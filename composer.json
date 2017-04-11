@@ -1,7 +1,7 @@
 {
     "name": "phalcon/ide-stubs",
     "type": "library",
-    "description": "The most complete Phalcon Framework IDE stubs library which allows autocomplete in modern IDEs.",
+    "description": "The most complete Phalcon Framework IDE stubs library which enables autocompletion in modern IDEs.",
     "keywords": [
         "Phalcon",
         "DevTools",

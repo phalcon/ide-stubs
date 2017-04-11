@@ -1,34 +1,37 @@
 # Phalcon IDE Stubs
 
-This repo provide the most complete Phalcon Framework stubs which allows autocomplete in modern IDEs.
+This repo provide the most complete Phalcon Framework stubs which enables autocompletion in modern IDEs.
 
 ## Installing via Composer
 
-Install Composer in a common location or in your project:
+1. Install Composer in a common location or in your project:
+    ```bash
+    curl -s http://getcomposer.org/installer | php
+    ```
 
-```bash
-curl -s http://getcomposer.org/installer | php
-```
-
-Create the `composer.json` file as follows:
-
-```json
-{
-    "require-dev": {
-        "phalcon/ide-stubs": "*"
+2. Create the `composer.json` file as follows:
+    ```json
+    {
+        "require-dev": {
+            "phalcon/ide-stubs": "*"
+        }
     }
-}
-```
+    ```
 
-Run the composer installer:
+3. Run the composer installer:
+    ```bash
+    php composer.phar install
+    ```
 
-```bash
-php composer.phar install
-```
+4. Setup your IDE.
 
-Setup your IDE.
+## Installing via Git
+
+1. Clone the Phalcon IDE Stubs repository in a common location.
+
+2. Setup your IDE.
 
 ## License
 
-Phalcon IDE Stubs is open-sourced software licensed under the New BSD License. © Phalcon Framework Team and contributors
+Phalcon IDE Stubs is open-sourced software licensed under the New BSD License. © Phalcon Framework Team and contributors.
 
