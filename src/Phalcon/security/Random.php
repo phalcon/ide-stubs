@@ -36,6 +36,9 @@ namespace Phalcon\Security;
  * echo $random->hex(12); // 95469d667475125208be45c4
  * echo $random->hex(13); // 05475e8af4a34f8f743ab48761
  *
+ * // Random base62 string
+ * echo $random->base62(); // z0RkwHfh8ErDM1xw
+ *
  * // Random base64 string
  * echo $random->base64(12); // XfIN81jGGuKkcE1E
  * echo $random->base64(12); // 3rcq39QzGK9fUqh8
@@ -121,7 +124,7 @@ class Random
      * If $len is not specified, 16 is assumed. It may be larger in future.
      * The result may contain alphanumeric characters except 0, O, I and l.
      *
-     * It is similar to Base64 but has been modified to avoid both non-alphanumeric
+     * It is similar to `Phalcon\Security\Random:base64` but has been modified to avoid both non-alphanumeric
      * characters and letters which might look ambiguous when printed.
      *
      * <code>
@@ -130,19 +133,41 @@ class Random
      * echo $random->base58(); // 4kUgL2pdQMSCQtjE
      * </code>
      *
-     * @link https://en.wikipedia.org/wiki/Base58
+     * @see    \Phalcon\Security\Random:base64
+     * @link   https://en.wikipedia.org/wiki/Base58
      * @throws Exception If secure random number generator is not available or unexpected partial read
-     * @param mixed $n
+     * @param int $len
      * @return string
      */
-    public function base58($n = null) {}
+    public function base58($len = null) {}
+
+    /**
+     * Generates a random base62 string
+     *
+     * If $len is not specified, 16 is assumed. It may be larger in future.
+     *
+     * It is similar to `Phalcon\Security\Random:base58` but has been modified to provide the largest value that can
+     * safely be used in URLs without needing to take extra characters into consideration because it is [A-Za-z0-9].
+     *
+     * < code>
+     * $random = new \Phalcon\Security\Random();
+     *
+     * echo $random->base62(); // z0RkwHfh8ErDM1xw
+     * </code>
+     *
+     * @see    \Phalcon\Security\Random:base58
+     * @throws Exception If secure random number generator is not available or unexpected partial read
+     * @param int $len
+     * @return string
+     */
+    public function base62($len = null) {}
 
     /**
      * Generates a random base64 string
      *
      * If $len is not specified, 16 is assumed. It may be larger in future.
      * The length of the result string is usually greater of $len.
-     * Size formula: 4( $len / 3) and this need to be rounded up to a multiple of 4.
+     * Size formula: 4 ($len / 3) and this need to be rounded up to a multiple of 4.
      *
      * <code>
      * $random = new \Phalcon\Security\Random();
@@ -219,5 +244,18 @@ class Random
      * @return int
      */
     public function number($len) {}
+
+    /**
+     * Generates a random string based on the number ($base) of characters ($alphabet).
+     *
+     * If $n is not specified, 16 is assumed. It may be larger in future.
+     *
+     * @throws Exception If secure random number generator is not available or unexpected partial read
+     * @param string $alphabet
+     * @param int $base
+     * @param mixed $n
+     * @return string
+     */
+    protected function base($alphabet, $base, $n = null) {}
 
 }

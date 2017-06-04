@@ -100,7 +100,7 @@ class Column implements \Phalcon\Db\ColumnInterface
     const TYPE_LONGBLOB = 13;
 
     /**
-     * Big integer abstract type
+     * Big integer abstract data type
      */
     const TYPE_BIGINTEGER = 14;
 

@@ -78,6 +78,15 @@ class Binder implements \Phalcon\Mvc\Model\BinderInterface
     public function bindToHandler($handler, array $params, $cacheKey, $methodName = null) {}
 
     /**
+     * Find the model by param value.
+     *
+     * @param mixed $paramValue
+     * @param string $className
+     * @return object|bool
+     */
+    protected function findBoundModel($paramValue, $className) {}
+
+    /**
      * Get params classes from cache by key
      *
      * @param string $cacheKey

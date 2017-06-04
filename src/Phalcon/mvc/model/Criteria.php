@@ -190,6 +190,7 @@ class Criteria implements \Phalcon\Mvc\Model\CriteriaInterface, \Phalcon\Di\Inje
      * @param string $conditions
      * @param mixed $bindParams
      * @param mixed $bindTypes
+     * @deprecated
      * @return Criteria
      */
     public function addWhere($conditions, $bindParams = null, $bindTypes = null) {}
@@ -406,7 +407,7 @@ class Criteria implements \Phalcon\Mvc\Model\CriteriaInterface, \Phalcon\Di\Inje
     public function getParams() {}
 
     /**
-     * Builds a Phalcon\Mvc\Model\Criteria based on an input array like _POST
+     * Builds a Phalcon\Mvc\Model\Criteria based on an input array like $_POST
      *
      * @param \Phalcon\DiInterface $dependencyInjector
      * @param string $modelName
@@ -415,6 +416,20 @@ class Criteria implements \Phalcon\Mvc\Model\CriteriaInterface, \Phalcon\Di\Inje
      * @return Criteria
      */
     public static function fromInput(\Phalcon\DiInterface $dependencyInjector, $modelName, array $data, $operator = "AND") {}
+
+    /**
+     * Creates a query builder from criteria.
+     *
+     * <code>
+     * $builder = Robots::query()
+     *     ->where("type = :type:")
+     *     ->bind(["type" => "mechanical"])
+     *     ->createBuilder();
+     * </code>
+     *
+     * @return BuilderInterface
+     */
+    public function createBuilder() {}
 
     /**
      * Executes a find using the parameters built with the criteria

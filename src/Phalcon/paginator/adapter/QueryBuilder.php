@@ -36,6 +36,11 @@ class QueryBuilder extends \Phalcon\Paginator\Adapter
      */
     protected $_builder;
 
+    /**
+     * Columns for count query if builder has having
+     */
+    protected $_columns;
+
 
     /**
      * Phalcon\Paginator\Adapter\QueryBuilder

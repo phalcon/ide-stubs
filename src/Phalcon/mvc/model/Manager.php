@@ -95,6 +95,9 @@ class Manager implements \Phalcon\Mvc\Model\ManagerInterface, \Phalcon\Di\Inject
     protected $_initialized;
 
 
+    protected $_prefix = "";
+
+
     protected $_sources;
 
 
@@ -208,6 +211,48 @@ class Manager implements \Phalcon\Mvc\Model\ManagerInterface, \Phalcon\Di\Inject
      * @return \Phalcon\Mvc\ModelInterface
      */
     public function load($modelName, $newInstance = false) {}
+
+    /**
+     * Sets the prefix for all model sources.
+     *
+     * <code>
+     * use Phalcon\Mvc\Model\Manager;
+     *
+     * $di->set("modelsManager", function () {
+     *     $modelsManager = new Manager();
+     *     $modelsManager->setModelPrefix("wp_");
+     *
+     *     return $modelsManager;
+     * });
+     *
+     * $robots = new Robots();
+     * echo $robots->getSource(); // wp_robots
+     * </code>
+     *
+     * @param string $prefix
+     */
+    public function setModelPrefix($prefix) {}
+
+    /**
+     * Returns the prefix for all model sources.
+     *
+     * <code>
+     * use Phalcon\Mvc\Model\Manager;
+     *
+     * $di->set("modelsManager", function () {
+     *     $modelsManager = new Manager();
+     *     $modelsManager->setModelPrefix("wp_");
+     *
+     *     return $modelsManager;
+     * });
+     *
+     * $robots = new Robots();
+     * echo $robots->getSource(); // wp_robots
+     * </code>
+     *
+     * @return string
+     */
+    public function getModelPrefix() {}
 
     /**
      * Sets the mapped source for a model

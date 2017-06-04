@@ -3,12 +3,12 @@
 namespace Phalcon\Cache\Backend;
 
 /**
- * Phalcon\Cache\Backend\Apc
+ * Phalcon\Cache\Backend\Apcu
  *
- * Allows to cache output fragments, PHP data and raw data using an APC backend
+ * Allows to cache output fragments, PHP data and raw data using an APCu backend
  *
  * <code>
- * use Phalcon\Cache\Backend\Apc;
+ * use Phalcon\Cache\Backend\Apcu;
  * use Phalcon\Cache\Frontend\Data as FrontData;
  *
  * // Cache data for 2 days
@@ -18,7 +18,7 @@ namespace Phalcon\Cache\Backend;
  *     ]
  * );
  *
- * $cache = new Apc(
+ * $cache = new Apcu(
  *     $frontCache,
  *     [
  *         "prefix" => "app-data",
@@ -31,11 +31,8 @@ namespace Phalcon\Cache\Backend;
  * // Get data
  * $data = $cache->get("my-data");
  * </code>
- *
- * @see \Phalcon\Cache\Backend\Apcu
- * @deprecated
  */
-class Apc extends \Phalcon\Cache\Backend
+class Apcu extends \Phalcon\Cache\Backend
 {
 
     /**
@@ -48,7 +45,7 @@ class Apc extends \Phalcon\Cache\Backend
     public function get($keyName, $lifetime = null) {}
 
     /**
-     * Stores cached content into the APC backend and stops the frontend
+     * Stores cached content into the APCu backend and stops the frontend
      *
      * @param string|int $keyName
      * @param string $content
@@ -112,9 +109,9 @@ class Apc extends \Phalcon\Cache\Backend
      * Immediately invalidates all existing items.
      *
      * <code>
-     * use Phalcon\Cache\Backend\Apc;
+     * use Phalcon\Cache\Backend\Apcu;
      *
-     * $cache = new Apc($frontCache, ["prefix" => "app-data"]);
+     * $cache = new Apcu($frontCache, ["prefix" => "app-data"]);
      *
      * $cache->save("my-data", [1, 2, 3, 4, 5]);
      *

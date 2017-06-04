@@ -3,20 +3,17 @@
 namespace Phalcon\Annotations\Adapter;
 
 /**
- * Phalcon\Annotations\Adapter\Apc
+ * Phalcon\Annotations\Adapter\Apcu
  *
- * Stores the parsed annotations in APC. This adapter is suitable for production
+ * Stores the parsed annotations in APCu. This adapter is suitable for production
  *
  * <code>
- * use Phalcon\Annotations\Adapter\Apc;
+ * use Phalcon\Annotations\Adapter\Apcu;
  *
- * $annotations = new Apc();
+ * $annotations = new Apcu();
  * </code>
- *
- * @see \Phalcon\Annotations\Adapter\Apcu
- * @deprecated
  */
-class Apc extends \Phalcon\Annotations\Adapter
+class Apcu extends \Phalcon\Annotations\Adapter
 {
 
     protected $_prefix = "";
@@ -26,14 +23,14 @@ class Apc extends \Phalcon\Annotations\Adapter
 
 
     /**
-     * Phalcon\Annotations\Adapter\Apc constructor
+     * Phalcon\Annotations\Adapter\Apcu constructor
      *
      * @param array $options
      */
     public function __construct($options = null) {}
 
     /**
-     * Reads parsed annotations from APC
+     * Reads parsed annotations from APCu
      *
      * @param string $key
      * @return bool|\Phalcon\Annotations\Reflection
@@ -41,7 +38,7 @@ class Apc extends \Phalcon\Annotations\Adapter
     public function read($key) {}
 
     /**
-     * Writes parsed annotations to APC
+     * Writes parsed annotations to APCu
      *
      * @param string $key
      * @param \Phalcon\Annotations\Reflection $data

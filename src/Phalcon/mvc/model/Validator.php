@@ -26,6 +26,7 @@ abstract class Validator implements \Phalcon\Mvc\Model\ValidatorInterface
      * Phalcon\Mvc\Model\Validator constructor
      *
      * @param array $options
+     * @deprecated
      */
     public function __construct(array $options) {}
 

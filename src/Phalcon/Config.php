@@ -31,6 +31,12 @@ namespace Phalcon;
 class Config implements \ArrayAccess, \Countable
 {
 
+    const DEFAULT_PATH_DELIMITER = ".";
+
+
+    static protected $_pathDelimiter;
+
+
     /**
      * Phalcon\Config constructor
      *
@@ -51,6 +57,20 @@ class Config implements \ArrayAccess, \Countable
      * @return bool
      */
     public function offsetExists($index) {}
+
+    /**
+     * Returns a value from current config using a dot separated path.
+     *
+     * <code>
+     * echo $config->path("unknown.path", "default", ".");
+     * </code>
+     *
+     * @param string $path
+     * @param mixed $defaultValue
+     * @param mixed $delimiter
+     * @return mixed
+     */
+    public function path($path, $defaultValue = null, $delimiter = null) {}
 
     /**
      * Gets an attribute from the configuration, if the attribute isn't defined returns null
@@ -162,6 +182,20 @@ class Config implements \ArrayAccess, \Countable
      * @return Config
      */
     public static function __set_state(array $data) {}
+
+    /**
+     * Sets the default path delimiter
+     *
+     * @param string $delimiter
+     */
+    public static function setPathDelimiter($delimiter = null) {}
+
+    /**
+     * Gets the default path delimiter
+     *
+     * @return string
+     */
+    public static function getPathDelimiter() {}
 
     /**
      * Helper method for merge configs (forwarding nested config instance)

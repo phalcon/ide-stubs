@@ -244,6 +244,28 @@ class Di implements \Phalcon\DiInterface
     public function __call($method, $arguments = null) {}
 
     /**
+     * Registers a service provider.
+     *
+     * <code>
+     * use Phalcon\DiInterface;
+     * use Phalcon\Di\ServiceProviderInterface;
+     *
+     * class SomeServiceProvider implements ServiceProviderInterface
+     * {
+     *     public function register(DiInterface $di)
+     *     {
+     *         $di->setShared('service', function () {
+     *             // ...
+     *         });
+     *     }
+     * }
+     * </code>
+     *
+     * @param \Phalcon\Di\ServiceProviderInterface $provider
+     */
+    public function register(\Phalcon\Di\ServiceProviderInterface $provider) {}
+
+    /**
      * Set a default dependency injection container to be obtained into static methods
      *
      * @param \Phalcon\DiInterface $dependencyInjector
@@ -261,5 +283,84 @@ class Di implements \Phalcon\DiInterface
      * Resets the internal default DI
      */
     public static function reset() {}
+
+    /**
+     * Loads services from a yaml file.
+     *
+     * <code>
+     * $di->loadFromYaml(
+     *     "path/services.yaml",
+     *     [
+     *         "!approot" => function ($value) {
+     *             return dirname(__DIR__) . $value;
+     *         }
+     *     ]
+     * );
+     * </code>
+     *
+     * And the services can be specified in the file as:
+     *
+     * <code>
+     * myComponent:
+     *     className: \Acme\Components\MyComponent
+     *     shared: true
+     *
+     * group:
+     *     className: \Acme\Group
+     *     arguments:
+     *         - type: service
+     *           name: myComponent
+     *
+     * user:
+     *    className: \Acme\User
+     * </code>
+     *
+     * @link https://docs.phalconphp.com/en/latest/reference/di.html
+     * @param string $filePath
+     * @param array $callbacks
+     */
+    public function loadFromYaml($filePath, array $callbacks = null) {}
+
+    /**
+     * Loads services from a php config file.
+     *
+     * <code>
+     * $di->loadFromPhp("path/services.php");
+     * </code>
+     *
+     * And the services can be specified in the file as:
+     *
+     * <code>
+     * return [
+     *      'myComponent' => [
+     *          'className' => '\Acme\Components\MyComponent',
+     *          'shared' => true,
+     *      ],
+     *      'group' => [
+     *          'className' => '\Acme\Group',
+     *          'arguments' => [
+     *              [
+     *                  'type' => 'service',
+     *                  'service' => 'myComponent',
+     *              ],
+     *          ],
+     *      ],
+     *      'user' => [
+     *          'className' => '\Acme\User',
+     *      ],
+     * ];
+     * </code>
+     *
+     * @link https://docs.phalconphp.com/en/latest/reference/di.html
+     * @param string $filePath
+     */
+    public function loadFromPhp($filePath) {}
+
+    /**
+     * Loads services from a Config object.
+     *
+     * @param \Phalcon\Config $config
+     */
+    protected function loadFromConfig(\Phalcon\Config $config) {}
 
 }

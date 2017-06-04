@@ -100,6 +100,9 @@ abstract class Model implements \Phalcon\Mvc\EntityInterface, \Phalcon\Mvc\Model
     protected $_snapshot;
 
 
+    protected $_oldSnapshot = array();
+
+
     /**
      * Phalcon\Mvc\Model constructor
      *
@@ -315,6 +318,19 @@ abstract class Model implements \Phalcon\Mvc\EntityInterface, \Phalcon\Mvc\Model
      * );
      *
      * // Allow assign only name and year
+     * $robot->assign(
+     *     $_POST,
+     *     null,
+     *     [
+     *         "name",
+     *         "year",
+     *     ]
+     * );
+     *
+     * // By default assign method will use setters if exist, you can disable it by using ini_set to directly use properties
+     *
+     * ini_set("phalcon.orm.disable_assign_setters", true);
+     *
      * $robot->assign(
      *     $_POST,
      *     null,
@@ -1281,13 +1297,45 @@ abstract class Model implements \Phalcon\Mvc\EntityInterface, \Phalcon\Mvc\Model
     public function getSnapshotData() {}
 
     /**
+     * Returns the internal old snapshot data
+     *
+     * @return array
+     */
+    public function getOldSnapshotData() {}
+
+    /**
      * Check if a specific attribute has changed
      * This only works if the model is keeping data snapshots
      *
+     * <code>
+     * $robot = new Robots();
+     *
+     * $robot->type = "mechanical";
+     * $robot->name = "Astro Boy";
+     * $robot->year = 1952;
+     *
+     * $robot->create();
+     * $robot->type = "hydraulic";
+     * $hasChanged = $robot->hasChanged("type"); // returns true
+     * $hasChanged = $robot->hasChanged(["type", "name"]); // returns true
+     * $hasChanged = $robot->hasChanged(["type", "name", true]); // returns false
+     * </code>
+     *
      * @param string|array $fieldName
+     * @param boolean $allFields
      * @return bool
      */
-    public function hasChanged($fieldName = null) {}
+    public function hasChanged($fieldName = null, $allFields = false) {}
+
+    /**
+     * Check if a specific attribute was updated
+     * This only works if the model is keeping data snapshots
+     *
+     * @param string|array $fieldName
+     * @param bool $allFields
+     * @return bool
+     */
+    public function hasUpdated($fieldName = null, $allFields = false) {}
 
     /**
      * Returns a list of changed values.
@@ -1305,6 +1353,24 @@ abstract class Model implements \Phalcon\Mvc\EntityInterface, \Phalcon\Mvc\Model
      * @return array
      */
     public function getChangedFields() {}
+
+    /**
+     * Returns a list of updated values.
+     *
+     * <code>
+     * $robots = Robots::findFirst();
+     * print_r($robots->getChangedFields()); // []
+     *
+     * $robots->deleted = 'Y';
+     *
+     * $robots->getChangedFields();
+     * print_r($robots->getChangedFields()); // ["deleted"]
+     * $robots->save();
+     * print_r($robots->getChangedFields()); // []
+     * print_r($robots->getUpdatedFields()); // ["deleted"]
+     * </code>
+     */
+    public function getUpdatedFields() {}
 
     /**
      * Sets if a model must use dynamic update instead of the all-field update

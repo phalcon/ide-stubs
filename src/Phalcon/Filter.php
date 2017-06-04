@@ -57,6 +57,12 @@ class Filter implements \Phalcon\FilterInterface
     const FILTER_UPPER = "upper";
 
 
+    const FILTER_URL = "url";
+
+
+    const FILTER_SPECIAL_CHARS = "special_chars";
+
+
     protected $_filters;
 
 

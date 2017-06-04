@@ -284,6 +284,7 @@ abstract class Dispatcher implements \Phalcon\DispatcherInterface, \Phalcon\Di\I
      * @see Phalcon\Dispatcher::setModelBinder()
      * @param bool $value
      * @param mixed $cache
+     * @deprecated
      * @return Dispatcher
      */
     public function setModelBinding($value, $cache = null) {}
@@ -328,8 +329,7 @@ abstract class Dispatcher implements \Phalcon\DispatcherInterface, \Phalcon\Di\I
     protected function _dispatch() {}
 
     /**
-     * Forwards the execution flow to another controller/action
-     * Dispatchers are unique per module. Forwarding between modules is not allowed
+     * Forwards the execution flow to another controller/action.
      *
      * <code>
      * $this->dispatcher->forward(

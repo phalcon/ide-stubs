@@ -233,7 +233,7 @@ class Builder implements \Phalcon\Mvc\Model\Query\BuilderInterface, \Phalcon\Di\
     public function getFrom() {}
 
     /**
-     * Adds an INNER join to the query
+     * Adds an :type: join (by default type - INNER) to the query
      *
      * <code>
      * // Inner Join model 'Robots' with automatic conditions and alias
@@ -315,7 +315,7 @@ class Builder implements \Phalcon\Mvc\Model\Query\BuilderInterface, \Phalcon\Di\
     public function getJoins() {}
 
     /**
-     * Sets the query conditions
+     * Sets the query WHERE conditions
      *
      * <code>
      * $builder->where(100);
@@ -339,7 +339,7 @@ class Builder implements \Phalcon\Mvc\Model\Query\BuilderInterface, \Phalcon\Di\
     public function where($conditions, $bindParams = null, $bindTypes = null) {}
 
     /**
-     * Appends a condition to the current conditions using a AND operator
+     * Appends a condition to the current WHERE conditions using a AND operator
      *
      * <code>
      * $builder->andWhere("name = 'Peter'");
@@ -383,7 +383,7 @@ class Builder implements \Phalcon\Mvc\Model\Query\BuilderInterface, \Phalcon\Di\
     public function orWhere($conditions, $bindParams = null, $bindTypes = null) {}
 
     /**
-     * Appends a BETWEEN condition to the current conditions
+     * Appends a BETWEEN condition to the current WHERE conditions
      *
      * <code>
      * $builder->betweenWhere("price", 100.25, 200.50);
@@ -398,7 +398,7 @@ class Builder implements \Phalcon\Mvc\Model\Query\BuilderInterface, \Phalcon\Di\
     public function betweenWhere($expr, $minimum, $maximum, $operator = BuilderInterface::OPERATOR_AND) {}
 
     /**
-     * Appends a NOT BETWEEN condition to the current conditions
+     * Appends a NOT BETWEEN condition to the current WHERE conditions
      *
      * <code>
      * $builder->notBetweenWhere("price", 100.25, 200.50);
@@ -413,7 +413,7 @@ class Builder implements \Phalcon\Mvc\Model\Query\BuilderInterface, \Phalcon\Di\
     public function notBetweenWhere($expr, $minimum, $maximum, $operator = BuilderInterface::OPERATOR_AND) {}
 
     /**
-     * Appends an IN condition to the current conditions
+     * Appends an IN condition to the current WHERE conditions
      *
      * <code>
      * $builder->inWhere("id", [1, 2, 3]);
@@ -427,7 +427,7 @@ class Builder implements \Phalcon\Mvc\Model\Query\BuilderInterface, \Phalcon\Di\
     public function inWhere($expr, array $values, $operator = BuilderInterface::OPERATOR_AND) {}
 
     /**
-     * Appends a NOT IN condition to the current conditions
+     * Appends a NOT IN condition to the current WHERE conditions
      *
      * <code>
      * $builder->notInWhere("id", [1, 2, 3]);
@@ -468,16 +468,132 @@ class Builder implements \Phalcon\Mvc\Model\Query\BuilderInterface, \Phalcon\Di\
     public function getOrderBy() {}
 
     /**
-     * Sets a HAVING condition clause. You need to escape PHQL reserved words using [ and ] delimiters
+     * Sets the HAVING condition clause
      *
      * <code>
      * $builder->having("SUM(Robots.price) > 0");
+     *
+     * $builder->having(
+     *         "SUM(Robots.price) > :sum:",
+     *       [
+     *            "sum" => 100,
+     *      ]
+     * );
      * </code>
      *
-     * @param string $having
+     * @param mixed $conditions
+     * @param array $bindParams
+     * @param array $bindTypes
      * @return Builder
      */
-    public function having($having) {}
+    public function having($conditions, $bindParams = null, $bindTypes = null) {}
+
+    /**
+     * Appends a condition to the current HAVING conditions clause using a AND operator
+     *
+     * <code>
+     * $builder->andHaving("SUM(Robots.price) > 0");
+     *
+     * $builder->andHaving(
+     *         "SUM(Robots.price) > :sum:",
+     *       [
+     *            "sum" => 100,
+     *      ]
+     * );
+     * </code>
+     *
+     * @param string $conditions
+     * @param array $bindParams
+     * @param array $bindTypes
+     * @return Builder
+     */
+    public function andHaving($conditions, $bindParams = null, $bindTypes = null) {}
+
+    /**
+     * Appends a condition to the current HAVING conditions clause using an OR operator
+     *
+     * <code>
+     * $builder->orHaving("SUM(Robots.price) > 0");
+     *
+     * $builder->orHaving(
+     *         "SUM(Robots.price) > :sum:",
+     *       [
+     *            "sum" => 100,
+     *      ]
+     * );
+     * </code>
+     *
+     * @param string $conditions
+     * @param array $bindParams
+     * @param array $bindTypes
+     * @return Builder
+     */
+    public function orHaving($conditions, $bindParams = null, $bindTypes = null) {}
+
+    /**
+     * Appends a BETWEEN condition to the current HAVING conditions clause
+     *
+     * <code>
+     * $builder->betweenHaving("SUM(Robots.price)", 100.25, 200.50);
+     * </code>
+     *
+     * @param string $expr
+     * @param mixed $minimum
+     * @param mixed $maximum
+     * @param string $operator
+     * @return Builder
+     */
+    public function betweenHaving($expr, $minimum, $maximum, $operator = BuilderInterface::OPERATOR_AND) {}
+
+    /**
+     * Appends a NOT BETWEEN condition to the current HAVING conditions clause
+     *
+     * <code>
+     * $builder->notBetweenHaving("SUM(Robots.price)", 100.25, 200.50);
+     * </code>
+     *
+     * @param string $expr
+     * @param mixed $minimum
+     * @param mixed $maximum
+     * @param string $operator
+     * @return Builder
+     */
+    public function notBetweenHaving($expr, $minimum, $maximum, $operator = BuilderInterface::OPERATOR_AND) {}
+
+    /**
+     * Appends an IN condition to the current HAVING conditions clause
+     *
+     * <code>
+     * $builder->inHaving("SUM(Robots.price)", [100, 200]);
+     * </code>
+     *
+     * @param string $expr
+     * @param array $values
+     * @param string $operator
+     * @return Builder
+     */
+    public function inHaving($expr, array $values, $operator = BuilderInterface::OPERATOR_AND) {}
+
+    /**
+     * Appends a NOT IN condition to the current HAVING conditions clause
+     *
+     * <code>
+     * $builder->notInHaving("SUM(Robots.price)", [100, 200]);
+     * </code>
+     *
+     * @param string $expr
+     * @param array $values
+     * @param string $operator
+     * @return Builder
+     */
+    public function notInHaving($expr, array $values, $operator = BuilderInterface::OPERATOR_AND) {}
+
+    /**
+     * Return the current having clause
+     *
+     * @return string
+     */
+    public function getHaving() {}
 
     /**
      * Sets a FOR UPDATE clause
@@ -490,13 +606,6 @@ class Builder implements \Phalcon\Mvc\Model\Query\BuilderInterface, \Phalcon\Di\
      * @return Builder
      */
     public function forUpdate($forUpdate) {}
-
-    /**
-     * Return the current having clause
-     *
-     * @return string|array
-     */
-    public function getHaving() {}
 
     /**
      * Sets a LIMIT clause, optionally an offset clause
@@ -583,5 +692,51 @@ class Builder implements \Phalcon\Mvc\Model\Query\BuilderInterface, \Phalcon\Di\
      * @return string
      */
     final public function autoescape($identifier) {}
+
+    /**
+     * Appends a BETWEEN condition
+     *
+     * @param string $clause
+     * @param string $operator
+     * @param string $expr
+     * @param mixed $minimum
+     * @param mixed $maximum
+     * @return Builder
+     */
+    private function _conditionBetween($clause, $operator, $expr, $minimum, $maximum) {}
+
+    /**
+     * Appends a NOT BETWEEN condition
+     *
+     * @param string $clause
+     * @param string $operator
+     * @param string $expr
+     * @param mixed $minimum
+     * @param mixed $maximum
+     * @return Builder
+     */
+    private function _conditionNotBetween($clause, $operator, $expr, $minimum, $maximum) {}
+
+    /**
+     * Appends an IN condition
+     *
+     * @param string $clause
+     * @param string $operator
+     * @param string $expr
+     * @param array $values
+     * @return Builder
+     */
+    private function _conditionIn($clause, $operator, $expr, array $values) {}
+
+    /**
+     * Appends a NOT IN condition
+     *
+     * @param string $clause
+     * @param string $operator
+     * @param string $expr
+     * @param array $values
+     * @return Builder
+     */
+    private function _conditionNotIn($clause, $operator, $expr, array $values) {}
 
 }

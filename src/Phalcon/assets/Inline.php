@@ -11,7 +11,7 @@ namespace Phalcon\Assets;
  * $inline = new \Phalcon\Assets\Inline("js", "alert('hello world');");
  * </code>
  */
-class Inline
+class Inline implements \Phalcon\Assets\ResourceInterface
 {
 
     protected $_type;
@@ -71,5 +71,12 @@ class Inline
      * @return Inline
      */
     public function setAttributes(array $attributes) {}
+
+    /**
+     * Gets the resource's key.
+     *
+     * @return string
+     */
+    public function getResourceKey() {}
 
 }

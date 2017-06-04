@@ -11,7 +11,7 @@ namespace Phalcon\Assets;
  * $resource = new \Phalcon\Assets\Resource("js", "javascripts/jquery.js");
  * </code>
  */
-class Resource
+class Resource implements \Phalcon\Assets\ResourceInterface
 {
     /**
      * @var string
@@ -188,5 +188,12 @@ class Resource
      * @return string
      */
     public function getRealTargetPath($basePath = null) {}
+
+    /**
+     * Gets the resource's key.
+     *
+     * @return string
+     */
+    public function getResourceKey() {}
 
 }

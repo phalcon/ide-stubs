@@ -46,6 +46,9 @@ class Collection implements \Countable, \Iterator
     protected $_sourcePath;
 
 
+    protected $_includedResources;
+
+
 
     public function getPrefix() {}
 
@@ -83,6 +86,11 @@ class Collection implements \Countable, \Iterator
     public function getSourcePath() {}
 
     /**
+     * Phalcon\Assets\Collection constructor
+     */
+    public function __construct() {}
+
+    /**
      * Adds a resource to the collection
      *
      * @param \Phalcon\Assets\Resource $resource
@@ -97,6 +105,24 @@ class Collection implements \Countable, \Iterator
      * @return Collection
      */
     public function addInline(\Phalcon\Assets\Inline $code) {}
+
+    /**
+     * Checks this the resource is added to the collection.
+     *
+     * <code>
+     * use Phalcon\Assets\Resource;
+     * use Phalcon\Assets\Collection;
+     *
+     * $collection = new Collection();
+     *
+     * $resource = new Resource("js", "js/jquery.js");
+     * $resource->has($resource); // true
+     * </code>
+     *
+     * @param ResourceInterface $resource
+     * @return bool
+     */
+    public function has(ResourceInterface $resource) {}
 
     /**
      * Adds a CSS resource to the collection
@@ -265,5 +291,13 @@ class Collection implements \Countable, \Iterator
      * @return Collection
      */
     public function addFilter(\Phalcon\Assets\FilterInterface $filter) {}
+
+    /**
+     * Adds a resource or inline-code to the collection
+     *
+     * @param ResourceInterface $resource
+     * @return bool
+     */
+    protected final function addResource(ResourceInterface $resource) {}
 
 }

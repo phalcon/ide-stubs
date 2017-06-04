@@ -234,11 +234,18 @@ abstract class Adapter implements \Phalcon\Session\AdapterInterface
     /**
      * Alias: Removes a session variable from an application context
      *
+     * <code>
+     * unset($session->auth);
+     * </code>
+     *
      * @param string $index
      */
     public function __unset($index) {}
 
 
     public function __destruct() {}
+
+
+    protected function removeSessionData() {}
 
 }
