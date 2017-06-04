@@ -165,7 +165,7 @@ class Manager
     public function set($id, \Phalcon\Assets\Collection $collection) {}
 
     /**
-     * Returns a collection by its id
+     * Returns a collection by its id.
      *
      * <code>
      * $scripts = $assets->get("js");
@@ -175,6 +175,21 @@ class Manager
      * @return \Phalcon\Assets\Collection
      */
     public function get($id) {}
+
+    /**
+     * Checks whether the Assets Manager has Collection.
+     *
+     * <code>
+     * if ($assets->has("jsHeader")) {
+     *     // \Phalcon\Assets\Collection
+     *     $collection = $assets->get("jsHeader");
+     * }
+     * </code>
+     *
+     * @param string $id
+     * @return bool
+     */
+    public function has($id) {}
 
     /**
      * Returns the CSS collection of assets
