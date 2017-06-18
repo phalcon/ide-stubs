@@ -10,10 +10,11 @@ namespace Phalcon\Cli;
  * instantiating a task and calling an action on it.
  *
  * <code>
- * $di = new \Phalcon\Di();
+ * use Phalcon\Di;
+ * use Phalcon\Cli\Dispatcher;
  *
- * $dispatcher = new \Phalcon\Cli\Dispatcher();
- *
+ * $di = new Di();
+ * $dispatcher = new Dispatcher();
  * $dispatcher->setDi($di);
  *
  * $dispatcher->setTaskName("posts");
@@ -110,9 +111,33 @@ class Dispatcher extends \Phalcon\Dispatcher implements \Phalcon\Cli\DispatcherI
     public function getOptions() {}
 
     /**
+     * Gets an option by its name or numeric index
+     *
+     * @param mixed $option
+     * @param mixed $filters
+     * @param mixed $defaultValue
+     * @param mixed $$option
+     * @param string|array $$filters
+     * @param mixed $$defaultValue
+     * @return mixed
+     */
+    public function getOption($option, $filters = null, $defaultValue = null) {}
+
+    /**
+     * Check if an option exists
+     *
+     * @param mixed $option
+     * @return bool
+     */
+    public function hasOption($option) {}
+
+    /**
+     * Calls the action method.
+     *
      * @param mixed $handler
      * @param string $actionMethod
      * @param array $params
+     * @return mixed
      */
     public function callActionMethod($handler, $actionMethod, array $params = array()) {}
 

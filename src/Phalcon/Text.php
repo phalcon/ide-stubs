@@ -25,6 +25,9 @@ abstract class Text
     const RANDOM_NOZERO = 4;
 
 
+    const RANDOM_DISTINCT = 5;
+
+
     /**
      * Converts strings to camelize style
      *
@@ -72,10 +75,10 @@ abstract class Text
      * Generates a random string based on the given type. Type is one of the RANDOM_ constants
      *
      * <code>
+     * use Phalcon\Text;
+     *
      * // "aloiwkqz"
-     * echo Phalcon\Text::random(
-     *     Phalcon\Text::RANDOM_ALNUM
-     * );
+     * echo Text::random(Text::RANDOM_ALNUM);
      * </code>
      *
      * @param int $type

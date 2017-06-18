@@ -66,4 +66,32 @@ abstract class Validator implements \Phalcon\Validation\ValidatorInterface
      */
     abstract public function validate(\Phalcon\Validation $validation, $attribute);
 
+    /**
+     * Prepares a label for the field.
+     *
+     * @param \Phalcon\Validation $validation
+     * @param string $field
+     * @return mixed
+     */
+    protected function prepareLabel(\Phalcon\Validation $validation, $field) {}
+
+    /**
+     * Prepares a validation message.
+     *
+     * @param \Phalcon\Validation $validation
+     * @param string $field
+     * @param string $type
+     * @param string $option
+     * @return mixed
+     */
+    protected function prepareMessage(\Phalcon\Validation $validation, $field, $type, $option = "message") {}
+
+    /**
+     * Prepares a validation code.
+     *
+     * @param string $field
+     * @return int|null
+     */
+    protected function prepareCode($field) {}
+
 }
