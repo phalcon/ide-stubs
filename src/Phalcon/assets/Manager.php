@@ -199,6 +199,13 @@ class Manager
     public function collection($name) {}
 
     /**
+     * @param array $resources
+     * @param string $type
+     * @return array
+     */
+    public function collectionResourcesByType(array $resources, $type) {}
+
+    /**
      * Traverses a collection calling the callback to generate its HTML
      *
      * @param \Phalcon\Assets\Collection $collection

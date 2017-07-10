@@ -256,4 +256,11 @@ class Mysql extends \Phalcon\Db\Dialect
      */
     protected function _getTableOptions(array $definition) {}
 
+    /**
+     * Generates SQL to check DB parameter FOREIGN_KEY_CHECKS.
+     *
+     * @return string
+     */
+    public function getForeignKeyChecks() {}
+
 }

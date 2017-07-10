@@ -13,10 +13,10 @@ namespace Phalcon\Config\Adapter;
  * use Phalcon\Config\Adapter\Grouped;
  *
  * $config = new Grouped(
- *    [
- *        "path/to/config.php",
- *        "path/to/config.dist.php",
- *    ]
+ *     [
+ *         "path/to/config.php",
+ *         "path/to/config.dist.php",
+ *     ]
  * );
  * </code>
  *
@@ -24,11 +24,11 @@ namespace Phalcon\Config\Adapter;
  * use Phalcon\Config\Adapter\Grouped;
  *
  * $config = new Grouped(
- *    [
- *        "path/to/config.json",
- *        "path/to/config.dist.json",
- *    ],
- *    "json"
+ *     [
+ *         "path/to/config.json",
+ *         "path/to/config.dist.json",
+ *     ],
+ *     "json"
  * );
  * </code>
  *
@@ -36,21 +36,21 @@ namespace Phalcon\Config\Adapter;
  * use Phalcon\Config\Adapter\Grouped;
  *
  * $config = new Grouped(
- *    [
- *        [
- *            "filePath" => "path/to/config.php",
- *            "adapter"  => "php",
- *        ],
- *        [
- *            "filePath" => "path/to/config.json",
- *            "adapter"  => "json",
- *        ],
- *        [
- *            "adapter"  => "array",
- *            "config"   => [
- *                "property" => "value",
- *            ],
- *        ],
+ *     [
+ *         [
+ *             "filePath" => "path/to/config.php",
+ *             "adapter"  => "php",
+ *         ],
+ *         [
+ *             "filePath" => "path/to/config.json",
+ *             "adapter"  => "json",
+ *         ],
+ *         [
+ *             "adapter"  => "array",
+ *             "config"   => [
+ *                 "property" => "value",
+ *         ],
+ *     ],
  * );
  * </code>
  */

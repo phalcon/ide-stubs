@@ -703,7 +703,7 @@ class Builder implements \Phalcon\Mvc\Model\Query\BuilderInterface, \Phalcon\Di\
      * @param mixed $maximum
      * @return Builder
      */
-    private function _conditionBetween($clause, $operator, $expr, $minimum, $maximum) {}
+    protected function _conditionBetween($clause, $operator, $expr, $minimum, $maximum) {}
 
     /**
      * Appends a NOT BETWEEN condition
@@ -715,7 +715,7 @@ class Builder implements \Phalcon\Mvc\Model\Query\BuilderInterface, \Phalcon\Di\
      * @param mixed $maximum
      * @return Builder
      */
-    private function _conditionNotBetween($clause, $operator, $expr, $minimum, $maximum) {}
+    protected function _conditionNotBetween($clause, $operator, $expr, $minimum, $maximum) {}
 
     /**
      * Appends an IN condition
@@ -726,7 +726,7 @@ class Builder implements \Phalcon\Mvc\Model\Query\BuilderInterface, \Phalcon\Di\
      * @param array $values
      * @return Builder
      */
-    private function _conditionIn($clause, $operator, $expr, array $values) {}
+    protected function _conditionIn($clause, $operator, $expr, array $values) {}
 
     /**
      * Appends a NOT IN condition
@@ -737,6 +737,6 @@ class Builder implements \Phalcon\Mvc\Model\Query\BuilderInterface, \Phalcon\Di\
      * @param array $values
      * @return Builder
      */
-    private function _conditionNotIn($clause, $operator, $expr, array $values) {}
+    protected function _conditionNotIn($clause, $operator, $expr, array $values) {}
 
 }

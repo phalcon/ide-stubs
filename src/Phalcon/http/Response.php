@@ -79,12 +79,10 @@ class Response implements \Phalcon\Http\ResponseInterface, \Phalcon\Di\Injection
      * Returns the status code
      *
      * <code>
-     * print_r(
-     *     $response->getStatusCode()
-     * );
+     * echo $response->getStatusCode();
      * </code>
      *
-     * @return array
+     * @return int|null
      */
     public function getStatusCode() {}
 

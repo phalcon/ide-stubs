@@ -75,4 +75,14 @@ class Mysql extends \Phalcon\Db\Adapter\Pdo
      */
     public function describeReferences($table, $schema = null) {}
 
+    /**
+     * Adds a foreign key to a table
+     *
+     * @param string $tableName
+     * @param string $schemaName
+     * @param \Phalcon\Db\ReferenceInterface $reference
+     * @return bool
+     */
+    public function addForeignKey($tableName, $schemaName, \Phalcon\Db\ReferenceInterface $reference) {}
+
 }
