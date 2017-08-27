@@ -231,15 +231,18 @@ class Security implements \Phalcon\Di\InjectionAwareInterface
     /**
      * Testing for LibreSSL
      *
+     * @deprecated Will be removed in 4.0.0
      * @return bool
      */
     public function hasLibreSsl() {}
 
     /**
-     * Getting OpenSSL or LibreSSL version
+     * Getting OpenSSL or LibreSSL version.
      *
      * Parse OPENSSL_VERSION_TEXT because OPENSSL_VERSION_NUMBER is no use for LibreSSL.
+     * This constant show not the current system openssl library version but version PHP was compiled with.
      *
+     * @deprecated Will be removed in 4.0.0
      * @link https://bugs.php.net/bug.php?id=71143
      *
      * <code>

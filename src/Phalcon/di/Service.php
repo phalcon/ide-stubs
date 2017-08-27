@@ -14,7 +14,7 @@ namespace Phalcon\Di;
  * );
  *
  * $request = service->resolve();
- * <code>
+ * </code>
  */
 class Service implements \Phalcon\Di\ServiceInterface
 {
