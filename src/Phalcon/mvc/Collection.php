@@ -606,7 +606,7 @@ abstract class Collection implements \Phalcon\Mvc\EntityInterface, \Phalcon\Mvc\
      * </code>
      *
      * @param array $parameters
-     * @return array
+     * @return int
      */
     public static function count(array $parameters = null) {}
 
@@ -614,7 +614,7 @@ abstract class Collection implements \Phalcon\Mvc\EntityInterface, \Phalcon\Mvc\
      * Perform an aggregation using the Mongo aggregation framework
      *
      * @param array $parameters
-     * @return int
+     * @return array
      */
     public static function aggregate(array $parameters = null) {}
 
