@@ -606,7 +606,7 @@ abstract class Collection implements \Phalcon\Mvc\EntityInterface, \Phalcon\Mvc\
      * </code>
      *
      * @param array $parameters
-     * @return array
+     * @return int
      */
     public static function count(array $parameters = null) {}
 
