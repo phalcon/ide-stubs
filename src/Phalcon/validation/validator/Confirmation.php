@@ -8,7 +8,10 @@ namespace Phalcon\Validation\Validator;
  * Checks that two values have the same value
  *
  * <code>
+ * use Phalcon\Validation;
  * use Phalcon\Validation\Validator\Confirmation;
+ *
+ * $validator = new Validation();
  *
  * $validator->add(
  *     "password",

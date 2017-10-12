@@ -415,6 +415,8 @@ class View extends \Phalcon\Di\Injectable implements \Phalcon\Mvc\ViewInterface
     /**
      * Gets extra parameters of the action rendered
      *
+     * @deprecated Will be removed in 4.0.0
+     * @deprecated
      * @return array
      */
     public function getParams() {}

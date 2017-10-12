@@ -8,7 +8,10 @@ namespace Phalcon\Validation\Validator;
  * Check for a valid numeric value
  *
  * <code>
+ * use Phalcon\Validation;
  * use Phalcon\Validation\Validator\Numericality;
+ *
+ * $validator = new Validation();
  *
  * $validator->add(
  *     "price",

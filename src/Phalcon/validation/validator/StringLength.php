@@ -10,7 +10,10 @@ namespace Phalcon\Validation\Validator;
  * be at least min, and at most max.
  *
  * <code>
+ * use Phalcon\Validation;
  * use Phalcon\Validation\Validator\StringLength as StringLength;
+ *
+ * $validator = new Validation();
  *
  * $validation->add(
  *     "name_last",

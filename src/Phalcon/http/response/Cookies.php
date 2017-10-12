@@ -23,6 +23,9 @@ class Cookies implements \Phalcon\Http\Response\CookiesInterface, \Phalcon\Di\In
     protected $_cookies;
 
 
+
+    public function __construct() {}
+
     /**
      * Sets the dependency injector
      *

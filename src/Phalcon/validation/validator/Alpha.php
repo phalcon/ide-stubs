@@ -8,7 +8,10 @@ namespace Phalcon\Validation\Validator;
  * Check for alphabetic character(s)
  *
  * <code>
+ * use Phalcon\Validation;
  * use Phalcon\Validation\Validator\Alpha as AlphaValidator;
+ *
+ * $validator = new Validation();
  *
  * $validator->add(
  *     "username",

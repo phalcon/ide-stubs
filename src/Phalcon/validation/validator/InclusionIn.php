@@ -8,7 +8,10 @@ namespace Phalcon\Validation\Validator;
  * Check if a value is included into a list of values
  *
  * <code>
+ * use Phalcon\Validation;
  * use Phalcon\Validation\Validator\InclusionIn;
+ *
+ * $validator = new Validation();
  *
  * $validator->add(
  *     "status",

@@ -38,7 +38,7 @@ abstract class Dispatcher implements \Phalcon\DispatcherInterface, \Phalcon\Di\I
     protected $_activeHandler;
 
 
-    protected $_finished;
+    protected $_finished = false;
 
 
     protected $_forwarded = false;
@@ -93,6 +93,9 @@ abstract class Dispatcher implements \Phalcon\DispatcherInterface, \Phalcon\Di\I
 
 
     protected $_modelBinder = null;
+
+
+    protected $_isControllerInitialize = false;
 
 
     /**
@@ -315,18 +318,16 @@ abstract class Dispatcher implements \Phalcon\DispatcherInterface, \Phalcon\Di\I
     public function getModelBinder() {}
 
     /**
-     * Dispatches a handle action taking into account the routing parameters
+     * Process the results of the router by calling into the appropriate controller action(s)
+     * including any routing data or injected parameters.
      *
-     * @return object
+     * @return object|false Returns the dispatched handler class (the Controller for Mvc dispatching or a Task
+     *                      for CLI dispatching) or <tt>false</tt> if an exception occurred and the operation was
+     *                      stopped by returning <tt>false</tt> in the exception handler.
+     *
+     * @throws \Exception if any uncaught or unhandled exception occurs during the dispatcher process.
      */
     public function dispatch() {}
-
-    /**
-     * Dispatches a handle action taking into account the routing parameters
-     *
-     * @return object
-     */
-    protected function _dispatch() {}
 
     /**
      * Forwards the execution flow to another controller/action.
@@ -340,7 +341,10 @@ abstract class Dispatcher implements \Phalcon\DispatcherInterface, \Phalcon\Di\I
      * );
      * </code>
      *
-     * @param array $forward
+     * @param array forward
+     *
+     * @throws \Phalcon\Exception
+     * @param mixed $forward
      */
     public function forward($forward) {}
 

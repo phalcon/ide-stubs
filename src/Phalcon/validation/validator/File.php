@@ -8,7 +8,10 @@ namespace Phalcon\Validation\Validator;
  * Checks if a value has a correct file
  *
  * <code>
+ * use Phalcon\Validation;
  * use Phalcon\Validation\Validator\File as FileValidator;
+ *
+ * $validator = new Validation();
  *
  * $validator->add(
  *     "file",

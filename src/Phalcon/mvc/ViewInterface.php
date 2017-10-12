@@ -130,6 +130,8 @@ interface ViewInterface extends \Phalcon\Mvc\ViewBaseInterface
     /**
      * Gets extra parameters of the action rendered
      *
+     * @deprecated Will be removed in 4.0.0
+     * @deprecated
      * @return array
      */
     public function getParams();

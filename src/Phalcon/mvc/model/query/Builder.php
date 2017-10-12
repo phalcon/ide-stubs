@@ -50,7 +50,9 @@ class Builder implements \Phalcon\Mvc\Model\Query\BuilderInterface, \Phalcon\Di\
 
     protected $_joins;
 
-
+    /**
+     * @deprecated Will be removed in version 4.0.0
+     */
     protected $_with;
 
 
@@ -195,27 +197,14 @@ class Builder implements \Phalcon\Mvc\Model\Query\BuilderInterface, \Phalcon\Di\
     /**
      * Add a model to take part of the query
      *
+     * NOTE: The third parameter $with is deprecated and will be removed in future releases.
+     *
      * <code>
      * // Load data from models Robots
      * $builder->addFrom("Robots");
      *
      * // Load data from model 'Robots' using 'r' as alias in PHQL
      * $builder->addFrom("Robots", "r");
-     *
-     * // Load data from model 'Robots' using 'r' as alias in PHQL
-     * // and eager load model 'RobotsParts'
-     * $builder->addFrom("Robots", "r", "RobotsParts");
-     *
-     * // Load data from model 'Robots' using 'r' as alias in PHQL
-     * // and eager load models 'RobotsParts' and 'Parts'
-     * $builder->addFrom(
-     *     "Robots",
-     *     "r",
-     *     [
-     *         "RobotsParts",
-     *         "Parts",
-     *     ]
-     * );
      * </code>
      *
      * @param mixed $model

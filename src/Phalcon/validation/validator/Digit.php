@@ -8,7 +8,10 @@ namespace Phalcon\Validation\Validator;
  * Check for numeric character(s)
  *
  * <code>
+ * use Phalcon\Validation;
  * use Phalcon\Validation\Validator\Digit as DigitValidator;
+ *
+ * $validator = new Validation();
  *
  * $validator->add(
  *     "height",

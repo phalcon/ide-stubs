@@ -8,7 +8,10 @@ namespace Phalcon\Validation\Validator;
  * Checks if a value is identical to other
  *
  * <code>
+ * use Phalcon\Validation;
  * use Phalcon\Validation\Validator\Identical;
+ *
+ * $validator = new Validation();
  *
  * $validator->add(
  *     "terms",
