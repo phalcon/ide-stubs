@@ -427,7 +427,7 @@ class Criteria implements \Phalcon\Mvc\Model\CriteriaInterface, \Phalcon\Di\Inje
      *     ->createBuilder();
      * </code>
      *
-     * @return BuilderInterface
+     * @return \Phalcon\Mvc\Model\Query\BuilderInterface
      */
     public function createBuilder() {}
 
