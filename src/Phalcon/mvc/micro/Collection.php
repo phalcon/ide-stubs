@@ -110,6 +110,17 @@ class Collection implements \Phalcon\Mvc\Micro\CollectionInterface
     public function map($routePattern, $handler, $name = null) {}
 
     /**
+     * Maps a route to a handler via methods
+     *
+     * @param string $routePattern
+     * @param callable $handler
+     * @param string|array $method
+     * @param string $name
+     * @return Collection
+     */
+    public function mapVia($routePattern, $handler, $method, $name = null) {}
+
+    /**
      * Maps a route to a handler that only matches if the HTTP method is GET
      *
      * @param string $routePattern

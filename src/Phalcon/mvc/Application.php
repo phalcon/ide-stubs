@@ -53,6 +53,28 @@ class Application extends \Phalcon\Application
     protected $_implicitView = true;
 
 
+    protected $_sendHeaders = true;
+
+
+    protected $_sendCookies = true;
+
+
+    /**
+     * Enables or disables sending headers by each request handling
+     *
+     * @param bool $sendHeaders
+     * @return Application
+     */
+    public function sendHeadersOnHandleRequest($sendHeaders) {}
+
+    /**
+     * Enables or disables sending cookies by each request handling
+     *
+     * @param bool $sendCookies
+     * @return Application
+     */
+    public function sendCookiesOnHandleRequest($sendCookies) {}
+
     /**
      * By default. The view is implicitly buffering all the output
      * You can full disable the view component using this method

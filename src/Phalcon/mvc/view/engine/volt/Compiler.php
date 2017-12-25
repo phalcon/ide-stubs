@@ -282,6 +282,24 @@ class Compiler implements \Phalcon\Di\InjectionAwareInterface
     public function compileIf(array $statement, $extendsMode = false) {}
 
     /**
+     * Compiles a 'switch' statement returning PHP code
+     *
+     * @param array $statement
+     * @param bool $extendsMode
+     * @return string
+     */
+    public function compileSwitch(array $statement, $extendsMode = false) {}
+
+    /**
+     * Compiles a "case"/"default" clause returning PHP code
+     *
+     * @param array $statement
+     * @param bool $caseClause
+     * @return string
+     */
+    public function compileCase(array $statement, $caseClause = true) {}
+
+    /**
      * Compiles a "elseif" statement returning PHP code
      *
      * @param array $statement

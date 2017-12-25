@@ -40,6 +40,9 @@ namespace Phalcon\Mvc;
 abstract class Model implements \Phalcon\Mvc\EntityInterface, \Phalcon\Mvc\ModelInterface, \Phalcon\Mvc\Model\ResultInterface, \Phalcon\Di\InjectionAwareInterface, \Serializable, \JsonSerializable
 {
 
+    const TRANSACTION_INDEX = "transaction";
+
+
     const OP_NONE = 0;
 
 
@@ -102,6 +105,9 @@ abstract class Model implements \Phalcon\Mvc\EntityInterface, \Phalcon\Mvc\Model
 
     protected $_oldSnapshot = array();
 
+
+
+    public function getTransaction() {}
 
     /**
      * Phalcon\Mvc\Model constructor
@@ -443,6 +449,61 @@ abstract class Model implements \Phalcon\Mvc\EntityInterface, \Phalcon\Mvc\Model
      * foreach ($robots as $robot) {
      *  echo $robot->name, "\n";
      * }
+     *
+     * // encapsulate find it into an running transaction esp. useful for application unit-tests
+     * // or complex business logic where we wanna control which transactions are used.
+     *
+     * $myTransaction = new Transaction(\Phalcon\Di::getDefault());
+     * $myTransaction->begin();
+     * $newRobot = new Robot();
+     * $newRobot->setTransaction($myTransaction);
+     * $newRobot->save(['name' => 'test', 'type' => 'mechanical', 'year' => 1944]);
+     *
+     * $resultInsideTransaction = Robot::find(['name' => 'test', Model::TRANSACTION_INDEX => $myTransaction]);
+     * $resultOutsideTransaction = Robot::find(['name' => 'test']);
+     *
+     * foreach ($setInsideTransaction as $robot) {
+     *     echo $robot->name, "\n";
+     * }
+     *
+     * foreach ($setOutsideTransaction as $robot) {
+     *     echo $robot->name, "\n";
+     * }
+     *
+     * // reverts all not commited changes
+     * $myTransaction->rollback();
+     *
+     * // creating two different transactions
+     * $myTransaction1 = new Transaction(\Phalcon\Di::getDefault());
+     * $myTransaction1->begin();
+     * $myTransaction2 = new Transaction(\Phalcon\Di::getDefault());
+     * $myTransaction2->begin();
+     *
+     *  // add a new robots
+     * $firstNewRobot = new Robot();
+     * $firstNewRobot->setTransaction($myTransaction1);
+     * $firstNewRobot->save(['name' => 'first-transaction-robot', 'type' => 'mechanical', 'year' => 1944]);
+     *
+     * $secondNewRobot = new Robot();
+     * $secondNewRobot->setTransaction($myTransaction2);
+     * $secondNewRobot->save(['name' => 'second-transaction-robot', 'type' => 'fictional', 'year' => 1984]);
+     *
+     * // this transaction will find the robot.
+     * $resultInFirstTransaction = Robot::find(['name' => 'first-transaction-robot', Model::TRANSACTION_INDEX => $myTransaction1]);
+     * // this transaction won't find the robot.
+     * $resultInSecondTransaction = Robot::find(['name' => 'first-transaction-robot', Model::TRANSACTION_INDEX => $myTransaction2]);
+     * // this transaction won't find the robot.
+     * $resultOutsideAnyExplicitTransaction = Robot::find(['name' => 'first-transaction-robot']);
+     *
+     * // this transaction won't find the robot.
+     * $resultInFirstTransaction = Robot::find(['name' => 'second-transaction-robot', Model::TRANSACTION_INDEX => $myTransaction2]);
+     * // this transaction will find the robot.
+     * $resultInSecondTransaction = Robot::find(['name' => 'second-transaction-robot', Model::TRANSACTION_INDEX => $myTransaction1]);
+     * // this transaction won't find the robot.
+     * $resultOutsideAnyExplicitTransaction = Robot::find(['name' => 'second-transaction-robot']);
+     *
+     * $transaction1->rollback();
+     * $transaction2->rollback();
      * </code>
      *
      * @param mixed $parameters
@@ -461,7 +522,7 @@ abstract class Model implements \Phalcon\Mvc\EntityInterface, \Phalcon\Mvc\Model
      *
      * // What's the first mechanical robot in robots table?
      * $robot = Robots::findFirst(
-     *     "type = 'mechanical'"
+     *  "type = 'mechanical'"
      * );
      *
      * echo "The first mechanical robot name is ", $robot->name;
@@ -475,12 +536,37 @@ abstract class Model implements \Phalcon\Mvc\EntityInterface, \Phalcon\Mvc\Model
      * );
      *
      * echo "The first virtual robot name is ", $robot->name;
+     *
+     * // behaviour with transaction
+     * $myTransaction = new Transaction(\Phalcon\Di::getDefault());
+     * $myTransaction->begin();
+     * $newRobot = new Robot();
+     * $newRobot->setTransaction($myTransaction);
+     * $newRobot->save(['name' => 'test', 'type' => 'mechanical', 'year' => 1944]);
+     *
+     * $findsARobot = Robot::findFirst(['name' => 'test', Model::TRANSACTION_INDEX => $myTransaction]);
+     * $doesNotFindARobot = Robot::findFirst(['name' => 'test']);
+     *
+     * var_dump($findARobot);
+     * var_dump($doesNotFindARobot);
+     *
+     * $transaction->commit();
+     * $doesFindTheRobotNow = Robot::findFirst(['name' => 'test']);
      * </code>
      *
-     * @param string|array $parameters
+     * @param mixed $parameters
      * @return Model
      */
     public static function findFirst($parameters = null) {}
+
+    /**
+     * shared prepare query logic for find and findFirst method
+     *
+     * @param mixed $params
+     * @param mixed $limit
+     * @return \Phalcon\Mvc\Model\Query
+     */
+    private static function getPreparedQuery($params, $limit = null) {}
 
     /**
      * Create a criteria for a specific model
@@ -1271,6 +1357,15 @@ abstract class Model implements \Phalcon\Mvc\EntityInterface, \Phalcon\Mvc\Model
      * @param array $columnMap
      */
     public function setSnapshotData(array $data, $columnMap = null) {}
+
+    /**
+     * Sets the record's old snapshot data.
+     * This method is used internally to set old snapshot data when the model was set up to keep snapshot data
+     *
+     * @param array $data
+     * @param array $columnMap
+     */
+    public function setOldSnapshotData(array $data, $columnMap = null) {}
 
     /**
      * Checks if the object has internal snapshot data

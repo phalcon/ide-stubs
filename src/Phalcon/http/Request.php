@@ -216,6 +216,14 @@ class Request implements \Phalcon\Http\RequestInterface, \Phalcon\Di\InjectionAw
     public final function hasServer($name) {}
 
     /**
+     * Checks whether headers has certain index
+     *
+     * @param string $header
+     * @return bool
+     */
+    public final function hasHeader($header) {}
+
+    /**
      * Gets HTTP header from request data
      *
      * @param string $header

@@ -23,6 +23,34 @@ namespace Phalcon\Mvc\Model;
  *     echo "Price: ", $row->cars->price, "\n";
  *     echo "Taxes: ", $row->taxes, "\n";
  * }
+ *
+ * // with transaction
+ * use Phalcon\Mvc\Model\Query;
+ * use Phalcon\Mvc\Model\Transaction;
+ *
+ * // $di needs to have the service "db" registered for this to work
+ * $di = Phalcon\Di\FactoryDefault::getDefault();
+ *
+ * $phql = 'SELECT FROM robot';
+ *
+ * $myTransaction = new Transaction($di);
+ * $myTransaction->begin();
+ *
+ * $newRobot = new Robot();
+ * $newRobot->setTransaction($myTransaction);
+ * $newRobot->type = "mechanical";
+ * $newRobot->name = "Astro Boy";
+ * $newRobot->year = 1952;
+ * $newRobot->save();
+ *
+ * $queryWithTransaction = new Query($phql, $di);
+ * $queryWithTransaction->setTransaction($myTransaction);
+ *
+ * $resultWithEntries = $queryWithTransaction->execute();
+ *
+ * $queryWithOutTransaction = new Query($phql, $di);
+ * $resultWithOutEntries = $queryWithTransaction->execute()
+ *
  * </code>
  */
 class Query implements \Phalcon\Mvc\Model\QueryInterface, \Phalcon\Di\InjectionAwareInterface
@@ -102,9 +130,24 @@ class Query implements \Phalcon\Mvc\Model\QueryInterface, \Phalcon\Di\InjectionA
 
     protected $_sharedLock;
 
+    /**
+     * TransactionInterface so that the query can wrap a transaction
+     * around batch updates and intermediate selects within the transaction.
+     * however if a model got a transaction set inside it will use the local transaction instead of this one
+     */
+    protected $_transaction;
+
 
     static protected $_irPhqlCache;
 
+
+    /**
+     * TransactionInterface so that the query can wrap a transaction
+     *
+     * around batch updates and intermediate selects within the transaction.
+     * however if a model got a transaction set inside it will use the local transaction instead of this one
+     */
+    public function getTransaction() {}
 
     /**
      * Phalcon\Mvc\Model\Query constructor
@@ -488,5 +531,35 @@ class Query implements \Phalcon\Mvc\Model\QueryInterface, \Phalcon\Di\InjectionA
      * Destroys the internal PHQL cache
      */
     public static function clean() {}
+
+    /**
+     * Gets the read connection from the model if there is no transaction set inside the query object
+     *
+     * @param \Phalcon\Mvc\ModelInterface $model
+     * @param array $intermediate
+     * @param array $bindParams
+     * @param array $bindTypes
+     * @return \Phalcon\Db\AdapterInterface
+     */
+    protected function getReadConnection(\Phalcon\Mvc\ModelInterface $model, array $intermediate = null, array $bindParams = null, array $bindTypes = null) {}
+
+    /**
+     * Gets the write connection from the model if there is no transaction inside the query object
+     *
+     * @param \Phalcon\Mvc\ModelInterface $model
+     * @param array $intermediate
+     * @param array $bindParams
+     * @param array $bindTypes
+     * @return \Phalcon\Db\AdapterInterface
+     */
+    protected function getWriteConnection(\Phalcon\Mvc\ModelInterface $model, array $intermediate = null, array $bindParams = null, array $bindTypes = null) {}
+
+    /**
+     * allows to wrap a transaction around all queries
+     *
+     * @param \Phalcon\Mvc\Model\TransactionInterface $transaction
+     * @return Query
+     */
+    public function setTransaction(\Phalcon\Mvc\Model\TransactionInterface $transaction) {}
 
 }

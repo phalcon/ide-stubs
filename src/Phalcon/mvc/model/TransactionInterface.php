@@ -20,14 +20,14 @@ interface TransactionInterface
     /**
      * Starts the transaction
      *
-     * @return boolean
+     * @return bool
      */
     public function begin();
 
     /**
      * Commits the transaction
      *
-     * @return boolean
+     * @return bool
      */
     public function commit();
 
@@ -36,35 +36,34 @@ interface TransactionInterface
      *
      * @param string $rollbackMessage
      * @param \Phalcon\Mvc\ModelInterface $rollbackRecord
-     * @return boolean
      */
-    public function rollback($rollbackMessage = null, $rollbackRecord = null);
+    public function rollback($rollbackMessage = null, \Phalcon\Mvc\ModelInterface $rollbackRecord = null);
 
     /**
      * Returns connection related to transaction
      *
-     * @return string
+     * @return \Phalcon\Db\AdapterInterface
      */
     public function getConnection();
 
     /**
      * Sets if is a reused transaction or new once
      *
-     * @param boolean $isNew
+     * @param bool $isNew
      */
     public function setIsNewTransaction($isNew);
 
     /**
      * Sets flag to rollback on abort the HTTP connection
      *
-     * @param boolean $rollbackOnAbort
+     * @param bool $rollbackOnAbort
      */
     public function setRollbackOnAbort($rollbackOnAbort);
 
     /**
      * Checks whether transaction is managed by a transaction manager
      *
-     * @return boolean
+     * @return bool
      */
     public function isManaged();
 
@@ -78,7 +77,7 @@ interface TransactionInterface
     /**
      * Checks whether internal connection is under an active transaction
      *
-     * @return boolean
+     * @return bool
      */
     public function isValid();
 

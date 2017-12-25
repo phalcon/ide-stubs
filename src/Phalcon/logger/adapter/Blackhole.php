@@ -3,30 +3,12 @@
 namespace Phalcon\Logger\Adapter;
 
 /**
- * Phalcon\Logger\Adapter\Firephp
+ * Phalcon\Logger\Adapter\Blackhole
  *
- * Sends logs to FirePHP
- *
- * <code>
- * use Phalcon\Logger\Adapter\Firephp;
- * use Phalcon\Logger;
- *
- * $logger = new Firephp();
- *
- * $logger->log(Logger::ERROR, "This is an error");
- * $logger->error("This is another error");
- * </code>
- *
- * @deprecated Will be removed in 4.0.0
+ * Any record it can handle will be thrown away.
  */
-class Firephp extends \Phalcon\Logger\Adapter
+class Blackhole extends \Phalcon\Logger\Adapter
 {
-
-    private $_initialized = false;
-
-
-    private $_index = 1;
-
 
     /**
      * Returns the internal formatter
@@ -36,7 +18,7 @@ class Firephp extends \Phalcon\Logger\Adapter
     public function getFormatter() {}
 
     /**
-     * Writes the log to the stream itself
+     * Writes the log to the blackhole
      *
      * @param string $message
      * @param int $type

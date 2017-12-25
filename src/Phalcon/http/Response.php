@@ -343,4 +343,16 @@ class Response implements \Phalcon\Http\ResponseInterface, \Phalcon\Di\Injection
      */
     public function setFileToSend($filePath, $attachmentName = null, $attachment = true) {}
 
+    /**
+     * Remove a header in the response
+     *
+     * <code>
+     * $response->removeHeader("Expires");
+     * </code>
+     *
+     * @param string $name
+     * @return Response
+     */
+    public function removeHeader($name) {}
+
 }

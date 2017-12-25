@@ -6,6 +6,8 @@ namespace Phalcon\Logger\Formatter;
  * Phalcon\Logger\Formatter\Firephp
  *
  * Formats messages so that they can be sent to FirePHP
+ *
+ * @deprecated Will be removed in 4.0.0
  */
 class Firephp extends \Phalcon\Logger\Formatter
 {

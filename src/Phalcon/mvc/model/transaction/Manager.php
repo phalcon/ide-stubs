@@ -13,10 +13,11 @@ namespace Phalcon\Mvc\Model\Transaction;
  * object part of the transaction.
  *
  * <code>
- * try {
- *    use Phalcon\Mvc\Model\Transaction\Manager as TransactionManager;
+ * use Phalcon\Mvc\Model\Transaction\Failed;
+ * use Phalcon\Mvc\Model\Transaction\Manager;
  *
- *    $transactionManager = new TransactionManager();
+ * try {
+ *    $transactionManager = new Manager();
  *
  *    $transaction = $transactionManager->get();
  *
@@ -42,7 +43,7 @@ namespace Phalcon\Mvc\Model\Transaction;
  *    }
  *
  *    $transaction->commit();
- * } catch (Phalcon\Mvc\Model\Transaction\Failed $e) {
+ * } catch (Failed $e) {
  *    echo "Failed, reason: ", $e->getMessage();
  * }
  * </code>

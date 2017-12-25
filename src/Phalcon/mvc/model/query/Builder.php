@@ -442,6 +442,7 @@ class Builder implements \Phalcon\Mvc\Model\Query\BuilderInterface, \Phalcon\Di\
      * <code>
      * $builder->orderBy("Robots.name");
      * $builder->orderBy(["1", "Robots.name"]);
+     * $builder->orderBy(["Robots.name DESC"]);
      * </code>
      *
      * @param string|array $orderBy

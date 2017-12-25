@@ -10,8 +10,11 @@ namespace Phalcon\Mvc\Model;
  * Phalcon Transactions should be created using Phalcon\Transaction\Manager.
  *
  * <code>
+ * use Phalcon\Mvc\Model\Transaction\Failed;
+ * use Phalcon\Mvc\Model\Transaction\Manager;
+ *
  * try {
- *     $manager = new \Phalcon\Mvc\Model\Transaction\Manager();
+ *     $manager = new Manager();
  *
  *     $transaction = $manager->get();
  *
@@ -37,7 +40,7 @@ namespace Phalcon\Mvc\Model;
  *     }
  *
  *     $transaction->commit();
- * } catch(Phalcon\Mvc\Model\Transaction\Failed $e) {
+ * } catch(Failed $e) {
  *     echo "Failed, reason: ", $e->getMessage();
  * }
  * </code>
@@ -70,7 +73,7 @@ class Transaction implements \Phalcon\Mvc\Model\TransactionInterface
      * Phalcon\Mvc\Model\Transaction constructor
      *
      * @param \Phalcon\DiInterface $dependencyInjector
-     * @param boolean $autoBegin
+     * @param bool $autoBegin
      * @param string $service
      */
     public function __construct(\Phalcon\DiInterface $dependencyInjector, $autoBegin = false, $service = null) {}
@@ -99,11 +102,11 @@ class Transaction implements \Phalcon\Mvc\Model\TransactionInterface
     /**
      * Rollbacks the transaction
      *
-     * @param string $rollbackMessage
+     * @param mixed $rollbackMessage
      * @param \Phalcon\Mvc\ModelInterface $rollbackRecord
      * @return bool
      */
-    public function rollback($rollbackMessage = null, $rollbackRecord = null) {}
+    public function rollback($rollbackMessage = null, \Phalcon\Mvc\ModelInterface $rollbackRecord = null) {}
 
     /**
      * Returns the connection related to transaction
