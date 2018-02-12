@@ -105,10 +105,6 @@ abstract class Adapter implements \Phalcon\Image\AdapterInterface
      * @param int $height
      * @param int $deltaX
      * @param int $rigidity
-     * @param int $$width new width
-     * @param int $$height new height
-     * @param int $$deltaX How much the seam can traverse on x-axis. Passing 0 causes the seams to be straight.
-     * @param int $$rigidity Introduces a bias for non-straight seams. This parameter is typically 0.
      * @return Adapter
      */
     public function liquidRescale($width, $height, $deltaX = 0, $rigidity = 0) {}

@@ -116,9 +116,6 @@ class Dispatcher extends \Phalcon\Dispatcher implements \Phalcon\Cli\DispatcherI
      * @param mixed $option
      * @param mixed $filters
      * @param mixed $defaultValue
-     * @param mixed $$option
-     * @param string|array $$filters
-     * @param mixed $$defaultValue
      * @return mixed
      */
     public function getOption($option, $filters = null, $defaultValue = null) {}

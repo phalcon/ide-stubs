@@ -404,7 +404,6 @@ abstract class Model implements \Phalcon\Mvc\EntityInterface, \Phalcon\Mvc\Model
      * @param ModelInterface $base
      * @param array $data
      * @param int $dirtyState
-     * @param \Phalcon\Mvc\ModelInterface $$base
      * @return \Phalcon\Mvc\ModelInterface
      */
     public static function cloneResult(ModelInterface $base, array $data, $dirtyState = 0) {}
@@ -1597,7 +1596,6 @@ abstract class Model implements \Phalcon\Mvc\EntityInterface, \Phalcon\Mvc\Model
      * </code>
      *
      * @param mixed $columns
-     * @param array $$columns
      * @return array
      */
     public function toArray($columns = null) {}

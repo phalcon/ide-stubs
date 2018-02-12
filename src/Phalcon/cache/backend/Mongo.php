@@ -132,7 +132,6 @@ class Mongo extends \Phalcon\Cache\Backend
      *
      * @param mixed $keyName
      * @param int $value
-     * @param int|string $$keyName
      * @return int|null
      */
     public function decrement($keyName, $value = 1) {}

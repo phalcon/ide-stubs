@@ -57,10 +57,6 @@ class Imagick extends \Phalcon\Image\Adapter
      * @param int $height
      * @param int $deltaX
      * @param int $rigidity
-     * @param int $$width new width
-     * @param int $$height new height
-     * @param int $$deltaX How much the seam can traverse on x-axis. Passing 0 causes the seams to be straight.
-     * @param int $$rigidity Introduces a bias for non-straight seams. This parameter is typically 0.
      */
     protected function _liquidRescale($width, $height, $deltaX, $rigidity) {}
 
@@ -150,7 +146,6 @@ class Imagick extends \Phalcon\Image\Adapter
      * Blur image
      *
      * @param int $radius
-     * @param int $$radius Blur radius
      */
     protected function _blur($radius) {}
 
@@ -158,7 +153,6 @@ class Imagick extends \Phalcon\Image\Adapter
      * Pixelate image
      *
      * @param int $amount
-     * @param int $$amount amount to pixelate
      */
     protected function _pixelate($amount) {}
 

@@ -163,7 +163,6 @@ class Manager implements \Phalcon\Di\InjectionAwareInterface, \Phalcon\Events\Ev
      * Returns the connection related to a model
      *
      * @param \Phalcon\Mvc\CollectionInterface $model
-     * @param \Phalcon\Mvc\CollectionInterface $$model
      * @return \Mongo
      */
     public function getConnection(\Phalcon\Mvc\CollectionInterface $model) {}

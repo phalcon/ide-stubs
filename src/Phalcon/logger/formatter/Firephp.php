@@ -65,9 +65,6 @@ class Firephp extends \Phalcon\Logger\Formatter
      * @param int $type
      * @param int $timestamp
      * @param mixed $context
-     * @param string $$message
-     * @param int $$type
-     * @param int $$timestamp
      * @return string
      */
     public function format($message, $type, $timestamp, $context = null) {}

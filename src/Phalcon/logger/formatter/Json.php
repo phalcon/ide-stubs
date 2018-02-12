@@ -17,7 +17,6 @@ class Json extends \Phalcon\Logger\Formatter
      * @param int $type
      * @param int $timestamp
      * @param mixed $context
-     * @param array $$context
      * @return string
      */
     public function format($message, $type, $timestamp, $context = null) {}

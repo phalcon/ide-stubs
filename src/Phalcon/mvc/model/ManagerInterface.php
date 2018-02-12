@@ -141,7 +141,6 @@ interface ManagerInterface
      * @param mixed $referencedModel
      * @param mixed $referencedFields
      * @param mixed $options
-     * @param \Phalcon\Mvc\ModelInterface $$model
      * @return \Phalcon\Mvc\Model\RelationInterface
      */
     public function addHasOne(\Phalcon\Mvc\ModelInterface $model, $fields, $referencedModel, $referencedFields, $options = null);
@@ -218,11 +217,6 @@ interface ManagerInterface
      * @param mixed $modelRelation
      * @param \Phalcon\Mvc\ModelInterface $record
      * @param mixed $parameters
-     * @param string $$method
-     * @param string $$modelName
-     * @param string $$modelRelation
-     * @param \Phalcon\Mvc\Model $$record
-     * @param array $$parameters
      * @return \Phalcon\Mvc\Model\ResultsetInterface
      */
     public function getBelongsToRecords($method, $modelName, $modelRelation, \Phalcon\Mvc\ModelInterface $record, $parameters = null);
@@ -235,11 +229,6 @@ interface ManagerInterface
      * @param mixed $modelRelation
      * @param \Phalcon\Mvc\ModelInterface $record
      * @param mixed $parameters
-     * @param string $$method
-     * @param string $$modelName
-     * @param string $$modelRelation
-     * @param \Phalcon\Mvc\Model $$record
-     * @param array $$parameters
      * @return \Phalcon\Mvc\Model\ResultsetInterface
      */
     public function getHasManyRecords($method, $modelName, $modelRelation, \Phalcon\Mvc\ModelInterface $record, $parameters = null);
@@ -252,11 +241,6 @@ interface ManagerInterface
      * @param mixed $modelRelation
      * @param \Phalcon\Mvc\ModelInterface $record
      * @param mixed $parameters
-     * @param string $$method
-     * @param string $$modelName
-     * @param string $$modelRelation
-     * @param \Phalcon\Mvc\Model $$record
-     * @param array $$parameters
      * @return \Phalcon\Mvc\Model\ResultsetInterface
      */
     public function getHasOneRecords($method, $modelName, $modelRelation, \Phalcon\Mvc\ModelInterface $record, $parameters = null);
@@ -265,7 +249,6 @@ interface ManagerInterface
      * Gets belongsTo relations defined on a model
      *
      * @param \Phalcon\Mvc\ModelInterface $model
-     * @param \Phalcon\Mvc\ModelInterface $$model
      * @return array
      */
     public function getBelongsTo(\Phalcon\Mvc\ModelInterface $model);
@@ -274,7 +257,6 @@ interface ManagerInterface
      * Gets hasMany relations defined on a model
      *
      * @param \Phalcon\Mvc\ModelInterface $model
-     * @param \Phalcon\Mvc\ModelInterface $$model
      * @return array
      */
     public function getHasMany(\Phalcon\Mvc\ModelInterface $model);
@@ -283,7 +265,6 @@ interface ManagerInterface
      * Gets hasOne relations defined on a model
      *
      * @param \Phalcon\Mvc\ModelInterface $model
-     * @param \Phalcon\Mvc\ModelInterface $$model
      * @return array
      */
     public function getHasOne(\Phalcon\Mvc\ModelInterface $model);
@@ -292,7 +273,6 @@ interface ManagerInterface
      * Gets hasOne relations defined on a model
      *
      * @param \Phalcon\Mvc\ModelInterface $model
-     * @param \Phalcon\Mvc\ModelInterface $$model
      * @return array
      */
     public function getHasOneAndHasMany(\Phalcon\Mvc\ModelInterface $model);
@@ -301,7 +281,6 @@ interface ManagerInterface
      * Query all the relationships defined on a model
      *
      * @param mixed $modelName
-     * @param string $$modelName
      * @return \Phalcon\Mvc\Model\RelationInterface[]
      */
     public function getRelations($modelName);
@@ -311,8 +290,6 @@ interface ManagerInterface
      *
      * @param mixed $first
      * @param mixed $second
-     * @param string $$first
-     * @param string $$second
      * @return array
      */
     public function getRelationsBetween($first, $second);
@@ -321,7 +298,6 @@ interface ManagerInterface
      * Creates a Phalcon\Mvc\Model\Query without execute it
      *
      * @param mixed $phql
-     * @param string $$phql
      * @return \Phalcon\Mvc\Model\QueryInterface
      */
     public function createQuery($phql);
@@ -331,8 +307,6 @@ interface ManagerInterface
      *
      * @param mixed $phql
      * @param mixed $placeholders
-     * @param string $$phql
-     * @param array $$placeholders
      * @return \Phalcon\Mvc\Model\QueryInterface
      */
     public function executeQuery($phql, $placeholders = null);
@@ -341,7 +315,6 @@ interface ManagerInterface
      * Creates a Phalcon\Mvc\Model\Query\Builder
      *
      * @param mixed $params
-     * @param string $$params
      * @return \Phalcon\Mvc\Model\Query\BuilderInterface
      */
     public function createBuilder($params = null);
@@ -360,7 +333,6 @@ interface ManagerInterface
      *
      * @param mixed $eventName
      * @param \Phalcon\Mvc\ModelInterface $model
-     * @param string $$eventName
      */
     public function notifyEvent($eventName, \Phalcon\Mvc\ModelInterface $model);
 
@@ -372,8 +344,6 @@ interface ManagerInterface
      * @param \Phalcon\Mvc\ModelInterface $model
      * @param mixed $eventName
      * @param mixed $data
-     * @param string $$eventName
-     * @param array $$data
      * @return boolean
      */
     public function missingMethod(\Phalcon\Mvc\ModelInterface $model, $eventName, $data);
@@ -390,8 +360,6 @@ interface ManagerInterface
      *
      * @param string $modelName
      * @param string $alias
-     * @param string $$modelName
-     * @param string $$alias
      * @return \Phalcon\Mvc\Model\Relation
      */
     public function getRelationByAlias($modelName, $alias);
