@@ -110,8 +110,6 @@ class Micro extends \Phalcon\Di\Injectable implements \ArrayAccess
      *
      * @param string $routePattern
      * @param mixed $handler
-     * @param string $$routePattern
-     * @param callable $$handler
      * @return \Phalcon\Mvc\Router\RouteInterface
      */
     public function put($routePattern, $handler) {}
@@ -121,8 +119,6 @@ class Micro extends \Phalcon\Di\Injectable implements \ArrayAccess
      *
      * @param string $routePattern
      * @param mixed $handler
-     * @param string $$routePattern
-     * @param callable $$handler
      * @return \Phalcon\Mvc\Router\RouteInterface
      */
     public function patch($routePattern, $handler) {}

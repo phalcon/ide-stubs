@@ -443,7 +443,6 @@ class View extends \Phalcon\Di\Injectable implements \Phalcon\Mvc\ViewInterface
      * @param boolean $silence
      * @param boolean $mustClean
      * @param \Phalcon\Cache\BackendInterface $cache
-     * @param \Phalcon\Cache\BackendInterface $$cache
      */
     protected function _engineRender($engines, $viewPath, $silence, $mustClean, \Phalcon\Cache\BackendInterface $cache = null) {}
 

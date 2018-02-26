@@ -65,10 +65,6 @@ class Item
      * @param int $type
      * @param int $time
      * @param mixed $context
-     * @param string $$message
-     * @param integer $$type
-     * @param integer $$time
-     * @param array $$context
      */
     public function __construct($message, $type, $time = 0, $context = null) {}
 
