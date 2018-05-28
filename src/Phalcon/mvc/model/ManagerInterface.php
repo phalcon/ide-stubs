@@ -212,11 +212,11 @@ interface ManagerInterface
     /**
      * Gets belongsTo related records from a model
      *
-     * @param mixed $method
-     * @param mixed $modelName
-     * @param mixed $modelRelation
-     * @param \Phalcon\Mvc\ModelInterface $record
-     * @param mixed $parameters
+     * @param string $method
+     * @param string $modelName
+     * @param string $modelRelation
+     * @param \Phalcon\Mvc\Model $record
+     * @param array $parameters
      * @return \Phalcon\Mvc\Model\ResultsetInterface
      */
     public function getBelongsToRecords($method, $modelName, $modelRelation, \Phalcon\Mvc\ModelInterface $record, $parameters = null);
@@ -224,11 +224,11 @@ interface ManagerInterface
     /**
      * Gets hasMany related records from a model
      *
-     * @param mixed $method
-     * @param mixed $modelName
-     * @param mixed $modelRelation
-     * @param \Phalcon\Mvc\ModelInterface $record
-     * @param mixed $parameters
+     * @param string $method
+     * @param string $modelName
+     * @param string $modelRelation
+     * @param \Phalcon\Mvc\Model $record
+     * @param array $parameters
      * @return \Phalcon\Mvc\Model\ResultsetInterface
      */
     public function getHasManyRecords($method, $modelName, $modelRelation, \Phalcon\Mvc\ModelInterface $record, $parameters = null);
@@ -236,11 +236,11 @@ interface ManagerInterface
     /**
      * Gets belongsTo related records from a model
      *
-     * @param mixed $method
-     * @param mixed $modelName
-     * @param mixed $modelRelation
-     * @param \Phalcon\Mvc\ModelInterface $record
-     * @param mixed $parameters
+     * @param string $method
+     * @param string $modelName
+     * @param string $modelRelation
+     * @param \Phalcon\Mvc\Model $record
+     * @param array $parameters
      * @return \Phalcon\Mvc\Model\ResultsetInterface
      */
     public function getHasOneRecords($method, $modelName, $modelRelation, \Phalcon\Mvc\ModelInterface $record, $parameters = null);
@@ -280,7 +280,7 @@ interface ManagerInterface
     /**
      * Query all the relationships defined on a model
      *
-     * @param mixed $modelName
+     * @param string $modelName
      * @return \Phalcon\Mvc\Model\RelationInterface[]
      */
     public function getRelations($modelName);
@@ -288,8 +288,8 @@ interface ManagerInterface
     /**
      * Query the relations between two models
      *
-     * @param mixed $first
-     * @param mixed $second
+     * @param string $first
+     * @param string $second
      * @return array
      */
     public function getRelationsBetween($first, $second);
@@ -297,7 +297,7 @@ interface ManagerInterface
     /**
      * Creates a Phalcon\Mvc\Model\Query without execute it
      *
-     * @param mixed $phql
+     * @param string $phql
      * @return \Phalcon\Mvc\Model\QueryInterface
      */
     public function createQuery($phql);
@@ -305,8 +305,8 @@ interface ManagerInterface
     /**
      * Creates a Phalcon\Mvc\Model\Query and execute it
      *
-     * @param mixed $phql
-     * @param mixed $placeholders
+     * @param string $phql
+     * @param array $placeholders
      * @return \Phalcon\Mvc\Model\QueryInterface
      */
     public function executeQuery($phql, $placeholders = null);
@@ -314,7 +314,7 @@ interface ManagerInterface
     /**
      * Creates a Phalcon\Mvc\Model\Query\Builder
      *
-     * @param mixed $params
+     * @param string $params
      * @return \Phalcon\Mvc\Model\Query\BuilderInterface
      */
     public function createBuilder($params = null);
@@ -331,7 +331,7 @@ interface ManagerInterface
      * Receives events generated in the models and dispatches them to an events-manager if available
      * Notify the behaviors that are listening in the model
      *
-     * @param mixed $eventName
+     * @param string $eventName
      * @param \Phalcon\Mvc\ModelInterface $model
      */
     public function notifyEvent($eventName, \Phalcon\Mvc\ModelInterface $model);
@@ -342,8 +342,8 @@ interface ManagerInterface
      * meaning that a least one is implemented
      *
      * @param \Phalcon\Mvc\ModelInterface $model
-     * @param mixed $eventName
-     * @param mixed $data
+     * @param string $eventName
+     * @param array $data
      * @return boolean
      */
     public function missingMethod(\Phalcon\Mvc\ModelInterface $model, $eventName, $data);

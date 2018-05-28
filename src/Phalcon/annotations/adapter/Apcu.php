@@ -16,7 +16,7 @@ namespace Phalcon\Annotations\Adapter;
 class Apcu extends \Phalcon\Annotations\Adapter
 {
 
-    protected $_prefix = "";
+    protected $_prefix = '';
 
 
     protected $_ttl = 172800;

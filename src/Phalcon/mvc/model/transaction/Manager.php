@@ -63,7 +63,7 @@ class Manager implements \Phalcon\Mvc\Model\Transaction\ManagerInterface, \Phalc
     protected $_number = 0;
 
 
-    protected $_service = "db";
+    protected $_service = 'db';
 
 
     protected $_transactions;

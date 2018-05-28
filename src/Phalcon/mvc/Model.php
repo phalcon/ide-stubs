@@ -40,7 +40,7 @@ namespace Phalcon\Mvc;
 abstract class Model implements \Phalcon\Mvc\EntityInterface, \Phalcon\Mvc\ModelInterface, \Phalcon\Mvc\Model\ResultInterface, \Phalcon\Di\InjectionAwareInterface, \Serializable, \JsonSerializable
 {
 
-    const TRANSACTION_INDEX = "transaction";
+    const TRANSACTION_INDEX = 'transaction';
 
 
     const OP_NONE = 0;
@@ -103,7 +103,7 @@ abstract class Model implements \Phalcon\Mvc\EntityInterface, \Phalcon\Mvc\Model
     protected $_snapshot;
 
 
-    protected $_oldSnapshot = array();
+    protected $_oldSnapshot;
 
 
 
@@ -401,7 +401,7 @@ abstract class Model implements \Phalcon\Mvc\EntityInterface, \Phalcon\Mvc\Model
      * );
      * </code>
      *
-     * @param ModelInterface $base
+     * @param \Phalcon\Mvc\ModelInterface $base
      * @param array $data
      * @param int $dirtyState
      * @return \Phalcon\Mvc\ModelInterface
@@ -1595,7 +1595,7 @@ abstract class Model implements \Phalcon\Mvc\EntityInterface, \Phalcon\Mvc\Model
      * );
      * </code>
      *
-     * @param mixed $columns
+     * @param array $columns
      * @return array
      */
     public function toArray($columns = null) {}

@@ -26,13 +26,13 @@ namespace Phalcon\Mvc;
 class Dispatcher extends \Phalcon\Dispatcher implements \Phalcon\Mvc\DispatcherInterface
 {
 
-    protected $_handlerSuffix = "Controller";
+    protected $_handlerSuffix = 'Controller';
 
 
-    protected $_defaultHandler = "index";
+    protected $_defaultHandler = 'index';
 
 
-    protected $_defaultAction = "index";
+    protected $_defaultAction = 'index';
 
 
     /**

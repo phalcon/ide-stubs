@@ -101,10 +101,10 @@ abstract class Adapter implements \Phalcon\Image\AdapterInterface
     /**
      * This method scales the images using liquid rescaling method. Only support Imagick
      *
-     * @param int $width
-     * @param int $height
-     * @param int $deltaX
-     * @param int $rigidity
+     * @param int $width new width
+     * @param int $height new height
+     * @param int $deltaX How much the seam can traverse on x-axis. Passing 0 causes the seams to be straight.
+     * @param int $rigidity Introduces a bias for non-straight seams. This parameter is typically 0.
      * @return Adapter
      */
     public function liquidRescale($width, $height, $deltaX = 0, $rigidity = 0) {}
@@ -177,7 +177,7 @@ abstract class Adapter implements \Phalcon\Image\AdapterInterface
      * @param string $fontfile
      * @return Adapter
      */
-    public function text($text, $offsetX = false, $offsetY = false, $opacity = 100, $color = "000000", $size = 12, $fontfile = null) {}
+    public function text($text, $offsetX = false, $offsetY = false, $opacity = 100, $color = '000000', $size = 12, $fontfile = null) {}
 
     /**
      * Composite one image onto another

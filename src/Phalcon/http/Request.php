@@ -547,6 +547,13 @@ class Request implements \Phalcon\Http\RequestInterface, \Phalcon\Di\InjectionAw
     public function getHeaders() {}
 
     /**
+     * Resolve authorization headers.
+     *
+     * @return array
+     */
+    protected function resolveAuthorizationHeaders() {}
+
+    /**
      * Gets web page that refers active request. ie: http://www.google.com
      *
      * @return string

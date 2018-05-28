@@ -16,10 +16,10 @@ abstract class Backend implements \Phalcon\Cache\BackendInterface
     protected $_options;
 
 
-    protected $_prefix = "";
+    protected $_prefix = '';
 
 
-    protected $_lastKey = "";
+    protected $_lastKey = '';
 
 
     protected $_lastLifetime = null;

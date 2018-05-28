@@ -800,7 +800,7 @@ class Tag
      * @param mixed $replace
      * @return string
      */
-    public static function friendlyTitle($text, $separator = "-", $lowercase = true, $replace = null) {}
+    public static function friendlyTitle($text, $separator = '-', $lowercase = true, $replace = null) {}
 
     /**
      * Set the document type of content

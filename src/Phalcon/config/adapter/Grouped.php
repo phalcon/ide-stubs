@@ -63,6 +63,6 @@ class Grouped extends \Phalcon\Config
      * @param array $arrayConfig
      * @param string $defaultAdapter
      */
-    public function __construct(array $arrayConfig, $defaultAdapter = "php") {}
+    public function __construct(array $arrayConfig, $defaultAdapter = 'php') {}
 
 }

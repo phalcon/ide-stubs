@@ -71,13 +71,13 @@ abstract class Dispatcher implements \Phalcon\DispatcherInterface, \Phalcon\Di\I
     protected $_defaultHandler = null;
 
 
-    protected $_defaultAction = "";
+    protected $_defaultAction = '';
 
 
-    protected $_handlerSuffix = "";
+    protected $_handlerSuffix = '';
 
 
-    protected $_actionSuffix = "Action";
+    protected $_actionSuffix = 'Action';
 
 
     protected $_previousNamespaceName = null;

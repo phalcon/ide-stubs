@@ -27,13 +27,13 @@ namespace Phalcon\Cli;
 class Dispatcher extends \Phalcon\Dispatcher implements \Phalcon\Cli\DispatcherInterface
 {
 
-    protected $_handlerSuffix = "Task";
+    protected $_handlerSuffix = 'Task';
 
 
-    protected $_defaultHandler = "main";
+    protected $_defaultHandler = 'main';
 
 
-    protected $_defaultAction = "main";
+    protected $_defaultAction = 'main';
 
 
     protected $_options = array();
@@ -114,7 +114,7 @@ class Dispatcher extends \Phalcon\Dispatcher implements \Phalcon\Cli\DispatcherI
      * Gets an option by its name or numeric index
      *
      * @param mixed $option
-     * @param mixed $filters
+     * @param string|array $filters
      * @param mixed $defaultValue
      * @return mixed
      */

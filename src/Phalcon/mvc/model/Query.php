@@ -298,7 +298,7 @@ class Query implements \Phalcon\Mvc\Model\QueryInterface, \Phalcon\Di\InjectionA
     /**
      * Returns a processed order clause for a SELECT statement
      *
-     * @param mixed $order
+     * @param array|string $order
      * @return array
      */
     protected final function _getOrderClause($order) {}

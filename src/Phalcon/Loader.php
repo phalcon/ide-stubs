@@ -44,7 +44,7 @@ class Loader implements \Phalcon\Events\EventsAwareInterface
     protected $_classes = array();
 
 
-    protected $_extensions = array("php");
+    protected $_extensions = array('php');
 
 
     protected $_namespaces = array();
@@ -58,6 +58,29 @@ class Loader implements \Phalcon\Events\EventsAwareInterface
 
     protected $_registered = false;
 
+
+    protected $fileCheckingCallback = 'is_file';
+
+
+    /**
+     * Sets the file check callback.
+     *
+     * <code>
+     * // Default behavior.
+     * $loader->setFileCheckingCallback("is_file");
+     *
+     * // Faster than `is_file()`, but implies some issues if
+     * // the file is removed from the filesystem.
+     * $loader->setFileCheckingCallback("stream_resolve_include_path");
+     *
+     * // Do not check file existence.
+     * $loader->setFileCheckingCallback(null);
+     * </code>
+     *
+     * @param mixed $callback
+     * @return Loader
+     */
+    public function setFileCheckingCallback($callback = null) {}
 
     /**
      * Sets the events manager

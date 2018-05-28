@@ -130,7 +130,7 @@ class Mongo extends \Phalcon\Cache\Backend
     /**
      * Decrement of a given key by $value
      *
-     * @param mixed $keyName
+     * @param int|string $keyName
      * @param int $value
      * @return int|null
      */

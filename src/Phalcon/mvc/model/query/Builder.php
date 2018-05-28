@@ -464,10 +464,10 @@ class Builder implements \Phalcon\Mvc\Model\Query\BuilderInterface, \Phalcon\Di\
      * $builder->having("SUM(Robots.price) > 0");
      *
      * $builder->having(
-     *         "SUM(Robots.price) > :sum:",
-     *       [
-     *            "sum" => 100,
-     *      ]
+     *     "SUM(Robots.price) > :sum:",
+     *     [
+     *         "sum" => 100,
+     *     ]
      * );
      * </code>
      *
@@ -485,10 +485,10 @@ class Builder implements \Phalcon\Mvc\Model\Query\BuilderInterface, \Phalcon\Di\
      * $builder->andHaving("SUM(Robots.price) > 0");
      *
      * $builder->andHaving(
-     *         "SUM(Robots.price) > :sum:",
-     *       [
-     *            "sum" => 100,
-     *      ]
+     *     "SUM(Robots.price) > :sum:",
+     *     [
+     *         "sum" => 100,
+     *     ]
      * );
      * </code>
      *
@@ -506,10 +506,10 @@ class Builder implements \Phalcon\Mvc\Model\Query\BuilderInterface, \Phalcon\Di\
      * $builder->orHaving("SUM(Robots.price) > 0");
      *
      * $builder->orHaving(
-     *         "SUM(Robots.price) > :sum:",
-     *       [
-     *            "sum" => 100,
-     *      ]
+     *     "SUM(Robots.price) > :sum:",
+     *     [
+     *         "sum" => 100,
+     *     ]
      * );
      * </code>
      *

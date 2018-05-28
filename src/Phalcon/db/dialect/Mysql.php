@@ -10,7 +10,7 @@ namespace Phalcon\Db\Dialect;
 class Mysql extends \Phalcon\Db\Dialect
 {
 
-    protected $_escapeChar = "`";
+    protected $_escapeChar = '`';
 
 
     /**

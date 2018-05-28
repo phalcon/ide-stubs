@@ -37,7 +37,7 @@ interface CookiesInterface
      * @param bool $httpOnly
      * @return CookiesInterface
      */
-    public function set($name, $value = null, $expire = 0, $path = "/", $secure = null, $domain = null, $httpOnly = null);
+    public function set($name, $value = null, $expire = 0, $path = '/', $secure = null, $domain = null, $httpOnly = null);
 
     /**
      * Gets a cookie from the bag

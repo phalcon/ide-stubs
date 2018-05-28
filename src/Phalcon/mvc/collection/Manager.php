@@ -50,7 +50,7 @@ class Manager implements \Phalcon\Di\InjectionAwareInterface, \Phalcon\Events\Ev
     protected $_behaviors;
 
 
-    protected $_serviceName = "mongo";
+    protected $_serviceName = 'mongo';
 
 
 

@@ -24,10 +24,10 @@ namespace Phalcon\Db\Adapter\Pdo;
 class Mysql extends \Phalcon\Db\Adapter\Pdo
 {
 
-    protected $_type = "mysql";
+    protected $_type = 'mysql';
 
 
-    protected $_dialectType = "mysql";
+    protected $_dialectType = 'mysql';
 
 
     /**

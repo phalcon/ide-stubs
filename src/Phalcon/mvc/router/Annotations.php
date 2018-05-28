@@ -30,10 +30,10 @@ class Annotations extends \Phalcon\Mvc\Router
     protected $_handlers = array();
 
 
-    protected $_controllerSuffix = "Controller";
+    protected $_controllerSuffix = 'Controller';
 
 
-    protected $_actionSuffix = "Action";
+    protected $_actionSuffix = 'Action';
 
 
     protected $_routePrefix;

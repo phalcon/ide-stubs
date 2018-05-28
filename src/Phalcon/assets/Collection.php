@@ -114,9 +114,9 @@ class Collection implements \Countable, \Iterator
      * use Phalcon\Assets\Collection;
      *
      * $collection = new Collection();
-     *
      * $resource = new Resource("js", "js/jquery.js");
-     * $resource->has($resource); // true
+     * $collection->add($resource);
+     * $collection->has($resource); // true
      * </code>
      *
      * @param ResourceInterface $resource

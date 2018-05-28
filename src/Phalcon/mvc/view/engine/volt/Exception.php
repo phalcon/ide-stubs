@@ -19,7 +19,7 @@ class Exception extends \Phalcon\Mvc\View\Exception
      * @param int $code
      * @param \Exception $previous
      */
-    public function __construct($message = "", array $statement = array(), $code = 0, \Exception $previous = null) {}
+    public function __construct($message = '', array $statement = array(), $code = 0, \Exception $previous = null) {}
 
     /**
      * Gets currently parsed statement (if any).

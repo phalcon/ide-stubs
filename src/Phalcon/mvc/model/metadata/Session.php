@@ -21,7 +21,7 @@ namespace Phalcon\Mvc\Model\MetaData;
 class Session extends \Phalcon\Mvc\Model\MetaData
 {
 
-    protected $_prefix = "";
+    protected $_prefix = '';
 
 
     /**

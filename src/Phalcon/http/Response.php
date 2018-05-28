@@ -87,6 +87,17 @@ class Response implements \Phalcon\Http\ResponseInterface, \Phalcon\Di\Injection
     public function getStatusCode() {}
 
     /**
+     * Returns the reason phrase
+     *
+     * <code>
+     * echo $response->getReasonPhrase();
+     * </code>
+     *
+     * @return string|null
+     */
+    public function getReasonPhrase() {}
+
+    /**
      * Sets a headers bag for the response externally
      *
      * @param \Phalcon\Http\Response\HeadersInterface $headers

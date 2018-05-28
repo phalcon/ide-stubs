@@ -10,10 +10,10 @@ namespace Phalcon;
 class Debug
 {
 
-    public $_uri = "//static.phalconphp.com/www/debug/3.0.x/";
+    public $_uri = '//static.phalconphp.com/www/debug/3.0.x/';
 
 
-    public $_theme = "default";
+    public $_theme = 'default';
 
 
     protected $_hideDocumentRoot = false;

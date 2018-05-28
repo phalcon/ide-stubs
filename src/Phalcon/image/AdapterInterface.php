@@ -60,7 +60,7 @@ interface AdapterInterface
      * @param int $size
      * @param string $fontfile
      */
-    public function text($text, $offsetX = 0, $offsetY = 0, $opacity = 100, $color = "000000", $size = 12, $fontfile = null);
+    public function text($text, $offsetX = 0, $offsetY = 0, $opacity = 100, $color = '000000', $size = 12, $fontfile = null);
 
     /**
      * @param Adapter $watermark

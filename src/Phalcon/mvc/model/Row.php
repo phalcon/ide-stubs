@@ -22,7 +22,7 @@ class Row implements \Phalcon\Mvc\EntityInterface, \Phalcon\Mvc\Model\ResultInte
     /**
      * Checks whether offset exists in the row
      *
-     * @param mixed $index
+     * @param string|int $index
      * @return bool
      */
     public function offsetExists($index) {}

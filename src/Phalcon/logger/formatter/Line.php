@@ -14,14 +14,14 @@ class Line extends \Phalcon\Logger\Formatter
      *
      * @var string
      */
-    protected $_dateFormat = "D, d M y H:i:s O";
+    protected $_dateFormat = 'D, d M y H:i:s O';
 
     /**
      * Format applied to each message
      *
      * @var string
      */
-    protected $_format = "[%date%][%type%] %message%";
+    protected $_format = '[%date%][%type%] %message%';
 
 
     /**
@@ -66,7 +66,7 @@ class Line extends \Phalcon\Logger\Formatter
      * @param string $message
      * @param int $type
      * @param int $timestamp
-     * @param mixed $context
+     * @param array $context
      * @return string
      */
     public function format($message, $type, $timestamp, $context = null) {}

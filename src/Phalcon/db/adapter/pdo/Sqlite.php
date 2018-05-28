@@ -20,10 +20,10 @@ namespace Phalcon\Db\Adapter\Pdo;
 class Sqlite extends \Phalcon\Db\Adapter\Pdo
 {
 
-    protected $_type = "sqlite";
+    protected $_type = 'sqlite';
 
 
-    protected $_dialectType = "sqlite";
+    protected $_dialectType = 'sqlite';
 
 
     /**

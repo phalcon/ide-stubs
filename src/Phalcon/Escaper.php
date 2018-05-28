@@ -21,7 +21,7 @@ namespace Phalcon;
 class Escaper implements \Phalcon\EscaperInterface
 {
 
-    protected $_encoding = "utf-8";
+    protected $_encoding = 'utf-8';
 
 
     protected $_htmlEscapeMap = null;

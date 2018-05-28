@@ -71,10 +71,10 @@ class View extends \Phalcon\Di\Injectable implements \Phalcon\Mvc\ViewInterface
     protected $_options;
 
 
-    protected $_basePath = "";
+    protected $_basePath = '';
 
 
-    protected $_content = "";
+    protected $_content = '';
 
 
     protected $_renderLevel = 5;
@@ -92,10 +92,10 @@ class View extends \Phalcon\Di\Injectable implements \Phalcon\Mvc\ViewInterface
     protected $_layout;
 
 
-    protected $_layoutsDir = "";
+    protected $_layoutsDir = '';
 
 
-    protected $_partialsDir = "";
+    protected $_partialsDir = '';
 
 
     protected $_viewsDirs = array();
@@ -115,7 +115,7 @@ class View extends \Phalcon\Di\Injectable implements \Phalcon\Mvc\ViewInterface
     protected $_registeredEngines;
 
 
-    protected $_mainView = "index";
+    protected $_mainView = 'index';
 
 
     protected $_controllerName;

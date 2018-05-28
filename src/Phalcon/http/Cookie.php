@@ -5,7 +5,7 @@ namespace Phalcon\Http;
 /**
  * Phalcon\Http\Cookie
  *
- * Provide OO wrappers to manage a HTTP cookie
+ * Provide OO wrappers to manage a HTTP cookie.
  */
 class Cookie implements \Phalcon\Http\CookieInterface, \Phalcon\Di\InjectionAwareInterface
 {
@@ -34,7 +34,7 @@ class Cookie implements \Phalcon\Http\CookieInterface, \Phalcon\Di\InjectionAwar
     protected $_expire;
 
 
-    protected $_path = "/";
+    protected $_path = '/';
 
 
     protected $_domain;
@@ -45,19 +45,41 @@ class Cookie implements \Phalcon\Http\CookieInterface, \Phalcon\Di\InjectionAwar
 
     protected $_httpOnly = true;
 
+    /**
+     * The cookie's sign key.
+     *
+     * @var string|null
+     */
+    protected $signKey = null;
+
 
     /**
-     * Phalcon\Http\Cookie constructor
+     * Phalcon\Http\Cookie constructor.
      *
      * @param string $name
      * @param mixed $value
      * @param int $expire
      * @param string $path
-     * @param boolean $secure
+     * @param bool $secure
      * @param string $domain
-     * @param boolean $httpOnly
+     * @param bool $httpOnly
      */
-    public function __construct($name, $value = null, $expire = 0, $path = "/", $secure = null, $domain = null, $httpOnly = null) {}
+    public function __construct($name, $value = null, $expire = 0, $path = '/', $secure = null, $domain = null, $httpOnly = null) {}
+
+    /**
+     * Sets the cookie's sign key.
+     *
+     * The `$signKey' MUST be at least 32 characters long
+     * and generated using a cryptographically secure pseudo random generator.
+     *
+     * Use NULL to disable cookie signing.
+     *
+     * @see \Phalcon\Security\Random
+     * @throws \Phalcon\Http\Cookie\Exception
+     * @param string $signKey
+     * @return CookieInterface
+     */
+    public function setSignKey($signKey = null) {}
 
     /**
      * Sets the dependency injector
@@ -82,25 +104,27 @@ class Cookie implements \Phalcon\Http\CookieInterface, \Phalcon\Di\InjectionAwar
     public function setValue($value) {}
 
     /**
-     * Returns the cookie's value
+     * Returns the cookie's value.
      *
-     * @param string|array $filters
-     * @param string $defaultValue
+     * @param mixed $filters
+     * @param mixed $defaultValue
      * @return mixed
      */
     public function getValue($filters = null, $defaultValue = null) {}
 
     /**
-     * Sends the cookie to the HTTP client
-     * Stores the cookie definition in session
+     * Sends the cookie to the HTTP client.
+     *
+     * Stores the cookie definition in session.
      *
      * @return CookieInterface
      */
     public function send() {}
 
     /**
-     * Reads the cookie-related info from the SESSION to restore the cookie as it was set
-     * This method is automatically called internally so normally you don't need to call it
+     * Reads the cookie-related info from the SESSION to restore the cookie as it was set.
+     *
+     * This method is automatically called internally so normally you don't need to call it.
      *
      * @return CookieInterface
      */
@@ -214,5 +238,13 @@ class Cookie implements \Phalcon\Http\CookieInterface, \Phalcon\Di\InjectionAwar
      * @return string
      */
     public function __toString() {}
+
+    /**
+     * Assert the cookie's key is enough long.
+     *
+     * @throws \Phalcon\Http\Cookie\Exception
+     * @param string $signKey
+     */
+    protected function assertSignKeyIsLongEnough($signKey) {}
 
 }

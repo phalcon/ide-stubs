@@ -24,10 +24,10 @@ namespace Phalcon\Db\Adapter\Pdo;
 class Postgresql extends \Phalcon\Db\Adapter\Pdo
 {
 
-    protected $_type = "pgsql";
+    protected $_type = 'pgsql';
 
 
-    protected $_dialectType = "postgresql";
+    protected $_dialectType = 'postgresql';
 
 
     /**

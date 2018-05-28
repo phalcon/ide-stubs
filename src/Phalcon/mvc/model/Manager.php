@@ -95,7 +95,7 @@ class Manager implements \Phalcon\Mvc\Model\ManagerInterface, \Phalcon\Di\Inject
     protected $_initialized;
 
 
-    protected $_prefix = "";
+    protected $_prefix = '';
 
 
     protected $_sources;

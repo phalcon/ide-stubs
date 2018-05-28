@@ -126,8 +126,8 @@ abstract class Resultset implements \Phalcon\Mvc\Model\ResultsetInterface, \Iter
     public final function rewind() {}
 
     /**
-     * Changes internal pointer to a specific position in the resultset
-     * Set new position if required and set this->_row
+     * Changes the internal pointer to a specific position in the resultset.
+     * Set the new position if required, and then set this->_row
      *
      * @param int $position
      */

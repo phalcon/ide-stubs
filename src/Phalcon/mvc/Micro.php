@@ -109,7 +109,7 @@ class Micro extends \Phalcon\Di\Injectable implements \ArrayAccess
      * Maps a route to a handler that only matches if the HTTP method is PUT
      *
      * @param string $routePattern
-     * @param mixed $handler
+     * @param callable $handler
      * @return \Phalcon\Mvc\Router\RouteInterface
      */
     public function put($routePattern, $handler) {}
@@ -118,7 +118,7 @@ class Micro extends \Phalcon\Di\Injectable implements \ArrayAccess
      * Maps a route to a handler that only matches if the HTTP method is PATCH
      *
      * @param string $routePattern
-     * @param mixed $handler
+     * @param callable $handler
      * @return \Phalcon\Mvc\Router\RouteInterface
      */
     public function patch($routePattern, $handler) {}

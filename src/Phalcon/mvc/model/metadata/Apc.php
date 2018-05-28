@@ -26,7 +26,7 @@ namespace Phalcon\Mvc\Model\MetaData;
 class Apc extends \Phalcon\Mvc\Model\MetaData
 {
 
-    protected $_prefix = "";
+    protected $_prefix = '';
 
 
     protected $_ttl = 172800;

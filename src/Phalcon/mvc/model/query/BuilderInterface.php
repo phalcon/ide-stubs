@@ -10,10 +10,10 @@ namespace Phalcon\Mvc\Model\Query;
 interface BuilderInterface
 {
 
-    const OPERATOR_OR = "or";
+    const OPERATOR_OR = 'or';
 
 
-    const OPERATOR_AND = "and";
+    const OPERATOR_AND = 'and';
 
 
     /**

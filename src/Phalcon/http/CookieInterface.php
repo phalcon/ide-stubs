@@ -19,10 +19,10 @@ interface CookieInterface
     public function setValue($value);
 
     /**
-     * Returns the cookie's value
+     * Returns the cookie's value.
      *
-     * @param string|array $filters
-     * @param string $defaultValue
+     * @param mixed $filters
+     * @param mixed $defaultValue
      * @return mixed
      */
     public function getValue($filters = null, $defaultValue = null);

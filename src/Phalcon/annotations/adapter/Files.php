@@ -20,7 +20,7 @@ namespace Phalcon\Annotations\Adapter;
 class Files extends \Phalcon\Annotations\Adapter
 {
 
-    protected $_annotationsDir = "./";
+    protected $_annotationsDir = './';
 
 
     /**

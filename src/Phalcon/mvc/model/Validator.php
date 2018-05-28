@@ -60,7 +60,7 @@ abstract class Validator implements \Phalcon\Mvc\Model\ValidatorInterface
      * @param mixed $defaultValue
      * @return mixed
      */
-    public function getOption($option, $defaultValue = "") {}
+    public function getOption($option, $defaultValue = '') {}
 
     /**
      * Check whether an option has been defined in the validator options

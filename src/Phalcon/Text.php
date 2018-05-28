@@ -69,7 +69,7 @@ abstract class Text
      * @param string $separator
      * @return string
      */
-    public static function increment($str, $separator = "_") {}
+    public static function increment($str, $separator = '_') {}
 
     /**
      * Generates a random string based on the given type. Type is one of the RANDOM_ constants
@@ -130,7 +130,7 @@ abstract class Text
      * @param string $encoding
      * @return string
      */
-    public static function lower($str, $encoding = "UTF-8") {}
+    public static function lower($str, $encoding = 'UTF-8') {}
 
     /**
      * Uppercases a string, this function makes use of the mbstring extension if available
@@ -143,7 +143,7 @@ abstract class Text
      * @param string $encoding
      * @return string
      */
-    public static function upper($str, $encoding = "UTF-8") {}
+    public static function upper($str, $encoding = 'UTF-8') {}
 
     /**
      * Reduces multiple slashes in a string to single slashes
@@ -205,7 +205,7 @@ abstract class Text
      * @param string $separator
      * @return string
      */
-    public static function dynamic($text, $leftDelimiter = "{", $rightDelimiter = "}", $separator = "|") {}
+    public static function dynamic($text, $leftDelimiter = '{', $rightDelimiter = '}', $separator = '|') {}
 
     /**
      * Makes a phrase underscored instead of spaced

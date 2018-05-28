@@ -614,9 +614,10 @@ abstract class Collection implements \Phalcon\Mvc\EntityInterface, \Phalcon\Mvc\
      * Perform an aggregation using the Mongo aggregation framework
      *
      * @param array $parameters
+     * @param array $options
      * @return array
      */
-    public static function aggregate(array $parameters = null) {}
+    public static function aggregate(array $parameters = null, array $options = null) {}
 
     /**
      * Allows to perform a summatory group for a column in the collection

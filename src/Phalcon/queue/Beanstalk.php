@@ -53,14 +53,14 @@ class Beanstalk
      *
      * @const string
      */
-    const DEFAULT_TUBE = "default";
+    const DEFAULT_TUBE = 'default';
 
     /**
      * Default connected host
      *
      * @const string
      */
-    const DEFAULT_HOST = "127.0.0.1";
+    const DEFAULT_HOST = '127.0.0.1';
 
     /**
      * Default connected port

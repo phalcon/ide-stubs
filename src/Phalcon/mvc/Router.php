@@ -237,6 +237,32 @@ class Router implements \Phalcon\Di\InjectionAwareInterface, \Phalcon\Mvc\Router
     public function handle($uri = null) {}
 
     /**
+     * Attach Route object to the routes stack.
+     *
+     * <code>
+     * use Phalcon\Mvc\Router;
+     * use Phalcon\Mvc\Router\Route;
+     *
+     * class CustomRoute extends Route {
+     *      // ...
+     * }
+     *
+     * $router = new Router();
+     *
+     * $router->attach(
+     *     new CustomRoute("/about", "About::index", ["GET", "HEAD"]),
+     *     Router::POSITION_FIRST
+     * );
+     * </code>
+     *
+     * @todo Add to the interface for 4.0.0
+     * @param \Phalcon\Mvc\Router\RouteInterface $route
+     * @param mixed $position
+     * @return RouterInterface
+     */
+    public function attach(\Phalcon\Mvc\Router\RouteInterface $route, $position = Router::POSITION_LAST) {}
+
+    /**
      * Adds a route to the router without any HTTP constraint
      *
      * <code>

@@ -5,13 +5,17 @@ namespace Phalcon;
 /**
  * Phalcon\Crypt
  *
- * Provides encryption facilities to phalcon applications
+ * Provides encryption facilities to Phalcon applications.
  *
  * <code>
- * $crypt = new \Phalcon\Crypt();
+ * use Phalcon\Crypt;
  *
- * $key  = "le password";
- * $text = "This is a secret text";
+ * $crypt = new Crypt();
+ *
+ * $crypt->setCipher('aes-256-ctr');
+ *
+ * $key  = "T4\xb1\x8d\xa9\x98\x05\\\x8c\xbe\x1d\x07&[\x99\x18\xa4~Lc1\xbeW\xb3";
+ * $text = "The message to be encrypted";
  *
  * $encrypted = $crypt->encrypt($text, $key);
  *
@@ -48,11 +52,48 @@ class Crypt implements \Phalcon\CryptInterface
     protected $_padding = 0;
 
 
-    protected $_cipher = "aes-256-cfb";
+    protected $_cipher = 'aes-256-cfb';
+
+    /**
+     * Available cipher methods.
+     *
+     * @var array
+     */
+    protected $availableCiphers;
+
+    /**
+     * The cipher iv length.
+     *
+     * @var int
+     */
+    protected $ivLength = 16;
+
+    /**
+     * The name of hashing algorithm.
+     *
+     * @var string
+     */
+    protected $hashAlgo = 'sha256';
+
+    /**
+     * Whether calculating message digest enabled or not.
+     * NOTE: This feature will be enabled by default in Phalcon 4.0.0
+     *
+     * @var bool
+     */
+    protected $useSigning = false;
 
 
     /**
-     * Changes the padding scheme used
+     * Phalcon\Crypt constructor.
+     *
+     * @param string $cipher
+     * @param bool $useSigning
+     */
+    public function __construct($cipher = 'aes-256-cfb', $useSigning = false) {}
+
+    /**
+     * Changes the padding scheme used.
      *
      * @param int $scheme
      * @return \Phalcon\CryptInterface
@@ -60,7 +101,13 @@ class Crypt implements \Phalcon\CryptInterface
     public function setPadding($scheme) {}
 
     /**
-     * Sets the cipher algorithm
+     * Sets the cipher algorithm for data encryption and decryption.
+     *
+     * The `aes-256-gcm' is the preferable cipher, but it is not usable
+     * until the openssl library is upgraded, which is available in PHP 7.1.
+     *
+     * The `aes-256-ctr' is arguably the best choice for cipher
+     * algorithm for current openssl library version.
      *
      * @param string $cipher
      * @return Crypt
@@ -75,8 +122,20 @@ class Crypt implements \Phalcon\CryptInterface
     public function getCipher() {}
 
     /**
-     * Sets the encryption key
+     * Sets the encryption key.
      *
+     * The `$key' should have been previously generated in a cryptographically safe way.
+     *
+     * Bad key:
+     * "le password"
+     *
+     * Better (but still unsafe):
+     * "#1dj8$=dp?.ak//j1V$~%0X"
+     *
+     * Good key:
+     * "T4\xb1\x8d\xa9\x98\x05\\\x8c\xbe\x1d\x07&[\x99\x18\xa4~Lc1\xbeW\xb3"
+     *
+     * @see \Phalcon\Security\Random
      * @param string $key
      * @return Crypt
      */
@@ -90,9 +149,35 @@ class Crypt implements \Phalcon\CryptInterface
     public function getKey() {}
 
     /**
-     * Pads texts before encryption
+     * Set the name of hashing algorithm.
      *
-     * @see http://www.di-mgt.com.au/cryptopad.html
+     * @throws \Phalcon\Crypt\Exception
+     * @param string $hashAlgo
+     * @return Crypt
+     */
+    public function setHashAlgo($hashAlgo) {}
+
+    /**
+     * Get the name of hashing algorithm.
+     *
+     * @return string
+     */
+    public function getHashAlgo() {}
+
+    /**
+     * Sets if the calculating message digest must used.
+     *
+     * NOTE: This feature will be enabled by default in Phalcon 4.0.0
+     *
+     * @param bool $useSigning
+     * @return Crypt
+     */
+    public function useSigning($useSigning) {}
+
+    /**
+     * Pads texts before encryption.
+     *
+     * @link http://www.di-mgt.com.au/cryptopad.html
      * @param string $text
      * @param string $mode
      * @param int $blockSize
@@ -101,8 +186,9 @@ class Crypt implements \Phalcon\CryptInterface
     protected function _cryptPadText($text, $mode, $blockSize, $paddingType) {}
 
     /**
-     * Removes padding @a padding_type from @a text
-     * If the function detects that the text was not padded, it will return it unmodified
+     * Removes a padding from a text.
+     *
+     * If the function detects that the text was not padded, it will return it unmodified.
      *
      * @param string $text Message to be unpadded
      * @param string $mode Encryption mode; unpadding is applied only in CBC or ECB mode
@@ -112,10 +198,13 @@ class Crypt implements \Phalcon\CryptInterface
     protected function _cryptUnpadText($text, $mode, $blockSize, $paddingType) {}
 
     /**
-     * Encrypts a text
+     * Encrypts a text.
      *
      * <code>
-     * $encrypted = $crypt->encrypt("Ultra-secret text", "encrypt password");
+     * $encrypted = $crypt->encrypt(
+     *     "Top secret",
+     *     "T4\xb1\x8d\xa9\x98\x05\\\x8c\xbe\x1d\x07&[\x99\x18\xa4~Lc1\xbeW\xb3"
+     * );
      * </code>
      *
      * @param string $text
@@ -125,20 +214,24 @@ class Crypt implements \Phalcon\CryptInterface
     public function encrypt($text, $key = null) {}
 
     /**
-     * Decrypts an encrypted text
+     * Decrypts an encrypted text.
      *
      * <code>
-     * echo $crypt->decrypt($encrypted, "decrypt password");
+     * $encrypted = $crypt->decrypt(
+     *     $encrypted,
+     *     "T4\xb1\x8d\xa9\x98\x05\\\x8c\xbe\x1d\x07&[\x99\x18\xa4~Lc1\xbeW\xb3"
+     * );
      * </code>
      *
+     * @throws \Phalcon\Crypt\Mismatch
      * @param string $text
-     * @param mixed $key
+     * @param string $key
      * @return string
      */
     public function decrypt($text, $key = null) {}
 
     /**
-     * Encrypts a text returning the result as a base64 string
+     * Encrypts a text returning the result as a base64 string.
      *
      * @param string $text
      * @param mixed $key
@@ -148,8 +241,9 @@ class Crypt implements \Phalcon\CryptInterface
     public function encryptBase64($text, $key = null, $safe = false) {}
 
     /**
-     * Decrypt a text that is coded as a base64 string
+     * Decrypt a text that is coded as a base64 string.
      *
+     * @throws \Phalcon\Crypt\Mismatch
      * @param string $text
      * @param mixed $key
      * @param bool $safe
@@ -158,10 +252,49 @@ class Crypt implements \Phalcon\CryptInterface
     public function decryptBase64($text, $key = null, $safe = false) {}
 
     /**
-     * Returns a list of available ciphers
+     * Returns a list of available ciphers.
      *
      * @return array
      */
     public function getAvailableCiphers() {}
+
+    /**
+     * Return a list of registered hashing algorithms suitable for hash_hmac.
+     *
+     * @return array
+     */
+    public function getAvailableHashAlgos() {}
+
+    /**
+     * Assert the cipher is available.
+     *
+     * @throws \Phalcon\Crypt\Exception
+     * @param string $cipher
+     */
+    protected function assertCipherIsAvailable($cipher) {}
+
+    /**
+     * Assert the hash algorithm is available.
+     *
+     * @throws \Phalcon\Crypt\Exception
+     * @param string $hashAlgo
+     */
+    protected function assertHashAlgorithmAvailable($hashAlgo) {}
+
+    /**
+     * Initialize available cipher algorithms.
+     *
+     * @throws \Phalcon\Crypt\Exception
+     * @param string $cipher
+     * @return int
+     */
+    protected function getIvLength($cipher) {}
+
+    /**
+     * Initialize available cipher algorithms.
+     *
+     * @throws \Phalcon\Crypt\Exception
+     */
+    protected function initializeAvailableCiphers() {}
 
 }

@@ -84,7 +84,7 @@ abstract class Validator implements \Phalcon\Validation\ValidatorInterface
      * @param string $option
      * @return mixed
      */
-    protected function prepareMessage(\Phalcon\Validation $validation, $field, $type, $option = "message") {}
+    protected function prepareMessage(\Phalcon\Validation $validation, $field, $type, $option = 'message') {}
 
     /**
      * Prepares a validation code.

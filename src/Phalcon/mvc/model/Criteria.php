@@ -415,7 +415,7 @@ class Criteria implements \Phalcon\Mvc\Model\CriteriaInterface, \Phalcon\Di\Inje
      * @param string $operator
      * @return Criteria
      */
-    public static function fromInput(\Phalcon\DiInterface $dependencyInjector, $modelName, array $data, $operator = "AND") {}
+    public static function fromInput(\Phalcon\DiInterface $dependencyInjector, $modelName, array $data, $operator = 'AND') {}
 
     /**
      * Creates a query builder from criteria.
