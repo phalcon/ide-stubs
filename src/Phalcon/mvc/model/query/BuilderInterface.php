@@ -232,7 +232,7 @@ interface BuilderInterface
     /**
      * Sets a LIMIT clause
      *
-     * @param string $group
+     * @param string|array $group
      * @return \Phalcon\Mvc\Model\Query\BuilderInterface
      */
     public function groupBy($group);
