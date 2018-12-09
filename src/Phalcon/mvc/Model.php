@@ -200,7 +200,7 @@ abstract class Model implements \Phalcon\Mvc\EntityInterface, \Phalcon\Mvc\Model
      * </code>
      *
      * @param \Phalcon\Mvc\Model\TransactionInterface $transaction
-     * @return Model
+     * @return ModelInterface
      */
     public function setTransaction(\Phalcon\Mvc\Model\TransactionInterface $transaction) {}
 
@@ -1569,7 +1569,7 @@ abstract class Model implements \Phalcon\Mvc\EntityInterface, \Phalcon\Mvc\Model
     /**
      * Unserializes the object from a serialized string
      *
-     * @param string $data
+     * @param mixed $data
      */
     public function unserialize($data) {}
 

@@ -33,21 +33,21 @@ abstract class Adapter implements \Phalcon\Acl\AdapterInterface, \Phalcon\Events
     /**
      * Role which the list is checking if it's allowed to certain resource/access
      *
-     * @var mixed
+     * @var string
      */
     protected $_activeRole;
 
     /**
      * Resource which the list is checking if some role can access it
      *
-     * @var mixed
+     * @var string
      */
     protected $_activeResource;
 
     /**
      * Active access which the list is checking if some role can access it
      *
-     * @var mixed
+     * @var string
      */
     protected $_activeAccess;
 
@@ -55,21 +55,21 @@ abstract class Adapter implements \Phalcon\Acl\AdapterInterface, \Phalcon\Events
     /**
      * Role which the list is checking if it's allowed to certain resource/access
      *
-     * @return mixed
+     * @return string
      */
     public function getActiveRole() {}
 
     /**
      * Resource which the list is checking if some role can access it
      *
-     * @return mixed
+     * @return string
      */
     public function getActiveResource() {}
 
     /**
      * Active access which the list is checking if some role can access it
      *
-     * @return mixed
+     * @return string
      */
     public function getActiveAccess() {}
 

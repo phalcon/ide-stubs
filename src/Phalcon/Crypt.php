@@ -110,7 +110,7 @@ class Crypt implements \Phalcon\CryptInterface
      * algorithm for current openssl library version.
      *
      * @param string $cipher
-     * @return Crypt
+     * @return \Phalcon\CryptInterface
      */
     public function setCipher($cipher) {}
 
@@ -137,7 +137,7 @@ class Crypt implements \Phalcon\CryptInterface
      *
      * @see \Phalcon\Security\Random
      * @param string $key
-     * @return Crypt
+     * @return \Phalcon\CryptInterface
      */
     public function setKey($key) {}
 

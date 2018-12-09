@@ -419,7 +419,7 @@ class Compiler implements \Phalcon\Di\InjectionAwareInterface
      * Compiles a template into a file forcing the destination path
      *
      * <code>
-     * $compiler->compile("views/layouts/main.volt", "views/layouts/main.volt.php");
+     * $compiler->compileFile("views/layouts/main.volt", "views/layouts/main.volt.php");
      * </code>
      *
      * @param string $path

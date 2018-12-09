@@ -39,8 +39,16 @@ class Model extends \Phalcon\Paginator\Adapter
     /**
      * Returns a slice of the resultset to show in the pagination
      *
+     * @deprecated will be removed after 4.0
      * @return \stdClass
      */
     public function getPaginate() {}
+
+    /**
+     * Returns a slice of the resultset to show in the pagination
+     *
+     * @return \stdClass
+     */
+    public function paginate() {}
 
 }

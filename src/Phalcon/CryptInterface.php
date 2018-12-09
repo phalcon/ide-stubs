@@ -44,7 +44,7 @@ interface CryptInterface
      * Encrypts a text
      *
      * @param string $text
-     * @param mixed $key
+     * @param string $key
      * @return string
      */
     public function encrypt($text, $key = null);

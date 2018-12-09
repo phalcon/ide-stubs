@@ -66,7 +66,7 @@ class Headers implements \Phalcon\Http\Response\HeadersInterface
      * Restore a \Phalcon\Http\Response\Headers object
      *
      * @param array $data
-     * @return Headers
+     * @return \Phalcon\Http\Response\HeadersInterface
      */
     public static function __set_state(array $data) {}
 

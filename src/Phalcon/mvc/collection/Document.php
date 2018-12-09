@@ -22,14 +22,14 @@ class Document implements \Phalcon\Mvc\EntityInterface, \ArrayAccess
     /**
      * Returns the value of a field using the ArrayAccess interfase
      *
-     * @param string $index
+     * @param mixed $index
      */
     public function offsetGet($index) {}
 
     /**
      * Change a value using the ArrayAccess interface
      *
-     * @param string $index
+     * @param mixed $index
      * @param mixed $value
      */
     public function offsetSet($index, $value) {}

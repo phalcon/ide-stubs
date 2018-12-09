@@ -263,4 +263,17 @@ class Mysql extends \Phalcon\Db\Dialect
      */
     public function getForeignKeyChecks() {}
 
+    /**
+     * Returns a SQL modified with a LOCK IN SHARE MODE clause
+     *
+     * <code>
+     * $sql = $dialect->sharedLock("SELECT FROM robots");
+     * echo $sql; // SELECT FROM robots LOCK IN SHARE MODE
+     * </code>
+     *
+     * @param string $sqlQuery
+     * @return string
+     */
+    public function sharedLock($sqlQuery) {}
+
 }

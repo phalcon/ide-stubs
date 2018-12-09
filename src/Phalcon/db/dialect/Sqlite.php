@@ -272,4 +272,13 @@ class Sqlite extends \Phalcon\Db\Dialect
      */
     public function tableOptions($table, $schema = null) {}
 
+    /**
+     * Returns a SQL modified a shared lock statement. For now this method
+     * returns the original query
+     *
+     * @param string $sqlQuery
+     * @return string
+     */
+    public function sharedLock($sqlQuery) {}
+
 }

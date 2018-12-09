@@ -53,7 +53,7 @@ class Complex extends \Phalcon\Mvc\Model\Resultset implements \Phalcon\Mvc\Model
     /**
      * Unserializing a resultset will allow to only works on the rows present in the saved state
      *
-     * @param string $data
+     * @param mixed $data
      */
     public function unserialize($data) {}
 

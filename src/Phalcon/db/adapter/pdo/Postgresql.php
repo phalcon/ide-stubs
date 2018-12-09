@@ -50,7 +50,7 @@ class Postgresql extends \Phalcon\Db\Adapter\Pdo
      *
      * @param string $table
      * @param string $schema
-     * @return \Phalcon\Db\Column[]
+     * @return \Phalcon\Db\ColumnInterface[]
      */
     public function describeColumns($table, $schema = null) {}
 

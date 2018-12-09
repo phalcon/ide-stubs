@@ -41,7 +41,7 @@ class Mysql extends \Phalcon\Db\Adapter\Pdo
      *
      * @param string $table
      * @param string $schema
-     * @return \Phalcon\Db\Column[]
+     * @return \Phalcon\Db\ColumnInterface[]
      */
     public function describeColumns($table, $schema = null) {}
 
@@ -71,7 +71,7 @@ class Mysql extends \Phalcon\Db\Adapter\Pdo
      *
      * @param string $table
      * @param string $schema
-     * @return \Phalcon\Db\Reference[]
+     * @return \Phalcon\Db\ReferenceInterface[]
      */
     public function describeReferences($table, $schema = null) {}
 

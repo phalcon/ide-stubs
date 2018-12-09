@@ -42,7 +42,7 @@ class Syslog extends \Phalcon\Logger\Adapter
     /**
      * Returns the internal formatter
      *
-     * @return \Phalcon\Logger\Formatter\Syslog
+     * @return \Phalcon\Logger\FormatterInterface
      */
     public function getFormatter() {}
 

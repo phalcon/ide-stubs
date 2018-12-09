@@ -91,7 +91,7 @@ class Validation extends \Phalcon\Di\Injectable implements \Phalcon\ValidationIn
     /**
      * Adds filters to the field
      *
-     * @param string $field
+     * @param array|string $field
      * @param array|string $filters
      * @return Validation
      */

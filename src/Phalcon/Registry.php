@@ -66,7 +66,7 @@ final class Registry implements \ArrayAccess, \Countable, \Iterator
     /**
      * Checks if the element is present in the registry
      *
-     * @param string $offset
+     * @param mixed $offset
      * @return bool
      */
     public final function offsetExists($offset) {}
@@ -74,7 +74,7 @@ final class Registry implements \ArrayAccess, \Countable, \Iterator
     /**
      * Returns an index in the registry
      *
-     * @param string $offset
+     * @param mixed $offset
      * @return mixed
      */
     public final function offsetGet($offset) {}
@@ -82,7 +82,7 @@ final class Registry implements \ArrayAccess, \Countable, \Iterator
     /**
      * Sets an element in the registry
      *
-     * @param string $offset
+     * @param mixed $offset
      * @param mixed $value
      */
     public final function offsetSet($offset, $value) {}
@@ -90,7 +90,7 @@ final class Registry implements \ArrayAccess, \Countable, \Iterator
     /**
      * Unsets an element in the registry
      *
-     * @param string $offset
+     * @param mixed $offset
      */
     public final function offsetUnset($offset) {}
 

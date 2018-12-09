@@ -38,7 +38,7 @@ interface BinderInterface
      * @param object $handler
      * @param array $params
      * @param string $cacheKey
-     * @param string $methodName
+     * @param mixed $methodName
      * @return array
      */
     public function bindToHandler($handler, array $params, $cacheKey, $methodName = null);

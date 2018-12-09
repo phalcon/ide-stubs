@@ -91,7 +91,7 @@ class Index implements \Phalcon\Db\IndexInterface
      * Restore a Phalcon\Db\Index object from export
      *
      * @param array $data
-     * @return Index
+     * @return IndexInterface
      */
     public static function __set_state(array $data) {}
 

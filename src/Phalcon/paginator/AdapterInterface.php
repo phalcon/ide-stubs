@@ -20,6 +20,7 @@ interface AdapterInterface
     /**
      * Returns a slice of the resultset to show in the pagination
      *
+     * @deprecated will be removed after 4.0
      * @return \stdClass
      */
     public function getPaginate();

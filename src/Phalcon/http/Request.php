@@ -511,7 +511,7 @@ class Request implements \Phalcon\Http\RequestInterface, \Phalcon\Di\InjectionAw
      * Gets attached files as Phalcon\Http\Request\File instances
      *
      * @param bool $onlySuccessful
-     * @return \Phalcon\Http\Request\File[]
+     * @return \Phalcon\Http\Request\FileInterface[]
      */
     public function getUploadedFiles($onlySuccessful = false) {}
 
@@ -593,7 +593,7 @@ class Request implements \Phalcon\Http\RequestInterface, \Phalcon\Di\InjectionAw
     /**
      * Gets a charsets array and their quality accepted by the browser/client from _SERVER["HTTP_ACCEPT_CHARSET"]
      *
-     * @return mixed
+     * @return array
      */
     public function getClientCharsets() {}
 

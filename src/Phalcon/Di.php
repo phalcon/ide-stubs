@@ -196,7 +196,7 @@ class Di implements \Phalcon\DiInterface
     /**
      * Check if a service is registered using the array syntax
      *
-     * @param string $name
+     * @param mixed $name
      * @return bool
      */
     public function offsetExists($name) {}
@@ -208,7 +208,7 @@ class Di implements \Phalcon\DiInterface
      * $di["request"] = new \Phalcon\Http\Request();
      * </code>
      *
-     * @param string $name
+     * @param mixed $name
      * @param mixed $definition
      * @return bool
      */
@@ -221,7 +221,7 @@ class Di implements \Phalcon\DiInterface
      * var_dump($di["request"]);
      * </code>
      *
-     * @param string $name
+     * @param mixed $name
      * @return mixed
      */
     public function offsetGet($name) {}
@@ -229,7 +229,7 @@ class Di implements \Phalcon\DiInterface
     /**
      * Removes a service from the services container using the array syntax
      *
-     * @param string $name
+     * @param mixed $name
      * @return bool
      */
     public function offsetUnset($name) {}
@@ -275,7 +275,7 @@ class Di implements \Phalcon\DiInterface
     /**
      * Return the latest DI created
      *
-     * @return \Phalcon\DiInterface
+     * @return null|\Phalcon\DiInterface
      */
     public static function getDefault() {}
 

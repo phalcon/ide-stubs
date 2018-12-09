@@ -8,7 +8,7 @@ interface FactoryInterface
 
     /**
      * @param \Phalcon\Config|array $config
-     * @return object
+     * @return mixed
      */
     public static function load($config);
 

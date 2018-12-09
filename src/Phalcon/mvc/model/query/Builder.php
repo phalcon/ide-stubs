@@ -411,7 +411,7 @@ class Builder implements \Phalcon\Mvc\Model\Query\BuilderInterface, \Phalcon\Di\
      * @param string $expr
      * @param array $values
      * @param string $operator
-     * @return Builder
+     * @return \Phalcon\Mvc\Model\Query\BuilderInterface
      */
     public function inWhere($expr, array $values, $operator = BuilderInterface::OPERATOR_AND) {}
 
@@ -425,7 +425,7 @@ class Builder implements \Phalcon\Mvc\Model\Query\BuilderInterface, \Phalcon\Di\
      * @param string $expr
      * @param array $values
      * @param string $operator
-     * @return Builder
+     * @return \Phalcon\Mvc\Model\Query\BuilderInterface
      */
     public function notInWhere($expr, array $values, $operator = BuilderInterface::OPERATOR_AND) {}
 

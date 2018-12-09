@@ -125,7 +125,7 @@ interface CollectionInterface
      * Find a document by its id
      *
      * @param string $id
-     * @return CollectionInterface
+     * @return null|CollectionInterface
      */
     public static function findById($id);
 

@@ -44,9 +44,10 @@ interface UrlInterface
      * @param string|array $uri
      * @param array|object $args Optional arguments to be appended to the query string
      * @param bool $local
+     * @param mixed $baseUri
      * @return string
      */
-    public function get($uri = null, $args = null, $local = null);
+    public function get($uri = null, $args = null, $local = null, $baseUri = null);
 
     /**
      * Generates a local path

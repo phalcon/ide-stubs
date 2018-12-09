@@ -29,10 +29,14 @@ namespace Phalcon\Mvc\Model;
  */
 class Message implements \Phalcon\Mvc\Model\MessageInterface
 {
-
+    /**
+     * @var string
+     */
     protected $_type;
 
-
+    /**
+     * @var string
+     */
     protected $_message;
 
 
@@ -44,6 +48,16 @@ class Message implements \Phalcon\Mvc\Model\MessageInterface
 
     protected $_code;
 
+
+    /**
+     * @return string
+     */
+    public function getType() {}
+
+    /**
+     * @return string
+     */
+    public function getMessage() {}
 
     /**
      * Phalcon\Mvc\Model\Message constructor
@@ -65,26 +79,12 @@ class Message implements \Phalcon\Mvc\Model\MessageInterface
     public function setType($type) {}
 
     /**
-     * Returns message type
-     *
-     * @return string
-     */
-    public function getType() {}
-
-    /**
      * Sets verbose message
      *
      * @param string $message
      * @return Message
      */
     public function setMessage($message) {}
-
-    /**
-     * Returns verbose message
-     *
-     * @return string
-     */
-    public function getMessage() {}
 
     /**
      * Sets field name related to message
@@ -140,7 +140,7 @@ class Message implements \Phalcon\Mvc\Model\MessageInterface
      * Magic __set_state helps to re-build messages variable exporting
      *
      * @param array $message
-     * @return Message
+     * @return \Phalcon\Mvc\Model\MessageInterface
      */
     public static function __set_state(array $message) {}
 

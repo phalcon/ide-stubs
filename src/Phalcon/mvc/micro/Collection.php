@@ -50,7 +50,7 @@ class Collection implements \Phalcon\Mvc\Micro\CollectionInterface
      * Sets a prefix for all routes added to the collection
      *
      * @param string $prefix
-     * @return Collection
+     * @return CollectionInterface
      */
     public function setPrefix($prefix) {}
 
@@ -81,7 +81,7 @@ class Collection implements \Phalcon\Mvc\Micro\CollectionInterface
      * Sets if the main handler must be lazy loaded
      *
      * @param bool $lazy
-     * @return Collection
+     * @return CollectionInterface
      */
     public function setLazy($lazy) {}
 

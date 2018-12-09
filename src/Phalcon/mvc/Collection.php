@@ -484,7 +484,7 @@ abstract class Collection implements \Phalcon\Mvc\EntityInterface, \Phalcon\Mvc\
      * </code>
      *
      * @param mixed $id
-     * @return null|Collection
+     * @return null|CollectionInterface
      */
     public static function findById($id) {}
 
@@ -700,7 +700,7 @@ abstract class Collection implements \Phalcon\Mvc\EntityInterface, \Phalcon\Mvc\
     /**
      * Unserializes the object from a serialized string
      *
-     * @param string $data
+     * @param mixed $data
      */
     public function unserialize($data) {}
 

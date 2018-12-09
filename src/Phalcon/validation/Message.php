@@ -103,7 +103,7 @@ class Message implements \Phalcon\Validation\MessageInterface
      * Magic __set_state helps to recover messages from serialization
      *
      * @param array $message
-     * @return Message
+     * @return \Phalcon\Validation\MessageInterface
      */
     public static function __set_state(array $message) {}
 

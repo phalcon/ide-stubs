@@ -260,4 +260,13 @@ class Postgresql extends \Phalcon\Db\Dialect
      */
     protected function _getTableOptions(array $definition) {}
 
+    /**
+     * Returns a SQL modified a shared lock statement. For now this method
+     * returns the original query
+     *
+     * @param string $sqlQuery
+     * @return string
+     */
+    public function sharedLock($sqlQuery) {}
+
 }

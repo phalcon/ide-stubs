@@ -279,7 +279,7 @@ abstract class Element implements \Phalcon\Forms\ElementInterface
     /**
      * Clears every element in the form to its default value
      *
-     * @return Element
+     * @return ElementInterface
      */
     public function clear() {}
 

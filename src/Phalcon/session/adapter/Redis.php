@@ -86,7 +86,7 @@ class Redis extends \Phalcon\Session\Adapter
     /**
      * {@inheritdoc}
      *
-     * @param string $sessionId
+     * @param mixed $sessionId
      * @return bool
      */
     public function destroy($sessionId = null) {}

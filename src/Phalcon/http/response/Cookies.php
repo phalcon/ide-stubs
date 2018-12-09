@@ -109,7 +109,7 @@ class Cookies implements \Phalcon\Http\Response\CookiesInterface, \Phalcon\Di\In
      * Set if cookies in the bag must be automatically encrypted/decrypted
      *
      * @param bool $useEncryption
-     * @return Cookies
+     * @return \Phalcon\Http\Response\CookiesInterface
      */
     public function useEncryption($useEncryption) {}
 
@@ -146,7 +146,7 @@ class Cookies implements \Phalcon\Http\Response\CookiesInterface, \Phalcon\Di\In
      * @param bool $secure
      * @param string $domain
      * @param bool $httpOnly
-     * @return Cookies
+     * @return \Phalcon\Http\Response\CookiesInterface
      */
     public function set($name, $value = null, $expire = 0, $path = '/', $secure = null, $domain = null, $httpOnly = null) {}
 
@@ -154,7 +154,7 @@ class Cookies implements \Phalcon\Http\Response\CookiesInterface, \Phalcon\Di\In
      * Gets a cookie from the bag
      *
      * @param string $name
-     * @return \Phalcon\Http\CookieInterface
+     * @return \Phalcon\Http\Response\CookiesInterface
      */
     public function get($name) {}
 
@@ -186,7 +186,7 @@ class Cookies implements \Phalcon\Http\Response\CookiesInterface, \Phalcon\Di\In
     /**
      * Reset set cookies
      *
-     * @return Cookies
+     * @return \Phalcon\Http\Response\CookiesInterface
      */
     public function reset() {}
 

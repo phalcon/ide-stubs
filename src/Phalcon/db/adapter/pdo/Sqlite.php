@@ -46,7 +46,7 @@ class Sqlite extends \Phalcon\Db\Adapter\Pdo
      *
      * @param string $table
      * @param string $schema
-     * @return \Phalcon\Db\Column[]
+     * @return \Phalcon\Db\ColumnInterface[]
      */
     public function describeColumns($table, $schema = null) {}
 
@@ -71,8 +71,8 @@ class Sqlite extends \Phalcon\Db\Adapter\Pdo
      * @param	string table
      * @param	string schema
      * @return	Phalcon\Db\ReferenceInterface[]
-     * @param mixed $table
-     * @param mixed $schema
+     * @param string $table
+     * @param string $schema
      * @return \Phalcon\Db\ReferenceInterface[]
      */
     public function describeReferences($table, $schema = null) {}

@@ -34,7 +34,7 @@ interface TransactionInterface
     /**
      * Rollbacks the transaction
      *
-     * @param string $rollbackMessage
+     * @param mixed $rollbackMessage
      * @param \Phalcon\Mvc\ModelInterface $rollbackRecord
      */
     public function rollback($rollbackMessage = null, \Phalcon\Mvc\ModelInterface $rollbackRecord = null);

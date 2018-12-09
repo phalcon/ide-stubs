@@ -13,30 +13,35 @@ namespace Phalcon\Assets;
  */
 class Inline implements \Phalcon\Assets\ResourceInterface
 {
-
+    /**
+     * @var string
+     */
     protected $_type;
 
 
     protected $_content;
 
-
+    /**
+     * @var bool
+     */
     protected $_filter;
 
 
     protected $_attributes;
 
 
-
+    /**
+     * @return string
+     */
     public function getType() {}
 
 
     public function getContent() {}
 
-
+    /**
+     * @return bool
+     */
     public function getFilter() {}
-
-
-    public function getAttributes() {}
 
     /**
      * Phalcon\Assets\Inline constructor
@@ -52,7 +57,7 @@ class Inline implements \Phalcon\Assets\ResourceInterface
      * Sets the inline's type
      *
      * @param string $type
-     * @return Inline
+     * @return ResourceInterface
      */
     public function setType($type) {}
 
@@ -60,7 +65,7 @@ class Inline implements \Phalcon\Assets\ResourceInterface
      * Sets if the resource must be filtered or not
      *
      * @param bool $filter
-     * @return Inline
+     * @return ResourceInterface
      */
     public function setFilter($filter) {}
 
@@ -68,9 +73,16 @@ class Inline implements \Phalcon\Assets\ResourceInterface
      * Sets extra HTML attributes
      *
      * @param array $attributes
-     * @return Inline
+     * @return ResourceInterface
      */
     public function setAttributes(array $attributes) {}
+
+    /**
+     * returns extra HTML attributes
+     *
+     * @return array|null
+     */
+    public function getAttributes() {}
 
     /**
      * Gets the resource's key.

@@ -29,7 +29,7 @@ class Resource implements \Phalcon\Assets\ResourceInterface
     protected $_local;
 
     /**
-     * @var boolean
+     * @var bool
      */
     protected $_filter;
 
@@ -64,7 +64,7 @@ class Resource implements \Phalcon\Assets\ResourceInterface
     public function getLocal() {}
 
     /**
-     * @return boolean
+     * @return bool
      */
     public function getFilter() {}
 
@@ -97,7 +97,7 @@ class Resource implements \Phalcon\Assets\ResourceInterface
      * Sets the resource's type
      *
      * @param string $type
-     * @return Resource
+     * @return ResourceInterface
      */
     public function setType($type) {}
 
@@ -121,7 +121,7 @@ class Resource implements \Phalcon\Assets\ResourceInterface
      * Sets if the resource must be filtered or not
      *
      * @param bool $filter
-     * @return Resource
+     * @return ResourceInterface
      */
     public function setFilter($filter) {}
 
@@ -129,7 +129,7 @@ class Resource implements \Phalcon\Assets\ResourceInterface
      * Sets extra HTML attributes
      *
      * @param array $attributes
-     * @return Resource
+     * @return ResourceInterface
      */
     public function setAttributes(array $attributes) {}
 

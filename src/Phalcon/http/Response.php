@@ -71,7 +71,7 @@ class Response implements \Phalcon\Http\ResponseInterface, \Phalcon\Di\Injection
      *
      * @param int $code
      * @param string $message
-     * @return Response
+     * @return ResponseInterface
      */
     public function setStatusCode($code, $message = null) {}
 
@@ -101,7 +101,7 @@ class Response implements \Phalcon\Http\ResponseInterface, \Phalcon\Di\Injection
      * Sets a headers bag for the response externally
      *
      * @param \Phalcon\Http\Response\HeadersInterface $headers
-     * @return Response
+     * @return ResponseInterface
      */
     public function setHeaders(\Phalcon\Http\Response\HeadersInterface $headers) {}
 
@@ -136,7 +136,7 @@ class Response implements \Phalcon\Http\ResponseInterface, \Phalcon\Di\Injection
      *
      * @param string $name
      * @param mixed $value
-     * @return Response
+     * @return ResponseInterface
      */
     public function setHeader($name, $value) {}
 
@@ -148,14 +148,14 @@ class Response implements \Phalcon\Http\ResponseInterface, \Phalcon\Di\Injection
      * </code>
      *
      * @param string $header
-     * @return Response
+     * @return ResponseInterface
      */
     public function setRawHeader($header) {}
 
     /**
      * Resets all the established headers
      *
-     * @return Response
+     * @return ResponseInterface
      */
     public function resetHeaders() {}
 
@@ -169,7 +169,7 @@ class Response implements \Phalcon\Http\ResponseInterface, \Phalcon\Di\Injection
      * </code>
      *
      * @param \DateTime $datetime
-     * @return Response
+     * @return ResponseInterface
      */
     public function setExpires(\DateTime $datetime) {}
 
@@ -202,7 +202,7 @@ class Response implements \Phalcon\Http\ResponseInterface, \Phalcon\Di\Injection
     /**
      * Sends a Not-Modified response
      *
-     * @return Response
+     * @return ResponseInterface
      */
     public function setNotModified() {}
 
@@ -216,7 +216,7 @@ class Response implements \Phalcon\Http\ResponseInterface, \Phalcon\Di\Injection
      *
      * @param string $contentType
      * @param mixed $charset
-     * @return Response
+     * @return ResponseInterface
      */
     public function setContentType($contentType, $charset = null) {}
 
@@ -228,7 +228,7 @@ class Response implements \Phalcon\Http\ResponseInterface, \Phalcon\Di\Injection
      * </code>
      *
      * @param int $contentLength
-     * @return Response
+     * @return ResponseInterface
      */
     public function setContentLength($contentLength) {}
 
@@ -266,7 +266,7 @@ class Response implements \Phalcon\Http\ResponseInterface, \Phalcon\Di\Injection
      * @param mixed $location
      * @param bool $externalRedirect
      * @param int $statusCode
-     * @return Response
+     * @return ResponseInterface
      */
     public function redirect($location = null, $externalRedirect = false, $statusCode = 302) {}
 
@@ -278,7 +278,7 @@ class Response implements \Phalcon\Http\ResponseInterface, \Phalcon\Di\Injection
      * </code>
      *
      * @param string $content
-     * @return Response
+     * @return ResponseInterface
      */
     public function setContent($content) {}
 
@@ -297,7 +297,7 @@ class Response implements \Phalcon\Http\ResponseInterface, \Phalcon\Di\Injection
      * @param mixed $content
      * @param int $jsonOptions
      * @param int $depth
-     * @return Response
+     * @return ResponseInterface
      */
     public function setJsonContent($content, $jsonOptions = 0, $depth = 512) {}
 
@@ -305,7 +305,7 @@ class Response implements \Phalcon\Http\ResponseInterface, \Phalcon\Di\Injection
      * Appends a string to the HTTP response body
      *
      * @param mixed $content
-     * @return Response
+     * @return ResponseInterface
      */
     public function appendContent($content) {}
 
@@ -326,21 +326,21 @@ class Response implements \Phalcon\Http\ResponseInterface, \Phalcon\Di\Injection
     /**
      * Sends headers to the client
      *
-     * @return Response
+     * @return ResponseInterface
      */
     public function sendHeaders() {}
 
     /**
      * Sends cookies to the client
      *
-     * @return Response
+     * @return ResponseInterface
      */
     public function sendCookies() {}
 
     /**
      * Prints out HTTP response to the client
      *
-     * @return Response
+     * @return ResponseInterface
      */
     public function send() {}
 
@@ -350,7 +350,7 @@ class Response implements \Phalcon\Http\ResponseInterface, \Phalcon\Di\Injection
      * @param string $filePath
      * @param mixed $attachmentName
      * @param mixed $attachment
-     * @return Response
+     * @return ResponseInterface
      */
     public function setFileToSend($filePath, $attachmentName = null, $attachment = true) {}
 

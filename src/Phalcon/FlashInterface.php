@@ -42,7 +42,7 @@ interface FlashInterface
      * Outputs a message
      *
      * @param string $type
-     * @param mixed $message
+     * @param string $message
      */
     public function message($type, $message);
 

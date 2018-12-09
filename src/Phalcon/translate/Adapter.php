@@ -55,7 +55,7 @@ abstract class Adapter implements \Phalcon\Translate\AdapterInterface
     /**
      * Check whether a translation key exists
      *
-     * @param string $translateKey
+     * @param mixed $translateKey
      * @return bool
      */
     public function offsetExists($translateKey) {}

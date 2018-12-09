@@ -164,7 +164,7 @@ interface RequestInterface
      * $_SERVER["REMOTE_ADDR"] and optionally in $_SERVER["HTTP_X_FORWARDED_FOR"]
      *
      * @param bool $trustForwardedHeader
-     * @return string
+     * @return string|bool
      */
     public function getClientAddress($trustForwardedHeader = false);
 
@@ -258,7 +258,7 @@ interface RequestInterface
      * Checks whether request include attached files
      *
      * @param boolean $onlySuccessful
-     * @return boolean
+     * @return int
      */
     public function hasFiles($onlySuccessful = false);
 

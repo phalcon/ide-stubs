@@ -57,7 +57,7 @@ interface ViewInterface extends \Phalcon\Mvc\ViewBaseInterface
     /**
      * Sets the render level for the view
      *
-     * @param string $level
+     * @param int $level
      */
     public function setRenderLevel($level);
 
@@ -172,7 +172,7 @@ interface ViewInterface extends \Phalcon\Mvc\ViewBaseInterface
     /**
      * Returns the path of the view that is currently rendered
      *
-     * @return string
+     * @return string|array
      */
     public function getActiveRenderPath();
 

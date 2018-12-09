@@ -129,7 +129,7 @@ abstract class Resultset implements \Phalcon\Mvc\Model\ResultsetInterface, \Iter
      * Changes the internal pointer to a specific position in the resultset.
      * Set the new position if required, and then set this->_row
      *
-     * @param int $position
+     * @param mixed $position
      */
     public final function seek($position) {}
 
@@ -143,7 +143,7 @@ abstract class Resultset implements \Phalcon\Mvc\Model\ResultsetInterface, \Iter
     /**
      * Checks whether offset exists in the resultset
      *
-     * @param int $index
+     * @param mixed $index
      * @return bool
      */
     public function offsetExists($index) {}
@@ -151,7 +151,7 @@ abstract class Resultset implements \Phalcon\Mvc\Model\ResultsetInterface, \Iter
     /**
      * Gets row in a specific position of the resultset
      *
-     * @param int $index
+     * @param mixed $index
      * @return bool|\Phalcon\Mvc\ModelInterface
      */
     public function offsetGet($index) {}
@@ -167,7 +167,7 @@ abstract class Resultset implements \Phalcon\Mvc\Model\ResultsetInterface, \Iter
     /**
      * Resultsets cannot be changed. It has only been implemented to meet the definition of the ArrayAccess interface
      *
-     * @param int $offset
+     * @param mixed $offset
      */
     public function offsetUnset($offset) {}
 

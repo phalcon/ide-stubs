@@ -138,7 +138,7 @@ interface ManagerInterface
      * @param	array $options
      * @param \Phalcon\Mvc\ModelInterface $model
      * @param mixed $fields
-     * @param mixed $referencedModel
+     * @param string $referencedModel
      * @param mixed $referencedFields
      * @param mixed $options
      * @return \Phalcon\Mvc\Model\RelationInterface
@@ -154,7 +154,7 @@ interface ManagerInterface
      * @param	array $options
      * @param \Phalcon\Mvc\ModelInterface $model
      * @param mixed $fields
-     * @param mixed $referencedModel
+     * @param string $referencedModel
      * @param mixed $referencedFields
      * @param mixed $options
      * @param $\Phalcon\Mvc\ModelInterface $model
@@ -171,7 +171,7 @@ interface ManagerInterface
      * @param	array $options
      * @param \Phalcon\Mvc\ModelInterface $model
      * @param mixed $fields
-     * @param mixed $referencedModel
+     * @param string $referencedModel
      * @param mixed $referencedFields
      * @param mixed $options
      * @param $\Phalcon\Mvc\ModelInterface $model
@@ -182,8 +182,8 @@ interface ManagerInterface
     /**
      * Checks whether a model has a belongsTo relation with another model
      *
-     * @param mixed $modelName
-     * @param mixed $modelRelation
+     * @param string $modelName
+     * @param string $modelRelation
      * @param $string $modelRelation
      * @return 
      */
@@ -192,8 +192,8 @@ interface ManagerInterface
     /**
      * Checks whether a model has a hasMany relation with another model
      *
-     * @param mixed $modelName
-     * @param mixed $modelRelation
+     * @param string $modelName
+     * @param string $modelRelation
      * @param $string $modelRelation
      * @return 
      */
@@ -202,8 +202,8 @@ interface ManagerInterface
     /**
      * Checks whether a model has a hasOne relation with another model
      *
-     * @param mixed $modelName
-     * @param mixed $modelRelation
+     * @param string $modelName
+     * @param string $modelRelation
      * @param $string $modelRelation
      * @return 
      */
@@ -307,9 +307,10 @@ interface ManagerInterface
      *
      * @param string $phql
      * @param array $placeholders
+     * @param array $types
      * @return \Phalcon\Mvc\Model\QueryInterface
      */
-    public function executeQuery($phql, $placeholders = null);
+    public function executeQuery($phql, $placeholders = null, $types = null);
 
     /**
      * Creates a Phalcon\Mvc\Model\Query\Builder

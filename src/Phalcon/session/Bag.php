@@ -188,24 +188,24 @@ class Bag implements \Phalcon\Di\InjectionAwareInterface, \Phalcon\Session\BagIn
     public final function getIterator() {}
 
     /**
-     * @param string $property
+     * @param mixed $property
      * @param mixed $value
      */
     public final function offsetSet($property, $value) {}
 
     /**
-     * @param string $property
+     * @param mixed $property
      * @return bool
      */
     public final function offsetExists($property) {}
 
     /**
-     * @param string $property
+     * @param mixed $property
      */
     public final function offsetUnset($property) {}
 
     /**
-     * @param string $property
+     * @param mixed $property
      * @return mixed
      */
     public final function offsetGet($property) {}

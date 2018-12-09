@@ -91,7 +91,7 @@ interface BackendInterface
     /**
      * Deletes a value from the cache by its key
      *
-     * @param int|string $keyName
+     * @param string $keyName
      * @return boolean
      */
     public function delete($keyName);
@@ -109,7 +109,7 @@ interface BackendInterface
      *
      * @param string $keyName
      * @param int $lifetime
-     * @return boolean
+     * @return bool
      */
     public function exists($keyName = null, $lifetime = null);
 

@@ -20,7 +20,7 @@ interface InjectionAwareInterface
     /**
      * Returns the internal dependency injector
      *
-     * @return \Phalcon\DiInterface
+     * @return null|\Phalcon\DiInterface
      */
     public function getDI();
 

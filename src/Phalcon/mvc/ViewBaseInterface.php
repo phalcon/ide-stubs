@@ -20,7 +20,7 @@ interface ViewBaseInterface
     /**
      * Gets views directory
      *
-     * @return string
+     * @return string|array
      */
     public function getViewsDir();
 
@@ -80,7 +80,6 @@ interface ViewBaseInterface
      *
      * @param string $partialPath
      * @param mixed $params
-     * @return string
      */
     public function partial($partialPath, $params = null);
 

@@ -381,7 +381,7 @@ class Column implements \Phalcon\Db\ColumnInterface
      * Restores the internal state of a Phalcon\Db\Column object
      *
      * @param array $data
-     * @return Column
+     * @return \Phalcon\Db\ColumnInterface
      */
     public static function __set_state(array $data) {}
 

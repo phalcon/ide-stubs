@@ -82,7 +82,7 @@ abstract class Adapter implements \Phalcon\Session\AdapterInterface
      * {@inheritdoc}
      *
      * @param bool $deleteOldSession
-     * @return Adapter
+     * @return AdapterInterface
      */
     public function regenerateId($deleteOldSession = true) {}
 
@@ -185,10 +185,10 @@ abstract class Adapter implements \Phalcon\Session\AdapterInterface
      * );
      * </code>
      *
-     * @param bool $removeData
+     * @param mixed $removeData
      * @return bool
      */
-    public function destroy($removeData = false) {}
+    public function destroy($removeData = null) {}
 
     /**
      * Returns the status of the current session.

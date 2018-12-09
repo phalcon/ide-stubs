@@ -155,7 +155,6 @@ interface DialectInterface
      * @param string $tableName
      * @param string $schemaName
      * @param array $definition
-     * @return string
      */
     public function createTable($tableName, $schemaName, array $definition);
 

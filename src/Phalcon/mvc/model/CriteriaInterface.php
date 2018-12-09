@@ -30,9 +30,10 @@ interface CriteriaInterface
      * This method replaces all previously set bound parameters
      *
      * @param array $bindParams
+     * @param bool $merge
      * @return CriteriaInterface
      */
-    public function bind(array $bindParams);
+    public function bind(array $bindParams, $merge = false);
 
     /**
      * Sets the bind types in the criteria
@@ -47,9 +48,11 @@ interface CriteriaInterface
      * Sets the conditions parameter in the criteria
      *
      * @param string $conditions
+     * @param mixed $bindParams
+     * @param mixed $bindTypes
      * @return CriteriaInterface
      */
-    public function where($conditions);
+    public function where($conditions, $bindParams = null, $bindTypes = null);
 
     /**
      * Adds the conditions parameter to the criteria

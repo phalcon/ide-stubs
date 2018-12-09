@@ -100,6 +100,28 @@ class Router implements \Phalcon\Di\InjectionAwareInterface, \Phalcon\Mvc\Router
     protected $_notFoundPaths;
 
 
+    protected $_keyRouteNames = array();
+
+
+    protected $_keyRouteIds = array();
+
+
+
+    public function getKeyRouteNames() {}
+
+    /**
+     * @param mixed $keyRouteNames
+     */
+    public function setKeyRouteNames($keyRouteNames) {}
+
+
+    public function getKeyRouteIds() {}
+
+    /**
+     * @param mixed $keyRouteIds
+     */
+    public function setKeyRouteIds($keyRouteIds) {}
+
     /**
      * Phalcon\Mvc\Router constructor
      *

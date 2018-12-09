@@ -471,7 +471,7 @@ abstract class Adapter implements \Phalcon\Db\AdapterInterface, \Phalcon\Events\
      *
      * @param string $viewName
      * @param array $definition
-     * @param mixed $schemaName
+     * @param string $schemaName
      * @return bool
      */
     public function createView($viewName, array $definition, $schemaName = null) {}
@@ -625,8 +625,8 @@ abstract class Adapter implements \Phalcon\Db\AdapterInterface, \Phalcon\Events\
      * @param	string schema
      * @return	Phalcon\Db\Index[]
      * @param string $table
-     * @param mixed $schema
-     * @return Index[]
+     * @param string $schema
+     * @return IndexInterface[]
      */
     public function describeIndexes($table, $schema = null) {}
 
@@ -641,7 +641,7 @@ abstract class Adapter implements \Phalcon\Db\AdapterInterface, \Phalcon\Events\
      *
      * @param string $table
      * @param string $schema
-     * @return Reference[]
+     * @return ReferenceInterface[]
      */
     public function describeReferences($table, $schema = null) {}
 

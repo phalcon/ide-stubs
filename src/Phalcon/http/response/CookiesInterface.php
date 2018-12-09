@@ -43,7 +43,7 @@ interface CookiesInterface
      * Gets a cookie from the bag
      *
      * @param string $name
-     * @return \Phalcon\Http\Cookie
+     * @return CookiesInterface
      */
     public function get($name);
 

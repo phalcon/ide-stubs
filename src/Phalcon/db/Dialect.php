@@ -82,19 +82,6 @@ abstract class Dialect implements \Phalcon\Db\DialectInterface
     public function forUpdate($sqlQuery) {}
 
     /**
-     * Returns a SQL modified with a LOCK IN SHARE MODE clause
-     *
-     * <code>
-     * $sql = $dialect->sharedLock("SELECT FROM robots");
-     * echo $sql; // SELECT FROM robots LOCK IN SHARE MODE
-     * </code>
-     *
-     * @param string $sqlQuery
-     * @return string
-     */
-    public function sharedLock($sqlQuery) {}
-
-    /**
      * Gets a list of columns with escaped identifiers
      *
      * <code>

@@ -58,7 +58,7 @@ class Simple extends \Phalcon\Mvc\Model\Resultset
     /**
      * Unserializing a resultset will allow to only works on the rows present in the saved state
      *
-     * @param string $data
+     * @param mixed $data
      */
     public function unserialize($data) {}
 

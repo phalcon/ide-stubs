@@ -55,7 +55,7 @@ class Criteria implements \Phalcon\Mvc\Model\CriteriaInterface, \Phalcon\Di\Inje
      * Set a model on which the query will be executed
      *
      * @param string $modelName
-     * @return Criteria
+     * @return \Phalcon\Mvc\Model\CriteriaInterface
      */
     public function setModelName($modelName) {}
 
@@ -72,7 +72,7 @@ class Criteria implements \Phalcon\Mvc\Model\CriteriaInterface, \Phalcon\Di\Inje
      *
      * @param array $bindParams
      * @param bool $merge
-     * @return Criteria
+     * @return \Phalcon\Mvc\Model\CriteriaInterface
      */
     public function bind(array $bindParams, $merge = false) {}
 
@@ -81,7 +81,7 @@ class Criteria implements \Phalcon\Mvc\Model\CriteriaInterface, \Phalcon\Di\Inje
      * This method replaces all previously set bound parameters
      *
      * @param array $bindTypes
-     * @return Criteria
+     * @return \Phalcon\Mvc\Model\CriteriaInterface
      */
     public function bindTypes(array $bindTypes) {}
 
@@ -178,7 +178,7 @@ class Criteria implements \Phalcon\Mvc\Model\CriteriaInterface, \Phalcon\Di\Inje
      * @param string $conditions
      * @param mixed $bindParams
      * @param mixed $bindTypes
-     * @return Criteria
+     * @return \Phalcon\Mvc\Model\CriteriaInterface
      */
     public function where($conditions, $bindParams = null, $bindTypes = null) {}
 
@@ -201,7 +201,7 @@ class Criteria implements \Phalcon\Mvc\Model\CriteriaInterface, \Phalcon\Di\Inje
      * @param string $conditions
      * @param mixed $bindParams
      * @param mixed $bindTypes
-     * @return Criteria
+     * @return \Phalcon\Mvc\Model\CriteriaInterface
      */
     public function andWhere($conditions, $bindParams = null, $bindTypes = null) {}
 
@@ -211,7 +211,7 @@ class Criteria implements \Phalcon\Mvc\Model\CriteriaInterface, \Phalcon\Di\Inje
      * @param string $conditions
      * @param mixed $bindParams
      * @param mixed $bindTypes
-     * @return Criteria
+     * @return \Phalcon\Mvc\Model\CriteriaInterface
      */
     public function orWhere($conditions, $bindParams = null, $bindTypes = null) {}
 
@@ -225,7 +225,7 @@ class Criteria implements \Phalcon\Mvc\Model\CriteriaInterface, \Phalcon\Di\Inje
      * @param string $expr
      * @param mixed $minimum
      * @param mixed $maximum
-     * @return Criteria
+     * @return \Phalcon\Mvc\Model\CriteriaInterface
      */
     public function betweenWhere($expr, $minimum, $maximum) {}
 
@@ -239,7 +239,7 @@ class Criteria implements \Phalcon\Mvc\Model\CriteriaInterface, \Phalcon\Di\Inje
      * @param string $expr
      * @param mixed $minimum
      * @param mixed $maximum
-     * @return Criteria
+     * @return \Phalcon\Mvc\Model\CriteriaInterface
      */
     public function notBetweenWhere($expr, $minimum, $maximum) {}
 
@@ -252,7 +252,7 @@ class Criteria implements \Phalcon\Mvc\Model\CriteriaInterface, \Phalcon\Di\Inje
      *
      * @param string $expr
      * @param array $values
-     * @return Criteria
+     * @return \Phalcon\Mvc\Model\CriteriaInterface
      */
     public function inWhere($expr, array $values) {}
 
@@ -265,7 +265,7 @@ class Criteria implements \Phalcon\Mvc\Model\CriteriaInterface, \Phalcon\Di\Inje
      *
      * @param string $expr
      * @param array $values
-     * @return Criteria
+     * @return \Phalcon\Mvc\Model\CriteriaInterface
      */
     public function notInWhere($expr, array $values) {}
 
@@ -273,7 +273,7 @@ class Criteria implements \Phalcon\Mvc\Model\CriteriaInterface, \Phalcon\Di\Inje
      * Adds the conditions parameter to the criteria
      *
      * @param string $conditions
-     * @return Criteria
+     * @return \Phalcon\Mvc\Model\CriteriaInterface
      */
     public function conditions($conditions) {}
 
@@ -291,7 +291,7 @@ class Criteria implements \Phalcon\Mvc\Model\CriteriaInterface, \Phalcon\Di\Inje
      * Adds the order-by clause to the criteria
      *
      * @param string $orderColumns
-     * @return Criteria
+     * @return \Phalcon\Mvc\Model\CriteriaInterface
      */
     public function orderBy($orderColumns) {}
 
@@ -322,7 +322,7 @@ class Criteria implements \Phalcon\Mvc\Model\CriteriaInterface, \Phalcon\Di\Inje
      *
      * @param int $limit
      * @param mixed $offset
-     * @return Criteria
+     * @return \Phalcon\Mvc\Model\CriteriaInterface
      */
     public function limit($limit, $offset = null) {}
 
@@ -330,7 +330,7 @@ class Criteria implements \Phalcon\Mvc\Model\CriteriaInterface, \Phalcon\Di\Inje
      * Adds the "for_update" parameter to the criteria
      *
      * @param bool $forUpdate
-     * @return Criteria
+     * @return \Phalcon\Mvc\Model\CriteriaInterface
      */
     public function forUpdate($forUpdate = true) {}
 
@@ -338,7 +338,7 @@ class Criteria implements \Phalcon\Mvc\Model\CriteriaInterface, \Phalcon\Di\Inje
      * Adds the "shared_lock" parameter to the criteria
      *
      * @param bool $sharedLock
-     * @return Criteria
+     * @return \Phalcon\Mvc\Model\CriteriaInterface
      */
     public function sharedLock($sharedLock = true) {}
 

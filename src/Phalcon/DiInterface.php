@@ -44,7 +44,7 @@ interface DiInterface extends \ArrayAccess
      * @param string $name
      * @param mixed $definition
      * @param boolean $shared
-     * @return \Phalcon\Di\ServiceInterface
+     * @return bool|\Phalcon\Di\ServiceInterface
      */
     public function attempt($name, $definition, $shared = false);
 

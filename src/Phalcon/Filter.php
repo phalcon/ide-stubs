@@ -71,7 +71,7 @@ class Filter implements \Phalcon\FilterInterface
      *
      * @param string $name
      * @param mixed $handler
-     * @return Filter
+     * @return \Phalcon\FilterInterface
      */
     public function add($name, $handler) {}
 

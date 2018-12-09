@@ -13,7 +13,7 @@ interface EngineInterface
     /**
      * Returns cached output on another view stage
      *
-     * @return array
+     * @return string
      */
     public function getContent();
 

@@ -127,7 +127,7 @@ interface AdapterInterface
      *
      * @param mixed $roleName
      * @param mixed $resourceName
-     * @param mixed $access
+     * @param string $access
      * @param array $parameters
      * @return bool
      */

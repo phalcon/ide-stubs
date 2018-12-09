@@ -136,7 +136,7 @@ class Reference implements \Phalcon\Db\ReferenceInterface
      * Restore a Phalcon\Db\Reference object from export
      *
      * @param array $data
-     * @return Reference
+     * @return ReferenceInterface
      */
     public static function __set_state(array $data) {}
 

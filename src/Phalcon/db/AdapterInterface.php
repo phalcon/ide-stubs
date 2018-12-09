@@ -80,8 +80,8 @@ interface AdapterInterface
     /**
      * Appends a LIMIT clause to sqlQuery argument
      *
-     * @param mixed $sqlQuery
-     * @param mixed $number
+     * @param string $sqlQuery
+     * @param int $number
      * @param $string sqlQuery
      * @param $int number
      * @return 
