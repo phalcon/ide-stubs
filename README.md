@@ -9,21 +9,12 @@ This repo provide the most complete Phalcon Framework stubs which enables autoco
     curl -s http://getcomposer.org/installer | php
     ```
 
-2. Create the `composer.json` file as follows:
-    ```json
-    {
-        "require-dev": {
-            "phalcon/ide-stubs": "*"
-        }
-    }
-    ```
-
-3. Run the composer installer:
+2. Install via composer:
     ```bash
-    php composer.phar install
+    composer require --dev phalcon/ide-stubs
     ```
 
-4. Setup your IDE.
+3. Setup your IDE.
 
 ## Installing via Git
 
