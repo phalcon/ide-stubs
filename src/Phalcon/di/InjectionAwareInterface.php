@@ -14,14 +14,15 @@ interface InjectionAwareInterface
      * Sets the dependency injector
      *
      * @param \Phalcon\DiInterface $dependencyInjector
+     * @return void
      */
-    public function setDI(\Phalcon\DiInterface $dependencyInjector);
+    public function setDI(\Phalcon\DiInterface $dependencyInjector) : void;
 
     /**
      * Returns the internal dependency injector
      *
-     * @return null|\Phalcon\DiInterface
+     * @return \Phalcon\DiInterface
      */
-    public function getDI();
+    public function getDI() : \Phalcon\DiInterface;
 
 }
