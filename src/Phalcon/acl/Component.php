@@ -11,7 +11,6 @@ use Phalcon\Acl\Exception;
  */
 class Component implements ComponentInterface
 {
-
 	/**
 	 * Component description
 	 * @var string
@@ -24,34 +23,25 @@ class Component implements ComponentInterface
 	 */
 	private $name;
 
-	/**
-	 * Phalcon\Acl\Component constructor
-	 */
-	public function __construct(string $name, string $description = null)
-	{
-	}
+    /**
+     * Phalcon\Acl\Component constructor
+     * @param string $name
+     * @param string|null $description
+     */
+	public function __construct(string $name, string $description = null) {}
 
     /**
      * Returns component description
      */
-    public function getDescription(): string
-    {
-        // TODO: Implement getDescription() method.
-    }
+    public function getDescription(): string {}
 
     /**
      * Returns the component name
      */
-    public function getName(): string
-    {
-        // TODO: Implement getName() method.
-    }
+    public function getName(): string {}
 
     /**
      * Magic method __toString
      */
-    public function __toString(): string
-    {
-        // TODO: Implement __toString() method.
-    }
+    public function __toString(): string {}
 }
