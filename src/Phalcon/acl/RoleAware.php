@@ -9,12 +9,11 @@ namespace Phalcon\Acl;
  */
 interface RoleAware
 {
-
     /**
      * Returns role name
      *
      * @return string
      */
-    public function getRoleName();
+    public function getRoleName() : string;
 
 }
