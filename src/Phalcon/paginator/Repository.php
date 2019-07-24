@@ -5,106 +5,123 @@ namespace Phalcon\Paginator;
 /**
  * Phalcon\Paginator\Repository
  *
- * Repository of current state Phalcon\Paginator\AdapterInterface::getPaginate()
+ * Repository of current state Phalcon\Paginator\AdapterInterface::paginate()
  */
-class Repository implements RepositoryInterface
+class Repository implements \Phalcon\Paginator\RepositoryInterface
 {
-	protected $_properties = [];
-	protected $_aliases = [];
+    /**
+     * @var array
+     */
+    protected $aliases = array();
 
-	/**
-	 * {@inheritdoc}
-	 */
-	public function setProperties(array $properties) : RepositoryInterface
-	{
-	}
+    /**
+     * @var array
+     */
+    protected $properties = array();
 
-	/**
-	 * {@inheritdoc}
-	 */
-	public function setAliases(array $aliases) : RepositoryInterface
-	{
-	}
 
-	/**
-	 * {@inheritdoc}
-	 */
-	public function getAliases() : array
-	{
-	}
+    /**
+     * {@inheritdoc}
+     *
+     * @param string $property
+     * @return mixed|null
+     */
+    public function __get(string $property): ? {}
 
-	/**
-	 * {@inheritdoc}
-	 */
-	public function getItems()	{
-	}
+    /**
+     * {@inheritdoc}
+     *
+     * @return array
+     */
+    public function getAliases(): array {}
 
-	/**
-	 * {@inheritdoc}
-	 */
-	public function getTotalItems() : int
-	{
-	}
+    /**
+     * {@inheritdoc}
+     *
+     * @return int
+     */
+    public function getCurrent(): int {}
 
-	/**
-	 * {@inheritdoc}
-	 */
-	public function getLimit() : int
-	{
-	}
+    /**
+     * {@inheritdoc}
+     *
+     * @return int
+     */
+    public function getFirst(): int {}
 
-	/**
-	 * {@inheritdoc}
-	 */
-	public function getFirst() : int
-	{
-	}
+    /**
+     * {@inheritdoc}
+     *
+     * @return mixed
+     */
+    public function getItems() {}
 
-	/**
-	 * {@inheritdoc}
-	 */
-	public function getPrevious() : int
-	{
-	}
+    /**
+     * {@inheritdoc}
+     *
+     * @return int
+     */
+    public function getLast(): int {}
 
-	/**
-	 * {@inheritdoc}
-	 */
-	public function getCurrent() : int
-	{
-	}
+    /**
+     * {@inheritdoc}
+     *
+     * @return int
+     */
+    public function getLimit(): int {}
 
-	/**
-	 * {@inheritdoc}
-	 */
-	public function getNext() : int
-	{
-	}
+    /**
+     * {@inheritdoc}
+     *
+     * @return int
+     */
+    public function getNext(): int {}
 
-	/**
-	 * {@inheritdoc}
-	 */
-	public function getLast() : int
-	{
-	}
+    /**
+     * {@inheritdoc}
+     *
+     * @return int
+     */
+    public function getPrevious(): int {}
 
-	/**
-	 * {@inheritdoc}
-	 */
-	public function __get(string $property)
-	{
-	}
+    /**
+     * {@inheritdoc}
+     *
+     * @return int
+     */
+    public function getTotalItems(): int {}
 
-	/**
-	 * Gets value of property by name
-	 */
-	protected function getProperty(string $property, $defaultValue = null)	{
-	}
+    /**
+     * {@inheritdoc}
+     *
+     * @param array $aliases
+     * @return RepositoryInterface
+     */
+    public function setAliases(array $aliases): RepositoryInterface {}
 
-	/**
-	 * Resolve legacy alias for compatibility with version 2.0.x
-	 */
-	protected function getRealNameProperty(string $property) : string
-	{
-	}
+    /**
+     * {@inheritdoc}
+     *
+     * @param array $properties
+     * @return RepositoryInterface
+     */
+    public function setProperties(array $properties): RepositoryInterface {}
+
+    /**
+     * Gets value of property by name
+     *
+     * @param string $property
+     * @param mixed $defaultValue
+     * @return mixed
+     */
+    protected function getProperty(string $property, $defaultValue = null) {}
+
+    /**
+     * Resolve alias property name
+     *
+     * @param string $property
+     * @return string
+     */
+    protected function getRealNameProperty(string $property): string {}
+
 }

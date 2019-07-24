@@ -3,11 +3,9 @@
 namespace Phalcon\Db\Adapter\Pdo;
 
 /**
- * Phalcon\Db\Adapter\Pdo\Mysql
- *
  * Specific functions for the Mysql database system
  *
- * <code>
+ * ```php
  * use Phalcon\Db\Adapter\Pdo\Mysql;
  *
  * $config = [
@@ -19,61 +17,20 @@ namespace Phalcon\Db\Adapter\Pdo;
  * ];
  *
  * $connection = new Mysql($config);
- * </code>
+ * ```
  */
-class Mysql extends \Phalcon\Db\Adapter\Pdo
+class Mysql extends \Phalcon\Db\Adapter\Pdo\AbstractPdo
 {
-
-    protected $_type = 'mysql';
-
-
-    protected $_dialectType = 'mysql';
-
+    /**
+     * @var string
+     */
+    protected $dialectType = 'mysql';
 
     /**
-     * Returns an array of Phalcon\Db\Column objects describing a table
-     *
-     * <code>
-     * print_r(
-     *     $connection->describeColumns("posts")
-     * );
-     * </code>
-     *
-     * @param string $table
-     * @param string $schema
-     * @return \Phalcon\Db\ColumnInterface[]
+     * @var string
      */
-    public function describeColumns($table, $schema = null) {}
+    protected $type = 'mysql';
 
-    /**
-     * Lists table indexes
-     *
-     * <code>
-     * print_r(
-     *     $connection->describeIndexes("robots_parts")
-     * );
-     * </code>
-     *
-     * @param string $table
-     * @param string $schema
-     * @return \Phalcon\Db\IndexInterface[]
-     */
-    public function describeIndexes($table, $schema = null) {}
-
-    /**
-     * Lists table references
-     *
-     * <code>
-     * print_r(
-     *     $connection->describeReferences("robots_parts")
-     * );
-     * </code>
-     *
-     * @param string $table
-     * @param string $schema
-     * @return \Phalcon\Db\ReferenceInterface[]
-     */
-    public function describeReferences($table, $schema = null) {}
 
     /**
      * Adds a foreign key to a table
@@ -83,6 +40,58 @@ class Mysql extends \Phalcon\Db\Adapter\Pdo
      * @param \Phalcon\Db\ReferenceInterface $reference
      * @return bool
      */
-    public function addForeignKey($tableName, $schemaName, \Phalcon\Db\ReferenceInterface $reference) {}
+    public function addForeignKey(string $tableName, string $schemaName, \Phalcon\Db\ReferenceInterface $reference): bool {}
+
+    /**
+     * Returns an array of Phalcon\Db\Column objects describing a table
+     *
+     * ```php
+     * print_r(
+     *     $connection->describeColumns("posts")
+     * );
+     * ```
+     *
+     * @param string $table
+     * @param string $schema
+     * @return array|\Phalcon\Db\ColumnInterface[]
+     */
+    public function describeColumns(string $table, string $schema = null): array {}
+
+    /**
+     * Lists table indexes
+     *
+     * ```php
+     * print_r(
+     *     $connection->describeIndexes("robots_parts")
+     * );
+     * ```
+     *
+     * @param string $table
+     * @param string $schema
+     * @return array|\Phalcon\Db\IndexInterface[]
+     */
+    public function describeIndexes(string $table, string $schema = null): array {}
+
+    /**
+     * Lists table references
+     *
+     * ```php
+     * print_r(
+     *     $connection->describeReferences("robots_parts")
+     * );
+     * ```
+     *
+     * @param string $table
+     * @param string $schema
+     * @return array|\Phalcon\Db\ReferenceInterface[]
+     */
+    public function describeReferences(string $table, string $schema = null): array {}
+
+    /**
+     * Returns PDO adapter DSN defaults as a key-value map.
+     *
+     * @return array
+     */
+    protected function getDsnDefaults(): array {}
 
 }

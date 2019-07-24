@@ -3,12 +3,10 @@
 namespace Phalcon\Validation\Validator;
 
 /**
- * Phalcon\Validation\Validator\Between
- *
  * Validates that a value is between an inclusive range of two values.
  * For a value x, the test is passed if minimum<=x<=maximum.
  *
- * <code>
+ * ```php
  * use Phalcon\Validation;
  * use Phalcon\Validation\Validator\Between;
  *
@@ -47,18 +45,21 @@ namespace Phalcon\Validation\Validator;
  *         ]
  *     )
  * );
- * </code>
+ * ```
  */
-class Between extends \Phalcon\Validation\Validator
+class Between extends \Phalcon\Validation\AbstractValidator
 {
+
+    protected $template = 'Field :field must be within the range of :min to :max';
+
 
     /**
      * Executes the validation
      *
      * @param \Phalcon\Validation $validation
-     * @param string $field
+     * @param mixed $field
      * @return bool
      */
-    public function validate(\Phalcon\Validation $validation, $field) {}
+    public function validate(\Phalcon\Validation $validation, $field): bool {}
 
 }

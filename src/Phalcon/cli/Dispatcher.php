@@ -3,18 +3,18 @@
 namespace Phalcon\Cli;
 
 /**
- * Phalcon\Cli\Dispatcher
+ * Dispatching is the process of taking the command-line arguments, extracting
+ * the module name, task name, action name, and optional parameters contained in
+ * it, and then instantiating a task and calling an action on it.
  *
- * Dispatching is the process of taking the command-line arguments, extracting the module name,
- * task name, action name, and optional parameters contained in it, and then
- * instantiating a task and calling an action on it.
- *
- * <code>
+ * ```php
  * use Phalcon\Di;
  * use Phalcon\Cli\Dispatcher;
  *
  * $di = new Di();
+ *
  * $dispatcher = new Dispatcher();
+ *
  * $dispatcher->setDi($di);
  *
  * $dispatcher->setTaskName("posts");
@@ -22,93 +22,54 @@ namespace Phalcon\Cli;
  * $dispatcher->setParams([]);
  *
  * $handle = $dispatcher->dispatch();
- * </code>
+ * ```
  */
-class Dispatcher extends \Phalcon\Dispatcher implements \Phalcon\Cli\DispatcherInterface
+class Dispatcher extends \Phalcon\Dispatcher\AbstractDispatcher implements \Phalcon\Cli\DispatcherInterface
 {
+    /**
+     * @var string
+     */
+    protected $defaultHandler = 'main';
 
-    protected $_handlerSuffix = 'Task';
+    /**
+     * @var string
+     */
+    protected $defaultAction = 'main';
 
+    /**
+     * @var string
+     */
+    protected $handlerSuffix = 'Task';
 
-    protected $_defaultHandler = 'main';
-
-
-    protected $_defaultAction = 'main';
-
-
-    protected $_options = array();
+    /**
+     * @var array
+     */
+    protected $options = array();
 
 
     /**
-     * Sets the default task suffix
+     * Calls the action method.
      *
-     * @param string $taskSuffix
+     * @param mixed $handler
+     * @param string $actionMethod
+     * @param array $params
+     * @return mixed
      */
-    public function setTaskSuffix($taskSuffix) {}
-
-    /**
-     * Sets the default task name
-     *
-     * @param string $taskName
-     */
-    public function setDefaultTask($taskName) {}
-
-    /**
-     * Sets the task name to be dispatched
-     *
-     * @param string $taskName
-     */
-    public function setTaskName($taskName) {}
-
-    /**
-     * Gets last dispatched task name
-     *
-     * @return string
-     */
-    public function getTaskName() {}
-
-    /**
-     * Throws an internal exception
-     *
-     * @param string $message
-     * @param int $exceptionCode
-     */
-    protected function _throwDispatchException($message, $exceptionCode = 0) {}
-
-    /**
-     * Handles a user exception
-     *
-     * @param \Exception $exception
-     */
-    protected function _handleException(\Exception $exception) {}
-
-    /**
-     * Returns the latest dispatched controller
-     *
-     * @return TaskInterface
-     */
-    public function getLastTask() {}
+    public function callActionMethod($handler, string $actionMethod, array $params = array()) {}
 
     /**
      * Returns the active task in the dispatcher
      *
      * @return TaskInterface
      */
-    public function getActiveTask() {}
+    public function getActiveTask(): TaskInterface {}
 
     /**
-     * Set the options to be dispatched
+     * Returns the latest dispatched controller
      *
-     * @param array $options
+     * @return TaskInterface
      */
-    public function setOptions(array $options) {}
-
-    /**
-     * Get dispatched options
-     *
-     * @return array
-     */
-    public function getOptions() {}
+    public function getLastTask(): TaskInterface {}
 
     /**
      * Gets an option by its name or numeric index
@@ -121,21 +82,75 @@ class Dispatcher extends \Phalcon\Dispatcher implements \Phalcon\Cli\DispatcherI
     public function getOption($option, $filters = null, $defaultValue = null) {}
 
     /**
+     * Get dispatched options
+     *
+     * @return array
+     */
+    public function getOptions(): array {}
+
+    /**
+     * Gets last dispatched task name
+     *
+     * @return string
+     */
+    public function getTaskName(): string {}
+
+    /**
+     * Gets the default task suffix
+     *
+     * @return string
+     */
+    public function getTaskSuffix(): string {}
+
+    /**
      * Check if an option exists
      *
      * @param mixed $option
      * @return bool
      */
-    public function hasOption($option) {}
+    public function hasOption($option): bool {}
 
     /**
-     * Calls the action method.
+     * Sets the default task name
      *
-     * @param mixed $handler
-     * @param string $actionMethod
-     * @param array $params
-     * @return mixed
+     * @param string $taskName
      */
-    public function callActionMethod($handler, $actionMethod, array $params = array()) {}
+    public function setDefaultTask(string $taskName) {}
+
+    /**
+     * Set the options to be dispatched
+     *
+     * @param array $options
+     */
+    public function setOptions(array $options) {}
+
+    /**
+     * Sets the task name to be dispatched
+     *
+     * @param string $taskName
+     */
+    public function setTaskName(string $taskName) {}
+
+    /**
+     * Sets the default task suffix
+     *
+     * @param string $taskSuffix
+     */
+    public function setTaskSuffix(string $taskSuffix) {}
+
+    /**
+     * Handles a user exception
+     *
+     * @param \Exception $exception
+     */
+    protected function handleException(\Exception $exception) {}
+
+    /**
+     * Throws an internal exception
+     *
+     * @param string $message
+     * @param int $exceptionCode
+     */
+    protected function throwDispatchException(string $message, int $exceptionCode = 0) {}
 
 }

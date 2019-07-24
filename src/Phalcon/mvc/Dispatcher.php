@@ -3,13 +3,12 @@
 namespace Phalcon\Mvc;
 
 /**
- * Phalcon\Mvc\Dispatcher
+ * Dispatching is the process of taking the request object, extracting the
+ * module name, controller name, action name, and optional parameters contained
+ * in it, and then instantiating a controller and calling an action of that
+ * controller.
  *
- * Dispatching is the process of taking the request object, extracting the module name,
- * controller name, action name, and optional parameters contained in it, and then
- * instantiating a controller and calling an action of that controller.
- *
- * <code>
+ * ```php
  * $di = new \Phalcon\Di();
  *
  * $dispatcher = new \Phalcon\Mvc\Dispatcher();
@@ -21,88 +20,24 @@ namespace Phalcon\Mvc;
  * $dispatcher->setParams([]);
  *
  * $controller = $dispatcher->dispatch();
- * </code>
+ * ```
  */
-class Dispatcher extends \Phalcon\Dispatcher implements \Phalcon\Mvc\DispatcherInterface
+class Dispatcher extends \Phalcon\Dispatcher\AbstractDispatcher implements \Phalcon\Mvc\DispatcherInterface
 {
 
-    protected $_handlerSuffix = 'Controller';
+    protected $defaultAction = 'index';
 
 
-    protected $_defaultHandler = 'index';
+    protected $defaultHandler = 'index';
 
 
-    protected $_defaultAction = 'index';
+    protected $handlerSuffix = 'Controller';
 
-
-    /**
-     * Sets the default controller suffix
-     *
-     * @param string $controllerSuffix
-     */
-    public function setControllerSuffix($controllerSuffix) {}
-
-    /**
-     * Sets the default controller name
-     *
-     * @param string $controllerName
-     */
-    public function setDefaultController($controllerName) {}
-
-    /**
-     * Sets the controller name to be dispatched
-     *
-     * @param string $controllerName
-     */
-    public function setControllerName($controllerName) {}
-
-    /**
-     * Gets last dispatched controller name
-     *
-     * @return string
-     */
-    public function getControllerName() {}
-
-    /**
-     * Gets previous dispatched namespace name
-     *
-     * @return string
-     */
-    public function getPreviousNamespaceName() {}
-
-    /**
-     * Gets previous dispatched controller name
-     *
-     * @return string
-     */
-    public function getPreviousControllerName() {}
-
-    /**
-     * Gets previous dispatched action name
-     *
-     * @return string
-     */
-    public function getPreviousActionName() {}
-
-    /**
-     * Throws an internal exception
-     *
-     * @param string $message
-     * @param int $exceptionCode
-     */
-    protected function _throwDispatchException($message, $exceptionCode = 0) {}
-
-    /**
-     * Handles a user exception
-     *
-     * @param \Exception $exception
-     */
-    protected function _handleException(\Exception $exception) {}
 
     /**
      * Forwards the execution flow to another controller/action.
      *
-     * <code>
+     * ```php
      * use Phalcon\Events\Event;
      * use Phalcon\Mvc\Dispatcher;
      * use App\Backend\Bootstrap as Backend;
@@ -136,8 +71,13 @@ class Dispatcher extends \Phalcon\Dispatcher implements \Phalcon\Mvc\DispatcherI
      *     function(Event $event, Dispatcher $dispatcher, array $forward) use ($modules) {
      *         $metadata = $modules[$forward["module"]]["metadata"];
      *
-     *         $dispatcher->setModuleName($forward["module"]);
-     *         $dispatcher->setNamespaceName($metadata["controllersNamespace"]);
+     *         $dispatcher->setModuleName(
+     *             $forward["module"]
+     *         );
+     *
+     *         $dispatcher->setNamespaceName(
+     *             $metadata["controllersNamespace"]
+     *         );
      *     }
      * );
      *
@@ -149,31 +89,96 @@ class Dispatcher extends \Phalcon\Dispatcher implements \Phalcon\Mvc\DispatcherI
      *         "action"     => "index",
      *     ]
      * );
-     * </code>
+     * ```
      *
      * @param array $forward
      */
     public function forward($forward) {}
 
     /**
-     * Possible controller class name that will be located to dispatch the request
+     * Returns the active controller in the dispatcher
+     *
+     * @return \Phalcon\Mvc\ControllerInterface
+     */
+    public function getActiveController(): ControllerInterface {}
+
+    /**
+     * Possible controller class name that will be located to dispatch the
+     * request
      *
      * @return string
      */
-    public function getControllerClass() {}
+    public function getControllerClass(): string {}
+
+    /**
+     * Gets last dispatched controller name
+     *
+     * @return string
+     */
+    public function getControllerName(): string {}
 
     /**
      * Returns the latest dispatched controller
      *
      * @return \Phalcon\Mvc\ControllerInterface
      */
-    public function getLastController() {}
+    public function getLastController(): ControllerInterface {}
 
     /**
-     * Returns the active controller in the dispatcher
+     * Gets previous dispatched action name
      *
-     * @return \Phalcon\Mvc\ControllerInterface
+     * @return string
      */
-    public function getActiveController() {}
+    public function getPreviousActionName(): string {}
+
+    /**
+     * Gets previous dispatched controller name
+     *
+     * @return string
+     */
+    public function getPreviousControllerName(): string {}
+
+    /**
+     * Gets previous dispatched namespace name
+     *
+     * @return string
+     */
+    public function getPreviousNamespaceName(): string {}
+
+    /**
+     * Sets the controller name to be dispatched
+     *
+     * @param string $controllerName
+     */
+    public function setControllerName(string $controllerName) {}
+
+    /**
+     * Sets the default controller suffix
+     *
+     * @param string $controllerSuffix
+     */
+    public function setControllerSuffix(string $controllerSuffix) {}
+
+    /**
+     * Sets the default controller name
+     *
+     * @param string $controllerName
+     */
+    public function setDefaultController(string $controllerName) {}
+
+    /**
+     * Handles a user exception
+     *
+     * @param \Exception $exception
+     */
+    protected function handleException(\Exception $exception) {}
+
+    /**
+     * Throws an internal exception
+     *
+     * @param string $message
+     * @param int $exceptionCode
+     */
+    protected function throwDispatchException(string $message, int $exceptionCode = 0) {}
 
 }

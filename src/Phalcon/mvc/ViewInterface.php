@@ -11,90 +11,9 @@ interface ViewInterface extends \Phalcon\Mvc\ViewBaseInterface
 {
 
     /**
-     * Sets the layouts sub-directory. Must be a directory under the views
-     * directory. Depending of your platform, always add a trailing slash or backslash
-     *
-     * @param string $layoutsDir
+     * Resets any template before layouts
      */
-    public function setLayoutsDir($layoutsDir);
-
-    /**
-     * Gets the current layouts sub-directory
-     *
-     * @return string
-     */
-    public function getLayoutsDir();
-
-    /**
-     * Sets a partials sub-directory. Must be a directory under the views
-     * directory. Depending of your platform, always add a trailing slash or backslash
-     *
-     * @param string $partialsDir
-     */
-    public function setPartialsDir($partialsDir);
-
-    /**
-     * Gets the current partials sub-directory
-     *
-     * @return string
-     */
-    public function getPartialsDir();
-
-    /**
-     * Sets base path. Depending of your platform, always add a trailing slash or backslash
-     *
-     * @param string $basePath
-     */
-    public function setBasePath($basePath);
-
-    /**
-     * Gets base path
-     *
-     * @return string
-     */
-    public function getBasePath();
-
-    /**
-     * Sets the render level for the view
-     *
-     * @param int $level
-     */
-    public function setRenderLevel($level);
-
-    /**
-     * Sets default view name. Must be a file without extension in the views directory
-     *
-     * @param string $viewPath
-     */
-    public function setMainView($viewPath);
-
-    /**
-     * Returns the name of the main view
-     *
-     * @return string
-     */
-    public function getMainView();
-
-    /**
-     * Change the layout to be used instead of using the name of the latest controller name
-     *
-     * @param string $layout
-     */
-    public function setLayout($layout);
-
-    /**
-     * Returns the name of the main view
-     *
-     * @return string
-     */
-    public function getLayout();
-
-    /**
-     * Appends template before controller layout
-     *
-     * @param string|array $templateBefore
-     */
-    public function setTemplateBefore($templateBefore);
+    public function cleanTemplateAfter();
 
     /**
      * Resets any template before layouts
@@ -102,44 +21,89 @@ interface ViewInterface extends \Phalcon\Mvc\ViewBaseInterface
     public function cleanTemplateBefore();
 
     /**
-     * Appends template after controller layout
-     *
-     * @param string|array $templateAfter
+     * Disables the auto-rendering process
      */
-    public function setTemplateAfter($templateAfter);
+    public function disable();
 
     /**
-     * Resets any template before layouts
+     * Enables the auto-rendering process
      */
-    public function cleanTemplateAfter();
+    public function enable();
 
     /**
-     * Gets the name of the controller rendered
-     *
-     * @return string
+     * Finishes the render process by stopping the output buffering
      */
-    public function getControllerName();
+    public function finish();
 
     /**
      * Gets the name of the action rendered
      *
      * @return string
      */
-    public function getActionName();
+    public function getActionName(): string;
 
     /**
-     * Gets extra parameters of the action rendered
+     * Returns the path of the view that is currently rendered
      *
-     * @deprecated Will be removed in 4.0.0
-     * @deprecated
-     * @return array
+     * @return string|array
      */
-    public function getParams();
+    public function getActiveRenderPath();
 
     /**
-     * Starts rendering process enabling the output buffering
+     * Gets base path
+     *
+     * @return string
      */
-    public function start();
+    public function getBasePath(): string;
+
+    /**
+     * Gets the name of the controller rendered
+     *
+     * @return string
+     */
+    public function getControllerName(): string;
+
+    /**
+     * Returns the name of the main view
+     *
+     * @return string
+     */
+    public function getLayout(): string;
+
+    /**
+     * Gets the current layouts sub-directory
+     *
+     * @return string
+     */
+    public function getLayoutsDir(): string;
+
+    /**
+     * Returns the name of the main view
+     *
+     * @return string
+     */
+    public function getMainView(): string;
+
+    /**
+     * Gets the current partials sub-directory
+     *
+     * @return string
+     */
+    public function getPartialsDir(): string;
+
+    /**
+     * Whether the automatic rendering is disabled
+     *
+     * @return bool
+     */
+    public function isDisabled(): bool;
+
+    /**
+     * Choose a view different to render than last-controller/last-action
+     *
+     * @param string $renderView
+     */
+    public function pick(string $renderView);
 
     /**
      * Register templating engines
@@ -154,37 +118,9 @@ interface ViewInterface extends \Phalcon\Mvc\ViewBaseInterface
      * @param string $controllerName
      * @param string $actionName
      * @param array $params
+     * @return bool|ViewInterface
      */
-    public function render($controllerName, $actionName, $params = null);
-
-    /**
-     * Choose a view different to render than last-controller/last-action
-     *
-     * @param string $renderView
-     */
-    public function pick($renderView);
-
-    /**
-     * Finishes the render process by stopping the output buffering
-     */
-    public function finish();
-
-    /**
-     * Returns the path of the view that is currently rendered
-     *
-     * @return string|array
-     */
-    public function getActiveRenderPath();
-
-    /**
-     * Disables the auto-rendering process
-     */
-    public function disable();
-
-    /**
-     * Enables the auto-rendering process
-     */
-    public function enable();
+    public function render(string $controllerName, string $actionName, array $params = array());
 
     /**
      * Resets the view component to its factory default values
@@ -192,10 +128,72 @@ interface ViewInterface extends \Phalcon\Mvc\ViewBaseInterface
     public function reset();
 
     /**
-     * Whether the automatic rendering is disabled
+     * Sets base path. Depending of your platform, always add a trailing slash
+     * or backslash
      *
-     * @return bool
+     * @param string $basePath
      */
-    public function isDisabled();
+    public function setBasePath(string $basePath);
+
+    /**
+     * Change the layout to be used instead of using the name of the latest
+     * controller name
+     *
+     * @param string $layout
+     */
+    public function setLayout(string $layout);
+
+    /**
+     * Sets the layouts sub-directory. Must be a directory under the views
+     * directory. Depending of your platform, always add a trailing slash or
+     * backslash
+     *
+     * @param string $layoutsDir
+     */
+    public function setLayoutsDir(string $layoutsDir);
+
+    /**
+     * Sets default view name. Must be a file without extension in the views
+     * directory
+     *
+     * @param string $viewPath
+     */
+    public function setMainView(string $viewPath);
+
+    /**
+     * Sets a partials sub-directory. Must be a directory under the views
+     * directory. Depending of your platform, always add a trailing slash or
+     * backslash
+     *
+     * @param string $partialsDir
+     */
+    public function setPartialsDir(string $partialsDir);
+
+    /**
+     * Sets the render level for the view
+     *
+     * @param int $level
+     * @return ViewInterface
+     */
+    public function setRenderLevel(int $level): ViewInterface;
+
+    /**
+     * Appends template after controller layout
+     *
+     * @param string|array $templateAfter
+     */
+    public function setTemplateAfter($templateAfter);
+
+    /**
+     * Appends template before controller layout
+     *
+     * @param string|array $templateBefore
+     */
+    public function setTemplateBefore($templateBefore);
+
+    /**
+     * Starts rendering process enabling the output buffering
+     */
+    public function start();
 
 }

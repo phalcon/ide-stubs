@@ -3,11 +3,9 @@
 namespace Phalcon\Validation\Validator;
 
 /**
- * Phalcon\Validation\Validator\Callback
- *
  * Calls user function for validation
  *
- * <code>
+ * ```php
  * use Phalcon\Validation;
  * use Phalcon\Validation\Validator\Callback as CallbackValidator;
  * use Phalcon\Validation\Validator\Numericality as NumericalityValidator;
@@ -46,18 +44,21 @@ namespace Phalcon\Validation\Validator;
  *         ]
  *     )
  * );
- * </code>
+ * ```
  */
-class Callback extends \Phalcon\Validation\Validator
+class Callback extends \Phalcon\Validation\AbstractValidator
 {
+
+    protected $template = 'Field :field must match the callback function';
+
 
     /**
      * Executes the validation
      *
      * @param \Phalcon\Validation $validation
-     * @param string $field
+     * @param mixed $field
      * @return bool
      */
-    public function validate(\Phalcon\Validation $validation, $field) {}
+    public function validate(\Phalcon\Validation $validation, $field): bool {}
 
 }

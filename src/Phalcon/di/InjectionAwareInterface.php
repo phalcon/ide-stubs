@@ -3,9 +3,8 @@
 namespace Phalcon\Di;
 
 /**
- * Phalcon\Di\InjectionAwareInterface
- *
- * This interface must be implemented in those classes that uses internally the Phalcon\Di that creates them
+ * This interface must be implemented in those classes that uses internally the
+ * Phalcon\Di that creates them
  */
 interface InjectionAwareInterface
 {
@@ -13,16 +12,15 @@ interface InjectionAwareInterface
     /**
      * Sets the dependency injector
      *
-     * @param \Phalcon\DiInterface $dependencyInjector
-     * @return void
+     * @param \Phalcon\Di\DiInterface $container
      */
-    public function setDI(\Phalcon\DiInterface $dependencyInjector) : void;
+    public function setDI(\Phalcon\Di\DiInterface $container);
 
     /**
      * Returns the internal dependency injector
      *
-     * @return \Phalcon\DiInterface
+     * @return \Phalcon\Di\DiInterface
      */
-    public function getDI() : \Phalcon\DiInterface;
+    public function getDI(): DiInterface;
 
 }

@@ -3,11 +3,9 @@
 namespace Phalcon\Db;
 
 /**
- * Phalcon\Db\Column
- *
  * Allows to define columns to be used on create or alter table operations
  *
- * <code>
+ * ```php
  * use Phalcon\Db\Column as Column;
  *
  * // Column definition
@@ -25,115 +23,10 @@ namespace Phalcon\Db;
  *
  * // Add column to existing table
  * $connection->addColumn("robots", null, $column);
- * </code>
+ * ```
  */
 class Column implements \Phalcon\Db\ColumnInterface
 {
-    /**
-     * Integer abstract type
-     */
-    const TYPE_INTEGER = 0;
-
-    /**
-     * Date abstract type
-     */
-    const TYPE_DATE = 1;
-
-    /**
-     * Varchar abstract type
-     */
-    const TYPE_VARCHAR = 2;
-
-    /**
-     * Decimal abstract type
-     */
-    const TYPE_DECIMAL = 3;
-
-    /**
-     * Datetime abstract type
-     */
-    const TYPE_DATETIME = 4;
-
-    /**
-     * Char abstract type
-     */
-    const TYPE_CHAR = 5;
-
-    /**
-     * Text abstract data type
-     */
-    const TYPE_TEXT = 6;
-
-    /**
-     * Float abstract data type
-     */
-    const TYPE_FLOAT = 7;
-
-    /**
-     * Boolean abstract data type
-     */
-    const TYPE_BOOLEAN = 8;
-
-    /**
-     * Double abstract data type
-     */
-    const TYPE_DOUBLE = 9;
-
-    /**
-     * Tinyblob abstract data type
-     */
-    const TYPE_TINYBLOB = 10;
-
-    /**
-     * Blob abstract data type
-     */
-    const TYPE_BLOB = 11;
-
-    /**
-     * Mediumblob abstract data type
-     */
-    const TYPE_MEDIUMBLOB = 12;
-
-    /**
-     * Longblob abstract data type
-     */
-    const TYPE_LONGBLOB = 13;
-
-    /**
-     * Big integer abstract data type
-     */
-    const TYPE_BIGINTEGER = 14;
-
-    /**
-     * Json abstract type
-     */
-    const TYPE_JSON = 15;
-
-    /**
-     * Jsonb abstract type
-     */
-    const TYPE_JSONB = 16;
-
-    /**
-     * Datetime abstract type
-     */
-    const TYPE_TIMESTAMP = 17;
-
-    /**
-     * Bind Type Null
-     */
-    const BIND_PARAM_NULL = 0;
-
-    /**
-     * Bind Type Integer
-     */
-    const BIND_PARAM_INT = 1;
-
-    /**
-     * Bind Type String
-     */
-    const BIND_PARAM_STR = 2;
-
     /**
      * Bind Type Blob
      */
@@ -150,63 +43,178 @@ class Column implements \Phalcon\Db\ColumnInterface
     const BIND_PARAM_DECIMAL = 32;
 
     /**
+     * Bind Type Integer
+     */
+    const BIND_PARAM_INT = 1;
+
+    /**
+     * Bind Type Null
+     */
+    const BIND_PARAM_NULL = 0;
+
+    /**
+     * Bind Type String
+     */
+    const BIND_PARAM_STR = 2;
+
+    /**
      * Skip binding by type
      */
     const BIND_SKIP = 1024;
 
     /**
-     * Column's name
+     * Big integer abstract data type
+     */
+    const TYPE_BIGINTEGER = 14;
+
+    /**
+     * Bit abstract data type
+     */
+    const TYPE_BIT = 19;
+
+    /**
+     * Blob abstract data type
+     */
+    const TYPE_BLOB = 11;
+
+    /**
+     * Bool abstract data type
+     */
+    const TYPE_BOOLEAN = 8;
+
+    /**
+     * Char abstract data type
+     */
+    const TYPE_CHAR = 5;
+
+    /**
+     * Date abstract data type
+     */
+    const TYPE_DATE = 1;
+
+    /**
+     * Datetime abstract data type
+     */
+    const TYPE_DATETIME = 4;
+
+    /**
+     * Decimal abstract data type
+     */
+    const TYPE_DECIMAL = 3;
+
+    /**
+     * Double abstract data type
+     */
+    const TYPE_DOUBLE = 9;
+
+    /**
+     * Enum abstract data type
+     */
+    const TYPE_ENUM = 18;
+
+    /**
+     * Float abstract data type
+     */
+    const TYPE_FLOAT = 7;
+
+    /**
+     * Int abstract data type
+     */
+    const TYPE_INTEGER = 0;
+
+    /**
+     * Json abstract data type
+     */
+    const TYPE_JSON = 15;
+
+    /**
+     * Jsonb abstract data type
+     */
+    const TYPE_JSONB = 16;
+
+    /**
+     * Longblob abstract data type
+     */
+    const TYPE_LONGBLOB = 13;
+
+    /**
+     * Longtext abstract data type
+     */
+    const TYPE_LONGTEXT = 24;
+
+    /**
+     * Mediumblob abstract data type
+     */
+    const TYPE_MEDIUMBLOB = 12;
+
+    /**
+     * Mediumintegerr abstract data type
+     */
+    const TYPE_MEDIUMINTEGER = 21;
+
+    /**
+     * Mediumtext abstract data type
+     */
+    const TYPE_MEDIUMTEXT = 23;
+
+    /**
+     * Smallint abstract data type
+     */
+    const TYPE_SMALLINTEGER = 22;
+
+    /**
+     * Text abstract data type
+     */
+    const TYPE_TEXT = 6;
+
+    /**
+     * Time abstract data type
+     */
+    const TYPE_TIME = 20;
+
+    /**
+     * Timestamp abstract data type
+     */
+    const TYPE_TIMESTAMP = 17;
+
+    /**
+     * Tinyblob abstract data type
+     */
+    const TYPE_TINYBLOB = 10;
+
+    /**
+     * Tinyint abstract data type
+     */
+    const TYPE_TINYINTEGER = 26;
+
+    /**
+     * Tinytext abstract data type
+     */
+    const TYPE_TINYTEXT = 25;
+
+    /**
+     * Varchar abstract data type
+     */
+    const TYPE_VARCHAR = 2;
+
+    /**
+     * Column Position
      *
      * @var string
      */
-    protected $_name;
+    protected $after;
 
     /**
-     * Schema which table related is
+     * Column is autoIncrement?
      *
-     * @var string
+     * @var bool
      */
-    protected $_schemaName;
+    protected $autoIncrement = false;
 
     /**
-     * Column data type
-     *
-     * @var int|string
+     * Bind Type
      */
-    protected $_type;
-
-    /**
-     * Column data type reference
-     *
-     * @var int
-     */
-    protected $_typeReference = -1;
-
-    /**
-     * Column data type values
-     *
-     * @var array|string
-     */
-    protected $_typeValues;
-
-    /**
-     * The column have some numeric type?
-     */
-    protected $_isNumeric = false;
-
-    /**
-     * Integer column size
-     *
-     * @var int
-     */
-    protected $_size = 0;
-
-    /**
-     * Integer column number scale
-     *
-     * @var int
-     */
-    protected $_scale = 0;
+    protected $bindType = 2;
 
     /**
      * Default column value
@@ -214,78 +222,118 @@ class Column implements \Phalcon\Db\ColumnInterface
     protected $_default = null;
 
     /**
-     * Integer column unsigned?
+     * Position is first
      *
-     * @var boolean
+     * @var bool
      */
-    protected $_unsigned = false;
+    protected $first = false;
+
+    /**
+     * The column have some numeric type?
+     */
+    protected $isNumeric = false;
+
+    /**
+     * Column's name
+     *
+     * @var string
+     */
+    protected $name;
 
     /**
      * Column not nullable?
      *
-     * @var boolean
+     * @var bool
      */
-    protected $_notNull = false;
+    protected $notNull = false;
 
     /**
      * Column is part of the primary key?
      */
-    protected $_primary = false;
+    protected $primary = false;
 
     /**
-     * Column is autoIncrement?
+     * Integer column number scale
      *
-     * @var boolean
+     * @var int
      */
-    protected $_autoIncrement = false;
+    protected $scale = 0;
 
     /**
-     * Position is first
+     * Integer column size
      *
-     * @var boolean
+     * @var int
      */
-    protected $_first = false;
+    protected $size = 0;
 
     /**
-     * Column Position
+     * Column data type
      *
-     * @var string
+     * @var int
      */
-    protected $_after;
+    protected $type;
 
     /**
-     * Bind Type
+     * Column data type reference
+     *
+     * @var int
      */
-    protected $_bindType = 2;
+    protected $typeReference = -1;
 
+    /**
+     * Column data type values
+     *
+     * @var array|string
+     */
+    protected $typeValues;
+
+    /**
+     * Integer column unsigned?
+     *
+     * @var bool
+     */
+    protected $unsigned = false;
+
+
+    /**
+     * Default column value
+     */
+    public function getDefault() {}
 
     /**
      * Column's name
      *
      * @return string
      */
-    public function getName() {}
+    public function getName(): string {}
 
     /**
-     * Schema which table related is
+     * Integer column number scale
      *
-     * @return string
+     * @return int
      */
-    public function getSchemaName() {}
+    public function getScale(): int {}
+
+    /**
+     * Integer column size
+     *
+     * @return int
+     */
+    public function getSize(): int {}
 
     /**
      * Column data type
      *
-     * @return int|string
+     * @return int
      */
-    public function getType() {}
+    public function getType(): int {}
 
     /**
      * Column data type reference
      *
      * @return int
      */
-    public function getTypeReference() {}
+    public function getTypeReference(): int {}
 
     /**
      * Column data type values
@@ -295,101 +343,74 @@ class Column implements \Phalcon\Db\ColumnInterface
     public function getTypeValues() {}
 
     /**
-     * Integer column size
-     *
-     * @return int
-     */
-    public function getSize() {}
-
-    /**
-     * Integer column number scale
-     *
-     * @return int
-     */
-    public function getScale() {}
-
-    /**
-     * Default column value
-     */
-    public function getDefault() {}
-
-    /**
      * Phalcon\Db\Column constructor
      *
      * @param string $name
      * @param array $definition
      */
-    public function __construct($name, array $definition) {}
-
-    /**
-     * Returns true if number column is unsigned
-     *
-     * @return bool
-     */
-    public function isUnsigned() {}
-
-    /**
-     * Not null
-     *
-     * @return bool
-     */
-    public function isNotNull() {}
-
-    /**
-     * Column is part of the primary key?
-     *
-     * @return bool
-     */
-    public function isPrimary() {}
-
-    /**
-     * Auto-Increment
-     *
-     * @return bool
-     */
-    public function isAutoIncrement() {}
-
-    /**
-     * Check whether column have an numeric type
-     *
-     * @return bool
-     */
-    public function isNumeric() {}
-
-    /**
-     * Check whether column have first position in table
-     *
-     * @return bool
-     */
-    public function isFirst() {}
+    public function __construct(string $name, array $definition) {}
 
     /**
      * Check whether field absolute to position in table
      *
      * @return string
      */
-    public function getAfterPosition() {}
+    public function getAfterPosition(): string {}
 
     /**
      * Returns the type of bind handling
      *
      * @return int
      */
-    public function getBindType() {}
-
-    /**
-     * Restores the internal state of a Phalcon\Db\Column object
-     *
-     * @param array $data
-     * @return \Phalcon\Db\ColumnInterface
-     */
-    public static function __set_state(array $data) {}
+    public function getBindType(): int {}
 
     /**
      * Check whether column has default value
      *
      * @return bool
      */
-    public function hasDefault() {}
+    public function hasDefault(): bool {}
+
+    /**
+     * Auto-Increment
+     *
+     * @return bool
+     */
+    public function isAutoIncrement(): bool {}
+
+    /**
+     * Check whether column have first position in table
+     *
+     * @return bool
+     */
+    public function isFirst(): bool {}
+
+    /**
+     * Not null
+     *
+     * @return bool
+     */
+    public function isNotNull(): bool {}
+
+    /**
+     * Check whether column have an numeric type
+     *
+     * @return bool
+     */
+    public function isNumeric(): bool {}
+
+    /**
+     * Column is part of the primary key?
+     *
+     * @return bool
+     */
+    public function isPrimary(): bool {}
+
+    /**
+     * Returns true if number column is unsigned
+     *
+     * @return bool
+     */
+    public function isUnsigned(): bool {}
 
 }

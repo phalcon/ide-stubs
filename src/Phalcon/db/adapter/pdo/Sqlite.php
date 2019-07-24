@@ -3,11 +3,9 @@
 namespace Phalcon\Db\Adapter\Pdo;
 
 /**
- * Phalcon\Db\Adapter\Pdo\Sqlite
- *
  * Specific functions for the Sqlite database system
  *
- * <code>
+ * ```php
  * use Phalcon\Db\Adapter\Pdo\Sqlite;
  *
  * $connection = new Sqlite(
@@ -15,79 +13,81 @@ namespace Phalcon\Db\Adapter\Pdo;
  *         "dbname" => "/tmp/test.sqlite",
  *     ]
  * );
- * </code>
+ * ```
  */
-class Sqlite extends \Phalcon\Db\Adapter\Pdo
+class Sqlite extends \Phalcon\Db\Adapter\Pdo\AbstractPdo
 {
+    /**
+     * @var string
+     */
+    protected $dialectType = 'sqlite';
 
-    protected $_type = 'sqlite';
-
-
-    protected $_dialectType = 'sqlite';
+    /**
+     * @var string
+     */
+    protected $type = 'sqlite';
 
 
     /**
-     * This method is automatically called in Phalcon\Db\Adapter\Pdo constructor.
-     * Call it when you need to restore a database connection.
+     * Constructor for Phalcon\Db\Adapter\Pdo\Sqlite
+     *
+     * @param array $descriptor
+     */
+    public function __construct(array $descriptor) {}
+
+    /**
+     * This method is automatically called in Phalcon\Db\Adapter\Pdo
+     * constructor. Call it when you need to restore a database connection.
      *
      * @param array $descriptor
      * @return bool
      */
-    public function connect(array $descriptor = null) {}
+    public function connect(array $descriptor = null): bool {}
 
     /**
      * Returns an array of Phalcon\Db\Column objects describing a table
      *
-     * <code>
+     * ```php
      * print_r(
      *     $connection->describeColumns("posts")
      * );
-     * </code>
+     * ```
      *
      * @param string $table
      * @param string $schema
-     * @return \Phalcon\Db\ColumnInterface[]
+     * @return array|\Phalcon\Db\ColumnInterface[]
      */
-    public function describeColumns($table, $schema = null) {}
+    public function describeColumns(string $table, string $schema = null): array {}
 
     /**
      * Lists table indexes
      *
-     * <code>
+     * ```php
      * print_r(
      *     $connection->describeIndexes("robots_parts")
      * );
-     * </code>
+     * ```
      *
      * @param string $table
      * @param string $schema
-     * @return \Phalcon\Db\IndexInterface[]
+     * @return array|\Phalcon\Db\IndexInterface[]
      */
-    public function describeIndexes($table, $schema = null) {}
+    public function describeIndexes(string $table, string $schema = null): array {}
 
     /**
      * Lists table references
      *
-     * @param	string table
-     * @param	string schema
-     * @return	Phalcon\Db\ReferenceInterface[]
      * @param string $table
      * @param string $schema
-     * @return \Phalcon\Db\ReferenceInterface[]
+     * @return array|\Phalcon\Db\ReferenceInterface[]
      */
-    public function describeReferences($table, $schema = null) {}
+    public function describeReferences(string $table, string $schema = null): array {}
 
     /**
-     * Check whether the database system requires an explicit value for identity columns
+     * Returns the default value to make the RBDM use the default value declared
+     * in the table definition
      *
-     * @return bool
-     */
-    public function useExplicitIdValue() {}
-
-    /**
-     * Returns the default value to make the RBDM use the default value declared in the table definition
-     *
-     * <code>
+     * ```php
      * // Inserting a new robot with a valid default value for the column 'year'
      * $success = $connection->insert(
      *     "robots",
@@ -100,10 +100,25 @@ class Sqlite extends \Phalcon\Db\Adapter\Pdo
      *         "year",
      *     ]
      * );
-     * </code>
+     * ```
      *
      * @return \Phalcon\Db\RawValue
      */
-    public function getDefaultValue() {}
+    public function getDefaultValue(): RawValue {}
+
+    /**
+     * Check whether the database system requires an explicit value for identity
+     * columns
+     *
+     * @return bool
+     */
+    public function useExplicitIdValue(): bool {}
+
+    /**
+     * Returns PDO adapter DSN defaults as a key-value map.
+     *
+     * @return array
+     */
+    protected function getDsnDefaults(): array {}
 
 }

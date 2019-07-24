@@ -3,14 +3,12 @@
 namespace Phalcon\Db;
 
 /**
- * Phalcon\Db\Profiler
- *
  * Instances of Phalcon\Db can generate execution profiles
  * on SQL statements sent to the relational database. Profiled
  * information includes execution time in milliseconds.
  * This helps you to identify bottlenecks in your applications.
  *
- * <code>
+ * ```php
  * use Phalcon\Db\Profiler;
  * use Phalcon\Events\Event;
  * use Phalcon\Events\Manager;
@@ -52,31 +50,66 @@ namespace Phalcon\Db;
  * echo "Start Time: ", $profile->getInitialTime(), "\n";
  * echo "Final Time: ", $profile->getFinalTime(), "\n";
  * echo "Total Elapsed Time: ", $profile->getTotalElapsedSeconds(), "\n";
- * </code>
+ * ```
  */
 class Profiler
 {
-    /**
-     * All the Phalcon\Db\Profiler\Item in the active profile
-     *
-     * @var \Phalcon\Db\Profiler\Item[]
-     */
-    protected $_allProfiles;
-
     /**
      * Active Phalcon\Db\Profiler\Item
      *
      * @var Phalcon\Db\Profiler\Item
      */
-    protected $_activeProfile;
+    protected $activeProfile;
+
+    /**
+     * All the Phalcon\Db\Profiler\Item in the active profile
+     *
+     * @var \Phalcon\Db\Profiler\Item[]
+     */
+    protected $allProfiles;
 
     /**
      * Total time spent by all profiles to complete
      *
      * @var float
      */
-    protected $_totalSeconds = 0;
+    protected $totalSeconds = 0;
 
+
+    /**
+     * Returns the last profile executed in the profiler
+     *
+     * @return \Phalcon\Db\Profiler\Item
+     */
+    public function getLastProfile(): Item {}
+
+    /**
+     * Returns the total number of SQL statements processed
+     *
+     * @return int
+     */
+    public function getNumberTotalStatements(): int {}
+
+    /**
+     * Returns the total time in seconds spent by the profiles
+     *
+     * @return double
+     */
+    public function getTotalElapsedSeconds(): float {}
+
+    /**
+     * Returns all the processed profiles
+     *
+     * @return array|\Phalcon\Db\Profiler\Item[]
+     */
+    public function getProfiles(): array {}
+
+    /**
+     * Resets the profiler, cleaning up all the profiles
+     *
+     * @return Profiler
+     */
+    public function reset(): Profiler {}
 
     /**
      * Starts the profile of a SQL sentence
@@ -86,48 +119,13 @@ class Profiler
      * @param mixed $sqlBindTypes
      * @return Profiler
      */
-    public function startProfile($sqlStatement, $sqlVariables = null, $sqlBindTypes = null) {}
+    public function startProfile(string $sqlStatement, $sqlVariables = null, $sqlBindTypes = null): Profiler {}
 
     /**
      * Stops the active profile
      *
      * @return Profiler
      */
-    public function stopProfile() {}
-
-    /**
-     * Returns the total number of SQL statements processed
-     *
-     * @return int
-     */
-    public function getNumberTotalStatements() {}
-
-    /**
-     * Returns the total time in seconds spent by the profiles
-     *
-     * @return double
-     */
-    public function getTotalElapsedSeconds() {}
-
-    /**
-     * Returns all the processed profiles
-     *
-     * @return \Phalcon\Db\Profiler\Item[]
-     */
-    public function getProfiles() {}
-
-    /**
-     * Resets the profiler, cleaning up all the profiles
-     *
-     * @return Profiler
-     */
-    public function reset() {}
-
-    /**
-     * Returns the last profile executed in the profiler
-     *
-     * @return \Phalcon\Db\Profiler\Item
-     */
-    public function getLastProfile() {}
+    public function stopProfile(): Profiler {}
 
 }

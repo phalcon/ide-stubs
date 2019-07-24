@@ -2,137 +2,127 @@
 
 namespace Phalcon\Messages;
 
-use Phalcon\Messages\MessageInterface;
-
 /**
  * Phalcon\Messages\Message
  *
  * Stores a message from various components
  */
-class Message implements MessageInterface, \JsonSerializable
+class Message implements \Phalcon\Messages\MessageInterface, \JsonSerializable
 {
-	/**
-	 * @var int
-	 */
-	protected $code;
-
-	/**
-	 * @var string
-	 */
-	protected $field;
-
-	/**
-	 * @var string
-	 */
-	protected $message;
-
-	/**
-	 * @var string
-	 */
-	protected $type;
-
-	/**
-	 * @var array
-	 */
-	protected $metaData = [];
-
-	/**
-	 * Phalcon\Messages\Message constructor
-	 */
-	public function __construct(string $message, $field = "", string $type = "", int $code = 0, array $metaData = [])
-	{
-	}
-
-	/**
-	 * Returns the message code
-	 */
-	public function getCode() : int
-	{
-	}
-
-	/**
-	 * Returns field name related to message
-	 *
-	 * @return mixed
-	 */
-	public function getField()
-	{
-	}
-
-	/**
-	 * Returns verbose message
-	 */
-	public function getMessage() : string
-	{
-	}
-
-	/**
-	 * Returns message type
-	 */
-	public function getType() : string
-	{
-	}
-
-	/**
-	 * Returns message metadata
-	 */
-	public function getMetaData() : array
-	{
-	}
+    /**
+     * @var int
+     */
+    protected $code;
 
     /**
-    * Serializes the object for json_encode
-    */
-	public function jsonSerialize() : array
-	{
-	}
+     * @var string
+     */
+    protected $field;
 
-	/**
-	 * Sets code for the message
-	 */
-	public function setCode(int $code) : MessageInterface
-	{
-	}
+    /**
+     * @var string
+     */
+    protected $message;
 
-	/**
-	 * Sets field name related to message
-	 */
-	public function setField($field) : MessageInterface
-	{
-	}
+    /**
+     * @var string
+     */
+    protected $type;
 
-	/**
-	 * Sets verbose message
-	 */
-	public function setMessage(string $message) : MessageInterface
-	{
-	}
+    /**
+     * @var array
+     */
+    protected $metaData = array();
 
-	/**
-	 * Sets message type
-	 */
-	public function setType(string $type) : MessageInterface
-	{
-	}
 
-	/**
-	 * Sets message metadata
-	 */
-	public function setMetaData(array $metaData) : MessageInterface
-	{
-	}
+    /**
+     * @return int
+     */
+    public function getCode(): int {}
 
-	/**
-	 * Magic __toString method returns verbose message
-	 */
-	public function __toString() : string
-	{
-	}
+    /**
+     * @return string
+     */
+    public function getField(): string {}
 
-	/**
-	 * Magic __set_state helps to re-build messages variable exporting
-	 */
-	public static function __set_state(array $message) : MessageInterface
-	{
-	}
+    /**
+     * @return string
+     */
+    public function getMessage(): string {}
+
+    /**
+     * @return string
+     */
+    public function getType(): string {}
+
+    /**
+     * @return array
+     */
+    public function getMetaData(): array {}
+
+    /**
+     * Phalcon\Messages\Message constructor
+     *
+     * @param string $message
+     * @param mixed $field
+     * @param string $type
+     * @param int $code
+     * @param array $metaData
+     */
+    public function __construct(string $message, $field = '', string $type = '', int $code = 0, array $metaData = array()) {}
+
+    /**
+     * Magic __toString method returns verbose message
+     *
+     * @return string
+     */
+    public function __toString(): string {}
+
+    /**
+     * Serializes the object for json_encode
+     *
+     * @return array
+     */
+    public function jsonSerialize(): array {}
+
+    /**
+     * Sets code for the message
+     *
+     * @param int $code
+     * @return \Phalcon\Messages\MessageInterface
+     */
+    public function setCode(int $code): MessageInterface {}
+
+    /**
+     * Sets field name related to message
+     *
+     * @param mixed $field
+     * @return \Phalcon\Messages\MessageInterface
+     */
+    public function setField($field): MessageInterface {}
+
+    /**
+     * Sets verbose message
+     *
+     * @param string $message
+     * @return \Phalcon\Messages\MessageInterface
+     */
+    public function setMessage(string $message): MessageInterface {}
+
+    /**
+     * Sets message metadata
+     *
+     * @param array $metaData
+     * @return \Phalcon\Messages\MessageInterface
+     */
+    public function setMetaData(array $metaData): MessageInterface {}
+
+    /**
+     * Sets message type
+     *
+     * @param string $type
+     * @return \Phalcon\Messages\MessageInterface
+     */
+    public function setType(string $type): MessageInterface {}
+
 }

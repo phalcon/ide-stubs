@@ -2,19 +2,18 @@
 
 namespace Phalcon\Html\Helper;
 
-use Phalcon\Html\Helper\AbstractHelper;
-
 /**
  * Phalcon\Html\Helper\Form
  *
  * Creates a form opening tag
  */
-class Form extends AbstractHelper
+class Form extends \Phalcon\Html\Helper\AbstractHelper
 {
-	/**
-	 * @var array  attributes Any additional attributes
-	 */
-	public function __invoke(array $attributes = []) : string
-	{
-	}
+
+    /**
+     * @param array $attributes
+     * @return string
+     */
+    public function __invoke(array $attributes = array()): string {}
+
 }

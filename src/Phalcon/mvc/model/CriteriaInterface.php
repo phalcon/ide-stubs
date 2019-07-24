@@ -11,29 +11,37 @@ interface CriteriaInterface
 {
 
     /**
-     * Set a model on which the query will be executed
+     * Appends a condition to the current conditions using an AND operator
      *
-     * @param string $modelName
+     * @param string $conditions
+     * @param array $bindParams
+     * @param array $bindTypes
      * @return CriteriaInterface
      */
-    public function setModelName($modelName);
+    public function andWhere(string $conditions, $bindParams = null, $bindTypes = null): CriteriaInterface;
 
     /**
-     * Returns an internal model name on which the criteria will be applied
+     * Appends a BETWEEN condition to the current conditions
      *
-     * @return string
+     * ```php
+     * $criteria->betweenWhere("price", 100.25, 200.50);
+     * ```
+     *
+     * @param string $expr
+     * @param mixed $minimum
+     * @param mixed $maximum
+     * @return CriteriaInterface
      */
-    public function getModelName();
+    public function betweenWhere(string $expr, $minimum, $maximum): CriteriaInterface;
 
     /**
      * Sets the bound parameters in the criteria
      * This method replaces all previously set bound parameters
      *
      * @param array $bindParams
-     * @param bool $merge
      * @return CriteriaInterface
      */
-    public function bind(array $bindParams, $merge = false);
+    public function bind(array $bindParams): CriteriaInterface;
 
     /**
      * Sets the bind types in the criteria
@@ -42,17 +50,16 @@ interface CriteriaInterface
      * @param array $bindTypes
      * @return CriteriaInterface
      */
-    public function bindTypes(array $bindTypes);
+    public function bindTypes(array $bindTypes): CriteriaInterface;
 
     /**
-     * Sets the conditions parameter in the criteria
+     * Sets the cache options in the criteria
+     * This method replaces all previously set cache options
      *
-     * @param string $conditions
-     * @param mixed $bindParams
-     * @param mixed $bindTypes
+     * @param array $cache
      * @return CriteriaInterface
      */
-    public function where($conditions, $bindParams = null, $bindTypes = null);
+    public function cache(array $cache): CriteriaInterface;
 
     /**
      * Adds the conditions parameter to the criteria
@@ -60,15 +67,165 @@ interface CriteriaInterface
      * @param string $conditions
      * @return CriteriaInterface
      */
-    public function conditions($conditions);
+    public function conditions(string $conditions): CriteriaInterface;
 
     /**
-     * Adds the order-by parameter to the criteria
+     * Sets SELECT DISTINCT / SELECT ALL flag
      *
-     * @param string $orderColumns
+     * @param mixed $distinct
      * @return CriteriaInterface
      */
-    public function orderBy($orderColumns);
+    public function distinct($distinct): CriteriaInterface;
+
+    /**
+     * Executes a find using the parameters built with the criteria
+     *
+     * @return ResultsetInterface
+     */
+    public function execute(): ResultsetInterface;
+
+    /**
+     * Sets the "for_update" parameter to the criteria
+     *
+     * @param bool $forUpdate
+     * @return CriteriaInterface
+     */
+    public function forUpdate(bool $forUpdate = true): CriteriaInterface;
+
+    /**
+     * Returns the columns to be queried
+     *
+     * @return string|null
+     */
+    public function getColumns(): ?string;
+
+    /**
+     * Returns the conditions parameter in the criteria
+     *
+     * @return string|null
+     */
+    public function getConditions(): ?string;
+
+    /**
+     * Returns the group clause in the criteria
+     */
+    public function getGroupBy();
+
+    /**
+     * Returns the having clause in the criteria
+     */
+    public function getHaving();
+
+    /**
+     * Returns the limit parameter in the criteria, which will be an integer if
+     * limit was set without an offset, an array with 'number' and 'offset' keys
+     * if an offset was set with the limit, or null if limit has not been set.
+     *
+     * @return string|null
+     */
+    public function getLimit(): ?string;
+
+    /**
+     * Returns an internal model name on which the criteria will be applied
+     *
+     * @return string
+     */
+    public function getModelName(): string;
+
+    /**
+     * Returns the order parameter in the criteria
+     *
+     * @return string|null
+     */
+    public function getOrderBy(): ?string;
+
+    /**
+     * Returns all the parameters defined in the criteria
+     *
+     * @return array
+     */
+    public function getParams(): array;
+
+    /**
+     * Returns the conditions parameter in the criteria
+     *
+     * @return string|null
+     */
+    public function getWhere(): ?string;
+
+    /**
+     * Adds the group-by clause to the criteria
+     *
+     * @param mixed $group
+     * @return CriteriaInterface
+     */
+    public function groupBy($group): CriteriaInterface;
+
+    /**
+     * Adds the having clause to the criteria
+     *
+     * @param mixed $having
+     * @return CriteriaInterface
+     */
+    public function having($having): CriteriaInterface;
+
+    /**
+     * Adds an INNER join to the query
+     *
+     * ```php
+     * $criteria->innerJoin(
+     *     Robots::class
+     * );
+     *
+     * $criteria->innerJoin(
+     *     Robots::class,
+     *     "r.id = RobotsParts.robots_id"
+     * );
+     *
+     * $criteria->innerJoin(
+     *     Robots::class,
+     *     "r.id = RobotsParts.robots_id",
+     *     "r"
+     * );
+     * ```
+     *
+     * @param string $model
+     * @param mixed $conditions
+     * @param mixed $alias
+     * @return CriteriaInterface
+     */
+    public function innerJoin(string $model, $conditions = null, $alias = null): CriteriaInterface;
+
+    /**
+     * Appends an IN condition to the current conditions
+     *
+     * ```php
+     * $criteria->inWhere("id", [1, 2, 3]);
+     * ```
+     *
+     * @param string $expr
+     * @param array $values
+     * @return CriteriaInterface
+     */
+    public function inWhere(string $expr, array $values): CriteriaInterface;
+
+    /**
+     * Adds a LEFT join to the query
+     *
+     * ```php
+     * $criteria->leftJoin(
+     *     Robots::class,
+     *     "r.id = RobotsParts.robots_id",
+     *     "r"
+     * );
+     * ```
+     *
+     * @param string $model
+     * @param mixed $conditions
+     * @param mixed $alias
+     * @return CriteriaInterface
+     */
+    public function leftJoin(string $model, $conditions = null, $alias = null): CriteriaInterface;
 
     /**
      * Sets the limit parameter to the criteria
@@ -77,33 +234,42 @@ interface CriteriaInterface
      * @param int $offset
      * @return CriteriaInterface
      */
-    public function limit($limit, $offset = null);
+    public function limit(int $limit, int $offset = 0): CriteriaInterface;
 
     /**
-     * Sets the "for_update" parameter to the criteria
+     * Appends a NOT BETWEEN condition to the current conditions
      *
-     * @param bool $forUpdate
+     * ```php
+     * $criteria->notBetweenWhere("price", 100.25, 200.50);
+     * ```
+     *
+     * @param string $expr
+     * @param mixed $minimum
+     * @param mixed $maximum
      * @return CriteriaInterface
      */
-    public function forUpdate($forUpdate = true);
+    public function notBetweenWhere(string $expr, $minimum, $maximum): CriteriaInterface;
 
     /**
-     * Sets the "shared_lock" parameter to the criteria
+     * Appends a NOT IN condition to the current conditions
      *
-     * @param bool $sharedLock
+     * ```php
+     * $criteria->notInWhere("id", [1, 2, 3]);
+     * ```
+     *
+     * @param string $expr
+     * @param array $values
      * @return CriteriaInterface
      */
-    public function sharedLock($sharedLock = true);
+    public function notInWhere(string $expr, array $values): CriteriaInterface;
 
     /**
-     * Appends a condition to the current conditions using an AND operator
+     * Adds the order-by parameter to the criteria
      *
-     * @param string $conditions
-     * @param array $bindParams
-     * @param array $bindTypes
+     * @param string $orderColumns
      * @return CriteriaInterface
      */
-    public function andWhere($conditions, $bindParams = null, $bindTypes = null);
+    public function orderBy(string $orderColumns): CriteriaInterface;
 
     /**
      * Appends a condition to the current conditions using an OR operator
@@ -113,105 +279,48 @@ interface CriteriaInterface
      * @param array $bindTypes
      * @return CriteriaInterface
      */
-    public function orWhere($conditions, $bindParams = null, $bindTypes = null);
+    public function orWhere(string $conditions, $bindParams = null, $bindTypes = null): CriteriaInterface;
 
     /**
-     * Appends a BETWEEN condition to the current conditions
+     * Adds a RIGHT join to the query
      *
-     * <code>
-     * $criteria->betweenWhere("price", 100.25, 200.50);
-     * </code>
+     * ```php
+     * $criteria->rightJoin(
+     *     Robots::class,
+     *     "r.id = RobotsParts.robots_id",
+     *     "r"
+     * );
+     * ```
      *
-     * @param string $expr
-     * @param mixed $minimum
-     * @param mixed $maximum
+     * @param string $model
+     * @param mixed $conditions
+     * @param mixed $alias
      * @return CriteriaInterface
      */
-    public function betweenWhere($expr, $minimum, $maximum);
+    public function rightJoin(string $model, $conditions = null, $alias = null): CriteriaInterface;
 
     /**
-     * Appends a NOT BETWEEN condition to the current conditions
+     * Set a model on which the query will be executed
      *
-     * <code>
-     * $criteria->notBetweenWhere("price", 100.25, 200.50);
-     * </code>
-     *
-     * @param string $expr
-     * @param mixed $minimum
-     * @param mixed $maximum
+     * @param string $modelName
      * @return CriteriaInterface
      */
-    public function notBetweenWhere($expr, $minimum, $maximum);
+    public function setModelName(string $modelName): CriteriaInterface;
 
     /**
-     * Appends an IN condition to the current conditions
+     * Sets the "shared_lock" parameter to the criteria
      *
-     * <code>
-     * $criteria->inWhere("id", [1, 2, 3]);
-     * </code>
-     *
-     * @param string $expr
-     * @param array $values
+     * @param bool $sharedLock
      * @return CriteriaInterface
      */
-    public function inWhere($expr, array $values);
+    public function sharedLock(bool $sharedLock = true): CriteriaInterface;
 
     /**
-     * Appends a NOT IN condition to the current conditions
+     * Sets the conditions parameter in the criteria
      *
-     * <code>
-     * $criteria->notInWhere("id", [1, 2, 3]);
-     * </code>
-     *
-     * @param string $expr
-     * @param array $values
+     * @param string $conditions
      * @return CriteriaInterface
      */
-    public function notInWhere($expr, array $values);
-
-    /**
-     * Returns the conditions parameter in the criteria
-     *
-     * @return string|null
-     */
-    public function getWhere();
-
-    /**
-     * Returns the conditions parameter in the criteria
-     *
-     * @return string|null
-     */
-    public function getConditions();
-
-    /**
-     * Returns the limit parameter in the criteria, which will be
-     * an integer if limit was set without an offset,
-     * an array with 'number' and 'offset' keys if an offset was set with the limit,
-     * or null if limit has not been set.
-     *
-     * @return int|array|null
-     */
-    public function getLimit();
-
-    /**
-     * Returns the order parameter in the criteria
-     *
-     * @return string|null
-     */
-    public function getOrderBy();
-
-    /**
-     * Returns all the parameters defined in the criteria
-     *
-     * @return array
-     */
-    public function getParams();
-
-    /**
-     * Executes a find using the parameters built with the criteria
-     *
-     * @return ResultsetInterface
-     */
-    public function execute();
+    public function where(string $conditions): CriteriaInterface;
 
 }

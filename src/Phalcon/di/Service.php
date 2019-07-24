@@ -3,80 +3,43 @@
 namespace Phalcon\Di;
 
 /**
- * Phalcon\Di\Service
- *
  * Represents individually a service in the services container
  *
- * <code>
+ * ```php
  * $service = new \Phalcon\Di\Service(
  *     "request",
- *     "Phalcon\\Http\\Request"
+ *     \Phalcon\Http\Request::class
  * );
  *
  * $request = service->resolve();
- * </code>
+ * ```
  */
 class Service implements \Phalcon\Di\ServiceInterface
 {
 
-    protected $_name;
+    protected $definition;
+
+    /**
+     * @var bool
+     */
+    protected $resolved = false;
+
+    /**
+     * @var bool
+     */
+    protected $shared = false;
 
 
-    protected $_definition;
-
-
-    protected $_shared = false;
-
-
-    protected $_resolved = false;
-
-
-    protected $_sharedInstance;
+    protected $sharedInstance;
 
 
     /**
      * Phalcon\Di\Service
      *
-     * @param string $name
      * @param mixed $definition
-     * @param boolean $shared
-     */
-    public final function __construct($name, $definition, $shared = false) {}
-
-    /**
-     * Returns the service's name
-     *
-     * @return string
-     */
-    public function getName() {}
-
-    /**
-     * Sets if the service is shared or not
-     *
      * @param bool $shared
      */
-    public function setShared($shared) {}
-
-    /**
-     * Check whether the service is shared or not
-     *
-     * @return bool
-     */
-    public function isShared() {}
-
-    /**
-     * Sets/Resets the shared instance related to the service
-     *
-     * @param mixed $sharedInstance
-     */
-    public function setSharedInstance($sharedInstance) {}
-
-    /**
-     * Set the service definition
-     *
-     * @param mixed $definition
-     */
-    public function setDefinition($definition) {}
+    final public function __construct($definition, bool $shared = false) {}
 
     /**
      * Returns the service definition
@@ -86,13 +49,42 @@ class Service implements \Phalcon\Di\ServiceInterface
     public function getDefinition() {}
 
     /**
+     * Returns a parameter in a specific position
+     *
+     * @param int $position
+     * @return array
+     */
+    public function getParameter(int $position) {}
+
+    /**
+     * Returns true if the service was resolved
+     *
+     * @return bool
+     */
+    public function isResolved(): bool {}
+
+    /**
+     * Check whether the service is shared or not
+     *
+     * @return bool
+     */
+    public function isShared(): bool {}
+
+    /**
      * Resolves the service
      *
      * @param array $parameters
-     * @param \Phalcon\DiInterface $dependencyInjector
+     * @param \Phalcon\Di\DiInterface $container
      * @return mixed
      */
-    public function resolve($parameters = null, \Phalcon\DiInterface $dependencyInjector = null) {}
+    public function resolve($parameters = null, \Phalcon\Di\DiInterface $container = null) {}
+
+    /**
+     * Set the service definition
+     *
+     * @param mixed $definition
+     */
+    public function setDefinition($definition) {}
 
     /**
      * Changes a parameter in the definition without resolve the service
@@ -101,29 +93,20 @@ class Service implements \Phalcon\Di\ServiceInterface
      * @param array $parameter
      * @return \Phalcon\Di\ServiceInterface
      */
-    public function setParameter($position, array $parameter) {}
+    public function setParameter(int $position, array $parameter): ServiceInterface {}
 
     /**
-     * Returns a parameter in a specific position
+     * Sets if the service is shared or not
      *
-     * @param int $position
-     * @return array
+     * @param bool $shared
      */
-    public function getParameter($position) {}
+    public function setShared(bool $shared) {}
 
     /**
-     * Returns true if the service was resolved
+     * Sets/Resets the shared instance related to the service
      *
-     * @return bool
+     * @param mixed $sharedInstance
      */
-    public function isResolved() {}
-
-    /**
-     * Restore the internal state of a service
-     *
-     * @param array $attributes
-     * @return \Phalcon\Di\ServiceInterface
-     */
-    public static function __set_state(array $attributes) {}
+    public function setSharedInstance($sharedInstance) {}
 
 }

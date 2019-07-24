@@ -11,11 +11,18 @@ interface ViewBaseInterface
 {
 
     /**
-     * Sets views directory. Depending of your platform, always add a trailing slash or backslash
+     * Returns cached output from another view stage
      *
-     * @param string $viewsDir
+     * @return string
      */
-    public function setViewsDir($viewsDir);
+    public function getContent(): string;
+
+    /**
+     * Returns parameters to views
+     *
+     * @return array
+     */
+    public function getParamsToView(): array;
 
     /**
      * Gets views directory
@@ -25,12 +32,27 @@ interface ViewBaseInterface
     public function getViewsDir();
 
     /**
+     * Renders a partial view
+     *
+     * @param string $partialPath
+     * @param mixed $params
+     */
+    public function partial(string $partialPath, $params = null);
+
+    /**
+     * Externally sets the view content
+     *
+     * @param string $content
+     */
+    public function setContent(string $content);
+
+    /**
      * Adds parameters to views (alias of setVar)
      *
      * @param string $key
      * @param mixed $value
      */
-    public function setParamToView($key, $value);
+    public function setParamToView(string $key, $value);
 
     /**
      * Adds parameters to views
@@ -38,49 +60,14 @@ interface ViewBaseInterface
      * @param string $key
      * @param mixed $value
      */
-    public function setVar($key, $value);
+    public function setVar(string $key, $value);
 
     /**
-     * Returns parameters to views
+     * Sets views directory. Depending of your platform, always add a trailing
+     * slash or backslash
      *
-     * @return array
+     * @param string $viewsDir
      */
-    public function getParamsToView();
-
-    /**
-     * Returns the cache instance used to cache
-     *
-     * @return \Phalcon\Cache\BackendInterface
-     */
-    public function getCache();
-
-    /**
-     * Cache the actual view render to certain level
-     *
-     * @param mixed $options
-     */
-    public function cache($options = true);
-
-    /**
-     * Externally sets the view content
-     *
-     * @param string $content
-     */
-    public function setContent($content);
-
-    /**
-     * Returns cached output from another view stage
-     *
-     * @return string
-     */
-    public function getContent();
-
-    /**
-     * Renders a partial view
-     *
-     * @param string $partialPath
-     * @param mixed $params
-     */
-    public function partial($partialPath, $params = null);
+    public function setViewsDir(string $viewsDir);
 
 }

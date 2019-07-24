@@ -12,12 +12,21 @@ class Row implements \Phalcon\Mvc\EntityInterface, \Phalcon\Mvc\Model\ResultInte
 {
 
     /**
-     * Set the current object's state
+     * Serializes the object for json_encode
      *
-     * @param int $dirtyState
-     * @return bool
+     * @return array
      */
-    public function setDirtyState($dirtyState) {}
+    public function jsonSerialize(): array {}
+
+    /**
+     * Gets a record in a specific position of the row
+     *
+     * @param string|int index
+     *
+     * @param mixed $index
+     * @return mixed
+     */
+    public function offsetGet($index) {}
 
     /**
      * Checks whether offset exists in the row
@@ -25,15 +34,7 @@ class Row implements \Phalcon\Mvc\EntityInterface, \Phalcon\Mvc\Model\ResultInte
      * @param string|int $index
      * @return bool
      */
-    public function offsetExists($index) {}
-
-    /**
-     * Gets a record in a specific position of the row
-     *
-     * @param string|int $index
-     * @return string|Phalcon\Mvc\ModelInterface
-     */
-    public function offsetGet($index) {}
+    public function offsetExists($index): bool {}
 
     /**
      * Rows cannot be changed. It has only been implemented to meet the definition of the ArrayAccess interface
@@ -53,39 +54,40 @@ class Row implements \Phalcon\Mvc\EntityInterface, \Phalcon\Mvc\Model\ResultInte
     /**
      * Reads an attribute value by its name
      *
-     * <code>
+     * ```php
      * echo $robot->readAttribute("name");
-     * </code>
+     * ```
      *
      * @param string $attribute
      * @return mixed
      */
-    public function readAttribute($attribute) {}
+    public function readAttribute(string $attribute) {}
 
     /**
-     * Writes an attribute value by its name
+     * Set the current object's state
      *
-     * <code>
-     * $robot->writeAttribute("name", "Rosey");
-     * </code>
-     *
-     * @param string $attribute
-     * @param mixed $value
+     * @param int $dirtyState
+     * @return bool|\Phalcon\Mvc\ModelInterface
      */
-    public function writeAttribute($attribute, $value) {}
+    public function setDirtyState(int $dirtyState) {}
 
     /**
      * Returns the instance as an array representation
      *
      * @return array
      */
-    public function toArray() {}
+    public function toArray(): array {}
 
     /**
-     * Serializes the object for json_encode
+     * Writes an attribute value by its name
      *
-     * @return array
+     * ```php
+     * $robot->writeAttribute("name", "Rosey");
+     * ```
+     *
+     * @param string $attribute
+     * @param mixed $value
      */
-    public function jsonSerialize() {}
+    public function writeAttribute(string $attribute, $value) {}
 
 }

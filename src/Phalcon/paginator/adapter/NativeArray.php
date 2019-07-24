@@ -7,7 +7,7 @@ namespace Phalcon\Paginator\Adapter;
  *
  * Pagination using a PHP array as source of data
  *
- * <code>
+ * ```php
  * use Phalcon\Paginator\Adapter\NativeArray;
  *
  * $paginator = new NativeArray(
@@ -23,36 +23,16 @@ namespace Phalcon\Paginator\Adapter;
  *         "page"  => $currentPage,
  *     ]
  * );
- * </code>
+ * ```
  */
-class NativeArray extends \Phalcon\Paginator\Adapter
+class NativeArray extends \Phalcon\Paginator\Adapter\AbstractAdapter
 {
-    /**
-     * Configuration of the paginator
-     */
-    protected $_config = null;
-
-
-    /**
-     * Phalcon\Paginator\Adapter\NativeArray constructor
-     *
-     * @param array $config
-     */
-    public function __construct(array $config) {}
 
     /**
      * Returns a slice of the resultset to show in the pagination
      *
-     * @deprecated will be removed after 4.0
-     * @return \stdClass
+     * @return \Phalcon\Paginator\RepositoryInterface
      */
-    public function getPaginate() {}
-
-    /**
-     * Returns a slice of the resultset to show in the pagination
-     *
-     * @return \stdClass
-     */
-    public function paginate() {}
+    public function paginate(): RepositoryInterface {}
 
 }

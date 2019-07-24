@@ -3,47 +3,39 @@
 namespace Phalcon\Http;
 
 /**
- * Phalcon\Http\Cookie
- *
  * Provide OO wrappers to manage a HTTP cookie.
  */
 class Cookie implements \Phalcon\Http\CookieInterface, \Phalcon\Di\InjectionAwareInterface
 {
 
-    protected $_readed = false;
+    protected $container;
 
 
-    protected $_restored = false;
+    protected $domain;
 
 
-    protected $_useEncryption = false;
+    protected $expire;
 
 
-    protected $_dependencyInjector;
+    protected $filter;
 
 
-    protected $_filter;
+    protected $httpOnly;
 
 
-    protected $_name;
+    protected $name;
 
 
-    protected $_value;
+    protected $path;
 
 
-    protected $_expire;
+    protected $read = false;
 
 
-    protected $_path = '/';
+    protected $restored = false;
 
 
-    protected $_domain;
-
-
-    protected $_secure;
-
-
-    protected $_httpOnly = true;
+    protected $secure;
 
     /**
      * The cookie's sign key.
@@ -51,6 +43,12 @@ class Cookie implements \Phalcon\Http\CookieInterface, \Phalcon\Di\InjectionAwar
      * @var string|null
      */
     protected $signKey = null;
+
+
+    protected $useEncryption = false;
+
+
+    protected $value;
 
 
     /**
@@ -64,7 +62,152 @@ class Cookie implements \Phalcon\Http\CookieInterface, \Phalcon\Di\InjectionAwar
      * @param string $domain
      * @param bool $httpOnly
      */
-    public function __construct($name, $value = null, $expire = 0, $path = '/', $secure = null, $domain = null, $httpOnly = null) {}
+    public function __construct(string $name, $value = null, int $expire = 0, string $path = '/', bool $secure = null, string $domain = null, bool $httpOnly = false) {}
+
+    /**
+     * Magic __toString method converts the cookie's value to string
+     *
+     * @return string
+     */
+    public function __toString(): string {}
+
+    /**
+     * Deletes the cookie by setting an expire time in the past
+     */
+    public function delete() {}
+
+    /**
+     * Returns the internal dependency injector
+     *
+     * @return \Phalcon\Di\DiInterface
+     */
+    public function getDI(): DiInterface {}
+
+    /**
+     * Returns the domain that the cookie is available to
+     *
+     * @return string
+     */
+    public function getDomain(): string {}
+
+    /**
+     * Returns the current expiration time
+     *
+     * @return string
+     */
+    public function getExpiration(): string {}
+
+    /**
+     * Returns if the cookie is accessible only through the HTTP protocol
+     *
+     * @return bool
+     */
+    public function getHttpOnly(): bool {}
+
+    /**
+     * Returns the current cookie's name
+     *
+     * @return string
+     */
+    public function getName(): string {}
+
+    /**
+     * Returns the current cookie's path
+     *
+     * @return string
+     */
+    public function getPath(): string {}
+
+    /**
+     * Returns whether the cookie must only be sent when the connection is
+     * secure (HTTPS)
+     *
+     * @return bool
+     */
+    public function getSecure(): bool {}
+
+    /**
+     * Returns the cookie's value.
+     *
+     * @param mixed $filters
+     * @param mixed $defaultValue
+     * @return mixed
+     */
+    public function getValue($filters = null, $defaultValue = null) {}
+
+    /**
+     * Check if the cookie is using implicit encryption
+     *
+     * @return bool
+     */
+    public function isUsingEncryption(): bool {}
+
+    /**
+     * Reads the cookie-related info from the SESSION to restore the cookie as
+     * it was set.
+     *
+     * This method is automatically called internally so normally you don't
+     * need to call it.
+     *
+     * @return CookieInterface
+     */
+    public function restore(): CookieInterface {}
+
+    /**
+     * Sends the cookie to the HTTP client.
+     *
+     * Stores the cookie definition in session.
+     *
+     * @return CookieInterface
+     */
+    public function send(): CookieInterface {}
+
+    /**
+     * Sets the dependency injector
+     *
+     * @param \Phalcon\Di\DiInterface $container
+     */
+    public function setDI(\Phalcon\Di\DiInterface $container) {}
+
+    /**
+     * Sets the domain that the cookie is available to
+     *
+     * @param string $domain
+     * @return CookieInterface
+     */
+    public function setDomain(string $domain): CookieInterface {}
+
+    /**
+     * Sets the cookie's expiration time
+     *
+     * @param int $expire
+     * @return CookieInterface
+     */
+    public function setExpiration(int $expire): CookieInterface {}
+
+    /**
+     * Sets if the cookie is accessible only through the HTTP protocol
+     *
+     * @param bool $httpOnly
+     * @return CookieInterface
+     */
+    public function setHttpOnly(bool $httpOnly): CookieInterface {}
+
+    /**
+     * Sets the cookie's expiration time
+     *
+     * @param string $path
+     * @return CookieInterface
+     */
+    public function setPath(string $path): CookieInterface {}
+
+    /**
+     * Sets if the cookie must only be sent when the connection is secure (HTTPS)
+     *
+     * @param bool $secure
+     * @return CookieInterface
+     */
+    public function setSecure(bool $secure): CookieInterface {}
 
     /**
      * Sets the cookie's sign key.
@@ -79,21 +222,7 @@ class Cookie implements \Phalcon\Http\CookieInterface, \Phalcon\Di\InjectionAwar
      * @param string $signKey
      * @return CookieInterface
      */
-    public function setSignKey($signKey = null) {}
-
-    /**
-     * Sets the dependency injector
-     *
-     * @param \Phalcon\DiInterface $dependencyInjector
-     */
-    public function setDI(\Phalcon\DiInterface $dependencyInjector) {}
-
-    /**
-     * Returns the internal dependency injector
-     *
-     * @return \Phalcon\DiInterface
-     */
-    public function getDI() {}
+    public function setSignKey(string $signKey = null): CookieInterface {}
 
     /**
      * Sets the cookie's value
@@ -101,39 +230,7 @@ class Cookie implements \Phalcon\Http\CookieInterface, \Phalcon\Di\InjectionAwar
      * @param string $value
      * @return CookieInterface
      */
-    public function setValue($value) {}
-
-    /**
-     * Returns the cookie's value.
-     *
-     * @param mixed $filters
-     * @param mixed $defaultValue
-     * @return mixed
-     */
-    public function getValue($filters = null, $defaultValue = null) {}
-
-    /**
-     * Sends the cookie to the HTTP client.
-     *
-     * Stores the cookie definition in session.
-     *
-     * @return CookieInterface
-     */
-    public function send() {}
-
-    /**
-     * Reads the cookie-related info from the SESSION to restore the cookie as it was set.
-     *
-     * This method is automatically called internally so normally you don't need to call it.
-     *
-     * @return CookieInterface
-     */
-    public function restore() {}
-
-    /**
-     * Deletes the cookie by setting an expire time in the past
-     */
-    public function delete() {}
+    public function setValue($value): CookieInterface {}
 
     /**
      * Sets if the cookie must be encrypted/decrypted automatically
@@ -141,103 +238,7 @@ class Cookie implements \Phalcon\Http\CookieInterface, \Phalcon\Di\InjectionAwar
      * @param bool $useEncryption
      * @return CookieInterface
      */
-    public function useEncryption($useEncryption) {}
-
-    /**
-     * Check if the cookie is using implicit encryption
-     *
-     * @return bool
-     */
-    public function isUsingEncryption() {}
-
-    /**
-     * Sets the cookie's expiration time
-     *
-     * @param int $expire
-     * @return CookieInterface
-     */
-    public function setExpiration($expire) {}
-
-    /**
-     * Returns the current expiration time
-     *
-     * @return string
-     */
-    public function getExpiration() {}
-
-    /**
-     * Sets the cookie's expiration time
-     *
-     * @param string $path
-     * @return CookieInterface
-     */
-    public function setPath($path) {}
-
-    /**
-     * Returns the current cookie's name
-     *
-     * @return string
-     */
-    public function getName() {}
-
-    /**
-     * Returns the current cookie's path
-     *
-     * @return string
-     */
-    public function getPath() {}
-
-    /**
-     * Sets the domain that the cookie is available to
-     *
-     * @param string $domain
-     * @return CookieInterface
-     */
-    public function setDomain($domain) {}
-
-    /**
-     * Returns the domain that the cookie is available to
-     *
-     * @return string
-     */
-    public function getDomain() {}
-
-    /**
-     * Sets if the cookie must only be sent when the connection is secure (HTTPS)
-     *
-     * @param bool $secure
-     * @return CookieInterface
-     */
-    public function setSecure($secure) {}
-
-    /**
-     * Returns whether the cookie must only be sent when the connection is secure (HTTPS)
-     *
-     * @return bool
-     */
-    public function getSecure() {}
-
-    /**
-     * Sets if the cookie is accessible only through the HTTP protocol
-     *
-     * @param bool $httpOnly
-     * @return CookieInterface
-     */
-    public function setHttpOnly($httpOnly) {}
-
-    /**
-     * Returns if the cookie is accessible only through the HTTP protocol
-     *
-     * @return bool
-     */
-    public function getHttpOnly() {}
-
-    /**
-     * Magic __toString method converts the cookie's value to string
-     *
-     * @return string
-     */
-    public function __toString() {}
+    public function useEncryption(bool $useEncryption): CookieInterface {}
 
     /**
      * Assert the cookie's key is enough long.
@@ -245,6 +246,6 @@ class Cookie implements \Phalcon\Http\CookieInterface, \Phalcon\Di\InjectionAwar
      * @throws \Phalcon\Http\Cookie\Exception
      * @param string $signKey
      */
-    protected function assertSignKeyIsLongEnough($signKey) {}
+    protected function assertSignKeyIsLongEnough(string $signKey) {}
 
 }

@@ -3,11 +3,9 @@
 namespace Phalcon\Forms\Element;
 
 /**
- * Phalcon\Forms\Element\File
- *
  * Component INPUT[type=file] for forms
  */
-class File extends \Phalcon\Forms\Element
+class File extends \Phalcon\Forms\Element\AbstractElement
 {
 
     /**
@@ -16,6 +14,6 @@ class File extends \Phalcon\Forms\Element
      * @param array $attributes
      * @return string
      */
-    public function render($attributes = null) {}
+    public function render(array $attributes = array()): string {}
 
 }

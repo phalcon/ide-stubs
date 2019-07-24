@@ -13,15 +13,15 @@ interface ModuleDefinitionInterface
     /**
      * Registers an autoloader related to the module
      *
-     * @param \Phalcon\DiInterface $dependencyInjector
+     * @param \Phalcon\Di\DiInterface $container
      */
-    public function registerAutoloaders(\Phalcon\DiInterface $dependencyInjector = null);
+    public function registerAutoloaders(\Phalcon\Di\DiInterface $container = null);
 
     /**
      * Registers services related to the module
      *
-     * @param \Phalcon\DiInterface $dependencyInjector
+     * @param \Phalcon\Di\DiInterface $container
      */
-    public function registerServices(\Phalcon\DiInterface $dependencyInjector);
+    public function registerServices(\Phalcon\Di\DiInterface $container);
 
 }

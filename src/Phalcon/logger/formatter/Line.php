@@ -7,21 +7,21 @@ namespace Phalcon\Logger\Formatter;
  *
  * Formats messages using an one-line string
  */
-class Line extends \Phalcon\Logger\Formatter
+class Line extends \Phalcon\Logger\Formatter\AbstractFormatter
 {
     /**
      * Default date format
      *
      * @var string
      */
-    protected $_dateFormat = 'D, d M y H:i:s O';
+    protected $dateFormat;
 
     /**
      * Format applied to each message
      *
      * @var string
      */
-    protected $_format = '[%date%][%type%] %message%';
+    protected $format;
 
 
     /**
@@ -29,28 +29,28 @@ class Line extends \Phalcon\Logger\Formatter
      *
      * @return string
      */
-    public function getDateFormat() {}
+    public function getDateFormat(): string {}
 
     /**
      * Default date format
      *
      * @param string $dateFormat
      */
-    public function setDateFormat($dateFormat) {}
+    public function setDateFormat(string $dateFormat) {}
 
     /**
      * Format applied to each message
      *
      * @return string
      */
-    public function getFormat() {}
+    public function getFormat(): string {}
 
     /**
      * Format applied to each message
      *
      * @param string $format
      */
-    public function setFormat($format) {}
+    public function setFormat(string $format) {}
 
     /**
      * Phalcon\Logger\Formatter\Line construct
@@ -58,17 +58,14 @@ class Line extends \Phalcon\Logger\Formatter
      * @param string $format
      * @param string $dateFormat
      */
-    public function __construct($format = null, $dateFormat = null) {}
+    public function __construct(string $format = '[%date%][%type%] %message%', string $dateFormat = 'D, d M y H:i:s O') {}
 
     /**
      * Applies a format to a message before sent it to the internal log
      *
-     * @param string $message
-     * @param int $type
-     * @param int $timestamp
-     * @param array $context
+     * @param \Phalcon\Logger\Item $item
      * @return string
      */
-    public function format($message, $type, $timestamp, $context = null) {}
+    public function format(\Phalcon\Logger\Item $item): string {}
 
 }

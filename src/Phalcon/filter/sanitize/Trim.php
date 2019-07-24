@@ -9,10 +9,10 @@ namespace Phalcon\Filter\Sanitize;
  */
 class Trim
 {
-	/**
-	 * @var mixed input The text to sanitize
-	 */
-	public function __invoke(string $input)
-	{
-	}
+
+    /**
+     * @param string $input
+     */
+    public function __invoke(string $input) {}
+
 }
