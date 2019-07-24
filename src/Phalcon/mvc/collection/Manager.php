@@ -10,7 +10,7 @@ namespace Phalcon\Mvc\Collection;
  *
  * A CollectionManager is injected to a model via a Dependency Injector Container such as Phalcon\Di.
  *
- * <code>
+ * ```php
  * $di = new \Phalcon\Di();
  *
  * $di->set(
@@ -21,36 +21,36 @@ namespace Phalcon\Mvc\Collection;
  * );
  *
  * $robot = new Robots($di);
- * </code>
+ * ```
  */
 class Manager implements \Phalcon\Di\InjectionAwareInterface, \Phalcon\Events\EventsAwareInterface
 {
 
-    protected $_dependencyInjector;
+    protected $behaviors;
 
 
-    protected $_initialized;
+    protected $connectionServices;
 
 
-    protected $_lastInitialized;
+    protected $container;
 
 
-    protected $_eventsManager;
+    protected $customEventsManager;
 
 
-    protected $_customEventsManager;
+    protected $eventsManager;
 
 
-    protected $_connectionServices;
+    protected $implicitObjectsIds;
 
 
-    protected $_implicitObjectsIds;
+    protected $initialized;
 
 
-    protected $_behaviors;
+    protected $lastInitialized;
 
 
-    protected $_serviceName = 'mongo';
+    protected $serviceName = 'mongo';
 
 
 
@@ -62,40 +62,12 @@ class Manager implements \Phalcon\Di\InjectionAwareInterface, \Phalcon\Events\Ev
     public function setServiceName($serviceName) {}
 
     /**
-     * Sets the DependencyInjector container
-     *
-     * @param \Phalcon\DiInterface $dependencyInjector
-     */
-    public function setDI(\Phalcon\DiInterface $dependencyInjector) {}
-
-    /**
-     * Returns the DependencyInjector container
-     *
-     * @return \Phalcon\DiInterface
-     */
-    public function getDI() {}
-
-    /**
-     * Sets the event manager
-     *
-     * @param \Phalcon\Events\ManagerInterface $eventsManager
-     */
-    public function setEventsManager(\Phalcon\Events\ManagerInterface $eventsManager) {}
-
-    /**
-     * Returns the internal event manager
-     *
-     * @return \Phalcon\Events\ManagerInterface
-     */
-    public function getEventsManager() {}
-
-    /**
-     * Sets a custom events manager for a specific model
+     * Binds a behavior to a model
      *
      * @param \Phalcon\Mvc\CollectionInterface $model
-     * @param \Phalcon\Events\ManagerInterface $eventsManager
+     * @param \Phalcon\Mvc\Collection\BehaviorInterface $behavior
      */
-    public function setCustomEventsManager(\Phalcon\Mvc\CollectionInterface $model, \Phalcon\Events\ManagerInterface $eventsManager) {}
+    public function addBehavior(\Phalcon\Mvc\CollectionInterface $model, \Phalcon\Mvc\Collection\BehaviorInterface $behavior) {}
 
     /**
      * Returns a custom events manager related to a model
@@ -103,61 +75,7 @@ class Manager implements \Phalcon\Di\InjectionAwareInterface, \Phalcon\Events\Ev
      * @param \Phalcon\Mvc\CollectionInterface $model
      * @return mixed|null
      */
-    public function getCustomEventsManager(\Phalcon\Mvc\CollectionInterface $model) {}
-
-    /**
-     * Initializes a model in the models manager
-     *
-     * @param \Phalcon\Mvc\CollectionInterface $model
-     */
-    public function initialize(\Phalcon\Mvc\CollectionInterface $model) {}
-
-    /**
-     * Check whether a model is already initialized
-     *
-     * @param string $modelName
-     * @return bool
-     */
-    public function isInitialized($modelName) {}
-
-    /**
-     * Get the latest initialized model
-     *
-     * @return \Phalcon\Mvc\CollectionInterface
-     */
-    public function getLastInitialized() {}
-
-    /**
-     * Sets a connection service for a specific model
-     *
-     * @param \Phalcon\Mvc\CollectionInterface $model
-     * @param string $connectionService
-     */
-    public function setConnectionService(\Phalcon\Mvc\CollectionInterface $model, $connectionService) {}
-
-    /**
-     * Gets a connection service for a specific model
-     *
-     * @param \Phalcon\Mvc\CollectionInterface $model
-     * @return string
-     */
-    public function getConnectionService(\Phalcon\Mvc\CollectionInterface $model) {}
-
-    /**
-     * Sets whether a model must use implicit objects ids
-     *
-     * @param \Phalcon\Mvc\CollectionInterface $model
-     * @param bool $useImplicitObjectIds
-     */
-    public function useImplicitObjectIds(\Phalcon\Mvc\CollectionInterface $model, $useImplicitObjectIds) {}
-
-    /**
-     * Checks if a model is using implicit object ids
-     *
-     * @param \Phalcon\Mvc\CollectionInterface $model
-     * @return bool
-     */
-    public function isUsingImplicitObjectIds(\Phalcon\Mvc\CollectionInterface $model) {}
+    public function getCustomEventsManager(\Phalcon\Mvc\CollectionInterface $model): ? {}
 
     /**
      * Returns the connection related to a model
@@ -168,13 +86,56 @@ class Manager implements \Phalcon\Di\InjectionAwareInterface, \Phalcon\Events\Ev
     public function getConnection(\Phalcon\Mvc\CollectionInterface $model) {}
 
     /**
-     * Receives events generated in the models and dispatches them to an events-manager if available
-     * Notify the behaviors that are listening in the model
+     * Gets a connection service for a specific model
      *
-     * @param string $eventName
+     * @param \Phalcon\Mvc\CollectionInterface $model
+     * @return string
+     */
+    public function getConnectionService(\Phalcon\Mvc\CollectionInterface $model): string {}
+
+    /**
+     * Returns the DependencyInjector container
+     *
+     * @return \Phalcon\Di\DiInterface
+     */
+    public function getDI(): DiInterface {}
+
+    /**
+     * Returns the internal event manager
+     *
+     * @return \Phalcon\Events\ManagerInterface
+     */
+    public function getEventsManager(): ManagerInterface {}
+
+    /**
+     * Get the latest initialized model
+     *
+     * @return \Phalcon\Mvc\CollectionInterface
+     */
+    public function getLastInitialized(): CollectionInterface {}
+
+    /**
+     * Checks if a model is using implicit object ids
+     *
+     * @param \Phalcon\Mvc\CollectionInterface $model
+     * @return bool
+     */
+    public function isUsingImplicitObjectIds(\Phalcon\Mvc\CollectionInterface $model): bool {}
+
+    /**
+     * Check whether a model is already initialized
+     *
+     * @param string $className
+     * @return bool
+     */
+    public function isInitialized(string $className): bool {}
+
+    /**
+     * Initializes a model in the models manager
+     *
      * @param \Phalcon\Mvc\CollectionInterface $model
      */
-    public function notifyEvent($eventName, \Phalcon\Mvc\CollectionInterface $model) {}
+    public function initialize(\Phalcon\Mvc\CollectionInterface $model) {}
 
     /**
      * Dispatch an event to the listeners and behaviors
@@ -186,14 +147,53 @@ class Manager implements \Phalcon\Di\InjectionAwareInterface, \Phalcon\Events\Ev
      * @param mixed $data
      * @return bool
      */
-    public function missingMethod(\Phalcon\Mvc\CollectionInterface $model, $eventName, $data) {}
+    public function missingMethod(\Phalcon\Mvc\CollectionInterface $model, string $eventName, $data): bool {}
 
     /**
-     * Binds a behavior to a model
+     * Receives events generated in the models and dispatches them to an events-manager if available
+     * Notify the behaviors that are listening in the model
+     *
+     * @param string $eventName
+     * @param \Phalcon\Mvc\CollectionInterface $model
+     */
+    public function notifyEvent(string $eventName, \Phalcon\Mvc\CollectionInterface $model) {}
+
+    /**
+     * Sets a custom events manager for a specific model
      *
      * @param \Phalcon\Mvc\CollectionInterface $model
-     * @param \Phalcon\Mvc\Collection\BehaviorInterface $behavior
+     * @param \Phalcon\Events\ManagerInterface $eventsManager
      */
-    public function addBehavior(\Phalcon\Mvc\CollectionInterface $model, \Phalcon\Mvc\Collection\BehaviorInterface $behavior) {}
+    public function setCustomEventsManager(\Phalcon\Mvc\CollectionInterface $model, \Phalcon\Events\ManagerInterface $eventsManager) {}
+
+    /**
+     * Sets a connection service for a specific model
+     *
+     * @param \Phalcon\Mvc\CollectionInterface $model
+     * @param string $connectionService
+     */
+    public function setConnectionService(\Phalcon\Mvc\CollectionInterface $model, string $connectionService) {}
+
+    /**
+     * Sets the DependencyInjector container
+     *
+     * @param \Phalcon\Di\DiInterface $container
+     */
+    public function setDI(\Phalcon\Di\DiInterface $container) {}
+
+    /**
+     * Sets the event manager
+     *
+     * @param \Phalcon\Events\ManagerInterface $eventsManager
+     */
+    public function setEventsManager(\Phalcon\Events\ManagerInterface $eventsManager) {}
+
+    /**
+     * Sets whether a model must use implicit objects ids
+     *
+     * @param \Phalcon\Mvc\CollectionInterface $model
+     * @param bool $useImplicitObjectIds
+     */
+    public function useImplicitObjectIds(\Phalcon\Mvc\CollectionInterface $model, bool $useImplicitObjectIds) {}
 
 }

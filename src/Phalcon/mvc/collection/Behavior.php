@@ -10,7 +10,7 @@ namespace Phalcon\Mvc\Collection;
 abstract class Behavior implements \Phalcon\Mvc\Collection\BehaviorInterface
 {
 
-    protected $_options;
+    protected $options;
 
 
     /**
@@ -18,15 +18,7 @@ abstract class Behavior implements \Phalcon\Mvc\Collection\BehaviorInterface
      *
      * @param array $options
      */
-    public function __construct($options = null) {}
-
-    /**
-     * Checks whether the behavior must take action on certain event
-     *
-     * @param string $eventName
-     * @return bool
-     */
-    protected function mustTakeAction($eventName) {}
+    public function __construct(array $options = array()) {}
 
     /**
      * Returns the behavior options related to an event
@@ -34,7 +26,24 @@ abstract class Behavior implements \Phalcon\Mvc\Collection\BehaviorInterface
      * @param string $eventName
      * @return array
      */
-    protected function getOptions($eventName = null) {}
+    protected function getOptions(string $eventName = null) {}
+
+    /**
+     * Acts as fallbacks when a missing method is called on the collection
+     *
+     * @param \Phalcon\Mvc\CollectionInterface $model
+     * @param string $method
+     * @param array $arguments
+     */
+    public function missingMethod(\Phalcon\Mvc\CollectionInterface $model, string $method, array $arguments = array()) {}
+
+    /**
+     * Checks whether the behavior must take action on certain event
+     *
+     * @param string $eventName
+     * @return bool
+     */
+    protected function mustTakeAction(string $eventName): bool {}
 
     /**
      * This method receives the notifications from the EventsManager
@@ -42,15 +51,6 @@ abstract class Behavior implements \Phalcon\Mvc\Collection\BehaviorInterface
      * @param string $type
      * @param \Phalcon\Mvc\CollectionInterface $model
      */
-    public function notify($type, \Phalcon\Mvc\CollectionInterface $model) {}
-
-    /**
-     * Acts as fallbacks when a missing method is called on the collection
-     *
-     * @param \Phalcon\Mvc\CollectionInterface $model
-     * @param string $method
-     * @param mixed $arguments
-     */
-    public function missingMethod(\Phalcon\Mvc\CollectionInterface $model, $method, $arguments = null) {}
+    public function notify(string $type, \Phalcon\Mvc\CollectionInterface $model) {}
 
 }

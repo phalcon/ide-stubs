@@ -3,11 +3,9 @@
 namespace Phalcon\Validation\Validator;
 
 /**
- * Phalcon\Validation\Validator\Digit
- *
  * Check for numeric character(s)
  *
- * <code>
+ * ```php
  * use Phalcon\Validation;
  * use Phalcon\Validation\Validator\Digit as DigitValidator;
  *
@@ -36,18 +34,21 @@ namespace Phalcon\Validation\Validator;
  *         ]
  *     )
  * );
- * </code>
+ * ```
  */
-class Digit extends \Phalcon\Validation\Validator
+class Digit extends \Phalcon\Validation\AbstractValidator
 {
+
+    protected $template = 'Field :field must be numeric';
+
 
     /**
      * Executes the validation
      *
      * @param \Phalcon\Validation $validation
-     * @param string $field
+     * @param mixed $field
      * @return bool
      */
-    public function validate(\Phalcon\Validation $validation, $field) {}
+    public function validate(\Phalcon\Validation $validation, $field): bool {}
 
 }

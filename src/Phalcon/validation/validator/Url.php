@@ -3,11 +3,9 @@
 namespace Phalcon\Validation\Validator;
 
 /**
- * Phalcon\Validation\Validator\Url
- *
  * Checks if a value has a url format
  *
- * <code>
+ * ```php
  * use Phalcon\Validation;
  * use Phalcon\Validation\Validator\Url as UrlValidator;
  *
@@ -36,18 +34,21 @@ namespace Phalcon\Validation\Validator;
  *         ]
  *     )
  * );
- * </code>
+ * ```
  */
-class Url extends \Phalcon\Validation\Validator
+class Url extends \Phalcon\Validation\AbstractValidator
 {
+
+    protected $template = 'Field :field must be a url';
+
 
     /**
      * Executes the validation
      *
      * @param \Phalcon\Validation $validation
-     * @param string $field
+     * @param mixed $field
      * @return bool
      */
-    public function validate(\Phalcon\Validation $validation, $field) {}
+    public function validate(\Phalcon\Validation $validation, $field): bool {}
 
 }

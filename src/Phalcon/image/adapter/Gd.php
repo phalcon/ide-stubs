@@ -2,30 +2,58 @@
 
 namespace Phalcon\Image\Adapter;
 
-
-class Gd extends \Phalcon\Image\Adapter
+/**
+ * This file is part of the Phalcon Framework.
+ *
+ * (c) Phalcon Team <team@phalconphp.com>
+ *
+ * For the full copyright and license information, please view the LICENSE.txt
+ * file that was distributed with this source code.
+ */
+class Gd extends \Phalcon\Image\Adapter\AbstractAdapter
 {
 
-    static protected $_checked = false;
+    static protected $checked = false;
 
-
-    /**
-     * @return bool
-     */
-    public static function check() {}
 
     /**
      * @param string $file
      * @param int $width
      * @param int $height
      */
-    public function __construct($file, $width = null, $height = null) {}
+    public function __construct(string $file, int $width = null, int $height = null) {}
+
+
+    public function __destruct() {}
+
+    /**
+     * @return bool
+     */
+    public static function check(): bool {}
+
+    /**
+     * @return string
+     */
+    public static function getVersion(): string {}
+
+    /**
+     * @param int $r
+     * @param int $g
+     * @param int $b
+     * @param int $opacity
+     */
+    protected function processBackground(int $r, int $g, int $b, int $opacity) {}
+
+    /**
+     * @param int $radius
+     */
+    protected function processBlur(int $radius) {}
 
     /**
      * @param int $width
      * @param int $height
      */
-    protected function _resize($width, $height) {}
+    protected function processCreate(int $width, int $height) {}
 
     /**
      * @param int $width
@@ -33,37 +61,57 @@ class Gd extends \Phalcon\Image\Adapter
      * @param int $offsetX
      * @param int $offsetY
      */
-    protected function _crop($width, $height, $offsetX, $offsetY) {}
-
-    /**
-     * @param int $degrees
-     */
-    protected function _rotate($degrees) {}
+    protected function processCrop(int $width, int $height, int $offsetX, int $offsetY) {}
 
     /**
      * @param int $direction
      */
-    protected function _flip($direction) {}
+    protected function processFlip(int $direction) {}
+
+    /**
+     * @param AdapterInterface $mask
+     */
+    protected function processMask(AdapterInterface $mask) {}
 
     /**
      * @param int $amount
      */
-    protected function _sharpen($amount) {}
+    protected function processPixelate(int $amount) {}
 
     /**
      * @param int $height
      * @param int $opacity
      * @param bool $fadeIn
      */
-    protected function _reflection($height, $opacity, $fadeIn) {}
+    protected function processReflection(int $height, int $opacity, bool $fadeIn) {}
 
     /**
-     * @param \Phalcon\Image\Adapter $watermark
-     * @param int $offsetX
-     * @param int $offsetY
-     * @param int $opacity
+     * @param string $ext
+     * @param int $quality
      */
-    protected function _watermark(\Phalcon\Image\Adapter $watermark, $offsetX, $offsetY, $opacity) {}
+    protected function processRender(string $ext, int $quality) {}
+
+    /**
+     * @param int $width
+     * @param int $height
+     */
+    protected function processResize(int $width, int $height) {}
+
+    /**
+     * @param int $degrees
+     */
+    protected function processRotate(int $degrees) {}
+
+    /**
+     * @param string $file
+     * @param int $quality
+     */
+    protected function processSave(string $file, int $quality) {}
+
+    /**
+     * @param int $amount
+     */
+    protected function processSharpen(int $amount) {}
 
     /**
      * @param string $text
@@ -76,50 +124,14 @@ class Gd extends \Phalcon\Image\Adapter
      * @param int $size
      * @param string $fontfile
      */
-    protected function _text($text, $offsetX, $offsetY, $opacity, $r, $g, $b, $size, $fontfile) {}
+    protected function processText(string $text, int $offsetX, int $offsetY, int $opacity, int $r, int $g, int $b, int $size, string $fontfile) {}
 
     /**
-     * @param \Phalcon\Image\Adapter $mask
-     */
-    protected function _mask(\Phalcon\Image\Adapter $mask) {}
-
-    /**
-     * @param int $r
-     * @param int $g
-     * @param int $b
+     * @param AdapterInterface $watermark
+     * @param int $offsetX
+     * @param int $offsetY
      * @param int $opacity
      */
-    protected function _background($r, $g, $b, $opacity) {}
-
-    /**
-     * @param int $radius
-     */
-    protected function _blur($radius) {}
-
-    /**
-     * @param int $amount
-     */
-    protected function _pixelate($amount) {}
-
-    /**
-     * @param string $file
-     * @param int $quality
-     */
-    protected function _save($file, $quality) {}
-
-    /**
-     * @param string $ext
-     * @param int $quality
-     */
-    protected function _render($ext, $quality) {}
-
-    /**
-     * @param int $width
-     * @param int $height
-     */
-    protected function _create($width, $height) {}
-
-
-    public function __destruct() {}
+    protected function processWatermark(AdapterInterface $watermark, int $offsetX, int $offsetY, int $opacity) {}
 
 }

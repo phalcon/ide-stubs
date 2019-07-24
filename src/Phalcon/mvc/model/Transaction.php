@@ -5,11 +5,12 @@ namespace Phalcon\Mvc\Model;
 /**
  * Phalcon\Mvc\Model\Transaction
  *
- * Transactions are protective blocks where SQL statements are only permanent if they can
- * all succeed as one atomic action. Phalcon\Transaction is intended to be used with Phalcon_Model_Base.
- * Phalcon Transactions should be created using Phalcon\Transaction\Manager.
+ * Transactions are protective blocks where SQL statements are only permanent if
+ * they can all succeed as one atomic action. Phalcon\Transaction is intended to
+ * be used with Phalcon_Model_Base. Phalcon Transactions should be created using
+ * Phalcon\Transaction\Manager.
  *
- * <code>
+ * ```php
  * use Phalcon\Mvc\Model\Transaction\Failed;
  * use Phalcon\Mvc\Model\Transaction\Manager;
  *
@@ -43,40 +44,115 @@ namespace Phalcon\Mvc\Model;
  * } catch(Failed $e) {
  *     echo "Failed, reason: ", $e->getMessage();
  * }
- * </code>
+ * ```
  */
 class Transaction implements \Phalcon\Mvc\Model\TransactionInterface
 {
 
-    protected $_connection;
+    protected $activeTransaction = false;
 
 
-    protected $_activeTransaction = false;
+    protected $connection;
 
 
-    protected $_isNewTransaction = true;
+    protected $isNewTransaction = true;
 
 
-    protected $_rollbackOnAbort = false;
+    protected $manager;
 
 
-    protected $_manager;
+    protected $messages;
 
 
-    protected $_messages;
+    protected $rollbackRecord;
 
 
-    protected $_rollbackRecord;
+    protected $rollbackOnAbort = false;
+
+
+    protected $rollbackThrowException = false;
 
 
     /**
      * Phalcon\Mvc\Model\Transaction constructor
      *
-     * @param \Phalcon\DiInterface $dependencyInjector
+     * @param \Phalcon\Di\DiInterface $container
      * @param bool $autoBegin
      * @param string $service
      */
-    public function __construct(\Phalcon\DiInterface $dependencyInjector, $autoBegin = false, $service = null) {}
+    public function __construct(\Phalcon\Di\DiInterface $container, bool $autoBegin = false, string $service = 'db') {}
+
+    /**
+     * Starts the transaction
+     *
+     * @return bool
+     */
+    public function begin(): bool {}
+
+    /**
+     * Commits the transaction
+     *
+     * @return bool
+     */
+    public function commit(): bool {}
+
+    /**
+     * Returns the connection related to transaction
+     *
+     * @return \Phalcon\Db\Adapter\AdapterInterface
+     */
+    public function getConnection(): \Phalcon\Db\Adapter\AdapterInterface {}
+
+    /**
+     * Returns validations messages from last save try
+     *
+     * @return array
+     */
+    public function getMessages(): array {}
+
+    /**
+     * Checks whether transaction is managed by a transaction manager
+     *
+     * @return bool
+     */
+    public function isManaged(): bool {}
+
+    /**
+     * Checks whether internal connection is under an active transaction
+     *
+     * @return bool
+     */
+    public function isValid(): bool {}
+
+    /**
+     * Rollbacks the transaction
+     *
+     * @param string $rollbackMessage
+     * @param \Phalcon\Mvc\ModelInterface $rollbackRecord
+     * @return bool
+     */
+    public function rollback(string $rollbackMessage = null, \Phalcon\Mvc\ModelInterface $rollbackRecord = null): bool {}
+
+    /**
+     * Sets if is a reused transaction or new once
+     *
+     * @param bool $isNew
+     */
+    public function setIsNewTransaction(bool $isNew) {}
+
+    /**
+     * Sets flag to rollback on abort the HTTP connection
+     *
+     * @param bool $rollbackOnAbort
+     */
+    public function setRollbackOnAbort(bool $rollbackOnAbort) {}
+
+    /**
+     * Sets object which generates rollback action
+     *
+     * @param \Phalcon\Mvc\ModelInterface $record
+     */
+    public function setRollbackedRecord(\Phalcon\Mvc\ModelInterface $record) {}
 
     /**
      * Sets transaction manager related to the transaction
@@ -86,75 +162,11 @@ class Transaction implements \Phalcon\Mvc\Model\TransactionInterface
     public function setTransactionManager(\Phalcon\Mvc\Model\Transaction\ManagerInterface $manager) {}
 
     /**
-     * Starts the transaction
+     * Enables throwing exception
      *
-     * @return bool
+     * @param bool $status
+     * @return \Phalcon\Mvc\Model\TransactionInterface
      */
-    public function begin() {}
-
-    /**
-     * Commits the transaction
-     *
-     * @return bool
-     */
-    public function commit() {}
-
-    /**
-     * Rollbacks the transaction
-     *
-     * @param mixed $rollbackMessage
-     * @param \Phalcon\Mvc\ModelInterface $rollbackRecord
-     * @return bool
-     */
-    public function rollback($rollbackMessage = null, \Phalcon\Mvc\ModelInterface $rollbackRecord = null) {}
-
-    /**
-     * Returns the connection related to transaction
-     *
-     * @return \Phalcon\Db\AdapterInterface
-     */
-    public function getConnection() {}
-
-    /**
-     * Sets if is a reused transaction or new once
-     *
-     * @param bool $isNew
-     */
-    public function setIsNewTransaction($isNew) {}
-
-    /**
-     * Sets flag to rollback on abort the HTTP connection
-     *
-     * @param bool $rollbackOnAbort
-     */
-    public function setRollbackOnAbort($rollbackOnAbort) {}
-
-    /**
-     * Checks whether transaction is managed by a transaction manager
-     *
-     * @return bool
-     */
-    public function isManaged() {}
-
-    /**
-     * Returns validations messages from last save try
-     *
-     * @return array
-     */
-    public function getMessages() {}
-
-    /**
-     * Checks whether internal connection is under an active transaction
-     *
-     * @return bool
-     */
-    public function isValid() {}
-
-    /**
-     * Sets object which generates rollback action
-     *
-     * @param \Phalcon\Mvc\ModelInterface $record
-     */
-    public function setRollbackedRecord(\Phalcon\Mvc\ModelInterface $record) {}
+    public function throwRollbackException(bool $status): TransactionInterface {}
 
 }

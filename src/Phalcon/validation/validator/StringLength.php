@@ -3,13 +3,12 @@
 namespace Phalcon\Validation\Validator;
 
 /**
- * Phalcon\Validation\Validator\StringLength
- *
  * Validates that a string has the specified maximum and minimum constraints
  * The test is passed if for a string's length L, min<=L<=max, i.e. L must
  * be at least min, and at most max.
+ * Since Phalcon v4.0 this valitor works like a container
  *
- * <code>
+ * ```php
  * use Phalcon\Validation;
  * use Phalcon\Validation\Validator\StringLength as StringLength;
  *
@@ -19,10 +18,12 @@ namespace Phalcon\Validation\Validator;
  *     "name_last",
  *     new StringLength(
  *         [
- *             "max"            => 50,
- *             "min"            => 2,
- *             "messageMaximum" => "We don't like really long names",
- *             "messageMinimum" => "We want more than just their initials",
+ *             "max"             => 50,
+ *             "min"             => 2,
+ *             "messageMaximum"  => "We don't like really long names",
+ *             "messageMinimum"  => "We want more than just their initials",
+ *             "includedMaximum" => true,
+ *             "includedMinimum" => false,
  *         ]
  *     )
  * );
@@ -49,22 +50,28 @@ namespace Phalcon\Validation\Validator;
  *             "messageMinimum" => [
  *                 "name_last"  => "We don't like too short last names",
  *                 "name_first" => "We don't like too short first names",
+ *             ],
+ *             "includedMaximum" => [
+ *                 "name_last"  => false,
+ *                 "name_first" => true,
+ *             ],
+ *             "includedMinimum" => [
+ *                 "name_last"  => false,
+ *                 "name_first" => true,
  *             ]
  *         ]
  *     )
  * );
- * </code>
+ * ```
  */
-class StringLength extends \Phalcon\Validation\Validator
+class StringLength extends \Phalcon\Validation\AbstractValidatorComposite
 {
 
     /**
-     * Executes the validation
+     * Constructor
      *
-     * @param \Phalcon\Validation $validation
-     * @param string $field
-     * @return bool
+     * @param array $options
      */
-    public function validate(\Phalcon\Validation $validation, $field) {}
+    public function __construct(array $options = array()) {}
 
 }

@@ -3,33 +3,31 @@
 namespace Phalcon\Di;
 
 /**
- * Phalcon\Di\Injectable
- *
- * This class allows to access services in the services container by just only accessing a public property
- * with the same name of a registered service
+ * This class allows to access services in the services container by just only
+ * accessing a public property with the same name of a registered service
  *
  * @property \Phalcon\Mvc\Dispatcher|\Phalcon\Mvc\DispatcherInterface $dispatcher
  * @property \Phalcon\Mvc\Router|\Phalcon\Mvc\RouterInterface $router
- * @property \Phalcon\Mvc\Url|\Phalcon\Mvc\UrlInterface $url
+ * @property \Phalcon\Url|\Phalcon\Url\UrlInterface $url
  * @property \Phalcon\Http\Request|\Phalcon\Http\RequestInterface $request
  * @property \Phalcon\Http\Response|\Phalcon\Http\ResponseInterface $response
  * @property \Phalcon\Http\Response\Cookies|\Phalcon\Http\Response\CookiesInterface $cookies
- * @property \Phalcon\Filter|\Phalcon\FilterInterface $filter
+ * @property \Phalcon\Filter\FilterLocator $filter
  * @property \Phalcon\Flash\Direct $flash
  * @property \Phalcon\Flash\Session $flashSession
- * @property \Phalcon\Session\Adapter\Files|\Phalcon\Session\Adapter|\Phalcon\Session\AdapterInterface $session
+ * @property \Phalcon\Session\ManagerInterface $session
  * @property \Phalcon\Events\Manager|\Phalcon\Events\ManagerInterface $eventsManager
- * @property \Phalcon\Db\AdapterInterface $db
+ * @property \Phalcon\Db\Adapter\AdapterInterface $db
  * @property \Phalcon\Security $security
  * @property \Phalcon\Crypt|\Phalcon\CryptInterface $crypt
  * @property \Phalcon\Tag $tag
- * @property \Phalcon\Escaper|\Phalcon\EscaperInterface $escaper
+ * @property \Phalcon\Escaper|\Phalcon\Escaper\EscaperInterface $escaper
  * @property \Phalcon\Annotations\Adapter\Memory|\Phalcon\Annotations\Adapter $annotations
  * @property \Phalcon\Mvc\Model\Manager|\Phalcon\Mvc\Model\ManagerInterface $modelsManager
  * @property \Phalcon\Mvc\Model\MetaData\Memory|\Phalcon\Mvc\Model\MetadataInterface $modelsMetadata
  * @property \Phalcon\Mvc\Model\Transaction\Manager|\Phalcon\Mvc\Model\Transaction\ManagerInterface $transactionManager
  * @property \Phalcon\Assets\Manager $assets
- * @property \Phalcon\Di|\Phalcon\DiInterface $di
+ * @property \Phalcon\Di|\Phalcon\Di\DiInterface $di
  * @property \Phalcon\Session\Bag|\Phalcon\Session\BagInterface $persistent
  * @property \Phalcon\Mvc\View|\Phalcon\Mvc\ViewInterface $view
  */
@@ -38,31 +36,46 @@ abstract class Injectable implements \Phalcon\Di\InjectionAwareInterface, \Phalc
     /**
      * Dependency Injector
      *
-     * @var \Phalcon\DiInterface
+     * @var DiInterface
      */
-    protected $_dependencyInjector;
+    protected $container;
 
     /**
      * Events Manager
      *
      * @var \Phalcon\Events\ManagerInterface
      */
-    protected $_eventsManager;
+    protected $eventsManager;
 
 
     /**
-     * Sets the dependency injector
+     * Magic method __get
      *
-     * @param \Phalcon\DiInterface $dependencyInjector
+     * @param string $propertyName
+     * @return mixed|null
      */
-    public function setDI(\Phalcon\DiInterface $dependencyInjector) {}
+    public function __get(string $propertyName): ? {}
 
     /**
      * Returns the internal dependency injector
      *
-     * @return \Phalcon\DiInterface
+     * @return \Phalcon\Di\DiInterface
      */
-    public function getDI() {}
+    public function getDI(): DiInterface {}
+
+    /**
+     * Returns the internal event manager
+     *
+     * @return \Phalcon\Events\ManagerInterface
+     */
+    public function getEventsManager(): ManagerInterface {}
+
+    /**
+     * Sets the dependency injector
+     *
+     * @param \Phalcon\Di\DiInterface $container
+     */
+    public function setDI(\Phalcon\Di\DiInterface $container) {}
 
     /**
      * Sets the event manager
@@ -70,19 +83,5 @@ abstract class Injectable implements \Phalcon\Di\InjectionAwareInterface, \Phalc
      * @param \Phalcon\Events\ManagerInterface $eventsManager
      */
     public function setEventsManager(\Phalcon\Events\ManagerInterface $eventsManager) {}
-
-    /**
-     * Returns the internal event manager
-     *
-     * @return \Phalcon\Events\ManagerInterface
-     */
-    public function getEventsManager() {}
-
-    /**
-     * Magic method __get
-     *
-     * @param string $propertyName
-     */
-    public function __get($propertyName) {}
 
 }

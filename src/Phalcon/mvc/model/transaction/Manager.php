@@ -5,14 +5,15 @@ namespace Phalcon\Mvc\Model\Transaction;
 /**
  * Phalcon\Mvc\Model\Transaction\Manager
  *
- * A transaction acts on a single database connection. If you have multiple class-specific
- * databases, the transaction will not protect interaction among them.
+ * A transaction acts on a single database connection. If you have multiple
+ * class-specific databases, the transaction will not protect interaction among
+ * them.
  *
  * This class manages the objects that compose a transaction.
- * A transaction produces a unique connection that is passed to every
- * object part of the transaction.
+ * A transaction produces a unique connection that is passed to every object
+ * part of the transaction.
  *
- * <code>
+ * ```php
  * use Phalcon\Mvc\Model\Transaction\Failed;
  * use Phalcon\Mvc\Model\Transaction\Manager;
  *
@@ -28,7 +29,7 @@ namespace Phalcon\Mvc\Model\Transaction;
  *    $robot->name       = "WALL·E";
  *    $robot->created_at = date("Y-m-d");
  *
- *    if ($robot->save() === false){
+ *    if ($robot->save() === false) {
  *        $transaction->rollback("Can't save robot");
  *    }
  *
@@ -46,86 +47,47 @@ namespace Phalcon\Mvc\Model\Transaction;
  * } catch (Failed $e) {
  *    echo "Failed, reason: ", $e->getMessage();
  * }
- * </code>
+ * ```
  */
 class Manager implements \Phalcon\Mvc\Model\Transaction\ManagerInterface, \Phalcon\Di\InjectionAwareInterface
 {
 
-    protected $_dependencyInjector;
+    protected $container;
 
 
-    protected $_initialized = false;
+    protected $initialized = false;
 
 
-    protected $_rollbackPendent = true;
+    protected $number = 0;
 
 
-    protected $_number = 0;
+    protected $rollbackPendent = true;
 
 
-    protected $_service = 'db';
+    protected $service = 'db';
 
-
-    protected $_transactions;
+    /**
+     * @var array
+     */
+    protected $transactions = array();
 
 
     /**
      * Phalcon\Mvc\Model\Transaction\Manager constructor
      *
-     * @param \Phalcon\DiInterface $dependencyInjector
+     * @param \Phalcon\Di\DiInterface $container
      */
-    public function __construct(\Phalcon\DiInterface $dependencyInjector = null) {}
+    public function __construct(\Phalcon\Di\DiInterface $container = null) {}
 
     /**
-     * Sets the dependency injection container
-     *
-     * @param \Phalcon\DiInterface $dependencyInjector
+     * Remove all the transactions from the manager
      */
-    public function setDI(\Phalcon\DiInterface $dependencyInjector) {}
+    public function collectTransactions() {}
 
     /**
-     * Returns the dependency injection container
-     *
-     * @return \Phalcon\DiInterface
+     * Commits active transactions within the manager
      */
-    public function getDI() {}
-
-    /**
-     * Sets the database service used to run the isolated transactions
-     *
-     * @param string $service
-     * @return Manager
-     */
-    public function setDbService($service) {}
-
-    /**
-     * Returns the database service used to isolate the transaction
-     *
-     * @return string
-     */
-    public function getDbService() {}
-
-    /**
-     * Set if the transaction manager must register a shutdown function to clean up pendent transactions
-     *
-     * @param bool $rollbackPendent
-     * @return Manager
-     */
-    public function setRollbackPendent($rollbackPendent) {}
-
-    /**
-     * Check if the transaction manager is registering a shutdown function to clean up pendent transactions
-     *
-     * @return bool
-     */
-    public function getRollbackPendent() {}
-
-    /**
-     * Checks whether the manager has an active transaction
-     *
-     * @return bool
-     */
-    public function has() {}
+    public function commit() {}
 
     /**
      * Returns a new \Phalcon\Mvc\Model\Transaction or an already created once
@@ -134,7 +96,21 @@ class Manager implements \Phalcon\Mvc\Model\Transaction\ManagerInterface, \Phalc
      * @param bool $autoBegin
      * @return \Phalcon\Mvc\Model\TransactionInterface
      */
-    public function get($autoBegin = true) {}
+    public function get(bool $autoBegin = true): TransactionInterface {}
+
+    /**
+     * Returns the database service used to isolate the transaction
+     *
+     * @return string
+     */
+    public function getDbService(): string {}
+
+    /**
+     * Returns the dependency injection container
+     *
+     * @return \Phalcon\Di\DiInterface
+     */
+    public function getDI(): DiInterface {}
 
     /**
      * Create/Returns a new transaction or an existing one
@@ -142,32 +118,22 @@ class Manager implements \Phalcon\Mvc\Model\Transaction\ManagerInterface, \Phalc
      * @param bool $autoBegin
      * @return \Phalcon\Mvc\Model\TransactionInterface
      */
-    public function getOrCreateTransaction($autoBegin = true) {}
+    public function getOrCreateTransaction(bool $autoBegin = true): TransactionInterface {}
 
     /**
-     * Rollbacks active transactions within the manager
-     */
-    public function rollbackPendent() {}
-
-    /**
-     * Commits active transactions within the manager
-     */
-    public function commit() {}
-
-    /**
-     * Rollbacks active transactions within the manager
-     * Collect will remove the transaction from the manager
+     * Check if the transaction manager is registering a shutdown function to
+     * clean up pendent transactions
      *
-     * @param boolean $collect
+     * @return bool
      */
-    public function rollback($collect = true) {}
+    public function getRollbackPendent(): bool {}
 
     /**
-     * Notifies the manager about a rollbacked transaction
+     * Checks whether the manager has an active transaction
      *
-     * @param \Phalcon\Mvc\Model\TransactionInterface $transaction
+     * @return bool
      */
-    public function notifyRollback(\Phalcon\Mvc\Model\TransactionInterface $transaction) {}
+    public function has(): bool {}
 
     /**
      * Notifies the manager about a committed transaction
@@ -177,15 +143,54 @@ class Manager implements \Phalcon\Mvc\Model\Transaction\ManagerInterface, \Phalc
     public function notifyCommit(\Phalcon\Mvc\Model\TransactionInterface $transaction) {}
 
     /**
+     * Notifies the manager about a rollbacked transaction
+     *
+     * @param \Phalcon\Mvc\Model\TransactionInterface $transaction
+     */
+    public function notifyRollback(\Phalcon\Mvc\Model\TransactionInterface $transaction) {}
+
+    /**
+     * Rollbacks active transactions within the manager
+     * Collect will remove the transaction from the manager
+     *
+     * @param bool $collect
+     */
+    public function rollback(bool $collect = true) {}
+
+    /**
+     * Rollbacks active transactions within the manager
+     */
+    public function rollbackPendent() {}
+
+    /**
+     * Sets the database service used to run the isolated transactions
+     *
+     * @param string $service
+     * @return \Phalcon\Mvc\Model\Transaction\ManagerInterface
+     */
+    public function setDbService(string $service): ManagerInterface {}
+
+    /**
+     * Sets the dependency injection container
+     *
+     * @param \Phalcon\Di\DiInterface $container
+     */
+    public function setDI(\Phalcon\Di\DiInterface $container) {}
+
+    /**
+     * Set if the transaction manager must register a shutdown function to clean
+     * up pendent transactions
+     *
+     * @param bool $rollbackPendent
+     * @return \Phalcon\Mvc\Model\Transaction\ManagerInterface
+     */
+    public function setRollbackPendent(bool $rollbackPendent): ManagerInterface {}
+
+    /**
      * Removes transactions from the TransactionManager
      *
      * @param \Phalcon\Mvc\Model\TransactionInterface $transaction
      */
-    protected function _collectTransaction(\Phalcon\Mvc\Model\TransactionInterface $transaction) {}
-
-    /**
-     * Remove all the transactions from the manager
-     */
-    public function collectTransactions() {}
+    protected function collectTransaction(\Phalcon\Mvc\Model\TransactionInterface $transaction) {}
 
 }

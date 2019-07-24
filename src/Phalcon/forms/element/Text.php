@@ -7,7 +7,7 @@ namespace Phalcon\Forms\Element;
  *
  * Component INPUT[type=text] for forms
  */
-class Text extends \Phalcon\Forms\Element
+class Text extends \Phalcon\Forms\Element\AbstractElement
 {
 
     /**
@@ -16,6 +16,6 @@ class Text extends \Phalcon\Forms\Element
      * @param array $attributes
      * @return string
      */
-    public function render($attributes = null) {}
+    public function render(array $attributes = array()): string {}
 
 }

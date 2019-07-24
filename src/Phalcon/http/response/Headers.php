@@ -10,16 +10,8 @@ namespace Phalcon\Http\Response;
 class Headers implements \Phalcon\Http\Response\HeadersInterface
 {
 
-    protected $_headers = array();
+    protected $headers = array();
 
-
-    /**
-     * Sets a header to be sent at the end of the request
-     *
-     * @param string $name
-     * @param string $value
-     */
-    public function set($name, $value) {}
 
     /**
      * Gets a header value from the internal bag
@@ -27,28 +19,22 @@ class Headers implements \Phalcon\Http\Response\HeadersInterface
      * @param string $name
      * @return string|bool
      */
-    public function get($name) {}
+    public function get(string $name) {}
 
     /**
-     * Sets a raw header to be sent at the end of the request
+     * Sets a header to be sent at the end of the request
      *
-     * @param string $header
+     * @param string $name
+     * @return bool
      */
-    public function setRaw($header) {}
+    public function has(string $name): bool {}
 
     /**
      * Removes a header to be sent at the end of the request
      *
      * @param string $header
      */
-    public function remove($header) {}
-
-    /**
-     * Sends the headers to the client
-     *
-     * @return bool
-     */
-    public function send() {}
+    public function remove(string $header) {}
 
     /**
      * Reset set headers
@@ -56,18 +42,32 @@ class Headers implements \Phalcon\Http\Response\HeadersInterface
     public function reset() {}
 
     /**
+     * Sends the headers to the client
+     *
+     * @return bool
+     */
+    public function send(): bool {}
+
+    /**
+     * Sets a header to be sent at the end of the request
+     *
+     * @param string $name
+     * @param string $value
+     */
+    public function set(string $name, string $value) {}
+
+    /**
+     * Sets a raw header to be sent at the end of the request
+     *
+     * @param string $header
+     */
+    public function setRaw(string $header) {}
+
+    /**
      * Returns the current headers as an array
      *
      * @return array
      */
-    public function toArray() {}
-
-    /**
-     * Restore a \Phalcon\Http\Response\Headers object
-     *
-     * @param array $data
-     * @return \Phalcon\Http\Response\HeadersInterface
-     */
-    public static function __set_state(array $data) {}
+    public function toArray(): array {}
 
 }

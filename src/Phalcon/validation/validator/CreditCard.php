@@ -3,11 +3,9 @@
 namespace Phalcon\Validation\Validator;
 
 /**
- * Phalcon\Validation\Validator\CreditCard
- *
  * Checks if a value has a valid credit card number
  *
- * <code>
+ * ```php
  * use Phalcon\Validation;
  * use Phalcon\Validation\Validator\CreditCard as CreditCardValidator;
  *
@@ -36,26 +34,30 @@ namespace Phalcon\Validation\Validator;
  *         ]
  *     )
  * );
- * </code>
+ * ```
  */
-class CreditCard extends \Phalcon\Validation\Validator
+class CreditCard extends \Phalcon\Validation\AbstractValidator
 {
+
+    protected $template = 'Field :field is not valid for a credit card number';
+
 
     /**
      * Executes the validation
      *
      * @param \Phalcon\Validation $validation
-     * @param string $field
+     * @param mixed $field
      * @return bool
      */
-    public function validate(\Phalcon\Validation $validation, $field) {}
+    public function validate(\Phalcon\Validation $validation, $field): bool {}
 
     /**
-     * is a simple checksum formula used to validate a variety of identification numbers
+     * is a simple checksum formula used to validate a variety of identification
+     * numbers
      *
      * @param string $number
      * @return bool
      */
-    private function verifyByLuhnAlgorithm($number) {}
+    private function verifyByLuhnAlgorithm(string $number): bool {}
 
 }

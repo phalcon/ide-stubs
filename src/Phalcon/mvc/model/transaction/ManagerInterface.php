@@ -11,24 +11,9 @@ interface ManagerInterface
 {
 
     /**
-     * Checks whether manager has an active transaction
-     *
-     * @return bool
+     * Remove all the transactions from the manager
      */
-    public function has();
-
-    /**
-     * Returns a new \Phalcon\Mvc\Model\Transaction or an already created once
-     *
-     * @param bool $autoBegin
-     * @return \Phalcon\Mvc\Model\TransactionInterface
-     */
-    public function get($autoBegin = true);
-
-    /**
-     * Rollbacks active transactions within the manager
-     */
-    public function rollbackPendent();
+    public function collectTransactions();
 
     /**
      * Commits active transactions within the manager
@@ -36,19 +21,33 @@ interface ManagerInterface
     public function commit();
 
     /**
-     * Rollbacks active transactions within the manager
-     * Collect will remove transaction from the manager
+     * Returns a new \Phalcon\Mvc\Model\Transaction or an already created once
      *
-     * @param boolean $collect
+     * @param bool $autoBegin
+     * @return \Phalcon\Mvc\Model\TransactionInterface
      */
-    public function rollback($collect = false);
+    public function get(bool $autoBegin = true): TransactionInterface;
 
     /**
-     * Notifies the manager about a rollbacked transaction
+     * Returns the database service used to isolate the transaction
      *
-     * @param \Phalcon\Mvc\Model\TransactionInterface $transaction
+     * @return string
      */
-    public function notifyRollback(\Phalcon\Mvc\Model\TransactionInterface $transaction);
+    public function getDbService(): string;
+
+    /**
+     * Check if the transaction manager is registering a shutdown function to clean up pendent transactions
+     *
+     * @return bool
+     */
+    public function getRollbackPendent(): bool;
+
+    /**
+     * Checks whether manager has an active transaction
+     *
+     * @return bool
+     */
+    public function has(): bool;
 
     /**
      * Notifies the manager about a committed transaction
@@ -58,8 +57,39 @@ interface ManagerInterface
     public function notifyCommit(\Phalcon\Mvc\Model\TransactionInterface $transaction);
 
     /**
-     * Remove all the transactions from the manager
+     * Notifies the manager about a rollbacked transaction
+     *
+     * @param \Phalcon\Mvc\Model\TransactionInterface $transaction
      */
-    public function collectTransactions();
+    public function notifyRollback(\Phalcon\Mvc\Model\TransactionInterface $transaction);
+
+    /**
+     * Rollbacks active transactions within the manager
+     * Collect will remove transaction from the manager
+     *
+     * @param bool $collect
+     */
+    public function rollback(bool $collect = false);
+
+    /**
+     * Rollbacks active transactions within the manager
+     */
+    public function rollbackPendent();
+
+    /**
+     * Sets the database service used to run the isolated transactions
+     *
+     * @param string $service
+     * @return ManagerInterface
+     */
+    public function setDbService(string $service): ManagerInterface;
+
+    /**
+     * Set if the transaction manager must register a shutdown function to clean up pendent transactions
+     *
+     * @param bool $rollbackPendent
+     * @return ManagerInterface
+     */
+    public function setRollbackPendent(bool $rollbackPendent): ManagerInterface;
 
 }

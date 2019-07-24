@@ -15,9 +15,11 @@ namespace Phalcon\Mvc\Model\Query;
  * the same technology as SQLite. This technology provides a small in-memory
  * parser with a very low memory footprint that is also thread-safe.
  *
- * <code>
- * $intermediate = Phalcon\Mvc\Model\Query\Lang::parsePHQL("SELECT r. FROM Robots r LIMIT 10");
- * </code>
+ * ```php
+ * $intermediate = Phalcon\Mvc\Model\Query\Lang::parsePHQL(
+ *     "SELECT r. FROM Robots r LIMIT 10"
+ * );
+ * ```
  */
 abstract class Lang
 {
@@ -28,6 +30,6 @@ abstract class Lang
      * @param string $phql
      * @return string
      */
-    public static function parsePHQL($phql) {}
+    public static function parsePHQL(string $phql): string {}
 
 }

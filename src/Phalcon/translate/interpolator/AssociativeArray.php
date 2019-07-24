@@ -2,17 +2,24 @@
 
 namespace Phalcon\Translate\Interpolator;
 
-
-class AssociativeArray implements \Phalcon\Translate\InterpolatorInterface
+/**
+ * This file is part of the Phalcon Framework.
+ *
+ * (c) Phalcon Team <team@phalconphp.com>
+ *
+ * For the full copyright and license information, please view the LICENSE.txt
+ * file that was distributed with this source code.
+ */
+class AssociativeArray implements \Phalcon\Translate\Interpolator\InterpolatorInterface
 {
 
     /**
      * Replaces placeholders by the values passed
      *
      * @param string $translation
-     * @param mixed $placeholders
+     * @param array $placeholders
      * @return string
      */
-    public function replacePlaceholders($translation, $placeholders = null) {}
+    public function replacePlaceholders(string $translation, array $placeholders = array()): string {}
 
 }
