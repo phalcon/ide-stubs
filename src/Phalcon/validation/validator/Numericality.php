@@ -3,9 +3,11 @@
 namespace Phalcon\Validation\Validator;
 
 /**
+ * Phalcon\Validation\Validator\Numericality
+ *
  * Check for a valid numeric value
  *
- * ```php
+ * <code>
  * use Phalcon\Validation;
  * use Phalcon\Validation\Validator\Numericality;
  *
@@ -34,21 +36,18 @@ namespace Phalcon\Validation\Validator;
  *         ]
  *     )
  * );
- * ```
+ * </code>
  */
-class Numericality extends \Phalcon\Validation\AbstractValidator
+class Numericality extends \Phalcon\Validation\Validator
 {
-
-    protected $template = 'Field :field does not have a valid numeric format';
-
 
     /**
      * Executes the validation
      *
      * @param \Phalcon\Validation $validation
-     * @param mixed $field
+     * @param string $field
      * @return bool
      */
-    public function validate(\Phalcon\Validation $validation, $field): bool {}
+    public function validate(\Phalcon\Validation $validation, $field) {}
 
 }

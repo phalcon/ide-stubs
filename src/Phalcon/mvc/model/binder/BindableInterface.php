@@ -11,8 +11,7 @@ interface BindableInterface
 {
 
     /**
-     * Return the model name or models names and parameters keys associated with
-     * this class
+     * Return the model name or models names and parameters keys associated with this class
      *
      * @return string|array
      */

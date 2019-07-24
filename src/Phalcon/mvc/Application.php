@@ -5,11 +5,10 @@ namespace Phalcon\Mvc;
 /**
  * Phalcon\Mvc\Application
  *
- * This component encapsulates all the complex operations behind instantiating
- * every component needed and integrating it with the rest to allow the MVC
- * pattern to operate as desired.
+ * This component encapsulates all the complex operations behind instantiating every component
+ * needed and integrating it with the rest to allow the MVC pattern to operate as desired.
  *
- * ```php
+ * <code>
  * use Phalcon\Mvc\Application;
  *
  * class MyApp extends Application
@@ -46,35 +45,19 @@ namespace Phalcon\Mvc;
  * $application = new MyApp();
  *
  * $application->main();
- * ```
+ * </code>
  */
-class Application extends \Phalcon\Application\AbstractApplication
+class Application extends \Phalcon\Application
 {
 
-    protected $implicitView = true;
+    protected $_implicitView = true;
 
 
-    protected $sendCookies = true;
+    protected $_sendHeaders = true;
 
 
-    protected $sendHeaders = true;
+    protected $_sendCookies = true;
 
-
-    /**
-     * Handles a MVC request
-     *
-     * @param string $uri
-     * @return bool|\Phalcon\Http\ResponseInterface
-     */
-    public function handle(string $uri) {}
-
-    /**
-     * Enables or disables sending cookies by each request handling
-     *
-     * @param bool $sendCookies
-     * @return Application
-     */
-    public function sendCookiesOnHandleRequest(bool $sendCookies): Application {}
 
     /**
      * Enables or disables sending headers by each request handling
@@ -82,7 +65,15 @@ class Application extends \Phalcon\Application\AbstractApplication
      * @param bool $sendHeaders
      * @return Application
      */
-    public function sendHeadersOnHandleRequest(bool $sendHeaders): Application {}
+    public function sendHeadersOnHandleRequest($sendHeaders) {}
+
+    /**
+     * Enables or disables sending cookies by each request handling
+     *
+     * @param bool $sendCookies
+     * @return Application
+     */
+    public function sendCookiesOnHandleRequest($sendCookies) {}
 
     /**
      * By default. The view is implicitly buffering all the output
@@ -91,6 +82,14 @@ class Application extends \Phalcon\Application\AbstractApplication
      * @param bool $implicitView
      * @return Application
      */
-    public function useImplicitView(bool $implicitView): Application {}
+    public function useImplicitView($implicitView) {}
+
+    /**
+     * Handles a MVC request
+     *
+     * @param string $uri
+     * @return bool|\Phalcon\Http\ResponseInterface
+     */
+    public function handle($uri = null) {}
 
 }

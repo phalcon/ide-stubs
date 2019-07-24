@@ -17,6 +17,6 @@ class Timestampable extends \Phalcon\Mvc\Collection\Behavior
      * @param string $type
      * @param \Phalcon\Mvc\CollectionInterface $model
      */
-    public function notify(string $type, \Phalcon\Mvc\CollectionInterface $model) {}
+    public function notify($type, \Phalcon\Mvc\CollectionInterface $model) {}
 
 }

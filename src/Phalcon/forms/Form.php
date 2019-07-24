@@ -3,36 +3,38 @@
 namespace Phalcon\Forms;
 
 /**
+ * Phalcon\Forms\Form
+ *
  * This component allows to build forms using an object-oriented interface
  */
-class Form extends \Phalcon\Di\Injectable implements \Countable, \Iterator, \Phalcon\Html\Attributes\AttributesInterface
+class Form extends \Phalcon\Di\Injectable implements \Countable, \Iterator
 {
 
-    protected $attributes;
+    protected $_position;
 
 
-    protected $data;
+    protected $_entity;
 
 
-    protected $elements = array();
+    protected $_options = array();
 
 
-    protected $elementsIndexed;
+    protected $_data;
 
 
-    protected $entity;
+    protected $_elements = array();
 
 
-    protected $messages;
+    protected $_elementsIndexed;
 
 
-    protected $position;
+    protected $_messages;
 
 
-    protected $options;
+    protected $_action;
 
 
-    protected $validation;
+    protected $_validation;
 
 
     /**
@@ -46,74 +48,66 @@ class Form extends \Phalcon\Di\Injectable implements \Countable, \Iterator, \Pha
     /**
      * Phalcon\Forms\Form constructor
      *
-     * @param mixed $entity
+     * @param object $entity
      * @param array $userOptions
      */
-    public function __construct($entity = null, array $userOptions = array()) {}
+    public function __construct($entity = null, $userOptions = null) {}
 
     /**
-     * Adds an element to the form
+     * Sets the form's action
      *
-     * @param \Phalcon\Forms\Element\ElementInterface $element
-     * @param string $position
-     * @param bool $type
+     * @param string $action
      * @return Form
      */
-    public function add(\Phalcon\Forms\Element\ElementInterface $element, string $position = null, bool $type = null): Form {}
-
-    /**
-     * Binds data to the entity
-     *
-     * @param array $data
-     * @param object $entity
-     * @param array $whitelist
-     * @return Form
-     */
-    public function bind(array $data, $entity, $whitelist = null): Form {}
-
-    /**
-     * Clears every element in the form to its default value
-     *
-     * @param array|string|null $fields
-     * @return Form
-     */
-    public function clear($fields = null): Form {}
-
-    /**
-     * Returns the number of elements in the form
-     *
-     * @return int
-     */
-    public function count(): int {}
-
-    /**
-     * Returns the current element in the iterator
-     *
-     * @return bool|\Phalcon\Forms\Element\ElementInterface
-     */
-    public function current() {}
-
-    /**
-     * Returns an element added to the form by its name
-     *
-     * @param string $name
-     * @return \Phalcon\Forms\Element\ElementInterface
-     */
-    public function get(string $name): ElementInterface {}
+    public function setAction($action) {}
 
     /**
      * Returns the form's action
      *
      * @return string
      */
-    public function getAction(): string {}
+    public function getAction() {}
 
     /**
-     * Returns the form elements added to the form
+     * Sets an option for the form
      *
-     * @return array|\Phalcon\Forms\Element\ElementInterface[]
+     * @param string $option
+     * @param mixed $value
+     * @return Form
      */
-    public function getElements(): array {}
+    public function setUserOption($option, $value) {}
+
+    /**
+     * Returns the value of an option if present
+     *
+     * @param string $option
+     * @param mixed $defaultValue
+     * @return mixed
+     */
+    public function getUserOption($option, $defaultValue = null) {}
+
+    /**
+     * Sets options for the element
+     *
+     * @param array $options
+     * @return Form
+     */
+    public function setUserOptions(array $options) {}
+
+    /**
+     * Returns the options for the element
+     *
+     * @return array
+     */
+    public function getUserOptions() {}
+
+    /**
+     * Sets the entity related to the model
+     *
+     * @param object $entity
+     * @return Form
+     */
+    public function setEntity($entity) {}
 
     /**
      * Returns the entity related to the model
@@ -123,77 +117,21 @@ class Form extends \Phalcon\Di\Injectable implements \Countable, \Iterator, \Pha
     public function getEntity() {}
 
     /**
-     * Returns a label for an element
+     * Returns the form elements added to the form
      *
-     * @param string $name
-     * @return string
+     * @return \Phalcon\Forms\ElementInterface[]
      */
-    public function getLabel(string $name): string {}
+    public function getElements() {}
 
     /**
-     * Returns the messages generated in the validation.
+     * Binds data to the entity
      *
-     * ```php
-     * if ($form->isValid($_POST) == false) {
-     *     $messages = $form->getMessages();
-     *
-     *     foreach ($messages as $message) {
-     *         echo $message, "<br>";
-     *     }
-     * }
-     * ```
-     *
-     * @return array|\Phalcon\Messages\Messages
+     * @param array $data
+     * @param object $entity
+     * @param array $whitelist
+     * @return Form
      */
-    public function getMessages() {}
-
-    /**
-     * Returns the messages generated for a specific element
-     *
-     * @param string $name
-     * @return \Phalcon\Messages\Messages
-     */
-    public function getMessagesFor(string $name): Messages {}
-
-    /**
-     * Returns the value of an option if present
-     *
-     * @param string $option
-     * @param mixed $defaultValue
-     * @return mixed
-     */
-    public function getUserOption(string $option, $defaultValue = null) {}
-
-    /**
-     * Returns the options for the element
-     *
-     * @return array
-     */
-    public function getUserOptions(): array {}
-
-    /**
-     * Gets a value from the internal related entity or from the default value
-     *
-     * @param string $name
-     * @return mixed|null
-     */
-    public function getValue(string $name): ? {}
-
-    /**
-     * Check if the form contains an element
-     *
-     * @param string $name
-     * @return bool
-     */
-    public function has(string $name): bool {}
-
-    /**
-     * Check if messages were generated for a specific element
-     *
-     * @param string $name
-     * @return bool
-     */
-    public function hasMessagesFor(string $name): bool {}
+    public function bind(array $data, $entity, $whitelist = null) {}
 
     /**
      * Validates the form
@@ -202,28 +140,61 @@ class Form extends \Phalcon\Di\Injectable implements \Countable, \Iterator, \Pha
      * @param object $entity
      * @return bool
      */
-    public function isValid($data = null, $entity = null): bool {}
+    public function isValid($data = null, $entity = null) {}
 
     /**
-     * Returns the current position/key in the iterator
+     * Returns the messages generated in the validation.
      *
-     * @return int
+     * <code>
+     * if ($form->isValid($_POST) == false) {
+     *     // Get messages separated by the item name
+     *     // $messages is an array of Group object
+     *     $messages = $form->getMessages(true);
+     *
+     *     foreach ($messages as $message) {
+     *         echo $message, "<br>";
+     *     }
+     *
+     *     // Default behavior.
+     *     // $messages is a Group object
+     *     $messages = $form->getMessages();
+     *
+     *     foreach ($messages as $message) {
+     *         echo $message, "<br>";
+     *     }
+     * }
+     * </code>
+     *
+     * @param bool $byItemName
+     * @return array|\Phalcon\Validation\Message\Group
      */
-    public function key(): int {}
+    public function getMessages($byItemName = false) {}
 
     /**
-     * Generate the label of an element added to the form including HTML
+     * Returns the messages generated for a specific element
      *
      * @param string $name
-     * @param array $attributes
-     * @return string
+     * @return \Phalcon\Validation\Message\Group
      */
-    public function label(string $name, array $attributes = null): string {}
+    public function getMessagesFor($name) {}
 
     /**
-     * Moves the internal iteration pointer to the next position
+     * Check if messages were generated for a specific element
+     *
+     * @param string $name
+     * @return bool
      */
-    public function next() {}
+    public function hasMessagesFor($name) {}
+
+    /**
+     * Adds an element to the form
+     *
+     * @param \Phalcon\Forms\ElementInterface $element
+     * @param string $position
+     * @param bool $type
+     * @return Form
+     */
+    public function add(\Phalcon\Forms\ElementInterface $element, $position = null, $type = null) {}
 
     /**
      * Renders a specific item in the form
@@ -232,7 +203,48 @@ class Form extends \Phalcon\Di\Injectable implements \Countable, \Iterator, \Pha
      * @param array $attributes
      * @return string
      */
-    public function render(string $name, array $attributes = array()): string {}
+    public function render($name, $attributes = null) {}
+
+    /**
+     * Returns an element added to the form by its name
+     *
+     * @param string $name
+     * @return \Phalcon\Forms\ElementInterface
+     */
+    public function get($name) {}
+
+    /**
+     * Generate the label of an element added to the form including HTML
+     *
+     * @param string $name
+     * @param array $attributes
+     * @return string
+     */
+    public function label($name, array $attributes = null) {}
+
+    /**
+     * Returns a label for an element
+     *
+     * @param string $name
+     * @return string
+     */
+    public function getLabel($name) {}
+
+    /**
+     * Gets a value from the internal related entity or from the default value
+     *
+     * @param string $name
+     * @return mixed|null
+     */
+    public function getValue($name) {}
+
+    /**
+     * Check if the form contains an element
+     *
+     * @param string $name
+     * @return bool
+     */
+    public function has($name) {}
 
     /**
      * Removes an element from the form
@@ -240,7 +252,22 @@ class Form extends \Phalcon\Di\Injectable implements \Countable, \Iterator, \Pha
      * @param string $name
      * @return bool
      */
-    public function remove(string $name): bool {}
+    public function remove($name) {}
+
+    /**
+     * Clears every element in the form to its default value
+     *
+     * @param array $fields
+     * @return Form
+     */
+    public function clear($fields = null) {}
+
+    /**
+     * Returns the number of elements in the form
+     *
+     * @return int
+     */
+    public function count() {}
 
     /**
      * Rewinds the internal iterator
@@ -248,58 +275,29 @@ class Form extends \Phalcon\Di\Injectable implements \Countable, \Iterator, \Pha
     public function rewind() {}
 
     /**
-     * Sets the form's action
+     * Returns the current element in the iterator
      *
-     * @param string $action
-     * @return Form
+     * @return bool|\Phalcon\Forms\ElementInterface
      */
-    public function setAction(string $action): Form {}
+    public function current() {}
 
     /**
-     * Sets the entity related to the model
+     * Returns the current position/key in the iterator
      *
-     * @param object $entity
-     * @return Form
+     * @return int
      */
-    public function setEntity($entity): Form {}
+    public function key() {}
 
     /**
-     * Sets an option for the form
-     *
-     * @param string $option
-     * @param mixed $value
-     * @return Form
+     * Moves the internal iteration pointer to the next position
      */
-    public function setUserOption(string $option, $value): Form {}
-
-    /**
-     * Sets options for the element
-     *
-     * @param array $options
-     * @return Form
-     */
-    public function setUserOptions(array $options): Form {}
+    public function next() {}
 
     /**
      * Check if the current element in the iterator is valid
      *
      * @return bool
      */
-    public function valid(): bool {}
-
-    /**
-     * Get Form attributes collection
-     *
-     * @return \Phalcon\Html\Attributes
-     */
-    public function getAttributes(): Attributes {}
-
-    /**
-     * Set form attributes collection
-     *
-     * @param \Phalcon\Html\Attributes $attributes
-     * @return \Phalcon\Html\Attributes\AttributesInterface
-     */
-    public function setAttributes(\Phalcon\Html\Attributes $attributes): AttributesInterface {}
+    public function valid() {}
 
 }

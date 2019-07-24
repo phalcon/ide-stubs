@@ -3,9 +3,11 @@
 namespace Phalcon\Validation\Validator;
 
 /**
+ * Phalcon\Validation\Validator\Date
+ *
  * Checks if a value is a valid date
  *
- * ```php
+ * <code>
  * use Phalcon\Validation;
  * use Phalcon\Validation\Validator\Date as DateValidator;
  *
@@ -39,28 +41,25 @@ namespace Phalcon\Validation\Validator;
  *         ]
  *     )
  * );
- * ```
+ * </code>
  */
-class Date extends \Phalcon\Validation\AbstractValidator
+class Date extends \Phalcon\Validation\Validator
 {
-
-    protected $template = 'Field :field is not a valid date';
-
 
     /**
      * Executes the validation
      *
      * @param \Phalcon\Validation $validation
-     * @param mixed $field
+     * @param string $field
      * @return bool
      */
-    public function validate(\Phalcon\Validation $validation, $field): bool {}
+    public function validate(\Phalcon\Validation $validation, $field) {}
 
     /**
      * @param mixed $value
      * @param mixed $format
      * @return bool
      */
-    private function checkDate($value, $format): bool {}
+    private function checkDate($value, $format) {}
 
 }

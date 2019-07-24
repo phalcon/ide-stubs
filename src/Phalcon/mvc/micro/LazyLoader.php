@@ -10,10 +10,13 @@ namespace Phalcon\Mvc\Micro;
 class LazyLoader
 {
 
-    protected $handler;
+    protected $_handler;
 
 
-    protected $definition;
+    protected $_modelBinder;
+
+
+    protected $_definition;
 
 
 
@@ -24,7 +27,16 @@ class LazyLoader
      *
      * @param string $definition
      */
-    public function __construct(string $definition) {}
+    public function __construct($definition) {}
+
+    /**
+     * Initializes the internal handler, calling functions on it
+     *
+     * @param string $method
+     * @param array $arguments
+     * @return mixed
+     */
+    public function __call($method, $arguments) {}
 
     /**
      * Calling __call method
@@ -34,6 +46,6 @@ class LazyLoader
      * @param \Phalcon\Mvc\Model\BinderInterface $modelBinder
      * @return mixed
      */
-    public function callMethod(string $method, $arguments, \Phalcon\Mvc\Model\BinderInterface $modelBinder = null) {}
+    public function callMethod($method, $arguments, \Phalcon\Mvc\Model\BinderInterface $modelBinder = null) {}
 
 }

@@ -3,9 +3,11 @@
 namespace Phalcon\Validation\Validator;
 
 /**
+ * Phalcon\Validation\Validator\Identical
+ *
  * Checks if a value is identical to other
  *
- * ```php
+ * <code>
  * use Phalcon\Validation;
  * use Phalcon\Validation\Validator\Identical;
  *
@@ -39,21 +41,18 @@ namespace Phalcon\Validation\Validator;
  *         ]
  *     )
  * );
- * ```
+ * </code>
  */
-class Identical extends \Phalcon\Validation\AbstractValidator
+class Identical extends \Phalcon\Validation\Validator
 {
-
-    protected $template = 'Field :field does not have the expected value';
-
 
     /**
      * Executes the validation
      *
      * @param \Phalcon\Validation $validation
-     * @param mixed $field
+     * @param string $field
      * @return bool
      */
-    public function validate(\Phalcon\Validation $validation, $field): bool {}
+    public function validate(\Phalcon\Validation $validation, $field) {}
 
 }

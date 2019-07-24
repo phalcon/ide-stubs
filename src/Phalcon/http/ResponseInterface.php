@@ -11,48 +11,76 @@ interface ResponseInterface
 {
 
     /**
-     * Appends a string to the HTTP response body
+     * Sets the HTTP response code
      *
-     * @param mixed $content
+     * @param int $code
+     * @param string $message
      * @return ResponseInterface
      */
-    public function appendContent($content): ResponseInterface;
-
-    /**
-     * Gets the HTTP response body
-     *
-     * @return string
-     */
-    public function getContent(): string;
-
-    /**
-     * Returns the status code
-     *
-     * @return int|null
-     */
-    public function getStatusCode(): ?int;
+    public function setStatusCode($code, $message = null);
 
     /**
      * Returns headers set by the user
      *
      * @return \Phalcon\Http\Response\HeadersInterface
      */
-    public function getHeaders(): HeadersInterface;
+    public function getHeaders();
 
     /**
-     * Checks if a header exists
+     * Overwrites a header in the response
      *
      * @param string $name
-     * @return bool
+     * @param mixed $value
+     * @return ResponseInterface
      */
-    public function hasHeader(string $name): bool;
+    public function setHeader($name, $value);
 
     /**
-     * Checks if the response was already sent
+     * Send a raw header to the response
      *
-     * @return bool
+     * @param string $header
+     * @return ResponseInterface
      */
-    public function isSent(): bool;
+    public function setRawHeader($header);
+
+    /**
+     * Resets all the established headers
+     *
+     * @return ResponseInterface
+     */
+    public function resetHeaders();
+
+    /**
+     * Sets output expire time header
+     *
+     * @param \DateTime $datetime
+     * @return ResponseInterface
+     */
+    public function setExpires(\DateTime $datetime);
+
+    /**
+     * Sends a Not-Modified response
+     *
+     * @return ResponseInterface
+     */
+    public function setNotModified();
+
+    /**
+     * Sets the response content-type mime, optionally the charset
+     *
+     * @param string $contentType
+     * @param string $charset
+     * @return ResponseInterface
+     */
+    public function setContentType($contentType, $charset = null);
+
+    /**
+     * Sets the response content-length
+     *
+     * @param int $contentLength
+     * @return ResponseInterface
+     */
+    public function setContentLength($contentLength);
 
     /**
      * Redirect by HTTP to another action or URL
@@ -62,14 +90,7 @@ interface ResponseInterface
      * @param int $statusCode
      * @return ResponseInterface
      */
-    public function redirect($location = null, bool $externalRedirect = false, int $statusCode = 302): ResponseInterface;
-
-    /**
-     * Resets all the established headers
-     *
-     * @return ResponseInterface
-     */
-    public function resetHeaders(): ResponseInterface;
+    public function redirect($location = null, $externalRedirect = false, $statusCode = 302);
 
     /**
      * Sets HTTP response body
@@ -77,32 +98,59 @@ interface ResponseInterface
      * @param string $content
      * @return ResponseInterface
      */
-    public function setContent(string $content): ResponseInterface;
+    public function setContent($content);
 
     /**
-     * Sets the response content-length
+     * Sets HTTP response body. The parameter is automatically converted to JSON
      *
-     * @param int $contentLength
+     * <code>
+     * $response->setJsonContent(
+     *     [
+     *         "status" => "OK",
+     *     ]
+     * );
+     * </code>
+     *
+     * @param mixed $content
      * @return ResponseInterface
      */
-    public function setContentLength(int $contentLength): ResponseInterface;
+    public function setJsonContent($content);
 
     /**
-     * Sets the response content-type mime, optionally the charset
+     * Appends a string to the HTTP response body
      *
-     * @param string $contentType
-     * @param string $charset
+     * @param mixed $content
      * @return ResponseInterface
      */
-    public function setContentType(string $contentType, $charset = null): ResponseInterface;
+    public function appendContent($content);
 
     /**
-     * Sets output expire time header
+     * Gets the HTTP response body
      *
-     * @param \DateTime $datetime
+     * @return string
+     */
+    public function getContent();
+
+    /**
+     * Sends headers to the client
+     *
      * @return ResponseInterface
      */
-    public function setExpires(\DateTime $datetime): ResponseInterface;
+    public function sendHeaders();
+
+    /**
+     * Sends cookies to the client
+     *
+     * @return ResponseInterface
+     */
+    public function sendCookies();
+
+    /**
+     * Prints out HTTP response to the client
+     *
+     * @return ResponseInterface
+     */
+    public function send();
 
     /**
      * Sets an attached file to be sent at the end of the request
@@ -111,76 +159,6 @@ interface ResponseInterface
      * @param mixed $attachmentName
      * @return ResponseInterface
      */
-    public function setFileToSend(string $filePath, $attachmentName = null): ResponseInterface;
-
-    /**
-     * Overwrites a header in the response
-     *
-     * @param string $name
-     * @param mixed $value
-     * @return ResponseInterface
-     */
-    public function setHeader(string $name, $value): ResponseInterface;
-
-    /**
-     * Sets HTTP response body. The parameter is automatically converted to JSON
-     *
-     * ```php
-     * $response->setJsonContent(
-     *     [
-     *         "status" => "OK",
-     *     ]
-     * );
-     * ```
-     *
-     * @param mixed $content
-     * @return ResponseInterface
-     */
-    public function setJsonContent($content): ResponseInterface;
-
-    /**
-     * Sends a Not-Modified response
-     *
-     * @return ResponseInterface
-     */
-    public function setNotModified(): ResponseInterface;
-
-    /**
-     * Send a raw header to the response
-     *
-     * @param string $header
-     * @return ResponseInterface
-     */
-    public function setRawHeader(string $header): ResponseInterface;
-
-    /**
-     * Sets the HTTP response code
-     *
-     * @param int $code
-     * @param string $message
-     * @return ResponseInterface
-     */
-    public function setStatusCode(int $code, string $message = null): ResponseInterface;
-
-    /**
-     * Prints out HTTP response to the client
-     *
-     * @return ResponseInterface
-     */
-    public function send(): ResponseInterface;
-
-    /**
-     * Sends cookies to the client
-     *
-     * @return ResponseInterface
-     */
-    public function sendCookies(): ResponseInterface;
-
-    /**
-     * Sends headers to the client
-     *
-     * @return bool|ResponseInterface
-     */
-    public function sendHeaders();
+    public function setFileToSend($filePath, $attachmentName = null);
 
 }

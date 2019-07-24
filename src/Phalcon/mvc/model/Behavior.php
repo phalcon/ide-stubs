@@ -9,10 +9,8 @@ namespace Phalcon\Mvc\Model;
  */
 abstract class Behavior implements \Phalcon\Mvc\Model\BehaviorInterface
 {
-    /**
-     * @var array
-     */
-    protected $options;
+
+    protected $_options;
 
 
     /**
@@ -20,7 +18,15 @@ abstract class Behavior implements \Phalcon\Mvc\Model\BehaviorInterface
      *
      * @param array $options
      */
-    public function __construct(array $options = array()) {}
+    public function __construct($options = null) {}
+
+    /**
+     * Checks whether the behavior must take action on certain event
+     *
+     * @param string $eventName
+     * @return bool
+     */
+    protected function mustTakeAction($eventName) {}
 
     /**
      * Returns the behavior options related to an event
@@ -28,7 +34,15 @@ abstract class Behavior implements \Phalcon\Mvc\Model\BehaviorInterface
      * @param string $eventName
      * @return array
      */
-    protected function getOptions(string $eventName = null) {}
+    protected function getOptions($eventName = null) {}
+
+    /**
+     * This method receives the notifications from the EventsManager
+     *
+     * @param string $type
+     * @param \Phalcon\Mvc\ModelInterface $model
+     */
+    public function notify($type, \Phalcon\Mvc\ModelInterface $model) {}
 
     /**
      * Acts as fallbacks when a missing method is called on the model
@@ -37,22 +51,6 @@ abstract class Behavior implements \Phalcon\Mvc\Model\BehaviorInterface
      * @param string $method
      * @param array $arguments
      */
-    public function missingMethod(\Phalcon\Mvc\ModelInterface $model, string $method, array $arguments = array()) {}
-
-    /**
-     * Checks whether the behavior must take action on certain event
-     *
-     * @param string $eventName
-     * @return bool
-     */
-    protected function mustTakeAction(string $eventName): bool {}
-
-    /**
-     * This method receives the notifications from the EventsManager
-     *
-     * @param string $type
-     * @param \Phalcon\Mvc\ModelInterface $model
-     */
-    public function notify(string $type, \Phalcon\Mvc\ModelInterface $model) {}
+    public function missingMethod(\Phalcon\Mvc\ModelInterface $model, $method, $arguments = null) {}
 
 }

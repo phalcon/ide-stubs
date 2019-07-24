@@ -11,50 +11,19 @@ interface CookiesInterface
 {
 
     /**
-     * Deletes a cookie by its name
-     * This method does not removes cookies from the _COOKIE superglobal
+     * Set if cookies in the bag must be automatically encrypted/decrypted
      *
-     * @param string $name
-     * @return bool
+     * @param bool $useEncryption
+     * @return CookiesInterface
      */
-    public function delete(string $name): bool;
-
-    /**
-     * Gets a cookie from the bag
-     *
-     * @param string $name
-     * @return \Phalcon\Http\CookieInterface
-     */
-    public function get(string $name): CookieInterface;
-
-    /**
-     * Check if a cookie is defined in the bag or exists in the _COOKIE superglobal
-     *
-     * @param string $name
-     * @return bool
-     */
-    public function has(string $name): bool;
+    public function useEncryption($useEncryption);
 
     /**
      * Returns if the bag is automatically encrypting/decrypting cookies
      *
      * @return bool
      */
-    public function isUsingEncryption(): bool;
-
-    /**
-     * Reset set cookies
-     *
-     * @return CookiesInterface
-     */
-    public function reset(): CookiesInterface;
-
-    /**
-     * Sends the cookies to the client
-     *
-     * @return bool
-     */
-    public function send(): bool;
+    public function isUsingEncryption();
 
     /**
      * Sets a cookie to be sent at the end of the request
@@ -68,14 +37,45 @@ interface CookiesInterface
      * @param bool $httpOnly
      * @return CookiesInterface
      */
-    public function set(string $name, $value = null, int $expire = 0, string $path = '/', bool $secure = null, string $domain = null, bool $httpOnly = null): CookiesInterface;
+    public function set($name, $value = null, $expire = 0, $path = '/', $secure = null, $domain = null, $httpOnly = null);
 
     /**
-     * Set if cookies in the bag must be automatically encrypted/decrypted
+     * Gets a cookie from the bag
      *
-     * @param bool $useEncryption
+     * @param string $name
      * @return CookiesInterface
      */
-    public function useEncryption(bool $useEncryption): CookiesInterface;
+    public function get($name);
+
+    /**
+     * Check if a cookie is defined in the bag or exists in the _COOKIE superglobal
+     *
+     * @param string $name
+     * @return bool
+     */
+    public function has($name);
+
+    /**
+     * Deletes a cookie by its name
+     * This method does not removes cookies from the _COOKIE superglobal
+     *
+     * @param string $name
+     * @return bool
+     */
+    public function delete($name);
+
+    /**
+     * Sends the cookies to the client
+     *
+     * @return bool
+     */
+    public function send();
+
+    /**
+     * Reset set cookies
+     *
+     * @return CookiesInterface
+     */
+    public function reset();
 
 }

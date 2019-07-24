@@ -3,9 +3,11 @@
 namespace Phalcon\Validation\Validator;
 
 /**
+ * Phalcon\Validation\Validator\Alnum
+ *
  * Check for alphanumeric character(s)
  *
- * ```php
+ * <code>
  * use Phalcon\Validation;
  * use Phalcon\Validation\Validator\Alnum as AlnumValidator;
  *
@@ -34,21 +36,18 @@ namespace Phalcon\Validation\Validator;
  *         ]
  *     )
  * );
- * ```
+ * </code>
  */
-class Alnum extends \Phalcon\Validation\AbstractValidator
+class Alnum extends \Phalcon\Validation\Validator
 {
-
-    protected $template = 'Field :field must contain only letters and numbers';
-
 
     /**
      * Executes the validation
      *
      * @param \Phalcon\Validation $validation
-     * @param mixed $field
+     * @param string $field
      * @return bool
      */
-    public function validate(\Phalcon\Validation $validation, $field): bool {}
+    public function validate(\Phalcon\Validation $validation, $field) {}
 
 }

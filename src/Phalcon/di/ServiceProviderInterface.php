@@ -3,28 +3,27 @@
 namespace Phalcon\Di;
 
 /**
- * Should be implemented by service providers, or such components, which
- * register a service in the service container.
+ * Phalcon\Di\ServiceProviderInterface
  *
- * ```php
+ * Should be implemented by service providers, or such components,
+ * which register a service in the service container.
+ *
+ * <code>
  * namespace Acme;
  *
- * use Phalcon\Di\DiInterface;
+ * use Phalcon\DiInterface;
  * use Phalcon\Di\ServiceProviderInterface;
  *
  * class SomeServiceProvider implements ServiceProviderInterface
  * {
  *     public function register(DiInterface $di)
  *     {
- *         $di->setShared(
- *             'service',
- *             function () {
- *                 // ...
- *             }
- *         );
+ *         $di->setShared('service', function () {
+ *             // ...
+ *         });
  *     }
  * }
- * ```
+ * </code>
  */
 interface ServiceProviderInterface
 {
@@ -32,8 +31,8 @@ interface ServiceProviderInterface
     /**
      * Registers a service provider.
      *
-     * @param \Phalcon\Di\DiInterface $di
+     * @param \Phalcon\DiInterface $di
      */
-    public function register(\Phalcon\Di\DiInterface $di);
+    public function register(\Phalcon\DiInterface $di);
 
 }

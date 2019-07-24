@@ -3,20 +3,37 @@
 namespace Phalcon\Cli;
 
 /**
+ * Phalcon\Cli\Console
+ *
  * This component allows to create CLI applications using Phalcon
  */
-class Console extends \Phalcon\Application\AbstractApplication
+class Console extends \Phalcon\Application
 {
-    /**
-     * @var array
-     */
-    protected $arguments = array();
+
+    protected $_arguments = array();
+
+
+    protected $_options = array();
+
 
     /**
-     * @var array
+     * Merge modules with the existing ones
+     *
+     * <code>
+     * $application->addModules(
+     *     [
+     *         "admin" => [
+     *             "className" => "Multiple\\Admin\\Module",
+     *             "path"      => "../apps/admin/Module.php",
+     *         ],
+     *     ]
+     * );
+     * </code>
+     *
+     * @param array $modules
+     * @deprecated
      */
-    protected $options = array();
-
+    public function addModules(array $modules) {}
 
     /**
      * Handle the whole command-line tasks
@@ -33,6 +50,6 @@ class Console extends \Phalcon\Application\AbstractApplication
      * @param bool $shift
      * @return Console
      */
-    public function setArgument(array $arguments = null, bool $str = true, bool $shift = true): Console {}
+    public function setArgument(array $arguments = null, $str = true, $shift = true) {}
 
 }

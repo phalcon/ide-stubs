@@ -18,6 +18,14 @@ interface EventInterface
     public function getData();
 
     /**
+     * Sets event data
+     *
+     * @param mixed $data
+     * @return EventInterface
+     */
+    public function setData($data = null);
+
+    /**
      * Gets event type
      *
      * @return mixed
@@ -25,40 +33,32 @@ interface EventInterface
     public function getType();
 
     /**
-     * Check whether the event is cancelable
-     *
-     * @return bool
-     */
-    public function isCancelable(): bool;
-
-    /**
-     * Check whether the event is currently stopped
-     *
-     * @return bool
-     */
-    public function isStopped(): bool;
-
-    /**
-     * Sets event data
-     *
-     * @param mixed $data
-     * @return EventInterface
-     */
-    public function setData($data = null): EventInterface;
-
-    /**
      * Sets event type
      *
      * @param string $type
      * @return EventInterface
      */
-    public function setType(string $type): EventInterface;
+    public function setType($type);
 
     /**
      * Stops the event preventing propagation
      *
      * @return EventInterface
      */
-    public function stop(): EventInterface;
+    public function stop();
+
+    /**
+     * Check whether the event is currently stopped
+     *
+     * @return bool
+     */
+    public function isStopped();
+
+    /**
+     * Check whether the event is cancelable
+     *
+     * @return bool
+     */
+    public function isCancelable();
 
 }

@@ -10,40 +10,40 @@ namespace Phalcon\Mvc\Router;
 class Route implements \Phalcon\Mvc\Router\RouteInterface
 {
 
-    protected $beforeMatch;
+    protected $_pattern;
 
 
-    protected $compiledPattern;
+    protected $_compiledPattern;
 
 
-    protected $converters;
+    protected $_paths;
 
 
-    protected $group;
+    protected $_methods;
 
 
-    protected $hostname;
+    protected $_hostname;
 
 
-    protected $id;
+    protected $_converters;
 
 
-    protected $methods;
+    protected $_id;
 
 
-    protected $match;
+    protected $_name;
 
 
-    protected $name;
+    protected $_beforeMatch;
 
 
-    protected $paths;
+    protected $_match;
 
 
-    protected $pattern;
+    protected $_group;
 
 
-    static protected $uniqueId = 0;
+    static protected $_uniqueId;
 
 
 
@@ -56,14 +56,89 @@ class Route implements \Phalcon\Mvc\Router\RouteInterface
      * @param mixed $paths
      * @param mixed $httpMethods
      */
-    public function __construct(string $pattern, $paths = null, $httpMethods = null) {}
+    public function __construct($pattern, $paths = null, $httpMethods = null) {}
+
+    /**
+     * Replaces placeholders from pattern returning a valid PCRE regular expression
+     *
+     * @param string $pattern
+     * @return string
+     */
+    public function compilePattern($pattern) {}
+
+    /**
+     * Set one or more HTTP methods that constraint the matching of the route
+     *
+     * <code>
+     * $route->via("GET");
+     *
+     * $route->via(
+     *     [
+     *         "GET",
+     *         "POST",
+     *     ]
+     * );
+     * </code>
+     *
+     * @param mixed $httpMethods
+     * @return Route
+     */
+    public function via($httpMethods) {}
+
+    /**
+     * Extracts parameters from a string
+     *
+     * @param string $pattern
+     * @return array|bool
+     */
+    public function extractNamedParams($pattern) {}
+
+    /**
+     * Reconfigure the route adding a new pattern and a set of paths
+     *
+     * @param string $pattern
+     * @param mixed $paths
+     */
+    public function reConfigure($pattern, $paths = null) {}
+
+    /**
+     * Returns routePaths
+     *
+     * @param mixed $paths
+     * @return array
+     */
+    public static function getRoutePaths($paths = null) {}
+
+    /**
+     * Returns the route's name
+     *
+     * @return string
+     */
+    public function getName() {}
+
+    /**
+     * Sets the route's name
+     *
+     * <code>
+     * $router->add(
+     *     "/about",
+     *     [
+     *         "controller" => "about",
+     *     ]
+     * )->setName("about");
+     * </code>
+     *
+     * @param string $name
+     * @return Route
+     */
+    public function setName($name) {}
 
     /**
      * Sets a callback that is called if the route is matched.
      * The developer can implement any arbitrary conditions here
      * If the callback returns false the route is treated as not matched
      *
-     * ```php
+     * <code>
      * $router->add(
      *     "/login",
      *     [
@@ -80,37 +155,12 @@ class Route implements \Phalcon\Mvc\Router\RouteInterface
      *         return true;
      *     }
      * );
-     * ```
+     * </code>
      *
      * @param mixed $callback
-     * @return RouteInterface
+     * @return Route
      */
-    public function beforeMatch($callback): RouteInterface {}
-
-    /**
-     * Replaces placeholders from pattern returning a valid PCRE regular expression
-     *
-     * @param string $pattern
-     * @return string
-     */
-    public function compilePattern(string $pattern): string {}
-
-    /**
-     * {@inheritdoc}
-     *
-     * @param string $name
-     * @param mixed $converter
-     * @return RouteInterface
-     */
-    public function convert(string $name, $converter): RouteInterface {}
-
-    /**
-     * Extracts parameters from a string
-     *
-     * @param string $pattern
-     * @return array|bool
-     */
-    public function extractNamedParams(string $pattern) {}
+    public function beforeMatch($callback) {}
 
     /**
      * Returns the 'before match' callback if any
@@ -120,39 +170,23 @@ class Route implements \Phalcon\Mvc\Router\RouteInterface
     public function getBeforeMatch() {}
 
     /**
-     * Returns the route's compiled pattern
+     * Allows to set a callback to handle the request directly in the route
      *
-     * @return string
-     */
-    public function getCompiledPattern(): string {}
-
-    /**
-     * Returns the router converter
+     * <code>
+     * $router->add(
+     *     "/help",
+     *     []
+     * )->match(
+     *     function () {
+     *         return $this->getResponse()->redirect("https://support.google.com/", true);
+     *     }
+     * );
+     * </code>
      *
-     * @return array
+     * @param mixed $callback
+     * @return Route
      */
-    public function getConverters(): array {}
-
-    /**
-     * Returns the group associated with the route
-     *
-     * @return null|GroupInterface
-     */
-    public function getGroup(): ?GroupInterface {}
-
-    /**
-     * Returns the HTTP methods that constraint matching the route
-     *
-     * @return array|string
-     */
-    public function getHttpMethods() {}
-
-    /**
-     * Returns the hostname restriction if any
-     *
-     * @return string
-     */
-    public function getHostname(): string {}
+    public function match($callback) {}
 
     /**
      * Returns the 'match' callback if any
@@ -162,153 +196,137 @@ class Route implements \Phalcon\Mvc\Router\RouteInterface
     public function getMatch() {}
 
     /**
-     * Returns the route's name
+     * Returns the route's id
      *
      * @return string
      */
-    public function getName(): string {}
-
-    /**
-     * Returns the paths
-     *
-     * @return array
-     */
-    public function getPaths(): array {}
+    public function getRouteId() {}
 
     /**
      * Returns the route's pattern
      *
      * @return string
      */
-    public function getPattern(): string {}
+    public function getPattern() {}
+
+    /**
+     * Returns the route's compiled pattern
+     *
+     * @return string
+     */
+    public function getCompiledPattern() {}
+
+    /**
+     * Returns the paths
+     *
+     * @return array
+     */
+    public function getPaths() {}
 
     /**
      * Returns the paths using positions as keys and names as values
      *
      * @return array
      */
-    public function getReversedPaths(): array {}
+    public function getReversedPaths() {}
 
     /**
-     * Returns the route's id
+     * Sets a set of HTTP methods that constraint the matching of the route (alias of via)
+     *
+     * <code>
+     * $route->setHttpMethods("GET");
+     * $route->setHttpMethods(["GET", "POST"]);
+     * </code>
+     *
+     * @param mixed $httpMethods
+     * @return RouteInterface
+     */
+    public function setHttpMethods($httpMethods) {}
+
+    /**
+     * Returns the HTTP methods that constraint matching the route
+     *
+     * @return array|string
+     */
+    public function getHttpMethods() {}
+
+    /**
+     * Sets a hostname restriction to the route
+     *
+     * <code>
+     * $route->setHostname("localhost");
+     * </code>
+     *
+     * @param string $hostname
+     * @return RouteInterface
+     */
+    public function setHostname($hostname) {}
+
+    /**
+     * Returns the hostname restriction if any
      *
      * @return string
      */
-    public function getRouteId(): string {}
-
-    /**
-     * Returns routePaths
-     *
-     * @param mixed $paths
-     * @return array
-     */
-    public static function getRoutePaths($paths = null): array {}
-
-    /**
-     * Allows to set a callback to handle the request directly in the route
-     *
-     * ```php
-     * $router->add(
-     *     "/help",
-     *     []
-     * )->match(
-     *     function () {
-     *         return $this->getResponse()->redirect("https://support.google.com/", true);
-     *     }
-     * );
-     * ```
-     *
-     * @param mixed $callback
-     * @return RouteInterface
-     */
-    public function match($callback): RouteInterface {}
-
-    /**
-     * Reconfigure the route adding a new pattern and a set of paths
-     *
-     * @param string $pattern
-     * @param mixed $paths
-     */
-    public function reConfigure(string $pattern, $paths = null) {}
-
-    /**
-     * Resets the internal route id generator
-     */
-    public static function reset() {}
+    public function getHostname() {}
 
     /**
      * Sets the group associated with the route
      *
      * @param GroupInterface $group
-     * @return RouteInterface
+     * @return Route
      */
-    public function setGroup(GroupInterface $group): RouteInterface {}
+    public function setGroup(GroupInterface $group) {}
 
     /**
-     * Sets a set of HTTP methods that constraint the matching of the route (alias of via)
+     * Returns the group associated with the route
      *
-     * ```php
-     * $route->setHttpMethods("GET");
-     *
-     * $route->setHttpMethods(
-     *     [
-     *         "GET",
-     *         "POST",
-     *     ]
-     * );
-     * ```
-     *
-     * @param mixed $httpMethods
-     * @return RouteInterface
+     * @return null|GroupInterface
      */
-    public function setHttpMethods($httpMethods): RouteInterface {}
+    public function getGroup() {}
 
     /**
-     * Sets a hostname restriction to the route
+     * Adds a converter to perform an additional transformation for certain parameter
      *
-     * ```php
-     * $route->setHostname("localhost");
-     * ```
+     * <code>
+     * $router = new Phalcon\Mvc\Router(false); //create Router without default routes
+     * $route = $router->add("/catalog/([a-zA-Z0-9\_\-]+)/([^\?]+)", [
+     *    "controller" => "catalog",
+     *    "action" => "show",
+     *    "name" => 1,
+     *    "params_" => 2,
+     * ]);
      *
-     * @param string $hostname
-     * @return RouteInterface
-     */
-    public function setHostname(string $hostname): RouteInterface {}
-
-    /**
-     * Sets the route's name
+     * //additional parsing
+     * $route->convert(
+     *    'params_',
+     *    function ($string) {
+     *        $array = explode('/', $string);
+     *        array_walk($array, function (&$string) {
+     *            $string = explode('-', $string);
+     *        });
      *
-     * ```php
-     * $router->add(
-     *     "/about",
-     *     [
-     *         "controller" => "about",
-     *     ]
-     * )->setName("about");
-     * ```
+     *        return $array;
+     *    });
+     * $router->handle("https://site.com/controller_name/param1-val1-val2/param2-val3");
+     * //result is: `["params_"] = [["param1","val1","val2"], ["param2","val3"]]`
+     * </code>
      *
      * @param string $name
-     * @return RouteInterface
+     * @param mixed $converter
+     * @return Route
      */
-    public function setName(string $name): RouteInterface {}
+    public function convert($name, $converter) {}
 
     /**
-     * Set one or more HTTP methods that constraint the matching of the route
+     * Returns the router converter
      *
-     * ```php
-     * $route->via("GET");
-     *
-     * $route->via(
-     *     [
-     *         "GET",
-     *         "POST",
-     *     ]
-     * );
-     * ```
-     *
-     * @param mixed $httpMethods
-     * @return RouteInterface
+     * @return array
      */
-    public function via($httpMethods): RouteInterface {}
+    public function getConverters() {}
+
+    /**
+     * Resets the internal route id generator
+     */
+    public static function reset() {}
 
 }

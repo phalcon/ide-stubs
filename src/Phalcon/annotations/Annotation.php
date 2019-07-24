@@ -3,30 +3,32 @@
 namespace Phalcon\Annotations;
 
 /**
+ * Phalcon\Annotations\Annotation
+ *
  * Represents a single annotation in an annotations collection
  */
 class Annotation
 {
     /**
+     * Annotation Name
+     *
+     * @var string
+     */
+    protected $_name;
+
+    /**
      * Annotation Arguments
      *
-     * @var array
+     * @var string
      */
-    protected $arguments;
+    protected $_arguments;
 
     /**
      * Annotation ExprArguments
      *
      * @var string
      */
-    protected $exprArguments;
-
-    /**
-     * Annotation Name
-     *
-     * @var string
-     */
-    protected $name;
+    protected $_exprArguments;
 
 
     /**
@@ -37,25 +39,11 @@ class Annotation
     public function __construct(array $reflectionData) {}
 
     /**
-     * Returns an argument in a specific position
+     * Returns the annotation's name
      *
-     * @param mixed $position
+     * @return string
      */
-    public function getArgument($position) {}
-
-    /**
-     * Returns the expression arguments
-     *
-     * @return array
-     */
-    public function getArguments(): array {}
-
-    /**
-     * Returns the expression arguments without resolving
-     *
-     * @return array
-     */
-    public function getExprArguments(): array {}
+    public function getName() {}
 
     /**
      * Resolves an annotation expression
@@ -66,18 +54,49 @@ class Annotation
     public function getExpression(array $expr) {}
 
     /**
-     * Returns the annotation's name
+     * Returns the expression arguments without resolving
      *
-     * @return string
+     * @return array
      */
-    public function getName(): string {}
+    public function getExprArguments() {}
+
+    /**
+     * Returns the expression arguments
+     *
+     * @return array
+     */
+    public function getArguments() {}
+
+    /**
+     * Returns the number of arguments that the annotation has
+     *
+     * @return int
+     */
+    public function numberArguments() {}
+
+    /**
+     * Returns an argument in a specific position
+     *
+     * @param int|string $position
+     * @return mixed
+     */
+    public function getArgument($position) {}
+
+    /**
+     * Returns an argument in a specific position
+     *
+     * @param int|string $position
+     * @return bool
+     */
+    public function hasArgument($position) {}
 
     /**
      * Returns a named argument
      *
      * @param string $name
+     * @return mixed
      */
-    public function getNamedArgument(string $name) {}
+    public function getNamedArgument($name) {}
 
     /**
      * Returns a named parameter
@@ -85,21 +104,6 @@ class Annotation
      * @param string $name
      * @return mixed
      */
-    public function getNamedParameter(string $name) {}
-
-    /**
-     * Returns an argument in a specific position
-     *
-     * @param mixed $position
-     * @return bool
-     */
-    public function hasArgument($position): bool {}
-
-    /**
-     * Returns the number of arguments that the annotation has
-     *
-     * @return int
-     */
-    public function numberArguments(): int {}
+    public function getNamedParameter($name) {}
 
 }

@@ -7,7 +7,7 @@ namespace Phalcon\Logger\Adapter;
  *
  * Sends logs to the system logger
  *
- * ```php
+ * <code>
  * use Phalcon\Logger;
  * use Phalcon\Logger\Adapter\Syslog;
  *
@@ -23,36 +23,12 @@ namespace Phalcon\Logger\Adapter;
  * $logger->log("This is a message");
  * $logger->log(Logger::ERROR, "This is an error");
  * $logger->error("This is another error");
- * ```
+ * </code>
  */
-class Syslog extends \Phalcon\Logger\Adapter\AbstractAdapter
+class Syslog extends \Phalcon\Logger\Adapter
 {
-    /**
-     * Name of the default formatter class
-     *
-     * @var string
-     */
-    protected $defaultFormatter = 'Syslog';
 
-    /**
-     * @var int
-     */
-    protected $facility = 0;
-
-    /**
-     * @var string
-     */
-    protected $name = '';
-
-    /**
-     * @var bool
-     */
-    protected $opened = false;
-
-    /**
-     * @var int
-     */
-    protected $option = 0;
+    protected $_opened = false;
 
 
     /**
@@ -61,28 +37,30 @@ class Syslog extends \Phalcon\Logger\Adapter\AbstractAdapter
      * @param string $name
      * @param array $options
      */
-    public function __construct(string $name, array $options = array()) {}
+    public function __construct($name, $options = null) {}
+
+    /**
+     * Returns the internal formatter
+     *
+     * @return \Phalcon\Logger\FormatterInterface
+     */
+    public function getFormatter() {}
+
+    /**
+     * Writes the log to the stream itself
+     *
+     * @param string $message
+     * @param int $type
+     * @param int $time
+     * @param array $context
+     */
+    public function logInternal($message, $type, $time, array $context) {}
 
     /**
      * Closes the logger
      *
      * @return bool
      */
-    public function close(): bool {}
-
-    /**
-     * Processes the message i.e. writes it to the syslog
-     *
-     * @param \Phalcon\Logger\Item $item
-     */
-    public function process(\Phalcon\Logger\Item $item) {}
-
-    /**
-     * Translates a Logger level to a Syslog level
-     *
-     * @param string $level
-     * @return int
-     */
-    private function logLevelToSyslog(string $level): int {}
+    public function close() {}
 
 }

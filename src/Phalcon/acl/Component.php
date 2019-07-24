@@ -2,53 +2,46 @@
 
 namespace Phalcon\Acl;
 
+use Phalcon\Acl\Exception;
+
 /**
+ * Phalcon\Acl\Component
+ *
  * This class defines component entity and its description
  */
-class Component implements \Phalcon\Acl\ComponentInterface
+class Component implements ComponentInterface
 {
+	/**
+	 * Component description
+	 * @var string
+	 */
+	private $description;
+
+	/**
+	 * Component name
+	 * @var string
+	 */
+	private $name;
+
     /**
-     * Component description
-     *
-     * @var string
+     * Phalcon\Acl\Component constructor
+     * @param string $name
+     * @param string|null $description
      */
-    private $description;
+	public function __construct(string $name, string $description = null) {}
 
     /**
-     * Component name
-     *
-     * @var string
-     */
-    private $name;
-
-
-    /**
-     * Component description
-     *
-     * @return string
+     * Returns component description
      */
     public function getDescription(): string {}
 
     /**
-     * Component name
-     *
-     * @return string
+     * Returns the component name
      */
     public function getName(): string {}
 
     /**
-     * Component name
-     *
-     * @return string
+     * Magic method __toString
      */
     public function __toString(): string {}
-
-    /**
-     * Phalcon\Acl\Component constructor
-     *
-     * @param string $name
-     * @param string $description
-     */
-    public function __construct(string $name, string $description = null) {}
-
 }

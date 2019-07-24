@@ -7,7 +7,7 @@ namespace Phalcon\Http\Request;
  *
  * Provides OO wrappers to the $_FILES superglobal
  *
- * ```php
+ * <code>
  * use Phalcon\Mvc\Controller;
  *
  * class PostsController extends Controller
@@ -20,58 +20,58 @@ namespace Phalcon\Http\Request;
  *             foreach ($this->request->getUploadedFiles() as $file) {
  *                 echo $file->getName(), " ", $file->getSize(), "\n";
  *             }
- *         }
+ *        }
  *     }
  * }
- * ```
+ * </code>
  */
 class File implements \Phalcon\Http\Request\FileInterface
 {
+
+    protected $_name;
+
+
+    protected $_tmp;
+
+
+    protected $_size;
+
+
+    protected $_type;
+
+
+    protected $_realType;
+
     /**
      * @var string|null
      */
-    protected $error;
+    protected $_error;
+
+    /**
+     * @var string|null
+     */
+    protected $_key;
 
     /**
      * @var string
      */
-    protected $extension;
-
-    /**
-     * @var string|null
-     */
-    protected $key;
-
-
-    protected $name;
-
-
-    protected $realType;
-
-
-    protected $size;
-
-
-    protected $tmp;
-
-
-    protected $type;
+    protected $_extension;
 
 
     /**
      * @return string|null
      */
-    public function getError(): ?string {}
+    public function getError() {}
+
+    /**
+     * @return string|null
+     */
+    public function getKey() {}
 
     /**
      * @return string
      */
-    public function getExtension(): string {}
-
-    /**
-     * @return string|null
-     */
-    public function getKey(): ?string {}
+    public function getExtension() {}
 
     /**
      * Phalcon\Http\Request\File constructor
@@ -82,32 +82,25 @@ class File implements \Phalcon\Http\Request\FileInterface
     public function __construct(array $file, $key = null) {}
 
     /**
-     * Returns the real name of the uploaded file
-     *
-     * @return string
-     */
-    public function getName(): string {}
-
-    /**
-     * Gets the real mime type of the upload file using finfo
-     *
-     * @return string
-     */
-    public function getRealType(): string {}
-
-    /**
      * Returns the file size of the uploaded file
      *
      * @return int
      */
-    public function getSize(): int {}
+    public function getSize() {}
+
+    /**
+     * Returns the real name of the uploaded file
+     *
+     * @return string
+     */
+    public function getName() {}
 
     /**
      * Returns the temporary name of the uploaded file
      *
      * @return string
      */
-    public function getTempName(): string {}
+    public function getTempName() {}
 
     /**
      * Returns the mime type reported by the browser
@@ -115,14 +108,21 @@ class File implements \Phalcon\Http\Request\FileInterface
      *
      * @return string
      */
-    public function getType(): string {}
+    public function getType() {}
+
+    /**
+     * Gets the real mime type of the upload file using finfo
+     *
+     * @return string
+     */
+    public function getRealType() {}
 
     /**
      * Checks whether the file has been uploaded via Post.
      *
      * @return bool
      */
-    public function isUploadedFile(): bool {}
+    public function isUploadedFile() {}
 
     /**
      * Moves the temporary file to a destination within the application
@@ -130,6 +130,6 @@ class File implements \Phalcon\Http\Request\FileInterface
      * @param string $destination
      * @return bool
      */
-    public function moveTo(string $destination): bool {}
+    public function moveTo($destination) {}
 
 }

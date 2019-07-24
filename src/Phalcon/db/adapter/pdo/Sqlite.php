@@ -3,9 +3,11 @@
 namespace Phalcon\Db\Adapter\Pdo;
 
 /**
+ * Phalcon\Db\Adapter\Pdo\Sqlite
+ *
  * Specific functions for the Sqlite database system
  *
- * ```php
+ * <code>
  * use Phalcon\Db\Adapter\Pdo\Sqlite;
  *
  * $connection = new Sqlite(
@@ -13,81 +15,79 @@ namespace Phalcon\Db\Adapter\Pdo;
  *         "dbname" => "/tmp/test.sqlite",
  *     ]
  * );
- * ```
+ * </code>
  */
-class Sqlite extends \Phalcon\Db\Adapter\Pdo\AbstractPdo
+class Sqlite extends \Phalcon\Db\Adapter\Pdo
 {
-    /**
-     * @var string
-     */
-    protected $dialectType = 'sqlite';
 
-    /**
-     * @var string
-     */
-    protected $type = 'sqlite';
+    protected $_type = 'sqlite';
+
+
+    protected $_dialectType = 'sqlite';
 
 
     /**
-     * Constructor for Phalcon\Db\Adapter\Pdo\Sqlite
-     *
-     * @param array $descriptor
-     */
-    public function __construct(array $descriptor) {}
-
-    /**
-     * This method is automatically called in Phalcon\Db\Adapter\Pdo
-     * constructor. Call it when you need to restore a database connection.
+     * This method is automatically called in Phalcon\Db\Adapter\Pdo constructor.
+     * Call it when you need to restore a database connection.
      *
      * @param array $descriptor
      * @return bool
      */
-    public function connect(array $descriptor = null): bool {}
+    public function connect(array $descriptor = null) {}
 
     /**
      * Returns an array of Phalcon\Db\Column objects describing a table
      *
-     * ```php
+     * <code>
      * print_r(
      *     $connection->describeColumns("posts")
      * );
-     * ```
+     * </code>
      *
      * @param string $table
      * @param string $schema
-     * @return array|\Phalcon\Db\ColumnInterface[]
+     * @return \Phalcon\Db\ColumnInterface[]
      */
-    public function describeColumns(string $table, string $schema = null): array {}
+    public function describeColumns($table, $schema = null) {}
 
     /**
      * Lists table indexes
      *
-     * ```php
+     * <code>
      * print_r(
      *     $connection->describeIndexes("robots_parts")
      * );
-     * ```
+     * </code>
      *
      * @param string $table
      * @param string $schema
-     * @return array|\Phalcon\Db\IndexInterface[]
+     * @return \Phalcon\Db\IndexInterface[]
      */
-    public function describeIndexes(string $table, string $schema = null): array {}
+    public function describeIndexes($table, $schema = null) {}
 
     /**
      * Lists table references
      *
+     * @param	string table
+     * @param	string schema
+     * @return	Phalcon\Db\ReferenceInterface[]
      * @param string $table
      * @param string $schema
-     * @return array|\Phalcon\Db\ReferenceInterface[]
+     * @return \Phalcon\Db\ReferenceInterface[]
      */
-    public function describeReferences(string $table, string $schema = null): array {}
+    public function describeReferences($table, $schema = null) {}
 
     /**
-     * Returns the default value to make the RBDM use the default value declared
-     * in the table definition
+     * Check whether the database system requires an explicit value for identity columns
      *
-     * ```php
+     * @return bool
+     */
+    public function useExplicitIdValue() {}
+
+    /**
+     * Returns the default value to make the RBDM use the default value declared in the table definition
+     *
+     * <code>
      * // Inserting a new robot with a valid default value for the column 'year'
      * $success = $connection->insert(
      *     "robots",
@@ -100,25 +100,10 @@ class Sqlite extends \Phalcon\Db\Adapter\Pdo\AbstractPdo
      *         "year",
      *     ]
      * );
-     * ```
+     * </code>
      *
      * @return \Phalcon\Db\RawValue
      */
-    public function getDefaultValue(): RawValue {}
-
-    /**
-     * Check whether the database system requires an explicit value for identity
-     * columns
-     *
-     * @return bool
-     */
-    public function useExplicitIdValue(): bool {}
-
-    /**
-     * Returns PDO adapter DSN defaults as a key-value map.
-     *
-     * @return array
-     */
-    protected function getDsnDefaults(): array {}
+    public function getDefaultValue() {}
 
 }

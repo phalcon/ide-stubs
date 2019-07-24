@@ -3,64 +3,76 @@
 namespace Phalcon\Debug;
 
 /**
+ * Phalcon\Debug\Dump
+ *
  * Dumps information about a variable(s)
  *
- * ```php
+ * <code>
  * $foo = 123;
  *
  * echo (new \Phalcon\Debug\Dump())->variable($foo, "foo");
- * ```
+ * </code>
  *
- * ```php
+ * <code>
  * $foo = "string";
  * $bar = ["key" => "value"];
  * $baz = new stdClass();
  *
  * echo (new \Phalcon\Debug\Dump())->variables($foo, $bar, $baz);
- * ```
+ * </code>
  */
 class Dump
 {
-    /**
-     * @var bool
-     */
-    protected $detailed = false;
 
-    /**
-     * @var array
-     */
-    protected $methods = array();
-
-    /**
-     * @var array
-     */
-    protected $styles = array();
+    protected $_detailed = false;
 
 
-    /**
-     * @return bool
-     */
-    public function getDetailed(): bool {}
+    protected $_methods = array();
+
+
+    protected $_styles;
+
+
+
+    public function getDetailed() {}
 
     /**
-     * @param bool $detailed
+     * @param mixed $detailed
      */
-    public function setDetailed(bool $detailed) {}
+    public function setDetailed($detailed) {}
 
     /**
      * Phalcon\Debug\Dump constructor
      *
      * @param array $styles
-     * @param bool $detailed
+     * @param boolean $detailed debug object's private and protected properties
      */
-    public function __construct(array $styles = array(), bool $detailed = false) {}
+    public function __construct(array $styles = array(), $detailed = false) {}
 
     /**
      * Alias of variables() method
      *
+     * @param mixed $variable
+     * @param ...
      * @return string
      */
-    public function all(): string {}
+    public function all() {}
+
+    /**
+     * Get style for type
+     *
+     * @param string $type
+     * @return string
+     */
+    protected function getStyle($type) {}
+
+    /**
+     * Set styles for vars type
+     *
+     * @param array $styles
+     * @return array
+     */
+    public function setStyles(array $styles = array()) {}
 
     /**
      * Alias of variable() method
@@ -69,20 +81,53 @@ class Dump
      * @param string $name
      * @return string
      */
-    public function one($variable, string $name = null): string {}
+    public function one($variable, $name = null) {}
 
     /**
-     * Set styles for vars type
+     * Prepare an HTML string of information about a single variable.
      *
-     * @param array $styles
-     * @return array
+     * @param mixed $variable
+     * @param string $name
+     * @param int $tab
+     * @return string
      */
-    public function setStyles(array $styles = array()): array {}
+    protected function output($variable, $name = null, $tab = 1) {}
+
+    /**
+     * Returns an HTML string of information about a single variable.
+     *
+     * <code>
+     * echo (new \Phalcon\Debug\Dump())->variable($foo, "foo");
+     * </code>
+     *
+     * @param mixed $variable
+     * @param string $name
+     * @return string
+     */
+    public function variable($variable, $name = null) {}
+
+    /**
+     * Returns an HTML string of debugging information about any number of
+     * variables, each wrapped in a "pre" tag.
+     *
+     * <code>
+     * $foo = "string";
+     * $bar = ["key" => "value"];
+     * $baz = new stdClass();
+     *
+     * echo (new \Phalcon\Debug\Dump())->variables($foo, $bar, $baz);
+     * </code>
+     *
+     * @param mixed $variable
+     * @param ...
+     * @return string
+     */
+    public function variables() {}
 
     /**
      * Returns an JSON string of information about a single variable.
      *
-     * ```php
+     * <code>
      * $foo = [
      *     "key" => "value",
      * ];
@@ -93,58 +138,11 @@ class Dump
      * $foo->bar = "buz";
      *
      * echo (new \Phalcon\Debug\Dump())->toJson($foo);
-     * ```
+     * </code>
      *
      * @param mixed $variable
      * @return string
      */
-    public function toJson($variable): string {}
-
-    /**
-     * Returns an HTML string of information about a single variable.
-     *
-     * ```php
-     * echo (new \Phalcon\Debug\Dump())->variable($foo, "foo");
-     * ```
-     *
-     * @param mixed $variable
-     * @param string $name
-     * @return string
-     */
-    public function variable($variable, string $name = null): string {}
-
-    /**
-     * Returns an HTML string of debugging information about any number of
-     * variables, each wrapped in a "pre" tag.
-     *
-     * ```php
-     * $foo = "string";
-     * $bar = ["key" => "value"];
-     * $baz = new stdClass();
-     *
-     * echo (new \Phalcon\Debug\Dump())->variables($foo, $bar, $baz);
-     * ```
-     *
-     * @return string
-     */
-    public function variables(): string {}
-
-    /**
-     * Get style for type
-     *
-     * @param string $type
-     * @return string
-     */
-    protected function getStyle(string $type): string {}
-
-    /**
-     * Prepare an HTML string of information about a single variable.
-     *
-     * @param mixed $variable
-     * @param string $name
-     * @param int $tab
-     * @return string
-     */
-    protected function output($variable, string $name = null, int $tab = 1): string {}
+    public function toJson($variable) {}
 
 }

@@ -3,82 +3,20 @@
 namespace Phalcon\Cli\Router;
 
 /**
+ * Phalcon\Cli\Router\RouteInterface
+ *
  * Interface for Phalcon\Cli\Router\Route
  */
 interface RouteInterface
 {
 
     /**
-     * Replaces placeholders from pattern returning a valid PCRE regular
-     * expression
+     * Replaces placeholders from pattern returning a valid PCRE regular expression
      *
      * @param string $pattern
      * @return string
      */
-    public function compilePattern(string $pattern): string;
-
-    /**
-     * Set the routing delimiter
-     *
-     * @param string $delimiter
-     */
-    public static function delimiter(string $delimiter = null);
-
-    /**
-     * Returns the route's pattern
-     *
-     * @return string
-     */
-    public function getCompiledPattern(): string;
-
-    /**
-     * Get routing delimiter
-     *
-     * @return string
-     */
-    public static function getDelimiter(): string;
-
-    /**
-     * Returns the route's description
-     *
-     * @return string
-     */
-    public function getDescription(): string;
-
-    /**
-     * Returns the route's name
-     *
-     * @return string
-     */
-    public function getName(): string;
-
-    /**
-     * Returns the paths
-     *
-     * @return array
-     */
-    public function getPaths(): array;
-
-    /**
-     * Returns the route's pattern
-     *
-     * @return string
-     */
-    public function getPattern(): string;
-
-    /**
-     * Returns the paths using positions as keys and names as values
-     *
-     * @return array
-     */
-    public function getReversedPaths(): array;
-
-    /**
-     * Returns the route's id
-     *
-     * @return string
-     */
-    public function getRouteId(): string;
+    public function compilePattern($pattern);
 
     /**
      * Reconfigure the route adding a new pattern and a set of paths
@@ -86,27 +24,60 @@ interface RouteInterface
      * @param string $pattern
      * @param mixed $paths
      */
-    public function reConfigure(string $pattern, $paths = null);
+    public function reConfigure($pattern, $paths = null);
 
     /**
-     * Resets the internal route id generator
-     */
-    public static function reset();
-
-    /**
-     * Sets the route's description
+     * Returns the route's name
      *
-     * @param string $description
-     * @return RouteInterface
+     * @return string
      */
-    public function setDescription(string $description): RouteInterface;
+    public function getName();
 
     /**
      * Sets the route's name
      *
      * @param string $name
-     * @return RouteInterface
      */
-    public function setName(string $name): RouteInterface;
+    public function setName($name);
+
+    /**
+     * Returns the route's id
+     *
+     * @return string
+     */
+    public function getRouteId();
+
+    /**
+     * Returns the route's pattern
+     *
+     * @return string
+     */
+    public function getPattern();
+
+    /**
+     * Returns the route's pattern
+     *
+     * @return string
+     */
+    public function getCompiledPattern();
+
+    /**
+     * Returns the paths
+     *
+     * @return array
+     */
+    public function getPaths();
+
+    /**
+     * Returns the paths using positions as keys and names as values
+     *
+     * @return array
+     */
+    public function getReversedPaths();
+
+    /**
+     * Resets the internal route id generator
+     */
+    public static function reset();
 
 }

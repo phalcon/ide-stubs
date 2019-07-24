@@ -14,9 +14,9 @@ interface EntityInterface
      * Reads an attribute value by its name
      *
      * @param string $attribute
-     * @return mixed|null
+     * @return mixed
      */
-    public function readAttribute(string $attribute): ?;
+    public function readAttribute($attribute);
 
     /**
      * Writes an attribute value by its name
@@ -24,6 +24,6 @@ interface EntityInterface
      * @param string $attribute
      * @param mixed $value
      */
-    public function writeAttribute(string $attribute, $value);
+    public function writeAttribute($attribute, $value);
 
 }

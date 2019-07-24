@@ -9,10 +9,10 @@ namespace Phalcon\Filter\Sanitize;
  */
 class Striptags
 {
-
-    /**
-     * @param string $input
-     */
-    public function __invoke(string $input) {}
-
+	/**
+	 * @var mixed input The text to sanitize
+	 */
+	public function __invoke(string $input)
+	{
+	}
 }

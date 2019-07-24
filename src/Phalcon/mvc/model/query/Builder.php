@@ -7,11 +7,9 @@ namespace Phalcon\Mvc\Model\Query;
  *
  * Helps to create PHQL queries using an OO interface
  *
- * ```php
+ * <code>
  * $params = [
- *     "models"     => [
- *         Users::class,
- *     ],
+ *     "models"     => ["Users"],
  *     "columns"    => ["id", "name", "status"],
  *     "conditions" => [
  *         [
@@ -36,176 +34,111 @@ namespace Phalcon\Mvc\Model\Query;
  * ];
  *
  * $queryBuilder = new \Phalcon\Mvc\Model\Query\Builder($params);
- * ```
+ * </code>
  */
 class Builder implements \Phalcon\Mvc\Model\Query\BuilderInterface, \Phalcon\Di\InjectionAwareInterface
 {
 
-    protected $bindParams;
+    protected $_dependencyInjector;
 
 
-    protected $bindTypes;
+    protected $_columns;
 
 
-    protected $columns;
+    protected $_models;
 
 
-    protected $conditions;
-
-
-    protected $container;
-
-
-    protected $distinct;
-
-
-    protected $forUpdate;
+    protected $_joins;
 
     /**
-     * @var array
+     * @deprecated Will be removed in version 4.0.0
      */
-    protected $group;
+    protected $_with;
 
 
-    protected $having;
+    protected $_conditions;
 
 
-    protected $hiddenParamNumber = 0;
+    protected $_group;
 
 
-    protected $joins;
+    protected $_having;
 
 
-    protected $limit;
+    protected $_order;
 
 
-    protected $models;
+    protected $_limit;
 
 
-    protected $offset;
+    protected $_offset;
 
 
-    protected $order;
+    protected $_forUpdate;
 
 
-    protected $sharedLock;
+    protected $_sharedLock;
+
+
+    protected $_bindParams;
+
+
+    protected $_bindTypes;
+
+
+    protected $_distinct;
+
+
+    protected $_hiddenParamNumber = 0;
 
 
     /**
      * Phalcon\Mvc\Model\Query\Builder constructor
      *
      * @param mixed $params
-     * @param \Phalcon\Di\DiInterface $container
+     * @param \Phalcon\DiInterface $dependencyInjector
      */
-    public function __construct($params = null, \Phalcon\Di\DiInterface $container = null) {}
+    public function __construct($params = null, \Phalcon\DiInterface $dependencyInjector = null) {}
 
     /**
-     * Add a model to take part of the query
+     * Sets the DependencyInjector container
      *
-     * ```php
-     * // Load data from models Robots
-     * $builder->addFrom(
-     *     Robots::class
-     * );
-     *
-     * // Load data from model 'Robots' using 'r' as alias in PHQL
-     * $builder->addFrom(
-     *     Robots::class,
-     *     "r"
-     * );
-     * ```
-     *
-     * @param string $model
-     * @param string $alias
-     * @return \Phalcon\Mvc\Model\Query\BuilderInterface
+     * @param \Phalcon\DiInterface $dependencyInjector
+     * @return Builder
      */
-    public function addFrom(string $model, string $alias = null): BuilderInterface {}
+    public function setDI(\Phalcon\DiInterface $dependencyInjector) {}
 
     /**
-     * Appends a condition to the current HAVING conditions clause using a AND operator
+     * Returns the DependencyInjector container
      *
-     * ```php
-     * $builder->andHaving("SUM(Robots.price) > 0");
-     *
-     * $builder->andHaving(
-     *     "SUM(Robots.price) > :sum:",
-     *     [
-     *         "sum" => 100,
-     *     ]
-     * );
-     * ```
-     *
-     * @param string $conditions
-     * @param array $bindParams
-     * @param array $bindTypes
-     * @return \Phalcon\Mvc\Model\Query\BuilderInterface
+     * @return \Phalcon\DiInterface
      */
-    public function andHaving(string $conditions, array $bindParams = array(), array $bindTypes = array()): BuilderInterface {}
+    public function getDI() {}
 
     /**
-     * Appends a condition to the current WHERE conditions using a AND operator
+     * Sets SELECT DISTINCT / SELECT ALL flag
      *
-     * ```php
-     * $builder->andWhere("name = 'Peter'");
+     * <code>
+     * $builder->distinct("status");
+     * $builder->distinct(null);
+     * </code>
      *
-     * $builder->andWhere(
-     *     "name = :name: AND id > :id:",
-     *     [
-     *         "name" => "Peter",
-     *         "id"   => 100,
-     *     ]
-     * );
-     * ```
-     *
-     * @param string $conditions
-     * @param array $bindParams
-     * @param array $bindTypes
-     * @return \Phalcon\Mvc\Model\Query\BuilderInterface
+     * @param mixed $distinct
+     * @return Builder
      */
-    public function andWhere(string $conditions, array $bindParams = array(), array $bindTypes = array()): BuilderInterface {}
+    public function distinct($distinct) {}
 
     /**
-     * Automatically escapes identifiers but only if they need to be escaped.
+     * Returns SELECT DISTINCT / SELECT ALL flag
      *
-     * @param string $identifier
-     * @return string
+     * @return bool
      */
-    final public function autoescape(string $identifier): string {}
-
-    /**
-     * Appends a BETWEEN condition to the current HAVING conditions clause
-     *
-     * ```php
-     * $builder->betweenHaving("SUM(Robots.price)", 100.25, 200.50);
-     * ```
-     *
-     * @param string $expr
-     * @param mixed $minimum
-     * @param mixed $maximum
-     * @param string $operator
-     * @return \Phalcon\Mvc\Model\Query\BuilderInterface
-     */
-    public function betweenHaving(string $expr, $minimum, $maximum, string $operator = BuilderInterface::OPERATOR_AND): BuilderInterface {}
-
-    /**
-     * Appends a BETWEEN condition to the current WHERE conditions
-     *
-     * ```php
-     * $builder->betweenWhere("price", 100.25, 200.50);
-     * ```
-     *
-     * @param string $expr
-     * @param mixed $minimum
-     * @param mixed $maximum
-     * @param string $operator
-     * @return \Phalcon\Mvc\Model\Query\BuilderInterface
-     */
-    public function betweenWhere(string $expr, $minimum, $maximum, string $operator = BuilderInterface::OPERATOR_AND): BuilderInterface {}
+    public function getDistinct() {}
 
     /**
      * Sets the columns to be queried
      *
-     * ```php
+     * <code>
      * $builder->columns("id, name");
      *
      * $builder->columns(
@@ -221,79 +154,12 @@ class Builder implements \Phalcon\Mvc\Model\Query\BuilderInterface, \Phalcon\Di\
      *         "number" => "COUNT()",
      *     ]
      * );
-     * ```
+     * </code>
      *
      * @param mixed $columns
-     * @return \Phalcon\Mvc\Model\Query\BuilderInterface
+     * @return Builder
      */
-    public function columns($columns): BuilderInterface {}
-
-    /**
-     * Sets SELECT DISTINCT / SELECT ALL flag
-     *
-     * ```php
-     * $builder->distinct("status");
-     * $builder->distinct(null);
-     * ```
-     *
-     * @param mixed $distinct
-     * @return \Phalcon\Mvc\Model\Query\BuilderInterface
-     */
-    public function distinct($distinct): BuilderInterface {}
-
-    /**
-     * Sets a FOR UPDATE clause
-     *
-     * ```php
-     * $builder->forUpdate(true);
-     * ```
-     *
-     * @param bool $forUpdate
-     * @return \Phalcon\Mvc\Model\Query\BuilderInterface
-     */
-    public function forUpdate(bool $forUpdate): BuilderInterface {}
-
-    /**
-     * Sets the models who makes part of the query
-     *
-     * ```php
-     * $builder->from(
-     *     Robots::class
-     * );
-     *
-     * $builder->from(
-     *     [
-     *         Robots::class,
-     *         RobotsParts::class,
-     *     ]
-     * );
-     *
-     * $builder->from(
-     *     [
-     *         "r"  => Robots::class,
-     *         "rp" => RobotsParts::class,
-     *     ]
-     * );
-     * ```
-     *
-     * @param mixed $models
-     * @return \Phalcon\Mvc\Model\Query\BuilderInterface
-     */
-    public function from($models): BuilderInterface {}
-
-    /**
-     * Returns default bind params
-     *
-     * @return array
-     */
-    public function getBindParams(): array {}
-
-    /**
-     * Returns default bind types
-     *
-     * @return array
-     */
-    public function getBindTypes(): array {}
+    public function columns($columns) {}
 
     /**
      * Return the columns to be queried
@@ -303,18 +169,50 @@ class Builder implements \Phalcon\Mvc\Model\Query\BuilderInterface, \Phalcon\Di\
     public function getColumns() {}
 
     /**
-     * Returns the DependencyInjector container
+     * Sets the models who makes part of the query
      *
-     * @return \Phalcon\Di\DiInterface
+     * <code>
+     * $builder->from("Robots");
+     *
+     * $builder->from(
+     *     [
+     *         "Robots",
+     *         "RobotsParts",
+     *     ]
+     * );
+     *
+     * $builder->from(
+     *     [
+     *         "r"  => "Robots",
+     *         "rp" => "RobotsParts",
+     *     ]
+     * );
+     * </code>
+     *
+     * @param mixed $models
+     * @return Builder
      */
-    public function getDI(): DiInterface {}
+    public function from($models) {}
 
     /**
-     * Returns SELECT DISTINCT / SELECT ALL flag
+     * Add a model to take part of the query
      *
-     * @return bool
+     * NOTE: The third parameter $with is deprecated and will be removed in future releases.
+     *
+     * <code>
+     * // Load data from models Robots
+     * $builder->addFrom("Robots");
+     *
+     * // Load data from model 'Robots' using 'r' as alias in PHQL
+     * $builder->addFrom("Robots", "r");
+     * </code>
+     *
+     * @param mixed $model
+     * @param mixed $alias
+     * @param mixed $with
+     * @return Builder
      */
-    public function getDistinct(): bool {}
+    public function addFrom($model, $alias = null, $with = null) {}
 
     /**
      * Return the models who makes part of the query
@@ -324,420 +222,91 @@ class Builder implements \Phalcon\Mvc\Model\Query\BuilderInterface, \Phalcon\Di\
     public function getFrom() {}
 
     /**
-     * Returns the GROUP BY clause
+     * Adds an :type: join (by default type - INNER) to the query
      *
-     * @return array
+     * <code>
+     * // Inner Join model 'Robots' with automatic conditions and alias
+     * $builder->join("Robots");
+     *
+     * // Inner Join model 'Robots' specifying conditions
+     * $builder->join("Robots", "Robots.id = RobotsParts.robots_id");
+     *
+     * // Inner Join model 'Robots' specifying conditions and alias
+     * $builder->join("Robots", "r.id = RobotsParts.robots_id", "r");
+     *
+     * // Left Join model 'Robots' specifying conditions, alias and type of join
+     * $builder->join("Robots", "r.id = RobotsParts.robots_id", "r", "LEFT");
+     * </code>
+     *
+     * @param string $model
+     * @param string $conditions
+     * @param string $alias
+     * @param string $type
+     * @return Builder
      */
-    public function getGroupBy(): array {}
+    public function join($model, $conditions = null, $alias = null, $type = null) {}
 
     /**
-     * Return the current having clause
+     * Adds an INNER join to the query
      *
-     * @return string
+     * <code>
+     * // Inner Join model 'Robots' with automatic conditions and alias
+     * $builder->innerJoin("Robots");
+     *
+     * // Inner Join model 'Robots' specifying conditions
+     * $builder->innerJoin("Robots", "Robots.id = RobotsParts.robots_id");
+     *
+     * // Inner Join model 'Robots' specifying conditions and alias
+     * $builder->innerJoin("Robots", "r.id = RobotsParts.robots_id", "r");
+     * </code>
+     *
+     * @param string $model
+     * @param string $conditions
+     * @param string $alias
+     * @param string $type
+     * @return Builder
      */
-    public function getHaving(): string {}
+    public function innerJoin($model, $conditions = null, $alias = null) {}
+
+    /**
+     * Adds a LEFT join to the query
+     *
+     * <code>
+     * $builder->leftJoin("Robots", "r.id = RobotsParts.robots_id", "r");
+     * </code>
+     *
+     * @param string $model
+     * @param string $conditions
+     * @param string $alias
+     * @return Builder
+     */
+    public function leftJoin($model, $conditions = null, $alias = null) {}
+
+    /**
+     * Adds a RIGHT join to the query
+     *
+     * <code>
+     * $builder->rightJoin("Robots", "r.id = RobotsParts.robots_id", "r");
+     * </code>
+     *
+     * @param string $model
+     * @param string $conditions
+     * @param string $alias
+     * @return Builder
+     */
+    public function rightJoin($model, $conditions = null, $alias = null) {}
 
     /**
      * Return join parts of the query
      *
      * @return array
      */
-    public function getJoins(): array {}
-
-    /**
-     * Returns the current LIMIT clause
-     *
-     * @return string|array
-     */
-    public function getLimit() {}
-
-    /**
-     * Returns the models involved in the query
-     *
-     * @return string|array|null
-     */
-    public function getModels() {}
-
-    /**
-     * Returns the current OFFSET clause
-     *
-     * @return int
-     */
-    public function getOffset(): int {}
-
-    /**
-     * Returns the set ORDER BY clause
-     *
-     * @return string|array
-     */
-    public function getOrderBy() {}
-
-    /**
-     * Returns a PHQL statement built based on the builder parameters
-     *
-     * @return string
-     */
-    final public function getPhql(): string {}
-
-    /**
-     * Returns the query built
-     *
-     * @return \Phalcon\Mvc\Model\QueryInterface
-     */
-    public function getQuery(): QueryInterface {}
-
-    /**
-     * Return the conditions for the query
-     *
-     * @return string|array
-     */
-    public function getWhere() {}
-
-    /**
-     * Sets a GROUP BY clause
-     *
-     * ```php
-     * $builder->groupBy(
-     *     [
-     *         "Robots.name",
-     *     ]
-     * );
-     * ```
-     *
-     * @param string|array $group
-     * @return \Phalcon\Mvc\Model\Query\BuilderInterface
-     */
-    public function groupBy($group): BuilderInterface {}
-
-    /**
-     * Sets the HAVING condition clause
-     *
-     * ```php
-     * $builder->having("SUM(Robots.price) > 0");
-     *
-     * $builder->having(
-     *     "SUM(Robots.price) > :sum:",
-     *     [
-     *         "sum" => 100,
-     *     ]
-     * );
-     * ```
-     *
-     * @param mixed $conditions
-     * @param array $bindParams
-     * @param array $bindTypes
-     * @return \Phalcon\Mvc\Model\Query\BuilderInterface
-     */
-    public function having($conditions, array $bindParams = array(), array $bindTypes = array()): BuilderInterface {}
-
-    /**
-     * Appends an IN condition to the current HAVING conditions clause
-     *
-     * ```php
-     * $builder->inHaving("SUM(Robots.price)", [100, 200]);
-     * ```
-     *
-     * @param string $expr
-     * @param array $values
-     * @param string $operator
-     * @return \Phalcon\Mvc\Model\Query\BuilderInterface
-     */
-    public function inHaving(string $expr, array $values, string $operator = BuilderInterface::OPERATOR_AND): BuilderInterface {}
-
-    /**
-     * Adds an INNER join to the query
-     *
-     * ```php
-     * // Inner Join model 'Robots' with automatic conditions and alias
-     * $builder->innerJoin(
-     *     Robots::class
-     * );
-     *
-     * // Inner Join model 'Robots' specifying conditions
-     * $builder->innerJoin(
-     *     Robots::class,
-     *     "Robots.id = RobotsParts.robots_id"
-     * );
-     *
-     * // Inner Join model 'Robots' specifying conditions and alias
-     * $builder->innerJoin(
-     *     Robots::class,
-     *     "r.id = RobotsParts.robots_id",
-     *     "r"
-     * );
-     * ```
-     *
-     * @param string $model
-     * @param string $conditions
-     * @param string $alias
-     * @return \Phalcon\Mvc\Model\Query\BuilderInterface
-     */
-    public function innerJoin(string $model, string $conditions = null, string $alias = null): BuilderInterface {}
-
-    /**
-     * Appends an IN condition to the current WHERE conditions
-     *
-     * ```php
-     * $builder->inWhere(
-     *     "id",
-     *     [1, 2, 3]
-     * );
-     * ```
-     *
-     * @param string $expr
-     * @param array $values
-     * @param string $operator
-     * @return \Phalcon\Mvc\Model\Query\BuilderInterface
-     */
-    public function inWhere(string $expr, array $values, string $operator = BuilderInterface::OPERATOR_AND): BuilderInterface {}
-
-    /**
-     * Adds an :type: join (by default type - INNER) to the query
-     *
-     * ```php
-     * // Inner Join model 'Robots' with automatic conditions and alias
-     * $builder->join(
-     *     Robots::class
-     * );
-     *
-     * // Inner Join model 'Robots' specifying conditions
-     * $builder->join(
-     *     Robots::class,
-     *     "Robots.id = RobotsParts.robots_id"
-     * );
-     *
-     * // Inner Join model 'Robots' specifying conditions and alias
-     * $builder->join(
-     *     Robots::class,
-     *     "r.id = RobotsParts.robots_id",
-     *     "r"
-     * );
-     *
-     * // Left Join model 'Robots' specifying conditions, alias and type of join
-     * $builder->join(
-     *     Robots::class,
-     *     "r.id = RobotsParts.robots_id",
-     *     "r",
-     *     "LEFT"
-     * );
-     * ```
-     *
-     * @param string $model
-     * @param string $conditions
-     * @param string $alias
-     * @param string $type
-     * @return \Phalcon\Mvc\Model\Query\BuilderInterface
-     */
-    public function join(string $model, string $conditions = null, string $alias = null, string $type = null): BuilderInterface {}
-
-    /**
-     * Adds a LEFT join to the query
-     *
-     * ```php
-     * $builder->leftJoin(
-     *     Robots::class,
-     *     "r.id = RobotsParts.robots_id",
-     *     "r"
-     * );
-     * ```
-     *
-     * @param string $model
-     * @param string $conditions
-     * @param string $alias
-     * @return \Phalcon\Mvc\Model\Query\BuilderInterface
-     */
-    public function leftJoin(string $model, string $conditions = null, string $alias = null): BuilderInterface {}
-
-    /**
-     * Sets a LIMIT clause, optionally an offset clause
-     *
-     * ```php
-     * $builder->limit(100);
-     * $builder->limit(100, 20);
-     * $builder->limit("100", "20");
-     * ```
-     *
-     * @param int $limit
-     * @param mixed $offset
-     * @return \Phalcon\Mvc\Model\Query\BuilderInterface
-     */
-    public function limit(int $limit, $offset = null): BuilderInterface {}
-
-    /**
-     * Appends a NOT BETWEEN condition to the current HAVING conditions clause
-     *
-     * ```php
-     * $builder->notBetweenHaving("SUM(Robots.price)", 100.25, 200.50);
-     * ```
-     *
-     * @param string $expr
-     * @param mixed $minimum
-     * @param mixed $maximum
-     * @param string $operator
-     * @return \Phalcon\Mvc\Model\Query\BuilderInterface
-     */
-    public function notBetweenHaving(string $expr, $minimum, $maximum, string $operator = BuilderInterface::OPERATOR_AND): BuilderInterface {}
-
-    /**
-     * Appends a NOT BETWEEN condition to the current WHERE conditions
-     *
-     * ```php
-     * $builder->notBetweenWhere("price", 100.25, 200.50);
-     * ```
-     *
-     * @param string $expr
-     * @param mixed $minimum
-     * @param mixed $maximum
-     * @param string $operator
-     * @return \Phalcon\Mvc\Model\Query\BuilderInterface
-     */
-    public function notBetweenWhere(string $expr, $minimum, $maximum, string $operator = BuilderInterface::OPERATOR_AND): BuilderInterface {}
-
-    /**
-     * Appends a NOT IN condition to the current HAVING conditions clause
-     *
-     * ```php
-     * $builder->notInHaving("SUM(Robots.price)", [100, 200]);
-     * ```
-     *
-     * @param string $expr
-     * @param array $values
-     * @param string $operator
-     * @return \Phalcon\Mvc\Model\Query\BuilderInterface
-     */
-    public function notInHaving(string $expr, array $values, string $operator = BuilderInterface::OPERATOR_AND): BuilderInterface {}
-
-    /**
-     * Appends a NOT IN condition to the current WHERE conditions
-     *
-     * ```php
-     * $builder->notInWhere("id", [1, 2, 3]);
-     * ```
-     *
-     * @param string $expr
-     * @param array $values
-     * @param string $operator
-     * @return \Phalcon\Mvc\Model\Query\BuilderInterface
-     */
-    public function notInWhere(string $expr, array $values, string $operator = BuilderInterface::OPERATOR_AND): BuilderInterface {}
-
-    /**
-     * Sets an OFFSET clause
-     *
-     * ```php
-     * $builder->offset(30);
-     * ```
-     *
-     * @param int $offset
-     * @return \Phalcon\Mvc\Model\Query\BuilderInterface
-     */
-    public function offset(int $offset): BuilderInterface {}
-
-    /**
-     * Sets an ORDER BY condition clause
-     *
-     * ```php
-     * $builder->orderBy("Robots.name");
-     * $builder->orderBy(["1", "Robots.name"]);
-     * $builder->orderBy(["Robots.name DESC"]);
-     * ```
-     *
-     * @param string|array $orderBy
-     * @return \Phalcon\Mvc\Model\Query\BuilderInterface
-     */
-    public function orderBy($orderBy): BuilderInterface {}
-
-    /**
-     * Appends a condition to the current HAVING conditions clause using an OR operator
-     *
-     * ```php
-     * $builder->orHaving("SUM(Robots.price) > 0");
-     *
-     * $builder->orHaving(
-     *     "SUM(Robots.price) > :sum:",
-     *     [
-     *         "sum" => 100,
-     *     ]
-     * );
-     * ```
-     *
-     * @param string $conditions
-     * @param array $bindParams
-     * @param array $bindTypes
-     * @return \Phalcon\Mvc\Model\Query\BuilderInterface
-     */
-    public function orHaving(string $conditions, array $bindParams = array(), array $bindTypes = array()): BuilderInterface {}
-
-    /**
-     * Appends a condition to the current conditions using an OR operator
-     *
-     * ```php
-     * $builder->orWhere("name = 'Peter'");
-     *
-     * $builder->orWhere(
-     *     "name = :name: AND id > :id:",
-     *     [
-     *         "name" => "Peter",
-     *         "id"   => 100,
-     *     ]
-     * );
-     * ```
-     *
-     * @param string $conditions
-     * @param array $bindParams
-     * @param array $bindTypes
-     * @return \Phalcon\Mvc\Model\Query\BuilderInterface
-     */
-    public function orWhere(string $conditions, array $bindParams = array(), array $bindTypes = array()): BuilderInterface {}
-
-    /**
-     * Adds a RIGHT join to the query
-     *
-     * ```php
-     * $builder->rightJoin(
-     *     Robots::class,
-     *     "r.id = RobotsParts.robots_id",
-     *     "r"
-     * );
-     * ```
-     *
-     * @param string $model
-     * @param string $conditions
-     * @param string $alias
-     * @return \Phalcon\Mvc\Model\Query\BuilderInterface
-     */
-    public function rightJoin(string $model, string $conditions = null, string $alias = null): BuilderInterface {}
-
-    /**
-     * Set default bind parameters
-     *
-     * @param array $bindParams
-     * @param bool $merge
-     * @return \Phalcon\Mvc\Model\Query\BuilderInterface
-     */
-    public function setBindParams(array $bindParams, bool $merge = false): BuilderInterface {}
-
-    /**
-     * Set default bind types
-     *
-     * @param array $bindTypes
-     * @param bool $merge
-     * @return \Phalcon\Mvc\Model\Query\BuilderInterface
-     */
-    public function setBindTypes(array $bindTypes, bool $merge = false): BuilderInterface {}
-
-    /**
-     * Sets the DependencyInjector container
-     *
-     * @param \Phalcon\Di\DiInterface $container
-     * @return \Phalcon\Mvc\Model\Query\BuilderInterface
-     */
-    public function setDI(\Phalcon\Di\DiInterface $container): BuilderInterface {}
+    public function getJoins() {}
 
     /**
      * Sets the query WHERE conditions
      *
-     * ```php
+     * <code>
      * $builder->where(100);
      *
      * $builder->where("name = 'Peter'");
@@ -749,14 +318,370 @@ class Builder implements \Phalcon\Mvc\Model\Query\BuilderInterface, \Phalcon\Di\
      *         "id"   => 100,
      *     ]
      * );
-     * ```
+     * </code>
+     *
+     * @param mixed $conditions
+     * @param array $bindParams
+     * @param array $bindTypes
+     * @return Builder
+     */
+    public function where($conditions, $bindParams = null, $bindTypes = null) {}
+
+    /**
+     * Appends a condition to the current WHERE conditions using a AND operator
+     *
+     * <code>
+     * $builder->andWhere("name = 'Peter'");
+     *
+     * $builder->andWhere(
+     *     "name = :name: AND id > :id:",
+     *     [
+     *         "name" => "Peter",
+     *         "id"   => 100,
+     *     ]
+     * );
+     * </code>
      *
      * @param string $conditions
      * @param array $bindParams
      * @param array $bindTypes
+     * @return Builder
+     */
+    public function andWhere($conditions, $bindParams = null, $bindTypes = null) {}
+
+    /**
+     * Appends a condition to the current conditions using an OR operator
+     *
+     * <code>
+     * $builder->orWhere("name = 'Peter'");
+     *
+     * $builder->orWhere(
+     *     "name = :name: AND id > :id:",
+     *     [
+     *         "name" => "Peter",
+     *         "id"   => 100,
+     *     ]
+     * );
+     * </code>
+     *
+     * @param string $conditions
+     * @param array $bindParams
+     * @param array $bindTypes
+     * @return Builder
+     */
+    public function orWhere($conditions, $bindParams = null, $bindTypes = null) {}
+
+    /**
+     * Appends a BETWEEN condition to the current WHERE conditions
+     *
+     * <code>
+     * $builder->betweenWhere("price", 100.25, 200.50);
+     * </code>
+     *
+     * @param string $expr
+     * @param mixed $minimum
+     * @param mixed $maximum
+     * @param string $operator
+     * @return Builder
+     */
+    public function betweenWhere($expr, $minimum, $maximum, $operator = BuilderInterface::OPERATOR_AND) {}
+
+    /**
+     * Appends a NOT BETWEEN condition to the current WHERE conditions
+     *
+     * <code>
+     * $builder->notBetweenWhere("price", 100.25, 200.50);
+     * </code>
+     *
+     * @param string $expr
+     * @param mixed $minimum
+     * @param mixed $maximum
+     * @param string $operator
+     * @return Builder
+     */
+    public function notBetweenWhere($expr, $minimum, $maximum, $operator = BuilderInterface::OPERATOR_AND) {}
+
+    /**
+     * Appends an IN condition to the current WHERE conditions
+     *
+     * <code>
+     * $builder->inWhere("id", [1, 2, 3]);
+     * </code>
+     *
+     * @param string $expr
+     * @param array $values
+     * @param string $operator
      * @return \Phalcon\Mvc\Model\Query\BuilderInterface
      */
-    public function where(string $conditions, array $bindParams = array(), array $bindTypes = array()): BuilderInterface {}
+    public function inWhere($expr, array $values, $operator = BuilderInterface::OPERATOR_AND) {}
+
+    /**
+     * Appends a NOT IN condition to the current WHERE conditions
+     *
+     * <code>
+     * $builder->notInWhere("id", [1, 2, 3]);
+     * </code>
+     *
+     * @param string $expr
+     * @param array $values
+     * @param string $operator
+     * @return \Phalcon\Mvc\Model\Query\BuilderInterface
+     */
+    public function notInWhere($expr, array $values, $operator = BuilderInterface::OPERATOR_AND) {}
+
+    /**
+     * Return the conditions for the query
+     *
+     * @return string|array
+     */
+    public function getWhere() {}
+
+    /**
+     * Sets an ORDER BY condition clause
+     *
+     * <code>
+     * $builder->orderBy("Robots.name");
+     * $builder->orderBy(["1", "Robots.name"]);
+     * $builder->orderBy(["Robots.name DESC"]);
+     * </code>
+     *
+     * @param string|array $orderBy
+     * @return Builder
+     */
+    public function orderBy($orderBy) {}
+
+    /**
+     * Returns the set ORDER BY clause
+     *
+     * @return string|array
+     */
+    public function getOrderBy() {}
+
+    /**
+     * Sets the HAVING condition clause
+     *
+     * <code>
+     * $builder->having("SUM(Robots.price) > 0");
+     *
+     * $builder->having(
+     *     "SUM(Robots.price) > :sum:",
+     *     [
+     *         "sum" => 100,
+     *     ]
+     * );
+     * </code>
+     *
+     * @param mixed $conditions
+     * @param array $bindParams
+     * @param array $bindTypes
+     * @return Builder
+     */
+    public function having($conditions, $bindParams = null, $bindTypes = null) {}
+
+    /**
+     * Appends a condition to the current HAVING conditions clause using a AND operator
+     *
+     * <code>
+     * $builder->andHaving("SUM(Robots.price) > 0");
+     *
+     * $builder->andHaving(
+     *     "SUM(Robots.price) > :sum:",
+     *     [
+     *         "sum" => 100,
+     *     ]
+     * );
+     * </code>
+     *
+     * @param string $conditions
+     * @param array $bindParams
+     * @param array $bindTypes
+     * @return Builder
+     */
+    public function andHaving($conditions, $bindParams = null, $bindTypes = null) {}
+
+    /**
+     * Appends a condition to the current HAVING conditions clause using an OR operator
+     *
+     * <code>
+     * $builder->orHaving("SUM(Robots.price) > 0");
+     *
+     * $builder->orHaving(
+     *     "SUM(Robots.price) > :sum:",
+     *     [
+     *         "sum" => 100,
+     *     ]
+     * );
+     * </code>
+     *
+     * @param string $conditions
+     * @param array $bindParams
+     * @param array $bindTypes
+     * @return Builder
+     */
+    public function orHaving($conditions, $bindParams = null, $bindTypes = null) {}
+
+    /**
+     * Appends a BETWEEN condition to the current HAVING conditions clause
+     *
+     * <code>
+     * $builder->betweenHaving("SUM(Robots.price)", 100.25, 200.50);
+     * </code>
+     *
+     * @param string $expr
+     * @param mixed $minimum
+     * @param mixed $maximum
+     * @param string $operator
+     * @return Builder
+     */
+    public function betweenHaving($expr, $minimum, $maximum, $operator = BuilderInterface::OPERATOR_AND) {}
+
+    /**
+     * Appends a NOT BETWEEN condition to the current HAVING conditions clause
+     *
+     * <code>
+     * $builder->notBetweenHaving("SUM(Robots.price)", 100.25, 200.50);
+     * </code>
+     *
+     * @param string $expr
+     * @param mixed $minimum
+     * @param mixed $maximum
+     * @param string $operator
+     * @return Builder
+     */
+    public function notBetweenHaving($expr, $minimum, $maximum, $operator = BuilderInterface::OPERATOR_AND) {}
+
+    /**
+     * Appends an IN condition to the current HAVING conditions clause
+     *
+     * <code>
+     * $builder->inHaving("SUM(Robots.price)", [100, 200]);
+     * </code>
+     *
+     * @param string $expr
+     * @param array $values
+     * @param string $operator
+     * @return Builder
+     */
+    public function inHaving($expr, array $values, $operator = BuilderInterface::OPERATOR_AND) {}
+
+    /**
+     * Appends a NOT IN condition to the current HAVING conditions clause
+     *
+     * <code>
+     * $builder->notInHaving("SUM(Robots.price)", [100, 200]);
+     * </code>
+     *
+     * @param string $expr
+     * @param array $values
+     * @param string $operator
+     * @return Builder
+     */
+    public function notInHaving($expr, array $values, $operator = BuilderInterface::OPERATOR_AND) {}
+
+    /**
+     * Return the current having clause
+     *
+     * @return string
+     */
+    public function getHaving() {}
+
+    /**
+     * Sets a FOR UPDATE clause
+     *
+     * <code>
+     * $builder->forUpdate(true);
+     * </code>
+     *
+     * @param bool $forUpdate
+     * @return Builder
+     */
+    public function forUpdate($forUpdate) {}
+
+    /**
+     * Sets a LIMIT clause, optionally an offset clause
+     *
+     * <code>
+     * $builder->limit(100);
+     * $builder->limit(100, 20);
+     * $builder->limit("100", "20");
+     * </code>
+     *
+     * @param int $limit
+     * @param mixed $offset
+     * @return Builder
+     */
+    public function limit($limit, $offset = null) {}
+
+    /**
+     * Returns the current LIMIT clause
+     *
+     * @return string|array
+     */
+    public function getLimit() {}
+
+    /**
+     * Sets an OFFSET clause
+     *
+     * <code>
+     * $builder->offset(30);
+     * </code>
+     *
+     * @param int $offset
+     * @return Builder
+     */
+    public function offset($offset) {}
+
+    /**
+     * Returns the current OFFSET clause
+     *
+     * @return string|array
+     */
+    public function getOffset() {}
+
+    /**
+     * Sets a GROUP BY clause
+     *
+     * <code>
+     * $builder->groupBy(
+     *     [
+     *         "Robots.name",
+     *     ]
+     * );
+     * </code>
+     *
+     * @param string|array $group
+     * @return Builder
+     */
+    public function groupBy($group) {}
+
+    /**
+     * Returns the GROUP BY clause
+     *
+     * @return string
+     */
+    public function getGroupBy() {}
+
+    /**
+     * Returns a PHQL statement built based on the builder parameters
+     *
+     * @return string
+     */
+    public final function getPhql() {}
+
+    /**
+     * Returns the query built
+     *
+     * @return \Phalcon\Mvc\Model\QueryInterface
+     */
+    public function getQuery() {}
+
+    /**
+     * Automatically escapes identifiers but only if they need to be escaped.
+     *
+     * @param string $identifier
+     * @return string
+     */
+    final public function autoescape($identifier) {}
 
     /**
      * Appends a BETWEEN condition
@@ -766,20 +691,9 @@ class Builder implements \Phalcon\Mvc\Model\Query\BuilderInterface, \Phalcon\Di\
      * @param string $expr
      * @param mixed $minimum
      * @param mixed $maximum
-     * @return \Phalcon\Mvc\Model\Query\BuilderInterface
+     * @return Builder
      */
-    protected function conditionBetween(string $clause, string $operator, string $expr, $minimum, $maximum): BuilderInterface {}
-
-    /**
-     * Appends an IN condition
-     *
-     * @param string $clause
-     * @param string $operator
-     * @param string $expr
-     * @param array $values
-     * @return \Phalcon\Mvc\Model\Query\BuilderInterface
-     */
-    protected function conditionIn(string $clause, string $operator, string $expr, array $values): BuilderInterface {}
+    protected function _conditionBetween($clause, $operator, $expr, $minimum, $maximum) {}
 
     /**
      * Appends a NOT BETWEEN condition
@@ -789,9 +703,20 @@ class Builder implements \Phalcon\Mvc\Model\Query\BuilderInterface, \Phalcon\Di\
      * @param string $expr
      * @param mixed $minimum
      * @param mixed $maximum
-     * @return \Phalcon\Mvc\Model\Query\BuilderInterface
+     * @return Builder
      */
-    protected function conditionNotBetween(string $clause, string $operator, string $expr, $minimum, $maximum): BuilderInterface {}
+    protected function _conditionNotBetween($clause, $operator, $expr, $minimum, $maximum) {}
+
+    /**
+     * Appends an IN condition
+     *
+     * @param string $clause
+     * @param string $operator
+     * @param string $expr
+     * @param array $values
+     * @return Builder
+     */
+    protected function _conditionIn($clause, $operator, $expr, array $values) {}
 
     /**
      * Appends a NOT IN condition
@@ -800,8 +725,8 @@ class Builder implements \Phalcon\Mvc\Model\Query\BuilderInterface, \Phalcon\Di\
      * @param string $operator
      * @param string $expr
      * @param array $values
-     * @return \Phalcon\Mvc\Model\Query\BuilderInterface
+     * @return Builder
      */
-    protected function conditionNotIn(string $clause, string $operator, string $expr, array $values): BuilderInterface {}
+    protected function _conditionNotIn($clause, $operator, $expr, array $values) {}
 
 }

@@ -5,8 +5,8 @@ namespace Phalcon\Mvc\Model\Behavior;
 /**
  * Phalcon\Mvc\Model\Behavior\Timestampable
  *
- * Allows to automatically update a model’s attribute saving the datetime when a
- * record is created or updated
+ * Allows to automatically update a model’s attribute saving the
+ * datetime when a record is created or updated
  */
 class Timestampable extends \Phalcon\Mvc\Model\Behavior
 {
@@ -17,11 +17,6 @@ class Timestampable extends \Phalcon\Mvc\Model\Behavior
      * @param string $type
      * @param \Phalcon\Mvc\ModelInterface $model
      */
-    public function notify(string $type, \Phalcon\Mvc\ModelInterface $model) {}
-
-    /**
-     * @param array $options
-     */
-    private function getTimestamp(array $options) {}
+    public function notify($type, \Phalcon\Mvc\ModelInterface $model) {}
 
 }

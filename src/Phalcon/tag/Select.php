@@ -5,8 +5,7 @@ namespace Phalcon\Tag;
 /**
  * Phalcon\Tag\Select
  *
- * Generates a SELECT html tag using a static array of values or a
- * Phalcon\Mvc\Model resultset
+ * Generates a SELECT html tag using a static array of values or a Phalcon\Mvc\Model resultset
  */
 abstract class Select
 {
@@ -16,9 +15,18 @@ abstract class Select
      *
      * @param array $parameters
      * @param array $data
-     * @return string
      */
-    public static function selectField($parameters, $data = null): string {}
+    public static function selectField($parameters, $data = null) {}
+
+    /**
+     * Generate the OPTION tags based on a resultset
+     *
+     * @param \Phalcon\Mvc\Model\Resultset $resultset
+     * @param array $using
+     * @param mixed $value
+     * @param string $closeOption
+     */
+    private static function _optionsFromResultset($resultset, $using, $value, $closeOption) {}
 
     /**
      * Generate the OPTION tags based on an array
@@ -26,19 +34,7 @@ abstract class Select
      * @param array $data
      * @param mixed $value
      * @param string $closeOption
-     * @return string
      */
-    private static function optionsFromArray(array $data, $value, string $closeOption): string {}
-
-    /**
-     * Generate the OPTION tags based on a resultset
-     *
-     * @param \Phalcon\Mvc\Model\ResulsetInterface $resultset
-     * @param array $using
-     * @param mixed $value
-     * @param string $closeOption
-     * @return string
-     */
-    private static function optionsFromResultset(\Phalcon\Mvc\Model\ResulsetInterface $resultset, $using, $value, string $closeOption): string {}
+    private static function _optionsFromArray($data, $value, $closeOption) {}
 
 }

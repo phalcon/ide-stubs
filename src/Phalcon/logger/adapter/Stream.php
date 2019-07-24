@@ -5,76 +5,59 @@ namespace Phalcon\Logger\Adapter;
 /**
  * Phalcon\Logger\Adapter\Stream
  *
- * Adapter to store logs in plain text files
+ * Sends logs to a valid PHP stream
  *
- * ```php
- * $logger = new \Phalcon\Logger\Adapter\Stream("app/logs/test.log");
+ * <code>
+ * use Phalcon\Logger;
+ * use Phalcon\Logger\Adapter\Stream;
+ *
+ * $logger = new Stream("php://stderr");
  *
  * $logger->log("This is a message");
- * $logger->log(\Phalcon\Logger::ERROR, "This is an error");
+ * $logger->log(Logger::ERROR, "This is an error");
  * $logger->error("This is another error");
- *
- * $logger->close();
- * ```
+ * </code>
  */
-class Stream extends \Phalcon\Logger\Adapter\AbstractAdapter
+class Stream extends \Phalcon\Logger\Adapter
 {
     /**
-     * Stream handler resource
+     * File handler resource
      *
-     * @var resource|null
+     * @var resource
      */
-    protected $handler = null;
-
-    /**
-     * The file open mode. Defaults to "ab"
-     *
-     * @var string
-     */
-    protected $mode = 'ab';
-
-    /**
-     * Stream name
-     *
-     * @var string
-     */
-    protected $name;
-
-    /**
-     * Path options
-     *
-     * @var array
-     */
-    protected $options;
+    protected $_stream;
 
 
     /**
-     * Stream name
-     *
-     * @return string
-     */
-    public function getName(): string {}
-
-    /**
-     * Constructor. Accepts the name and some options
+     * Phalcon\Logger\Adapter\Stream constructor
      *
      * @param string $name
      * @param array $options
      */
-    public function __construct(string $name, array $options = array()) {}
+    public function __construct($name, $options = null) {}
 
     /**
-     * Closes the stream
+     * Returns the internal formatter
+     *
+     * @return \Phalcon\Logger\FormatterInterface
+     */
+    public function getFormatter() {}
+
+    /**
+     * Writes the log to the stream itself
+     *
+     * @param string $message
+     * @param int $type
+     * @param int $time
+     * @param array $context
+     */
+    public function logInternal($message, $type, $time, array $context) {}
+
+    /**
+     * Closes the logger
      *
      * @return bool
      */
-    public function close(): bool {}
-
-    /**
-     * Processes the message i.e. writes it to the file
-     *
-     * @param \Phalcon\Logger\Item $item
-     */
-    public function process(\Phalcon\Logger\Item $item) {}
+    public function close() {}
 
 }

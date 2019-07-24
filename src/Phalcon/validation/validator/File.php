@@ -3,9 +3,11 @@
 namespace Phalcon\Validation\Validator;
 
 /**
+ * Phalcon\Validation\Validator\File
+ *
  * Checks if a value has a correct file
  *
- * ```php
+ * <code>
  * use Phalcon\Validation;
  * use Phalcon\Validation\Validator\File as FileValidator;
  *
@@ -16,14 +18,14 @@ namespace Phalcon\Validation\Validator;
  *     new FileValidator(
  *         [
  *             "maxSize"              => "2M",
- *             "messageSize"          => ":field exceeds the max filesize (:size)",
+ *             "messageSize"          => ":field exceeds the max filesize (:max)",
  *             "allowedTypes"         => [
  *                 "image/jpeg",
  *                 "image/png",
  *             ],
  *             "messageType"          => "Allowed file types are :types",
  *             "maxResolution"        => "800x600",
- *             "messageMaxResolution" => "Max resolution of :field is :resolution",
+ *             "messageMaxResolution" => "Max resolution of :field is :max",
  *         ]
  *     )
  * );
@@ -67,16 +69,27 @@ namespace Phalcon\Validation\Validator;
  *         ]
  *     )
  * );
- * ```
+ * </code>
  */
-class File extends \Phalcon\Validation\AbstractValidatorComposite
+class File extends \Phalcon\Validation\Validator
 {
 
     /**
-     * Constructor
+     * Executes the validation
      *
-     * @param array $options
+     * @param \Phalcon\Validation $validation
+     * @param string $field
+     * @return bool
      */
-    public function __construct(array $options = array()) {}
+    public function validate(\Phalcon\Validation $validation, $field) {}
+
+    /**
+     * Check on empty
+     *
+     * @param \Phalcon\Validation $validation
+     * @param string $field
+     * @return bool
+     */
+    public function isAllowEmpty(\Phalcon\Validation $validation, $field) {}
 
 }

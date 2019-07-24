@@ -3,23 +3,25 @@
 namespace Phalcon\Acl;
 
 /**
+ * Phalcon\Acl\Role
+ *
  * This class defines role entity and its description
  */
-class Role implements \Phalcon\Acl\RoleInterface
+class Role implements RoleInterface
 {
     /**
      * Role name
      *
      * @var string
      */
-    private $name;
+    protected $name;
 
     /**
      * Role description
      *
      * @var string
      */
-    private $description;
+    protected $description;
 
 
     /**
@@ -27,21 +29,21 @@ class Role implements \Phalcon\Acl\RoleInterface
      *
      * @return string
      */
-    public function getName(): string {}
+    public function getName() {}
 
     /**
      * Role name
      *
      * @return string
      */
-    public function __toString(): string {}
+    public function __toString() {}
 
     /**
      * Role description
      *
      * @return string
      */
-    public function getDescription(): string {}
+    public function getDescription() {}
 
     /**
      * Phalcon\Acl\Role constructor
@@ -49,6 +51,6 @@ class Role implements \Phalcon\Acl\RoleInterface
      * @param string $name
      * @param string $description
      */
-    public function __construct(string $name, string $description = null) {}
+    public function __construct(string $name, ?string $description = null) {}
 
 }

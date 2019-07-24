@@ -3,11 +3,13 @@
 namespace Phalcon\Config\Adapter;
 
 /**
+ * Phalcon\Config\Adapter\Grouped
+ *
  * Reads multiple files (or arrays) and merges them all together.
  *
- * See `Phalcon\Config\Factory::load` To load Config Adapter class using 'adapter' option.
+ * @see Phalcon\Config\Factory::load To load Config Adapter class using 'adapter' option.
  *
- * ```php
+ * <code>
  * use Phalcon\Config\Adapter\Grouped;
  *
  * $config = new Grouped(
@@ -16,9 +18,9 @@ namespace Phalcon\Config\Adapter;
  *         "path/to/config.dist.php",
  *     ]
  * );
- * ```
+ * </code>
  *
- * ```php
+ * <code>
  * use Phalcon\Config\Adapter\Grouped;
  *
  * $config = new Grouped(
@@ -28,9 +30,9 @@ namespace Phalcon\Config\Adapter;
  *     ],
  *     "json"
  * );
- * ```
+ * </code>
  *
- * ```php
+ * <code>
  * use Phalcon\Config\Adapter\Grouped;
  *
  * $config = new Grouped(
@@ -47,11 +49,10 @@ namespace Phalcon\Config\Adapter;
  *             "adapter"  => "array",
  *             "config"   => [
  *                 "property" => "value",
- *             ],
  *         ],
  *     ],
  * );
- * ```
+ * </code>
  */
 class Grouped extends \Phalcon\Config
 {
@@ -62,6 +63,6 @@ class Grouped extends \Phalcon\Config
      * @param array $arrayConfig
      * @param string $defaultAdapter
      */
-    public function __construct(array $arrayConfig, string $defaultAdapter = 'php') {}
+    public function __construct(array $arrayConfig, $defaultAdapter = 'php') {}
 
 }

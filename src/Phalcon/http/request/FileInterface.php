@@ -11,32 +11,25 @@ interface FileInterface
 {
 
     /**
-     * Returns the real name of the uploaded file
-     *
-     * @return string
-     */
-    public function getName(): string;
-
-    /**
-     * Gets the real mime type of the upload file using finfo
-     *
-     * @return string
-     */
-    public function getRealType(): string;
-
-    /**
      * Returns the file size of the uploaded file
      *
      * @return int
      */
-    public function getSize(): int;
+    public function getSize();
+
+    /**
+     * Returns the real name of the uploaded file
+     *
+     * @return string
+     */
+    public function getName();
 
     /**
      * Returns the temporal name of the uploaded file
      *
      * @return string
      */
-    public function getTempName(): string;
+    public function getTempName();
 
     /**
      * Returns the mime type reported by the browser
@@ -44,7 +37,14 @@ interface FileInterface
      *
      * @return string
      */
-    public function getType(): string;
+    public function getType();
+
+    /**
+     * Gets the real mime type of the upload file using finfo
+     *
+     * @return string
+     */
+    public function getRealType();
 
     /**
      * Move the temporary file to a destination
@@ -52,6 +52,6 @@ interface FileInterface
      * @param string $destination
      * @return bool
      */
-    public function moveTo(string $destination): bool;
+    public function moveTo($destination);
 
 }

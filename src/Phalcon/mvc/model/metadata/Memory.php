@@ -10,6 +10,9 @@ namespace Phalcon\Mvc\Model\MetaData;
 class Memory extends \Phalcon\Mvc\Model\MetaData
 {
 
+    protected $_metaData = array();
+
+
     /**
      * Phalcon\Mvc\Model\MetaData\Memory constructor
      *
@@ -21,9 +24,9 @@ class Memory extends \Phalcon\Mvc\Model\MetaData
      * Reads the meta-data from temporal memory
      *
      * @param string $key
-     * @return array|null
+     * @return array
      */
-    public function read(string $key): ?array {}
+    public function read($key) {}
 
     /**
      * Writes the meta-data to temporal memory
@@ -31,6 +34,6 @@ class Memory extends \Phalcon\Mvc\Model\MetaData
      * @param string $key
      * @param array $data
      */
-    public function write(string $key, array $data) {}
+    public function write($key, $data) {}
 
 }

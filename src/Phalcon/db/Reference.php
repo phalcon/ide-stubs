@@ -3,16 +3,18 @@
 namespace Phalcon\Db;
 
 /**
+ * Phalcon\Db\Reference
+ *
  * Allows to define reference constraints on tables
  *
- * ```php
+ * <code>
  * $reference = new \Phalcon\Db\Reference(
  *     "field_fk",
  *     [
  *         "referencedSchema"  => "invoicing",
  *         "referencedTable"   => "products",
  *         "columns"           => [
- *             "producttype",
+ *             "product_type",
  *             "product_code",
  *         ],
  *         "referencedColumns" => [
@@ -21,122 +23,106 @@ namespace Phalcon\Db;
  *         ],
  *     ]
  * );
- * ```
+ * </code>
  */
 class Reference implements \Phalcon\Db\ReferenceInterface
 {
     /**
-     * Local reference columns
-     *
-     * @var array
-     */
-    protected $columns;
-
-    /**
      * Constraint name
      *
      * @var string
      */
-    protected $name;
+    protected $_name;
 
-    /**
-     * Referenced Columns
-     *
-     * @var array
-     */
-    protected $referencedColumns;
 
-    /**
-     * Referenced Schema
-     *
-     * @var string
-     */
-    protected $referencedSchema;
+    protected $_schemaName;
+
+
+    protected $_referencedSchema;
 
     /**
      * Referenced Table
      *
      * @var string
      */
-    protected $referencedTable;
-
-    /**
-     * Schema name
-     *
-     * @var string
-     */
-    protected $schemaName;
-
-    /**
-     * ON DELETE
-     *
-     * @var string
-     */
-    protected $onDelete;
-
-    /**
-     * ON UPDATE
-     *
-     * @var string
-     */
-    protected $onUpdate;
-
+    protected $_referencedTable;
 
     /**
      * Local reference columns
      *
-     * @return array
+     * @var array
      */
-    public function getColumns(): array {}
+    protected $_columns;
+
+    /**
+     * Referenced Columns
+     *
+     * @var array
+     */
+    protected $_referencedColumns;
+
+    /**
+     * ON DELETE
+     *
+     * @var array
+     */
+    protected $_onDelete;
+
+    /**
+     * ON UPDATE
+     *
+     * @var array
+     */
+    protected $_onUpdate;
+
 
     /**
      * Constraint name
      *
      * @return string
      */
-    public function getName(): string {}
+    public function getName() {}
 
-    /**
-     * Referenced Columns
-     *
-     * @return array
-     */
-    public function getReferencedColumns(): array {}
 
-    /**
-     * Referenced Schema
-     *
-     * @return string
-     */
-    public function getReferencedSchema(): string {}
+    public function getSchemaName() {}
+
+
+    public function getReferencedSchema() {}
 
     /**
      * Referenced Table
      *
      * @return string
      */
-    public function getReferencedTable(): string {}
+    public function getReferencedTable() {}
 
     /**
-     * Schema name
+     * Local reference columns
      *
-     * @return string
+     * @return array
      */
-    public function getSchemaName(): string {}
+    public function getColumns() {}
+
+    /**
+     * Referenced Columns
+     *
+     * @return array
+     */
+    public function getReferencedColumns() {}
 
     /**
      * ON DELETE
      *
-     * @return string
+     * @return array
      */
-    public function getOnDelete(): string {}
+    public function getOnDelete() {}
 
     /**
      * ON UPDATE
      *
-     * @return string
+     * @return array
      */
-    public function getOnUpdate(): string {}
+    public function getOnUpdate() {}
 
     /**
      * Phalcon\Db\Reference constructor
@@ -144,6 +130,14 @@ class Reference implements \Phalcon\Db\ReferenceInterface
      * @param string $name
      * @param array $definition
      */
-    public function __construct(string $name, array $definition) {}
+    public function __construct($name, array $definition) {}
+
+    /**
+     * Restore a Phalcon\Db\Reference object from export
+     *
+     * @param array $data
+     * @return ReferenceInterface
+     */
+    public static function __set_state(array $data) {}
 
 }

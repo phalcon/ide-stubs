@@ -3,18 +3,20 @@
 namespace Phalcon\Assets\Inline;
 
 /**
- * Represents an inline JavaScript
+ * Phalcon\Assets\Inline\Js
+ *
+ * Represents an inline Javascript
  */
 class Js extends \Phalcon\Assets\Inline
 {
 
     /**
-     * Phalcon\Assets\Inline\Js constructor
+     * Phalcon\Assets\Inline\Js
      *
      * @param string $content
-     * @param bool $filter
-     * @param mixed $attributes
+     * @param boolean $filter
+     * @param array $attributes
      */
-    public function __construct(string $content, bool $filter = true, $attributes = null) {}
+    public function __construct($content, $filter = true, $attributes = null) {}
 
 }

@@ -5,7 +5,7 @@ namespace Phalcon\Translate\Adapter;
 /**
  * Phalcon\Translate\Adapter\Gettext
  *
- * ```php
+ * <code>
  * use Phalcon\Translate\Adapter\Gettext;
  *
  * $adapter = new Gettext(
@@ -16,42 +16,32 @@ namespace Phalcon\Translate\Adapter;
  *         "category"      => LC_MESSAGES,
  *     ]
  * );
- * ```
+ * </code>
  *
  * Allows translate using gettext
  */
-class Gettext extends \Phalcon\Translate\Adapter\AbstractAdapter implements \ArrayAccess
+class Gettext extends \Phalcon\Translate\Adapter implements \ArrayAccess
 {
-    /**
-     * @var int
-     */
-    protected $category;
-
-    /**
-     * @var string
-     */
-    protected $defaultDomain;
-
     /**
      * @var string|array
      */
-    protected $directory;
+    protected $_directory;
 
     /**
      * @var string
      */
-    protected $locale;
-
-
-    /**
-     * @return int
-     */
-    public function getCategory(): int {}
+    protected $_defaultDomain;
 
     /**
-     * @return string
+     * @var string
      */
-    public function getDefaultDomain(): string {}
+    protected $_locale;
+
+    /**
+     * @var int
+     */
+    protected $_category;
+
 
     /**
      * @return string|array
@@ -61,15 +51,37 @@ class Gettext extends \Phalcon\Translate\Adapter\AbstractAdapter implements \Arr
     /**
      * @return string
      */
-    public function getLocale(): string {}
+    public function getDefaultDomain() {}
+
+    /**
+     * @return string
+     */
+    public function getLocale() {}
+
+    /**
+     * @return int
+     */
+    public function getCategory() {}
 
     /**
      * Phalcon\Translate\Adapter\Gettext constructor
      *
-     * @param \Phalcon\Translate\InterpolatorFactory $interpolator
      * @param array $options
      */
-    public function __construct(\Phalcon\Translate\InterpolatorFactory $interpolator, array $options) {}
+    public function __construct(array $options) {}
+
+    /**
+     * Returns the translation related to the given key.
+     *
+     * <code>
+     * $translator->query("你好 %name%！", ["name" => "Phalcon"]);
+     * </code>
+     *
+     * @param string $index
+     * @param mixed $placeholders
+     * @return string
+     */
+    public function query($index, $placeholders = null) {}
 
     /**
      * Check whether is defined a translation key in the internal array
@@ -77,12 +89,11 @@ class Gettext extends \Phalcon\Translate\Adapter\AbstractAdapter implements \Arr
      * @param string $index
      * @return bool
      */
-    public function exists(string $index): bool {}
+    public function exists($index) {}
 
     /**
      * The plural version of gettext().
-     * Some languages have more than one form for plural messages dependent on
-     * the count.
+     * Some languages have more than one form for plural messages dependent on the count.
      *
      * @param string $msgid1
      * @param string $msgid2
@@ -91,39 +102,34 @@ class Gettext extends \Phalcon\Translate\Adapter\AbstractAdapter implements \Arr
      * @param string $domain
      * @return string
      */
-    public function nquery(string $msgid1, string $msgid2, int $count, $placeholders = null, string $domain = null): string {}
+    public function nquery($msgid1, $msgid2, $count, $placeholders = null, $domain = null) {}
 
     /**
-     * Returns the translation related to the given key.
+     * Changes the current domain (i.e. the translation file)
      *
-     * ```php
-     * $translator->query("你好 %name%！", ["name" => "Phalcon"]);
-     * ```
-     *
-     * @param string $index
-     * @param array $placeholders
+     * @param mixed $domain
      * @return string
      */
-    public function query(string $index, $placeholders = null): string {}
+    public function setDomain($domain) {}
 
     /**
      * Sets the default domain
      *
      * @return string
      */
-    public function resetDomain(): string {}
+    public function resetDomain() {}
 
     /**
      * Sets the domain default to search within when calls are made to gettext()
      *
      * @param string $domain
      */
-    public function setDefaultDomain(string $domain) {}
+    public function setDefaultDomain($domain) {}
 
     /**
      * Sets the path for a domain
      *
-     * ```php
+     * <code>
      * // Set the directory path
      * $gettext->setDirectory("/path/to/the/messages");
      *
@@ -134,43 +140,28 @@ class Gettext extends \Phalcon\Translate\Adapter\AbstractAdapter implements \Arr
      *         "another"  => "/path/to/the/another",
      *     ]
      * );
-     * ```
+     * </code>
      *
      * @param string|array $directory The directory path or an array of directories and domains
      */
     public function setDirectory($directory) {}
 
     /**
-     * Changes the current domain (i.e. the translation file)
-     *
-     * @param mixed $domain
-     * @return string
-     */
-    public function setDomain($domain): string {}
-
-    /**
      * Sets locale information
      *
-     * ```php
+     * <code>
      * // Set locale to Dutch
      * $gettext->setLocale(LC_ALL, "nl_NL");
      *
      * // Try different possible locale names for german
      * $gettext->setLocale(LC_ALL, "de_DE@euro", "de_DE", "de", "ge");
-     * ```
+     * </code>
      *
      * @param int $category
      * @param string $locale
      * @return string|bool
      */
-    public function setLocale(int $category, string $locale) {}
-
-    /**
-     * Gets default options
-     *
-     * @return array
-     */
-    protected function getOptionsDefault(): array {}
+    public function setLocale($category, $locale) {}
 
     /**
      * Validator for constructor
@@ -178,5 +169,12 @@ class Gettext extends \Phalcon\Translate\Adapter\AbstractAdapter implements \Arr
      * @param array $options
      */
     protected function prepareOptions(array $options) {}
+
+    /**
+     * Gets default options
+     *
+     * @return array
+     */
+    protected function getOptionsDefault() {}
 
 }

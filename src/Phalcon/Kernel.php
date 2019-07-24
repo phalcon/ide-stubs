@@ -3,6 +3,8 @@
 namespace Phalcon;
 
 /**
+ * Phalcon\Kernel
+ *
  * This class allows to change the internal behavior of the framework in runtime
  */
 class Kernel
@@ -15,6 +17,6 @@ class Kernel
      * @param string $key
      * @return string
      */
-    public static function preComputeHashKey(string $key) {}
+    public static function preComputeHashKey($key) {}
 
 }

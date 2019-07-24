@@ -7,38 +7,18 @@ namespace Phalcon\Translate\Adapter;
  *
  * Allows to define translation lists using CSV file
  */
-class Csv extends \Phalcon\Translate\Adapter\AbstractAdapter implements \ArrayAccess
+class Csv extends \Phalcon\Translate\Adapter implements \ArrayAccess
 {
-    /**
-     * @var array
-     */
-    protected $translate = array();
+
+    protected $_translate = array();
 
 
     /**
      * Phalcon\Translate\Adapter\Csv constructor
      *
-     * @param \Phalcon\Translate\InterpolatorFactory $interpolator
      * @param array $options
      */
-    public function __construct(\Phalcon\Translate\InterpolatorFactory $interpolator, array $options) {}
-
-    /**
-     * Check whether is defined a translation key in the internal array
-     *
-     * @param string $index
-     * @return bool
-     */
-    public function exists(string $index): bool {}
-
-    /**
-     * Returns the translation related to the given key
-     *
-     * @param string $index
-     * @param mixed $placeholders
-     * @return string
-     */
-    public function query(string $index, $placeholders = null): string {}
+    public function __construct(array $options) {}
 
     /**
      * Load translates from file
@@ -48,6 +28,23 @@ class Csv extends \Phalcon\Translate\Adapter\AbstractAdapter implements \ArrayAc
      * @param string $delimiter
      * @param string $enclosure
      */
-    private function load(string $file, int $length, string $delimiter, string $enclosure) {}
+    private function _load($file, $length, $delimiter, $enclosure) {}
+
+    /**
+     * Returns the translation related to the given key
+     *
+     * @param string $index
+     * @param mixed $placeholders
+     * @return string
+     */
+    public function query($index, $placeholders = null) {}
+
+    /**
+     * Check whether is defined a translation key in the internal array
+     *
+     * @param string $index
+     * @return bool
+     */
+    public function exists($index) {}
 
 }

@@ -3,170 +3,87 @@
 namespace Phalcon\Assets;
 
 /**
- * Represents a collection of assets
+ * Phalcon\Assets\Collection
+ *
+ * Represents a collection of resources
  */
 class Collection implements \Countable, \Iterator
 {
-    /**
-     * @var array
-     */
-    protected $assets = array();
 
-    /**
-     * @var array
-     */
-    protected $attributes = array();
-
-    /**
-     * Should version be determined from file modification time
-     *
-     * @var bool
-     */
-    protected $autoVersion = false;
-
-    /**
-     * @var array
-     */
-    protected $codes = array();
-
-    /**
-     * @var array
-     */
-    protected $filters = array();
-
-    /**
-     * @var array
-     */
-    protected $includedAssets;
-
-    /**
-     * @var bool
-     */
-    protected $join = true;
-
-    /**
-     * @var bool
-     */
-    protected $local = true;
-
-    /**
-     * @var string
-     */
-    protected $prefix;
-
-    /**
-     * @var int
-     */
-    protected $position;
-
-    /**
-     * @var string
-     */
-    protected $sourcePath;
-
-    /**
-     * @var bool
-     */
-    protected $targetLocal = true;
-
-    /**
-     * @var string
-     */
-    protected $targetPath;
-
-    /**
-     * @var string
-     */
-    protected $targetUri;
-
-    /**
-     * Version of resource
-     *
-     * @var string
-     */
-    protected $version;
+    protected $_prefix;
 
 
-    /**
-     * @return array
-     */
-    public function getAssets(): array {}
+    protected $_local = true;
 
-    /**
-     * @return array
-     */
-    public function getAttributes(): array {}
 
-    /**
-     * Should version be determined from file modification time
-     *
-     * @param bool $autoVersion
-     */
-    public function setAutoVersion(bool $autoVersion) {}
+    protected $_resources = array();
 
-    /**
-     * @return array
-     */
-    public function getCodes(): array {}
 
-    /**
-     * @return array
-     */
-    public function getFilters(): array {}
+    protected $_codes = array();
 
-    /**
-     * @return bool
-     */
-    public function getJoin(): bool {}
 
-    /**
-     * @return bool
-     */
-    public function getLocal(): bool {}
+    protected $_position;
 
-    /**
-     * @return string
-     */
-    public function getPrefix(): string {}
 
-    /**
-     * @return int
-     */
-    public function getPosition(): int {}
+    protected $_filters = array();
 
-    /**
-     * @return string
-     */
-    public function getSourcePath(): string {}
 
-    /**
-     * @return bool
-     */
-    public function getTargetLocal(): bool {}
+    protected $_attributes = array();
 
-    /**
-     * @return string
-     */
-    public function getTargetPath(): string {}
 
-    /**
-     * @return string
-     */
-    public function getTargetUri(): string {}
+    protected $_join = true;
 
-    /**
-     * Version of resource
-     *
-     * @return string
-     */
-    public function getVersion(): string {}
 
-    /**
-     * Version of resource
-     *
-     * @param string $version
-     */
-    public function setVersion(string $version) {}
+    protected $_targetUri;
+
+
+    protected $_targetPath;
+
+
+    protected $_targetLocal = true;
+
+
+    protected $_sourcePath;
+
+
+    protected $_includedResources;
+
+
+
+    public function getPrefix() {}
+
+
+    public function getLocal() {}
+
+
+    public function getResources() {}
+
+
+    public function getCodes() {}
+
+
+    public function getPosition() {}
+
+
+    public function getFilters() {}
+
+
+    public function getAttributes() {}
+
+
+    public function getJoin() {}
+
+
+    public function getTargetUri() {}
+
+
+    public function getTargetPath() {}
+
+
+    public function getTargetLocal() {}
+
+
+    public function getSourcePath() {}
 
     /**
      * Phalcon\Assets\Collection constructor
@@ -174,33 +91,12 @@ class Collection implements \Countable, \Iterator
     public function __construct() {}
 
     /**
-     * Adds a asset to the collection
+     * Adds a resource to the collection
      *
-     * @param AssetInterface $asset
+     * @param \Phalcon\Assets\Resource $resource
      * @return Collection
      */
-    public function add(AssetInterface $asset): Collection {}
-
-    /**
-     * Adds a CSS asset to the collection
-     *
-     * @param string $path
-     * @param mixed $local
-     * @param bool $filter
-     * @param mixed $attributes
-     * @param string $version
-     * @param bool $autoVersion
-     * @return Collection
-     */
-    public function addCss(string $path, $local = null, bool $filter = true, $attributes = null, string $version = null, bool $autoVersion = false): Collection {}
-
-    /**
-     * Adds a filter to the collection
-     *
-     * @param \Phalcon\Assets\FilterInterface $filter
-     * @return Collection
-     */
-    public function addFilter(\Phalcon\Assets\FilterInterface $filter): Collection {}
+    public function add(\Phalcon\Assets\Resource $resource) {}
 
     /**
      * Adds an inline code to the collection
@@ -208,7 +104,36 @@ class Collection implements \Countable, \Iterator
      * @param \Phalcon\Assets\Inline $code
      * @return Collection
      */
-    public function addInline(\Phalcon\Assets\Inline $code): Collection {}
+    public function addInline(\Phalcon\Assets\Inline $code) {}
+
+    /**
+     * Checks this the resource is added to the collection.
+     *
+     * <code>
+     * use Phalcon\Assets\Resource;
+     * use Phalcon\Assets\Collection;
+     *
+     * $collection = new Collection();
+     * $resource = new Resource("js", "js/jquery.js");
+     * $collection->add($resource);
+     * $collection->has($resource); // true
+     * </code>
+     *
+     * @param ResourceInterface $resource
+     * @return bool
+     */
+    public function has(ResourceInterface $resource) {}
+
+    /**
+     * Adds a CSS resource to the collection
+     *
+     * @param string $path
+     * @param mixed $local
+     * @param bool $filter
+     * @param mixed $attributes
+     * @return Collection
+     */
+    public function addCss($path, $local = null, $filter = true, $attributes = null) {}
 
     /**
      * Adds an inline CSS to the collection
@@ -218,7 +143,18 @@ class Collection implements \Countable, \Iterator
      * @param mixed $attributes
      * @return Collection
      */
-    public function addInlineCss(string $content, bool $filter = true, $attributes = null): Collection {}
+    public function addInlineCss($content, $filter = true, $attributes = null) {}
+
+    /**
+     * Adds a javascript resource to the collection
+     *
+     * @param string $path
+     * @param boolean $local
+     * @param boolean $filter
+     * @param array $attributes
+     * @return Collection
+     */
+    public function addJs($path, $local = null, $filter = true, $attributes = null) {}
 
     /**
      * Adds an inline javascript to the collection
@@ -228,91 +164,14 @@ class Collection implements \Countable, \Iterator
      * @param mixed $attributes
      * @return Collection
      */
-    public function addInlineJs(string $content, bool $filter = true, $attributes = null): Collection {}
-
-    /**
-     * Adds a javascript asset to the collection
-     *
-     * @param string $path
-     * @param mixed $local
-     * @param bool $filter
-     * @param array $attributes
-     * @param string $version
-     * @param bool $autoVersion
-     * @return Collection
-     */
-    public function addJs(string $path, $local = null, bool $filter = true, $attributes = null, string $version = null, bool $autoVersion = false): Collection {}
+    public function addInlineJs($content, $filter = true, $attributes = null) {}
 
     /**
      * Returns the number of elements in the form
      *
      * @return int
      */
-    public function count(): int {}
-
-    /**
-     * Returns the current asset in the iterator
-     *
-     * @return \Phalcon\Assets\Asset
-     */
-    public function current(): Asset {}
-
-    /**
-     * Returns the complete location where the joined/filtered collection must
-     * be written
-     *
-     * @param string $basePath
-     * @return string
-     */
-    public function getRealTargetPath(string $basePath): string {}
-
-    /**
-     * Checks this the asset is added to the collection.
-     *
-     * ```php
-     * use Phalcon\Assets\Asset;
-     * use Phalcon\Assets\Collection;
-     *
-     * $collection = new Collection();
-     *
-     * $asset = new Asset("js", "js/jquery.js");
-     *
-     * $collection->add($asset);
-     * $collection->has($asset); // true
-     * ```
-     *
-     * @param AssetInterface $asset
-     * @return bool
-     */
-    public function has(AssetInterface $asset): bool {}
-
-    /**
-     * Checks if collection is using auto version
-     *
-     * @return bool
-     */
-    public function isAutoVersion(): bool {}
-
-    /**
-     * Sets if all filtered assets in the collection must be joined in a single
-     * result file
-     *
-     * @param bool $join
-     * @return Collection
-     */
-    public function join(bool $join): Collection {}
-
-    /**
-     * Returns the current position/key in the iterator
-     *
-     * @return int
-     */
-    public function key(): int {}
-
-    /**
-     * Moves the internal iteration pointer to the next position
-     */
-    public function next() {}
+    public function count() {}
 
     /**
      * Rewinds the internal iterator
@@ -320,44 +179,30 @@ class Collection implements \Countable, \Iterator
     public function rewind() {}
 
     /**
-     * Sets extra HTML attributes
+     * Returns the current resource in the iterator
      *
-     * @param array $attributes
-     * @return Collection
+     * @return \Phalcon\Assets\Resource
      */
-    public function setAttributes(array $attributes): Collection {}
+    public function current() {}
 
     /**
-     * Sets an array of filters in the collection
+     * Returns the current position/key in the iterator
      *
-     * @param array $filters
-     * @return Collection
+     * @return int
      */
-    public function setFilters(array $filters): Collection {}
+    public function key() {}
 
     /**
-     * Sets if the collection uses local assets by default
-     *
-     * @param bool $local
-     * @return Collection
+     * Moves the internal iteration pointer to the next position
      */
-    public function setLocal(bool $local): Collection {}
+    public function next() {}
 
     /**
-     * Sets a common prefix for all the assets
+     * Check if the current element in the iterator is valid
      *
-     * @param string $prefix
-     * @return Collection
+     * @return bool
      */
-    public function setPrefix(string $prefix): Collection {}
-
-    /**
-     * Sets the target local
-     *
-     * @param bool $targetLocal
-     * @return Collection
-     */
-    public function setTargetLocal(bool $targetLocal): Collection {}
+    public function valid() {}
 
     /**
      * Sets the target path of the file for the filtered/join output
@@ -365,7 +210,15 @@ class Collection implements \Countable, \Iterator
      * @param string $targetPath
      * @return Collection
      */
-    public function setTargetPath(string $targetPath): Collection {}
+    public function setTargetPath($targetPath) {}
+
+    /**
+     * Sets a base source path for all the resources in this collection
+     *
+     * @param string $sourcePath
+     * @return Collection
+     */
+    public function setSourcePath($sourcePath) {}
 
     /**
      * Sets a target uri for the generated HTML
@@ -373,29 +226,78 @@ class Collection implements \Countable, \Iterator
      * @param string $targetUri
      * @return Collection
      */
-    public function setTargetUri(string $targetUri): Collection {}
+    public function setTargetUri($targetUri) {}
 
     /**
-     * Sets a base source path for all the assets in this collection
+     * Sets a common prefix for all the resources
      *
-     * @param string $sourcePath
+     * @param string $prefix
      * @return Collection
      */
-    public function setSourcePath(string $sourcePath): Collection {}
+    public function setPrefix($prefix) {}
 
     /**
-     * Check if the current element in the iterator is valid
+     * Sets if the collection uses local resources by default
      *
-     * @return bool
+     * @param bool $local
+     * @return Collection
      */
-    public function valid(): bool {}
+    public function setLocal($local) {}
 
     /**
-     * Adds a asset or inline-code to the collection
+     * Sets extra HTML attributes
      *
-     * @param AssetInterface $asset
+     * @param array $attributes
+     * @return Collection
+     */
+    public function setAttributes(array $attributes) {}
+
+    /**
+     * Sets an array of filters in the collection
+     *
+     * @param array $filters
+     * @return Collection
+     */
+    public function setFilters(array $filters) {}
+
+    /**
+     * Sets the target local
+     *
+     * @param bool $targetLocal
+     * @return Collection
+     */
+    public function setTargetLocal($targetLocal) {}
+
+    /**
+     * Sets if all filtered resources in the collection must be joined in a single result file
+     *
+     * @param bool $join
+     * @return Collection
+     */
+    public function join($join) {}
+
+    /**
+     * Returns the complete location where the joined/filtered collection must be written
+     *
+     * @param string $basePath
+     * @return string
+     */
+    public function getRealTargetPath($basePath) {}
+
+    /**
+     * Adds a filter to the collection
+     *
+     * @param \Phalcon\Assets\FilterInterface $filter
+     * @return Collection
+     */
+    public function addFilter(\Phalcon\Assets\FilterInterface $filter) {}
+
+    /**
+     * Adds a resource or inline-code to the collection
+     *
+     * @param ResourceInterface $resource
      * @return bool
      */
-    final protected function addAsset(AssetInterface $asset): bool {}
+    protected final function addResource(ResourceInterface $resource) {}
 
 }

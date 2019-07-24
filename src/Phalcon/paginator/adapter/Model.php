@@ -5,10 +5,9 @@ namespace Phalcon\Paginator\Adapter;
 /**
  * Phalcon\Paginator\Adapter\Model
  *
- * This adapter allows to paginate data using a Phalcon\Mvc\Model resultset as a
- * base.
+ * This adapter allows to paginate data using a Phalcon\Mvc\Model resultset as a base.
  *
- * ```php
+ * <code>
  * use Phalcon\Paginator\Adapter\Model;
  *
  * $paginator = new Model(
@@ -19,17 +18,37 @@ namespace Phalcon\Paginator\Adapter;
  *     ]
  * );
  *
- * $paginate = $paginator->paginate();
- * ```
+ * $paginate = $paginator->getPaginate();
+ * </code>
  */
-class Model extends \Phalcon\Paginator\Adapter\AbstractAdapter
+class Model extends \Phalcon\Paginator\Adapter
 {
+    /**
+     * Configuration of paginator by model
+     */
+    protected $_config = null;
+
+
+    /**
+     * Phalcon\Paginator\Adapter\Model constructor
+     *
+     * @param array $config
+     */
+    public function __construct(array $config) {}
 
     /**
      * Returns a slice of the resultset to show in the pagination
      *
-     * @return \Phalcon\Paginator\RepositoryInterface
+     * @deprecated will be removed after 4.0
+     * @return \stdClass
      */
-    public function paginate(): RepositoryInterface {}
+    public function getPaginate() {}
+
+    /**
+     * Returns a slice of the resultset to show in the pagination
+     *
+     * @return \stdClass
+     */
+    public function paginate() {}
 
 }

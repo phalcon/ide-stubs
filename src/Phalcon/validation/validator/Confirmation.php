@@ -3,9 +3,11 @@
 namespace Phalcon\Validation\Validator;
 
 /**
+ * Phalcon\Validation\Validator\Confirmation
+ *
  * Checks that two values have the same value
  *
- * ```php
+ * <code>
  * use Phalcon\Validation;
  * use Phalcon\Validation\Validator\Confirmation;
  *
@@ -39,22 +41,19 @@ namespace Phalcon\Validation\Validator;
  *         ]
  *     )
  * );
- * ```
+ * </code>
  */
-class Confirmation extends \Phalcon\Validation\AbstractValidator
+class Confirmation extends \Phalcon\Validation\Validator
 {
-
-    protected $template = 'Field :field must be the same as :with';
-
 
     /**
      * Executes the validation
      *
      * @param \Phalcon\Validation $validation
-     * @param mixed $field
+     * @param string $field
      * @return bool
      */
-    public function validate(\Phalcon\Validation $validation, $field): bool {}
+    public function validate(\Phalcon\Validation $validation, $field) {}
 
     /**
      * Compare strings
@@ -63,6 +62,6 @@ class Confirmation extends \Phalcon\Validation\AbstractValidator
      * @param string $b
      * @return bool
      */
-    final protected function compare(string $a, string $b): bool {}
+    protected final function compare($a, $b) {}
 
 }

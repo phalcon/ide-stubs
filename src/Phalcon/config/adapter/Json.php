@@ -3,24 +3,24 @@
 namespace Phalcon\Config\Adapter;
 
 /**
+ * Phalcon\Config\Adapter\Json
+ *
  * Reads JSON files and converts them to Phalcon\Config objects.
  *
  * Given the following configuration file:
  *
- * ```json
+ * <code>
  * {"phalcon":{"baseuri":"\/phalcon\/"},"models":{"metadata":"memory"}}
- * ```
+ * </code>
  *
  * You can read it as follows:
  *
- * ```php
- * use Phalcon\Config\Adapter\Json;
- *
- * $config = new Json("path/config.json");
+ * <code>
+ * $config = new Phalcon\Config\Adapter\Json("path/config.json");
  *
  * echo $config->phalcon->baseuri;
  * echo $config->models->metadata;
- * ```
+ * </code>
  */
 class Json extends \Phalcon\Config
 {
@@ -30,6 +30,6 @@ class Json extends \Phalcon\Config
      *
      * @param string $filePath
      */
-    public function __construct(string $filePath) {}
+    public function __construct($filePath) {}
 
 }

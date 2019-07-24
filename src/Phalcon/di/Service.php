@@ -3,81 +3,73 @@
 namespace Phalcon\Di;
 
 /**
+ * Phalcon\Di\Service
+ *
  * Represents individually a service in the services container
  *
- * ```php
+ * <code>
  * $service = new \Phalcon\Di\Service(
  *     "request",
- *     \Phalcon\Http\Request::class
+ *     "Phalcon\\Http\\Request"
  * );
  *
  * $request = service->resolve();
- * ```
+ * </code>
  */
 class Service implements \Phalcon\Di\ServiceInterface
 {
 
-    protected $definition;
-
-    /**
-     * @var bool
-     */
-    protected $resolved = false;
-
-    /**
-     * @var bool
-     */
-    protected $shared = false;
+    protected $_name;
 
 
-    protected $sharedInstance;
+    protected $_definition;
+
+
+    protected $_shared = false;
+
+
+    protected $_resolved = false;
+
+
+    protected $_sharedInstance;
 
 
     /**
      * Phalcon\Di\Service
      *
+     * @param string $name
      * @param mixed $definition
+     * @param boolean $shared
+     */
+    public final function __construct($name, $definition, $shared = false) {}
+
+    /**
+     * Returns the service's name
+     *
+     * @return string
+     */
+    public function getName() {}
+
+    /**
+     * Sets if the service is shared or not
+     *
      * @param bool $shared
      */
-    final public function __construct($definition, bool $shared = false) {}
-
-    /**
-     * Returns the service definition
-     *
-     * @return mixed
-     */
-    public function getDefinition() {}
-
-    /**
-     * Returns a parameter in a specific position
-     *
-     * @param int $position
-     * @return array
-     */
-    public function getParameter(int $position) {}
-
-    /**
-     * Returns true if the service was resolved
-     *
-     * @return bool
-     */
-    public function isResolved(): bool {}
+    public function setShared($shared) {}
 
     /**
      * Check whether the service is shared or not
      *
      * @return bool
      */
-    public function isShared(): bool {}
+    public function isShared() {}
 
     /**
-     * Resolves the service
+     * Sets/Resets the shared instance related to the service
      *
-     * @param array $parameters
-     * @param \Phalcon\Di\DiInterface $container
-     * @return mixed
+     * @param mixed $sharedInstance
      */
-    public function resolve($parameters = null, \Phalcon\Di\DiInterface $container = null) {}
+    public function setSharedInstance($sharedInstance) {}
 
     /**
      * Set the service definition
@@ -87,26 +79,51 @@ class Service implements \Phalcon\Di\ServiceInterface
     public function setDefinition($definition) {}
 
     /**
+     * Returns the service definition
+     *
+     * @return mixed
+     */
+    public function getDefinition() {}
+
+    /**
+     * Resolves the service
+     *
+     * @param array $parameters
+     * @param \Phalcon\DiInterface $dependencyInjector
+     * @return mixed
+     */
+    public function resolve($parameters = null, \Phalcon\DiInterface $dependencyInjector = null) {}
+
+    /**
      * Changes a parameter in the definition without resolve the service
      *
      * @param int $position
      * @param array $parameter
      * @return \Phalcon\Di\ServiceInterface
      */
-    public function setParameter(int $position, array $parameter): ServiceInterface {}
+    public function setParameter($position, array $parameter) {}
 
     /**
-     * Sets if the service is shared or not
+     * Returns a parameter in a specific position
      *
-     * @param bool $shared
+     * @param int $position
+     * @return array
      */
-    public function setShared(bool $shared) {}
+    public function getParameter($position) {}
 
     /**
-     * Sets/Resets the shared instance related to the service
+     * Returns true if the service was resolved
      *
-     * @param mixed $sharedInstance
+     * @return bool
      */
-    public function setSharedInstance($sharedInstance) {}
+    public function isResolved() {}
+
+    /**
+     * Restore the internal state of a service
+     *
+     * @param array $attributes
+     * @return \Phalcon\Di\ServiceInterface
+     */
+    public static function __set_state(array $attributes) {}
 
 }

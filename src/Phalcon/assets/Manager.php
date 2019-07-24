@@ -7,100 +7,67 @@ namespace Phalcon\Assets;
  *
  * Manages collections of CSS/Javascript assets
  */
-class Manager implements \Phalcon\Di\InjectionAwareInterface
+class Manager
 {
-
-    protected $collections;
-
-    /**
-     * @var DiInterface
-     */
-    protected $container;
-
     /**
      * Options configure
      *
      * @var array
      */
-    protected $options;
+    protected $_options;
+
+
+    protected $_collections;
+
+
+    protected $_implicitOutput = true;
+
 
     /**
-     * @var bool
-     */
-    protected $implicitOutput = true;
-
-
-    /**
-     * Phalcon\Assets\Manager constructor
+     * Phalcon\Assets\Manager
      *
      * @param array $options
      */
-    public function __construct(array $options = array()) {}
+    public function __construct($options = null) {}
 
     /**
-     * Adds a raw asset to the manager
+     * Sets the manager options
      *
-     * ```php
-     * $assets->addAsset(
-     *     new Phalcon\Assets\Asset("css", "css/style.css")
-     * );
-     * ```
-     *
-     * @param \Phalcon\Assets\Asset $asset
+     * @param array $options
      * @return Manager
      */
-    public function addAsset(\Phalcon\Assets\Asset $asset): Manager {}
+    public function setOptions(array $options) {}
 
     /**
-     * Adds a asset by its type
+     * Returns the manager options
      *
-     * ```php
-     * $assets->addAssetByType(
-     *     "css",
-     *     new \Phalcon\Assets\Asset\Css("css/style.css")
-     * );
-     * ```
+     * @return array
+     */
+    public function getOptions() {}
+
+    /**
+     * Sets if the HTML generated must be directly printed or returned
      *
-     * @param string $type
-     * @param \Phalcon\Assets\Asset $asset
+     * @param bool $implicitOutput
      * @return Manager
      */
-    public function addAssetByType(string $type, \Phalcon\Assets\Asset $asset): Manager {}
+    public function useImplicitOutput($implicitOutput) {}
 
     /**
-     * Adds a Css asset to the 'css' collection
+     * Adds a Css resource to the 'css' collection
      *
-     * ```php
+     * <code>
      * $assets->addCss("css/bootstrap.css");
      * $assets->addCss("http://bootstrap.my-cdn.com/style.css", false);
-     * ```
+     * </code>
      *
      * @param string $path
      * @param mixed $local
-     * @param bool $filter
+     * @param mixed $filter
      * @param mixed $attributes
-     * @param string $version
-     * @param bool $autoVersion
      * @return Manager
      */
-    public function addCss(string $path, $local = true, bool $filter = true, $attributes = null, string $version = null, bool $autoVersion = false): Manager {}
-
-    /**
-     * Adds a raw inline code to the manager
-     *
-     * @param Inline $code
-     * @return Manager
-     */
-    public function addInlineCode(Inline $code): Manager {}
-
-    /**
-     * Adds an inline code by its type
-     *
-     * @param string $type
-     * @param Inline $code
-     * @return Manager
-     */
-    public function addInlineCodeByType(string $type, Inline $code): Manager {}
+    public function addCss($path, $local = true, $filter = true, $attributes = null) {}
 
     /**
      * Adds an inline Css to the 'css' collection
@@ -110,7 +77,23 @@ class Manager implements \Phalcon\Di\InjectionAwareInterface
      * @param mixed $attributes
      * @return Manager
      */
-    public function addInlineCss(string $content, $filter = true, $attributes = null): Manager {}
+    public function addInlineCss($content, $filter = true, $attributes = null) {}
+
+    /**
+     * Adds a javascript resource to the 'js' collection
+     *
+     * <code>
+     * $assets->addJs("scripts/jquery.js");
+     * $assets->addJs("http://jquery.my-cdn.com/jquery.js", false);
+     * </code>
+     *
+     * @param string $path
+     * @param mixed $local
+     * @param mixed $filter
+     * @param mixed $attributes
+     * @return Manager
+     */
+    public function addJs($path, $local = true, $filter = true, $attributes = null) {}
 
     /**
      * Adds an inline javascript to the 'js' collection
@@ -120,104 +103,107 @@ class Manager implements \Phalcon\Di\InjectionAwareInterface
      * @param mixed $attributes
      * @return Manager
      */
-    public function addInlineJs(string $content, $filter = true, $attributes = null): Manager {}
+    public function addInlineJs($content, $filter = true, $attributes = null) {}
 
     /**
-     * Adds a javascript asset to the 'js' collection
+     * Adds a resource by its type
      *
-     * ```php
-     * $assets->addJs("scripts/jquery.js");
-     * $assets->addJs("http://jquery.my-cdn.com/jquery.js", false);
-     * ```
+     * <code>
+     * $assets->addResourceByType("css",
+     *     new \Phalcon\Assets\Resource\Css("css/style.css")
+     * );
+     * </code>
      *
-     * @param string $path
-     * @param mixed $local
-     * @param bool $filter
-     * @param mixed $attributes
-     * @param string $version
-     * @param bool $autoVersion
+     * @param string $type
+     * @param \Phalcon\Assets\Resource $resource
      * @return Manager
      */
-    public function addJs(string $path, $local = true, bool $filter = true, $attributes = null, string $version = null, bool $autoVersion = false): Manager {}
+    public function addResourceByType($type, \Phalcon\Assets\Resource $resource) {}
 
     /**
-     * Creates/Returns a collection of assets
+     * Adds an inline code by its type
      *
-     * @param string $name
-     * @return \Phalcon\Assets\Collection
-     */
-    public function collection(string $name): Collection {}
-
-    /**
-     * Creates/Returns a collection of assets by type
-     *
-     * @param array $assets
      * @param string $type
-     * @return array
+     * @param Inline $code
+     * @return Manager
      */
-    public function collectionAssetsByType(array $assets, string $type): array {}
+    public function addInlineCodeByType($type, Inline $code) {}
 
     /**
-     * Returns true or false if collection exists.
+     * Adds a raw resource to the manager
      *
-     * ```php
-     * if ($assets->exists("jsHeader")) {
-     *     // \Phalcon\Assets\Collection
-     *     $collection = $assets->get("jsHeader");
-     * }
-     * ```
+     * <code>
+     * $assets->addResource(
+     *     new Phalcon\Assets\Resource("css", "css/style.css")
+     * );
+     * </code>
+     *
+     * @param \Phalcon\Assets\Resource $resource
+     * @return Manager
+     */
+    public function addResource(\Phalcon\Assets\Resource $resource) {}
+
+    /**
+     * Adds a raw inline code to the manager
+     *
+     * @param Inline $code
+     * @return Manager
+     */
+    public function addInlineCode(Inline $code) {}
+
+    /**
+     * Sets a collection in the Assets Manager
+     *
+     * <code>
+     * $assets->set("js", $collection);
+     * </code>
      *
      * @param string $id
-     * @return bool
+     * @param \Phalcon\Assets\Collection $collection
+     * @return Manager
      */
-    public function exists(string $id): bool {}
+    public function set($id, \Phalcon\Assets\Collection $collection) {}
 
     /**
      * Returns a collection by its id.
      *
-     * ```php
+     * <code>
      * $scripts = $assets->get("js");
-     * ```
+     * </code>
      *
      * @param string $id
      * @return \Phalcon\Assets\Collection
      */
-    public function get(string $id): Collection {}
-
-    /**
-     * Returns existing collections in the manager
-     *
-     * @return array|\Phalcon\Assets\Collection[]
-     */
-    public function getCollections(): array {}
+    public function get($id) {}
 
     /**
      * Returns the CSS collection of assets
      *
      * @return \Phalcon\Assets\Collection
      */
-    public function getCss(): Collection {}
-
-    /**
-     * Returns the internal dependency injector
-     *
-     * @return \Phalcon\Di\DiInterface
-     */
-    public function getDI(): DiInterface {}
+    public function getCss() {}
 
     /**
      * Returns the CSS collection of assets
      *
      * @return \Phalcon\Assets\Collection
      */
-    public function getJs(): Collection {}
+    public function getJs() {}
 
     /**
-     * Returns the manager options
+     * Creates/Returns a collection of resources
      *
+     * @param string $name
+     * @return \Phalcon\Assets\Collection
+     */
+    public function collection($name) {}
+
+    /**
+     * @param array $resources
+     * @param string $type
      * @return array
      */
-    public function getOptions(): array {}
+    public function collectionResourcesByType(array $resources, $type) {}
 
     /**
      * Traverses a collection calling the callback to generate its HTML
@@ -227,15 +213,7 @@ class Manager implements \Phalcon\Di\InjectionAwareInterface
      * @param string $type
      * @return string|null
      */
-    public function output(\Phalcon\Assets\Collection $collection, $callback, $type): ?string {}
-
-    /**
-     * Prints the HTML for CSS assets
-     *
-     * @param string $collectionName
-     * @return string
-     */
-    public function outputCss(string $collectionName = null): string {}
+    public function output(\Phalcon\Assets\Collection $collection, $callback, $type) {}
 
     /**
      * Traverses a collection and generate its HTML
@@ -244,7 +222,15 @@ class Manager implements \Phalcon\Di\InjectionAwareInterface
      * @param string $type
      * @return string
      */
-    public function outputInline(\Phalcon\Assets\Collection $collection, $type): string {}
+    public function outputInline(\Phalcon\Assets\Collection $collection, $type) {}
+
+    /**
+     * Prints the HTML for CSS resources
+     *
+     * @param string $collectionName
+     * @return string
+     */
+    public function outputCss($collectionName = null) {}
 
     /**
      * Prints the HTML for inline CSS
@@ -252,7 +238,15 @@ class Manager implements \Phalcon\Di\InjectionAwareInterface
      * @param string $collectionName
      * @return string
      */
-    public function outputInlineCss(string $collectionName = null): string {}
+    public function outputInlineCss($collectionName = null) {}
+
+    /**
+     * Prints the HTML for JS resources
+     *
+     * @param string $collectionName
+     * @return string
+     */
+    public function outputJs($collectionName = null) {}
 
     /**
      * Prints the HTML for inline JS
@@ -260,59 +254,28 @@ class Manager implements \Phalcon\Di\InjectionAwareInterface
      * @param string $collectionName
      * @return string
      */
-    public function outputInlineJs(string $collectionName = null): string {}
+    public function outputInlineJs($collectionName = null) {}
 
     /**
-     * Prints the HTML for JS assets
+     * Returns existing collections in the manager
      *
-     * @param string $collectionName
-     * @return string
+     * @return \Phalcon\Assets\Collection[]
      */
-    public function outputJs(string $collectionName = null): string {}
+    public function getCollections() {}
 
     /**
-     * Sets a collection in the Assets Manager
+     * Returns true or false if collection exists.
      *
-     * ```php
-     * $assets->set("js", $collection);
-     * ```
+     * <code>
+     * if ($assets->exists("jsHeader")) {
+     *     // \Phalcon\Assets\Collection
+     *     $collection = $assets->get("jsHeader");
+     * }
+     * </code>
      *
      * @param string $id
-     * @param \Phalcon\Assets\Collection $collection
-     * @return Manager
+     * @return bool
      */
-    public function set(string $id, \Phalcon\Assets\Collection $collection): Manager {}
-
-    /**
-     * Sets the dependency injector
-     *
-     * @param \Phalcon\Di\DiInterface $container
-     */
-    public function setDI(\Phalcon\Di\DiInterface $container) {}
-
-    /**
-     * Sets the manager options
-     *
-     * @param array $options
-     * @return Manager
-     */
-    public function setOptions(array $options): Manager {}
-
-    /**
-     * Sets if the HTML generated must be directly printed or returned
-     *
-     * @param bool $implicitOutput
-     * @return Manager
-     */
-    public function useImplicitOutput(bool $implicitOutput): Manager {}
-
-    /**
-     * Returns the prefixed path
-     *
-     * @param \Phalcon\Assets\Collection $collection
-     * @param string $path
-     * @return string
-     */
-    private function getPrefixedPath(\Phalcon\Assets\Collection $collection, string $path): string {}
+    public function exists($id) {}
 
 }

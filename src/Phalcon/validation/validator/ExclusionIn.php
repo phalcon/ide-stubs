@@ -3,9 +3,11 @@
 namespace Phalcon\Validation\Validator;
 
 /**
+ * Phalcon\Validation\Validator\ExclusionIn
+ *
  * Check if a value is not included into a list of values
  *
- * ```php
+ * <code>
  * use Phalcon\Validation;
  * use Phalcon\Validation\Validator\ExclusionIn;
  *
@@ -45,21 +47,18 @@ namespace Phalcon\Validation\Validator;
  *         ]
  *     )
  * );
- * ```
+ * </code>
  */
-class ExclusionIn extends \Phalcon\Validation\AbstractValidator
+class ExclusionIn extends \Phalcon\Validation\Validator
 {
-
-    protected $template = 'Field :field must not be a part of list: :domain';
-
 
     /**
      * Executes the validation
      *
      * @param \Phalcon\Validation $validation
-     * @param mixed $field
+     * @param string $field
      * @return bool
      */
-    public function validate(\Phalcon\Validation $validation, $field): bool {}
+    public function validate(\Phalcon\Validation $validation, $field) {}
 
 }

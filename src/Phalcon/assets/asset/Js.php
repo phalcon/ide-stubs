@@ -2,22 +2,19 @@
 
 namespace Phalcon\Assets\Asset;
 
+use Phalcon\Assets\Asset as AssetBase;
+
 /**
+ * Phalcon\Assets\Asset\Js
+ *
  * Represents Javascript assets
  */
-class Js extends \Phalcon\Assets\Asset
+class Js extends AssetBase
 {
-
-    /**
-     * Phalcon\Assets\Asset\Js constructor
-     *
-     * @param string $path
-     * @param bool $local
-     * @param bool $filter
-     * @param array $attributes
-     * @param string $version
-     * @param bool $autoVersion
-     */
-    public function __construct(string $path, bool $local = true, bool $filter = true, array $attributes = array(), string $version = null, bool $autoVersion = false) {}
-
+	/**
+	 * Phalcon\Assets\Asset\Js
+	 */
+	public function __construct(string $path, bool $local = true, bool $filter = true, array $attributes = [])
+	{
+	}
 }

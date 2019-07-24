@@ -2,24 +2,17 @@
 
 namespace Phalcon\Translate\Interpolator;
 
-/**
- * This file is part of the Phalcon Framework.
- *
- * (c) Phalcon Team <team@phalconphp.com>
- *
- * For the full copyright and license information, please view the LICENSE.txt
- * file that was distributed with this source code.
- */
-class IndexedArray implements \Phalcon\Translate\Interpolator\InterpolatorInterface
+
+class IndexedArray implements \Phalcon\Translate\InterpolatorInterface
 {
 
     /**
      * Replaces placeholders by the values passed
      *
      * @param string $translation
-     * @param array $placeholders
+     * @param mixed $placeholders
      * @return string
      */
-    public function replacePlaceholders(string $translation, array $placeholders = array()): string {}
+    public function replacePlaceholders($translation, $placeholders = null) {}
 
 }

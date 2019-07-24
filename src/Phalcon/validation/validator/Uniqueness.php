@@ -3,9 +3,11 @@
 namespace Phalcon\Validation\Validator;
 
 /**
+ * Phalcon\Validation\Validator\Uniqueness
+ *
  * Check that a field is unique in the related table
  *
- * ```php
+ * <code>
  * use Phalcon\Validation;
  * use Phalcon\Validation\Validator\Uniqueness as UniquenessValidator;
  *
@@ -20,10 +22,10 @@ namespace Phalcon\Validation\Validator;
  *         ]
  *     )
  * );
- * ```
+ * </code>
  *
  * Different attribute from the field:
- * ```php
+ * <code>
  * $validator->add(
  *     "username",
  *     new UniquenessValidator(
@@ -33,18 +35,18 @@ namespace Phalcon\Validation\Validator;
  *         ]
  *     )
  * );
- * ```
+ * </code>
  *
  * In model:
- * ```php
+ * <code>
  * $validator->add(
  *     "username",
  *     new UniquenessValidator()
  * );
- * ```
+ * </code>
  *
  * Combination of fields in model:
- * ```php
+ * <code>
  * $validator->add(
  *     [
  *         "firstName",
@@ -52,12 +54,12 @@ namespace Phalcon\Validation\Validator;
  *     ],
  *     new UniquenessValidator()
  * );
- * ```
+ * </code>
  *
  * It is possible to convert values before validation. This is useful in
  * situations where values need to be converted to do the database lookup:
  *
- * ```php
+ * <code>
  * $validator->add(
  *     "username",
  *     new UniquenessValidator(
@@ -70,13 +72,10 @@ namespace Phalcon\Validation\Validator;
  *         ]
  *     )
  * );
- * ```
+ * </code>
  */
-class Uniqueness extends \Phalcon\Validation\AbstractCombinedFieldsValidator
+class Uniqueness extends \Phalcon\Validation\CombinedFieldsValidator
 {
-
-    protected $template = 'Field :field must be unique';
-
 
     private $columnMap = null;
 
@@ -88,7 +87,14 @@ class Uniqueness extends \Phalcon\Validation\AbstractCombinedFieldsValidator
      * @param mixed $field
      * @return bool
      */
-    public function validate(\Phalcon\Validation $validation, $field): bool {}
+    public function validate(\Phalcon\Validation $validation, $field) {}
+
+    /**
+     * @param \Phalcon\Validation $validation
+     * @param mixed $field
+     * @return bool
+     */
+    protected function isUniqueness(\Phalcon\Validation $validation, $field) {}
 
     /**
      * The column map is used in the case to get real column name
@@ -97,23 +103,7 @@ class Uniqueness extends \Phalcon\Validation\AbstractCombinedFieldsValidator
      * @param string $field
      * @return string
      */
-    protected function getColumnNameReal($record, string $field): string {}
-
-    /**
-     * @param \Phalcon\Validation $validation
-     * @param mixed $field
-     * @return bool
-     */
-    protected function isUniqueness(\Phalcon\Validation $validation, $field): bool {}
-
-    /**
-     * Uniqueness method used for collection
-     *
-     * @param mixed $record
-     * @param array $field
-     * @param array $values
-     */
-    protected function isUniquenessCollection($record, array $field, array $values) {}
+    protected function getColumnNameReal($record, $field) {}
 
     /**
      * Uniqueness method used for model
@@ -123,5 +113,14 @@ class Uniqueness extends \Phalcon\Validation\AbstractCombinedFieldsValidator
      * @param array $values
      */
     protected function isUniquenessModel($record, array $field, array $values) {}
+
+    /**
+     * Uniqueness method used for collection
+     *
+     * @param mixed $record
+     * @param array $field
+     * @param array $values
+     */
+    protected function isUniquenessCollection($record, array $field, array $values) {}
 
 }

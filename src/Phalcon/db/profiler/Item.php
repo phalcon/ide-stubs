@@ -3,101 +3,61 @@
 namespace Phalcon\Db\Profiler;
 
 /**
+ * Phalcon\Db\Profiler\Item
+ *
  * This class identifies each profile in a Phalcon\Db\Profiler
  */
 class Item
 {
     /**
-     * Timestamp when the profile ended
-     *
-     * @var double
-     */
-    protected $finalTime;
-
-    /**
-     * Timestamp when the profile started
-     *
-     * @var double
-     */
-    protected $initialTime;
-
-    /**
-     * SQL bind types related to the profile
-     *
-     * @var array
-     */
-    protected $sqlBindTypes;
-
-    /**
      * SQL statement related to the profile
      *
      * @var string
      */
-    protected $sqlStatement;
+    protected $_sqlStatement;
 
     /**
      * SQL variables related to the profile
      *
      * @var array
      */
-    protected $sqlVariables;
-
-
-    /**
-     * Timestamp when the profile ended
-     *
-     * @param double $finalTime
-     */
-    public function setFinalTime(float $finalTime) {}
-
-    /**
-     * Timestamp when the profile ended
-     *
-     * @return double
-     */
-    public function getFinalTime(): float {}
-
-    /**
-     * Timestamp when the profile started
-     *
-     * @param double $initialTime
-     */
-    public function setInitialTime(float $initialTime) {}
-
-    /**
-     * Timestamp when the profile started
-     *
-     * @return double
-     */
-    public function getInitialTime(): float {}
+    protected $_sqlVariables;
 
     /**
      * SQL bind types related to the profile
      *
-     * @param array $sqlBindTypes
+     * @var array
      */
-    public function setSqlBindTypes(array $sqlBindTypes) {}
+    protected $_sqlBindTypes;
 
     /**
-     * SQL bind types related to the profile
+     * Timestamp when the profile started
      *
-     * @return array
+     * @var double
      */
-    public function getSqlBindTypes(): array {}
+    protected $_initialTime;
+
+    /**
+     * Timestamp when the profile ended
+     *
+     * @var double
+     */
+    protected $_finalTime;
+
 
     /**
      * SQL statement related to the profile
      *
      * @param string $sqlStatement
      */
-    public function setSqlStatement(string $sqlStatement) {}
+    public function setSqlStatement($sqlStatement) {}
 
     /**
      * SQL statement related to the profile
      *
      * @return string
      */
-    public function getSqlStatement(): string {}
+    public function getSqlStatement() {}
 
     /**
      * SQL variables related to the profile
@@ -111,13 +71,55 @@ class Item
      *
      * @return array
      */
-    public function getSqlVariables(): array {}
+    public function getSqlVariables() {}
+
+    /**
+     * SQL bind types related to the profile
+     *
+     * @param array $sqlBindTypes
+     */
+    public function setSqlBindTypes(array $sqlBindTypes) {}
+
+    /**
+     * SQL bind types related to the profile
+     *
+     * @return array
+     */
+    public function getSqlBindTypes() {}
+
+    /**
+     * Timestamp when the profile started
+     *
+     * @param double $initialTime
+     */
+    public function setInitialTime($initialTime) {}
+
+    /**
+     * Timestamp when the profile started
+     *
+     * @return double
+     */
+    public function getInitialTime() {}
+
+    /**
+     * Timestamp when the profile ended
+     *
+     * @param double $finalTime
+     */
+    public function setFinalTime($finalTime) {}
+
+    /**
+     * Timestamp when the profile ended
+     *
+     * @return double
+     */
+    public function getFinalTime() {}
 
     /**
      * Returns the total time in seconds spent by the profile
      *
      * @return double
      */
-    public function getTotalElapsedSeconds(): float {}
+    public function getTotalElapsedSeconds() {}
 
 }

@@ -11,36 +11,36 @@ interface BinderInterface
 {
 
     /**
+     * Gets active bound models
+     *
+     * @return array
+     */
+    public function getBoundModels();
+
+    /**
+     * Gets cache instance
+     *
+     * @return \Phalcon\Cache\BackendInterface
+     */
+    public function getCache();
+
+    /**
+     * Sets cache instance
+     *
+     * @param \Phalcon\Cache\BackendInterface $cache
+     * @return BinderInterface
+     */
+    public function setCache(\Phalcon\Cache\BackendInterface $cache);
+
+    /**
      * Bind models into params in proper handler
      *
      * @param object $handler
      * @param array $params
      * @param string $cacheKey
-     * @param string $methodName
+     * @param mixed $methodName
      * @return array
      */
-    public function bindToHandler($handler, array $params, string $cacheKey, string $methodName = null): array;
-
-    /**
-     * Gets active bound models
-     *
-     * @return array
-     */
-    public function getBoundModels(): array;
-
-    /**
-     * Gets cache instance
-     *
-     * @return \Phalcon\Cache\Adapter\AdapterInterface
-     */
-    public function getCache(): AdapterInterface;
-
-    /**
-     * Sets cache instance
-     *
-     * @param \Phalcon\Cache\Adapter\AdapterInterface $cache
-     * @return BinderInterface
-     */
-    public function setCache(\Phalcon\Cache\Adapter\AdapterInterface $cache): BinderInterface;
+    public function bindToHandler($handler, array $params, $cacheKey, $methodName = null);
 
 }

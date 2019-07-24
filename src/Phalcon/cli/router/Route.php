@@ -3,6 +3,8 @@
 namespace Phalcon\Cli\Router;
 
 /**
+ * Phalcon\Cli\Router\Route
+ *
  * This class represents every route added to the router
  */
 class Route
@@ -11,44 +13,91 @@ class Route
     const DEFAULT_DELIMITER = ' ';
 
 
-    protected $beforeMatch;
+    protected $_pattern;
 
 
-    protected $compiledPattern;
+    protected $_compiledPattern;
 
 
-    protected $converters;
+    protected $_paths;
 
 
-    protected $delimiter;
+    protected $_converters;
 
 
-    static protected $delimiterPath = self::DEFAULT_DELIMITER;
+    protected $_id;
 
 
-    protected $description;
+    protected $_name;
 
 
-    protected $id;
+    protected $_beforeMatch;
 
 
-    protected $name;
+    protected $_delimiter;
 
 
-    protected $paths;
+    static protected $_uniqueId;
 
 
-    protected $pattern;
-
-
-    static protected $uniqueId = 0;
+    static protected $_delimiterPath;
 
 
     /**
+     * Phalcon\Cli\Router\Route constructor
+     *
      * @param string $pattern
-     * @param array|string $paths
+     * @param array $paths
      */
-    public function __construct(string $pattern, $paths = null) {}
+    public function __construct($pattern, $paths = null) {}
+
+    /**
+     * Replaces placeholders from pattern returning a valid PCRE regular expression
+     *
+     * @param string $pattern
+     * @return string
+     */
+    public function compilePattern($pattern) {}
+
+    /**
+     * Extracts parameters from a string
+     *
+     * @param string $pattern
+     * @return array|boolean
+     */
+    public function extractNamedParams($pattern) {}
+
+    /**
+     * Reconfigure the route adding a new pattern and a set of paths
+     *
+     * @param string $pattern
+     * @param array $paths
+     */
+    public function reConfigure($pattern, $paths = null) {}
+
+    /**
+     * Returns the route's name
+     *
+     * @return string
+     */
+    public function getName() {}
+
+    /**
+     * Sets the route's name
+     *
+     * <code>
+     * $router->add(
+     *     "/about",
+     *     [
+     *         "controller" => "about",
+     *     ]
+     * )->setName("about");
+     * </code>
+     *
+     * @param string $name
+     * @return Route
+     */
+    public function setName($name) {}
 
     /**
      * Sets a callback that is called if the route is matched.
@@ -56,43 +105,9 @@ class Route
      * If the callback returns false the route is treated as not matched
      *
      * @param callback $callback
-     * @return RouteInterface
+     * @return Route
      */
-    public function beforeMatch($callback): RouteInterface {}
-
-    /**
-     * Replaces placeholders from pattern returning a valid PCRE regular
-     * expression
-     *
-     * @param string $pattern
-     * @return string
-     */
-    public function compilePattern(string $pattern): string {}
-
-    /**
-     * Adds a converter to perform an additional transformation for certain
-     * parameter
-     *
-     * @param string $name
-     * @param callable $converter
-     * @return RouteInterface
-     */
-    public function convert(string $name, $converter): RouteInterface {}
-
-    /**
-     * Set the routing delimiter
-     *
-     * @param string $delimiter
-     */
-    public static function delimiter(string $delimiter = null) {}
-
-    /**
-     * Extracts parameters from a string
-     *
-     * @param string $pattern
-     * @return array|bool
-     */
-    public function extractNamedParams(string $pattern) {}
+    public function beforeMatch($callback) {}
 
     /**
      * Returns the 'before match' callback if any
@@ -102,75 +117,55 @@ class Route
     public function getBeforeMatch() {}
 
     /**
-     * Returns the route's compiled pattern
+     * Returns the route's id
      *
      * @return string
      */
-    public function getCompiledPattern(): string {}
-
-    /**
-     * Returns the router converter
-     *
-     * @return array
-     */
-    public function getConverters(): array {}
-
-    /**
-     * Get routing delimiter
-     *
-     * @return string
-     */
-    public static function getDelimiter(): string {}
-
-    /**
-     * Returns the route's description
-     *
-     * @return string
-     */
-    public function getDescription(): string {}
-
-    /**
-     * Returns the route's name
-     *
-     * @return string
-     */
-    public function getName(): string {}
-
-    /**
-     * Returns the paths
-     *
-     * @return array
-     */
-    public function getPaths(): array {}
+    public function getRouteId() {}
 
     /**
      * Returns the route's pattern
      *
      * @return string
      */
-    public function getPattern(): string {}
+    public function getPattern() {}
+
+    /**
+     * Returns the route's compiled pattern
+     *
+     * @return string
+     */
+    public function getCompiledPattern() {}
+
+    /**
+     * Returns the paths
+     *
+     * @return array
+     */
+    public function getPaths() {}
 
     /**
      * Returns the paths using positions as keys and names as values
      *
      * @return array
      */
-    public function getReversedPaths(): array {}
+    public function getReversedPaths() {}
 
     /**
-     * Returns the route's id
+     * Adds a converter to perform an additional transformation for certain parameter
      *
-     * @return string
+     * @param string $name
+     * @param callable $converter
+     * @return Route
      */
-    public function getRouteId(): string {}
+    public function convert($name, $converter) {}
 
     /**
-     * Reconfigure the route adding a new pattern and a set of paths
+     * Returns the router converter
      *
-     * @param string $pattern
-     * @param array|string $paths
+     * @return array
      */
-    public function reConfigure(string $pattern, $paths = null) {}
+    public function getConverters() {}
 
     /**
      * Resets the internal route id generator
@@ -178,28 +173,17 @@ class Route
     public static function reset() {}
 
     /**
-     * Sets the route's description
+     * Set the routing delimiter
      *
-     * @param string $description
-     * @return RouteInterface
+     * @param string $delimiter
      */
-    public function setDescription(string $description): RouteInterface {}
+    public static function delimiter($delimiter = null) {}
 
     /**
-     * Sets the route's name
+     * Get routing delimiter
      *
-     * ```php
-     * $router->add(
-     *     "/about",
-     *     [
-     *         "controller" => "about",
-     *     ]
-     * )->setName("about");
-     * ```
-     *
-     * @param string $name
-     * @return RouteInterface
+     * @return string
      */
-    public function setName(string $name): RouteInterface {}
+    public static function getDelimiter() {}
 
 }

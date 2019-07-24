@@ -12,20 +12,19 @@ class Document implements \Phalcon\Mvc\EntityInterface, \ArrayAccess
 {
 
     /**
+     * Checks whether an offset exists in the document
+     *
+     * @param int $index
+     * @return bool
+     */
+    public function offsetExists($index) {}
+
+    /**
      * Returns the value of a field using the ArrayAccess interfase
      *
      * @param mixed $index
-     * @return mixed
      */
     public function offsetGet($index) {}
-
-    /**
-     * Checks whether an offset exists in the document
-     *
-     * @param mixed $index
-     * @return bool
-     */
-    public function offsetExists($index): bool {}
 
     /**
      * Change a value using the ArrayAccess interface
@@ -38,39 +37,39 @@ class Document implements \Phalcon\Mvc\EntityInterface, \ArrayAccess
     /**
      * Rows cannot be changed. It has only been implemented to meet the definition of the ArrayAccess interface
      *
-     * @param mixed $index
+     * @param string $offset
      */
-    public function offsetUnset($index) {}
+    public function offsetUnset($offset) {}
 
     /**
      * Reads an attribute value by its name
      *
-     * ```php
+     * <code>
      *  echo $robot->readAttribute("name");
-     * ```
+     * </code>
      *
      * @param string $attribute
-     * @return mixed|null
+     * @return mixed
      */
-    public function readAttribute(string $attribute): ? {}
+    public function readAttribute($attribute) {}
+
+    /**
+     * Writes an attribute value by its name
+     *
+     * <code>
+     *  $robot->writeAttribute("name", "Rosey");
+     * </code>
+     *
+     * @param string $attribute
+     * @param mixed $value
+     */
+    public function writeAttribute($attribute, $value) {}
 
     /**
      * Returns the instance as an array representation
      *
      * @return array
      */
-    public function toArray(): array {}
-
-    /**
-     * Writes an attribute value by its name
-     *
-     * ```php
-     *  $robot->writeAttribute("name", "Rosey");
-     * ```
-     *
-     * @param string $attribute
-     * @param mixed $value
-     */
-    public function writeAttribute(string $attribute, $value) {}
+    public function toArray() {}
 
 }

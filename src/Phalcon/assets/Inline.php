@@ -3,94 +3,92 @@
 namespace Phalcon\Assets;
 
 /**
+ * Phalcon\Assets\Inline
+ *
  * Represents an inline asset
  *
- * ```php
+ * <code>
  * $inline = new \Phalcon\Assets\Inline("js", "alert('hello world');");
- * ```
+ * </code>
  */
-class Inline implements \Phalcon\Assets\AssetInterface
+class Inline implements \Phalcon\Assets\ResourceInterface
 {
-    /**
-     * @var array | null
-     */
-    protected $attributes;
-
     /**
      * @var string
      */
-    protected $content;
+    protected $_type;
+
+
+    protected $_content;
 
     /**
      * @var bool
      */
-    protected $filter;
-
-    /**
-     * @var string
-     */
-    protected $type;
+    protected $_filter;
 
 
-    /**
-     * @return array|null
-     */
-    public function getAttributes(): ?array {}
+    protected $_attributes;
+
 
     /**
      * @return string
      */
-    public function getContent(): string {}
+    public function getType() {}
+
+
+    public function getContent() {}
 
     /**
      * @return bool
      */
-    public function getFilter(): bool {}
-
-    /**
-     * @return string
-     */
-    public function getType(): string {}
+    public function getFilter() {}
 
     /**
      * Phalcon\Assets\Inline constructor
      *
      * @param string $type
      * @param string $content
-     * @param bool $filter
+     * @param boolean $filter
      * @param array $attributes
      */
-    public function __construct(string $type, string $content, bool $filter = true, array $attributes = array()) {}
-
-    /**
-     * Gets the asset's key.
-     *
-     * @return string
-     */
-    public function getAssetKey(): string {}
-
-    /**
-     * Sets extra HTML attributes
-     *
-     * @param array $attributes
-     * @return AssetInterface
-     */
-    public function setAttributes(array $attributes): AssetInterface {}
-
-    /**
-     * Sets if the asset must be filtered or not
-     *
-     * @param bool $filter
-     * @return AssetInterface
-     */
-    public function setFilter(bool $filter): AssetInterface {}
+    public function __construct($type, $content, $filter = true, $attributes = null) {}
 
     /**
      * Sets the inline's type
      *
      * @param string $type
-     * @return AssetInterface
+     * @return ResourceInterface
      */
-    public function setType(string $type): AssetInterface {}
+    public function setType($type) {}
+
+    /**
+     * Sets if the resource must be filtered or not
+     *
+     * @param bool $filter
+     * @return ResourceInterface
+     */
+    public function setFilter($filter) {}
+
+    /**
+     * Sets extra HTML attributes
+     *
+     * @param array $attributes
+     * @return ResourceInterface
+     */
+    public function setAttributes(array $attributes) {}
+
+    /**
+     * returns extra HTML attributes
+     *
+     * @return array|null
+     */
+    public function getAttributes() {}
+
+    /**
+     * Gets the resource's key.
+     *
+     * @return string
+     */
+    public function getResourceKey() {}
 
 }

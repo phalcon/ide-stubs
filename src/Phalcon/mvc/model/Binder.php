@@ -37,7 +37,7 @@ class Binder implements \Phalcon\Mvc\Model\BinderInterface
      *
      * @return array
      */
-    public function getBoundModels(): array {}
+    public function getBoundModels() {}
 
     /**
      * Array for original values
@@ -47,9 +47,24 @@ class Binder implements \Phalcon\Mvc\Model\BinderInterface
     /**
      * Phalcon\Mvc\Model\Binder constructor
      *
-     * @param \Phalcon\Cache\Adapter\AdapterInterface $cache
+     * @param \Phalcon\Cache\BackendInterface $cache
      */
-    public function __construct(\Phalcon\Cache\Adapter\AdapterInterface $cache = null) {}
+    public function __construct(\Phalcon\Cache\BackendInterface $cache = null) {}
+
+    /**
+     * Gets cache instance
+     *
+     * @param \Phalcon\Cache\BackendInterface $cache
+     * @return BinderInterface
+     */
+    public function setCache(\Phalcon\Cache\BackendInterface $cache) {}
+
+    /**
+     * Sets cache instance
+     *
+     * @return \Phalcon\Cache\BackendInterface
+     */
+    public function getCache() {}
 
     /**
      * Bind models into params in proper handler
@@ -57,10 +72,10 @@ class Binder implements \Phalcon\Mvc\Model\BinderInterface
      * @param object $handler
      * @param array $params
      * @param string $cacheKey
-     * @param string $methodName
+     * @param mixed $methodName
      * @return array
      */
-    public function bindToHandler($handler, array $params, string $cacheKey, string $methodName = null): array {}
+    public function bindToHandler($handler, array $params, $cacheKey, $methodName = null) {}
 
     /**
      * Find the model by param value.
@@ -69,14 +84,7 @@ class Binder implements \Phalcon\Mvc\Model\BinderInterface
      * @param string $className
      * @return object|bool
      */
-    protected function findBoundModel($paramValue, string $className): bool {}
-
-    /**
-     * Sets cache instance
-     *
-     * @return \Phalcon\Cache\Adapter\AdapterInterface
-     */
-    public function getCache(): AdapterInterface {}
+    protected function findBoundModel($paramValue, $className) {}
 
     /**
      * Get params classes from cache by key
@@ -84,7 +92,7 @@ class Binder implements \Phalcon\Mvc\Model\BinderInterface
      * @param string $cacheKey
      * @return array|null
      */
-    protected function getParamsFromCache(string $cacheKey): ?array {}
+    protected function getParamsFromCache($cacheKey) {}
 
     /**
      * Get modified params for handler using reflection
@@ -92,17 +100,9 @@ class Binder implements \Phalcon\Mvc\Model\BinderInterface
      * @param object $handler
      * @param array $params
      * @param string $cacheKey
-     * @param string $methodName
+     * @param mixed $methodName
      * @return array
      */
-    protected function getParamsFromReflection($handler, array $params, string $cacheKey, string $methodName): array {}
-
-    /**
-     * Gets cache instance
-     *
-     * @param \Phalcon\Cache\Adapter\AdapterInterface $cache
-     * @return BinderInterface
-     */
-    public function setCache(\Phalcon\Cache\Adapter\AdapterInterface $cache): BinderInterface {}
+    protected function getParamsFromReflection($handler, array $params, $cacheKey, $methodName) {}
 
 }

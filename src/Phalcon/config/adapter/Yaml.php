@@ -3,29 +3,29 @@
 namespace Phalcon\Config\Adapter;
 
 /**
+ * Phalcon\Config\Adapter\Yaml
+ *
  * Reads YAML files and converts them to Phalcon\Config objects.
  *
  * Given the following configuration file:
  *
- * ```yaml
+ * <code>
  * phalcon:
  *   baseuri:        /phalcon/
  *   controllersDir: !approot  /app/controllers/
  * models:
  *   metadata: memory
- * ```
+ * </code>
  *
  * You can read it as follows:
  *
- * ```php
+ * <code>
  * define(
  *     "APPROOT",
  *     dirname(__DIR__)
  * );
  *
- * use Phalcon\Config\Adapter\Yaml;
- *
- * $config = new Yaml(
+ * $config = new \Phalcon\Config\Adapter\Yaml(
  *     "path/config.yaml",
  *     [
  *         "!approot" => function($value) {
@@ -37,7 +37,7 @@ namespace Phalcon\Config\Adapter;
  * echo $config->phalcon->controllersDir;
  * echo $config->phalcon->baseuri;
  * echo $config->models->metadata;
- * ```
+ * </code>
  */
 class Yaml extends \Phalcon\Config
 {
@@ -45,9 +45,10 @@ class Yaml extends \Phalcon\Config
     /**
      * Phalcon\Config\Adapter\Yaml constructor
      *
+     * @throws \Phalcon\Config\Exception
      * @param string $filePath
      * @param array $callbacks
      */
-    public function __construct(string $filePath, array $callbacks = null) {}
+    public function __construct($filePath, array $callbacks = null) {}
 
 }

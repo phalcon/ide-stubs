@@ -7,7 +7,7 @@ namespace Phalcon\Forms\Element;
  *
  * Component INPUT[type=check] for forms
  */
-class Check extends \Phalcon\Forms\Element\AbstractElement
+class Check extends \Phalcon\Forms\Element
 {
 
     /**
@@ -16,6 +16,6 @@ class Check extends \Phalcon\Forms\Element\AbstractElement
      * @param array $attributes
      * @return string
      */
-    public function render(array $attributes = array()): string {}
+    public function render($attributes = null) {}
 
 }

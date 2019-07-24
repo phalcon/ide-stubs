@@ -3,25 +3,23 @@
 namespace Phalcon\Annotations\Adapter;
 
 /**
+ * Phalcon\Annotations\Adapter\Apcu
+ *
  * Stores the parsed annotations in APCu. This adapter is suitable for production
  *
- * ```php
+ * <code>
  * use Phalcon\Annotations\Adapter\Apcu;
  *
  * $annotations = new Apcu();
- * ```
+ * </code>
  */
-class Apcu extends \Phalcon\Annotations\Adapter\AbstractAdapter
+class Apcu extends \Phalcon\Annotations\Adapter
 {
-    /**
-     * @var string
-     */
-    protected $prefix = '';
 
-    /**
-     * @var int
-     */
-    protected $ttl = 172800;
+    protected $_prefix = '';
+
+
+    protected $_ttl = 172800;
 
 
     /**
@@ -29,7 +27,7 @@ class Apcu extends \Phalcon\Annotations\Adapter\AbstractAdapter
      *
      * @param array $options
      */
-    public function __construct(array $options = array()) {}
+    public function __construct($options = null) {}
 
     /**
      * Reads parsed annotations from APCu
@@ -37,15 +35,14 @@ class Apcu extends \Phalcon\Annotations\Adapter\AbstractAdapter
      * @param string $key
      * @return bool|\Phalcon\Annotations\Reflection
      */
-    public function read(string $key) {}
+    public function read($key) {}
 
     /**
      * Writes parsed annotations to APCu
      *
      * @param string $key
      * @param \Phalcon\Annotations\Reflection $data
-     * @return bool
      */
-    public function write(string $key, \Phalcon\Annotations\Reflection $data): bool {}
+    public function write($key, \Phalcon\Annotations\Reflection $data) {}
 
 }

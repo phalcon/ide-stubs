@@ -7,43 +7,18 @@ namespace Phalcon\Logger\Formatter;
  *
  * Formats messages using JSON encoding
  */
-class Json extends \Phalcon\Logger\Formatter\AbstractFormatter
+class Json extends \Phalcon\Logger\Formatter
 {
-    /**
-     * Default date format
-     *
-     * @var string
-     */
-    protected $dateFormat;
-
-
-    /**
-     * Default date format
-     *
-     * @return string
-     */
-    public function getDateFormat(): string {}
-
-    /**
-     * Default date format
-     *
-     * @param string $dateFormat
-     */
-    public function setDateFormat(string $dateFormat) {}
-
-    /**
-     * Phalcon\Logger\Formatter\Json construct
-     *
-     * @param string $dateFormat
-     */
-    public function __construct(string $dateFormat = 'D, d M y H:i:s O') {}
 
     /**
      * Applies a format to a message before sent it to the internal log
      *
-     * @param \Phalcon\Logger\Item $item
+     * @param string $message
+     * @param int $type
+     * @param int $timestamp
+     * @param array $context
      * @return string
      */
-    public function format(\Phalcon\Logger\Item $item): string {}
+    public function format($message, $type, $timestamp, $context = null) {}
 
 }

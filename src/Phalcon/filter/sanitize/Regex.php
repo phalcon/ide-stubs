@@ -9,12 +9,10 @@ namespace Phalcon\Filter\Sanitize;
  */
 class Regex
 {
-
-    /**
-     * @param mixed $input
-     * @param mixed $pattern
-     * @param mixed $replace
-     */
-    public function __invoke($input, $pattern, $replace) {}
-
+	/**
+	 * @var mixed input The text to sanitize
+	 */
+	public function __invoke($input, $pattern, $replace)
+	{
+	}
 }

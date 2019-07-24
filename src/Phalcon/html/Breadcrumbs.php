@@ -2,6 +2,8 @@
 
 namespace Phalcon\Html;
 
+use Phalcon\DiInterface;
+
 /**
  * Phalcon\Html\Breadcrumbs
  *
@@ -13,96 +15,81 @@ class Breadcrumbs
 {
     /**
      * Keeps all the breadcrumbs
-     *
+     * 
      * @var array
      */
-    private $elements = array();
+    private $elements = [];
 
     /**
      * Crumb separator
-     *
+     * 
      * @var string
      */
-    private $separator = ' / ';
+    private $separator = " / ";
 
     /**
      * The HTML template to use to render the breadcrumbs.
-     *
+     * 
      * @var string
      */
-    private $template = '<dt><a href=\\\"%link%\\\">%label%</a></dt>';
-
-
-    /**
-     * Crumb separator
-     *
-     * @return string
-     */
-    public function getSeparator(): string {}
-
-    /**
-     * Crumb separator
-     *
-     * @param string $separator
-     */
-    public function setSeparator(string $separator) {}
+    private $template = "<dt><a href=\"%link%\">%label%</a></dt>";
 
     /**
      * Adds a new crumb.
      *
-     * ```php
+     * <code>
      * // Adding a crumb with a link
      * $breadcrumbs->add("Home", "/");
      *
      * // Adding a crumb without a link (normally the last one)
      * $breadcrumbs->add("Users");
-     * ```
-     *
-     * @param string $label
-     * @param string $link
-     * @return Breadcrumbs
+     * </code>
      */
-    public function add(string $label, string $link = ''): Breadcrumbs {}
+    public function add(string $label, string $link = "") : Breadcrumbs
+    {
+    }
 
     /**
-     * Clears the crumbs
+     * Clears the crumbx
      *
-     * ```php
+     * <code>
      * $breadcrumbs->clear()
-     * ```
+     * </code>
      */
-    public function clear() {}
+    public function clear() : void
+    {
+    }
 
     /**
      * Removes crumb by url.
      *
-     * ```php
+     * <code>
      * $breadcrumbs->remove("/admin/user/create");
      *
      * // remove a crumb without an url (last link)
      * $breadcrumbs->remove();
-     * ```
-     *
-     * @param string $link
+     * </code>
      */
-    public function remove(string $link) {}
+    public function remove(string $link) : void
+    {
+    }
 
     /**
      * Renders and outputs breadcrumbs based on previously set template.
      *
-     * ```php
+     * <code>
+     * // Php Engine
      * echo $breadcrumbs->render();
-     * ```
-     *
-     * @return string
+     * </code>
      */
-    public function render(): string {}
+    public function render() : string
+    {
+    }
 
     /**
      * Returns the internal breadcrumbs array
-     *
-     * @return array
      */
-    public function toArray(): array {}
-
+    public function toArray() : array
+    {
+    }
 }

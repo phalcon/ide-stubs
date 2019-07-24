@@ -6,11 +6,11 @@ namespace Phalcon\Mvc;
  * Phalcon\Mvc\Router
  *
  * Phalcon\Mvc\Router is the standard framework router. Routing is the
- * process of taking a URI endpoint (that part of the URI which comes after the
- * base URL) and decomposing it into parameters to determine which module,
- * controller, and action of that controller should receive the request
+ * process of taking a URI endpoint (that part of the URI which comes after the base URL) and
+ * decomposing it into parameters to determine which module, controller, and
+ * action of that controller should receive the request
  *
- * ```php
+ * <code>
  * use Phalcon\Mvc\Router;
  *
  * $router = new Router();
@@ -23,15 +23,19 @@ namespace Phalcon\Mvc;
  *     ]
  * );
  *
- * $router->handle(
- *     "/documentation/1/examples.html"
- * );
+ * $router->handle();
  *
  * echo $router->getControllerName();
- * ```
+ * </code>
  */
 class Router implements \Phalcon\Di\InjectionAwareInterface, \Phalcon\Mvc\RouterInterface, \Phalcon\Events\EventsAwareInterface
 {
+
+    const URI_SOURCE_GET_URL = 0;
+
+
+    const URI_SOURCE_SERVER_REQUEST_URI = 1;
+
 
     const POSITION_FIRST = 0;
 
@@ -39,67 +43,67 @@ class Router implements \Phalcon\Di\InjectionAwareInterface, \Phalcon\Mvc\Router
     const POSITION_LAST = 1;
 
 
-    protected $action = null;
+    protected $_dependencyInjector;
 
 
-    protected $container;
+    protected $_eventsManager;
 
 
-    protected $controller = null;
+    protected $_uriSource;
 
 
-    protected $defaultAction;
+    protected $_namespace = null;
 
 
-    protected $defaultController;
+    protected $_module = null;
 
 
-    protected $defaultModule;
+    protected $_controller = null;
 
 
-    protected $defaultNamespace;
+    protected $_action = null;
 
 
-    protected $defaultParams = array();
+    protected $_params = array();
 
 
-    protected $eventsManager;
+    protected $_routes;
 
 
-    protected $keyRouteNames = array();
+    protected $_matchedRoute;
 
 
-    protected $keyRouteIds = array();
+    protected $_matches;
 
 
-    protected $matchedRoute;
+    protected $_wasMatched = false;
 
 
-    protected $matches;
+    protected $_defaultNamespace;
 
 
-    protected $module = null;
+    protected $_defaultModule;
 
 
-    protected $namespaceName = null;
+    protected $_defaultController;
 
 
-    protected $notFoundPaths;
+    protected $_defaultAction;
 
 
-    protected $params = array();
+    protected $_defaultParams = array();
 
 
-    protected $removeExtraSlashes;
+    protected $_removeExtraSlashes;
 
 
-    protected $routes;
+    protected $_notFoundPaths;
 
 
-    protected $uriSource;
+    protected $_keyRouteNames = array();
 
 
-    protected $wasMatched = false;
+    protected $_keyRouteIds = array();
 
 
 
@@ -123,143 +127,141 @@ class Router implements \Phalcon\Di\InjectionAwareInterface, \Phalcon\Mvc\Router
      *
      * @param bool $defaultRoutes
      */
-    public function __construct(bool $defaultRoutes = true) {}
+    public function __construct($defaultRoutes = true) {}
 
     /**
-     * Adds a route to the router without any HTTP constraint
+     * Sets the dependency injector
      *
-     * ```php
-     * use Phalcon\Mvc\Router;
+     * @param \Phalcon\DiInterface $dependencyInjector
+     */
+    public function setDI(\Phalcon\DiInterface $dependencyInjector) {}
+
+    /**
+     * Returns the internal dependency injector
      *
-     * $router->add("/about", "About::index");
+     * @return \Phalcon\DiInterface
+     */
+    public function getDI() {}
+
+    /**
+     * Sets the events manager
      *
-     * $router->add(
-     *     "/about",
-     *     "About::index",
-     *     ["GET", "POST"]
+     * @param \Phalcon\Events\ManagerInterface $eventsManager
+     */
+    public function setEventsManager(\Phalcon\Events\ManagerInterface $eventsManager) {}
+
+    /**
+     * Returns the internal event manager
+     *
+     * @return \Phalcon\Events\ManagerInterface
+     */
+    public function getEventsManager() {}
+
+    /**
+     * Get rewrite info. This info is read from $_GET["_url"]. This returns '/' if the rewrite information cannot be read
+     *
+     * @return string
+     */
+    public function getRewriteUri() {}
+
+    /**
+     * Sets the URI source. One of the URI_SOURCE_ constants
+     *
+     * <code>
+     * $router->setUriSource(
+     *     Router::URI_SOURCE_SERVER_REQUEST_URI
      * );
+     * </code>
      *
-     * $router->add(
-     *     "/about",
-     *     "About::index",
-     *     ["GET", "POST"],
-     *     Router::POSITION_FIRST
+     * @param mixed $uriSource
+     * @return RouterInterface
+     */
+    public function setUriSource($uriSource) {}
+
+    /**
+     * Set whether router must remove the extra slashes in the handled routes
+     *
+     * @param bool $remove
+     * @return RouterInterface
+     */
+    public function removeExtraSlashes($remove) {}
+
+    /**
+     * Sets the name of the default namespace
+     *
+     * @param string $namespaceName
+     * @return RouterInterface
+     */
+    public function setDefaultNamespace($namespaceName) {}
+
+    /**
+     * Sets the name of the default module
+     *
+     * @param string $moduleName
+     * @return RouterInterface
+     */
+    public function setDefaultModule($moduleName) {}
+
+    /**
+     * Sets the default controller name
+     *
+     * @param string $controllerName
+     * @return RouterInterface
+     */
+    public function setDefaultController($controllerName) {}
+
+    /**
+     * Sets the default action name
+     *
+     * @param string $actionName
+     * @return RouterInterface
+     */
+    public function setDefaultAction($actionName) {}
+
+    /**
+     * Sets an array of default paths. If a route is missing a path the router will use the defined here
+     * This method must not be used to set a 404 route
+     *
+     * <code>
+     * $router->setDefaults(
+     *     [
+     *         "module" => "common",
+     *         "action" => "index",
+     *     ]
      * );
-     * ```
+     * </code>
      *
-     * @param string $pattern
-     * @param mixed $paths
-     * @param mixed $httpMethods
-     * @param mixed $position
-     * @return \Phalcon\Mvc\Router\RouteInterface
+     * @param array $defaults
+     * @return RouterInterface
      */
-    public function add(string $pattern, $paths = null, $httpMethods = null, $position = Router::POSITION_LAST): RouteInterface {}
+    public function setDefaults(array $defaults) {}
 
     /**
-     * Adds a route to the router that only match if the HTTP method is CONNECT
+     * Returns an array of default parameters
      *
-     * @param string $pattern
-     * @param mixed $paths
-     * @param mixed $position
-     * @return \Phalcon\Mvc\Router\RouteInterface
+     * @return array
      */
-    public function addConnect(string $pattern, $paths = null, $position = Router::POSITION_LAST): RouteInterface {}
+    public function getDefaults() {}
 
     /**
-     * Adds a route to the router that only match if the HTTP method is DELETE
+     * Handles routing information received from the rewrite engine
      *
-     * @param string $pattern
-     * @param mixed $paths
-     * @param mixed $position
-     * @return \Phalcon\Mvc\Router\RouteInterface
-     */
-    public function addDelete(string $pattern, $paths = null, $position = Router::POSITION_LAST): RouteInterface {}
-
-    /**
-     * Adds a route to the router that only match if the HTTP method is GET
+     * <code>
+     * // Read the info from the rewrite engine
+     * $router->handle();
      *
-     * @param string $pattern
-     * @param mixed $paths
-     * @param mixed $position
-     * @return \Phalcon\Mvc\Router\RouteInterface
-     */
-    public function addGet(string $pattern, $paths = null, $position = Router::POSITION_LAST): RouteInterface {}
-
-    /**
-     * Adds a route to the router that only match if the HTTP method is HEAD
+     * // Manually passing an URL
+     * $router->handle("/posts/edit/1");
+     * </code>
      *
-     * @param string $pattern
-     * @param mixed $paths
-     * @param mixed $position
-     * @return \Phalcon\Mvc\Router\RouteInterface
+     * @param string $uri
      */
-    public function addHead(string $pattern, $paths = null, $position = Router::POSITION_LAST): RouteInterface {}
-
-    /**
-     * Add a route to the router that only match if the HTTP method is OPTIONS
-     *
-     * @param string $pattern
-     * @param mixed $paths
-     * @param mixed $position
-     * @return \Phalcon\Mvc\Router\RouteInterface
-     */
-    public function addOptions(string $pattern, $paths = null, $position = Router::POSITION_LAST): RouteInterface {}
-
-    /**
-     * Adds a route to the router that only match if the HTTP method is PATCH
-     *
-     * @param string $pattern
-     * @param mixed $paths
-     * @param mixed $position
-     * @return \Phalcon\Mvc\Router\RouteInterface
-     */
-    public function addPatch(string $pattern, $paths = null, $position = Router::POSITION_LAST): RouteInterface {}
-
-    /**
-     * Adds a route to the router that only match if the HTTP method is POST
-     *
-     * @param string $pattern
-     * @param mixed $paths
-     * @param mixed $position
-     * @return \Phalcon\Mvc\Router\RouteInterface
-     */
-    public function addPost(string $pattern, $paths = null, $position = Router::POSITION_LAST): RouteInterface {}
-
-    /**
-     * Adds a route to the router that only match if the HTTP method is PURGE
-     * (Squid and Varnish support)
-     *
-     * @param string $pattern
-     * @param mixed $paths
-     * @param mixed $position
-     * @return \Phalcon\Mvc\Router\RouteInterface
-     */
-    public function addPurge(string $pattern, $paths = null, $position = Router::POSITION_LAST): RouteInterface {}
-
-    /**
-     * Adds a route to the router that only match if the HTTP method is PUT
-     *
-     * @param string $pattern
-     * @param mixed $paths
-     * @param mixed $position
-     * @return \Phalcon\Mvc\Router\RouteInterface
-     */
-    public function addPut(string $pattern, $paths = null, $position = Router::POSITION_LAST): RouteInterface {}
-
-    /**
-     * Adds a route to the router that only match if the HTTP method is TRACE
-     *
-     * @param string $pattern
-     * @param mixed $paths
-     * @param mixed $position
-     * @return \Phalcon\Mvc\Router\RouteInterface
-     */
-    public function addTrace(string $pattern, $paths = null, $position = Router::POSITION_LAST): RouteInterface {}
+    public function handle($uri = null) {}
 
     /**
      * Attach Route object to the routes stack.
      *
-     * ```php
+     * <code>
      * use Phalcon\Mvc\Router;
      * use Phalcon\Mvc\Router\Route;
      *
@@ -273,13 +275,149 @@ class Router implements \Phalcon\Di\InjectionAwareInterface, \Phalcon\Mvc\Router
      *     new CustomRoute("/about", "About::index", ["GET", "HEAD"]),
      *     Router::POSITION_FIRST
      * );
-     * ```
+     * </code>
      *
+     * @todo Add to the interface for 4.0.0
      * @param \Phalcon\Mvc\Router\RouteInterface $route
      * @param mixed $position
      * @return RouterInterface
      */
-    public function attach(\Phalcon\Mvc\Router\RouteInterface $route, $position = Router::POSITION_LAST): RouterInterface {}
+    public function attach(\Phalcon\Mvc\Router\RouteInterface $route, $position = Router::POSITION_LAST) {}
+
+    /**
+     * Adds a route to the router without any HTTP constraint
+     *
+     * <code>
+     * use Phalcon\Mvc\Router;
+     *
+     * $router->add("/about", "About::index");
+     * $router->add("/about", "About::index", ["GET", "POST"]);
+     * $router->add("/about", "About::index", ["GET", "POST"], Router::POSITION_FIRST);
+     * </code>
+     *
+     * @param string $pattern
+     * @param mixed $paths
+     * @param mixed $httpMethods
+     * @param mixed $position
+     * @return \Phalcon\Mvc\Router\RouteInterface
+     */
+    public function add($pattern, $paths = null, $httpMethods = null, $position = Router::POSITION_LAST) {}
+
+    /**
+     * Adds a route to the router that only match if the HTTP method is GET
+     *
+     * @param string $pattern
+     * @param mixed $paths
+     * @param mixed $position
+     * @return \Phalcon\Mvc\Router\RouteInterface
+     */
+    public function addGet($pattern, $paths = null, $position = Router::POSITION_LAST) {}
+
+    /**
+     * Adds a route to the router that only match if the HTTP method is POST
+     *
+     * @param string $pattern
+     * @param mixed $paths
+     * @param mixed $position
+     * @return \Phalcon\Mvc\Router\RouteInterface
+     */
+    public function addPost($pattern, $paths = null, $position = Router::POSITION_LAST) {}
+
+    /**
+     * Adds a route to the router that only match if the HTTP method is PUT
+     *
+     * @param string $pattern
+     * @param mixed $paths
+     * @param mixed $position
+     * @return \Phalcon\Mvc\Router\RouteInterface
+     */
+    public function addPut($pattern, $paths = null, $position = Router::POSITION_LAST) {}
+
+    /**
+     * Adds a route to the router that only match if the HTTP method is PATCH
+     *
+     * @param string $pattern
+     * @param mixed $paths
+     * @param mixed $position
+     * @return \Phalcon\Mvc\Router\RouteInterface
+     */
+    public function addPatch($pattern, $paths = null, $position = Router::POSITION_LAST) {}
+
+    /**
+     * Adds a route to the router that only match if the HTTP method is DELETE
+     *
+     * @param string $pattern
+     * @param mixed $paths
+     * @param mixed $position
+     * @return \Phalcon\Mvc\Router\RouteInterface
+     */
+    public function addDelete($pattern, $paths = null, $position = Router::POSITION_LAST) {}
+
+    /**
+     * Add a route to the router that only match if the HTTP method is OPTIONS
+     *
+     * @param string $pattern
+     * @param mixed $paths
+     * @param mixed $position
+     * @return \Phalcon\Mvc\Router\RouteInterface
+     */
+    public function addOptions($pattern, $paths = null, $position = Router::POSITION_LAST) {}
+
+    /**
+     * Adds a route to the router that only match if the HTTP method is HEAD
+     *
+     * @param string $pattern
+     * @param mixed $paths
+     * @param mixed $position
+     * @return \Phalcon\Mvc\Router\RouteInterface
+     */
+    public function addHead($pattern, $paths = null, $position = Router::POSITION_LAST) {}
+
+    /**
+     * Adds a route to the router that only match if the HTTP method is PURGE (Squid and Varnish support)
+     *
+     * @param string $pattern
+     * @param mixed $paths
+     * @param mixed $position
+     * @return \Phalcon\Mvc\Router\RouteInterface
+     */
+    public function addPurge($pattern, $paths = null, $position = Router::POSITION_LAST) {}
+
+    /**
+     * Adds a route to the router that only match if the HTTP method is TRACE
+     *
+     * @param string $pattern
+     * @param mixed $paths
+     * @param mixed $position
+     * @return \Phalcon\Mvc\Router\RouteInterface
+     */
+    public function addTrace($pattern, $paths = null, $position = Router::POSITION_LAST) {}
+
+    /**
+     * Adds a route to the router that only match if the HTTP method is CONNECT
+     *
+     * @param string $pattern
+     * @param mixed $paths
+     * @param mixed $position
+     * @return \Phalcon\Mvc\Router\RouteInterface
+     */
+    public function addConnect($pattern, $paths = null, $position = Router::POSITION_LAST) {}
+
+    /**
+     * Mounts a group of routes in the router
+     *
+     * @param \Phalcon\Mvc\Router\GroupInterface $group
+     * @return RouterInterface
+     */
+    public function mount(\Phalcon\Mvc\Router\GroupInterface $group) {}
+
+    /**
+     * Set a group of paths to be returned when none of the defined routes are matched
+     *
+     * @param mixed $paths
+     * @return RouterInterface
+     */
+    public function notFound($paths) {}
 
     /**
      * Removes all the pre-defined routes
@@ -287,67 +425,67 @@ class Router implements \Phalcon\Di\InjectionAwareInterface, \Phalcon\Mvc\Router
     public function clear() {}
 
     /**
-     * Returns the internal dependency injector
-     *
-     * @return \Phalcon\Di\DiInterface
-     */
-    public function getDI(): DiInterface {}
-
-    /**
-     * Returns the internal event manager
-     *
-     * @return \Phalcon\Events\ManagerInterface
-     */
-    public function getEventsManager(): ManagerInterface {}
-
-    /**
-     * Returns the processed action name
+     * Returns the processed namespace name
      *
      * @return string
      */
-    public function getActionName(): string {}
-
-    /**
-     * Returns the processed controller name
-     *
-     * @return string
-     */
-    public function getControllerName(): string {}
-
-    /**
-     * Returns the route that matches the handled URI
-     *
-     * @return \Phalcon\Mvc\Router\RouteInterface
-     */
-    public function getMatchedRoute(): RouteInterface {}
-
-    /**
-     * Returns the sub expressions in the regular expression matched
-     *
-     * @return array
-     */
-    public function getMatches(): array {}
+    public function getNamespaceName() {}
 
     /**
      * Returns the processed module name
      *
      * @return string
      */
-    public function getModuleName(): string {}
+    public function getModuleName() {}
 
     /**
-     * Returns the processed namespace name
+     * Returns the processed controller name
      *
      * @return string
      */
-    public function getNamespaceName(): string {}
+    public function getControllerName() {}
+
+    /**
+     * Returns the processed action name
+     *
+     * @return string
+     */
+    public function getActionName() {}
 
     /**
      * Returns the processed parameters
      *
      * @return array
      */
-    public function getParams(): array {}
+    public function getParams() {}
+
+    /**
+     * Returns the route that matches the handled URI
+     *
+     * @return \Phalcon\Mvc\Router\RouteInterface
+     */
+    public function getMatchedRoute() {}
+
+    /**
+     * Returns the sub expressions in the regular expression matched
+     *
+     * @return array
+     */
+    public function getMatches() {}
+
+    /**
+     * Checks if the router matches any of the defined routes
+     *
+     * @return bool
+     */
+    public function wasMatched() {}
+
+    /**
+     * Returns all the routes defined in the router
+     *
+     * @return \Phalcon\Mvc\Router\RouteInterface[]
+     */
+    public function getRoutes() {}
 
     /**
      * Returns a route object by its id
@@ -363,136 +501,13 @@ class Router implements \Phalcon\Di\InjectionAwareInterface, \Phalcon\Mvc\Router
      * @param string $name
      * @return bool|\Phalcon\Mvc\Router\RouteInterface
      */
-    public function getRouteByName(string $name) {}
-
-    /**
-     * Returns all the routes defined in the router
-     *
-     * @return array|\Phalcon\Mvc\Router\RouteInterface[]
-     */
-    public function getRoutes(): array {}
-
-    /**
-     * Handles routing information received from the rewrite engine
-     *
-     * ```php
-     * // Passing a URL
-     * $router->handle("/posts/edit/1");
-     * ```
-     *
-     * @param string $uri
-     */
-    public function handle(string $uri) {}
+    public function getRouteByName($name) {}
 
     /**
      * Returns whether controller name should not be mangled
      *
      * @return bool
      */
-    public function isExactControllerName(): bool {}
-
-    /**
-     * Mounts a group of routes in the router
-     *
-     * @param \Phalcon\Mvc\Router\GroupInterface $group
-     * @return RouterInterface
-     */
-    public function mount(\Phalcon\Mvc\Router\GroupInterface $group): RouterInterface {}
-
-    /**
-     * Set a group of paths to be returned when none of the defined routes are
-     * matched
-     *
-     * @param mixed $paths
-     * @return RouterInterface
-     */
-    public function notFound($paths): RouterInterface {}
-
-    /**
-     * Set whether router must remove the extra slashes in the handled routes
-     *
-     * @param bool $remove
-     * @return RouterInterface
-     */
-    public function removeExtraSlashes(bool $remove): RouterInterface {}
-
-    /**
-     * Sets the default action name
-     *
-     * @param string $actionName
-     * @return RouterInterface
-     */
-    public function setDefaultAction(string $actionName): RouterInterface {}
-
-    /**
-     * Sets the default controller name
-     *
-     * @param string $controllerName
-     * @return RouterInterface
-     */
-    public function setDefaultController(string $controllerName): RouterInterface {}
-
-    /**
-     * Sets the name of the default module
-     *
-     * @param string $moduleName
-     * @return RouterInterface
-     */
-    public function setDefaultModule(string $moduleName): RouterInterface {}
-
-    /**
-     * Sets the name of the default namespace
-     *
-     * @param string $namespaceName
-     * @return RouterInterface
-     */
-    public function setDefaultNamespace(string $namespaceName): RouterInterface {}
-
-    /**
-     * Sets an array of default paths. If a route is missing a path the router
-     * will use the defined here. This method must not be used to set a 404
-     * route
-     *
-     * ```php
-     * $router->setDefaults(
-     *     [
-     *         "module" => "common",
-     *         "action" => "index",
-     *     ]
-     * );
-     * ```
-     *
-     * @param array $defaults
-     * @return RouterInterface
-     */
-    public function setDefaults(array $defaults): RouterInterface {}
-
-    /**
-     * Returns an array of default parameters
-     *
-     * @return array
-     */
-    public function getDefaults(): array {}
-
-    /**
-     * Sets the dependency injector
-     *
-     * @param \Phalcon\Di\DiInterface $container
-     */
-    public function setDI(\Phalcon\Di\DiInterface $container) {}
-
-    /**
-     * Sets the events manager
-     *
-     * @param \Phalcon\Events\ManagerInterface $eventsManager
-     */
-    public function setEventsManager(\Phalcon\Events\ManagerInterface $eventsManager) {}
-
-    /**
-     * Checks if the router matches any of the defined routes
-     *
-     * @return bool
-     */
-    public function wasMatched(): bool {}
+    public function isExactControllerName() {}
 
 }

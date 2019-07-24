@@ -9,10 +9,10 @@ namespace Phalcon\Filter\Sanitize;
  */
 class Alpha
 {
-
-    /**
-     * @param mixed $input
-     */
-    public function __invoke($input) {}
-
+	/**
+	 * @var mixed input The text to sanitize
+	 */
+	public function __invoke($input)
+	{
+	}
 }

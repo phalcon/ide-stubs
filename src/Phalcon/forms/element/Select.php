@@ -7,10 +7,10 @@ namespace Phalcon\Forms\Element;
  *
  * Component SELECT (choice) for forms
  */
-class Select extends \Phalcon\Forms\Element\AbstractElement
+class Select extends \Phalcon\Forms\Element
 {
 
-    protected $optionsValues;
+    protected $_optionsValues;
 
 
     /**
@@ -20,15 +20,15 @@ class Select extends \Phalcon\Forms\Element\AbstractElement
      * @param object|array $options
      * @param array $attributes
      */
-    public function __construct(string $name, $options = null, $attributes = null) {}
+    public function __construct($name, $options = null, $attributes = null) {}
 
     /**
-     * Adds an option to the current options
+     * Set the choice's options
      *
-     * @param array $option
-     * @return Element
+     * @param array|object $options
+     * @return \Phalcon\Forms\Element
      */
-    public function addOption($option): Element {}
+    public function setOptions($options) {}
 
     /**
      * Returns the choices' options
@@ -38,19 +38,19 @@ class Select extends \Phalcon\Forms\Element\AbstractElement
     public function getOptions() {}
 
     /**
+     * Adds an option to the current options
+     *
+     * @param array $option
+     * @return \Phalcon\Forms\Element
+     */
+    public function addOption($option) {}
+
+    /**
      * Renders the element widget returning html
      *
      * @param array $attributes
      * @return string
      */
-    public function render(array $attributes = array()): string {}
-
-    /**
-     * Set the choice's options
-     *
-     * @param array|object $options
-     * @return Element
-     */
-    public function setOptions($options): Element {}
+    public function render($attributes = null) {}
 
 }

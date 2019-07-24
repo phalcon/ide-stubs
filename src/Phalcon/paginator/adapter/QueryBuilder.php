@@ -7,12 +7,12 @@ namespace Phalcon\Paginator\Adapter;
  *
  * Pagination using a PHQL query builder as source of data
  *
- * ```php
+ * <code>
  * use Phalcon\Paginator\Adapter\QueryBuilder;
  *
  * $builder = $this->modelsManager->createBuilder()
  *                 ->columns("id, name")
- *                 ->from(Robots::class)
+ *                 ->from("Robots")
  *                 ->orderBy("name");
  *
  * $paginator = new QueryBuilder(
@@ -22,19 +22,24 @@ namespace Phalcon\Paginator\Adapter;
  *         "page"    => 1,
  *     ]
  * );
- * ```
+ * </code>
  */
-class QueryBuilder extends \Phalcon\Paginator\Adapter\AbstractAdapter
+class QueryBuilder extends \Phalcon\Paginator\Adapter
 {
+    /**
+     * Configuration of paginator by model
+     */
+    protected $_config;
+
     /**
      * Paginator's data
      */
-    protected $builder;
+    protected $_builder;
 
     /**
      * Columns for count query if builder has having
      */
-    protected $columns;
+    protected $_columns;
 
 
     /**
@@ -49,21 +54,7 @@ class QueryBuilder extends \Phalcon\Paginator\Adapter\AbstractAdapter
      *
      * @return int
      */
-    public function getCurrentPage(): int {}
-
-    /**
-     * Get query builder object
-     *
-     * @return \Phalcon\Mvc\Model\Query\Builder
-     */
-    public function getQueryBuilder(): Builder {}
-
-    /**
-     * Returns a slice of the resultset to show in the pagination
-     *
-     * @return \Phalcon\Paginator\RepositoryInterface
-     */
-    public function paginate(): RepositoryInterface {}
+    public function getCurrentPage() {}
 
     /**
      * Set query builder object
@@ -71,6 +62,28 @@ class QueryBuilder extends \Phalcon\Paginator\Adapter\AbstractAdapter
      * @param \Phalcon\Mvc\Model\Query\Builder $builder
      * @return QueryBuilder
      */
-    public function setQueryBuilder(\Phalcon\Mvc\Model\Query\Builder $builder): QueryBuilder {}
+    public function setQueryBuilder(\Phalcon\Mvc\Model\Query\Builder $builder) {}
+
+    /**
+     * Get query builder object
+     *
+     * @return \Phalcon\Mvc\Model\Query\Builder
+     */
+    public function getQueryBuilder() {}
+
+    /**
+     * Returns a slice of the resultset to show in the pagination
+     *
+     * @deprecated `will be removed after 4.0
+     * @return \stdClass
+     */
+    public function getPaginate() {}
+
+    /**
+     * Returns a slice of the resultset to show in the pagination
+     *
+     * @return \stdClass
+     */
+    public function paginate() {}
 
 }

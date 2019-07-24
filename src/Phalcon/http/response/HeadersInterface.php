@@ -11,20 +11,34 @@ interface HeadersInterface
 {
 
     /**
+     * Sets a header to be sent at the end of the request
+     *
+     * @param string $name
+     * @param string $value
+     */
+    public function set($name, $value);
+
+    /**
      * Gets a header value from the internal bag
      *
      * @param string $name
      * @return string|bool
      */
-    public function get(string $name);
+    public function get($name);
 
     /**
-     * Returns true if the header is set, false otherwise
+     * Sets a raw header to be sent at the end of the request
      *
-     * @param string $name
+     * @param string $header
+     */
+    public function setRaw($header);
+
+    /**
+     * Sends the headers to the client
+     *
      * @return bool
      */
-    public function has(string $name): bool;
+    public function send();
 
     /**
      * Reset set headers
@@ -32,25 +46,11 @@ interface HeadersInterface
     public function reset();
 
     /**
-     * Sends the headers to the client
+     * Restore a \Phalcon\Http\Response\Headers object
      *
-     * @return bool
+     * @param array $data
+     * @return HeadersInterface
      */
-    public function send(): bool;
-
-    /**
-     * Sets a header to be sent at the end of the request
-     *
-     * @param string $name
-     * @param string $value
-     */
-    public function set(string $name, string $value);
-
-    /**
-     * Sets a raw header to be sent at the end of the request
-     *
-     * @param string $header
-     */
-    public function setRaw(string $header);
+    public static function __set_state(array $data);
 
 }

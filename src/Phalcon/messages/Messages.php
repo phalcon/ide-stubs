@@ -2,161 +2,170 @@
 
 namespace Phalcon\Messages;
 
+use Phalcon\Messages\Message;
+use Phalcon\Messages\Exception;
+use Phalcon\Messages\MessageInterface;
+
 /**
+ * Phalcon\Messages\Messages
+ *
  * Represents a collection of messages
  */
 class Messages implements \ArrayAccess, \Countable, \Iterator, \JsonSerializable
 {
-    /**
-     * @var int
-     */
-    protected $position = 0;
+	/**
+	 * @var int
+	 */
+	protected $position = 0;
 
-    /**
-     * @var array
-     */
-    protected $messages;
+	/**
+	 * @var array
+	 */
+	protected $messages;
 
+	/**
+	 * Phalcon\Messages\Messages constructor
+	 */
+	public function __construct(array $messages = [])
+	{
+	}
 
-    /**
-     * Phalcon\Messages\Messages constructor
-     *
-     * @param array $messages
-     */
-    public function __construct(array $messages = array()) {}
+	/**
+	 * Appends a message to the collection
+	 *
+	 *<code>
+	 * $messages->appendMessage(
+	 *     new \Phalcon\Messages\Message("This is a message")
+	 * );
+	 *</code>
+	 */
+	public function appendMessage(MessageInterface $message)
+	{
+	}
 
-    /**
-     * Appends a message to the collection
-     *
-     * ```php
-     * $messages->appendMessage(
-     *     new \Phalcon\Messages\Message("This is a message")
-     * );
-     * ```
-     *
-     * @param \Phalcon\Messages\MessageInterface $message
-     */
-    public function appendMessage(\Phalcon\Messages\MessageInterface $message) {}
+	/**
+	 * Appends an array of messages to the collection
+	 *
+	 *<code>
+	 * $messages->appendMessages($messagesArray);
+	 *</code>
+	 *
+	 * @param \Phalcon\Messages\MessageInterface[] messages
+	 */
+	public function appendMessages($messages)
+	{
+	}
 
-    /**
-     * Appends an array of messages to the collection
-     *
-     * ```php
-     * $messages->appendMessages($messagesArray);
-     * ```
-     *
-     * @param \Phalcon\Messages\MessageInterface[] $messages
-     */
-    public function appendMessages($messages) {}
+	/**
+	 * Returns the number of messages in the list
+	 */
+	public function count() : int
+	{
+	}
 
-    /**
-     * Returns the number of messages in the list
-     *
-     * @return int
-     */
-    public function count(): int {}
+	/**
+	 * Returns the current message in the iterator
+	 */
+	public function current() : MessageInterface
+	{
+	}
 
-    /**
-     * Returns the current message in the iterator
-     *
-     * @return \Phalcon\Messages\MessageInterface
-     */
-    public function current(): MessageInterface {}
-
-    /**
-     * Filters the message collection by field name
-     *
-     * @param string $fieldName
-     * @return array
-     */
-    public function filter(string $fieldName): array {}
+	/**
+	 * Filters the message collection by field name
+	 */
+	public function filter(string $fieldName) : array
+	{
+	}
 
     /**
      * Returns serialised message objects as array for json_encode. Calls
      * jsonSerialize on each object if present
      *
-     * ```php
+     *<code>
      * $data = $messages->jsonSerialize();
      * echo json_encode($data);
-     * ```
-     *
-     * @return array
+     *</code>
      */
-    public function jsonSerialize(): array {}
+    public function jsonSerialize() : array
+    {
+    }
 
-    /**
-     * Returns the current position/key in the iterator
-     *
-     * @return int
-     */
-    public function key(): int {}
+	/**
+	 * Returns the current position/key in the iterator
+	 */
+	public function key() : int
+	{
+	}
 
-    /**
-     * Moves the internal iteration pointer to the next position
-     */
-    public function next() {}
+	/**
+	 * Moves the internal iteration pointer to the next position
+	 */
+	public function next() : void
+	{
+	}
 
-    /**
-     * Checks if an index exists
-     *
-     * ```php
-     * var_dump(
-     *     isset($message["database"])
-     * );
-     * ```
-     *
-     * @param int $index
-     * @return bool
-     */
-    public function offsetExists($index): bool {}
+	/**
+	 * Checks if an index exists
+	 *
+	 *<code>
+	 * var_dump(
+	 *     isset($message["database"])
+	 * );
+	 *</code>
+	 *
+	 * @param int index
+	 */
+	public function offsetExists($index) : boolean
+	{
+	}
 
-    /**
-     * Gets an attribute a message using the array syntax
-     *
-     * ```php
-     * print_r(
-     *     $messages[0]
-     * );
-     * ```
-     *
-     * @param mixed $index
-     * @return mixed
-     */
-    public function offsetGet($index) {}
+	/**
+	 * Gets an attribute a message using the array syntax
+	 *
+	 *<code>
+	 * print_r(
+	 *     $messages[0]
+	 * );
+	 *</code>
+	 */
+	public function offsetGet($index)	{
+	}
 
-    /**
-     * Sets an attribute using the array-syntax
-     *
-     * ```php
-     * $messages[0] = new \Phalcon\Messages\Message("This is a message");
-     * ```
-     *
-     * @param mixed $index
-     * @param \Phalcon\Messages\Message $message
-     */
-    public function offsetSet($index, $message) {}
+	/**
+	 * Sets an attribute using the array-syntax
+	 *
+	 *<code>
+	 * $messages[0] = new \Phalcon\Messages\Message("This is a message");
+	 *</code>
+	 *
+	 * @param \Phalcon\Messages\Message message
+	 */
+	public function offsetSet($index, $message) : void
+	{
+	}
 
-    /**
-     * Removes a message from the list
-     *
-     * ```php
-     * unset($message["database"]);
-     * ```
-     *
-     * @param mixed $index
-     */
-    public function offsetUnset($index) {}
+	/**
+	 * Removes a message from the list
+	 *
+	 *<code>
+	 * unset($message["database"]);
+	 *</code>
+	 */
+	public function offsetUnset($index) : void
+	{
+	}
 
-    /**
-     * Rewinds the internal iterator
-     */
-    public function rewind() {}
+	/**
+	 * Rewinds the internal iterator
+	 */
+	public function rewind() : void
+	{
+	}
 
-    /**
-     * Check if the current message in the iterator is valid
-     *
-     * @return bool
-     */
-    public function valid(): bool {}
-
+	/**
+	 * Check if the current message in the iterator is valid
+	 */
+	public function valid() : boolean
+	{
+	}
 }

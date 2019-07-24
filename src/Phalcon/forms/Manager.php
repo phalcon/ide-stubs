@@ -3,12 +3,12 @@
 namespace Phalcon\Forms;
 
 /**
- * Forms Manager
+ * Phalcon\Forms\Manager
  */
 class Manager
 {
 
-    protected $forms = array();
+    protected $_forms;
 
 
     /**
@@ -18,7 +18,7 @@ class Manager
      * @param object $entity
      * @return Form
      */
-    public function create(string $name, $entity = null): Form {}
+    public function create($name, $entity = null) {}
 
     /**
      * Returns a form by its name
@@ -26,7 +26,7 @@ class Manager
      * @param string $name
      * @return Form
      */
-    public function get(string $name): Form {}
+    public function get($name) {}
 
     /**
      * Checks if a form is registered in the forms manager
@@ -34,7 +34,7 @@ class Manager
      * @param string $name
      * @return bool
      */
-    public function has(string $name): bool {}
+    public function has($name) {}
 
     /**
      * Registers a form in the Forms Manager
@@ -43,6 +43,6 @@ class Manager
      * @param Form $form
      * @return FormManager
      */
-    public function set(string $name, Form $form): FormManager {}
+    public function set($name, Form $form) {}
 
 }

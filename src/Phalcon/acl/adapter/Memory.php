@@ -2,14 +2,19 @@
 
 namespace Phalcon\Acl\Adapter;
 
+use Phalcon\Acl;
+use Phalcon\Acl\Adapter;
+use Phalcon\Acl\ComponentInterface;
+use Phalcon\Acl\RoleInterface;
+
 /**
  * Manages ACL lists in memory
  *
- * ```php
+ *```php
  * $acl = new \Phalcon\Acl\Adapter\Memory();
  *
  * $acl->setDefaultAction(
- *     \Phalcon\Acl\Enum::DENY
+ *     \Phalcon\Acl::DENY
  * );
  *
  * // Register roles
@@ -51,9 +56,9 @@ namespace Phalcon\Acl\Adapter;
  * }
  *
  * // Grant access to public areas to both users and guests
- * foreach ($roles as $role) {
+ * foreach ($roles as $role){
  *     foreach ($publicComponents as $component => $actions) {
- *         $acl->allow($role->getName(), $component, "");
+ *         $acl->allow($role->getName(), $component, "*");
  *     }
  * }
  *
@@ -63,9 +68,9 @@ namespace Phalcon\Acl\Adapter;
  *         $acl->allow("Users", $component, $action);
  *     }
  * }
- * ```
+ *```
  */
-class Memory extends \Phalcon\Acl\Adapter\AbstractAdapter
+class Memory extends Adapter
 {
     /**
      * Access
@@ -81,11 +86,11 @@ class Memory extends \Phalcon\Acl\Adapter\AbstractAdapter
      */
     protected $accessList;
 
-    /**
-     * Returns latest function used to acquire access
-     *
-     * @var mixed
-     */
+        /**
+         * Returns latest function used to acquire access
+         *
+         * @var mixed
+         */
     protected $activeFunction;
 
     /**
@@ -93,7 +98,7 @@ class Memory extends \Phalcon\Acl\Adapter\AbstractAdapter
      *
      * @var int
      */
-    protected $activeFunctionCustomArgumentsCount = 0;
+    protected $activeFunctionCustomArgumentsCount;
 
     /**
      * Returns latest key used to acquire access
@@ -128,7 +133,7 @@ class Memory extends \Phalcon\Acl\Adapter\AbstractAdapter
      *
      * @var mixed
      */
-    protected $noArgumentsDefaultAction = Enum::DENY;
+    protected $noArgumentsDefaultAction = Acl::DENY;
 
     /**
      * Roles
@@ -151,27 +156,6 @@ class Memory extends \Phalcon\Acl\Adapter\AbstractAdapter
      */
     protected $rolesNames;
 
-
-    /**
-     * Returns latest function used to acquire access
-     *
-     * @return mixed
-     */
-    public function getActiveFunction() {}
-
-    /**
-     * Returns number of additional arguments(excluding role and resource) for active function
-     *
-     * @return int
-     */
-    public function getActiveFunctionCustomArgumentsCount(): int {}
-
-    /**
-     * Returns latest key used to acquire access
-     *
-     * @return string|null
-     */
-    public function getActiveKey(): ?string {}
 
     /**
      * Phalcon\Acl\Adapter\Memory constructor
@@ -211,21 +195,20 @@ class Memory extends \Phalcon\Acl\Adapter\AbstractAdapter
      *     ]
      * );
      * ```
-     *
-     * @param mixed $componentValue
-     * @param mixed $accessList
+     * @param $componentValue
+     * @param $accessList
      * @return bool
      */
-    public function addComponent($componentValue, $accessList): bool {}
+    public function addComponent($componentValue, $accessList) : bool {}
 
     /**
      * Adds access to components
      *
-     * @param string $componentName
-     * @param mixed $accessList
+     * @param $componentName
+     * @param $accessList
      * @return bool
      */
-    public function addComponentAccess(string $componentName, $accessList): bool {}
+    public function addComponentAccess(string $componentName, $accessList) : bool {}
 
     /**
      * Do a role inherit from another existing role
@@ -236,10 +219,10 @@ class Memory extends \Phalcon\Acl\Adapter\AbstractAdapter
      * ```
      *
      * @param string $roleName
-     * @param mixed $roleToInherits
+     * @param $roleToInherits
      * @return bool
      */
-    public function addInherit(string $roleName, $roleToInherits): bool {}
+    public function addInherit(string $roleName, $roleToInherits) : bool {}
 
     /**
      * Adds a role to the ACL list. Second parameter allows inheriting access data from other existing role
@@ -254,14 +237,14 @@ class Memory extends \Phalcon\Acl\Adapter\AbstractAdapter
      * $acl->addRole("administrator", ["consultant", "consultant2"]);
      * ```
      *
-     * @param mixed $role
-     * @param mixed $accessInherits
+     * @param $role
+     * @param null $accessInherits
      * @return bool
      */
-    public function addRole($role, $accessInherits = null): bool {}
+    public function addRole($role, $accessInherits = null) : bool {}
 
     /**
-     * Allow access to a role on a component. You can use `` as wildcard
+     * Allow access to a role on a component. You can use `*` as wildcard
      *
      * ```php
      * // Allow access to guests to search on customers
@@ -271,20 +254,20 @@ class Memory extends \Phalcon\Acl\Adapter\AbstractAdapter
      * $acl->allow("guests", "customers", ["search", "create"]);
      *
      * // Allow access to any role to browse on products
-     * $acl->allow("", "products", "browse");
+     * $acl->allow("*", "products", "browse");
      *
      * // Allow access to any role to browse on any component
-     * $acl->allow("", "", "browse");
+     * $acl->allow("*", "*", "browse");
      *
      * @param string $roleName
      * @param string $componentName
-     * @param mixed $access
-     * @param mixed $func
+     * @param $access
+     * @param null $func
      */
-    public function allow(string $roleName, string $componentName, $access, $func = null) {}
+    public function allow(string $roleName, string $componentName, $access, $func = null) : void {}
 
     /**
-     * Deny access to a role on a component. You can use `` as wildcard
+     * Deny access to a role on a component. You can use `*` as wildcard
      *
      * ```php
      * // Deny access to guests to search on customers
@@ -294,48 +277,45 @@ class Memory extends \Phalcon\Acl\Adapter\AbstractAdapter
      * $acl->deny("guests", "customers", ["search", "create"]);
      *
      * // Deny access to any role to browse on products
-     * $acl->deny("", "products", "browse");
+     * $acl->deny("*", "products", "browse");
      *
      * // Deny access to any role to browse on any component
-     * $acl->deny("", "", "browse");
+     * $acl->deny("*", "*", "browse");
      * ```
      *
      * @param string $roleName
      * @param string $componentName
-     * @param mixed $access
-     * @param mixed $func
+     * @param $access
+     * @param null $func
      */
-    public function deny(string $roleName, string $componentName, $access, $func = null) {}
+    public function deny(string $roleName, string $componentName, $access, $func = null) : void {}
 
     /**
      * Removes an access from a component
-     *
      * @param string $componentName
-     * @param mixed $accessList
+     * @param $accessList
      */
-    public function dropComponentAccess(string $componentName, $accessList) {}
+    public function dropComponentAccess(string $componentName, $accessList) : void {}
 
     /**
      * Returns the default ACL access level for no arguments provided in
      * `isAllowed` action if a `func` (callable) exists for `accessKey`
-     *
-     * @return int
      */
-    public function getNoArgumentsDefaultAction(): int {}
+    public function getNoArgumentsDefaultAction() : int {}
 
     /**
      * Return an array with every role registered in the list
      *
-     * @return array|\Phalcon\Acl\RoleInterface[]
+     * @return RoleInterface[]
      */
-    public function getRoles(): array {}
+    public function getRoles() : array {}
 
     /**
      * Return an array with every component registered in the list
      *
-     * @return array|\Phalcon\Acl\ComponentInterface[]
+     * @return ComponentInterface[]
      */
-    public function getComponents(): array {}
+    public function getComponents() : array {}
 
     /**
      * Check whether a role is allowed to access an action from a component
@@ -345,16 +325,15 @@ class Memory extends \Phalcon\Acl\Adapter\AbstractAdapter
      * $acl->isAllowed("andres", "Products", "create");
      *
      * // Do guests have access to any component to edit?
-     * $acl->isAllowed("guests", "", "edit");
+     * $acl->isAllowed("guests", "*", "edit");
      * ```
-     *
-     * @param mixed $roleName
-     * @param mixed $componentName
-     * @param string $access
-     * @param array $parameters
+     * @param $roleName
+     * @param $componentName
+     * @param $access
+     * @param array|null $parameters
      * @return bool
      */
-    public function isAllowed($roleName, $componentName, string $access, array $parameters = null): bool {}
+    public function isAllowed($roleName, $componentName, $access, ?array $parameters = null) : bool {}
 
     /**
      * Check whether role exist in the roles list
@@ -362,7 +341,7 @@ class Memory extends \Phalcon\Acl\Adapter\AbstractAdapter
      * @param string $roleName
      * @return bool
      */
-    public function isRole(string $roleName): bool {}
+    public function isRole(string $roleName) : bool {}
 
     /**
      * Check whether component exist in the components list
@@ -370,36 +349,14 @@ class Memory extends \Phalcon\Acl\Adapter\AbstractAdapter
      * @param string $componentName
      * @return bool
      */
-    public function isComponent(string $componentName): bool {}
+    public function isComponent(string $componentName) : bool {}
 
     /**
-     * Sets the default access level (`Phalcon\Enum::ALLOW` or `Phalcon\Enum::DENY`)
+     * Sets the default access level (`Phalcon\Acl::ALLOW` or `Phalcon\Acl::DENY`)
      * for no arguments provided in isAllowed action if there exists func for
      * accessKey
      *
      * @param int $defaultAccess
      */
-    public function setNoArgumentsDefaultAction(int $defaultAccess) {}
-
-    /**
-     * Checks if a role has access to a component
-     *
-     * @param string $roleName
-     * @param string $componentName
-     * @param mixed $access
-     * @param mixed $action
-     * @param mixed $func
-     */
-    private function allowOrDeny(string $roleName, string $componentName, $access, $action, $func = null) {}
-
-    /**
-     * Check whether a role is allowed to access an action from a component
-     *
-     * @param string $roleName
-     * @param string $componentName
-     * @param string $access
-     * @return string|bool
-     */
-    private function canAccess(string $roleName, string $componentName, string $access) {}
-
+    public function setNoArgumentsDefaultAction(int $defaultAccess) : void {}
 }

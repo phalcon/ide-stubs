@@ -10,7 +10,7 @@ namespace Phalcon\Mvc\Model;
  * it will dump all the rows into a big array. Then unserialize will retrieve the rows as they were before
  * serializing.
  *
- * ```php
+ * <code>
  *
  * // Using a standard foreach
  * $robots = Robots::find(
@@ -41,19 +41,10 @@ namespace Phalcon\Mvc\Model;
  *
  *     $robots->next();
  * }
- * ```
+ * </code>
  */
 abstract class Resultset implements \Phalcon\Mvc\Model\ResultsetInterface, \Iterator, \SeekableIterator, \Countable, \ArrayAccess, \Serializable, \JsonSerializable
 {
-
-    const HYDRATE_ARRAYS = 1;
-
-
-    const HYDRATE_OBJECTS = 2;
-
-
-    const HYDRATE_RECORDS = 0;
-
 
     const TYPE_RESULT_FULL = 0;
 
@@ -61,153 +52,101 @@ abstract class Resultset implements \Phalcon\Mvc\Model\ResultsetInterface, \Iter
     const TYPE_RESULT_PARTIAL = 1;
 
 
-    protected $activeRow = null;
+    const HYDRATE_RECORDS = 0;
 
 
-    protected $cache;
+    const HYDRATE_OBJECTS = 2;
 
 
-    protected $count;
-
-
-    protected $errorMessages;
-
-
-    protected $hydrateMode = 0;
-
-
-    protected $isFresh = true;
-
-
-    protected $pointer = 0;
-
-
-    protected $row = null;
-
-
-    protected $rows = null;
+    const HYDRATE_ARRAYS = 1;
 
     /**
      * Phalcon\Db\ResultInterface or false for empty resultset
      */
-    protected $result;
+    protected $_result = false;
+
+
+    protected $_cache;
+
+
+    protected $_isFresh = true;
+
+
+    protected $_pointer = 0;
+
+
+    protected $_count;
+
+
+    protected $_activeRow = null;
+
+
+    protected $_rows = null;
+
+
+    protected $_row = null;
+
+
+    protected $_errorMessages;
+
+
+    protected $_hydrateMode = 0;
 
 
     /**
      * Phalcon\Mvc\Model\Resultset constructor
      *
      * @param \Phalcon\Db\ResultInterface|false $result
-     * @param \Phalcon\Cache\Adapter\AdapterInterface $cache
+     * @param \Phalcon\Cache\BackendInterface $cache
      */
-    public function __construct($result, \Phalcon\Cache\Adapter\AdapterInterface $cache = null) {}
+    public function __construct($result, \Phalcon\Cache\BackendInterface $cache = null) {}
 
     /**
-     * Counts how many rows are in the resultset
-     *
-     * @return int
+     * Moves cursor to next row in the resultset
      */
-    final public function count(): int {}
+    public function next() {}
 
     /**
-     * Deletes every record in the resultset
-     *
-     * @param \Closure $conditionCallback
-     * @return bool
-     */
-    public function delete(\Closure $conditionCallback = null): bool {}
-
-    /**
-     * Filters a resultset returning only those the developer requires
-     *
-     * ```php
-     * $filtered = $robots->filter(
-     *     function ($robot) {
-     *         if ($robot->id < 3) {
-     *             return $robot;
-     *         }
-     *     }
-     * );
-     * ```
-     *
-     * @param callable $filter
-     * @return array|\Phalcon\Mvc\ModelInterface[]
-     */
-    public function filter($filter): array {}
-
-    /**
-     * Returns the associated cache for the resultset
-     *
-     * @return \Phalcon\Cache\Adapter\AdapterInterface
-     */
-    public function getCache(): AdapterInterface {}
-
-    /**
-     * Get first row in the resultset
-     *
-     * @return null|\Phalcon\Mvc\ModelInterface
-     */
-    public function getFirst(): ?ModelInterface {}
-
-    /**
-     * Returns the current hydration mode
-     *
-     * @return int
-     */
-    public function getHydrateMode(): int {}
-
-    /**
-     * Get last row in the resultset
-     *
-     * @return null|\Phalcon\Mvc\ModelInterface
-     */
-    public function getLast(): ?ModelInterface {}
-
-    /**
-     * Returns the error messages produced by a batch operation
-     *
-     * @return array|\Phalcon\Messages\MessageInterface[]
-     */
-    public function getMessages(): array {}
-
-    /**
-     * Returns the internal type of data retrieval that the resultset is using
-     *
-     * @return int
-     */
-    public function getType(): int {}
-
-    /**
-     * Tell if the resultset if fresh or an old one cached
+     * Check whether internal resource has rows to fetch
      *
      * @return bool
      */
-    public function isFresh(): bool {}
-
-    /**
-     * Returns serialised model objects as array for json_encode.
-     * Calls jsonSerialize on each object if present
-     *
-     * ```php
-     * $robots = Robots::find();
-     *
-     * echo json_encode($robots);
-     * ```
-     *
-     * @return array
-     */
-    public function jsonSerialize(): array {}
+    public function valid() {}
 
     /**
      * Gets pointer number of active row in the resultset
      *
      * @return int|null
      */
-    public function key(): ?int {}
+    public function key() {}
 
     /**
-     * Moves cursor to next row in the resultset
+     * Rewinds resultset to its beginning
      */
-    public function next() {}
+    public final function rewind() {}
+
+    /**
+     * Changes the internal pointer to a specific position in the resultset.
+     * Set the new position if required, and then set this->_row
+     *
+     * @param mixed $position
+     */
+    public final function seek($position) {}
+
+    /**
+     * Counts how many rows are in the resultset
+     *
+     * @return int
+     */
+    public final function count() {}
+
+    /**
+     * Checks whether offset exists in the resultset
+     *
+     * @param mixed $index
+     * @return bool
+     */
+    public function offsetExists($index) {}
 
     /**
      * Gets row in a specific position of the resultset
@@ -216,14 +155,6 @@ abstract class Resultset implements \Phalcon\Mvc\Model\ResultsetInterface, \Iter
      * @return bool|\Phalcon\Mvc\ModelInterface
      */
     public function offsetGet($index) {}
-
-    /**
-     * Checks whether offset exists in the resultset
-     *
-     * @param mixed $index
-     * @return bool
-     */
-    public function offsetExists($index): bool {}
 
     /**
      * Resultsets cannot be changed. It has only been implemented to meet the definition of the ArrayAccess interface
@@ -241,33 +172,69 @@ abstract class Resultset implements \Phalcon\Mvc\Model\ResultsetInterface, \Iter
     public function offsetUnset($offset) {}
 
     /**
-     * Rewinds resultset to its beginning
+     * Returns the internal type of data retrieval that the resultset is using
+     *
+     * @return int
      */
-    final public function rewind() {}
+    public function getType() {}
 
     /**
-     * Changes the internal pointer to a specific position in the resultset.
-     * Set the new position if required, and then set this->row
+     * Get first row in the resultset
      *
-     * @param mixed $position
+     * @return bool|\Phalcon\Mvc\ModelInterface
      */
-    final public function seek($position) {}
+    public function getFirst() {}
 
     /**
-     * Sets the hydration mode in the resultset
+     * Get last row in the resultset
      *
-     * @param int $hydrateMode
-     * @return \Phalcon\Mvc\Model\ResultsetInterface
+     * @return bool|\Phalcon\Mvc\ModelInterface
      */
-    public function setHydrateMode(int $hydrateMode): ResultsetInterface {}
+    public function getLast() {}
 
     /**
      * Set if the resultset is fresh or an old one cached
      *
      * @param bool $isFresh
-     * @return \Phalcon\Mvc\Model\ResultsetInterface
+     * @return Resultset
      */
-    public function setIsFresh(bool $isFresh): ResultsetInterface {}
+    public function setIsFresh($isFresh) {}
+
+    /**
+     * Tell if the resultset if fresh or an old one cached
+     *
+     * @return bool
+     */
+    public function isFresh() {}
+
+    /**
+     * Sets the hydration mode in the resultset
+     *
+     * @param int $hydrateMode
+     * @return Resultset
+     */
+    public function setHydrateMode($hydrateMode) {}
+
+    /**
+     * Returns the current hydration mode
+     *
+     * @return int
+     */
+    public function getHydrateMode() {}
+
+    /**
+     * Returns the associated cache for the resultset
+     *
+     * @return \Phalcon\Cache\BackendInterface
+     */
+    public function getCache() {}
+
+    /**
+     * Returns the error messages produced by a batch operation
+     *
+     * @return \Phalcon\Mvc\Model\MessageInterface[]
+     */
+    public function getMessages() {}
 
     /**
      * Updates every record in the resultset
@@ -276,13 +243,45 @@ abstract class Resultset implements \Phalcon\Mvc\Model\ResultsetInterface, \Iter
      * @param \Closure $conditionCallback
      * @return bool
      */
-    public function update($data, \Closure $conditionCallback = null): bool {}
+    public function update($data, \Closure $conditionCallback = null) {}
 
     /**
-     * Check whether internal resource has rows to fetch
+     * Deletes every record in the resultset
      *
+     * @param \Closure $conditionCallback
      * @return bool
      */
-    public function valid(): bool {}
+    public function delete(\Closure $conditionCallback = null) {}
+
+    /**
+     * Filters a resultset returning only those the developer requires
+     *
+     * <code>
+     * $filtered = $robots->filter(
+     *     function ($robot) {
+     *         if ($robot->id < 3) {
+     *             return $robot;
+     *         }
+     *     }
+     * );
+     * </code>
+     *
+     * @param callback $filter
+     * @return array
+     */
+    public function filter($filter) {}
+
+    /**
+     * Returns serialised model objects as array for json_encode.
+     * Calls jsonSerialize on each object if present
+     *
+     * <code>
+     * $robots = Robots::find();
+     * echo json_encode($robots);
+     * </code>
+     *
+     * @return array
+     */
+    public function jsonSerialize() {}
 
 }

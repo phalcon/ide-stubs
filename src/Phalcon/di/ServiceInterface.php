@@ -3,48 +3,33 @@
 namespace Phalcon\Di;
 
 /**
+ * Phalcon\Di\ServiceInterface
+ *
  * Represents a service in the services container
  */
 interface ServiceInterface
 {
 
     /**
-     * Returns the service definition
+     * Returns the service's name
      *
-     * @return mixed
+     * @param string
      */
-    public function getDefinition();
+    public function getName();
 
     /**
-     * Returns a parameter in a specific position
+     * Sets if the service is shared or not
      *
-     * @param int $position
-     * @return array
+     * @param bool $shared
      */
-    public function getParameter(int $position);
-
-    /**
-     * Returns true if the service was resolved
-     *
-     * @return bool
-     */
-    public function isResolved(): bool;
+    public function setShared($shared);
 
     /**
      * Check whether the service is shared or not
      *
      * @return bool
      */
-    public function isShared(): bool;
-
-    /**
-     * Resolves the service
-     *
-     * @param array $parameters
-     * @param \Phalcon\Di\DiInterface $container
-     * @return mixed
-     */
-    public function resolve($parameters = null, \Phalcon\Di\DiInterface $container = null);
+    public function isShared();
 
     /**
      * Set the service definition
@@ -54,19 +39,36 @@ interface ServiceInterface
     public function setDefinition($definition);
 
     /**
+     * Returns the service definition
+     *
+     * @return mixed
+     */
+    public function getDefinition();
+
+    /**
+     * Resolves the service
+     *
+     * @param array $parameters
+     * @param \Phalcon\DiInterface $dependencyInjector
+     * @return mixed
+     */
+    public function resolve($parameters = null, \Phalcon\DiInterface $dependencyInjector = null);
+
+    /**
      * Changes a parameter in the definition without resolve the service
      *
      * @param int $position
      * @param array $parameter
      * @return ServiceInterface
      */
-    public function setParameter(int $position, array $parameter): ServiceInterface;
+    public function setParameter($position, array $parameter);
 
     /**
-     * Sets if the service is shared or not
+     * Restore the internal state of a service
      *
-     * @param bool $shared
+     * @param array $attributes
+     * @return ServiceInterface
      */
-    public function setShared(bool $shared);
+    public static function __set_state(array $attributes);
 
 }
