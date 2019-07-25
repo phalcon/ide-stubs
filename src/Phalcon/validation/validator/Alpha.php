@@ -3,11 +3,9 @@
 namespace Phalcon\Validation\Validator;
 
 /**
- * Phalcon\Validation\Validator\Alpha
- *
  * Check for alphabetic character(s)
  *
- * <code>
+ * ```php
  * use Phalcon\Validation;
  * use Phalcon\Validation\Validator\Alpha as AlphaValidator;
  *
@@ -36,18 +34,21 @@ namespace Phalcon\Validation\Validator;
  *         ]
  *     )
  * );
- * </code>
+ * ```
  */
-class Alpha extends \Phalcon\Validation\Validator
+class Alpha extends \Phalcon\Validation\AbstractValidator
 {
+
+    protected $template = 'Field :field must contain only letters';
+
 
     /**
      * Executes the validation
      *
      * @param \Phalcon\Validation $validation
-     * @param string $field
+     * @param mixed $field
      * @return bool
      */
-    public function validate(\Phalcon\Validation $validation, $field) {}
+    public function validate(\Phalcon\Validation $validation, $field): bool {}
 
 }

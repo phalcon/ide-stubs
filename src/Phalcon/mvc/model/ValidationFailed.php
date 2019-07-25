@@ -11,32 +11,32 @@ namespace Phalcon\Mvc\Model;
 class ValidationFailed extends \Phalcon\Mvc\Model\Exception
 {
 
-    protected $_model;
+    protected $messages;
 
 
-    protected $_messages;
+    protected $model;
 
 
     /**
      * Phalcon\Mvc\Model\ValidationFailed constructor
      *
-     * @param Model $model
+     * @param \Phalcon\Mvc\ModelInterface $model
      * @param Message[] $validationMessages
      */
-    public function __construct(\Phalcon\Mvc\Model $model, array $validationMessages) {}
-
-    /**
-     * Returns the model that generated the messages
-     *
-     * @return \Phalcon\Mvc\Model
-     */
-    public function getModel() {}
+    public function __construct(\Phalcon\Mvc\ModelInterface $model, array $validationMessages) {}
 
     /**
      * Returns the complete group of messages produced in the validation
      *
-     * @return Message[]
+     * @return array|Message[]
      */
-    public function getMessages() {}
+    public function getMessages(): array {}
+
+    /**
+     * Returns the model that generated the messages
+     *
+     * @return \Phalcon\Mvc\ModelInterface
+     */
+    public function getModel(): ModelInterface {}
 
 }

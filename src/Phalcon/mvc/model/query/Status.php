@@ -10,7 +10,7 @@ namespace Phalcon\Mvc\Model\Query;
  * information and the related messages produced by the
  * model which finally executes the operations when it fails
  *
- * <code>
+ * ```php
  * $phql = "UPDATE Robots SET name = :name:, type = :type:, year = :year: WHERE id = :id:";
  *
  * $status = $app->modelsManager->executeQuery(
@@ -24,18 +24,18 @@ namespace Phalcon\Mvc\Model\Query;
  * );
  *
  * // Check if the update was successful
- * if ($status->success() === true) {
+ * if ($status->success()) {
  *     echo "OK";
  * }
- * </code>
+ * ```
  */
 class Status implements \Phalcon\Mvc\Model\Query\StatusInterface
 {
 
-    protected $_success;
+    protected $model;
 
 
-    protected $_model;
+    protected $success;
 
 
     /**
@@ -44,27 +44,27 @@ class Status implements \Phalcon\Mvc\Model\Query\StatusInterface
      * @param bool $success
      * @param \Phalcon\Mvc\ModelInterface $model
      */
-    public function __construct($success, \Phalcon\Mvc\ModelInterface $model = null) {}
+    public function __construct(bool $success, \Phalcon\Mvc\ModelInterface $model = null) {}
+
+    /**
+     * Returns the messages produced because of a failed operation
+     *
+     * @return array|\Phalcon\Messages\MessageInterface[]
+     */
+    public function getMessages(): array {}
 
     /**
      * Returns the model that executed the action
      *
      * @return \Phalcon\Mvc\ModelInterface
      */
-    public function getModel() {}
-
-    /**
-     * Returns the messages produced because of a failed operation
-     *
-     * @return \Phalcon\Mvc\Model\MessageInterface[]
-     */
-    public function getMessages() {}
+    public function getModel(): ModelInterface {}
 
     /**
      * Allows to check if the executed operation was successful
      *
      * @return bool
      */
-    public function success() {}
+    public function success(): bool {}
 
 }

@@ -2,33 +2,38 @@
 
 namespace Phalcon;
 
-use Psr\Container\ContainerInterface;
-use Phalcon\DiInterface;
-
-class Container implements ContainerInterface
+/**
+ * PSR-11 Wrapper for `Phalcon\Di`
+ */
+class Container implements \Psr\Container\ContainerInterface
 {
-	/**
-	 * @var <DiInterface>
-	 */
-	protected $container;
+    /**
+     * @var <DiInterface>
+     */
+    protected $container;
 
-	/**
-	 * Phalcon\Di constructor
-	 */
-	public function __construct(DiInterface $container)
-	{
-	}
 
-	/**
-	 * Return the service
-	 */
-	public function get($name)	{
-	}
+    /**
+     * Phalcon\Container constructor
+     *
+     * @param \Phalcon\Di\DiInterface $container
+     */
+    public function __construct(\Phalcon\Di\DiInterface $container) {}
 
-	/**
-	 * Whether a service exists or not in the container
-	 */
-	public function has($name) : bool
-	{
-	}
+    /**
+     * Return the service
+     *
+     * @param mixed $name
+     * @return mixed
+     */
+    public function get($name) {}
+
+    /**
+     * Whether a service exists or not in the container
+     *
+     * @param mixed $name
+     * @return bool
+     */
+    public function has($name): bool {}
+
 }

@@ -2,15 +2,13 @@
 
 namespace Phalcon\Session\Adapter;
 
-use SessionHandlerInterface;
-
 /**
  * Phalcon\Session\Adapter\Noop
  *
  * This is an "empty" or null adapter. It can be used for testing or any
  * other purpose that no session needs to be invoked
  *
- * <code>
+ * ```php
  * <?php
  *
  * use Phalcon\Session\Manager;
@@ -18,89 +16,99 @@ use SessionHandlerInterface;
  *
  * $session = new Manager();
  * $session->setHandler(new Noop());
- * </code>
+ * ```
  */
-class Noop implements SessionHandlerInterface
+class Noop implements \SessionHandlerInterface
 {
     /**
      * The connection of some adapters
      */
-	protected $connection;
+    protected $connection;
 
-	/**
-	 * Session options
-	 *
-	 * @var array
-	 */
-	protected $options = [];
+    /**
+     * Session options
+     *
+     * @var array
+     */
+    protected $options = array();
 
-	/**
-	 * Session prefix
-	 *
-	 * @var string
-	 */
-	protected $prefix = "";
+    /**
+     * Session prefix
+     *
+     * @var string
+     */
+    protected $prefix = '';
 
-	/**
-	 * Time To Live
-	 *
-	 * @var int
-	 */
-	protected $ttl = 8600;
+    /**
+     * Time To Live
+     *
+     * @var int
+     */
+    protected $ttl = 8600;
 
-	/**
-	 * Constructor
-	 */
-	public function __construct(array $options = [])
-	{
-	}
 
-	/**
-	 * Close
-	 */
-	public function close() : bool
-	{
-	}
+    /**
+     * Constructor
+     *
+     * @param array $options
+     */
+    public function __construct(array $options = array()) {}
 
-	/**
-	 * Destroy
-	 */
-	public function destroy($id) : bool
-	{
-	}
+    /**
+     * Close
+     *
+     * @return bool
+     */
+    public function close(): bool {}
 
-	/**
-	 * Garbage Collector
-	 */
-	public function gc($maxlifetime) : bool
-	{
-	}
+    /**
+     * Destroy
+     *
+     * @param mixed $id
+     * @return bool
+     */
+    public function destroy($id): bool {}
 
-	/**
-	 * Read
-	 */
-	public function read($id) : string
-	{
-	}
+    /**
+     * Garbage Collector
+     *
+     * @param mixed $maxlifetime
+     * @return bool
+     */
+    public function gc($maxlifetime): bool {}
 
-	/**
-	 * Open
-	 */
-	public function open($savePath, $sessionName) : bool
-	{
-	}
+    /**
+     * Read
+     *
+     * @param mixed $id
+     * @return string
+     */
+    public function read($id): string {}
 
-	/**
-	 * Write
-	 */
-	public function write($id, $data) : bool
-	{
-	}
+    /**
+     * Open
+     *
+     * @param mixed $savePath
+     * @param mixed $sessionName
+     * @return bool
+     */
+    public function open($savePath, $sessionName): bool {}
 
-	/**
-	 * Helper method to get the name prefixed
-	 */
-	protected function getPrefixedName($name) : string
-	{
-	}
+    /**
+     * Write
+     *
+     * @param mixed $id
+     * @param mixed $data
+     * @return bool
+     */
+    public function write($id, $data): bool {}
+
+    /**
+     * Helper method to get the name prefixed
+     *
+     * @param mixed $name
+     * @return string
+     */
+    protected function getPrefixedName($name): string {}
+
 }

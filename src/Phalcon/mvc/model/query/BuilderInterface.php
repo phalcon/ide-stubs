@@ -10,19 +10,96 @@ namespace Phalcon\Mvc\Model\Query;
 interface BuilderInterface
 {
 
+    const OPERATOR_AND = 'and';
+
+
     const OPERATOR_OR = 'or';
 
 
-    const OPERATOR_AND = 'and';
+    /**
+     * Add a model to take part of the query
+     *
+     * @param string $model
+     * @param string $alias
+     * @return BuilderInterface
+     */
+    public function addFrom(string $model, string $alias = null): BuilderInterface;
 
+    /**
+     * Appends a condition to the current conditions using a AND operator
+     *
+     * @param string $conditions
+     * @param array $bindParams
+     * @param array $bindTypes
+     * @return BuilderInterface
+     */
+    public function andWhere(string $conditions, array $bindParams = array(), array $bindTypes = array()): BuilderInterface;
+
+    /**
+     * Appends a BETWEEN condition to the current conditions
+     *
+     * @param string $expr
+     * @param mixed $minimum
+     * @param mixed $maximum
+     * @param string $operator
+     * @return BuilderInterface
+     */
+    public function betweenWhere(string $expr, $minimum, $maximum, string $operator = BuilderInterface::OPERATOR_AND): BuilderInterface;
 
     /**
      * Sets the columns to be queried
      *
      * @param string|array $columns
-     * @return \Phalcon\Mvc\Model\Query\BuilderInterface
+     * @return BuilderInterface
      */
-    public function columns($columns);
+    public function columns($columns): BuilderInterface;
+
+    /**
+     * Sets SELECT DISTINCT / SELECT ALL flag
+     *
+     * ```php
+     * $builder->distinct("status");
+     * $builder->distinct(null);
+     * ```
+     *
+     * @param mixed $distinct
+     * @return BuilderInterface
+     */
+    public function distinct($distinct): BuilderInterface;
+
+    /**
+     * Sets a FOR UPDATE clause
+     *
+     * ```php
+     * $builder->forUpdate(true);
+     * ```
+     *
+     * @param bool $forUpdate
+     * @return BuilderInterface
+     */
+    public function forUpdate(bool $forUpdate): BuilderInterface;
+
+    /**
+     * Sets the models who makes part of the query
+     *
+     * @param string|array $models
+     * @return BuilderInterface
+     */
+    public function from($models): BuilderInterface;
+
+    /**
+     * Returns default bind params
+     *
+     * @return array
+     */
+    public function getBindParams(): array;
+
+    /**
+     * Returns default bind types
+     *
+     * @return array
+     */
+    public function getBindTypes(): array;
 
     /**
      * Return the columns to be queried
@@ -32,21 +109,11 @@ interface BuilderInterface
     public function getColumns();
 
     /**
-     * Sets the models who makes part of the query
+     * Returns SELECT DISTINCT / SELECT ALL flag
      *
-     * @param string|array $models
-     * @return \Phalcon\Mvc\Model\Query\BuilderInterface
+     * @return bool
      */
-    public function from($models);
-
-    /**
-     * Add a model to take part of the query
-     *
-     * @param string $model
-     * @param string $alias
-     * @return \Phalcon\Mvc\Model\Query\BuilderInterface
-     */
-    public function addFrom($model, $alias = null);
+    public function getDistinct(): bool;
 
     /**
      * Return the models who makes part of the query
@@ -56,171 +123,25 @@ interface BuilderInterface
     public function getFrom();
 
     /**
-     * Adds an :type: join (by default type - INNER) to the query
+     * Returns the GROUP BY clause
      *
-     * @param string $model
-     * @param string $conditions
-     * @param string $alias
-     * @param string $type
-     * @return \Phalcon\Mvc\Model\Query\BuilderInterface
+     * @return array
      */
-    public function join($model, $conditions = null, $alias = null, $type = null);
+    public function getGroupBy(): array;
 
     /**
-     * Adds an INNER join to the query
+     * Returns the HAVING condition clause
      *
-     * @param string $model
-     * @param string $conditions
-     * @param string $alias
-     * @param string $type
-     * @return \Phalcon\Mvc\Model\Query\Builder
+     * @return string
      */
-    public function innerJoin($model, $conditions = null, $alias = null);
-
-    /**
-     * Adds a LEFT join to the query
-     *
-     * @param string $model
-     * @param string $conditions
-     * @param string $alias
-     * @return \Phalcon\Mvc\Model\Query\Builder
-     */
-    public function leftJoin($model, $conditions = null, $alias = null);
-
-    /**
-     * Adds a RIGHT join to the query
-     *
-     * @param string $model
-     * @param string $conditions
-     * @param string $alias
-     * @return \Phalcon\Mvc\Model\Query\Builder
-     */
-    public function rightJoin($model, $conditions = null, $alias = null);
+    public function getHaving(): string;
 
     /**
      * Return join parts of the query
      *
      * @return array
      */
-    public function getJoins();
-
-    /**
-     * Sets conditions for the query
-     *
-     * @param string $conditions
-     * @param array $bindParams
-     * @param array $bindTypes
-     * @return \Phalcon\Mvc\Model\Query\BuilderInterface
-     */
-    public function where($conditions, $bindParams = null, $bindTypes = null);
-
-    /**
-     * Appends a condition to the current conditions using a AND operator
-     *
-     * @param string $conditions
-     * @param array $bindParams
-     * @param array $bindTypes
-     * @return \Phalcon\Mvc\Model\Query\Builder
-     */
-    public function andWhere($conditions, $bindParams = null, $bindTypes = null);
-
-    /**
-     * Appends a condition to the current conditions using an OR operator
-     *
-     * @param string $conditions
-     * @param array $bindParams
-     * @param array $bindTypes
-     * @return \Phalcon\Mvc\Model\Query\Builder
-     */
-    public function orWhere($conditions, $bindParams = null, $bindTypes = null);
-
-    /**
-     * Appends a BETWEEN condition to the current conditions
-     *
-     * @param string $expr
-     * @param mixed $minimum
-     * @param mixed $maximum
-     * @param string $operator
-     * @return \Phalcon\Mvc\Model\Query\Builder
-     */
-    public function betweenWhere($expr, $minimum, $maximum, $operator = BuilderInterface::OPERATOR_AND);
-
-    /**
-     * Appends a NOT BETWEEN condition to the current conditions
-     *
-     * @param string $expr
-     * @param mixed $minimum
-     * @param mixed $maximum
-     * @param string $operator
-     * @return \Phalcon\Mvc\Model\Query\Builder
-     */
-    public function notBetweenWhere($expr, $minimum, $maximum, $operator = BuilderInterface::OPERATOR_AND);
-
-    /**
-     * Appends an IN condition to the current conditions
-     *
-     * @param string $expr
-     * @param array $values
-     * @param string $operator
-     * @return BuilderInterface
-     */
-    public function inWhere($expr, array $values, $operator = BuilderInterface::OPERATOR_AND);
-
-    /**
-     * Appends a NOT IN condition to the current conditions
-     *
-     * @param string $expr
-     * @param array $values
-     * @param string $operator
-     * @return BuilderInterface
-     */
-    public function notInWhere($expr, array $values, $operator = BuilderInterface::OPERATOR_AND);
-
-    /**
-     * Return the conditions for the query
-     *
-     * @return string|array
-     */
-    public function getWhere();
-
-    /**
-     * Sets an ORDER BY condition clause
-     *
-     * @param string $orderBy
-     * @return \Phalcon\Mvc\Model\Query\BuilderInterface
-     */
-    public function orderBy($orderBy);
-
-    /**
-     * Return the set ORDER BY clause
-     *
-     * @return string|array
-     */
-    public function getOrderBy();
-
-    /**
-     * Sets a HAVING condition clause
-     *
-     * @param string $having
-     * @return \Phalcon\Mvc\Model\Query\BuilderInterface
-     */
-    public function having($having);
-
-    /**
-     * Returns the HAVING condition clause
-     *
-     * @return string|array
-     */
-    public function getHaving();
-
-    /**
-     * Sets a LIMIT clause
-     *
-     * @param int $limit
-     * @param int $offset
-     * @return \Phalcon\Mvc\Model\Query\BuilderInterface
-     */
-    public function limit($limit, $offset = null);
+    public function getJoins(): array;
 
     /**
      * Returns the current LIMIT clause
@@ -230,32 +151,196 @@ interface BuilderInterface
     public function getLimit();
 
     /**
-     * Sets a LIMIT clause
+     * Returns the current OFFSET clause
      *
-     * @param string|array $group
-     * @return \Phalcon\Mvc\Model\Query\BuilderInterface
+     * @return int
      */
-    public function groupBy($group);
+    public function getOffset(): int;
 
     /**
-     * Returns the GROUP BY clause
+     * Return the set ORDER BY clause
      *
-     * @return string
+     * @return string|array
      */
-    public function getGroupBy();
+    public function getOrderBy();
 
     /**
      * Returns a PHQL statement built based on the builder parameters
      *
      * @return string
      */
-    public function getPhql();
+    public function getPhql(): string;
 
     /**
      * Returns the query built
      *
      * @return \Phalcon\Mvc\Model\QueryInterface
      */
-    public function getQuery();
+    public function getQuery(): QueryInterface;
+
+    /**
+     * Return the conditions for the query
+     *
+     * @return string|array
+     */
+    public function getWhere();
+
+    /**
+     * Sets a GROUP BY clause
+     *
+     * @param string|array $group
+     * @return BuilderInterface
+     */
+    public function groupBy($group): BuilderInterface;
+
+    /**
+     * Sets a HAVING condition clause
+     *
+     * @param string $having
+     * @return BuilderInterface
+     */
+    public function having(string $having): BuilderInterface;
+
+    /**
+     * Adds an INNER join to the query
+     *
+     * @param string $model
+     * @param string $conditions
+     * @param string $alias
+     * @return BuilderInterface
+     */
+    public function innerJoin(string $model, string $conditions = null, string $alias = null): BuilderInterface;
+
+    /**
+     * Appends an IN condition to the current conditions
+     *
+     * @param string $expr
+     * @param array $values
+     * @param string $operator
+     * @return BuilderInterface
+     */
+    public function inWhere(string $expr, array $values, string $operator = BuilderInterface::OPERATOR_AND): BuilderInterface;
+
+    /**
+     * Adds an :type: join (by default type - INNER) to the query
+     *
+     * @param string $model
+     * @param string $conditions
+     * @param string $alias
+     * @param string $type
+     * @return BuilderInterface
+     */
+    public function join(string $model, string $conditions = null, string $alias = null): BuilderInterface;
+
+    /**
+     * Adds a LEFT join to the query
+     *
+     * @param string $model
+     * @param string $conditions
+     * @param string $alias
+     * @return BuilderInterface
+     */
+    public function leftJoin(string $model, string $conditions = null, string $alias = null): BuilderInterface;
+
+    /**
+     * Sets a LIMIT clause
+     *
+     * @param int $limit
+     * @param int $offset
+     * @return BuilderInterface
+     */
+    public function limit(int $limit, $offset = null): BuilderInterface;
+
+    /**
+     * Returns the models involved in the query
+     *
+     * @return string|array|null
+     */
+    public function getModels();
+
+    /**
+     * Appends a NOT BETWEEN condition to the current conditions
+     *
+     * @param string $expr
+     * @param mixed $minimum
+     * @param mixed $maximum
+     * @param string $operator
+     * @return BuilderInterface
+     */
+    public function notBetweenWhere(string $expr, $minimum, $maximum, string $operator = BuilderInterface::OPERATOR_AND): BuilderInterface;
+
+    /**
+     * Appends a NOT IN condition to the current conditions
+     *
+     * @param string $expr
+     * @param array $values
+     * @param string $operator
+     * @return BuilderInterface
+     */
+    public function notInWhere(string $expr, array $values, string $operator = BuilderInterface::OPERATOR_AND): BuilderInterface;
+
+    /**
+     * Sets an OFFSET clause
+     *
+     * @param int $offset
+     * @return BuilderInterface
+     */
+    public function offset(int $offset): BuilderInterface;
+
+    /**
+     * Sets an ORDER BY condition clause
+     *
+     * @param string $orderBy
+     * @return BuilderInterface
+     */
+    public function orderBy(string $orderBy): BuilderInterface;
+
+    /**
+     * Appends a condition to the current conditions using an OR operator
+     *
+     * @param string $conditions
+     * @param array $bindParams
+     * @param array $bindTypes
+     * @return BuilderInterface
+     */
+    public function orWhere(string $conditions, array $bindParams = array(), array $bindTypes = array()): BuilderInterface;
+
+    /**
+     * Adds a RIGHT join to the query
+     *
+     * @param string $model
+     * @param string $conditions
+     * @param string $alias
+     * @return BuilderInterface
+     */
+    public function rightJoin(string $model, string $conditions = null, string $alias = null): BuilderInterface;
+
+    /**
+     * Set default bind parameters
+     *
+     * @param array $bindParams
+     * @param bool $merge
+     * @return BuilderInterface
+     */
+    public function setBindParams(array $bindParams, bool $merge = false): BuilderInterface;
+
+    /**
+     * Set default bind types
+     *
+     * @param array $bindTypes
+     * @param bool $merge
+     * @return BuilderInterface
+     */
+    public function setBindTypes(array $bindTypes, bool $merge = false): BuilderInterface;
+
+    /**
+     * Sets conditions for the query
+     *
+     * @param string $conditions
+     * @param array $bindParams
+     * @param array $bindTypes
+     * @return BuilderInterface
+     */
+    public function where(string $conditions, array $bindParams = array(), array $bindTypes = array()): BuilderInterface;
 
 }

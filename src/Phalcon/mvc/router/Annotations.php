@@ -7,7 +7,7 @@ namespace Phalcon\Mvc\Router;
  *
  * A router that reads routes annotations from classes/resources
  *
- * <code>
+ * ```php
  * use Phalcon\Mvc\Router\Annotations;
  *
  * $di->setShared(
@@ -22,32 +22,22 @@ namespace Phalcon\Mvc\Router;
  *         return $router;
  *     }
  * );
- * </code>
+ * ```
  */
 class Annotations extends \Phalcon\Mvc\Router
 {
 
-    protected $_handlers = array();
+    protected $actionSuffix = 'Action';
 
 
-    protected $_controllerSuffix = 'Controller';
+    protected $controllerSuffix = 'Controller';
 
 
-    protected $_actionSuffix = 'Action';
+    protected $handlers = array();
 
 
-    protected $_routePrefix;
+    protected $routePrefix;
 
-
-    /**
-     * Adds a resource to the annotations handler
-     * A resource is a class that contains routing annotations
-     *
-     * @param string $handler
-     * @param string $prefix
-     * @return Annotations
-     */
-    public function addResource($handler, $prefix = null) {}
 
     /**
      * Adds a resource to the annotations handler
@@ -59,22 +49,31 @@ class Annotations extends \Phalcon\Mvc\Router
      * @param string $prefix
      * @return Annotations
      */
-    public function addModuleResource($module, $handler, $prefix = null) {}
+    public function addModuleResource(string $module, string $handler, string $prefix = null): Annotations {}
+
+    /**
+     * Adds a resource to the annotations handler
+     * A resource is a class that contains routing annotations
+     *
+     * @param string $handler
+     * @param string $prefix
+     * @return Annotations
+     */
+    public function addResource(string $handler, string $prefix = null): Annotations {}
+
+    /**
+     * Return the registered resources
+     *
+     * @return array
+     */
+    public function getResources(): array {}
 
     /**
      * Produce the routing parameters from the rewrite information
      *
      * @param string $uri
      */
-    public function handle($uri = null) {}
-
-    /**
-     * Checks for annotations in the controller docblock
-     *
-     * @param string $handler
-     * @param \Phalcon\Annotations\Annotation $annotation
-     */
-    public function processControllerAnnotation($handler, \Phalcon\Annotations\Annotation $annotation) {}
+    public function handle(string $uri) {}
 
     /**
      * Checks for annotations in the public methods of the controller
@@ -85,27 +84,28 @@ class Annotations extends \Phalcon\Mvc\Router
      * @param string $action
      * @param \Phalcon\Annotations\Annotation $annotation
      */
-    public function processActionAnnotation($module, $namespaceName, $controller, $action, \Phalcon\Annotations\Annotation $annotation) {}
+    public function processActionAnnotation(string $module, string $namespaceName, string $controller, string $action, \Phalcon\Annotations\Annotation $annotation) {}
 
     /**
-     * Changes the controller class suffix
+     * Checks for annotations in the controller docblock
      *
-     * @param string $controllerSuffix
+     * @param string $handler
+     * @param \Phalcon\Annotations\Annotation $annotation
      */
-    public function setControllerSuffix($controllerSuffix) {}
+    public function processControllerAnnotation(string $handler, \Phalcon\Annotations\Annotation $annotation) {}
 
     /**
      * Changes the action method suffix
      *
      * @param string $actionSuffix
      */
-    public function setActionSuffix($actionSuffix) {}
+    public function setActionSuffix(string $actionSuffix) {}
 
     /**
-     * Return the registered resources
+     * Changes the controller class suffix
      *
-     * @return array
+     * @param string $controllerSuffix
      */
-    public function getResources() {}
+    public function setControllerSuffix(string $controllerSuffix) {}
 
 }

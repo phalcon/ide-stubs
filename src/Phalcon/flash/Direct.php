@@ -3,11 +3,10 @@
 namespace Phalcon\Flash;
 
 /**
- * Phalcon\Flash\Direct
- *
- * This is a variant of the Phalcon\Flash that immediately outputs any message passed to it
+ * This is a variant of the Phalcon\Flash that immediately outputs any message
+ * passed to it
  */
-class Direct extends \Phalcon\Flash
+class Direct extends \Phalcon\Flash\AbstractFlash
 {
 
     /**
@@ -17,13 +16,13 @@ class Direct extends \Phalcon\Flash
      * @param mixed $message
      * @return string
      */
-    public function message($type, $message) {}
+    public function message(string $type, $message): string {}
 
     /**
      * Prints the messages accumulated in the flasher
      *
      * @param bool $remove
      */
-    public function output($remove = true) {}
+    public function output(bool $remove = true) {}
 
 }

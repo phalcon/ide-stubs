@@ -3,11 +3,9 @@
 namespace Phalcon\Validation\Validator;
 
 /**
- * Phalcon\Validation\Validator\InclusionIn
- *
  * Check if a value is included into a list of values
  *
- * <code>
+ * ```php
  * use Phalcon\Validation;
  * use Phalcon\Validation\Validator\InclusionIn;
  *
@@ -41,18 +39,21 @@ namespace Phalcon\Validation\Validator;
  *         ]
  *     )
  * );
- * </code>
+ * ```
  */
-class InclusionIn extends \Phalcon\Validation\Validator
+class InclusionIn extends \Phalcon\Validation\AbstractValidator
 {
+
+    protected $template = 'Field :field must be a part of list: :domain';
+
 
     /**
      * Executes the validation
      *
      * @param \Phalcon\Validation $validation
-     * @param string $field
+     * @param mixed $field
      * @return bool
      */
-    public function validate(\Phalcon\Validation $validation, $field) {}
+    public function validate(\Phalcon\Validation $validation, $field): bool {}
 
 }

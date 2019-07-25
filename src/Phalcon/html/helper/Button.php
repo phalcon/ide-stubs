@@ -2,20 +2,19 @@
 
 namespace Phalcon\Html\Helper;
 
-use Phalcon\Html\Helper\AbstractHelper;
-
 /**
  * Phalcon\Html\Helper\Button
  *
  * Creates a button tag
  */
-class Button extends AbstractHelper
+class Button extends \Phalcon\Html\Helper\AbstractHelper
 {
-	/**
-	 * @var string text       The text for the anchor
-	 * @var array  attributes Any additional attributes
-	 */
-	public function __invoke(string $text, array $attributes = []) : string
-	{
-	}
+
+    /**
+     * @param string $text
+     * @param array $attributes
+     * @return string
+     */
+    public function __invoke(string $text, array $attributes = array()): string {}
+
 }

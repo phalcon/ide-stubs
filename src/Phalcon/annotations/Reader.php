@@ -3,20 +3,18 @@
 namespace Phalcon\Annotations;
 
 /**
- * Phalcon\Annotations\Reader
- *
  * Parses docblocks returning an array with the found annotations
  */
 class Reader implements \Phalcon\Annotations\ReaderInterface
 {
 
     /**
-     * Reads annotations from the class dockblocks, its methods and/or properties
+     * Reads annotations from the class docblocks, its methods and/or properties
      *
      * @param string $className
      * @return array
      */
-    public function parse($className) {}
+    public function parse(string $className): array {}
 
     /**
      * Parses a raw doc block returning the annotations found
@@ -26,6 +24,6 @@ class Reader implements \Phalcon\Annotations\ReaderInterface
      * @param mixed $line
      * @return array
      */
-    public static function parseDocBlock($docBlock, $file = null, $line = null) {}
+    public static function parseDocBlock(string $docBlock, $file = null, $line = null): array {}
 
 }

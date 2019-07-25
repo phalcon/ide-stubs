@@ -5,32 +5,27 @@ namespace Phalcon\Session;
 /**
  * Phalcon\Session\Bag
  *
- * This component helps to separate session data into "namespaces". Working by this way
- * you can easily create groups of session variables into the application
+ * This component helps to separate session data into "namespaces". Working by
+ * this way you can easily create groups of session variables into the
+ * application
  *
- * <code>
+ * ```php
  * $user = new \Phalcon\Session\Bag("user");
  *
  * $user->name = "Kimbra Johnson";
  * $user->age  = 22;
- * </code>
+ * ```
  */
-class Bag implements \Phalcon\Di\InjectionAwareInterface, \Phalcon\Session\BagInterface, \IteratorAggregate, \ArrayAccess, \Countable
+class Bag extends \Phalcon\Collection implements \Phalcon\Di\InjectionAwareInterface
 {
 
-    protected $_dependencyInjector;
+    private $container;
 
 
-    protected $_name = null;
+    private $name = null;
 
 
-    protected $_data;
-
-
-    protected $_initialized = false;
-
-
-    protected $_session;
+    private $session;
 
 
     /**
@@ -38,176 +33,47 @@ class Bag implements \Phalcon\Di\InjectionAwareInterface, \Phalcon\Session\BagIn
      *
      * @param string $name
      */
-    public function __construct($name) {}
+    public function __construct(string $name) {}
 
     /**
-     * Sets the DependencyInjector container
-     *
-     * @param \Phalcon\DiInterface $dependencyInjector
+     * Destroys the session bag
      */
-    public function setDI(\Phalcon\DiInterface $dependencyInjector) {}
+    public function clear() {}
 
     /**
      * Returns the DependencyInjector container
      *
-     * @return \Phalcon\DiInterface
+     * @return \Phalcon\Di\DiInterface
      */
-    public function getDI() {}
-
-    /**
-     * Initializes the session bag. This method must not be called directly, the
-     * class calls it when its internal data is accessed
-     */
-    public function initialize() {}
-
-    /**
-     * Destroys the session bag
-     *
-     * <code>
-     * $user->destroy();
-     * </code>
-     */
-    public function destroy() {}
-
-    /**
-     * Sets a value in the session bag
-     *
-     * <code>
-     * $user->set("name", "Kimbra");
-     * </code>
-     *
-     * @param string $property
-     * @param mixed $value
-     */
-    public function set($property, $value) {}
-
-    /**
-     * Magic setter to assign values to the session bag
-     *
-     * <code>
-     * $user->name = "Kimbra";
-     * </code>
-     *
-     * @param string $property
-     * @param mixed $value
-     */
-    public function __set($property, $value) {}
-
-    /**
-     * Obtains a value from the session bag optionally setting a default value
-     *
-     * <code>
-     * echo $user->get("name", "Kimbra");
-     * </code>
-     *
-     * @param string $property
-     * @param mixed $defaultValue
-     */
-    public function get($property, $defaultValue = null) {}
-
-    /**
-     * Magic getter to obtain values from the session bag
-     *
-     * <code>
-     * echo $user->name;
-     * </code>
-     *
-     * @param string $property
-     * @return mixed
-     */
-    public function __get($property) {}
-
-    /**
-     * Check whether a property is defined in the internal bag
-     *
-     * <code>
-     * var_dump(
-     *     $user->has("name")
-     * );
-     * </code>
-     *
-     * @param string $property
-     * @return bool
-     */
-    public function has($property) {}
-
-    /**
-     * Magic isset to check whether a property is defined in the bag
-     *
-     * <code>
-     * var_dump(
-     *     isset($user["name"])
-     * );
-     * </code>
-     *
-     * @param string $property
-     * @return bool
-     */
-    public function __isset($property) {}
+    public function getDI(): DiInterface {}
 
     /**
      * Removes a property from the internal bag
      *
-     * <code>
-     * $user->remove("name");
-     * </code>
-     *
-     * @param string $property
-     * @return bool
+     * @param array $data
      */
-    public function remove($property) {}
+    public function init(array $data = array()) {}
 
     /**
-     * Magic unset to remove items using the array syntax
+     * Removes a property from the internal bag
      *
-     * <code>
-     * unset($user["name"]);
-     * </code>
-     *
-     * @param string $property
-     * @return bool
+     * @param string $element
      */
-    public function __unset($property) {}
+    public function remove(string $element) {}
 
     /**
-     * Return length of bag
+     * Sets a value in the session bag
      *
-     * <code>
-     * echo $user->count();
-     * </code>
-     *
-     * @return int
-     */
-    public final function count() {}
-
-    /**
-     *  Returns the bag iterator
-     *
-     * @return \ArrayIterator
-     */
-    public final function getIterator() {}
-
-    /**
-     * @param mixed $property
+     * @param string $element
      * @param mixed $value
      */
-    public final function offsetSet($property, $value) {}
+    public function set(string $element, $value) {}
 
     /**
-     * @param mixed $property
-     * @return bool
+     * Sets the DependencyInjector container
+     *
+     * @param \Phalcon\Di\DiInterface $container
      */
-    public final function offsetExists($property) {}
-
-    /**
-     * @param mixed $property
-     */
-    public final function offsetUnset($property) {}
-
-    /**
-     * @param mixed $property
-     * @return mixed
-     */
-    public final function offsetGet($property) {}
+    public function setDI(\Phalcon\Di\DiInterface $container) {}
 
 }

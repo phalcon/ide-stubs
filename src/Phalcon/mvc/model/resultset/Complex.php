@@ -11,12 +11,13 @@ namespace Phalcon\Mvc\Model\Resultset;
 class Complex extends \Phalcon\Mvc\Model\Resultset implements \Phalcon\Mvc\Model\ResultsetInterface
 {
 
-    protected $_columnTypes;
+    protected $columnTypes;
 
     /**
-     * Unserialised result-set hydrated all rows already. unserialise() sets _disableHydration to true
+     * Unserialised result-set hydrated all rows already. unserialise() sets
+     * disableHydration to true
      */
-    protected $_disableHydration = false;
+    protected $disableHydration = false;
 
 
     /**
@@ -24,31 +25,31 @@ class Complex extends \Phalcon\Mvc\Model\Resultset implements \Phalcon\Mvc\Model
      *
      * @param array $columnTypes
      * @param \Phalcon\Db\ResultInterface $result
-     * @param \Phalcon\Cache\BackendInterface $cache
+     * @param \Phalcon\Cache\Adapter\AdapterInterface $cache
      */
-    public function __construct($columnTypes, \Phalcon\Db\ResultInterface $result = null, \Phalcon\Cache\BackendInterface $cache = null) {}
+    public function __construct($columnTypes, \Phalcon\Db\ResultInterface $result = null, \Phalcon\Cache\Adapter\AdapterInterface $cache = null) {}
 
     /**
      * Returns current row in the resultset
      *
      * @return bool|ModelInterface
      */
-    public final function current() {}
+    final public function current() {}
 
     /**
-     * Returns a complete resultset as an array, if the resultset has a big number of rows
-     * it could consume more memory than currently it does.
+     * Returns a complete resultset as an array, if the resultset has a big
+     * number of rows it could consume more memory than currently it does.
      *
      * @return array
      */
-    public function toArray() {}
+    public function toArray(): array {}
 
     /**
      * Serializing a resultset will dump all related rows into a big array
      *
      * @return string
      */
-    public function serialize() {}
+    public function serialize(): string {}
 
     /**
      * Unserializing a resultset will allow to only works on the rows present in the saved state

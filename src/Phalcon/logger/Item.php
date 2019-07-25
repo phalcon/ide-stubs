@@ -9,30 +9,61 @@ namespace Phalcon\Logger;
  */
 class Item
 {
-    /**
-     * Log type
-     *
-     * @var integer
-     */
-    protected $_type;
+
+    protected $context;
 
     /**
      * Log message
      *
      * @var string
      */
-    protected $_message;
+    protected $message;
+
+    /**
+     * Log message
+     *
+     * @var string
+     */
+    protected $name;
 
     /**
      * Log timestamp
      *
      * @var integer
      */
-    protected $_time;
+    protected $time;
+
+    /**
+     * Log type
+     *
+     * @var integer
+     */
+    protected $type;
 
 
-    protected $_context;
 
+    public function getContext() {}
+
+    /**
+     * Log message
+     *
+     * @return string
+     */
+    public function getMessage(): string {}
+
+    /**
+     * Log message
+     *
+     * @return string
+     */
+    public function getName(): string {}
+
+    /**
+     * Log timestamp
+     *
+     * @return integer
+     */
+    public function getTime() {}
 
     /**
      * Log type
@@ -42,30 +73,14 @@ class Item
     public function getType() {}
 
     /**
-     * Log message
-     *
-     * @return string
-     */
-    public function getMessage() {}
-
-    /**
-     * Log timestamp
-     *
-     * @return integer
-     */
-    public function getTime() {}
-
-
-    public function getContext() {}
-
-    /**
      * Phalcon\Logger\Item constructor
      *
      * @param string $message
-     * @param integer $type
-     * @param integer $time
-     * @param array $context
+     * @param string $name
+     * @param int $type
+     * @param int $time
+     * @param mixed $context
      */
-    public function __construct($message, $type, $time = 0, $context = null) {}
+    public function __construct(string $message, string $name, int $type, int $time = 0, $context = array()) {}
 
 }

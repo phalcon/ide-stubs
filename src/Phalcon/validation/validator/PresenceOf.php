@@ -3,11 +3,9 @@
 namespace Phalcon\Validation\Validator;
 
 /**
- * Phalcon\Validation\Validator\PresenceOf
- *
  * Validates that a value is not null or empty string
  *
- * <code>
+ * ```php
  * use Phalcon\Validation;
  * use Phalcon\Validation\Validator\PresenceOf;
  *
@@ -36,18 +34,21 @@ namespace Phalcon\Validation\Validator;
  *         ]
  *     )
  * );
- * </code>
+ * ```
  */
-class PresenceOf extends \Phalcon\Validation\Validator
+class PresenceOf extends \Phalcon\Validation\AbstractValidator
 {
+
+    protected $template = 'Field :field is required';
+
 
     /**
      * Executes the validation
      *
      * @param \Phalcon\Validation $validation
-     * @param string $field
+     * @param mixed $field
      * @return bool
      */
-    public function validate(\Phalcon\Validation $validation, $field) {}
+    public function validate(\Phalcon\Validation $validation, $field): bool {}
 
 }

@@ -5,11 +5,12 @@ namespace Phalcon\Mvc;
 /**
  * Phalcon\Mvc\View
  *
- * Phalcon\Mvc\View is a class for working with the "view" portion of the model-view-controller pattern.
- * That is, it exists to help keep the view script separate from the model and controller scripts.
- * It provides a system of helpers, output filters, and variable escaping.
+ * Phalcon\Mvc\View is a class for working with the "view" portion of the
+ * model-view-controller pattern. That is, it exists to help keep the view
+ * script separate from the model and controller scripts. It provides a system
+ * of helpers, output filters, and variable escaping.
  *
- * <code>
+ * ```php
  * use Phalcon\Mvc\View;
  *
  * $view = new View();
@@ -25,24 +26,14 @@ namespace Phalcon\Mvc;
  *
  * // Printing views output
  * echo $view->getContent();
- * </code>
+ * ```
  */
 class View extends \Phalcon\Di\Injectable implements \Phalcon\Mvc\ViewInterface
 {
     /**
-     * Render Level: To the main layout
+     * Render Level: To the action view
      */
-    const LEVEL_MAIN_LAYOUT = 5;
-
-    /**
-     * Render Level: Render to the templates "after"
-     */
-    const LEVEL_AFTER_TEMPLATE = 4;
-
-    /**
-     * Render Level: To the controller layout
-     */
-    const LEVEL_LAYOUT = 3;
+    const LEVEL_ACTION_VIEW = 1;
 
     /**
      * Render Level: To the templates "before"
@@ -50,9 +41,14 @@ class View extends \Phalcon\Di\Injectable implements \Phalcon\Mvc\ViewInterface
     const LEVEL_BEFORE_TEMPLATE = 2;
 
     /**
-     * Render Level: To the action view
+     * Render Level: To the controller layout
      */
-    const LEVEL_ACTION_VIEW = 1;
+    const LEVEL_LAYOUT = 3;
+
+    /**
+     * Render Level: To the main layout
+     */
+    const LEVEL_MAIN_LAYOUT = 5;
 
     /**
      * Render Level: No render any view
@@ -60,98 +56,85 @@ class View extends \Phalcon\Di\Injectable implements \Phalcon\Mvc\ViewInterface
     const LEVEL_NO_RENDER = 0;
 
     /**
-     * Cache Mode
+     * Render Level: Render to the templates "after"
      */
-    const CACHE_MODE_NONE = 0;
+    const LEVEL_AFTER_TEMPLATE = 4;
 
 
-    const CACHE_MODE_INVERSE = 1;
+    protected $actionName;
 
 
-    protected $_options;
+    protected $activeRenderPaths;
 
 
-    protected $_basePath = '';
+    protected $basePath = '';
 
 
-    protected $_content = '';
+    protected $content = '';
 
 
-    protected $_renderLevel = 5;
+    protected $controllerName;
 
 
-    protected $_currentRenderLevel = 0;
+    protected $currentRenderLevel = 0;
 
 
-    protected $_disabledLevels;
+    protected $disabled = false;
 
 
-    protected $_viewParams = array();
+    protected $disabledLevels;
 
 
-    protected $_layout;
+    protected $engines = false;
 
 
-    protected $_layoutsDir = '';
+    protected $layout;
 
 
-    protected $_partialsDir = '';
+    protected $layoutsDir = '';
 
 
-    protected $_viewsDirs = array();
+    protected $mainView = 'index';
 
 
-    protected $_templatesBefore = array();
+    protected $options = array();
 
 
-    protected $_templatesAfter = array();
+    protected $params;
 
 
-    protected $_engines = false;
-
-    /**
-     * @var array
-     */
-    protected $_registeredEngines;
+    protected $pickView;
 
 
-    protected $_mainView = 'index';
+    protected $partialsDir = '';
 
 
-    protected $_controllerName;
+    protected $registeredEngines = array();
 
 
-    protected $_actionName;
+    protected $renderLevel = 5;
 
 
-    protected $_params;
+    protected $templatesAfter = array();
 
 
-    protected $_pickView;
+    protected $templatesBefore = array();
 
 
-    protected $_cache;
+    protected $viewsDirs = array();
 
 
-    protected $_cacheLevel = 0;
+    protected $viewParams = array();
 
-
-    protected $_activeRenderPaths;
-
-
-    protected $_disabled = false;
-
-
-
-    public function getRenderLevel() {}
 
 
     public function getCurrentRenderLevel() {}
 
-    /**
-     * @return array
-     */
+
     public function getRegisteredEngines() {}
+
+
+    public function getRenderLevel() {}
 
     /**
      * Phalcon\Mvc\View constructor
@@ -161,308 +144,83 @@ class View extends \Phalcon\Di\Injectable implements \Phalcon\Mvc\ViewInterface
     public function __construct(array $options = array()) {}
 
     /**
-     * Checks if a path is absolute or not
+     * Magic method to retrieve a variable passed to the view
      *
-     * @param string $path
+     * ```php
+     * echo $this->view->products;
+     * ```
+     *
+     * @param string $key
+     * @return mixed|null
      */
-    protected final function _isAbsolutePath($path) {}
+    public function __get(string $key): ? {}
 
     /**
-     * Sets the views directory. Depending of your platform,
-     * always add a trailing slash or backslash
+     * Magic method to retrieve if a variable is set in the view
      *
-     * @param mixed $viewsDir
-     * @return View
+     * ```php
+     * echo isset($this->view->products);
+     * ```
+     *
+     * @param string $key
+     * @return bool
      */
-    public function setViewsDir($viewsDir) {}
+    public function __isset(string $key): bool {}
 
     /**
-     * Gets views directory
+     * Magic method to pass variables to the views
      *
-     * @return string|array
+     * ```php
+     * $this->view->products = $products;
+     * ```
+     *
+     * @param string $key
+     * @param mixed $value
      */
-    public function getViewsDir() {}
-
-    /**
-     * Sets the layouts sub-directory. Must be a directory under the views directory.
-     * Depending of your platform, always add a trailing slash or backslash
-     *
-     * <code>
-     * $view->setLayoutsDir("../common/layouts/");
-     * </code>
-     *
-     * @param string $layoutsDir
-     * @return View
-     */
-    public function setLayoutsDir($layoutsDir) {}
-
-    /**
-     * Gets the current layouts sub-directory
-     *
-     * @return string
-     */
-    public function getLayoutsDir() {}
-
-    /**
-     * Sets a partials sub-directory. Must be a directory under the views directory.
-     * Depending of your platform, always add a trailing slash or backslash
-     *
-     * <code>
-     * $view->setPartialsDir("../common/partials/");
-     * </code>
-     *
-     * @param string $partialsDir
-     * @return View
-     */
-    public function setPartialsDir($partialsDir) {}
-
-    /**
-     * Gets the current partials sub-directory
-     *
-     * @return string
-     */
-    public function getPartialsDir() {}
-
-    /**
-     * Sets base path. Depending of your platform, always add a trailing slash or backslash
-     *
-     * <code>
-     *     $view->setBasePath(__DIR__ . "/");
-     * </code>
-     *
-     * @param string $basePath
-     * @return View
-     */
-    public function setBasePath($basePath) {}
-
-    /**
-     * Gets base path
-     *
-     * @return string
-     */
-    public function getBasePath() {}
-
-    /**
-     * Sets the render level for the view
-     *
-     * <code>
-     * // Render the view related to the controller only
-     * $this->view->setRenderLevel(
-     *     View::LEVEL_LAYOUT
-     * );
-     * </code>
-     *
-     * @param int $level
-     * @return View
-     */
-    public function setRenderLevel($level) {}
-
-    /**
-     * Disables a specific level of rendering
-     *
-     * <code>
-     * // Render all levels except ACTION level
-     * $this->view->disableLevel(
-     *     View::LEVEL_ACTION_VIEW
-     * );
-     * </code>
-     *
-     * @param mixed $level
-     * @return View
-     */
-    public function disableLevel($level) {}
-
-    /**
-     * Sets default view name. Must be a file without extension in the views directory
-     *
-     * <code>
-     * // Renders as main view views-dir/base.phtml
-     * $this->view->setMainView("base");
-     * </code>
-     *
-     * @param string $viewPath
-     * @return View
-     */
-    public function setMainView($viewPath) {}
-
-    /**
-     * Returns the name of the main view
-     *
-     * @return string
-     */
-    public function getMainView() {}
-
-    /**
-     * Change the layout to be used instead of using the name of the latest controller name
-     *
-     * <code>
-     * $this->view->setLayout("main");
-     * </code>
-     *
-     * @param string $layout
-     * @return View
-     */
-    public function setLayout($layout) {}
-
-    /**
-     * Returns the name of the main view
-     *
-     * @return string
-     */
-    public function getLayout() {}
-
-    /**
-     * Sets a template before the controller layout
-     *
-     * @param mixed $templateBefore
-     * @return View
-     */
-    public function setTemplateBefore($templateBefore) {}
-
-    /**
-     * Resets any "template before" layouts
-     *
-     * @return View
-     */
-    public function cleanTemplateBefore() {}
-
-    /**
-     * Sets a "template after" controller layout
-     *
-     * @param mixed $templateAfter
-     * @return View
-     */
-    public function setTemplateAfter($templateAfter) {}
+    public function __set(string $key, $value) {}
 
     /**
      * Resets any template before layouts
      *
      * @return View
      */
-    public function cleanTemplateAfter() {}
+    public function cleanTemplateAfter(): View {}
 
     /**
-     * Adds parameters to views (alias of setVar)
+     * Resets any "template before" layouts
      *
-     * <code>
-     * $this->view->setParamToView("products", $products);
-     * </code>
-     *
-     * @param string $key
-     * @param mixed $value
      * @return View
      */
-    public function setParamToView($key, $value) {}
+    public function cleanTemplateBefore(): View {}
 
     /**
-     * Set all the render params
+     * Disables a specific level of rendering
      *
-     * <code>
-     * $this->view->setVars(
-     *     [
-     *         "products" => $products,
-     *     ]
+     * ```php
+     * // Render all levels except ACTION level
+     * $this->view->disableLevel(
+     *     View::LEVEL_ACTION_VIEW
      * );
-     * </code>
+     * ```
      *
-     * @param array $params
-     * @param bool $merge
-     * @return View
+     * @param mixed $level
+     * @return \Phalcon\Mvc\ViewInterface
      */
-    public function setVars(array $params, $merge = true) {}
+    public function disableLevel($level): ViewInterface {}
 
     /**
-     * Set a single view parameter
-     *
-     * <code>
-     * $this->view->setVar("products", $products);
-     * </code>
-     *
-     * @param string $key
-     * @param mixed $value
-     * @return View
-     */
-    public function setVar($key, $value) {}
-
-    /**
-     * Returns a parameter previously set in the view
-     *
-     * @param string $key
-     */
-    public function getVar($key) {}
-
-    /**
-     * Returns parameters to views
-     *
-     * @return array
-     */
-    public function getParamsToView() {}
-
-    /**
-     * Gets the name of the controller rendered
-     *
-     * @return string
-     */
-    public function getControllerName() {}
-
-    /**
-     * Gets the name of the action rendered
-     *
-     * @return string
-     */
-    public function getActionName() {}
-
-    /**
-     * Gets extra parameters of the action rendered
-     *
-     * @deprecated Will be removed in 4.0.0
-     * @deprecated
-     * @return array
-     */
-    public function getParams() {}
-
-    /**
-     * Starts rendering process enabling the output buffering
+     * Disables the auto-rendering process
      *
      * @return View
      */
-    public function start() {}
+    public function disable(): View {}
 
     /**
-     * Loads registered template engines, if none is registered it will use Phalcon\Mvc\View\Engine\Php
+     * Enables the auto-rendering process
      *
-     * @return array
-     */
-    protected function _loadTemplateEngines() {}
-
-    /**
-     * Checks whether view exists on registered extensions and render it
-     *
-     * @param array $engines
-     * @param string $viewPath
-     * @param boolean $silence
-     * @param boolean $mustClean
-     * @param \Phalcon\Cache\BackendInterface $cache
-     */
-    protected function _engineRender($engines, $viewPath, $silence, $mustClean, \Phalcon\Cache\BackendInterface $cache = null) {}
-
-    /**
-     * Register templating engines
-     *
-     * <code>
-     * $this->view->registerEngines(
-     *     [
-     *         ".phtml" => "Phalcon\\Mvc\\View\\Engine\\Php",
-     *         ".volt"  => "Phalcon\\Mvc\\View\\Engine\\Volt",
-     *         ".mhtml" => "MyCustomEngine",
-     *     ]
-     * );
-     * </code>
-     *
-     * @param array $engines
      * @return View
      */
-    public function registerEngines(array $engines) {}
+    public function enable(): View {}
 
     /**
      * Checks whether view exists
@@ -470,177 +228,21 @@ class View extends \Phalcon\Di\Injectable implements \Phalcon\Mvc\ViewInterface
      * @param string $view
      * @return bool
      */
-    public function exists($view) {}
-
-    /**
-     * Executes render process from dispatching data
-     *
-     * <code>
-     * // Shows recent posts view (app/views/posts/recent.phtml)
-     * $view->start()->render("posts", "recent")->finish();
-     * </code>
-     *
-     * @param string $controllerName
-     * @param string $actionName
-     * @param array $params
-     * @return bool|View
-     */
-    public function render($controllerName, $actionName, $params = null) {}
-
-    /**
-     * Choose a different view to render instead of last-controller/last-action
-     *
-     * <code>
-     * use Phalcon\Mvc\Controller;
-     *
-     * class ProductsController extends Controller
-     * {
-     *    public function saveAction()
-     *    {
-     *         // Do some save stuff...
-     *
-     *         // Then show the list view
-     *         $this->view->pick("products/list");
-     *    }
-     * }
-     * </code>
-     *
-     * @param mixed $renderView
-     * @return View
-     */
-    public function pick($renderView) {}
-
-    /**
-     * Renders a partial view
-     *
-     * <code>
-     * // Retrieve the contents of a partial
-     * echo $this->getPartial("shared/footer");
-     * </code>
-     *
-     * <code>
-     * // Retrieve the contents of a partial with arguments
-     * echo $this->getPartial(
-     *     "shared/footer",
-     *     [
-     *         "content" => $html,
-     *     ]
-     * );
-     * </code>
-     *
-     * @param string $partialPath
-     * @param mixed $params
-     * @return string
-     */
-    public function getPartial($partialPath, $params = null) {}
-
-    /**
-     * Renders a partial view
-     *
-     * <code>
-     * // Show a partial inside another view
-     * $this->partial("shared/footer");
-     * </code>
-     *
-     * <code>
-     * // Show a partial inside another view with parameters
-     * $this->partial(
-     *     "shared/footer",
-     *     [
-     *         "content" => $html,
-     *     ]
-     * );
-     * </code>
-     *
-     * @param string $partialPath
-     * @param mixed $params
-     */
-    public function partial($partialPath, $params = null) {}
-
-    /**
-     * Perform the automatic rendering returning the output as a string
-     *
-     * <code>
-     * $template = $this->view->getRender(
-     *     "products",
-     *     "show",
-     *     [
-     *         "products" => $products,
-     *     ]
-     * );
-     * </code>
-     *
-     * @param string $controllerName
-     * @param string $actionName
-     * @param array $params
-     * @param mixed $configCallback
-     * @return string
-     */
-    public function getRender($controllerName, $actionName, $params = null, $configCallback = null) {}
+    public function exists(string $view): bool {}
 
     /**
      * Finishes the render process by stopping the output buffering
      *
      * @return View
      */
-    public function finish() {}
+    public function finish(): View {}
 
     /**
-     * Create a Phalcon\Cache based on the internal cache options
-     *
-     * @return \Phalcon\Cache\BackendInterface
-     */
-    protected function _createCache() {}
-
-    /**
-     * Check if the component is currently caching the output content
-     *
-     * @return bool
-     */
-    public function isCaching() {}
-
-    /**
-     * Returns the cache instance used to cache
-     *
-     * @return \Phalcon\Cache\BackendInterface
-     */
-    public function getCache() {}
-
-    /**
-     * Cache the actual view render to certain level
-     *
-     * <code>
-     * $this->view->cache(
-     *     [
-     *         "key"      => "my-key",
-     *         "lifetime" => 86400,
-     *     ]
-     * );
-     * </code>
-     *
-     * @param mixed $options
-     * @return View
-     */
-    public function cache($options = true) {}
-
-    /**
-     * Externally sets the view content
-     *
-     * <code>
-     * $this->view->setContent("<h1>hello</h1>");
-     * </code>
-     *
-     * @param string $content
-     * @return View
-     */
-    public function setContent($content) {}
-
-    /**
-     * Returns cached output from another view stage
+     * Gets the name of the action rendered
      *
      * @return string
      */
-    public function getContent() {}
+    public function getActionName(): string {}
 
     /**
      * Returns the path (or paths) of the views that are currently rendered
@@ -650,74 +252,434 @@ class View extends \Phalcon\Di\Injectable implements \Phalcon\Mvc\ViewInterface
     public function getActiveRenderPath() {}
 
     /**
-     * Disables the auto-rendering process
+     * Gets base path
      *
-     * @return View
+     * @return string
      */
-    public function disable() {}
+    public function getBasePath(): string {}
 
     /**
-     * Enables the auto-rendering process
+     * Returns output from another view stage
      *
-     * @return View
+     * @return string
      */
-    public function enable() {}
+    public function getContent(): string {}
 
     /**
-     * Resets the view component to its factory default values
+     * Gets the name of the controller rendered
      *
-     * @return View
+     * @return string
      */
-    public function reset() {}
+    public function getControllerName(): string {}
 
     /**
-     * Magic method to pass variables to the views
+     * Returns the name of the main view
      *
-     * <code>
-     * $this->view->products = $products;
-     * </code>
+     * @return string
+     */
+    public function getLayout(): string {}
+
+    /**
+     * Gets the current layouts sub-directory
+     *
+     * @return string
+     */
+    public function getLayoutsDir(): string {}
+
+    /**
+     * Returns the name of the main view
+     *
+     * @return string
+     */
+    public function getMainView(): string {}
+
+    /**
+     * Returns parameters to views
+     *
+     * @return array
+     */
+    public function getParamsToView(): array {}
+
+    /**
+     * Renders a partial view
+     *
+     * ```php
+     * // Retrieve the contents of a partial
+     * echo $this->getPartial("shared/footer");
+     * ```
+     *
+     * ```php
+     * // Retrieve the contents of a partial with arguments
+     * echo $this->getPartial(
+     *     "shared/footer",
+     *     [
+     *         "content" => $html,
+     *     ]
+     * );
+     * ```
+     *
+     * @param string $partialPath
+     * @param mixed $params
+     * @return string
+     */
+    public function getPartial(string $partialPath, $params = null): string {}
+
+    /**
+     * Gets the current partials sub-directory
+     *
+     * @return string
+     */
+    public function getPartialsDir(): string {}
+
+    /**
+     * Perform the automatic rendering returning the output as a string
+     *
+     * ```php
+     * $template = $this->view->getRender(
+     *     "products",
+     *     "show",
+     *     [
+     *         "products" => $products,
+     *     ]
+     * );
+     * ```
+     *
+     * @param string $controllerName
+     * @param string $actionName
+     * @param array $params
+     * @param mixed $configCallback
+     * @return string
+     */
+    public function getRender(string $controllerName, string $actionName, array $params = array(), $configCallback = null): string {}
+
+    /**
+     * Returns a parameter previously set in the view
      *
      * @param string $key
-     * @param mixed $value
      */
-    public function __set($key, $value) {}
+    public function getVar(string $key) {}
 
     /**
-     * Magic method to retrieve a variable passed to the view
+     * Gets views directory
      *
-     * <code>
-     * echo $this->view->products;
-     * </code>
-     *
-     * @param string $key
-     * @return mixed|null
+     * @return string|array
      */
-    public function __get($key) {}
-
-    /**
-     * Whether automatic rendering is enabled
-     *
-     * @return bool
-     */
-    public function isDisabled() {}
-
-    /**
-     * Magic method to retrieve if a variable is set in the view
-     *
-     * <code>
-     * echo isset($this->view->products);
-     * </code>
-     *
-     * @param string $key
-     * @return bool
-     */
-    public function __isset($key) {}
+    public function getViewsDir() {}
 
     /**
      * Gets views directories
      *
      * @return array
      */
-    protected function getViewsDirs() {}
+    protected function getViewsDirs(): array {}
+
+    /**
+     * Whether automatic rendering is enabled
+     *
+     * @return bool
+     */
+    public function isDisabled(): bool {}
+
+    /**
+     * Renders a partial view
+     *
+     * ```php
+     * // Show a partial inside another view
+     * $this->partial("shared/footer");
+     * ```
+     *
+     * ```php
+     * // Show a partial inside another view with parameters
+     * $this->partial(
+     *     "shared/footer",
+     *     [
+     *         "content" => $html,
+     *     ]
+     * );
+     * ```
+     *
+     * @param string $partialPath
+     * @param mixed $params
+     */
+    public function partial(string $partialPath, $params = null) {}
+
+    /**
+     * Choose a different view to render instead of last-controller/last-action
+     *
+     * ```php
+     * use Phalcon\Mvc\Controller;
+     *
+     * class ProductsController extends Controller
+     * {
+     *     public function saveAction()
+     *     {
+     *         // Do some save stuff...
+     *
+     *         // Then show the list view
+     *         $this->view->pick("products/list");
+     *     }
+     * }
+     * ```
+     *
+     * @param mixed $renderView
+     * @return View
+     */
+    public function pick($renderView): View {}
+
+    /**
+     * Register templating engines
+     *
+     * ```php
+     * $this->view->registerEngines(
+     *     [
+     *         ".phtml" => \Phalcon\Mvc\View\Engine\Php::class,
+     *         ".volt"  => \Phalcon\Mvc\View\Engine\Volt::class,
+     *         ".mhtml" => \MyCustomEngine::class,
+     *     ]
+     * );
+     * ```
+     *
+     * @param array $engines
+     * @return View
+     */
+    public function registerEngines(array $engines): View {}
+
+    /**
+     * Executes render process from dispatching data
+     *
+     * ```php
+     * // Shows recent posts view (app/views/posts/recent.phtml)
+     * $view->start()->render("posts", "recent")->finish();
+     * ```
+     *
+     * @param string $controllerName
+     * @param string $actionName
+     * @param array $params
+     * @return bool|View
+     */
+    public function render(string $controllerName, string $actionName, array $params = array()) {}
+
+    /**
+     * Resets the view component to its factory default values
+     *
+     * @return View
+     */
+    public function reset(): View {}
+
+    /**
+     * Sets base path. Depending of your platform, always add a trailing slash
+     * or backslash
+     *
+     * ```php
+     * $view->setBasePath(__DIR__ . "/");
+     * ```
+     *
+     * @param string $basePath
+     * @return View
+     */
+    public function setBasePath(string $basePath): View {}
+
+    /**
+     * Externally sets the view content
+     *
+     * ```php
+     * $this->view->setContent("<h1>hello</h1>");
+     * ```
+     *
+     * @param string $content
+     * @return View
+     */
+    public function setContent(string $content): View {}
+
+    /**
+     * Change the layout to be used instead of using the name of the latest
+     * controller name
+     *
+     * ```php
+     * $this->view->setLayout("main");
+     * ```
+     *
+     * @param string $layout
+     * @return View
+     */
+    public function setLayout(string $layout): View {}
+
+    /**
+     * Sets the layouts sub-directory. Must be a directory under the views
+     * directory. Depending of your platform, always add a trailing slash or
+     * backslash
+     *
+     * ```php
+     * $view->setLayoutsDir("../common/layouts/");
+     * ```
+     *
+     * @param string $layoutsDir
+     * @return View
+     */
+    public function setLayoutsDir(string $layoutsDir): View {}
+
+    /**
+     * Sets default view name. Must be a file without extension in the views
+     * directory
+     *
+     * ```php
+     * // Renders as main view views-dir/base.phtml
+     * $this->view->setMainView("base");
+     * ```
+     *
+     * @param string $viewPath
+     * @return View
+     */
+    public function setMainView(string $viewPath): View {}
+
+    /**
+     * Sets a partials sub-directory. Must be a directory under the views
+     * directory. Depending of your platform, always add a trailing slash or
+     * backslash
+     *
+     * ```php
+     * $view->setPartialsDir("../common/partials/");
+     * ```
+     *
+     * @param string $partialsDir
+     * @return View
+     */
+    public function setPartialsDir(string $partialsDir): View {}
+
+    /**
+     * Adds parameters to views (alias of setVar)
+     *
+     * ```php
+     * $this->view->setParamToView("products", $products);
+     * ```
+     *
+     * @param string $key
+     * @param mixed $value
+     * @return View
+     */
+    public function setParamToView(string $key, $value): View {}
+
+    /**
+     * Sets the render level for the view
+     *
+     * ```php
+     * // Render the view related to the controller only
+     * $this->view->setRenderLevel(
+     *     View::LEVEL_LAYOUT
+     * );
+     * ```
+     *
+     * @param int $level
+     * @return \Phalcon\Mvc\ViewInterface
+     */
+    public function setRenderLevel(int $level): ViewInterface {}
+
+    /**
+     * Sets a "template after" controller layout
+     *
+     * @param mixed $templateAfter
+     * @return View
+     */
+    public function setTemplateAfter($templateAfter): View {}
+
+    /**
+     * Sets a template before the controller layout
+     *
+     * @param mixed $templateBefore
+     * @return View
+     */
+    public function setTemplateBefore($templateBefore): View {}
+
+    /**
+     * Set a single view parameter
+     *
+     * ```php
+     * $this->view->setVar("products", $products);
+     * ```
+     *
+     * @param string $key
+     * @param mixed $value
+     * @return View
+     */
+    public function setVar(string $key, $value): View {}
+
+    /**
+     * Set all the render params
+     *
+     * ```php
+     * $this->view->setVars(
+     *     [
+     *         "products" => $products,
+     *     ]
+     * );
+     * ```
+     *
+     * @param array $params
+     * @param bool $merge
+     * @return View
+     */
+    public function setVars(array $params, bool $merge = true): View {}
+
+    /**
+     * Sets the views directory. Depending of your platform,
+     * always add a trailing slash or backslash
+     *
+     * @param mixed $viewsDir
+     * @return View
+     */
+    public function setViewsDir($viewsDir): View {}
+
+    /**
+     * Starts rendering process enabling the output buffering
+     *
+     * @return View
+     */
+    public function start(): View {}
+
+    /**
+     * Renders the view and returns it as a string
+     *
+     * @param string $controllerName
+     * @param string $actionName
+     * @param array $params
+     * @return string
+     */
+    public function toString(string $controllerName, string $actionName, array $params = array()): string {}
+
+    /**
+     * Checks whether view exists on registered extensions and render it
+     *
+     * @param array $engines
+     * @param string $viewPath
+     * @param bool $silence
+     * @param bool $mustClean
+     */
+    protected function engineRender(array $engines, string $viewPath, bool $silence, bool $mustClean = true) {}
+
+    /**
+     * Checks if a path is absolute or not
+     *
+     * @param string $path
+     */
+    final protected function isAbsolutePath(string $path) {}
+
+    /**
+     * Loads registered template engines, if none is registered it will use
+     * Phalcon\Mvc\View\Engine\Php
+     *
+     * @return array
+     */
+    protected function loadTemplateEngines(): array {}
+
+    /**
+     * Processes the view and templates; Fires events if needed
+     *
+     * @param string $controllerName
+     * @param string $actionName
+     * @param array $params
+     * @param bool $fireEvents
+     * @return bool
+     */
+    public function processRender(string $controllerName, string $actionName, array $params = array(), bool $fireEvents = true): bool {}
 
 }

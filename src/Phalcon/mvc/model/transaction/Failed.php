@@ -10,7 +10,7 @@ namespace Phalcon\Mvc\Model\Transaction;
 class Failed extends \Phalcon\Mvc\Model\Transaction\Exception
 {
 
-    protected $_record = null;
+    protected $record = null;
 
 
     /**
@@ -19,20 +19,20 @@ class Failed extends \Phalcon\Mvc\Model\Transaction\Exception
      * @param string $message
      * @param \Phalcon\Mvc\ModelInterface $record
      */
-    public function __construct($message, \Phalcon\Mvc\ModelInterface $record = null) {}
-
-    /**
-     * Returns validation record messages which stop the transaction
-     *
-     * @return \Phalcon\Mvc\Model\MessageInterface[]
-     */
-    public function getRecordMessages() {}
+    public function __construct(string $message, \Phalcon\Mvc\ModelInterface $record = null) {}
 
     /**
      * Returns validation record messages which stop the transaction
      *
      * @return \Phalcon\Mvc\ModelInterface
      */
-    public function getRecord() {}
+    public function getRecord(): ModelInterface {}
+
+    /**
+     * Returns validation record messages which stop the transaction
+     *
+     * @return array|\Phalcon\Messages\MessageInterface[]
+     */
+    public function getRecordMessages(): array {}
 
 }

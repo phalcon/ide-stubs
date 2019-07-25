@@ -11,99 +11,35 @@ interface RouteInterface
 {
 
     /**
-     * Sets a hostname restriction to the route
+     * Replaces placeholders from pattern returning a valid PCRE regular expression
      *
-     * @param string $hostname
+     * @param string $pattern
+     * @return string
+     */
+    public function compilePattern(string $pattern): string;
+
+    /**
+     * Adds a converter to perform an additional transformation for certain parameter.
+     *
+     * @param string $name
+     * @param mixed $converter
      * @return RouteInterface
      */
-    public function setHostname($hostname);
+    public function convert(string $name, $converter): RouteInterface;
+
+    /**
+     * Returns the route's pattern
+     *
+     * @return string
+     */
+    public function getCompiledPattern(): string;
 
     /**
      * Returns the hostname restriction if any
      *
      * @return string
      */
-    public function getHostname();
-
-    /**
-     * Replaces placeholders from pattern returning a valid PCRE regular expression
-     *
-     * @param string $pattern
-     * @return string
-     */
-    public function compilePattern($pattern);
-
-    /**
-     * Set one or more HTTP methods that constraint the matching of the route
-     *
-     * @param mixed $httpMethods
-     */
-    public function via($httpMethods);
-
-    /**
-     * Reconfigure the route adding a new pattern and a set of paths
-     *
-     * @param string $pattern
-     * @param mixed $paths
-     */
-    public function reConfigure($pattern, $paths = null);
-
-    /**
-     * Returns the route's name
-     *
-     * @return string
-     */
-    public function getName();
-
-    /**
-     * Sets the route's name
-     *
-     * @param string $name
-     */
-    public function setName($name);
-
-    /**
-     * Sets a set of HTTP methods that constraint the matching of the route
-     *
-     * @param mixed $httpMethods
-     * @return RouteInterface
-     */
-    public function setHttpMethods($httpMethods);
-
-    /**
-     * Returns the route's id
-     *
-     * @return string
-     */
-    public function getRouteId();
-
-    /**
-     * Returns the route's pattern
-     *
-     * @return string
-     */
-    public function getPattern();
-
-    /**
-     * Returns the route's pattern
-     *
-     * @return string
-     */
-    public function getCompiledPattern();
-
-    /**
-     * Returns the paths
-     *
-     * @return array
-     */
-    public function getPaths();
-
-    /**
-     * Returns the paths using positions as keys and names as values
-     *
-     * @return array
-     */
-    public function getReversedPaths();
+    public function getHostname(): string;
 
     /**
      * Returns the HTTP methods that constraint matching the route
@@ -113,8 +49,81 @@ interface RouteInterface
     public function getHttpMethods();
 
     /**
+     * Returns the route's name
+     *
+     * @return string
+     */
+    public function getName(): string;
+
+    /**
+     * Returns the paths
+     *
+     * @return array
+     */
+    public function getPaths(): array;
+
+    /**
+     * Returns the route's pattern
+     *
+     * @return string
+     */
+    public function getPattern(): string;
+
+    /**
+     * Returns the paths using positions as keys and names as values
+     *
+     * @return array
+     */
+    public function getReversedPaths(): array;
+
+    /**
+     * Returns the route's id
+     *
+     * @return string
+     */
+    public function getRouteId(): string;
+
+    /**
+     * Sets a hostname restriction to the route
+     *
+     * @param string $hostname
+     * @return RouteInterface
+     */
+    public function setHostname(string $hostname): RouteInterface;
+
+    /**
+     * Sets a set of HTTP methods that constraint the matching of the route
+     *
+     * @param mixed $httpMethods
+     * @return RouteInterface
+     */
+    public function setHttpMethods($httpMethods): RouteInterface;
+
+    /**
+     * Sets the route's name
+     *
+     * @param string $name
+     */
+    public function setName(string $name);
+
+    /**
+     * Reconfigure the route adding a new pattern and a set of paths
+     *
+     * @param string $pattern
+     * @param mixed $paths
+     */
+    public function reConfigure(string $pattern, $paths = null);
+
+    /**
      * Resets the internal route id generator
      */
     public static function reset();
+
+    /**
+     * Set one or more HTTP methods that constraint the matching of the route
+     *
+     * @param mixed $httpMethods
+     */
+    public function via($httpMethods);
 
 }

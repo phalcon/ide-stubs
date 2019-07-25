@@ -3,20 +3,18 @@
 namespace Phalcon\Assets\Inline;
 
 /**
- * Phalcon\Assets\Inline\Css
- *
  * Represents an inlined CSS
  */
 class Css extends \Phalcon\Assets\Inline
 {
 
     /**
-     * Phalcon\Assets\Inline\Css
+     * Phalcon\Assets\Inline\Css constructor
      *
      * @param string $content
-     * @param boolean $filter
-     * @param array $attributes
+     * @param bool $filter
+     * @param mixed $attributes
      */
-    public function __construct($content, $filter = true, $attributes = null) {}
+    public function __construct(string $content, bool $filter = true, $attributes = null) {}
 
 }

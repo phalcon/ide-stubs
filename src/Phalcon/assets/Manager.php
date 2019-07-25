@@ -7,67 +7,100 @@ namespace Phalcon\Assets;
  *
  * Manages collections of CSS/Javascript assets
  */
-class Manager
+class Manager implements \Phalcon\Di\InjectionAwareInterface
 {
+
+    protected $collections;
+
+    /**
+     * @var DiInterface
+     */
+    protected $container;
+
     /**
      * Options configure
      *
      * @var array
      */
-    protected $_options;
+    protected $options;
 
-
-    protected $_collections;
-
-
-    protected $_implicitOutput = true;
+    /**
+     * @var bool
+     */
+    protected $implicitOutput = true;
 
 
     /**
-     * Phalcon\Assets\Manager
+     * Phalcon\Assets\Manager constructor
      *
      * @param array $options
      */
-    public function __construct($options = null) {}
+    public function __construct(array $options = array()) {}
 
     /**
-     * Sets the manager options
+     * Adds a raw asset to the manager
      *
-     * @param array $options
+     * ```php
+     * $assets->addAsset(
+     *     new Phalcon\Assets\Asset("css", "css/style.css")
+     * );
+     * ```
+     *
+     * @param \Phalcon\Assets\Asset $asset
      * @return Manager
      */
-    public function setOptions(array $options) {}
+    public function addAsset(\Phalcon\Assets\Asset $asset): Manager {}
 
     /**
-     * Returns the manager options
+     * Adds a asset by its type
      *
-     * @return array
-     */
-    public function getOptions() {}
-
-    /**
-     * Sets if the HTML generated must be directly printed or returned
+     * ```php
+     * $assets->addAssetByType(
+     *     "css",
+     *     new \Phalcon\Assets\Asset\Css("css/style.css")
+     * );
+     * ```
      *
-     * @param bool $implicitOutput
+     * @param string $type
+     * @param \Phalcon\Assets\Asset $asset
      * @return Manager
      */
-    public function useImplicitOutput($implicitOutput) {}
+    public function addAssetByType(string $type, \Phalcon\Assets\Asset $asset): Manager {}
 
     /**
-     * Adds a Css resource to the 'css' collection
+     * Adds a Css asset to the 'css' collection
      *
-     * <code>
+     * ```php
      * $assets->addCss("css/bootstrap.css");
      * $assets->addCss("http://bootstrap.my-cdn.com/style.css", false);
-     * </code>
+     * ```
      *
      * @param string $path
      * @param mixed $local
-     * @param mixed $filter
+     * @param bool $filter
      * @param mixed $attributes
+     * @param string $version
+     * @param bool $autoVersion
      * @return Manager
      */
-    public function addCss($path, $local = true, $filter = true, $attributes = null) {}
+    public function addCss(string $path, $local = true, bool $filter = true, $attributes = null, string $version = null, bool $autoVersion = false): Manager {}
+
+    /**
+     * Adds a raw inline code to the manager
+     *
+     * @param Inline $code
+     * @return Manager
+     */
+    public function addInlineCode(Inline $code): Manager {}
+
+    /**
+     * Adds an inline code by its type
+     *
+     * @param string $type
+     * @param Inline $code
+     * @return Manager
+     */
+    public function addInlineCodeByType(string $type, Inline $code): Manager {}
 
     /**
      * Adds an inline Css to the 'css' collection
@@ -77,23 +110,7 @@ class Manager
      * @param mixed $attributes
      * @return Manager
      */
-    public function addInlineCss($content, $filter = true, $attributes = null) {}
-
-    /**
-     * Adds a javascript resource to the 'js' collection
-     *
-     * <code>
-     * $assets->addJs("scripts/jquery.js");
-     * $assets->addJs("http://jquery.my-cdn.com/jquery.js", false);
-     * </code>
-     *
-     * @param string $path
-     * @param mixed $local
-     * @param mixed $filter
-     * @param mixed $attributes
-     * @return Manager
-     */
-    public function addJs($path, $local = true, $filter = true, $attributes = null) {}
+    public function addInlineCss(string $content, $filter = true, $attributes = null): Manager {}
 
     /**
      * Adds an inline javascript to the 'js' collection
@@ -103,107 +120,104 @@ class Manager
      * @param mixed $attributes
      * @return Manager
      */
-    public function addInlineJs($content, $filter = true, $attributes = null) {}
+    public function addInlineJs(string $content, $filter = true, $attributes = null): Manager {}
 
     /**
-     * Adds a resource by its type
+     * Adds a javascript asset to the 'js' collection
      *
-     * <code>
-     * $assets->addResourceByType("css",
-     *     new \Phalcon\Assets\Resource\Css("css/style.css")
-     * );
-     * </code>
+     * ```php
+     * $assets->addJs("scripts/jquery.js");
+     * $assets->addJs("http://jquery.my-cdn.com/jquery.js", false);
+     * ```
      *
-     * @param string $type
-     * @param \Phalcon\Assets\Resource $resource
+     * @param string $path
+     * @param mixed $local
+     * @param bool $filter
+     * @param mixed $attributes
+     * @param string $version
+     * @param bool $autoVersion
      * @return Manager
      */
-    public function addResourceByType($type, \Phalcon\Assets\Resource $resource) {}
+    public function addJs(string $path, $local = true, bool $filter = true, $attributes = null, string $version = null, bool $autoVersion = false): Manager {}
 
     /**
-     * Adds an inline code by its type
-     *
-     * @param string $type
-     * @param Inline $code
-     * @return Manager
-     */
-    public function addInlineCodeByType($type, Inline $code) {}
-
-    /**
-     * Adds a raw resource to the manager
-     *
-     * <code>
-     * $assets->addResource(
-     *     new Phalcon\Assets\Resource("css", "css/style.css")
-     * );
-     * </code>
-     *
-     * @param \Phalcon\Assets\Resource $resource
-     * @return Manager
-     */
-    public function addResource(\Phalcon\Assets\Resource $resource) {}
-
-    /**
-     * Adds a raw inline code to the manager
-     *
-     * @param Inline $code
-     * @return Manager
-     */
-    public function addInlineCode(Inline $code) {}
-
-    /**
-     * Sets a collection in the Assets Manager
-     *
-     * <code>
-     * $assets->set("js", $collection);
-     * </code>
-     *
-     * @param string $id
-     * @param \Phalcon\Assets\Collection $collection
-     * @return Manager
-     */
-    public function set($id, \Phalcon\Assets\Collection $collection) {}
-
-    /**
-     * Returns a collection by its id.
-     *
-     * <code>
-     * $scripts = $assets->get("js");
-     * </code>
-     *
-     * @param string $id
-     * @return \Phalcon\Assets\Collection
-     */
-    public function get($id) {}
-
-    /**
-     * Returns the CSS collection of assets
-     *
-     * @return \Phalcon\Assets\Collection
-     */
-    public function getCss() {}
-
-    /**
-     * Returns the CSS collection of assets
-     *
-     * @return \Phalcon\Assets\Collection
-     */
-    public function getJs() {}
-
-    /**
-     * Creates/Returns a collection of resources
+     * Creates/Returns a collection of assets
      *
      * @param string $name
      * @return \Phalcon\Assets\Collection
      */
-    public function collection($name) {}
+    public function collection(string $name): Collection {}
 
     /**
-     * @param array $resources
+     * Creates/Returns a collection of assets by type
+     *
+     * @param array $assets
      * @param string $type
      * @return array
      */
-    public function collectionResourcesByType(array $resources, $type) {}
+    public function collectionAssetsByType(array $assets, string $type): array {}
+
+    /**
+     * Returns true or false if collection exists.
+     *
+     * ```php
+     * if ($assets->exists("jsHeader")) {
+     *     // \Phalcon\Assets\Collection
+     *     $collection = $assets->get("jsHeader");
+     * }
+     * ```
+     *
+     * @param string $id
+     * @return bool
+     */
+    public function exists(string $id): bool {}
+
+    /**
+     * Returns a collection by its id.
+     *
+     * ```php
+     * $scripts = $assets->get("js");
+     * ```
+     *
+     * @param string $id
+     * @return \Phalcon\Assets\Collection
+     */
+    public function get(string $id): Collection {}
+
+    /**
+     * Returns existing collections in the manager
+     *
+     * @return array|\Phalcon\Assets\Collection[]
+     */
+    public function getCollections(): array {}
+
+    /**
+     * Returns the CSS collection of assets
+     *
+     * @return \Phalcon\Assets\Collection
+     */
+    public function getCss(): Collection {}
+
+    /**
+     * Returns the internal dependency injector
+     *
+     * @return \Phalcon\Di\DiInterface
+     */
+    public function getDI(): DiInterface {}
+
+    /**
+     * Returns the CSS collection of assets
+     *
+     * @return \Phalcon\Assets\Collection
+     */
+    public function getJs(): Collection {}
+
+    /**
+     * Returns the manager options
+     *
+     * @return array
+     */
+    public function getOptions(): array {}
 
     /**
      * Traverses a collection calling the callback to generate its HTML
@@ -213,7 +227,15 @@ class Manager
      * @param string $type
      * @return string|null
      */
-    public function output(\Phalcon\Assets\Collection $collection, $callback, $type) {}
+    public function output(\Phalcon\Assets\Collection $collection, $callback, $type): ?string {}
+
+    /**
+     * Prints the HTML for CSS assets
+     *
+     * @param string $collectionName
+     * @return string
+     */
+    public function outputCss(string $collectionName = null): string {}
 
     /**
      * Traverses a collection and generate its HTML
@@ -222,15 +244,7 @@ class Manager
      * @param string $type
      * @return string
      */
-    public function outputInline(\Phalcon\Assets\Collection $collection, $type) {}
-
-    /**
-     * Prints the HTML for CSS resources
-     *
-     * @param string $collectionName
-     * @return string
-     */
-    public function outputCss($collectionName = null) {}
+    public function outputInline(\Phalcon\Assets\Collection $collection, $type): string {}
 
     /**
      * Prints the HTML for inline CSS
@@ -238,15 +252,7 @@ class Manager
      * @param string $collectionName
      * @return string
      */
-    public function outputInlineCss($collectionName = null) {}
-
-    /**
-     * Prints the HTML for JS resources
-     *
-     * @param string $collectionName
-     * @return string
-     */
-    public function outputJs($collectionName = null) {}
+    public function outputInlineCss(string $collectionName = null): string {}
 
     /**
      * Prints the HTML for inline JS
@@ -254,28 +260,59 @@ class Manager
      * @param string $collectionName
      * @return string
      */
-    public function outputInlineJs($collectionName = null) {}
+    public function outputInlineJs(string $collectionName = null): string {}
 
     /**
-     * Returns existing collections in the manager
+     * Prints the HTML for JS assets
      *
-     * @return \Phalcon\Assets\Collection[]
+     * @param string $collectionName
+     * @return string
      */
-    public function getCollections() {}
+    public function outputJs(string $collectionName = null): string {}
 
     /**
-     * Returns true or false if collection exists.
+     * Sets a collection in the Assets Manager
      *
-     * <code>
-     * if ($assets->exists("jsHeader")) {
-     *     // \Phalcon\Assets\Collection
-     *     $collection = $assets->get("jsHeader");
-     * }
-     * </code>
+     * ```php
+     * $assets->set("js", $collection);
+     * ```
      *
      * @param string $id
-     * @return bool
+     * @param \Phalcon\Assets\Collection $collection
+     * @return Manager
      */
-    public function exists($id) {}
+    public function set(string $id, \Phalcon\Assets\Collection $collection): Manager {}
+
+    /**
+     * Sets the dependency injector
+     *
+     * @param \Phalcon\Di\DiInterface $container
+     */
+    public function setDI(\Phalcon\Di\DiInterface $container) {}
+
+    /**
+     * Sets the manager options
+     *
+     * @param array $options
+     * @return Manager
+     */
+    public function setOptions(array $options): Manager {}
+
+    /**
+     * Sets if the HTML generated must be directly printed or returned
+     *
+     * @param bool $implicitOutput
+     * @return Manager
+     */
+    public function useImplicitOutput(bool $implicitOutput): Manager {}
+
+    /**
+     * Returns the prefixed path
+     *
+     * @param \Phalcon\Assets\Collection $collection
+     * @param string $path
+     * @return string
+     */
+    private function getPrefixedPath(\Phalcon\Assets\Collection $collection, string $path): string {}
 
 }

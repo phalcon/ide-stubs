@@ -3,11 +3,9 @@
 namespace Phalcon\Annotations;
 
 /**
- * Phalcon\Annotations\Reflection
- *
  * Allows to manipulate the annotations reflection in an OO manner
  *
- * <code>
+ * ```php
  * use Phalcon\Annotations\Reader;
  * use Phalcon\Annotations\Reflection;
  *
@@ -20,21 +18,23 @@ namespace Phalcon\Annotations;
  *
  * // Get the annotations in the class docblock
  * $classAnnotations = $reflection->getClassAnnotations();
- * </code>
+ * ```
  */
 class Reflection
 {
 
-    protected $_reflectionData;
+    protected $classAnnotations;
 
 
-    protected $_classAnnotations;
+    protected $methodAnnotations;
 
 
-    protected $_methodAnnotations;
+    protected $propertyAnnotations;
 
-
-    protected $_propertyAnnotations;
+    /**
+     * @var array
+     */
+    protected $reflectionData;
 
 
     /**
@@ -42,7 +42,7 @@ class Reflection
      *
      * @param array $reflectionData
      */
-    public function __construct($reflectionData = null) {}
+    public function __construct(array $reflectionData = array()) {}
 
     /**
      * Returns the annotations found in the class docblock
@@ -54,30 +54,23 @@ class Reflection
     /**
      * Returns the annotations found in the methods' docblocks
      *
-     * @return bool|\Phalcon\Annotations\Collection[]
+     * @return array|bool|\Phalcon\Annotations\Collection[]
      */
     public function getMethodsAnnotations() {}
 
     /**
      * Returns the annotations found in the properties' docblocks
      *
-     * @return bool|\Phalcon\Annotations\Collection[]
+     * @return array|bool|\Phalcon\Annotations\Collection[]
      */
     public function getPropertiesAnnotations() {}
 
     /**
-     * Returns the raw parsing intermediate definitions used to construct the reflection
+     * Returns the raw parsing intermediate definitions used to construct the
+     * reflection
      *
      * @return array
      */
-    public function getReflectionData() {}
-
-    /**
-     * Restores the state of a Phalcon\Annotations\Reflection variable export
-     *
-     * @param mixed $data
-     * @return Reflection
-     */
-    public static function __set_state($data) {}
+    public function getReflectionData(): array {}
 
 }

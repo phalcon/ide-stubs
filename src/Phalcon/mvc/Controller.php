@@ -5,13 +5,15 @@ namespace Phalcon\Mvc;
 /**
  * Phalcon\Mvc\Controller
  *
- * Every application controller should extend this class that encapsulates all the controller functionality
+ * Every application controller should extend this class that encapsulates all
+ * the controller functionality
  *
- * The controllers provide the “flow” between models and views. Controllers are responsible
- * for processing the incoming requests from the web browser, interrogating the models for data,
- * and passing that data on to the views for presentation.
+ * The controllers provide the “flow” between models and views. Controllers are
+ * responsible for processing the incoming requests from the web browser,
+ * interrogating the models for data, and passing that data on to the views for
+ * presentation.
  *
- * <code>
+ * ```php
  * <?php
  *
  * class PeopleController extends \Phalcon\Mvc\Controller
@@ -38,7 +40,7 @@ namespace Phalcon\Mvc;
  *         );
  *     }
  * }
- * </code>
+ * ```
  */
 abstract class Controller extends \Phalcon\Di\Injectable implements \Phalcon\Mvc\ControllerInterface
 {
@@ -46,6 +48,6 @@ abstract class Controller extends \Phalcon\Di\Injectable implements \Phalcon\Mvc
     /**
      * Phalcon\Mvc\Controller constructor
      */
-    public final function __construct() {}
+    final public function __construct() {}
 
 }

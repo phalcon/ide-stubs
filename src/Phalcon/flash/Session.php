@@ -3,45 +3,16 @@
 namespace Phalcon\Flash;
 
 /**
- * Phalcon\Flash\Session
- *
- * Temporarily stores the messages in session, then messages can be printed in the next request
+ * Temporarily stores the messages in session, then messages can be printed in
+ * the next request
  */
-class Session extends \Phalcon\Flash
+class Session extends \Phalcon\Flash\AbstractFlash
 {
 
     /**
-     * Returns the messages stored in session
-     *
-     * @param bool $remove
-     * @param mixed $type
-     * @return array
+     * Clear messages in the session messenger
      */
-    protected function _getSessionMessages($remove, $type = null) {}
-
-    /**
-     * Stores the messages in session
-     *
-     * @param array $messages
-     * @return array
-     */
-    protected function _setSessionMessages(array $messages) {}
-
-    /**
-     * Adds a message to the session flasher
-     *
-     * @param string $type
-     * @param string $message
-     */
-    public function message($type, $message) {}
-
-    /**
-     * Checks whether there are messages
-     *
-     * @param mixed $type
-     * @return bool
-     */
-    public function has($type = null) {}
+    public function clear() {}
 
     /**
      * Returns the messages in the session flasher
@@ -50,18 +21,46 @@ class Session extends \Phalcon\Flash
      * @param bool $remove
      * @return array
      */
-    public function getMessages($type = null, $remove = true) {}
+    public function getMessages($type = null, bool $remove = true): array {}
+
+    /**
+     * Checks whether there are messages
+     *
+     * @param mixed $type
+     * @return bool
+     */
+    public function has($type = null): bool {}
+
+    /**
+     * Adds a message to the session flasher
+     *
+     * @param string $type
+     * @param string $message
+     */
+    public function message(string $type, string $message) {}
 
     /**
      * Prints the messages in the session flasher
      *
      * @param bool $remove
      */
-    public function output($remove = true) {}
+    public function output(bool $remove = true) {}
 
     /**
-     * Clear messages in the session messenger
+     * Returns the messages stored in session
+     *
+     * @param bool $remove
+     * @param mixed $type
+     * @return array
      */
-    public function clear() {}
+    protected function getSessionMessages(bool $remove, $type = null): array {}
+
+    /**
+     * Stores the messages in session
+     *
+     * @param array $messages
+     * @return array
+     */
+    protected function setSessionMessages(array $messages): array {}
 
 }

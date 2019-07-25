@@ -3,40 +3,84 @@
 namespace Phalcon\Cli;
 
 /**
- * Phalcon\Cli\RouterInterface
- *
  * Interface for Phalcon\Cli\Router
  */
 interface RouterInterface
 {
 
     /**
-     * Sets the name of the default module
+     * Adds a route to the router on any HTTP method
      *
-     * @param string $moduleName
+     * @param string $pattern
+     * @param mixed $paths
+     * @return \Phalcon\Cli\Router\RouteInterface
      */
-    public function setDefaultModule($moduleName);
+    public function add(string $pattern, $paths = null): RouteInterface;
 
     /**
-     * Sets the default task name
+     * Returns processed action name
      *
-     * @param string $taskName
+     * @return string
      */
-    public function setDefaultTask($taskName);
+    public function getActionName(): string;
 
     /**
-     * Sets the default action name
+     * Returns the route that matches the handled URI
      *
-     * @param string $actionName
+     * @return \Phalcon\Cli\Router\RouteInterface
      */
-    public function setDefaultAction($actionName);
+    public function getMatchedRoute(): RouteInterface;
 
     /**
-     * Sets an array of default paths
+     * Return the sub expressions in the regular expression matched
      *
-     * @param array $defaults
+     * @return array
      */
-    public function setDefaults(array $defaults);
+    public function getMatches(): array;
+
+    /**
+     * Returns processed module name
+     *
+     * @return string
+     */
+    public function getModuleName(): string;
+
+    /**
+     * Returns processed extra params
+     *
+     * @return array
+     */
+    public function getParams(): array;
+
+    /**
+     * Returns a route object by its id
+     *
+     * @param mixed $id
+     * @return \Phalcon\Cli\Router\RouteInterface
+     */
+    public function getRouteById($id): RouteInterface;
+
+    /**
+     * Returns a route object by its name
+     *
+     * @param string $name
+     * @return \Phalcon\Cli\Router\RouteInterface
+     */
+    public function getRouteByName(string $name): RouteInterface;
+
+    /**
+     * Return all the routes defined in the router
+     *
+     * @return array|\Phalcon\Cli\Router\RouteInterface[]
+     */
+    public function getRoutes(): array;
+
+    /**
+     * Returns processed task name
+     *
+     * @return string
+     */
+    public function getTaskName(): string;
 
     /**
      * Handles routing information received from the rewrite engine
@@ -46,84 +90,38 @@ interface RouterInterface
     public function handle($arguments = null);
 
     /**
-     * Adds a route to the router on any HTTP method
+     * Sets the default action name
      *
-     * @param string $pattern
-     * @param mixed $paths
-     * @return \Phalcon\Cli\Router\RouteInterface
+     * @param string $actionName
      */
-    public function add($pattern, $paths = null);
+    public function setDefaultAction(string $actionName);
 
     /**
-     * Returns processed module name
+     * Sets the name of the default module
      *
-     * @return string
+     * @param string $moduleName
      */
-    public function getModuleName();
+    public function setDefaultModule(string $moduleName);
 
     /**
-     * Returns processed task name
+     * Sets an array of default paths
      *
-     * @return string
+     * @param array $defaults
      */
-    public function getTaskName();
+    public function setDefaults(array $defaults);
 
     /**
-     * Returns processed action name
+     * Sets the default task name
      *
-     * @return string
+     * @param string $taskName
      */
-    public function getActionName();
-
-    /**
-     * Returns processed extra params
-     *
-     * @return array
-     */
-    public function getParams();
-
-    /**
-     * Returns the route that matches the handled URI
-     *
-     * @return \Phalcon\Cli\Router\RouteInterface
-     */
-    public function getMatchedRoute();
-
-    /**
-     * Return the sub expressions in the regular expression matched
-     *
-     * @return array
-     */
-    public function getMatches();
+    public function setDefaultTask(string $taskName);
 
     /**
      * Check if the router matches any of the defined routes
      *
      * @return bool
      */
-    public function wasMatched();
-
-    /**
-     * Return all the routes defined in the router
-     *
-     * @return \Phalcon\Cli\Router\RouteInterface[]
-     */
-    public function getRoutes();
-
-    /**
-     * Returns a route object by its id
-     *
-     * @param mixed $id
-     * @return \Phalcon\Cli\Router\RouteInterface
-     */
-    public function getRouteById($id);
-
-    /**
-     * Returns a route object by its name
-     *
-     * @param string $name
-     * @return \Phalcon\Cli\Router\RouteInterface
-     */
-    public function getRouteByName($name);
+    public function wasMatched(): bool;
 
 }
