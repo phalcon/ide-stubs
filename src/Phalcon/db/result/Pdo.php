@@ -53,13 +53,13 @@ class Pdo implements \Phalcon\Db\ResultInterface
     /**
      * Phalcon\Db\Result\Pdo constructor
      *
-     * @param Db\AdapterInterface $connection
+     * @param \Phalcon\Db\Adapter\AdapterInterface $connection
      * @param \PDOStatement $result
      * @param mixed $sqlStatement
      * @param mixed $bindParams
      * @param mixed $bindTypes
      */
-    public function __construct(Db\AdapterInterface $connection, \PDOStatement $result, $sqlStatement = null, $bindParams = null, $bindTypes = null) {}
+    public function __construct(\Phalcon\Db\Adapter\AdapterInterface $connection, \PDOStatement $result, $sqlStatement = null, $bindParams = null, $bindTypes = null) {}
 
     /**
      * Moves internal resultset cursor to another position letting us to fetch a

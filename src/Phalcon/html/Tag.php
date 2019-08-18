@@ -1171,12 +1171,12 @@ class Tag implements \Phalcon\Di\InjectionAwareInterface
     /**
      * Generates the option values from a resultset
      *
-     * @param ResulsetInterface $resultset
+     * @param \Phalcon\Mvc\Model\ResultsetInterface $resultset
      * @param mixed $using
      * @param mixed $value
      * @param string $closeOption
      * @return string
      */
-    private function renderSelectResultset(ResulsetInterface $resultset, $using, $value, string $closeOption): string {}
+    private function renderSelectResultset(\Phalcon\Mvc\Model\ResultsetInterface $resultset, $using, $value, string $closeOption): string {}
 
 }
