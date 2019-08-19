@@ -89,24 +89,24 @@ abstract class AbstractApplication extends \Phalcon\Di\Injectable implements \Ph
      *
      * @param array $modules
      * @param bool $merge
-     * @return Application
+     * @return AbstractApplication
      */
-    public function registerModules(array $modules, bool $merge = false): Application {}
+    public function registerModules(array $modules, bool $merge = false): AbstractApplication {}
 
     /**
      * Sets the module name to be used if the router doesn't return a valid module
      *
      * @param string $defaultModule
-     * @return Application
+     * @return AbstractApplication
      */
-    public function setDefaultModule(string $defaultModule): Application {}
+    public function setDefaultModule(string $defaultModule): AbstractApplication {}
 
     /**
      * Sets the events manager
      *
      * @param \Phalcon\Events\ManagerInterface $eventsManager
-     * @return Application
+     * @return AbstractApplication
      */
-    public function setEventsManager(\Phalcon\Events\ManagerInterface $eventsManager): Application {}
+    public function setEventsManager(\Phalcon\Events\ManagerInterface $eventsManager): AbstractApplication {}
 
 }

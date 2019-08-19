@@ -480,7 +480,7 @@ abstract class AbstractAdapter implements \Phalcon\Db\Adapter\AdapterInterface, 
     /**
      * Returns internal dialect instance
      *
-     * @return DialectInterface
+     * @return \Phalcon\Db\DialectInterface
      */
     public function getDialect(): DialectInterface {}
 
@@ -651,9 +651,9 @@ abstract class AbstractAdapter implements \Phalcon\Db\Adapter\AdapterInterface, 
     /**
      * Sets the dialect used to produce the SQL
      *
-     * @param DialectInterface $dialect
+     * @param \Phalcon\Db\DialectInterface $dialect
      */
-    public function setDialect(DialectInterface $dialect) {}
+    public function setDialect(\Phalcon\Db\DialectInterface $dialect) {}
 
     /**
      * Set if nested transactions should use savepoints

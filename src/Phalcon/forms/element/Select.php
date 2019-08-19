@@ -25,7 +25,7 @@ class Select extends \Phalcon\Forms\Element\AbstractElement
     /**
      * Adds an option to the current options
      *
-     * @param array $option
+     * @param array|string $option
      * @return Element
      */
     public function addOption($option): Element {}

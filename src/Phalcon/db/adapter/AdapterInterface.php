@@ -326,7 +326,7 @@ interface AdapterInterface
     /**
      * Returns internal dialect instance
      *
-     * @return DialectInterface
+     * @return \Phalcon\Db\DialectInterface
      */
     public function getDialect(): DialectInterface;
 
@@ -494,7 +494,7 @@ interface AdapterInterface
      * @param string $sqlStatement
      * @param mixed $placeholders
      * @param mixed $dataTypes
-     * @return bool|ResultInterface
+     * @return bool|\Phalcon\Db\ResultInterface
      */
     public function query(string $sqlStatement, $placeholders = null, $dataTypes = null);
 
