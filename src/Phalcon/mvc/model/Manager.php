@@ -1,6 +1,23 @@
 <?php
 
+/**
+ * This file is part of the Phalcon Framework.
+ *
+ * (c) Phalcon Team <team@phalcon.io>
+ *
+ * For the full copyright and license information, please view the LICENSE.txt
+ * file that was distributed with this source code.
+ */
+
 namespace Phalcon\Mvc\Model;
+
+use Phalcon\Db\Adapter\AdapterInterface;
+use Phalcon\Di\DiInterface;
+use Phalcon\Di\InjectionAwareInterface;
+use Phalcon\Events\EventsAwareInterface;
+use Phalcon\Events\ManagerInterface as EventsManagerInterface;
+use Phalcon\Mvc\Model\Query\BuilderInterface;
+use Phalcon\Mvc\ModelInterface;
 
 /**
  * Phalcon\Mvc\Model\Manager
@@ -27,7 +44,7 @@ namespace Phalcon\Mvc\Model;
  * $robot = new Robots($di);
  * ```
  */
-class Manager implements \Phalcon\Mvc\Model\ManagerInterface, \Phalcon\Di\InjectionAwareInterface, \Phalcon\Events\EventsAwareInterface
+class Manager implements ManagerInterface, InjectionAwareInterface, EventsAwareInterface
 {
 
     protected $aliases = array();
@@ -151,9 +168,8 @@ class Manager implements \Phalcon\Mvc\Model\ManagerInterface, \Phalcon\Di\Inject
      * Sets a global events manager
      *
      * @param \Phalcon\Events\ManagerInterface $eventsManager
-     * @return \Phalcon\Mvc\Model\ManagerInterface
      */
-    public function setEventsManager(\Phalcon\Events\ManagerInterface $eventsManager): ManagerInterface {}
+    public function setEventsManager(\Phalcon\Events\ManagerInterface $eventsManager) {}
 
     /**
      * Returns the internal event manager

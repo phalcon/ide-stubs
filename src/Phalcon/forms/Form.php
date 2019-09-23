@@ -1,11 +1,28 @@
 <?php
 
+/**
+ * This file is part of the Phalcon Framework.
+ *
+ * (c) Phalcon Team <team@phalcon.io>
+ *
+ * For the full copyright and license information, please view the LICENSE.txt
+ * file that was distributed with this source code.
+ */
+
 namespace Phalcon\Forms;
+
+use Countable;
+use Iterator;
+use Phalcon\Di\Injectable;
+use Phalcon\Forms\Element\ElementInterface;
+use Phalcon\Html\Attributes;
+use Phalcon\Html\Attributes\AttributesInterface;
+use Phalcon\Messages\Messages;
 
 /**
  * This component allows to build forms using an object-oriented interface
  */
-class Form extends \Phalcon\Di\Injectable implements \Countable, \Iterator, \Phalcon\Html\Attributes\AttributesInterface
+class Form extends Injectable implements Countable, Iterator, AttributesInterface
 {
 
     protected $attributes;
@@ -177,7 +194,7 @@ class Form extends \Phalcon\Di\Injectable implements \Countable, \Iterator, \Pha
      * @param string $name
      * @return mixed|null
      */
-    public function getValue(string $name): ? {}
+    public function getValue(string $name) {}
 
     /**
      * Check if the form contains an element

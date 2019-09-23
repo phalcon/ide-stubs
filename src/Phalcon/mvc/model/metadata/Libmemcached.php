@@ -1,6 +1,17 @@
 <?php
 
+/**
+ * This file is part of the Phalcon Framework.
+ *
+ * (c) Phalcon Team <team@phalcon.io>
+ *
+ * For the full copyright and license information, please view the LICENSE.txt
+ * file that was distributed with this source code.
+ */
+
 namespace Phalcon\Mvc\Model\MetaData;
+
+use Phalcon\Mvc\Model\MetaData;
 
 /**
  * Phalcon\Mvc\Model\MetaData\Libmemcached
@@ -9,7 +20,7 @@ namespace Phalcon\Mvc\Model\MetaData;
  *
  * By default meta-data is stored for 48 hours (172800 seconds)
  */
-class Libmemcached extends \Phalcon\Mvc\Model\MetaData
+class Libmemcached extends MetaData
 {
 
     /**

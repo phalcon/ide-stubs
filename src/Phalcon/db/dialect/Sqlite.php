@@ -1,11 +1,22 @@
 <?php
 
+/**
+ * This file is part of the Phalcon Framework.
+ *
+ * (c) Phalcon Team <team@phalcon.io>
+ *
+ * For the full copyright and license information, please view the LICENSE.txt
+ * file that was distributed with this source code.
+ */
+
 namespace Phalcon\Db\Dialect;
+
+use Phalcon\Db\Dialect;
 
 /**
  * Generates database specific SQL for the SQLite RDBMS
  */
-class Sqlite extends \Phalcon\Db\Dialect
+class Sqlite extends Dialect
 {
     /**
      * @var string

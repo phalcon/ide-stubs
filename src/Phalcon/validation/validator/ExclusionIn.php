@@ -1,6 +1,17 @@
 <?php
 
+/**
+ * This file is part of the Phalcon Framework.
+ *
+ * (c) Phalcon Team <team@phalcon.io>
+ *
+ * For the full copyright and license information, please view the LICENSE.txt
+ * file that was distributed with this source code.
+ */
+
 namespace Phalcon\Validation\Validator;
+
+use Phalcon\Validation\AbstractValidator;
 
 /**
  * Check if a value is not included into a list of values
@@ -47,7 +58,7 @@ namespace Phalcon\Validation\Validator;
  * );
  * ```
  */
-class ExclusionIn extends \Phalcon\Validation\AbstractValidator
+class ExclusionIn extends AbstractValidator
 {
 
     protected $template = 'Field :field must not be a part of list: :domain';

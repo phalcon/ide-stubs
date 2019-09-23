@@ -1,6 +1,17 @@
 <?php
 
+/**
+ * This file is part of the Phalcon Framework.
+ *
+ * (c) Phalcon Team <team@phalcon.io>
+ *
+ * For the full copyright and license information, please view the LICENSE.txt
+ * file that was distributed with this source code.
+ */
+
 namespace Phalcon\Translate\Adapter;
+
+use ArrayAccess;
 
 /**
  * Phalcon\Translate\Adapter\Gettext
@@ -20,7 +31,7 @@ namespace Phalcon\Translate\Adapter;
  *
  * Allows translate using gettext
  */
-class Gettext extends \Phalcon\Translate\Adapter\AbstractAdapter implements \ArrayAccess
+class Gettext extends AbstractAdapter implements ArrayAccess
 {
     /**
      * @var int

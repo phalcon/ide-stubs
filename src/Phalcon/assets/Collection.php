@@ -1,11 +1,23 @@
 <?php
 
+/**
+ * This file is part of the Phalcon Framework.
+ *
+ * (c) Phalcon Team <team@phalcon.io>
+ *
+ * For the full copyright and license information, please view the LICENSE.txt
+ * file that was distributed with this source code.
+ */
+
 namespace Phalcon\Assets;
+
+use Countable;
+use Iterator;
 
 /**
  * Represents a collection of assets
  */
-class Collection implements \Countable, \Iterator
+class Collection implements Countable, Iterator
 {
     /**
      * @var array

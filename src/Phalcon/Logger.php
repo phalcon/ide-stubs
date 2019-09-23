@@ -1,6 +1,20 @@
 <?php
 
-namespace Phalcon\Logger;
+/**
+ * This file is part of the Phalcon Framework.
+ *
+ * (c) Phalcon Team <team@phalcon.io>
+ *
+ * For the full copyright and license information, please view the LICENSE.txt
+ * file that was distributed with this source code.
+ */
+
+namespace Phalcon;
+
+use Phalcon\Logger\Adapter\AdapterInterface;
+use Phalcon\Logger\Exception;
+use Psr\Log\InvalidArgumentException;
+use Psr\Log\LoggerInterface;
 
 /**
  * Phalcon\Logger
@@ -9,7 +23,7 @@ namespace Phalcon\Logger;
  * component accepts multiple adapters, working also as a multiple logger.
  * Phalcon\Logger implements PSR-3.
  *
- * ```php
+ *```php
  * use Phalcon\Logger;
  * use Phalcon\Logger\Adapter\Stream;
  *
@@ -33,9 +47,9 @@ namespace Phalcon\Logger;
  * $logger
  *         ->excludeAdapters(['manager'])
  *         ->info('This does not go to the "manager" logger);
- * ```
+ *```
  */
-class Logger implements \Psr\Log\LoggerInterface
+class Logger implements LoggerInterface
 {
 
     const ALERT = 2;

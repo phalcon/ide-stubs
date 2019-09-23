@@ -1,15 +1,24 @@
 <?php
 
+/**
+ * This file is part of the Phalcon Framework.
+ *
+ * (c) Phalcon Team <team@phalcon.io>
+ *
+ * For the full copyright and license information, please view the LICENSE.txt
+ * file that was distributed with this source code.
+ */
+
 namespace Phalcon\Assets;
 
 /**
  * Represents an inline asset
  *
- * ```php
+ *```php
  * $inline = new \Phalcon\Assets\Inline("js", "alert('hello world');");
- * ```
+ *```
  */
-class Inline implements \Phalcon\Assets\AssetInterface
+class Inline implements AssetInterface
 {
     /**
      * @var array | null

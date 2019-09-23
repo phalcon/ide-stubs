@@ -1,5 +1,14 @@
 <?php
 
+/**
+ * This file is part of the Phalcon.
+ *
+ * (c) Phalcon Team <team@phalcon.com>
+ *
+ * For the full copyright and license information, please view the LICENSE
+ * file that was distributed with this source code.
+ */
+
 namespace Phalcon\Session\Adapter;
 
 /**
@@ -19,10 +28,10 @@ namespace Phalcon\Session\Adapter;
  *         'savePath' => '/tmp',
  *     ]
  * );
- * $session->setHandler($files);
+ * $session->setAdapter($files);
  * ```
  */
-class Stream extends \Phalcon\Session\Adapter\Noop
+class Stream extends Noop
 {
     /**
      * @var string
@@ -48,6 +57,8 @@ class Stream extends \Phalcon\Session\Adapter\Noop
     public function gc($maxlifetime): bool {}
 
     /**
+     * Ignore the savePath and use local defined path
+     *
      * @param mixed $savePath
      * @param mixed $sessionName
      * @return bool

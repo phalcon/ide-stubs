@@ -1,11 +1,27 @@
 <?php
 
+/**
+ * This file is part of the Phalcon Framework.
+ *
+ * (c) Phalcon Team <team@phalcon.io>
+ *
+ * For the full copyright and license information, please view the LICENSE.txt
+ * file that was distributed with this source code.
+ *
+ * Implementation of this file has been influenced by Zend Diactoros
+ * @link    https://github.com/zendframework/zend-diactoros
+ * @license https://github.com/zendframework/zend-diactoros/blob/master/LICENSE.md
+ */
+
 namespace Phalcon\Http\Message;
+
+use Phalcon\Http\Message\Exception\InvalidArgumentException;
+use Psr\Http\Message\UriInterface;
 
 /**
  * PSR-7 Uri
  */
-final class Uri extends \Phalcon\Http\Message\AbstractCommon implements \Psr\Http\Message\UriInterface
+final class Uri extends AbstractCommon implements UriInterface
 {
     /**
      * Returns the fragment of the URL

@@ -1,6 +1,21 @@
 <?php
 
+/**
+ * This file is part of the Phalcon Framework.
+ *
+ * (c) Phalcon Team <team@phalcon.io>
+ *
+ * For the full copyright and license information, please view the LICENSE.txt
+ * file that was distributed with this source code.
+ */
+
 namespace Phalcon\Mvc;
+
+use ArrayAccess;
+use Phalcon\Di\Injectable;
+use Phalcon\Di\ServiceInterface;
+use Phalcon\Mvc\Model\BinderInterface;
+use Phalcon\Mvc\Router\RouteInterface;
 
 /**
  * Phalcon\Mvc\Micro
@@ -10,7 +25,7 @@ namespace Phalcon\Mvc;
  * application. Micro applications are suitable to small applications, APIs and
  * prototypes in a practical way.
  *
- * ```php
+ *```php
  * $app = new \Phalcon\Mvc\Micro();
  *
  * $app->get(
@@ -21,9 +36,9 @@ namespace Phalcon\Mvc;
  * );
  *
  * $app->handle("/say/welcome/Phalcon");
- * ```
+ *```
  */
-class Micro extends \Phalcon\Di\Injectable implements \ArrayAccess
+class Micro extends Injectable implements ArrayAccess
 {
 
     protected $activeHandler;

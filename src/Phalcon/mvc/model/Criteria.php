@@ -1,6 +1,19 @@
 <?php
 
+/**
+ * This file is part of the Phalcon Framework.
+ *
+ * (c) Phalcon Team <team@phalcon.io>
+ *
+ * For the full copyright and license information, please view the LICENSE.txt
+ * file that was distributed with this source code.
+ */
+
 namespace Phalcon\Mvc\Model;
+
+use Phalcon\Di\DiInterface;
+use Phalcon\Di\InjectionAwareInterface;
+use Phalcon\Mvc\Model\Query\BuilderInterface;
 
 /**
  * Phalcon\Mvc\Model\Criteria
@@ -19,7 +32,7 @@ namespace Phalcon\Mvc\Model;
  *     ->execute();
  * ```
  */
-class Criteria implements \Phalcon\Mvc\Model\CriteriaInterface, \Phalcon\Di\InjectionAwareInterface
+class Criteria implements CriteriaInterface, InjectionAwareInterface
 {
 
     protected $bindParams;

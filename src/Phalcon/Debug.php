@@ -1,5 +1,14 @@
 <?php
 
+/**
+ * This file is part of the Phalcon Framework.
+ *
+ * (c) Phalcon Team <team@phalcon.io>
+ *
+ * For the full copyright and license information, please view the LICENSE.txt
+ * file that was distributed with this source code.
+ */
+
 namespace Phalcon;
 
 /**
@@ -43,7 +52,7 @@ class Debug
     /**
      * @var string
      */
-    protected $uri = 'https://assets.phalconphp.com/debug/4.0.x/';
+    protected $uri = 'https://assets.phalcon.io/debug/4.0.x/';
 
 
     /**

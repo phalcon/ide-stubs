@@ -1,11 +1,23 @@
 <?php
 
+/**
+ * This file is part of the Phalcon Framework.
+ *
+ * (c) Phalcon Team <team@phalcon.io>
+ *
+ * For the full copyright and license information, please view the LICENSE.txt
+ * file that was distributed with this source code.
+ */
+
 namespace Phalcon\Firewall\Adapter\Micro;
+
+use Phalcon\Firewall\Adapter\AbstractAdapter;
+use Phalcon\Mvc\Micro;
 
 /**
  * Firewall for Phalcon\Mvc\Micro which depends on ACL
  */
-class Acl extends \Phalcon\Firewall\Adapter\AbstractAdapter
+class Acl extends AbstractAdapter
 {
     /**
      * Acl service name

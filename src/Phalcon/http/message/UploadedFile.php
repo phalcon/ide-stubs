@@ -1,11 +1,29 @@
 <?php
 
+/**
+ * This file is part of the Phalcon Framework.
+ *
+ * (c) Phalcon Team <team@phalcon.io>
+ *
+ * For the full copyright and license information, please view the LICENSE.txt
+ * file that was distributed with this source code.
+ *
+ * Implementation of this file has been influenced by Zend Diactoros
+ * @link    https://github.com/zendframework/zend-diactoros
+ * @license https://github.com/zendframework/zend-diactoros/blob/master/LICENSE.md
+ */
+
 namespace Phalcon\Http\Message;
+
+use Phalcon\Http\Message\Exception\InvalidArgumentException;
+use Psr\Http\Message\StreamInterface;
+use Psr\Http\Message\UploadedFileInterface;
+use RuntimeException;
 
 /**
  * PSR-7 UploadedFile
  */
-final class UploadedFile implements \Psr\Http\Message\UploadedFileInterface
+final class UploadedFile implements UploadedFileInterface
 {
     /**
      * If the file has already been moved, we hold that status here
@@ -162,8 +180,7 @@ final class UploadedFile implements \Psr\Http\Message\UploadedFileInterface
      * If the moveTo() method has been called previously, this method MUST
      * raise an exception.
      *
-     * @throws RuntimeException in cases when no stream is available or can be
-     *     created.
+     * @throws RuntimeException in cases when no stream is available or can be created.
      * @return mixed
      */
     public function getStream() {}

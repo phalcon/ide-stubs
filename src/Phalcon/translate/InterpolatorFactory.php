@@ -1,16 +1,20 @@
 <?php
 
-namespace Phalcon\Translate;
-
 /**
  * This file is part of the Phalcon Framework.
  *
- * (c) Phalcon Team <team@phalconphp.com>
+ * (c) Phalcon Team <team@phalcon.io>
  *
  * For the full copyright and license information, please view the LICENSE.txt
  * file that was distributed with this source code.
  */
-class InterpolatorFactory extends \Phalcon\Factory\AbstractFactory
+
+namespace Phalcon\Translate;
+
+use Phalcon\Factory\AbstractFactory;
+use Phalcon\Translate\Adapter\AdapterInterface;
+
+class InterpolatorFactory extends AbstractFactory
 {
     /**
      * @var array

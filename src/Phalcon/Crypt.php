@@ -1,6 +1,17 @@
 <?php
 
+/**
+ * This file is part of the Phalcon Framework.
+ *
+ * (c) Phalcon Team <team@phalcon.io>
+ *
+ * For the full copyright and license information, please view the LICENSE.txt
+ * file that was distributed with this source code.
+ */
+
 namespace Phalcon;
+
+use Phalcon\Crypt\CryptInterface;
 
 /**
  * Provides encryption capabilities to Phalcon applications.
@@ -20,7 +31,7 @@ namespace Phalcon;
  * echo $crypt->decrypt($encrypted, $key);
  * ```
  */
-class Crypt implements \Phalcon\Crypt\CryptInterface
+class Crypt implements CryptInterface
 {
 
     const PADDING_ANSI_X_923 = 1;

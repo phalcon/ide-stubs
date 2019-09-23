@@ -1,6 +1,20 @@
 <?php
 
+/**
+ * This file is part of the Phalcon Framework.
+ *
+ * (c) Phalcon Team <team@phalcon.io>
+ *
+ * For the full copyright and license information, please view the LICENSE.txt
+ * file that was distributed with this source code.
+ */
+
 namespace Phalcon\Mvc\Model;
+
+use Phalcon\Cache\Adapter\AdapterInterface as CacheAdapterInterface;
+use Phalcon\Di\DiInterface;
+use Phalcon\Di\InjectionAwareInterface;
+use Phalcon\Mvc\Model\MetaData\StrategyInterface;
 
 /**
  * Phalcon\Mvc\Model\MetaData
@@ -22,7 +36,7 @@ namespace Phalcon\Mvc\Model;
  * print_r($attributes);
  * ```
  */
-abstract class MetaData implements \Phalcon\Di\InjectionAwareInterface, \Phalcon\Mvc\Model\MetaDataInterface
+abstract class MetaData implements InjectionAwareInterface, MetaDataInterface
 {
 
     const MODELS_ATTRIBUTES = 0;

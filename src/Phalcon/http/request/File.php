@@ -1,5 +1,14 @@
 <?php
 
+/**
+ * This file is part of the Phalcon Framework.
+ *
+ * (c) Phalcon Team <team@phalcon.io>
+ *
+ * For the full copyright and license information, please view the LICENSE.txt
+ * file that was distributed with this source code.
+ */
+
 namespace Phalcon\Http\Request;
 
 /**
@@ -7,7 +16,7 @@ namespace Phalcon\Http\Request;
  *
  * Provides OO wrappers to the $_FILES superglobal
  *
- * ```php
+ *```php
  * use Phalcon\Mvc\Controller;
  *
  * class PostsController extends Controller
@@ -23,9 +32,9 @@ namespace Phalcon\Http\Request;
  *         }
  *     }
  * }
- * ```
+ *```
  */
-class File implements \Phalcon\Http\Request\FileInterface
+class File implements FileInterface
 {
     /**
      * @var string|null

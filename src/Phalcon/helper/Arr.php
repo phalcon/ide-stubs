@@ -1,5 +1,14 @@
 <?php
 
+/**
+ * This file is part of the Phalcon.
+ *
+ * (c) Phalcon Team <team@phalcon.com>
+ *
+ * For the full copyright and license information, please view the LICENSE
+ * file that was distributed with this source code.
+ */
+
 namespace Phalcon\Helper;
 
 /**
@@ -7,11 +16,6 @@ namespace Phalcon\Helper;
  */
 class Arr
 {
-
-    /**
-     * @param array $collection
-     */
-    final public static function arrayToObject(array $collection) {}
 
     /**
      * Chunks an array into smaller arrays of a specified size.
@@ -197,6 +201,13 @@ class Arr
      * @return array
      */
     final public static function split(array $collection): array {}
+
+    /**
+     * Returns the passed array as an object
+     *
+     * @param array $collection
+     */
+    final public static function toObject(array $collection) {}
 
     /**
      * Returns true if the provided function returns true for all elements of

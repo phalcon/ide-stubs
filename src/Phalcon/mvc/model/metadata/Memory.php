@@ -1,13 +1,25 @@
 <?php
 
+/**
+ * This file is part of the Phalcon Framework.
+ *
+ * (c) Phalcon Team <team@phalcon.io>
+ *
+ * For the full copyright and license information, please view the LICENSE.txt
+ * file that was distributed with this source code.
+ */
+
 namespace Phalcon\Mvc\Model\MetaData;
+
+use Phalcon\Mvc\Model\MetaData;
 
 /**
  * Phalcon\Mvc\Model\MetaData\Memory
  *
  * Stores model meta-data in memory. Data will be erased when the request finishes
+ *
  */
-class Memory extends \Phalcon\Mvc\Model\MetaData
+class Memory extends MetaData
 {
 
     /**

@@ -1,13 +1,24 @@
 <?php
 
+/**
+ * This file is part of the Phalcon Framework.
+ *
+ * (c) Phalcon Team <team@phalcon.io>
+ *
+ * For the full copyright and license information, please view the LICENSE.txt
+ * file that was distributed with this source code.
+ */
+
 namespace Phalcon\Mvc\Model\Transaction;
+
+use Phalcon\Mvc\ModelInterface;
 
 /**
  * Phalcon\Mvc\Model\Transaction\Failed
  *
  * This class will be thrown to exit a try/catch block for isolated transactions
  */
-class Failed extends \Phalcon\Mvc\Model\Transaction\Exception
+class Failed extends Exception
 {
 
     protected $record = null;

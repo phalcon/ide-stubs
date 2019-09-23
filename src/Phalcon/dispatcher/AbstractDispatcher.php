@@ -1,13 +1,27 @@
 <?php
 
+/**
+ * This file is part of the Phalcon Framework.
+ *
+ * (c) Phalcon Team <team@phalcon.io>
+ *
+ * For the full copyright and license information, please view the LICENSE.txt
+ * file that was distributed with this source code.
+ */
+
 namespace Phalcon\Dispatcher;
+
+use Phalcon\Di\AbstractInjectionAware;
+use Phalcon\Events\EventsAwareInterface;
+use Phalcon\Events\ManagerInterface;
+use Phalcon\Mvc\Model\BinderInterface;
 
 /**
  * This is the base class for Phalcon\Mvc\Dispatcher and Phalcon\Cli\Dispatcher.
  * This class can't be instantiated directly, you can use it to create your own
  * dispatchers.
  */
-abstract class AbstractDispatcher implements \Phalcon\Dispatcher\DispatcherInterface, \Phalcon\Di\InjectionAwareInterface, \Phalcon\Events\EventsAwareInterface
+abstract class AbstractDispatcher extends AbstractInjectionAware implements DispatcherInterface, EventsAwareInterface
 {
 
     protected $activeHandler;
@@ -29,9 +43,6 @@ abstract class AbstractDispatcher implements \Phalcon\Dispatcher\DispatcherInter
      * @var array
      */
     protected $camelCaseMap = array();
-
-
-    protected $container;
 
     /**
      * @var string
@@ -194,13 +205,6 @@ abstract class AbstractDispatcher implements \Phalcon\Dispatcher\DispatcherInter
     public function getDefaultNamespace(): string {}
 
     /**
-     * Returns the internal dependency injector
-     *
-     * @return \Phalcon\Di\DiInterface
-     */
-    public function getDI(): DiInterface {}
-
-    /**
      * Returns the internal event manager
      *
      * @return \Phalcon\Events\ManagerInterface
@@ -288,13 +292,6 @@ abstract class AbstractDispatcher implements \Phalcon\Dispatcher\DispatcherInter
      * @param string $namespaceName
      */
     public function setDefaultNamespace(string $namespaceName) {}
-
-    /**
-     * Sets the dependency injector
-     *
-     * @param \Phalcon\Di\DiInterface $container
-     */
-    public function setDI(\Phalcon\Di\DiInterface $container) {}
 
     /**
      * Possible class name that will be located to dispatch the request

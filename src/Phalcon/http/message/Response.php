@@ -1,11 +1,26 @@
 <?php
 
+/**
+ * This file is part of the Phalcon Framework.
+ *
+ * (c) Phalcon Team <team@phalcon.io>
+ *
+ * For the full copyright and license information, please view the LICENSE.txt
+ * file that was distributed with this source code.
+ *
+ * Implementation of this file has been influenced by Zend Diactoros
+ * @link    https://github.com/zendframework/zend-diactoros
+ * @license https://github.com/zendframework/zend-diactoros/blob/master/LICENSE.md
+ */
+
 namespace Phalcon\Http\Message;
+
+use Psr\Http\Message\ResponseInterface;
 
 /**
  * PSR-7 Response
  */
-final class Response extends \Phalcon\Http\Message\AbstractMessage implements \Psr\Http\Message\ResponseInterface
+final class Response extends AbstractMessage implements ResponseInterface
 {
     /**
      * Gets the response reason phrase associated with the status code.

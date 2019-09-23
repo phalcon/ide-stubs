@@ -1,11 +1,24 @@
 <?php
 
+/**
+ * This file is part of the Phalcon Framework.
+ *
+ * (c) Phalcon Team <team@phalcon.io>
+ *
+ * For the full copyright and license information, please view the LICENSE.txt
+ * file that was distributed with this source code.
+ */
+
 namespace Phalcon;
+
+use Phalcon\Di\Injectable;
+use Phalcon\Messages\Messages;
+use Phalcon\Validation\ValidationInterface;
 
 /**
  * Allows to validate data using custom or built-in validators
  */
-class Validation extends \Phalcon\Di\Injectable implements \Phalcon\Validation\ValidationInterface
+class Validation extends Injectable implements ValidationInterface
 {
 
     protected $combinedFieldsValidators;
@@ -87,7 +100,7 @@ class Validation extends \Phalcon\Di\Injectable implements \Phalcon\Validation\V
      * @param string $field
      * @return mixed|null
      */
-    public function getFilters(string $field = null): ? {}
+    public function getFilters(string $field = null) {}
 
     /**
      * Get label for field
@@ -117,7 +130,7 @@ class Validation extends \Phalcon\Di\Injectable implements \Phalcon\Validation\V
      * @param string $field
      * @return mixed|null
      */
-    public function getValue(string $field): ? {}
+    public function getValue(string $field) {}
 
     /**
      * Alias of `add` method

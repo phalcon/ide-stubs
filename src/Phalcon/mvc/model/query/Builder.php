@@ -1,13 +1,26 @@
 <?php
 
+/**
+ * This file is part of the Phalcon Framework.
+ *
+ * (c) Phalcon Team <team@phalcon.io>
+ *
+ * For the full copyright and license information, please view the LICENSE.txt
+ * file that was distributed with this source code.
+ */
+
 namespace Phalcon\Mvc\Model\Query;
+
+use Phalcon\Di\DiInterface;
+use Phalcon\Di\InjectionAwareInterface;
+use Phalcon\Mvc\Model\QueryInterface;
 
 /**
  * Phalcon\Mvc\Model\Query\Builder
  *
  * Helps to create PHQL queries using an OO interface
  *
- * ```php
+ *```php
  * $params = [
  *     "models"     => [
  *         Users::class,
@@ -36,9 +49,9 @@ namespace Phalcon\Mvc\Model\Query;
  * ];
  *
  * $queryBuilder = new \Phalcon\Mvc\Model\Query\Builder($params);
- * ```
+ *```
  */
-class Builder implements \Phalcon\Mvc\Model\Query\BuilderInterface, \Phalcon\Di\InjectionAwareInterface
+class Builder implements BuilderInterface, InjectionAwareInterface
 {
 
     protected $bindParams;
@@ -730,9 +743,8 @@ class Builder implements \Phalcon\Mvc\Model\Query\BuilderInterface, \Phalcon\Di\
      * Sets the DependencyInjector container
      *
      * @param \Phalcon\Di\DiInterface $container
-     * @return \Phalcon\Mvc\Model\Query\BuilderInterface
      */
-    public function setDI(\Phalcon\Di\DiInterface $container): BuilderInterface {}
+    public function setDI(\Phalcon\Di\DiInterface $container) {}
 
     /**
      * Sets the query WHERE conditions

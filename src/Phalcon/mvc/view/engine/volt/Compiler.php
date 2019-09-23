@@ -1,19 +1,31 @@
 <?php
 
+/**
+ * This file is part of the Phalcon Framework.
+ *
+ * (c) Phalcon Team <team@phalcon.io>
+ *
+ * For the full copyright and license information, please view the LICENSE.txt
+ * file that was distributed with this source code.
+ */
+
 namespace Phalcon\Mvc\View\Engine\Volt;
+
+use Phalcon\Di\DiInterface;
+use Phalcon\Di\InjectionAwareInterface;
 
 /**
  * This class reads and compiles Volt templates into PHP plain code
  *
- * ```php
+ *```php
  * $compiler = new \Phalcon\Mvc\View\Engine\Volt\Compiler();
  *
  * $compiler->compile("views/partials/header.volt");
  *
  * require $compiler->getCompiledTemplatePath();
- * ```
+ *```
  */
-class Compiler implements \Phalcon\Di\InjectionAwareInterface
+class Compiler implements InjectionAwareInterface
 {
 
     protected $autoescape = false;

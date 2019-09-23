@@ -1,6 +1,18 @@
 <?php
 
+/**
+ * This file is part of the Phalcon Framework.
+ *
+ * (c) Phalcon Team <team@phalcon.io>
+ *
+ * For the full copyright and license information, please view the LICENSE.txt
+ * file that was distributed with this source code.
+ */
+
 namespace Phalcon\Http\Response;
+
+use Phalcon\Di\AbstractInjectionAware;
+use Phalcon\Http\CookieInterface;
 
 /**
  * Phalcon\Http\Response\Cookies
@@ -41,7 +53,7 @@ namespace Phalcon\Http\Response;
  *
  *         // The `$key' MUST be at least 32 characters long and generated using a
  *         // cryptographically secure pseudo random generator.
- *         $key = "#1dj8$=dp?.ak//j1V$~%0XaK\xb1\x8d\xa9\x98\x054t7w!z%CF-Jk\x98\x05\\\x5c";
+ *         $key = "#1dj8$=dp?.ak//j1V$~%*0XaK\xb1\x8d\xa9\x98\x054t7w!z%C*F-Jk\x98\x05\\\x5c";
  *
  *         $cookies->setSignKey($key);
  *
@@ -50,11 +62,8 @@ namespace Phalcon\Http\Response;
  * );
  * ```
  */
-class Cookies implements \Phalcon\Http\Response\CookiesInterface, \Phalcon\Di\InjectionAwareInterface
+class Cookies extends AbstractInjectionAware implements CookiesInterface
 {
-
-    protected $container;
-
 
     protected $cookies = array();
 
@@ -103,13 +112,6 @@ class Cookies implements \Phalcon\Http\Response\CookiesInterface, \Phalcon\Di\In
      * @return array
      */
     public function getCookies(): array {}
-
-    /**
-     * Returns the internal dependency injector
-     *
-     * @return \Phalcon\Di\DiInterface
-     */
-    public function getDI(): DiInterface {}
 
     /**
      * Check if a cookie is defined in the bag or exists in the _COOKIE
@@ -171,13 +173,6 @@ class Cookies implements \Phalcon\Http\Response\CookiesInterface, \Phalcon\Di\In
      * @return \Phalcon\Http\Response\CookiesInterface
      */
     public function set(string $name, $value = null, int $expire = 0, string $path = '/', bool $secure = null, string $domain = null, bool $httpOnly = null): CookiesInterface {}
-
-    /**
-     * Sets the dependency injector
-     *
-     * @param \Phalcon\Di\DiInterface $container
-     */
-    public function setDI(\Phalcon\Di\DiInterface $container) {}
 
     /**
      * Sets the cookie's sign key.

@@ -1,13 +1,24 @@
 <?php
 
+/**
+ * This file is part of the Phalcon Framework.
+ *
+ * (c) Phalcon Team <team@phalcon.io>
+ *
+ * For the full copyright and license information, please view the LICENSE.txt
+ * file that was distributed with this source code.
+ */
+
 namespace Phalcon\Mvc\Model;
+
+use Phalcon\Cache\Adapter\AdapterInterface;
 
 /**
  * Phalcon\Mvc\Model\Binding
  *
  * This is an class for binding models into params for handler
  */
-class Binder implements \Phalcon\Mvc\Model\BinderInterface
+class Binder implements BinderInterface
 {
     /**
      * Array for storing active bound models

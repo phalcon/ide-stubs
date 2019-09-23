@@ -1,6 +1,17 @@
 <?php
 
+/**
+ * This file is part of the Phalcon Framework.
+ *
+ * (c) Phalcon Team <team@phalcon.io>
+ *
+ * For the full copyright and license information, please view the LICENSE.txt
+ * file that was distributed with this source code.
+ */
+
 namespace Phalcon\Validation\Validator;
+
+use Phalcon\Validation\AbstractValidator;
 
 /**
  * Check for alphabetic character(s)
@@ -36,7 +47,7 @@ namespace Phalcon\Validation\Validator;
  * );
  * ```
  */
-class Alpha extends \Phalcon\Validation\AbstractValidator
+class Alpha extends AbstractValidator
 {
 
     protected $template = 'Field :field must contain only letters';

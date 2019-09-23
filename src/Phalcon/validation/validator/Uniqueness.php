@@ -1,6 +1,20 @@
 <?php
 
+/**
+ * This file is part of the Phalcon Framework.
+ *
+ * (c) Phalcon Team <team@phalcon.io>
+ *
+ * For the full copyright and license information, please view the LICENSE.txt
+ * file that was distributed with this source code.
+ */
+
 namespace Phalcon\Validation\Validator;
+
+use Phalcon\Validation\AbstractCombinedFieldsValidator;
+
+//use Phalcon\Mvc\CollectionInterface;
+//use Phalcon\Mvc\Collection;
 
 /**
  * Check that a field is unique in the related table
@@ -72,7 +86,7 @@ namespace Phalcon\Validation\Validator;
  * );
  * ```
  */
-class Uniqueness extends \Phalcon\Validation\AbstractCombinedFieldsValidator
+class Uniqueness extends AbstractCombinedFieldsValidator
 {
 
     protected $template = 'Field :field must be unique';
@@ -105,15 +119,6 @@ class Uniqueness extends \Phalcon\Validation\AbstractCombinedFieldsValidator
      * @return bool
      */
     protected function isUniqueness(\Phalcon\Validation $validation, $field): bool {}
-
-    /**
-     * Uniqueness method used for collection
-     *
-     * @param mixed $record
-     * @param array $field
-     * @param array $values
-     */
-    protected function isUniquenessCollection($record, array $field, array $values) {}
 
     /**
      * Uniqueness method used for model

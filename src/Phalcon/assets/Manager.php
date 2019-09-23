@@ -1,21 +1,27 @@
 <?php
 
+/**
+ * This file is part of the Phalcon Framework.
+ *
+ * (c) Phalcon Team <team@phalcon.io>
+ *
+ * For the full copyright and license information, please view the LICENSE.txt
+ * file that was distributed with this source code.
+ */
+
 namespace Phalcon\Assets;
+
+use Phalcon\Di\AbstractInjectionAware;
 
 /**
  * Phalcon\Assets\Manager
  *
  * Manages collections of CSS/Javascript assets
  */
-class Manager implements \Phalcon\Di\InjectionAwareInterface
+class Manager extends AbstractInjectionAware
 {
 
     protected $collections;
-
-    /**
-     * @var DiInterface
-     */
-    protected $container;
 
     /**
      * Options configure
@@ -199,13 +205,6 @@ class Manager implements \Phalcon\Di\InjectionAwareInterface
     public function getCss(): Collection {}
 
     /**
-     * Returns the internal dependency injector
-     *
-     * @return \Phalcon\Di\DiInterface
-     */
-    public function getDI(): DiInterface {}
-
-    /**
      * Returns the CSS collection of assets
      *
      * @return \Phalcon\Assets\Collection
@@ -282,13 +281,6 @@ class Manager implements \Phalcon\Di\InjectionAwareInterface
      * @return Manager
      */
     public function set(string $id, \Phalcon\Assets\Collection $collection): Manager {}
-
-    /**
-     * Sets the dependency injector
-     *
-     * @param \Phalcon\Di\DiInterface $container
-     */
-    public function setDI(\Phalcon\Di\DiInterface $container) {}
 
     /**
      * Sets the manager options

@@ -1,5 +1,14 @@
 <?php
 
+/**
+ * This file is part of the Phalcon Framework.
+ *
+ * (c) Phalcon Team <team@phalcon.io>
+ *
+ * For the full copyright and license information, please view the LICENSE.txt
+ * file that was distributed with this source code.
+ */
+
 namespace Phalcon\Paginator;
 
 /**
@@ -7,7 +16,7 @@ namespace Phalcon\Paginator;
  *
  * Repository of current state Phalcon\Paginator\AdapterInterface::paginate()
  */
-class Repository implements \Phalcon\Paginator\RepositoryInterface
+class Repository implements RepositoryInterface
 {
     /**
      * @var array
@@ -26,7 +35,7 @@ class Repository implements \Phalcon\Paginator\RepositoryInterface
      * @param string $property
      * @return mixed|null
      */
-    public function __get(string $property): ? {}
+    public function __get(string $property) {}
 
     /**
      * {@inheritdoc}

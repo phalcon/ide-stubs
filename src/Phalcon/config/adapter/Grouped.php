@@ -1,6 +1,17 @@
 <?php
 
+/**
+ * This file is part of the Phalcon Framework.
+ *
+ * (c) Phalcon Team <team@phalcon.io>
+ *
+ * For the full copyright and license information, please view the LICENSE.txt
+ * file that was distributed with this source code.
+ */
+
 namespace Phalcon\Config\Adapter;
+
+use Phalcon\Config;
 
 /**
  * Reads multiple files (or arrays) and merges them all together.
@@ -53,7 +64,7 @@ namespace Phalcon\Config\Adapter;
  * );
  * ```
  */
-class Grouped extends \Phalcon\Config
+class Grouped extends Config
 {
 
     /**

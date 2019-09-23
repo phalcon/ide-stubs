@@ -1,5 +1,14 @@
 <?php
 
+/**
+ * This file is part of the Phalcon Framework.
+ *
+ * (c) Phalcon Team <team@phalcon.io>
+ *
+ * For the full copyright and license information, please view the LICENSE.txt
+ * file that was distributed with this source code.
+ */
+
 namespace Phalcon\Validation\Validator\File;
 
 /**
@@ -50,7 +59,7 @@ namespace Phalcon\Validation\Validator\File;
  * );
  * ```
  */
-class MimeType extends \Phalcon\Validation\Validator\File\AbstractFile
+class MimeType extends AbstractFile
 {
 
     protected $template = 'File :field must be of type: :types';

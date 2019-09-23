@@ -1,6 +1,18 @@
 <?php
 
+/**
+ * This file is part of the Phalcon.
+ *
+ * (c) Phalcon Team <team@phalcon.com>
+ *
+ * For the full copyright and license information, please view the LICENSE
+ * file that was distributed with this source code.
+ */
+
 namespace Phalcon\Db\Adapter\Pdo;
+
+use Phalcon\Db\Adapter\Pdo\AbstractPdo as PdoAdapter;
+use Phalcon\Db\RawValue;
 
 /**
  * Specific functions for the Postgresql database system
@@ -19,7 +31,7 @@ namespace Phalcon\Db\Adapter\Pdo;
  * $connection = new Postgresql($config);
  * ```
  */
-class Postgresql extends \Phalcon\Db\Adapter\Pdo\AbstractPdo
+class Postgresql extends PdoAdapter
 {
     /**
      * @var string

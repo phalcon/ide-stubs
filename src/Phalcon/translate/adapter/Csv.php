@@ -1,13 +1,24 @@
 <?php
 
+/**
+ * This file is part of the Phalcon Framework.
+ *
+ * (c) Phalcon Team <team@phalcon.io>
+ *
+ * For the full copyright and license information, please view the LICENSE.txt
+ * file that was distributed with this source code.
+ */
+
 namespace Phalcon\Translate\Adapter;
+
+use ArrayAccess;
 
 /**
  * Phalcon\Translate\Adapter\Csv
  *
  * Allows to define translation lists using CSV file
  */
-class Csv extends \Phalcon\Translate\Adapter\AbstractAdapter implements \ArrayAccess
+class Csv extends AbstractAdapter implements ArrayAccess
 {
     /**
      * @var array

@@ -1,11 +1,23 @@
 <?php
 
+/**
+ * This file is part of the Phalcon Framework.
+ *
+ * (c) Phalcon Team <team@phalcon.io>
+ *
+ * For the full copyright and license information, please view the LICENSE.txt
+ * file that was distributed with this source code.
+ */
+
 namespace Phalcon\Forms\Element;
+
+use Phalcon\Forms\Form;
+use Phalcon\Messages\Messages;
 
 /**
  * This is a base class for form elements
  */
-abstract class AbstractElement implements \Phalcon\Forms\Element\ElementInterface
+abstract class AbstractElement implements ElementInterface
 {
 
     protected $attributes;

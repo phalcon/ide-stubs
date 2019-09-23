@@ -1,12 +1,24 @@
 <?php
 
+/**
+ * This file is part of the Phalcon Framework.
+ *
+ * (c) Phalcon Team <team@phalcon.io>
+ *
+ * For the full copyright and license information, please view the LICENSE.txt
+ * file that was distributed with this source code.
+ */
+
 namespace Phalcon;
+
+use Phalcon\Events\EventsAwareInterface;
+use Phalcon\Events\ManagerInterface;
 
 /**
  * This component helps to load your project classes automatically based on some
  * conventions
  *
- * ```php
+ *```php
  * use Phalcon\Loader;
  *
  * // Creates the autoloader
@@ -26,9 +38,9 @@ namespace Phalcon;
  *
  * // Requiring this class will automatically include file vendor/example/adapter/Some.php
  * $adapter = new \Example\Adapter\Some();
- * ```
+ *```
  */
-class Loader implements \Phalcon\Events\EventsAwareInterface
+class Loader implements EventsAwareInterface
 {
 
     protected $checkedPath = null;

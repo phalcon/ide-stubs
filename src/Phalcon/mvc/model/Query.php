@@ -1,14 +1,29 @@
 <?php
 
+/**
+ * This file is part of the Phalcon Framework.
+ *
+ * (c) Phalcon Team <team@phalcon.io>
+ *
+ * For the full copyright and license information, please view the LICENSE.txt
+ * file that was distributed with this source code.
+ */
+
 namespace Phalcon\Mvc\Model;
+
+use Phalcon\Db\Adapter\AdapterInterface;
+use Phalcon\Di\DiInterface;
+use Phalcon\Di\InjectionAwareInterface;
+use Phalcon\Mvc\Model\Query\StatusInterface;
+use Phalcon\Mvc\ModelInterface;
 
 /**
  * Phalcon\Mvc\Model\Query
  *
  * This class takes a PHQL intermediate representation and executes it.
  *
- * ```php
- * $phql = "SELECT c.price0.16 AS taxes, c. FROM Cars AS c JOIN Brands AS b
+ *```php
+ * $phql = "SELECT c.price*0.16 AS taxes, c.* FROM Cars AS c JOIN Brands AS b
  *          WHERE b.name = :name: ORDER BY c.name";
  *
  * $result = $manager->executeQuery(
@@ -31,7 +46,7 @@ namespace Phalcon\Mvc\Model;
  * // $di needs to have the service "db" registered for this to work
  * $di = Phalcon\Di\FactoryDefault::getDefault();
  *
- * $phql = 'SELECT FROM robot';
+ * $phql = 'SELECT * FROM robot';
  *
  * $myTransaction = new Transaction($di);
  * $myTransaction->begin();
@@ -50,9 +65,9 @@ namespace Phalcon\Mvc\Model;
  *
  * $queryWithOutTransaction = new Query($phql, $di);
  * $resultWithOutEntries = $queryWithTransaction->execute();
- * ```
+ *```
  */
-class Query implements \Phalcon\Mvc\Model\QueryInterface, \Phalcon\Di\InjectionAwareInterface
+class Query implements QueryInterface, InjectionAwareInterface
 {
 
     const TYPE_DELETE = 303;
@@ -372,7 +387,7 @@ class Query implements \Phalcon\Mvc\Model\QueryInterface, \Phalcon\Di\InjectionA
     /**
      * Returns the current cache backend instance
      *
-     * @return \Phalcon\Cache\Adapter\AdapterInterface
+     * @return \Phalcon\Db\Adapter\AdapterInterface
      */
     public function getCache(): AdapterInterface {}
 
@@ -556,7 +571,7 @@ class Query implements \Phalcon\Mvc\Model\QueryInterface, \Phalcon\Di\InjectionA
      * @param array $intermediate
      * @param array $bindParams
      * @param array $bindTypes
-     * @return \Phalcon\Cache\Adapter\AdapterInterface
+     * @return \Phalcon\Db\Adapter\AdapterInterface
      */
     protected function getReadConnection(\Phalcon\Mvc\ModelInterface $model, array $intermediate = null, array $bindParams = array(), array $bindTypes = array()): AdapterInterface {}
 
@@ -568,7 +583,7 @@ class Query implements \Phalcon\Mvc\Model\QueryInterface, \Phalcon\Di\InjectionA
      * @param array $intermediate
      * @param array $bindParams
      * @param array $bindTypes
-     * @return \Phalcon\Cache\Adapter\AdapterInterface
+     * @return \Phalcon\Db\Adapter\AdapterInterface
      */
     protected function getWriteConnection(\Phalcon\Mvc\ModelInterface $model, array $intermediate = null, array $bindParams = array(), array $bindTypes = array()): AdapterInterface {}
 

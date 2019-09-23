@@ -1,5 +1,14 @@
 <?php
 
+/**
+ * This file is part of the Phalcon Framework.
+ *
+ * (c) Phalcon Team <team@phalcon.io>
+ *
+ * For the full copyright and license information, please view the LICENSE.txt
+ * file that was distributed with this source code.
+ */
+
 namespace Phalcon\Forms\Element;
 
 /**
@@ -7,7 +16,7 @@ namespace Phalcon\Forms\Element;
  *
  * Component SELECT (choice) for forms
  */
-class Select extends \Phalcon\Forms\Element\AbstractElement
+class Select extends AbstractElement
 {
 
     protected $optionsValues;

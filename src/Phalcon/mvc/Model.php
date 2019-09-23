@@ -1,6 +1,27 @@
 <?php
+/**
+ * This file is part of the Phalcon.
+ *
+ * (c) Phalcon Team <team@phalcon.com>
+ *
+ * For the full copyright and license information, please view the LICENSE
+ * file that was distributed with this source code.
+ */
 
 namespace Phalcon\Mvc;
+
+use JsonSerializable;
+use Phalcon\Db\Adapter\AdapterInterface;
+use Phalcon\Di\AbstractInjectionAware;
+use Phalcon\Events\ManagerInterface as EventsManagerInterface;
+use Phalcon\Mvc\Model\CriteriaInterface;
+use Phalcon\Mvc\Model\ManagerInterface;
+use Phalcon\Mvc\Model\MetaDataInterface;
+use Phalcon\Mvc\Model\Query;
+use Phalcon\Mvc\Model\Relation;
+use Phalcon\Mvc\Model\ResultInterface;
+use Phalcon\Mvc\Model\ResultsetInterface;
+use Serializable;
 
 /**
  * Phalcon\Mvc\Model
@@ -39,7 +60,7 @@ namespace Phalcon\Mvc;
  * }
  * ```
  */
-abstract class Model implements \Phalcon\Mvc\EntityInterface, \Phalcon\Mvc\ModelInterface, \Phalcon\Mvc\Model\ResultInterface, \Phalcon\Di\InjectionAwareInterface, \Serializable, \JsonSerializable
+abstract class Model extends AbstractInjectionAware implements EntityInterface, ModelInterface, ResultInterface, Serializable, JsonSerializable
 {
 
     const DIRTY_STATE_DETACHED = 2;
@@ -64,9 +85,6 @@ abstract class Model implements \Phalcon\Mvc\EntityInterface, \Phalcon\Mvc\Model
 
 
     const TRANSACTION_INDEX = 'transaction';
-
-
-    protected $container;
 
 
     protected $dirtyState = 1;
@@ -247,7 +265,6 @@ abstract class Model implements \Phalcon\Mvc\EntityInterface, \Phalcon\Mvc\Model
      * // Allow assign only name and year
      * $robot->assign(
      *     $_POST,
-     *     null,
      *     [
      *         "name",
      *         "year",
@@ -260,7 +277,6 @@ abstract class Model implements \Phalcon\Mvc\EntityInterface, \Phalcon\Mvc\Model
      *
      * $robot->assign(
      *     $_POST,
-     *     null,
      *     [
      *         "name",
      *         "year",
@@ -269,11 +285,11 @@ abstract class Model implements \Phalcon\Mvc\EntityInterface, \Phalcon\Mvc\Model
      * ```
      *
      * @param array $data
-     * @param array $dataColumnMap array to transform keys of data to another
      * @param array $whiteList
+     * @param array $dataColumnMap array to transform keys of data to another
      * @return \Phalcon\Mvc\ModelInterface
      */
-    public function assign(array $data, $dataColumnMap = null, $whiteList = null): ModelInterface {}
+    public function assign(array $data, $whiteList = null, $dataColumnMap = null): ModelInterface {}
 
     /**
      * Returns the average value on a column for a result-set of rows matching
@@ -725,13 +741,6 @@ abstract class Model implements \Phalcon\Mvc\EntityInterface, \Phalcon\Mvc\Model
     public function getDirtyState(): int {}
 
     /**
-     * Returns the dependency injection container
-     *
-     * @return \Phalcon\Di\DiInterface
-     */
-    public function getDI(): DiInterface {}
-
-    /**
      * Returns the custom events manager
      *
      * @return \Phalcon\Events\ManagerInterface
@@ -1032,7 +1041,7 @@ abstract class Model implements \Phalcon\Mvc\EntityInterface, \Phalcon\Mvc\Model
      * @param string $attribute
      * @return mixed|null
      */
-    public function readAttribute(string $attribute): ? {}
+    public function readAttribute(string $attribute) {}
 
     /**
      * Refreshes the model attributes re-querying the record from the database
@@ -1086,9 +1095,8 @@ abstract class Model implements \Phalcon\Mvc\EntityInterface, \Phalcon\Mvc\Model
      * Sets the DependencyInjection connection service name
      *
      * @param string $connectionService
-     * @return \Phalcon\Mvc\ModelInterface
      */
-    final public function setConnectionService(string $connectionService): ModelInterface {}
+    final public function setConnectionService(string $connectionService) {}
 
     /**
      * Sets the dirty state of the object using one of the DIRTY_STATE_ constants
@@ -1097,13 +1105,6 @@ abstract class Model implements \Phalcon\Mvc\EntityInterface, \Phalcon\Mvc\Model
      * @return bool|\Phalcon\Mvc\ModelInterface
      */
     public function setDirtyState(int $dirtyState) {}
-
-    /**
-     * Sets the dependency injection container
-     *
-     * @param \Phalcon\Di\DiInterface $container
-     */
-    public function setDI(\Phalcon\Di\DiInterface $container) {}
 
     /**
      * Sets a custom events manager
@@ -1116,9 +1117,8 @@ abstract class Model implements \Phalcon\Mvc\EntityInterface, \Phalcon\Mvc\Model
      * Sets the DependencyInjection connection service name used to read data
      *
      * @param string $connectionService
-     * @return \Phalcon\Mvc\ModelInterface
      */
-    final public function setReadConnectionService(string $connectionService): ModelInterface {}
+    final public function setReadConnectionService(string $connectionService) {}
 
     /**
      * Sets the record's old snapshot data.
@@ -1195,9 +1195,8 @@ abstract class Model implements \Phalcon\Mvc\EntityInterface, \Phalcon\Mvc\Model
      * Sets the DependencyInjection connection service name used to write data
      *
      * @param string $connectionService
-     * @return \Phalcon\Mvc\ModelInterface
      */
-    final public function setWriteConnectionService(string $connectionService): ModelInterface {}
+    final public function setWriteConnectionService(string $connectionService) {}
 
     /**
      * Skips the current operation forcing a success state

@@ -1,12 +1,23 @@
 <?php
 
+/**
+ * This file is part of the Phalcon Framework.
+ *
+ * (c) Phalcon Team <team@phalcon.io>
+ *
+ * For the full copyright and license information, please view the LICENSE.txt
+ * file that was distributed with this source code.
+ */
+
 namespace Phalcon\Config;
+
+use Phalcon\Factory\AbstractFactory;
 
 /**
  * Loads Config Adapter class using 'adapter' option, if no extension is
  * provided it will be added to filePath
  *
- * ```php
+ *```php
  * use Phalcon\Config\ConfigFactory;
  *
  * $options = [
@@ -15,9 +26,9 @@ namespace Phalcon\Config;
  * ];
  *
  * $config = (new ConfigFactory())->load($options);
- * ```
+ *```
  */
-class ConfigFactory extends \Phalcon\Factory\AbstractFactory
+class ConfigFactory extends AbstractFactory
 {
 
     /**

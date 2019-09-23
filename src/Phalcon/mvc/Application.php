@@ -1,6 +1,17 @@
 <?php
 
+/**
+ * This file is part of the Phalcon Framework.
+ *
+ * (c) Phalcon Team <team@phalcon.io>
+ *
+ * For the full copyright and license information, please view the LICENSE.txt
+ * file that was distributed with this source code.
+ */
+
 namespace Phalcon\Mvc;
+
+use Phalcon\Application\AbstractApplication;
 
 /**
  * Phalcon\Mvc\Application
@@ -9,23 +20,23 @@ namespace Phalcon\Mvc;
  * every component needed and integrating it with the rest to allow the MVC
  * pattern to operate as desired.
  *
- * ```php
+ *```php
  * use Phalcon\Mvc\Application;
  *
  * class MyApp extends Application
  * {
- *     /
- * Register the services here to make them general or register
- * in the ModuleDefinition to make them module-specific
- * \/
+ *     /**
+ *      * Register the services here to make them general or register
+ *      * in the ModuleDefinition to make them module-specific
+ *      *\/
  *     protected function registerServices()
  *     {
  *
  *     }
  *
- *     /
- * This method registers all the modules in the application
- * \/
+ *     /**
+ *      * This method registers all the modules in the application
+ *      *\/
  *     public function main()
  *     {
  *         $this->registerModules(
@@ -46,9 +57,9 @@ namespace Phalcon\Mvc;
  * $application = new MyApp();
  *
  * $application->main();
- * ```
+ *```
  */
-class Application extends \Phalcon\Application\AbstractApplication
+class Application extends AbstractApplication
 {
 
     protected $implicitView = true;

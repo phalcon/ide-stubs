@@ -1,11 +1,26 @@
 <?php
 
+/**
+ * This file is part of the Phalcon Framework.
+ *
+ * (c) Phalcon Team <team@phalcon.io>
+ *
+ * For the full copyright and license information, please view the LICENSE.txt
+ * file that was distributed with this source code.
+ */
+
 namespace Phalcon\Firewall\Adapter;
+
+use Closure;
+use Phalcon\Acl\Enum;
+use Phalcon\Cache\Adapter\AdapterInterface as CacheAdapterInterface;
+use Phalcon\Events\EventsAwareInterface;
+use Phalcon\Events\ManagerInterface;
 
 /**
  * Adapter for Phalcon\Firewall adapters
  */
-abstract class AbstractAdapter implements \Phalcon\Firewall\Adapter\AdapterInterface, \Phalcon\Events\EventsAwareInterface
+abstract class AbstractAdapter implements AdapterInterface, EventsAwareInterface
 {
     /**
      * Storing active identity object implementing Phalcon/Acl/RoleAware
@@ -72,13 +87,6 @@ abstract class AbstractAdapter implements \Phalcon\Firewall\Adapter\AdapterInter
     public function getActiveRole() {}
 
     /**
-     * Should role always be resolved using role callback or just once?
-     *
-     * @param bool $alwaysResolvingRole
-     */
-    public function setAlwaysResolvingRole(bool $alwaysResolvingRole) {}
-
-    /**
      * Default access
      *
      * @return int
@@ -126,9 +134,8 @@ abstract class AbstractAdapter implements \Phalcon\Firewall\Adapter\AdapterInter
      * Sets the events manager
      *
      * @param \Phalcon\Events\ManagerInterface $eventsManager
-     * @return AdapterInterface
      */
-    public function setEventsManager(\Phalcon\Events\ManagerInterface $eventsManager): AdapterInterface {}
+    public function setEventsManager(\Phalcon\Events\ManagerInterface $eventsManager) {}
 
     /**
      * Sets role callback to fetch role name
@@ -137,6 +144,13 @@ abstract class AbstractAdapter implements \Phalcon\Firewall\Adapter\AdapterInter
      * @return AdapterInterface
      */
     public function setRoleCallback($callback): AdapterInterface {}
+
+    /**
+     * Sets always resolving role option
+     *
+     * @param bool $alwaysResolvingRole
+     */
+    public function setAlwaysResolvingRole(bool $alwaysResolvingRole) {}
 
     /**
      * @param \Phalcon\Di\DiInterface $container

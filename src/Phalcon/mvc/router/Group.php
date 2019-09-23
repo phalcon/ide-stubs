@@ -1,5 +1,14 @@
 <?php
 
+/**
+ * This file is part of the Phalcon Framework.
+ *
+ * (c) Phalcon Team <team@phalcon.io>
+ *
+ * For the full copyright and license information, please view the LICENSE.txt
+ * file that was distributed with this source code.
+ */
+
 namespace Phalcon\Mvc\Router;
 
 /**
@@ -7,7 +16,7 @@ namespace Phalcon\Mvc\Router;
  *
  * Helper class to create a group of routes with common attributes
  *
- * ```php
+ *```php
  * $router = new \Phalcon\Mvc\Router();
  *
  * //Create a group with a common module and controller
@@ -48,9 +57,9 @@ namespace Phalcon\Mvc\Router;
  *
  * //Add the group to the router
  * $router->mount($blog);
- * ```
+ *```
  */
-class Group implements \Phalcon\Mvc\Router\GroupInterface
+class Group implements GroupInterface
 {
 
     protected $beforeMatch;
@@ -65,7 +74,7 @@ class Group implements \Phalcon\Mvc\Router\GroupInterface
     protected $prefix;
 
 
-    protected $routes;
+    protected $routes = array();
 
 
     /**

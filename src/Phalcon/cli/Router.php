@@ -1,6 +1,17 @@
 <?php
 
+/**
+ * This file is part of the Phalcon Framework.
+ *
+ * (c) Phalcon Team <team@phalcon.io>
+ *
+ * For the full copyright and license information, please view the LICENSE.txt
+ * file that was distributed with this source code.
+ */
+
 namespace Phalcon\Cli;
+
+use Phalcon\Di\AbstractInjectionAware;
 
 /**
  * Phalcon\Cli\Router is the standard framework router. Routing is the process
@@ -8,7 +19,7 @@ namespace Phalcon\Cli;
  * determine which module, task, and action of that task should receive the
  * request.
  *
- * ```php
+ *```php
  * $router = new \Phalcon\Cli\Router();
  *
  * $router->handle(
@@ -20,15 +31,12 @@ namespace Phalcon\Cli;
  * );
  *
  * echo $router->getTaskName();
- * ```
+ *```
  */
-class Router implements \Phalcon\Di\InjectionAwareInterface
+class Router extends AbstractInjectionAware
 {
 
     protected $action;
-
-
-    protected $container;
 
 
     protected $defaultAction = null;
@@ -94,13 +102,6 @@ class Router implements \Phalcon\Di\InjectionAwareInterface
      * @return string
      */
     public function getActionName(): string {}
-
-    /**
-     * Returns the internal dependency injector
-     *
-     * @return \Phalcon\Di\DiInterface
-     */
-    public function getDI(): DiInterface {}
 
     /**
      * Returns the route that matches the handled URI
@@ -206,13 +207,6 @@ class Router implements \Phalcon\Di\InjectionAwareInterface
      * @param string $taskName
      */
     public function setDefaultTask(string $taskName) {}
-
-    /**
-     * Sets the dependency injector
-     *
-     * @param \Phalcon\Di\DiInterface $container
-     */
-    public function setDI(\Phalcon\Di\DiInterface $container) {}
 
     /**
      * Checks if the router matches any of the defined routes

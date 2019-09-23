@@ -1,6 +1,17 @@
 <?php
 
+/**
+ * This file is part of the Phalcon Framework.
+ *
+ * (c) Phalcon Team <team@phalcon.io>
+ *
+ * For the full copyright and license information, please view the LICENSE.txt
+ * file that was distributed with this source code.
+ */
+
 namespace Phalcon\Mvc\Router;
+
+use Phalcon\Mvc\Router;
 
 /**
  * Phalcon\Mvc\Router\Annotations
@@ -24,7 +35,7 @@ namespace Phalcon\Mvc\Router;
  * );
  * ```
  */
-class Annotations extends \Phalcon\Mvc\Router
+class Annotations extends Router
 {
 
     protected $actionSuffix = 'Action';

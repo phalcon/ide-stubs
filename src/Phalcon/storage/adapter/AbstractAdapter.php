@@ -1,16 +1,22 @@
 <?php
 
-namespace Phalcon\Storage\Adapter;
-
 /**
  * This file is part of the Phalcon Framework.
  *
- * (c) Phalcon Team <team@phalconphp.com>
+ * (c) Phalcon Team <team@phalcon.io>
  *
  * For the full copyright and license information, please view the LICENSE.txt
  * file that was distributed with this source code.
  */
-abstract class AbstractAdapter implements \Phalcon\Storage\Adapter\AdapterInterface
+
+namespace Phalcon\Storage\Adapter;
+
+use DateInterval;
+use Phalcon\Storage\Exception;
+use Phalcon\Storage\Serializer\SerializerInterface;
+use Phalcon\Storage\SerializerFactory;
+
+abstract class AbstractAdapter implements AdapterInterface
 {
     /**
      * @var mixed

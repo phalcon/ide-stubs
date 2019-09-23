@@ -1,11 +1,26 @@
 <?php
 
+/**
+ * This file is part of the Phalcon Framework.
+ *
+ * (c) Phalcon Team <team@phalcon.io>
+ *
+ * For the full copyright and license information, please view the LICENSE.txt
+ * file that was distributed with this source code.
+ *
+ * Implementation of this file has been influenced by Zend Diactoros
+ * @link    https://github.com/zendframework/zend-diactoros
+ * @license https://github.com/zendframework/zend-diactoros/blob/master/LICENSE.md
+ */
+
 namespace Phalcon\Http\Message;
+
+use Psr\Http\Message\StreamInterface;
 
 /**
  * PSR-7 Stream
  */
-class Stream implements \Psr\Http\Message\StreamInterface
+class Stream implements StreamInterface
 {
     /**
      * @var resource | null
@@ -64,7 +79,7 @@ class Stream implements \Psr\Http\Message\StreamInterface
      *
      * @return resource|null
      */
-    public function detach(): ? {}
+    public function detach() {}
 
     /**
      * Returns true if the stream is at the end of the stream.

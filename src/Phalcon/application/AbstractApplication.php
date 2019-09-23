@@ -1,11 +1,25 @@
 <?php
 
+/**
+ * This file is part of the Phalcon Framework.
+ *
+ * (c) Phalcon Team <team@phalcon.io>
+ *
+ * For the full copyright and license information, please view the LICENSE.txt
+ * file that was distributed with this source code.
+ */
+
 namespace Phalcon\Application;
+
+use Phalcon\Di\DiInterface;
+use Phalcon\Di\Injectable;
+use Phalcon\Events\EventsAwareInterface;
+use Phalcon\Events\ManagerInterface;
 
 /**
  * Base class for Phalcon\Cli\Console and Phalcon\Mvc\Application.
  */
-abstract class AbstractApplication extends \Phalcon\Di\Injectable implements \Phalcon\Events\EventsAwareInterface
+abstract class AbstractApplication extends Injectable implements EventsAwareInterface
 {
     /**
      * @var DiInterface
@@ -66,8 +80,11 @@ abstract class AbstractApplication extends \Phalcon\Di\Injectable implements \Ph
 
     /**
      * Handles a request
+     *
+     * @param string $uri
+     * @return bool|ResponseInterface
      */
-    abstract public function handle();
+    abstract public function handle(string $uri);
 
     /**
      * Register an array of modules present in the application
@@ -105,8 +122,7 @@ abstract class AbstractApplication extends \Phalcon\Di\Injectable implements \Ph
      * Sets the events manager
      *
      * @param \Phalcon\Events\ManagerInterface $eventsManager
-     * @return AbstractApplication
      */
-    public function setEventsManager(\Phalcon\Events\ManagerInterface $eventsManager): AbstractApplication {}
+    public function setEventsManager(\Phalcon\Events\ManagerInterface $eventsManager) {}
 
 }

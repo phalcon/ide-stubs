@@ -1,12 +1,23 @@
 <?php
 
+/**
+ * This file is part of the Phalcon Framework.
+ *
+ * (c) Phalcon Team <team@phalcon.io>
+ *
+ * For the full copyright and license information, please view the LICENSE.txt
+ * file that was distributed with this source code.
+ */
+
 namespace Phalcon\Flash;
+
+use Phalcon\Session\ManagerInterface as SessionInterface;
 
 /**
  * Temporarily stores the messages in session, then messages can be printed in
  * the next request
  */
-class Session extends \Phalcon\Flash\AbstractFlash
+class Session extends AbstractFlash
 {
 
     /**
@@ -36,8 +47,9 @@ class Session extends \Phalcon\Flash\AbstractFlash
      *
      * @param string $type
      * @param string $message
+     * @return string|null
      */
-    public function message(string $type, string $message) {}
+    public function message(string $type, string $message): ?string {}
 
     /**
      * Prints the messages in the session flasher
@@ -62,5 +74,12 @@ class Session extends \Phalcon\Flash\AbstractFlash
      * @return array
      */
     protected function setSessionMessages(array $messages): array {}
+
+    /**
+     * Returns the Session Service
+     *
+     * @return \Phalcon\Session\ManagerInterface
+     */
+    public function getSessionService(): SessionInterface {}
 
 }

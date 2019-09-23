@@ -1,6 +1,18 @@
 <?php
 
+/**
+ * This file is part of the Phalcon Framework.
+ *
+ * (c) Phalcon Team <team@phalcon.io>
+ *
+ * For the full copyright and license information, please view the LICENSE.txt
+ * file that was distributed with this source code.
+ */
+
 namespace Phalcon\Http;
+
+use Phalcon\Di\AbstractInjectionAware;
+use Phalcon\Filter\FilterInterface;
 
 /**
  * Encapsulates request information for easy and secure access from application
@@ -9,7 +21,7 @@ namespace Phalcon\Http;
  * The request object is a simple value object that is passed between the
  * dispatcher and controller classes. It packages the HTTP request environment.
  *
- * ```php
+ *```php
  * use Phalcon\Http\Request;
  *
  * $request = new Request();
@@ -26,13 +38,10 @@ namespace Phalcon\Http;
  *
  * // An array of languages the client accepts
  * $request->getLanguages();
- * ```
+ *```
  */
-class Request implements \Phalcon\Http\RequestInterface, \Phalcon\Di\InjectionAwareInterface
+class Request extends AbstractInjectionAware implements RequestInterface
 {
-
-    private $container;
-
 
     private $filterService;
 
@@ -153,13 +162,6 @@ class Request implements \Phalcon\Http\RequestInterface, \Phalcon\Di\InjectionAw
      * @return string|null
      */
     public function getContentType(): ?string {}
-
-    /**
-     * Returns the internal dependency injector
-     *
-     * @return \Phalcon\Di\DiInterface
-     */
-    public function getDI(): DiInterface {}
 
     /**
      * Gets auth info accepted by the browser/client from
@@ -422,11 +424,20 @@ class Request implements \Phalcon\Http\RequestInterface, \Phalcon\Di\InjectionAw
     public function getUploadedFiles(bool $onlySuccessful = false, bool $namedKeys = false): array {}
 
     /**
-     * Gets HTTP URI which request has been made
+     * Gets HTTP URI which request has been made to
      *
+     * ```php
+     * // Returns /some/path?with=queryParams
+     * $uri = $request->getURI();
+     *
+     * // Returns /some/path
+     * $uri = $request->getURI(true);
+     * ```
+     *
+     * @param bool $onlyPath If true, query part will be omitted
      * @return string
      */
-    final public function getURI(): string {}
+    final public function getURI(bool $onlyPath = false): string {}
 
     /**
      * Gets HTTP user agent used to made the request
@@ -619,13 +630,6 @@ class Request implements \Phalcon\Http\RequestInterface, \Phalcon\Di\InjectionAw
      * @return bool
      */
     public function isValidHttpMethod(string $method): bool {}
-
-    /**
-     * Sets the dependency injector
-     *
-     * @param \Phalcon\Di\DiInterface $container
-     */
-    public function setDI(\Phalcon\Di\DiInterface $container) {}
 
     /**
      * Sets automatic sanitizers/filters for a particular field and for

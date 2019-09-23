@@ -1,11 +1,23 @@
 <?php
 
+/**
+ * This file is part of the Phalcon Framework.
+ *
+ * (c) Phalcon Team <team@phalcon.io>
+ *
+ * For the full copyright and license information, please view the LICENSE.txt
+ * file that was distributed with this source code.
+ */
+
 namespace Phalcon\Image;
+
+use Phalcon\Factory\AbstractFactory;
+use Phalcon\Image\Adapter\AdapterInterface;
 
 /**
  * Phalcon\Image/ImageFactory
  */
-class ImageFactory extends \Phalcon\Factory\AbstractFactory
+class ImageFactory extends AbstractFactory
 {
 
     /**

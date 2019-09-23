@@ -1,5 +1,14 @@
 <?php
 
+/**
+ * This file is part of the Phalcon Framework.
+ *
+ * (c) Phalcon Team <team@phalcon.io>
+ *
+ * For the full copyright and license information, please view the LICENSE.txt
+ * file that was distributed with this source code.
+ */
+
 namespace Phalcon\Events;
 
 /**
@@ -10,7 +19,7 @@ namespace Phalcon\Events;
  * can create hooks or plugins that will offer monitoring of data, manipulation,
  * conditional execution and much more.
  */
-class Manager implements \Phalcon\Events\ManagerInterface
+class Manager implements ManagerInterface
 {
 
     const DEFAULT_PRIORITY = 100;

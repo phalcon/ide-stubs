@@ -1,15 +1,23 @@
 <?php
 
+/**
+ * This file is part of the Phalcon Framework.
+ *
+ * (c) Phalcon Team <team@phalcon.io>
+ *
+ * For the full copyright and license information, please view the LICENSE.txt
+ * file that was distributed with this source code.
+ */
+
 namespace Phalcon\Http;
+
+use Phalcon\Di\AbstractInjectionAware;
 
 /**
  * Provide OO wrappers to manage a HTTP cookie.
  */
-class Cookie implements \Phalcon\Http\CookieInterface, \Phalcon\Di\InjectionAwareInterface
+class Cookie extends AbstractInjectionAware implements CookieInterface
 {
-
-    protected $container;
-
 
     protected $domain;
 
@@ -75,13 +83,6 @@ class Cookie implements \Phalcon\Http\CookieInterface, \Phalcon\Di\InjectionAwar
      * Deletes the cookie by setting an expire time in the past
      */
     public function delete() {}
-
-    /**
-     * Returns the internal dependency injector
-     *
-     * @return \Phalcon\Di\DiInterface
-     */
-    public function getDI(): DiInterface {}
 
     /**
      * Returns the domain that the cookie is available to
@@ -161,13 +162,6 @@ class Cookie implements \Phalcon\Http\CookieInterface, \Phalcon\Di\InjectionAwar
      * @return CookieInterface
      */
     public function send(): CookieInterface {}
-
-    /**
-     * Sets the dependency injector
-     *
-     * @param \Phalcon\Di\DiInterface $container
-     */
-    public function setDI(\Phalcon\Di\DiInterface $container) {}
 
     /**
      * Sets the domain that the cookie is available to

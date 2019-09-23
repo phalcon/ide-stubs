@@ -1,5 +1,14 @@
 <?php
 
+/**
+ * This file is part of the Phalcon Framework.
+ *
+ * (c) Phalcon Team <team@phalcon.io>
+ *
+ * For the full copyright and license information, please view the LICENSE.txt
+ * file that was distributed with this source code.
+ */
+
 namespace Phalcon\Mvc\Micro;
 
 /**
@@ -7,7 +16,7 @@ namespace Phalcon\Mvc\Micro;
  *
  * Groups Micro-Mvc handlers as controllers
  *
- * ```php
+ *```php
  * $app = new \Phalcon\Mvc\Micro();
  *
  * $collection = new Collection();
@@ -19,9 +28,9 @@ namespace Phalcon\Mvc\Micro;
  * $collection->get("/posts/edit/{id}", "edit");
  *
  * $app->mount($collection);
- * ```
+ *```
  */
-class Collection implements \Phalcon\Mvc\Micro\CollectionInterface
+class Collection implements CollectionInterface
 {
 
     protected $handler;

@@ -1,11 +1,25 @@
 <?php
 
+/**
+ * This file is part of the Phalcon Framework.
+ *
+ * (c) Phalcon Team <team@phalcon.io>
+ *
+ * For the full copyright and license information, please view the LICENSE.txt
+ * file that was distributed with this source code.
+ */
+
 namespace Phalcon\Messages;
+
+use ArrayAccess;
+use Countable;
+use Iterator;
+use JsonSerializable;
 
 /**
  * Represents a collection of messages
  */
-class Messages implements \ArrayAccess, \Countable, \Iterator, \JsonSerializable
+class Messages implements ArrayAccess, Countable, Iterator, JsonSerializable
 {
     /**
      * @var int

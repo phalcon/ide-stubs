@@ -1,6 +1,19 @@
 <?php
 
+/**
+ * This file is part of the Phalcon Framework.
+ *
+ * (c) Phalcon Team <team@phalcon.io>
+ *
+ * For the full copyright and license information, please view the LICENSE.txt
+ * file that was distributed with this source code.
+ */
+
 namespace Phalcon\Mvc\Model;
+
+use ArrayAccess;
+use JsonSerializable;
+use Phalcon\Mvc\EntityInterface;
 
 /**
  * Phalcon\Mvc\Model\Row
@@ -8,7 +21,7 @@ namespace Phalcon\Mvc\Model;
  * This component allows Phalcon\Mvc\Model to return rows without an associated entity.
  * This objects implements the ArrayAccess interface to allow access the object as object->x or array[x].
  */
-class Row implements \Phalcon\Mvc\EntityInterface, \Phalcon\Mvc\Model\ResultInterface, \ArrayAccess, \JsonSerializable
+class Row implements EntityInterface, ResultInterface, ArrayAccess, JsonSerializable
 {
 
     /**

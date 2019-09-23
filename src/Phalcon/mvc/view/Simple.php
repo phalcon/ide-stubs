@@ -1,13 +1,25 @@
 <?php
 
+/**
+ * This file is part of the Phalcon Framework.
+ *
+ * (c) Phalcon Team <team@phalcon.io>
+ *
+ * For the full copyright and license information, please view the LICENSE.txt
+ * file that was distributed with this source code.
+ */
+
 namespace Phalcon\Mvc\View;
+
+use Phalcon\Di\Injectable;
+use Phalcon\Mvc\ViewBaseInterface;
 
 /**
  * Phalcon\Mvc\View\Simple
  *
  * This component allows to render views without hierarchical levels
  *
- * ```php
+ *```php
  * use Phalcon\Mvc\View\Simple as View;
  *
  * $view = new View();
@@ -27,9 +39,9 @@ namespace Phalcon\Mvc\View;
  *         "parameter" => $here,
  *     ]
  * );
- * ```
+ *```
  */
-class Simple extends \Phalcon\Di\Injectable implements \Phalcon\Mvc\ViewBaseInterface
+class Simple extends Injectable implements ViewBaseInterface
 {
 
     protected $activeRenderPath;
@@ -82,7 +94,7 @@ class Simple extends \Phalcon\Di\Injectable implements \Phalcon\Mvc\ViewBaseInte
      * @param string $key
      * @return mixed|null
      */
-    public function __get(string $key): ? {}
+    public function __get(string $key) {}
 
     /**
      * Magic method to pass variables to the views
@@ -123,7 +135,7 @@ class Simple extends \Phalcon\Di\Injectable implements \Phalcon\Mvc\ViewBaseInte
      * @param string $key
      * @return mixed|null
      */
-    public function getVar(string $key): ? {}
+    public function getVar(string $key) {}
 
     /**
      * Gets views directory

@@ -1,32 +1,23 @@
 <?php
 
-namespace Phalcon\Storage\Serializer;
-
 /**
  * This file is part of the Phalcon Framework.
  *
- * (c) Phalcon Team <team@phalconphp.com>
+ * (c) Phalcon Team <team@phalcon.io>
  *
  * For the full copyright and license information, please view the LICENSE.txt
  * file that was distributed with this source code.
  */
-abstract class AbstractSerializer implements \Phalcon\Storage\Serializer\SerializerInterface
+
+namespace Phalcon\Storage\Serializer;
+
+abstract class AbstractSerializer implements SerializerInterface
 {
     /**
      * @var mixed
      */
     protected $data = null;
 
-
-    /**
-     * @return mixed
-     */
-    public function getData() {}
-
-    /**
-     * @param mixed $data
-     */
-    public function setData($data) {}
 
     /**
      * Constructor
@@ -42,5 +33,15 @@ abstract class AbstractSerializer implements \Phalcon\Storage\Serializer\Seriali
      * @return bool
      */
     protected function isSerializable($data): bool {}
+
+    /**
+     * @return mixed
+     */
+    public function getData() {}
+
+    /**
+     * @param mixed $data
+     */
+    public function setData($data) {}
 
 }

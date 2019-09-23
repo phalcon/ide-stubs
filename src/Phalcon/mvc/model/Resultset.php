@@ -1,6 +1,24 @@
 <?php
 
+/**
+ * This file is part of the Phalcon Framework.
+ *
+ * (c) Phalcon Team <team@phalcon.io>
+ *
+ * For the full copyright and license information, please view the LICENSE.txt
+ * file that was distributed with this source code.
+ */
+
 namespace Phalcon\Mvc\Model;
+
+use ArrayAccess;
+use Countable;
+use Iterator;
+use JsonSerializable;
+use Phalcon\Cache\Adapter\AdapterInterface;
+use Phalcon\Mvc\ModelInterface;
+use SeekableIterator;
+use Serializable;
 
 /**
  * Phalcon\Mvc\Model\Resultset
@@ -43,7 +61,8 @@ namespace Phalcon\Mvc\Model;
  * }
  * ```
  */
-abstract class Resultset implements \Phalcon\Mvc\Model\ResultsetInterface, \Iterator, \SeekableIterator, \Countable, \ArrayAccess, \Serializable, \JsonSerializable
+abstract class Resultset
+    implements ResultsetInterface, Iterator, SeekableIterator, Countable, ArrayAccess, Serializable, JsonSerializable
 {
 
     const HYDRATE_ARRAYS = 1;

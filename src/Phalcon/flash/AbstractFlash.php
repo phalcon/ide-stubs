@@ -1,17 +1,30 @@
 <?php
 
+/**
+ * This file is part of the Phalcon Framework.
+ *
+ * (c) Phalcon Team <team@phalcon.io>
+ *
+ * For the full copyright and license information, please view the LICENSE.txt
+ * file that was distributed with this source code.
+ */
+
 namespace Phalcon\Flash;
+
+use Phalcon\Di\AbstractInjectionAware;
+use Phalcon\Escaper\EscaperInterface;
+use Phalcon\Session\ManagerInterface as SessionInterface;
 
 /**
  * Shows HTML notifications related to different circumstances. Classes can be
  * stylized using CSS
  *
- * ```php
+ *```php
  * $flash->success("The record was successfully deleted");
  * $flash->error("Cannot open the file");
- * ```
+ *```
  */
-abstract class AbstractFlash implements \Phalcon\Flash\FlashInterface, \Phalcon\Di\InjectionAwareInterface
+abstract class AbstractFlash extends AbstractInjectionAware implements FlashInterface
 {
     /**
      * @var bool
@@ -33,10 +46,9 @@ abstract class AbstractFlash implements \Phalcon\Flash\FlashInterface, \Phalcon\
      */
     protected $customTemplate = '';
 
-
-    protected $container = null;
-
-
+    /**
+     * @var EscaperInterface | null
+     */
     protected $escaperService = null;
 
     /**
@@ -44,16 +56,39 @@ abstract class AbstractFlash implements \Phalcon\Flash\FlashInterface, \Phalcon\
      */
     protected $implicitFlush = true;
 
-
+    /**
+     * @var array
+     */
     protected $messages = array();
 
+    /**
+     * @var SessionInterface | null
+     */
+    protected $sessionService = null;
+
+
+    /**
+     * @return bool
+     */
+    public function getAutoescape(): bool {}
+
+    /**
+     * @return array
+     */
+    public function getCssClasses(): array {}
+
+    /**
+     * @return string
+     */
+    public function getCustomTemplate(): string {}
 
     /**
      * Phalcon\Flash constructor
      *
-     * @param mixed $cssClasses
+     * @param \Phalcon\Escaper\EscaperInterface $escaper
+     * @param \Phalcon\Session\ManagerInterface $session
      */
-    public function __construct($cssClasses = null) {}
+    public function __construct(\Phalcon\Escaper\EscaperInterface $escaper = null, \Phalcon\Session\ManagerInterface $session = null) {}
 
     /**
      * Clears accumulated messages when implicit flush is disabled
@@ -71,27 +106,6 @@ abstract class AbstractFlash implements \Phalcon\Flash\FlashInterface, \Phalcon\
      * @return string
      */
     public function error(string $message): string {}
-
-    /**
-     * Returns the autoescape mode in generated html
-     *
-     * @return bool
-     */
-    public function getAutoescape(): bool {}
-
-    /**
-     * Returns the custom template set
-     *
-     * @return string
-     */
-    public function getCustomTemplate(): string {}
-
-    /**
-     * Returns the internal dependency injector
-     *
-     * @return \Phalcon\Di\DiInterface
-     */
-    public function getDI(): DiInterface {}
 
     /**
      * Returns the Escaper Service
@@ -116,9 +130,9 @@ abstract class AbstractFlash implements \Phalcon\Flash\FlashInterface, \Phalcon\
      * Set the autoescape mode in generated html
      *
      * @param bool $autoescape
-     * @return Flash
+     * @return FlashInterface
      */
-    public function setAutoescape(bool $autoescape): Flash {}
+    public function setAutoescape(bool $autoescape): FlashInterface {}
 
     /**
      * Set if the output must be implicitly formatted with HTML
@@ -143,14 +157,6 @@ abstract class AbstractFlash implements \Phalcon\Flash\FlashInterface, \Phalcon\
      * @return FlashInterface
      */
     public function setCustomTemplate(string $customTemplate): FlashInterface {}
-
-    /**
-     * Sets the dependency injector
-     *
-     * @param \Phalcon\Di\DiInterface $container
-     * @return FlashInterface
-     */
-    public function setDI(\Phalcon\Di\DiInterface $container): FlashInterface {}
 
     /**
      * Sets the Escaper Service

@@ -1,6 +1,19 @@
 <?php
 
+/**
+ * This file is part of the Phalcon Framework.
+ *
+ * (c) Phalcon Team <team@phalcon.io>
+ *
+ * For the full copyright and license information, please view the LICENSE.txt
+ * file that was distributed with this source code.
+ */
+
 namespace Phalcon\Mvc\Model\Transaction;
+
+use Phalcon\Di\DiInterface;
+use Phalcon\Di\InjectionAwareInterface;
+use Phalcon\Mvc\Model\TransactionInterface;
 
 /**
  * Phalcon\Mvc\Model\Transaction\Manager
@@ -47,9 +60,9 @@ namespace Phalcon\Mvc\Model\Transaction;
  * } catch (Failed $e) {
  *    echo "Failed, reason: ", $e->getMessage();
  * }
- * ```
+ *```
  */
-class Manager implements \Phalcon\Mvc\Model\Transaction\ManagerInterface, \Phalcon\Di\InjectionAwareInterface
+class Manager implements ManagerInterface, InjectionAwareInterface
 {
 
     protected $container;

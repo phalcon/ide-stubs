@@ -1,6 +1,20 @@
 <?php
 
+/**
+ * This file is part of the Phalcon Framework.
+ *
+ * (c) Phalcon Team <team@phalcon.io>
+ *
+ * For the full copyright and license information, please view the LICENSE.txt
+ * file that was distributed with this source code.
+ */
+
 namespace Phalcon;
+
+use Phalcon\Di\DiInterface;
+use Phalcon\Di\Exception\ServiceResolutionException;
+use Phalcon\Di\ServiceInterface;
+use Phalcon\Events\ManagerInterface;
 
 /**
  * Phalcon\Di is a component that implements Dependency Injection/Service
@@ -20,7 +34,7 @@ namespace Phalcon;
  * Additionally, this pattern increases testability in the code, thus making it
  * less prone to errors.
  *
- * ```php
+ *```php
  * use Phalcon\Di;
  * use Phalcon\Http\Request;
  *
@@ -38,9 +52,9 @@ namespace Phalcon;
  * );
  *
  * $request = $di->getRequest();
- * ```
+ *```
  */
-class Di implements \Phalcon\Di\DiInterface
+class Di implements DiInterface
 {
     /**
      * List of registered services
@@ -77,7 +91,7 @@ class Di implements \Phalcon\Di\DiInterface
      * @param array $arguments
      * @return mixed|null
      */
-    public function __call(string $method, array $arguments = array()): ? {}
+    public function __call(string $method, array $arguments = array()) {}
 
     /**
      * Attempts to register a service in the services container
@@ -184,7 +198,7 @@ class Di implements \Phalcon\Di\DiInterface
      * ];
      * ```
      *
-     * @link https://docs.phalconphp.com/en/latest/reference/di.html
+     * @link https://docs.phalcon.io/en/latest/reference/di.html
      * @param string $filePath
      */
     public function loadFromPhp(string $filePath) {}
@@ -220,7 +234,7 @@ class Di implements \Phalcon\Di\DiInterface
      *    className: \Acme\User
      * ```
      *
-     * @link https://docs.phalconphp.com/en/latest/reference/di.html
+     * @link https://docs.phalcon.io/en/latest/reference/di.html
      * @param string $filePath
      * @param array $callbacks
      */

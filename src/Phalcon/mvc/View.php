@@ -1,6 +1,17 @@
 <?php
 
+/**
+ * This file is part of the Phalcon Framework.
+ *
+ * (c) Phalcon Team <team@phalcon.io>
+ *
+ * For the full copyright and license information, please view the LICENSE.txt
+ * file that was distributed with this source code.
+ */
+
 namespace Phalcon\Mvc;
+
+use Phalcon\Di\Injectable;
 
 /**
  * Phalcon\Mvc\View
@@ -28,7 +39,7 @@ namespace Phalcon\Mvc;
  * echo $view->getContent();
  * ```
  */
-class View extends \Phalcon\Di\Injectable implements \Phalcon\Mvc\ViewInterface
+class View extends Injectable implements ViewInterface
 {
     /**
      * Render Level: To the action view
@@ -153,7 +164,7 @@ class View extends \Phalcon\Di\Injectable implements \Phalcon\Mvc\ViewInterface
      * @param string $key
      * @return mixed|null
      */
-    public function __get(string $key): ? {}
+    public function __get(string $key) {}
 
     /**
      * Magic method to retrieve if a variable is set in the view

@@ -1,6 +1,17 @@
 <?php
 
+/**
+ * This file is part of the Phalcon Framework.
+ *
+ * (c) Phalcon Team <team@phalcon.io>
+ *
+ * For the full copyright and license information, please view the LICENSE.txt
+ * file that was distributed with this source code.
+ */
+
 namespace Phalcon\Db;
+
+use Phalcon\Db\Profiler\Item;
 
 /**
  * Instances of Phalcon\Db can generate execution profiles
@@ -35,6 +46,7 @@ namespace Phalcon\Db;
  *
  * // Set the event manager on the connection
  * $connection->setEventsManager($eventsManager);
+ *
  *
  * $sql = "SELECT buyer_name, quantity, product_name
  * FROM buyers LEFT JOIN products ON

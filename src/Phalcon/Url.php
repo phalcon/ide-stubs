@@ -1,11 +1,24 @@
 <?php
 
+/**
+ * This file is part of the Phalcon Framework.
+ *
+ * (c) Phalcon Team <team@phalcon.io>
+ *
+ * For the full copyright and license information, please view the LICENSE.txt
+ * file that was distributed with this source code.
+ */
+
 namespace Phalcon;
+
+use Phalcon\Di\AbstractInjectionAware;
+use Phalcon\Mvc\RouterInterface;
+use Phalcon\Url\UrlInterface;
 
 /**
  * This components helps in the generation of: URIs, URLs and Paths
  *
- * ```php
+ *```php
  * // Generate a URL appending the URI to the base URI
  * echo $url->get("products/edit/1");
  *
@@ -17,9 +30,9 @@ namespace Phalcon;
  *         "year"  => "2012",
  *     ]
  * );
- * ```
+ *```
  */
-class Url implements \Phalcon\Url\UrlInterface, \Phalcon\Di\InjectionAwareInterface
+class Url extends AbstractInjectionAware implements UrlInterface
 {
     /**
      * @var null | string
@@ -32,18 +45,20 @@ class Url implements \Phalcon\Url\UrlInterface, \Phalcon\Di\InjectionAwareInterf
     protected $basePath = null;
 
     /**
-     * @var <DiInterface>
+     * @var <RouterInterface> | null
      */
-    protected $container;
-
-
-    protected $router;
+    protected $router = null;
 
     /**
      * @var null | string
      */
     protected $staticBaseUri = null;
 
+
+    /**
+     * @param \Phalcon\Mvc\RouterInterface $router
+     */
+    public function __construct(\Phalcon\Mvc\RouterInterface $router = null) {}
 
     /**
      * Generates a URL
@@ -72,7 +87,7 @@ class Url implements \Phalcon\Url\UrlInterface, \Phalcon\Di\InjectionAwareInterf
      *
      * // Generate an absolute URL by setting the third parameter as false.
      * echo $url->get(
-     *     "https://phalconphp.com/",
+     *     "https://phalcon.io/",
      *     null,
      *     false
      * );
@@ -99,13 +114,6 @@ class Url implements \Phalcon\Url\UrlInterface, \Phalcon\Di\InjectionAwareInterf
      * @return string
      */
     public function getBaseUri(): string {}
-
-    /**
-     * Returns the DependencyInjector container
-     *
-     * @return \Phalcon\Di\DiInterface
-     */
-    public function getDI(): DiInterface {}
 
     /**
      * Generates a URL for a static resource
@@ -159,13 +167,6 @@ class Url implements \Phalcon\Url\UrlInterface, \Phalcon\Di\InjectionAwareInterf
      * @return \Phalcon\Url\UrlInterface
      */
     public function setBaseUri(string $baseUri): UrlInterface {}
-
-    /**
-     * Sets the DependencyInjector container
-     *
-     * @param \Phalcon\Di\DiInterface $container
-     */
-    public function setDI(\Phalcon\Di\DiInterface $container) {}
 
     /**
      * Sets a prefix for all static URLs generated

@@ -1,16 +1,19 @@
 <?php
 
-namespace Phalcon\Logger\Adapter;
-
 /**
  * This file is part of the Phalcon Framework.
  *
- * (c) Phalcon Team <team@phalconphp.com>
+ * (c) Phalcon Team <team@phalcon.io>
  *
  * For the full copyright and license information, please view the LICENSE.txt
  * file that was distributed with this source code.
  */
-abstract class AbstractAdapter implements \Phalcon\Logger\Adapter\AdapterInterface
+
+namespace Phalcon\Logger\Adapter;
+
+use Phalcon\Logger\Formatter\FormatterInterface;
+
+abstract class AbstractAdapter implements AdapterInterface
 {
     /**
      * Name of the default formatter class

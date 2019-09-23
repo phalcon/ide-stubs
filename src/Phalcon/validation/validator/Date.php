@@ -1,6 +1,17 @@
 <?php
 
+/**
+ * This file is part of the Phalcon Framework.
+ *
+ * (c) Phalcon Team <team@phalcon.io>
+ *
+ * For the full copyright and license information, please view the LICENSE.txt
+ * file that was distributed with this source code.
+ */
+
 namespace Phalcon\Validation\Validator;
+
+use Phalcon\Validation\AbstractValidator;
 
 /**
  * Checks if a value is a valid date
@@ -41,7 +52,7 @@ namespace Phalcon\Validation\Validator;
  * );
  * ```
  */
-class Date extends \Phalcon\Validation\AbstractValidator
+class Date extends AbstractValidator
 {
 
     protected $template = 'Field :field is not a valid date';

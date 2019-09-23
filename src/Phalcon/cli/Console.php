@@ -1,11 +1,22 @@
 <?php
 
+/**
+ * This file is part of the Phalcon Framework.
+ *
+ * (c) Phalcon Team <team@phalcon.io>
+ *
+ * For the full copyright and license information, please view the LICENSE.txt
+ * file that was distributed with this source code.
+ */
+
 namespace Phalcon\Cli;
+
+use Phalcon\Application\AbstractApplication;
 
 /**
  * This component allows to create CLI applications using Phalcon
  */
-class Console extends \Phalcon\Application\AbstractApplication
+class Console extends AbstractApplication
 {
     /**
      * @var array
@@ -21,9 +32,10 @@ class Console extends \Phalcon\Application\AbstractApplication
     /**
      * Handle the whole command-line tasks
      *
-     * @param array $arguments
+     * @param string $arguments
+     * @return bool|ResponseInterface
      */
-    public function handle(array $arguments = null) {}
+    public function handle(string $arguments) {}
 
     /**
      * Set an specific argument

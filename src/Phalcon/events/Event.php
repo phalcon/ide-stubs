@@ -1,5 +1,14 @@
 <?php
 
+/**
+ * This file is part of the Phalcon Framework.
+ *
+ * (c) Phalcon Team <team@phalcon.io>
+ *
+ * For the full copyright and license information, please view the LICENSE.txt
+ * file that was distributed with this source code.
+ */
+
 namespace Phalcon\Events;
 
 /**
@@ -8,7 +17,7 @@ namespace Phalcon\Events;
  * This class offers contextual information of a fired event in the
  * EventsManager
  */
-class Event implements \Phalcon\Events\EventInterface
+class Event implements EventInterface
 {
     /**
      * Is event cancelable?

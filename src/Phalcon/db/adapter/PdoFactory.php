@@ -1,16 +1,19 @@
 <?php
 
-namespace Phalcon\Db\Adapter;
-
 /**
  * This file is part of the Phalcon Framework.
  *
- * (c) Phalcon Team <team@phalconphp.com>
+ * (c) Phalcon Team <team@phalcon.io>
  *
  * For the full copyright and license information, please view the LICENSE.txt
  * file that was distributed with this source code.
  */
-class PdoFactory extends \Phalcon\Factory\AbstractFactory
+
+namespace Phalcon\Db\Adapter;
+
+use Phalcon\Factory\AbstractFactory;
+
+class PdoFactory extends AbstractFactory
 {
 
     /**
@@ -33,7 +36,7 @@ class PdoFactory extends \Phalcon\Factory\AbstractFactory
      *
      * @param string $name
      * @param array $options
-     * @return \Phalcon\Annotations\Adapter\AbstractAdapter
+     * @return \Phalcon\Db\Adapter\AbstractAdapter
      */
     public function newInstance(string $name, array $options = array()): AbstractAdapter {}
 

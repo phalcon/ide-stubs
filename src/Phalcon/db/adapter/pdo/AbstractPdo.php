@@ -1,6 +1,17 @@
 <?php
 
+/**
+ * This file is part of the Phalcon.
+ *
+ * (c) Phalcon Team <team@phalcon.com>
+ *
+ * For the full copyright and license information, please view the LICENSE
+ * file that was distributed with this source code.
+ */
+
 namespace Phalcon\Db\Adapter\Pdo;
+
+use Phalcon\Db\Adapter\AbstractAdapter;
 
 /**
  * Phalcon\Db\Adapter\Pdo is the Phalcon\Db that internally uses PDO to connect
@@ -18,9 +29,9 @@ namespace Phalcon\Db\Adapter\Pdo;
  * ];
  *
  * $connection = new Mysql($config);
- * ```
+ *```
  */
-abstract class AbstractPdo extends \Phalcon\Db\Adapter\AbstractAdapter
+abstract class AbstractPdo extends AbstractAdapter
 {
     /**
      * Last affected rows

@@ -1,6 +1,18 @@
 <?php
 
+/**
+ * This file is part of the Phalcon Framework.
+ *
+ * (c) Phalcon Team <team@phalcon.io>
+ *
+ * For the full copyright and license information, please view the LICENSE.txt
+ * file that was distributed with this source code.
+ */
+
 namespace Phalcon\Mvc\Model\Resultset;
+
+use Phalcon\Mvc\Model\Resultset;
+use Phalcon\Mvc\Model\ResultsetInterface;
 
 /**
  * Phalcon\Mvc\Model\Resultset\Complex
@@ -8,7 +20,7 @@ namespace Phalcon\Mvc\Model\Resultset;
  * Complex resultsets may include complete objects and scalar values.
  * This class builds every complex row as it is required
  */
-class Complex extends \Phalcon\Mvc\Model\Resultset implements \Phalcon\Mvc\Model\ResultsetInterface
+class Complex extends Resultset implements ResultsetInterface
 {
 
     protected $columnTypes;
