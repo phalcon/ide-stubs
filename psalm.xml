@@ -19,5 +19,19 @@
         <MissingReturnType errorLevel="suppress" />
         <InvalidReturnType errorLevel="suppress" />
         <MissingPropertyType errorLevel="suppress" />
+        <ImplementedParamTypeMismatch errorLevel="info" />
+        <MismatchingDocblockParamType errorLevel="info" />
+        <UndefinedDocblockClass errorLevel="info" />
+        <PropertyNotSetInConstructor errorLevel="info" />
+        <UndefinedClass errorLevel="info" />
+        <OverriddenPropertyAccess errorLevel="info" />
+        <InvalidPropertyAssignmentValue errorLevel="info" />
+        <InvalidDocblock errorLevel="info" />
+        <InvalidClass errorLevel="info" />
+        <MoreSpecificImplementedParamType errorLevel="info" />
+        <LessSpecificImplementedReturnType errorLevel="info" />
+        <MismatchingDocblockReturnType errorLevel="info" />
+        <ReservedWord errorLevel="info" />
+        <MissingConstructor errorLevel="info" />
     </issueHandlers>
 </psalm>
