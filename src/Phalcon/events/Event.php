@@ -1,5 +1,14 @@
 <?php
 
+/**
+ * This file is part of the Phalcon Framework.
+ *
+ * (c) Phalcon Team <team@phalcon.io>
+ *
+ * For the full copyright and license information, please view the LICENSE.txt
+ * file that was distributed with this source code.
+ */
+
 namespace Phalcon\Events;
 
 /**
@@ -8,7 +17,7 @@ namespace Phalcon\Events;
  * This class offers contextual information of a fired event in the
  * EventsManager
  */
-class Event implements \Phalcon\Events\EventInterface
+class Event implements EventInterface
 {
     /**
      * Is event cancelable?
@@ -51,21 +60,27 @@ class Event implements \Phalcon\Events\EventInterface
      *
      * @return mixed
      */
-    public function getData() {}
+    public function getData()
+    {
+    }
 
     /**
      * Event source
      *
      * @return object
      */
-    public function getSource() {}
+    public function getSource()
+    {
+    }
 
     /**
      * Event type
      *
      * @return string
      */
-    public function getType(): string {}
+    public function getType(): string
+    {
+    }
 
     /**
      * Phalcon\Events\Event constructor
@@ -75,7 +90,9 @@ class Event implements \Phalcon\Events\EventInterface
      * @param mixed $data
      * @param bool $cancelable
      */
-    public function __construct(string $type, $source, $data = null, bool $cancelable = true) {}
+    public function __construct(string $type, $source, $data = null, bool $cancelable = true)
+    {
+    }
 
     /**
      * Check whether the event is cancelable.
@@ -88,14 +105,18 @@ class Event implements \Phalcon\Events\EventInterface
      *
      * @return bool
      */
-    public function isCancelable(): bool {}
+    public function isCancelable(): bool
+    {
+    }
 
     /**
      * Check whether the event is currently stopped.
      *
      * @return bool
      */
-    public function isStopped(): bool {}
+    public function isStopped(): bool
+    {
+    }
 
     /**
      * Sets event data.
@@ -103,7 +124,9 @@ class Event implements \Phalcon\Events\EventInterface
      * @param mixed $data
      * @return EventInterface
      */
-    public function setData($data = null): EventInterface {}
+    public function setData($data = null): EventInterface
+    {
+    }
 
     /**
      * Sets event type.
@@ -111,7 +134,9 @@ class Event implements \Phalcon\Events\EventInterface
      * @param string $type
      * @return EventInterface
      */
-    public function setType(string $type): EventInterface {}
+    public function setType(string $type): EventInterface
+    {
+    }
 
     /**
      * Stops the event preventing propagation.
@@ -124,6 +149,7 @@ class Event implements \Phalcon\Events\EventInterface
      *
      * @return EventInterface
      */
-    public function stop(): EventInterface {}
-
+    public function stop(): EventInterface
+    {
+    }
 }

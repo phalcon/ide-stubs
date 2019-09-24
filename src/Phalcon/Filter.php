@@ -1,11 +1,22 @@
 <?php
 
-namespace Phalcon\Filter;
+/**
+ * This file is part of the Phalcon Framework.
+ *
+ * (c) Phalcon Team <team@phalcon.io>
+ *
+ * For the full copyright and license information, please view the LICENSE.txt
+ * file that was distributed with this source code.
+ */
+
+namespace Phalcon;
+
+use Phalcon\Filter\FilterInterface;
 
 /**
  * Lazy loads, stores and exposes sanitizer objects
  */
-class Filter implements \Phalcon\Filter\FilterInterface
+class Filter implements FilterInterface
 {
 
     const FILTER_ABSINT = 'absint';
@@ -87,7 +98,9 @@ class Filter implements \Phalcon\Filter\FilterInterface
      *
      * @param array $mapper
      */
-    public function __construct(array $mapper = array()) {}
+    public function __construct(array $mapper = array())
+    {
+    }
 
     /**
      * Get a service. If it is not in the mapper array, create a new object,
@@ -96,7 +109,9 @@ class Filter implements \Phalcon\Filter\FilterInterface
      * @param string $name
      * @return object
      */
-    public function get(string $name) {}
+    public function get(string $name)
+    {
+    }
 
     /**
      * Checks if a service exists in the map array
@@ -104,7 +119,9 @@ class Filter implements \Phalcon\Filter\FilterInterface
      * @param string $name
      * @return bool
      */
-    public function has(string $name): bool {}
+    public function has(string $name): bool
+    {
+    }
 
     /**
      * Sanitizes a value with a specified single or set of sanitizers
@@ -114,7 +131,9 @@ class Filter implements \Phalcon\Filter\FilterInterface
      * @param bool $noRecursive
      * @return mixed
      */
-    public function sanitize($value, $sanitizers, bool $noRecursive = false) {}
+    public function sanitize($value, $sanitizers, bool $noRecursive = false)
+    {
+    }
 
     /**
      * Set a new service to the mapper array
@@ -122,14 +141,18 @@ class Filter implements \Phalcon\Filter\FilterInterface
      * @param string $name
      * @param callable $service
      */
-    public function set(string $name, $service) {}
+    public function set(string $name, $service)
+    {
+    }
 
     /**
      * Loads the objects in the internal mapper array
      *
      * @param array $mapper
      */
-    protected function init(array $mapper) {}
+    protected function init(array $mapper)
+    {
+    }
 
     /**
      * Processes the array values with the relevant sanitizers
@@ -139,7 +162,9 @@ class Filter implements \Phalcon\Filter\FilterInterface
      * @param array $sanitizerParams
      * @return array
      */
-    private function processArrayValues(array $values, string $sanitizerName, array $sanitizerParams = array()): array {}
+    private function processArrayValues(array $values, string $sanitizerName, array $sanitizerParams = array()): array
+    {
+    }
 
     /**
      * Internal sanitize wrapper for recursion
@@ -149,6 +174,7 @@ class Filter implements \Phalcon\Filter\FilterInterface
      * @param array $sanitizerParams
      * @return mixed
      */
-    private function sanitizer($value, string $sanitizerName, array $sanitizerParams = array()) {}
-
+    private function sanitizer($value, string $sanitizerName, array $sanitizerParams = array())
+    {
+    }
 }

@@ -1,6 +1,18 @@
 <?php
 
+/**
+ * This file is part of the Phalcon Framework.
+ *
+ * (c) Phalcon Team <team@phalcon.io>
+ *
+ * For the full copyright and license information, please view the LICENSE.txt
+ * file that was distributed with this source code.
+ */
+
 namespace Phalcon\Http\Response;
+
+use Phalcon\Di\AbstractInjectionAware;
+use Phalcon\Http\CookieInterface;
 
 /**
  * Phalcon\Http\Response\Cookies
@@ -41,7 +53,7 @@ namespace Phalcon\Http\Response;
  *
  *         // The `$key' MUST be at least 32 characters long and generated using a
  *         // cryptographically secure pseudo random generator.
- *         $key = "#1dj8$=dp?.ak//j1V$~%0XaK\xb1\x8d\xa9\x98\x054t7w!z%CF-Jk\x98\x05\\\x5c";
+ *         $key = "#1dj8$=dp?.ak//j1V$~%*0XaK\xb1\x8d\xa9\x98\x054t7w!z%C*F-Jk\x98\x05\\\x5c";
  *
  *         $cookies->setSignKey($key);
  *
@@ -50,11 +62,8 @@ namespace Phalcon\Http\Response;
  * );
  * ```
  */
-class Cookies implements \Phalcon\Http\Response\CookiesInterface, \Phalcon\Di\InjectionAwareInterface
+class Cookies extends AbstractInjectionAware implements CookiesInterface
 {
-
-    protected $container;
-
 
     protected $cookies = array();
 
@@ -78,7 +87,9 @@ class Cookies implements \Phalcon\Http\Response\CookiesInterface, \Phalcon\Di\In
      * @param bool $useEncryption
      * @param string $signKey
      */
-    public function __construct(bool $useEncryption = true, string $signKey = null) {}
+    public function __construct(bool $useEncryption = true, string $signKey = null)
+    {
+    }
 
     /**
      * Deletes a cookie by its name
@@ -87,7 +98,9 @@ class Cookies implements \Phalcon\Http\Response\CookiesInterface, \Phalcon\Di\In
      * @param string $name
      * @return bool
      */
-    public function delete(string $name): bool {}
+    public function delete(string $name): bool
+    {
+    }
 
     /**
      * Gets a cookie from the bag
@@ -95,21 +108,18 @@ class Cookies implements \Phalcon\Http\Response\CookiesInterface, \Phalcon\Di\In
      * @param string $name
      * @return \Phalcon\Http\CookieInterface
      */
-    public function get(string $name): CookieInterface {}
+    public function get(string $name): CookieInterface
+    {
+    }
 
     /**
      * Gets all cookies from the bag
      *
      * @return array
      */
-    public function getCookies(): array {}
-
-    /**
-     * Returns the internal dependency injector
-     *
-     * @return \Phalcon\Di\DiInterface
-     */
-    public function getDI(): DiInterface {}
+    public function getCookies(): array
+    {
+    }
 
     /**
      * Check if a cookie is defined in the bag or exists in the _COOKIE
@@ -118,21 +128,27 @@ class Cookies implements \Phalcon\Http\Response\CookiesInterface, \Phalcon\Di\In
      * @param string $name
      * @return bool
      */
-    public function has(string $name): bool {}
+    public function has(string $name): bool
+    {
+    }
 
     /**
      * Returns if the bag is automatically encrypting/decrypting cookies
      *
      * @return bool
      */
-    public function isUsingEncryption(): bool {}
+    public function isUsingEncryption(): bool
+    {
+    }
 
     /**
      * Reset set cookies
      *
      * @return \Phalcon\Http\Response\CookiesInterface
      */
-    public function reset(): CookiesInterface {}
+    public function reset(): CookiesInterface
+    {
+    }
 
     /**
      * Sends the cookies to the client
@@ -140,7 +156,9 @@ class Cookies implements \Phalcon\Http\Response\CookiesInterface, \Phalcon\Di\In
      *
      * @return bool
      */
-    public function send(): bool {}
+    public function send(): bool
+    {
+    }
 
     /**
      * Sets a cookie to be sent at the end of the request.
@@ -170,14 +188,9 @@ class Cookies implements \Phalcon\Http\Response\CookiesInterface, \Phalcon\Di\In
      * @param bool $httpOnly
      * @return \Phalcon\Http\Response\CookiesInterface
      */
-    public function set(string $name, $value = null, int $expire = 0, string $path = '/', bool $secure = null, string $domain = null, bool $httpOnly = null): CookiesInterface {}
-
-    /**
-     * Sets the dependency injector
-     *
-     * @param \Phalcon\Di\DiInterface $container
-     */
-    public function setDI(\Phalcon\Di\DiInterface $container) {}
+    public function set(string $name, $value = null, int $expire = 0, string $path = '/', bool $secure = null, string $domain = null, bool $httpOnly = null): CookiesInterface
+    {
+    }
 
     /**
      * Sets the cookie's sign key.
@@ -191,7 +204,9 @@ class Cookies implements \Phalcon\Http\Response\CookiesInterface, \Phalcon\Di\In
      * @param string $signKey
      * @return \Phalcon\Http\CookieInterface
      */
-    public function setSignKey(string $signKey = null): CookieInterface {}
+    public function setSignKey(string $signKey = null): CookieInterface
+    {
+    }
 
     /**
      * Set if cookies in the bag must be automatically encrypted/decrypted
@@ -199,6 +214,7 @@ class Cookies implements \Phalcon\Http\Response\CookiesInterface, \Phalcon\Di\In
      * @param bool $useEncryption
      * @return \Phalcon\Http\Response\CookiesInterface
      */
-    public function useEncryption(bool $useEncryption): CookiesInterface {}
-
+    public function useEncryption(bool $useEncryption): CookiesInterface
+    {
+    }
 }

@@ -1,5 +1,14 @@
 <?php
 
+/**
+ * This file is part of the Phalcon Framework.
+ *
+ * (c) Phalcon Team <team@phalcon.io>
+ *
+ * For the full copyright and license information, please view the LICENSE.txt
+ * file that was distributed with this source code.
+ */
+
 namespace Phalcon\Events;
 
 /**
@@ -14,9 +23,9 @@ interface EventsAwareInterface
     /**
      * Returns the internal event manager
      *
-     * @return ManagerInterface
+     * @return null|ManagerInterface
      */
-    public function getEventsManager(): ManagerInterface;
+    public function getEventsManager(): ?ManagerInterface;
 
     /**
      * Sets the events manager
@@ -24,5 +33,4 @@ interface EventsAwareInterface
      * @param ManagerInterface $eventsManager
      */
     public function setEventsManager(ManagerInterface $eventsManager);
-
 }

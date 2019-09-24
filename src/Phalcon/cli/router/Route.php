@@ -1,5 +1,14 @@
 <?php
 
+/**
+ * This file is part of the Phalcon Framework.
+ *
+ * (c) Phalcon Team <team@phalcon.io>
+ *
+ * For the full copyright and license information, please view the LICENSE.txt
+ * file that was distributed with this source code.
+ */
+
 namespace Phalcon\Cli\Router;
 
 /**
@@ -23,7 +32,7 @@ class Route
     protected $delimiter;
 
 
-    static protected $delimiterPath = self::DEFAULT_DELIMITER;
+    protected static $delimiterPath = self::DEFAULT_DELIMITER;
 
 
     protected $description;
@@ -41,14 +50,16 @@ class Route
     protected $pattern;
 
 
-    static protected $uniqueId = 0;
+    protected static $uniqueId = 0;
 
 
     /**
      * @param string $pattern
      * @param array|string $paths
      */
-    public function __construct(string $pattern, $paths = null) {}
+    public function __construct(string $pattern, $paths = null)
+    {
+    }
 
     /**
      * Sets a callback that is called if the route is matched.
@@ -58,7 +69,9 @@ class Route
      * @param callback $callback
      * @return RouteInterface
      */
-    public function beforeMatch($callback): RouteInterface {}
+    public function beforeMatch($callback): RouteInterface
+    {
+    }
 
     /**
      * Replaces placeholders from pattern returning a valid PCRE regular
@@ -67,7 +80,9 @@ class Route
      * @param string $pattern
      * @return string
      */
-    public function compilePattern(string $pattern): string {}
+    public function compilePattern(string $pattern): string
+    {
+    }
 
     /**
      * Adds a converter to perform an additional transformation for certain
@@ -77,14 +92,18 @@ class Route
      * @param callable $converter
      * @return RouteInterface
      */
-    public function convert(string $name, $converter): RouteInterface {}
+    public function convert(string $name, $converter): RouteInterface
+    {
+    }
 
     /**
      * Set the routing delimiter
      *
      * @param string $delimiter
      */
-    public static function delimiter(string $delimiter = null) {}
+    public static function delimiter(string $delimiter = null)
+    {
+    }
 
     /**
      * Extracts parameters from a string
@@ -92,77 +111,99 @@ class Route
      * @param string $pattern
      * @return array|bool
      */
-    public function extractNamedParams(string $pattern) {}
+    public function extractNamedParams(string $pattern)
+    {
+    }
 
     /**
      * Returns the 'before match' callback if any
      *
      * @return mixed
      */
-    public function getBeforeMatch() {}
+    public function getBeforeMatch()
+    {
+    }
 
     /**
      * Returns the route's compiled pattern
      *
      * @return string
      */
-    public function getCompiledPattern(): string {}
+    public function getCompiledPattern(): string
+    {
+    }
 
     /**
      * Returns the router converter
      *
      * @return array
      */
-    public function getConverters(): array {}
+    public function getConverters(): array
+    {
+    }
 
     /**
      * Get routing delimiter
      *
      * @return string
      */
-    public static function getDelimiter(): string {}
+    public static function getDelimiter(): string
+    {
+    }
 
     /**
      * Returns the route's description
      *
      * @return string
      */
-    public function getDescription(): string {}
+    public function getDescription(): string
+    {
+    }
 
     /**
      * Returns the route's name
      *
      * @return string
      */
-    public function getName(): string {}
+    public function getName(): string
+    {
+    }
 
     /**
      * Returns the paths
      *
      * @return array
      */
-    public function getPaths(): array {}
+    public function getPaths(): array
+    {
+    }
 
     /**
      * Returns the route's pattern
      *
      * @return string
      */
-    public function getPattern(): string {}
+    public function getPattern(): string
+    {
+    }
 
     /**
      * Returns the paths using positions as keys and names as values
      *
      * @return array
      */
-    public function getReversedPaths(): array {}
+    public function getReversedPaths(): array
+    {
+    }
 
     /**
      * Returns the route's id
      *
      * @return string
      */
-    public function getRouteId(): string {}
+    public function getRouteId(): string
+    {
+    }
 
     /**
      * Reconfigure the route adding a new pattern and a set of paths
@@ -170,12 +211,16 @@ class Route
      * @param string $pattern
      * @param array|string $paths
      */
-    public function reConfigure(string $pattern, $paths = null) {}
+    public function reConfigure(string $pattern, $paths = null)
+    {
+    }
 
     /**
      * Resets the internal route id generator
      */
-    public static function reset() {}
+    public static function reset()
+    {
+    }
 
     /**
      * Sets the route's description
@@ -183,7 +228,9 @@ class Route
      * @param string $description
      * @return RouteInterface
      */
-    public function setDescription(string $description): RouteInterface {}
+    public function setDescription(string $description): RouteInterface
+    {
+    }
 
     /**
      * Sets the route's name
@@ -200,6 +247,7 @@ class Route
      * @param string $name
      * @return RouteInterface
      */
-    public function setName(string $name): RouteInterface {}
-
+    public function setName(string $name): RouteInterface
+    {
+    }
 }

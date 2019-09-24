@@ -1,6 +1,22 @@
 <?php
 
+/**
+ * This file is part of the Phalcon Framework.
+ *
+ * (c) Phalcon Team <team@phalcon.io>
+ *
+ * For the full copyright and license information, please view the LICENSE.txt
+ * file that was distributed with this source code.
+ */
+
 namespace Phalcon;
+
+use ArrayAccess;
+use Countable;
+use IteratorAggregate;
+use JsonSerializable;
+use Serializable;
+use Traversable;
 
 /**
  * `Phalcon\Collection` is a supercharged object oriented array. It implements [ArrayAccess](https://www.php.net/manual/en/class.arrayaccess.php), [Countable](https://www.php.net/manual/en/class.countable.php), [IteratorAggregate](https://www.php.net/manual/en/class.iteratoraggregate.php), [JsonSerializable](https://www.php.net/manual/en/class.jsonserializable.php), [Serializable](https://www.php.net/manual/en/class.serializable.php)
@@ -9,7 +25,12 @@ namespace Phalcon;
  * Such implementations are for instance accessing globals `$_GET`, `$_POST`
  * etc.
  */
-class Collection implements \ArrayAccess, \Countable, \IteratorAggregate, \JsonSerializable, \Serializable
+class Collection implements
+    ArrayAccess,
+    Countable,
+    IteratorAggregate,
+    JsonSerializable,
+    Serializable
 {
     /**
      * @var array
@@ -33,7 +54,9 @@ class Collection implements \ArrayAccess, \Countable, \IteratorAggregate, \JsonS
      * @param array $data
      * @param bool $insensitive
      */
-    public function __construct(array $data = array(), bool $insensitive = true) {}
+    public function __construct(array $data = array(), bool $insensitive = true)
+    {
+    }
 
     /**
      * Magic getter to get an element from the collection
@@ -41,7 +64,9 @@ class Collection implements \ArrayAccess, \Countable, \IteratorAggregate, \JsonS
      * @param string $element
      * @return mixed
      */
-    public function __get(string $element) {}
+    public function __get(string $element)
+    {
+    }
 
     /**
      * Magic isset to check whether an element exists or not
@@ -49,7 +74,9 @@ class Collection implements \ArrayAccess, \Countable, \IteratorAggregate, \JsonS
      * @param string $element
      * @return bool
      */
-    public function __isset(string $element): bool {}
+    public function __isset(string $element): bool
+    {
+    }
 
     /**
      * Magic setter to assign values to an element
@@ -57,19 +84,25 @@ class Collection implements \ArrayAccess, \Countable, \IteratorAggregate, \JsonS
      * @param string $element
      * @param mixed $value
      */
-    public function __set(string $element, $value) {}
+    public function __set(string $element, $value)
+    {
+    }
 
     /**
      * Magic unset to remove an element from the collection
      *
      * @param string $element
      */
-    public function __unset(string $element) {}
+    public function __unset(string $element)
+    {
+    }
 
     /**
      * Clears the internal collection
      */
-    public function clear() {}
+    public function clear()
+    {
+    }
 
     /**
      * Count elements of an object.
@@ -77,7 +110,9 @@ class Collection implements \ArrayAccess, \Countable, \IteratorAggregate, \JsonS
      *
      * @return int
      */
-    public function count(): int {}
+    public function count(): int
+    {
+    }
 
     /**
      * Get the element from the collection
@@ -86,14 +121,18 @@ class Collection implements \ArrayAccess, \Countable, \IteratorAggregate, \JsonS
      * @param mixed $defaultValue
      * @return mixed
      */
-    public function get(string $element, $defaultValue = null) {}
+    public function get(string $element, $defaultValue = null)
+    {
+    }
 
     /**
      * Returns the iterator of the class
      *
      * @return \Traversable
      */
-    public function getIterator(): Traversable {}
+    public function getIterator(): Traversable
+    {
+    }
 
     /**
      * Get the element from the collection
@@ -101,14 +140,18 @@ class Collection implements \ArrayAccess, \Countable, \IteratorAggregate, \JsonS
      * @param string $element
      * @return bool
      */
-    public function has(string $element): bool {}
+    public function has(string $element): bool
+    {
+    }
 
     /**
      * Initialize internal array
      *
      * @param array $data
      */
-    public function init(array $data = array()) {}
+    public function init(array $data = array())
+    {
+    }
 
     /**
      * Specify data which should be serialized to JSON
@@ -116,7 +159,9 @@ class Collection implements \ArrayAccess, \Countable, \IteratorAggregate, \JsonS
      *
      * @return array
      */
-    public function jsonSerialize(): array {}
+    public function jsonSerialize(): array
+    {
+    }
 
     /**
      * Whether a offset exists
@@ -125,7 +170,9 @@ class Collection implements \ArrayAccess, \Countable, \IteratorAggregate, \JsonS
      * @param mixed $element
      * @return bool
      */
-    public function offsetExists($element): bool {}
+    public function offsetExists($element): bool
+    {
+    }
 
     /**
      * Offset to retrieve
@@ -133,7 +180,9 @@ class Collection implements \ArrayAccess, \Countable, \IteratorAggregate, \JsonS
      *
      * @param mixed $element
      */
-    public function offsetGet($element) {}
+    public function offsetGet($element)
+    {
+    }
 
     /**
      * Offset to set
@@ -142,7 +191,9 @@ class Collection implements \ArrayAccess, \Countable, \IteratorAggregate, \JsonS
      * @param mixed $element
      * @param mixed $value
      */
-    public function offsetSet($element, $value) {}
+    public function offsetSet($element, $value)
+    {
+    }
 
     /**
      * Offset to unset
@@ -150,14 +201,18 @@ class Collection implements \ArrayAccess, \Countable, \IteratorAggregate, \JsonS
      *
      * @param mixed $element
      */
-    public function offsetUnset($element) {}
+    public function offsetUnset($element)
+    {
+    }
 
     /**
      * Delete the element from the collection
      *
      * @param string $element
      */
-    public function remove(string $element) {}
+    public function remove(string $element)
+    {
+    }
 
     /**
      * Set an element in the collection
@@ -165,7 +220,9 @@ class Collection implements \ArrayAccess, \Countable, \IteratorAggregate, \JsonS
      * @param string $element
      * @param mixed $value
      */
-    public function set(string $element, $value) {}
+    public function set(string $element, $value)
+    {
+    }
 
     /**
      * String representation of object
@@ -173,14 +230,18 @@ class Collection implements \ArrayAccess, \Countable, \IteratorAggregate, \JsonS
      *
      * @return string
      */
-    public function serialize(): string {}
+    public function serialize(): string
+    {
+    }
 
     /**
      * Returns the object in an array format
      *
      * @return array
      */
-    public function toArray(): array {}
+    public function toArray(): array
+    {
+    }
 
     /**
      * Returns the object in a JSON format
@@ -195,7 +256,9 @@ class Collection implements \ArrayAccess, \Countable, \IteratorAggregate, \JsonS
      * @param int $options
      * @return string
      */
-    public function toJson(int $options = 79): string {}
+    public function toJson(int $options = 79): string
+    {
+    }
 
     /**
      * Constructs the object
@@ -203,7 +266,9 @@ class Collection implements \ArrayAccess, \Countable, \IteratorAggregate, \JsonS
      *
      * @param mixed $serialized
      */
-    public function unserialize($serialized) {}
+    public function unserialize($serialized)
+    {
+    }
 
     /**
      * Internal method to set data
@@ -211,6 +276,7 @@ class Collection implements \ArrayAccess, \Countable, \IteratorAggregate, \JsonS
      * @param string $element
      * @param mixed $value
      */
-    protected function setData(string $element, $value) {}
-
+    protected function setData(string $element, $value)
+    {
+    }
 }

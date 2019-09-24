@@ -1,11 +1,23 @@
 <?php
 
+/**
+ * This file is part of the Phalcon Framework.
+ *
+ * (c) Phalcon Team <team@phalcon.io>
+ *
+ * For the full copyright and license information, please view the LICENSE.txt
+ * file that was distributed with this source code.
+ */
+
 namespace Phalcon\Acl\Adapter;
+
+use Phalcon\Events\EventsAwareInterface;
+use Phalcon\Events\ManagerInterface;
 
 /**
  * Adapter for Phalcon\Acl adapters
  */
-abstract class AbstractAdapter implements \Phalcon\Acl\Adapter\AdapterInterface, \Phalcon\Events\EventsAwareInterface
+abstract class AbstractAdapter implements AdapterInterface, EventsAwareInterface
 {
     /**
      * Active access which the list is checking if some role can access it
@@ -56,7 +68,9 @@ abstract class AbstractAdapter implements \Phalcon\Acl\Adapter\AdapterInterface,
      *
      * @return string
      */
-    public function getActiveAccess(): string {}
+    public function getActiveAccess(): string
+    {
+    }
 
     /**
      * Role which the list is checking if it's allowed to certain
@@ -65,41 +79,52 @@ abstract class AbstractAdapter implements \Phalcon\Acl\Adapter\AdapterInterface,
      *
      * @return string
      */
-    public function getActiveRole(): string {}
+    public function getActiveRole(): string
+    {
+    }
 
     /**
      * Component which the list is checking if some role can access it
      *
      * @return string
      */
-    public function getActiveComponent(): string {}
+    public function getActiveComponent(): string
+    {
+    }
 
     /**
      * Returns the default ACL access level
      *
      * @return int
      */
-    public function getDefaultAction(): int {}
+    public function getDefaultAction(): int
+    {
+    }
 
     /**
      * Returns the internal event manager
      *
      * @return \Phalcon\Events\ManagerInterface
      */
-    public function getEventsManager(): ManagerInterface {}
+    public function getEventsManager(): ManagerInterface
+    {
+    }
 
     /**
      * Sets the default access level (Phalcon\Acl::ALLOW or Phalcon\Acl::DENY)
      *
      * @param int $defaultAccess
      */
-    public function setDefaultAction(int $defaultAccess) {}
+    public function setDefaultAction(int $defaultAccess)
+    {
+    }
 
     /**
      * Sets the events manager
      *
      * @param \Phalcon\Events\ManagerInterface $eventsManager
      */
-    public function setEventsManager(\Phalcon\Events\ManagerInterface $eventsManager) {}
-
+    public function setEventsManager(\Phalcon\Events\ManagerInterface $eventsManager)
+    {
+    }
 }

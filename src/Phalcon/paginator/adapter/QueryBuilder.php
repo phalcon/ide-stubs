@@ -1,6 +1,18 @@
 <?php
 
+/**
+ * This file is part of the Phalcon Framework.
+ *
+ * (c) Phalcon Team <team@phalcon.io>
+ *
+ * For the full copyright and license information, please view the LICENSE.txt
+ * file that was distributed with this source code.
+ */
+
 namespace Phalcon\Paginator\Adapter;
+
+use Phalcon\Mvc\Model\Query\Builder;
+use Phalcon\Paginator\RepositoryInterface;
 
 /**
  * Phalcon\Paginator\Adapter\QueryBuilder
@@ -22,9 +34,9 @@ namespace Phalcon\Paginator\Adapter;
  *         "page"    => 1,
  *     ]
  * );
- * ```
+ *```
  */
-class QueryBuilder extends \Phalcon\Paginator\Adapter\AbstractAdapter
+class QueryBuilder extends AbstractAdapter
 {
     /**
      * Paginator's data
@@ -42,28 +54,36 @@ class QueryBuilder extends \Phalcon\Paginator\Adapter\AbstractAdapter
      *
      * @param array $config
      */
-    public function __construct(array $config) {}
+    public function __construct(array $config)
+    {
+    }
 
     /**
      * Get the current page number
      *
      * @return int
      */
-    public function getCurrentPage(): int {}
+    public function getCurrentPage(): int
+    {
+    }
 
     /**
      * Get query builder object
      *
      * @return \Phalcon\Mvc\Model\Query\Builder
      */
-    public function getQueryBuilder(): Builder {}
+    public function getQueryBuilder(): Builder
+    {
+    }
 
     /**
      * Returns a slice of the resultset to show in the pagination
      *
      * @return \Phalcon\Paginator\RepositoryInterface
      */
-    public function paginate(): RepositoryInterface {}
+    public function paginate(): RepositoryInterface
+    {
+    }
 
     /**
      * Set query builder object
@@ -71,6 +91,7 @@ class QueryBuilder extends \Phalcon\Paginator\Adapter\AbstractAdapter
      * @param \Phalcon\Mvc\Model\Query\Builder $builder
      * @return QueryBuilder
      */
-    public function setQueryBuilder(\Phalcon\Mvc\Model\Query\Builder $builder): QueryBuilder {}
-
+    public function setQueryBuilder(\Phalcon\Mvc\Model\Query\Builder $builder): QueryBuilder
+    {
+    }
 }

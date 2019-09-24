@@ -1,6 +1,19 @@
 <?php
 
+/**
+ * This file is part of the Phalcon Framework.
+ *
+ * (c) Phalcon Team <team@phalcon.io>
+ *
+ * For the full copyright and license information, please view the LICENSE.txt
+ * file that was distributed with this source code.
+ */
+
 namespace Phalcon\Di;
+
+use Phalcon\Events\EventsAwareInterface;
+use Phalcon\Events\ManagerInterface;
+use Phalcon\Session\BagInterface;
 
 /**
  * This class allows to access services in the services container by just only
@@ -12,7 +25,7 @@ namespace Phalcon\Di;
  * @property \Phalcon\Http\Request|\Phalcon\Http\RequestInterface $request
  * @property \Phalcon\Http\Response|\Phalcon\Http\ResponseInterface $response
  * @property \Phalcon\Http\Response\Cookies|\Phalcon\Http\Response\CookiesInterface $cookies
- * @property \Phalcon\Filter\FilterLocator $filter
+ * @property \Phalcon\Filter $filter
  * @property \Phalcon\Flash\Direct $flash
  * @property \Phalcon\Flash\Session $flashSession
  * @property \Phalcon\Session\ManagerInterface $session
@@ -31,7 +44,7 @@ namespace Phalcon\Di;
  * @property \Phalcon\Session\Bag|\Phalcon\Session\BagInterface $persistent
  * @property \Phalcon\Mvc\View|\Phalcon\Mvc\ViewInterface $view
  */
-abstract class Injectable implements \Phalcon\Di\InjectionAwareInterface, \Phalcon\Events\EventsAwareInterface
+abstract class Injectable implements InjectionAwareInterface, EventsAwareInterface
 {
     /**
      * Dependency Injector
@@ -54,34 +67,43 @@ abstract class Injectable implements \Phalcon\Di\InjectionAwareInterface, \Phalc
      * @param string $propertyName
      * @return mixed|null
      */
-    public function __get(string $propertyName): ? {}
+    public function __get(string $propertyName)
+    {
+    }
 
     /**
      * Returns the internal dependency injector
      *
      * @return \Phalcon\Di\DiInterface
      */
-    public function getDI(): DiInterface {}
+    public function getDI(): DiInterface
+    {
+    }
 
     /**
      * Returns the internal event manager
      *
-     * @return \Phalcon\Events\ManagerInterface
+     * @return null|\Phalcon\Events\ManagerInterface
      */
-    public function getEventsManager(): ManagerInterface {}
+    public function getEventsManager(): ?ManagerInterface
+    {
+    }
 
     /**
      * Sets the dependency injector
      *
      * @param \Phalcon\Di\DiInterface $container
      */
-    public function setDI(\Phalcon\Di\DiInterface $container) {}
+    public function setDI(\Phalcon\Di\DiInterface $container)
+    {
+    }
 
     /**
      * Sets the event manager
      *
      * @param \Phalcon\Events\ManagerInterface $eventsManager
      */
-    public function setEventsManager(\Phalcon\Events\ManagerInterface $eventsManager) {}
-
+    public function setEventsManager(\Phalcon\Events\ManagerInterface $eventsManager)
+    {
+    }
 }

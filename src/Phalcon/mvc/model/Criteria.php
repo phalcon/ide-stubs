@@ -1,6 +1,19 @@
 <?php
 
+/**
+ * This file is part of the Phalcon Framework.
+ *
+ * (c) Phalcon Team <team@phalcon.io>
+ *
+ * For the full copyright and license information, please view the LICENSE.txt
+ * file that was distributed with this source code.
+ */
+
 namespace Phalcon\Mvc\Model;
+
+use Phalcon\Di\DiInterface;
+use Phalcon\Di\InjectionAwareInterface;
+use Phalcon\Mvc\Model\Query\BuilderInterface;
 
 /**
  * Phalcon\Mvc\Model\Criteria
@@ -19,7 +32,7 @@ namespace Phalcon\Mvc\Model;
  *     ->execute();
  * ```
  */
-class Criteria implements \Phalcon\Mvc\Model\CriteriaInterface, \Phalcon\Di\InjectionAwareInterface
+class Criteria implements CriteriaInterface, InjectionAwareInterface
 {
 
     protected $bindParams;
@@ -42,14 +55,18 @@ class Criteria implements \Phalcon\Mvc\Model\CriteriaInterface, \Phalcon\Di\Inje
      *
      * @param \Phalcon\Di\DiInterface $container
      */
-    public function setDI(\Phalcon\Di\DiInterface $container) {}
+    public function setDI(\Phalcon\Di\DiInterface $container)
+    {
+    }
 
     /**
      * Returns the DependencyInjector container
      *
      * @return \Phalcon\Di\DiInterface
      */
-    public function getDI(): DiInterface {}
+    public function getDI(): DiInterface
+    {
+    }
 
     /**
      * Set a model on which the query will be executed
@@ -57,14 +74,18 @@ class Criteria implements \Phalcon\Mvc\Model\CriteriaInterface, \Phalcon\Di\Inje
      * @param string $modelName
      * @return \Phalcon\Mvc\Model\CriteriaInterface
      */
-    public function setModelName(string $modelName): CriteriaInterface {}
+    public function setModelName(string $modelName): CriteriaInterface
+    {
+    }
 
     /**
      * Returns an internal model name on which the criteria will be applied
      *
      * @return string
      */
-    public function getModelName(): string {}
+    public function getModelName(): string
+    {
+    }
 
     /**
      * Sets the bound parameters in the criteria
@@ -74,7 +95,9 @@ class Criteria implements \Phalcon\Mvc\Model\CriteriaInterface, \Phalcon\Di\Inje
      * @param bool $merge
      * @return \Phalcon\Mvc\Model\CriteriaInterface
      */
-    public function bind(array $bindParams, bool $merge = false): CriteriaInterface {}
+    public function bind(array $bindParams, bool $merge = false): CriteriaInterface
+    {
+    }
 
     /**
      * Sets the bind types in the criteria
@@ -83,7 +106,9 @@ class Criteria implements \Phalcon\Mvc\Model\CriteriaInterface, \Phalcon\Di\Inje
      * @param array $bindTypes
      * @return \Phalcon\Mvc\Model\CriteriaInterface
      */
-    public function bindTypes(array $bindTypes): CriteriaInterface {}
+    public function bindTypes(array $bindTypes): CriteriaInterface
+    {
+    }
 
     /**
      * Sets SELECT DISTINCT / SELECT ALL flag
@@ -91,7 +116,9 @@ class Criteria implements \Phalcon\Mvc\Model\CriteriaInterface, \Phalcon\Di\Inje
      * @param mixed $distinct
      * @return \Phalcon\Mvc\Model\CriteriaInterface
      */
-    public function distinct($distinct): CriteriaInterface {}
+    public function distinct($distinct): CriteriaInterface
+    {
+    }
 
     /**
      * Sets the columns to be queried
@@ -108,7 +135,9 @@ class Criteria implements \Phalcon\Mvc\Model\CriteriaInterface, \Phalcon\Di\Inje
      * @param string|array $columns
      * @return \Phalcon\Mvc\Model\CriteriaInterface
      */
-    public function columns($columns): CriteriaInterface {}
+    public function columns($columns): CriteriaInterface
+    {
+    }
 
     /**
      * Adds an INNER join to the query
@@ -143,7 +172,9 @@ class Criteria implements \Phalcon\Mvc\Model\CriteriaInterface, \Phalcon\Di\Inje
      * @param mixed $type
      * @return \Phalcon\Mvc\Model\CriteriaInterface
      */
-    public function join(string $model, $conditions = null, $alias = null, $type = null): CriteriaInterface {}
+    public function join(string $model, $conditions = null, $alias = null, $type = null): CriteriaInterface
+    {
+    }
 
     /**
      * Adds an INNER join to the query
@@ -170,7 +201,9 @@ class Criteria implements \Phalcon\Mvc\Model\CriteriaInterface, \Phalcon\Di\Inje
      * @param mixed $alias
      * @return \Phalcon\Mvc\Model\CriteriaInterface
      */
-    public function innerJoin(string $model, $conditions = null, $alias = null): CriteriaInterface {}
+    public function innerJoin(string $model, $conditions = null, $alias = null): CriteriaInterface
+    {
+    }
 
     /**
      * Adds a LEFT join to the query
@@ -188,7 +221,9 @@ class Criteria implements \Phalcon\Mvc\Model\CriteriaInterface, \Phalcon\Di\Inje
      * @param mixed $alias
      * @return \Phalcon\Mvc\Model\CriteriaInterface
      */
-    public function leftJoin(string $model, $conditions = null, $alias = null): CriteriaInterface {}
+    public function leftJoin(string $model, $conditions = null, $alias = null): CriteriaInterface
+    {
+    }
 
     /**
      * Adds a RIGHT join to the query
@@ -206,7 +241,9 @@ class Criteria implements \Phalcon\Mvc\Model\CriteriaInterface, \Phalcon\Di\Inje
      * @param mixed $alias
      * @return \Phalcon\Mvc\Model\CriteriaInterface
      */
-    public function rightJoin(string $model, $conditions = null, $alias = null): CriteriaInterface {}
+    public function rightJoin(string $model, $conditions = null, $alias = null): CriteriaInterface
+    {
+    }
 
     /**
      * Sets the conditions parameter in the criteria
@@ -216,7 +253,9 @@ class Criteria implements \Phalcon\Mvc\Model\CriteriaInterface, \Phalcon\Di\Inje
      * @param mixed $bindTypes
      * @return \Phalcon\Mvc\Model\CriteriaInterface
      */
-    public function where(string $conditions, $bindParams = null, $bindTypes = null): CriteriaInterface {}
+    public function where(string $conditions, $bindParams = null, $bindTypes = null): CriteriaInterface
+    {
+    }
 
     /**
      * Appends a condition to the current conditions using an AND operator
@@ -226,7 +265,9 @@ class Criteria implements \Phalcon\Mvc\Model\CriteriaInterface, \Phalcon\Di\Inje
      * @param mixed $bindTypes
      * @return \Phalcon\Mvc\Model\CriteriaInterface
      */
-    public function andWhere(string $conditions, $bindParams = null, $bindTypes = null): CriteriaInterface {}
+    public function andWhere(string $conditions, $bindParams = null, $bindTypes = null): CriteriaInterface
+    {
+    }
 
     /**
      * Appends a condition to the current conditions using an OR operator
@@ -236,7 +277,9 @@ class Criteria implements \Phalcon\Mvc\Model\CriteriaInterface, \Phalcon\Di\Inje
      * @param mixed $bindTypes
      * @return \Phalcon\Mvc\Model\CriteriaInterface
      */
-    public function orWhere(string $conditions, $bindParams = null, $bindTypes = null): CriteriaInterface {}
+    public function orWhere(string $conditions, $bindParams = null, $bindTypes = null): CriteriaInterface
+    {
+    }
 
     /**
      * Appends a BETWEEN condition to the current conditions
@@ -250,7 +293,9 @@ class Criteria implements \Phalcon\Mvc\Model\CriteriaInterface, \Phalcon\Di\Inje
      * @param mixed $maximum
      * @return \Phalcon\Mvc\Model\CriteriaInterface
      */
-    public function betweenWhere(string $expr, $minimum, $maximum): CriteriaInterface {}
+    public function betweenWhere(string $expr, $minimum, $maximum): CriteriaInterface
+    {
+    }
 
     /**
      * Appends a NOT BETWEEN condition to the current conditions
@@ -264,7 +309,9 @@ class Criteria implements \Phalcon\Mvc\Model\CriteriaInterface, \Phalcon\Di\Inje
      * @param mixed $maximum
      * @return \Phalcon\Mvc\Model\CriteriaInterface
      */
-    public function notBetweenWhere(string $expr, $minimum, $maximum): CriteriaInterface {}
+    public function notBetweenWhere(string $expr, $minimum, $maximum): CriteriaInterface
+    {
+    }
 
     /**
      * Appends an IN condition to the current conditions
@@ -277,7 +324,9 @@ class Criteria implements \Phalcon\Mvc\Model\CriteriaInterface, \Phalcon\Di\Inje
      * @param array $values
      * @return \Phalcon\Mvc\Model\CriteriaInterface
      */
-    public function inWhere(string $expr, array $values): CriteriaInterface {}
+    public function inWhere(string $expr, array $values): CriteriaInterface
+    {
+    }
 
     /**
      * Appends a NOT IN condition to the current conditions
@@ -290,7 +339,9 @@ class Criteria implements \Phalcon\Mvc\Model\CriteriaInterface, \Phalcon\Di\Inje
      * @param array $values
      * @return \Phalcon\Mvc\Model\CriteriaInterface
      */
-    public function notInWhere(string $expr, array $values): CriteriaInterface {}
+    public function notInWhere(string $expr, array $values): CriteriaInterface
+    {
+    }
 
     /**
      * Adds the conditions parameter to the criteria
@@ -298,7 +349,9 @@ class Criteria implements \Phalcon\Mvc\Model\CriteriaInterface, \Phalcon\Di\Inje
      * @param string $conditions
      * @return \Phalcon\Mvc\Model\CriteriaInterface
      */
-    public function conditions(string $conditions): CriteriaInterface {}
+    public function conditions(string $conditions): CriteriaInterface
+    {
+    }
 
     /**
      * Adds the order-by clause to the criteria
@@ -306,7 +359,9 @@ class Criteria implements \Phalcon\Mvc\Model\CriteriaInterface, \Phalcon\Di\Inje
      * @param string $orderColumns
      * @return \Phalcon\Mvc\Model\CriteriaInterface
      */
-    public function orderBy(string $orderColumns): CriteriaInterface {}
+    public function orderBy(string $orderColumns): CriteriaInterface
+    {
+    }
 
     /**
      * Adds the group-by clause to the criteria
@@ -314,7 +369,9 @@ class Criteria implements \Phalcon\Mvc\Model\CriteriaInterface, \Phalcon\Di\Inje
      * @param mixed $group
      * @return \Phalcon\Mvc\Model\CriteriaInterface
      */
-    public function groupBy($group): CriteriaInterface {}
+    public function groupBy($group): CriteriaInterface
+    {
+    }
 
     /**
      * Adds the having clause to the criteria
@@ -322,7 +379,9 @@ class Criteria implements \Phalcon\Mvc\Model\CriteriaInterface, \Phalcon\Di\Inje
      * @param mixed $having
      * @return \Phalcon\Mvc\Model\CriteriaInterface
      */
-    public function having($having): CriteriaInterface {}
+    public function having($having): CriteriaInterface
+    {
+    }
 
     /**
      * Adds the limit parameter to the criteria.
@@ -337,7 +396,9 @@ class Criteria implements \Phalcon\Mvc\Model\CriteriaInterface, \Phalcon\Di\Inje
      * @param int $offset
      * @return \Phalcon\Mvc\Model\CriteriaInterface
      */
-    public function limit(int $limit, int $offset = 0): CriteriaInterface {}
+    public function limit(int $limit, int $offset = 0): CriteriaInterface
+    {
+    }
 
     /**
      * Adds the "for_update" parameter to the criteria
@@ -345,7 +406,9 @@ class Criteria implements \Phalcon\Mvc\Model\CriteriaInterface, \Phalcon\Di\Inje
      * @param bool $forUpdate
      * @return \Phalcon\Mvc\Model\CriteriaInterface
      */
-    public function forUpdate(bool $forUpdate = true): CriteriaInterface {}
+    public function forUpdate(bool $forUpdate = true): CriteriaInterface
+    {
+    }
 
     /**
      * Adds the "shared_lock" parameter to the criteria
@@ -353,7 +416,9 @@ class Criteria implements \Phalcon\Mvc\Model\CriteriaInterface, \Phalcon\Di\Inje
      * @param bool $sharedLock
      * @return \Phalcon\Mvc\Model\CriteriaInterface
      */
-    public function sharedLock(bool $sharedLock = true): CriteriaInterface {}
+    public function sharedLock(bool $sharedLock = true): CriteriaInterface
+    {
+    }
 
     /**
      * Sets the cache options in the criteria
@@ -362,28 +427,36 @@ class Criteria implements \Phalcon\Mvc\Model\CriteriaInterface, \Phalcon\Di\Inje
      * @param array $cache
      * @return \Phalcon\Mvc\Model\CriteriaInterface
      */
-    public function cache(array $cache): CriteriaInterface {}
+    public function cache(array $cache): CriteriaInterface
+    {
+    }
 
     /**
      * Returns the conditions parameter in the criteria
      *
      * @return string|null
      */
-    public function getWhere(): ?string {}
+    public function getWhere(): ?string
+    {
+    }
 
     /**
      * Returns the columns to be queried
      *
      * @return string|null
      */
-    public function getColumns(): ?string {}
+    public function getColumns(): ?string
+    {
+    }
 
     /**
      * Returns the conditions parameter in the criteria
      *
      * @return string|null
      */
-    public function getConditions(): ?string {}
+    public function getConditions(): ?string
+    {
+    }
 
     /**
      * Returns the limit parameter in the criteria, which will be an integer if
@@ -392,31 +465,41 @@ class Criteria implements \Phalcon\Mvc\Model\CriteriaInterface, \Phalcon\Di\Inje
      *
      * @return string|null
      */
-    public function getLimit(): ?string {}
+    public function getLimit(): ?string
+    {
+    }
 
     /**
      * Returns the order clause in the criteria
      *
      * @return string|null
      */
-    public function getOrderBy(): ?string {}
+    public function getOrderBy(): ?string
+    {
+    }
 
     /**
      * Returns the group clause in the criteria
      */
-    public function getGroupBy() {}
+    public function getGroupBy()
+    {
+    }
 
     /**
      * Returns the having clause in the criteria
      */
-    public function getHaving() {}
+    public function getHaving()
+    {
+    }
 
     /**
      * Returns all the parameters defined in the criteria
      *
      * @return array
      */
-    public function getParams(): array {}
+    public function getParams(): array
+    {
+    }
 
     /**
      * Builds a Phalcon\Mvc\Model\Criteria based on an input array like $_POST
@@ -427,7 +510,9 @@ class Criteria implements \Phalcon\Mvc\Model\CriteriaInterface, \Phalcon\Di\Inje
      * @param string $operator
      * @return \Phalcon\Mvc\Model\CriteriaInterface
      */
-    public static function fromInput(\Phalcon\Di\DiInterface $container, string $modelName, array $data, string $operator = 'AND'): CriteriaInterface {}
+    public static function fromInput(\Phalcon\Di\DiInterface $container, string $modelName, array $data, string $operator = 'AND'): CriteriaInterface
+    {
+    }
 
     /**
      * Creates a query builder from criteria.
@@ -441,13 +526,16 @@ class Criteria implements \Phalcon\Mvc\Model\CriteriaInterface, \Phalcon\Di\Inje
      *
      * @return \Phalcon\Mvc\Model\Query\BuilderInterface
      */
-    public function createBuilder(): BuilderInterface {}
+    public function createBuilder(): BuilderInterface
+    {
+    }
 
     /**
      * Executes a find using the parameters built with the criteria
      *
      * @return \Phalcon\Mvc\Model\ResultsetInterface
      */
-    public function execute(): ResultsetInterface {}
-
+    public function execute(): ResultsetInterface
+    {
+    }
 }

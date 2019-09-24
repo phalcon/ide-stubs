@@ -1,11 +1,23 @@
 <?php
 
+/**
+ * This file is part of the Phalcon Framework.
+ *
+ * (c) Phalcon Team <team@phalcon.io>
+ *
+ * For the full copyright and license information, please view the LICENSE.txt
+ * file that was distributed with this source code.
+ */
+
 namespace Phalcon;
+
+use Phalcon\Di\DiInterface;
+use Psr\Container\ContainerInterface;
 
 /**
  * PSR-11 Wrapper for `Phalcon\Di`
  */
-class Container implements \Psr\Container\ContainerInterface
+class Container implements ContainerInterface
 {
     /**
      * @var <DiInterface>
@@ -18,7 +30,9 @@ class Container implements \Psr\Container\ContainerInterface
      *
      * @param \Phalcon\Di\DiInterface $container
      */
-    public function __construct(\Phalcon\Di\DiInterface $container) {}
+    public function __construct(\Phalcon\Di\DiInterface $container)
+    {
+    }
 
     /**
      * Return the service
@@ -26,7 +40,9 @@ class Container implements \Psr\Container\ContainerInterface
      * @param mixed $name
      * @return mixed
      */
-    public function get($name) {}
+    public function get($name)
+    {
+    }
 
     /**
      * Whether a service exists or not in the container
@@ -34,6 +50,7 @@ class Container implements \Psr\Container\ContainerInterface
      * @param mixed $name
      * @return bool
      */
-    public function has($name): bool {}
-
+    public function has($name): bool
+    {
+    }
 }

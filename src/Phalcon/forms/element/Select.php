@@ -1,5 +1,14 @@
 <?php
 
+/**
+ * This file is part of the Phalcon Framework.
+ *
+ * (c) Phalcon Team <team@phalcon.io>
+ *
+ * For the full copyright and license information, please view the LICENSE.txt
+ * file that was distributed with this source code.
+ */
+
 namespace Phalcon\Forms\Element;
 
 /**
@@ -7,7 +16,7 @@ namespace Phalcon\Forms\Element;
  *
  * Component SELECT (choice) for forms
  */
-class Select extends \Phalcon\Forms\Element\AbstractElement
+class Select extends AbstractElement
 {
 
     protected $optionsValues;
@@ -20,7 +29,9 @@ class Select extends \Phalcon\Forms\Element\AbstractElement
      * @param object|array $options
      * @param array $attributes
      */
-    public function __construct(string $name, $options = null, $attributes = null) {}
+    public function __construct(string $name, $options = null, $attributes = null)
+    {
+    }
 
     /**
      * Adds an option to the current options
@@ -28,14 +39,18 @@ class Select extends \Phalcon\Forms\Element\AbstractElement
      * @param array|string $option
      * @return Element
      */
-    public function addOption($option): Element {}
+    public function addOption($option): Element
+    {
+    }
 
     /**
      * Returns the choices' options
      *
      * @return array|object
      */
-    public function getOptions() {}
+    public function getOptions()
+    {
+    }
 
     /**
      * Renders the element widget returning html
@@ -43,7 +58,9 @@ class Select extends \Phalcon\Forms\Element\AbstractElement
      * @param array $attributes
      * @return string
      */
-    public function render(array $attributes = array()): string {}
+    public function render(array $attributes = array()): string
+    {
+    }
 
     /**
      * Set the choice's options
@@ -51,6 +68,7 @@ class Select extends \Phalcon\Forms\Element\AbstractElement
      * @param array|object $options
      * @return Element
      */
-    public function setOptions($options): Element {}
-
+    public function setOptions($options): Element
+    {
+    }
 }

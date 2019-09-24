@@ -1,13 +1,24 @@
 <?php
 
+/**
+ * This file is part of the Phalcon Framework.
+ *
+ * (c) Phalcon Team <team@phalcon.io>
+ *
+ * For the full copyright and license information, please view the LICENSE.txt
+ * file that was distributed with this source code.
+ */
+
 namespace Phalcon\Translate\Adapter;
+
+use ArrayAccess;
 
 /**
  * Phalcon\Translate\Adapter\NativeArray
  *
  * Allows to define translation lists using PHP arrays
  */
-class NativeArray extends \Phalcon\Translate\Adapter\AbstractAdapter implements \ArrayAccess
+class NativeArray extends AbstractAdapter implements ArrayAccess
 {
     /**
      * @var array
@@ -26,7 +37,9 @@ class NativeArray extends \Phalcon\Translate\Adapter\AbstractAdapter implements 
      * @param \Phalcon\Translate\InterpolatorFactory $interpolator
      * @param array $options
      */
-    public function __construct(\Phalcon\Translate\InterpolatorFactory $interpolator, array $options) {}
+    public function __construct(\Phalcon\Translate\InterpolatorFactory $interpolator, array $options)
+    {
+    }
 
     /**
      * Check whether is defined a translation key in the internal array
@@ -34,7 +47,9 @@ class NativeArray extends \Phalcon\Translate\Adapter\AbstractAdapter implements 
      * @param string $index
      * @return bool
      */
-    public function exists(string $index): bool {}
+    public function exists(string $index): bool
+    {
+    }
 
     /**
      * Whenever a key is not found this medhod will be called
@@ -42,7 +57,9 @@ class NativeArray extends \Phalcon\Translate\Adapter\AbstractAdapter implements 
      * @param string $index
      * @return string
      */
-    public function notFound(string $index): string {}
+    public function notFound(string $index): string
+    {
+    }
 
     /**
      * Returns the translation related to the given key
@@ -51,6 +68,7 @@ class NativeArray extends \Phalcon\Translate\Adapter\AbstractAdapter implements 
      * @param mixed $placeholders
      * @return string
      */
-    public function query(string $index, $placeholders = null): string {}
-
+    public function query(string $index, $placeholders = null): string
+    {
+    }
 }

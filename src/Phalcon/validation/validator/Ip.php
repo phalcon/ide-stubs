@@ -1,6 +1,17 @@
 <?php
 
+/**
+ * This file is part of the Phalcon Framework.
+ *
+ * (c) Phalcon Team <team@phalcon.io>
+ *
+ * For the full copyright and license information, please view the LICENSE.txt
+ * file that was distributed with this source code.
+ */
+
 namespace Phalcon\Validation\Validator;
+
+use Phalcon\Validation\AbstractValidator;
 
 /**
  * Check for IP addresses
@@ -53,7 +64,7 @@ namespace Phalcon\Validation\Validator;
  * );
  * ```
  */
-class Ip extends \Phalcon\Validation\AbstractValidator
+class Ip extends AbstractValidator
 {
 
     const VERSION_4 = 1048576;
@@ -72,6 +83,7 @@ class Ip extends \Phalcon\Validation\AbstractValidator
      * @param mixed $field
      * @return bool
      */
-    public function validate(\Phalcon\Validation $validation, $field): bool {}
-
+    public function validate(\Phalcon\Validation $validation, $field): bool
+    {
+    }
 }

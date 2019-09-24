@@ -1,6 +1,17 @@
 <?php
 
+/**
+ * This file is part of the Phalcon Framework.
+ *
+ * (c) Phalcon Team <team@phalcon.io>
+ *
+ * For the full copyright and license information, please view the LICENSE.txt
+ * file that was distributed with this source code.
+ */
+
 namespace Phalcon\Validation\Validator\StringLength;
+
+use Phalcon\Validation\AbstractValidator;
 
 /**
  * Validates that a string has the specified minimum constraints
@@ -48,7 +59,7 @@ namespace Phalcon\Validation\Validator\StringLength;
  * );
  * ```
  */
-class Min extends \Phalcon\Validation\AbstractValidator
+class Min extends AbstractValidator
 {
 
     protected $template = 'Field :field must be at least :min characters long';
@@ -61,6 +72,7 @@ class Min extends \Phalcon\Validation\AbstractValidator
      * @param mixed $field
      * @return bool
      */
-    public function validate(\Phalcon\Validation $validation, $field): bool {}
-
+    public function validate(\Phalcon\Validation $validation, $field): bool
+    {
+    }
 }

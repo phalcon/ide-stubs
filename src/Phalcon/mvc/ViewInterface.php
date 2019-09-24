@@ -1,5 +1,14 @@
 <?php
 
+/**
+ * This file is part of the Phalcon Framework.
+ *
+ * (c) Phalcon Team <team@phalcon.io>
+ *
+ * For the full copyright and license information, please view the LICENSE.txt
+ * file that was distributed with this source code.
+ */
+
 namespace Phalcon\Mvc;
 
 /**
@@ -7,7 +16,7 @@ namespace Phalcon\Mvc;
  *
  * Interface for Phalcon\Mvc\View
  */
-interface ViewInterface extends \Phalcon\Mvc\ViewBaseInterface
+interface ViewInterface extends ViewBaseInterface
 {
 
     /**
@@ -195,5 +204,4 @@ interface ViewInterface extends \Phalcon\Mvc\ViewBaseInterface
      * Starts rendering process enabling the output buffering
      */
     public function start();
-
 }

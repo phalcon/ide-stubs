@@ -1,11 +1,24 @@
 <?php
 
+/**
+ * This file is part of the Phalcon Framework.
+ *
+ * (c) Phalcon Team <team@phalcon.io>
+ *
+ * For the full copyright and license information, please view the LICENSE.txt
+ * file that was distributed with this source code.
+ */
+
 namespace Phalcon;
+
+use Phalcon\Di\Injectable;
+use Phalcon\Messages\Messages;
+use Phalcon\Validation\ValidationInterface;
 
 /**
  * Allows to validate data using custom or built-in validators
  */
-class Validation extends \Phalcon\Di\Injectable implements \Phalcon\Validation\ValidationInterface
+class Validation extends Injectable implements ValidationInterface
 {
 
     protected $combinedFieldsValidators;
@@ -33,19 +46,25 @@ class Validation extends \Phalcon\Di\Injectable implements \Phalcon\Validation\V
 
 
 
-    public function getData() {}
+    public function getData()
+    {
+    }
 
     /**
      * @param mixed $validators
      */
-    public function setValidators($validators) {}
+    public function setValidators($validators)
+    {
+    }
 
     /**
      * Phalcon\Validation constructor
      *
      * @param array $validators
      */
-    public function __construct(array $validators = array()) {}
+    public function __construct(array $validators = array())
+    {
+    }
 
     /**
      * Adds a validator to a field
@@ -54,7 +73,9 @@ class Validation extends \Phalcon\Di\Injectable implements \Phalcon\Validation\V
      * @param \Phalcon\Validation\ValidatorInterface $validator
      * @return \Phalcon\Validation\ValidationInterface
      */
-    public function add($field, \Phalcon\Validation\ValidatorInterface $validator): ValidationInterface {}
+    public function add($field, \Phalcon\Validation\ValidatorInterface $validator): ValidationInterface
+    {
+    }
 
     /**
      * Appends a message to the messages list
@@ -62,7 +83,9 @@ class Validation extends \Phalcon\Di\Injectable implements \Phalcon\Validation\V
      * @param \Phalcon\Messages\MessageInterface $message
      * @return \Phalcon\Validation\ValidationInterface
      */
-    public function appendMessage(\Phalcon\Messages\MessageInterface $message): ValidationInterface {}
+    public function appendMessage(\Phalcon\Messages\MessageInterface $message): ValidationInterface
+    {
+    }
 
     /**
      * Assigns the data to an entity
@@ -72,14 +95,18 @@ class Validation extends \Phalcon\Di\Injectable implements \Phalcon\Validation\V
      * @param array|object $data
      * @return \Phalcon\Validation\ValidationInterface
      */
-    public function bind($entity, $data): ValidationInterface {}
+    public function bind($entity, $data): ValidationInterface
+    {
+    }
 
     /**
      * Returns the bound entity
      *
      * @return object
      */
-    public function getEntity() {}
+    public function getEntity()
+    {
+    }
 
     /**
      * Returns all the filters or a specific one
@@ -87,7 +114,9 @@ class Validation extends \Phalcon\Di\Injectable implements \Phalcon\Validation\V
      * @param string $field
      * @return mixed|null
      */
-    public function getFilters(string $field = null): ? {}
+    public function getFilters(string $field = null)
+    {
+    }
 
     /**
      * Get label for field
@@ -95,21 +124,27 @@ class Validation extends \Phalcon\Di\Injectable implements \Phalcon\Validation\V
      * @param string $field
      * @return string
      */
-    public function getLabel($field): string {}
+    public function getLabel($field): string
+    {
+    }
 
     /**
      * Returns the registered validators
      *
      * @return \Phalcon\Messages\Messages
      */
-    public function getMessages(): Messages {}
+    public function getMessages(): Messages
+    {
+    }
 
     /**
      * Returns the validators added to the validation
      *
      * @return array
      */
-    public function getValidators(): array {}
+    public function getValidators(): array
+    {
+    }
 
     /**
      * Gets the a value to validate in the array/object data source
@@ -117,7 +152,9 @@ class Validation extends \Phalcon\Di\Injectable implements \Phalcon\Validation\V
      * @param string $field
      * @return mixed|null
      */
-    public function getValue(string $field): ? {}
+    public function getValue(string $field)
+    {
+    }
 
     /**
      * Alias of `add` method
@@ -126,7 +163,9 @@ class Validation extends \Phalcon\Di\Injectable implements \Phalcon\Validation\V
      * @param \Phalcon\Validation\ValidatorInterface $validator
      * @return \Phalcon\Validation\ValidationInterface
      */
-    public function rule($field, \Phalcon\Validation\ValidatorInterface $validator): ValidationInterface {}
+    public function rule($field, \Phalcon\Validation\ValidatorInterface $validator): ValidationInterface
+    {
+    }
 
     /**
      * Adds the validators to a field
@@ -135,14 +174,18 @@ class Validation extends \Phalcon\Di\Injectable implements \Phalcon\Validation\V
      * @param array $validators
      * @return \Phalcon\Validation\ValidationInterface
      */
-    public function rules($field, array $validators): ValidationInterface {}
+    public function rules($field, array $validators): ValidationInterface
+    {
+    }
 
     /**
      * Sets the bound entity
      *
      * @param object $entity
      */
-    public function setEntity($entity) {}
+    public function setEntity($entity)
+    {
+    }
 
     /**
      * Adds filters to the field
@@ -151,14 +194,18 @@ class Validation extends \Phalcon\Di\Injectable implements \Phalcon\Validation\V
      * @param array|string $filters
      * @return \Phalcon\Validation\ValidationInterface
      */
-    public function setFilters($field, $filters): ValidationInterface {}
+    public function setFilters($field, $filters): ValidationInterface
+    {
+    }
 
     /**
      * Adds labels for fields
      *
      * @param array $labels
      */
-    public function setLabels(array $labels) {}
+    public function setLabels(array $labels)
+    {
+    }
 
     /**
      * Validate a set of data according to a set of rules
@@ -167,7 +214,9 @@ class Validation extends \Phalcon\Di\Injectable implements \Phalcon\Validation\V
      * @param object $entity
      * @return \Phalcon\Messages\Messages
      */
-    public function validate($data = null, $entity = null): Messages {}
+    public function validate($data = null, $entity = null): Messages
+    {
+    }
 
     /**
      * Internal validations, if it returns true, then skip the current validator
@@ -176,6 +225,7 @@ class Validation extends \Phalcon\Di\Injectable implements \Phalcon\Validation\V
      * @param \Phalcon\Validation\ValidatorInterface $validator
      * @return bool
      */
-    protected function preChecking($field, \Phalcon\Validation\ValidatorInterface $validator): bool {}
-
+    protected function preChecking($field, \Phalcon\Validation\ValidatorInterface $validator): bool
+    {
+    }
 }

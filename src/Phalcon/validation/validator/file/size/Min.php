@@ -1,6 +1,17 @@
 <?php
 
+/**
+ * This file is part of the Phalcon Framework.
+ *
+ * (c) Phalcon Team <team@phalcon.io>
+ *
+ * For the full copyright and license information, please view the LICENSE.txt
+ * file that was distributed with this source code.
+ */
+
 namespace Phalcon\Validation\Validator\File\Size;
+
+use Phalcon\Validation\Validator\File\AbstractFile;
 
 /**
  * Checks if a value has a correct file
@@ -46,7 +57,7 @@ namespace Phalcon\Validation\Validator\File\Size;
  * );
  * ```
  */
-class Min extends \Phalcon\Validation\Validator\File\AbstractFile
+class Min extends AbstractFile
 {
 
     protected $template = 'File :field can not have the minimum size of :size';
@@ -59,6 +70,7 @@ class Min extends \Phalcon\Validation\Validator\File\AbstractFile
      * @param mixed $field
      * @return bool
      */
-    public function validate(\Phalcon\Validation $validation, $field): bool {}
-
+    public function validate(\Phalcon\Validation $validation, $field): bool
+    {
+    }
 }

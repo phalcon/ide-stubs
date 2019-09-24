@@ -1,11 +1,22 @@
 <?php
 
+/**
+ * This file is part of the Phalcon Framework.
+ *
+ * (c) Phalcon Team <team@phalcon.io>
+ *
+ * For the full copyright and license information, please view the LICENSE.txt
+ * file that was distributed with this source code.
+ */
+
 namespace Phalcon\Paginator\Adapter;
+
+use Phalcon\Paginator\RepositoryInterface;
 
 /**
  * Phalcon\Paginator\Adapter\AbstractAdapter
  */
-abstract class AbstractAdapter implements \Phalcon\Paginator\Adapter\AdapterInterface
+abstract class AbstractAdapter implements AdapterInterface
 {
     /**
      * Configuration of paginator
@@ -35,14 +46,18 @@ abstract class AbstractAdapter implements \Phalcon\Paginator\Adapter\AdapterInte
      *
      * @param array $config
      */
-    public function __construct(array $config) {}
+    public function __construct(array $config)
+    {
+    }
 
     /**
      * Get current rows limit
      *
      * @return int
      */
-    public function getLimit(): int {}
+    public function getLimit(): int
+    {
+    }
 
     /**
      * Set the current page number
@@ -50,7 +65,9 @@ abstract class AbstractAdapter implements \Phalcon\Paginator\Adapter\AdapterInte
      * @param int $page
      * @return Adapter
      */
-    public function setCurrentPage(int $page): Adapter {}
+    public function setCurrentPage(int $page): Adapter
+    {
+    }
 
     /**
      * Set current rows limit
@@ -58,7 +75,9 @@ abstract class AbstractAdapter implements \Phalcon\Paginator\Adapter\AdapterInte
      * @param int $limitRows
      * @return Adapter
      */
-    public function setLimit(int $limitRows): Adapter {}
+    public function setLimit(int $limitRows): Adapter
+    {
+    }
 
     /**
      * Sets current repository for pagination
@@ -66,7 +85,9 @@ abstract class AbstractAdapter implements \Phalcon\Paginator\Adapter\AdapterInte
      * @param \Phalcon\Paginator\RepositoryInterface $repository
      * @return Adapter
      */
-    public function setRepository(\Phalcon\Paginator\RepositoryInterface $repository): Adapter {}
+    public function setRepository(\Phalcon\Paginator\RepositoryInterface $repository): Adapter
+    {
+    }
 
     /**
      * Gets current repository for pagination
@@ -74,6 +95,7 @@ abstract class AbstractAdapter implements \Phalcon\Paginator\Adapter\AdapterInte
      * @param array $properties
      * @return \Phalcon\Paginator\RepositoryInterface
      */
-    protected function getRepository(array $properties = null): RepositoryInterface {}
-
+    protected function getRepository(array $properties = null): RepositoryInterface
+    {
+    }
 }

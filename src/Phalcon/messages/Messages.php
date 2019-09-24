@@ -1,11 +1,25 @@
 <?php
 
+/**
+ * This file is part of the Phalcon Framework.
+ *
+ * (c) Phalcon Team <team@phalcon.io>
+ *
+ * For the full copyright and license information, please view the LICENSE.txt
+ * file that was distributed with this source code.
+ */
+
 namespace Phalcon\Messages;
+
+use ArrayAccess;
+use Countable;
+use Iterator;
+use JsonSerializable;
 
 /**
  * Represents a collection of messages
  */
-class Messages implements \ArrayAccess, \Countable, \Iterator, \JsonSerializable
+class Messages implements ArrayAccess, Countable, Iterator, JsonSerializable
 {
     /**
      * @var int
@@ -23,7 +37,9 @@ class Messages implements \ArrayAccess, \Countable, \Iterator, \JsonSerializable
      *
      * @param array $messages
      */
-    public function __construct(array $messages = array()) {}
+    public function __construct(array $messages = array())
+    {
+    }
 
     /**
      * Appends a message to the collection
@@ -36,7 +52,9 @@ class Messages implements \ArrayAccess, \Countable, \Iterator, \JsonSerializable
      *
      * @param \Phalcon\Messages\MessageInterface $message
      */
-    public function appendMessage(\Phalcon\Messages\MessageInterface $message) {}
+    public function appendMessage(\Phalcon\Messages\MessageInterface $message)
+    {
+    }
 
     /**
      * Appends an array of messages to the collection
@@ -47,21 +65,27 @@ class Messages implements \ArrayAccess, \Countable, \Iterator, \JsonSerializable
      *
      * @param \Phalcon\Messages\MessageInterface[] $messages
      */
-    public function appendMessages($messages) {}
+    public function appendMessages($messages)
+    {
+    }
 
     /**
      * Returns the number of messages in the list
      *
      * @return int
      */
-    public function count(): int {}
+    public function count(): int
+    {
+    }
 
     /**
      * Returns the current message in the iterator
      *
      * @return \Phalcon\Messages\MessageInterface
      */
-    public function current(): MessageInterface {}
+    public function current(): MessageInterface
+    {
+    }
 
     /**
      * Filters the message collection by field name
@@ -69,7 +93,9 @@ class Messages implements \ArrayAccess, \Countable, \Iterator, \JsonSerializable
      * @param string $fieldName
      * @return array
      */
-    public function filter(string $fieldName): array {}
+    public function filter(string $fieldName): array
+    {
+    }
 
     /**
      * Returns serialised message objects as array for json_encode. Calls
@@ -82,19 +108,25 @@ class Messages implements \ArrayAccess, \Countable, \Iterator, \JsonSerializable
      *
      * @return array
      */
-    public function jsonSerialize(): array {}
+    public function jsonSerialize(): array
+    {
+    }
 
     /**
      * Returns the current position/key in the iterator
      *
      * @return int
      */
-    public function key(): int {}
+    public function key(): int
+    {
+    }
 
     /**
      * Moves the internal iteration pointer to the next position
      */
-    public function next() {}
+    public function next()
+    {
+    }
 
     /**
      * Checks if an index exists
@@ -108,7 +140,9 @@ class Messages implements \ArrayAccess, \Countable, \Iterator, \JsonSerializable
      * @param int $index
      * @return bool
      */
-    public function offsetExists($index): bool {}
+    public function offsetExists($index): bool
+    {
+    }
 
     /**
      * Gets an attribute a message using the array syntax
@@ -122,7 +156,9 @@ class Messages implements \ArrayAccess, \Countable, \Iterator, \JsonSerializable
      * @param mixed $index
      * @return mixed
      */
-    public function offsetGet($index) {}
+    public function offsetGet($index)
+    {
+    }
 
     /**
      * Sets an attribute using the array-syntax
@@ -134,7 +170,9 @@ class Messages implements \ArrayAccess, \Countable, \Iterator, \JsonSerializable
      * @param mixed $index
      * @param \Phalcon\Messages\Message $message
      */
-    public function offsetSet($index, $message) {}
+    public function offsetSet($index, $message)
+    {
+    }
 
     /**
      * Removes a message from the list
@@ -145,18 +183,23 @@ class Messages implements \ArrayAccess, \Countable, \Iterator, \JsonSerializable
      *
      * @param mixed $index
      */
-    public function offsetUnset($index) {}
+    public function offsetUnset($index)
+    {
+    }
 
     /**
      * Rewinds the internal iterator
      */
-    public function rewind() {}
+    public function rewind()
+    {
+    }
 
     /**
      * Check if the current message in the iterator is valid
      *
      * @return bool
      */
-    public function valid(): bool {}
-
+    public function valid(): bool
+    {
+    }
 }

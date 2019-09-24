@@ -1,6 +1,21 @@
 <?php
 
+/**
+ * This file is part of the Phalcon Framework.
+ *
+ * (c) Phalcon Team <team@phalcon.io>
+ *
+ * For the full copyright and license information, please view the LICENSE.txt
+ * file that was distributed with this source code.
+ */
+
 namespace Phalcon\Mvc;
+
+use ArrayAccess;
+use Phalcon\Di\Injectable;
+use Phalcon\Di\ServiceInterface;
+use Phalcon\Mvc\Model\BinderInterface;
+use Phalcon\Mvc\Router\RouteInterface;
 
 /**
  * Phalcon\Mvc\Micro
@@ -10,7 +25,7 @@ namespace Phalcon\Mvc;
  * application. Micro applications are suitable to small applications, APIs and
  * prototypes in a practical way.
  *
- * ```php
+ *```php
  * $app = new \Phalcon\Mvc\Micro();
  *
  * $app->get(
@@ -21,9 +36,9 @@ namespace Phalcon\Mvc;
  * );
  *
  * $app->handle("/say/welcome/Phalcon");
- * ```
+ *```
  */
-class Micro extends \Phalcon\Di\Injectable implements \ArrayAccess
+class Micro extends Injectable implements ArrayAccess
 {
 
     protected $activeHandler;
@@ -73,7 +88,9 @@ class Micro extends \Phalcon\Di\Injectable implements \ArrayAccess
      *
      * @param \Phalcon\Di\DiInterface $container
      */
-    public function __construct(\Phalcon\Di\DiInterface $container = null) {}
+    public function __construct(\Phalcon\Di\DiInterface $container = null)
+    {
+    }
 
     /**
      * Appends an 'after' middleware to be called after execute the route
@@ -81,7 +98,9 @@ class Micro extends \Phalcon\Di\Injectable implements \ArrayAccess
      * @param callable $handler
      * @return Micro
      */
-    public function after($handler): Micro {}
+    public function after($handler): Micro
+    {
+    }
 
     /**
      * Appends a afterBinding middleware to be called after model binding
@@ -89,7 +108,9 @@ class Micro extends \Phalcon\Di\Injectable implements \ArrayAccess
      * @param callable $handler
      * @return Micro
      */
-    public function afterBinding($handler): Micro {}
+    public function afterBinding($handler): Micro
+    {
+    }
 
     /**
      * Appends a before middleware to be called before execute the route
@@ -97,7 +118,9 @@ class Micro extends \Phalcon\Di\Injectable implements \ArrayAccess
      * @param callable $handler
      * @return Micro
      */
-    public function before($handler): Micro {}
+    public function before($handler): Micro
+    {
+    }
 
     /**
      * Maps a route to a handler that only matches if the HTTP method is DELETE
@@ -106,7 +129,9 @@ class Micro extends \Phalcon\Di\Injectable implements \ArrayAccess
      * @param callable $handler
      * @return \Phalcon\Mvc\Router\RouteInterface
      */
-    public function delete(string $routePattern, $handler): RouteInterface {}
+    public function delete(string $routePattern, $handler): RouteInterface
+    {
+    }
 
     /**
      * Sets a handler that will be called when an exception is thrown handling
@@ -115,7 +140,9 @@ class Micro extends \Phalcon\Di\Injectable implements \ArrayAccess
      * @param callable $handler
      * @return Micro
      */
-    public function error($handler): Micro {}
+    public function error($handler): Micro
+    {
+    }
 
     /**
      * Appends a 'finish' middleware to be called when the request is finished
@@ -123,7 +150,9 @@ class Micro extends \Phalcon\Di\Injectable implements \ArrayAccess
      * @param callable $handler
      * @return Micro
      */
-    public function finish($handler): Micro {}
+    public function finish($handler): Micro
+    {
+    }
 
     /**
      * Maps a route to a handler that only matches if the HTTP method is GET
@@ -132,49 +161,63 @@ class Micro extends \Phalcon\Di\Injectable implements \ArrayAccess
      * @param callable $handler
      * @return \Phalcon\Mvc\Router\RouteInterface
      */
-    public function get(string $routePattern, $handler): RouteInterface {}
+    public function get(string $routePattern, $handler): RouteInterface
+    {
+    }
 
     /**
      * Return the handler that will be called for the matched route
      *
      * @return callable
      */
-    public function getActiveHandler() {}
+    public function getActiveHandler()
+    {
+    }
 
     /**
      * Returns bound models from binder instance
      *
      * @return array
      */
-    public function getBoundModels(): array {}
+    public function getBoundModels(): array
+    {
+    }
 
     /**
      * Returns the internal handlers attached to the application
      *
      * @return array
      */
-    public function getHandlers(): array {}
+    public function getHandlers(): array
+    {
+    }
 
     /**
      * Gets model binder
      *
      * @return null|\Phalcon\Mvc\Model\BinderInterface
      */
-    public function getModelBinder(): ?BinderInterface {}
+    public function getModelBinder(): ?BinderInterface
+    {
+    }
 
     /**
      * Returns the value returned by the executed handler
      *
      * @return mixed
      */
-    public function getReturnedValue() {}
+    public function getReturnedValue()
+    {
+    }
 
     /**
      * Returns the internal router used by the application
      *
      * @return RouterInterface
      */
-    public function getRouter(): RouterInterface {}
+    public function getRouter(): RouterInterface
+    {
+    }
 
     /**
      * Obtains a service from the DI
@@ -182,7 +225,9 @@ class Micro extends \Phalcon\Di\Injectable implements \ArrayAccess
      * @param string $serviceName
      * @return object
      */
-    public function getService(string $serviceName) {}
+    public function getService(string $serviceName)
+    {
+    }
 
     /**
      * Obtains a shared service from the DI
@@ -190,7 +235,9 @@ class Micro extends \Phalcon\Di\Injectable implements \ArrayAccess
      * @param string $serviceName
      * @return mixed
      */
-    public function getSharedService(string $serviceName) {}
+    public function getSharedService(string $serviceName)
+    {
+    }
 
     /**
      * Handle the whole request
@@ -198,7 +245,9 @@ class Micro extends \Phalcon\Di\Injectable implements \ArrayAccess
      * @param string $uri
      * @return mixed
      */
-    public function handle(string $uri) {}
+    public function handle(string $uri)
+    {
+    }
 
     /**
      * Checks if a service is registered in the DI
@@ -206,7 +255,9 @@ class Micro extends \Phalcon\Di\Injectable implements \ArrayAccess
      * @param string $serviceName
      * @return bool
      */
-    public function hasService(string $serviceName): bool {}
+    public function hasService(string $serviceName): bool
+    {
+    }
 
     /**
      * Maps a route to a handler that only matches if the HTTP method is HEAD
@@ -215,7 +266,9 @@ class Micro extends \Phalcon\Di\Injectable implements \ArrayAccess
      * @param callable $handler
      * @return \Phalcon\Mvc\Router\RouteInterface
      */
-    public function head(string $routePattern, $handler): RouteInterface {}
+    public function head(string $routePattern, $handler): RouteInterface
+    {
+    }
 
     /**
      * Maps a route to a handler without any HTTP method constraint
@@ -224,7 +277,9 @@ class Micro extends \Phalcon\Di\Injectable implements \ArrayAccess
      * @param callable $handler
      * @return \Phalcon\Mvc\Router\RouteInterface
      */
-    public function map(string $routePattern, $handler): RouteInterface {}
+    public function map(string $routePattern, $handler): RouteInterface
+    {
+    }
 
     /**
      * Mounts a collection of handlers
@@ -232,7 +287,9 @@ class Micro extends \Phalcon\Di\Injectable implements \ArrayAccess
      * @param \Phalcon\Mvc\Micro\CollectionInterface $collection
      * @return Micro
      */
-    public function mount(\Phalcon\Mvc\Micro\CollectionInterface $collection): Micro {}
+    public function mount(\Phalcon\Mvc\Micro\CollectionInterface $collection): Micro
+    {
+    }
 
     /**
      * Sets a handler that will be called when the router doesn't match any of
@@ -241,7 +298,9 @@ class Micro extends \Phalcon\Di\Injectable implements \ArrayAccess
      * @param callable $handler
      * @return Micro
      */
-    public function notFound($handler): Micro {}
+    public function notFound($handler): Micro
+    {
+    }
 
     /**
      * Check if a service is registered in the internal services container using
@@ -250,7 +309,9 @@ class Micro extends \Phalcon\Di\Injectable implements \ArrayAccess
      * @param mixed $alias
      * @return bool
      */
-    public function offsetExists($alias): bool {}
+    public function offsetExists($alias): bool
+    {
+    }
 
     /**
      * Allows to obtain a shared service in the internal services container
@@ -265,7 +326,9 @@ class Micro extends \Phalcon\Di\Injectable implements \ArrayAccess
      * @param mixed $alias
      * @return mixed
      */
-    public function offsetGet($alias) {}
+    public function offsetGet($alias)
+    {
+    }
 
     /**
      * Allows to register a shared service in the internal services container
@@ -278,7 +341,9 @@ class Micro extends \Phalcon\Di\Injectable implements \ArrayAccess
      * @param mixed $alias
      * @param mixed $definition
      */
-    public function offsetSet($alias, $definition) {}
+    public function offsetSet($alias, $definition)
+    {
+    }
 
     /**
      * Removes a service from the internal services container using the array
@@ -286,7 +351,9 @@ class Micro extends \Phalcon\Di\Injectable implements \ArrayAccess
      *
      * @param mixed $alias
      */
-    public function offsetUnset($alias) {}
+    public function offsetUnset($alias)
+    {
+    }
 
     /**
      * Maps a route to a handler that only matches if the HTTP method is OPTIONS
@@ -295,7 +362,9 @@ class Micro extends \Phalcon\Di\Injectable implements \ArrayAccess
      * @param callable $handler
      * @return \Phalcon\Mvc\Router\RouteInterface
      */
-    public function options(string $routePattern, $handler): RouteInterface {}
+    public function options(string $routePattern, $handler): RouteInterface
+    {
+    }
 
     /**
      * Maps a route to a handler that only matches if the HTTP method is PATCH
@@ -304,7 +373,9 @@ class Micro extends \Phalcon\Di\Injectable implements \ArrayAccess
      * @param callable $handler
      * @return \Phalcon\Mvc\Router\RouteInterface
      */
-    public function patch(string $routePattern, $handler): RouteInterface {}
+    public function patch(string $routePattern, $handler): RouteInterface
+    {
+    }
 
     /**
      * Maps a route to a handler that only matches if the HTTP method is POST
@@ -313,7 +384,9 @@ class Micro extends \Phalcon\Di\Injectable implements \ArrayAccess
      * @param callable $handler
      * @return \Phalcon\Mvc\Router\RouteInterface
      */
-    public function post(string $routePattern, $handler): RouteInterface {}
+    public function post(string $routePattern, $handler): RouteInterface
+    {
+    }
 
     /**
      * Maps a route to a handler that only matches if the HTTP method is PUT
@@ -322,21 +395,27 @@ class Micro extends \Phalcon\Di\Injectable implements \ArrayAccess
      * @param callable $handler
      * @return \Phalcon\Mvc\Router\RouteInterface
      */
-    public function put(string $routePattern, $handler): RouteInterface {}
+    public function put(string $routePattern, $handler): RouteInterface
+    {
+    }
 
     /**
      * Sets externally the handler that must be called by the matched route
      *
      * @param callable $activeHandler
      */
-    public function setActiveHandler($activeHandler) {}
+    public function setActiveHandler($activeHandler)
+    {
+    }
 
     /**
      * Sets the DependencyInjector container
      *
      * @param \Phalcon\Di\DiInterface $container
      */
-    public function setDI(\Phalcon\Di\DiInterface $container) {}
+    public function setDI(\Phalcon\Di\DiInterface $container)
+    {
+    }
 
     /**
      * Sets model binder
@@ -354,7 +433,9 @@ class Micro extends \Phalcon\Di\Injectable implements \ArrayAccess
      * @param mixed $cache
      * @return Micro
      */
-    public function setModelBinder(\Phalcon\Mvc\Model\BinderInterface $modelBinder, $cache = null): Micro {}
+    public function setModelBinder(\Phalcon\Mvc\Model\BinderInterface $modelBinder, $cache = null): Micro
+    {
+    }
 
     /**
      * Appends a custom 'reponse' handler to be called insted of the default
@@ -363,7 +444,9 @@ class Micro extends \Phalcon\Di\Injectable implements \ArrayAccess
      * @param callable $handler
      * @return Micro
      */
-    public function setResponseHandler($handler): Micro {}
+    public function setResponseHandler($handler): Micro
+    {
+    }
 
     /**
      * Sets a service from the DI
@@ -373,12 +456,15 @@ class Micro extends \Phalcon\Di\Injectable implements \ArrayAccess
      * @param bool $shared
      * @return \Phalcon\Di\ServiceInterface
      */
-    public function setService(string $serviceName, $definition, bool $shared = false): ServiceInterface {}
+    public function setService(string $serviceName, $definition, bool $shared = false): ServiceInterface
+    {
+    }
 
     /**
      * Stops the middleware execution avoiding than other middlewares be
      * executed
      */
-    public function stop() {}
-
+    public function stop()
+    {
+    }
 }

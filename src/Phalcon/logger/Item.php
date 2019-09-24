@@ -1,11 +1,21 @@
 <?php
 
+/**
+ * This file is part of the Phalcon Framework.
+ *
+ * (c) Phalcon Team <team@phalcon.io>
+ *
+ * For the full copyright and license information, please view the LICENSE.txt
+ * file that was distributed with this source code.
+ */
+
 namespace Phalcon\Logger;
 
 /**
  * Phalcon\Logger\Item
  *
  * Represents each item in a logging transaction
+ *
  */
 class Item
 {
@@ -42,35 +52,45 @@ class Item
 
 
 
-    public function getContext() {}
+    public function getContext()
+    {
+    }
 
     /**
      * Log message
      *
      * @return string
      */
-    public function getMessage(): string {}
+    public function getMessage(): string
+    {
+    }
 
     /**
      * Log message
      *
      * @return string
      */
-    public function getName(): string {}
+    public function getName(): string
+    {
+    }
 
     /**
      * Log timestamp
      *
      * @return integer
      */
-    public function getTime() {}
+    public function getTime()
+    {
+    }
 
     /**
      * Log type
      *
      * @return integer
      */
-    public function getType() {}
+    public function getType()
+    {
+    }
 
     /**
      * Phalcon\Logger\Item constructor
@@ -81,6 +101,7 @@ class Item
      * @param int $time
      * @param mixed $context
      */
-    public function __construct(string $message, string $name, int $type, int $time = 0, $context = array()) {}
-
+    public function __construct(string $message, string $name, int $type, int $time = 0, $context = array())
+    {
+    }
 }

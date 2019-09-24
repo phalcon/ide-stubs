@@ -1,12 +1,21 @@
 <?php
 
+/**
+ * This file is part of the Phalcon Framework.
+ *
+ * (c) Phalcon Team <team@phalcon.io>
+ *
+ * For the full copyright and license information, please view the LICENSE.txt
+ * file that was distributed with this source code.
+ */
+
 namespace Phalcon\Annotations\Adapter;
 
 /**
  * Stores the parsed annotations in memory. This adapter is the suitable
  * development/testing
  */
-class Memory extends \Phalcon\Annotations\Adapter\AbstractAdapter
+class Memory extends AbstractAdapter
 {
     /**
      * @var mixed
@@ -20,7 +29,9 @@ class Memory extends \Phalcon\Annotations\Adapter\AbstractAdapter
      * @param string $key
      * @return bool|\Phalcon\Annotations\Reflection
      */
-    public function read(string $key) {}
+    public function read(string $key)
+    {
+    }
 
     /**
      * Writes parsed annotations to memory
@@ -28,6 +39,7 @@ class Memory extends \Phalcon\Annotations\Adapter\AbstractAdapter
      * @param string $key
      * @param \Phalcon\Annotations\Reflection $data
      */
-    public function write(string $key, \Phalcon\Annotations\Reflection $data) {}
-
+    public function write(string $key, \Phalcon\Annotations\Reflection $data)
+    {
+    }
 }

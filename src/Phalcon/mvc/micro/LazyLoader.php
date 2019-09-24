@@ -1,5 +1,14 @@
 <?php
 
+/**
+ * This file is part of the Phalcon Framework.
+ *
+ * (c) Phalcon Team <team@phalcon.io>
+ *
+ * For the full copyright and license information, please view the LICENSE.txt
+ * file that was distributed with this source code.
+ */
+
 namespace Phalcon\Mvc\Micro;
 
 /**
@@ -17,14 +26,18 @@ class LazyLoader
 
 
 
-    public function getDefinition() {}
+    public function getDefinition()
+    {
+    }
 
     /**
      * Phalcon\Mvc\Micro\LazyLoader constructor
      *
      * @param string $definition
      */
-    public function __construct(string $definition) {}
+    public function __construct(string $definition)
+    {
+    }
 
     /**
      * Calling __call method
@@ -34,6 +47,7 @@ class LazyLoader
      * @param \Phalcon\Mvc\Model\BinderInterface $modelBinder
      * @return mixed
      */
-    public function callMethod(string $method, $arguments, \Phalcon\Mvc\Model\BinderInterface $modelBinder = null) {}
-
+    public function callMethod(string $method, $arguments, \Phalcon\Mvc\Model\BinderInterface $modelBinder = null)
+    {
+    }
 }

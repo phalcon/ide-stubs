@@ -1,5 +1,14 @@
 <?php
 
+/**
+ * This file is part of the Phalcon Framework.
+ *
+ * (c) Phalcon Team <team@phalcon.io>
+ *
+ * For the full copyright and license information, please view the LICENSE.txt
+ * file that was distributed with this source code.
+ */
+
 namespace Phalcon;
 
 /**
@@ -39,7 +48,9 @@ class Text
      * @param mixed $delimiter
      * @return string
      */
-    public static function camelize(string $text, $delimiter = null): string {}
+    public static function camelize(string $text, $delimiter = null): string
+    {
+    }
 
     /**
      * Concatenates strings using the separator only once without duplication in
@@ -64,7 +75,9 @@ class Text
      * @param string $...N
      * @return string
      */
-    public static function concat(): string {}
+    public static function concat(): string
+    {
+    }
 
     /**
      * Generates random text in accordance with the template
@@ -93,7 +106,9 @@ class Text
      * @param string $separator
      * @return string
      */
-    public static function dynamic(string $text, string $leftDelimiter = '{', string $rightDelimiter = '}', string $separator = '|'): string {}
+    public static function dynamic(string $text, string $leftDelimiter = '{', string $rightDelimiter = '}', string $separator = '|'): string
+    {
+    }
 
     /**
      * Check if a string ends with a given string
@@ -109,7 +124,9 @@ class Text
      * @param bool $ignoreCase
      * @return bool
      */
-    public static function endsWith(string $text, string $end, bool $ignoreCase = true): bool {}
+    public static function endsWith(string $text, string $end, bool $ignoreCase = true): bool
+    {
+    }
 
     /**
      * Makes an underscored or dashed phrase human-readable
@@ -122,7 +139,9 @@ class Text
      * @param string $text
      * @return string
      */
-    public static function humanize(string $text): string {}
+    public static function humanize(string $text): string
+    {
+    }
 
     /**
      * Adds a number to a string or increment that number if it already is
@@ -137,7 +156,9 @@ class Text
      * @param string $separator
      * @return string
      */
-    public static function increment(string $text, string $separator = '_'): string {}
+    public static function increment(string $text, string $separator = '_'): string
+    {
+    }
 
     /**
      * Lowercases a string, this function makes use of the mbstring extension if
@@ -151,7 +172,9 @@ class Text
      * @param string $encoding
      * @return string
      */
-    public static function lower(string $text, string $encoding = 'UTF-8'): string {}
+    public static function lower(string $text, string $encoding = 'UTF-8'): string
+    {
+    }
 
     /**
      * Check if a string starts with a given string
@@ -167,7 +190,9 @@ class Text
      * @param bool $ignoreCase
      * @return bool
      */
-    public static function startsWith(string $text, string $start, bool $ignoreCase = true): bool {}
+    public static function startsWith(string $text, string $start, bool $ignoreCase = true): bool
+    {
+    }
 
     /**
      * Generates a random string based on the given type. Type is one of the
@@ -184,7 +209,9 @@ class Text
      * @param long $length
      * @return string
      */
-    public static function random(int $type = 0, int $length = 8): string {}
+    public static function random(int $type = 0, int $length = 8): string
+    {
+    }
 
     /**
      * Reduces multiple slashes in a string to single slashes
@@ -200,7 +227,9 @@ class Text
      * @param string $text
      * @return string
      */
-    public static function reduceSlashes(string $text): string {}
+    public static function reduceSlashes(string $text): string
+    {
+    }
 
     /**
      * Uncamelize strings which are camelized
@@ -214,7 +243,9 @@ class Text
      * @param mixed $delimiter
      * @return string
      */
-    public static function uncamelize(string $text, $delimiter = null): string {}
+    public static function uncamelize(string $text, $delimiter = null): string
+    {
+    }
 
     /**
      * Makes a phrase underscored instead of spaced
@@ -227,7 +258,9 @@ class Text
      * @param string $text
      * @return string
      */
-    public static function underscore(string $text): string {}
+    public static function underscore(string $text): string
+    {
+    }
 
     /**
      * Uppercases a string, this function makes use of the mbstring extension if
@@ -241,6 +274,7 @@ class Text
      * @param string $encoding
      * @return string
      */
-    public static function upper(string $text, string $encoding = 'UTF-8'): string {}
-
+    public static function upper(string $text, string $encoding = 'UTF-8'): string
+    {
+    }
 }

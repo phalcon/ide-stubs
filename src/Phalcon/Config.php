@@ -1,5 +1,14 @@
 <?php
 
+/**
+ * This file is part of the Phalcon Framework.
+ *
+ * (c) Phalcon Team <team@phalcon.io>
+ *
+ * For the full copyright and license information, please view the LICENSE.txt
+ * file that was distributed with this source code.
+ */
+
 namespace Phalcon;
 
 /**
@@ -8,7 +17,7 @@ namespace Phalcon;
  * based user interface for accessing this configuration data within application
  * code.
  *
- * ```php
+ *```php
  * $config = new \Phalcon\Config(
  *     [
  *         "database" => [
@@ -25,9 +34,9 @@ namespace Phalcon;
  *         ],
  *     ]
  * );
- * ```
+ *```
  */
-class Config extends \Phalcon\Collection
+class Config extends Collection
 {
 
     const DEFAULT_PATH_DELIMITER = '.';
@@ -43,7 +52,9 @@ class Config extends \Phalcon\Collection
      *
      * @return string
      */
-    public function getPathDelimiter(): string {}
+    public function getPathDelimiter(): string
+    {
+    }
 
     /**
      * Merges a configuration into the current one
@@ -63,7 +74,9 @@ class Config extends \Phalcon\Collection
      * @param mixed $toMerge
      * @return Config
      */
-    public function merge($toMerge): Config {}
+    public function merge($toMerge): Config
+    {
+    }
 
     /**
      * Returns a value from current config using a dot separated path.
@@ -76,7 +89,9 @@ class Config extends \Phalcon\Collection
      * @param mixed $defaultValue
      * @param mixed $delimiter
      */
-    public function path(string $path, $defaultValue = null, $delimiter = null) {}
+    public function path(string $path, $defaultValue = null, $delimiter = null)
+    {
+    }
 
     /**
      * Sets the default path delimiter
@@ -84,7 +99,9 @@ class Config extends \Phalcon\Collection
      * @param string $delimiter
      * @return Config
      */
-    public function setPathDelimiter(string $delimiter = null): Config {}
+    public function setPathDelimiter(string $delimiter = null): Config
+    {
+    }
 
     /**
      * Converts recursively the object to an array
@@ -97,7 +114,9 @@ class Config extends \Phalcon\Collection
      *
      * @return array
      */
-    public function toArray(): array {}
+    public function toArray(): array
+    {
+    }
 
     /**
      * Performs a merge recursively
@@ -106,7 +125,9 @@ class Config extends \Phalcon\Collection
      * @param array $target
      * @return array
      */
-    final protected function internalMerge(array $source, array $target): array {}
+    final protected function internalMerge(array $source, array $target): array
+    {
+    }
 
     /**
      * Sets the collection data
@@ -114,6 +135,7 @@ class Config extends \Phalcon\Collection
      * @param mixed $element
      * @param mixed $value
      */
-    protected function setData($element, $value) {}
-
+    protected function setData($element, $value)
+    {
+    }
 }

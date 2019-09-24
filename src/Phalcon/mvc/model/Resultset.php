@@ -1,6 +1,24 @@
 <?php
 
+/**
+ * This file is part of the Phalcon Framework.
+ *
+ * (c) Phalcon Team <team@phalcon.io>
+ *
+ * For the full copyright and license information, please view the LICENSE.txt
+ * file that was distributed with this source code.
+ */
+
 namespace Phalcon\Mvc\Model;
+
+use ArrayAccess;
+use Countable;
+use Iterator;
+use JsonSerializable;
+use Phalcon\Cache\Adapter\AdapterInterface;
+use Phalcon\Mvc\ModelInterface;
+use SeekableIterator;
+use Serializable;
 
 /**
  * Phalcon\Mvc\Model\Resultset
@@ -43,7 +61,7 @@ namespace Phalcon\Mvc\Model;
  * }
  * ```
  */
-abstract class Resultset implements \Phalcon\Mvc\Model\ResultsetInterface, \Iterator, \SeekableIterator, \Countable, \ArrayAccess, \Serializable, \JsonSerializable
+abstract class Resultset implements ResultsetInterface, Iterator, SeekableIterator, Countable, ArrayAccess, Serializable, JsonSerializable
 {
 
     const HYDRATE_ARRAYS = 1;
@@ -99,14 +117,18 @@ abstract class Resultset implements \Phalcon\Mvc\Model\ResultsetInterface, \Iter
      * @param \Phalcon\Db\ResultInterface|false $result
      * @param \Phalcon\Cache\Adapter\AdapterInterface $cache
      */
-    public function __construct($result, \Phalcon\Cache\Adapter\AdapterInterface $cache = null) {}
+    public function __construct($result, \Phalcon\Cache\Adapter\AdapterInterface $cache = null)
+    {
+    }
 
     /**
      * Counts how many rows are in the resultset
      *
      * @return int
      */
-    final public function count(): int {}
+    final public function count(): int
+    {
+    }
 
     /**
      * Deletes every record in the resultset
@@ -114,7 +136,9 @@ abstract class Resultset implements \Phalcon\Mvc\Model\ResultsetInterface, \Iter
      * @param \Closure $conditionCallback
      * @return bool
      */
-    public function delete(\Closure $conditionCallback = null): bool {}
+    public function delete(\Closure $conditionCallback = null): bool
+    {
+    }
 
     /**
      * Filters a resultset returning only those the developer requires
@@ -132,56 +156,72 @@ abstract class Resultset implements \Phalcon\Mvc\Model\ResultsetInterface, \Iter
      * @param callable $filter
      * @return array|\Phalcon\Mvc\ModelInterface[]
      */
-    public function filter($filter): array {}
+    public function filter($filter): array
+    {
+    }
 
     /**
      * Returns the associated cache for the resultset
      *
      * @return \Phalcon\Cache\Adapter\AdapterInterface
      */
-    public function getCache(): AdapterInterface {}
+    public function getCache(): AdapterInterface
+    {
+    }
 
     /**
      * Get first row in the resultset
      *
      * @return null|\Phalcon\Mvc\ModelInterface
      */
-    public function getFirst(): ?ModelInterface {}
+    public function getFirst(): ?ModelInterface
+    {
+    }
 
     /**
      * Returns the current hydration mode
      *
      * @return int
      */
-    public function getHydrateMode(): int {}
+    public function getHydrateMode(): int
+    {
+    }
 
     /**
      * Get last row in the resultset
      *
      * @return null|\Phalcon\Mvc\ModelInterface
      */
-    public function getLast(): ?ModelInterface {}
+    public function getLast(): ?ModelInterface
+    {
+    }
 
     /**
      * Returns the error messages produced by a batch operation
      *
      * @return array|\Phalcon\Messages\MessageInterface[]
      */
-    public function getMessages(): array {}
+    public function getMessages(): array
+    {
+    }
 
     /**
      * Returns the internal type of data retrieval that the resultset is using
      *
      * @return int
      */
-    public function getType(): int {}
+    public function getType(): int
+    {
+    }
 
     /**
      * Tell if the resultset if fresh or an old one cached
      *
      * @return bool
      */
-    public function isFresh(): bool {}
+    public function isFresh(): bool
+    {
+    }
 
     /**
      * Returns serialised model objects as array for json_encode.
@@ -195,19 +235,25 @@ abstract class Resultset implements \Phalcon\Mvc\Model\ResultsetInterface, \Iter
      *
      * @return array
      */
-    public function jsonSerialize(): array {}
+    public function jsonSerialize(): array
+    {
+    }
 
     /**
      * Gets pointer number of active row in the resultset
      *
      * @return int|null
      */
-    public function key(): ?int {}
+    public function key(): ?int
+    {
+    }
 
     /**
      * Moves cursor to next row in the resultset
      */
-    public function next() {}
+    public function next()
+    {
+    }
 
     /**
      * Gets row in a specific position of the resultset
@@ -215,7 +261,9 @@ abstract class Resultset implements \Phalcon\Mvc\Model\ResultsetInterface, \Iter
      * @param mixed $index
      * @return bool|\Phalcon\Mvc\ModelInterface
      */
-    public function offsetGet($index) {}
+    public function offsetGet($index)
+    {
+    }
 
     /**
      * Checks whether offset exists in the resultset
@@ -223,7 +271,9 @@ abstract class Resultset implements \Phalcon\Mvc\Model\ResultsetInterface, \Iter
      * @param mixed $index
      * @return bool
      */
-    public function offsetExists($index): bool {}
+    public function offsetExists($index): bool
+    {
+    }
 
     /**
      * Resultsets cannot be changed. It has only been implemented to meet the definition of the ArrayAccess interface
@@ -231,19 +281,25 @@ abstract class Resultset implements \Phalcon\Mvc\Model\ResultsetInterface, \Iter
      * @param int $index
      * @param \Phalcon\Mvc\ModelInterface $value
      */
-    public function offsetSet($index, $value) {}
+    public function offsetSet($index, $value)
+    {
+    }
 
     /**
      * Resultsets cannot be changed. It has only been implemented to meet the definition of the ArrayAccess interface
      *
      * @param mixed $offset
      */
-    public function offsetUnset($offset) {}
+    public function offsetUnset($offset)
+    {
+    }
 
     /**
      * Rewinds resultset to its beginning
      */
-    final public function rewind() {}
+    final public function rewind()
+    {
+    }
 
     /**
      * Changes the internal pointer to a specific position in the resultset.
@@ -251,7 +307,9 @@ abstract class Resultset implements \Phalcon\Mvc\Model\ResultsetInterface, \Iter
      *
      * @param mixed $position
      */
-    final public function seek($position) {}
+    final public function seek($position)
+    {
+    }
 
     /**
      * Sets the hydration mode in the resultset
@@ -259,7 +317,9 @@ abstract class Resultset implements \Phalcon\Mvc\Model\ResultsetInterface, \Iter
      * @param int $hydrateMode
      * @return \Phalcon\Mvc\Model\ResultsetInterface
      */
-    public function setHydrateMode(int $hydrateMode): ResultsetInterface {}
+    public function setHydrateMode(int $hydrateMode): ResultsetInterface
+    {
+    }
 
     /**
      * Set if the resultset is fresh or an old one cached
@@ -267,7 +327,9 @@ abstract class Resultset implements \Phalcon\Mvc\Model\ResultsetInterface, \Iter
      * @param bool $isFresh
      * @return \Phalcon\Mvc\Model\ResultsetInterface
      */
-    public function setIsFresh(bool $isFresh): ResultsetInterface {}
+    public function setIsFresh(bool $isFresh): ResultsetInterface
+    {
+    }
 
     /**
      * Updates every record in the resultset
@@ -276,13 +338,16 @@ abstract class Resultset implements \Phalcon\Mvc\Model\ResultsetInterface, \Iter
      * @param \Closure $conditionCallback
      * @return bool
      */
-    public function update($data, \Closure $conditionCallback = null): bool {}
+    public function update($data, \Closure $conditionCallback = null): bool
+    {
+    }
 
     /**
      * Check whether internal resource has rows to fetch
      *
      * @return bool
      */
-    public function valid(): bool {}
-
+    public function valid(): bool
+    {
+    }
 }

@@ -1,13 +1,24 @@
 <?php
 
+/**
+ * This file is part of the Phalcon Framework.
+ *
+ * (c) Phalcon Team <team@phalcon.io>
+ *
+ * For the full copyright and license information, please view the LICENSE.txt
+ * file that was distributed with this source code.
+ */
+
 namespace Phalcon\Translate\Adapter;
+
+use ArrayAccess;
 
 /**
  * Phalcon\Translate\Adapter\Csv
  *
  * Allows to define translation lists using CSV file
  */
-class Csv extends \Phalcon\Translate\Adapter\AbstractAdapter implements \ArrayAccess
+class Csv extends AbstractAdapter implements ArrayAccess
 {
     /**
      * @var array
@@ -21,7 +32,9 @@ class Csv extends \Phalcon\Translate\Adapter\AbstractAdapter implements \ArrayAc
      * @param \Phalcon\Translate\InterpolatorFactory $interpolator
      * @param array $options
      */
-    public function __construct(\Phalcon\Translate\InterpolatorFactory $interpolator, array $options) {}
+    public function __construct(\Phalcon\Translate\InterpolatorFactory $interpolator, array $options)
+    {
+    }
 
     /**
      * Check whether is defined a translation key in the internal array
@@ -29,7 +42,9 @@ class Csv extends \Phalcon\Translate\Adapter\AbstractAdapter implements \ArrayAc
      * @param string $index
      * @return bool
      */
-    public function exists(string $index): bool {}
+    public function exists(string $index): bool
+    {
+    }
 
     /**
      * Returns the translation related to the given key
@@ -38,7 +53,9 @@ class Csv extends \Phalcon\Translate\Adapter\AbstractAdapter implements \ArrayAc
      * @param mixed $placeholders
      * @return string
      */
-    public function query(string $index, $placeholders = null): string {}
+    public function query(string $index, $placeholders = null): string
+    {
+    }
 
     /**
      * Load translates from file
@@ -48,6 +65,7 @@ class Csv extends \Phalcon\Translate\Adapter\AbstractAdapter implements \ArrayAc
      * @param string $delimiter
      * @param string $enclosure
      */
-    private function load(string $file, int $length, string $delimiter, string $enclosure) {}
-
+    private function load(string $file, int $length, string $delimiter, string $enclosure)
+    {
+    }
 }

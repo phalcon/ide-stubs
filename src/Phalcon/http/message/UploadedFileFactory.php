@@ -1,11 +1,28 @@
 <?php
 
+/**
+ * This file is part of the Phalcon Framework.
+ *
+ * (c) Phalcon Team <team@phalcon.io>
+ *
+ * For the full copyright and license information, please view the LICENSE.txt
+ * file that was distributed with this source code.
+ *
+ * Implementation of this file has been influenced by Zend Diactoros
+ * @link    https://github.com/zendframework/zend-diactoros
+ * @license https://github.com/zendframework/zend-diactoros/blob/master/LICENSE.md
+ */
+
 namespace Phalcon\Http\Message;
+
+use Psr\Http\Message\StreamInterface;
+use Psr\Http\Message\UploadedFileFactoryInterface;
+use Psr\Http\Message\UploadedFileInterface;
 
 /**
  * PSR-17 UploadedFileFactory
  */
-final class UploadedFileFactory implements \Psr\Http\Message\UploadedFileFactoryInterface
+final class UploadedFileFactory implements UploadedFileFactoryInterface
 {
 
     /**
@@ -29,6 +46,7 @@ final class UploadedFileFactory implements \Psr\Http\Message\UploadedFileFactory
      * @param string $clientMediaType
      * @return \Psr\Http\Message\UploadedFileInterface
      */
-    public function createUploadedFile(\Psr\Http\Message\StreamInterface $stream, int $size = null, int $error = 0, string $clientFilename = null, string $clientMediaType = null): UploadedFileInterface {}
-
+    public function createUploadedFile(\Psr\Http\Message\StreamInterface $stream, int $size = null, int $error = 0, string $clientFilename = null, string $clientMediaType = null): UploadedFileInterface
+    {
+    }
 }

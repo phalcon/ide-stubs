@@ -1,6 +1,17 @@
 <?php
 
+/**
+ * This file is part of the Phalcon Framework.
+ *
+ * (c) Phalcon Team <team@phalcon.io>
+ *
+ * For the full copyright and license information, please view the LICENSE.txt
+ * file that was distributed with this source code.
+ */
+
 namespace Phalcon\Validation\Validator;
+
+use Phalcon\Validation\AbstractValidator;
 
 /**
  * Validates that a value is not null or empty string
@@ -36,7 +47,7 @@ namespace Phalcon\Validation\Validator;
  * );
  * ```
  */
-class PresenceOf extends \Phalcon\Validation\AbstractValidator
+class PresenceOf extends AbstractValidator
 {
 
     protected $template = 'Field :field is required';
@@ -49,6 +60,7 @@ class PresenceOf extends \Phalcon\Validation\AbstractValidator
      * @param mixed $field
      * @return bool
      */
-    public function validate(\Phalcon\Validation $validation, $field): bool {}
-
+    public function validate(\Phalcon\Validation $validation, $field): bool
+    {
+    }
 }

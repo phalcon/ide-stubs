@@ -1,11 +1,25 @@
 <?php
 
+/**
+ * This file is part of the Phalcon Framework.
+ *
+ * (c) Phalcon Team <team@phalcon.io>
+ *
+ * For the full copyright and license information, please view the LICENSE.txt
+ * file that was distributed with this source code.
+ */
+
 namespace Phalcon\Application;
+
+use Phalcon\Di\DiInterface;
+use Phalcon\Di\Injectable;
+use Phalcon\Events\EventsAwareInterface;
+use Phalcon\Events\ManagerInterface;
 
 /**
  * Base class for Phalcon\Cli\Console and Phalcon\Mvc\Application.
  */
-abstract class AbstractApplication extends \Phalcon\Di\Injectable implements \Phalcon\Events\EventsAwareInterface
+abstract class AbstractApplication extends Injectable implements EventsAwareInterface
 {
     /**
      * @var DiInterface
@@ -33,21 +47,27 @@ abstract class AbstractApplication extends \Phalcon\Di\Injectable implements \Ph
      *
      * @param \Phalcon\Di\DiInterface $container
      */
-    public function __construct(\Phalcon\Di\DiInterface $container = null) {}
+    public function __construct(\Phalcon\Di\DiInterface $container = null)
+    {
+    }
 
     /**
      * Returns the default module name
      *
      * @return string
      */
-    public function getDefaultModule(): string {}
+    public function getDefaultModule(): string
+    {
+    }
 
     /**
      * Returns the internal event manager
      *
      * @return \Phalcon\Events\ManagerInterface
      */
-    public function getEventsManager(): ManagerInterface {}
+    public function getEventsManager(): ManagerInterface
+    {
+    }
 
     /**
      * Gets the module definition registered in the application via module name
@@ -55,19 +75,18 @@ abstract class AbstractApplication extends \Phalcon\Di\Injectable implements \Ph
      * @param string $name
      * @return array|object
      */
-    public function getModule(string $name): array {}
+    public function getModule(string $name): array
+    {
+    }
 
     /**
      * Return the modules registered in the application
      *
      * @return array
      */
-    public function getModules(): array {}
-
-    /**
-     * Handles a request
-     */
-    abstract public function handle();
+    public function getModules(): array
+    {
+    }
 
     /**
      * Register an array of modules present in the application
@@ -91,7 +110,9 @@ abstract class AbstractApplication extends \Phalcon\Di\Injectable implements \Ph
      * @param bool $merge
      * @return AbstractApplication
      */
-    public function registerModules(array $modules, bool $merge = false): AbstractApplication {}
+    public function registerModules(array $modules, bool $merge = false): AbstractApplication
+    {
+    }
 
     /**
      * Sets the module name to be used if the router doesn't return a valid module
@@ -99,14 +120,16 @@ abstract class AbstractApplication extends \Phalcon\Di\Injectable implements \Ph
      * @param string $defaultModule
      * @return AbstractApplication
      */
-    public function setDefaultModule(string $defaultModule): AbstractApplication {}
+    public function setDefaultModule(string $defaultModule): AbstractApplication
+    {
+    }
 
     /**
      * Sets the events manager
      *
      * @param \Phalcon\Events\ManagerInterface $eventsManager
-     * @return AbstractApplication
      */
-    public function setEventsManager(\Phalcon\Events\ManagerInterface $eventsManager): AbstractApplication {}
-
+    public function setEventsManager(\Phalcon\Events\ManagerInterface $eventsManager)
+    {
+    }
 }

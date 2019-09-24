@@ -1,6 +1,18 @@
 <?php
+/**
+ * This file is part of the Phalcon.
+ *
+ * (c) Phalcon Team <team@phalcon.com>
+ *
+ * For the full copyright and license information, please view the LICENSE
+ * file that was distributed with this source code.
+ */
 
 namespace Phalcon\Session;
+
+use Phalcon\Collection;
+use Phalcon\Di\DiInterface;
+use Phalcon\Di\InjectionAwareInterface;
 
 /**
  * Phalcon\Session\Bag
@@ -16,7 +28,7 @@ namespace Phalcon\Session;
  * $user->age  = 22;
  * ```
  */
-class Bag extends \Phalcon\Collection implements \Phalcon\Di\InjectionAwareInterface
+class Bag extends Collection implements InjectionAwareInterface
 {
 
     private $container;
@@ -33,33 +45,43 @@ class Bag extends \Phalcon\Collection implements \Phalcon\Di\InjectionAwareInter
      *
      * @param string $name
      */
-    public function __construct(string $name) {}
+    public function __construct(string $name)
+    {
+    }
 
     /**
      * Destroys the session bag
      */
-    public function clear() {}
+    public function clear()
+    {
+    }
 
     /**
      * Returns the DependencyInjector container
      *
      * @return \Phalcon\Di\DiInterface
      */
-    public function getDI(): DiInterface {}
+    public function getDI(): DiInterface
+    {
+    }
 
     /**
      * Removes a property from the internal bag
      *
      * @param array $data
      */
-    public function init(array $data = array()) {}
+    public function init(array $data = array())
+    {
+    }
 
     /**
      * Removes a property from the internal bag
      *
      * @param string $element
      */
-    public function remove(string $element) {}
+    public function remove(string $element)
+    {
+    }
 
     /**
      * Sets a value in the session bag
@@ -67,13 +89,16 @@ class Bag extends \Phalcon\Collection implements \Phalcon\Di\InjectionAwareInter
      * @param string $element
      * @param mixed $value
      */
-    public function set(string $element, $value) {}
+    public function set(string $element, $value)
+    {
+    }
 
     /**
      * Sets the DependencyInjector container
      *
      * @param \Phalcon\Di\DiInterface $container
      */
-    public function setDI(\Phalcon\Di\DiInterface $container) {}
-
+    public function setDI(\Phalcon\Di\DiInterface $container)
+    {
+    }
 }

@@ -1,6 +1,19 @@
 <?php
 
+/**
+ * This file is part of the Phalcon Framework.
+ *
+ * (c) Phalcon Team <team@phalcon.io>
+ *
+ * For the full copyright and license information, please view the LICENSE.txt
+ * file that was distributed with this source code.
+ */
+
 namespace Phalcon\Mvc\Model;
+
+use Phalcon\Db\Adapter\AdapterInterface;
+use Phalcon\Mvc\Model\Query\BuilderInterface;
+use Phalcon\Mvc\ModelInterface;
 
 /**
  * Phalcon\Mvc\Model\ManagerInterface
@@ -358,7 +371,7 @@ interface ManagerInterface
      * @param string $property
      * @return bool
      */
-    final public function isVisibleModelProperty(\Phalcon\Mvc\ModelInterface $model, string $property): bool;
+    public function isVisibleModelProperty(\Phalcon\Mvc\ModelInterface $model, string $property): bool;
 
     /**
      * Sets if a model must keep snapshots
@@ -436,5 +449,4 @@ interface ManagerInterface
      * @param bool $dynamicUpdate
      */
     public function useDynamicUpdate(\Phalcon\Mvc\ModelInterface $model, bool $dynamicUpdate);
-
 }

@@ -1,6 +1,17 @@
 <?php
 
+/**
+ * This file is part of the Phalcon Framework.
+ *
+ * (c) Phalcon Team <team@phalcon.io>
+ *
+ * For the full copyright and license information, please view the LICENSE.txt
+ * file that was distributed with this source code.
+ */
+
 namespace Phalcon\Validation\Validator;
+
+use Phalcon\Validation\AbstractValidator;
 
 /**
  * Checks that two values have the same value
@@ -41,7 +52,7 @@ namespace Phalcon\Validation\Validator;
  * );
  * ```
  */
-class Confirmation extends \Phalcon\Validation\AbstractValidator
+class Confirmation extends AbstractValidator
 {
 
     protected $template = 'Field :field must be the same as :with';
@@ -54,7 +65,9 @@ class Confirmation extends \Phalcon\Validation\AbstractValidator
      * @param mixed $field
      * @return bool
      */
-    public function validate(\Phalcon\Validation $validation, $field): bool {}
+    public function validate(\Phalcon\Validation $validation, $field): bool
+    {
+    }
 
     /**
      * Compare strings
@@ -63,6 +76,7 @@ class Confirmation extends \Phalcon\Validation\AbstractValidator
      * @param string $b
      * @return bool
      */
-    final protected function compare(string $a, string $b): bool {}
-
+    final protected function compare(string $a, string $b): bool
+    {
+    }
 }

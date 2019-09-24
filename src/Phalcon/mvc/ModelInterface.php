@@ -1,6 +1,19 @@
 <?php
+/**
+ * This file is part of the Phalcon.
+ *
+ * (c) Phalcon Team <team@phalcon.com>
+ *
+ * For the full copyright and license information, please view the LICENSE
+ * file that was distributed with this source code.
+ */
 
 namespace Phalcon\Mvc;
+
+use Phalcon\Db\Adapter\AdapterInterface;
+use Phalcon\Mvc\Model\CriteriaInterface;
+use Phalcon\Mvc\Model\MetaDataInterface;
+use Phalcon\Mvc\Model\ResultsetInterface;
 
 /**
  * Phalcon\Mvc\ModelInterface
@@ -14,7 +27,7 @@ interface ModelInterface
      * Appends a customized message on the validation process
      *
      * @param \Phalcon\Messages\MessageInterface $message
-     * @return \Phalcon\Mvc\ModelInterface
+     * @return ModelInterface
      */
     public function appendMessage(\Phalcon\Messages\MessageInterface $message): ModelInterface;
 
@@ -22,12 +35,12 @@ interface ModelInterface
      * Assigns values to a model from an array
      *
      * @param array $data
-     * @param mixed $dataColumnMap
      * @param mixed $whiteList
+     * @param mixed $dataColumnMap
      * @param array $columnMap
-     * @return \Phalcon\Mvc\ModelInterface
+     * @return ModelInterface
      */
-    public function assign(array $data, $dataColumnMap = null, $whiteList = null): ModelInterface;
+    public function assign(array $data, $whiteList = null, $dataColumnMap = null): ModelInterface;
 
     /**
      * Allows to calculate the average value on a column matching the specified
@@ -41,12 +54,12 @@ interface ModelInterface
     /**
      * Assigns values to a model from an array returning a new model
      *
-     * @param \Phalcon\Mvc\ModelInterface $base
+     * @param ModelInterface $base
      * @param array $data
      * @param int $dirtyState
-     * @return \Phalcon\Mvc\ModelInterface
+     * @return ModelInterface
      */
-    public static function cloneResult(\Phalcon\Mvc\ModelInterface $base, array $data, int $dirtyState = 0): ModelInterface;
+    public static function cloneResult(ModelInterface $base, array $data, int $dirtyState = 0): ModelInterface;
 
     /**
      * Assigns values to a model from an array returning a new model
@@ -56,7 +69,7 @@ interface ModelInterface
      * @param array $columnMap
      * @param int $dirtyState
      * @param bool $keepSnapshots
-     * @return \Phalcon\Mvc\ModelInterface
+     * @return ModelInterface
      */
     public static function cloneResultMap($base, array $data, $columnMap, int $dirtyState = 0, bool $keepSnapshots = null): ModelInterface;
 
@@ -105,7 +118,7 @@ interface ModelInterface
      * Allows to query the first record that match the specified conditions
      *
      * @param array $parameters
-     * @return bool|\Phalcon\Mvc\ModelInterface
+     * @return bool|ModelInterface
      */
     public static function findFirst($parameters = null);
 
@@ -238,7 +251,7 @@ interface ModelInterface
     /**
      * Refreshes the model attributes re-querying the record from the database
      *
-     * @return \Phalcon\Mvc\ModelInterface
+     * @return ModelInterface
      */
     public function refresh(): ModelInterface;
 
@@ -262,7 +275,7 @@ interface ModelInterface
      * constants
      *
      * @param int $dirtyState
-     * @return bool|\Phalcon\Mvc\ModelInterface
+     * @return bool|ModelInterface
      */
     public function setDirtyState(int $dirtyState);
 
@@ -286,7 +299,7 @@ interface ModelInterface
      * Sets a transaction related to the Model instance
      *
      * @param \Phalcon\Mvc\Model\TransactionInterface $transaction
-     * @return \Phalcon\Mvc\ModelInterface
+     * @return ModelInterface
      */
     public function setTransaction(\Phalcon\Mvc\Model\TransactionInterface $transaction): ModelInterface;
 
@@ -327,5 +340,4 @@ interface ModelInterface
      * @return bool
      */
     public function update(): bool;
-
 }

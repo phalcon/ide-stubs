@@ -1,11 +1,22 @@
 <?php
 
+/**
+* This file is part of the Phalcon Framework.
+*
+* (c) Phalcon Team <team@phalcon.io>
+*
+* For the full copyright and license information, please view the LICENSE.txt
+* file that was distributed with this source code.
+*/
+
 namespace Phalcon\Collection;
+
+use Phalcon\Collection;
 
 /**
  * Phalcon\Collection\ReadOnly is a read only Collection object
  */
-class ReadOnly extends \Phalcon\Collection
+class ReadOnly extends Collection
 {
 
     /**
@@ -13,7 +24,9 @@ class ReadOnly extends \Phalcon\Collection
      *
      * @param string $element
      */
-    public function remove(string $element) {}
+    public function remove(string $element)
+    {
+    }
 
     /**
      * Set an element in the collection
@@ -21,6 +34,7 @@ class ReadOnly extends \Phalcon\Collection
      * @param string $element
      * @param mixed $value
      */
-    public function set(string $element, $value) {}
-
+    public function set(string $element, $value)
+    {
+    }
 }

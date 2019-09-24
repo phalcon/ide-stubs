@@ -1,13 +1,24 @@
 <?php
 
+/**
+ * This file is part of the Phalcon Framework.
+ *
+ * (c) Phalcon Team <team@phalcon.io>
+ *
+ * For the full copyright and license information, please view the LICENSE.txt
+ * file that was distributed with this source code.
+ */
+
 namespace Phalcon\Config\Adapter;
+
+use Phalcon\Config;
 
 /**
  * Reads ini files and converts them to Phalcon\Config objects.
  *
  * Given the next configuration file:
  *
- * ```ini
+ *```ini
  * [database]
  * adapter = Mysql
  * host = localhost
@@ -23,14 +34,14 @@ namespace Phalcon\Config\Adapter;
  *
  * You can read it as follows:
  *
- * ```php
+ *```php
  * use Phalcon\Config\Adapter\Ini;
  *
  * $config = new Ini("path/config.ini");
  *
  * echo $config->phalcon->controllersDir;
  * echo $config->database->username;
- * ```
+ *```
  *
  * PHP constants may also be parsed in the ini file, so if you define a constant
  * as an ini value before calling the constructor, the constant's value will be
@@ -44,7 +55,7 @@ namespace Phalcon\Config\Adapter;
  * );
  * ```
  */
-class Ini extends \Phalcon\Config
+class Ini extends Config
 {
 
     /**
@@ -53,7 +64,9 @@ class Ini extends \Phalcon\Config
      * @param string $filePath
      * @param mixed $mode
      */
-    public function __construct(string $filePath, $mode = null) {}
+    public function __construct(string $filePath, $mode = null)
+    {
+    }
 
     /**
      * We have to cast values manually because parse_ini_file() has a poor
@@ -62,7 +75,9 @@ class Ini extends \Phalcon\Config
      * @param mixed $ini
      * @return bool|null|double|int|string
      */
-    protected function cast($ini) {}
+    protected function cast($ini)
+    {
+    }
 
     /**
      * Build multidimensional array from string
@@ -71,6 +86,7 @@ class Ini extends \Phalcon\Config
      * @param mixed $value
      * @return array
      */
-    protected function parseIniString(string $path, $value): array {}
-
+    protected function parseIniString(string $path, $value): array
+    {
+    }
 }

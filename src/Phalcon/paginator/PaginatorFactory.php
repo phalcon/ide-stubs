@@ -1,16 +1,20 @@
 <?php
 
-namespace Phalcon\Paginator;
-
 /**
  * This file is part of the Phalcon Framework.
  *
- * (c) Phalcon Team <team@phalconphp.com>
+ * (c) Phalcon Team <team@phalcon.io>
  *
  * For the full copyright and license information, please view the LICENSE.txt
  * file that was distributed with this source code.
  */
-class PaginatorFactory extends \Phalcon\Factory\AbstractFactory
+
+namespace Phalcon\Paginator;
+
+use Phalcon\Factory\AbstractFactory;
+use Phalcon\Paginator\Adapter\AbstractAdapter;
+
+class PaginatorFactory extends AbstractFactory
 {
 
     /**
@@ -18,7 +22,9 @@ class PaginatorFactory extends \Phalcon\Factory\AbstractFactory
      *
      * @param array $services
      */
-    public function __construct(array $services = array()) {}
+    public function __construct(array $services = array())
+    {
+    }
 
     /**
      * Factory to create an instace from a Config object
@@ -46,7 +52,9 @@ class PaginatorFactory extends \Phalcon\Factory\AbstractFactory
      * @param mixed $config
      * @return mixed
      */
-    public function load($config) {}
+    public function load($config)
+    {
+    }
 
     /**
      * Create a new instance of the adapter
@@ -55,11 +63,14 @@ class PaginatorFactory extends \Phalcon\Factory\AbstractFactory
      * @param array $options
      * @return \Phalcon\Paginator\Adapter\AbstractAdapter
      */
-    public function newInstance(string $name, array $options = array()): AbstractAdapter {}
+    public function newInstance(string $name, array $options = array()): AbstractAdapter
+    {
+    }
 
     /**
      * @return array
      */
-    protected function getAdapters(): array {}
-
+    protected function getAdapters(): array
+    {
+    }
 }

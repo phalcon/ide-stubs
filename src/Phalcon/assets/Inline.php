@@ -1,15 +1,24 @@
 <?php
 
+/**
+ * This file is part of the Phalcon Framework.
+ *
+ * (c) Phalcon Team <team@phalcon.io>
+ *
+ * For the full copyright and license information, please view the LICENSE.txt
+ * file that was distributed with this source code.
+ */
+
 namespace Phalcon\Assets;
 
 /**
  * Represents an inline asset
  *
- * ```php
+ *```php
  * $inline = new \Phalcon\Assets\Inline("js", "alert('hello world');");
- * ```
+ *```
  */
-class Inline implements \Phalcon\Assets\AssetInterface
+class Inline implements AssetInterface
 {
     /**
      * @var array | null
@@ -35,22 +44,30 @@ class Inline implements \Phalcon\Assets\AssetInterface
     /**
      * @return array|null
      */
-    public function getAttributes(): ?array {}
+    public function getAttributes(): ?array
+    {
+    }
 
     /**
      * @return string
      */
-    public function getContent(): string {}
+    public function getContent(): string
+    {
+    }
 
     /**
      * @return bool
      */
-    public function getFilter(): bool {}
+    public function getFilter(): bool
+    {
+    }
 
     /**
      * @return string
      */
-    public function getType(): string {}
+    public function getType(): string
+    {
+    }
 
     /**
      * Phalcon\Assets\Inline constructor
@@ -60,14 +77,18 @@ class Inline implements \Phalcon\Assets\AssetInterface
      * @param bool $filter
      * @param array $attributes
      */
-    public function __construct(string $type, string $content, bool $filter = true, array $attributes = array()) {}
+    public function __construct(string $type, string $content, bool $filter = true, array $attributes = array())
+    {
+    }
 
     /**
      * Gets the asset's key.
      *
      * @return string
      */
-    public function getAssetKey(): string {}
+    public function getAssetKey(): string
+    {
+    }
 
     /**
      * Sets extra HTML attributes
@@ -75,7 +96,9 @@ class Inline implements \Phalcon\Assets\AssetInterface
      * @param array $attributes
      * @return AssetInterface
      */
-    public function setAttributes(array $attributes): AssetInterface {}
+    public function setAttributes(array $attributes): AssetInterface
+    {
+    }
 
     /**
      * Sets if the asset must be filtered or not
@@ -83,7 +106,9 @@ class Inline implements \Phalcon\Assets\AssetInterface
      * @param bool $filter
      * @return AssetInterface
      */
-    public function setFilter(bool $filter): AssetInterface {}
+    public function setFilter(bool $filter): AssetInterface
+    {
+    }
 
     /**
      * Sets the inline's type
@@ -91,6 +116,7 @@ class Inline implements \Phalcon\Assets\AssetInterface
      * @param string $type
      * @return AssetInterface
      */
-    public function setType(string $type): AssetInterface {}
-
+    public function setType(string $type): AssetInterface
+    {
+    }
 }

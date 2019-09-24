@@ -1,18 +1,31 @@
 <?php
 
+/**
+ * This file is part of the Phalcon Framework.
+ *
+ * (c) Phalcon Team <team@phalcon.io>
+ *
+ * For the full copyright and license information, please view the LICENSE.txt
+ * file that was distributed with this source code.
+ */
+
 namespace Phalcon\Flash;
+
+use Phalcon\Session\ManagerInterface as SessionInterface;
 
 /**
  * Temporarily stores the messages in session, then messages can be printed in
  * the next request
  */
-class Session extends \Phalcon\Flash\AbstractFlash
+class Session extends AbstractFlash
 {
 
     /**
      * Clear messages in the session messenger
      */
-    public function clear() {}
+    public function clear()
+    {
+    }
 
     /**
      * Returns the messages in the session flasher
@@ -21,7 +34,9 @@ class Session extends \Phalcon\Flash\AbstractFlash
      * @param bool $remove
      * @return array
      */
-    public function getMessages($type = null, bool $remove = true): array {}
+    public function getMessages($type = null, bool $remove = true): array
+    {
+    }
 
     /**
      * Checks whether there are messages
@@ -29,22 +44,29 @@ class Session extends \Phalcon\Flash\AbstractFlash
      * @param mixed $type
      * @return bool
      */
-    public function has($type = null): bool {}
+    public function has($type = null): bool
+    {
+    }
 
     /**
      * Adds a message to the session flasher
      *
      * @param string $type
      * @param string $message
+     * @return string|null
      */
-    public function message(string $type, string $message) {}
+    public function message(string $type, string $message): ?string
+    {
+    }
 
     /**
      * Prints the messages in the session flasher
      *
      * @param bool $remove
      */
-    public function output(bool $remove = true) {}
+    public function output(bool $remove = true)
+    {
+    }
 
     /**
      * Returns the messages stored in session
@@ -53,7 +75,9 @@ class Session extends \Phalcon\Flash\AbstractFlash
      * @param mixed $type
      * @return array
      */
-    protected function getSessionMessages(bool $remove, $type = null): array {}
+    protected function getSessionMessages(bool $remove, $type = null): array
+    {
+    }
 
     /**
      * Stores the messages in session
@@ -61,6 +85,16 @@ class Session extends \Phalcon\Flash\AbstractFlash
      * @param array $messages
      * @return array
      */
-    protected function setSessionMessages(array $messages): array {}
+    protected function setSessionMessages(array $messages): array
+    {
+    }
 
+    /**
+     * Returns the Session Service
+     *
+     * @return \Phalcon\Session\ManagerInterface
+     */
+    public function getSessionService(): SessionInterface
+    {
+    }
 }

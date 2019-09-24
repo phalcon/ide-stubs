@@ -1,5 +1,14 @@
 <?php
 
+/**
+ * This file is part of the Phalcon.
+ *
+ * (c) Phalcon Team <team@phalcon.com>
+ *
+ * For the full copyright and license information, please view the LICENSE
+ * file that was distributed with this source code.
+ */
+
 namespace Phalcon\Helper;
 
 /**
@@ -43,7 +52,9 @@ class Str
      * @param mixed $delimiter
      * @return string
      */
-    final public static function camelize(string $text, $delimiter = null): string {}
+    final public static function camelize(string $text, $delimiter = null): string
+    {
+    }
 
     /**
      * Concatenates strings using the separator only once without duplication in
@@ -68,7 +79,9 @@ class Str
      * @param string $b
      * @return string
      */
-    final public static function concat(): string {}
+    final public static function concat(): string
+    {
+    }
 
     /**
      * Retuns number of vowels in provided string. Uses a regular expression
@@ -79,7 +92,9 @@ class Str
      * @param string $text
      * @return int
      */
-    final public static function countVowels(string $text): int {}
+    final public static function countVowels(string $text): int
+    {
+    }
 
     /**
      * Decapitalizes the first letter of the sring and then adds it with rest
@@ -94,7 +109,9 @@ class Str
      * @param string $string
      * @return string
      */
-    final public static function decapitalize(string $text, bool $upperRest = false, string $encoding = 'UTF-8'): string {}
+    final public static function decapitalize(string $text, bool $upperRest = false, string $encoding = 'UTF-8'): string
+    {
+    }
 
     /**
      * Accepts a file name (without extension) and returns a calculated
@@ -111,7 +128,9 @@ class Str
      * @param string $file
      * @return string
      */
-    final public static function dirFromFile(string $file): string {}
+    final public static function dirFromFile(string $file): string
+    {
+    }
 
     /**
      * Accepts a directory name and ensures that it ends with
@@ -128,7 +147,9 @@ class Str
      * @param string $directory
      * @return string
      */
-    final public static function dirSeparator(string $directory): string {}
+    final public static function dirSeparator(string $directory): string
+    {
+    }
 
     /**
      * Generates random text in accordance with the template
@@ -161,7 +182,9 @@ class Str
      * @param string $separator
      * @return string
      */
-    final public static function dynamic(string $text, string $leftDelimiter = '{', string $rightDelimiter = '}', string $separator = '|'): string {}
+    final public static function dynamic(string $text, string $leftDelimiter = '{', string $rightDelimiter = '}', string $separator = '|'): string
+    {
+    }
 
     /**
      * Check if a string ends with a given string
@@ -181,7 +204,9 @@ class Str
      * @param bool $ignoreCase
      * @return bool
      */
-    final public static function endsWith(string $text, string $end, bool $ignoreCase = true): bool {}
+    final public static function endsWith(string $text, string $end, bool $ignoreCase = true): bool
+    {
+    }
 
     /**
      * Returns the first string there is between the strings from the
@@ -194,7 +219,9 @@ class Str
      * @param string $end
      * @return string
      */
-    final public static function firstBetween(string $text, string $start, string $end): string {}
+    final public static function firstBetween(string $text, string $start, string $end): string
+    {
+    }
 
     /**
      * Makes an underscored or dashed phrase human-readable
@@ -211,7 +238,9 @@ class Str
      * @param string $text
      * @return string
      */
-    final public static function humanize(string $text): string {}
+    final public static function humanize(string $text): string
+    {
+    }
 
     /**
      * Lets you determine whether or not a string includes another string.
@@ -222,7 +251,9 @@ class Str
      * @param string $haystack
      * @return bool
      */
-    final public static function includes(string $needle, string $haystack): bool {}
+    final public static function includes(string $needle, string $haystack): bool
+    {
+    }
 
     /**
      * Adds a number to a string or increment that number if it already is
@@ -241,7 +272,9 @@ class Str
      * @param string $separator
      * @return string
      */
-    final public static function increment(string $text, string $separator = '_'): string {}
+    final public static function increment(string $text, string $separator = '_'): string
+    {
+    }
 
     /**
      * Compare two strings and returns true if both strings are anagram,
@@ -253,7 +286,9 @@ class Str
      * @param string $second
      * @return bool
      */
-    final public static function isAnagram(string $first, string $second): bool {}
+    final public static function isAnagram(string $first, string $second): bool
+    {
+    }
 
     /**
      * Returns true if the given string is lower case, false otherwise.
@@ -264,7 +299,9 @@ class Str
      * @param string $encoding
      * @return bool
      */
-    final public static function isLower(string $text, string $encoding = 'UTF-8'): bool {}
+    final public static function isLower(string $text, string $encoding = 'UTF-8'): bool
+    {
+    }
 
     /**
      * Returns true if the given string is a palindrome, false otherwise.
@@ -274,7 +311,9 @@ class Str
      * @param string $text
      * @return bool
      */
-    final public static function isPalindrome(string $text): bool {}
+    final public static function isPalindrome(string $text): bool
+    {
+    }
 
     /**
      * Returns true if the given string is upper case, false otherwise.
@@ -285,7 +324,9 @@ class Str
      * @param string $encoding
      * @return bool
      */
-    final public static function isUpper(string $text, string $encoding = 'UTF-8'): bool {}
+    final public static function isUpper(string $text, string $encoding = 'UTF-8'): bool
+    {
+    }
 
     /**
      * Lowercases a string, this function makes use of the mbstring extension if
@@ -301,7 +342,9 @@ class Str
      * @param string $encoding
      * @return string
      */
-    final public static function lower(string $text, string $encoding = 'UTF-8'): string {}
+    final public static function lower(string $text, string $encoding = 'UTF-8'): string
+    {
+    }
 
     /**
      * Generates a random string based on the given type. Type is one of the
@@ -319,7 +362,9 @@ class Str
      * @param long $length
      * @return string
      */
-    final public static function random(int $type = 0, int $length = 8): string {}
+    final public static function random(int $type = 0, int $length = 8): string
+    {
+    }
 
     /**
      * Reduces multiple slashes in a string to single slashes
@@ -337,7 +382,9 @@ class Str
      * @param string $text
      * @return string
      */
-    final public static function reduceSlashes(string $text): string {}
+    final public static function reduceSlashes(string $text): string
+    {
+    }
 
     /**
      * Check if a string starts with a given string
@@ -357,7 +404,9 @@ class Str
      * @param bool $ignoreCase
      * @return bool
      */
-    final public static function startsWith(string $text, string $start, bool $ignoreCase = true): bool {}
+    final public static function startsWith(string $text, string $start, bool $ignoreCase = true): bool
+    {
+    }
 
     /**
      * Uncamelize strings which are camelized
@@ -375,7 +424,9 @@ class Str
      * @param mixed $delimiter
      * @return string
      */
-    final public static function uncamelize(string $text, $delimiter = null): string {}
+    final public static function uncamelize(string $text, $delimiter = null): string
+    {
+    }
 
     /**
      * Makes a phrase underscored instead of spaced
@@ -392,7 +443,9 @@ class Str
      * @param string $text
      * @return string
      */
-    final public static function underscore(string $text): string {}
+    final public static function underscore(string $text): string
+    {
+    }
 
     /**
      * Uppercases a string, this function makes use of the mbstring extension if
@@ -408,6 +461,7 @@ class Str
      * @param string $encoding
      * @return string
      */
-    final public static function upper(string $text, string $encoding = 'UTF-8'): string {}
-
+    final public static function upper(string $text, string $encoding = 'UTF-8'): string
+    {
+    }
 }

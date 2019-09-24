@@ -1,11 +1,26 @@
 <?php
 
+/**
+ * This file is part of the Phalcon Framework.
+ *
+ * (c) Phalcon Team <team@phalcon.io>
+ *
+ * For the full copyright and license information, please view the LICENSE.txt
+ * file that was distributed with this source code.
+ *
+ * Implementation of this file has been influenced by Zend Diactoros
+ * @link    https://github.com/zendframework/zend-diactoros
+ * @license https://github.com/zendframework/zend-diactoros/blob/master/LICENSE.md
+ */
+
 namespace Phalcon\Http\Message;
+
+use Psr\Http\Message\ResponseInterface;
 
 /**
  * PSR-7 Response
  */
-final class Response extends \Phalcon\Http\Message\AbstractMessage implements \Psr\Http\Message\ResponseInterface
+final class Response extends AbstractMessage implements ResponseInterface
 {
     /**
      * Gets the response reason phrase associated with the status code.
@@ -47,7 +62,9 @@ final class Response extends \Phalcon\Http\Message\AbstractMessage implements \P
      *
      * @return string
      */
-    public function getReasonPhrase(): string {}
+    public function getReasonPhrase(): string
+    {
+    }
 
     /**
      * Gets the response status code.
@@ -57,7 +74,9 @@ final class Response extends \Phalcon\Http\Message\AbstractMessage implements \P
      *
      * @return int
      */
-    public function getStatusCode(): int {}
+    public function getStatusCode(): int
+    {
+    }
 
     /**
      * Response constructor.
@@ -66,7 +85,9 @@ final class Response extends \Phalcon\Http\Message\AbstractMessage implements \P
      * @param int $code
      * @param array $headers
      */
-    public function __construct($body = 'php://memory', int $code = 200, array $headers = array()) {}
+    public function __construct($body = 'php://memory', int $code = 200, array $headers = array())
+    {
+    }
 
     /**
      * Return an instance with the specified status code and, optionally,
@@ -89,28 +110,36 @@ final class Response extends \Phalcon\Http\Message\AbstractMessage implements \P
      * @param mixed $reasonPhrase
      * @return Response
      */
-    public function withStatus($code, $reasonPhrase = ''): Response {}
+    public function withStatus($code, $reasonPhrase = ''): Response
+    {
+    }
 
     /**
      * Checks if a code is integer or string
      *
      * @param mixed $code
      */
-    private function checkCodeType($code) {}
+    private function checkCodeType($code)
+    {
+    }
 
     /**
      * Checks if a code is integer or string
      *
      * @param int $code
      */
-    private function checkCodeValue(int $code) {}
+    private function checkCodeValue(int $code)
+    {
+    }
 
     /**
      * Returns the list of status codes available
      *
      * @return array
      */
-    private function getPhrases(): array {}
+    private function getPhrases(): array
+    {
+    }
 
     /**
      * Set a valid status code and phrase
@@ -118,6 +147,7 @@ final class Response extends \Phalcon\Http\Message\AbstractMessage implements \P
      * @param mixed $code
      * @param mixed $phrase
      */
-    private function processCode($code, $phrase = '') {}
-
+    private function processCode($code, $phrase = '')
+    {
+    }
 }

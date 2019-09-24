@@ -1,11 +1,24 @@
 <?php
 
+/**
+ * This file is part of the Phalcon Framework.
+ *
+ * (c) Phalcon Team <team@phalcon.io>
+ *
+ * For the full copyright and license information, please view the LICENSE.txt
+ * file that was distributed with this source code.
+ */
+
 namespace Phalcon\Cache;
+
+use Phalcon\Cache\Adapter\AbstractAdapter;
+use Phalcon\Factory\AbstractFactory;
+use Phalcon\Storage\SerializerFactory;
 
 /**
  * Factory to create Cache adapters
  */
-class AdapterFactory extends \Phalcon\Factory\AbstractFactory
+class AdapterFactory extends AbstractFactory
 {
     /**
      * @var SerializerFactory
@@ -19,7 +32,9 @@ class AdapterFactory extends \Phalcon\Factory\AbstractFactory
      * @param \Phalcon\Storage\SerializerFactory $factory
      * @param array $services
      */
-    public function __construct(\Phalcon\Storage\SerializerFactory $factory = null, array $services = array()) {}
+    public function __construct(\Phalcon\Storage\SerializerFactory $factory = null, array $services = array())
+    {
+    }
 
     /**
      * Create a new instance of the adapter
@@ -28,13 +43,16 @@ class AdapterFactory extends \Phalcon\Factory\AbstractFactory
      * @param array $options
      * @return \Phalcon\Cache\Adapter\AbstractAdapter
      */
-    public function newInstance(string $name, array $options = array()): AbstractAdapter {}
+    public function newInstance(string $name, array $options = array()): AbstractAdapter
+    {
+    }
 
     /**
      * Returns the available adapters
      *
      * @return array
      */
-    protected function getAdapters(): array {}
-
+    protected function getAdapters(): array
+    {
+    }
 }

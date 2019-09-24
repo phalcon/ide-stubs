@@ -1,6 +1,19 @@
 <?php
 
+/**
+ * This file is part of the Phalcon Framework.
+ *
+ * (c) Phalcon Team <team@phalcon.io>
+ *
+ * For the full copyright and license information, please view the LICENSE.txt
+ * file that was distributed with this source code.
+ */
+
 namespace Phalcon\Mvc\Model;
+
+use ArrayAccess;
+use JsonSerializable;
+use Phalcon\Mvc\EntityInterface;
 
 /**
  * Phalcon\Mvc\Model\Row
@@ -8,7 +21,7 @@ namespace Phalcon\Mvc\Model;
  * This component allows Phalcon\Mvc\Model to return rows without an associated entity.
  * This objects implements the ArrayAccess interface to allow access the object as object->x or array[x].
  */
-class Row implements \Phalcon\Mvc\EntityInterface, \Phalcon\Mvc\Model\ResultInterface, \ArrayAccess, \JsonSerializable
+class Row implements EntityInterface, ResultInterface, ArrayAccess, JsonSerializable
 {
 
     /**
@@ -16,7 +29,9 @@ class Row implements \Phalcon\Mvc\EntityInterface, \Phalcon\Mvc\Model\ResultInte
      *
      * @return array
      */
-    public function jsonSerialize(): array {}
+    public function jsonSerialize(): array
+    {
+    }
 
     /**
      * Gets a record in a specific position of the row
@@ -26,7 +41,9 @@ class Row implements \Phalcon\Mvc\EntityInterface, \Phalcon\Mvc\Model\ResultInte
      * @param mixed $index
      * @return mixed
      */
-    public function offsetGet($index) {}
+    public function offsetGet($index)
+    {
+    }
 
     /**
      * Checks whether offset exists in the row
@@ -34,7 +51,9 @@ class Row implements \Phalcon\Mvc\EntityInterface, \Phalcon\Mvc\Model\ResultInte
      * @param string|int $index
      * @return bool
      */
-    public function offsetExists($index): bool {}
+    public function offsetExists($index): bool
+    {
+    }
 
     /**
      * Rows cannot be changed. It has only been implemented to meet the definition of the ArrayAccess interface
@@ -42,14 +61,18 @@ class Row implements \Phalcon\Mvc\EntityInterface, \Phalcon\Mvc\Model\ResultInte
      * @param string|int $index
      * @param \Phalcon\Mvc\ModelInterface $value
      */
-    public function offsetSet($index, $value) {}
+    public function offsetSet($index, $value)
+    {
+    }
 
     /**
      * Rows cannot be changed. It has only been implemented to meet the definition of the ArrayAccess interface
      *
      * @param string|int $offset
      */
-    public function offsetUnset($offset) {}
+    public function offsetUnset($offset)
+    {
+    }
 
     /**
      * Reads an attribute value by its name
@@ -61,7 +84,9 @@ class Row implements \Phalcon\Mvc\EntityInterface, \Phalcon\Mvc\Model\ResultInte
      * @param string $attribute
      * @return mixed
      */
-    public function readAttribute(string $attribute) {}
+    public function readAttribute(string $attribute)
+    {
+    }
 
     /**
      * Set the current object's state
@@ -69,14 +94,18 @@ class Row implements \Phalcon\Mvc\EntityInterface, \Phalcon\Mvc\Model\ResultInte
      * @param int $dirtyState
      * @return bool|\Phalcon\Mvc\ModelInterface
      */
-    public function setDirtyState(int $dirtyState) {}
+    public function setDirtyState(int $dirtyState)
+    {
+    }
 
     /**
      * Returns the instance as an array representation
      *
      * @return array
      */
-    public function toArray(): array {}
+    public function toArray(): array
+    {
+    }
 
     /**
      * Writes an attribute value by its name
@@ -88,6 +117,7 @@ class Row implements \Phalcon\Mvc\EntityInterface, \Phalcon\Mvc\Model\ResultInte
      * @param string $attribute
      * @param mixed $value
      */
-    public function writeAttribute(string $attribute, $value) {}
-
+    public function writeAttribute(string $attribute, $value)
+    {
+    }
 }

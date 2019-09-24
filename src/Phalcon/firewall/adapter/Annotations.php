@@ -1,11 +1,20 @@
 <?php
 
+/**
+ * This file is part of the Phalcon Framework.
+ *
+ * (c) Phalcon Team <team@phalcon.io>
+ *
+ * For the full copyright and license information, please view the LICENSE.txt
+ * file that was distributed with this source code.
+ */
+
 namespace Phalcon\Firewall\Adapter;
 
 /**
  * Firewall which depends on annotations and dispatcher
  */
-class Annotations extends \Phalcon\Firewall\Adapter\AbstractAdapter
+class Annotations extends AbstractAdapter
 {
     /**
      * Number of active active arguments in active annotation
@@ -39,48 +48,62 @@ class Annotations extends \Phalcon\Firewall\Adapter\AbstractAdapter
      *
      * @return mixed
      */
-    public function getAnnotationsAdapter() {}
+    public function getAnnotationsAdapter()
+    {
+    }
 
     /**
      * Adapter for annotations
      *
      * @param mixed $annotationsAdapter
      */
-    public function setAnnotationsAdapter($annotationsAdapter) {}
+    public function setAnnotationsAdapter($annotationsAdapter)
+    {
+    }
 
     /**
      * Phalcon\Firewall\Adapter\Annotations constructor
      *
      * @param \Phalcon\Annotations\Adapter\AdapterInterface $annotationsAdapter
      */
-    public function __construct(\Phalcon\Annotations\Adapter\AdapterInterface $annotationsAdapter) {}
+    public function __construct(\Phalcon\Annotations\Adapter\AdapterInterface $annotationsAdapter)
+    {
+    }
 
     /**
      * @param \Phalcon\Events\Event $event
      * @param \Phalcon\Mvc\DispatcherInterface $dispatcher
      * @param mixed $data
      */
-    public function beforeExecuteRoute(\Phalcon\Events\Event $event, \Phalcon\Mvc\DispatcherInterface $dispatcher, $data) {}
+    public function beforeExecuteRoute(\Phalcon\Events\Event $event, \Phalcon\Mvc\DispatcherInterface $dispatcher, $data)
+    {
+    }
 
     /**
      * Gets dispatcher
      *
      * @return Dispatcher
      */
-    public function getDispatcher(): Dispatcher {}
+    public function getDispatcher(): Dispatcher
+    {
+    }
 
     /**
      * @param string $controllerClass
      * @param string $controllerName
      * @param mixed $role
      */
-    protected function checkControllerAnnotationAccess(string $controllerClass, string $controllerName, $role) {}
+    protected function checkControllerAnnotationAccess(string $controllerClass, string $controllerName, $role)
+    {
+    }
 
     /**
      * @param mixed $annotations
      * @param mixed $role
      */
-    protected function checkAnnotations($annotations, $role) {}
+    protected function checkAnnotations($annotations, $role)
+    {
+    }
 
     /**
      * @param string $controllerClass
@@ -88,7 +111,9 @@ class Annotations extends \Phalcon\Firewall\Adapter\AbstractAdapter
      * @param string $actionName
      * @param mixed $role
      */
-    protected function checkActionAnnotationAccess(string $controllerClass, string $controllerName, string $actionName, $role) {}
+    protected function checkActionAnnotationAccess(string $controllerClass, string $controllerName, string $actionName, $role)
+    {
+    }
 
     /**
      * @param string $key
@@ -96,13 +121,16 @@ class Annotations extends \Phalcon\Firewall\Adapter\AbstractAdapter
      * @param string $roleCacheKey
      * @return bool|null
      */
-    protected function getAccessFromCache(string $key, array $originalValues = null, string $roleCacheKey = null): ?bool {}
+    protected function getAccessFromCache(string $key, array $originalValues = null, string $roleCacheKey = null): ?bool
+    {
+    }
 
     /**
      * @param mixed $annotation
      * @param bool $access
      * @param mixed $role
      */
-    protected function handleAnnotation($annotation, bool $access, $role) {}
-
+    protected function handleAnnotation($annotation, bool $access, $role)
+    {
+    }
 }

@@ -1,6 +1,17 @@
 <?php
 
+/**
+ * This file is part of the Phalcon Framework.
+ *
+ * (c) Phalcon Team <team@phalcon.io>
+ *
+ * For the full copyright and license information, please view the LICENSE.txt
+ * file that was distributed with this source code.
+ */
+
 namespace Phalcon\Validation\Validator;
+
+use Phalcon\Validation\AbstractValidator;
 
 /**
  * Checks if a value has a correct e-mail format
@@ -36,7 +47,7 @@ namespace Phalcon\Validation\Validator;
  * );
  * ```
  */
-class Email extends \Phalcon\Validation\AbstractValidator
+class Email extends AbstractValidator
 {
 
     protected $template = 'Field :field must be an email address';
@@ -49,6 +60,7 @@ class Email extends \Phalcon\Validation\AbstractValidator
      * @param mixed $field
      * @return bool
      */
-    public function validate(\Phalcon\Validation $validation, $field): bool {}
-
+    public function validate(\Phalcon\Validation $validation, $field): bool
+    {
+    }
 }

@@ -1,5 +1,14 @@
 <?php
 
+/**
+ * This file is part of the Phalcon Framework.
+ *
+ * (c) Phalcon Team <team@phalcon.io>
+ *
+ * For the full copyright and license information, please view the LICENSE.txt
+ * file that was distributed with this source code.
+ */
+
 namespace Phalcon\Mvc\Model\Query;
 
 /**
@@ -17,7 +26,7 @@ namespace Phalcon\Mvc\Model\Query;
  *
  * ```php
  * $intermediate = Phalcon\Mvc\Model\Query\Lang::parsePHQL(
- *     "SELECT r. FROM Robots r LIMIT 10"
+ *     "SELECT r.* FROM Robots r LIMIT 10"
  * );
  * ```
  */
@@ -30,6 +39,7 @@ abstract class Lang
      * @param string $phql
      * @return string
      */
-    public static function parsePHQL(string $phql): string {}
-
+    public static function parsePHQL(string $phql): string
+    {
+    }
 }

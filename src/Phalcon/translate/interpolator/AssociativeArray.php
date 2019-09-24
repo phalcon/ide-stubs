@@ -1,16 +1,17 @@
 <?php
 
-namespace Phalcon\Translate\Interpolator;
-
 /**
  * This file is part of the Phalcon Framework.
  *
- * (c) Phalcon Team <team@phalconphp.com>
+ * (c) Phalcon Team <team@phalcon.io>
  *
  * For the full copyright and license information, please view the LICENSE.txt
  * file that was distributed with this source code.
  */
-class AssociativeArray implements \Phalcon\Translate\Interpolator\InterpolatorInterface
+
+namespace Phalcon\Translate\Interpolator;
+
+class AssociativeArray implements InterpolatorInterface
 {
 
     /**
@@ -20,6 +21,7 @@ class AssociativeArray implements \Phalcon\Translate\Interpolator\InterpolatorIn
      * @param array $placeholders
      * @return string
      */
-    public function replacePlaceholders(string $translation, array $placeholders = array()): string {}
-
+    public function replacePlaceholders(string $translation, array $placeholders = array()): string
+    {
+    }
 }

@@ -1,6 +1,17 @@
 <?php
 
+/**
+ * This file is part of the Phalcon Framework.
+ *
+ * (c) Phalcon Team <team@phalcon.io>
+ *
+ * For the full copyright and license information, please view the LICENSE.txt
+ * file that was distributed with this source code.
+ */
+
 namespace Phalcon\Validation\Validator;
+
+use Phalcon\Validation\AbstractValidatorComposite;
 
 /**
  * Checks if a value has a correct file
@@ -69,7 +80,7 @@ namespace Phalcon\Validation\Validator;
  * );
  * ```
  */
-class File extends \Phalcon\Validation\AbstractValidatorComposite
+class File extends AbstractValidatorComposite
 {
 
     /**
@@ -77,6 +88,7 @@ class File extends \Phalcon\Validation\AbstractValidatorComposite
      *
      * @param array $options
      */
-    public function __construct(array $options = array()) {}
-
+    public function __construct(array $options = array())
+    {
+    }
 }

@@ -1,12 +1,23 @@
 <?php
 
+/**
+ * This file is part of the Phalcon Framework.
+ *
+ * (c) Phalcon Team <team@phalcon.io>
+ *
+ * For the full copyright and license information, please view the LICENSE.txt
+ * file that was distributed with this source code.
+ */
+
 namespace Phalcon\Config;
+
+use Phalcon\Factory\AbstractFactory;
 
 /**
  * Loads Config Adapter class using 'adapter' option, if no extension is
  * provided it will be added to filePath
  *
- * ```php
+ *```php
  * use Phalcon\Config\ConfigFactory;
  *
  * $options = [
@@ -15,9 +26,9 @@ namespace Phalcon\Config;
  * ];
  *
  * $config = (new ConfigFactory())->load($options);
- * ```
+ *```
  */
-class ConfigFactory extends \Phalcon\Factory\AbstractFactory
+class ConfigFactory extends AbstractFactory
 {
 
     /**
@@ -25,7 +36,9 @@ class ConfigFactory extends \Phalcon\Factory\AbstractFactory
      *
      * @param array $services
      */
-    public function __construct(array $services = array()) {}
+    public function __construct(array $services = array())
+    {
+    }
 
     /**
      * Load a config to create a new instance
@@ -33,7 +46,9 @@ class ConfigFactory extends \Phalcon\Factory\AbstractFactory
      * @param mixed $config
      * @return object
      */
-    public function load($config) {}
+    public function load($config)
+    {
+    }
 
     /**
      * Returns a new Config instance
@@ -43,13 +58,16 @@ class ConfigFactory extends \Phalcon\Factory\AbstractFactory
      * @param mixed $params
      * @return object
      */
-    public function newInstance(string $name, string $fileName, $params = null) {}
+    public function newInstance(string $name, string $fileName, $params = null)
+    {
+    }
 
     /**
      * Returns the adapters for the factory
      *
      * @return array
      */
-    protected function getAdapters(): array {}
-
+    protected function getAdapters(): array
+    {
+    }
 }

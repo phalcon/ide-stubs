@@ -1,11 +1,22 @@
 <?php
 
+/**
+ * This file is part of the Phalcon Framework.
+ *
+ * (c) Phalcon Team <team@phalcon.io>
+ *
+ * For the full copyright and license information, please view the LICENSE.txt
+ * file that was distributed with this source code.
+ */
+
 namespace Phalcon\Validation;
+
+use Phalcon\Messages\Message;
 
 /**
  * This is a base class for validators
  */
-abstract class AbstractValidator implements \Phalcon\Validation\ValidatorInterface
+abstract class AbstractValidator implements ValidatorInterface
 {
     /**
      * Message template
@@ -30,7 +41,9 @@ abstract class AbstractValidator implements \Phalcon\Validation\ValidatorInterfa
      *
      * @param array $options
      */
-    public function __construct(array $options = array()) {}
+    public function __construct(array $options = array())
+    {
+    }
 
     /**
      * Get the template message
@@ -39,14 +52,18 @@ abstract class AbstractValidator implements \Phalcon\Validation\ValidatorInterfa
      * @param string $field
      * @return string
      */
-    public function getTemplate(string $field = null): string {}
+    public function getTemplate(string $field = null): string
+    {
+    }
 
     /**
      * Get templates collection object
      *
      * @return array
      */
-    public function getTemplates(): array {}
+    public function getTemplates(): array
+    {
+    }
 
     /**
      * Clear current templates and set new from an array,
@@ -54,7 +71,9 @@ abstract class AbstractValidator implements \Phalcon\Validation\ValidatorInterfa
      * @param array $templates
      * @return \Phalcon\Validation\ValidatorInterface
      */
-    public function setTemplates(array $templates): ValidatorInterface {}
+    public function setTemplates(array $templates): ValidatorInterface
+    {
+    }
 
     /**
      * Set a new template message
@@ -62,7 +81,9 @@ abstract class AbstractValidator implements \Phalcon\Validation\ValidatorInterfa
      * @param string $template
      * @return \Phalcon\Validation\ValidatorInterface
      */
-    public function setTemplate(string $template): ValidatorInterface {}
+    public function setTemplate(string $template): ValidatorInterface
+    {
+    }
 
     /**
      * Returns an option in the validator's options
@@ -72,7 +93,9 @@ abstract class AbstractValidator implements \Phalcon\Validation\ValidatorInterfa
      * @param mixed $defaultValue
      * @return mixed
      */
-    public function getOption(string $key, $defaultValue = null) {}
+    public function getOption(string $key, $defaultValue = null)
+    {
+    }
 
     /**
      * Checks if an option is defined
@@ -80,7 +103,9 @@ abstract class AbstractValidator implements \Phalcon\Validation\ValidatorInterfa
      * @param string $key
      * @return bool
      */
-    public function hasOption(string $key): bool {}
+    public function hasOption(string $key): bool
+    {
+    }
 
     /**
      * Sets an option in the validator
@@ -88,7 +113,9 @@ abstract class AbstractValidator implements \Phalcon\Validation\ValidatorInterfa
      * @param string $key
      * @param mixed $value
      */
-    public function setOption(string $key, $value) {}
+    public function setOption(string $key, $value)
+    {
+    }
 
     /**
      * Executes the validation
@@ -105,7 +132,9 @@ abstract class AbstractValidator implements \Phalcon\Validation\ValidatorInterfa
      * @param string $field
      * @return int|null
      */
-    protected function prepareCode(string $field): ?int {}
+    protected function prepareCode(string $field): ?int
+    {
+    }
 
     /**
      * Prepares a label for the field.
@@ -114,7 +143,9 @@ abstract class AbstractValidator implements \Phalcon\Validation\ValidatorInterfa
      * @param string $field
      * @return mixed
      */
-    protected function prepareLabel(\Phalcon\Validation $validation, string $field) {}
+    protected function prepareLabel(\Phalcon\Validation $validation, string $field)
+    {
+    }
 
     /**
      * Create a default message by factory
@@ -127,6 +158,7 @@ abstract class AbstractValidator implements \Phalcon\Validation\ValidatorInterfa
      * @param array $replacements
      * @return \Phalcon\Messages\Message
      */
-    public function messageFactory(\Phalcon\Validation $validation, $field, array $replacements = array()): Message {}
-
+    public function messageFactory(\Phalcon\Validation $validation, $field, array $replacements = array()): Message
+    {
+    }
 }

@@ -1,6 +1,17 @@
 <?php
 
+/**
+ * This file is part of the Phalcon Framework.
+ *
+ * (c) Phalcon Team <team@phalcon.io>
+ *
+ * For the full copyright and license information, please view the LICENSE.txt
+ * file that was distributed with this source code.
+ */
+
 namespace Phalcon\Mvc;
+
+use Phalcon\Di\Injectable;
 
 /**
  * Phalcon\Mvc\Controller
@@ -13,7 +24,7 @@ namespace Phalcon\Mvc;
  * interrogating the models for data, and passing that data on to the views for
  * presentation.
  *
- * ```php
+ *```php
  * <?php
  *
  * class PeopleController extends \Phalcon\Mvc\Controller
@@ -40,14 +51,15 @@ namespace Phalcon\Mvc;
  *         );
  *     }
  * }
- * ```
+ *```
  */
-abstract class Controller extends \Phalcon\Di\Injectable implements \Phalcon\Mvc\ControllerInterface
+abstract class Controller extends Injectable implements ControllerInterface
 {
 
     /**
      * Phalcon\Mvc\Controller constructor
      */
-    final public function __construct() {}
-
+    final public function __construct()
+    {
+    }
 }

@@ -1,16 +1,19 @@
 <?php
 
-namespace Phalcon\Storage\Serializer;
-
 /**
  * This file is part of the Phalcon Framework.
  *
- * (c) Phalcon Team <team@phalconphp.com>
+ * (c) Phalcon Team <team@phalcon.io>
  *
  * For the full copyright and license information, please view the LICENSE.txt
  * file that was distributed with this source code.
  */
-interface SerializerInterface extends \Serializable
+
+namespace Phalcon\Storage\Serializer;
+
+use Serializable;
+
+interface SerializerInterface extends Serializable
 {
 
     /**
@@ -20,8 +23,6 @@ interface SerializerInterface extends \Serializable
 
     /**
      * @param mixed $data
-     * @param $data
      */
     public function setData($data);
-
 }

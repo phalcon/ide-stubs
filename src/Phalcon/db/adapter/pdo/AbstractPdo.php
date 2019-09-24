@@ -1,6 +1,17 @@
 <?php
 
+/**
+ * This file is part of the Phalcon.
+ *
+ * (c) Phalcon Team <team@phalcon.com>
+ *
+ * For the full copyright and license information, please view the LICENSE
+ * file that was distributed with this source code.
+ */
+
 namespace Phalcon\Db\Adapter\Pdo;
+
+use Phalcon\Db\Adapter\AbstractAdapter;
 
 /**
  * Phalcon\Db\Adapter\Pdo is the Phalcon\Db that internally uses PDO to connect
@@ -18,9 +29,9 @@ namespace Phalcon\Db\Adapter\Pdo;
  * ];
  *
  * $connection = new Mysql($config);
- * ```
+ *```
  */
-abstract class AbstractPdo extends \Phalcon\Db\Adapter\AbstractAdapter
+abstract class AbstractPdo extends AbstractAdapter
 {
     /**
      * Last affected rows
@@ -40,7 +51,9 @@ abstract class AbstractPdo extends \Phalcon\Db\Adapter\AbstractAdapter
      *
      * @param array $descriptor
      */
-    public function __construct(array $descriptor) {}
+    public function __construct(array $descriptor)
+    {
+    }
 
     /**
      * Returns the number of affected rows by the latest INSERT/UPDATE/DELETE
@@ -56,7 +69,9 @@ abstract class AbstractPdo extends \Phalcon\Db\Adapter\AbstractAdapter
      *
      * @return int
      */
-    public function affectedRows(): int {}
+    public function affectedRows(): int
+    {
+    }
 
     /**
      * Starts a transaction in the connection
@@ -64,7 +79,9 @@ abstract class AbstractPdo extends \Phalcon\Db\Adapter\AbstractAdapter
      * @param bool $nesting
      * @return bool
      */
-    public function begin(bool $nesting = true): bool {}
+    public function begin(bool $nesting = true): bool
+    {
+    }
 
     /**
      * Commits the active transaction in the connection
@@ -72,7 +89,9 @@ abstract class AbstractPdo extends \Phalcon\Db\Adapter\AbstractAdapter
      * @param bool $nesting
      * @return bool
      */
-    public function commit(bool $nesting = true): bool {}
+    public function commit(bool $nesting = true): bool
+    {
+    }
 
     /**
      * Closes the active connection returning success. Phalcon automatically
@@ -80,7 +99,9 @@ abstract class AbstractPdo extends \Phalcon\Db\Adapter\AbstractAdapter
      *
      * @return bool
      */
-    public function close(): bool {}
+    public function close(): bool
+    {
+    }
 
     /**
      * This method is automatically called in \Phalcon\Db\Adapter\Pdo
@@ -109,7 +130,9 @@ abstract class AbstractPdo extends \Phalcon\Db\Adapter\AbstractAdapter
      * @param array $descriptor
      * @return bool
      */
-    public function connect(array $descriptor = null): bool {}
+    public function connect(array $descriptor = null): bool
+    {
+    }
 
     /**
      * Converts bound parameters such as :name: or ?1 into PDO bind params ?
@@ -129,7 +152,9 @@ abstract class AbstractPdo extends \Phalcon\Db\Adapter\AbstractAdapter
      * @param array $params
      * @return array
      */
-    public function convertBoundParams(string $sql, array $params = array()): array {}
+    public function convertBoundParams(string $sql, array $params = array()): array
+    {
+    }
 
     /**
      * Escapes a value to avoid SQL injections according to the active charset
@@ -142,7 +167,9 @@ abstract class AbstractPdo extends \Phalcon\Db\Adapter\AbstractAdapter
      * @param string $str
      * @return string
      */
-    public function escapeString(string $str): string {}
+    public function escapeString(string $str): string
+    {
+    }
 
     /**
      * Sends SQL statements to the database server returning the success state.
@@ -169,7 +196,9 @@ abstract class AbstractPdo extends \Phalcon\Db\Adapter\AbstractAdapter
      * @param mixed $bindTypes
      * @return bool
      */
-    public function execute(string $sqlStatement, $bindParams = null, $bindTypes = null): bool {}
+    public function execute(string $sqlStatement, $bindParams = null, $bindTypes = null): bool
+    {
+    }
 
     /**
      * Executes a prepared statement binding. This function uses integer indexes
@@ -198,26 +227,34 @@ abstract class AbstractPdo extends \Phalcon\Db\Adapter\AbstractAdapter
      * @param mixed $dataTypes
      * @return \PDOStatement
      */
-    public function executePrepared(\PDOStatement $statement, array $placeholders, $dataTypes): \PDOStatement {}
+    public function executePrepared(\PDOStatement $statement, array $placeholders, $dataTypes): \PDOStatement
+    {
+    }
 
     /**
      * Return the error info, if any
      */
-    public function getErrorInfo() {}
+    public function getErrorInfo()
+    {
+    }
 
     /**
      * Return internal PDO handler
      *
      * @return \Pdo
      */
-    public function getInternalHandler(): \Pdo {}
+    public function getInternalHandler(): \Pdo
+    {
+    }
 
     /**
      * Returns the current transaction nesting level
      *
      * @return int
      */
-    public function getTransactionLevel(): int {}
+    public function getTransactionLevel(): int
+    {
+    }
 
     /**
      * Checks whether the connection is under a transaction
@@ -233,7 +270,9 @@ abstract class AbstractPdo extends \Phalcon\Db\Adapter\AbstractAdapter
      *
      * @return bool
      */
-    public function isUnderTransaction(): bool {}
+    public function isUnderTransaction(): bool
+    {
+    }
 
     /**
      * Returns the insert id for the auto_increment/serial column inserted in
@@ -260,7 +299,9 @@ abstract class AbstractPdo extends \Phalcon\Db\Adapter\AbstractAdapter
      * @param mixed $sequenceName
      * @return int|bool
      */
-    public function lastInsertId($sequenceName = null) {}
+    public function lastInsertId($sequenceName = null)
+    {
+    }
 
     /**
      * Returns a PDO prepared statement to be executed with 'executePrepared'
@@ -286,7 +327,9 @@ abstract class AbstractPdo extends \Phalcon\Db\Adapter\AbstractAdapter
      * @param string $sqlStatement
      * @return \PDOStatement
      */
-    public function prepare(string $sqlStatement): \PDOStatement {}
+    public function prepare(string $sqlStatement): \PDOStatement
+    {
+    }
 
     /**
      * Sends SQL statements to the database server returning the success state.
@@ -312,7 +355,9 @@ abstract class AbstractPdo extends \Phalcon\Db\Adapter\AbstractAdapter
      * @param mixed $bindTypes
      * @return bool|\Phalcon\Db\ResultInterface
      */
-    public function query(string $sqlStatement, $bindParams = null, $bindTypes = null) {}
+    public function query(string $sqlStatement, $bindParams = null, $bindTypes = null)
+    {
+    }
 
     /**
      * Rollbacks the active transaction in the connection
@@ -320,7 +365,9 @@ abstract class AbstractPdo extends \Phalcon\Db\Adapter\AbstractAdapter
      * @param bool $nesting
      * @return bool
      */
-    public function rollback(bool $nesting = true): bool {}
+    public function rollback(bool $nesting = true): bool
+    {
+    }
 
     /**
      * Returns PDO adapter DSN defaults as a key-value map.
@@ -328,5 +375,4 @@ abstract class AbstractPdo extends \Phalcon\Db\Adapter\AbstractAdapter
      * @return array
      */
     abstract protected function getDsnDefaults(): array;
-
 }

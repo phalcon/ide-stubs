@@ -1,11 +1,22 @@
 <?php
 
+/**
+ * This file is part of the Phalcon Framework.
+ *
+ * (c) Phalcon Team <team@phalcon.io>
+ *
+ * For the full copyright and license information, please view the LICENSE.txt
+ * file that was distributed with this source code.
+ */
+
 namespace Phalcon\Mvc\View\Engine;
+
+use Phalcon\Mvc\View\Engine\Volt\Compiler;
 
 /**
  * Designer friendly and fast template engine for PHP written in Zephir/C
  */
-class Volt extends \Phalcon\Mvc\View\Engine\AbstractEngine
+class Volt extends AbstractEngine
 {
 
     protected $compiler;
@@ -24,7 +35,9 @@ class Volt extends \Phalcon\Mvc\View\Engine\AbstractEngine
      * @param array $arguments
      * @return mixed
      */
-    public function callMacro(string $name, array $arguments = array()) {}
+    public function callMacro(string $name, array $arguments = array())
+    {
+    }
 
     /**
      * Performs a string conversion
@@ -34,21 +47,27 @@ class Volt extends \Phalcon\Mvc\View\Engine\AbstractEngine
      * @param string $to
      * @return string
      */
-    public function convertEncoding(string $text, string $from, string $to): string {}
+    public function convertEncoding(string $text, string $from, string $to): string
+    {
+    }
 
     /**
      * Returns the Volt's compiler
      *
      * @return \Phalcon\Mvc\View\Engine\Volt\Compiler
      */
-    public function getCompiler(): Compiler {}
+    public function getCompiler(): Compiler
+    {
+    }
 
     /**
      * Return Volt's options
      *
      * @return array
      */
-    public function getOptions(): array {}
+    public function getOptions(): array
+    {
+    }
 
     /**
      * Checks if the needle is included in the haystack
@@ -57,7 +76,9 @@ class Volt extends \Phalcon\Mvc\View\Engine\AbstractEngine
      * @param mixed $haystack
      * @return bool
      */
-    public function isIncluded($needle, $haystack): bool {}
+    public function isIncluded($needle, $haystack): bool
+    {
+    }
 
     /**
      * Length filter. If an array/object is passed a count is performed otherwise a strlen/mb_strlen
@@ -65,7 +86,9 @@ class Volt extends \Phalcon\Mvc\View\Engine\AbstractEngine
      * @param mixed $item
      * @return int
      */
-    public function length($item): int {}
+    public function length($item): int
+    {
+    }
 
     /**
      * Renders a view using the template engine
@@ -74,14 +97,18 @@ class Volt extends \Phalcon\Mvc\View\Engine\AbstractEngine
      * @param mixed $params
      * @param bool $mustClean
      */
-    public function render(string $templatePath, $params, bool $mustClean = false) {}
+    public function render(string $templatePath, $params, bool $mustClean = false)
+    {
+    }
 
     /**
      * Set Volt's options
      *
      * @param array $options
      */
-    public function setOptions(array $options) {}
+    public function setOptions(array $options)
+    {
+    }
 
     /**
      * Extracts a slice from a string/array/traversable object value
@@ -90,7 +117,9 @@ class Volt extends \Phalcon\Mvc\View\Engine\AbstractEngine
      * @param int $start
      * @param mixed $end
      */
-    public function slice($value, int $start = 0, $end = null) {}
+    public function slice($value, int $start = 0, $end = null)
+    {
+    }
 
     /**
      * Sorts an array
@@ -98,6 +127,7 @@ class Volt extends \Phalcon\Mvc\View\Engine\AbstractEngine
      * @param array $value
      * @return array
      */
-    public function sort(array $value): array {}
-
+    public function sort(array $value): array
+    {
+    }
 }

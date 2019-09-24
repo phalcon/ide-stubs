@@ -1,6 +1,17 @@
 <?php
 
+/**
+ * This file is part of the Phalcon Framework.
+ *
+ * (c) Phalcon Team <team@phalcon.io>
+ *
+ * For the full copyright and license information, please view the LICENSE.txt
+ * file that was distributed with this source code.
+ */
+
 namespace Phalcon\Mvc\Router;
+
+use Phalcon\Mvc\Router;
 
 /**
  * Phalcon\Mvc\Router\Annotations
@@ -24,7 +35,7 @@ namespace Phalcon\Mvc\Router;
  * );
  * ```
  */
-class Annotations extends \Phalcon\Mvc\Router
+class Annotations extends Router
 {
 
     protected $actionSuffix = 'Action';
@@ -49,7 +60,9 @@ class Annotations extends \Phalcon\Mvc\Router
      * @param string $prefix
      * @return Annotations
      */
-    public function addModuleResource(string $module, string $handler, string $prefix = null): Annotations {}
+    public function addModuleResource(string $module, string $handler, string $prefix = null): Annotations
+    {
+    }
 
     /**
      * Adds a resource to the annotations handler
@@ -59,21 +72,27 @@ class Annotations extends \Phalcon\Mvc\Router
      * @param string $prefix
      * @return Annotations
      */
-    public function addResource(string $handler, string $prefix = null): Annotations {}
+    public function addResource(string $handler, string $prefix = null): Annotations
+    {
+    }
 
     /**
      * Return the registered resources
      *
      * @return array
      */
-    public function getResources(): array {}
+    public function getResources(): array
+    {
+    }
 
     /**
      * Produce the routing parameters from the rewrite information
      *
      * @param string $uri
      */
-    public function handle(string $uri) {}
+    public function handle(string $uri)
+    {
+    }
 
     /**
      * Checks for annotations in the public methods of the controller
@@ -84,7 +103,9 @@ class Annotations extends \Phalcon\Mvc\Router
      * @param string $action
      * @param \Phalcon\Annotations\Annotation $annotation
      */
-    public function processActionAnnotation(string $module, string $namespaceName, string $controller, string $action, \Phalcon\Annotations\Annotation $annotation) {}
+    public function processActionAnnotation(string $module, string $namespaceName, string $controller, string $action, \Phalcon\Annotations\Annotation $annotation)
+    {
+    }
 
     /**
      * Checks for annotations in the controller docblock
@@ -92,20 +113,25 @@ class Annotations extends \Phalcon\Mvc\Router
      * @param string $handler
      * @param \Phalcon\Annotations\Annotation $annotation
      */
-    public function processControllerAnnotation(string $handler, \Phalcon\Annotations\Annotation $annotation) {}
+    public function processControllerAnnotation(string $handler, \Phalcon\Annotations\Annotation $annotation)
+    {
+    }
 
     /**
      * Changes the action method suffix
      *
      * @param string $actionSuffix
      */
-    public function setActionSuffix(string $actionSuffix) {}
+    public function setActionSuffix(string $actionSuffix)
+    {
+    }
 
     /**
      * Changes the controller class suffix
      *
      * @param string $controllerSuffix
      */
-    public function setControllerSuffix(string $controllerSuffix) {}
-
+    public function setControllerSuffix(string $controllerSuffix)
+    {
+    }
 }

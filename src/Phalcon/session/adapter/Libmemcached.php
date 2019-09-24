@@ -1,11 +1,20 @@
 <?php
 
+/**
+ * This file is part of the Phalcon.
+ *
+ * (c) Phalcon Team <team@phalcon.com>
+ *
+ * For the full copyright and license information, please view the LICENSE
+ * file that was distributed with this source code.
+ */
+
 namespace Phalcon\Session\Adapter;
 
 /**
  * Phalcon\Session\Adapter\Libmemcached
  */
-class Libmemcached extends \Phalcon\Session\Adapter\AbstractAdapter
+class Libmemcached extends AbstractAdapter
 {
 
     /**
@@ -14,6 +23,7 @@ class Libmemcached extends \Phalcon\Session\Adapter\AbstractAdapter
      * @param \Phalcon\Storage\AdapterFactory $factory
      * @param array $options
      */
-    public function __construct(\Phalcon\Storage\AdapterFactory $factory, array $options = array()) {}
-
+    public function __construct(\Phalcon\Storage\AdapterFactory $factory, array $options = array())
+    {
+    }
 }

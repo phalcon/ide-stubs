@@ -1,11 +1,26 @@
 <?php
 
+/**
+ * This file is part of the Phalcon Framework.
+ *
+ * (c) Phalcon Team <team@phalcon.io>
+ *
+ * For the full copyright and license information, please view the LICENSE.txt
+ * file that was distributed with this source code.
+ *
+ * Implementation of this file has been influenced by Zend Diactoros
+ * @link    https://github.com/zendframework/zend-diactoros
+ * @license https://github.com/zendframework/zend-diactoros/blob/master/LICENSE.md
+ */
+
 namespace Phalcon\Http\Message;
+
+use Psr\Http\Message\StreamInterface;
 
 /**
  * PSR-7 Stream
  */
-class Stream implements \Psr\Http\Message\StreamInterface
+class Stream implements StreamInterface
 {
     /**
      * @var resource | null
@@ -29,12 +44,16 @@ class Stream implements \Psr\Http\Message\StreamInterface
      * @param mixed $stream
      * @param string $mode
      */
-    public function __construct($stream, string $mode = 'rb') {}
+    public function __construct($stream, string $mode = 'rb')
+    {
+    }
 
     /**
      * Closes the stream when the destructed.
      */
-    public function __destruct() {}
+    public function __destruct()
+    {
+    }
 
     /**
      * Reads all data from the stream into a string, from the beginning to end.
@@ -50,12 +69,16 @@ class Stream implements \Psr\Http\Message\StreamInterface
      * @see http://php.net/manual/en/language.oop5.magic.php#object.tostring
      * @return string
      */
-    public function __toString(): string {}
+    public function __toString(): string
+    {
+    }
 
     /**
      * Closes the stream and any underlying resources.
      */
-    public function close() {}
+    public function close()
+    {
+    }
 
     /**
      * Separates any underlying resources from the stream.
@@ -64,21 +87,27 @@ class Stream implements \Psr\Http\Message\StreamInterface
      *
      * @return resource|null
      */
-    public function detach(): ? {}
+    public function detach()
+    {
+    }
 
     /**
      * Returns true if the stream is at the end of the stream.
      *
      * @return bool
      */
-    public function eof(): bool {}
+    public function eof(): bool
+    {
+    }
 
     /**
      * Returns the remaining contents in a string
      *
      * @return string
      */
-    public function getContents(): string {}
+    public function getContents(): string
+    {
+    }
 
     /**
      * Get stream metadata as an associative array or retrieve a specific key.
@@ -91,35 +120,45 @@ class Stream implements \Psr\Http\Message\StreamInterface
      * @param mixed $key
      * @return array|mixed|null
      */
-    public function getMetadata($key = null) {}
+    public function getMetadata($key = null)
+    {
+    }
 
     /**
      * Get the size of the stream if known.
      *
      * @return null|int
      */
-    public function getSize(): ?int {}
+    public function getSize(): ?int
+    {
+    }
 
     /**
      * Returns whether or not the stream is readable.
      *
      * @return bool
      */
-    public function isReadable(): bool {}
+    public function isReadable(): bool
+    {
+    }
 
     /**
      * Returns whether or not the stream is seekable.
      *
      * @return bool
      */
-    public function isSeekable(): bool {}
+    public function isSeekable(): bool
+    {
+    }
 
     /**
      * Returns whether or not the stream is writable.
      *
      * @return bool
      */
-    public function isWritable(): bool {}
+    public function isWritable(): bool
+    {
+    }
 
     /**
      * Read data from the stream.
@@ -129,7 +168,9 @@ class Stream implements \Psr\Http\Message\StreamInterface
      * @param mixed $length
      * @return string
      */
-    public function read($length): string {}
+    public function read($length): string
+    {
+    }
 
     /**
      * Seek to the beginning of the stream.
@@ -137,7 +178,9 @@ class Stream implements \Psr\Http\Message\StreamInterface
      * If the stream is not seekable, this method will raise an exception;
      * otherwise, it will perform a seek(0).
      */
-    public function rewind() {}
+    public function rewind()
+    {
+    }
 
     /**
      * Seek to a position in the stream.
@@ -145,7 +188,9 @@ class Stream implements \Psr\Http\Message\StreamInterface
      * @param int $offset
      * @param int $whence
      */
-    public function seek($offset, $whence = 0) {}
+    public function seek($offset, $whence = 0)
+    {
+    }
 
     /**
      * Sets the stream - existing instance
@@ -153,14 +198,18 @@ class Stream implements \Psr\Http\Message\StreamInterface
      * @param mixed $stream
      * @param string $mode
      */
-    public function setStream($stream, string $mode = 'rb') {}
+    public function setStream($stream, string $mode = 'rb')
+    {
+    }
 
     /**
      * Returns the current position of the file read/write pointer
      *
      * @return int
      */
-    public function tell(): int {}
+    public function tell(): int
+    {
+    }
 
     /**
      * Write data to the stream.
@@ -170,26 +219,35 @@ class Stream implements \Psr\Http\Message\StreamInterface
      * @param mixed $data
      * @return int
      */
-    public function write($data): int {}
+    public function write($data): int
+    {
+    }
 
     /**
      * Checks if a handle is available and throws an exception otherwise
      */
-    private function checkHandle() {}
+    private function checkHandle()
+    {
+    }
 
     /**
      * Checks if a handle is readable and throws an exception otherwise
      */
-    private function checkReadable() {}
+    private function checkReadable()
+    {
+    }
 
     /**
      * Checks if a handle is seekable and throws an exception otherwise
      */
-    private function checkSeekable() {}
+    private function checkSeekable()
+    {
+    }
 
     /**
      * Checks if a handle is writeable and throws an exception otherwise
      */
-    private function checkWritable() {}
-
+    private function checkWritable()
+    {
+    }
 }

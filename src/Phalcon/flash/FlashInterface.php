@@ -1,5 +1,14 @@
 <?php
 
+/**
+ * This file is part of the Phalcon Framework.
+ *
+ * (c) Phalcon Team <team@phalcon.io>
+ *
+ * For the full copyright and license information, please view the LICENSE.txt
+ * file that was distributed with this source code.
+ */
+
 namespace Phalcon\Flash;
 
 /**
@@ -23,8 +32,9 @@ interface FlashInterface
      *
      * @param string $type
      * @param string $message
+     * @return string|null
      */
-    public function message(string $type, string $message);
+    public function message(string $type, string $message): ?string;
 
     /**
      * Shows a HTML notice/information message
@@ -49,5 +59,4 @@ interface FlashInterface
      * @return string
      */
     public function warning(string $message): string;
-
 }

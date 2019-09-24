@@ -1,23 +1,31 @@
 <?php
 
+/**
+ * This file is part of the Phalcon.
+ *
+ * (c) Phalcon Team <team@phalcon.com>
+ *
+ * For the full copyright and license information, please view the LICENSE
+ * file that was distributed with this source code.
+ */
+
 namespace Phalcon\Session;
+
+use InvalidArgumentException;
+use Phalcon\DI\AbstractInjectionAware;
+use SessionHandlerInterface;
 
 /**
  * Phalcon\Session\Manager
  *
  * Session manager class
  */
-class Manager implements \Phalcon\Session\ManagerInterface, \Phalcon\DI\InjectionAwareInterface
+class Manager extends AbstractInjectionAware implements ManagerInterface
 {
-    /**
-     * @var <DiInterface>
-     */
-    private $container;
-
     /**
      * @var <SessionHandlerInterface>|null
      */
-    private $handler = null;
+    private $adapter = null;
 
     /**
      * @var string
@@ -40,7 +48,9 @@ class Manager implements \Phalcon\Session\ManagerInterface, \Phalcon\DI\Injectio
      *
      * @param array $options
      */
-    public function __construct(array $options = array()) {}
+    public function __construct(array $options = array())
+    {
+    }
 
     /**
      * Alias: Gets a session variable from an application context
@@ -48,7 +58,9 @@ class Manager implements \Phalcon\Session\ManagerInterface, \Phalcon\DI\Injectio
      * @param string $key
      * @return mixed
      */
-    public function __get(string $key) {}
+    public function __get(string $key)
+    {
+    }
 
     /**
      * Alias: Check whether a session variable is set in an application context
@@ -56,7 +68,9 @@ class Manager implements \Phalcon\Session\ManagerInterface, \Phalcon\DI\Injectio
      * @param string $key
      * @return bool
      */
-    public function __isset(string $key): bool {}
+    public function __isset(string $key): bool
+    {
+    }
 
     /**
      * Alias: Sets a session variable in an application context
@@ -64,26 +78,34 @@ class Manager implements \Phalcon\Session\ManagerInterface, \Phalcon\DI\Injectio
      * @param string $key
      * @param mixed $value
      */
-    public function __set(string $key, $value) {}
+    public function __set(string $key, $value)
+    {
+    }
 
     /**
      * Alias: Removes a session variable from an application context
      *
      * @param string $key
      */
-    public function __unset(string $key) {}
+    public function __unset(string $key)
+    {
+    }
 
     /**
      * Destroy/end a session
      */
-    public function destroy() {}
+    public function destroy()
+    {
+    }
 
     /**
      * Check whether the session has been started
      *
      * @return bool
      */
-    public function exists(): bool {}
+    public function exists(): bool
+    {
+    }
 
     /**
      * Gets a session variable from an application context
@@ -93,35 +115,36 @@ class Manager implements \Phalcon\Session\ManagerInterface, \Phalcon\DI\Injectio
      * @param bool $remove
      * @return mixed
      */
-    public function get(string $key, $defaultValue = null, bool $remove = false) {}
+    public function get(string $key, $defaultValue = null, bool $remove = false)
+    {
+    }
 
     /**
-     * Returns the DependencyInjector container
-     *
-     * @return \Phalcon\Di\DiInterface
-     */
-    public function getDI(): DiInterface {}
-
-    /**
-     * Returns the stored session handler
+     * Returns the stored session adapter
      *
      * @return \SessionHandlerInterface
      */
-    public function getHandler(): SessionHandlerInterface {}
+    public function getAdapter(): SessionHandlerInterface
+    {
+    }
 
     /**
      * Returns the session id
      *
      * @return string
      */
-    public function getId(): string {}
+    public function getId(): string
+    {
+    }
 
     /**
      * Returns the name of the session
      *
      * @return string
      */
-    public function getName(): string {}
+    public function getName(): string
+    {
+    }
 
     /**
      * Check whether a session variable is set in an application context
@@ -129,37 +152,37 @@ class Manager implements \Phalcon\Session\ManagerInterface, \Phalcon\DI\Injectio
      * @param string $key
      * @return bool
      */
-    public function has(string $key): bool {}
+    public function has(string $key): bool
+    {
+    }
 
     /**
      * Get internal options
      *
      * @return array
      */
-    public function getOptions(): array {}
+    public function getOptions(): array
+    {
+    }
 
     /**
-     * Regenerates the session id using the handler.
+     * Regenerates the session id using the adapter.
      *
      * @param mixed $deleteOldSession
      * @return \Phalcon\Session\ManagerInterface
      */
-    public function regenerateId($deleteOldSession = true): ManagerInterface {}
-
-    /**
-     * Registers a handler with the session
-     *
-     * @param \SessionHandlerInterface $handler
-     * @return bool
-     */
-    public function registerHandler(\SessionHandlerInterface $handler): bool {}
+    public function regenerateId($deleteOldSession = true): ManagerInterface
+    {
+    }
 
     /**
      * Removes a session variable from an application context
      *
      * @param string $key
      */
-    public function remove(string $key) {}
+    public function remove(string $key)
+    {
+    }
 
     /**
      * Sets a session variable in an application context
@@ -167,22 +190,19 @@ class Manager implements \Phalcon\Session\ManagerInterface, \Phalcon\DI\Injectio
      * @param string $key
      * @param mixed $value
      */
-    public function set(string $key, $value) {}
+    public function set(string $key, $value)
+    {
+    }
 
     /**
-     * Sets the DependencyInjector container
+     * Set the adapter for the session
      *
-     * @param \Phalcon\Di\DiInterface $container
-     */
-    public function setDI(\Phalcon\Di\DiInterface $container) {}
-
-    /**
-     * Set the handler for the session
-     *
-     * @param \SessionHandlerInterface $handler
+     * @param \SessionHandlerInterface $adapter
      * @return \Phalcon\Session\ManagerInterface
      */
-    public function setHandler(\SessionHandlerInterface $handler): ManagerInterface {}
+    public function setAdapter(\SessionHandlerInterface $adapter): ManagerInterface
+    {
+    }
 
     /**
      * Set session Id
@@ -190,7 +210,9 @@ class Manager implements \Phalcon\Session\ManagerInterface, \Phalcon\DI\Injectio
      * @param string $id
      * @return \Phalcon\Session\ManagerInterface
      */
-    public function setId(string $id): ManagerInterface {}
+    public function setId(string $id): ManagerInterface
+    {
+    }
 
     /**
      * Set the session name. Throw exception if the session has started
@@ -203,14 +225,18 @@ class Manager implements \Phalcon\Session\ManagerInterface, \Phalcon\DI\Injectio
      * @param string $name
      * @return \Phalcon\Session\ManagerInterface
      */
-    public function setName(string $name): ManagerInterface {}
+    public function setName(string $name): ManagerInterface
+    {
+    }
 
     /**
      * Sets session's options
      *
      * @param array $options
      */
-    public function setOptions(array $options) {}
+    public function setOptions(array $options)
+    {
+    }
 
     /**
      * Starts the session (if headers are already sent the session will not be
@@ -218,14 +244,18 @@ class Manager implements \Phalcon\Session\ManagerInterface, \Phalcon\DI\Injectio
      *
      * @return bool
      */
-    public function start(): bool {}
+    public function start(): bool
+    {
+    }
 
     /**
      * Returns the status of the current session.
      *
      * @return int
      */
-    public function status(): int {}
+    public function status(): int
+    {
+    }
 
     /**
      * Returns the key prefixed
@@ -233,6 +263,7 @@ class Manager implements \Phalcon\Session\ManagerInterface, \Phalcon\DI\Injectio
      * @param string $key
      * @return string
      */
-    private function getUniqueKey(string $key): string {}
-
+    private function getUniqueKey(string $key): string
+    {
+    }
 }

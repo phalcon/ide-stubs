@@ -1,6 +1,17 @@
 <?php
 
+/**
+ * This file is part of the Phalcon Framework.
+ *
+ * (c) Phalcon Team <team@phalcon.io>
+ *
+ * For the full copyright and license information, please view the LICENSE.txt
+ * file that was distributed with this source code.
+ */
+
 namespace Phalcon\Mvc\Model\Resultset;
+
+use Phalcon\Mvc\Model\Resultset;
 
 /**
  * Phalcon\Mvc\Model\Resultset\Simple
@@ -8,7 +19,7 @@ namespace Phalcon\Mvc\Model\Resultset;
  * Simple resultsets only contains a complete objects
  * This class builds every complete object as it is required
  */
-class Simple extends \Phalcon\Mvc\Model\Resultset
+class Simple extends Resultset
 {
 
     protected $columnMap;
@@ -31,14 +42,18 @@ class Simple extends \Phalcon\Mvc\Model\Resultset
      * @param \Phalcon\Cache\Adapter\AdapterInterface $cache
      * @param bool $keepSnapshots
      */
-    public function __construct($columnMap, $model, $result, \Phalcon\Cache\Adapter\AdapterInterface $cache = null, bool $keepSnapshots = null) {}
+    public function __construct($columnMap, $model, $result, \Phalcon\Cache\Adapter\AdapterInterface $cache = null, bool $keepSnapshots = null)
+    {
+    }
 
     /**
      * Returns current row in the resultset
      *
      * @return null|ModelInterface
      */
-    final public function current(): ?ModelInterface {}
+    final public function current(): ?ModelInterface
+    {
+    }
 
     /**
      * Returns a complete resultset as an array, if the resultset has a big
@@ -49,14 +64,18 @@ class Simple extends \Phalcon\Mvc\Model\Resultset
      * @param bool $renameColumns
      * @return array
      */
-    public function toArray(bool $renameColumns = true): array {}
+    public function toArray(bool $renameColumns = true): array
+    {
+    }
 
     /**
      * Serializing a resultset will dump all related rows into a big array
      *
      * @return string
      */
-    public function serialize(): string {}
+    public function serialize(): string
+    {
+    }
 
     /**
      * Unserializing a resultset will allow to only works on the rows present in
@@ -64,6 +83,7 @@ class Simple extends \Phalcon\Mvc\Model\Resultset
      *
      * @param mixed $data
      */
-    public function unserialize($data) {}
-
+    public function unserialize($data)
+    {
+    }
 }

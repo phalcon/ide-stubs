@@ -1,11 +1,29 @@
 <?php
 
+/**
+ * This file is part of the Phalcon Framework.
+ *
+ * (c) Phalcon Team <team@phalcon.io>
+ *
+ * For the full copyright and license information, please view the LICENSE.txt
+ * file that was distributed with this source code.
+ *
+ * Implementation of this file has been influenced by Zend Diactoros
+ * @link    https://github.com/zendframework/zend-diactoros
+ * @license https://github.com/zendframework/zend-diactoros/blob/master/LICENSE.md
+ */
+
 namespace Phalcon\Http\Message;
+
+use Phalcon\Collection;
+use Phalcon\Http\Message\Exception\InvalidArgumentException;
+use Psr\Http\Message\StreamInterface;
+use Psr\Http\Message\UriInterface;
 
 /**
  * Message methods
  */
-abstract class AbstractMessage extends \Phalcon\Http\Message\AbstractCommon
+abstract class AbstractMessage extends AbstractCommon
 {
     /**
      * Gets the body of the message.
@@ -48,7 +66,9 @@ abstract class AbstractMessage extends \Phalcon\Http\Message\AbstractCommon
      *
      * @return <StreamInterface>
      */
-    public function getBody() {}
+    public function getBody()
+    {
+    }
 
     /**
      * Retrieves the HTTP protocol version as a string.
@@ -58,7 +78,9 @@ abstract class AbstractMessage extends \Phalcon\Http\Message\AbstractCommon
      *
      * @return string
      */
-    public function getProtocolVersion(): string {}
+    public function getProtocolVersion(): string
+    {
+    }
 
     /**
      * Retrieves the URI instance.
@@ -67,7 +89,9 @@ abstract class AbstractMessage extends \Phalcon\Http\Message\AbstractCommon
      *
      * @return UriInterface
      */
-    public function getUri() {}
+    public function getUri()
+    {
+    }
 
     /**
      * Retrieves a message header value by the given case-insensitive name.
@@ -83,7 +107,9 @@ abstract class AbstractMessage extends \Phalcon\Http\Message\AbstractCommon
      * @param mixed $name
      * @return array
      */
-    public function getHeader($name): array {}
+    public function getHeader($name): array
+    {
+    }
 
     /**
      * Retrieves a comma-separated string of the values for a single header.
@@ -104,7 +130,9 @@ abstract class AbstractMessage extends \Phalcon\Http\Message\AbstractCommon
      * @param mixed $name
      * @return string
      */
-    public function getHeaderLine($name): string {}
+    public function getHeaderLine($name): string
+    {
+    }
 
     /**
      * Retrieves all message header values.
@@ -129,7 +157,9 @@ abstract class AbstractMessage extends \Phalcon\Http\Message\AbstractCommon
      *
      * @return array
      */
-    public function getHeaders(): array {}
+    public function getHeaders(): array
+    {
+    }
 
     /**
      * Checks if a header exists by the given case-insensitive name.
@@ -139,7 +169,9 @@ abstract class AbstractMessage extends \Phalcon\Http\Message\AbstractCommon
      * @param mixed $name
      * @return bool
      */
-    public function hasHeader($name): bool {}
+    public function hasHeader($name): bool
+    {
+    }
 
     /**
      * Return an instance with the specified header appended with the given
@@ -159,7 +191,9 @@ abstract class AbstractMessage extends \Phalcon\Http\Message\AbstractCommon
      * @param mixed $value
      * @return object
      */
-    public function withAddedHeader($name, $value) {}
+    public function withAddedHeader($name, $value)
+    {
+    }
 
     /**
      * Return an instance with the specified message body.
@@ -177,7 +211,9 @@ abstract class AbstractMessage extends \Phalcon\Http\Message\AbstractCommon
      * @param \Psr\Http\Message\StreamInterface $body
      * @return object
      */
-    public function withBody(\Psr\Http\Message\StreamInterface $body) {}
+    public function withBody(\Psr\Http\Message\StreamInterface $body)
+    {
+    }
 
     /**
      * Return an instance with the provided value replacing the specified
@@ -198,7 +234,9 @@ abstract class AbstractMessage extends \Phalcon\Http\Message\AbstractCommon
      * @param mixed $value
      * @return object
      */
-    public function withHeader($name, $value) {}
+    public function withHeader($name, $value)
+    {
+    }
 
     /**
      * Return an instance with the specified HTTP protocol version.
@@ -215,7 +253,9 @@ abstract class AbstractMessage extends \Phalcon\Http\Message\AbstractCommon
      * @param mixed $version
      * @return object
      */
-    public function withProtocolVersion($version) {}
+    public function withProtocolVersion($version)
+    {
+    }
 
     /**
      * Return an instance without the specified header.
@@ -231,7 +271,9 @@ abstract class AbstractMessage extends \Phalcon\Http\Message\AbstractCommon
      * @param mixed $name
      * @return object
      */
-    public function withoutHeader($name) {}
+    public function withoutHeader($name)
+    {
+    }
 
     /**
      * Ensure Host is the first header.
@@ -243,7 +285,9 @@ abstract class AbstractMessage extends \Phalcon\Http\Message\AbstractCommon
      * @param \Phalcon\Collection $collection
      * @return \Phalcon\Collection
      */
-    final protected function checkHeaderHost(\Phalcon\Collection $collection): Collection {}
+    final protected function checkHeaderHost(\Phalcon\Collection $collection): Collection
+    {
+    }
 
     /**
      * Check the name of the header. Throw exception if not valid
@@ -253,7 +297,9 @@ abstract class AbstractMessage extends \Phalcon\Http\Message\AbstractCommon
      * @param mixed $name
      * @param $name
      */
-    final protected function checkHeaderName($name) {}
+    final protected function checkHeaderName($name)
+    {
+    }
 
     /**
      * Validates a header value
@@ -303,7 +349,9 @@ abstract class AbstractMessage extends \Phalcon\Http\Message\AbstractCommon
      * @param mixed $value
      * @param $value
      */
-    final protected function checkHeaderValue($value) {}
+    final protected function checkHeaderValue($value)
+    {
+    }
 
     /**
      * Returns the header values checked for validity
@@ -313,7 +361,9 @@ abstract class AbstractMessage extends \Phalcon\Http\Message\AbstractCommon
      * @param mixed $values
      * @return array
      */
-    final protected function getHeaderValue($values): array {}
+    final protected function getHeaderValue($values): array
+    {
+    }
 
     /**
      * Return the host and if applicable the port
@@ -323,7 +373,9 @@ abstract class AbstractMessage extends \Phalcon\Http\Message\AbstractCommon
      * @param \Psr\Http\Message\UriInterface $uri
      * @return string
      */
-    final protected function getUriHost(\Psr\Http\Message\UriInterface $uri): string {}
+    final protected function getUriHost(\Psr\Http\Message\UriInterface $uri): string
+    {
+    }
 
     /**
      * Populates the header collection
@@ -333,7 +385,9 @@ abstract class AbstractMessage extends \Phalcon\Http\Message\AbstractCommon
      * @param array $headers
      * @return \Phalcon\Collection
      */
-    final protected function populateHeaderCollection(array $headers): Collection {}
+    final protected function populateHeaderCollection(array $headers): Collection
+    {
+    }
 
     /**
      * Set a valid stream
@@ -344,7 +398,9 @@ abstract class AbstractMessage extends \Phalcon\Http\Message\AbstractCommon
      * @param string $mode
      * @return \Psr\Http\Message\StreamInterface
      */
-    final protected function processBody($body = 'php://memory', string $mode = 'r+b'): StreamInterface {}
+    final protected function processBody($body = 'php://memory', string $mode = 'r+b'): StreamInterface
+    {
+    }
 
     /**
      * Sets the headers
@@ -354,7 +410,9 @@ abstract class AbstractMessage extends \Phalcon\Http\Message\AbstractCommon
      * @param mixed $headers
      * @return \Phalcon\Collection
      */
-    final protected function processHeaders($headers): Collection {}
+    final protected function processHeaders($headers): Collection
+    {
+    }
 
     /**
      * Checks the protocol
@@ -364,6 +422,7 @@ abstract class AbstractMessage extends \Phalcon\Http\Message\AbstractCommon
      * @param mixed $protocol
      * @return string
      */
-    final protected function processProtocol($protocol = ''): string {}
-
+    final protected function processProtocol($protocol = ''): string
+    {
+    }
 }

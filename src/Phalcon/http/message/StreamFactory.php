@@ -1,11 +1,27 @@
 <?php
 
+/**
+ * This file is part of the Phalcon Framework.
+ *
+ * (c) Phalcon Team <team@phalcon.io>
+ *
+ * For the full copyright and license information, please view the LICENSE.txt
+ * file that was distributed with this source code.
+ *
+ * Implementation of this file has been influenced by Zend Diactoros
+ * @link    https://github.com/zendframework/zend-diactoros
+ * @license https://github.com/zendframework/zend-diactoros/blob/master/LICENSE.md
+ */
+
 namespace Phalcon\Http\Message;
+
+use Psr\Http\Message\StreamFactoryInterface;
+use Psr\Http\Message\StreamInterface;
 
 /**
  * PSR-17 StreamFactory
  */
-final class StreamFactory implements \Psr\Http\Message\StreamFactoryInterface
+final class StreamFactory implements StreamFactoryInterface
 {
 
     /**
@@ -18,7 +34,9 @@ final class StreamFactory implements \Psr\Http\Message\StreamFactoryInterface
      * @param string $content
      * @return \Psr\Http\Message\StreamInterface
      */
-    public function createStream(string $content = ''): StreamInterface {}
+    public function createStream(string $content = ''): StreamInterface
+    {
+    }
 
     /**
      * Create a stream from an existing file.
@@ -37,7 +55,9 @@ final class StreamFactory implements \Psr\Http\Message\StreamFactoryInterface
      * @param string $mode
      * @return \Psr\Http\Message\StreamInterface
      */
-    public function createStreamFromFile(string $filename, string $mode = 'r+b'): StreamInterface {}
+    public function createStreamFromFile(string $filename, string $mode = 'r+b'): StreamInterface
+    {
+    }
 
     /**
      * Create a new stream from an existing resource.
@@ -47,6 +67,7 @@ final class StreamFactory implements \Psr\Http\Message\StreamFactoryInterface
      * @param mixed $phpResource
      * @return \Psr\Http\Message\StreamInterface
      */
-    public function createStreamFromResource($phpResource): StreamInterface {}
-
+    public function createStreamFromResource($phpResource): StreamInterface
+    {
+    }
 }

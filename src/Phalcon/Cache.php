@@ -1,12 +1,24 @@
 <?php
 
+/**
+ * This file is part of the Phalcon Framework.
+ *
+ * (c) Phalcon Team <team@phalcon.io>
+ *
+ * For the full copyright and license information, please view the LICENSE.txt
+ * file that was distributed with this source code.
+ */
+
 namespace Phalcon;
+
+use Phalcon\Cache\Adapter\AdapterInterface;
+use Psr\SimpleCache\CacheInterface;
 
 /**
  * This component offers caching capabilities for your application.
  * Phalcon\Cache implements PSR-16.
  */
-class Cache implements \Psr\SimpleCache\CacheInterface
+class Cache implements CacheInterface
 {
     /**
      * The adapter
@@ -21,21 +33,27 @@ class Cache implements \Psr\SimpleCache\CacheInterface
      *
      * @return AdapterInterface
      */
-    public function getAdapter() {}
+    public function getAdapter()
+    {
+    }
 
     /**
      * Constructor.
      *
      * @param AdapterInterface $adapter The cache adapter
      */
-    public function __construct(\Phalcon\Cache\Adapter\AdapterInterface $adapter) {}
+    public function __construct(\Phalcon\Cache\Adapter\AdapterInterface $adapter)
+    {
+    }
 
     /**
      * Wipes clean the entire cache's keys.
      *
      * @return bool
      */
-    public function clear(): bool {}
+    public function clear(): bool
+    {
+    }
 
     /**
      * Delete an item from the cache by its unique key.
@@ -44,12 +62,13 @@ class Cache implements \Psr\SimpleCache\CacheInterface
      *
      * @return bool True if the item was successfully removed. False if there was an error.
      *
-     * @throws Phalcon\Cache\Exception\InvalidArgumentException
-     *   MUST be thrown if the $key string is not a legal value.
+     * @throws Phalcon\Cache\Exception\InvalidArgumentException MUST be thrown if the $key string is not a legal value.
      * @param mixed $key
      * @return bool
      */
-    public function delete($key): bool {}
+    public function delete($key): bool
+    {
+    }
 
     /**
      * Deletes multiple cache items in a single operation.
@@ -58,13 +77,13 @@ class Cache implements \Psr\SimpleCache\CacheInterface
      *
      * @return bool True if the items were successfully removed. False if there was an error.
      *
-     * @throws Phalcon\Cache\Exception\InvalidArgumentException
-     *   MUST be thrown if $keys is neither an array nor a Traversable,
-     *   or if any of the $keys are not a legal value.
+     * @throws Phalcon\Cache\Exception\InvalidArgumentException MUST be thrown if $keys is neither an array nor a Traversable, or if any of the $keys are not a legal value.
      * @param mixed $keys
      * @return bool
      */
-    public function deleteMultiple($keys): bool {}
+    public function deleteMultiple($keys): bool
+    {
+    }
 
     /**
      * Fetches a value from the cache.
@@ -73,13 +92,14 @@ class Cache implements \Psr\SimpleCache\CacheInterface
      *
      * @return mixed The value of the item from the cache, or $default in case of cache miss.
      *
-     * @throws Phalcon\Cache\Exception\InvalidArgumentException
-     *   MUST be thrown if the $key string is not a legal value.
+     * @throws Phalcon\Cache\Exception\InvalidArgumentException MUST be thrown if the $key string is not a legal value.
      * @param string $key The unique key of this item in the cache.
      * @param mixed $defaultValue
      * @return mixed
      */
-    public function get($key, $defaultValue = null) {}
+    public function get($key, $defaultValue = null)
+    {
+    }
 
     /**
      * Obtains multiple cache items by their unique keys.
@@ -88,14 +108,14 @@ class Cache implements \Psr\SimpleCache\CacheInterface
      *
      * @return iterable A list of key => value pairs. Cache keys that do not exist or are stale will have $default as value.
      *
-     * @throws Phalcon\Cache\Exception\InvalidArgumentException
-     *   MUST be thrown if $keys is neither an array nor a Traversable,
-     *   or if any of the $keys are not a legal value.
+     * @throws Phalcon\Cache\Exception\InvalidArgumentException MUST be thrown if $keys is neither an array nor a Traversable, or if any of the $keys are not a legal value.
      * @param iterable $keys A list of keys that can obtained in a single operation.
      * @param mixed $defaultValue
      * @return mixed
      */
-    public function getMultiple($keys, $defaultValue = null) {}
+    public function getMultiple($keys, $defaultValue = null)
+    {
+    }
 
     /**
      * Determines whether an item is present in the cache.
@@ -104,12 +124,13 @@ class Cache implements \Psr\SimpleCache\CacheInterface
      *
      * @return bool
      *
-     * @throws Phalcon\Cache\Exception\InvalidArgumentException
-     *   MUST be thrown if the $key string is not a legal value.
+     * @throws Phalcon\Cache\Exception\InvalidArgumentException MUST be thrown if the $key string is not a legal value.
      * @param mixed $key
      * @return bool
      */
-    public function has($key): bool {}
+    public function has($key): bool
+    {
+    }
 
     /**
      * Persists data in the cache, uniquely referenced by a key with an optional expiration TTL time.
@@ -120,14 +141,15 @@ class Cache implements \Psr\SimpleCache\CacheInterface
      *
      * @return bool True on success and false on failure.
      *
-     * @throws Phalcon\Cache\Exception\InvalidArgumentException
-     *   MUST be thrown if the $key string is not a legal value.
+     * @throws Phalcon\Cache\Exception\InvalidArgumentException MUST be thrown if the $key string is not a legal value.
      * @param string $key The key of the item to store.
      * @param mixed $value The value of the item to store. Must be serializable.
      * @param mixed $ttl
      * @return bool
      */
-    public function set($key, $value, $ttl = null): bool {}
+    public function set($key, $value, $ttl = null): bool
+    {
+    }
 
     /**
      * Persists a set of key => value pairs in the cache, with an optional TTL.
@@ -138,27 +160,30 @@ class Cache implements \Psr\SimpleCache\CacheInterface
      *
      * @return bool True on success and false on failure.
      *
-     * @throws Phalcon\Cache\Exception\InvalidArgumentException
-     *   MUST be thrown if $values is neither an array nor a Traversable,
-     *   or if any of the $values are not a legal value.
+     * @throws Phalcon\Cache\Exception\InvalidArgumentException MUST be thrown if $values is neither an array nor a Traversable, or if any of the $values are not a legal value.
      * @param iterable $values A list of key => value pairs for a multiple-set operation.
      * @param mixed $ttl
      * @return bool
      */
-    public function setMultiple($values, $ttl = null): bool {}
+    public function setMultiple($values, $ttl = null): bool
+    {
+    }
 
     /**
      * Checks the key. If it contains invalid characters an exception is thrown
      *
      * @param mixed $key
      */
-    protected function checkKey($key) {}
+    protected function checkKey($key)
+    {
+    }
 
     /**
      * Checks the key. If it contains invalid characters an exception is thrown
      *
      * @param mixed $keys
      */
-    protected function checkKeys($keys) {}
-
+    protected function checkKeys($keys)
+    {
+    }
 }

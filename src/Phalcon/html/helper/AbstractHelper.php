@@ -1,6 +1,17 @@
 <?php
 
+/**
+ * This file is part of the Phalcon Framework.
+ *
+ * (c) Phalcon Team <team@phalcon.io>
+ *
+ * For the full copyright and license information, please view the LICENSE.txt
+ * file that was distributed with this source code.
+ */
+
 namespace Phalcon\Html\Helper;
+
+use Phalcon\Escaper\EscaperInterface;
 
 /**
  * Phalcon\Html\Helper\AbstractHelper
@@ -20,7 +31,9 @@ abstract class AbstractHelper
      *
      * @param \Phalcon\Escaper\EscaperInterface $escaper
      */
-    public function __construct(\Phalcon\Escaper\EscaperInterface $escaper) {}
+    public function __construct(\Phalcon\Escaper\EscaperInterface $escaper)
+    {
+    }
 
     /**
      * Renders an element
@@ -31,7 +44,9 @@ abstract class AbstractHelper
      * @param bool $raw
      * @return string
      */
-    protected function renderFullElement(string $tag, string $text, array $attributes = array(), bool $raw = false): string {}
+    protected function renderFullElement(string $tag, string $text, array $attributes = array(), bool $raw = false): string
+    {
+    }
 
     /**
      * Renders an element
@@ -40,7 +55,9 @@ abstract class AbstractHelper
      * @param array $attributes
      * @return string
      */
-    protected function renderElement(string $tag, array $attributes = array()): string {}
+    protected function renderElement(string $tag, array $attributes = array()): string
+    {
+    }
 
     /**
      * Keeps all the attributes sorted - same order all the tome
@@ -51,7 +68,9 @@ abstract class AbstractHelper
      * @param array $attributes
      * @return array
      */
-    protected function orderAttributes(array $overrides, array $attributes): array {}
+    protected function orderAttributes(array $overrides, array $attributes): array
+    {
+    }
 
     /**
      * Renders all the attributes
@@ -59,7 +78,9 @@ abstract class AbstractHelper
      * @param array $attributes
      * @return string
      */
-    protected function renderAttributes(array $attributes): string {}
+    protected function renderAttributes(array $attributes): string
+    {
+    }
 
     /**
      * Produces a self close tag i.e. <img />
@@ -68,6 +89,7 @@ abstract class AbstractHelper
      * @param array $attributes
      * @return string
      */
-    protected function selfClose(string $tag, array $attributes = array()): string {}
-
+    protected function selfClose(string $tag, array $attributes = array()): string
+    {
+    }
 }

@@ -1,6 +1,20 @@
 <?php
 
+/**
+ * This file is part of the Phalcon Framework.
+ *
+ * (c) Phalcon Team <team@phalcon.io>
+ *
+ * For the full copyright and license information, please view the LICENSE.txt
+ * file that was distributed with this source code.
+ */
+
 namespace Phalcon;
+
+use Phalcon\Di\DiInterface;
+use Phalcon\Di\Exception\ServiceResolutionException;
+use Phalcon\Di\ServiceInterface;
+use Phalcon\Events\ManagerInterface;
 
 /**
  * Phalcon\Di is a component that implements Dependency Injection/Service
@@ -20,7 +34,7 @@ namespace Phalcon;
  * Additionally, this pattern increases testability in the code, thus making it
  * less prone to errors.
  *
- * ```php
+ *```php
  * use Phalcon\Di;
  * use Phalcon\Http\Request;
  *
@@ -38,9 +52,9 @@ namespace Phalcon;
  * );
  *
  * $request = $di->getRequest();
- * ```
+ *```
  */
-class Di implements \Phalcon\Di\DiInterface
+class Di implements DiInterface
 {
     /**
      * List of registered services
@@ -62,13 +76,15 @@ class Di implements \Phalcon\Di\DiInterface
     /**
      * Latest DI build
      */
-    static protected $_default;
+    protected static $_default;
 
 
     /**
      * Phalcon\Di constructor
      */
-    public function __construct() {}
+    public function __construct()
+    {
+    }
 
     /**
      * Magic method to get or set services using setters/getters
@@ -77,7 +93,9 @@ class Di implements \Phalcon\Di\DiInterface
      * @param array $arguments
      * @return mixed|null
      */
-    public function __call(string $method, array $arguments = array()): ? {}
+    public function __call(string $method, array $arguments = array())
+    {
+    }
 
     /**
      * Attempts to register a service in the services container
@@ -89,7 +107,9 @@ class Di implements \Phalcon\Di\DiInterface
      * @param bool $shared
      * @return bool|\Phalcon\Di\ServiceInterface
      */
-    public function attempt(string $name, $definition, bool $shared = false) {}
+    public function attempt(string $name, $definition, bool $shared = false)
+    {
+    }
 
     /**
      * Resolves the service based on its configuration
@@ -98,21 +118,27 @@ class Di implements \Phalcon\Di\DiInterface
      * @param mixed $parameters
      * @return mixed
      */
-    public function get(string $name, $parameters = null) {}
+    public function get(string $name, $parameters = null)
+    {
+    }
 
     /**
      * Return the latest DI created
      *
      * @return null|\Phalcon\Di\DiInterface
      */
-    public static function getDefault(): ?DiInterface {}
+    public static function getDefault(): ?DiInterface
+    {
+    }
 
     /**
      * Returns the internal event manager
      *
      * @return \Phalcon\Events\ManagerInterface
      */
-    public function getInternalEventsManager(): ManagerInterface {}
+    public function getInternalEventsManager(): ManagerInterface
+    {
+    }
 
     /**
      * Returns a service definition without resolving
@@ -120,7 +146,9 @@ class Di implements \Phalcon\Di\DiInterface
      * @param string $name
      * @return mixed
      */
-    public function getRaw(string $name) {}
+    public function getRaw(string $name)
+    {
+    }
 
     /**
      * Returns a Phalcon\Di\Service instance
@@ -128,14 +156,18 @@ class Di implements \Phalcon\Di\DiInterface
      * @param string $name
      * @return \Phalcon\Di\ServiceInterface
      */
-    public function getService(string $name): ServiceInterface {}
+    public function getService(string $name): ServiceInterface
+    {
+    }
 
     /**
      * Return the services registered in the DI
      *
      * @return array|\Phalcon\Di\ServiceInterface[]
      */
-    public function getServices(): array {}
+    public function getServices(): array
+    {
+    }
 
     /**
      * Resolves a service, the resolved service is stored in the DI, subsequent
@@ -145,14 +177,18 @@ class Di implements \Phalcon\Di\DiInterface
      * @param mixed $parameters
      * @return mixed
      */
-    public function getShared(string $name, $parameters = null) {}
+    public function getShared(string $name, $parameters = null)
+    {
+    }
 
     /**
      * Loads services from a Config object.
      *
      * @param \Phalcon\Config $config
      */
-    protected function loadFromConfig(\Phalcon\Config $config) {}
+    protected function loadFromConfig(\Phalcon\Config $config)
+    {
+    }
 
     /**
      * Loads services from a php config file.
@@ -184,10 +220,12 @@ class Di implements \Phalcon\Di\DiInterface
      * ];
      * ```
      *
-     * @link https://docs.phalconphp.com/en/latest/reference/di.html
+     * @link https://docs.phalcon.io/en/latest/reference/di.html
      * @param string $filePath
      */
-    public function loadFromPhp(string $filePath) {}
+    public function loadFromPhp(string $filePath)
+    {
+    }
 
     /**
      * Loads services from a yaml file.
@@ -220,11 +258,13 @@ class Di implements \Phalcon\Di\DiInterface
      *    className: \Acme\User
      * ```
      *
-     * @link https://docs.phalconphp.com/en/latest/reference/di.html
+     * @link https://docs.phalcon.io/en/latest/reference/di.html
      * @param string $filePath
      * @param array $callbacks
      */
-    public function loadFromYaml(string $filePath, array $callbacks = null) {}
+    public function loadFromYaml(string $filePath, array $callbacks = null)
+    {
+    }
 
     /**
      * Check whether the DI contains a service by a name
@@ -232,7 +272,9 @@ class Di implements \Phalcon\Di\DiInterface
      * @param string $name
      * @return bool
      */
-    public function has(string $name): bool {}
+    public function has(string $name): bool
+    {
+    }
 
     /**
      * Allows to obtain a shared service using the array syntax
@@ -244,7 +286,9 @@ class Di implements \Phalcon\Di\DiInterface
      * @param mixed $name
      * @return mixed
      */
-    public function offsetGet($name) {}
+    public function offsetGet($name)
+    {
+    }
 
     /**
      * Check if a service is registered using the array syntax
@@ -252,7 +296,9 @@ class Di implements \Phalcon\Di\DiInterface
      * @param mixed $name
      * @return bool
      */
-    public function offsetExists($name): bool {}
+    public function offsetExists($name): bool
+    {
+    }
 
     /**
      * Allows to register a shared service using the array syntax
@@ -264,14 +310,18 @@ class Di implements \Phalcon\Di\DiInterface
      * @param mixed $name
      * @param mixed $definition
      */
-    public function offsetSet($name, $definition) {}
+    public function offsetSet($name, $definition)
+    {
+    }
 
     /**
      * Removes a service from the services container using the array syntax
      *
      * @param mixed $name
      */
-    public function offsetUnset($name) {}
+    public function offsetUnset($name)
+    {
+    }
 
     /**
      * Registers a service provider.
@@ -296,7 +346,9 @@ class Di implements \Phalcon\Di\DiInterface
      *
      * @param \Phalcon\Di\ServiceProviderInterface $provider
      */
-    public function register(\Phalcon\Di\ServiceProviderInterface $provider) {}
+    public function register(\Phalcon\Di\ServiceProviderInterface $provider)
+    {
+    }
 
     /**
      * Removes a service in the services container
@@ -304,12 +356,16 @@ class Di implements \Phalcon\Di\DiInterface
      *
      * @param string $name
      */
-    public function remove(string $name) {}
+    public function remove(string $name)
+    {
+    }
 
     /**
      * Resets the internal default DI
      */
-    public static function reset() {}
+    public static function reset()
+    {
+    }
 
     /**
      * Registers a service in the services container
@@ -319,7 +375,9 @@ class Di implements \Phalcon\Di\DiInterface
      * @param bool $shared
      * @return \Phalcon\Di\ServiceInterface
      */
-    public function set(string $name, $definition, bool $shared = false): ServiceInterface {}
+    public function set(string $name, $definition, bool $shared = false): ServiceInterface
+    {
+    }
 
     /**
      * Set a default dependency injection container to be obtained into static
@@ -327,14 +385,18 @@ class Di implements \Phalcon\Di\DiInterface
      *
      * @param \Phalcon\Di\DiInterface $container
      */
-    public static function setDefault(\Phalcon\Di\DiInterface $container) {}
+    public static function setDefault(\Phalcon\Di\DiInterface $container)
+    {
+    }
 
     /**
      * Sets the internal event manager
      *
      * @param \Phalcon\Events\ManagerInterface $eventsManager
      */
-    public function setInternalEventsManager(\Phalcon\Events\ManagerInterface $eventsManager) {}
+    public function setInternalEventsManager(\Phalcon\Events\ManagerInterface $eventsManager)
+    {
+    }
 
     /**
      * Sets a service using a raw Phalcon\Di\Service definition
@@ -343,7 +405,9 @@ class Di implements \Phalcon\Di\DiInterface
      * @param \Phalcon\Di\ServiceInterface $rawDefinition
      * @return \Phalcon\Di\ServiceInterface
      */
-    public function setRaw(string $name, \Phalcon\Di\ServiceInterface $rawDefinition): ServiceInterface {}
+    public function setRaw(string $name, \Phalcon\Di\ServiceInterface $rawDefinition): ServiceInterface
+    {
+    }
 
     /**
      * Registers an "always shared" service in the services container
@@ -352,6 +416,7 @@ class Di implements \Phalcon\Di\DiInterface
      * @param mixed $definition
      * @return \Phalcon\Di\ServiceInterface
      */
-    public function setShared(string $name, $definition): ServiceInterface {}
-
+    public function setShared(string $name, $definition): ServiceInterface
+    {
+    }
 }

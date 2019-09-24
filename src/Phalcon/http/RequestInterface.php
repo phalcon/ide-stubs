@@ -1,5 +1,14 @@
 <?php
 
+/**
+ * This file is part of the Phalcon Framework.
+ *
+ * (c) Phalcon Team <team@phalcon.io>
+ *
+ * For the full copyright and license information, please view the LICENSE.txt
+ * file that was distributed with this source code.
+ */
+
 namespace Phalcon\Http;
 
 /**
@@ -212,11 +221,20 @@ interface RequestInterface
     public function getPort(): int;
 
     /**
-     * Gets HTTP URI which request has been made
+     * Gets HTTP URI which request has been made to
      *
+     * ```php
+     * // Returns /some/path?with=queryParams
+     * $uri = $request->getURI();
+     *
+     * // Returns /some/path
+     * $uri = $request->getURI(true);
+     * ```
+     *
+     * @param bool $onlyPath If true, query part will be omitted
      * @return string
      */
-    final public function getURI(): string;
+    public function getURI(bool $onlyPath = false): string;
 
     /**
      * Gets a variable from the $_POST superglobal applying filters if needed
@@ -486,5 +504,4 @@ interface RequestInterface
      * @return bool
      */
     public function isTrace(): bool;
-
 }

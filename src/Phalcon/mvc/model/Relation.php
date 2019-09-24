@@ -1,5 +1,14 @@
 <?php
 
+/**
+ * This file is part of the Phalcon Framework.
+ *
+ * (c) Phalcon Team <team@phalcon.io>
+ *
+ * For the full copyright and license information, please view the LICENSE.txt
+ * file that was distributed with this source code.
+ */
+
 namespace Phalcon\Mvc\Model;
 
 /**
@@ -7,7 +16,7 @@ namespace Phalcon\Mvc\Model;
  *
  * This class represents a relationship between two models
  */
-class Relation implements \Phalcon\Mvc\Model\RelationInterface
+class Relation implements RelationInterface
 {
 
     const ACTION_CASCADE = 2;
@@ -67,42 +76,54 @@ class Relation implements \Phalcon\Mvc\Model\RelationInterface
      * @param string|array $referencedFields
      * @param array $options
      */
-    public function __construct(int $type, string $referencedModel, $fields, $referencedFields, array $options = array()) {}
+    public function __construct(int $type, string $referencedModel, $fields, $referencedFields, array $options = array())
+    {
+    }
 
     /**
      * Returns the fields
      *
      * @return string|array
      */
-    public function getFields() {}
+    public function getFields()
+    {
+    }
 
     /**
      * Returns the foreign key configuration
      *
      * @return string|array
      */
-    public function getForeignKey() {}
+    public function getForeignKey()
+    {
+    }
 
     /**
      * Gets the intermediate fields for has--through relations
      *
      * @return string|array
      */
-    public function getIntermediateFields() {}
+    public function getIntermediateFields()
+    {
+    }
 
     /**
      * Gets the intermediate model for has--through relations
      *
      * @return string
      */
-    public function getIntermediateModel(): string {}
+    public function getIntermediateModel(): string
+    {
+    }
 
     /**
      * Gets the intermediate referenced fields for has--through relations
      *
      * @return string|array
      */
-    public function getIntermediateReferencedFields() {}
+    public function getIntermediateReferencedFields()
+    {
+    }
 
     /**
      * Returns an option by the specified name
@@ -110,63 +131,81 @@ class Relation implements \Phalcon\Mvc\Model\RelationInterface
      *
      * @param string $name
      */
-    public function getOption(string $name) {}
+    public function getOption(string $name)
+    {
+    }
 
     /**
      * Returns the options
      *
      * @return array
      */
-    public function getOptions(): array {}
+    public function getOptions(): array
+    {
+    }
 
     /**
      * Returns parameters that must be always used when the related records are obtained
      *
      * @return array
      */
-    public function getParams() {}
+    public function getParams()
+    {
+    }
 
     /**
      * Returns the relation type
      *
      * @return int
      */
-    public function getType(): int {}
+    public function getType(): int
+    {
+    }
 
     /**
      * Returns the referenced fields
      *
      * @return string|array
      */
-    public function getReferencedFields() {}
+    public function getReferencedFields()
+    {
+    }
 
     /**
      * Returns the referenced model
      *
      * @return string
      */
-    public function getReferencedModel(): string {}
+    public function getReferencedModel(): string
+    {
+    }
 
     /**
      * Check whether the relation act as a foreign key
      *
      * @return bool
      */
-    public function isForeignKey(): bool {}
+    public function isForeignKey(): bool
+    {
+    }
 
     /**
      * Check whether the relation is a 'many-to-many' relation or not
      *
      * @return bool
      */
-    public function isThrough(): bool {}
+    public function isThrough(): bool
+    {
+    }
 
     /**
      * Check if records returned by getting belongs-to/has-many are implicitly cached during the current request
      *
      * @return bool
      */
-    public function isReusable(): bool {}
+    public function isReusable(): bool
+    {
+    }
 
     /**
      * Sets the intermediate model data for has--through relations
@@ -175,6 +214,7 @@ class Relation implements \Phalcon\Mvc\Model\RelationInterface
      * @param string $intermediateModel
      * @param string $intermediateReferencedFields
      */
-    public function setIntermediateRelation($intermediateFields, string $intermediateModel, $intermediateReferencedFields) {}
-
+    public function setIntermediateRelation($intermediateFields, string $intermediateModel, $intermediateReferencedFields)
+    {
+    }
 }

@@ -1,13 +1,24 @@
 <?php
 
+/**
+ * This file is part of the Phalcon Framework.
+ *
+ * (c) Phalcon Team <team@phalcon.io>
+ *
+ * For the full copyright and license information, please view the LICENSE.txt
+ * file that was distributed with this source code.
+ */
+
 namespace Phalcon\Messages;
+
+use JsonSerializable;
 
 /**
  * Phalcon\Messages\Message
  *
  * Stores a message from various components
  */
-class Message implements \Phalcon\Messages\MessageInterface, \JsonSerializable
+class Message implements MessageInterface, JsonSerializable
 {
     /**
      * @var int
@@ -38,27 +49,37 @@ class Message implements \Phalcon\Messages\MessageInterface, \JsonSerializable
     /**
      * @return int
      */
-    public function getCode(): int {}
+    public function getCode(): int
+    {
+    }
 
     /**
      * @return string
      */
-    public function getField(): string {}
+    public function getField(): string
+    {
+    }
 
     /**
      * @return string
      */
-    public function getMessage(): string {}
+    public function getMessage(): string
+    {
+    }
 
     /**
      * @return string
      */
-    public function getType(): string {}
+    public function getType(): string
+    {
+    }
 
     /**
      * @return array
      */
-    public function getMetaData(): array {}
+    public function getMetaData(): array
+    {
+    }
 
     /**
      * Phalcon\Messages\Message constructor
@@ -69,21 +90,27 @@ class Message implements \Phalcon\Messages\MessageInterface, \JsonSerializable
      * @param int $code
      * @param array $metaData
      */
-    public function __construct(string $message, $field = '', string $type = '', int $code = 0, array $metaData = array()) {}
+    public function __construct(string $message, $field = '', string $type = '', int $code = 0, array $metaData = array())
+    {
+    }
 
     /**
      * Magic __toString method returns verbose message
      *
      * @return string
      */
-    public function __toString(): string {}
+    public function __toString(): string
+    {
+    }
 
     /**
      * Serializes the object for json_encode
      *
      * @return array
      */
-    public function jsonSerialize(): array {}
+    public function jsonSerialize(): array
+    {
+    }
 
     /**
      * Sets code for the message
@@ -91,7 +118,9 @@ class Message implements \Phalcon\Messages\MessageInterface, \JsonSerializable
      * @param int $code
      * @return \Phalcon\Messages\MessageInterface
      */
-    public function setCode(int $code): MessageInterface {}
+    public function setCode(int $code): MessageInterface
+    {
+    }
 
     /**
      * Sets field name related to message
@@ -99,7 +128,9 @@ class Message implements \Phalcon\Messages\MessageInterface, \JsonSerializable
      * @param mixed $field
      * @return \Phalcon\Messages\MessageInterface
      */
-    public function setField($field): MessageInterface {}
+    public function setField($field): MessageInterface
+    {
+    }
 
     /**
      * Sets verbose message
@@ -107,7 +138,9 @@ class Message implements \Phalcon\Messages\MessageInterface, \JsonSerializable
      * @param string $message
      * @return \Phalcon\Messages\MessageInterface
      */
-    public function setMessage(string $message): MessageInterface {}
+    public function setMessage(string $message): MessageInterface
+    {
+    }
 
     /**
      * Sets message metadata
@@ -115,7 +148,9 @@ class Message implements \Phalcon\Messages\MessageInterface, \JsonSerializable
      * @param array $metaData
      * @return \Phalcon\Messages\MessageInterface
      */
-    public function setMetaData(array $metaData): MessageInterface {}
+    public function setMetaData(array $metaData): MessageInterface
+    {
+    }
 
     /**
      * Sets message type
@@ -123,6 +158,7 @@ class Message implements \Phalcon\Messages\MessageInterface, \JsonSerializable
      * @param string $type
      * @return \Phalcon\Messages\MessageInterface
      */
-    public function setType(string $type): MessageInterface {}
-
+    public function setType(string $type): MessageInterface
+    {
+    }
 }

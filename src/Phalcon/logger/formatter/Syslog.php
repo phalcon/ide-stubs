@@ -1,5 +1,14 @@
 <?php
 
+/**
+ * This file is part of the Phalcon Framework.
+ *
+ * (c) Phalcon Team <team@phalcon.io>
+ *
+ * For the full copyright and license information, please view the LICENSE.txt
+ * file that was distributed with this source code.
+ */
+
 namespace Phalcon\Logger\Formatter;
 
 /**
@@ -7,7 +16,7 @@ namespace Phalcon\Logger\Formatter;
  *
  * Prepares a message to be used in a Syslog backend
  */
-class Syslog extends \Phalcon\Logger\Formatter\AbstractFormatter
+class Syslog extends AbstractFormatter
 {
 
     /**
@@ -16,6 +25,7 @@ class Syslog extends \Phalcon\Logger\Formatter\AbstractFormatter
      * @param \Phalcon\Logger\Item $item
      * @return array
      */
-    public function format(\Phalcon\Logger\Item $item): array {}
-
+    public function format(\Phalcon\Logger\Item $item): array
+    {
+    }
 }

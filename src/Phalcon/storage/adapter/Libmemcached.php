@@ -1,11 +1,22 @@
 <?php
 
+/**
+ * This file is part of the Phalcon Framework.
+ *
+ * (c) Phalcon Team <team@phalcon.io>
+ *
+ * For the full copyright and license information, please view the LICENSE.txt
+ * file that was distributed with this source code.
+ */
+
 namespace Phalcon\Storage\Adapter;
+
+use Phalcon\Storage\Exception;
 
 /**
  * Libmemcached adapter
  */
-class Libmemcached extends \Phalcon\Storage\Adapter\AbstractAdapter
+class Libmemcached extends AbstractAdapter
 {
     /**
      * @var array
@@ -19,7 +30,9 @@ class Libmemcached extends \Phalcon\Storage\Adapter\AbstractAdapter
      * @param \Phalcon\Storage\SerializerFactory $factory
      * @param array $options
      */
-    public function __construct(\Phalcon\Storage\SerializerFactory $factory = null, array $options = array()) {}
+    public function __construct(\Phalcon\Storage\SerializerFactory $factory = null, array $options = array())
+    {
+    }
 
     /**
      * Flushes/clears the cache
@@ -27,7 +40,9 @@ class Libmemcached extends \Phalcon\Storage\Adapter\AbstractAdapter
      * @throws Exception
      * @return bool
      */
-    public function clear(): bool {}
+    public function clear(): bool
+    {
+    }
 
     /**
      * Decrements a stored number
@@ -36,7 +51,9 @@ class Libmemcached extends \Phalcon\Storage\Adapter\AbstractAdapter
      * @param int $value
      * @return int|bool
      */
-    public function decrement(string $key, int $value = 1) {}
+    public function decrement(string $key, int $value = 1)
+    {
+    }
 
     /**
      * Reads data from the adapter
@@ -47,7 +64,9 @@ class Libmemcached extends \Phalcon\Storage\Adapter\AbstractAdapter
      * @param string $key
      * @return bool
      */
-    public function delete(string $key): bool {}
+    public function delete(string $key): bool
+    {
+    }
 
     /**
      * Reads data from the adapter
@@ -59,7 +78,9 @@ class Libmemcached extends \Phalcon\Storage\Adapter\AbstractAdapter
      * @param mixed $defaultValue
      * @return mixed
      */
-    public function get(string $key, $defaultValue = null) {}
+    public function get(string $key, $defaultValue = null)
+    {
+    }
 
     /**
      * Returns the already connected adapter or connects to the Memcached
@@ -68,7 +89,9 @@ class Libmemcached extends \Phalcon\Storage\Adapter\AbstractAdapter
      * @throws Exception
      * @return mixed
      */
-    public function getAdapter() {}
+    public function getAdapter()
+    {
+    }
 
     /**
      * Stores data in the adapter
@@ -76,7 +99,9 @@ class Libmemcached extends \Phalcon\Storage\Adapter\AbstractAdapter
      * @throws Exception
      * @return array
      */
-    public function getKeys(): array {}
+    public function getKeys(): array
+    {
+    }
 
     /**
      * Checks if an element exists in the cache
@@ -87,7 +112,9 @@ class Libmemcached extends \Phalcon\Storage\Adapter\AbstractAdapter
      * @param string $key
      * @return bool
      */
-    public function has(string $key): bool {}
+    public function has(string $key): bool
+    {
+    }
 
     /**
      * Increments a stored number
@@ -99,7 +126,9 @@ class Libmemcached extends \Phalcon\Storage\Adapter\AbstractAdapter
      * @param int $value
      * @return int|bool
      */
-    public function increment(string $key, int $value = 1) {}
+    public function increment(string $key, int $value = 1)
+    {
+    }
 
     /**
      * Stores data in the adapter
@@ -112,7 +141,9 @@ class Libmemcached extends \Phalcon\Storage\Adapter\AbstractAdapter
      * @param mixed $ttl
      * @return bool
      */
-    public function set(string $key, $value, $ttl = null): bool {}
+    public function set(string $key, $value, $ttl = null): bool
+    {
+    }
 
     /**
      * Checks the serializer. If it is a supported one it is set, otherwise
@@ -120,6 +151,7 @@ class Libmemcached extends \Phalcon\Storage\Adapter\AbstractAdapter
      *
      * @param Memcached $connection
      */
-    private function setSerializer(\Memcached $connection) {}
-
+    private function setSerializer(\Memcached $connection)
+    {
+    }
 }

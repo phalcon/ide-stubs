@@ -1,11 +1,20 @@
 <?php
 
+/**
+ * This file is part of the Phalcon Framework.
+ *
+ * (c) Phalcon Team <team@phalcon.io>
+ *
+ * For the full copyright and license information, please view the LICENSE.txt
+ * file that was distributed with this source code.
+ */
+
 namespace Phalcon\Annotations;
 
 /**
  * Allows to manipulate the annotations reflection in an OO manner
  *
- * ```php
+ *```php
  * use Phalcon\Annotations\Reader;
  * use Phalcon\Annotations\Reflection;
  *
@@ -18,7 +27,7 @@ namespace Phalcon\Annotations;
  *
  * // Get the annotations in the class docblock
  * $classAnnotations = $reflection->getClassAnnotations();
- * ```
+ *```
  */
 class Reflection
 {
@@ -42,28 +51,36 @@ class Reflection
      *
      * @param array $reflectionData
      */
-    public function __construct(array $reflectionData = array()) {}
+    public function __construct(array $reflectionData = array())
+    {
+    }
 
     /**
      * Returns the annotations found in the class docblock
      *
      * @return bool|\Phalcon\Annotations\Collection
      */
-    public function getClassAnnotations() {}
+    public function getClassAnnotations()
+    {
+    }
 
     /**
      * Returns the annotations found in the methods' docblocks
      *
      * @return array|bool|\Phalcon\Annotations\Collection[]
      */
-    public function getMethodsAnnotations() {}
+    public function getMethodsAnnotations()
+    {
+    }
 
     /**
      * Returns the annotations found in the properties' docblocks
      *
      * @return array|bool|\Phalcon\Annotations\Collection[]
      */
-    public function getPropertiesAnnotations() {}
+    public function getPropertiesAnnotations()
+    {
+    }
 
     /**
      * Returns the raw parsing intermediate definitions used to construct the
@@ -71,6 +88,7 @@ class Reflection
      *
      * @return array
      */
-    public function getReflectionData(): array {}
-
+    public function getReflectionData(): array
+    {
+    }
 }

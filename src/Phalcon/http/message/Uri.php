@@ -1,11 +1,27 @@
 <?php
 
+/**
+ * This file is part of the Phalcon Framework.
+ *
+ * (c) Phalcon Team <team@phalcon.io>
+ *
+ * For the full copyright and license information, please view the LICENSE.txt
+ * file that was distributed with this source code.
+ *
+ * Implementation of this file has been influenced by Zend Diactoros
+ * @link    https://github.com/zendframework/zend-diactoros
+ * @license https://github.com/zendframework/zend-diactoros/blob/master/LICENSE.md
+ */
+
 namespace Phalcon\Http\Message;
+
+use Phalcon\Http\Message\Exception\InvalidArgumentException;
+use Psr\Http\Message\UriInterface;
 
 /**
  * PSR-7 Uri
  */
-final class Uri extends \Phalcon\Http\Message\AbstractCommon implements \Psr\Http\Message\UriInterface
+final class Uri extends AbstractCommon implements UriInterface
 {
     /**
      * Returns the fragment of the URL
@@ -90,7 +106,9 @@ final class Uri extends \Phalcon\Http\Message\AbstractCommon implements \Psr\Htt
     /**
      * Returns the fragment of the URL
      */
-    public function getFragment() {}
+    public function getFragment()
+    {
+    }
 
     /**
      * Retrieve the host component of the URI.
@@ -100,12 +118,16 @@ final class Uri extends \Phalcon\Http\Message\AbstractCommon implements \Psr\Htt
      * The value returned MUST be normalized to lowercase, per RFC 3986
      * Section 3.2.2.
      */
-    public function getHost() {}
+    public function getHost()
+    {
+    }
 
     /**
      * Returns the path of the URL
      */
-    public function getPath() {}
+    public function getPath()
+    {
+    }
 
     /**
      * Retrieve the port component of the URI.
@@ -120,12 +142,16 @@ final class Uri extends \Phalcon\Http\Message\AbstractCommon implements \Psr\Htt
      * If no port is present, but a scheme is present, this method MAY return
      * the standard port for that scheme, but SHOULD return null.
      */
-    public function getPort() {}
+    public function getPort()
+    {
+    }
 
     /**
      * Returns the query of the URL
      */
-    public function getQuery() {}
+    public function getQuery()
+    {
+    }
 
     /**
      * Retrieve the scheme component of the URI.
@@ -138,14 +164,18 @@ final class Uri extends \Phalcon\Http\Message\AbstractCommon implements \Psr\Htt
      * The trailing ":" character is not part of the scheme and MUST NOT be
      * added.
      */
-    public function getScheme() {}
+    public function getScheme()
+    {
+    }
 
     /**
      * Uri constructor.
      *
      * @param string $uri
      */
-    public function __construct(string $uri = '') {}
+    public function __construct(string $uri = '')
+    {
+    }
 
     /**
      * Return the string representation as a URI reference.
@@ -157,14 +187,18 @@ final class Uri extends \Phalcon\Http\Message\AbstractCommon implements \Psr\Htt
      *
      * @return string
      */
-    public function __toString(): string {}
+    public function __toString(): string
+    {
+    }
 
     /**
      * Retrieve the authority component of the URI.
      *
      * @return string
      */
-    public function getAuthority(): string {}
+    public function getAuthority(): string
+    {
+    }
 
     /**
      * Retrieve the user information component of the URI.
@@ -181,7 +215,9 @@ final class Uri extends \Phalcon\Http\Message\AbstractCommon implements \Psr\Htt
      *
      * @return string
      */
-    public function getUserInfo(): string {}
+    public function getUserInfo(): string
+    {
+    }
 
     /**
      * Return an instance with the specified URI fragment.
@@ -199,7 +235,9 @@ final class Uri extends \Phalcon\Http\Message\AbstractCommon implements \Psr\Htt
      * @param mixed $fragment
      * @return Uri
      */
-    public function withFragment($fragment): Uri {}
+    public function withFragment($fragment): Uri
+    {
+    }
 
     /**
      * Return an instance with the specified path.
@@ -225,7 +263,9 @@ final class Uri extends \Phalcon\Http\Message\AbstractCommon implements \Psr\Htt
      * @param mixed $path
      * @return Uri
      */
-    public function withPath($path): Uri {}
+    public function withPath($path): Uri
+    {
+    }
 
     /**
      * Return an instance with the specified port.
@@ -245,7 +285,9 @@ final class Uri extends \Phalcon\Http\Message\AbstractCommon implements \Psr\Htt
      * @param mixed $port
      * @return Uri
      */
-    public function withPort($port): Uri {}
+    public function withPort($port): Uri
+    {
+    }
 
     /**
      * Return an instance with the specified query string.
@@ -264,7 +306,9 @@ final class Uri extends \Phalcon\Http\Message\AbstractCommon implements \Psr\Htt
      * @param mixed $query
      * @return Uri
      */
-    public function withQuery($query): Uri {}
+    public function withQuery($query): Uri
+    {
+    }
 
     /**
      * Return an instance with the specified scheme.
@@ -284,7 +328,9 @@ final class Uri extends \Phalcon\Http\Message\AbstractCommon implements \Psr\Htt
      * @param mixed $scheme
      * @return Uri
      */
-    public function withScheme($scheme): Uri {}
+    public function withScheme($scheme): Uri
+    {
+    }
 
     /**
      * Return an instance with the specified user information.
@@ -295,7 +341,9 @@ final class Uri extends \Phalcon\Http\Message\AbstractCommon implements \Psr\Htt
      * @param mixed $password
      * @return Uri
      */
-    public function withUserInfo($user, $password = null): Uri {}
+    public function withUserInfo($user, $password = null): Uri
+    {
+    }
 
     /**
      * Return an instance with the specified host.
@@ -312,7 +360,9 @@ final class Uri extends \Phalcon\Http\Message\AbstractCommon implements \Psr\Htt
      * @param mixed $host
      * @return Uri
      */
-    public function withHost($host): Uri {}
+    public function withHost($host): Uri
+    {
+    }
 
     /**
      * If the value passed is empty it returns it prefixed and suffixed with
@@ -325,7 +375,9 @@ final class Uri extends \Phalcon\Http\Message\AbstractCommon implements \Psr\Htt
      * @param string $suffix
      * @return string
      */
-    private function checkValue(string $value, string $prefix = '', string $suffix = ''): string {}
+    private function checkValue(string $value, string $prefix = '', string $suffix = ''): string
+    {
+    }
 
     /**
      * If no fragment is present, this method MUST return an empty string.
@@ -345,7 +397,9 @@ final class Uri extends \Phalcon\Http\Message\AbstractCommon implements \Psr\Htt
      * @param string $fragment
      * @return string
      */
-    private function filterFragment(string $fragment): string {}
+    private function filterFragment(string $fragment): string
+    {
+    }
 
     /**
      *
@@ -375,7 +429,9 @@ final class Uri extends \Phalcon\Http\Message\AbstractCommon implements \Psr\Htt
      * @param string $path
      * @return string
      */
-    private function filterPath(string $path): string {}
+    private function filterPath(string $path): string
+    {
+    }
 
     /**
      * Checks the port. If it is a standard one (80,443) then it returns null
@@ -385,7 +441,9 @@ final class Uri extends \Phalcon\Http\Message\AbstractCommon implements \Psr\Htt
      * @param mixed $port
      * @return int
      */
-    private function filterPort($port): int {}
+    private function filterPort($port): int
+    {
+    }
 
     /**
      * If no query string is present, this method MUST return an empty string.
@@ -409,7 +467,9 @@ final class Uri extends \Phalcon\Http\Message\AbstractCommon implements \Psr\Htt
      * @param string $query
      * @return string
      */
-    private function filterQuery(string $query): string {}
+    private function filterQuery(string $query): string
+    {
+    }
 
     /**
      * Filters the passed scheme - only allowed schemes
@@ -419,7 +479,9 @@ final class Uri extends \Phalcon\Http\Message\AbstractCommon implements \Psr\Htt
      * @param string $scheme
      * @return string
      */
-    private function filterScheme(string $scheme): string {}
+    private function filterScheme(string $scheme): string
+    {
+    }
 
     /**
      * @param string $element
@@ -427,6 +489,7 @@ final class Uri extends \Phalcon\Http\Message\AbstractCommon implements \Psr\Htt
      * @param string $element
      * @return array
      */
-    private function splitQueryValue(string $element): array {}
-
+    private function splitQueryValue(string $element): array
+    {
+    }
 }

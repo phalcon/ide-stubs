@@ -1,6 +1,18 @@
 <?php
 
+/**
+ * This file is part of the Phalcon.
+ *
+ * (c) Phalcon Team <team@phalcon.com>
+ *
+ * For the full copyright and license information, please view the LICENSE
+ * file that was distributed with this source code.
+ */
+
 namespace Phalcon\Db\Adapter;
+
+use Phalcon\Db\DialectInterface;
+use Phalcon\Db\RawValue;
 
 /**
  * Interface for Phalcon\Db adapters
@@ -618,5 +630,4 @@ interface AdapterInterface
      * @return bool
      */
     public function viewExists(string $viewName, string $schemaName = null): bool;
-
 }

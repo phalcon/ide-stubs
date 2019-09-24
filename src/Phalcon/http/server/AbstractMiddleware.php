@@ -1,6 +1,20 @@
 <?php
 
+/**
+ * This file is part of the Phalcon Framework.
+ *
+ * (c) Phalcon Team <team@phalcon.io>
+ *
+ * For the full copyright and license information, please view the LICENSE.txt
+ * file that was distributed with this source code.
+ */
+
 namespace Phalcon\Http\Server;
+
+use Psr\Http\Message\ResponseInterface;
+use Psr\Http\Message\ServerRequestInterface;
+use Psr\Http\Server\MiddlewareInterface;
+use Psr\Http\Server\RequestHandlerInterface;
 
 /**
  * Participant in processing a server request and response.
@@ -9,7 +23,7 @@ namespace Phalcon\Http\Server;
  * by acting on the request, generating the response, or forwarding the
  * request to a subsequent middleware and possibly acting on its response.
  */
-abstract class AbstractMiddleware implements \Psr\Http\Server\MiddlewareInterface
+abstract class AbstractMiddleware implements MiddlewareInterface
 {
 
     /**
@@ -24,5 +38,4 @@ abstract class AbstractMiddleware implements \Psr\Http\Server\MiddlewareInterfac
      * @return \Psr\Http\Message\ResponseInterface
      */
     abstract public function process(\Psr\Http\Message\ServerRequestInterface $request, \Psr\Http\Server\RequestHandlerInterface $handler): ResponseInterface;
-
 }

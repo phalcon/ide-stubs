@@ -1,0 +1,30 @@
+language: php
+
+php:
+    - '7.3'
+
+dist: bionic
+
+cache:
+    timeout: 604800
+    directories:
+        - "$HOME/.composer/cache"
+        - "$HOME/assets"
+
+before_install:
+    - git config --global advice.detachedHead false
+    - if [ -n "$GITHUB_TOKEN" ]; then composer config github-oauth.github.com "$GITHUB_TOKEN"; fi
+
+install:
+    - pecl install --force psr
+
+before_script:
+    - travis_retry composer install --no-interaction --no-ansi --no-progress --no-suggest
+
+script:
+    - vendor/bin/psalm
+    - phpenv config-rm xdebug.ini || true
+    - vendor/bin/phpcs
+
+notifications:
+    email: false

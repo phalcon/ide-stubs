@@ -1,5 +1,14 @@
 <?php
 
+/**
+ * This file is part of the Phalcon Framework.
+ *
+ * (c) Phalcon Team <team@phalcon.io>
+ *
+ * For the full copyright and license information, please view the LICENSE.txt
+ * file that was distributed with this source code.
+ */
+
 namespace Phalcon\Logger\Adapter;
 
 /**
@@ -7,7 +16,7 @@ namespace Phalcon\Logger\Adapter;
  *
  * Adapter to store logs in plain text files
  *
- * ```php
+ *```php
  * $logger = new \Phalcon\Logger\Adapter\Stream("app/logs/test.log");
  *
  * $logger->log("This is a message");
@@ -15,9 +24,9 @@ namespace Phalcon\Logger\Adapter;
  * $logger->error("This is another error");
  *
  * $logger->close();
- * ```
+ *```
  */
-class Stream extends \Phalcon\Logger\Adapter\AbstractAdapter
+class Stream extends AbstractAdapter
 {
     /**
      * Stream handler resource
@@ -53,7 +62,9 @@ class Stream extends \Phalcon\Logger\Adapter\AbstractAdapter
      *
      * @return string
      */
-    public function getName(): string {}
+    public function getName(): string
+    {
+    }
 
     /**
      * Constructor. Accepts the name and some options
@@ -61,20 +72,25 @@ class Stream extends \Phalcon\Logger\Adapter\AbstractAdapter
      * @param string $name
      * @param array $options
      */
-    public function __construct(string $name, array $options = array()) {}
+    public function __construct(string $name, array $options = array())
+    {
+    }
 
     /**
      * Closes the stream
      *
      * @return bool
      */
-    public function close(): bool {}
+    public function close(): bool
+    {
+    }
 
     /**
      * Processes the message i.e. writes it to the file
      *
      * @param \Phalcon\Logger\Item $item
      */
-    public function process(\Phalcon\Logger\Item $item) {}
-
+    public function process(\Phalcon\Logger\Item $item)
+    {
+    }
 }

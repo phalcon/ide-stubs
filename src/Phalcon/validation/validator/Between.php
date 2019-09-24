@@ -1,6 +1,17 @@
 <?php
 
+/**
+ * This file is part of the Phalcon Framework.
+ *
+ * (c) Phalcon Team <team@phalcon.io>
+ *
+ * For the full copyright and license information, please view the LICENSE.txt
+ * file that was distributed with this source code.
+ */
+
 namespace Phalcon\Validation\Validator;
+
+use Phalcon\Validation\AbstractValidator;
 
 /**
  * Validates that a value is between an inclusive range of two values.
@@ -47,7 +58,7 @@ namespace Phalcon\Validation\Validator;
  * );
  * ```
  */
-class Between extends \Phalcon\Validation\AbstractValidator
+class Between extends AbstractValidator
 {
 
     protected $template = 'Field :field must be within the range of :min to :max';
@@ -60,6 +71,7 @@ class Between extends \Phalcon\Validation\AbstractValidator
      * @param mixed $field
      * @return bool
      */
-    public function validate(\Phalcon\Validation $validation, $field): bool {}
-
+    public function validate(\Phalcon\Validation $validation, $field): bool
+    {
+    }
 }

@@ -1,16 +1,17 @@
 <?php
 
-namespace Phalcon\Factory;
-
 /**
  * This file is part of the Phalcon Framework.
  *
- * (c) Phalcon Team <team@phalconphp.com>
+ * (c) Phalcon Team <team@phalcon.io>
  *
  * For the full copyright and license information, please view the LICENSE.txt
  * file that was distributed with this source code.
  */
-class AbstractFactory
+
+namespace Phalcon\Factory;
+
+abstract class AbstractFactory
 {
     /**
      * @var array
@@ -28,7 +29,9 @@ class AbstractFactory
      *
      * @param string $name
      */
-    protected function checkService(string $name) {}
+    protected function checkService(string $name)
+    {
+    }
 
     /**
      * Checks the config if it is a valid object
@@ -36,7 +39,9 @@ class AbstractFactory
      * @param mixed $config
      * @return array
      */
-    protected function checkConfig($config): array {}
+    protected function checkConfig($config): array
+    {
+    }
 
     /**
      * Returns the adapters for the factory
@@ -50,6 +55,7 @@ class AbstractFactory
      *
      * @param array $services
      */
-    protected function init(array $services = array()) {}
-
+    protected function init(array $services = array())
+    {
+    }
 }

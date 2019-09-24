@@ -1,11 +1,23 @@
 <?php
 
+/**
+ * This file is part of the Phalcon Framework.
+ *
+ * (c) Phalcon Team <team@phalcon.io>
+ *
+ * For the full copyright and license information, please view the LICENSE.txt
+ * file that was distributed with this source code.
+ */
+
 namespace Phalcon\Image;
+
+use Phalcon\Factory\AbstractFactory;
+use Phalcon\Image\Adapter\AdapterInterface;
 
 /**
  * Phalcon\Image/ImageFactory
  */
-class ImageFactory extends \Phalcon\Factory\AbstractFactory
+class ImageFactory extends AbstractFactory
 {
 
     /**
@@ -13,7 +25,9 @@ class ImageFactory extends \Phalcon\Factory\AbstractFactory
      *
      * @param array $services
      */
-    public function __construct(array $services = array()) {}
+    public function __construct(array $services = array())
+    {
+    }
 
     /**
      * Factory to create an instace from a Config object
@@ -21,7 +35,9 @@ class ImageFactory extends \Phalcon\Factory\AbstractFactory
      * @param mixed $config
      * @return \Phalcon\Image\Adapter\AdapterInterface
      */
-    public function load($config): AdapterInterface {}
+    public function load($config): AdapterInterface
+    {
+    }
 
     /**
      * Creates a new instance
@@ -32,11 +48,14 @@ class ImageFactory extends \Phalcon\Factory\AbstractFactory
      * @param int $height
      * @return \Phalcon\Image\Adapter\AdapterInterface
      */
-    public function newInstance(string $name, string $file, int $width = null, int $height = null): AdapterInterface {}
+    public function newInstance(string $name, string $file, int $width = null, int $height = null): AdapterInterface
+    {
+    }
 
     /**
      * @return array
      */
-    protected function getAdapters(): array {}
-
+    protected function getAdapters(): array
+    {
+    }
 }

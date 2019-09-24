@@ -1,6 +1,18 @@
 <?php
 
+/**
+ * This file is part of the Phalcon Framework.
+ *
+ * (c) Phalcon Team <team@phalcon.io>
+ *
+ * For the full copyright and license information, please view the LICENSE.txt
+ * file that was distributed with this source code.
+ */
+
 namespace Phalcon\Http;
+
+use Phalcon\Di\AbstractInjectionAware;
+use Phalcon\Filter\FilterInterface;
 
 /**
  * Encapsulates request information for easy and secure access from application
@@ -9,7 +21,7 @@ namespace Phalcon\Http;
  * The request object is a simple value object that is passed between the
  * dispatcher and controller classes. It packages the HTTP request environment.
  *
- * ```php
+ *```php
  * use Phalcon\Http\Request;
  *
  * $request = new Request();
@@ -26,13 +38,10 @@ namespace Phalcon\Http;
  *
  * // An array of languages the client accepts
  * $request->getLanguages();
- * ```
+ *```
  */
-class Request implements \Phalcon\Http\RequestInterface, \Phalcon\Di\InjectionAwareInterface
+class Request extends AbstractInjectionAware implements RequestInterface
 {
-
-    private $container;
-
 
     private $filterService;
 
@@ -61,12 +70,16 @@ class Request implements \Phalcon\Http\RequestInterface, \Phalcon\Di\InjectionAw
     /**
      * @return bool
      */
-    public function getHttpMethodParameterOverride(): bool {}
+    public function getHttpMethodParameterOverride(): bool
+    {
+    }
 
     /**
      * @param bool $httpMethodParameterOverride
      */
-    public function setHttpMethodParameterOverride(bool $httpMethodParameterOverride) {}
+    public function setHttpMethodParameterOverride(bool $httpMethodParameterOverride)
+    {
+    }
 
     /**
      * Gets a variable from the $_REQUEST superglobal applying filters if
@@ -87,7 +100,9 @@ class Request implements \Phalcon\Http\RequestInterface, \Phalcon\Di\InjectionAw
      * @param bool $noRecursive
      * @return mixed
      */
-    public function get(string $name = null, $filters = null, $defaultValue = null, bool $notAllowEmpty = false, bool $noRecursive = false) {}
+    public function get(string $name = null, $filters = null, $defaultValue = null, bool $notAllowEmpty = false, bool $noRecursive = false)
+    {
+    }
 
     /**
      * Gets an array with mime/types and their quality accepted by the
@@ -95,7 +110,9 @@ class Request implements \Phalcon\Http\RequestInterface, \Phalcon\Di\InjectionAw
      *
      * @return array
      */
-    public function getAcceptableContent(): array {}
+    public function getAcceptableContent(): array
+    {
+    }
 
     /**
      * Gets auth info accepted by the browser/client from
@@ -103,7 +120,9 @@ class Request implements \Phalcon\Http\RequestInterface, \Phalcon\Di\InjectionAw
      *
      * @return array|null
      */
-    public function getBasicAuth(): ?array {}
+    public function getBasicAuth(): ?array
+    {
+    }
 
     /**
      * Gets best mime/type accepted by the browser/client from
@@ -111,7 +130,9 @@ class Request implements \Phalcon\Http\RequestInterface, \Phalcon\Di\InjectionAw
      *
      * @return string
      */
-    public function getBestAccept(): string {}
+    public function getBestAccept(): string
+    {
+    }
 
     /**
      * Gets best charset accepted by the browser/client from
@@ -119,7 +140,9 @@ class Request implements \Phalcon\Http\RequestInterface, \Phalcon\Di\InjectionAw
      *
      * @return string
      */
-    public function getBestCharset(): string {}
+    public function getBestCharset(): string
+    {
+    }
 
     /**
      * Gets best language accepted by the browser/client from
@@ -127,7 +150,9 @@ class Request implements \Phalcon\Http\RequestInterface, \Phalcon\Di\InjectionAw
      *
      * @return string
      */
-    public function getBestLanguage(): string {}
+    public function getBestLanguage(): string
+    {
+    }
 
     /**
      * Gets most possible client IPv4 Address. This method searches in
@@ -137,7 +162,9 @@ class Request implements \Phalcon\Http\RequestInterface, \Phalcon\Di\InjectionAw
      * @param bool $trustForwardedHeader
      * @return string|bool
      */
-    public function getClientAddress(bool $trustForwardedHeader = false) {}
+    public function getClientAddress(bool $trustForwardedHeader = false)
+    {
+    }
 
     /**
      * Gets a charsets array and their quality accepted by the browser/client
@@ -145,21 +172,18 @@ class Request implements \Phalcon\Http\RequestInterface, \Phalcon\Di\InjectionAw
      *
      * @return array
      */
-    public function getClientCharsets(): array {}
+    public function getClientCharsets(): array
+    {
+    }
 
     /**
      * Gets content type which request has been made
      *
      * @return string|null
      */
-    public function getContentType(): ?string {}
-
-    /**
-     * Returns the internal dependency injector
-     *
-     * @return \Phalcon\Di\DiInterface
-     */
-    public function getDI(): DiInterface {}
+    public function getContentType(): ?string
+    {
+    }
 
     /**
      * Gets auth info accepted by the browser/client from
@@ -167,7 +191,9 @@ class Request implements \Phalcon\Http\RequestInterface, \Phalcon\Di\InjectionAw
      *
      * @return array
      */
-    public function getDigestAuth(): array {}
+    public function getDigestAuth(): array
+    {
+    }
 
     /**
      * Retrieves a query/get value always sanitized with the preset filters
@@ -178,7 +204,9 @@ class Request implements \Phalcon\Http\RequestInterface, \Phalcon\Di\InjectionAw
      * @param bool $noRecursive
      * @return mixed
      */
-    public function getFilteredQuery(string $name = null, $defaultValue = null, bool $notAllowEmpty = false, bool $noRecursive = false) {}
+    public function getFilteredQuery(string $name = null, $defaultValue = null, bool $notAllowEmpty = false, bool $noRecursive = false)
+    {
+    }
 
     /**
      * Retrieves a post value always sanitized with the preset filters
@@ -189,7 +217,9 @@ class Request implements \Phalcon\Http\RequestInterface, \Phalcon\Di\InjectionAw
      * @param bool $noRecursive
      * @return mixed
      */
-    public function getFilteredPost(string $name = null, $defaultValue = null, bool $notAllowEmpty = false, bool $noRecursive = false) {}
+    public function getFilteredPost(string $name = null, $defaultValue = null, bool $notAllowEmpty = false, bool $noRecursive = false)
+    {
+    }
 
     /**
      * Retrieves a put value always sanitized with the preset filters
@@ -200,7 +230,9 @@ class Request implements \Phalcon\Http\RequestInterface, \Phalcon\Di\InjectionAw
      * @param bool $noRecursive
      * @return mixed
      */
-    public function getFilteredPut(string $name = null, $defaultValue = null, bool $notAllowEmpty = false, bool $noRecursive = false) {}
+    public function getFilteredPut(string $name = null, $defaultValue = null, bool $notAllowEmpty = false, bool $noRecursive = false)
+    {
+    }
 
     /**
      * Gets HTTP header from request data
@@ -208,7 +240,9 @@ class Request implements \Phalcon\Http\RequestInterface, \Phalcon\Di\InjectionAw
      * @param string $header
      * @return string
      */
-    final public function getHeader(string $header): string {}
+    final public function getHeader(string $header): string
+    {
+    }
 
     /**
      * Returns the available headers in the request
@@ -226,7 +260,9 @@ class Request implements \Phalcon\Http\RequestInterface, \Phalcon\Di\InjectionAw
      *
      * @return array
      */
-    public function getHeaders(): array {}
+    public function getHeaders(): array
+    {
+    }
 
     /**
      * Gets host name used by the request.
@@ -264,14 +300,18 @@ class Request implements \Phalcon\Http\RequestInterface, \Phalcon\Di\InjectionAw
      *
      * @return string
      */
-    public function getHttpHost(): string {}
+    public function getHttpHost(): string
+    {
+    }
 
     /**
      * Gets web page that refers active request. ie: http://www.google.com
      *
      * @return string
      */
-    public function getHTTPReferer(): string {}
+    public function getHTTPReferer(): string
+    {
+    }
 
     /**
      * Gets decoded JSON HTTP raw request body
@@ -279,7 +319,9 @@ class Request implements \Phalcon\Http\RequestInterface, \Phalcon\Di\InjectionAw
      * @param bool $associative
      * @return array|bool|\stdClass
      */
-    public function getJsonRawBody(bool $associative = false) {}
+    public function getJsonRawBody(bool $associative = false)
+    {
+    }
 
     /**
      * Gets languages array and their quality accepted by the browser/client
@@ -287,7 +329,9 @@ class Request implements \Phalcon\Http\RequestInterface, \Phalcon\Di\InjectionAw
      *
      * @return array
      */
-    public function getLanguages(): array {}
+    public function getLanguages(): array
+    {
+    }
 
     /**
      * Gets HTTP method which request has been made
@@ -302,14 +346,18 @@ class Request implements \Phalcon\Http\RequestInterface, \Phalcon\Di\InjectionAw
      *
      * @return string
      */
-    final public function getMethod(): string {}
+    final public function getMethod(): string
+    {
+    }
 
     /**
      * Gets information about the port on which the request is made.
      *
      * @return int
      */
-    public function getPort(): int {}
+    public function getPort(): int
+    {
+    }
 
     /**
      * Gets a variable from the $_POST superglobal applying filters if needed
@@ -330,7 +378,9 @@ class Request implements \Phalcon\Http\RequestInterface, \Phalcon\Di\InjectionAw
      * @param bool $noRecursive
      * @return mixed
      */
-    public function getPost(string $name = null, $filters = null, $defaultValue = null, bool $notAllowEmpty = false, bool $noRecursive = false) {}
+    public function getPost(string $name = null, $filters = null, $defaultValue = null, bool $notAllowEmpty = false, bool $noRecursive = false)
+    {
+    }
 
     /**
      * Gets a variable from put request
@@ -350,7 +400,9 @@ class Request implements \Phalcon\Http\RequestInterface, \Phalcon\Di\InjectionAw
      * @param bool $noRecursive
      * @return mixed
      */
-    public function getPut(string $name = null, $filters = null, $defaultValue = null, bool $notAllowEmpty = false, bool $noRecursive = false) {}
+    public function getPut(string $name = null, $filters = null, $defaultValue = null, bool $notAllowEmpty = false, bool $noRecursive = false)
+    {
+    }
 
     /**
      * Gets variable from $_GET superglobal applying filters if needed
@@ -374,21 +426,27 @@ class Request implements \Phalcon\Http\RequestInterface, \Phalcon\Di\InjectionAw
      * @param bool $noRecursive
      * @return mixed
      */
-    public function getQuery(string $name = null, $filters = null, $defaultValue = null, bool $notAllowEmpty = false, bool $noRecursive = false) {}
+    public function getQuery(string $name = null, $filters = null, $defaultValue = null, bool $notAllowEmpty = false, bool $noRecursive = false)
+    {
+    }
 
     /**
      * Gets HTTP raw request body
      *
      * @return string
      */
-    public function getRawBody(): string {}
+    public function getRawBody(): string
+    {
+    }
 
     /**
      * Gets HTTP schema (http/https)
      *
      * @return string
      */
-    public function getScheme(): string {}
+    public function getScheme(): string
+    {
+    }
 
     /**
      * Gets variable from $_SERVER superglobal
@@ -396,21 +454,27 @@ class Request implements \Phalcon\Http\RequestInterface, \Phalcon\Di\InjectionAw
      * @param string $name
      * @return string|null
      */
-    public function getServer(string $name): ?string {}
+    public function getServer(string $name): ?string
+    {
+    }
 
     /**
      * Gets active server address IP
      *
      * @return string
      */
-    public function getServerAddress(): string {}
+    public function getServerAddress(): string
+    {
+    }
 
     /**
      * Gets active server name
      *
      * @return string
      */
-    public function getServerName(): string {}
+    public function getServerName(): string
+    {
+    }
 
     /**
      * Gets attached files as Phalcon\Http\Request\File instances
@@ -419,21 +483,36 @@ class Request implements \Phalcon\Http\RequestInterface, \Phalcon\Di\InjectionAw
      * @param bool $namedKeys
      * @return array|\Phalcon\Http\Request\FileInterface[]
      */
-    public function getUploadedFiles(bool $onlySuccessful = false, bool $namedKeys = false): array {}
+    public function getUploadedFiles(bool $onlySuccessful = false, bool $namedKeys = false): array
+    {
+    }
 
     /**
-     * Gets HTTP URI which request has been made
+     * Gets HTTP URI which request has been made to
      *
+     * ```php
+     * // Returns /some/path?with=queryParams
+     * $uri = $request->getURI();
+     *
+     * // Returns /some/path
+     * $uri = $request->getURI(true);
+     * ```
+     *
+     * @param bool $onlyPath If true, query part will be omitted
      * @return string
      */
-    final public function getURI(): string {}
+    final public function getURI(bool $onlyPath = false): string
+    {
+    }
 
     /**
      * Gets HTTP user agent used to made the request
      *
      * @return string
      */
-    public function getUserAgent(): string {}
+    public function getUserAgent(): string
+    {
+    }
 
     /**
      * Checks whether $_REQUEST superglobal has certain index
@@ -441,7 +520,9 @@ class Request implements \Phalcon\Http\RequestInterface, \Phalcon\Di\InjectionAw
      * @param string $name
      * @return bool
      */
-    public function has(string $name): bool {}
+    public function has(string $name): bool
+    {
+    }
 
     /**
      * Returns the number of files available
@@ -451,7 +532,9 @@ class Request implements \Phalcon\Http\RequestInterface, \Phalcon\Di\InjectionAw
      * @param bool $onlySuccessful
      * @return long
      */
-    public function hasFiles(bool $onlySuccessful = false): int {}
+    public function hasFiles(bool $onlySuccessful = false): int
+    {
+    }
 
     /**
      * Checks whether headers has certain index
@@ -459,7 +542,9 @@ class Request implements \Phalcon\Http\RequestInterface, \Phalcon\Di\InjectionAw
      * @param string $header
      * @return bool
      */
-    final public function hasHeader(string $header): bool {}
+    final public function hasHeader(string $header): bool
+    {
+    }
 
     /**
      * Checks whether $_POST superglobal has certain index
@@ -467,7 +552,9 @@ class Request implements \Phalcon\Http\RequestInterface, \Phalcon\Di\InjectionAw
      * @param string $name
      * @return bool
      */
-    public function hasPost(string $name): bool {}
+    public function hasPost(string $name): bool
+    {
+    }
 
     /**
      * Checks whether the PUT data has certain index
@@ -475,7 +562,9 @@ class Request implements \Phalcon\Http\RequestInterface, \Phalcon\Di\InjectionAw
      * @param string $name
      * @return bool
      */
-    public function hasPut(string $name): bool {}
+    public function hasPut(string $name): bool
+    {
+    }
 
     /**
      * Checks whether $_GET superglobal has certain index
@@ -483,7 +572,9 @@ class Request implements \Phalcon\Http\RequestInterface, \Phalcon\Di\InjectionAw
      * @param string $name
      * @return bool
      */
-    public function hasQuery(string $name): bool {}
+    public function hasQuery(string $name): bool
+    {
+    }
 
     /**
      * Checks whether $_SERVER superglobal has certain index
@@ -491,14 +582,18 @@ class Request implements \Phalcon\Http\RequestInterface, \Phalcon\Di\InjectionAw
      * @param string $name
      * @return bool
      */
-    final public function hasServer(string $name): bool {}
+    final public function hasServer(string $name): bool
+    {
+    }
 
     /**
      * Checks whether request has been made using ajax
      *
      * @return bool
      */
-    public function isAjax(): bool {}
+    public function isAjax(): bool
+    {
+    }
 
     /**
      * Checks whether HTTP method is CONNECT.
@@ -506,7 +601,9 @@ class Request implements \Phalcon\Http\RequestInterface, \Phalcon\Di\InjectionAw
      *
      * @return bool
      */
-    public function isConnect(): bool {}
+    public function isConnect(): bool
+    {
+    }
 
     /**
      * Checks whether HTTP method is DELETE.
@@ -514,7 +611,9 @@ class Request implements \Phalcon\Http\RequestInterface, \Phalcon\Di\InjectionAw
      *
      * @return bool
      */
-    public function isDelete(): bool {}
+    public function isDelete(): bool
+    {
+    }
 
     /**
      * Checks whether HTTP method is GET.
@@ -522,7 +621,9 @@ class Request implements \Phalcon\Http\RequestInterface, \Phalcon\Di\InjectionAw
      *
      * @return bool
      */
-    public function isGet(): bool {}
+    public function isGet(): bool
+    {
+    }
 
     /**
      * Checks whether HTTP method is HEAD.
@@ -530,7 +631,9 @@ class Request implements \Phalcon\Http\RequestInterface, \Phalcon\Di\InjectionAw
      *
      * @return bool
      */
-    public function isHead(): bool {}
+    public function isHead(): bool
+    {
+    }
 
     /**
      * Check if HTTP method match any of the passed methods
@@ -540,7 +643,9 @@ class Request implements \Phalcon\Http\RequestInterface, \Phalcon\Di\InjectionAw
      * @param bool $strict
      * @return bool
      */
-    public function isMethod($methods, bool $strict = false): bool {}
+    public function isMethod($methods, bool $strict = false): bool
+    {
+    }
 
     /**
      * Checks whether HTTP method is OPTIONS.
@@ -548,7 +653,9 @@ class Request implements \Phalcon\Http\RequestInterface, \Phalcon\Di\InjectionAw
      *
      * @return bool
      */
-    public function isOptions(): bool {}
+    public function isOptions(): bool
+    {
+    }
 
     /**
      * Checks whether HTTP method is PATCH.
@@ -556,7 +663,9 @@ class Request implements \Phalcon\Http\RequestInterface, \Phalcon\Di\InjectionAw
      *
      * @return bool
      */
-    public function isPatch(): bool {}
+    public function isPatch(): bool
+    {
+    }
 
     /**
      * Checks whether HTTP method is POST.
@@ -564,7 +673,9 @@ class Request implements \Phalcon\Http\RequestInterface, \Phalcon\Di\InjectionAw
      *
      * @return bool
      */
-    public function isPost(): bool {}
+    public function isPost(): bool
+    {
+    }
 
     /**
      * Checks whether HTTP method is PUT.
@@ -572,7 +683,9 @@ class Request implements \Phalcon\Http\RequestInterface, \Phalcon\Di\InjectionAw
      *
      * @return bool
      */
-    public function isPut(): bool {}
+    public function isPut(): bool
+    {
+    }
 
     /**
      * Checks whether HTTP method is PURGE (Squid and Varnish support).
@@ -580,14 +693,18 @@ class Request implements \Phalcon\Http\RequestInterface, \Phalcon\Di\InjectionAw
      *
      * @return bool
      */
-    public function isPurge(): bool {}
+    public function isPurge(): bool
+    {
+    }
 
     /**
      * Checks whether request has been made using any secure layer
      *
      * @return bool
      */
-    public function isSecure(): bool {}
+    public function isSecure(): bool
+    {
+    }
 
     /**
      * Checks if the `Request::getHttpHost` method will be use strict validation
@@ -595,14 +712,18 @@ class Request implements \Phalcon\Http\RequestInterface, \Phalcon\Di\InjectionAw
      *
      * @return bool
      */
-    public function isStrictHostCheck(): bool {}
+    public function isStrictHostCheck(): bool
+    {
+    }
 
     /**
      * Checks whether request has been made using SOAP
      *
      * @return bool
      */
-    public function isSoap(): bool {}
+    public function isSoap(): bool
+    {
+    }
 
     /**
      * Checks whether HTTP method is TRACE.
@@ -610,7 +731,9 @@ class Request implements \Phalcon\Http\RequestInterface, \Phalcon\Di\InjectionAw
      *
      * @return bool
      */
-    public function isTrace(): bool {}
+    public function isTrace(): bool
+    {
+    }
 
     /**
      * Checks if a method is a valid HTTP method
@@ -618,14 +741,9 @@ class Request implements \Phalcon\Http\RequestInterface, \Phalcon\Di\InjectionAw
      * @param string $method
      * @return bool
      */
-    public function isValidHttpMethod(string $method): bool {}
-
-    /**
-     * Sets the dependency injector
-     *
-     * @param \Phalcon\Di\DiInterface $container
-     */
-    public function setDI(\Phalcon\Di\DiInterface $container) {}
+    public function isValidHttpMethod(string $method): bool
+    {
+    }
 
     /**
      * Sets automatic sanitizers/filters for a particular field and for
@@ -636,7 +754,9 @@ class Request implements \Phalcon\Http\RequestInterface, \Phalcon\Di\InjectionAw
      * @param array $scope
      * @return RequestInterface
      */
-    public function setParameterFilters(string $name, array $filters = array(), array $scope = array()): RequestInterface {}
+    public function setParameterFilters(string $name, array $filters = array(), array $scope = array()): RequestInterface
+    {
+    }
 
     /**
      * Sets if the `Request::getHttpHost` method must be use strict validation
@@ -645,7 +765,9 @@ class Request implements \Phalcon\Http\RequestInterface, \Phalcon\Di\InjectionAw
      * @param bool $flag
      * @return RequestInterface
      */
-    public function setStrictHostCheck(bool $flag = true): RequestInterface {}
+    public function setStrictHostCheck(bool $flag = true): RequestInterface
+    {
+    }
 
     /**
      * Process a request header and return the one with best quality
@@ -654,7 +776,9 @@ class Request implements \Phalcon\Http\RequestInterface, \Phalcon\Di\InjectionAw
      * @param string $name
      * @return string
      */
-    final protected function getBestQuality(array $qualityParts, string $name): string {}
+    final protected function getBestQuality(array $qualityParts, string $name): string
+    {
+    }
 
     /**
      * Helper to get data from superglobals, applying filters if needed.
@@ -668,7 +792,9 @@ class Request implements \Phalcon\Http\RequestInterface, \Phalcon\Di\InjectionAw
      * @param bool $noRecursive
      * @return mixed
      */
-    final protected function getHelper(array $source, string $name = null, $filters = null, $defaultValue = null, bool $notAllowEmpty = false, bool $noRecursive = false) {}
+    final protected function getHelper(array $source, string $name = null, $filters = null, $defaultValue = null, bool $notAllowEmpty = false, bool $noRecursive = false)
+    {
+    }
 
     /**
      * Recursively counts file in an array of files
@@ -677,7 +803,9 @@ class Request implements \Phalcon\Http\RequestInterface, \Phalcon\Di\InjectionAw
      * @param bool $onlySuccessful
      * @return long
      */
-    final protected function hasFileHelper($data, bool $onlySuccessful): int {}
+    final protected function hasFileHelper($data, bool $onlySuccessful): int
+    {
+    }
 
     /**
      * Process a request header and return an array of values with their qualities
@@ -686,14 +814,18 @@ class Request implements \Phalcon\Http\RequestInterface, \Phalcon\Di\InjectionAw
      * @param string $name
      * @return array
      */
-    final protected function getQualityHeader(string $serverIndex, string $name): array {}
+    final protected function getQualityHeader(string $serverIndex, string $name): array
+    {
+    }
 
     /**
      * Resolve authorization headers.
      *
      * @return array
      */
-    protected function resolveAuthorizationHeaders(): array {}
+    protected function resolveAuthorizationHeaders(): array
+    {
+    }
 
     /**
      * Smooth out $_FILES to have plain array with all files uploaded
@@ -706,18 +838,23 @@ class Request implements \Phalcon\Http\RequestInterface, \Phalcon\Di\InjectionAw
      * @param string $prefix
      * @return array
      */
-    final protected function smoothFiles(array $names, array $types, array $tmp_names, array $sizes, array $errors, string $prefix): array {}
+    final protected function smoothFiles(array $names, array $types, array $tmp_names, array $sizes, array $errors, string $prefix): array
+    {
+    }
 
     /**
      * Checks the filter service and assigns it to the class parameter
      *
      * @return \Phalcon\Filter\FilterInterface
      */
-    private function getFilterService(): FilterInterface {}
+    private function getFilterService(): FilterInterface
+    {
+    }
 
     /**
      * @return array
      */
-    private function getServerArray(): array {}
-
+    private function getServerArray(): array
+    {
+    }
 }

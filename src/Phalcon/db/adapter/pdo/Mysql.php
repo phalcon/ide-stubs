@@ -1,11 +1,22 @@
 <?php
 
+/**
+ * This file is part of the Phalcon.
+ *
+ * (c) Phalcon Team <team@phalcon.com>
+ *
+ * For the full copyright and license information, please view the LICENSE
+ * file that was distributed with this source code.
+ */
+
 namespace Phalcon\Db\Adapter\Pdo;
+
+use Phalcon\Db\Adapter\Pdo\AbstractPdo as PdoAdapter;
 
 /**
  * Specific functions for the Mysql database system
  *
- * ```php
+ *```php
  * use Phalcon\Db\Adapter\Pdo\Mysql;
  *
  * $config = [
@@ -17,9 +28,9 @@ namespace Phalcon\Db\Adapter\Pdo;
  * ];
  *
  * $connection = new Mysql($config);
- * ```
+ *```
  */
-class Mysql extends \Phalcon\Db\Adapter\Pdo\AbstractPdo
+class Mysql extends PdoAdapter
 {
     /**
      * @var string
@@ -40,7 +51,9 @@ class Mysql extends \Phalcon\Db\Adapter\Pdo\AbstractPdo
      * @param \Phalcon\Db\ReferenceInterface $reference
      * @return bool
      */
-    public function addForeignKey(string $tableName, string $schemaName, \Phalcon\Db\ReferenceInterface $reference): bool {}
+    public function addForeignKey(string $tableName, string $schemaName, \Phalcon\Db\ReferenceInterface $reference): bool
+    {
+    }
 
     /**
      * Returns an array of Phalcon\Db\Column objects describing a table
@@ -55,7 +68,9 @@ class Mysql extends \Phalcon\Db\Adapter\Pdo\AbstractPdo
      * @param string $schema
      * @return array|\Phalcon\Db\ColumnInterface[]
      */
-    public function describeColumns(string $table, string $schema = null): array {}
+    public function describeColumns(string $table, string $schema = null): array
+    {
+    }
 
     /**
      * Lists table indexes
@@ -70,7 +85,9 @@ class Mysql extends \Phalcon\Db\Adapter\Pdo\AbstractPdo
      * @param string $schema
      * @return array|\Phalcon\Db\IndexInterface[]
      */
-    public function describeIndexes(string $table, string $schema = null): array {}
+    public function describeIndexes(string $table, string $schema = null): array
+    {
+    }
 
     /**
      * Lists table references
@@ -85,13 +102,16 @@ class Mysql extends \Phalcon\Db\Adapter\Pdo\AbstractPdo
      * @param string $schema
      * @return array|\Phalcon\Db\ReferenceInterface[]
      */
-    public function describeReferences(string $table, string $schema = null): array {}
+    public function describeReferences(string $table, string $schema = null): array
+    {
+    }
 
     /**
      * Returns PDO adapter DSN defaults as a key-value map.
      *
      * @return array
      */
-    protected function getDsnDefaults(): array {}
-
+    protected function getDsnDefaults(): array
+    {
+    }
 }

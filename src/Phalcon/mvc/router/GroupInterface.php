@@ -1,11 +1,20 @@
 <?php
 
+/**
+ * This file is part of the Phalcon Framework.
+ *
+ * (c) Phalcon Team <team@phalcon.io>
+ *
+ * For the full copyright and license information, please view the LICENSE.txt
+ * file that was distributed with this source code.
+ */
+
 namespace Phalcon\Mvc\Router;
 
 /**
  * Phalcon\Mvc\Router\GroupInterface
  *
- * ```php
+ *```php
  * $router = new \Phalcon\Mvc\Router();
  *
  * // Create a group with a common module and controller
@@ -46,7 +55,7 @@ namespace Phalcon\Mvc\Router;
  *
  * // Add the group to the router
  * $router->mount($blog);
- * ```
+ *```
  */
 interface GroupInterface
 {
@@ -228,5 +237,4 @@ interface GroupInterface
      * @return GroupInterface
      */
     public function setPrefix(string $prefix): GroupInterface;
-
 }

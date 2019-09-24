@@ -1,16 +1,19 @@
 <?php
 
-namespace Phalcon\Logger\Adapter;
-
 /**
  * This file is part of the Phalcon Framework.
  *
- * (c) Phalcon Team <team@phalconphp.com>
+ * (c) Phalcon Team <team@phalcon.io>
  *
  * For the full copyright and license information, please view the LICENSE.txt
  * file that was distributed with this source code.
  */
-abstract class AbstractAdapter implements \Phalcon\Logger\Adapter\AdapterInterface
+
+namespace Phalcon\Logger\Adapter;
+
+use Phalcon\Logger\Formatter\FormatterInterface;
+
+abstract class AbstractAdapter implements AdapterInterface
 {
     /**
      * Name of the default formatter class
@@ -44,7 +47,9 @@ abstract class AbstractAdapter implements \Phalcon\Logger\Adapter\AdapterInterfa
     /**
      * Destructor cleanup
      */
-    public function __destruct() {}
+    public function __destruct()
+    {
+    }
 
     /**
      * Adds a message to the queue
@@ -52,33 +57,43 @@ abstract class AbstractAdapter implements \Phalcon\Logger\Adapter\AdapterInterfa
      * @param \Phalcon\Logger\Item $item
      * @return \Phalcon\Logger\Adapter\AdapterInterface
      */
-    public function add(\Phalcon\Logger\Item $item): AdapterInterface {}
+    public function add(\Phalcon\Logger\Item $item): AdapterInterface
+    {
+    }
 
     /**
      * Starts a transaction
      *
      * @return \Phalcon\Logger\Adapter\AdapterInterface
      */
-    public function begin(): AdapterInterface {}
+    public function begin(): AdapterInterface
+    {
+    }
 
     /**
      * Commits the internal transaction
      *
      * @return \Phalcon\Logger\Adapter\AdapterInterface
      */
-    public function commit(): AdapterInterface {}
+    public function commit(): AdapterInterface
+    {
+    }
 
     /**
      * @return \Phalcon\Logger\Formatter\FormatterInterface
      */
-    public function getFormatter(): FormatterInterface {}
+    public function getFormatter(): FormatterInterface
+    {
+    }
 
     /**
      * Returns the whether the logger is currently in an active transaction or not
      *
      * @return bool
      */
-    public function inTransaction(): bool {}
+    public function inTransaction(): bool
+    {
+    }
 
     /**
      * Processes the message in the adapter
@@ -92,7 +107,9 @@ abstract class AbstractAdapter implements \Phalcon\Logger\Adapter\AdapterInterfa
      *
      * @return \Phalcon\Logger\Adapter\AdapterInterface
      */
-    public function rollback(): AdapterInterface {}
+    public function rollback(): AdapterInterface
+    {
+    }
 
     /**
      * Sets the message formatter
@@ -100,6 +117,7 @@ abstract class AbstractAdapter implements \Phalcon\Logger\Adapter\AdapterInterfa
      * @param \Phalcon\Logger\Formatter\FormatterInterface $formatter
      * @return \Phalcon\Logger\Adapter\AdapterInterface
      */
-    public function setFormatter(\Phalcon\Logger\Formatter\FormatterInterface $formatter): AdapterInterface {}
-
+    public function setFormatter(\Phalcon\Logger\Formatter\FormatterInterface $formatter): AdapterInterface
+    {
+    }
 }

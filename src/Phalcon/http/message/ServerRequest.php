@@ -1,11 +1,31 @@
 <?php
 
+/**
+* This file is part of the Phalcon Framework.
+*
+* (c) Phalcon Team <team@phalcon.io>
+*
+* For the full copyright and license information, please view the LICENSE.txt
+* file that was distributed with this source code.
+*
+* Implementation of this file has been influenced by Zend Diactoros
+* @link    https://github.com/zendframework/zend-diactoros
+* @license https://github.com/zendframework/zend-diactoros/blob/master/LICENSE.md
+*/
+
 namespace Phalcon\Http\Message;
+
+use Phalcon\Collection;
+use Phalcon\Http\Message\Exception\InvalidArgumentException;
+use Psr\Http\Message\ServerRequestInterface;
+use Psr\Http\Message\StreamInterface;
+use Psr\Http\Message\UploadedFileInterface;
+use Psr\Http\Message\UriInterface;
 
 /**
  * PSR-7 ServerRequest
  */
-final class ServerRequest extends \Phalcon\Http\Message\AbstractRequest implements \Psr\Http\Message\ServerRequestInterface
+final class ServerRequest extends AbstractRequest implements ServerRequestInterface
 {
     /**
      * @var Collection
@@ -89,7 +109,9 @@ final class ServerRequest extends \Phalcon\Http\Message\AbstractRequest implemen
      *
      * @return array
      */
-    public function getCookieParams(): array {}
+    public function getCookieParams(): array
+    {
+    }
 
     /**
      * Retrieve any parameters provided in the request body.
@@ -105,7 +127,9 @@ final class ServerRequest extends \Phalcon\Http\Message\AbstractRequest implemen
      *
      * @return mixed
      */
-    public function getParsedBody() {}
+    public function getParsedBody()
+    {
+    }
 
     /**
      * Retrieve query string arguments.
@@ -119,7 +143,9 @@ final class ServerRequest extends \Phalcon\Http\Message\AbstractRequest implemen
      *
      * @return array
      */
-    public function getQueryParams(): array {}
+    public function getQueryParams(): array
+    {
+    }
 
     /**
      * Retrieve server parameters.
@@ -130,7 +156,9 @@ final class ServerRequest extends \Phalcon\Http\Message\AbstractRequest implemen
      *
      * @return array
      */
-    public function getServerParams(): array {}
+    public function getServerParams(): array
+    {
+    }
 
     /**
      * Retrieve normalized file upload data.
@@ -143,7 +171,9 @@ final class ServerRequest extends \Phalcon\Http\Message\AbstractRequest implemen
      *
      * @return array
      */
-    public function getUploadedFiles(): array {}
+    public function getUploadedFiles(): array
+    {
+    }
 
     /**
      * ServerRequest constructor.
@@ -159,7 +189,9 @@ final class ServerRequest extends \Phalcon\Http\Message\AbstractRequest implemen
      * @param null|array|object $parsedBody
      * @param string $protocol
      */
-    public function __construct(string $method = 'GET', $uri = null, array $serverParams = array(), $body = 'php://input', $headers = array(), array $cookies = array(), array $queryParams = array(), array $uploadFiles = array(), $parsedBody = null, string $protocol = '1.1') {}
+    public function __construct(string $method = 'GET', $uri = null, array $serverParams = array(), $body = 'php://input', $headers = array(), array $cookies = array(), array $queryParams = array(), array $uploadFiles = array(), $parsedBody = null, string $protocol = '1.1')
+    {
+    }
 
     /**
      * Retrieve a single derived request attribute.
@@ -177,7 +209,9 @@ final class ServerRequest extends \Phalcon\Http\Message\AbstractRequest implemen
      * @param mixed $defaultValue
      * @return mixed
      */
-    public function getAttribute($name, $defaultValue = null) {}
+    public function getAttribute($name, $defaultValue = null)
+    {
+    }
 
     /**
      * Retrieve attributes derived from the request.
@@ -190,7 +224,9 @@ final class ServerRequest extends \Phalcon\Http\Message\AbstractRequest implemen
      *
      * @return array
      */
-    public function getAttributes(): array {}
+    public function getAttributes(): array
+    {
+    }
 
     /**
      * Return an instance with the specified derived request attribute.
@@ -208,7 +244,9 @@ final class ServerRequest extends \Phalcon\Http\Message\AbstractRequest implemen
      * @param mixed $value
      * @return ServerRequest
      */
-    public function withAttribute($name, $value): ServerRequest {}
+    public function withAttribute($name, $value): ServerRequest
+    {
+    }
 
     /**
      * Return an instance with the specified cookies.
@@ -229,7 +267,9 @@ final class ServerRequest extends \Phalcon\Http\Message\AbstractRequest implemen
      * @param array $cookies
      * @return ServerRequest
      */
-    public function withCookieParams(array $cookies): ServerRequest {}
+    public function withCookieParams(array $cookies): ServerRequest
+    {
+    }
 
     /**
      * Return an instance with the specified body parameters.
@@ -255,13 +295,14 @@ final class ServerRequest extends \Phalcon\Http\Message\AbstractRequest implemen
      *
      * @param array|object|null $data
      *
-     * @throws InvalidArgumentException if an unsupported argument type is
-     *     provided.
+     * @throws InvalidArgumentException if an unsupported argument type is provided.
      *
      * @param mixed $data
      * @return ServerRequest
      */
-    public function withParsedBody($data): ServerRequest {}
+    public function withParsedBody($data): ServerRequest
+    {
+    }
 
     /**
      * Return an instance with the specified query string arguments.
@@ -286,7 +327,9 @@ final class ServerRequest extends \Phalcon\Http\Message\AbstractRequest implemen
      * @param array $query
      * @return ServerRequest
      */
-    public function withQueryParams(array $query): ServerRequest {}
+    public function withQueryParams(array $query): ServerRequest
+    {
+    }
 
     /**
      * Create a new instance with the specified uploaded files.
@@ -302,7 +345,9 @@ final class ServerRequest extends \Phalcon\Http\Message\AbstractRequest implemen
      * @param array $uploadedFiles
      * @return ServerRequest
      */
-    public function withUploadedFiles(array $uploadedFiles): ServerRequest {}
+    public function withUploadedFiles(array $uploadedFiles): ServerRequest
+    {
+    }
 
     /**
      * Return an instance that removes the specified derived request attribute.
@@ -319,13 +364,16 @@ final class ServerRequest extends \Phalcon\Http\Message\AbstractRequest implemen
      * @param mixed $name
      * @return ServerRequest
      */
-    public function withoutAttribute($name): ServerRequest {}
+    public function withoutAttribute($name): ServerRequest
+    {
+    }
 
     /**
      * Checks the uploaded files
      *
      * @param array $files
      */
-    private function checkUploadedFiles(array $files) {}
-
+    private function checkUploadedFiles(array $files)
+    {
+    }
 }

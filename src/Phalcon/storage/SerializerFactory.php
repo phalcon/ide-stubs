@@ -1,16 +1,20 @@
 <?php
 
-namespace Phalcon\Storage;
-
 /**
  * This file is part of the Phalcon Framework.
  *
- * (c) Phalcon Team <team@phalconphp.com>
+ * (c) Phalcon Team <team@phalcon.io>
  *
  * For the full copyright and license information, please view the LICENSE.txt
  * file that was distributed with this source code.
  */
-class SerializerFactory extends \Phalcon\Factory\AbstractFactory
+
+namespace Phalcon\Storage;
+
+use Phalcon\Factory\AbstractFactory;
+use Phalcon\Storage\Serializer\SerializerInterface;
+
+class SerializerFactory extends AbstractFactory
 {
 
     /**
@@ -18,7 +22,9 @@ class SerializerFactory extends \Phalcon\Factory\AbstractFactory
      *
      * @param array $services
      */
-    public function __construct(array $services = array()) {}
+    public function __construct(array $services = array())
+    {
+    }
 
     /**
      * @param string name
@@ -27,11 +33,14 @@ class SerializerFactory extends \Phalcon\Factory\AbstractFactory
      * @param string $name
      * @return \Phalcon\Storage\Serializer\SerializerInterface
      */
-    public function newInstance(string $name): SerializerInterface {}
+    public function newInstance(string $name): SerializerInterface
+    {
+    }
 
     /**
      * @return array
      */
-    protected function getAdapters(): array {}
-
+    protected function getAdapters(): array
+    {
+    }
 }

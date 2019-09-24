@@ -1,6 +1,17 @@
 <?php
 
+/**
+ * This file is part of the Phalcon Framework.
+ *
+ * (c) Phalcon Team <team@phalcon.io>
+ *
+ * For the full copyright and license information, please view the LICENSE.txt
+ * file that was distributed with this source code.
+ */
+
 namespace Phalcon\Paginator\Adapter;
+
+use Phalcon\Paginator\RepositoryInterface;
 
 /**
  * Phalcon\Paginator\Adapter\NativeArray
@@ -23,9 +34,9 @@ namespace Phalcon\Paginator\Adapter;
  *         "page"  => $currentPage,
  *     ]
  * );
- * ```
+ *```
  */
-class NativeArray extends \Phalcon\Paginator\Adapter\AbstractAdapter
+class NativeArray extends AbstractAdapter
 {
 
     /**
@@ -33,6 +44,7 @@ class NativeArray extends \Phalcon\Paginator\Adapter\AbstractAdapter
      *
      * @return \Phalcon\Paginator\RepositoryInterface
      */
-    public function paginate(): RepositoryInterface {}
-
+    public function paginate(): RepositoryInterface
+    {
+    }
 }

@@ -1,6 +1,17 @@
 <?php
 
+/**
+ * This file is part of the Phalcon Framework.
+ *
+ * (c) Phalcon Team <team@phalcon.io>
+ *
+ * For the full copyright and license information, please view the LICENSE.txt
+ * file that was distributed with this source code.
+ */
+
 namespace Phalcon\Mvc\Model\Behavior;
+
+use Phalcon\Mvc\Model\Behavior;
 
 /**
  * Phalcon\Mvc\Model\Behavior\Timestampable
@@ -8,7 +19,7 @@ namespace Phalcon\Mvc\Model\Behavior;
  * Allows to automatically update a model’s attribute saving the datetime when a
  * record is created or updated
  */
-class Timestampable extends \Phalcon\Mvc\Model\Behavior
+class Timestampable extends Behavior
 {
 
     /**
@@ -17,11 +28,14 @@ class Timestampable extends \Phalcon\Mvc\Model\Behavior
      * @param string $type
      * @param \Phalcon\Mvc\ModelInterface $model
      */
-    public function notify(string $type, \Phalcon\Mvc\ModelInterface $model) {}
+    public function notify(string $type, \Phalcon\Mvc\ModelInterface $model)
+    {
+    }
 
     /**
      * @param array $options
      */
-    private function getTimestamp(array $options) {}
-
+    private function getTimestamp(array $options)
+    {
+    }
 }

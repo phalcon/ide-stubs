@@ -1,11 +1,29 @@
 <?php
 
+/**
+ * This file is part of the Phalcon Framework.
+ *
+ * (c) Phalcon Team <team@phalcon.io>
+ *
+ * For the full copyright and license information, please view the LICENSE.txt
+ * file that was distributed with this source code.
+ *
+ * Implementation of this file has been influenced by Zend Diactoros
+ * @link    https://github.com/zendframework/zend-diactoros
+ * @license https://github.com/zendframework/zend-diactoros/blob/master/LICENSE.md
+ */
+
 namespace Phalcon\Http\Message;
+
+use Phalcon\Http\Message\Exception\InvalidArgumentException;
+use Psr\Http\Message\StreamInterface;
+use Psr\Http\Message\UploadedFileInterface;
+use RuntimeException;
 
 /**
  * PSR-7 UploadedFile
  */
-final class UploadedFile implements \Psr\Http\Message\UploadedFileInterface
+final class UploadedFile implements UploadedFileInterface
 {
     /**
      * If the file has already been moved, we hold that status here
@@ -97,7 +115,9 @@ final class UploadedFile implements \Psr\Http\Message\UploadedFileInterface
      *
      * @return string|null
      */
-    public function getClientFilename(): ?string {}
+    public function getClientFilename(): ?string
+    {
+    }
 
     /**
      * Retrieve the media type sent by the client.
@@ -111,7 +131,9 @@ final class UploadedFile implements \Psr\Http\Message\UploadedFileInterface
      *
      * @return string|null
      */
-    public function getClientMediaType(): ?string {}
+    public function getClientMediaType(): ?string
+    {
+    }
 
     /**
      * Retrieve the error associated with the uploaded file.
@@ -126,7 +148,9 @@ final class UploadedFile implements \Psr\Http\Message\UploadedFileInterface
      *
      * @return int
      */
-    public function getError(): int {}
+    public function getError(): int
+    {
+    }
 
     /**
      * Retrieve the file size.
@@ -137,7 +161,9 @@ final class UploadedFile implements \Psr\Http\Message\UploadedFileInterface
      *
      * @return int|null
      */
-    public function getSize(): ?int {}
+    public function getSize(): ?int
+    {
+    }
 
     /**
      * UploadedFile constructor.
@@ -148,7 +174,9 @@ final class UploadedFile implements \Psr\Http\Message\UploadedFileInterface
      * @param string|null $clientFilename
      * @param string|null $clientMediaType
      */
-    public function __construct($stream, int $size = null, int $error = 0, string $clientFilename = null, string $clientMediaType = null) {}
+    public function __construct($stream, int $size = null, int $error = 0, string $clientFilename = null, string $clientMediaType = null)
+    {
+    }
 
     /**
      * Retrieve a stream representing the uploaded file.
@@ -162,11 +190,12 @@ final class UploadedFile implements \Psr\Http\Message\UploadedFileInterface
      * If the moveTo() method has been called previously, this method MUST
      * raise an exception.
      *
-     * @throws RuntimeException in cases when no stream is available or can be
-     *     created.
+     * @throws RuntimeException in cases when no stream is available or can be created.
      * @return mixed
      */
-    public function getStream() {}
+    public function getStream()
+    {
+    }
 
     /**
      * Move the uploaded file to a new location.
@@ -203,14 +232,18 @@ final class UploadedFile implements \Psr\Http\Message\UploadedFileInterface
      *     the second or subsequent call to the method.
      * @param mixed $targetPath
      */
-    public function moveTo($targetPath) {}
+    public function moveTo($targetPath)
+    {
+    }
 
     /**
      * Checks the passed error code and if not in the range throws an exception
      *
      * @param int $error
      */
-    private function checkError(int $error) {}
+    private function checkError(int $error)
+    {
+    }
 
     /**
      * Checks the passed error code and if not in the range throws an exception
@@ -218,7 +251,9 @@ final class UploadedFile implements \Psr\Http\Message\UploadedFileInterface
      * @param StreamInterface|resource|string $stream
      * @param int $error
      */
-    private function checkStream($stream, int $error) {}
+    private function checkStream($stream, int $error)
+    {
+    }
 
     /**
      * Returns a description string depending on the upload error code passed
@@ -228,13 +263,16 @@ final class UploadedFile implements \Psr\Http\Message\UploadedFileInterface
      * @param int $error
      * @return string
      */
-    private function getErrorDescription(int $error): string {}
+    private function getErrorDescription(int $error): string
+    {
+    }
 
     /**
      * Store a file in the new location (stream)
      *
      * @param string $targetPath
      */
-    private function storeFile(string $targetPath) {}
-
+    private function storeFile(string $targetPath)
+    {
+    }
 }

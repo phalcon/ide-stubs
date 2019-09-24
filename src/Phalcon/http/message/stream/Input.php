@@ -1,6 +1,21 @@
 <?php
 
+/**
+ * This file is part of the Phalcon Framework.
+ *
+ * (c) Phalcon Team <team@phalcon.io>
+ *
+ * For the full copyright and license information, please view the LICENSE.txt
+ * file that was distributed with this source code.
+ *
+ * Implementation of this file has been influenced by Zend Diactoros
+ * @link    https://github.com/zendframework/zend-diactoros
+ * @license https://github.com/zendframework/zend-diactoros/blob/master/LICENSE.md
+ */
+
 namespace Phalcon\Http\Message\Stream;
+
+use Phalcon\Http\Message\Stream;
 
 /**
  * Describes a data stream from "php://input"
@@ -9,7 +24,7 @@ namespace Phalcon\Http\Message\Stream;
  * a wrapper around the most common operations, including serialization of
  * the entire stream to a string.
  */
-class Input extends \Phalcon\Http\Message\Stream
+class Input extends Stream
 {
     /**
      * @var string
@@ -25,7 +40,9 @@ class Input extends \Phalcon\Http\Message\Stream
     /**
      * Input constructor.
      */
-    public function __construct() {}
+    public function __construct()
+    {
+    }
 
     /**
      * Reads all data from the stream into a string, from the beginning to end.
@@ -41,7 +58,9 @@ class Input extends \Phalcon\Http\Message\Stream
      * @see http://php.net/manual/en/language.oop5.magic.php#object.tostring
      * @return string
      */
-    public function __toString(): string {}
+    public function __toString(): string
+    {
+    }
 
     /**
      * Returns the remaining contents in a string
@@ -54,14 +73,18 @@ class Input extends \Phalcon\Http\Message\Stream
      * @param int $length
      * @return string
      */
-    public function getContents(int $length = -1): string {}
+    public function getContents(int $length = -1): string
+    {
+    }
 
     /**
      * Returns whether or not the stream is writeable.
      *
      * @return bool
      */
-    public function isWritable(): bool {}
+    public function isWritable(): bool
+    {
+    }
 
     /**
      * Read data from the stream.
@@ -71,6 +94,7 @@ class Input extends \Phalcon\Http\Message\Stream
      * @param mixed $length
      * @return string
      */
-    public function read($length): string {}
-
+    public function read($length): string
+    {
+    }
 }

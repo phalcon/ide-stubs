@@ -1,6 +1,17 @@
 <?php
 
+/**
+ * This file is part of the Phalcon Framework.
+ *
+ * (c) Phalcon Team <team@phalcon.io>
+ *
+ * For the full copyright and license information, please view the LICENSE.txt
+ * file that was distributed with this source code.
+ */
+
 namespace Phalcon\Cli;
+
+use Phalcon\Di\Injectable;
 
 /**
  * Every command-line task should extend this class that encapsulates all the
@@ -10,7 +21,7 @@ namespace Phalcon\Cli;
  * or anything that you want. The Task class should at least have a "mainAction"
  * method.
  *
- * ```php
+ *```php
  * class HelloTask extends \Phalcon\Cli\Task
  * {
  *     // This action will be executed by default
@@ -24,14 +35,15 @@ namespace Phalcon\Cli;
  *
  *     }
  * }
- * ```
+ *```
  */
-class Task extends \Phalcon\Di\Injectable implements \Phalcon\Cli\TaskInterface
+class Task extends Injectable implements TaskInterface
 {
 
     /**
      * Phalcon\Cli\Task constructor
      */
-    final public function __construct() {}
-
+    final public function __construct()
+    {
+    }
 }

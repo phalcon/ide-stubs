@@ -1,6 +1,17 @@
 <?php
 
+/**
+ * This file is part of the Phalcon Framework.
+ *
+ * (c) Phalcon Team <team@phalcon.io>
+ *
+ * For the full copyright and license information, please view the LICENSE.txt
+ * file that was distributed with this source code.
+ */
+
 namespace Phalcon\Mvc\Model\Query;
+
+use Phalcon\Mvc\ModelInterface;
 
 /**
  * Phalcon\Mvc\Model\Query\Status
@@ -10,7 +21,7 @@ namespace Phalcon\Mvc\Model\Query;
  * information and the related messages produced by the
  * model which finally executes the operations when it fails
  *
- * ```php
+ *```php
  * $phql = "UPDATE Robots SET name = :name:, type = :type:, year = :year: WHERE id = :id:";
  *
  * $status = $app->modelsManager->executeQuery(
@@ -27,9 +38,9 @@ namespace Phalcon\Mvc\Model\Query;
  * if ($status->success()) {
  *     echo "OK";
  * }
- * ```
+ *```
  */
-class Status implements \Phalcon\Mvc\Model\Query\StatusInterface
+class Status implements StatusInterface
 {
 
     protected $model;
@@ -44,27 +55,34 @@ class Status implements \Phalcon\Mvc\Model\Query\StatusInterface
      * @param bool $success
      * @param \Phalcon\Mvc\ModelInterface $model
      */
-    public function __construct(bool $success, \Phalcon\Mvc\ModelInterface $model = null) {}
+    public function __construct(bool $success, \Phalcon\Mvc\ModelInterface $model = null)
+    {
+    }
 
     /**
      * Returns the messages produced because of a failed operation
      *
      * @return array|\Phalcon\Messages\MessageInterface[]
      */
-    public function getMessages(): array {}
+    public function getMessages(): array
+    {
+    }
 
     /**
      * Returns the model that executed the action
      *
      * @return \Phalcon\Mvc\ModelInterface
      */
-    public function getModel(): ModelInterface {}
+    public function getModel(): ModelInterface
+    {
+    }
 
     /**
      * Allows to check if the executed operation was successful
      *
      * @return bool
      */
-    public function success(): bool {}
-
+    public function success(): bool
+    {
+    }
 }

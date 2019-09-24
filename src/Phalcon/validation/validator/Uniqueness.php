@@ -1,6 +1,20 @@
 <?php
 
+/**
+ * This file is part of the Phalcon Framework.
+ *
+ * (c) Phalcon Team <team@phalcon.io>
+ *
+ * For the full copyright and license information, please view the LICENSE.txt
+ * file that was distributed with this source code.
+ */
+
 namespace Phalcon\Validation\Validator;
+
+use Phalcon\Validation\AbstractCombinedFieldsValidator;
+
+//use Phalcon\Mvc\CollectionInterface;
+//use Phalcon\Mvc\Collection;
 
 /**
  * Check that a field is unique in the related table
@@ -72,7 +86,7 @@ namespace Phalcon\Validation\Validator;
  * );
  * ```
  */
-class Uniqueness extends \Phalcon\Validation\AbstractCombinedFieldsValidator
+class Uniqueness extends AbstractCombinedFieldsValidator
 {
 
     protected $template = 'Field :field must be unique';
@@ -88,7 +102,9 @@ class Uniqueness extends \Phalcon\Validation\AbstractCombinedFieldsValidator
      * @param mixed $field
      * @return bool
      */
-    public function validate(\Phalcon\Validation $validation, $field): bool {}
+    public function validate(\Phalcon\Validation $validation, $field): bool
+    {
+    }
 
     /**
      * The column map is used in the case to get real column name
@@ -97,23 +113,18 @@ class Uniqueness extends \Phalcon\Validation\AbstractCombinedFieldsValidator
      * @param string $field
      * @return string
      */
-    protected function getColumnNameReal($record, string $field): string {}
+    protected function getColumnNameReal($record, string $field): string
+    {
+    }
 
     /**
      * @param \Phalcon\Validation $validation
      * @param mixed $field
      * @return bool
      */
-    protected function isUniqueness(\Phalcon\Validation $validation, $field): bool {}
-
-    /**
-     * Uniqueness method used for collection
-     *
-     * @param mixed $record
-     * @param array $field
-     * @param array $values
-     */
-    protected function isUniquenessCollection($record, array $field, array $values) {}
+    protected function isUniqueness(\Phalcon\Validation $validation, $field): bool
+    {
+    }
 
     /**
      * Uniqueness method used for model
@@ -122,6 +133,7 @@ class Uniqueness extends \Phalcon\Validation\AbstractCombinedFieldsValidator
      * @param array $field
      * @param array $values
      */
-    protected function isUniquenessModel($record, array $field, array $values) {}
-
+    protected function isUniquenessModel($record, array $field, array $values)
+    {
+    }
 }

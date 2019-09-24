@@ -1,6 +1,17 @@
 <?php
 
+/**
+ * This file is part of the Phalcon Framework.
+ *
+ * (c) Phalcon Team <team@phalcon.io>
+ *
+ * For the full copyright and license information, please view the LICENSE.txt
+ * file that was distributed with this source code.
+ */
+
 namespace Phalcon;
+
+use Phalcon\Escaper\EscaperInterface;
 
 /**
  * Phalcon\Escaper
@@ -11,15 +22,15 @@ namespace Phalcon;
  * This component only works with UTF-8. The PREG extension needs to be compiled
  * with UTF-8 support.
  *
- * ```php
+ *```php
  * $escaper = new \Phalcon\Escaper();
  *
  * $escaped = $escaper->escapeCss("font-family: <Verdana>");
  *
  * echo $escaped; // font\2D family\3A \20 \3C Verdana\3E
- * ```
+ *```
  */
-class Escaper implements \Phalcon\Escaper\EscaperInterface
+class Escaper implements EscaperInterface
 {
     /**
      * @var bool
@@ -46,7 +57,9 @@ class Escaper implements \Phalcon\Escaper\EscaperInterface
      * @param string $str
      * @return string|null
      */
-    final public function detectEncoding(string $str): ?string {}
+    final public function detectEncoding(string $str): ?string
+    {
+    }
 
     /**
      * Escape CSS strings by replacing non-alphanumeric chars by their
@@ -55,7 +68,9 @@ class Escaper implements \Phalcon\Escaper\EscaperInterface
      * @param string $css
      * @return string
      */
-    public function escapeCss(string $css): string {}
+    public function escapeCss(string $css): string
+    {
+    }
 
     /**
      * Escape javascript strings by replacing non-alphanumeric chars by their
@@ -64,7 +79,9 @@ class Escaper implements \Phalcon\Escaper\EscaperInterface
      * @param string $js
      * @return string
      */
-    public function escapeJs(string $js): string {}
+    public function escapeJs(string $js): string
+    {
+    }
 
     /**
      * Escapes a HTML string. Internally uses htmlspecialchars
@@ -72,7 +89,9 @@ class Escaper implements \Phalcon\Escaper\EscaperInterface
      * @param string $text
      * @return string
      */
-    public function escapeHtml(string $text): string {}
+    public function escapeHtml(string $text): string
+    {
+    }
 
     /**
      * Escapes a HTML attribute string
@@ -80,7 +99,9 @@ class Escaper implements \Phalcon\Escaper\EscaperInterface
      * @param string $attribute
      * @return string
      */
-    public function escapeHtmlAttr(string $attribute): string {}
+    public function escapeHtmlAttr(string $attribute): string
+    {
+    }
 
     /**
      * Escapes a URL. Internally uses rawurlencode
@@ -88,14 +109,18 @@ class Escaper implements \Phalcon\Escaper\EscaperInterface
      * @param string $url
      * @return string
      */
-    public function escapeUrl(string $url): string {}
+    public function escapeUrl(string $url): string
+    {
+    }
 
     /**
      * Returns the internal encoding used by the escaper
      *
      * @return string
      */
-    public function getEncoding(): string {}
+    public function getEncoding(): string
+    {
+    }
 
     /**
      * Utility to normalize a string's encoding to UTF-32.
@@ -103,7 +128,9 @@ class Escaper implements \Phalcon\Escaper\EscaperInterface
      * @param string $str
      * @return string
      */
-    final public function normalizeEncoding(string $str): string {}
+    final public function normalizeEncoding(string $str): string
+    {
+    }
 
     /**
      * Sets the double_encode to be used by the escaper
@@ -114,7 +141,9 @@ class Escaper implements \Phalcon\Escaper\EscaperInterface
      *
      * @param bool $doubleEncode
      */
-    public function setDoubleEncode(bool $doubleEncode) {}
+    public function setDoubleEncode(bool $doubleEncode)
+    {
+    }
 
     /**
      * Sets the encoding to be used by the escaper
@@ -125,7 +154,9 @@ class Escaper implements \Phalcon\Escaper\EscaperInterface
      *
      * @param string $encoding
      */
-    public function setEncoding(string $encoding) {}
+    public function setEncoding(string $encoding)
+    {
+    }
 
     /**
      * Sets the HTML quoting type for htmlspecialchars
@@ -136,6 +167,7 @@ class Escaper implements \Phalcon\Escaper\EscaperInterface
      *
      * @param int $quoteType
      */
-    public function setHtmlQuoteType(int $quoteType) {}
-
+    public function setHtmlQuoteType(int $quoteType)
+    {
+    }
 }

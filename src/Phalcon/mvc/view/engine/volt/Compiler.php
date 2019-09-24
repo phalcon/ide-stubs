@@ -1,19 +1,31 @@
 <?php
 
+/**
+ * This file is part of the Phalcon Framework.
+ *
+ * (c) Phalcon Team <team@phalcon.io>
+ *
+ * For the full copyright and license information, please view the LICENSE.txt
+ * file that was distributed with this source code.
+ */
+
 namespace Phalcon\Mvc\View\Engine\Volt;
+
+use Phalcon\Di\DiInterface;
+use Phalcon\Di\InjectionAwareInterface;
 
 /**
  * This class reads and compiles Volt templates into PHP plain code
  *
- * ```php
+ *```php
  * $compiler = new \Phalcon\Mvc\View\Engine\Volt\Compiler();
  *
  * $compiler->compile("views/partials/header.volt");
  *
  * require $compiler->getCompiledTemplatePath();
- * ```
+ *```
  */
-class Compiler implements \Phalcon\Di\InjectionAwareInterface
+class Compiler implements InjectionAwareInterface
 {
 
     protected $autoescape = false;
@@ -84,7 +96,9 @@ class Compiler implements \Phalcon\Di\InjectionAwareInterface
      *
      * @param \Phalcon\Mvc\ViewBaseInterface $view
      */
-    public function __construct(\Phalcon\Mvc\ViewBaseInterface $view = null) {}
+    public function __construct(\Phalcon\Mvc\ViewBaseInterface $view = null)
+    {
+    }
 
     /**
      * Registers a Volt's extension
@@ -92,7 +106,9 @@ class Compiler implements \Phalcon\Di\InjectionAwareInterface
      * @param mixed $extension
      * @return Compiler
      */
-    public function addExtension($extension): Compiler {}
+    public function addExtension($extension): Compiler
+    {
+    }
 
     /**
      * Register a new filter in the compiler
@@ -101,7 +117,9 @@ class Compiler implements \Phalcon\Di\InjectionAwareInterface
      * @param mixed $definition
      * @return Compiler
      */
-    public function addFilter(string $name, $definition): Compiler {}
+    public function addFilter(string $name, $definition): Compiler
+    {
+    }
 
     /**
      * Register a new function in the compiler
@@ -110,7 +128,9 @@ class Compiler implements \Phalcon\Di\InjectionAwareInterface
      * @param mixed $definition
      * @return Compiler
      */
-    public function addFunction(string $name, $definition): Compiler {}
+    public function addFunction(string $name, $definition): Compiler
+    {
+    }
 
     /**
      * Resolves attribute reading
@@ -118,7 +138,9 @@ class Compiler implements \Phalcon\Di\InjectionAwareInterface
      * @param array $expr
      * @return string
      */
-    public function attributeReader(array $expr): string {}
+    public function attributeReader(array $expr): string
+    {
+    }
 
     /**
      * Compiles a template into a file applying the compiler options
@@ -133,7 +155,9 @@ class Compiler implements \Phalcon\Di\InjectionAwareInterface
      * @param string $templatePath
      * @param bool $extendsMode
      */
-    public function compile(string $templatePath, bool $extendsMode = false) {}
+    public function compile(string $templatePath, bool $extendsMode = false)
+    {
+    }
 
     /**
      * Compiles a "autoescape" statement returning PHP code
@@ -142,7 +166,9 @@ class Compiler implements \Phalcon\Di\InjectionAwareInterface
      * @param bool $extendsMode
      * @return string
      */
-    public function compileAutoEscape(array $statement, bool $extendsMode): string {}
+    public function compileAutoEscape(array $statement, bool $extendsMode): string
+    {
+    }
 
     /**
      * Compiles a "cache" statement returning PHP code
@@ -151,7 +177,9 @@ class Compiler implements \Phalcon\Di\InjectionAwareInterface
      * @param bool $extendsMode
      * @return string
      */
-    public function compileCache(array $statement, bool $extendsMode = false): string {}
+    public function compileCache(array $statement, bool $extendsMode = false): string
+    {
+    }
 
     /**
      * Compiles calls to macros
@@ -159,7 +187,9 @@ class Compiler implements \Phalcon\Di\InjectionAwareInterface
      * @param array $statement
      * @param bool $extendsMode
      */
-    public function compileCall(array $statement, bool $extendsMode) {}
+    public function compileCall(array $statement, bool $extendsMode)
+    {
+    }
 
     /**
      * Compiles a "case"/"default" clause returning PHP code
@@ -168,7 +198,9 @@ class Compiler implements \Phalcon\Di\InjectionAwareInterface
      * @param bool $caseClause
      * @return string
      */
-    public function compileCase(array $statement, bool $caseClause = true): string {}
+    public function compileCase(array $statement, bool $caseClause = true): string
+    {
+    }
 
     /**
      * Compiles a "do" statement returning PHP code
@@ -176,7 +208,9 @@ class Compiler implements \Phalcon\Di\InjectionAwareInterface
      * @param array $statement
      * @return string
      */
-    public function compileDo(array $statement): string {}
+    public function compileDo(array $statement): string
+    {
+    }
 
     /**
      * Compiles a {% raw %}`{{` `}}`{% endraw %} statement returning PHP code
@@ -184,7 +218,9 @@ class Compiler implements \Phalcon\Di\InjectionAwareInterface
      * @param array $statement
      * @return string
      */
-    public function compileEcho(array $statement): string {}
+    public function compileEcho(array $statement): string
+    {
+    }
 
     /**
      * Compiles a "elseif" statement returning PHP code
@@ -192,7 +228,9 @@ class Compiler implements \Phalcon\Di\InjectionAwareInterface
      * @param array $statement
      * @return string
      */
-    public function compileElseIf(array $statement): string {}
+    public function compileElseIf(array $statement): string
+    {
+    }
 
     /**
      * Compiles a template into a file forcing the destination path
@@ -209,7 +247,9 @@ class Compiler implements \Phalcon\Di\InjectionAwareInterface
      * @param bool $extendsMode
      * @return string|array
      */
-    public function compileFile(string $path, string $compiledPath, bool $extendsMode = false) {}
+    public function compileFile(string $path, string $compiledPath, bool $extendsMode = false)
+    {
+    }
 
     /**
      * Compiles a "foreach" intermediate code representation into plain PHP code
@@ -218,14 +258,18 @@ class Compiler implements \Phalcon\Di\InjectionAwareInterface
      * @param bool $extendsMode
      * @return string
      */
-    public function compileForeach(array $statement, bool $extendsMode = false): string {}
+    public function compileForeach(array $statement, bool $extendsMode = false): string
+    {
+    }
 
     /**
      * Generates a 'forelse' PHP code
      *
      * @return string
      */
-    public function compileForElse(): string {}
+    public function compileForElse(): string
+    {
+    }
 
     /**
      * Compiles a 'if' statement returning PHP code
@@ -234,7 +278,9 @@ class Compiler implements \Phalcon\Di\InjectionAwareInterface
      * @param bool $extendsMode
      * @return string
      */
-    public function compileIf(array $statement, bool $extendsMode = false): string {}
+    public function compileIf(array $statement, bool $extendsMode = false): string
+    {
+    }
 
     /**
      * Compiles a 'include' statement returning PHP code
@@ -242,7 +288,9 @@ class Compiler implements \Phalcon\Di\InjectionAwareInterface
      * @param array $statement
      * @return string
      */
-    public function compileInclude(array $statement): string {}
+    public function compileInclude(array $statement): string
+    {
+    }
 
     /**
      * Compiles macros
@@ -251,7 +299,9 @@ class Compiler implements \Phalcon\Di\InjectionAwareInterface
      * @param bool $extendsMode
      * @return string
      */
-    public function compileMacro(array $statement, bool $extendsMode): string {}
+    public function compileMacro(array $statement, bool $extendsMode): string
+    {
+    }
 
     /**
      * Compiles a "return" statement returning PHP code
@@ -259,7 +309,9 @@ class Compiler implements \Phalcon\Di\InjectionAwareInterface
      * @param array $statement
      * @return string
      */
-    public function compileReturn(array $statement): string {}
+    public function compileReturn(array $statement): string
+    {
+    }
 
     /**
      * Compiles a "set" statement returning PHP code
@@ -267,7 +319,9 @@ class Compiler implements \Phalcon\Di\InjectionAwareInterface
      * @param array $statement
      * @return string
      */
-    public function compileSet(array $statement): string {}
+    public function compileSet(array $statement): string
+    {
+    }
 
     /**
      * Compiles a template into a string
@@ -280,7 +334,9 @@ class Compiler implements \Phalcon\Di\InjectionAwareInterface
      * @param bool $extendsMode
      * @return string
      */
-    public function compileString(string $viewCode, bool $extendsMode = false): string {}
+    public function compileString(string $viewCode, bool $extendsMode = false): string
+    {
+    }
 
     /**
      * Compiles a 'switch' statement returning PHP code
@@ -289,7 +345,9 @@ class Compiler implements \Phalcon\Di\InjectionAwareInterface
      * @param bool $extendsMode
      * @return string
      */
-    public function compileSwitch(array $statement, bool $extendsMode = false): string {}
+    public function compileSwitch(array $statement, bool $extendsMode = false): string
+    {
+    }
 
     /**
      * Resolves an expression node in an AST volt tree
@@ -297,7 +355,9 @@ class Compiler implements \Phalcon\Di\InjectionAwareInterface
      * @param array $expr
      * @return string
      */
-    final public function expression(array $expr): string {}
+    final public function expression(array $expr): string
+    {
+    }
 
     /**
      * Fires an event to registered extensions
@@ -306,7 +366,9 @@ class Compiler implements \Phalcon\Di\InjectionAwareInterface
      * @param array $arguments
      * @return mixed
      */
-    final public function fireExtensionEvent(string $name, $arguments = null) {}
+    final public function fireExtensionEvent(string $name, $arguments = null)
+    {
+    }
 
     /**
      * Resolves function intermediate code into PHP function calls
@@ -314,42 +376,54 @@ class Compiler implements \Phalcon\Di\InjectionAwareInterface
      * @param array $expr
      * @return string
      */
-    public function functionCall(array $expr): string {}
+    public function functionCall(array $expr): string
+    {
+    }
 
     /**
      * Returns the path to the last compiled template
      *
      * @return string
      */
-    public function getCompiledTemplatePath(): string {}
+    public function getCompiledTemplatePath(): string
+    {
+    }
 
     /**
      * Returns the internal dependency injector
      *
      * @return \Phalcon\Di\DiInterface
      */
-    public function getDI(): DiInterface {}
+    public function getDI(): DiInterface
+    {
+    }
 
     /**
      * Returns the list of extensions registered in Volt
      *
      * @return array
      */
-    public function getExtensions(): array {}
+    public function getExtensions(): array
+    {
+    }
 
     /**
      * Register the user registered filters
      *
      * @return array
      */
-    public function getFilters(): array {}
+    public function getFilters(): array
+    {
+    }
 
     /**
      * Register the user registered functions
      *
      * @return array
      */
-    public function getFunctions(): array {}
+    public function getFunctions(): array
+    {
+    }
 
     /**
      * Returns a compiler's option
@@ -357,21 +431,27 @@ class Compiler implements \Phalcon\Di\InjectionAwareInterface
      * @param string $option
      * @return string
      */
-    public function getOption(string $option) {}
+    public function getOption(string $option)
+    {
+    }
 
     /**
      * Returns the compiler options
      *
      * @return array
      */
-    public function getOptions(): array {}
+    public function getOptions(): array
+    {
+    }
 
     /**
      * Returns the path that is currently being compiled
      *
      * @return string
      */
-    public function getTemplatePath(): string {}
+    public function getTemplatePath(): string
+    {
+    }
 
     /**
      * Return a unique prefix to be used as prefix for compiled variables and
@@ -379,7 +459,9 @@ class Compiler implements \Phalcon\Di\InjectionAwareInterface
      *
      * @return string
      */
-    public function getUniquePrefix(): string {}
+    public function getUniquePrefix(): string
+    {
+    }
 
     /**
      * Parses a Volt template returning its intermediate representation
@@ -393,7 +475,9 @@ class Compiler implements \Phalcon\Di\InjectionAwareInterface
      * @param string $viewCode
      * @return array
      */
-    public function parse(string $viewCode) {}
+    public function parse(string $viewCode)
+    {
+    }
 
     /**
      * Resolves filter intermediate code into a valid PHP expression
@@ -402,14 +486,18 @@ class Compiler implements \Phalcon\Di\InjectionAwareInterface
      * @param string $left
      * @return string
      */
-    public function resolveTest(array $test, string $left): string {}
+    public function resolveTest(array $test, string $left): string
+    {
+    }
 
     /**
      * Sets the dependency injector
      *
      * @param \Phalcon\Di\DiInterface $container
      */
-    public function setDI(\Phalcon\Di\DiInterface $container) {}
+    public function setDI(\Phalcon\Di\DiInterface $container)
+    {
+    }
 
     /**
      * Sets a single compiler option
@@ -417,14 +505,18 @@ class Compiler implements \Phalcon\Di\InjectionAwareInterface
      * @param string $option
      * @param mixed $value
      */
-    public function setOption(string $option, $value) {}
+    public function setOption(string $option, $value)
+    {
+    }
 
     /**
      * Sets the compiler options
      *
      * @param array $options
      */
-    public function setOptions(array $options) {}
+    public function setOptions(array $options)
+    {
+    }
 
     /**
      * Set a unique prefix to be used as prefix for compiled variables
@@ -432,7 +524,9 @@ class Compiler implements \Phalcon\Di\InjectionAwareInterface
      * @param string $prefix
      * @return Compiler
      */
-    public function setUniquePrefix(string $prefix): Compiler {}
+    public function setUniquePrefix(string $prefix): Compiler
+    {
+    }
 
     /**
      * Compiles a Volt source code returning a PHP plain version
@@ -441,14 +535,18 @@ class Compiler implements \Phalcon\Di\InjectionAwareInterface
      * @param bool $extendsMode
      * @return string
      */
-    protected function compileSource(string $viewCode, bool $extendsMode = false): string {}
+    protected function compileSource(string $viewCode, bool $extendsMode = false): string
+    {
+    }
 
     /**
      * Gets the final path with VIEW
      *
      * @param string $path
      */
-    protected function getFinalPath(string $path) {}
+    protected function getFinalPath(string $path)
+    {
+    }
 
     /**
      * Resolves filter intermediate code into PHP function calls
@@ -457,7 +555,9 @@ class Compiler implements \Phalcon\Di\InjectionAwareInterface
      * @param string $left
      * @return string
      */
-    final protected function resolveFilter(array $filter, string $left): string {}
+    final protected function resolveFilter(array $filter, string $left): string
+    {
+    }
 
     /**
      * Traverses a statement list compiling each of its nodes
@@ -466,7 +566,9 @@ class Compiler implements \Phalcon\Di\InjectionAwareInterface
      * @param bool $extendsMode
      * @return string
      */
-    final protected function statementList(array $statements, bool $extendsMode = false): string {}
+    final protected function statementList(array $statements, bool $extendsMode = false): string
+    {
+    }
 
     /**
      * Compiles a block of statements
@@ -474,6 +576,7 @@ class Compiler implements \Phalcon\Di\InjectionAwareInterface
      * @param array $statements
      * @return string|array
      */
-    final protected function statementListOrExtends($statements) {}
-
+    final protected function statementListOrExtends($statements)
+    {
+    }
 }

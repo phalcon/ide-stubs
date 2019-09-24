@@ -1,6 +1,17 @@
 <?php
 
+/**
+ * This file is part of the Phalcon Framework.
+ *
+ * (c) Phalcon Team <team@phalcon.io>
+ *
+ * For the full copyright and license information, please view the LICENSE.txt
+ * file that was distributed with this source code.
+ */
+
 namespace Phalcon\Mvc;
+
+use Phalcon\Dispatcher\AbstractDispatcher as BaseDispatcher;
 
 /**
  * Dispatching is the process of taking the request object, extracting the
@@ -8,7 +19,7 @@ namespace Phalcon\Mvc;
  * in it, and then instantiating a controller and calling an action of that
  * controller.
  *
- * ```php
+ *```php
  * $di = new \Phalcon\Di();
  *
  * $dispatcher = new \Phalcon\Mvc\Dispatcher();
@@ -20,9 +31,9 @@ namespace Phalcon\Mvc;
  * $dispatcher->setParams([]);
  *
  * $controller = $dispatcher->dispatch();
- * ```
+ *```
  */
-class Dispatcher extends \Phalcon\Dispatcher\AbstractDispatcher implements \Phalcon\Mvc\DispatcherInterface
+class Dispatcher extends BaseDispatcher implements DispatcherInterface
 {
 
     protected $defaultAction = 'index';
@@ -93,14 +104,18 @@ class Dispatcher extends \Phalcon\Dispatcher\AbstractDispatcher implements \Phal
      *
      * @param array $forward
      */
-    public function forward($forward) {}
+    public function forward($forward)
+    {
+    }
 
     /**
      * Returns the active controller in the dispatcher
      *
      * @return \Phalcon\Mvc\ControllerInterface
      */
-    public function getActiveController(): ControllerInterface {}
+    public function getActiveController(): ControllerInterface
+    {
+    }
 
     /**
      * Possible controller class name that will be located to dispatch the
@@ -108,70 +123,90 @@ class Dispatcher extends \Phalcon\Dispatcher\AbstractDispatcher implements \Phal
      *
      * @return string
      */
-    public function getControllerClass(): string {}
+    public function getControllerClass(): string
+    {
+    }
 
     /**
      * Gets last dispatched controller name
      *
      * @return string
      */
-    public function getControllerName(): string {}
+    public function getControllerName(): string
+    {
+    }
 
     /**
      * Returns the latest dispatched controller
      *
      * @return \Phalcon\Mvc\ControllerInterface
      */
-    public function getLastController(): ControllerInterface {}
+    public function getLastController(): ControllerInterface
+    {
+    }
 
     /**
      * Gets previous dispatched action name
      *
      * @return string
      */
-    public function getPreviousActionName(): string {}
+    public function getPreviousActionName(): string
+    {
+    }
 
     /**
      * Gets previous dispatched controller name
      *
      * @return string
      */
-    public function getPreviousControllerName(): string {}
+    public function getPreviousControllerName(): string
+    {
+    }
 
     /**
      * Gets previous dispatched namespace name
      *
      * @return string
      */
-    public function getPreviousNamespaceName(): string {}
+    public function getPreviousNamespaceName(): string
+    {
+    }
 
     /**
      * Sets the controller name to be dispatched
      *
      * @param string $controllerName
      */
-    public function setControllerName(string $controllerName) {}
+    public function setControllerName(string $controllerName)
+    {
+    }
 
     /**
      * Sets the default controller suffix
      *
      * @param string $controllerSuffix
      */
-    public function setControllerSuffix(string $controllerSuffix) {}
+    public function setControllerSuffix(string $controllerSuffix)
+    {
+    }
 
     /**
      * Sets the default controller name
      *
      * @param string $controllerName
      */
-    public function setDefaultController(string $controllerName) {}
+    public function setDefaultController(string $controllerName)
+    {
+    }
 
     /**
      * Handles a user exception
      *
      * @param \Exception $exception
      */
-    protected function handleException(\Exception $exception) {}
+    protected function handleException(\Exception $exception)
+    {
+    }
 
     /**
      * Throws an internal exception
@@ -179,6 +214,7 @@ class Dispatcher extends \Phalcon\Dispatcher\AbstractDispatcher implements \Phal
      * @param string $message
      * @param int $exceptionCode
      */
-    protected function throwDispatchException(string $message, int $exceptionCode = 0) {}
-
+    protected function throwDispatchException(string $message, int $exceptionCode = 0)
+    {
+    }
 }

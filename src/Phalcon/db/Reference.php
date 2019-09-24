@@ -1,11 +1,20 @@
 <?php
 
+/**
+ * This file is part of the Phalcon Framework.
+ *
+ * (c) Phalcon Team <team@phalcon.io>
+ *
+ * For the full copyright and license information, please view the LICENSE.txt
+ * file that was distributed with this source code.
+ */
+
 namespace Phalcon\Db;
 
 /**
  * Allows to define reference constraints on tables
  *
- * ```php
+ *```php
  * $reference = new \Phalcon\Db\Reference(
  *     "field_fk",
  *     [
@@ -21,9 +30,9 @@ namespace Phalcon\Db;
  *         ],
  *     ]
  * );
- * ```
+ *```
  */
-class Reference implements \Phalcon\Db\ReferenceInterface
+class Reference implements ReferenceInterface
 {
     /**
      * Local reference columns
@@ -87,56 +96,72 @@ class Reference implements \Phalcon\Db\ReferenceInterface
      *
      * @return array
      */
-    public function getColumns(): array {}
+    public function getColumns(): array
+    {
+    }
 
     /**
      * Constraint name
      *
      * @return string
      */
-    public function getName(): string {}
+    public function getName(): string
+    {
+    }
 
     /**
      * Referenced Columns
      *
      * @return array
      */
-    public function getReferencedColumns(): array {}
+    public function getReferencedColumns(): array
+    {
+    }
 
     /**
      * Referenced Schema
      *
      * @return string
      */
-    public function getReferencedSchema(): string {}
+    public function getReferencedSchema(): string
+    {
+    }
 
     /**
      * Referenced Table
      *
      * @return string
      */
-    public function getReferencedTable(): string {}
+    public function getReferencedTable(): string
+    {
+    }
 
     /**
      * Schema name
      *
      * @return string
      */
-    public function getSchemaName(): string {}
+    public function getSchemaName(): string
+    {
+    }
 
     /**
      * ON DELETE
      *
      * @return string
      */
-    public function getOnDelete(): string {}
+    public function getOnDelete(): string
+    {
+    }
 
     /**
      * ON UPDATE
      *
      * @return string
      */
-    public function getOnUpdate(): string {}
+    public function getOnUpdate(): string
+    {
+    }
 
     /**
      * Phalcon\Db\Reference constructor
@@ -144,6 +169,7 @@ class Reference implements \Phalcon\Db\ReferenceInterface
      * @param string $name
      * @param array $definition
      */
-    public function __construct(string $name, array $definition) {}
-
+    public function __construct(string $name, array $definition)
+    {
+    }
 }

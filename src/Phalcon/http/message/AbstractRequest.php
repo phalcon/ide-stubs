@@ -1,11 +1,27 @@
 <?php
 
+/**
+ * This file is part of the Phalcon Framework.
+ *
+ * (c) Phalcon Team <team@phalcon.io>
+ *
+ * For the full copyright and license information, please view the LICENSE.txt
+ * file that was distributed with this source code.
+ *
+ * Implementation of this file has been influenced by Zend Diactoros
+ * @link    https://github.com/zendframework/zend-diactoros
+ * @license https://github.com/zendframework/zend-diactoros/blob/master/LICENSE.md
+ */
+
 namespace Phalcon\Http\Message;
+
+use Phalcon\Http\Message\Exception\InvalidArgumentException;
+use Psr\Http\Message\UriInterface;
 
 /**
  * Request methods
  */
-abstract class AbstractRequest extends \Phalcon\Http\Message\AbstractMessage
+abstract class AbstractRequest extends AbstractMessage
 {
     /**
      * Retrieves the HTTP method of the request.
@@ -38,7 +54,9 @@ abstract class AbstractRequest extends \Phalcon\Http\Message\AbstractMessage
      *
      * @return string
      */
-    public function getMethod(): string {}
+    public function getMethod(): string
+    {
+    }
 
     /**
      * Retrieves the URI instance.
@@ -47,7 +65,9 @@ abstract class AbstractRequest extends \Phalcon\Http\Message\AbstractMessage
      *
      * @return UriInterface
      */
-    public function getUri() {}
+    public function getUri()
+    {
+    }
 
     /**
      * Retrieves the message's request target.
@@ -62,7 +82,9 @@ abstract class AbstractRequest extends \Phalcon\Http\Message\AbstractMessage
      *
      * @return string
      */
-    public function getRequestTarget(): string {}
+    public function getRequestTarget(): string
+    {
+    }
 
     /**
      * Return an instance with the provided HTTP method.
@@ -82,7 +104,9 @@ abstract class AbstractRequest extends \Phalcon\Http\Message\AbstractMessage
      * @param mixed $method
      * @return object
      */
-    public function withMethod($method) {}
+    public function withMethod($method)
+    {
+    }
 
     /**
      * Return an instance with the specific request-target.
@@ -104,7 +128,9 @@ abstract class AbstractRequest extends \Phalcon\Http\Message\AbstractMessage
      * @param mixed $requestTarget
      * @return object
      */
-    public function withRequestTarget($requestTarget) {}
+    public function withRequestTarget($requestTarget)
+    {
+    }
 
     /**
      * Returns an instance with the provided URI.
@@ -140,7 +166,9 @@ abstract class AbstractRequest extends \Phalcon\Http\Message\AbstractMessage
      * @param mixed $preserveHost
      * @return object
      */
-    public function withUri(\Psr\Http\Message\UriInterface $uri, $preserveHost = false) {}
+    public function withUri(\Psr\Http\Message\UriInterface $uri, $preserveHost = false)
+    {
+    }
 
     /**
      * Check the method
@@ -150,7 +178,9 @@ abstract class AbstractRequest extends \Phalcon\Http\Message\AbstractMessage
      * @param mixed $method
      * @return string
      */
-    final protected function processMethod($method = ''): string {}
+    final protected function processMethod($method = ''): string
+    {
+    }
 
     /**
      * Sets a valid Uri
@@ -160,6 +190,7 @@ abstract class AbstractRequest extends \Phalcon\Http\Message\AbstractMessage
      * @param mixed $uri
      * @return \Psr\Http\Message\UriInterface
      */
-    final protected function processUri($uri): UriInterface {}
-
+    final protected function processUri($uri): UriInterface
+    {
+    }
 }

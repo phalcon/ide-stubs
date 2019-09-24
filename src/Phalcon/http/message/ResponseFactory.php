@@ -1,11 +1,27 @@
 <?php
 
+/**
+ * This file is part of the Phalcon Framework.
+ *
+ * (c) Phalcon Team <team@phalcon.io>
+ *
+ * For the full copyright and license information, please view the LICENSE.txt
+ * file that was distributed with this source code.
+ *
+ * Implementation of this file has been influenced by Zend Diactoros
+ * @link    https://github.com/zendframework/zend-diactoros
+ * @license https://github.com/zendframework/zend-diactoros/blob/master/LICENSE.md
+ */
+
 namespace Phalcon\Http\Message;
+
+use Psr\Http\Message\ResponseFactoryInterface;
+use Psr\Http\Message\ResponseInterface;
 
 /**
  * PSR-17 ResponseFactory
  */
-final class ResponseFactory implements \Psr\Http\Message\ResponseFactoryInterface
+final class ResponseFactory implements ResponseFactoryInterface
 {
 
     /**
@@ -20,6 +36,7 @@ final class ResponseFactory implements \Psr\Http\Message\ResponseFactoryInterfac
      * @param string $reasonPhrase
      * @return \Psr\Http\Message\ResponseInterface
      */
-    public function createResponse(int $code = 200, string $reasonPhrase = ''): ResponseInterface {}
-
+    public function createResponse(int $code = 200, string $reasonPhrase = ''): ResponseInterface
+    {
+    }
 }

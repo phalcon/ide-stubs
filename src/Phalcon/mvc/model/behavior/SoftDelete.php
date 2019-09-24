@@ -1,6 +1,17 @@
 <?php
 
+/**
+ * This file is part of the Phalcon Framework.
+ *
+ * (c) Phalcon Team <team@phalcon.io>
+ *
+ * For the full copyright and license information, please view the LICENSE.txt
+ * file that was distributed with this source code.
+ */
+
 namespace Phalcon\Mvc\Model\Behavior;
+
+use Phalcon\Mvc\Model\Behavior;
 
 /**
  * Phalcon\Mvc\Model\Behavior\SoftDelete
@@ -8,7 +19,7 @@ namespace Phalcon\Mvc\Model\Behavior;
  * Instead of permanently delete a record it marks the record as deleted
  * changing the value of a flag column
  */
-class SoftDelete extends \Phalcon\Mvc\Model\Behavior
+class SoftDelete extends Behavior
 {
 
     /**
@@ -17,6 +28,7 @@ class SoftDelete extends \Phalcon\Mvc\Model\Behavior
      * @param string $type
      * @param \Phalcon\Mvc\ModelInterface $model
      */
-    public function notify(string $type, \Phalcon\Mvc\ModelInterface $model) {}
-
+    public function notify(string $type, \Phalcon\Mvc\ModelInterface $model)
+    {
+    }
 }

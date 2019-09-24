@@ -1,11 +1,20 @@
 <?php
 
+/**
+ * This file is part of the Phalcon Framework.
+ *
+ * (c) Phalcon Team <team@phalcon.io>
+ *
+ * For the full copyright and license information, please view the LICENSE.txt
+ * file that was distributed with this source code.
+ */
+
 namespace Phalcon\Annotations;
 
 /**
  * Parses docblocks returning an array with the found annotations
  */
-class Reader implements \Phalcon\Annotations\ReaderInterface
+class Reader implements ReaderInterface
 {
 
     /**
@@ -14,7 +23,9 @@ class Reader implements \Phalcon\Annotations\ReaderInterface
      * @param string $className
      * @return array
      */
-    public function parse(string $className): array {}
+    public function parse(string $className): array
+    {
+    }
 
     /**
      * Parses a raw doc block returning the annotations found
@@ -24,6 +35,7 @@ class Reader implements \Phalcon\Annotations\ReaderInterface
      * @param mixed $line
      * @return array
      */
-    public static function parseDocBlock(string $docBlock, $file = null, $line = null): array {}
-
+    public static function parseDocBlock(string $docBlock, $file = null, $line = null): array
+    {
+    }
 }

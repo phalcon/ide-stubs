@@ -1,6 +1,17 @@
 <?php
 
+/**
+ * This file is part of the Phalcon Framework.
+ *
+ * (c) Phalcon Team <team@phalcon.io>
+ *
+ * For the full copyright and license information, please view the LICENSE.txt
+ * file that was distributed with this source code.
+ */
+
 namespace Phalcon\Paginator\Adapter;
+
+use Phalcon\Paginator\RepositoryInterface;
 
 /**
  * Phalcon\Paginator\Adapter\Model
@@ -20,9 +31,9 @@ namespace Phalcon\Paginator\Adapter;
  * );
  *
  * $paginate = $paginator->paginate();
- * ```
+ *```
  */
-class Model extends \Phalcon\Paginator\Adapter\AbstractAdapter
+class Model extends AbstractAdapter
 {
 
     /**
@@ -30,6 +41,7 @@ class Model extends \Phalcon\Paginator\Adapter\AbstractAdapter
      *
      * @return \Phalcon\Paginator\RepositoryInterface
      */
-    public function paginate(): RepositoryInterface {}
-
+    public function paginate(): RepositoryInterface
+    {
+    }
 }
