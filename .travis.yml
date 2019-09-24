@@ -22,7 +22,7 @@ before_script:
     - travis_retry composer install --no-interaction --no-ansi --no-progress --no-suggest
 
 script:
-    - vendor/bin/psalm --show-info=false
+    - vendor/bin/psalm
     - phpenv config-rm xdebug.ini || true
     - vendor/bin/phpcs
 
