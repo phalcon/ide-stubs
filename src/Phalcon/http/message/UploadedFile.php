@@ -115,7 +115,9 @@ final class UploadedFile implements UploadedFileInterface
      *
      * @return string|null
      */
-    public function getClientFilename(): ?string {}
+    public function getClientFilename(): ?string
+    {
+    }
 
     /**
      * Retrieve the media type sent by the client.
@@ -129,7 +131,9 @@ final class UploadedFile implements UploadedFileInterface
      *
      * @return string|null
      */
-    public function getClientMediaType(): ?string {}
+    public function getClientMediaType(): ?string
+    {
+    }
 
     /**
      * Retrieve the error associated with the uploaded file.
@@ -144,7 +148,9 @@ final class UploadedFile implements UploadedFileInterface
      *
      * @return int
      */
-    public function getError(): int {}
+    public function getError(): int
+    {
+    }
 
     /**
      * Retrieve the file size.
@@ -155,7 +161,9 @@ final class UploadedFile implements UploadedFileInterface
      *
      * @return int|null
      */
-    public function getSize(): ?int {}
+    public function getSize(): ?int
+    {
+    }
 
     /**
      * UploadedFile constructor.
@@ -166,7 +174,9 @@ final class UploadedFile implements UploadedFileInterface
      * @param string|null $clientFilename
      * @param string|null $clientMediaType
      */
-    public function __construct($stream, int $size = null, int $error = 0, string $clientFilename = null, string $clientMediaType = null) {}
+    public function __construct($stream, int $size = null, int $error = 0, string $clientFilename = null, string $clientMediaType = null)
+    {
+    }
 
     /**
      * Retrieve a stream representing the uploaded file.
@@ -183,7 +193,9 @@ final class UploadedFile implements UploadedFileInterface
      * @throws RuntimeException in cases when no stream is available or can be created.
      * @return mixed
      */
-    public function getStream() {}
+    public function getStream()
+    {
+    }
 
     /**
      * Move the uploaded file to a new location.
@@ -220,14 +232,18 @@ final class UploadedFile implements UploadedFileInterface
      *     the second or subsequent call to the method.
      * @param mixed $targetPath
      */
-    public function moveTo($targetPath) {}
+    public function moveTo($targetPath)
+    {
+    }
 
     /**
      * Checks the passed error code and if not in the range throws an exception
      *
      * @param int $error
      */
-    private function checkError(int $error) {}
+    private function checkError(int $error)
+    {
+    }
 
     /**
      * Checks the passed error code and if not in the range throws an exception
@@ -235,7 +251,9 @@ final class UploadedFile implements UploadedFileInterface
      * @param StreamInterface|resource|string $stream
      * @param int $error
      */
-    private function checkStream($stream, int $error) {}
+    private function checkStream($stream, int $error)
+    {
+    }
 
     /**
      * Returns a description string depending on the upload error code passed
@@ -245,13 +263,16 @@ final class UploadedFile implements UploadedFileInterface
      * @param int $error
      * @return string
      */
-    private function getErrorDescription(int $error): string {}
+    private function getErrorDescription(int $error): string
+    {
+    }
 
     /**
      * Store a file in the new location (stream)
      *
      * @param string $targetPath
      */
-    private function storeFile(string $targetPath) {}
-
+    private function storeFile(string $targetPath)
+    {
+    }
 }

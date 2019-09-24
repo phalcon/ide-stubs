@@ -52,7 +52,9 @@ class Config extends Collection
      *
      * @return string
      */
-    public function getPathDelimiter(): string {}
+    public function getPathDelimiter(): string
+    {
+    }
 
     /**
      * Merges a configuration into the current one
@@ -72,7 +74,9 @@ class Config extends Collection
      * @param mixed $toMerge
      * @return Config
      */
-    public function merge($toMerge): Config {}
+    public function merge($toMerge): Config
+    {
+    }
 
     /**
      * Returns a value from current config using a dot separated path.
@@ -85,7 +89,9 @@ class Config extends Collection
      * @param mixed $defaultValue
      * @param mixed $delimiter
      */
-    public function path(string $path, $defaultValue = null, $delimiter = null) {}
+    public function path(string $path, $defaultValue = null, $delimiter = null)
+    {
+    }
 
     /**
      * Sets the default path delimiter
@@ -93,7 +99,9 @@ class Config extends Collection
      * @param string $delimiter
      * @return Config
      */
-    public function setPathDelimiter(string $delimiter = null): Config {}
+    public function setPathDelimiter(string $delimiter = null): Config
+    {
+    }
 
     /**
      * Converts recursively the object to an array
@@ -106,7 +114,9 @@ class Config extends Collection
      *
      * @return array
      */
-    public function toArray(): array {}
+    public function toArray(): array
+    {
+    }
 
     /**
      * Performs a merge recursively
@@ -115,7 +125,9 @@ class Config extends Collection
      * @param array $target
      * @return array
      */
-    final protected function internalMerge(array $source, array $target): array {}
+    final protected function internalMerge(array $source, array $target): array
+    {
+    }
 
     /**
      * Sets the collection data
@@ -123,6 +135,7 @@ class Config extends Collection
      * @param mixed $element
      * @param mixed $value
      */
-    protected function setData($element, $value) {}
-
+    protected function setData($element, $value)
+    {
+    }
 }

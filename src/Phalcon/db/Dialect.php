@@ -30,7 +30,9 @@ abstract class Dialect implements DialectInterface
      * @param string $name
      * @return string
      */
-    public function createSavepoint(string $name): string {}
+    public function createSavepoint(string $name): string
+    {
+    }
 
     /**
      * Escape identifiers
@@ -39,7 +41,9 @@ abstract class Dialect implements DialectInterface
      * @param string $escapeChar
      * @return string
      */
-    final public function escape(string $str, string $escapeChar = null): string {}
+    final public function escape(string $str, string $escapeChar = null): string
+    {
+    }
 
     /**
      * Escape Schema
@@ -48,7 +52,9 @@ abstract class Dialect implements DialectInterface
      * @param string $escapeChar
      * @return string
      */
-    final public function escapeSchema(string $str, string $escapeChar = null): string {}
+    final public function escapeSchema(string $str, string $escapeChar = null): string
+    {
+    }
 
     /**
      * Returns a SQL modified with a FOR UPDATE clause
@@ -62,7 +68,9 @@ abstract class Dialect implements DialectInterface
      * @param string $sqlQuery
      * @return string
      */
-    public function forUpdate(string $sqlQuery): string {}
+    public function forUpdate(string $sqlQuery): string
+    {
+    }
 
     /**
      * Gets a list of columns with escaped identifiers
@@ -81,14 +89,18 @@ abstract class Dialect implements DialectInterface
      * @param mixed $bindCounts
      * @return string
      */
-    final public function getColumnList(array $columnList, string $escapeChar = null, $bindCounts = null): string {}
+    final public function getColumnList(array $columnList, string $escapeChar = null, $bindCounts = null): string
+    {
+    }
 
     /**
      * Returns registered functions
      *
      * @return array
      */
-    public function getCustomFunctions(): array {}
+    public function getCustomFunctions(): array
+    {
+    }
 
     /**
      * Resolve Column expressions
@@ -98,7 +110,9 @@ abstract class Dialect implements DialectInterface
      * @param mixed $bindCounts
      * @return string
      */
-    final public function getSqlColumn($column, string $escapeChar = null, $bindCounts = null): string {}
+    final public function getSqlColumn($column, string $escapeChar = null, $bindCounts = null): string
+    {
+    }
 
     /**
      * Transforms an intermediate representation for an expression into a database system valid expression
@@ -108,7 +122,9 @@ abstract class Dialect implements DialectInterface
      * @param mixed $bindCounts
      * @return string
      */
-    public function getSqlExpression(array $expression, string $escapeChar = null, $bindCounts = null): string {}
+    public function getSqlExpression(array $expression, string $escapeChar = null, $bindCounts = null): string
+    {
+    }
 
     /**
      * Transform an intermediate representation of a schema/table into a
@@ -118,7 +134,9 @@ abstract class Dialect implements DialectInterface
      * @param string $escapeChar
      * @return string
      */
-    final public function getSqlTable($table, string $escapeChar = null): string {}
+    final public function getSqlTable($table, string $escapeChar = null): string
+    {
+    }
 
     /**
      * Generates the SQL for LIMIT clause
@@ -141,7 +159,9 @@ abstract class Dialect implements DialectInterface
      * @param mixed $number
      * @return string
      */
-    public function limit(string $sqlQuery, $number): string {}
+    public function limit(string $sqlQuery, $number): string
+    {
+    }
 
     /**
      * Registers custom SQL functions
@@ -150,7 +170,9 @@ abstract class Dialect implements DialectInterface
      * @param callable $customFunction
      * @return Dialect
      */
-    public function registerCustomFunction(string $name, $customFunction): Dialect {}
+    public function registerCustomFunction(string $name, $customFunction): Dialect
+    {
+    }
 
     /**
      * Generate SQL to release a savepoint
@@ -158,7 +180,9 @@ abstract class Dialect implements DialectInterface
      * @param string $name
      * @return string
      */
-    public function releaseSavepoint(string $name): string {}
+    public function releaseSavepoint(string $name): string
+    {
+    }
 
     /**
      * Generate SQL to rollback a savepoint
@@ -166,7 +190,9 @@ abstract class Dialect implements DialectInterface
      * @param string $name
      * @return string
      */
-    public function rollbackSavepoint(string $name): string {}
+    public function rollbackSavepoint(string $name): string
+    {
+    }
 
     /**
      * Builds a SELECT statement
@@ -174,21 +200,27 @@ abstract class Dialect implements DialectInterface
      * @param array $definition
      * @return string
      */
-    public function select(array $definition): string {}
+    public function select(array $definition): string
+    {
+    }
 
     /**
      * Checks whether the platform supports savepoints
      *
      * @return bool
      */
-    public function supportsSavepoints(): bool {}
+    public function supportsSavepoints(): bool
+    {
+    }
 
     /**
      * Checks whether the platform supports releasing savepoints.
      *
      * @return bool
      */
-    public function supportsReleaseSavepoints(): bool {}
+    public function supportsReleaseSavepoints(): bool
+    {
+    }
 
     /**
      * Returns the size of the column enclosed in parentheses
@@ -196,7 +228,9 @@ abstract class Dialect implements DialectInterface
      * @param ColumnInterface $column
      * @return string
      */
-    protected function getColumnSize(ColumnInterface $column): string {}
+    protected function getColumnSize(ColumnInterface $column): string
+    {
+    }
 
     /**
      * Returns the column size and scale enclosed in parentheses
@@ -204,7 +238,9 @@ abstract class Dialect implements DialectInterface
      * @param ColumnInterface $column
      * @return string
      */
-    protected function getColumnSizeAndScale(ColumnInterface $column): string {}
+    protected function getColumnSizeAndScale(ColumnInterface $column): string
+    {
+    }
 
     /**
      * Checks the column type and if not string it returns the type reference
@@ -212,7 +248,9 @@ abstract class Dialect implements DialectInterface
      * @param ColumnInterface $column
      * @return string
      */
-    protected function checkColumnType(ColumnInterface $column): string {}
+    protected function checkColumnType(ColumnInterface $column): string
+    {
+    }
 
     /**
      * Checks the column type and returns the updated SQL statement
@@ -220,7 +258,9 @@ abstract class Dialect implements DialectInterface
      * @param ColumnInterface $column
      * @return string
      */
-    protected function checkColumnTypeSql(ColumnInterface $column): string {}
+    protected function checkColumnTypeSql(ColumnInterface $column): string
+    {
+    }
 
     /**
      * Resolve
@@ -229,7 +269,9 @@ abstract class Dialect implements DialectInterface
      * @param string $escapeChar
      * @return string
      */
-    final protected function getSqlExpressionAll(array $expression, string $escapeChar = null): string {}
+    final protected function getSqlExpressionAll(array $expression, string $escapeChar = null): string
+    {
+    }
 
     /**
      * Resolve binary operations expressions
@@ -239,7 +281,9 @@ abstract class Dialect implements DialectInterface
      * @param mixed $bindCounts
      * @return string
      */
-    final protected function getSqlExpressionBinaryOperations(array $expression, string $escapeChar = null, $bindCounts = null): string {}
+    final protected function getSqlExpressionBinaryOperations(array $expression, string $escapeChar = null, $bindCounts = null): string
+    {
+    }
 
     /**
      * Resolve CASE expressions
@@ -249,7 +293,9 @@ abstract class Dialect implements DialectInterface
      * @param mixed $bindCounts
      * @return string
      */
-    final protected function getSqlExpressionCase(array $expression, string $escapeChar = null, $bindCounts = null): string {}
+    final protected function getSqlExpressionCase(array $expression, string $escapeChar = null, $bindCounts = null): string
+    {
+    }
 
     /**
      * Resolve CAST of values
@@ -259,7 +305,9 @@ abstract class Dialect implements DialectInterface
      * @param mixed $bindCounts
      * @return string
      */
-    final protected function getSqlExpressionCastValue(array $expression, string $escapeChar = null, $bindCounts = null): string {}
+    final protected function getSqlExpressionCastValue(array $expression, string $escapeChar = null, $bindCounts = null): string
+    {
+    }
 
     /**
      * Resolve CONVERT of values encodings
@@ -269,7 +317,9 @@ abstract class Dialect implements DialectInterface
      * @param mixed $bindCounts
      * @return string
      */
-    final protected function getSqlExpressionConvertValue(array $expression, string $escapeChar = null, $bindCounts = null): string {}
+    final protected function getSqlExpressionConvertValue(array $expression, string $escapeChar = null, $bindCounts = null): string
+    {
+    }
 
     /**
      * Resolve a FROM clause
@@ -278,7 +328,9 @@ abstract class Dialect implements DialectInterface
      * @param string $escapeChar
      * @return string
      */
-    final protected function getSqlExpressionFrom($expression, string $escapeChar = null): string {}
+    final protected function getSqlExpressionFrom($expression, string $escapeChar = null): string
+    {
+    }
 
     /**
      * Resolve function calls
@@ -288,7 +340,9 @@ abstract class Dialect implements DialectInterface
      * @param mixed $bindCounts
      * @return string
      */
-    final protected function getSqlExpressionFunctionCall(array $expression, string $escapeChar = null, $bindCounts): string {}
+    final protected function getSqlExpressionFunctionCall(array $expression, string $escapeChar = null, $bindCounts): string
+    {
+    }
 
     /**
      * Resolve a GROUP BY clause
@@ -298,7 +352,9 @@ abstract class Dialect implements DialectInterface
      * @param mixed $bindCounts
      * @return string
      */
-    final protected function getSqlExpressionGroupBy($expression, string $escapeChar = null, $bindCounts = null): string {}
+    final protected function getSqlExpressionGroupBy($expression, string $escapeChar = null, $bindCounts = null): string
+    {
+    }
 
     /**
      * Resolve a HAVING clause
@@ -308,7 +364,9 @@ abstract class Dialect implements DialectInterface
      * @param mixed $bindCounts
      * @return string
      */
-    final protected function getSqlExpressionHaving(array $expression, string $escapeChar = null, $bindCounts = null): string {}
+    final protected function getSqlExpressionHaving(array $expression, string $escapeChar = null, $bindCounts = null): string
+    {
+    }
 
     /**
      * Resolve a JOINs clause
@@ -318,7 +376,9 @@ abstract class Dialect implements DialectInterface
      * @param mixed $bindCounts
      * @return string
      */
-    final protected function getSqlExpressionJoins($expression, string $escapeChar = null, $bindCounts = null): string {}
+    final protected function getSqlExpressionJoins($expression, string $escapeChar = null, $bindCounts = null): string
+    {
+    }
 
     /**
      * Resolve a LIMIT clause
@@ -328,7 +388,9 @@ abstract class Dialect implements DialectInterface
      * @param mixed $bindCounts
      * @return string
      */
-    final protected function getSqlExpressionLimit($expression, string $escapeChar = null, $bindCounts = null): string {}
+    final protected function getSqlExpressionLimit($expression, string $escapeChar = null, $bindCounts = null): string
+    {
+    }
 
     /**
      * Resolve Lists
@@ -338,7 +400,9 @@ abstract class Dialect implements DialectInterface
      * @param mixed $bindCounts
      * @return string
      */
-    final protected function getSqlExpressionList(array $expression, string $escapeChar = null, $bindCounts = null): string {}
+    final protected function getSqlExpressionList(array $expression, string $escapeChar = null, $bindCounts = null): string
+    {
+    }
 
     /**
      * Resolve object expressions
@@ -348,7 +412,9 @@ abstract class Dialect implements DialectInterface
      * @param mixed $bindCounts
      * @return string
      */
-    final protected function getSqlExpressionObject(array $expression, string $escapeChar = null, $bindCounts = null): string {}
+    final protected function getSqlExpressionObject(array $expression, string $escapeChar = null, $bindCounts = null): string
+    {
+    }
 
     /**
      * Resolve an ORDER BY clause
@@ -358,7 +424,9 @@ abstract class Dialect implements DialectInterface
      * @param mixed $bindCounts
      * @return string
      */
-    final protected function getSqlExpressionOrderBy($expression, string $escapeChar = null, $bindCounts = null): string {}
+    final protected function getSqlExpressionOrderBy($expression, string $escapeChar = null, $bindCounts = null): string
+    {
+    }
 
     /**
      * Resolve qualified expressions
@@ -367,7 +435,9 @@ abstract class Dialect implements DialectInterface
      * @param string $escapeChar
      * @return string
      */
-    final protected function getSqlExpressionQualified(array $expression, string $escapeChar = null): string {}
+    final protected function getSqlExpressionQualified(array $expression, string $escapeChar = null): string
+    {
+    }
 
     /**
      * Resolve Column expressions
@@ -377,7 +447,9 @@ abstract class Dialect implements DialectInterface
      * @param mixed $bindCounts
      * @return string
      */
-    final protected function getSqlExpressionScalar(array $expression, string $escapeChar = null, $bindCounts = null): string {}
+    final protected function getSqlExpressionScalar(array $expression, string $escapeChar = null, $bindCounts = null): string
+    {
+    }
 
     /**
      * Resolve unary operations expressions
@@ -387,7 +459,9 @@ abstract class Dialect implements DialectInterface
      * @param mixed $bindCounts
      * @return string
      */
-    final protected function getSqlExpressionUnaryOperations(array $expression, string $escapeChar = null, $bindCounts = null): string {}
+    final protected function getSqlExpressionUnaryOperations(array $expression, string $escapeChar = null, $bindCounts = null): string
+    {
+    }
 
     /**
      * Resolve a WHERE clause
@@ -397,7 +471,9 @@ abstract class Dialect implements DialectInterface
      * @param mixed $bindCounts
      * @return string
      */
-    final protected function getSqlExpressionWhere($expression, string $escapeChar = null, $bindCounts = null): string {}
+    final protected function getSqlExpressionWhere($expression, string $escapeChar = null, $bindCounts = null): string
+    {
+    }
 
     /**
      * Prepares column for this RDBMS
@@ -407,7 +483,9 @@ abstract class Dialect implements DialectInterface
      * @param string $escapeChar
      * @return string
      */
-    protected function prepareColumnAlias(string $qualified, string $alias = null, string $escapeChar = null): string {}
+    protected function prepareColumnAlias(string $qualified, string $alias = null, string $escapeChar = null): string
+    {
+    }
 
     /**
      * Prepares table for this RDBMS
@@ -418,7 +496,9 @@ abstract class Dialect implements DialectInterface
      * @param string $escapeChar
      * @return string
      */
-    protected function prepareTable(string $table, string $schema = null, string $alias = null, string $escapeChar = null): string {}
+    protected function prepareTable(string $table, string $schema = null, string $alias = null, string $escapeChar = null): string
+    {
+    }
 
     /**
      * Prepares qualified for this RDBMS
@@ -428,6 +508,7 @@ abstract class Dialect implements DialectInterface
      * @param string $escapeChar
      * @return string
      */
-    protected function prepareQualified(string $column, string $domain = null, string $escapeChar = null): string {}
-
+    protected function prepareQualified(string $column, string $domain = null, string $escapeChar = null): string
+    {
+    }
 }

@@ -117,5 +117,4 @@ interface RouteInterface
      * @return RouteInterface
      */
     public function setName(string $name): RouteInterface;
-
 }

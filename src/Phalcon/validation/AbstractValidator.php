@@ -41,7 +41,9 @@ abstract class AbstractValidator implements ValidatorInterface
      *
      * @param array $options
      */
-    public function __construct(array $options = array()) {}
+    public function __construct(array $options = array())
+    {
+    }
 
     /**
      * Get the template message
@@ -50,14 +52,18 @@ abstract class AbstractValidator implements ValidatorInterface
      * @param string $field
      * @return string
      */
-    public function getTemplate(string $field = null): string {}
+    public function getTemplate(string $field = null): string
+    {
+    }
 
     /**
      * Get templates collection object
      *
      * @return array
      */
-    public function getTemplates(): array {}
+    public function getTemplates(): array
+    {
+    }
 
     /**
      * Clear current templates and set new from an array,
@@ -65,7 +71,9 @@ abstract class AbstractValidator implements ValidatorInterface
      * @param array $templates
      * @return \Phalcon\Validation\ValidatorInterface
      */
-    public function setTemplates(array $templates): ValidatorInterface {}
+    public function setTemplates(array $templates): ValidatorInterface
+    {
+    }
 
     /**
      * Set a new template message
@@ -73,7 +81,9 @@ abstract class AbstractValidator implements ValidatorInterface
      * @param string $template
      * @return \Phalcon\Validation\ValidatorInterface
      */
-    public function setTemplate(string $template): ValidatorInterface {}
+    public function setTemplate(string $template): ValidatorInterface
+    {
+    }
 
     /**
      * Returns an option in the validator's options
@@ -83,7 +93,9 @@ abstract class AbstractValidator implements ValidatorInterface
      * @param mixed $defaultValue
      * @return mixed
      */
-    public function getOption(string $key, $defaultValue = null) {}
+    public function getOption(string $key, $defaultValue = null)
+    {
+    }
 
     /**
      * Checks if an option is defined
@@ -91,7 +103,9 @@ abstract class AbstractValidator implements ValidatorInterface
      * @param string $key
      * @return bool
      */
-    public function hasOption(string $key): bool {}
+    public function hasOption(string $key): bool
+    {
+    }
 
     /**
      * Sets an option in the validator
@@ -99,7 +113,9 @@ abstract class AbstractValidator implements ValidatorInterface
      * @param string $key
      * @param mixed $value
      */
-    public function setOption(string $key, $value) {}
+    public function setOption(string $key, $value)
+    {
+    }
 
     /**
      * Executes the validation
@@ -116,7 +132,9 @@ abstract class AbstractValidator implements ValidatorInterface
      * @param string $field
      * @return int|null
      */
-    protected function prepareCode(string $field): ?int {}
+    protected function prepareCode(string $field): ?int
+    {
+    }
 
     /**
      * Prepares a label for the field.
@@ -125,7 +143,9 @@ abstract class AbstractValidator implements ValidatorInterface
      * @param string $field
      * @return mixed
      */
-    protected function prepareLabel(\Phalcon\Validation $validation, string $field) {}
+    protected function prepareLabel(\Phalcon\Validation $validation, string $field)
+    {
+    }
 
     /**
      * Create a default message by factory
@@ -138,6 +158,7 @@ abstract class AbstractValidator implements ValidatorInterface
      * @param array $replacements
      * @return \Phalcon\Messages\Message
      */
-    public function messageFactory(\Phalcon\Validation $validation, $field, array $replacements = array()): Message {}
-
+    public function messageFactory(\Phalcon\Validation $validation, $field, array $replacements = array()): Message
+    {
+    }
 }

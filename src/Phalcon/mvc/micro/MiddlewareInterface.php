@@ -23,5 +23,4 @@ interface MiddlewareInterface
      * @param \Phalcon\Mvc\Micro $application
      */
     public function call(\Phalcon\Mvc\Micro $application);
-
 }

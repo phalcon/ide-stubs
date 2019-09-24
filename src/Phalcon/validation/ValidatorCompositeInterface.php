@@ -32,5 +32,4 @@ interface ValidatorCompositeInterface
      * @return bool
      */
     public function validate(\Phalcon\Validation $validation, $field): bool;
-
 }

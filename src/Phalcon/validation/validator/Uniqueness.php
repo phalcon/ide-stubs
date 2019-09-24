@@ -102,7 +102,9 @@ class Uniqueness extends AbstractCombinedFieldsValidator
      * @param mixed $field
      * @return bool
      */
-    public function validate(\Phalcon\Validation $validation, $field): bool {}
+    public function validate(\Phalcon\Validation $validation, $field): bool
+    {
+    }
 
     /**
      * The column map is used in the case to get real column name
@@ -111,14 +113,18 @@ class Uniqueness extends AbstractCombinedFieldsValidator
      * @param string $field
      * @return string
      */
-    protected function getColumnNameReal($record, string $field): string {}
+    protected function getColumnNameReal($record, string $field): string
+    {
+    }
 
     /**
      * @param \Phalcon\Validation $validation
      * @param mixed $field
      * @return bool
      */
-    protected function isUniqueness(\Phalcon\Validation $validation, $field): bool {}
+    protected function isUniqueness(\Phalcon\Validation $validation, $field): bool
+    {
+    }
 
     /**
      * Uniqueness method used for model
@@ -127,6 +133,7 @@ class Uniqueness extends AbstractCombinedFieldsValidator
      * @param array $field
      * @param array $values
      */
-    protected function isUniquenessModel($record, array $field, array $values) {}
-
+    protected function isUniquenessModel($record, array $field, array $values)
+    {
+    }
 }

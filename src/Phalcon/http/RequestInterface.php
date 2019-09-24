@@ -504,5 +504,4 @@ interface RequestInterface
      * @return bool
      */
     public function isTrace(): bool;
-
 }

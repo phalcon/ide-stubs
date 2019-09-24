@@ -73,6 +73,7 @@ class Grouped extends Config
      * @param array $arrayConfig
      * @param string $defaultAdapter
      */
-    public function __construct(array $arrayConfig, string $defaultAdapter = 'php') {}
-
+    public function __construct(array $arrayConfig, string $defaultAdapter = 'php')
+    {
+    }
 }

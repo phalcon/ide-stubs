@@ -70,21 +70,27 @@ class Syslog extends AbstractAdapter
      * @param string $name
      * @param array $options
      */
-    public function __construct(string $name, array $options = array()) {}
+    public function __construct(string $name, array $options = array())
+    {
+    }
 
     /**
      * Closes the logger
      *
      * @return bool
      */
-    public function close(): bool {}
+    public function close(): bool
+    {
+    }
 
     /**
      * Processes the message i.e. writes it to the syslog
      *
      * @param \Phalcon\Logger\Item $item
      */
-    public function process(\Phalcon\Logger\Item $item) {}
+    public function process(\Phalcon\Logger\Item $item)
+    {
+    }
 
     /**
      * Translates a Logger level to a Syslog level
@@ -92,6 +98,7 @@ class Syslog extends AbstractAdapter
      * @param string $level
      * @return int
      */
-    private function logLevelToSyslog(string $level): int {}
-
+    private function logLevelToSyslog(string $level): int
+    {
+    }
 }

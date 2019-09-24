@@ -57,7 +57,9 @@ class Escaper implements EscaperInterface
      * @param string $str
      * @return string|null
      */
-    final public function detectEncoding(string $str): ?string {}
+    final public function detectEncoding(string $str): ?string
+    {
+    }
 
     /**
      * Escape CSS strings by replacing non-alphanumeric chars by their
@@ -66,7 +68,9 @@ class Escaper implements EscaperInterface
      * @param string $css
      * @return string
      */
-    public function escapeCss(string $css): string {}
+    public function escapeCss(string $css): string
+    {
+    }
 
     /**
      * Escape javascript strings by replacing non-alphanumeric chars by their
@@ -75,7 +79,9 @@ class Escaper implements EscaperInterface
      * @param string $js
      * @return string
      */
-    public function escapeJs(string $js): string {}
+    public function escapeJs(string $js): string
+    {
+    }
 
     /**
      * Escapes a HTML string. Internally uses htmlspecialchars
@@ -83,7 +89,9 @@ class Escaper implements EscaperInterface
      * @param string $text
      * @return string
      */
-    public function escapeHtml(string $text): string {}
+    public function escapeHtml(string $text): string
+    {
+    }
 
     /**
      * Escapes a HTML attribute string
@@ -91,7 +99,9 @@ class Escaper implements EscaperInterface
      * @param string $attribute
      * @return string
      */
-    public function escapeHtmlAttr(string $attribute): string {}
+    public function escapeHtmlAttr(string $attribute): string
+    {
+    }
 
     /**
      * Escapes a URL. Internally uses rawurlencode
@@ -99,14 +109,18 @@ class Escaper implements EscaperInterface
      * @param string $url
      * @return string
      */
-    public function escapeUrl(string $url): string {}
+    public function escapeUrl(string $url): string
+    {
+    }
 
     /**
      * Returns the internal encoding used by the escaper
      *
      * @return string
      */
-    public function getEncoding(): string {}
+    public function getEncoding(): string
+    {
+    }
 
     /**
      * Utility to normalize a string's encoding to UTF-32.
@@ -114,7 +128,9 @@ class Escaper implements EscaperInterface
      * @param string $str
      * @return string
      */
-    final public function normalizeEncoding(string $str): string {}
+    final public function normalizeEncoding(string $str): string
+    {
+    }
 
     /**
      * Sets the double_encode to be used by the escaper
@@ -125,7 +141,9 @@ class Escaper implements EscaperInterface
      *
      * @param bool $doubleEncode
      */
-    public function setDoubleEncode(bool $doubleEncode) {}
+    public function setDoubleEncode(bool $doubleEncode)
+    {
+    }
 
     /**
      * Sets the encoding to be used by the escaper
@@ -136,7 +154,9 @@ class Escaper implements EscaperInterface
      *
      * @param string $encoding
      */
-    public function setEncoding(string $encoding) {}
+    public function setEncoding(string $encoding)
+    {
+    }
 
     /**
      * Sets the HTML quoting type for htmlspecialchars
@@ -147,6 +167,7 @@ class Escaper implements EscaperInterface
      *
      * @param int $quoteType
      */
-    public function setHtmlQuoteType(int $quoteType) {}
-
+    public function setHtmlQuoteType(int $quoteType)
+    {
+    }
 }

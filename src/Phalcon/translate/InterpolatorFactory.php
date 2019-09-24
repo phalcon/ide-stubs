@@ -32,7 +32,9 @@ class InterpolatorFactory extends AbstractFactory
      *
      * @param array $services
      */
-    public function __construct(array $services = array()) {}
+    public function __construct(array $services = array())
+    {
+    }
 
     /**
      * Create a new instance of the adapter
@@ -40,11 +42,14 @@ class InterpolatorFactory extends AbstractFactory
      * @param string $name
      * @return \Phalcon\Translate\Adapter\AdapterInterface
      */
-    public function newInstance(string $name): AdapterInterface {}
+    public function newInstance(string $name): AdapterInterface
+    {
+    }
 
     /**
      * @return array
      */
-    protected function getAdapters(): array {}
-
+    protected function getAdapters(): array
+    {
+    }
 }

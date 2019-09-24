@@ -93,35 +93,45 @@ class Profiler
      *
      * @return \Phalcon\Db\Profiler\Item
      */
-    public function getLastProfile(): Item {}
+    public function getLastProfile(): Item
+    {
+    }
 
     /**
      * Returns the total number of SQL statements processed
      *
      * @return int
      */
-    public function getNumberTotalStatements(): int {}
+    public function getNumberTotalStatements(): int
+    {
+    }
 
     /**
      * Returns the total time in seconds spent by the profiles
      *
      * @return double
      */
-    public function getTotalElapsedSeconds(): float {}
+    public function getTotalElapsedSeconds(): float
+    {
+    }
 
     /**
      * Returns all the processed profiles
      *
      * @return array|\Phalcon\Db\Profiler\Item[]
      */
-    public function getProfiles(): array {}
+    public function getProfiles(): array
+    {
+    }
 
     /**
      * Resets the profiler, cleaning up all the profiles
      *
      * @return Profiler
      */
-    public function reset(): Profiler {}
+    public function reset(): Profiler
+    {
+    }
 
     /**
      * Starts the profile of a SQL sentence
@@ -131,13 +141,16 @@ class Profiler
      * @param mixed $sqlBindTypes
      * @return Profiler
      */
-    public function startProfile(string $sqlStatement, $sqlVariables = null, $sqlBindTypes = null): Profiler {}
+    public function startProfile(string $sqlStatement, $sqlVariables = null, $sqlBindTypes = null): Profiler
+    {
+    }
 
     /**
      * Stops the active profile
      *
      * @return Profiler
      */
-    public function stopProfile(): Profiler {}
-
+    public function stopProfile(): Profiler
+    {
+    }
 }

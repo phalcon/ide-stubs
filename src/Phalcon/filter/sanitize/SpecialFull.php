@@ -22,6 +22,7 @@ class SpecialFull
     /**
      * @param mixed $input
      */
-    public function __invoke($input) {}
-
+    public function __invoke($input)
+    {
+    }
 }

@@ -71,7 +71,9 @@ class Pdo implements ResultInterface
      * @param mixed $bindParams
      * @param mixed $bindTypes
      */
-    public function __construct(\Phalcon\Db\Adapter\AdapterInterface $connection, \PDOStatement $result, $sqlStatement = null, $bindParams = null, $bindTypes = null) {}
+    public function __construct(\Phalcon\Db\Adapter\AdapterInterface $connection, \PDOStatement $result, $sqlStatement = null, $bindParams = null, $bindTypes = null)
+    {
+    }
 
     /**
      * Moves internal resultset cursor to another position letting us to fetch a
@@ -91,7 +93,9 @@ class Pdo implements ResultInterface
      *
      * @param long $number
      */
-    public function dataSeek(int $number) {}
+    public function dataSeek(int $number)
+    {
+    }
 
     /**
      * Allows to execute the statement again. Some database systems don't
@@ -100,7 +104,9 @@ class Pdo implements ResultInterface
      *
      * @return bool
      */
-    public function execute(): bool {}
+    public function execute(): bool
+    {
+    }
 
     /**
      * Fetches an array/object of strings that corresponds to the fetched row,
@@ -123,7 +129,9 @@ class Pdo implements ResultInterface
      * @param mixed $cursorOrientation
      * @param mixed $cursorOffset
      */
-    public function fetch($fetchStyle = null, $cursorOrientation = null, $cursorOffset = null) {}
+    public function fetch($fetchStyle = null, $cursorOrientation = null, $cursorOffset = null)
+    {
+    }
 
     /**
      * Returns an array of arrays containing all the records in the result
@@ -143,7 +151,9 @@ class Pdo implements ResultInterface
      * @param mixed $ctorArgs
      * @return array
      */
-    public function fetchAll($fetchStyle = null, $fetchArgument = null, $ctorArgs = null): array {}
+    public function fetchAll($fetchStyle = null, $fetchArgument = null, $ctorArgs = null): array
+    {
+    }
 
     /**
      * Returns an array of strings that corresponds to the fetched row, or FALSE
@@ -162,14 +172,18 @@ class Pdo implements ResultInterface
      * }
      * ```
      */
-    public function fetchArray() {}
+    public function fetchArray()
+    {
+    }
 
     /**
      * Gets the internal PDO result object
      *
      * @return \PDOStatement
      */
-    public function getInternalResult(): \PDOStatement {}
+    public function getInternalResult(): \PDOStatement
+    {
+    }
 
     /**
      * Gets number of rows returned by a resultset
@@ -184,7 +198,9 @@ class Pdo implements ResultInterface
      *
      * @return int
      */
-    public function numRows(): int {}
+    public function numRows(): int
+    {
+    }
 
     /**
      * Changes the fetching mode affecting Phalcon\Db\Result\Pdo::fetch()
@@ -216,6 +232,7 @@ class Pdo implements ResultInterface
      * @param mixed $ctorargs
      * @return bool
      */
-    public function setFetchMode(int $fetchMode, $colNoOrClassNameOrObject = null, $ctorargs = null): bool {}
-
+    public function setFetchMode(int $fetchMode, $colNoOrClassNameOrObject = null, $ctorargs = null): bool
+    {
+    }
 }

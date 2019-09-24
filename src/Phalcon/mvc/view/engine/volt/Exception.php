@@ -28,13 +28,16 @@ class Exception extends BaseException
      * @param int $code
      * @param \Exception $previous
      */
-    public function __construct(string $message = '', array $statement = array(), int $code = 0, \Exception $previous = null) {}
+    public function __construct(string $message = '', array $statement = array(), int $code = 0, \Exception $previous = null)
+    {
+    }
 
     /**
      * Gets currently parsed statement (if any).
      *
      * @return array
      */
-    public function getStatement(): array {}
-
+    public function getStatement(): array
+    {
+    }
 }

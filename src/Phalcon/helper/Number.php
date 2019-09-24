@@ -27,6 +27,7 @@ class Number
      * @param int $to
      * @return bool
      */
-    final public static function between(int $value, int $from, int $to): bool {}
-
+    final public static function between(int $value, int $from, int $to): bool
+    {
+    }
 }

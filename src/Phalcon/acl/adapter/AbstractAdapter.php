@@ -68,7 +68,9 @@ abstract class AbstractAdapter implements AdapterInterface, EventsAwareInterface
      *
      * @return string
      */
-    public function getActiveAccess(): string {}
+    public function getActiveAccess(): string
+    {
+    }
 
     /**
      * Role which the list is checking if it's allowed to certain
@@ -77,41 +79,52 @@ abstract class AbstractAdapter implements AdapterInterface, EventsAwareInterface
      *
      * @return string
      */
-    public function getActiveRole(): string {}
+    public function getActiveRole(): string
+    {
+    }
 
     /**
      * Component which the list is checking if some role can access it
      *
      * @return string
      */
-    public function getActiveComponent(): string {}
+    public function getActiveComponent(): string
+    {
+    }
 
     /**
      * Returns the default ACL access level
      *
      * @return int
      */
-    public function getDefaultAction(): int {}
+    public function getDefaultAction(): int
+    {
+    }
 
     /**
      * Returns the internal event manager
      *
      * @return \Phalcon\Events\ManagerInterface
      */
-    public function getEventsManager(): ManagerInterface {}
+    public function getEventsManager(): ManagerInterface
+    {
+    }
 
     /**
      * Sets the default access level (Phalcon\Acl::ALLOW or Phalcon\Acl::DENY)
      *
      * @param int $defaultAccess
      */
-    public function setDefaultAction(int $defaultAccess) {}
+    public function setDefaultAction(int $defaultAccess)
+    {
+    }
 
     /**
      * Sets the events manager
      *
      * @param \Phalcon\Events\ManagerInterface $eventsManager
      */
-    public function setEventsManager(\Phalcon\Events\ManagerInterface $eventsManager) {}
-
+    public function setEventsManager(\Phalcon\Events\ManagerInterface $eventsManager)
+    {
+    }
 }

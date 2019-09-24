@@ -73,38 +73,50 @@ abstract class AbstractFile extends AbstractValidator
     /**
      * Empty is empty
      */
-    public function getMessageFileEmpty() {}
+    public function getMessageFileEmpty()
+    {
+    }
 
     /**
      * Empty is empty
      *
      * @param mixed $messageFileEmpty
      */
-    public function setMessageFileEmpty($messageFileEmpty) {}
+    public function setMessageFileEmpty($messageFileEmpty)
+    {
+    }
 
     /**
      * File exceeed the file size setted in PHP configuration
      */
-    public function getMessageIniSize() {}
+    public function getMessageIniSize()
+    {
+    }
 
     /**
      * File exceeed the file size setted in PHP configuration
      *
      * @param mixed $messageIniSize
      */
-    public function setMessageIniSize($messageIniSize) {}
+    public function setMessageIniSize($messageIniSize)
+    {
+    }
 
     /**
      * File is not valid
      */
-    public function getMessageValid() {}
+    public function getMessageValid()
+    {
+    }
 
     /**
      * File is not valid
      *
      * @param mixed $messageValid
      */
-    public function setMessageValid($messageValid) {}
+    public function setMessageValid($messageValid)
+    {
+    }
 
     /**
      * Check on empty
@@ -113,7 +125,9 @@ abstract class AbstractFile extends AbstractValidator
      * @param mixed $field
      * @return bool
      */
-    public function isAllowEmpty(\Phalcon\Validation $validation, string $field): bool {}
+    public function isAllowEmpty(\Phalcon\Validation $validation, string $field): bool
+    {
+    }
 
     /**
      * Check upload
@@ -122,7 +136,9 @@ abstract class AbstractFile extends AbstractValidator
      * @param mixed $field
      * @return bool
      */
-    public function checkUpload(\Phalcon\Validation $validation, $field): bool {}
+    public function checkUpload(\Phalcon\Validation $validation, $field): bool
+    {
+    }
 
     /**
      * Check if uploaded file is larger than PHP allowed size
@@ -131,7 +147,9 @@ abstract class AbstractFile extends AbstractValidator
      * @param mixed $field
      * @return bool
      */
-    public function checkUploadMaxSize(\Phalcon\Validation $validation, $field): bool {}
+    public function checkUploadMaxSize(\Phalcon\Validation $validation, $field): bool
+    {
+    }
 
     /**
      * Check if upload is empty
@@ -140,7 +158,9 @@ abstract class AbstractFile extends AbstractValidator
      * @param mixed $field
      * @return bool
      */
-    public function checkUploadIsEmpty(\Phalcon\Validation $validation, $field): bool {}
+    public function checkUploadIsEmpty(\Phalcon\Validation $validation, $field): bool
+    {
+    }
 
     /**
      * Check if upload is valid
@@ -149,7 +169,9 @@ abstract class AbstractFile extends AbstractValidator
      * @param mixed $field
      * @return bool
      */
-    public function checkUploadIsValid(\Phalcon\Validation $validation, $field): bool {}
+    public function checkUploadIsValid(\Phalcon\Validation $validation, $field): bool
+    {
+    }
 
     /**
      * Convert a string like "2.5MB" in bytes
@@ -157,6 +179,7 @@ abstract class AbstractFile extends AbstractValidator
      * @param string $size
      * @return double
      */
-    public function getFileSizeInBytes(string $size): float {}
-
+    public function getFileSizeInBytes(string $size): float
+    {
+    }
 }

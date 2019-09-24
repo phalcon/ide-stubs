@@ -37,7 +37,9 @@ class NativeArray extends AbstractAdapter implements ArrayAccess
      * @param \Phalcon\Translate\InterpolatorFactory $interpolator
      * @param array $options
      */
-    public function __construct(\Phalcon\Translate\InterpolatorFactory $interpolator, array $options) {}
+    public function __construct(\Phalcon\Translate\InterpolatorFactory $interpolator, array $options)
+    {
+    }
 
     /**
      * Check whether is defined a translation key in the internal array
@@ -45,7 +47,9 @@ class NativeArray extends AbstractAdapter implements ArrayAccess
      * @param string $index
      * @return bool
      */
-    public function exists(string $index): bool {}
+    public function exists(string $index): bool
+    {
+    }
 
     /**
      * Whenever a key is not found this medhod will be called
@@ -53,7 +57,9 @@ class NativeArray extends AbstractAdapter implements ArrayAccess
      * @param string $index
      * @return string
      */
-    public function notFound(string $index): string {}
+    public function notFound(string $index): string
+    {
+    }
 
     /**
      * Returns the translation related to the given key
@@ -62,6 +68,7 @@ class NativeArray extends AbstractAdapter implements ArrayAccess
      * @param mixed $placeholders
      * @return string
      */
-    public function query(string $index, $placeholders = null): string {}
-
+    public function query(string $index, $placeholders = null): string
+    {
+    }
 }

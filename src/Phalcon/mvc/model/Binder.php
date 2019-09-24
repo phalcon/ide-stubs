@@ -48,19 +48,25 @@ class Binder implements BinderInterface
      *
      * @return array
      */
-    public function getBoundModels(): array {}
+    public function getBoundModels(): array
+    {
+    }
 
     /**
      * Array for original values
      */
-    public function getOriginalValues() {}
+    public function getOriginalValues()
+    {
+    }
 
     /**
      * Phalcon\Mvc\Model\Binder constructor
      *
      * @param \Phalcon\Cache\Adapter\AdapterInterface $cache
      */
-    public function __construct(\Phalcon\Cache\Adapter\AdapterInterface $cache = null) {}
+    public function __construct(\Phalcon\Cache\Adapter\AdapterInterface $cache = null)
+    {
+    }
 
     /**
      * Bind models into params in proper handler
@@ -71,7 +77,9 @@ class Binder implements BinderInterface
      * @param string $methodName
      * @return array
      */
-    public function bindToHandler($handler, array $params, string $cacheKey, string $methodName = null): array {}
+    public function bindToHandler($handler, array $params, string $cacheKey, string $methodName = null): array
+    {
+    }
 
     /**
      * Find the model by param value.
@@ -80,14 +88,18 @@ class Binder implements BinderInterface
      * @param string $className
      * @return object|bool
      */
-    protected function findBoundModel($paramValue, string $className): bool {}
+    protected function findBoundModel($paramValue, string $className): bool
+    {
+    }
 
     /**
      * Sets cache instance
      *
      * @return \Phalcon\Cache\Adapter\AdapterInterface
      */
-    public function getCache(): AdapterInterface {}
+    public function getCache(): AdapterInterface
+    {
+    }
 
     /**
      * Get params classes from cache by key
@@ -95,7 +107,9 @@ class Binder implements BinderInterface
      * @param string $cacheKey
      * @return array|null
      */
-    protected function getParamsFromCache(string $cacheKey): ?array {}
+    protected function getParamsFromCache(string $cacheKey): ?array
+    {
+    }
 
     /**
      * Get modified params for handler using reflection
@@ -106,7 +120,9 @@ class Binder implements BinderInterface
      * @param string $methodName
      * @return array
      */
-    protected function getParamsFromReflection($handler, array $params, string $cacheKey, string $methodName): array {}
+    protected function getParamsFromReflection($handler, array $params, string $cacheKey, string $methodName): array
+    {
+    }
 
     /**
      * Gets cache instance
@@ -114,6 +130,7 @@ class Binder implements BinderInterface
      * @param \Phalcon\Cache\Adapter\AdapterInterface $cache
      * @return BinderInterface
      */
-    public function setCache(\Phalcon\Cache\Adapter\AdapterInterface $cache): BinderInterface {}
-
+    public function setCache(\Phalcon\Cache\Adapter\AdapterInterface $cache): BinderInterface
+    {
+    }
 }

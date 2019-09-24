@@ -43,6 +43,7 @@ class Task extends Injectable implements TaskInterface
     /**
      * Phalcon\Cli\Task constructor
      */
-    final public function __construct() {}
-
+    final public function __construct()
+    {
+    }
 }

@@ -54,28 +54,36 @@ class QueryBuilder extends AbstractAdapter
      *
      * @param array $config
      */
-    public function __construct(array $config) {}
+    public function __construct(array $config)
+    {
+    }
 
     /**
      * Get the current page number
      *
      * @return int
      */
-    public function getCurrentPage(): int {}
+    public function getCurrentPage(): int
+    {
+    }
 
     /**
      * Get query builder object
      *
      * @return \Phalcon\Mvc\Model\Query\Builder
      */
-    public function getQueryBuilder(): Builder {}
+    public function getQueryBuilder(): Builder
+    {
+    }
 
     /**
      * Returns a slice of the resultset to show in the pagination
      *
      * @return \Phalcon\Paginator\RepositoryInterface
      */
-    public function paginate(): RepositoryInterface {}
+    public function paginate(): RepositoryInterface
+    {
+    }
 
     /**
      * Set query builder object
@@ -83,6 +91,7 @@ class QueryBuilder extends AbstractAdapter
      * @param \Phalcon\Mvc\Model\Query\Builder $builder
      * @return QueryBuilder
      */
-    public function setQueryBuilder(\Phalcon\Mvc\Model\Query\Builder $builder): QueryBuilder {}
-
+    public function setQueryBuilder(\Phalcon\Mvc\Model\Query\Builder $builder): QueryBuilder
+    {
+    }
 }

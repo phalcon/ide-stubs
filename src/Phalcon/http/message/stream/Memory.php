@@ -32,6 +32,7 @@ class Memory extends Stream
      *
      * @param mixed $mode
      */
-    public function __construct($mode = 'rb') {}
-
+    public function __construct($mode = 'rb')
+    {
+    }
 }

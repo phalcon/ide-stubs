@@ -32,10 +32,11 @@ class Console extends AbstractApplication
     /**
      * Handle the whole command-line tasks
      *
-     * @param string $arguments
-     * @return bool|ResponseInterface
+     * @param array $arguments
      */
-    public function handle(string $arguments) {}
+    public function handle(array $arguments = null)
+    {
+    }
 
     /**
      * Set an specific argument
@@ -45,6 +46,7 @@ class Console extends AbstractApplication
      * @param bool $shift
      * @return Console
      */
-    public function setArgument(array $arguments = null, bool $str = true, bool $shift = true): Console {}
-
+    public function setArgument(array $arguments = null, bool $str = true, bool $shift = true): Console
+    {
+    }
 }

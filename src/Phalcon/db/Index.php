@@ -69,21 +69,27 @@ class Index implements IndexInterface
      *
      * @return array
      */
-    public function getColumns(): array {}
+    public function getColumns(): array
+    {
+    }
 
     /**
      * Index name
      *
      * @return string
      */
-    public function getName(): string {}
+    public function getName(): string
+    {
+    }
 
     /**
      * Index type
      *
      * @return string
      */
-    public function getType(): string {}
+    public function getType(): string
+    {
+    }
 
     /**
      * Phalcon\Db\Index constructor
@@ -92,6 +98,7 @@ class Index implements IndexInterface
      * @param array $columns
      * @param string $type
      */
-    public function __construct(string $name, array $columns, string $type = '') {}
-
+    public function __construct(string $name, array $columns, string $type = '')
+    {
+    }
 }

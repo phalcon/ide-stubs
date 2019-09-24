@@ -71,7 +71,9 @@ final class Registry extends Collection
      *
      * @param array $data
      */
-    final public function __construct(array $data = null) {}
+    final public function __construct(array $data = null)
+    {
+    }
 
     /**
      * Magic getter to get an element from the collection
@@ -79,7 +81,9 @@ final class Registry extends Collection
      * @param string $element
      * @return mixed
      */
-    final public function __get(string $element) {}
+    final public function __get(string $element)
+    {
+    }
 
     /**
      * Magic isset to check whether an element exists or not
@@ -87,7 +91,9 @@ final class Registry extends Collection
      * @param string $element
      * @return bool
      */
-    final public function __isset(string $element): bool {}
+    final public function __isset(string $element): bool
+    {
+    }
 
     /**
      * Magic setter to assign values to an element
@@ -95,19 +101,25 @@ final class Registry extends Collection
      * @param string $element
      * @param mixed $value
      */
-    final public function __set(string $element, $value) {}
+    final public function __set(string $element, $value)
+    {
+    }
 
     /**
      * Magic unset to remove an element from the collection
      *
      * @param string $element
      */
-    final public function __unset(string $element) {}
+    final public function __unset(string $element)
+    {
+    }
 
     /**
      * Clears the internal collection
      */
-    final public function clear() {}
+    final public function clear()
+    {
+    }
 
     /**
      * Count elements of an object
@@ -115,7 +127,9 @@ final class Registry extends Collection
      * @link https://php.net/manual/en/countable.count.php
      * @return int
      */
-    final public function count(): int {}
+    final public function count(): int
+    {
+    }
 
     /**
      * Get the element from the collection
@@ -124,14 +138,18 @@ final class Registry extends Collection
      * @param mixed $defaultValue
      * @return mixed
      */
-    final public function get(string $element, $defaultValue = null) {}
+    final public function get(string $element, $defaultValue = null)
+    {
+    }
 
     /**
      * Returns the iterator of the class
      *
      * @return \Traversable
      */
-    final public function getIterator(): Traversable {}
+    final public function getIterator(): Traversable
+    {
+    }
 
     /**
      * Get the element from the collection
@@ -139,14 +157,18 @@ final class Registry extends Collection
      * @param string $element
      * @return bool
      */
-    final public function has(string $element): bool {}
+    final public function has(string $element): bool
+    {
+    }
 
     /**
      * Initialize internal array
      *
      * @param array $data
      */
-    final public function init(array $data = array()) {}
+    final public function init(array $data = array())
+    {
+    }
 
     /**
      * Specify data which should be serialized to JSON
@@ -154,7 +176,9 @@ final class Registry extends Collection
      * @link https://php.net/manual/en/jsonserializable.jsonserialize.php
      * @return array
      */
-    final public function jsonSerialize(): array {}
+    final public function jsonSerialize(): array
+    {
+    }
 
     /**
      * Whether a offset exists
@@ -163,7 +187,9 @@ final class Registry extends Collection
      * @param mixed $element
      * @return bool
      */
-    final public function offsetExists($element): bool {}
+    final public function offsetExists($element): bool
+    {
+    }
 
     /**
      * Offset to retrieve
@@ -172,7 +198,9 @@ final class Registry extends Collection
      * @param mixed $element
      * @return mixed
      */
-    final public function offsetGet($element) {}
+    final public function offsetGet($element)
+    {
+    }
 
     /**
      * Offset to set
@@ -181,7 +209,9 @@ final class Registry extends Collection
      * @param mixed $element
      * @param mixed $value
      */
-    final public function offsetSet($element, $value) {}
+    final public function offsetSet($element, $value)
+    {
+    }
 
     /**
      * Offset to unset
@@ -189,14 +219,18 @@ final class Registry extends Collection
      * @link https://php.net/manual/en/arrayaccess.offsetunset.php
      * @param mixed $element
      */
-    final public function offsetUnset($element) {}
+    final public function offsetUnset($element)
+    {
+    }
 
     /**
      * Delete the element from the collection
      *
      * @param string $element
      */
-    final public function remove(string $element) {}
+    final public function remove(string $element)
+    {
+    }
 
     /**
      * String representation of object
@@ -204,7 +238,9 @@ final class Registry extends Collection
      * @link https://php.net/manual/en/serializable.serialize.php
      * @return string
      */
-    final public function serialize(): string {}
+    final public function serialize(): string
+    {
+    }
 
     /**
      * Set an element in the collection
@@ -212,14 +248,18 @@ final class Registry extends Collection
      * @param string $element
      * @param mixed $value
      */
-    final public function set(string $element, $value) {}
+    final public function set(string $element, $value)
+    {
+    }
 
     /**
      * Returns the object in an array format
      *
      * @return array
      */
-    final public function toArray(): array {}
+    final public function toArray(): array
+    {
+    }
 
     /**
      * Returns the object in a JSON format
@@ -232,7 +272,9 @@ final class Registry extends Collection
      * @param int $options
      * @return string
      */
-    final public function toJson(int $options = 79): string {}
+    final public function toJson(int $options = 79): string
+    {
+    }
 
     /**
      * Constructs the object
@@ -240,6 +282,7 @@ final class Registry extends Collection
      * @link https://php.net/manual/en/serializable.unserialize.php
      * @param mixed $serialized
      */
-    final public function unserialize($serialized) {}
-
+    final public function unserialize($serialized)
+    {
+    }
 }

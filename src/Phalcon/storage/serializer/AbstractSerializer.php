@@ -24,7 +24,9 @@ abstract class AbstractSerializer implements SerializerInterface
      *
      * @param mixed $data
      */
-    public function __construct($data = null) {}
+    public function __construct($data = null)
+    {
+    }
 
     /**
      * If this returns true, then the data returns back as is
@@ -32,16 +34,21 @@ abstract class AbstractSerializer implements SerializerInterface
      * @param mixed $data
      * @return bool
      */
-    protected function isSerializable($data): bool {}
+    protected function isSerializable($data): bool
+    {
+    }
 
     /**
      * @return mixed
      */
-    public function getData() {}
+    public function getData()
+    {
+    }
 
     /**
      * @param mixed $data
      */
-    public function setData($data) {}
-
+    public function setData($data)
+    {
+    }
 }

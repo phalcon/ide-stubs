@@ -190,5 +190,4 @@ interface ManagerInterface
      * @return ManagerInterface
      */
     public function regenerateId($deleteOldSession = true): ManagerInterface;
-
 }

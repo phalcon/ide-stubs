@@ -25,13 +25,16 @@ class Direct extends AbstractFlash
      * @param mixed $message
      * @return string|null
      */
-    public function message(string $type, $message): ?string {}
+    public function message(string $type, $message): ?string
+    {
+    }
 
     /**
      * Prints the messages accumulated in the flasher
      *
      * @param bool $remove
      */
-    public function output(bool $remove = true) {}
-
+    public function output(bool $remove = true)
+    {
+    }
 }

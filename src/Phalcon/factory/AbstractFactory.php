@@ -29,7 +29,9 @@ abstract class AbstractFactory
      *
      * @param string $name
      */
-    protected function checkService(string $name) {}
+    protected function checkService(string $name)
+    {
+    }
 
     /**
      * Checks the config if it is a valid object
@@ -37,7 +39,9 @@ abstract class AbstractFactory
      * @param mixed $config
      * @return array
      */
-    protected function checkConfig($config): array {}
+    protected function checkConfig($config): array
+    {
+    }
 
     /**
      * Returns the adapters for the factory
@@ -51,6 +55,7 @@ abstract class AbstractFactory
      *
      * @param array $services
      */
-    protected function init(array $services = array()) {}
-
+    protected function init(array $services = array())
+    {
+    }
 }

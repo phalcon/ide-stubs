@@ -32,7 +32,7 @@ class Debug
     /**
      * @var bool
      */
-    static protected $isActive;
+    protected static $isActive;
 
     /**
      * @var bool
@@ -60,7 +60,9 @@ class Debug
      *
      * @return Debug
      */
-    public function clearVars(): Debug {}
+    public function clearVars(): Debug
+    {
+    }
 
     /**
      * Adds a variable to the debug output
@@ -69,33 +71,43 @@ class Debug
      * @param string $key
      * @return Debug
      */
-    public function debugVar($varz, string $key = null): Debug {}
+    public function debugVar($varz, string $key = null): Debug
+    {
+    }
 
     /**
      * Returns the css sources
      *
      * @return string
      */
-    public function getCssSources(): string {}
+    public function getCssSources(): string
+    {
+    }
 
     /**
      * Returns the javascript sources
      *
      * @return string
      */
-    public function getJsSources(): string {}
+    public function getJsSources(): string
+    {
+    }
 
     /**
      * Generates a link to the current version documentation
      *
      * @return string
      */
-    public function getVersion(): string {}
+    public function getVersion(): string
+    {
+    }
 
     /**
      * Halts the request showing a backtrace
      */
-    public function halt() {}
+    public function halt()
+    {
+    }
 
     /**
      * Listen for uncaught exceptions and unsilent notices or warnings
@@ -104,21 +116,27 @@ class Debug
      * @param bool $lowSeverity
      * @return Debug
      */
-    public function listen(bool $exceptions = true, bool $lowSeverity = false): Debug {}
+    public function listen(bool $exceptions = true, bool $lowSeverity = false): Debug
+    {
+    }
 
     /**
      * Listen for uncaught exceptions
      *
      * @return Debug
      */
-    public function listenExceptions(): Debug {}
+    public function listenExceptions(): Debug
+    {
+    }
 
     /**
      * Listen for unsilent notices or warnings
      *
      * @return Debug
      */
-    public function listenLowSeverity(): Debug {}
+    public function listenLowSeverity(): Debug
+    {
+    }
 
     /**
      * Handles uncaught exceptions
@@ -126,7 +144,9 @@ class Debug
      * @param \Exception $exception
      * @return bool
      */
-    public function onUncaughtException(\Exception $exception): bool {}
+    public function onUncaughtException(\Exception $exception): bool
+    {
+    }
 
     /**
      * Throws an exception when a notice or warning is raised
@@ -137,7 +157,9 @@ class Debug
      * @param mixed $line
      * @param mixed $context
      */
-    public function onUncaughtLowSeverity($severity, $message, $file, $line, $context) {}
+    public function onUncaughtLowSeverity($severity, $message, $file, $line, $context)
+    {
+    }
 
     /**
      * Sets if files the exception's backtrace must be showed
@@ -145,7 +167,9 @@ class Debug
      * @param array $blacklist
      * @return Debug
      */
-    public function setBlacklist(array $blacklist): Debug {}
+    public function setBlacklist(array $blacklist): Debug
+    {
+    }
 
     /**
      * Sets if files the exception's backtrace must be showed
@@ -153,7 +177,9 @@ class Debug
      * @param bool $showBackTrace
      * @return Debug
      */
-    public function setShowBackTrace(bool $showBackTrace): Debug {}
+    public function setShowBackTrace(bool $showBackTrace): Debug
+    {
+    }
 
     /**
      * Sets if files must be completely opened and showed in the output
@@ -162,7 +188,9 @@ class Debug
      * @param bool $showFileFragment
      * @return Debug
      */
-    public function setShowFileFragment(bool $showFileFragment): Debug {}
+    public function setShowFileFragment(bool $showFileFragment): Debug
+    {
+    }
 
     /**
      * Set if files part of the backtrace must be shown in the output
@@ -170,7 +198,9 @@ class Debug
      * @param bool $showFiles
      * @return Debug
      */
-    public function setShowFiles(bool $showFiles): Debug {}
+    public function setShowFiles(bool $showFiles): Debug
+    {
+    }
 
     /**
      * Change the base URI for static resources
@@ -178,7 +208,9 @@ class Debug
      * @param string $uri
      * @return Debug
      */
-    public function setUri(string $uri): Debug {}
+    public function setUri(string $uri): Debug
+    {
+    }
 
     /**
      * Escapes a string with htmlentities
@@ -186,7 +218,9 @@ class Debug
      * @param mixed $value
      * @return string
      */
-    protected function escapeString($value): string {}
+    protected function escapeString($value): string
+    {
+    }
 
     /**
      * Produces a recursive representation of an array
@@ -195,7 +229,9 @@ class Debug
      * @param mixed $n
      * @return string|null
      */
-    protected function getArrayDump(array $argument, $n = 0): ?string {}
+    protected function getArrayDump(array $argument, $n = 0): ?string
+    {
+    }
 
     /**
      * Produces an string representation of a variable
@@ -203,7 +239,9 @@ class Debug
      * @param mixed $variable
      * @return string
      */
-    protected function getVarDump($variable): string {}
+    protected function getVarDump($variable): string
+    {
+    }
 
     /**
      * Shows a backtrace item
@@ -212,6 +250,7 @@ class Debug
      * @param array $trace
      * @return string
      */
-    final protected function showTraceItem(int $n, array $trace): string {}
-
+    final protected function showTraceItem(int $n, array $trace): string
+    {
+    }
 }

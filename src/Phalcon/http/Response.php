@@ -68,7 +68,9 @@ class Response implements ResponseInterface, InjectionAwareInterface, EventsAwar
      * @param mixed $code
      * @param mixed $status
      */
-    public function __construct($content = null, $code = null, $status = null) {}
+    public function __construct($content = null, $code = null, $status = null)
+    {
+    }
 
     /**
      * Appends a string to the HTTP response body
@@ -76,42 +78,54 @@ class Response implements ResponseInterface, InjectionAwareInterface, EventsAwar
      * @param mixed $content
      * @return ResponseInterface
      */
-    public function appendContent($content): ResponseInterface {}
+    public function appendContent($content): ResponseInterface
+    {
+    }
 
     /**
      * Gets the HTTP response body
      *
      * @return string
      */
-    public function getContent(): string {}
+    public function getContent(): string
+    {
+    }
 
     /**
      * Returns cookies set by the user
      *
      * @return \Phalcon\Http\Response\CookiesInterface
      */
-    public function getCookies(): CookiesInterface {}
+    public function getCookies(): CookiesInterface
+    {
+    }
 
     /**
      * Returns the internal dependency injector
      *
      * @return \Phalcon\Di\DiInterface
      */
-    public function getDI(): DiInterface {}
+    public function getDI(): DiInterface
+    {
+    }
 
     /**
      * Returns the internal event manager
      *
      * @return \Phalcon\Events\ManagerInterface
      */
-    public function getEventsManager(): ManagerInterface {}
+    public function getEventsManager(): ManagerInterface
+    {
+    }
 
     /**
      * Returns headers set by the user
      *
      * @return \Phalcon\Http\Response\HeadersInterface
      */
-    public function getHeaders(): HeadersInterface {}
+    public function getHeaders(): HeadersInterface
+    {
+    }
 
     /**
      * Returns the reason phrase
@@ -122,7 +136,9 @@ class Response implements ResponseInterface, InjectionAwareInterface, EventsAwar
      *
      * @return string|null
      */
-    public function getReasonPhrase(): ?string {}
+    public function getReasonPhrase(): ?string
+    {
+    }
 
     /**
      * Returns the status code
@@ -133,7 +149,9 @@ class Response implements ResponseInterface, InjectionAwareInterface, EventsAwar
      *
      * @return int|null
      */
-    public function getStatusCode(): ?int {}
+    public function getStatusCode(): ?int
+    {
+    }
 
     /**
      * Checks if a header exists
@@ -145,14 +163,18 @@ class Response implements ResponseInterface, InjectionAwareInterface, EventsAwar
      * @param string $name
      * @return bool
      */
-    public function hasHeader(string $name): bool {}
+    public function hasHeader(string $name): bool
+    {
+    }
 
     /**
      * Check if the response is already sent
      *
      * @return bool
      */
-    public function isSent(): bool {}
+    public function isSent(): bool
+    {
+    }
 
     /**
      * Redirect by HTTP to another action or URL
@@ -178,7 +200,9 @@ class Response implements ResponseInterface, InjectionAwareInterface, EventsAwar
      * @param int $statusCode
      * @return ResponseInterface
      */
-    public function redirect($location = null, bool $externalRedirect = false, int $statusCode = 302): ResponseInterface {}
+    public function redirect($location = null, bool $externalRedirect = false, int $statusCode = 302): ResponseInterface
+    {
+    }
 
     /**
      * Remove a header in the response
@@ -190,35 +214,45 @@ class Response implements ResponseInterface, InjectionAwareInterface, EventsAwar
      * @param string $name
      * @return ResponseInterface
      */
-    public function removeHeader(string $name): ResponseInterface {}
+    public function removeHeader(string $name): ResponseInterface
+    {
+    }
 
     /**
      * Resets all the established headers
      *
      * @return ResponseInterface
      */
-    public function resetHeaders(): ResponseInterface {}
+    public function resetHeaders(): ResponseInterface
+    {
+    }
 
     /**
      * Prints out HTTP response to the client
      *
      * @return ResponseInterface
      */
-    public function send(): ResponseInterface {}
+    public function send(): ResponseInterface
+    {
+    }
 
     /**
      * Sends cookies to the client
      *
      * @return ResponseInterface
      */
-    public function sendCookies(): ResponseInterface {}
+    public function sendCookies(): ResponseInterface
+    {
+    }
 
     /**
      * Sends headers to the client
      *
      * @return bool|ResponseInterface
      */
-    public function sendHeaders() {}
+    public function sendHeaders()
+    {
+    }
 
     /**
      * Sets Cache headers to use HTTP cache
@@ -230,7 +264,9 @@ class Response implements ResponseInterface, InjectionAwareInterface, EventsAwar
      * @param int $minutes
      * @return ResponseInterface
      */
-    public function setCache(int $minutes): ResponseInterface {}
+    public function setCache(int $minutes): ResponseInterface
+    {
+    }
 
     /**
      * Sets HTTP response body
@@ -242,7 +278,9 @@ class Response implements ResponseInterface, InjectionAwareInterface, EventsAwar
      * @param string $content
      * @return ResponseInterface
      */
-    public function setContent(string $content): ResponseInterface {}
+    public function setContent(string $content): ResponseInterface
+    {
+    }
 
     /**
      * Sets the response content-length
@@ -254,7 +292,9 @@ class Response implements ResponseInterface, InjectionAwareInterface, EventsAwar
      * @param int $contentLength
      * @return ResponseInterface
      */
-    public function setContentLength(int $contentLength): ResponseInterface {}
+    public function setContentLength(int $contentLength): ResponseInterface
+    {
+    }
 
     /**
      * Sets the response content-type mime, optionally the charset
@@ -268,7 +308,9 @@ class Response implements ResponseInterface, InjectionAwareInterface, EventsAwar
      * @param mixed $charset
      * @return ResponseInterface
      */
-    public function setContentType(string $contentType, $charset = null): ResponseInterface {}
+    public function setContentType(string $contentType, $charset = null): ResponseInterface
+    {
+    }
 
     /**
      * Sets a cookies bag for the response externally
@@ -276,14 +318,18 @@ class Response implements ResponseInterface, InjectionAwareInterface, EventsAwar
      * @param \Phalcon\Http\Response\CookiesInterface $cookies
      * @return ResponseInterface
      */
-    public function setCookies(\Phalcon\Http\Response\CookiesInterface $cookies): ResponseInterface {}
+    public function setCookies(\Phalcon\Http\Response\CookiesInterface $cookies): ResponseInterface
+    {
+    }
 
     /**
      * Sets the dependency injector
      *
      * @param \Phalcon\Di\DiInterface $container
      */
-    public function setDI(\Phalcon\Di\DiInterface $container) {}
+    public function setDI(\Phalcon\Di\DiInterface $container)
+    {
+    }
 
     /**
      * Set a custom ETag
@@ -299,7 +345,9 @@ class Response implements ResponseInterface, InjectionAwareInterface, EventsAwar
      * @param string $etag
      * @return ResponseInterface
      */
-    public function setEtag(string $etag): ResponseInterface {}
+    public function setEtag(string $etag): ResponseInterface
+    {
+    }
 
     /**
      * Sets an Expires header in the response that allows to use the HTTP cache
@@ -313,14 +361,18 @@ class Response implements ResponseInterface, InjectionAwareInterface, EventsAwar
      * @param \DateTime $datetime
      * @return ResponseInterface
      */
-    public function setExpires(\DateTime $datetime): ResponseInterface {}
+    public function setExpires(\DateTime $datetime): ResponseInterface
+    {
+    }
 
     /**
      * Sets the events manager
      *
      * @param \Phalcon\Events\ManagerInterface $eventsManager
      */
-    public function setEventsManager(\Phalcon\Events\ManagerInterface $eventsManager) {}
+    public function setEventsManager(\Phalcon\Events\ManagerInterface $eventsManager)
+    {
+    }
 
     /**
      * Sets an attached file to be sent at the end of the request
@@ -330,7 +382,9 @@ class Response implements ResponseInterface, InjectionAwareInterface, EventsAwar
      * @param mixed $attachment
      * @return ResponseInterface
      */
-    public function setFileToSend(string $filePath, $attachmentName = null, $attachment = true): ResponseInterface {}
+    public function setFileToSend(string $filePath, $attachmentName = null, $attachment = true): ResponseInterface
+    {
+    }
 
     /**
      * Overwrites a header in the response
@@ -343,7 +397,9 @@ class Response implements ResponseInterface, InjectionAwareInterface, EventsAwar
      * @param mixed $value
      * @return ResponseInterface
      */
-    public function setHeader(string $name, $value): ResponseInterface {}
+    public function setHeader(string $name, $value): ResponseInterface
+    {
+    }
 
     /**
      * Sets a headers bag for the response externally
@@ -351,7 +407,9 @@ class Response implements ResponseInterface, InjectionAwareInterface, EventsAwar
      * @param \Phalcon\Http\Response\HeadersInterface $headers
      * @return ResponseInterface
      */
-    public function setHeaders(\Phalcon\Http\Response\HeadersInterface $headers): ResponseInterface {}
+    public function setHeaders(\Phalcon\Http\Response\HeadersInterface $headers): ResponseInterface
+    {
+    }
 
     /**
      * Sets HTTP response body. The parameter is automatically converted to JSON
@@ -370,7 +428,9 @@ class Response implements ResponseInterface, InjectionAwareInterface, EventsAwar
      * @param int $depth
      * @return ResponseInterface
      */
-    public function setJsonContent($content, int $jsonOptions = 0, int $depth = 512): ResponseInterface {}
+    public function setJsonContent($content, int $jsonOptions = 0, int $depth = 512): ResponseInterface
+    {
+    }
 
     /**
      * Sets Last-Modified header
@@ -384,14 +444,18 @@ class Response implements ResponseInterface, InjectionAwareInterface, EventsAwar
      * @param \DateTime $datetime
      * @return ResponseInterface
      */
-    public function setLastModified(\DateTime $datetime): ResponseInterface {}
+    public function setLastModified(\DateTime $datetime): ResponseInterface
+    {
+    }
 
     /**
      * Sends a Not-Modified response
      *
      * @return ResponseInterface
      */
-    public function setNotModified(): ResponseInterface {}
+    public function setNotModified(): ResponseInterface
+    {
+    }
 
     /**
      * Sets the HTTP response code
@@ -404,7 +468,9 @@ class Response implements ResponseInterface, InjectionAwareInterface, EventsAwar
      * @param string $message
      * @return ResponseInterface
      */
-    public function setStatusCode(int $code, string $message = null): ResponseInterface {}
+    public function setStatusCode(int $code, string $message = null): ResponseInterface
+    {
+    }
 
     /**
      * Send a raw header to the response
@@ -416,6 +482,7 @@ class Response implements ResponseInterface, InjectionAwareInterface, EventsAwar
      * @param string $header
      * @return ResponseInterface
      */
-    public function setRawHeader(string $header): ResponseInterface {}
-
+    public function setRawHeader(string $header): ResponseInterface
+    {
+    }
 }

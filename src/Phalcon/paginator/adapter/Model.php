@@ -41,6 +41,7 @@ class Model extends AbstractAdapter
      *
      * @return \Phalcon\Paginator\RepositoryInterface
      */
-    public function paginate(): RepositoryInterface {}
-
+    public function paginate(): RepositoryInterface
+    {
+    }
 }

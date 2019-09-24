@@ -23,7 +23,9 @@ class Session extends AbstractFlash
     /**
      * Clear messages in the session messenger
      */
-    public function clear() {}
+    public function clear()
+    {
+    }
 
     /**
      * Returns the messages in the session flasher
@@ -32,7 +34,9 @@ class Session extends AbstractFlash
      * @param bool $remove
      * @return array
      */
-    public function getMessages($type = null, bool $remove = true): array {}
+    public function getMessages($type = null, bool $remove = true): array
+    {
+    }
 
     /**
      * Checks whether there are messages
@@ -40,7 +44,9 @@ class Session extends AbstractFlash
      * @param mixed $type
      * @return bool
      */
-    public function has($type = null): bool {}
+    public function has($type = null): bool
+    {
+    }
 
     /**
      * Adds a message to the session flasher
@@ -49,14 +55,18 @@ class Session extends AbstractFlash
      * @param string $message
      * @return string|null
      */
-    public function message(string $type, string $message): ?string {}
+    public function message(string $type, string $message): ?string
+    {
+    }
 
     /**
      * Prints the messages in the session flasher
      *
      * @param bool $remove
      */
-    public function output(bool $remove = true) {}
+    public function output(bool $remove = true)
+    {
+    }
 
     /**
      * Returns the messages stored in session
@@ -65,7 +75,9 @@ class Session extends AbstractFlash
      * @param mixed $type
      * @return array
      */
-    protected function getSessionMessages(bool $remove, $type = null): array {}
+    protected function getSessionMessages(bool $remove, $type = null): array
+    {
+    }
 
     /**
      * Stores the messages in session
@@ -73,13 +85,16 @@ class Session extends AbstractFlash
      * @param array $messages
      * @return array
      */
-    protected function setSessionMessages(array $messages): array {}
+    protected function setSessionMessages(array $messages): array
+    {
+    }
 
     /**
      * Returns the Session Service
      *
      * @return \Phalcon\Session\ManagerInterface
      */
-    public function getSessionService(): SessionInterface {}
-
+    public function getSessionService(): SessionInterface
+    {
+    }
 }

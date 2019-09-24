@@ -33,13 +33,16 @@ class Noop extends AbstractAdapter
      *
      * @return bool
      */
-    public function close(): bool {}
+    public function close(): bool
+    {
+    }
 
     /**
      * Processes the message i.e. writes it to the file
      *
      * @param \Phalcon\Logger\Item $item
      */
-    public function process(\Phalcon\Logger\Item $item) {}
-
+    public function process(\Phalcon\Logger\Item $item)
+    {
+    }
 }

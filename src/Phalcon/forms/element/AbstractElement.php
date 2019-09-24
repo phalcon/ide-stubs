@@ -55,14 +55,18 @@ abstract class AbstractElement implements ElementInterface
      * @param string $name Attribute name (value of 'name' attribute of HTML element)
      * @param array $attributes Additional HTML element attributes
      */
-    public function __construct(string $name, array $attributes = array()) {}
+    public function __construct(string $name, array $attributes = array())
+    {
+    }
 
     /**
      * Magic method __toString renders the widget without attributes
      *
      * @return string
      */
-    public function __toString(): string {}
+    public function __toString(): string
+    {
+    }
 
     /**
      * Adds a filter to current list of filters
@@ -70,7 +74,9 @@ abstract class AbstractElement implements ElementInterface
      * @param string $filter
      * @return ElementInterface
      */
-    public function addFilter(string $filter): ElementInterface {}
+    public function addFilter(string $filter): ElementInterface
+    {
+    }
 
     /**
      * Adds a validator to the element
@@ -78,7 +84,9 @@ abstract class AbstractElement implements ElementInterface
      * @param \Phalcon\Validation\ValidatorInterface $validator
      * @return ElementInterface
      */
-    public function addValidator(\Phalcon\Validation\ValidatorInterface $validator): ElementInterface {}
+    public function addValidator(\Phalcon\Validation\ValidatorInterface $validator): ElementInterface
+    {
+    }
 
     /**
      * Adds a group of validators
@@ -87,7 +95,9 @@ abstract class AbstractElement implements ElementInterface
      * @param bool $merge
      * @return ElementInterface
      */
-    public function addValidators(array $validators, bool $merge = true): ElementInterface {}
+    public function addValidators(array $validators, bool $merge = true): ElementInterface
+    {
+    }
 
     /**
      * Appends a message to the internal message list
@@ -95,14 +105,18 @@ abstract class AbstractElement implements ElementInterface
      * @param \Phalcon\Messages\MessageInterface $message
      * @return ElementInterface
      */
-    public function appendMessage(\Phalcon\Messages\MessageInterface $message): ElementInterface {}
+    public function appendMessage(\Phalcon\Messages\MessageInterface $message): ElementInterface
+    {
+    }
 
     /**
      * Clears element to its default value
      *
      * @return ElementInterface
      */
-    public function clear(): ElementInterface {}
+    public function clear(): ElementInterface
+    {
+    }
 
     /**
      * Returns the value of an attribute if present
@@ -111,42 +125,54 @@ abstract class AbstractElement implements ElementInterface
      * @param mixed $defaultValue
      * @return mixed
      */
-    public function getAttribute(string $attribute, $defaultValue = null) {}
+    public function getAttribute(string $attribute, $defaultValue = null)
+    {
+    }
 
     /**
      * Returns the default attributes for the element
      *
      * @return array
      */
-    public function getAttributes(): array {}
+    public function getAttributes(): array
+    {
+    }
 
     /**
      * Returns the default value assigned to the element
      *
      * @return mixed
      */
-    public function getDefault() {}
+    public function getDefault()
+    {
+    }
 
     /**
      * Returns the element filters
      *
      * @return mixed
      */
-    public function getFilters() {}
+    public function getFilters()
+    {
+    }
 
     /**
      * Returns the parent form to the element
      *
      * @return \Phalcon\Forms\Form
      */
-    public function getForm(): Form {}
+    public function getForm(): Form
+    {
+    }
 
     /**
      * Returns the element label
      *
      * @return string
      */
-    public function getLabel(): string {}
+    public function getLabel(): string
+    {
+    }
 
     /**
      * Returns the messages that belongs to the element
@@ -154,14 +180,18 @@ abstract class AbstractElement implements ElementInterface
      *
      * @return \Phalcon\Messages\Messages
      */
-    public function getMessages(): Messages {}
+    public function getMessages(): Messages
+    {
+    }
 
     /**
      * Returns the element name
      *
      * @return string
      */
-    public function getName(): string {}
+    public function getName(): string
+    {
+    }
 
     /**
      * Returns the value of an option if present
@@ -170,35 +200,45 @@ abstract class AbstractElement implements ElementInterface
      * @param mixed $defaultValue
      * @return mixed
      */
-    public function getUserOption(string $option, $defaultValue = null) {}
+    public function getUserOption(string $option, $defaultValue = null)
+    {
+    }
 
     /**
      * Returns the options for the element
      *
      * @return array
      */
-    public function getUserOptions(): array {}
+    public function getUserOptions(): array
+    {
+    }
 
     /**
      * Returns the validators registered for the element
      *
      * @return array|\Phalcon\Validation\ValidatorInterface[]
      */
-    public function getValidators(): array {}
+    public function getValidators(): array
+    {
+    }
 
     /**
      * Returns the element's value
      *
      * @return mixed
      */
-    public function getValue() {}
+    public function getValue()
+    {
+    }
 
     /**
      * Checks whether there are messages attached to the element
      *
      * @return bool
      */
-    public function hasMessages(): bool {}
+    public function hasMessages(): bool
+    {
+    }
 
     /**
      * Generate the HTML to label the element
@@ -206,7 +246,9 @@ abstract class AbstractElement implements ElementInterface
      * @param array $attributes
      * @return string
      */
-    public function label(array $attributes = array()): string {}
+    public function label(array $attributes = array()): string
+    {
+    }
 
     /**
      * Returns an array of prepared attributes for Phalcon\Tag helpers
@@ -216,7 +258,9 @@ abstract class AbstractElement implements ElementInterface
      * @param bool $useChecked
      * @return array
      */
-    public function prepareAttributes(array $attributes = array(), bool $useChecked = false): array {}
+    public function prepareAttributes(array $attributes = array(), bool $useChecked = false): array
+    {
+    }
 
     /**
      * Sets a default attribute for the element
@@ -225,7 +269,9 @@ abstract class AbstractElement implements ElementInterface
      * @param mixed $value
      * @return ElementInterface
      */
-    public function setAttribute(string $attribute, $value): ElementInterface {}
+    public function setAttribute(string $attribute, $value): ElementInterface
+    {
+    }
 
     /**
      * Sets default attributes for the element
@@ -233,7 +279,9 @@ abstract class AbstractElement implements ElementInterface
      * @param array $attributes
      * @return ElementInterface
      */
-    public function setAttributes(array $attributes): ElementInterface {}
+    public function setAttributes(array $attributes): ElementInterface
+    {
+    }
 
     /**
      * Sets a default value in case the form does not use an entity
@@ -242,7 +290,9 @@ abstract class AbstractElement implements ElementInterface
      * @param mixed $value
      * @return ElementInterface
      */
-    public function setDefault($value): ElementInterface {}
+    public function setDefault($value): ElementInterface
+    {
+    }
 
     /**
      * Sets the element filters
@@ -250,7 +300,9 @@ abstract class AbstractElement implements ElementInterface
      * @param array|string $filters
      * @return ElementInterface
      */
-    public function setFilters($filters): ElementInterface {}
+    public function setFilters($filters): ElementInterface
+    {
+    }
 
     /**
      * Sets the parent form to the element
@@ -258,7 +310,9 @@ abstract class AbstractElement implements ElementInterface
      * @param \Phalcon\Forms\Form $form
      * @return ElementInterface
      */
-    public function setForm(\Phalcon\Forms\Form $form): ElementInterface {}
+    public function setForm(\Phalcon\Forms\Form $form): ElementInterface
+    {
+    }
 
     /**
      * Sets the element label
@@ -266,7 +320,9 @@ abstract class AbstractElement implements ElementInterface
      * @param string $label
      * @return ElementInterface
      */
-    public function setLabel(string $label): ElementInterface {}
+    public function setLabel(string $label): ElementInterface
+    {
+    }
 
     /**
      * Sets the validation messages related to the element
@@ -274,7 +330,9 @@ abstract class AbstractElement implements ElementInterface
      * @param \Phalcon\Messages\Messages $messages
      * @return ElementInterface
      */
-    public function setMessages(\Phalcon\Messages\Messages $messages): ElementInterface {}
+    public function setMessages(\Phalcon\Messages\Messages $messages): ElementInterface
+    {
+    }
 
     /**
      * Sets the element name
@@ -282,7 +340,9 @@ abstract class AbstractElement implements ElementInterface
      * @param string $name
      * @return ElementInterface
      */
-    public function setName(string $name): ElementInterface {}
+    public function setName(string $name): ElementInterface
+    {
+    }
 
     /**
      * Sets an option for the element
@@ -291,7 +351,9 @@ abstract class AbstractElement implements ElementInterface
      * @param mixed $value
      * @return ElementInterface
      */
-    public function setUserOption(string $option, $value): ElementInterface {}
+    public function setUserOption(string $option, $value): ElementInterface
+    {
+    }
 
     /**
      * Sets options for the element
@@ -299,6 +361,7 @@ abstract class AbstractElement implements ElementInterface
      * @param array $options
      * @return ElementInterface
      */
-    public function setUserOptions(array $options): ElementInterface {}
-
+    public function setUserOptions(array $options): ElementInterface
+    {
+    }
 }

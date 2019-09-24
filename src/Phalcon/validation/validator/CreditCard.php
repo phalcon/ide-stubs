@@ -60,7 +60,9 @@ class CreditCard extends AbstractValidator
      * @param mixed $field
      * @return bool
      */
-    public function validate(\Phalcon\Validation $validation, $field): bool {}
+    public function validate(\Phalcon\Validation $validation, $field): bool
+    {
+    }
 
     /**
      * is a simple checksum formula used to validate a variety of identification
@@ -69,6 +71,7 @@ class CreditCard extends AbstractValidator
      * @param string $number
      * @return bool
      */
-    private function verifyByLuhnAlgorithm(string $number): bool {}
-
+    private function verifyByLuhnAlgorithm(string $number): bool
+    {
+    }
 }

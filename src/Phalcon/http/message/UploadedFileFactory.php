@@ -46,6 +46,7 @@ final class UploadedFileFactory implements UploadedFileFactoryInterface
      * @param string $clientMediaType
      * @return \Psr\Http\Message\UploadedFileInterface
      */
-    public function createUploadedFile(\Psr\Http\Message\StreamInterface $stream, int $size = null, int $error = 0, string $clientFilename = null, string $clientMediaType = null): UploadedFileInterface {}
-
+    public function createUploadedFile(\Psr\Http\Message\StreamInterface $stream, int $size = null, int $error = 0, string $clientFilename = null, string $clientMediaType = null): UploadedFileInterface
+    {
+    }
 }

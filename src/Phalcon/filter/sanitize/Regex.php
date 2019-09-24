@@ -24,6 +24,7 @@ class Regex
      * @param mixed $pattern
      * @param mixed $replace
      */
-    public function __invoke($input, $pattern, $replace) {}
-
+    public function __invoke($input, $pattern, $replace)
+    {
+    }
 }

@@ -42,19 +42,25 @@ class Stream extends Noop
     /**
      * @param array $options
      */
-    public function __construct(array $options = array()) {}
+    public function __construct(array $options = array())
+    {
+    }
 
     /**
      * @param mixed $id
      * @return bool
      */
-    public function destroy($id): bool {}
+    public function destroy($id): bool
+    {
+    }
 
     /**
      * @param mixed $maxlifetime
      * @return bool
      */
-    public function gc($maxlifetime): bool {}
+    public function gc($maxlifetime): bool
+    {
+    }
 
     /**
      * Ignore the savePath and use local defined path
@@ -63,19 +69,24 @@ class Stream extends Noop
      * @param mixed $sessionName
      * @return bool
      */
-    public function open($savePath, $sessionName): bool {}
+    public function open($savePath, $sessionName): bool
+    {
+    }
 
     /**
      * @param mixed $id
      * @return string
      */
-    public function read($id): string {}
+    public function read($id): string
+    {
+    }
 
     /**
      * @param mixed $id
      * @param mixed $data
      * @return bool
      */
-    public function write($id, $data): bool {}
-
+    public function write($id, $data): bool
+    {
+    }
 }

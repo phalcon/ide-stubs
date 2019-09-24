@@ -30,6 +30,7 @@ class PayloadFactory
      *
      * @return \Phalcon\Domain\Payload\PayloadInterface
      */
-    public function newInstance(): PayloadInterface {}
-
+    public function newInstance(): PayloadInterface
+    {
+    }
 }

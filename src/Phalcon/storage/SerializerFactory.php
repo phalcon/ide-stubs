@@ -22,7 +22,9 @@ class SerializerFactory extends AbstractFactory
      *
      * @param array $services
      */
-    public function __construct(array $services = array()) {}
+    public function __construct(array $services = array())
+    {
+    }
 
     /**
      * @param string name
@@ -31,11 +33,14 @@ class SerializerFactory extends AbstractFactory
      * @param string $name
      * @return \Phalcon\Storage\Serializer\SerializerInterface
      */
-    public function newInstance(string $name): SerializerInterface {}
+    public function newInstance(string $name): SerializerInterface
+    {
+    }
 
     /**
      * @return array
      */
-    protected function getAdapters(): array {}
-
+    protected function getAdapters(): array
+    {
+    }
 }

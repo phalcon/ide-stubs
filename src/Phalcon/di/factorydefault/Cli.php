@@ -27,6 +27,7 @@ class Cli extends FactoryDefault
     /**
      * Phalcon\Di\FactoryDefault\Cli constructor
      */
-    public function __construct() {}
-
+    public function __construct()
+    {
+    }
 }

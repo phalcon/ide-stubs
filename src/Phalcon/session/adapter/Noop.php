@@ -63,14 +63,18 @@ class Noop implements SessionHandlerInterface
      *
      * @param array $options
      */
-    public function __construct(array $options = array()) {}
+    public function __construct(array $options = array())
+    {
+    }
 
     /**
      * Close
      *
      * @return bool
      */
-    public function close(): bool {}
+    public function close(): bool
+    {
+    }
 
     /**
      * Destroy
@@ -78,7 +82,9 @@ class Noop implements SessionHandlerInterface
      * @param mixed $id
      * @return bool
      */
-    public function destroy($id): bool {}
+    public function destroy($id): bool
+    {
+    }
 
     /**
      * Garbage Collector
@@ -86,7 +92,9 @@ class Noop implements SessionHandlerInterface
      * @param mixed $maxlifetime
      * @return bool
      */
-    public function gc($maxlifetime): bool {}
+    public function gc($maxlifetime): bool
+    {
+    }
 
     /**
      * Read
@@ -94,7 +102,9 @@ class Noop implements SessionHandlerInterface
      * @param mixed $id
      * @return string
      */
-    public function read($id): string {}
+    public function read($id): string
+    {
+    }
 
     /**
      * Open
@@ -103,7 +113,9 @@ class Noop implements SessionHandlerInterface
      * @param mixed $sessionName
      * @return bool
      */
-    public function open($savePath, $sessionName): bool {}
+    public function open($savePath, $sessionName): bool
+    {
+    }
 
     /**
      * Write
@@ -112,7 +124,9 @@ class Noop implements SessionHandlerInterface
      * @param mixed $data
      * @return bool
      */
-    public function write($id, $data): bool {}
+    public function write($id, $data): bool
+    {
+    }
 
     /**
      * Helper method to get the name prefixed
@@ -120,6 +134,7 @@ class Noop implements SessionHandlerInterface
      * @param mixed $name
      * @return string
      */
-    protected function getPrefixedName($name): string {}
-
+    protected function getPrefixedName($name): string
+    {
+    }
 }

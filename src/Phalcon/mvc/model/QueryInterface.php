@@ -123,5 +123,4 @@ interface QueryInterface
      * @return QueryInterface
      */
     public function setUniqueRow(bool $uniqueRow): QueryInterface;
-
 }

@@ -25,7 +25,9 @@ abstract class AbstractValidatorComposite extends AbstractValidator implements V
     /**
      * @return array
      */
-    public function getValidators(): array {}
+    public function getValidators(): array
+    {
+    }
 
     /**
      * Executes the validation
@@ -34,6 +36,7 @@ abstract class AbstractValidatorComposite extends AbstractValidator implements V
      * @param mixed $field
      * @return bool
      */
-    public function validate(\Phalcon\Validation $validation, $field): bool {}
-
+    public function validate(\Phalcon\Validation $validation, $field): bool
+    {
+    }
 }

@@ -27,7 +27,9 @@ abstract class AbstractAdapter implements SessionHandlerInterface
      *
      * @return bool
      */
-    public function close(): bool {}
+    public function close(): bool
+    {
+    }
 
     /**
      * Destroy
@@ -35,7 +37,9 @@ abstract class AbstractAdapter implements SessionHandlerInterface
      * @param mixed $id
      * @return bool
      */
-    public function destroy($id): bool {}
+    public function destroy($id): bool
+    {
+    }
 
     /**
      * Garbage Collector
@@ -43,7 +47,9 @@ abstract class AbstractAdapter implements SessionHandlerInterface
      * @param mixed $maxlifetime
      * @return bool
      */
-    public function gc($maxlifetime): bool {}
+    public function gc($maxlifetime): bool
+    {
+    }
 
     /**
      * Read
@@ -51,7 +57,9 @@ abstract class AbstractAdapter implements SessionHandlerInterface
      * @param mixed $id
      * @return string
      */
-    public function read($id): string {}
+    public function read($id): string
+    {
+    }
 
     /**
      * Open
@@ -60,7 +68,9 @@ abstract class AbstractAdapter implements SessionHandlerInterface
      * @param mixed $sessionName
      * @return bool
      */
-    public function open($savePath, $sessionName): bool {}
+    public function open($savePath, $sessionName): bool
+    {
+    }
 
     /**
      * Write
@@ -69,6 +79,7 @@ abstract class AbstractAdapter implements SessionHandlerInterface
      * @param mixed $data
      * @return bool
      */
-    public function write($id, $data): bool {}
-
+    public function write($id, $data): bool
+    {
+    }
 }

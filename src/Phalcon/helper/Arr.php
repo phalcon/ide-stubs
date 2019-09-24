@@ -27,7 +27,9 @@ class Arr
      * @param bool $preserveKeys
      * @return array
      */
-    final public static function chunk(array $collection, int $size, bool $preserveKeys = false): array {}
+    final public static function chunk(array $collection, int $size, bool $preserveKeys = false): array
+    {
+    }
 
     /**
      * Returns the first element of the collection. If a callable is passed, the
@@ -39,7 +41,9 @@ class Arr
      * @param mixed $method
      * @return mixed
      */
-    final public static function first(array $collection, $method = null) {}
+    final public static function first(array $collection, $method = null)
+    {
+    }
 
     /**
      * Returns the key of the first element of the collection. If a callable
@@ -51,7 +55,9 @@ class Arr
      * @param mixed $method
      * @return mixed
      */
-    final public static function firstKey(array $collection, $method = null) {}
+    final public static function firstKey(array $collection, $method = null)
+    {
+    }
 
     /**
      * Flattens an array up to the one level depth, unless `$deep` is set to `true`
@@ -62,7 +68,9 @@ class Arr
      * @param bool $deep
      * @return array
      */
-    final public static function flatten(array $collection, bool $deep = false): array {}
+    final public static function flatten(array $collection, bool $deep = false): array
+    {
+    }
 
     /**
      * Helper method to get an array element or a default
@@ -72,7 +80,9 @@ class Arr
      * @param mixed $defaultValue
      * @return mixed
      */
-    final public static function get(array $collection, $index, $defaultValue = null) {}
+    final public static function get(array $collection, $index, $defaultValue = null)
+    {
+    }
 
     /**
      * Groups the elements of an array based on the passed callable
@@ -83,7 +93,9 @@ class Arr
      * @param mixed $method
      * @return array
      */
-    final public static function group(array $collection, $method): array {}
+    final public static function group(array $collection, $method): array
+    {
+    }
 
     /**
      * Helper method to get an array element or a default
@@ -95,7 +107,9 @@ class Arr
      * @param mixed $index
      * @return bool
      */
-    final public static function has(array $collection, $index): bool {}
+    final public static function has(array $collection, $index): bool
+    {
+    }
 
     /**
      * Checks a flat list for duplicate values. Returns true if duplicate
@@ -106,7 +120,9 @@ class Arr
      * @param array $collection
      * @return bool
      */
-    final public static function isUnique(array $collection): bool {}
+    final public static function isUnique(array $collection): bool
+    {
+    }
 
     /**
      * Returns the last element of the collection. If a callable is passed, the
@@ -119,7 +135,9 @@ class Arr
      * @param mixed $method
      * @return mixed
      */
-    final public static function last(array $collection, $method = null) {}
+    final public static function last(array $collection, $method = null)
+    {
+    }
 
     /**
      * Returns the key of the last element of the collection. If a callable is
@@ -131,7 +149,9 @@ class Arr
      * @param mixed $method
      * @return mixed
      */
-    final public static function lastKey(array $collection, $method = null) {}
+    final public static function lastKey(array $collection, $method = null)
+    {
+    }
 
     /**
      * Sorts a collection of arrays or objects by key
@@ -144,7 +164,9 @@ class Arr
      * @param mixed $attr
      * @return array
      */
-    final public static function order(array $collection, $attribute, string $order = 'asc'): array {}
+    final public static function order(array $collection, $attribute, string $order = 'asc'): array
+    {
+    }
 
     /**
      * Retrieves all of the values for a given key:
@@ -155,7 +177,9 @@ class Arr
      * @param string $element
      * @return array
      */
-    final public static function pluck(array $collection, string $element): array {}
+    final public static function pluck(array $collection, string $element): array
+    {
+    }
 
     /**
      * Helper method to set an array element
@@ -167,7 +191,9 @@ class Arr
      * @param mixed $index
      * @return array
      */
-    final public static function set(array $collection, $value, $index = null): array {}
+    final public static function set(array $collection, $value, $index = null): array
+    {
+    }
 
     /**
      * Returns a new array with n elements removed from the right.
@@ -178,7 +204,9 @@ class Arr
      * @param int $elements
      * @return array
      */
-    final public static function sliceLeft(array $collection, int $elements = 1): array {}
+    final public static function sliceLeft(array $collection, int $elements = 1): array
+    {
+    }
 
     /**
      * Returns a new array with the X elements from the right
@@ -189,7 +217,9 @@ class Arr
      * @param int $elements
      * @return array
      */
-    final public static function sliceRight(array $collection, int $elements = 1): array {}
+    final public static function sliceRight(array $collection, int $elements = 1): array
+    {
+    }
 
     /**
      * Returns a new array with keys of the passed array as one element and
@@ -200,14 +230,18 @@ class Arr
      * @param array $collection
      * @return array
      */
-    final public static function split(array $collection): array {}
+    final public static function split(array $collection): array
+    {
+    }
 
     /**
      * Returns the passed array as an object
      *
      * @param array $collection
      */
-    final public static function toObject(array $collection) {}
+    final public static function toObject(array $collection)
+    {
+    }
 
     /**
      * Returns true if the provided function returns true for all elements of
@@ -219,7 +253,9 @@ class Arr
      * @param mixed $method
      * @return bool
      */
-    final public static function validateAll(array $collection, $method): bool {}
+    final public static function validateAll(array $collection, $method): bool
+    {
+    }
 
     /**
      * Returns true if the provided function returns true for at least one
@@ -231,7 +267,9 @@ class Arr
      * @param mixed $method
      * @return bool
      */
-    final public static function validateAny(array $collection, $method): bool {}
+    final public static function validateAny(array $collection, $method): bool
+    {
+    }
 
     /**
      * Helper method to filter the collection
@@ -242,7 +280,9 @@ class Arr
      * @param mixed $method
      * @return array
      */
-    final private static function filterCollection(array $collection, $method = null): array {}
+    final private static function filterCollection(array $collection, $method = null): array
+    {
+    }
 
     /**
      * White list filter by key: obtain elements of an array filtering
@@ -254,6 +294,7 @@ class Arr
      * @param array $whiteList
      * @return array
      */
-    final public static function whiteList(array $collection, array $whiteList): array {}
-
+    final public static function whiteList(array $collection, array $whiteList): array
+    {
+    }
 }

@@ -59,6 +59,7 @@ abstract class Controller extends Injectable implements ControllerInterface
     /**
      * Phalcon\Mvc\Controller constructor
      */
-    final public function __construct() {}
-
+    final public function __construct()
+    {
+    }
 }

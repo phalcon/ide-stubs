@@ -70,17 +70,23 @@ class File implements FileInterface
     /**
      * @return string|null
      */
-    public function getError(): ?string {}
+    public function getError(): ?string
+    {
+    }
 
     /**
      * @return string
      */
-    public function getExtension(): string {}
+    public function getExtension(): string
+    {
+    }
 
     /**
      * @return string|null
      */
-    public function getKey(): ?string {}
+    public function getKey(): ?string
+    {
+    }
 
     /**
      * Phalcon\Http\Request\File constructor
@@ -88,35 +94,45 @@ class File implements FileInterface
      * @param array $file
      * @param mixed $key
      */
-    public function __construct(array $file, $key = null) {}
+    public function __construct(array $file, $key = null)
+    {
+    }
 
     /**
      * Returns the real name of the uploaded file
      *
      * @return string
      */
-    public function getName(): string {}
+    public function getName(): string
+    {
+    }
 
     /**
      * Gets the real mime type of the upload file using finfo
      *
      * @return string
      */
-    public function getRealType(): string {}
+    public function getRealType(): string
+    {
+    }
 
     /**
      * Returns the file size of the uploaded file
      *
      * @return int
      */
-    public function getSize(): int {}
+    public function getSize(): int
+    {
+    }
 
     /**
      * Returns the temporary name of the uploaded file
      *
      * @return string
      */
-    public function getTempName(): string {}
+    public function getTempName(): string
+    {
+    }
 
     /**
      * Returns the mime type reported by the browser
@@ -124,14 +140,18 @@ class File implements FileInterface
      *
      * @return string
      */
-    public function getType(): string {}
+    public function getType(): string
+    {
+    }
 
     /**
      * Checks whether the file has been uploaded via Post.
      *
      * @return bool
      */
-    public function isUploadedFile(): bool {}
+    public function isUploadedFile(): bool
+    {
+    }
 
     /**
      * Moves the temporary file to a destination within the application
@@ -139,6 +159,7 @@ class File implements FileInterface
      * @param string $destination
      * @return bool
      */
-    public function moveTo(string $destination): bool {}
-
+    public function moveTo(string $destination): bool
+    {
+    }
 }

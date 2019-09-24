@@ -249,5 +249,4 @@ interface MetaDataInterface
      * @param array $data
      */
     public function write(string $key, array $data);
-
 }

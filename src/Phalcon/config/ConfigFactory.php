@@ -36,7 +36,9 @@ class ConfigFactory extends AbstractFactory
      *
      * @param array $services
      */
-    public function __construct(array $services = array()) {}
+    public function __construct(array $services = array())
+    {
+    }
 
     /**
      * Load a config to create a new instance
@@ -44,7 +46,9 @@ class ConfigFactory extends AbstractFactory
      * @param mixed $config
      * @return object
      */
-    public function load($config) {}
+    public function load($config)
+    {
+    }
 
     /**
      * Returns a new Config instance
@@ -54,13 +58,16 @@ class ConfigFactory extends AbstractFactory
      * @param mixed $params
      * @return object
      */
-    public function newInstance(string $name, string $fileName, $params = null) {}
+    public function newInstance(string $name, string $fileName, $params = null)
+    {
+    }
 
     /**
      * Returns the adapters for the factory
      *
      * @return array
      */
-    protected function getAdapters(): array {}
-
+    protected function getAdapters(): array
+    {
+    }
 }

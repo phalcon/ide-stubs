@@ -22,6 +22,7 @@ class StringVal
     /**
      * @param mixed $input
      */
-    public function __invoke($input) {}
-
+    public function __invoke($input)
+    {
+    }
 }

@@ -27,7 +27,9 @@ class TranslateFactory extends AbstractFactory
      * @param \Phalcon\Translate\InterpolatorFactory $interpolator
      * @param array $services
      */
-    public function __construct(\Phalcon\Translate\InterpolatorFactory $interpolator, array $services = array()) {}
+    public function __construct(\Phalcon\Translate\InterpolatorFactory $interpolator, array $services = array())
+    {
+    }
 
     /**
      * Factory to create an instace from a Config object
@@ -35,7 +37,9 @@ class TranslateFactory extends AbstractFactory
      * @param mixed $config
      * @return mixed
      */
-    public function load($config) {}
+    public function load($config)
+    {
+    }
 
     /**
      * Create a new instance of the adapter
@@ -44,11 +48,14 @@ class TranslateFactory extends AbstractFactory
      * @param array $options
      * @return AbstractAdapter
      */
-    public function newInstance(string $name, array $options = array()): AbstractAdapter {}
+    public function newInstance(string $name, array $options = array()): AbstractAdapter
+    {
+    }
 
     /**
      * @return array
      */
-    protected function getAdapters(): array {}
-
+    protected function getAdapters(): array
+    {
+    }
 }

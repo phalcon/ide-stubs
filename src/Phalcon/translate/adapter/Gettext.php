@@ -57,22 +57,30 @@ class Gettext extends AbstractAdapter implements ArrayAccess
     /**
      * @return int
      */
-    public function getCategory(): int {}
+    public function getCategory(): int
+    {
+    }
 
     /**
      * @return string
      */
-    public function getDefaultDomain(): string {}
+    public function getDefaultDomain(): string
+    {
+    }
 
     /**
      * @return string|array
      */
-    public function getDirectory() {}
+    public function getDirectory()
+    {
+    }
 
     /**
      * @return string
      */
-    public function getLocale(): string {}
+    public function getLocale(): string
+    {
+    }
 
     /**
      * Phalcon\Translate\Adapter\Gettext constructor
@@ -80,7 +88,9 @@ class Gettext extends AbstractAdapter implements ArrayAccess
      * @param \Phalcon\Translate\InterpolatorFactory $interpolator
      * @param array $options
      */
-    public function __construct(\Phalcon\Translate\InterpolatorFactory $interpolator, array $options) {}
+    public function __construct(\Phalcon\Translate\InterpolatorFactory $interpolator, array $options)
+    {
+    }
 
     /**
      * Check whether is defined a translation key in the internal array
@@ -88,7 +98,9 @@ class Gettext extends AbstractAdapter implements ArrayAccess
      * @param string $index
      * @return bool
      */
-    public function exists(string $index): bool {}
+    public function exists(string $index): bool
+    {
+    }
 
     /**
      * The plural version of gettext().
@@ -102,7 +114,9 @@ class Gettext extends AbstractAdapter implements ArrayAccess
      * @param string $domain
      * @return string
      */
-    public function nquery(string $msgid1, string $msgid2, int $count, $placeholders = null, string $domain = null): string {}
+    public function nquery(string $msgid1, string $msgid2, int $count, $placeholders = null, string $domain = null): string
+    {
+    }
 
     /**
      * Returns the translation related to the given key.
@@ -115,21 +129,27 @@ class Gettext extends AbstractAdapter implements ArrayAccess
      * @param array $placeholders
      * @return string
      */
-    public function query(string $index, $placeholders = null): string {}
+    public function query(string $index, $placeholders = null): string
+    {
+    }
 
     /**
      * Sets the default domain
      *
      * @return string
      */
-    public function resetDomain(): string {}
+    public function resetDomain(): string
+    {
+    }
 
     /**
      * Sets the domain default to search within when calls are made to gettext()
      *
      * @param string $domain
      */
-    public function setDefaultDomain(string $domain) {}
+    public function setDefaultDomain(string $domain)
+    {
+    }
 
     /**
      * Sets the path for a domain
@@ -149,7 +169,9 @@ class Gettext extends AbstractAdapter implements ArrayAccess
      *
      * @param string|array $directory The directory path or an array of directories and domains
      */
-    public function setDirectory($directory) {}
+    public function setDirectory($directory)
+    {
+    }
 
     /**
      * Changes the current domain (i.e. the translation file)
@@ -157,7 +179,9 @@ class Gettext extends AbstractAdapter implements ArrayAccess
      * @param mixed $domain
      * @return string
      */
-    public function setDomain($domain): string {}
+    public function setDomain($domain): string
+    {
+    }
 
     /**
      * Sets locale information
@@ -174,20 +198,25 @@ class Gettext extends AbstractAdapter implements ArrayAccess
      * @param string $locale
      * @return string|bool
      */
-    public function setLocale(int $category, string $locale) {}
+    public function setLocale(int $category, string $locale)
+    {
+    }
 
     /**
      * Gets default options
      *
      * @return array
      */
-    protected function getOptionsDefault(): array {}
+    protected function getOptionsDefault(): array
+    {
+    }
 
     /**
      * Validator for constructor
      *
      * @param array $options
      */
-    protected function prepareOptions(array $options) {}
-
+    protected function prepareOptions(array $options)
+    {
+    }
 }

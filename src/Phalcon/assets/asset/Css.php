@@ -29,6 +29,7 @@ class Css extends AssetBase
      * @param string $version
      * @param bool $autoVersion
      */
-    public function __construct(string $path, bool $local = true, bool $filter = true, array $attributes = array(), string $version = null, bool $autoVersion = false) {}
-
+    public function __construct(string $path, bool $local = true, bool $filter = true, array $attributes = array(), string $version = null, bool $autoVersion = false)
+    {
+    }
 }

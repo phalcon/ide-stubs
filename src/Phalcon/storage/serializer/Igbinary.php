@@ -19,13 +19,16 @@ class Igbinary extends AbstractSerializer
      *
      * @return string
      */
-    public function serialize(): string {}
+    public function serialize(): string
+    {
+    }
 
     /**
      * Unserializes data
      *
      * @param mixed $data
      */
-    public function unserialize($data) {}
-
+    public function unserialize($data)
+    {
+    }
 }

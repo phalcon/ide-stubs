@@ -75,5 +75,4 @@ interface ValidatorInterface
      * @return ValidatorInterface
      */
     public function setTemplate(string $template): ValidatorInterface;
-
 }

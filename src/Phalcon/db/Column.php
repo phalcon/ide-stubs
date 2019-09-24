@@ -307,49 +307,63 @@ class Column implements ColumnInterface
     /**
      * Default column value
      */
-    public function getDefault() {}
+    public function getDefault()
+    {
+    }
 
     /**
      * Column's name
      *
      * @return string
      */
-    public function getName(): string {}
+    public function getName(): string
+    {
+    }
 
     /**
      * Integer column number scale
      *
      * @return int
      */
-    public function getScale(): int {}
+    public function getScale(): int
+    {
+    }
 
     /**
      * Integer column size
      *
      * @return int
      */
-    public function getSize(): int {}
+    public function getSize(): int
+    {
+    }
 
     /**
      * Column data type
      *
      * @return int
      */
-    public function getType(): int {}
+    public function getType(): int
+    {
+    }
 
     /**
      * Column data type reference
      *
      * @return int
      */
-    public function getTypeReference(): int {}
+    public function getTypeReference(): int
+    {
+    }
 
     /**
      * Column data type values
      *
      * @return array|string
      */
-    public function getTypeValues() {}
+    public function getTypeValues()
+    {
+    }
 
     /**
      * Phalcon\Db\Column constructor
@@ -357,69 +371,88 @@ class Column implements ColumnInterface
      * @param string $name
      * @param array $definition
      */
-    public function __construct(string $name, array $definition) {}
+    public function __construct(string $name, array $definition)
+    {
+    }
 
     /**
      * Check whether field absolute to position in table
      *
      * @return string
      */
-    public function getAfterPosition(): string {}
+    public function getAfterPosition(): string
+    {
+    }
 
     /**
      * Returns the type of bind handling
      *
      * @return int
      */
-    public function getBindType(): int {}
+    public function getBindType(): int
+    {
+    }
 
     /**
      * Check whether column has default value
      *
      * @return bool
      */
-    public function hasDefault(): bool {}
+    public function hasDefault(): bool
+    {
+    }
 
     /**
      * Auto-Increment
      *
      * @return bool
      */
-    public function isAutoIncrement(): bool {}
+    public function isAutoIncrement(): bool
+    {
+    }
 
     /**
      * Check whether column have first position in table
      *
      * @return bool
      */
-    public function isFirst(): bool {}
+    public function isFirst(): bool
+    {
+    }
 
     /**
      * Not null
      *
      * @return bool
      */
-    public function isNotNull(): bool {}
+    public function isNotNull(): bool
+    {
+    }
 
     /**
      * Check whether column have an numeric type
      *
      * @return bool
      */
-    public function isNumeric(): bool {}
+    public function isNumeric(): bool
+    {
+    }
 
     /**
      * Column is part of the primary key?
      *
      * @return bool
      */
-    public function isPrimary(): bool {}
+    public function isPrimary(): bool
+    {
+    }
 
     /**
      * Returns true if number column is unsigned
      *
      * @return bool
      */
-    public function isUnsigned(): bool {}
-
+    public function isUnsigned(): bool
+    {
+    }
 }

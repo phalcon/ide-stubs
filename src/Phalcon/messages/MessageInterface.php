@@ -100,5 +100,4 @@ interface MessageInterface
      * @return MessageInterface
      */
     public function setType(string $type): MessageInterface;
-
 }

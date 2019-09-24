@@ -25,5 +25,4 @@ interface SerializerInterface extends Serializable
      * @param mixed $data
      */
     public function setData($data);
-
 }

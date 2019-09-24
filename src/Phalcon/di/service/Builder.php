@@ -27,7 +27,9 @@ class Builder
      * @param array $parameters
      * @return mixed
      */
-    public function build(\Phalcon\Di\DiInterface $container, array $definition, $parameters = null) {}
+    public function build(\Phalcon\Di\DiInterface $container, array $definition, $parameters = null)
+    {
+    }
 
     /**
      * Resolves a constructor/call parameter
@@ -37,7 +39,9 @@ class Builder
      * @param array $argument
      * @return mixed
      */
-    private function buildParameter(\Phalcon\Di\DiInterface $container, int $position, array $argument) {}
+    private function buildParameter(\Phalcon\Di\DiInterface $container, int $position, array $argument)
+    {
+    }
 
     /**
      * Resolves an array of parameters
@@ -46,6 +50,7 @@ class Builder
      * @param array $arguments
      * @return array
      */
-    private function buildParameters(\Phalcon\Di\DiInterface $container, array $arguments): array {}
-
+    private function buildParameters(\Phalcon\Di\DiInterface $container, array $arguments): array
+    {
+    }
 }

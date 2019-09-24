@@ -60,21 +60,27 @@ class Event implements EventInterface
      *
      * @return mixed
      */
-    public function getData() {}
+    public function getData()
+    {
+    }
 
     /**
      * Event source
      *
      * @return object
      */
-    public function getSource() {}
+    public function getSource()
+    {
+    }
 
     /**
      * Event type
      *
      * @return string
      */
-    public function getType(): string {}
+    public function getType(): string
+    {
+    }
 
     /**
      * Phalcon\Events\Event constructor
@@ -84,7 +90,9 @@ class Event implements EventInterface
      * @param mixed $data
      * @param bool $cancelable
      */
-    public function __construct(string $type, $source, $data = null, bool $cancelable = true) {}
+    public function __construct(string $type, $source, $data = null, bool $cancelable = true)
+    {
+    }
 
     /**
      * Check whether the event is cancelable.
@@ -97,14 +105,18 @@ class Event implements EventInterface
      *
      * @return bool
      */
-    public function isCancelable(): bool {}
+    public function isCancelable(): bool
+    {
+    }
 
     /**
      * Check whether the event is currently stopped.
      *
      * @return bool
      */
-    public function isStopped(): bool {}
+    public function isStopped(): bool
+    {
+    }
 
     /**
      * Sets event data.
@@ -112,7 +124,9 @@ class Event implements EventInterface
      * @param mixed $data
      * @return EventInterface
      */
-    public function setData($data = null): EventInterface {}
+    public function setData($data = null): EventInterface
+    {
+    }
 
     /**
      * Sets event type.
@@ -120,7 +134,9 @@ class Event implements EventInterface
      * @param string $type
      * @return EventInterface
      */
-    public function setType(string $type): EventInterface {}
+    public function setType(string $type): EventInterface
+    {
+    }
 
     /**
      * Stops the event preventing propagation.
@@ -133,6 +149,7 @@ class Event implements EventInterface
      *
      * @return EventInterface
      */
-    public function stop(): EventInterface {}
-
+    public function stop(): EventInterface
+    {
+    }
 }

@@ -23,6 +23,7 @@ class Form extends AbstractHelper
      * @param array $attributes
      * @return string
      */
-    public function __invoke(array $attributes = array()): string {}
-
+    public function __invoke(array $attributes = array()): string
+    {
+    }
 }

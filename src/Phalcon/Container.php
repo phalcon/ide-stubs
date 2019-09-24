@@ -30,7 +30,9 @@ class Container implements ContainerInterface
      *
      * @param \Phalcon\Di\DiInterface $container
      */
-    public function __construct(\Phalcon\Di\DiInterface $container) {}
+    public function __construct(\Phalcon\Di\DiInterface $container)
+    {
+    }
 
     /**
      * Return the service
@@ -38,7 +40,9 @@ class Container implements ContainerInterface
      * @param mixed $name
      * @return mixed
      */
-    public function get($name) {}
+    public function get($name)
+    {
+    }
 
     /**
      * Whether a service exists or not in the container
@@ -46,6 +50,7 @@ class Container implements ContainerInterface
      * @param mixed $name
      * @return bool
      */
-    public function has($name): bool {}
-
+    public function has($name): bool
+    {
+    }
 }

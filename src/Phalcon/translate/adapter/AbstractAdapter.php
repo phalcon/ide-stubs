@@ -35,7 +35,9 @@ abstract class AbstractAdapter implements AdapterInterface
      * @param \Phalcon\Translate\InterpolatorFactory $interpolator
      * @param array $options
      */
-    public function __construct(\Phalcon\Translate\InterpolatorFactory $interpolator, array $options) {}
+    public function __construct(\Phalcon\Translate\InterpolatorFactory $interpolator, array $options)
+    {
+    }
 
     /**
      * Returns the translation string of the given key (alias of method 't')
@@ -44,7 +46,9 @@ abstract class AbstractAdapter implements AdapterInterface
      * @param array $placeholders
      * @return string
      */
-    public function _(string $translateKey, $placeholders = null): string {}
+    public function _(string $translateKey, $placeholders = null): string
+    {
+    }
 
     /**
      * Check whether a translation key exists
@@ -52,7 +56,9 @@ abstract class AbstractAdapter implements AdapterInterface
      * @param mixed $translateKey
      * @return bool
      */
-    public function offsetExists($translateKey): bool {}
+    public function offsetExists($translateKey): bool
+    {
+    }
 
     /**
      * Returns the translation related to the given key
@@ -60,7 +66,9 @@ abstract class AbstractAdapter implements AdapterInterface
      * @param mixed $translateKey
      * @return mixed
      */
-    public function offsetGet($translateKey) {}
+    public function offsetGet($translateKey)
+    {
+    }
 
     /**
      * Sets a translation value
@@ -68,14 +76,18 @@ abstract class AbstractAdapter implements AdapterInterface
      * @param mixed $offset
      * @param string $value
      */
-    public function offsetSet($offset, $value) {}
+    public function offsetSet($offset, $value)
+    {
+    }
 
     /**
      * Unsets a translation from the dictionary
      *
      * @param mixed $offset
      */
-    public function offsetUnset($offset) {}
+    public function offsetUnset($offset)
+    {
+    }
 
     /**
      * Returns the translation string of the given key
@@ -84,7 +96,9 @@ abstract class AbstractAdapter implements AdapterInterface
      * @param array $placeholders
      * @return string
      */
-    public function t(string $translateKey, $placeholders = null): string {}
+    public function t(string $translateKey, $placeholders = null): string
+    {
+    }
 
     /**
      * Replaces placeholders by the values passed
@@ -93,6 +107,7 @@ abstract class AbstractAdapter implements AdapterInterface
      * @param mixed $placeholders
      * @return string
      */
-    protected function replacePlaceholders(string $translation, $placeholders = null): string {}
-
+    protected function replacePlaceholders(string $translation, $placeholders = null): string
+    {
+    }
 }

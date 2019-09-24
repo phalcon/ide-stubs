@@ -36,21 +36,27 @@ class Role implements RoleInterface
      *
      * @return string
      */
-    public function getName(): string {}
+    public function getName(): string
+    {
+    }
 
     /**
      * Role name
      *
      * @return string
      */
-    public function __toString(): string {}
+    public function __toString(): string
+    {
+    }
 
     /**
      * Role description
      *
      * @return string
      */
-    public function getDescription(): string {}
+    public function getDescription(): string
+    {
+    }
 
     /**
      * Phalcon\Acl\Role constructor
@@ -58,6 +64,7 @@ class Role implements RoleInterface
      * @param string $name
      * @param string $description
      */
-    public function __construct(string $name, string $description = null) {}
-
+    public function __construct(string $name, string $description = null)
+    {
+    }
 }

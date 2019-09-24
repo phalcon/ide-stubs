@@ -65,35 +65,45 @@ class Payload implements PayloadInterface
      *
      * @return mixed
      */
-    public function getExtras() {}
+    public function getExtras()
+    {
+    }
 
     /**
      * Input
      *
      * @return mixed
      */
-    public function getInput() {}
+    public function getInput()
+    {
+    }
 
     /**
      * Messages
      *
      * @return mixed
      */
-    public function getMessages() {}
+    public function getMessages()
+    {
+    }
 
     /**
      * Status
      *
      * @return mixed
      */
-    public function getStatus() {}
+    public function getStatus()
+    {
+    }
 
     /**
      * Output
      *
      * @return mixed
      */
-    public function getOutput() {}
+    public function getOutput()
+    {
+    }
 
     /**
      * Sets arbitrary extra domain information.
@@ -101,7 +111,9 @@ class Payload implements PayloadInterface
      * @param mixed $extras
      * @return \Phalcon\Domain\Payload\PayloadInterface
      */
-    public function setExtras($extras): PayloadInterface {}
+    public function setExtras($extras): PayloadInterface
+    {
+    }
 
     /**
      * Sets the domain input.
@@ -109,7 +121,9 @@ class Payload implements PayloadInterface
      * @param mixed $input
      * @return \Phalcon\Domain\Payload\PayloadInterface
      */
-    public function setInput($input): PayloadInterface {}
+    public function setInput($input): PayloadInterface
+    {
+    }
 
     /**
      * Sets the domain messages.
@@ -117,7 +131,9 @@ class Payload implements PayloadInterface
      * @param mixed $messages
      * @return \Phalcon\Domain\Payload\PayloadInterface
      */
-    public function setMessages($messages): PayloadInterface {}
+    public function setMessages($messages): PayloadInterface
+    {
+    }
 
     /**
      * Sets the domain output.
@@ -125,7 +141,9 @@ class Payload implements PayloadInterface
      * @param mixed $output
      * @return \Phalcon\Domain\Payload\PayloadInterface
      */
-    public function setOutput($output): PayloadInterface {}
+    public function setOutput($output): PayloadInterface
+    {
+    }
 
     /**
      * Sets the payload status.
@@ -133,6 +151,7 @@ class Payload implements PayloadInterface
      * @param mixed $status
      * @return \Phalcon\Domain\Payload\PayloadInterface
      */
-    public function setStatus($status): PayloadInterface {}
-
+    public function setStatus($status): PayloadInterface
+    {
+    }
 }

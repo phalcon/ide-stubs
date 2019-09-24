@@ -87,7 +87,9 @@ class Cookies extends AbstractInjectionAware implements CookiesInterface
      * @param bool $useEncryption
      * @param string $signKey
      */
-    public function __construct(bool $useEncryption = true, string $signKey = null) {}
+    public function __construct(bool $useEncryption = true, string $signKey = null)
+    {
+    }
 
     /**
      * Deletes a cookie by its name
@@ -96,7 +98,9 @@ class Cookies extends AbstractInjectionAware implements CookiesInterface
      * @param string $name
      * @return bool
      */
-    public function delete(string $name): bool {}
+    public function delete(string $name): bool
+    {
+    }
 
     /**
      * Gets a cookie from the bag
@@ -104,14 +108,18 @@ class Cookies extends AbstractInjectionAware implements CookiesInterface
      * @param string $name
      * @return \Phalcon\Http\CookieInterface
      */
-    public function get(string $name): CookieInterface {}
+    public function get(string $name): CookieInterface
+    {
+    }
 
     /**
      * Gets all cookies from the bag
      *
      * @return array
      */
-    public function getCookies(): array {}
+    public function getCookies(): array
+    {
+    }
 
     /**
      * Check if a cookie is defined in the bag or exists in the _COOKIE
@@ -120,21 +128,27 @@ class Cookies extends AbstractInjectionAware implements CookiesInterface
      * @param string $name
      * @return bool
      */
-    public function has(string $name): bool {}
+    public function has(string $name): bool
+    {
+    }
 
     /**
      * Returns if the bag is automatically encrypting/decrypting cookies
      *
      * @return bool
      */
-    public function isUsingEncryption(): bool {}
+    public function isUsingEncryption(): bool
+    {
+    }
 
     /**
      * Reset set cookies
      *
      * @return \Phalcon\Http\Response\CookiesInterface
      */
-    public function reset(): CookiesInterface {}
+    public function reset(): CookiesInterface
+    {
+    }
 
     /**
      * Sends the cookies to the client
@@ -142,7 +156,9 @@ class Cookies extends AbstractInjectionAware implements CookiesInterface
      *
      * @return bool
      */
-    public function send(): bool {}
+    public function send(): bool
+    {
+    }
 
     /**
      * Sets a cookie to be sent at the end of the request.
@@ -172,7 +188,9 @@ class Cookies extends AbstractInjectionAware implements CookiesInterface
      * @param bool $httpOnly
      * @return \Phalcon\Http\Response\CookiesInterface
      */
-    public function set(string $name, $value = null, int $expire = 0, string $path = '/', bool $secure = null, string $domain = null, bool $httpOnly = null): CookiesInterface {}
+    public function set(string $name, $value = null, int $expire = 0, string $path = '/', bool $secure = null, string $domain = null, bool $httpOnly = null): CookiesInterface
+    {
+    }
 
     /**
      * Sets the cookie's sign key.
@@ -186,7 +204,9 @@ class Cookies extends AbstractInjectionAware implements CookiesInterface
      * @param string $signKey
      * @return \Phalcon\Http\CookieInterface
      */
-    public function setSignKey(string $signKey = null): CookieInterface {}
+    public function setSignKey(string $signKey = null): CookieInterface
+    {
+    }
 
     /**
      * Set if cookies in the bag must be automatically encrypted/decrypted
@@ -194,6 +214,7 @@ class Cookies extends AbstractInjectionAware implements CookiesInterface
      * @param bool $useEncryption
      * @return \Phalcon\Http\Response\CookiesInterface
      */
-    public function useEncryption(bool $useEncryption): CookiesInterface {}
-
+    public function useEncryption(bool $useEncryption): CookiesInterface
+    {
+    }
 }

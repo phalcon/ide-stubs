@@ -32,7 +32,9 @@ class Csv extends AbstractAdapter implements ArrayAccess
      * @param \Phalcon\Translate\InterpolatorFactory $interpolator
      * @param array $options
      */
-    public function __construct(\Phalcon\Translate\InterpolatorFactory $interpolator, array $options) {}
+    public function __construct(\Phalcon\Translate\InterpolatorFactory $interpolator, array $options)
+    {
+    }
 
     /**
      * Check whether is defined a translation key in the internal array
@@ -40,7 +42,9 @@ class Csv extends AbstractAdapter implements ArrayAccess
      * @param string $index
      * @return bool
      */
-    public function exists(string $index): bool {}
+    public function exists(string $index): bool
+    {
+    }
 
     /**
      * Returns the translation related to the given key
@@ -49,7 +53,9 @@ class Csv extends AbstractAdapter implements ArrayAccess
      * @param mixed $placeholders
      * @return string
      */
-    public function query(string $index, $placeholders = null): string {}
+    public function query(string $index, $placeholders = null): string
+    {
+    }
 
     /**
      * Load translates from file
@@ -59,6 +65,7 @@ class Csv extends AbstractAdapter implements ArrayAccess
      * @param string $delimiter
      * @param string $enclosure
      */
-    private function load(string $file, int $length, string $delimiter, string $enclosure) {}
-
+    private function load(string $file, int $length, string $delimiter, string $enclosure)
+    {
+    }
 }

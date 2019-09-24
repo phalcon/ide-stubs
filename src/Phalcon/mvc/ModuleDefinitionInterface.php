@@ -32,5 +32,4 @@ interface ModuleDefinitionInterface
      * @param \Phalcon\Di\DiInterface $container
      */
     public function registerServices(\Phalcon\Di\DiInterface $container);
-
 }

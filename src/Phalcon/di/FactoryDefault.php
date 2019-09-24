@@ -23,6 +23,7 @@ class FactoryDefault extends \Phalcon\Di
     /**
      * Phalcon\Di\FactoryDefault constructor
      */
-    public function __construct() {}
-
+    public function __construct()
+    {
+    }
 }

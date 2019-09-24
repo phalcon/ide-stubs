@@ -98,7 +98,9 @@ class Filter implements FilterInterface
      *
      * @param array $mapper
      */
-    public function __construct(array $mapper = array()) {}
+    public function __construct(array $mapper = array())
+    {
+    }
 
     /**
      * Get a service. If it is not in the mapper array, create a new object,
@@ -107,7 +109,9 @@ class Filter implements FilterInterface
      * @param string $name
      * @return object
      */
-    public function get(string $name) {}
+    public function get(string $name)
+    {
+    }
 
     /**
      * Checks if a service exists in the map array
@@ -115,7 +119,9 @@ class Filter implements FilterInterface
      * @param string $name
      * @return bool
      */
-    public function has(string $name): bool {}
+    public function has(string $name): bool
+    {
+    }
 
     /**
      * Sanitizes a value with a specified single or set of sanitizers
@@ -125,7 +131,9 @@ class Filter implements FilterInterface
      * @param bool $noRecursive
      * @return mixed
      */
-    public function sanitize($value, $sanitizers, bool $noRecursive = false) {}
+    public function sanitize($value, $sanitizers, bool $noRecursive = false)
+    {
+    }
 
     /**
      * Set a new service to the mapper array
@@ -133,14 +141,18 @@ class Filter implements FilterInterface
      * @param string $name
      * @param callable $service
      */
-    public function set(string $name, $service) {}
+    public function set(string $name, $service)
+    {
+    }
 
     /**
      * Loads the objects in the internal mapper array
      *
      * @param array $mapper
      */
-    protected function init(array $mapper) {}
+    protected function init(array $mapper)
+    {
+    }
 
     /**
      * Processes the array values with the relevant sanitizers
@@ -150,7 +162,9 @@ class Filter implements FilterInterface
      * @param array $sanitizerParams
      * @return array
      */
-    private function processArrayValues(array $values, string $sanitizerName, array $sanitizerParams = array()): array {}
+    private function processArrayValues(array $values, string $sanitizerName, array $sanitizerParams = array()): array
+    {
+    }
 
     /**
      * Internal sanitize wrapper for recursion
@@ -160,6 +174,7 @@ class Filter implements FilterInterface
      * @param array $sanitizerParams
      * @return mixed
      */
-    private function sanitizer($value, string $sanitizerName, array $sanitizerParams = array()) {}
-
+    private function sanitizer($value, string $sanitizerName, array $sanitizerParams = array())
+    {
+    }
 }

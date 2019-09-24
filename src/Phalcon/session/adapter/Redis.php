@@ -14,7 +14,7 @@ namespace Phalcon\Session\Adapter;
 /**
  * Phalcon\Session\Adapter\Redis
  */
- class Redis extends AbstractAdapter
+class Redis extends AbstractAdapter
 {
 
     /**
@@ -23,6 +23,7 @@ namespace Phalcon\Session\Adapter;
      * @param \Phalcon\Storage\AdapterFactory $factory
      * @param array $options
      */
-    public function __construct(\Phalcon\Storage\AdapterFactory $factory, array $options = array()) {}
-
+    public function __construct(\Phalcon\Storage\AdapterFactory $factory, array $options = array())
+    {
+    }
 }

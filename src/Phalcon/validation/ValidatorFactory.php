@@ -21,7 +21,9 @@ class ValidatorFactory extends AbstractFactory
      *
      * @param array $services
      */
-    public function __construct(array $services = array()) {}
+    public function __construct(array $services = array())
+    {
+    }
 
     /**
      * Creates a new instance
@@ -29,11 +31,14 @@ class ValidatorFactory extends AbstractFactory
      * @param string $name
      * @return mixed
      */
-    public function newInstance(string $name) {}
+    public function newInstance(string $name)
+    {
+    }
 
     /**
      * @return array
      */
-    protected function getAdapters(): array {}
-
+    protected function getAdapters(): array
+    {
+    }
 }

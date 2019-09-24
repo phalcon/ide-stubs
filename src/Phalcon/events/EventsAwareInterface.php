@@ -33,5 +33,4 @@ interface EventsAwareInterface
      * @param ManagerInterface $eventsManager
      */
     public function setEventsManager(ManagerInterface $eventsManager);
-
 }

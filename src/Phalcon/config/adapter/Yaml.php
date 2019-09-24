@@ -59,6 +59,7 @@ class Yaml extends Config
      * @param string $filePath
      * @param array $callbacks
      */
-    public function __construct(string $filePath, array $callbacks = null) {}
-
+    public function __construct(string $filePath, array $callbacks = null)
+    {
+    }
 }

@@ -25,6 +25,7 @@ class Close extends AbstractHelper
      * @param string $tag
      * @return string
      */
-    public function __invoke(string $tag): string {}
-
+    public function __invoke(string $tag): string
+    {
+    }
 }

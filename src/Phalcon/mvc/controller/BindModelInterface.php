@@ -25,5 +25,4 @@ interface BindModelInterface
      * @return string
      */
     public static function getModelName(): string;
-
 }

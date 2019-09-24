@@ -133,5 +133,4 @@ interface ValidationInterface
      * @return \Phalcon\Messages\Messages
      */
     public function validate($data = null, $entity = null): Messages;
-
 }

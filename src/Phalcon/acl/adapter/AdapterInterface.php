@@ -179,5 +179,4 @@ interface AdapterInterface
      * @param int $defaultAccess
      */
     public function setNoArgumentsDefaultAction(int $defaultAccess);
-
 }

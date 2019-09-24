@@ -36,21 +36,27 @@ class Component implements ComponentInterface
      *
      * @return string
      */
-    public function getDescription(): string {}
+    public function getDescription(): string
+    {
+    }
 
     /**
      * Component name
      *
      * @return string
      */
-    public function getName(): string {}
+    public function getName(): string
+    {
+    }
 
     /**
      * Component name
      *
      * @return string
      */
-    public function __toString(): string {}
+    public function __toString(): string
+    {
+    }
 
     /**
      * Phalcon\Acl\Component constructor
@@ -58,6 +64,7 @@ class Component implements ComponentInterface
      * @param string $name
      * @param string $description
      */
-    public function __construct(string $name, string $description = null) {}
-
+    public function __construct(string $name, string $description = null)
+    {
+    }
 }

@@ -34,5 +34,4 @@ interface AttributesInterface
      * @return AttributesInterface
      */
     public function setAttributes(\Phalcon\Html\Attributes $attributes): AttributesInterface;
-
 }

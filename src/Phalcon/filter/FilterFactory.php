@@ -20,11 +20,14 @@ class FilterFactory
      *
      * @return LocatorInterface
      */
-    public function newInstance(): LocatorInterface {}
+    public function newInstance(): LocatorInterface
+    {
+    }
 
     /**
      * @return array
      */
-    protected function getAdapters(): array {}
-
+    protected function getAdapters(): array
+    {
+    }
 }

@@ -204,5 +204,4 @@ interface ViewInterface extends ViewBaseInterface
      * Starts rendering process enabling the output buffering
      */
     public function start();
-
 }

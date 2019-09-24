@@ -26,5 +26,4 @@ interface ResultInterface
      * @return bool|\Phalcon\Mvc\ModelInterface
      */
     public function setDirtyState(int $dirtyState);
-
 }

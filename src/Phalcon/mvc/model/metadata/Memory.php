@@ -27,7 +27,9 @@ class Memory extends MetaData
      *
      * @param array $options
      */
-    public function __construct($options = null) {}
+    public function __construct($options = null)
+    {
+    }
 
     /**
      * Reads the meta-data from temporal memory
@@ -35,7 +37,9 @@ class Memory extends MetaData
      * @param string $key
      * @return array|null
      */
-    public function read(string $key): ?array {}
+    public function read(string $key): ?array
+    {
+    }
 
     /**
      * Writes the meta-data to temporal memory
@@ -43,6 +47,7 @@ class Memory extends MetaData
      * @param string $key
      * @param array $data
      */
-    public function write(string $key, array $data) {}
-
+    public function write(string $key, array $data)
+    {
+    }
 }

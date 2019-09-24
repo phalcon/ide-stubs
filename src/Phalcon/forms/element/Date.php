@@ -23,6 +23,7 @@ class Date extends AbstractElement
      * @param array $attributes
      * @return string
      */
-    public function render(array $attributes = array()): string {}
-
+    public function render(array $attributes = array()): string
+    {
+    }
 }

@@ -104,7 +104,9 @@ class Logger implements LoggerInterface
      * @param string $name The name of the logger
      * @param array $adapters The collection of adapters to be used for logging (default [])
      */
-    public function __construct(string $name, array $adapters = array()) {}
+    public function __construct(string $name, array $adapters = array())
+    {
+    }
 
     /**
      * Add an adapter to the stack. For processing we use FIFO
@@ -113,7 +115,9 @@ class Logger implements LoggerInterface
      * @param <AdapterInterface> $adapter The adapter to add to the stack
      * @return Logger
      */
-    public function addAdapter(string $name, \Phalcon\Logger\Adapter\AdapterInterface $adapter): Logger {}
+    public function addAdapter(string $name, \Phalcon\Logger\Adapter\AdapterInterface $adapter): Logger
+    {
+    }
 
     /**
      * Action must be taken immediately.
@@ -124,7 +128,9 @@ class Logger implements LoggerInterface
      * @param string $message
      * @param array $context
      */
-    public function alert($message, array $context = array()) {}
+    public function alert($message, array $context = array())
+    {
+    }
 
     /**
      * Critical conditions.
@@ -134,7 +140,9 @@ class Logger implements LoggerInterface
      * @param string $message
      * @param array $context
      */
-    public function critical($message, array $context = array()) {}
+    public function critical($message, array $context = array())
+    {
+    }
 
     /**
      * Detailed debug information.
@@ -142,7 +150,9 @@ class Logger implements LoggerInterface
      * @param string $message
      * @param array $context
      */
-    public function debug($message, array $context = array()) {}
+    public function debug($message, array $context = array())
+    {
+    }
 
     /**
      * Runtime errors that do not require immediate action but should typically
@@ -151,7 +161,9 @@ class Logger implements LoggerInterface
      * @param string $message
      * @param array $context
      */
-    public function error($message, array $context = array()) {}
+    public function error($message, array $context = array())
+    {
+    }
 
     /**
      * System is unusable.
@@ -159,7 +171,9 @@ class Logger implements LoggerInterface
      * @param string $message
      * @param array $context
      */
-    public function emergency($message, array $context = array()) {}
+    public function emergency($message, array $context = array())
+    {
+    }
 
     /**
      * Exclude certain adapters.
@@ -167,7 +181,9 @@ class Logger implements LoggerInterface
      * @param array $adapters
      * @return Logger
      */
-    public function excludeAdapters(array $adapters = array()): Logger {}
+    public function excludeAdapters(array $adapters = array()): Logger
+    {
+    }
 
     /**
      * Returns an adapter from the stack
@@ -178,21 +194,27 @@ class Logger implements LoggerInterface
      * @param string $name
      * @return \Phalcon\Logger\Adapter\AdapterInterface
      */
-    public function getAdapter(string $name): AdapterInterface {}
+    public function getAdapter(string $name): AdapterInterface
+    {
+    }
 
     /**
      * Returns the adapter stack array
      *
      * @return array
      */
-    public function getAdapters(): array {}
+    public function getAdapters(): array
+    {
+    }
 
     /**
      * Returns the name of the logger
      *
      * @return string
      */
-    public function getName(): string {}
+    public function getName(): string
+    {
+    }
 
     /**
      * Interesting events.
@@ -202,7 +224,9 @@ class Logger implements LoggerInterface
      * @param string $message
      * @param array $context
      */
-    public function info($message, array $context = array()) {}
+    public function info($message, array $context = array())
+    {
+    }
 
     /**
      * Logs with an arbitrary level.
@@ -211,7 +235,9 @@ class Logger implements LoggerInterface
      * @param string $message
      * @param array $context
      */
-    public function log($level, $message, array $context = array()) {}
+    public function log($level, $message, array $context = array())
+    {
+    }
 
     /**
      * Normal but significant events.
@@ -219,7 +245,9 @@ class Logger implements LoggerInterface
      * @param string $message
      * @param array $context
      */
-    public function notice($message, array $context = array()) {}
+    public function notice($message, array $context = array())
+    {
+    }
 
     /**
      * Removes an adapter from the stack
@@ -230,7 +258,9 @@ class Logger implements LoggerInterface
      * @param string $name
      * @return Logger
      */
-    public function removeAdapter(string $name): Logger {}
+    public function removeAdapter(string $name): Logger
+    {
+    }
 
     /**
      * Sets the adapters stack overriding what is already there
@@ -238,7 +268,9 @@ class Logger implements LoggerInterface
      * @param array $adapters An array of adapters
      * @return Logger
      */
-    public function setAdapters(array $adapters): Logger {}
+    public function setAdapters(array $adapters): Logger
+    {
+    }
 
     /**
      * Exceptional occurrences that are not errors.
@@ -249,7 +281,9 @@ class Logger implements LoggerInterface
      * @param string $message
      * @param array $context
      */
-    public function warning($message, array $context = array()) {}
+    public function warning($message, array $context = array())
+    {
+    }
 
     /**
      * Adds a message to each handler for processing
@@ -262,14 +296,18 @@ class Logger implements LoggerInterface
      * @param array $context
      * @return bool
      */
-    protected function addMessage(int $level, string $message, array $context = array()): bool {}
+    protected function addMessage(int $level, string $message, array $context = array()): bool
+    {
+    }
 
     /**
      * Returns an array of log levels with integer to string conversion
      *
      * @return array
      */
-    protected function getLevels(): array {}
+    protected function getLevels(): array
+    {
+    }
 
     /**
      * Converts the level from string/word to an integer
@@ -277,6 +315,7 @@ class Logger implements LoggerInterface
      * @param string|int $level
      * @return int
      */
-    private function getLevelNumber($level): int {}
-
+    private function getLevelNumber($level): int
+    {
+    }
 }

@@ -25,13 +25,16 @@ class Attributes extends Collection implements RenderInterface
      *
      * @return string
      */
-    public function render(): string {}
+    public function render(): string
+    {
+    }
 
     /**
      * Alias of the render method
      *
      * @return string
      */
-    public function __toString(): string {}
-
+    public function __toString(): string
+    {
+    }
 }

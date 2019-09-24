@@ -29,11 +29,14 @@ class Libmemcached extends MetaData
      * @param \Phalcon\Cache\AdapterFactory $factory
      * @param array $options
      */
-    public function __construct(\Phalcon\Cache\AdapterFactory $factory, array $options = array()) {}
+    public function __construct(\Phalcon\Cache\AdapterFactory $factory, array $options = array())
+    {
+    }
 
     /**
      * Flush Memcache data and resets internal meta-data in order to regenerate it
      */
-    public function reset() {}
-
+    public function reset()
+    {
+    }
 }

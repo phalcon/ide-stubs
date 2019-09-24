@@ -35,70 +35,90 @@ class Repository implements RepositoryInterface
      * @param string $property
      * @return mixed|null
      */
-    public function __get(string $property) {}
+    public function __get(string $property)
+    {
+    }
 
     /**
      * {@inheritdoc}
      *
      * @return array
      */
-    public function getAliases(): array {}
+    public function getAliases(): array
+    {
+    }
 
     /**
      * {@inheritdoc}
      *
      * @return int
      */
-    public function getCurrent(): int {}
+    public function getCurrent(): int
+    {
+    }
 
     /**
      * {@inheritdoc}
      *
      * @return int
      */
-    public function getFirst(): int {}
+    public function getFirst(): int
+    {
+    }
 
     /**
      * {@inheritdoc}
      *
      * @return mixed
      */
-    public function getItems() {}
+    public function getItems()
+    {
+    }
 
     /**
      * {@inheritdoc}
      *
      * @return int
      */
-    public function getLast(): int {}
+    public function getLast(): int
+    {
+    }
 
     /**
      * {@inheritdoc}
      *
      * @return int
      */
-    public function getLimit(): int {}
+    public function getLimit(): int
+    {
+    }
 
     /**
      * {@inheritdoc}
      *
      * @return int
      */
-    public function getNext(): int {}
+    public function getNext(): int
+    {
+    }
 
     /**
      * {@inheritdoc}
      *
      * @return int
      */
-    public function getPrevious(): int {}
+    public function getPrevious(): int
+    {
+    }
 
     /**
      * {@inheritdoc}
      *
      * @return int
      */
-    public function getTotalItems(): int {}
+    public function getTotalItems(): int
+    {
+    }
 
     /**
      * {@inheritdoc}
@@ -106,7 +126,9 @@ class Repository implements RepositoryInterface
      * @param array $aliases
      * @return RepositoryInterface
      */
-    public function setAliases(array $aliases): RepositoryInterface {}
+    public function setAliases(array $aliases): RepositoryInterface
+    {
+    }
 
     /**
      * {@inheritdoc}
@@ -114,7 +136,9 @@ class Repository implements RepositoryInterface
      * @param array $properties
      * @return RepositoryInterface
      */
-    public function setProperties(array $properties): RepositoryInterface {}
+    public function setProperties(array $properties): RepositoryInterface
+    {
+    }
 
     /**
      * Gets value of property by name
@@ -123,7 +147,9 @@ class Repository implements RepositoryInterface
      * @param mixed $defaultValue
      * @return mixed
      */
-    protected function getProperty(string $property, $defaultValue = null) {}
+    protected function getProperty(string $property, $defaultValue = null)
+    {
+    }
 
     /**
      * Resolve alias property name
@@ -131,6 +157,7 @@ class Repository implements RepositoryInterface
      * @param string $property
      * @return string
      */
-    protected function getRealNameProperty(string $property): string {}
-
+    protected function getRealNameProperty(string $property): string
+    {
+    }
 }

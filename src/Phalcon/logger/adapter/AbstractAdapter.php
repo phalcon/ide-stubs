@@ -47,7 +47,9 @@ abstract class AbstractAdapter implements AdapterInterface
     /**
      * Destructor cleanup
      */
-    public function __destruct() {}
+    public function __destruct()
+    {
+    }
 
     /**
      * Adds a message to the queue
@@ -55,33 +57,43 @@ abstract class AbstractAdapter implements AdapterInterface
      * @param \Phalcon\Logger\Item $item
      * @return \Phalcon\Logger\Adapter\AdapterInterface
      */
-    public function add(\Phalcon\Logger\Item $item): AdapterInterface {}
+    public function add(\Phalcon\Logger\Item $item): AdapterInterface
+    {
+    }
 
     /**
      * Starts a transaction
      *
      * @return \Phalcon\Logger\Adapter\AdapterInterface
      */
-    public function begin(): AdapterInterface {}
+    public function begin(): AdapterInterface
+    {
+    }
 
     /**
      * Commits the internal transaction
      *
      * @return \Phalcon\Logger\Adapter\AdapterInterface
      */
-    public function commit(): AdapterInterface {}
+    public function commit(): AdapterInterface
+    {
+    }
 
     /**
      * @return \Phalcon\Logger\Formatter\FormatterInterface
      */
-    public function getFormatter(): FormatterInterface {}
+    public function getFormatter(): FormatterInterface
+    {
+    }
 
     /**
      * Returns the whether the logger is currently in an active transaction or not
      *
      * @return bool
      */
-    public function inTransaction(): bool {}
+    public function inTransaction(): bool
+    {
+    }
 
     /**
      * Processes the message in the adapter
@@ -95,7 +107,9 @@ abstract class AbstractAdapter implements AdapterInterface
      *
      * @return \Phalcon\Logger\Adapter\AdapterInterface
      */
-    public function rollback(): AdapterInterface {}
+    public function rollback(): AdapterInterface
+    {
+    }
 
     /**
      * Sets the message formatter
@@ -103,6 +117,7 @@ abstract class AbstractAdapter implements AdapterInterface
      * @param \Phalcon\Logger\Formatter\FormatterInterface $formatter
      * @return \Phalcon\Logger\Adapter\AdapterInterface
      */
-    public function setFormatter(\Phalcon\Logger\Formatter\FormatterInterface $formatter): AdapterInterface {}
-
+    public function setFormatter(\Phalcon\Logger\Formatter\FormatterInterface $formatter): AdapterInterface
+    {
+    }
 }

@@ -45,33 +45,43 @@ class Bag extends Collection implements InjectionAwareInterface
      *
      * @param string $name
      */
-    public function __construct(string $name) {}
+    public function __construct(string $name)
+    {
+    }
 
     /**
      * Destroys the session bag
      */
-    public function clear() {}
+    public function clear()
+    {
+    }
 
     /**
      * Returns the DependencyInjector container
      *
      * @return \Phalcon\Di\DiInterface
      */
-    public function getDI(): DiInterface {}
+    public function getDI(): DiInterface
+    {
+    }
 
     /**
      * Removes a property from the internal bag
      *
      * @param array $data
      */
-    public function init(array $data = array()) {}
+    public function init(array $data = array())
+    {
+    }
 
     /**
      * Removes a property from the internal bag
      *
      * @param string $element
      */
-    public function remove(string $element) {}
+    public function remove(string $element)
+    {
+    }
 
     /**
      * Sets a value in the session bag
@@ -79,13 +89,16 @@ class Bag extends Collection implements InjectionAwareInterface
      * @param string $element
      * @param mixed $value
      */
-    public function set(string $element, $value) {}
+    public function set(string $element, $value)
+    {
+    }
 
     /**
      * Sets the DependencyInjector container
      *
      * @param \Phalcon\Di\DiInterface $container
      */
-    public function setDI(\Phalcon\Di\DiInterface $container) {}
-
+    public function setDI(\Phalcon\Di\DiInterface $container)
+    {
+    }
 }

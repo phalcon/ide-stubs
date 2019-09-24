@@ -67,34 +67,43 @@ abstract class Injectable implements InjectionAwareInterface, EventsAwareInterfa
      * @param string $propertyName
      * @return mixed|null
      */
-    public function __get(string $propertyName) {}
+    public function __get(string $propertyName)
+    {
+    }
 
     /**
      * Returns the internal dependency injector
      *
      * @return \Phalcon\Di\DiInterface
      */
-    public function getDI(): DiInterface {}
+    public function getDI(): DiInterface
+    {
+    }
 
     /**
      * Returns the internal event manager
      *
      * @return null|\Phalcon\Events\ManagerInterface
      */
-    public function getEventsManager(): ?ManagerInterface {}
+    public function getEventsManager(): ?ManagerInterface
+    {
+    }
 
     /**
      * Sets the dependency injector
      *
      * @param \Phalcon\Di\DiInterface $container
      */
-    public function setDI(\Phalcon\Di\DiInterface $container) {}
+    public function setDI(\Phalcon\Di\DiInterface $container)
+    {
+    }
 
     /**
      * Sets the event manager
      *
      * @param \Phalcon\Events\ManagerInterface $eventsManager
      */
-    public function setEventsManager(\Phalcon\Events\ManagerInterface $eventsManager) {}
-
+    public function setEventsManager(\Phalcon\Events\ManagerInterface $eventsManager)
+    {
+    }
 }

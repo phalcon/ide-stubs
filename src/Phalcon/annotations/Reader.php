@@ -23,7 +23,9 @@ class Reader implements ReaderInterface
      * @param string $className
      * @return array
      */
-    public function parse(string $className): array {}
+    public function parse(string $className): array
+    {
+    }
 
     /**
      * Parses a raw doc block returning the annotations found
@@ -33,6 +35,7 @@ class Reader implements ReaderInterface
      * @param mixed $line
      * @return array
      */
-    public static function parseDocBlock(string $docBlock, $file = null, $line = null): array {}
-
+    public static function parseDocBlock(string $docBlock, $file = null, $line = null): array
+    {
+    }
 }

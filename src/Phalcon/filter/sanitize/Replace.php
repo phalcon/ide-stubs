@@ -24,6 +24,7 @@ class Replace
      * @param mixed $from
      * @param mixed $to
      */
-    public function __invoke($input, $from, $to) {}
-
+    public function __invoke($input, $from, $to)
+    {
+    }
 }

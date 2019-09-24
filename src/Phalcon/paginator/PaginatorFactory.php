@@ -22,7 +22,9 @@ class PaginatorFactory extends AbstractFactory
      *
      * @param array $services
      */
-    public function __construct(array $services = array()) {}
+    public function __construct(array $services = array())
+    {
+    }
 
     /**
      * Factory to create an instace from a Config object
@@ -50,7 +52,9 @@ class PaginatorFactory extends AbstractFactory
      * @param mixed $config
      * @return mixed
      */
-    public function load($config) {}
+    public function load($config)
+    {
+    }
 
     /**
      * Create a new instance of the adapter
@@ -59,11 +63,14 @@ class PaginatorFactory extends AbstractFactory
      * @param array $options
      * @return \Phalcon\Paginator\Adapter\AbstractAdapter
      */
-    public function newInstance(string $name, array $options = array()): AbstractAdapter {}
+    public function newInstance(string $name, array $options = array()): AbstractAdapter
+    {
+    }
 
     /**
      * @return array
      */
-    protected function getAdapters(): array {}
-
+    protected function getAdapters(): array
+    {
+    }
 }

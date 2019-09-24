@@ -62,19 +62,25 @@ abstract class AbstractAdapter implements AdapterInterface
      *
      * @return string
      */
-    public function getDefaultSerializer(): string {}
+    public function getDefaultSerializer(): string
+    {
+    }
 
     /**
      * Name of the default serializer class
      *
      * @param string $defaultSerializer
      */
-    public function setDefaultSerializer(string $defaultSerializer) {}
+    public function setDefaultSerializer(string $defaultSerializer)
+    {
+    }
 
     /**
      * @return string
      */
-    public function getPrefix(): string {}
+    public function getPrefix(): string
+    {
+    }
 
     /**
      * Sets parameters based on options
@@ -82,7 +88,9 @@ abstract class AbstractAdapter implements AdapterInterface
      * @param \Phalcon\Storage\SerializerFactory $factory
      * @param array $options
      */
-    protected function __construct(\Phalcon\Storage\SerializerFactory $factory = null, array $options) {}
+    protected function __construct(\Phalcon\Storage\SerializerFactory $factory = null, array $options)
+    {
+    }
 
     /**
      * Flushes/clears the cache
@@ -163,7 +171,9 @@ abstract class AbstractAdapter implements AdapterInterface
      * @param mixed $key
      * @return string
      */
-    protected function getPrefixedKey($key): string {}
+    protected function getPrefixedKey($key): string
+    {
+    }
 
     /**
      * Returns serialized data
@@ -171,7 +181,9 @@ abstract class AbstractAdapter implements AdapterInterface
      * @param mixed $content
      * @return mixed
      */
-    protected function getSerializedData($content) {}
+    protected function getSerializedData($content)
+    {
+    }
 
     /**
      * Calculates the TTL for a cache item
@@ -182,7 +194,9 @@ abstract class AbstractAdapter implements AdapterInterface
      * @param mixed $ttl
      * @return int
      */
-    protected function getTtl($ttl): int {}
+    protected function getTtl($ttl): int
+    {
+    }
 
     /**
      * Returns unserialized data
@@ -191,11 +205,14 @@ abstract class AbstractAdapter implements AdapterInterface
      * @param mixed $defaultValue
      * @return mixed
      */
-    protected function getUnserializedData($content, $defaultValue = null) {}
+    protected function getUnserializedData($content, $defaultValue = null)
+    {
+    }
 
     /**
      * Initializes the serializer
      */
-    protected function initSerializer() {}
-
+    protected function initSerializer()
+    {
+    }
 }

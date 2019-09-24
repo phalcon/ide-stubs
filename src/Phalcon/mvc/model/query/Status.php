@@ -55,27 +55,34 @@ class Status implements StatusInterface
      * @param bool $success
      * @param \Phalcon\Mvc\ModelInterface $model
      */
-    public function __construct(bool $success, \Phalcon\Mvc\ModelInterface $model = null) {}
+    public function __construct(bool $success, \Phalcon\Mvc\ModelInterface $model = null)
+    {
+    }
 
     /**
      * Returns the messages produced because of a failed operation
      *
      * @return array|\Phalcon\Messages\MessageInterface[]
      */
-    public function getMessages(): array {}
+    public function getMessages(): array
+    {
+    }
 
     /**
      * Returns the model that executed the action
      *
      * @return \Phalcon\Mvc\ModelInterface
      */
-    public function getModel(): ModelInterface {}
+    public function getModel(): ModelInterface
+    {
+    }
 
     /**
      * Allows to check if the executed operation was successful
      *
      * @return bool
      */
-    public function success(): bool {}
-
+    public function success(): bool
+    {
+    }
 }

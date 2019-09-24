@@ -27,6 +27,7 @@ class Cssmin implements FilterInterface
      * @param string $content
      * @return string
      */
-    public function filter(string $content): string {}
-
+    public function filter(string $content): string
+    {
+    }
 }

@@ -47,14 +47,18 @@ class Breadcrumbs
      *
      * @return string
      */
-    public function getSeparator(): string {}
+    public function getSeparator(): string
+    {
+    }
 
     /**
      * Crumb separator
      *
      * @param string $separator
      */
-    public function setSeparator(string $separator) {}
+    public function setSeparator(string $separator)
+    {
+    }
 
     /**
      * Adds a new crumb.
@@ -71,7 +75,9 @@ class Breadcrumbs
      * @param string $link
      * @return Breadcrumbs
      */
-    public function add(string $label, string $link = ''): Breadcrumbs {}
+    public function add(string $label, string $link = ''): Breadcrumbs
+    {
+    }
 
     /**
      * Clears the crumbs
@@ -80,7 +86,9 @@ class Breadcrumbs
      * $breadcrumbs->clear()
      * ```
      */
-    public function clear() {}
+    public function clear()
+    {
+    }
 
     /**
      * Removes crumb by url.
@@ -94,7 +102,9 @@ class Breadcrumbs
      *
      * @param string $link
      */
-    public function remove(string $link) {}
+    public function remove(string $link)
+    {
+    }
 
     /**
      * Renders and outputs breadcrumbs based on previously set template.
@@ -105,13 +115,16 @@ class Breadcrumbs
      *
      * @return string
      */
-    public function render(): string {}
+    public function render(): string
+    {
+    }
 
     /**
      * Returns the internal breadcrumbs array
      *
      * @return array
      */
-    public function toArray(): array {}
-
+    public function toArray(): array
+    {
+    }
 }

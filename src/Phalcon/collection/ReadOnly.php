@@ -24,7 +24,9 @@ class ReadOnly extends Collection
      *
      * @param string $element
      */
-    public function remove(string $element) {}
+    public function remove(string $element)
+    {
+    }
 
     /**
      * Set an element in the collection
@@ -32,6 +34,7 @@ class ReadOnly extends Collection
      * @param string $element
      * @param mixed $value
      */
-    public function set(string $element, $value) {}
-
+    public function set(string $element, $value)
+    {
+    }
 }

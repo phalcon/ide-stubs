@@ -42,14 +42,18 @@ class Simple extends Resultset
      * @param \Phalcon\Cache\Adapter\AdapterInterface $cache
      * @param bool $keepSnapshots
      */
-    public function __construct($columnMap, $model, $result, \Phalcon\Cache\Adapter\AdapterInterface $cache = null, bool $keepSnapshots = null) {}
+    public function __construct($columnMap, $model, $result, \Phalcon\Cache\Adapter\AdapterInterface $cache = null, bool $keepSnapshots = null)
+    {
+    }
 
     /**
      * Returns current row in the resultset
      *
      * @return null|ModelInterface
      */
-    final public function current(): ?ModelInterface {}
+    final public function current(): ?ModelInterface
+    {
+    }
 
     /**
      * Returns a complete resultset as an array, if the resultset has a big
@@ -60,14 +64,18 @@ class Simple extends Resultset
      * @param bool $renameColumns
      * @return array
      */
-    public function toArray(bool $renameColumns = true): array {}
+    public function toArray(bool $renameColumns = true): array
+    {
+    }
 
     /**
      * Serializing a resultset will dump all related rows into a big array
      *
      * @return string
      */
-    public function serialize(): string {}
+    public function serialize(): string
+    {
+    }
 
     /**
      * Unserializing a resultset will allow to only works on the rows present in
@@ -75,6 +83,7 @@ class Simple extends Resultset
      *
      * @param mixed $data
      */
-    public function unserialize($data) {}
-
+    public function unserialize($data)
+    {
+    }
 }

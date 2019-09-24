@@ -24,6 +24,7 @@ class Kernel
      * @param string $key
      * @return string
      */
-    public static function preComputeHashKey(string $key) {}
-
+    public static function preComputeHashKey(string $key)
+    {
+    }
 }

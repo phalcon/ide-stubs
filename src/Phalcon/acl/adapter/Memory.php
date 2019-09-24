@@ -168,26 +168,34 @@ class Memory extends AbstractAdapter
      *
      * @return mixed
      */
-    public function getActiveFunction() {}
+    public function getActiveFunction()
+    {
+    }
 
     /**
      * Returns number of additional arguments(excluding role and resource) for active function
      *
      * @return int
      */
-    public function getActiveFunctionCustomArgumentsCount(): int {}
+    public function getActiveFunctionCustomArgumentsCount(): int
+    {
+    }
 
     /**
      * Returns latest key used to acquire access
      *
      * @return string|null
      */
-    public function getActiveKey(): ?string {}
+    public function getActiveKey(): ?string
+    {
+    }
 
     /**
      * Phalcon\Acl\Adapter\Memory constructor
      */
-    public function __construct() {}
+    public function __construct()
+    {
+    }
 
     /**
      * Adds a component to the ACL list
@@ -227,7 +235,9 @@ class Memory extends AbstractAdapter
      * @param mixed $accessList
      * @return bool
      */
-    public function addComponent($componentValue, $accessList): bool {}
+    public function addComponent($componentValue, $accessList): bool
+    {
+    }
 
     /**
      * Adds access to components
@@ -236,7 +246,9 @@ class Memory extends AbstractAdapter
      * @param mixed $accessList
      * @return bool
      */
-    public function addComponentAccess(string $componentName, $accessList): bool {}
+    public function addComponentAccess(string $componentName, $accessList): bool
+    {
+    }
 
     /**
      * Do a role inherit from another existing role
@@ -250,7 +262,9 @@ class Memory extends AbstractAdapter
      * @param mixed $roleToInherits
      * @return bool
      */
-    public function addInherit(string $roleName, $roleToInherits): bool {}
+    public function addInherit(string $roleName, $roleToInherits): bool
+    {
+    }
 
     /**
      * Adds a role to the ACL list. Second parameter allows inheriting access data from other existing role
@@ -269,7 +283,9 @@ class Memory extends AbstractAdapter
      * @param mixed $accessInherits
      * @return bool
      */
-    public function addRole($role, $accessInherits = null): bool {}
+    public function addRole($role, $accessInherits = null): bool
+    {
+    }
 
     /**
      * Allow access to a role on a component. You can use `` as wildcard
@@ -292,7 +308,9 @@ class Memory extends AbstractAdapter
      * @param mixed $access
      * @param mixed $func
      */
-    public function allow(string $roleName, string $componentName, $access, $func = null) {}
+    public function allow(string $roleName, string $componentName, $access, $func = null)
+    {
+    }
 
     /**
      * Deny access to a role on a component. You can use `` as wildcard
@@ -316,7 +334,9 @@ class Memory extends AbstractAdapter
      * @param mixed $access
      * @param mixed $func
      */
-    public function deny(string $roleName, string $componentName, $access, $func = null) {}
+    public function deny(string $roleName, string $componentName, $access, $func = null)
+    {
+    }
 
     /**
      * Removes an access from a component
@@ -324,7 +344,9 @@ class Memory extends AbstractAdapter
      * @param string $componentName
      * @param mixed $accessList
      */
-    public function dropComponentAccess(string $componentName, $accessList) {}
+    public function dropComponentAccess(string $componentName, $accessList)
+    {
+    }
 
     /**
      * Returns the default ACL access level for no arguments provided in
@@ -332,21 +354,27 @@ class Memory extends AbstractAdapter
      *
      * @return int
      */
-    public function getNoArgumentsDefaultAction(): int {}
+    public function getNoArgumentsDefaultAction(): int
+    {
+    }
 
     /**
      * Return an array with every role registered in the list
      *
      * @return array|\Phalcon\Acl\RoleInterface[]
      */
-    public function getRoles(): array {}
+    public function getRoles(): array
+    {
+    }
 
     /**
      * Return an array with every component registered in the list
      *
      * @return array|\Phalcon\Acl\ComponentInterface[]
      */
-    public function getComponents(): array {}
+    public function getComponents(): array
+    {
+    }
 
     /**
      * Check whether a role is allowed to access an action from a component
@@ -365,7 +393,9 @@ class Memory extends AbstractAdapter
      * @param array $parameters
      * @return bool
      */
-    public function isAllowed($roleName, $componentName, string $access, array $parameters = null): bool {}
+    public function isAllowed($roleName, $componentName, string $access, array $parameters = null): bool
+    {
+    }
 
     /**
      * Check whether role exist in the roles list
@@ -373,7 +403,9 @@ class Memory extends AbstractAdapter
      * @param string $roleName
      * @return bool
      */
-    public function isRole(string $roleName): bool {}
+    public function isRole(string $roleName): bool
+    {
+    }
 
     /**
      * Check whether component exist in the components list
@@ -381,7 +413,9 @@ class Memory extends AbstractAdapter
      * @param string $componentName
      * @return bool
      */
-    public function isComponent(string $componentName): bool {}
+    public function isComponent(string $componentName): bool
+    {
+    }
 
     /**
      * Sets the default access level (`Phalcon\Enum::ALLOW` or `Phalcon\Enum::DENY`)
@@ -390,7 +424,9 @@ class Memory extends AbstractAdapter
      *
      * @param int $defaultAccess
      */
-    public function setNoArgumentsDefaultAction(int $defaultAccess) {}
+    public function setNoArgumentsDefaultAction(int $defaultAccess)
+    {
+    }
 
     /**
      * Checks if a role has access to a component
@@ -401,7 +437,9 @@ class Memory extends AbstractAdapter
      * @param mixed $action
      * @param mixed $func
      */
-    private function allowOrDeny(string $roleName, string $componentName, $access, $action, $func = null) {}
+    private function allowOrDeny(string $roleName, string $componentName, $access, $action, $func = null)
+    {
+    }
 
     /**
      * Check whether a role is allowed to access an action from a component
@@ -411,6 +449,7 @@ class Memory extends AbstractAdapter
      * @param string $access
      * @return string|bool
      */
-    private function canAccess(string $roleName, string $componentName, string $access) {}
-
+    private function canAccess(string $roleName, string $componentName, string $access)
+    {
+    }
 }

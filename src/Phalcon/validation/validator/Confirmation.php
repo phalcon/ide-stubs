@@ -65,7 +65,9 @@ class Confirmation extends AbstractValidator
      * @param mixed $field
      * @return bool
      */
-    public function validate(\Phalcon\Validation $validation, $field): bool {}
+    public function validate(\Phalcon\Validation $validation, $field): bool
+    {
+    }
 
     /**
      * Compare strings
@@ -74,6 +76,7 @@ class Confirmation extends AbstractValidator
      * @param string $b
      * @return bool
      */
-    final protected function compare(string $a, string $b): bool {}
-
+    final protected function compare(string $a, string $b): bool
+    {
+    }
 }

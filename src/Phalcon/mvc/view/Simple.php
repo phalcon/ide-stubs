@@ -75,14 +75,18 @@ class Simple extends Injectable implements ViewBaseInterface
     /**
      * @return array|null
      */
-    public function getRegisteredEngines(): ?array {}
+    public function getRegisteredEngines(): ?array
+    {
+    }
 
     /**
      * Phalcon\Mvc\View\Simple constructor
      *
      * @param array $options
      */
-    public function __construct(array $options = array()) {}
+    public function __construct(array $options = array())
+    {
+    }
 
     /**
      * Magic method to retrieve a variable passed to the view
@@ -94,7 +98,9 @@ class Simple extends Injectable implements ViewBaseInterface
      * @param string $key
      * @return mixed|null
      */
-    public function __get(string $key) {}
+    public function __get(string $key)
+    {
+    }
 
     /**
      * Magic method to pass variables to the views
@@ -106,28 +112,36 @@ class Simple extends Injectable implements ViewBaseInterface
      * @param string $key
      * @param mixed $value
      */
-    public function __set(string $key, $value) {}
+    public function __set(string $key, $value)
+    {
+    }
 
     /**
      * Returns the path of the view that is currently rendered
      *
      * @return string
      */
-    public function getActiveRenderPath(): string {}
+    public function getActiveRenderPath(): string
+    {
+    }
 
     /**
      * Returns output from another view stage
      *
      * @return string
      */
-    public function getContent(): string {}
+    public function getContent(): string
+    {
+    }
 
     /**
      * Returns parameters to views
      *
      * @return array
      */
-    public function getParamsToView(): array {}
+    public function getParamsToView(): array
+    {
+    }
 
     /**
      * Returns a parameter previously set in the view
@@ -135,14 +149,18 @@ class Simple extends Injectable implements ViewBaseInterface
      * @param string $key
      * @return mixed|null
      */
-    public function getVar(string $key) {}
+    public function getVar(string $key)
+    {
+    }
 
     /**
      * Gets views directory
      *
      * @return string
      */
-    public function getViewsDir(): string {}
+    public function getViewsDir(): string
+    {
+    }
 
     /**
      * Renders a partial view
@@ -165,7 +183,9 @@ class Simple extends Injectable implements ViewBaseInterface
      * @param string $partialPath
      * @param mixed $params
      */
-    public function partial(string $partialPath, $params = null) {}
+    public function partial(string $partialPath, $params = null)
+    {
+    }
 
     /**
      * Register templating engines
@@ -182,7 +202,9 @@ class Simple extends Injectable implements ViewBaseInterface
      *
      * @param array $engines
      */
-    public function registerEngines(array $engines) {}
+    public function registerEngines(array $engines)
+    {
+    }
 
     /**
      * Renders a view
@@ -191,7 +213,9 @@ class Simple extends Injectable implements ViewBaseInterface
      * @param array $params
      * @return string
      */
-    public function render(string $path, array $params = array()): string {}
+    public function render(string $path, array $params = array()): string
+    {
+    }
 
     /**
      * Externally sets the view content
@@ -203,7 +227,9 @@ class Simple extends Injectable implements ViewBaseInterface
      * @param string $content
      * @return Simple
      */
-    public function setContent(string $content): Simple {}
+    public function setContent(string $content): Simple
+    {
+    }
 
     /**
      * Adds parameters to views (alias of setVar)
@@ -216,7 +242,9 @@ class Simple extends Injectable implements ViewBaseInterface
      * @param mixed $value
      * @return Simple
      */
-    public function setParamToView(string $key, $value): Simple {}
+    public function setParamToView(string $key, $value): Simple
+    {
+    }
 
     /**
      * Set a single view parameter
@@ -229,7 +257,9 @@ class Simple extends Injectable implements ViewBaseInterface
      * @param mixed $value
      * @return Simple
      */
-    public function setVar(string $key, $value): Simple {}
+    public function setVar(string $key, $value): Simple
+    {
+    }
 
     /**
      * Set all the render params
@@ -246,14 +276,18 @@ class Simple extends Injectable implements ViewBaseInterface
      * @param bool $merge
      * @return Simple
      */
-    public function setVars(array $params, bool $merge = true): Simple {}
+    public function setVars(array $params, bool $merge = true): Simple
+    {
+    }
 
     /**
      * Sets views directory
      *
      * @param string $viewsDir
      */
-    public function setViewsDir(string $viewsDir) {}
+    public function setViewsDir(string $viewsDir)
+    {
+    }
 
     /**
      * Loads registered template engines, if none are registered it will use
@@ -261,7 +295,9 @@ class Simple extends Injectable implements ViewBaseInterface
      *
      * @return array
      */
-    protected function loadTemplateEngines(): array {}
+    protected function loadTemplateEngines(): array
+    {
+    }
 
     /**
      * Tries to render the view with every engine registered in the component
@@ -269,6 +305,7 @@ class Simple extends Injectable implements ViewBaseInterface
      * @param string $path
      * @param array $params
      */
-    final protected function internalRender(string $path, $params) {}
-
+    final protected function internalRender(string $path, $params)
+    {
+    }
 }

@@ -30,14 +30,18 @@ abstract class AbstractCommon
      * @param string $property
      * @return object
      */
-    final protected function cloneInstance($element, string $property) {}
+    final protected function cloneInstance($element, string $property)
+    {
+    }
 
     /**
      * Checks the element passed if it is a string
      *
      * @param mixed $element
      */
-    final protected function checkStringParameter($element) {}
+    final protected function checkStringParameter($element)
+    {
+    }
 
     /**
      * Checks the element passed; assigns it to the property and returns a
@@ -49,6 +53,7 @@ abstract class AbstractCommon
      * @param string $property
      * @return object
      */
-    final protected function processWith($element, string $property) {}
-
+    final protected function processWith($element, string $property)
+    {
+    }
 }

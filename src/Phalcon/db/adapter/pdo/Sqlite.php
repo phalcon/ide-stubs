@@ -45,7 +45,9 @@ class Sqlite extends PdoAdapter
      *
      * @param array $descriptor
      */
-    public function __construct(array $descriptor) {}
+    public function __construct(array $descriptor)
+    {
+    }
 
     /**
      * This method is automatically called in Phalcon\Db\Adapter\Pdo
@@ -54,7 +56,9 @@ class Sqlite extends PdoAdapter
      * @param array $descriptor
      * @return bool
      */
-    public function connect(array $descriptor = null): bool {}
+    public function connect(array $descriptor = null): bool
+    {
+    }
 
     /**
      * Returns an array of Phalcon\Db\Column objects describing a table
@@ -69,7 +73,9 @@ class Sqlite extends PdoAdapter
      * @param string $schema
      * @return array|\Phalcon\Db\ColumnInterface[]
      */
-    public function describeColumns(string $table, string $schema = null): array {}
+    public function describeColumns(string $table, string $schema = null): array
+    {
+    }
 
     /**
      * Lists table indexes
@@ -84,7 +90,9 @@ class Sqlite extends PdoAdapter
      * @param string $schema
      * @return array|\Phalcon\Db\IndexInterface[]
      */
-    public function describeIndexes(string $table, string $schema = null): array {}
+    public function describeIndexes(string $table, string $schema = null): array
+    {
+    }
 
     /**
      * Lists table references
@@ -93,7 +101,9 @@ class Sqlite extends PdoAdapter
      * @param string $schema
      * @return array|\Phalcon\Db\ReferenceInterface[]
      */
-    public function describeReferences(string $table, string $schema = null): array {}
+    public function describeReferences(string $table, string $schema = null): array
+    {
+    }
 
     /**
      * Returns the default value to make the RBDM use the default value declared
@@ -116,7 +126,9 @@ class Sqlite extends PdoAdapter
      *
      * @return \Phalcon\Db\RawValue
      */
-    public function getDefaultValue(): RawValue {}
+    public function getDefaultValue(): RawValue
+    {
+    }
 
     /**
      * Check whether the database system requires an explicit value for identity
@@ -124,13 +136,16 @@ class Sqlite extends PdoAdapter
      *
      * @return bool
      */
-    public function useExplicitIdValue(): bool {}
+    public function useExplicitIdValue(): bool
+    {
+    }
 
     /**
      * Returns PDO adapter DSN defaults as a key-value map.
      *
      * @return array
      */
-    protected function getDsnDefaults(): array {}
-
+    protected function getDsnDefaults(): array
+    {
+    }
 }

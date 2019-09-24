@@ -71,6 +71,7 @@ class ExclusionIn extends AbstractValidator
      * @param mixed $field
      * @return bool
      */
-    public function validate(\Phalcon\Validation $validation, $field): bool {}
-
+    public function validate(\Phalcon\Validation $validation, $field): bool
+    {
+    }
 }

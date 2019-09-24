@@ -28,7 +28,9 @@ class Introspection implements StrategyInterface
      * @param \Phalcon\Di\DiInterface $container
      * @return array
      */
-    final public function getColumnMaps(\Phalcon\Mvc\ModelInterface $model, \Phalcon\Di\DiInterface $container): array {}
+    final public function getColumnMaps(\Phalcon\Mvc\ModelInterface $model, \Phalcon\Di\DiInterface $container): array
+    {
+    }
 
     /**
      * The meta-data is obtained by reading the column descriptions from the database information schema
@@ -37,6 +39,7 @@ class Introspection implements StrategyInterface
      * @param \Phalcon\Di\DiInterface $container
      * @return array
      */
-    final public function getMetaData(\Phalcon\Mvc\ModelInterface $model, \Phalcon\Di\DiInterface $container): array {}
-
+    final public function getMetaData(\Phalcon\Mvc\ModelInterface $model, \Phalcon\Di\DiInterface $container): array
+    {
+    }
 }

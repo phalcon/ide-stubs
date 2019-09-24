@@ -43,28 +43,36 @@ class Annotation
      *
      * @param array $reflectionData
      */
-    public function __construct(array $reflectionData) {}
+    public function __construct(array $reflectionData)
+    {
+    }
 
     /**
      * Returns an argument in a specific position
      *
      * @param mixed $position
      */
-    public function getArgument($position) {}
+    public function getArgument($position)
+    {
+    }
 
     /**
      * Returns the expression arguments
      *
      * @return array
      */
-    public function getArguments(): array {}
+    public function getArguments(): array
+    {
+    }
 
     /**
      * Returns the expression arguments without resolving
      *
      * @return array
      */
-    public function getExprArguments(): array {}
+    public function getExprArguments(): array
+    {
+    }
 
     /**
      * Resolves an annotation expression
@@ -72,21 +80,27 @@ class Annotation
      * @param array $expr
      * @return mixed
      */
-    public function getExpression(array $expr) {}
+    public function getExpression(array $expr)
+    {
+    }
 
     /**
      * Returns the annotation's name
      *
      * @return string
      */
-    public function getName(): string {}
+    public function getName(): string
+    {
+    }
 
     /**
      * Returns a named argument
      *
      * @param string $name
      */
-    public function getNamedArgument(string $name) {}
+    public function getNamedArgument(string $name)
+    {
+    }
 
     /**
      * Returns a named parameter
@@ -94,7 +108,9 @@ class Annotation
      * @param string $name
      * @return mixed
      */
-    public function getNamedParameter(string $name) {}
+    public function getNamedParameter(string $name)
+    {
+    }
 
     /**
      * Returns an argument in a specific position
@@ -102,13 +118,16 @@ class Annotation
      * @param mixed $position
      * @return bool
      */
-    public function hasArgument($position): bool {}
+    public function hasArgument($position): bool
+    {
+    }
 
     /**
      * Returns the number of arguments that the annotation has
      *
      * @return int
      */
-    public function numberArguments(): int {}
-
+    public function numberArguments(): int
+    {
+    }
 }

@@ -31,10 +31,10 @@ use Imagick as ImagicNative;
 class Imagick extends AbstractAdapter
 {
 
-    static protected $checked = false;
+    protected static $checked = false;
 
 
-    static protected $version = 0;
+    protected static $version = 0;
 
 
     /**
@@ -44,26 +44,34 @@ class Imagick extends AbstractAdapter
      * @param int $width
      * @param int $height
      */
-    public function __construct(string $file, int $width = null, int $height = null) {}
+    public function __construct(string $file, int $width = null, int $height = null)
+    {
+    }
 
     /**
      * Destroys the loaded image to free up resources.
      */
-    public function __destruct() {}
+    public function __destruct()
+    {
+    }
 
     /**
      * Checks if Imagick is enabled
      *
      * @return bool
      */
-    public static function check(): bool {}
+    public static function check(): bool
+    {
+    }
 
     /**
      * Get instance
      *
      * @return \Imagick
      */
-    public function getInternalImInstance(): ImagicNative {}
+    public function getInternalImInstance(): ImagicNative
+    {
+    }
 
     /**
      * Sets the limit for a particular resource in megabytes
@@ -72,7 +80,9 @@ class Imagick extends AbstractAdapter
      * @param int $type
      * @param int $limit
      */
-    public function setResourceLimit(int $type, int $limit) {}
+    public function setResourceLimit(int $type, int $limit)
+    {
+    }
 
     /**
      * Execute a background.
@@ -82,14 +92,18 @@ class Imagick extends AbstractAdapter
      * @param int $b
      * @param int $opacity
      */
-    protected function processBackground(int $r, int $g, int $b, int $opacity) {}
+    protected function processBackground(int $r, int $g, int $b, int $opacity)
+    {
+    }
 
     /**
      * Blur image
      *
      * @param int $radius Blur radius
      */
-    protected function processBlur(int $radius) {}
+    protected function processBlur(int $radius)
+    {
+    }
 
     /**
      * Execute a crop.
@@ -99,14 +113,18 @@ class Imagick extends AbstractAdapter
      * @param int $offsetX
      * @param int $offsetY
      */
-    protected function processCrop(int $width, int $height, int $offsetX, int $offsetY) {}
+    protected function processCrop(int $width, int $height, int $offsetX, int $offsetY)
+    {
+    }
 
     /**
      * Execute a flip.
      *
      * @param int $direction
      */
-    protected function processFlip(int $direction) {}
+    protected function processFlip(int $direction)
+    {
+    }
 
     /**
      * This method scales the images using liquid rescaling method. Only support
@@ -117,21 +135,27 @@ class Imagick extends AbstractAdapter
      * @param int $deltaX How much the seam can traverse on x-axis. Passing 0 causes the seams to be straight.
      * @param int $rigidity Introduces a bias for non-straight seams. This parameter is typically 0.
      */
-    protected function processLiquidRescale(int $width, int $height, int $deltaX, int $rigidity) {}
+    protected function processLiquidRescale(int $width, int $height, int $deltaX, int $rigidity)
+    {
+    }
 
     /**
      * Composite one image onto another
      *
      * @param AdapterInterface $image
      */
-    protected function processMask(AdapterInterface $image) {}
+    protected function processMask(AdapterInterface $image)
+    {
+    }
 
     /**
      * Pixelate image
      *
      * @param int $amount amount to pixelate
      */
-    protected function processPixelate(int $amount) {}
+    protected function processPixelate(int $amount)
+    {
+    }
 
     /**
      * Execute a reflection.
@@ -140,7 +164,9 @@ class Imagick extends AbstractAdapter
      * @param int $opacity
      * @param bool $fadeIn
      */
-    protected function processReflection(int $height, int $opacity, bool $fadeIn) {}
+    protected function processReflection(int $height, int $opacity, bool $fadeIn)
+    {
+    }
 
     /**
      * Execute a render.
@@ -149,7 +175,9 @@ class Imagick extends AbstractAdapter
      * @param int $quality
      * @return string
      */
-    protected function processRender(string $extension, int $quality): string {}
+    protected function processRender(string $extension, int $quality): string
+    {
+    }
 
     /**
      * Execute a resize.
@@ -157,14 +185,18 @@ class Imagick extends AbstractAdapter
      * @param int $width
      * @param int $height
      */
-    protected function processResize(int $width, int $height) {}
+    protected function processResize(int $width, int $height)
+    {
+    }
 
     /**
      * Execute a rotation.
      *
      * @param int $degrees
      */
-    protected function processRotate(int $degrees) {}
+    protected function processRotate(int $degrees)
+    {
+    }
 
     /**
      * Execute a save.
@@ -172,14 +204,18 @@ class Imagick extends AbstractAdapter
      * @param string $file
      * @param int $quality
      */
-    protected function processSave(string $file, int $quality) {}
+    protected function processSave(string $file, int $quality)
+    {
+    }
 
     /**
      * Execute a sharpen.
      *
      * @param int $amount
      */
-    protected function processSharpen(int $amount) {}
+    protected function processSharpen(int $amount)
+    {
+    }
 
     /**
      * Execute a text
@@ -194,7 +230,9 @@ class Imagick extends AbstractAdapter
      * @param int $size
      * @param string $fontfile
      */
-    protected function processText(string $text, $offsetX, $offsetY, int $opacity, int $r, int $g, int $b, int $size, string $fontfile) {}
+    protected function processText(string $text, $offsetX, $offsetY, int $opacity, int $r, int $g, int $b, int $size, string $fontfile)
+    {
+    }
 
     /**
      * Execute a watermarking.
@@ -204,6 +242,7 @@ class Imagick extends AbstractAdapter
      * @param int $offsetY
      * @param int $opacity
      */
-    protected function processWatermark(AdapterInterface $image, int $offsetX, int $offsetY, int $opacity) {}
-
+    protected function processWatermark(AdapterInterface $image, int $offsetX, int $offsetY, int $opacity)
+    {
+    }
 }

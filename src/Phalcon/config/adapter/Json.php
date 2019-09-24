@@ -41,6 +41,7 @@ class Json extends Config
      *
      * @param string $filePath
      */
-    public function __construct(string $filePath) {}
-
+    public function __construct(string $filePath)
+    {
+    }
 }

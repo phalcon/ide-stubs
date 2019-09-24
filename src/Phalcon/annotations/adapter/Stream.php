@@ -37,7 +37,9 @@ class Stream extends AbstractAdapter
      *
      * @param array $options
      */
-    public function __construct(array $options = array()) {}
+    public function __construct(array $options = array())
+    {
+    }
 
     /**
      * Reads parsed annotations from files
@@ -45,7 +47,9 @@ class Stream extends AbstractAdapter
      * @param string $key
      * @return bool|int|\Phalcon\Annotations\Reflection
      */
-    public function read(string $key) {}
+    public function read(string $key)
+    {
+    }
 
     /**
      * Writes parsed annotations to files
@@ -53,6 +57,7 @@ class Stream extends AbstractAdapter
      * @param string $key
      * @param \Phalcon\Annotations\Reflection $data
      */
-    public function write(string $key, \Phalcon\Annotations\Reflection $data) {}
-
+    public function write(string $key, \Phalcon\Annotations\Reflection $data)
+    {
+    }
 }

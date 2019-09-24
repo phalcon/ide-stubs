@@ -24,5 +24,4 @@ interface FilterInterface
      * @return string
      */
     public function filter(string $content): string;
-
 }

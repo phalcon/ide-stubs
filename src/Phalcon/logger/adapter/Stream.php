@@ -62,7 +62,9 @@ class Stream extends AbstractAdapter
      *
      * @return string
      */
-    public function getName(): string {}
+    public function getName(): string
+    {
+    }
 
     /**
      * Constructor. Accepts the name and some options
@@ -70,20 +72,25 @@ class Stream extends AbstractAdapter
      * @param string $name
      * @param array $options
      */
-    public function __construct(string $name, array $options = array()) {}
+    public function __construct(string $name, array $options = array())
+    {
+    }
 
     /**
      * Closes the stream
      *
      * @return bool
      */
-    public function close(): bool {}
+    public function close(): bool
+    {
+    }
 
     /**
      * Processes the message i.e. writes it to the file
      *
      * @param \Phalcon\Logger\Item $item
      */
-    public function process(\Phalcon\Logger\Item $item) {}
-
+    public function process(\Phalcon\Logger\Item $item)
+    {
+    }
 }

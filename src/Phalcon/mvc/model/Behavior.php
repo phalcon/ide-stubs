@@ -29,7 +29,9 @@ abstract class Behavior implements BehaviorInterface
      *
      * @param array $options
      */
-    public function __construct(array $options = array()) {}
+    public function __construct(array $options = array())
+    {
+    }
 
     /**
      * Returns the behavior options related to an event
@@ -37,7 +39,9 @@ abstract class Behavior implements BehaviorInterface
      * @param string $eventName
      * @return array
      */
-    protected function getOptions(string $eventName = null) {}
+    protected function getOptions(string $eventName = null)
+    {
+    }
 
     /**
      * Acts as fallbacks when a missing method is called on the model
@@ -46,7 +50,9 @@ abstract class Behavior implements BehaviorInterface
      * @param string $method
      * @param array $arguments
      */
-    public function missingMethod(\Phalcon\Mvc\ModelInterface $model, string $method, array $arguments = array()) {}
+    public function missingMethod(\Phalcon\Mvc\ModelInterface $model, string $method, array $arguments = array())
+    {
+    }
 
     /**
      * Checks whether the behavior must take action on certain event
@@ -54,7 +60,9 @@ abstract class Behavior implements BehaviorInterface
      * @param string $eventName
      * @return bool
      */
-    protected function mustTakeAction(string $eventName): bool {}
+    protected function mustTakeAction(string $eventName): bool
+    {
+    }
 
     /**
      * This method receives the notifications from the EventsManager
@@ -62,6 +70,7 @@ abstract class Behavior implements BehaviorInterface
      * @param string $type
      * @param \Phalcon\Mvc\ModelInterface $model
      */
-    public function notify(string $type, \Phalcon\Mvc\ModelInterface $model) {}
-
+    public function notify(string $type, \Phalcon\Mvc\ModelInterface $model)
+    {
+    }
 }

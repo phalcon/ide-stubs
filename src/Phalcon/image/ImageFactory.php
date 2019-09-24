@@ -25,7 +25,9 @@ class ImageFactory extends AbstractFactory
      *
      * @param array $services
      */
-    public function __construct(array $services = array()) {}
+    public function __construct(array $services = array())
+    {
+    }
 
     /**
      * Factory to create an instace from a Config object
@@ -33,7 +35,9 @@ class ImageFactory extends AbstractFactory
      * @param mixed $config
      * @return \Phalcon\Image\Adapter\AdapterInterface
      */
-    public function load($config): AdapterInterface {}
+    public function load($config): AdapterInterface
+    {
+    }
 
     /**
      * Creates a new instance
@@ -44,11 +48,14 @@ class ImageFactory extends AbstractFactory
      * @param int $height
      * @return \Phalcon\Image\Adapter\AdapterInterface
      */
-    public function newInstance(string $name, string $file, int $width = null, int $height = null): AdapterInterface {}
+    public function newInstance(string $name, string $file, int $width = null, int $height = null): AdapterInterface
+    {
+    }
 
     /**
      * @return array
      */
-    protected function getAdapters(): array {}
-
+    protected function getAdapters(): array
+    {
+    }
 }

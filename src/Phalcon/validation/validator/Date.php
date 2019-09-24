@@ -65,13 +65,16 @@ class Date extends AbstractValidator
      * @param mixed $field
      * @return bool
      */
-    public function validate(\Phalcon\Validation $validation, $field): bool {}
+    public function validate(\Phalcon\Validation $validation, $field): bool
+    {
+    }
 
     /**
      * @param mixed $value
      * @param mixed $format
      * @return bool
      */
-    private function checkDate($value, $format): bool {}
-
+    private function checkDate($value, $format): bool
+    {
+    }
 }

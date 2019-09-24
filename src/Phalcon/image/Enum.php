@@ -39,6 +39,4 @@ class Enum
 
 
     const VERTICAL = 12;
-
-
 }

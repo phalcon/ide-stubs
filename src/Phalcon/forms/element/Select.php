@@ -29,7 +29,9 @@ class Select extends AbstractElement
      * @param object|array $options
      * @param array $attributes
      */
-    public function __construct(string $name, $options = null, $attributes = null) {}
+    public function __construct(string $name, $options = null, $attributes = null)
+    {
+    }
 
     /**
      * Adds an option to the current options
@@ -37,14 +39,18 @@ class Select extends AbstractElement
      * @param array|string $option
      * @return Element
      */
-    public function addOption($option): Element {}
+    public function addOption($option): Element
+    {
+    }
 
     /**
      * Returns the choices' options
      *
      * @return array|object
      */
-    public function getOptions() {}
+    public function getOptions()
+    {
+    }
 
     /**
      * Renders the element widget returning html
@@ -52,7 +58,9 @@ class Select extends AbstractElement
      * @param array $attributes
      * @return string
      */
-    public function render(array $attributes = array()): string {}
+    public function render(array $attributes = array()): string
+    {
+    }
 
     /**
      * Set the choice's options
@@ -60,6 +68,7 @@ class Select extends AbstractElement
      * @param array|object $options
      * @return Element
      */
-    public function setOptions($options): Element {}
-
+    public function setOptions($options): Element
+    {
+    }
 }

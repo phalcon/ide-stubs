@@ -51,7 +51,9 @@ class Mysql extends PdoAdapter
      * @param \Phalcon\Db\ReferenceInterface $reference
      * @return bool
      */
-    public function addForeignKey(string $tableName, string $schemaName, \Phalcon\Db\ReferenceInterface $reference): bool {}
+    public function addForeignKey(string $tableName, string $schemaName, \Phalcon\Db\ReferenceInterface $reference): bool
+    {
+    }
 
     /**
      * Returns an array of Phalcon\Db\Column objects describing a table
@@ -66,7 +68,9 @@ class Mysql extends PdoAdapter
      * @param string $schema
      * @return array|\Phalcon\Db\ColumnInterface[]
      */
-    public function describeColumns(string $table, string $schema = null): array {}
+    public function describeColumns(string $table, string $schema = null): array
+    {
+    }
 
     /**
      * Lists table indexes
@@ -81,7 +85,9 @@ class Mysql extends PdoAdapter
      * @param string $schema
      * @return array|\Phalcon\Db\IndexInterface[]
      */
-    public function describeIndexes(string $table, string $schema = null): array {}
+    public function describeIndexes(string $table, string $schema = null): array
+    {
+    }
 
     /**
      * Lists table references
@@ -96,13 +102,16 @@ class Mysql extends PdoAdapter
      * @param string $schema
      * @return array|\Phalcon\Db\ReferenceInterface[]
      */
-    public function describeReferences(string $table, string $schema = null): array {}
+    public function describeReferences(string $table, string $schema = null): array
+    {
+    }
 
     /**
      * Returns PDO adapter DSN defaults as a key-value map.
      *
      * @return array
      */
-    protected function getDsnDefaults(): array {}
-
+    protected function getDsnDefaults(): array
+    {
+    }
 }

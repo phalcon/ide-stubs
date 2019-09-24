@@ -129,5 +129,4 @@ interface ResultsetInterface
      * @return bool
      */
     public function update($data, \Closure $conditionCallback = null): bool;
-
 }

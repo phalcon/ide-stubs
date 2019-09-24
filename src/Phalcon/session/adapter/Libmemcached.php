@@ -23,6 +23,7 @@ class Libmemcached extends AbstractAdapter
      * @param \Phalcon\Storage\AdapterFactory $factory
      * @param array $options
      */
-    public function __construct(\Phalcon\Storage\AdapterFactory $factory, array $options = array()) {}
-
+    public function __construct(\Phalcon\Storage\AdapterFactory $factory, array $options = array())
+    {
+    }
 }

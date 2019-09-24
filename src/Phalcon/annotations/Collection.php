@@ -49,21 +49,27 @@ class Collection implements Iterator, Countable
      *
      * @param array $reflectionData
      */
-    public function __construct(array $reflectionData = array()) {}
+    public function __construct(array $reflectionData = array())
+    {
+    }
 
     /**
      * Returns the number of annotations in the collection
      *
      * @return int
      */
-    public function count(): int {}
+    public function count(): int
+    {
+    }
 
     /**
      * Returns the current annotation in the iterator
      *
      * @return bool|\Phalcon\Annotations\Annotation
      */
-    public function current() {}
+    public function current()
+    {
+    }
 
     /**
      * Returns the first annotation that match a name
@@ -71,7 +77,9 @@ class Collection implements Iterator, Countable
      * @param string $name
      * @return \Phalcon\Annotations\Annotation
      */
-    public function get(string $name): Annotation {}
+    public function get(string $name): Annotation
+    {
+    }
 
     /**
      * Returns all the annotations that match a name
@@ -79,14 +87,18 @@ class Collection implements Iterator, Countable
      * @param string $name
      * @return array|\Phalcon\Annotations\Annotation[]
      */
-    public function getAll(string $name): array {}
+    public function getAll(string $name): array
+    {
+    }
 
     /**
      * Returns the internal annotations as an array
      *
      * @return array|\Phalcon\Annotations\Annotation[]
      */
-    public function getAnnotations(): array {}
+    public function getAnnotations(): array
+    {
+    }
 
     /**
      * Check if an annotation exists in a collection
@@ -94,30 +106,39 @@ class Collection implements Iterator, Countable
      * @param string $name
      * @return bool
      */
-    public function has(string $name): bool {}
+    public function has(string $name): bool
+    {
+    }
 
     /**
      * Returns the current position/key in the iterator
      *
      * @return int
      */
-    public function key(): int {}
+    public function key(): int
+    {
+    }
 
     /**
      * Moves the internal iteration pointer to the next position
      */
-    public function next() {}
+    public function next()
+    {
+    }
 
     /**
      * Rewinds the internal iterator
      */
-    public function rewind() {}
+    public function rewind()
+    {
+    }
 
     /**
      * Check if the current annotation in the iterator is valid
      *
      * @return bool
      */
-    public function valid(): bool {}
-
+    public function valid(): bool
+    {
+    }
 }

@@ -30,7 +30,9 @@ class Redis extends AbstractAdapter
      * @param \Phalcon\Storage\SerializerFactory $factory
      * @param array $options
      */
-    public function __construct(\Phalcon\Storage\SerializerFactory $factory = null, array $options = array()) {}
+    public function __construct(\Phalcon\Storage\SerializerFactory $factory = null, array $options = array())
+    {
+    }
 
     /**
      * Flushes/clears the cache
@@ -38,7 +40,9 @@ class Redis extends AbstractAdapter
      * @throws Exception
      * @return bool
      */
-    public function clear(): bool {}
+    public function clear(): bool
+    {
+    }
 
     /**
      * Decrements a stored number
@@ -50,7 +54,9 @@ class Redis extends AbstractAdapter
      * @param int $value
      * @return int|bool
      */
-    public function decrement(string $key, int $value = 1) {}
+    public function decrement(string $key, int $value = 1)
+    {
+    }
 
     /**
      * Reads data from the adapter
@@ -61,7 +67,9 @@ class Redis extends AbstractAdapter
      * @param string $key
      * @return bool
      */
-    public function delete(string $key): bool {}
+    public function delete(string $key): bool
+    {
+    }
 
     /**
      * Reads data from the adapter
@@ -73,7 +81,9 @@ class Redis extends AbstractAdapter
      * @param mixed $defaultValue
      * @return mixed
      */
-    public function get(string $key, $defaultValue = null) {}
+    public function get(string $key, $defaultValue = null)
+    {
+    }
 
     /**
      * Returns the already connected adapter or connects to the Memcached
@@ -82,7 +92,9 @@ class Redis extends AbstractAdapter
      * @throws Exception
      * @return mixed
      */
-    public function getAdapter() {}
+    public function getAdapter()
+    {
+    }
 
     /**
      * Stores data in the adapter
@@ -90,7 +102,9 @@ class Redis extends AbstractAdapter
      * @throws Exception
      * @return array
      */
-    public function getKeys(): array {}
+    public function getKeys(): array
+    {
+    }
 
     /**
      * Checks if an element exists in the cache
@@ -101,7 +115,9 @@ class Redis extends AbstractAdapter
      * @param string $key
      * @return bool
      */
-    public function has(string $key): bool {}
+    public function has(string $key): bool
+    {
+    }
 
     /**
      * Increments a stored number
@@ -113,7 +129,9 @@ class Redis extends AbstractAdapter
      * @param int $value
      * @return int|bool
      */
-    public function increment(string $key, int $value = 1) {}
+    public function increment(string $key, int $value = 1)
+    {
+    }
 
     /**
      * Stores data in the adapter
@@ -126,7 +144,9 @@ class Redis extends AbstractAdapter
      * @param mixed $ttl
      * @return bool
      */
-    public function set(string $key, $value, $ttl = null): bool {}
+    public function set(string $key, $value, $ttl = null): bool
+    {
+    }
 
     /**
      * Checks the serializer. If it is a supported one it is set, otherwise
@@ -134,6 +154,7 @@ class Redis extends AbstractAdapter
      *
      * @param \Redis $connection
      */
-    private function setSerializer(\Redis $connection) {}
-
+    private function setSerializer(\Redis $connection)
+    {
+    }
 }

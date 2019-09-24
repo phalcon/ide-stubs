@@ -38,7 +38,9 @@ class Apcu extends AbstractAdapter
      *
      * @param array $options
      */
-    public function __construct(array $options = array()) {}
+    public function __construct(array $options = array())
+    {
+    }
 
     /**
      * Reads parsed annotations from APCu
@@ -46,7 +48,9 @@ class Apcu extends AbstractAdapter
      * @param string $key
      * @return bool|\Phalcon\Annotations\Reflection
      */
-    public function read(string $key) {}
+    public function read(string $key)
+    {
+    }
 
     /**
      * Writes parsed annotations to APCu
@@ -55,6 +59,7 @@ class Apcu extends AbstractAdapter
      * @param \Phalcon\Annotations\Reflection $data
      * @return bool
      */
-    public function write(string $key, \Phalcon\Annotations\Reflection $data): bool {}
-
+    public function write(string $key, \Phalcon\Annotations\Reflection $data): bool
+    {
+    }
 }

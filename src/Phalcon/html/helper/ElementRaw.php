@@ -30,6 +30,7 @@ class ElementRaw extends AbstractHelper
      * @param array $attributes
      * @return string
      */
-    public function __invoke(string $tag, string $text, array $attributes = array()): string {}
-
+    public function __invoke(string $tag, string $text, array $attributes = array()): string
+    {
+    }
 }

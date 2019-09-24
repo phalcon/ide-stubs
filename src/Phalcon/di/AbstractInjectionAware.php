@@ -29,13 +29,16 @@ abstract class AbstractInjectionAware implements InjectionAwareInterface
      *
      * @return \Phalcon\Di\DiInterface
      */
-    public function getDI(): DiInterface {}
+    public function getDI(): DiInterface
+    {
+    }
 
     /**
      * Sets the dependency injector
      *
      * @param \Phalcon\Di\DiInterface $container
      */
-    public function setDI(\Phalcon\Di\DiInterface $container) {}
-
+    public function setDI(\Phalcon\Di\DiInterface $container)
+    {
+    }
 }

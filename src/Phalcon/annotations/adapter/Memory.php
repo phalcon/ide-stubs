@@ -29,7 +29,9 @@ class Memory extends AbstractAdapter
      * @param string $key
      * @return bool|\Phalcon\Annotations\Reflection
      */
-    public function read(string $key) {}
+    public function read(string $key)
+    {
+    }
 
     /**
      * Writes parsed annotations to memory
@@ -37,6 +39,7 @@ class Memory extends AbstractAdapter
      * @param string $key
      * @param \Phalcon\Annotations\Reflection $data
      */
-    public function write(string $key, \Phalcon\Annotations\Reflection $data) {}
-
+    public function write(string $key, \Phalcon\Annotations\Reflection $data)
+    {
+    }
 }

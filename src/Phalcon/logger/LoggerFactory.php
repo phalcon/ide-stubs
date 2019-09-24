@@ -29,7 +29,9 @@ class LoggerFactory
     /**
      * @param \Phalcon\Logger\AdapterFactory $factory
      */
-    public function __construct(\Phalcon\Logger\AdapterFactory $factory) {}
+    public function __construct(\Phalcon\Logger\AdapterFactory $factory)
+    {
+    }
 
     /**
      * Factory to create an instace from a Config object
@@ -37,7 +39,9 @@ class LoggerFactory
      * @param mixed $config
      * @return mixed
      */
-    public function load($config) {}
+    public function load($config)
+    {
+    }
 
     /**
      * Returns a Logger object
@@ -48,6 +52,7 @@ class LoggerFactory
      * @param array $adapters
      * @return \Phalcon\Logger
      */
-    public function newInstance(string $name, array $adapters = array()): Logger {}
-
+    public function newInstance(string $name, array $adapters = array()): Logger
+    {
+    }
 }

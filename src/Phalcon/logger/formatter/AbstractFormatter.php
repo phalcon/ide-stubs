@@ -21,6 +21,7 @@ abstract class AbstractFormatter implements FormatterInterface
      * @param string $message
      * @param array $context
      */
-    public function interpolate(string $message, $context = null) {}
-
+    public function interpolate(string $message, $context = null)
+    {
+    }
 }

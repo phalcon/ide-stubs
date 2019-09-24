@@ -28,7 +28,9 @@ class AdapterFactory extends AbstractFactory
      * @param \Phalcon\Storage\SerializerFactory $factory
      * @param array $services
      */
-    public function __construct(\Phalcon\Storage\SerializerFactory $factory = null, array $services = array()) {}
+    public function __construct(\Phalcon\Storage\SerializerFactory $factory = null, array $services = array())
+    {
+    }
 
     /**
      * Create a new instance of the adapter
@@ -37,11 +39,14 @@ class AdapterFactory extends AbstractFactory
      * @param array $options
      * @return \Phalcon\Storage\Adapter\AbstractAdapter
      */
-    public function newInstance(string $name, array $options = array()): AbstractAdapter {}
+    public function newInstance(string $name, array $options = array()): AbstractAdapter
+    {
+    }
 
     /**
      * @return array
      */
-    protected function getAdapters(): array {}
-
+    protected function getAdapters(): array
+    {
+    }
 }

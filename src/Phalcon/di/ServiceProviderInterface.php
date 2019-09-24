@@ -44,5 +44,4 @@ interface ServiceProviderInterface
      * @param \Phalcon\Di\DiInterface $di
      */
     public function register(\Phalcon\Di\DiInterface $di);
-
 }

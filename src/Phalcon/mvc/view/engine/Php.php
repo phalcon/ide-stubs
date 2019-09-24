@@ -24,6 +24,7 @@ class Php extends AbstractEngine
      * @param mixed $params
      * @param bool $mustClean
      */
-    public function render(string $path, $params, bool $mustClean = false) {}
-
+    public function render(string $path, $params, bool $mustClean = false)
+    {
+    }
 }

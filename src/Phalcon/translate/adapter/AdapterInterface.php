@@ -44,5 +44,4 @@ interface AdapterInterface
      * @return string
      */
     public function t(string $translateKey, $placeholders = null): string;
-
 }

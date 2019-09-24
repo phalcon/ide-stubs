@@ -37,7 +37,9 @@ class Stream extends MetaData
      *
      * @param array $options
      */
-    public function __construct($options = null) {}
+    public function __construct($options = null)
+    {
+    }
 
     /**
      * Reads meta-data from files
@@ -45,7 +47,9 @@ class Stream extends MetaData
      * @param string $key
      * @return array|null
      */
-    public function read(string $key): ?array {}
+    public function read(string $key): ?array
+    {
+    }
 
     /**
      * Writes the meta-data to files
@@ -53,13 +57,16 @@ class Stream extends MetaData
      * @param string $key
      * @param array $data
      */
-    public function write(string $key, array $data) {}
+    public function write(string $key, array $data)
+    {
+    }
 
     /**
      * Throws an exception when the metadata cannot be written
      *
      * @param mixed $option
      */
-    private function throwWriteException($option) {}
-
+    private function throwWriteException($option)
+    {
+    }
 }

@@ -88,6 +88,7 @@ class Status
     /**
      * Instantiation not allowed.
      */
-    final private function __construct() {}
-
+    final private function __construct()
+    {
+    }
 }

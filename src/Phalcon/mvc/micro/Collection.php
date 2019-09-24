@@ -53,7 +53,9 @@ class Collection implements CollectionInterface
      * @param string $name
      * @return CollectionInterface
      */
-    public function delete(string $routePattern, $handler, string $name = null): CollectionInterface {}
+    public function delete(string $routePattern, $handler, string $name = null): CollectionInterface
+    {
+    }
 
     /**
      * Maps a route to a handler that only matches if the HTTP method is GET.
@@ -63,28 +65,36 @@ class Collection implements CollectionInterface
      * @param string $name
      * @return CollectionInterface
      */
-    public function get(string $routePattern, $handler, string $name = null): CollectionInterface {}
+    public function get(string $routePattern, $handler, string $name = null): CollectionInterface
+    {
+    }
 
     /**
      * Returns the main handler
      *
      * @return mixed
      */
-    public function getHandler() {}
+    public function getHandler()
+    {
+    }
 
     /**
      * Returns the registered handlers
      *
      * @return array
      */
-    public function getHandlers(): array {}
+    public function getHandlers(): array
+    {
+    }
 
     /**
      * Returns the collection prefix if any
      *
      * @return string
      */
-    public function getPrefix(): string {}
+    public function getPrefix(): string
+    {
+    }
 
     /**
      * Maps a route to a handler that only matches if the HTTP method is HEAD.
@@ -94,14 +104,18 @@ class Collection implements CollectionInterface
      * @param string $name
      * @return CollectionInterface
      */
-    public function head(string $routePattern, $handler, string $name = null): CollectionInterface {}
+    public function head(string $routePattern, $handler, string $name = null): CollectionInterface
+    {
+    }
 
     /**
      * Returns if the main handler must be lazy loaded
      *
      * @return bool
      */
-    public function isLazy(): bool {}
+    public function isLazy(): bool
+    {
+    }
 
     /**
      * Maps a route to a handler.
@@ -111,7 +125,9 @@ class Collection implements CollectionInterface
      * @param string $name
      * @return CollectionInterface
      */
-    public function map(string $routePattern, $handler, string $name = null): CollectionInterface {}
+    public function map(string $routePattern, $handler, string $name = null): CollectionInterface
+    {
+    }
 
     /**
      * Maps a route to a handler via methods.
@@ -131,7 +147,9 @@ class Collection implements CollectionInterface
      * @param string $name
      * @return CollectionInterface
      */
-    public function mapVia(string $routePattern, $handler, $method, string $name = null): CollectionInterface {}
+    public function mapVia(string $routePattern, $handler, $method, string $name = null): CollectionInterface
+    {
+    }
 
     /**
      * Maps a route to a handler that only matches if the HTTP method is
@@ -142,7 +160,9 @@ class Collection implements CollectionInterface
      * @param string $name
      * @return CollectionInterface
      */
-    public function options(string $routePattern, $handler, string $name = null): CollectionInterface {}
+    public function options(string $routePattern, $handler, string $name = null): CollectionInterface
+    {
+    }
 
     /**
      * Maps a route to a handler that only matches if the HTTP method is PATCH.
@@ -152,7 +172,9 @@ class Collection implements CollectionInterface
      * @param string $name
      * @return CollectionInterface
      */
-    public function patch(string $routePattern, $handler, string $name = null): CollectionInterface {}
+    public function patch(string $routePattern, $handler, string $name = null): CollectionInterface
+    {
+    }
 
     /**
      * Maps a route to a handler that only matches if the HTTP method is POST.
@@ -162,7 +184,9 @@ class Collection implements CollectionInterface
      * @param string $name
      * @return CollectionInterface
      */
-    public function post(string $routePattern, $handler, string $name = null): CollectionInterface {}
+    public function post(string $routePattern, $handler, string $name = null): CollectionInterface
+    {
+    }
 
     /**
      * Maps a route to a handler that only matches if the HTTP method is PUT.
@@ -172,7 +196,9 @@ class Collection implements CollectionInterface
      * @param string $name
      * @return CollectionInterface
      */
-    public function put(string $routePattern, $handler, string $name = null): CollectionInterface {}
+    public function put(string $routePattern, $handler, string $name = null): CollectionInterface
+    {
+    }
 
     /**
      * Sets the main handler.
@@ -181,7 +207,9 @@ class Collection implements CollectionInterface
      * @param bool $lazy
      * @return CollectionInterface
      */
-    public function setHandler($handler, bool $lazy = false): CollectionInterface {}
+    public function setHandler($handler, bool $lazy = false): CollectionInterface
+    {
+    }
 
     /**
      * Sets if the main handler must be lazy loaded
@@ -189,7 +217,9 @@ class Collection implements CollectionInterface
      * @param bool $lazy
      * @return CollectionInterface
      */
-    public function setLazy(bool $lazy): CollectionInterface {}
+    public function setLazy(bool $lazy): CollectionInterface
+    {
+    }
 
     /**
      * Sets a prefix for all routes added to the collection
@@ -197,7 +227,9 @@ class Collection implements CollectionInterface
      * @param string $prefix
      * @return CollectionInterface
      */
-    public function setPrefix(string $prefix): CollectionInterface {}
+    public function setPrefix(string $prefix): CollectionInterface
+    {
+    }
 
     /**
      * Internal function to add a handler to the group.
@@ -207,6 +239,7 @@ class Collection implements CollectionInterface
      * @param callable|string $handler
      * @param string $name
      */
-    protected function addMap($method, string $routePattern, $handler, string $name) {}
-
+    protected function addMap($method, string $routePattern, $handler, string $name)
+    {
+    }
 }

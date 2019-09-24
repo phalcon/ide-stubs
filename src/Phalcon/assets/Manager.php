@@ -41,7 +41,9 @@ class Manager extends AbstractInjectionAware
      *
      * @param array $options
      */
-    public function __construct(array $options = array()) {}
+    public function __construct(array $options = array())
+    {
+    }
 
     /**
      * Adds a raw asset to the manager
@@ -55,7 +57,9 @@ class Manager extends AbstractInjectionAware
      * @param \Phalcon\Assets\Asset $asset
      * @return Manager
      */
-    public function addAsset(\Phalcon\Assets\Asset $asset): Manager {}
+    public function addAsset(\Phalcon\Assets\Asset $asset): Manager
+    {
+    }
 
     /**
      * Adds a asset by its type
@@ -71,7 +75,9 @@ class Manager extends AbstractInjectionAware
      * @param \Phalcon\Assets\Asset $asset
      * @return Manager
      */
-    public function addAssetByType(string $type, \Phalcon\Assets\Asset $asset): Manager {}
+    public function addAssetByType(string $type, \Phalcon\Assets\Asset $asset): Manager
+    {
+    }
 
     /**
      * Adds a Css asset to the 'css' collection
@@ -89,7 +95,9 @@ class Manager extends AbstractInjectionAware
      * @param bool $autoVersion
      * @return Manager
      */
-    public function addCss(string $path, $local = true, bool $filter = true, $attributes = null, string $version = null, bool $autoVersion = false): Manager {}
+    public function addCss(string $path, $local = true, bool $filter = true, $attributes = null, string $version = null, bool $autoVersion = false): Manager
+    {
+    }
 
     /**
      * Adds a raw inline code to the manager
@@ -97,7 +105,9 @@ class Manager extends AbstractInjectionAware
      * @param Inline $code
      * @return Manager
      */
-    public function addInlineCode(Inline $code): Manager {}
+    public function addInlineCode(Inline $code): Manager
+    {
+    }
 
     /**
      * Adds an inline code by its type
@@ -106,7 +116,9 @@ class Manager extends AbstractInjectionAware
      * @param Inline $code
      * @return Manager
      */
-    public function addInlineCodeByType(string $type, Inline $code): Manager {}
+    public function addInlineCodeByType(string $type, Inline $code): Manager
+    {
+    }
 
     /**
      * Adds an inline Css to the 'css' collection
@@ -116,7 +128,9 @@ class Manager extends AbstractInjectionAware
      * @param mixed $attributes
      * @return Manager
      */
-    public function addInlineCss(string $content, $filter = true, $attributes = null): Manager {}
+    public function addInlineCss(string $content, $filter = true, $attributes = null): Manager
+    {
+    }
 
     /**
      * Adds an inline javascript to the 'js' collection
@@ -126,7 +140,9 @@ class Manager extends AbstractInjectionAware
      * @param mixed $attributes
      * @return Manager
      */
-    public function addInlineJs(string $content, $filter = true, $attributes = null): Manager {}
+    public function addInlineJs(string $content, $filter = true, $attributes = null): Manager
+    {
+    }
 
     /**
      * Adds a javascript asset to the 'js' collection
@@ -144,7 +160,9 @@ class Manager extends AbstractInjectionAware
      * @param bool $autoVersion
      * @return Manager
      */
-    public function addJs(string $path, $local = true, bool $filter = true, $attributes = null, string $version = null, bool $autoVersion = false): Manager {}
+    public function addJs(string $path, $local = true, bool $filter = true, $attributes = null, string $version = null, bool $autoVersion = false): Manager
+    {
+    }
 
     /**
      * Creates/Returns a collection of assets
@@ -152,7 +170,9 @@ class Manager extends AbstractInjectionAware
      * @param string $name
      * @return \Phalcon\Assets\Collection
      */
-    public function collection(string $name): Collection {}
+    public function collection(string $name): Collection
+    {
+    }
 
     /**
      * Creates/Returns a collection of assets by type
@@ -161,7 +181,9 @@ class Manager extends AbstractInjectionAware
      * @param string $type
      * @return array
      */
-    public function collectionAssetsByType(array $assets, string $type): array {}
+    public function collectionAssetsByType(array $assets, string $type): array
+    {
+    }
 
     /**
      * Returns true or false if collection exists.
@@ -176,7 +198,9 @@ class Manager extends AbstractInjectionAware
      * @param string $id
      * @return bool
      */
-    public function exists(string $id): bool {}
+    public function exists(string $id): bool
+    {
+    }
 
     /**
      * Returns a collection by its id.
@@ -188,35 +212,45 @@ class Manager extends AbstractInjectionAware
      * @param string $id
      * @return \Phalcon\Assets\Collection
      */
-    public function get(string $id): Collection {}
+    public function get(string $id): Collection
+    {
+    }
 
     /**
      * Returns existing collections in the manager
      *
      * @return array|\Phalcon\Assets\Collection[]
      */
-    public function getCollections(): array {}
+    public function getCollections(): array
+    {
+    }
 
     /**
      * Returns the CSS collection of assets
      *
      * @return \Phalcon\Assets\Collection
      */
-    public function getCss(): Collection {}
+    public function getCss(): Collection
+    {
+    }
 
     /**
      * Returns the CSS collection of assets
      *
      * @return \Phalcon\Assets\Collection
      */
-    public function getJs(): Collection {}
+    public function getJs(): Collection
+    {
+    }
 
     /**
      * Returns the manager options
      *
      * @return array
      */
-    public function getOptions(): array {}
+    public function getOptions(): array
+    {
+    }
 
     /**
      * Traverses a collection calling the callback to generate its HTML
@@ -226,7 +260,9 @@ class Manager extends AbstractInjectionAware
      * @param string $type
      * @return string|null
      */
-    public function output(\Phalcon\Assets\Collection $collection, $callback, $type): ?string {}
+    public function output(\Phalcon\Assets\Collection $collection, $callback, $type): ?string
+    {
+    }
 
     /**
      * Prints the HTML for CSS assets
@@ -234,7 +270,9 @@ class Manager extends AbstractInjectionAware
      * @param string $collectionName
      * @return string
      */
-    public function outputCss(string $collectionName = null): string {}
+    public function outputCss(string $collectionName = null): string
+    {
+    }
 
     /**
      * Traverses a collection and generate its HTML
@@ -243,7 +281,9 @@ class Manager extends AbstractInjectionAware
      * @param string $type
      * @return string
      */
-    public function outputInline(\Phalcon\Assets\Collection $collection, $type): string {}
+    public function outputInline(\Phalcon\Assets\Collection $collection, $type): string
+    {
+    }
 
     /**
      * Prints the HTML for inline CSS
@@ -251,7 +291,9 @@ class Manager extends AbstractInjectionAware
      * @param string $collectionName
      * @return string
      */
-    public function outputInlineCss(string $collectionName = null): string {}
+    public function outputInlineCss(string $collectionName = null): string
+    {
+    }
 
     /**
      * Prints the HTML for inline JS
@@ -259,7 +301,9 @@ class Manager extends AbstractInjectionAware
      * @param string $collectionName
      * @return string
      */
-    public function outputInlineJs(string $collectionName = null): string {}
+    public function outputInlineJs(string $collectionName = null): string
+    {
+    }
 
     /**
      * Prints the HTML for JS assets
@@ -267,7 +311,9 @@ class Manager extends AbstractInjectionAware
      * @param string $collectionName
      * @return string
      */
-    public function outputJs(string $collectionName = null): string {}
+    public function outputJs(string $collectionName = null): string
+    {
+    }
 
     /**
      * Sets a collection in the Assets Manager
@@ -280,7 +326,9 @@ class Manager extends AbstractInjectionAware
      * @param \Phalcon\Assets\Collection $collection
      * @return Manager
      */
-    public function set(string $id, \Phalcon\Assets\Collection $collection): Manager {}
+    public function set(string $id, \Phalcon\Assets\Collection $collection): Manager
+    {
+    }
 
     /**
      * Sets the manager options
@@ -288,7 +336,9 @@ class Manager extends AbstractInjectionAware
      * @param array $options
      * @return Manager
      */
-    public function setOptions(array $options): Manager {}
+    public function setOptions(array $options): Manager
+    {
+    }
 
     /**
      * Sets if the HTML generated must be directly printed or returned
@@ -296,7 +346,9 @@ class Manager extends AbstractInjectionAware
      * @param bool $implicitOutput
      * @return Manager
      */
-    public function useImplicitOutput(bool $implicitOutput): Manager {}
+    public function useImplicitOutput(bool $implicitOutput): Manager
+    {
+    }
 
     /**
      * Returns the prefixed path
@@ -305,6 +357,7 @@ class Manager extends AbstractInjectionAware
      * @param string $path
      * @return string
      */
-    private function getPrefixedPath(\Phalcon\Assets\Collection $collection, string $path): string {}
-
+    private function getPrefixedPath(\Phalcon\Assets\Collection $collection, string $path): string
+    {
+    }
 }

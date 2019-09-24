@@ -23,6 +23,7 @@ class Remove
      * @param mixed $input
      * @param mixed $replace
      */
-    public function __invoke($input, $replace) {}
-
+    public function __invoke($input, $replace)
+    {
+    }
 }

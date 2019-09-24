@@ -21,7 +21,9 @@ class AdapterFactory extends AbstractFactory
      *
      * @param array $services
      */
-    public function __construct(array $services = array()) {}
+    public function __construct(array $services = array())
+    {
+    }
 
     /**
      * Create a new instance of the adapter
@@ -31,11 +33,14 @@ class AdapterFactory extends AbstractFactory
      * @param array $options
      * @return AdapterInterface
      */
-    public function newInstance(string $name, string $fileName, array $options = array()): AdapterInterface {}
+    public function newInstance(string $name, string $fileName, array $options = array()): AdapterInterface
+    {
+    }
 
     /**
      * @return array
      */
-    protected function getAdapters(): array {}
-
+    protected function getAdapters(): array
+    {
+    }
 }

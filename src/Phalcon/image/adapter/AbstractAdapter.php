@@ -21,7 +21,7 @@ use Phalcon\Image\Enum;
 abstract class AbstractAdapter implements AdapterInterface
 {
 
-    static protected $checked = false;
+    protected static $checked = false;
 
 
     protected $file;
@@ -68,20 +68,28 @@ abstract class AbstractAdapter implements AdapterInterface
      *
      * @return int
      */
-    public function getHeight(): int {}
+    public function getHeight(): int
+    {
+    }
 
 
-    public function getImage() {}
+    public function getImage()
+    {
+    }
 
     /**
      * Image mime type
      *
      * @return string
      */
-    public function getMime(): string {}
+    public function getMime(): string
+    {
+    }
 
 
-    public function getRealpath() {}
+    public function getRealpath()
+    {
+    }
 
     /**
      * Image type
@@ -90,14 +98,18 @@ abstract class AbstractAdapter implements AdapterInterface
      *
      * @return int
      */
-    public function getType(): int {}
+    public function getType(): int
+    {
+    }
 
     /**
      * Image width
      *
      * @return int
      */
-    public function getWidth(): int {}
+    public function getWidth(): int
+    {
+    }
 
     /**
      * Set the background color of an image
@@ -106,7 +118,9 @@ abstract class AbstractAdapter implements AdapterInterface
      * @param int $opacity
      * @return AdapterInterface
      */
-    public function background(string $color, int $opacity = 100): AdapterInterface {}
+    public function background(string $color, int $opacity = 100): AdapterInterface
+    {
+    }
 
     /**
      * Blur image
@@ -114,7 +128,9 @@ abstract class AbstractAdapter implements AdapterInterface
      * @param int $radius
      * @return AdapterInterface
      */
-    public function blur(int $radius): AdapterInterface {}
+    public function blur(int $radius): AdapterInterface
+    {
+    }
 
     /**
      * Crop an image to the given size
@@ -125,7 +141,9 @@ abstract class AbstractAdapter implements AdapterInterface
      * @param int $offsetY
      * @return AdapterInterface
      */
-    public function crop(int $width, int $height, int $offsetX = null, int $offsetY = null): AdapterInterface {}
+    public function crop(int $width, int $height, int $offsetX = null, int $offsetY = null): AdapterInterface
+    {
+    }
 
     /**
      * Flip the image along the horizontal or vertical axis
@@ -133,7 +151,9 @@ abstract class AbstractAdapter implements AdapterInterface
      * @param int $direction
      * @return AdapterInterface
      */
-    public function flip(int $direction): AdapterInterface {}
+    public function flip(int $direction): AdapterInterface
+    {
+    }
 
     /**
      * This method scales the images using liquid rescaling method. Only support
@@ -145,7 +165,9 @@ abstract class AbstractAdapter implements AdapterInterface
      * @param int $rigidity Introduces a bias for non-straight seams. This parameter is typically 0.
      * @return AbstractAdapter
      */
-    public function liquidRescale(int $width, int $height, int $deltaX = 0, int $rigidity = 0): AbstractAdapter {}
+    public function liquidRescale(int $width, int $height, int $deltaX = 0, int $rigidity = 0): AbstractAdapter
+    {
+    }
 
     /**
      * Composite one image onto another
@@ -153,7 +175,9 @@ abstract class AbstractAdapter implements AdapterInterface
      * @param AdapterInterface $watermark
      * @return AdapterInterface
      */
-    public function mask(AdapterInterface $watermark): AdapterInterface {}
+    public function mask(AdapterInterface $watermark): AdapterInterface
+    {
+    }
 
     /**
      * Pixelate image
@@ -161,7 +185,9 @@ abstract class AbstractAdapter implements AdapterInterface
      * @param int $amount
      * @return AdapterInterface
      */
-    public function pixelate(int $amount): AdapterInterface {}
+    public function pixelate(int $amount): AdapterInterface
+    {
+    }
 
     /**
      * Add a reflection to an image
@@ -171,7 +197,9 @@ abstract class AbstractAdapter implements AdapterInterface
      * @param bool $fadeIn
      * @return AdapterInterface
      */
-    public function reflection(int $height, int $opacity = 100, bool $fadeIn = false): AdapterInterface {}
+    public function reflection(int $height, int $opacity = 100, bool $fadeIn = false): AdapterInterface
+    {
+    }
 
     /**
      * Render the image and return the binary string
@@ -180,7 +208,9 @@ abstract class AbstractAdapter implements AdapterInterface
      * @param int $quality
      * @return string
      */
-    public function render(string $ext = null, int $quality = 100): string {}
+    public function render(string $ext = null, int $quality = 100): string
+    {
+    }
 
     /**
      * Resize the image to the given size
@@ -190,7 +220,9 @@ abstract class AbstractAdapter implements AdapterInterface
      * @param int $master
      * @return AdapterInterface
      */
-    public function resize(int $width = null, int $height = null, int $master = Enum::AUTO): AdapterInterface {}
+    public function resize(int $width = null, int $height = null, int $master = Enum::AUTO): AdapterInterface
+    {
+    }
 
     /**
      * Rotate the image by a given amount
@@ -198,7 +230,9 @@ abstract class AbstractAdapter implements AdapterInterface
      * @param int $degrees
      * @return AdapterInterface
      */
-    public function rotate(int $degrees): AdapterInterface {}
+    public function rotate(int $degrees): AdapterInterface
+    {
+    }
 
     /**
      * Save the image
@@ -207,7 +241,9 @@ abstract class AbstractAdapter implements AdapterInterface
      * @param int $quality
      * @return AdapterInterface
      */
-    public function save(string $file = null, int $quality = -1): AdapterInterface {}
+    public function save(string $file = null, int $quality = -1): AdapterInterface
+    {
+    }
 
     /**
      * Sharpen the image by a given amount
@@ -215,7 +251,9 @@ abstract class AbstractAdapter implements AdapterInterface
      * @param int $amount
      * @return AdapterInterface
      */
-    public function sharpen(int $amount): AdapterInterface {}
+    public function sharpen(int $amount): AdapterInterface
+    {
+    }
 
     /**
      * Add a text to an image with a specified opacity
@@ -229,7 +267,9 @@ abstract class AbstractAdapter implements AdapterInterface
      * @param string $fontfile
      * @return AdapterInterface
      */
-    public function text(string $text, $offsetX = false, $offsetY = false, int $opacity = 100, string $color = '000000', int $size = 12, string $fontfile = null): AdapterInterface {}
+    public function text(string $text, $offsetX = false, $offsetY = false, int $opacity = 100, string $color = '000000', int $size = 12, string $fontfile = null): AdapterInterface
+    {
+    }
 
     /**
      * Add a watermark to an image with the specified opacity
@@ -240,6 +280,7 @@ abstract class AbstractAdapter implements AdapterInterface
      * @param int $opacity
      * @return AdapterInterface
      */
-    public function watermark(AdapterInterface $watermark, int $offsetX = 0, int $offsetY = 0, int $opacity = 100): AdapterInterface {}
-
+    public function watermark(AdapterInterface $watermark, int $offsetX = 0, int $offsetY = 0, int $opacity = 100): AdapterInterface
+    {
+    }
 }

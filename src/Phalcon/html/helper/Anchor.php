@@ -25,6 +25,7 @@ class Anchor extends AbstractHelper
      * @param array $attributes
      * @return string
      */
-    public function __invoke(string $href, string $text, array $attributes = array()): string {}
-
+    public function __invoke(string $href, string $text, array $attributes = array()): string
+    {
+    }
 }

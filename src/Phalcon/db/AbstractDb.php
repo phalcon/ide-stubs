@@ -62,6 +62,7 @@ abstract class AbstractDb
      *
      * @param array $options
      */
-    public static function setup(array $options) {}
-
+    public static function setup(array $options)
+    {
+    }
 }

@@ -33,6 +33,7 @@ final class Request extends AbstractRequest implements RequestInterface
      * @param StreamInterface|resource|string $body
      * @param array $headers
      */
-    public function __construct(string $method = 'GET', $uri = null, $body = 'php://memory', $headers = array()) {}
-
+    public function __construct(string $method = 'GET', $uri = null, $body = 'php://memory', $headers = array())
+    {
+    }
 }

@@ -22,6 +22,7 @@ class Trim
     /**
      * @param string $input
      */
-    public function __invoke(string $input) {}
-
+    public function __invoke(string $input)
+    {
+    }
 }

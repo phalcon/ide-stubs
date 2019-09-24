@@ -54,7 +54,9 @@ class Collection implements
      * @param array $data
      * @param bool $insensitive
      */
-    public function __construct(array $data = array(), bool $insensitive = true) {}
+    public function __construct(array $data = array(), bool $insensitive = true)
+    {
+    }
 
     /**
      * Magic getter to get an element from the collection
@@ -62,7 +64,9 @@ class Collection implements
      * @param string $element
      * @return mixed
      */
-    public function __get(string $element) {}
+    public function __get(string $element)
+    {
+    }
 
     /**
      * Magic isset to check whether an element exists or not
@@ -70,7 +74,9 @@ class Collection implements
      * @param string $element
      * @return bool
      */
-    public function __isset(string $element): bool {}
+    public function __isset(string $element): bool
+    {
+    }
 
     /**
      * Magic setter to assign values to an element
@@ -78,19 +84,25 @@ class Collection implements
      * @param string $element
      * @param mixed $value
      */
-    public function __set(string $element, $value) {}
+    public function __set(string $element, $value)
+    {
+    }
 
     /**
      * Magic unset to remove an element from the collection
      *
      * @param string $element
      */
-    public function __unset(string $element) {}
+    public function __unset(string $element)
+    {
+    }
 
     /**
      * Clears the internal collection
      */
-    public function clear() {}
+    public function clear()
+    {
+    }
 
     /**
      * Count elements of an object.
@@ -98,7 +110,9 @@ class Collection implements
      *
      * @return int
      */
-    public function count(): int {}
+    public function count(): int
+    {
+    }
 
     /**
      * Get the element from the collection
@@ -107,14 +121,18 @@ class Collection implements
      * @param mixed $defaultValue
      * @return mixed
      */
-    public function get(string $element, $defaultValue = null) {}
+    public function get(string $element, $defaultValue = null)
+    {
+    }
 
     /**
      * Returns the iterator of the class
      *
      * @return \Traversable
      */
-    public function getIterator(): Traversable {}
+    public function getIterator(): Traversable
+    {
+    }
 
     /**
      * Get the element from the collection
@@ -122,14 +140,18 @@ class Collection implements
      * @param string $element
      * @return bool
      */
-    public function has(string $element): bool {}
+    public function has(string $element): bool
+    {
+    }
 
     /**
      * Initialize internal array
      *
      * @param array $data
      */
-    public function init(array $data = array()) {}
+    public function init(array $data = array())
+    {
+    }
 
     /**
      * Specify data which should be serialized to JSON
@@ -137,7 +159,9 @@ class Collection implements
      *
      * @return array
      */
-    public function jsonSerialize(): array {}
+    public function jsonSerialize(): array
+    {
+    }
 
     /**
      * Whether a offset exists
@@ -146,7 +170,9 @@ class Collection implements
      * @param mixed $element
      * @return bool
      */
-    public function offsetExists($element): bool {}
+    public function offsetExists($element): bool
+    {
+    }
 
     /**
      * Offset to retrieve
@@ -154,7 +180,9 @@ class Collection implements
      *
      * @param mixed $element
      */
-    public function offsetGet($element) {}
+    public function offsetGet($element)
+    {
+    }
 
     /**
      * Offset to set
@@ -163,7 +191,9 @@ class Collection implements
      * @param mixed $element
      * @param mixed $value
      */
-    public function offsetSet($element, $value) {}
+    public function offsetSet($element, $value)
+    {
+    }
 
     /**
      * Offset to unset
@@ -171,14 +201,18 @@ class Collection implements
      *
      * @param mixed $element
      */
-    public function offsetUnset($element) {}
+    public function offsetUnset($element)
+    {
+    }
 
     /**
      * Delete the element from the collection
      *
      * @param string $element
      */
-    public function remove(string $element) {}
+    public function remove(string $element)
+    {
+    }
 
     /**
      * Set an element in the collection
@@ -186,7 +220,9 @@ class Collection implements
      * @param string $element
      * @param mixed $value
      */
-    public function set(string $element, $value) {}
+    public function set(string $element, $value)
+    {
+    }
 
     /**
      * String representation of object
@@ -194,14 +230,18 @@ class Collection implements
      *
      * @return string
      */
-    public function serialize(): string {}
+    public function serialize(): string
+    {
+    }
 
     /**
      * Returns the object in an array format
      *
      * @return array
      */
-    public function toArray(): array {}
+    public function toArray(): array
+    {
+    }
 
     /**
      * Returns the object in a JSON format
@@ -216,7 +256,9 @@ class Collection implements
      * @param int $options
      * @return string
      */
-    public function toJson(int $options = 79): string {}
+    public function toJson(int $options = 79): string
+    {
+    }
 
     /**
      * Constructs the object
@@ -224,7 +266,9 @@ class Collection implements
      *
      * @param mixed $serialized
      */
-    public function unserialize($serialized) {}
+    public function unserialize($serialized)
+    {
+    }
 
     /**
      * Internal method to set data
@@ -232,6 +276,7 @@ class Collection implements
      * @param string $element
      * @param mixed $value
      */
-    protected function setData(string $element, $value) {}
-
+    protected function setData(string $element, $value)
+    {
+    }
 }

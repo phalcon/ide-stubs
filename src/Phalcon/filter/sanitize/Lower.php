@@ -22,6 +22,7 @@ class Lower
     /**
      * @param string $input
      */
-    public function __invoke(string $input) {}
-
+    public function __invoke(string $input)
+    {
+    }
 }

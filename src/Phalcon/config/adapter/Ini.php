@@ -64,7 +64,9 @@ class Ini extends Config
      * @param string $filePath
      * @param mixed $mode
      */
-    public function __construct(string $filePath, $mode = null) {}
+    public function __construct(string $filePath, $mode = null)
+    {
+    }
 
     /**
      * We have to cast values manually because parse_ini_file() has a poor
@@ -73,7 +75,9 @@ class Ini extends Config
      * @param mixed $ini
      * @return bool|null|double|int|string
      */
-    protected function cast($ini) {}
+    protected function cast($ini)
+    {
+    }
 
     /**
      * Build multidimensional array from string
@@ -82,6 +86,7 @@ class Ini extends Config
      * @param mixed $value
      * @return array
      */
-    protected function parseIniString(string $path, $value): array {}
-
+    protected function parseIniString(string $path, $value): array
+    {
+    }
 }

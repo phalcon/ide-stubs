@@ -26,6 +26,7 @@ class Js extends InlineBase
      * @param bool $filter
      * @param mixed $attributes
      */
-    public function __construct(string $content, bool $filter = true, $attributes = null) {}
-
+    public function __construct(string $content, bool $filter = true, $attributes = null)
+    {
+    }
 }

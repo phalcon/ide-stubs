@@ -43,11 +43,14 @@ class Redis extends MetaData
      * @param \Phalcon\Cache\AdapterFactory $factory
      * @param array $options
      */
-    public function __construct(\Phalcon\Cache\AdapterFactory $factory, array $options = array()) {}
+    public function __construct(\Phalcon\Cache\AdapterFactory $factory, array $options = array())
+    {
+    }
 
     /**
      * Flush Redis data and resets internal meta-data in order to regenerate it
      */
-    public function reset() {}
-
+    public function reset()
+    {
+    }
 }

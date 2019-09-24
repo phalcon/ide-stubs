@@ -40,7 +40,9 @@ class Input extends Stream
     /**
      * Input constructor.
      */
-    public function __construct() {}
+    public function __construct()
+    {
+    }
 
     /**
      * Reads all data from the stream into a string, from the beginning to end.
@@ -56,7 +58,9 @@ class Input extends Stream
      * @see http://php.net/manual/en/language.oop5.magic.php#object.tostring
      * @return string
      */
-    public function __toString(): string {}
+    public function __toString(): string
+    {
+    }
 
     /**
      * Returns the remaining contents in a string
@@ -69,14 +73,18 @@ class Input extends Stream
      * @param int $length
      * @return string
      */
-    public function getContents(int $length = -1): string {}
+    public function getContents(int $length = -1): string
+    {
+    }
 
     /**
      * Returns whether or not the stream is writeable.
      *
      * @return bool
      */
-    public function isWritable(): bool {}
+    public function isWritable(): bool
+    {
+    }
 
     /**
      * Read data from the stream.
@@ -86,6 +94,7 @@ class Input extends Stream
      * @param mixed $length
      * @return string
      */
-    public function read($length): string {}
-
+    public function read($length): string
+    {
+    }
 }

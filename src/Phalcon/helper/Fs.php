@@ -28,6 +28,7 @@ class Fs
      * @param mixed $suffix
      * @return string
      */
-    final public static function basename(string $uri, $suffix = null): string {}
-
+    final public static function basename(string $uri, $suffix = null): string
+    {
+    }
 }

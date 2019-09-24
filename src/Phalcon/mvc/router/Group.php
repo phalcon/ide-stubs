@@ -82,7 +82,9 @@ class Group implements GroupInterface
      *
      * @param mixed $paths
      */
-    public function __construct($paths = null) {}
+    public function __construct($paths = null)
+    {
+    }
 
     /**
      * Adds a route to the router on any HTTP method
@@ -96,7 +98,9 @@ class Group implements GroupInterface
      * @param mixed $httpMethods
      * @return RouteInterface
      */
-    public function add(string $pattern, $paths = null, $httpMethods = null): RouteInterface {}
+    public function add(string $pattern, $paths = null, $httpMethods = null): RouteInterface
+    {
+    }
 
     /**
      * Adds a route to the router that only match if the HTTP method is CONNECT
@@ -105,7 +109,9 @@ class Group implements GroupInterface
      * @param string|array $paths
      * @return RouteInterface
      */
-    public function addConnect(string $pattern, $paths = null): RouteInterface {}
+    public function addConnect(string $pattern, $paths = null): RouteInterface
+    {
+    }
 
     /**
      * Adds a route to the router that only match if the HTTP method is DELETE
@@ -114,7 +120,9 @@ class Group implements GroupInterface
      * @param string|array $paths
      * @return RouteInterface
      */
-    public function addDelete(string $pattern, $paths = null): RouteInterface {}
+    public function addDelete(string $pattern, $paths = null): RouteInterface
+    {
+    }
 
     /**
      * Adds a route to the router that only match if the HTTP method is GET
@@ -123,7 +131,9 @@ class Group implements GroupInterface
      * @param string|array $paths
      * @return RouteInterface
      */
-    public function addGet(string $pattern, $paths = null): RouteInterface {}
+    public function addGet(string $pattern, $paths = null): RouteInterface
+    {
+    }
 
     /**
      * Adds a route to the router that only match if the HTTP method is HEAD
@@ -132,7 +142,9 @@ class Group implements GroupInterface
      * @param string|array $paths
      * @return RouteInterface
      */
-    public function addHead(string $pattern, $paths = null): RouteInterface {}
+    public function addHead(string $pattern, $paths = null): RouteInterface
+    {
+    }
 
     /**
      * Add a route to the router that only match if the HTTP method is OPTIONS
@@ -141,7 +153,9 @@ class Group implements GroupInterface
      * @param string|array $paths
      * @return RouteInterface
      */
-    public function addOptions(string $pattern, $paths = null): RouteInterface {}
+    public function addOptions(string $pattern, $paths = null): RouteInterface
+    {
+    }
 
     /**
      * Adds a route to the router that only match if the HTTP method is PATCH
@@ -150,7 +164,9 @@ class Group implements GroupInterface
      * @param string|array $paths
      * @return RouteInterface
      */
-    public function addPatch(string $pattern, $paths = null): RouteInterface {}
+    public function addPatch(string $pattern, $paths = null): RouteInterface
+    {
+    }
 
     /**
      * Adds a route to the router that only match if the HTTP method is POST
@@ -159,7 +175,9 @@ class Group implements GroupInterface
      * @param string|array $paths
      * @return RouteInterface
      */
-    public function addPost(string $pattern, $paths = null): RouteInterface {}
+    public function addPost(string $pattern, $paths = null): RouteInterface
+    {
+    }
 
     /**
      * Adds a route to the router that only match if the HTTP method is PURGE
@@ -168,7 +186,9 @@ class Group implements GroupInterface
      * @param string|array $paths
      * @return RouteInterface
      */
-    public function addPurge(string $pattern, $paths = null): RouteInterface {}
+    public function addPurge(string $pattern, $paths = null): RouteInterface
+    {
+    }
 
     /**
      * Adds a route to the router that only match if the HTTP method is PUT
@@ -177,7 +197,9 @@ class Group implements GroupInterface
      * @param string|array $paths
      * @return RouteInterface
      */
-    public function addPut(string $pattern, $paths = null): RouteInterface {}
+    public function addPut(string $pattern, $paths = null): RouteInterface
+    {
+    }
 
     /**
      * Adds a route to the router that only match if the HTTP method is TRACE
@@ -186,7 +208,9 @@ class Group implements GroupInterface
      * @param string|array $paths
      * @return RouteInterface
      */
-    public function addTrace(string $pattern, $paths = null): RouteInterface {}
+    public function addTrace(string $pattern, $paths = null): RouteInterface
+    {
+    }
 
     /**
      * Sets a callback that is called if the route is matched.
@@ -196,47 +220,61 @@ class Group implements GroupInterface
      * @param callable $beforeMatch
      * @return GroupInterface
      */
-    public function beforeMatch($beforeMatch): GroupInterface {}
+    public function beforeMatch($beforeMatch): GroupInterface
+    {
+    }
 
     /**
      * Removes all the pre-defined routes
      */
-    public function clear() {}
+    public function clear()
+    {
+    }
 
     /**
      * Returns the 'before match' callback if any
      *
      * @return callable
      */
-    public function getBeforeMatch() {}
+    public function getBeforeMatch()
+    {
+    }
 
     /**
      * Returns the hostname restriction
      *
      * @return string
      */
-    public function getHostname(): string {}
+    public function getHostname(): string
+    {
+    }
 
     /**
      * Returns the common paths defined for this group
      *
      * @return array|string
      */
-    public function getPaths() {}
+    public function getPaths()
+    {
+    }
 
     /**
      * Returns the common prefix for all the routes
      *
      * @return string
      */
-    public function getPrefix(): string {}
+    public function getPrefix(): string
+    {
+    }
 
     /**
      * Returns the routes added to the group
      *
      * @return array|RouteInterface[]
      */
-    public function getRoutes(): array {}
+    public function getRoutes(): array
+    {
+    }
 
     /**
      * Set a hostname restriction for all the routes in the group
@@ -244,7 +282,9 @@ class Group implements GroupInterface
      * @param string $hostname
      * @return GroupInterface
      */
-    public function setHostname(string $hostname): GroupInterface {}
+    public function setHostname(string $hostname): GroupInterface
+    {
+    }
 
     /**
      * Set common paths for all the routes in the group
@@ -252,7 +292,9 @@ class Group implements GroupInterface
      * @param mixed $paths
      * @return GroupInterface
      */
-    public function setPaths($paths): GroupInterface {}
+    public function setPaths($paths): GroupInterface
+    {
+    }
 
     /**
      * Set a common uri prefix for all the routes in this group
@@ -260,7 +302,9 @@ class Group implements GroupInterface
      * @param string $prefix
      * @return GroupInterface
      */
-    public function setPrefix(string $prefix): GroupInterface {}
+    public function setPrefix(string $prefix): GroupInterface
+    {
+    }
 
     /**
      * Adds a route applying the common attributes
@@ -270,6 +314,7 @@ class Group implements GroupInterface
      * @param mixed $httpMethods
      * @return RouteInterface
      */
-    protected function addRoute(string $pattern, $paths = null, $httpMethods = null): RouteInterface {}
-
+    protected function addRoute(string $pattern, $paths = null, $httpMethods = null): RouteInterface
+    {
+    }
 }

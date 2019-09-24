@@ -31,7 +31,9 @@ class TagFactory extends AbstractFactory
      * @param \Phalcon\Escaper\EscaperInterface $escaper
      * @param array $services
      */
-    public function __construct(\Phalcon\Escaper\EscaperInterface $escaper, array $services = array()) {}
+    public function __construct(\Phalcon\Escaper\EscaperInterface $escaper, array $services = array())
+    {
+    }
 
     /**
      * @param string name
@@ -40,11 +42,14 @@ class TagFactory extends AbstractFactory
      * @param string $name
      * @return mixed
      */
-    public function newInstance(string $name) {}
+    public function newInstance(string $name)
+    {
+    }
 
     /**
      * @return array
      */
-    protected function getAdapters(): array {}
-
+    protected function getAdapters(): array
+    {
+    }
 }

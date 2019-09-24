@@ -25,6 +25,7 @@ class Exception extends \Exception implements Throwable
      * @param string $service
      * @return string
      */
-    public static function containerServiceNotFound(string $service): string {}
-
+    public static function containerServiceNotFound(string $service): string
+    {
+    }
 }

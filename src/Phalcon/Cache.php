@@ -33,21 +33,27 @@ class Cache implements CacheInterface
      *
      * @return AdapterInterface
      */
-    public function getAdapter() {}
+    public function getAdapter()
+    {
+    }
 
     /**
      * Constructor.
      *
      * @param AdapterInterface $adapter The cache adapter
      */
-    public function __construct(\Phalcon\Cache\Adapter\AdapterInterface $adapter) {}
+    public function __construct(\Phalcon\Cache\Adapter\AdapterInterface $adapter)
+    {
+    }
 
     /**
      * Wipes clean the entire cache's keys.
      *
      * @return bool
      */
-    public function clear(): bool {}
+    public function clear(): bool
+    {
+    }
 
     /**
      * Delete an item from the cache by its unique key.
@@ -60,7 +66,9 @@ class Cache implements CacheInterface
      * @param mixed $key
      * @return bool
      */
-    public function delete($key): bool {}
+    public function delete($key): bool
+    {
+    }
 
     /**
      * Deletes multiple cache items in a single operation.
@@ -73,7 +81,9 @@ class Cache implements CacheInterface
      * @param mixed $keys
      * @return bool
      */
-    public function deleteMultiple($keys): bool {}
+    public function deleteMultiple($keys): bool
+    {
+    }
 
     /**
      * Fetches a value from the cache.
@@ -87,7 +97,9 @@ class Cache implements CacheInterface
      * @param mixed $defaultValue
      * @return mixed
      */
-    public function get($key, $defaultValue = null) {}
+    public function get($key, $defaultValue = null)
+    {
+    }
 
     /**
      * Obtains multiple cache items by their unique keys.
@@ -101,7 +113,9 @@ class Cache implements CacheInterface
      * @param mixed $defaultValue
      * @return mixed
      */
-    public function getMultiple($keys, $defaultValue = null) {}
+    public function getMultiple($keys, $defaultValue = null)
+    {
+    }
 
     /**
      * Determines whether an item is present in the cache.
@@ -114,7 +128,9 @@ class Cache implements CacheInterface
      * @param mixed $key
      * @return bool
      */
-    public function has($key): bool {}
+    public function has($key): bool
+    {
+    }
 
     /**
      * Persists data in the cache, uniquely referenced by a key with an optional expiration TTL time.
@@ -131,7 +147,9 @@ class Cache implements CacheInterface
      * @param mixed $ttl
      * @return bool
      */
-    public function set($key, $value, $ttl = null): bool {}
+    public function set($key, $value, $ttl = null): bool
+    {
+    }
 
     /**
      * Persists a set of key => value pairs in the cache, with an optional TTL.
@@ -147,20 +165,25 @@ class Cache implements CacheInterface
      * @param mixed $ttl
      * @return bool
      */
-    public function setMultiple($values, $ttl = null): bool {}
+    public function setMultiple($values, $ttl = null): bool
+    {
+    }
 
     /**
      * Checks the key. If it contains invalid characters an exception is thrown
      *
      * @param mixed $key
      */
-    protected function checkKey($key) {}
+    protected function checkKey($key)
+    {
+    }
 
     /**
      * Checks the key. If it contains invalid characters an exception is thrown
      *
      * @param mixed $keys
      */
-    protected function checkKeys($keys) {}
-
+    protected function checkKeys($keys)
+    {
+    }
 }

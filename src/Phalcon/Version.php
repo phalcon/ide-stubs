@@ -84,7 +84,9 @@ class Version
      *
      * @return array
      */
-    protected static function _getVersion(): array {}
+    protected static function _getVersion(): array
+    {
+    }
 
     /**
      * Translates a number to a special release.
@@ -92,7 +94,9 @@ class Version
      * @param int $special
      * @return string
      */
-    protected final static function _getSpecial(int $special): string {}
+    final protected static function _getSpecial(int $special): string
+    {
+    }
 
     /**
      * Returns the active version (string)
@@ -103,7 +107,9 @@ class Version
      *
      * @return string
      */
-    public static function get(): string {}
+    public static function get(): string
+    {
+    }
 
     /**
      * Returns the numeric active version
@@ -114,7 +120,9 @@ class Version
      *
      * @return string
      */
-    public static function getId(): string {}
+    public static function getId(): string
+    {
+    }
 
     /**
      * Returns a specific part of the version. If the wrong parameter is passed
@@ -129,6 +137,7 @@ class Version
      * @param int $part
      * @return string
      */
-    public static function getPart(int $part): string {}
-
+    public static function getPart(int $part): string
+    {
+    }
 }

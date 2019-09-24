@@ -34,7 +34,9 @@ final class StreamFactory implements StreamFactoryInterface
      * @param string $content
      * @return \Psr\Http\Message\StreamInterface
      */
-    public function createStream(string $content = ''): StreamInterface {}
+    public function createStream(string $content = ''): StreamInterface
+    {
+    }
 
     /**
      * Create a stream from an existing file.
@@ -53,7 +55,9 @@ final class StreamFactory implements StreamFactoryInterface
      * @param string $mode
      * @return \Psr\Http\Message\StreamInterface
      */
-    public function createStreamFromFile(string $filename, string $mode = 'r+b'): StreamInterface {}
+    public function createStreamFromFile(string $filename, string $mode = 'r+b'): StreamInterface
+    {
+    }
 
     /**
      * Create a new stream from an existing resource.
@@ -63,6 +67,7 @@ final class StreamFactory implements StreamFactoryInterface
      * @param mixed $phpResource
      * @return \Psr\Http\Message\StreamInterface
      */
-    public function createStreamFromResource($phpResource): StreamInterface {}
-
+    public function createStreamFromResource($phpResource): StreamInterface
+    {
+    }
 }

@@ -27,7 +27,9 @@ abstract class Select
      * @param array $data
      * @return string
      */
-    public static function selectField($parameters, $data = null): string {}
+    public static function selectField($parameters, $data = null): string
+    {
+    }
 
     /**
      * Generate the OPTION tags based on an array
@@ -37,7 +39,9 @@ abstract class Select
      * @param string $closeOption
      * @return string
      */
-    private static function optionsFromArray(array $data, $value, string $closeOption): string {}
+    private static function optionsFromArray(array $data, $value, string $closeOption): string
+    {
+    }
 
     /**
      * Generate the OPTION tags based on a resultset
@@ -48,6 +52,7 @@ abstract class Select
      * @param string $closeOption
      * @return string
      */
-    private static function optionsFromResultset(\Phalcon\Mvc\Model\ResultsetInterface $resultset, $using, $value, string $closeOption): string {}
-
+    private static function optionsFromResultset(\Phalcon\Mvc\Model\ResultsetInterface $resultset, $using, $value, string $closeOption): string
+    {
+    }
 }

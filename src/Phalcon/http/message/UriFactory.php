@@ -31,6 +31,7 @@ final class UriFactory implements UriFactoryInterface
      * @param string $uri
      * @return \Psr\Http\Message\UriInterface
      */
-    public function createUri(string $uri = ''): UriInterface {}
-
+    public function createUri(string $uri = ''): UriInterface
+    {
+    }
 }

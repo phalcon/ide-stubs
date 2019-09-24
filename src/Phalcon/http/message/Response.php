@@ -62,7 +62,9 @@ final class Response extends AbstractMessage implements ResponseInterface
      *
      * @return string
      */
-    public function getReasonPhrase(): string {}
+    public function getReasonPhrase(): string
+    {
+    }
 
     /**
      * Gets the response status code.
@@ -72,7 +74,9 @@ final class Response extends AbstractMessage implements ResponseInterface
      *
      * @return int
      */
-    public function getStatusCode(): int {}
+    public function getStatusCode(): int
+    {
+    }
 
     /**
      * Response constructor.
@@ -81,7 +85,9 @@ final class Response extends AbstractMessage implements ResponseInterface
      * @param int $code
      * @param array $headers
      */
-    public function __construct($body = 'php://memory', int $code = 200, array $headers = array()) {}
+    public function __construct($body = 'php://memory', int $code = 200, array $headers = array())
+    {
+    }
 
     /**
      * Return an instance with the specified status code and, optionally,
@@ -104,28 +110,36 @@ final class Response extends AbstractMessage implements ResponseInterface
      * @param mixed $reasonPhrase
      * @return Response
      */
-    public function withStatus($code, $reasonPhrase = ''): Response {}
+    public function withStatus($code, $reasonPhrase = ''): Response
+    {
+    }
 
     /**
      * Checks if a code is integer or string
      *
      * @param mixed $code
      */
-    private function checkCodeType($code) {}
+    private function checkCodeType($code)
+    {
+    }
 
     /**
      * Checks if a code is integer or string
      *
      * @param int $code
      */
-    private function checkCodeValue(int $code) {}
+    private function checkCodeValue(int $code)
+    {
+    }
 
     /**
      * Returns the list of status codes available
      *
      * @return array
      */
-    private function getPhrases(): array {}
+    private function getPhrases(): array
+    {
+    }
 
     /**
      * Set a valid status code and phrase
@@ -133,6 +147,7 @@ final class Response extends AbstractMessage implements ResponseInterface
      * @param mixed $code
      * @param mixed $phrase
      */
-    private function processCode($code, $phrase = '') {}
-
+    private function processCode($code, $phrase = '')
+    {
+    }
 }

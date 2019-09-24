@@ -101,7 +101,9 @@ class Random
      * @param int $len
      * @return string
      */
-    public function base58(int $len = null): string {}
+    public function base58(int $len = null): string
+    {
+    }
 
     /**
      * Generates a random base62 string
@@ -124,7 +126,9 @@ class Random
      * @param int $len
      * @return string
      */
-    public function base62(int $len = null): string {}
+    public function base62(int $len = null): string
+    {
+    }
 
     /**
      * Generates a random base64 string
@@ -143,7 +147,9 @@ class Random
      * @param int $len
      * @return string
      */
-    public function base64(int $len = null): string {}
+    public function base64(int $len = null): string
+    {
+    }
 
     /**
      * Generates a random URL-safe base64 string
@@ -168,7 +174,9 @@ class Random
      * @param bool $padding
      * @return string
      */
-    public function base64Safe(int $len = null, bool $padding = false): string {}
+    public function base64Safe(int $len = null, bool $padding = false): string
+    {
+    }
 
     /**
      * Generates a random binary string
@@ -191,7 +199,9 @@ class Random
      * @param int $len
      * @return string
      */
-    public function bytes(int $len = 16): string {}
+    public function bytes(int $len = 16): string
+    {
+    }
 
     /**
      * Generates a random hex string
@@ -209,7 +219,9 @@ class Random
      * @param int $len
      * @return string
      */
-    public function hex(int $len = null): string {}
+    public function hex(int $len = null): string
+    {
+    }
 
     /**
      * Generates a random number between 0 and $len
@@ -226,7 +238,9 @@ class Random
      * @param int $len
      * @return int
      */
-    public function number(int $len): int {}
+    public function number(int $len): int
+    {
+    }
 
     /**
      * Generates a v4 random UUID (Universally Unique IDentifier)
@@ -251,7 +265,9 @@ class Random
      * @throws Exception If secure random number generator is not available or unexpected partial read
      * @return string
      */
-    public function uuid(): string {}
+    public function uuid(): string
+    {
+    }
 
     /**
      * Generates a random string based on the number ($base) of characters
@@ -265,6 +281,7 @@ class Random
      * @param mixed $n
      * @return string
      */
-    protected function base(string $alphabet, int $base, $n = null): string {}
-
+    protected function base(string $alphabet, int $base, $n = null): string
+    {
+    }
 }

@@ -77,7 +77,9 @@ class Application extends AbstractApplication
      * @param string $uri
      * @return bool|\Phalcon\Http\ResponseInterface
      */
-    public function handle(string $uri) {}
+    public function handle(string $uri)
+    {
+    }
 
     /**
      * Enables or disables sending cookies by each request handling
@@ -85,7 +87,9 @@ class Application extends AbstractApplication
      * @param bool $sendCookies
      * @return Application
      */
-    public function sendCookiesOnHandleRequest(bool $sendCookies): Application {}
+    public function sendCookiesOnHandleRequest(bool $sendCookies): Application
+    {
+    }
 
     /**
      * Enables or disables sending headers by each request handling
@@ -93,7 +97,9 @@ class Application extends AbstractApplication
      * @param bool $sendHeaders
      * @return Application
      */
-    public function sendHeadersOnHandleRequest(bool $sendHeaders): Application {}
+    public function sendHeadersOnHandleRequest(bool $sendHeaders): Application
+    {
+    }
 
     /**
      * By default. The view is implicitly buffering all the output
@@ -102,6 +108,7 @@ class Application extends AbstractApplication
      * @param bool $implicitView
      * @return Application
      */
-    public function useImplicitView(bool $implicitView): Application {}
-
+    public function useImplicitView(bool $implicitView): Application
+    {
+    }
 }

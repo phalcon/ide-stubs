@@ -41,5 +41,4 @@ interface StatusInterface
      * @return bool
      */
     public function success(): bool;
-
 }

@@ -154,5 +154,4 @@ interface DispatcherInterface
      * @param array $params
      */
     public function setParams(array $params);
-
 }
