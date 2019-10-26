@@ -19,5 +19,4 @@ class Cssmin implements \Phalcon\Assets\FilterInterface
     public function filter(string $content): string
     {
     }
-
 }

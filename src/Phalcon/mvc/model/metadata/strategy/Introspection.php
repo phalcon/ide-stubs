@@ -31,5 +31,4 @@ class Introspection implements \Phalcon\Mvc\Model\MetaData\Strategy\StrategyInte
     final public function getMetaData(\Phalcon\Mvc\ModelInterface $model, \Phalcon\Di\DiInterface $container): array
     {
     }
-
 }

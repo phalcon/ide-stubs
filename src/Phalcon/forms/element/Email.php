@@ -19,5 +19,4 @@ class Email extends AbstractElement
     public function render(array $attributes = array()): string
     {
     }
-
 }

@@ -92,5 +92,4 @@ abstract class AbstractAdapter implements \Phalcon\Annotations\Adapter\AdapterIn
     public function setReader(\Phalcon\Annotations\ReaderInterface $reader)
     {
     }
-
 }

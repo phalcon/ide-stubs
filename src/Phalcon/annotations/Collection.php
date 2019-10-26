@@ -129,5 +129,4 @@ class Collection implements \Iterator, \Countable
     public function valid(): bool
     {
     }
-
 }

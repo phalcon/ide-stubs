@@ -30,5 +30,4 @@ class Igbinary extends AbstractSerializer
     public function unserialize($data)
     {
     }
-
 }

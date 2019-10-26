@@ -208,5 +208,4 @@ class Gettext extends AbstractAdapter implements \ArrayAccess
     protected function prepareOptions(array $options)
     {
     }
-
 }

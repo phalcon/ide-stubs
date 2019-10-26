@@ -184,5 +184,4 @@ interface ResponseInterface
      * @return bool|ResponseInterface
      */
     public function sendHeaders();
-
 }

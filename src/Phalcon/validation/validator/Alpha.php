@@ -54,5 +54,4 @@ class Alpha extends AbstractValidator
     public function validate(\Phalcon\Validation $validation, $field): bool
     {
     }
-
 }

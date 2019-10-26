@@ -30,5 +30,4 @@ class Base64 extends AbstractSerializer
     public function unserialize($data)
     {
     }
-
 }

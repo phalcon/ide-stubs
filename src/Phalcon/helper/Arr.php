@@ -12,8 +12,8 @@ class Arr
      * Chunks an array into smaller arrays of a specified size.
      *
      * @param array $collection
-     * @param int   $size
-     * @param bool  $preserveKeys
+     * @param int $size
+     * @param bool $preserveKeys
      *
      * @return array
      */
@@ -25,7 +25,7 @@ class Arr
      * Returns the first element of the collection. If a callable is passed, the
      * element returned is the first that validates true
      *
-     * @param array    $collection
+     * @param array $collection
      * @param callable $method
      *
      * @return mixed
@@ -38,7 +38,7 @@ class Arr
      * Returns the key of the first element of the collection. If a callable
      * is passed, the element returned is the first that validates true
      *
-     * @param array    $collection
+     * @param array $collection
      * @param callable $method
      *
      * @return mixed
@@ -51,7 +51,7 @@ class Arr
      * Flattens an array up to the one level depth, unless `$deep` is set to `true`
      *
      * @param array $collection
-     * @param bool  $deep
+     * @param bool $deep
      *
      * @return array
      */
@@ -75,7 +75,7 @@ class Arr
     /**
      * Groups the elements of an array based on the passed callable
      *
-     * @param array    $collection
+     * @param array $collection
      * @param callable $method
      *
      * @return array
@@ -113,7 +113,7 @@ class Arr
      * Returns the last element of the collection. If a callable is passed, the
      * element returned is the first that validates true
      *
-     * @param array    $collection
+     * @param array $collection
      * @param callable $method
      *
      * return mixed
@@ -127,7 +127,7 @@ class Arr
      * Returns the key of the last element of the collection. If a callable is
      * passed, the element returned is the first that validates true
      *
-     * @param array    $collection
+     * @param array $collection
      * @param callable $method
      *
      * @return mixed
@@ -139,8 +139,8 @@ class Arr
     /**
      * Sorts a collection of arrays or objects by key
      *
-     * @param array  $collection
-     * @param mixed  $attribute
+     * @param array $collection
+     * @param mixed $attribute
      * @param string $order
      *
      * @return array
@@ -152,7 +152,7 @@ class Arr
     /**
      * Retrieves all of the values for a given key:
      *
-     * @param array  $collection
+     * @param array $collection
      * @param string $element
      *
      * @return array
@@ -178,7 +178,7 @@ class Arr
      * Returns a new array with n elements removed from the right.
      *
      * @param array $collection
-     * @param int   $elements
+     * @param int $elements
      *
      * @return array
      */
@@ -190,7 +190,7 @@ class Arr
      * Returns a new array with the X elements from the right
      *
      * @param array $collection
-     * @param int   $elements
+     * @param int $elements
      *
      * @return array
      */
@@ -223,7 +223,7 @@ class Arr
      * Returns true if the provided function returns true for all elements of
      * the collection, false otherwise.
      *
-     * @param array    $collection
+     * @param array $collection
      * @param callable $method
      *
      * @return bool
@@ -236,7 +236,7 @@ class Arr
      * Returns true if the provided function returns true for at least one
      * element fo the collection, false otherwise.
      *
-     * @param array    $collection
+     * @param array $collection
      * @param callable $method
      *
      * @return bool
@@ -248,7 +248,7 @@ class Arr
     /**
      * Helper method to filter the collection
      *
-     * @param array    $collection
+     * @param array $collection
      * @param callable $method
      *
      * @return array
@@ -269,5 +269,4 @@ class Arr
     final public static function whiteList(array $collection, array $whiteList): array
     {
     }
-
 }

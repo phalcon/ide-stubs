@@ -126,5 +126,4 @@ class Annotations extends AbstractAdapter
     protected function handleAnnotation($annotation, bool $access, $role)
     {
     }
-
 }

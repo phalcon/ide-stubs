@@ -141,5 +141,4 @@ class Item
     public function getTotalElapsedSeconds(): float
     {
     }
-
 }

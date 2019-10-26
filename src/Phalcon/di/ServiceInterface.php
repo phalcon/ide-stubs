@@ -18,8 +18,8 @@ interface ServiceInterface
     /**
      * Returns a parameter in a specific position
      *
-     * @return array
      * @param int $position
+     * @return array
      */
     public function getParameter(int $position);
 
@@ -68,5 +68,4 @@ interface ServiceInterface
      * @param bool $shared
      */
     public function setShared(bool $shared);
-
 }

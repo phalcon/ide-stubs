@@ -57,5 +57,4 @@ class Csv extends AbstractAdapter implements \ArrayAccess
     private function load(string $file, int $length, string $delimiter, string $enclosure)
     {
     }
-
 }

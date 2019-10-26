@@ -19,5 +19,4 @@ class Anchor extends AbstractHelper
     public function __invoke(string $href, string $text, array $attributes = array()): string
     {
     }
-
 }

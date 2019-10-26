@@ -215,8 +215,8 @@ abstract class AbstractFlash extends AbstractInjectionAware implements \Phalcon\
      * ```
      *
      * @param string|array $message
-     * @return string|void
      * @param string $type
+     * @return string|void
      */
     public function outputMessage(string $type, $message)
     {
@@ -266,5 +266,4 @@ abstract class AbstractFlash extends AbstractInjectionAware implements \Phalcon\
     private function prepareHtmlMessage(string $type, string $message): string
     {
     }
-
 }

@@ -30,5 +30,4 @@ class Msgpack extends AbstractSerializer
     public function unserialize($data)
     {
     }
-
 }

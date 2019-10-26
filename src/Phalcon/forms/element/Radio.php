@@ -19,5 +19,4 @@ class Radio extends AbstractElement
     public function render(array $attributes = array()): string
     {
     }
-
 }

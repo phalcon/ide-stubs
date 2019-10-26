@@ -55,8 +55,8 @@ class Service implements \Phalcon\Di\ServiceInterface
     /**
      * Returns a parameter in a specific position
      *
-     * @return array
      * @param int $position
+     * @return array
      */
     public function getParameter(int $position)
     {
@@ -128,5 +128,4 @@ class Service implements \Phalcon\Di\ServiceInterface
     public function setSharedInstance($sharedInstance)
     {
     }
-
 }

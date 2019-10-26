@@ -69,5 +69,4 @@ interface ViewBaseInterface
      * @param string $viewsDir
      */
     public function setViewsDir(string $viewsDir);
-
 }

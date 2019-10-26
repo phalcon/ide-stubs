@@ -474,5 +474,4 @@ class Response implements \Phalcon\Http\ResponseInterface, \Phalcon\Di\Injection
     public function setRawHeader(string $header): ResponseInterface
     {
     }
-
 }

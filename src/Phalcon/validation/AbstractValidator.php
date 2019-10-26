@@ -39,9 +39,9 @@ abstract class AbstractValidator implements \Phalcon\Validation\ValidatorInterfa
     /**
      * Get the template message
      *
+     * @param string $field
      * @return string
      * @throw InvalidArgumentException When the field does not exists
-     * @param string $field
      */
     public function getTemplate(string $field = null): string
     {
@@ -59,8 +59,8 @@ abstract class AbstractValidator implements \Phalcon\Validation\ValidatorInterfa
     /**
      * Clear current templates and set new from an array,
      *
-     * @return ValidatorInterface
      * @param array $templates
+     * @return ValidatorInterface
      */
     public function setTemplates(array $templates): ValidatorInterface
     {
@@ -69,8 +69,8 @@ abstract class AbstractValidator implements \Phalcon\Validation\ValidatorInterfa
     /**
      * Set a new template message
      *
-     * @return ValidatorInterface
      * @param string $template
+     * @return ValidatorInterface
      */
     public function setTemplate(string $template): ValidatorInterface
     {
@@ -141,15 +141,14 @@ abstract class AbstractValidator implements \Phalcon\Validation\ValidatorInterfa
     /**
      * Create a default message by factory
      *
-     * @return Message
-     *
-     * @throw Exception
      * @param \Phalcon\Validation $validation
      * @param mixed $field
      * @param array $replacements
+     * @return Message
+     *
+     * @throw Exception
      */
     public function messageFactory(\Phalcon\Validation $validation, $field, array $replacements = array()): Message
     {
     }
-
 }

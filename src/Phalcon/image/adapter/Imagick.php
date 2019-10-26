@@ -21,10 +21,10 @@ namespace Phalcon\Image\Adapter;
 class Imagick extends AbstractAdapter
 {
 
-    static protected $checked = false;
+    protected static $checked = false;
 
 
-    static protected $version = 0;
+    protected static $version = 0;
 
 
     /**
@@ -120,8 +120,8 @@ class Imagick extends AbstractAdapter
      * This method scales the images using liquid rescaling method. Only support
      * Imagick
      *
-     * @param int $width   new width
-     * @param int $height  new height
+     * @param int $width new width
+     * @param int $height new height
      * @param int $deltaX How much the seam can traverse on x-axis. Passing 0 causes the seams to be straight.
      * @param int $rigidity Introduces a bias for non-straight seams. This parameter is typically 0.
      */
@@ -235,5 +235,4 @@ class Imagick extends AbstractAdapter
     protected function processWatermark(AdapterInterface $image, int $offsetX, int $offsetY, int $opacity)
     {
     }
-
 }

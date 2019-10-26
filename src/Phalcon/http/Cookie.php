@@ -238,10 +238,10 @@ class Cookie extends AbstractInjectionAware implements \Phalcon\Http\CookieInter
      *
      * Use NULL to disable cookie signing.
      *
-     * @see \Phalcon\Security\Random
-     * @throws \Phalcon\Http\Cookie\Exception
      * @param string $signKey
      * @return CookieInterface
+     * @throws \Phalcon\Http\Cookie\Exception
+     * @see \Phalcon\Security\Random
      */
     public function setSignKey(string $signKey = null): CookieInterface
     {
@@ -270,11 +270,10 @@ class Cookie extends AbstractInjectionAware implements \Phalcon\Http\CookieInter
     /**
      * Assert the cookie's key is enough long.
      *
-     * @throws \Phalcon\Http\Cookie\Exception
      * @param string $signKey
+     * @throws \Phalcon\Http\Cookie\Exception
      */
     protected function assertSignKeyIsLongEnough(string $signKey)
     {
     }
-
 }

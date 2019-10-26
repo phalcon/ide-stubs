@@ -51,5 +51,4 @@ interface DispatcherInterface extends \Phalcon\Dispatcher\DispatcherInterface
      * @param string $controllerName
      */
     public function setDefaultController(string $controllerName);
-
 }

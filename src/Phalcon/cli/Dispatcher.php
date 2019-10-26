@@ -80,9 +80,9 @@ class Dispatcher extends \Phalcon\Dispatcher\AbstractDispatcher implements \Phal
     /**
      * Gets an option by its name or numeric index
      *
-     * @param  mixed $option
-     * @param  string|array $filters
-     * @param  mixed $defaultValue
+     * @param mixed $option
+     * @param string|array $filters
+     * @param mixed $defaultValue
      * @return mixed
      */
     public function getOption($option, $filters = null, $defaultValue = null)
@@ -180,5 +180,4 @@ class Dispatcher extends \Phalcon\Dispatcher\AbstractDispatcher implements \Phal
     protected function throwDispatchException(string $message, int $exceptionCode = 0)
     {
     }
-
 }

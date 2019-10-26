@@ -24,5 +24,4 @@ abstract class AbstractRequestHandler implements \Psr\Http\Server\RequestHandler
      * @return \Psr\Http\Message\ResponseInterface
      */
     abstract public function handle(\Psr\Http\Message\ServerRequestInterface $request): ResponseInterface;
-
 }

@@ -443,5 +443,4 @@ class Memory extends AbstractAdapter
     private function canAccess(string $roleName, string $componentName, string $access)
     {
     }
-
 }

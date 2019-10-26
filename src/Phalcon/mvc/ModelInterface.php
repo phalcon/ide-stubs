@@ -58,10 +58,10 @@ interface ModelInterface
      *
      * @param \Phalcon\Mvc\Model $base
      * @param array $columnMap
-     * @return \Phalcon\Mvc\Model result
      * @param array $data
      * @param int $dirtyState
      * @param bool $keepSnapshots
+     * @return \Phalcon\Mvc\Model result
      */
     public static function cloneResultMap($base, array $data, $columnMap, int $dirtyState = 0, bool $keepSnapshots = null): ModelInterface;
 
@@ -181,8 +181,8 @@ interface ModelInterface
      * Returns related records based on defined relations
      *
      * @param array $arguments
-     * @return \Phalcon\Mvc\Model\Resultset\Simple|Phalcon\Mvc\Model\Resultset\Simple|false
      * @param string $alias
+     * @return \Phalcon\Mvc\Model\Resultset\Simple|Phalcon\Mvc\Model\Resultset\Simple|false
      */
     public function getRelated(string $alias, $arguments = null);
 
@@ -332,5 +332,4 @@ interface ModelInterface
      * @return bool
      */
     public function update(): bool;
-
 }

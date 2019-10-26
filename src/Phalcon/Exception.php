@@ -17,5 +17,4 @@ class Exception extends \Exception implements \Throwable
     public static function containerServiceNotFound(string $service): string
     {
     }
-
 }

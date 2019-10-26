@@ -343,5 +343,4 @@ interface BuilderInterface
      * @return BuilderInterface
      */
     public function where(string $conditions, array $bindParams = array(), array $bindTypes = array()): BuilderInterface;
-
 }

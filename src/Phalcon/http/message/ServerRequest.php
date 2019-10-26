@@ -165,16 +165,16 @@ final class ServerRequest extends AbstractRequest implements \Psr\Http\Message\S
     /**
      * ServerRequest constructor.
      *
-     * @param string                   $method
+     * @param string $method
      * @param UriInterface|string|null $uri
-     * @param array                    $serverParams
-     * @param StreamInterface|string   $body
-     * @param array                    $headers
-     * @param array                    $cookies
-     * @param array                    $queryParams
-     * @param array                    $uploadFiles
-     * @param null|array|object        $parsedBody
-     * @param string                   $protocol
+     * @param array $serverParams
+     * @param StreamInterface|string $body
+     * @param array $headers
+     * @param array $cookies
+     * @param array $queryParams
+     * @param array $uploadFiles
+     * @param null|array|object $parsedBody
+     * @param string $protocol
      */
     public function __construct(string $method = 'GET', $uri = null, array $serverParams = array(), $body = 'php://input', $headers = array(), array $cookies = array(), array $queryParams = array(), array $uploadFiles = array(), $parsedBody = null, string $protocol = '1.1')
     {
@@ -190,8 +190,8 @@ final class ServerRequest extends AbstractRequest implements \Psr\Http\Message\S
      * This method obviates the need for a hasAttribute() method, as it allows
      * specifying a default value to return if the attribute is not found.
      *
-     * @param string        $name
-     * @param mixed|null    $defaultValue
+     * @param string $name
+     * @param mixed|null $defaultValue
      *
      * @return mixed
      */
@@ -225,7 +225,7 @@ final class ServerRequest extends AbstractRequest implements \Psr\Http\Message\S
      * updated attribute.
      *
      * @param string $name
-     * @param mixed  $value
+     * @param mixed $value
      *
      * @return ServerRequest
      */
@@ -356,5 +356,4 @@ final class ServerRequest extends AbstractRequest implements \Psr\Http\Message\S
     private function checkUploadedFiles(array $files)
     {
     }
-
 }

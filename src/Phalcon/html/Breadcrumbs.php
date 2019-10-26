@@ -118,5 +118,4 @@ class Breadcrumbs
     public function toArray(): array
     {
     }
-
 }

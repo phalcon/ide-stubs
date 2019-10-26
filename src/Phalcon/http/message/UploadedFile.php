@@ -156,10 +156,10 @@ final class UploadedFile implements \Psr\Http\Message\UploadedFileInterface
      * UploadedFile constructor.
      *
      * @param StreamInterface|string|null $stream
-     * @param int|null                    $size
-     * @param int                         $error
-     * @param string|null                 $clientFilename
-     * @param string|null                 $clientMediaType
+     * @param int|null $size
+     * @param int $error
+     * @param string|null $clientFilename
+     * @param string|null $clientMediaType
      */
     public function __construct($stream, int $size = null, int $error = 0, string $clientFilename = null, string $clientMediaType = null)
     {
@@ -235,7 +235,7 @@ final class UploadedFile implements \Psr\Http\Message\UploadedFileInterface
      * Checks the passed error code and if not in the range throws an exception
      *
      * @param StreamInterface|resource|string $stream
-     * @param int                             $error
+     * @param int $error
      */
     private function checkStream($stream, int $error)
     {
@@ -260,5 +260,4 @@ final class UploadedFile implements \Psr\Http\Message\UploadedFileInterface
     private function storeFile(string $targetPath)
     {
     }
-
 }

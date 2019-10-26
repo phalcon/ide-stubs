@@ -138,7 +138,7 @@ class Query implements \Phalcon\Mvc\Model\QueryInterface, \Phalcon\Di\InjectionA
     protected $uniqueRow;
 
 
-    static protected $_irPhqlCache;
+    protected static $_irPhqlCache;
 
     /**
      * TransactionInterface so that the query can wrap a transaction
@@ -276,9 +276,9 @@ class Query implements \Phalcon\Mvc\Model\QueryInterface, \Phalcon\Di\InjectionA
     /**
      * Resolves a table in a SELECT statement checking if the model exists
      *
-     * @return string
      * @param \Phalcon\Mvc\Model\ManagerInterface $manager
      * @param array $qualifiedName
+     * @return string
      */
     final protected function _getTable(\Phalcon\Mvc\Model\ManagerInterface $manager, array $qualifiedName)
     {
@@ -504,9 +504,9 @@ class Query implements \Phalcon\Mvc\Model\QueryInterface, \Phalcon\Di\InjectionA
     /**
      * Executes a parsed PHQL statement
      *
-     * @return mixed
      * @param array $bindParams
      * @param array $bindTypes
+     * @return mixed
      */
     public function execute(array $bindParams = array(), array $bindTypes = array())
     {
@@ -684,5 +684,4 @@ class Query implements \Phalcon\Mvc\Model\QueryInterface, \Phalcon\Di\InjectionA
     public function setTransaction(\Phalcon\Mvc\Model\TransactionInterface $transaction): QueryInterface
     {
     }
-
 }

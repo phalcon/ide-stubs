@@ -40,5 +40,4 @@ class ValidatorFactory extends AbstractFactory
     protected function getAdapters(): array
     {
     }
-
 }

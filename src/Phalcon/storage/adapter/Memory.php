@@ -43,7 +43,7 @@ class Memory extends AbstractAdapter
      * Decrements a stored number
      *
      * @param string $key
-     * @param int    $value
+     * @param int $value
      *
      * @return bool|int
      */
@@ -65,7 +65,7 @@ class Memory extends AbstractAdapter
     /**
      * Reads data from the adapter
      *
-     * @param string     $key
+     * @param string $key
      * @param mixed|null $defaultValue
      *
      * @return mixed
@@ -108,7 +108,7 @@ class Memory extends AbstractAdapter
      * Increments a stored number
      *
      * @param string $key
-     * @param int    $value
+     * @param int $value
      *
      * @return bool|int
      */
@@ -120,13 +120,12 @@ class Memory extends AbstractAdapter
      * Stores data in the adapter
      *
      * @param string $key
-     * @param mixed  $value
-     * @param null   $ttl
+     * @param mixed $value
+     * @param null $ttl
      *
      * @return bool
      */
     public function set(string $key, $value, $ttl = null): bool
     {
     }
-
 }

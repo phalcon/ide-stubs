@@ -49,5 +49,4 @@ interface WriteableInterface
      * @return \Phalcon\Domain\Payload\PayloadInterface
      */
     public function setExtras($extras): PayloadInterface;
-
 }

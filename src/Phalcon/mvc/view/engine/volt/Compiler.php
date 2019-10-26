@@ -232,10 +232,10 @@ class Compiler implements \Phalcon\Di\InjectionAwareInterface
      * );
      * ```
      *
-     * @return string|array
      * @param string $path
      * @param string $compiledPath
      * @param bool $extendsMode
+     * @return string|array
      */
     public function compileFile(string $path, string $compiledPath, bool $extendsMode = false)
     {
@@ -353,8 +353,8 @@ class Compiler implements \Phalcon\Di\InjectionAwareInterface
      * Fires an event to registered extensions
      *
      * @param array $arguments
-     * @return mixed
      * @param string $name
+     * @return mixed
      */
     final public function fireExtensionEvent(string $name, $arguments = null)
     {
@@ -418,8 +418,8 @@ class Compiler implements \Phalcon\Di\InjectionAwareInterface
     /**
      * Returns a compiler's option
      *
-     * @return string
      * @param string $option
+     * @return string
      */
     public function getOption(string $option)
     {
@@ -462,8 +462,8 @@ class Compiler implements \Phalcon\Di\InjectionAwareInterface
      * );
      * ```
      *
-     * @return array
      * @param string $viewCode
+     * @return array
      */
     public function parse(string $viewCode)
     {
@@ -569,5 +569,4 @@ class Compiler implements \Phalcon\Di\InjectionAwareInterface
     final protected function statementListOrExtends($statements)
     {
     }
-
 }

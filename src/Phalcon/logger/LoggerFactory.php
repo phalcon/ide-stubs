@@ -38,12 +38,11 @@ class LoggerFactory
      * Returns a Logger object
      *
      * @param string $name
-     * @param array  $adapters
+     * @param array $adapters
      *
      * @return Logger
      */
     public function newInstance(string $name, array $adapters = array()): Logger
     {
     }
-
 }

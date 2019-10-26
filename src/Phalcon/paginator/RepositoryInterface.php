@@ -113,5 +113,4 @@ interface RepositoryInterface
      * @return RepositoryInterface
      */
     public function setProperties(array $properties): RepositoryInterface;
-
 }

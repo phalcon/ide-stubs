@@ -625,11 +625,11 @@ class Manager implements \Phalcon\Mvc\Model\ManagerInterface, \Phalcon\Di\Inject
     /**
      * Helper method to query records based on a relation definition
      *
-     * @return \Phalcon\Mvc\Model\Resultset\Simple|Phalcon\Mvc\Model\Resultset\Simple|int|false
      * @param \Phalcon\Mvc\Model\RelationInterface $relation
      * @param \Phalcon\Mvc\ModelInterface $record
      * @param mixed $parameters
      * @param string $method
+     * @return \Phalcon\Mvc\Model\Resultset\Simple|Phalcon\Mvc\Model\Resultset\Simple|int|false
      */
     public function getRelationRecords(\Phalcon\Mvc\Model\RelationInterface $relation, \Phalcon\Mvc\ModelInterface $record, $parameters = null, string $method = null)
     {
@@ -829,5 +829,4 @@ class Manager implements \Phalcon\Mvc\Model\ManagerInterface, \Phalcon\Di\Inject
     public function __destruct()
     {
     }
-
 }

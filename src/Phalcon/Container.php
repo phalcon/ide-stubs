@@ -43,5 +43,4 @@ class Container implements \Psr\Container\ContainerInterface
     public function has($name): bool
     {
     }
-
 }

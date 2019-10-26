@@ -19,5 +19,4 @@ class Syslog extends AbstractFormatter
     public function format(\Phalcon\Logger\Item $item): array
     {
     }
-
 }

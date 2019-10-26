@@ -18,5 +18,4 @@ class Button extends AbstractHelper
     public function __invoke(string $text, array $attributes = array()): string
     {
     }
-
 }

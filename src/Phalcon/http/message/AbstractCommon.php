@@ -11,7 +11,7 @@ abstract class AbstractCommon
     /**
      * Returns a new instance having set the parameter
      *
-     * @param mixed  $element
+     * @param mixed $element
      * @param string $property
      *
      * @return mixed
@@ -33,7 +33,7 @@ abstract class AbstractCommon
      * Checks the element passed; assigns it to the property and returns a
      * clone of the object back
      *
-     * @param mixed  $element
+     * @param mixed $element
      * @param string $property
      *
      * @return mixed
@@ -41,5 +41,4 @@ abstract class AbstractCommon
     final protected function processWith($element, string $property)
     {
     }
-
 }

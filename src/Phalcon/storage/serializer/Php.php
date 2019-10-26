@@ -30,5 +30,4 @@ class Php extends AbstractSerializer
     public function unserialize($data)
     {
     }
-
 }

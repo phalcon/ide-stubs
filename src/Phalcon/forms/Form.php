@@ -321,8 +321,8 @@ class Form extends Injectable implements \Countable, \Iterator, \Phalcon\Html\At
     /**
      * Sets the form's action
      *
-     * @return Form
      * @param string $action
+     * @return Form
      */
     public function setAction(string $action): Form
     {
@@ -377,5 +377,4 @@ class Form extends Injectable implements \Countable, \Iterator, \Phalcon\Html\At
     public function valid(): bool
     {
     }
-
 }

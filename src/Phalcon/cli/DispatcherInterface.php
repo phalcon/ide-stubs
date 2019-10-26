@@ -70,5 +70,4 @@ interface DispatcherInterface extends \Phalcon\Dispatcher\DispatcherInterface
      * @param string $taskSuffix
      */
     public function setTaskSuffix(string $taskSuffix);
-
 }

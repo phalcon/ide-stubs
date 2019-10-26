@@ -39,5 +39,4 @@ interface AdapterInterface
      * @param int $limit
      */
     public function setLimit(int $limit);
-
 }

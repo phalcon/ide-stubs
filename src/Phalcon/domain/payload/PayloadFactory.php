@@ -16,5 +16,4 @@ class PayloadFactory
     public function newInstance(): PayloadInterface
     {
     }
-
 }

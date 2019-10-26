@@ -233,5 +233,4 @@ class Collection implements \Phalcon\Mvc\Micro\CollectionInterface
     protected function addMap($method, string $routePattern, $handler, string $name)
     {
     }
-
 }

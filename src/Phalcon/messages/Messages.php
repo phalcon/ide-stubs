@@ -190,5 +190,4 @@ class Messages implements \ArrayAccess, \Countable, \Iterator, \JsonSerializable
     public function valid(): bool
     {
     }
-
 }

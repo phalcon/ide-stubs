@@ -146,7 +146,7 @@ abstract class AbstractRequest extends AbstractMessage
      * @see http://tools.ietf.org/html/rfc3986#section-4.3
      *
      * @param UriInterface $uri
-     * @param bool         $preserveHost
+     * @param bool $preserveHost
      *
      * @return object
      */
@@ -175,5 +175,4 @@ abstract class AbstractRequest extends AbstractMessage
     final protected function processUri($uri): UriInterface
     {
     }
-
 }

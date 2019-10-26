@@ -59,5 +59,4 @@ interface AssetInterface
      * @return AssetInterface
      */
     public function setType(string $type): AssetInterface;
-
 }

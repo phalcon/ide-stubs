@@ -80,5 +80,4 @@ abstract class Injectable implements \Phalcon\Di\InjectionAwareInterface
     public function setDI(\Phalcon\Di\DiInterface $container)
     {
     }
-
 }

@@ -169,13 +169,13 @@ abstract class AbstractMessage extends AbstractCommon
      * immutability of the message, and MUST return an instance that has the
      * new header and/or value.
      *
-     * @param string          $name
+     * @param string $name
      * @param string|string[] $value
      *
-     * @return self
      * @param mixed $value
      * @param string|string  [] $value
      *
+     * @return self
      */
     public function withAddedHeader($name, $value)
     {
@@ -211,14 +211,14 @@ abstract class AbstractMessage extends AbstractCommon
      * immutability of the message, and MUST return an instance that has the
      * new and/or updated header and value.
      *
-     * @param string          $name
+     * @param string $name
      * @param string|string[] $value
-     *
-     * @return self
-     * @throws InvalidArgumentException for invalid header names or values.
      *
      * @param mixed $value
      * @param string|string  [] $value
+     *
+     * @return self
+     * @throws InvalidArgumentException for invalid header names or values.
      *
      */
     public function withHeader($name, $value)
@@ -369,7 +369,7 @@ abstract class AbstractMessage extends AbstractCommon
      * Set a valid stream
      *
      * @param StreamInterface|resource|string $body
-     * @param string                          $mode
+     * @param string $mode
      *
      * @return StreamInterface
      */
@@ -397,5 +397,4 @@ abstract class AbstractMessage extends AbstractCommon
     final protected function processProtocol($protocol = ''): string
     {
     }
-
 }

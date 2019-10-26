@@ -317,7 +317,7 @@ final class Uri extends AbstractCommon implements \Psr\Http\Message\UriInterface
     /**
      * Return an instance with the specified user information.
      *
-     * @param string      $user
+     * @param string $user
      * @param string|null $password
      *
      * @return Uri
@@ -465,5 +465,4 @@ final class Uri extends AbstractCommon implements \Psr\Http\Message\UriInterface
     private function splitQueryValue(string $element): array
     {
     }
-
 }

@@ -38,7 +38,7 @@ class Str
      * ```
      *
      * @param string $text
-     * @param mixed  $delimiter
+     * @param mixed $delimiter
      *
      * @return string
      */
@@ -67,9 +67,9 @@ class Str
      * @param string $b
      * @param string ...N
      *
-     * @return string
      * @param string  ...N
      *
+     * @return string
      */
     final public static function concat(): string
     {
@@ -81,8 +81,8 @@ class Str
      *
      * @param string $string
      *
-     * @return int
      * @param string $text
+     * @return int
      */
     final public static function countVowels(string $text): int
     {
@@ -94,11 +94,11 @@ class Str
      * string intact, or set it to true to convert to uppercase.
      *
      * @param string $string
-     * @param bool   $upperRest
+     * @param bool $upperRest
      * @param string $encoding
      *
-     * @return string
      * @param string $text
+     * @return string
      */
     final public static function decapitalize(string $text, bool $upperRest = false, string $encoding = 'UTF-8'): string
     {
@@ -187,7 +187,7 @@ class Str
      *
      * @param string $text
      * @param string $end
-     * @param bool   $ignoreCase
+     * @param bool $ignoreCase
      *
      * @return bool
      */
@@ -374,7 +374,7 @@ class Str
      *
      * @param string $text
      * @param string $start
-     * @param bool   $ignoreCase
+     * @param bool $ignoreCase
      *
      * @return bool
      */
@@ -393,7 +393,7 @@ class Str
      * ```
      *
      * @param string $text
-     * @param mixed  $delimiter
+     * @param mixed $delimiter
      *
      * @return string
      */
@@ -435,5 +435,4 @@ class Str
     final public static function upper(string $text, string $encoding = 'UTF-8'): string
     {
     }
-
 }

@@ -279,5 +279,4 @@ class Loader implements \Phalcon\Events\EventsAwareInterface
     protected function prepareNamespace(array $namespaceName): array
     {
     }
-
 }

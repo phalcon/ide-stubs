@@ -133,7 +133,6 @@ class View extends Injectable implements \Phalcon\Mvc\ViewInterface, \Phalcon\Ev
     protected $viewParams = array();
 
 
-
     public function getCurrentRenderLevel()
     {
     }
@@ -813,5 +812,4 @@ class View extends Injectable implements \Phalcon\Mvc\ViewInterface, \Phalcon\Ev
     public function processRender(string $controllerName, string $actionName, array $params = array(), bool $fireEvents = true): bool
     {
     }
-
 }

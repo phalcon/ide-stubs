@@ -42,5 +42,4 @@ class Failed extends Exception
     public function getRecordMessages(): array
     {
     }
-
 }

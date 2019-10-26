@@ -60,5 +60,4 @@ class NativeArray extends AbstractAdapter implements \ArrayAccess
     public function query(string $index, array $placeholders = array()): string
     {
     }
-
 }

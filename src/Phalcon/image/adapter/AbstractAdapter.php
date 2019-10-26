@@ -12,7 +12,7 @@ use Phalcon\Image\Enum;
 abstract class AbstractAdapter implements \Phalcon\Image\Adapter\AdapterInterface
 {
 
-    static protected $checked = false;
+    protected static $checked = false;
 
 
     protected $file;
@@ -150,8 +150,8 @@ abstract class AbstractAdapter implements \Phalcon\Image\Adapter\AdapterInterfac
      * This method scales the images using liquid rescaling method. Only support
      * Imagick
      *
-     * @param int $width   new width
-     * @param int $height  new height
+     * @param int $width new width
+     * @param int $height new height
      * @param int $deltaX How much the seam can traverse on x-axis. Passing 0 causes the seams to be straight.
      * @param int $rigidity Introduces a bias for non-straight seams. This parameter is typically 0.
      * @return AbstractAdapter
@@ -274,5 +274,4 @@ abstract class AbstractAdapter implements \Phalcon\Image\Adapter\AdapterInterfac
     public function watermark(AdapterInterface $watermark, int $offsetX = 0, int $offsetY = 0, int $opacity = 100): AdapterInterface
     {
     }
-
 }

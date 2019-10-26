@@ -27,8 +27,8 @@ abstract class Behavior implements \Phalcon\Mvc\Model\BehaviorInterface
     /**
      * Returns the behavior options related to an event
      *
-     * @return array
      * @param string $eventName
+     * @return array
      */
     protected function getOptions(string $eventName = null)
     {
@@ -64,5 +64,4 @@ abstract class Behavior implements \Phalcon\Mvc\Model\BehaviorInterface
     public function notify(string $type, \Phalcon\Mvc\ModelInterface $model)
     {
     }
-
 }

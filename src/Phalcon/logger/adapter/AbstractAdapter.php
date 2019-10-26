@@ -119,5 +119,4 @@ abstract class AbstractAdapter implements \Phalcon\Logger\Adapter\AdapterInterfa
     public function setFormatter(\Phalcon\Logger\Formatter\FormatterInterface $formatter): AdapterInterface
     {
     }
-
 }

@@ -42,9 +42,9 @@ interface ManagerInterface
      *
      * @param object $source
      * @param mixed $data
-     * @return mixed
      * @param string $eventType
      * @param bool $cancelable
+     * @return mixed
      */
     public function fire(string $eventType, $source, $data = null, bool $cancelable = true);
 
@@ -63,5 +63,4 @@ interface ManagerInterface
      * @return bool
      */
     public function hasListeners(string $type): bool;
-
 }

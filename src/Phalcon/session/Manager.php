@@ -210,9 +210,9 @@ class Manager extends AbstractInjectionAware implements \Phalcon\Session\Manager
      * and do not allow poop names
      *
      * @param string $name *
+     * @return Manager
      * @throws InvalidArgumentException
      *
-     * @return Manager
      */
     public function setName(string $name): ManagerInterface
     {
@@ -255,5 +255,4 @@ class Manager extends AbstractInjectionAware implements \Phalcon\Session\Manager
     private function getUniqueKey(string $key): string
     {
     }
-
 }

@@ -16,10 +16,10 @@ interface StrategyInterface
     /**
      * Read the model's column map, this can't be inferred
      *
-     * @todo Not implemented
      * @param \Phalcon\Mvc\ModelInterface $model
      * @param \Phalcon\Di\DiInterface $container
      * @return array
+     * @todo Not implemented
      */
     public function getColumnMaps(\Phalcon\Mvc\ModelInterface $model, \Phalcon\Di\DiInterface $container): array;
 
@@ -31,5 +31,4 @@ interface StrategyInterface
      * @return array
      */
     public function getMetaData(\Phalcon\Mvc\ModelInterface $model, \Phalcon\Di\DiInterface $container): array;
-
 }

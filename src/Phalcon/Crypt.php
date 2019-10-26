@@ -156,11 +156,11 @@ class Crypt implements \Phalcon\Crypt\CryptInterface
     /**
      * Decrypt a text that is coded as a base64 string.
      *
-     * @throws \Phalcon\Crypt\Mismatch
      * @param string $text
      * @param mixed $key
      * @param bool $safe
      * @return string
+     * @throws \Phalcon\Crypt\Mismatch
      */
     public function decryptBase64(string $text, $key = null, bool $safe = false): string
     {
@@ -284,9 +284,9 @@ class Crypt implements \Phalcon\Crypt\CryptInterface
     /**
      * Set the name of hashing algorithm.
      *
-     * @throws \Phalcon\Crypt\Exception
      * @param string $hashAlgo
      * @return \Phalcon\Crypt\CryptInterface
+     * @throws \Phalcon\Crypt\Exception
      */
     public function setHashAlgo(string $hashAlgo): CryptInterface
     {
@@ -396,5 +396,4 @@ class Crypt implements \Phalcon\Crypt\CryptInterface
     protected function cryptUnpadText(string $text, string $mode, int $blockSize, int $paddingType)
     {
     }
-
 }

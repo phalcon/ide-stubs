@@ -69,8 +69,8 @@ final class Response extends AbstractMessage implements \Psr\Http\Message\Respon
      * Response constructor.
      *
      * @param string $body
-     * @param int    $code
-     * @param array  $headers
+     * @param int $code
+     * @param array $headers
      */
     public function __construct($body = 'php://memory', int $code = 200, array $headers = array())
     {
@@ -91,7 +91,7 @@ final class Response extends AbstractMessage implements \Psr\Http\Message\Respon
      * @see http://tools.ietf.org/html/rfc7231#section-6
      * @see http://www.iana.org/assignments/http-status-codes/http-status-codes.xhtml
      *
-     * @param int    $code
+     * @param int $code
      * @param string $reasonPhrase
      *
      * @return Response
@@ -136,5 +136,4 @@ final class Response extends AbstractMessage implements \Psr\Http\Message\Respon
     private function processCode($code, $phrase = '')
     {
     }
-
 }

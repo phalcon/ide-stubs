@@ -52,5 +52,4 @@ interface HeadersInterface
      * @param string $header
      */
     public function setRaw(string $header);
-
 }

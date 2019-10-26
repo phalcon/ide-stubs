@@ -23,5 +23,4 @@ abstract class AbstractFormatter implements \Phalcon\Logger\Formatter\FormatterI
     public function interpolate(string $message, $context = null)
     {
     }
-
 }

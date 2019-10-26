@@ -34,5 +34,4 @@ class Annotations implements \Phalcon\Mvc\Model\MetaData\Strategy\StrategyInterf
     final public function getMetaData(\Phalcon\Mvc\ModelInterface $model, \Phalcon\Di\DiInterface $container): array
     {
     }
-
 }

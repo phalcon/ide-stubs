@@ -16,5 +16,4 @@ class AbsInt
     public function __invoke($input)
     {
     }
-
 }

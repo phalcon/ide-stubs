@@ -153,5 +153,4 @@ class File implements \Phalcon\Http\Request\FileInterface
     public function moveTo(string $destination): bool
     {
     }
-
 }

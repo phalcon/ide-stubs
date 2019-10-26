@@ -101,5 +101,4 @@ abstract class AbstractAdapter implements \Phalcon\Translate\Adapter\AdapterInte
     protected function replacePlaceholders(string $translation, array $placeholders = array()): string
     {
     }
-
 }

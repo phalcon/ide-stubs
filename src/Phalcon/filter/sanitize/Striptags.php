@@ -16,5 +16,4 @@ class Striptags
     public function __invoke(string $input)
     {
     }
-
 }

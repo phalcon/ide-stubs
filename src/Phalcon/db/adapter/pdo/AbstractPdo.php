@@ -366,5 +366,4 @@ abstract class AbstractPdo extends AbstractAdapter
      * @return array
      */
     abstract protected function getDsnDefaults(): array;
-
 }

@@ -43,8 +43,7 @@ class Route implements \Phalcon\Mvc\Router\RouteInterface
     protected $pattern;
 
 
-    static protected $uniqueId = 0;
-
+    protected static $uniqueId = 0;
 
 
     public function getId()
@@ -364,5 +363,4 @@ class Route implements \Phalcon\Mvc\Router\RouteInterface
     public function via($httpMethods): RouteInterface
     {
     }
-
 }

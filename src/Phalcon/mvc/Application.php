@@ -102,5 +102,4 @@ class Application extends AbstractApplication
     public function useImplicitView(bool $implicitView): Application
     {
     }
-
 }

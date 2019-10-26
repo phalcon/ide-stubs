@@ -100,9 +100,9 @@ class Manager implements \Phalcon\Events\ManagerInterface
      *
      * @param object $source
      * @param mixed $data
-     * @return mixed
      * @param string $eventType
      * @param bool $cancelable
+     * @return mixed
      */
     public function fire(string $eventType, $source, $data = null, bool $cancelable = true)
     {
@@ -111,9 +111,9 @@ class Manager implements \Phalcon\Events\ManagerInterface
     /**
      * Internal handler to call a queue of events
      *
-     * @return mixed
      * @param \SplPriorityQueue $queue
      * @param EventInterface $event
+     * @return mixed
      */
     final public function fireQueue(\SplPriorityQueue $queue, EventInterface $event)
     {
@@ -158,5 +158,4 @@ class Manager implements \Phalcon\Events\ManagerInterface
     public function isCollecting(): bool
     {
     }
-
 }

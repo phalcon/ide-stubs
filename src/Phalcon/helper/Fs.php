@@ -21,5 +21,4 @@ class Fs
     final public static function basename(string $uri, $suffix = null): string
     {
     }
-
 }

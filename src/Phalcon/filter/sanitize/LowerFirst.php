@@ -16,5 +16,4 @@ class LowerFirst
     public function __invoke(string $input)
     {
     }
-
 }

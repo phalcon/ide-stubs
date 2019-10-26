@@ -50,5 +50,4 @@ abstract class AbstractSerializer implements \Phalcon\Storage\Serializer\Seriali
     public function setData($data)
     {
     }
-
 }

@@ -38,5 +38,4 @@ class NativeArray extends AbstractAdapter
     public function paginate(): RepositoryInterface
     {
     }
-
 }

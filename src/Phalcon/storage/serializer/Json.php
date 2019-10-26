@@ -30,5 +30,4 @@ class Json extends AbstractSerializer
     public function unserialize($data)
     {
     }
-
 }

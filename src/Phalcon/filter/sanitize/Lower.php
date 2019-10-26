@@ -16,5 +16,4 @@ class Lower
     public function __invoke(string $input)
     {
     }
-
 }

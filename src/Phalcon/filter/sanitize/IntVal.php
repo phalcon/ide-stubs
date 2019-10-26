@@ -16,5 +16,4 @@ class IntVal
     public function __invoke($input)
     {
     }
-
 }

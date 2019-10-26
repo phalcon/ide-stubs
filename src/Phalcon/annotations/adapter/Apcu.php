@@ -53,5 +53,4 @@ class Apcu extends AbstractAdapter
     public function write(string $key, \Phalcon\Annotations\Reflection $data): bool
     {
     }
-
 }

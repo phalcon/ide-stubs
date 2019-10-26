@@ -23,9 +23,9 @@ interface QueryInterface
     /**
      * Executes a parsed PHQL statement
      *
-     * @return mixed
      * @param array $bindParams
      * @param array $bindTypes
+     * @return mixed
      */
     public function execute(array $bindParams = array(), array $bindTypes = array());
 
@@ -114,5 +114,4 @@ interface QueryInterface
      * @return QueryInterface
      */
     public function setUniqueRow(bool $uniqueRow): QueryInterface;
-
 }

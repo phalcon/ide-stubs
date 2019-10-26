@@ -234,8 +234,8 @@ class Micro extends Injectable implements \ArrayAccess, \Phalcon\Events\EventsAw
     /**
      * Obtains a service from the DI
      *
-     * @return object
      * @param string $serviceName
+     * @return object
      */
     public function getService(string $serviceName)
     {
@@ -244,8 +244,8 @@ class Micro extends Injectable implements \ArrayAccess, \Phalcon\Events\EventsAw
     /**
      * Obtains a shared service from the DI
      *
-     * @return mixed
      * @param string $serviceName
+     * @return mixed
      */
     public function getSharedService(string $serviceName)
     {
@@ -479,5 +479,4 @@ class Micro extends Injectable implements \ArrayAccess, \Phalcon\Events\EventsAw
     public function stop()
     {
     }
-
 }

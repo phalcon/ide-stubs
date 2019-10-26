@@ -17,5 +17,4 @@ class Form extends AbstractHelper
     public function __invoke(array $attributes = array()): string
     {
     }
-
 }

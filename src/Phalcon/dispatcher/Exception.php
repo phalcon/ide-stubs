@@ -24,6 +24,4 @@ class Exception extends \Phalcon\Exception
 
 
     const EXCEPTION_NO_DI = 0;
-
-
 }

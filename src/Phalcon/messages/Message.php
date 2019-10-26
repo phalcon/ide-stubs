@@ -150,5 +150,4 @@ class Message implements \Phalcon\Messages\MessageInterface, \JsonSerializable
     public function setType(string $type): MessageInterface
     {
     }
-
 }

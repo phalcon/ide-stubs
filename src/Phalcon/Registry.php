@@ -277,5 +277,4 @@ final class Registry extends Collection
     final public function unserialize($serialized)
     {
     }
-
 }

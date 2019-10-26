@@ -351,5 +351,4 @@ class Manager extends AbstractInjectionAware
     private function getPrefixedPath(\Phalcon\Assets\Collection $collection, string $path): string
     {
     }
-
 }

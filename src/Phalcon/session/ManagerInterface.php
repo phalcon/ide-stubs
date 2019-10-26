@@ -146,9 +146,9 @@ interface ManagerInterface
      * Set the session name. Throw exception if the session has started
      * and do not allow poop names
      *
-     * @throws InvalidArgumentException
      * @param string $name
      * @return ManagerInterface
+     * @throws InvalidArgumentException
      */
     public function setName(string $name): ManagerInterface;
 
@@ -181,5 +181,4 @@ interface ManagerInterface
      * @return ManagerInterface
      */
     public function regenerateId($deleteOldSession = true): ManagerInterface;
-
 }

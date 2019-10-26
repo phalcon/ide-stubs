@@ -269,5 +269,4 @@ class Text
     public static function upper(string $text, string $encoding = 'UTF-8'): string
     {
     }
-
 }

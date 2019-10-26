@@ -66,8 +66,8 @@ class Row implements \Phalcon\Mvc\EntityInterface, \Phalcon\Mvc\Model\ResultInte
      * echo $robot->readAttribute("name");
      * ```
      *
-     * @return mixed
      * @param string $attribute
+     * @return mixed
      */
     public function readAttribute(string $attribute)
     {
@@ -105,5 +105,4 @@ class Row implements \Phalcon\Mvc\EntityInterface, \Phalcon\Mvc\Model\ResultInte
     public function writeAttribute(string $attribute, $value)
     {
     }
-
 }

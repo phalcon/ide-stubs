@@ -14,7 +14,7 @@ class Img extends \Phalcon\Html\Helper\AbstractHelper
 
     /**
      * @param string $src
-     * @param array  $attributes Any additional attributes
+     * @param array $attributes Any additional attributes
      *
      * @return string
      * @throws Exception
@@ -22,5 +22,4 @@ class Img extends \Phalcon\Html\Helper\AbstractHelper
     public function __invoke(string $src, array $attributes = array()): string
     {
     }
-
 }

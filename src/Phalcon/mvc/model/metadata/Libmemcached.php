@@ -30,5 +30,4 @@ class Libmemcached extends MetaData
     public function reset()
     {
     }
-
 }

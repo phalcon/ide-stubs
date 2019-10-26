@@ -146,8 +146,8 @@ abstract class AbstractDispatcher extends AbstractInjectionAware implements \Pha
      * );
      * ```
      *
-     * @throws \Phalcon\Exception
      * @param array $forward
+     * @throws \Phalcon\Exception
      */
     public function forward(array $forward)
     {
@@ -463,5 +463,4 @@ abstract class AbstractDispatcher extends AbstractInjectionAware implements \Pha
     protected function toCamelCase(string $input): string
     {
     }
-
 }

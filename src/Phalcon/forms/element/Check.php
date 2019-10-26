@@ -19,5 +19,4 @@ class Check extends AbstractElement
     public function render(array $attributes = array()): string
     {
     }
-
 }

@@ -191,9 +191,9 @@ class Cookies extends AbstractInjectionAware implements \Phalcon\Http\Response\C
      *
      * Use NULL to disable cookie signing.
      *
-     * @see \Phalcon\Security\Random
      * @param string $signKey
      * @return \Phalcon\Http\CookieInterface
+     * @see \Phalcon\Security\Random
      */
     public function setSignKey(string $signKey = null): CookieInterface
     {
@@ -208,5 +208,4 @@ class Cookies extends AbstractInjectionAware implements \Phalcon\Http\Response\C
     public function useEncryption(bool $useEncryption): CookiesInterface
     {
     }
-
 }

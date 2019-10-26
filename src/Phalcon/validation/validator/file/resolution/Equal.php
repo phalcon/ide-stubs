@@ -59,5 +59,4 @@ class Equal extends AbstractFile
     public function validate(\Phalcon\Validation $validation, $field): bool
     {
     }
-
 }

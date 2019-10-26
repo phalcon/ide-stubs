@@ -28,5 +28,4 @@ class ReadOnly extends Collection
     public function set(string $element, $value)
     {
     }
-
 }

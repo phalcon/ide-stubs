@@ -19,5 +19,4 @@ class Hidden extends AbstractElement
     public function render(array $attributes = array()): string
     {
     }
-
 }

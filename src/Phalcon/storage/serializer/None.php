@@ -30,5 +30,4 @@ class None extends AbstractSerializer
     public function unserialize($data)
     {
     }
-
 }

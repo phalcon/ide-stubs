@@ -232,5 +232,4 @@ class Acl extends AbstractAdapter
     protected function saveAccessInCache(string $key, bool $access)
     {
     }
-
 }

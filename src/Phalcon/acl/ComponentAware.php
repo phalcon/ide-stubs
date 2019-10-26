@@ -14,5 +14,4 @@ interface ComponentAware
      * @return string
      */
     public function getComponentName(): string;
-
 }

@@ -23,14 +23,14 @@ class ServerRequestFactory implements \Psr\Http\Message\ServerRequestFactoryInte
      * no attempt is made to determine the HTTP method or URI, which must be
      * provided explicitly.
      *
-     * @param string              $method       The HTTP method associated with
+     * @param string $method The HTTP method associated with
      *                                          the request.
-     * @param UriInterface|string $uri          The URI associated with the
+     * @param UriInterface|string $uri The URI associated with the
      *                                          request. If the value is a
      *                                          string, the factory MUST create
      *                                          a UriInterface instance based
      *                                          on it.
-     * @param array               $serverParams Array of SAPI parameters with
+     * @param array $serverParams Array of SAPI parameters with
      *                                          which to seed the generated
      *                                          request instance.
      *
@@ -46,11 +46,11 @@ class ServerRequestFactory implements \Psr\Http\Message\ServerRequestFactoryInte
      * If any argument is not supplied, the corresponding superglobal value will
      * be used.
      *
-     * @param array $server  $_SERVER superglobal
-     * @param array $get     $_GET superglobal
-     * @param array $post    $_POST superglobal
+     * @param array $server $_SERVER superglobal
+     * @param array $get $_GET superglobal
+     * @param array $post $_POST superglobal
      * @param array $cookies $_COOKIE superglobal
-     * @param array $files   $_FILES superglobal
+     * @param array $files $_FILES superglobal
      *
      * @return ServerRequest
      * @see fromServer()
@@ -155,7 +155,7 @@ class ServerRequestFactory implements \Psr\Http\Message\ServerRequestFactoryInte
      * Returns a header
      *
      * @param Collection $headers
-     * @param string     $name
+     * @param string $name
      * @param mixed|null $defaultValue
      *
      * @return mixed|string
@@ -234,5 +234,4 @@ class ServerRequestFactory implements \Psr\Http\Message\ServerRequestFactoryInte
     private function parseUri(\Phalcon\Collection $server, \Phalcon\Collection $headers): Uri
     {
     }
-
 }

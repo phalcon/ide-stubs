@@ -22,5 +22,4 @@ class SoftDelete extends Behavior
     public function notify(string $type, \Phalcon\Mvc\ModelInterface $model)
     {
     }
-
 }

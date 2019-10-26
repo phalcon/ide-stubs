@@ -12,35 +12,35 @@ interface ValidatorInterface
      * Returns an option in the validator's options
      * Returns null if the option hasn't set
      *
-     * @return mixed
      * @param string $key
      * @param mixed $defaultValue
+     * @return mixed
      */
     public function getOption(string $key, $defaultValue = null);
 
     /**
      * Checks if an option is defined
      *
-     * @return boolean
      * @param string $key
+     * @return boolean
      */
     public function hasOption(string $key): bool;
 
     /**
      * Executes the validation
      *
-     * @return boolean
      * @param \Phalcon\Validation $validation
      * @param mixed $field
+     * @return boolean
      */
     public function validate(\Phalcon\Validation $validation, $field): bool;
 
     /**
      * Get the template message
      *
+     * @param string $field
      * @return string
      * @throw InvalidArgumentException When the field does not exists
-     * @param string $field
      */
     public function getTemplate(string $field): string;
 
@@ -54,17 +54,16 @@ interface ValidatorInterface
     /**
      * Clear current template and set new from an array,
      *
-     * @return ValidatorInterface
      * @param array $templates
+     * @return ValidatorInterface
      */
     public function setTemplates(array $templates): ValidatorInterface;
 
     /**
      * Set a new temlate message
      *
-     * @return ValidatorInterface
      * @param string $template
+     * @return ValidatorInterface
      */
     public function setTemplate(string $template): ValidatorInterface;
-
 }

@@ -52,5 +52,4 @@ class RawValue
     public function __construct($value)
     {
     }
-
 }

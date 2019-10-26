@@ -195,8 +195,8 @@ class Logger implements \Psr\Log\LoggerInterface
      *
      * @param string $name The name of the adapter
      *
-     * @throws Exception
      * @return \Phalcon\Logger\Adapter\AdapterInterface
+     * @throws Exception
      */
     public function getAdapter(string $name): AdapterInterface
     {
@@ -258,8 +258,8 @@ class Logger implements \Psr\Log\LoggerInterface
      *
      * @param string $name The name of the adapter
      *
-     * @throws Logger\Exception
      * @return Logger
+     * @throws Logger\Exception
      */
     public function removeAdapter(string $name): Logger
     {
@@ -303,9 +303,9 @@ class Logger implements \Psr\Log\LoggerInterface
      *
      * @param int $level
      * @param string $message *
-     * @throws Logger\Exception
      * @param array $context
      * @return bool
+     * @throws Logger\Exception
      */
     protected function addMessage(int $level, string $message, array $context = array()): bool
     {
@@ -329,5 +329,4 @@ class Logger implements \Psr\Log\LoggerInterface
     private function getLevelNumber($level): int
     {
     }
-
 }

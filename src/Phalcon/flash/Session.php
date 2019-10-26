@@ -88,5 +88,4 @@ class Session extends AbstractFlash
     public function getSessionService(): ManagerInterface
     {
     }
-
 }

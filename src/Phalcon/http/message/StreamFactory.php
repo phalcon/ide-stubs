@@ -34,7 +34,7 @@ final class StreamFactory implements \Psr\Http\Message\StreamFactoryInterface
      *
      * @param string $filename The filename or stream URI to use as basis of
      *                         stream.
-     * @param string $mode     The mode with which to open the underlying
+     * @param string $mode The mode with which to open the underlying
      *                         filename/stream.
      *
      * @return StreamInterface
@@ -54,5 +54,4 @@ final class StreamFactory implements \Psr\Http\Message\StreamFactoryInterface
     public function createStreamFromResource($phpResource): StreamInterface
     {
     }
-
 }

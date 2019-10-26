@@ -23,7 +23,7 @@ class Stream implements \Psr\Http\Message\StreamInterface
     /**
      * Stream constructor.
      *
-     * @param mixed  $stream
+     * @param mixed $stream
      * @param string $mode
      */
     public function __construct($stream, string $mode = 'rb')
@@ -175,7 +175,7 @@ class Stream implements \Psr\Http\Message\StreamInterface
     /**
      * Sets the stream - existing instance
      *
-     * @param mixed  $stream
+     * @param mixed $stream
      * @param string $mode
      */
     public function setStream($stream, string $mode = 'rb')
@@ -229,5 +229,4 @@ class Stream implements \Psr\Http\Message\StreamInterface
     private function checkWritable()
     {
     }
-
 }

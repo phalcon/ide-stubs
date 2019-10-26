@@ -16,5 +16,4 @@ class StringVal
     public function __invoke($input)
     {
     }
-
 }

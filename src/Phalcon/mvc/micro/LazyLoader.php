@@ -16,7 +16,6 @@ class LazyLoader
     protected $definition;
 
 
-
     public function getDefinition()
     {
     }
@@ -34,12 +33,11 @@ class LazyLoader
      * Calling __call method
      *
      * @param array $arguments
-     * @return mixed
      * @param string $method
      * @param \Phalcon\Mvc\Model\BinderInterface $modelBinder
+     * @return mixed
      */
     public function callMethod(string $method, $arguments, \Phalcon\Mvc\Model\BinderInterface $modelBinder = null)
     {
     }
-
 }

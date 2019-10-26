@@ -4,13 +4,8 @@ namespace Phalcon\Firewall\Adapter;
 
 use Closure;
 use Phalcon\Acl\Enum;
-use Phalcon\Acl\RoleAware;
 use Phalcon\Cache\Adapter\AdapterInterface as CacheAdapterInterface;
-use Phalcon\Di\DiInterface;
-use Phalcon\Events\EventsAwareInterface;
 use Phalcon\Events\ManagerInterface;
-use Phalcon\Firewall\Exception;
-use Phalcon\Mvc\Dispatcher;
 
 /**
  * Adapter for Phalcon\Firewall adapters
@@ -229,5 +224,4 @@ abstract class AbstractAdapter implements \Phalcon\Firewall\Adapter\AdapterInter
     protected function throwFirewallException(string $message, int $exceptionCode = 0): bool
     {
     }
-
 }

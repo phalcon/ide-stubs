@@ -17,5 +17,4 @@ class File extends AbstractElement
     public function render(array $attributes = array()): string
     {
     }
-
 }

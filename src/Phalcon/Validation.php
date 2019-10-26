@@ -36,7 +36,6 @@ class Validation extends Injectable implements \Phalcon\Validation\ValidationInt
     protected $values;
 
 
-
     public function getData()
     {
     }
@@ -219,5 +218,4 @@ class Validation extends Injectable implements \Phalcon\Validation\ValidationInt
     protected function preChecking($field, \Phalcon\Validation\ValidatorInterface $validator): bool
     {
     }
-
 }

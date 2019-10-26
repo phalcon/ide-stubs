@@ -56,9 +56,9 @@ class Stream extends \Phalcon\Session\Adapter\Noop
     /**
      * Ignore the savePath and use local defined path
      *
-     * @return bool
      * @param mixed $savePath
      * @param mixed $sessionName
+     * @return bool
      */
     public function open($savePath, $sessionName): bool
     {
@@ -80,5 +80,4 @@ class Stream extends \Phalcon\Session\Adapter\Noop
     public function write($id, $data): bool
     {
     }
-
 }

@@ -66,7 +66,7 @@ class Di implements \Phalcon\Di\DiInterface
     /**
      * Latest DI build
      */
-    static protected $_default;
+    protected static $_default;
 
 
     /**
@@ -409,5 +409,4 @@ class Di implements \Phalcon\Di\DiInterface
     public function setShared(string $name, $definition): ServiceInterface
     {
     }
-
 }

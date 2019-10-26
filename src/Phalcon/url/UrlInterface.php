@@ -55,5 +55,4 @@ interface UrlInterface
      * @return string
      */
     public function path(string $path = null): string;
-
 }

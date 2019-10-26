@@ -143,5 +143,4 @@ class Volt extends AbstractEngine implements \Phalcon\Events\EventsAwareInterfac
     public function sort(array $value): array
     {
     }
-
 }

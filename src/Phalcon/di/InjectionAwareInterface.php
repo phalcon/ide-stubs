@@ -22,5 +22,4 @@ interface InjectionAwareInterface
      * @return \Phalcon\Di\DiInterface
      */
     public function getDI(): DiInterface;
-
 }

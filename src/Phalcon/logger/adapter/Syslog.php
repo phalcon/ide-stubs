@@ -92,5 +92,4 @@ class Syslog extends \Phalcon\Logger\Adapter\AbstractAdapter
     private function logLevelToSyslog(string $level): int
     {
     }
-
 }

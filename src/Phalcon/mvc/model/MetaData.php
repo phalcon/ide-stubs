@@ -621,5 +621,4 @@ abstract class MetaData implements \Phalcon\Di\InjectionAwareInterface, \Phalcon
     private function throwWriteException($option)
     {
     }
-
 }

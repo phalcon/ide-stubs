@@ -62,5 +62,4 @@ class Select extends AbstractElement
     public function setOptions($options): ElementInterface
     {
     }
-
 }

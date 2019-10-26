@@ -46,5 +46,4 @@ abstract class Select
     private static function optionsFromResultset(\Phalcon\Mvc\Model\ResultsetInterface $resultset, $using, $value, string $closeOption): string
     {
     }
-
 }

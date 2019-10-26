@@ -15,7 +15,7 @@ final class RequestFactory implements \Psr\Http\Message\RequestFactoryInterface
     /**
      * Create a new request.
      *
-     * @param string                   $method
+     * @param string $method
      * @param UriInterface|string|null $uri
      *
      * @return RequestInterface
@@ -23,5 +23,4 @@ final class RequestFactory implements \Psr\Http\Message\RequestFactoryInterface
     public function createRequest(string $method, $uri): RequestInterface
     {
     }
-
 }

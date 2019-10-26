@@ -35,5 +35,4 @@ class Model extends AbstractAdapter
     public function paginate(): RepositoryInterface
     {
     }
-
 }

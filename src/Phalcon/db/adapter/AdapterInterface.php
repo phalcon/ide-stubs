@@ -621,5 +621,4 @@ interface AdapterInterface
      * @return bool
      */
     public function viewExists(string $viewName, string $schemaName = null): bool;
-
 }

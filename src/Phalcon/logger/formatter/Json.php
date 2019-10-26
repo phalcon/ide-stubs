@@ -53,5 +53,4 @@ class Json extends AbstractFormatter
     public function format(\Phalcon\Logger\Item $item): string
     {
     }
-
 }

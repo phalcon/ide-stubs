@@ -194,5 +194,4 @@ class Transaction implements \Phalcon\Mvc\Model\TransactionInterface
     public function throwRollbackException(bool $status): TransactionInterface
     {
     }
-
 }

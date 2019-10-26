@@ -31,5 +31,4 @@ class Exception extends BaseException
     public function getStatement(): array
     {
     }
-
 }

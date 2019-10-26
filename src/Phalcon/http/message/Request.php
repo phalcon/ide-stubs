@@ -15,13 +15,12 @@ final class Request extends AbstractRequest implements \Psr\Http\Message\Request
     /**
      * Request constructor.
      *
-     * @param string                          $method
-     * @param UriInterface|string|null        $uri
+     * @param string $method
+     * @param UriInterface|string|null $uri
      * @param StreamInterface|resource|string $body
-     * @param array                           $headers
+     * @param array $headers
      */
     public function __construct(string $method = 'GET', $uri = null, $body = 'php://memory', $headers = array())
     {
     }
-
 }

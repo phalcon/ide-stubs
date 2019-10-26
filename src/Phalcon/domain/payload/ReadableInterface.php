@@ -42,5 +42,4 @@ interface ReadableInterface
      * @return mixed
      */
     public function getExtras();
-
 }

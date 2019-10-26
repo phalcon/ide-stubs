@@ -28,5 +28,4 @@ class Direct extends AbstractFlash
     public function output(bool $remove = true)
     {
     }
-
 }

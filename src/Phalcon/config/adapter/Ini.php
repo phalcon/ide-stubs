@@ -80,5 +80,4 @@ class Ini extends Config
     protected function parseIniString(string $path, $value): array
     {
     }
-
 }

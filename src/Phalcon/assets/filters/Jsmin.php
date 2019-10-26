@@ -20,5 +20,4 @@ class Jsmin implements \Phalcon\Assets\FilterInterface
     public function filter(string $content): string
     {
     }
-
 }

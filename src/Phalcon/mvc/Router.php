@@ -103,7 +103,6 @@ class Router extends AbstractInjectionAware implements \Phalcon\Mvc\RouterInterf
     protected $wasMatched = false;
 
 
-
     public function getKeyRouteNames()
     {
     }
@@ -565,5 +564,4 @@ class Router extends AbstractInjectionAware implements \Phalcon\Mvc\RouterInterf
     public function wasMatched(): bool
     {
     }
-
 }

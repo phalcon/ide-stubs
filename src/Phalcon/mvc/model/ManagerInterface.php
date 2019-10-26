@@ -145,11 +145,11 @@ interface ManagerInterface
     /**
      * Gets belongsTo related records from a model
      *
-     * @param string            $modelName
-     * @param string            $modelRelation
+     * @param string $modelName
+     * @param string $modelRelation
      * @param array|string|null $parameters
-     * @param ModelInterface    $record
-     * @param string|null       $method
+     * @param ModelInterface $record
+     * @param string|null $method
      * @return bool|ResultsetInterface
      */
     public function getBelongsToRecords(string $modelName, string $modelRelation, \Phalcon\Mvc\ModelInterface $record, $parameters = null, string $method = null);
@@ -165,11 +165,11 @@ interface ManagerInterface
     /**
      * Gets hasMany related records from a model
      *
-     * @param string            $modelName
-     * @param string            $modelRelation
+     * @param string $modelName
+     * @param string $modelRelation
      * @param array|string|null $parameters
-     * @param ModelInterface    $record
-     * @param string|null       $method
+     * @param ModelInterface $record
+     * @param string|null $method
      * @return bool|ResultsetInterface
      */
     public function getHasManyRecords(string $modelName, string $modelRelation, \Phalcon\Mvc\ModelInterface $record, $parameters = null, string $method = null);
@@ -201,11 +201,11 @@ interface ManagerInterface
     /**
      * Gets belongsTo related records from a model
      *
-     * @param string            $modelName
-     * @param string            $modelRelation
+     * @param string $modelName
+     * @param string $modelRelation
      * @param array|string|null $parameters
-     * @param ModelInterface    $record
-     * @param string|null       $method
+     * @param ModelInterface $record
+     * @param string|null $method
      * @return bool|\Phalcon\Mvc\ModelInterface
      */
     public function getHasOneRecords(string $modelName, string $modelRelation, \Phalcon\Mvc\ModelInterface $record, $parameters = null, string $method = null);
@@ -268,11 +268,11 @@ interface ManagerInterface
     /**
      * Helper method to query records based on a relation definition
      *
-     * @return \Phalcon\Mvc\Model\Resultset\Simple|Phalcon\Mvc\Model\Resultset\Simple|int|false
      * @param \Phalcon\Mvc\Model\RelationInterface $relation
      * @param \Phalcon\Mvc\ModelInterface $record
      * @param mixed $parameters
      * @param string $method
+     * @return \Phalcon\Mvc\Model\Resultset\Simple|Phalcon\Mvc\Model\Resultset\Simple|int|false
      */
     public function getRelationRecords(\Phalcon\Mvc\Model\RelationInterface $relation, \Phalcon\Mvc\ModelInterface $record, $parameters = null, string $method = null);
 
@@ -378,9 +378,9 @@ interface ManagerInterface
      * meaning that a least one is implemented
      *
      * @param array $data
-     * @return bool
      * @param \Phalcon\Mvc\ModelInterface $model
      * @param string $eventName
+     * @return bool
      */
     public function missingMethod(\Phalcon\Mvc\ModelInterface $model, string $eventName, $data);
 
@@ -440,5 +440,4 @@ interface ManagerInterface
      * @param bool $dynamicUpdate
      */
     public function useDynamicUpdate(\Phalcon\Mvc\ModelInterface $model, bool $dynamicUpdate);
-
 }

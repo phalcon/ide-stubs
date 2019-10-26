@@ -18,5 +18,4 @@ class Regex
     public function __invoke($input, $pattern, $replace)
     {
     }
-
 }

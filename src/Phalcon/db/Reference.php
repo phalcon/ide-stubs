@@ -163,5 +163,4 @@ class Reference implements \Phalcon\Db\ReferenceInterface
     public function __construct(string $name, array $definition)
     {
     }
-
 }

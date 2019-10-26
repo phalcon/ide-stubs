@@ -85,5 +85,4 @@ class QueryBuilder extends AbstractAdapter
     public function setQueryBuilder(\Phalcon\Mvc\Model\Query\Builder $builder): QueryBuilder
     {
     }
-
 }

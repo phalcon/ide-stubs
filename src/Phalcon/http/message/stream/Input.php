@@ -52,12 +52,12 @@ class Input extends Stream
     /**
      * Returns the remaining contents in a string
      *
-     * @throws RuntimeException if unable to read.
-     * @throws RuntimeException if error occurs while reading.
-     *
      * @param int $length
      *
      * @return string
+     * @throws RuntimeException if unable to read.
+     * @throws RuntimeException if error occurs while reading.
+     *
      */
     public function getContents(int $length = -1): string
     {
@@ -82,5 +82,4 @@ class Input extends Stream
     public function read($length): string
     {
     }
-
 }

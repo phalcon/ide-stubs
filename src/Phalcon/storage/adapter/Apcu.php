@@ -36,7 +36,7 @@ class Apcu extends AbstractAdapter
      * Decrements a stored number
      *
      * @param string $key
-     * @param int    $value
+     * @param int $value
      *
      * @return bool|int
      */
@@ -59,7 +59,7 @@ class Apcu extends AbstractAdapter
      * Reads data from the adapter
      *
      * @param string $key
-     * @param null   $defaultValue
+     * @param null $defaultValue
      *
      * @return mixed
      */
@@ -101,7 +101,7 @@ class Apcu extends AbstractAdapter
      * Increments a stored number
      *
      * @param string $key
-     * @param int    $value
+     * @param int $value
      *
      * @return bool|int
      */
@@ -113,8 +113,8 @@ class Apcu extends AbstractAdapter
      * Stores data in the adapter
      *
      * @param string $key
-     * @param mixed  $value
-     * @param null   $ttl
+     * @param mixed $value
+     * @param null $ttl
      *
      * @return bool
      * @throws \Exception
@@ -122,5 +122,4 @@ class Apcu extends AbstractAdapter
     public function set(string $key, $value, $ttl = null): bool
     {
     }
-
 }

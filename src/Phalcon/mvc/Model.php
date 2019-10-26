@@ -117,7 +117,6 @@ abstract class Model extends AbstractInjectionAware implements \Phalcon\Mvc\Enti
     protected $uniqueTypes;
 
 
-
     public function getTransaction()
     {
     }
@@ -136,10 +135,10 @@ abstract class Model extends AbstractInjectionAware implements \Phalcon\Mvc\Enti
     /**
      * Handles method calls when a method is not implemented
      *
-     * @return mixed
-     * @throws \Phalcon\Mvc\Model\Exception If the method doesn't exist
      * @param string $method
      * @param array $arguments
+     * @return mixed
+     * @throws \Phalcon\Mvc\Model\Exception If the method doesn't exist
      */
     public function __call(string $method, array $arguments)
     {
@@ -148,10 +147,10 @@ abstract class Model extends AbstractInjectionAware implements \Phalcon\Mvc\Enti
     /**
      * Handles method calls when a static method is not implemented
      *
-     * @return mixed
-     * @throws \Phalcon\Mvc\Model\Exception If the method doesn't exist
      * @param string $method
      * @param array $arguments
+     * @return mixed
+     * @throws \Phalcon\Mvc\Model\Exception If the method doesn't exist
      */
     public static function __callStatic(string $method, array $arguments)
     {
@@ -161,8 +160,8 @@ abstract class Model extends AbstractInjectionAware implements \Phalcon\Mvc\Enti
      * Magic method to get related records using the relation alias as a
      * property
      *
-     * @return mixed
      * @param string $property
+     * @return mixed
      */
     public function __get(string $property)
     {
@@ -385,9 +384,9 @@ abstract class Model extends AbstractInjectionAware implements \Phalcon\Mvc\Enti
      * Returns an hydrated result based on the data and the column map
      *
      * @param array $columnMap
-     * @return mixed
      * @param array $data
      * @param int $hydrationMode
+     * @return mixed
      */
     public static function cloneResultMapHydrate(array $data, $columnMap, int $hydrationMode)
     {
@@ -877,8 +876,8 @@ abstract class Model extends AbstractInjectionAware implements \Phalcon\Mvc\Enti
      * Returns related records based on defined relations
      *
      * @param array $arguments
-     * @return \Phalcon\Mvc\Model\Resultset\Simple|Phalcon\Mvc\Model\Resultset\Simple|false
      * @param string $alias
+     * @return \Phalcon\Mvc\Model\Resultset\Simple|Phalcon\Mvc\Model\Resultset\Simple|false
      */
     public function getRelated(string $alias, $arguments = null)
     {
@@ -1496,11 +1495,11 @@ abstract class Model extends AbstractInjectionAware implements \Phalcon\Mvc\Enti
     /**
      * Try to check if the query must invoke a finder
      *
-     * @return \Phalcon\Mvc\ModelInterface[]|\Phalcon\Mvc\ModelInterface|bool
      * @param string $method
      * @param array $arguments
+     * @return \Phalcon\Mvc\ModelInterface[]|\Phalcon\Mvc\ModelInterface|bool
      */
-    protected final static function _invokeFinder(string $method, array $arguments)
+    final protected static function _invokeFinder(string $method, array $arguments)
     {
     }
 
@@ -1554,7 +1553,7 @@ abstract class Model extends AbstractInjectionAware implements \Phalcon\Mvc\Enti
     /**
      * Save the related records assigned in the has-one/has-many relations
      *
-     * @param  Phalcon\Mvc\ModelInterface[] related
+     * @param Phalcon\Mvc\ModelInterface[] related
      * @param \Phalcon\Db\Adapter\AdapterInterface $connection
      * @param mixed $related
      * @param Phalcon\Mvc\ModelInterface  [] related
@@ -1941,5 +1940,4 @@ abstract class Model extends AbstractInjectionAware implements \Phalcon\Mvc\Enti
     private static function caseInsensitiveColumnMap($columnMap, $key): string
     {
     }
-
 }

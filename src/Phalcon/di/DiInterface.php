@@ -123,5 +123,4 @@ interface DiInterface extends \ArrayAccess
      * @return \Phalcon\Di\ServiceInterface
      */
     public function setShared(string $name, $definition): ServiceInterface;
-
 }

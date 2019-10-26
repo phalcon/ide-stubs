@@ -32,5 +32,4 @@ abstract class AbstractInjectionAware implements \Phalcon\Di\InjectionAwareInter
     public function setDI(\Phalcon\Di\DiInterface $container)
     {
     }
-
 }

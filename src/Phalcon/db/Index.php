@@ -92,5 +92,4 @@ class Index implements \Phalcon\Db\IndexInterface
     public function __construct(string $name, array $columns, string $type = '')
     {
     }
-
 }

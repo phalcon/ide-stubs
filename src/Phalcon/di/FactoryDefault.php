@@ -17,5 +17,4 @@ class FactoryDefault extends \Phalcon\Di
     public function __construct()
     {
     }
-
 }
