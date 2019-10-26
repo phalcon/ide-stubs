@@ -2,13 +2,6 @@
 
 namespace Phalcon\Mvc;
 
-use Phalcon\Mvc\DispatcherInterface;
-use Phalcon\Mvc\Dispatcher\Exception;
-use Phalcon\Events\ManagerInterface;
-use Phalcon\Http\ResponseInterface;
-use Phalcon\Mvc\ControllerInterface;
-use Phalcon\Dispatcher\AbstractDispatcher;
-
 /**
  * Dispatching is the process of taking the request object, extracting the
  * module name, controller name, action name, and optional parameters contained

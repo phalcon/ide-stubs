@@ -2,8 +2,6 @@
 
 namespace Phalcon\Events;
 
-use Phalcon\Events\Exception;
-
 /**
  * Phalcon\Events\Event
  *

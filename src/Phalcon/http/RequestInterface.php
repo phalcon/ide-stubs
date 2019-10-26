@@ -2,9 +2,6 @@
 
 namespace Phalcon\Http;
 
-use Phalcon\Http\Request\FileInterface;
-use stdClass;
-
 /**
  * Interface for Phalcon\Http\Request
  */

@@ -2,8 +2,6 @@
 
 namespace Phalcon\Translate\Interpolator;
 
-use Phalcon\Translate\Interpolator\InterpolatorInterface;
-
 /**
  * This file is part of the Phalcon Framework.
  *

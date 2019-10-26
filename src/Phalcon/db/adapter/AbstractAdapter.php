@@ -3,16 +3,8 @@
 namespace Phalcon\Db\Adapter;
 
 use Phalcon\Db\DialectInterface;
-use Phalcon\Db\Adapter\AdapterInterface;
-use Phalcon\Db\ColumnInterface;
 use Phalcon\Db\Enum;
-use Phalcon\Db\Exception;
-use Phalcon\Db\Index;
-use Phalcon\Db\IndexInterface;
-use Phalcon\Db\Reference;
-use Phalcon\Db\ReferenceInterface;
 use Phalcon\Db\RawValue;
-use Phalcon\Events\EventsAwareInterface;
 use Phalcon\Events\ManagerInterface;
 
 /**

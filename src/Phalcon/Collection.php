@@ -2,12 +2,6 @@
 
 namespace Phalcon;
 
-use ArrayAccess;
-use ArrayIterator;
-use Countable;
-use IteratorAggregate;
-use JsonSerializable;
-use Serializable;
 use Traversable;
 
 /**

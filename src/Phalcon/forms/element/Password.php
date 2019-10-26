@@ -2,9 +2,6 @@
 
 namespace Phalcon\Forms\Element;
 
-use Phalcon\Tag;
-use Phalcon\Forms\Element\AbstractElement;
-
 /**
  * Phalcon\Forms\Element\Password
  *

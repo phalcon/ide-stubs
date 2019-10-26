@@ -3,8 +3,6 @@
 namespace Phalcon\Firewall\Adapter;
 
 use Closure;
-use Phalcon\Mvc\DispatcherInterface;
-use Phalcon\Cache\Adapter\AdapterInterface;
 
 /**
  * Interface for Phalcon\Mvc\Dispatcher\Firewall adapters

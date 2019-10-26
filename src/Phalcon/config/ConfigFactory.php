@@ -2,16 +2,7 @@
 
 namespace Phalcon\Config;
 
-use Phalcon\Config;
-use Phalcon\Config\Adapter\Grouped;
-use Phalcon\Config\Adapter\Ini;
-use Phalcon\Config\Adapter\Json;
-use Phalcon\Config\Adapter\Php;
-use Phalcon\Config\Adapter\Yaml;
-use Phalcon\Config\Exception;
 use Phalcon\Factory\AbstractFactory;
-use Phalcon\Factory\Exception;
-use Phalcon\Helper\Arr;
 
 /**
  * Loads Config Adapter class using 'adapter' option, if no extension is

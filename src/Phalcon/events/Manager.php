@@ -2,10 +2,6 @@
 
 namespace Phalcon\Events;
 
-use Closure;
-use Phalcon\Events\Event;
-use SplPriorityQueue;
-
 /**
  * Phalcon\Events\Manager
  *

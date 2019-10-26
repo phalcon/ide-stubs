@@ -2,10 +2,6 @@
 
 namespace Phalcon\Helper;
 
-use Phalcon\Helper\Arr;
-use Phalcon\Helper\Exception;
-use RuntimeException;
-
 /**
  * This class offers quick string functions throughout the framework
  */

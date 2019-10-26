@@ -2,10 +2,7 @@
 
 namespace Phalcon\Mvc\Model\Behavior;
 
-use Closure;
-use Phalcon\Mvc\ModelInterface;
 use Phalcon\Mvc\Model\Behavior;
-use Phalcon\Mvc\Model\Exception;
 
 /**
  * Phalcon\Mvc\Model\Behavior\Timestampable

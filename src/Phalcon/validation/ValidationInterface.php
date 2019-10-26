@@ -2,11 +2,7 @@
 
 namespace Phalcon\Validation;
 
-use Phalcon\Di\Injectable;
-use Phalcon\Messages\MessageInterface;
 use Phalcon\Messages\Messages;
-use Phalcon\Validation\Exception;
-use Phalcon\Validation\ValidatorInterface;
 
 /**
  * Interface for the Phalcon\Validation component

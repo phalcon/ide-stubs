@@ -2,15 +2,6 @@
 
 namespace Phalcon\Assets;
 
-use Phalcon\Tag;
-use Phalcon\Assets\Asset;
-use Phalcon\Assets\Collection;
-use Phalcon\Assets\Exception;
-use Phalcon\Assets\Asset\Js;
-use Phalcon\Assets\Asset\Css;
-use Phalcon\Assets\Inline\Css;
-use Phalcon\Assets\Inline\Js;
-use Phalcon\Di\DiInterface;
 use Phalcon\Di\AbstractInjectionAware;
 
 /**

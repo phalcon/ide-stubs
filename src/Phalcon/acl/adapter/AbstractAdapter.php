@@ -3,7 +3,6 @@
 namespace Phalcon\Acl\Adapter;
 
 use Phalcon\Events\ManagerInterface;
-use Phalcon\Events\EventsAwareInterface;
 
 /**
  * Adapter for Phalcon\Acl adapters

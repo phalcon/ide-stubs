@@ -2,9 +2,6 @@
 
 namespace Phalcon\Mvc\Model;
 
-use Phalcon\Mvc\ModelInterface;
-use Phalcon\Mvc\Model\BehaviorInterface;
-
 /**
  * Phalcon\Mvc\Model\Behavior
  *

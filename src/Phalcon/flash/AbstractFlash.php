@@ -2,12 +2,8 @@
 
 namespace Phalcon\Flash;
 
-use Phalcon\Di;
-use Phalcon\Di\DiInterface;
 use Phalcon\Di\AbstractInjectionAware;
 use Phalcon\Escaper\EscaperInterface;
-use Phalcon\Flash\Exception;
-use Phalcon\Session\ManagerInterface;
 
 /**
  * Shows HTML notifications related to different circumstances. Classes can be

@@ -2,9 +2,6 @@
 
 namespace Phalcon\Acl\Adapter;
 
-use Phalcon\Acl\ComponentInterface;
-use Phalcon\Acl\RoleInterface;
-
 /**
  * Interface for Phalcon\Acl adapters
  */

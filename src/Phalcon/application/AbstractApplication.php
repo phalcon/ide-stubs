@@ -2,10 +2,8 @@
 
 namespace Phalcon\Application;
 
-use Phalcon\Application\Exception;
 use Phalcon\Di\DiInterface;
 use Phalcon\Di\Injectable;
-use Phalcon\Events\EventsAwareInterface;
 use Phalcon\Events\ManagerInterface;
 
 /**

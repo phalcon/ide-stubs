@@ -2,9 +2,6 @@
 
 namespace Phalcon\Storage\Serializer;
 
-use Phalcon\Storage\Exception;
-use Phalcon\Storage\Serializer\SerializerInterface;
-
 /**
  * This file is part of the Phalcon Framework.
  *

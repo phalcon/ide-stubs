@@ -2,9 +2,7 @@
 
 namespace Phalcon\Mvc;
 
-use Phalcon\Mvc\Router;
 use Phalcon\Mvc\Router\RouteInterface;
-use Phalcon\Mvc\Router\GroupInterface;
 
 /**
  * Interface for Phalcon\Mvc\Router

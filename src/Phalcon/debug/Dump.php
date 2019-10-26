@@ -2,12 +2,6 @@
 
 namespace Phalcon\Debug;
 
-use Phalcon\Di;
-use Reflection;
-use ReflectionClass;
-use ReflectionProperty;
-use stdClass;
-
 /**
  * Dumps information about a variable(s)
  *

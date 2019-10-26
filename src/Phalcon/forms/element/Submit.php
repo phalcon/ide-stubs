@@ -2,9 +2,6 @@
 
 namespace Phalcon\Forms\Element;
 
-use Phalcon\Tag;
-use Phalcon\Forms\Element\AbstractElement;
-
 /**
  * Component INPUT[type=submit] for forms
  */

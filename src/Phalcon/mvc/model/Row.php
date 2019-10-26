@@ -2,13 +2,6 @@
 
 namespace Phalcon\Mvc\Model;
 
-use ArrayAccess;
-use JsonSerializable;
-use Phalcon\Mvc\EntityInterface;
-use Phalcon\Mvc\Model\Exception;
-use Phalcon\Mvc\Model\ResultInterface;
-use Phalcon\Mvc\ModelInterface;
-
 /**
  * Phalcon\Mvc\Model\Row
  *

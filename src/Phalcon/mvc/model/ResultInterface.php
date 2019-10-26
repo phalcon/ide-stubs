@@ -2,8 +2,6 @@
 
 namespace Phalcon\Mvc\Model;
 
-use Phalcon\Mvc\ModelInterface;
-
 /**
  * Phalcon\Mvc\Model\ResultInterface
  *

@@ -3,7 +3,6 @@
 namespace Phalcon\Logger\Adapter;
 
 use Phalcon\Logger\Formatter\FormatterInterface;
-use Phalcon\Logger\Item;
 
 /**
  * Phalcon\Logger\AdapterInterface

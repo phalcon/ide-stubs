@@ -2,16 +2,6 @@
 
 namespace Phalcon\Assets;
 
-use Countable;
-use Iterator;
-use Phalcon\Assets\Asset;
-use Phalcon\Assets\FilterInterface;
-use Phalcon\Assets\Inline;
-use Phalcon\Assets\Asset\Css;
-use Phalcon\Assets\Asset\Js;
-use Phalcon\Assets\Inline\Js;
-use Phalcon\Assets\Inline\Css;
-
 /**
  * Represents a collection of assets
  */

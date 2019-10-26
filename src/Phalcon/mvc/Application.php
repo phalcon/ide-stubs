@@ -2,17 +2,7 @@
 
 namespace Phalcon\Mvc;
 
-use Closure;
 use Phalcon\Application\AbstractApplication;
-use Phalcon\Di\DiInterface;
-use Phalcon\Mvc\ViewInterface;
-use Phalcon\Mvc\RouterInterface;
-use Phalcon\Http\ResponseInterface;
-use Phalcon\Events\ManagerInterface;
-use Phalcon\Mvc\DispatcherInterface;
-use Phalcon\Mvc\Application\Exception;
-use Phalcon\Mvc\Router\RouteInterface;
-use Phalcon\Mvc\ModuleDefinitionInterface;
 
 /**
  * Phalcon\Mvc\Application

@@ -2,8 +2,6 @@
 
 namespace Phalcon\Acl;
 
-use Phalcon\Acl\Exception;
-
 /**
  * This class defines component entity and its description
  */

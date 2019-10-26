@@ -2,9 +2,6 @@
 
 namespace Phalcon\Helper;
 
-use Phalcon\Helper\Exception;
-use stdClass;
-
 /**
  * This class offers quick array functions throughout the framework
  */

@@ -2,8 +2,6 @@
 
 namespace Phalcon\Http\Message;
 
-use Phalcon\Http\Message\Exception\InvalidArgumentException;
-
 /**
  * Common methods
  */

@@ -2,15 +2,7 @@
 
 namespace Phalcon\Db\Adapter\Pdo;
 
-use Phalcon\Db\Adapter\Pdo\AbstractPdo;
-use Phalcon\Db\Column;
-use Phalcon\Db\ColumnInterface;
-use Phalcon\Db\Enum;
-use Phalcon\Db\Exception;
 use Phalcon\Db\RawValue;
-use Phalcon\Db\Reference;
-use Phalcon\Db\ReferenceInterface;
-use Throwable;
 
 /**
  * Specific functions for the Postgresql database system

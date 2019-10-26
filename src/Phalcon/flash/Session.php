@@ -2,9 +2,6 @@
 
 namespace Phalcon\Flash;
 
-use Phalcon\Di\DiInterface;
-use Phalcon\Flash\AbstractFlash;
-use Phalcon\Flash\Exception;
 use Phalcon\Session\ManagerInterface;
 
 /**

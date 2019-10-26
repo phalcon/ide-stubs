@@ -2,8 +2,6 @@
 
 namespace Phalcon\Domain\Payload;
 
-use Phalcon\Domain\Payload\PayloadInterface;
-
 /**
  * This interface is used for consumers (write)
  */

@@ -2,8 +2,6 @@
 
 namespace Phalcon\Cli;
 
-use Phalcon\Dispatcher\DispatcherInterface;
-
 /**
  * Interface for Phalcon\Cli\Dispatcher
  */

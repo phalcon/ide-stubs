@@ -2,8 +2,6 @@
 
 namespace Phalcon\Http\Message;
 
-use Phalcon\Http\Message\Stream;
-use Phalcon\Http\Message\Exception\InvalidArgumentException;
 use Psr\Http\Message\StreamFactoryInterface;
 use Psr\Http\Message\StreamInterface;
 

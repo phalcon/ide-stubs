@@ -3,10 +3,8 @@
 namespace Phalcon;
 
 use Phalcon\Cache\Adapter\AdapterInterface;
-use Phalcon\Cache\Exception\Exception;
 use Phalcon\Cache\Exception\InvalidArgumentException;
 use Psr\SimpleCache\CacheInterface;
-use Traversable;
 
 /**
  * This component offers caching capabilities for your application.

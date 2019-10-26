@@ -2,10 +2,6 @@
 
 namespace Phalcon\Forms\Element;
 
-use Phalcon\Forms\Element\AbstractElement;
-use Phalcon\Tag\Select;
-use Phalcon\Forms\Element\ElementInterface;
-
 /**
  * Phalcon\Forms\Element\Select
  *

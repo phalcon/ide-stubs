@@ -3,11 +3,6 @@
 namespace Phalcon\Db\Adapter\Pdo;
 
 use Phalcon\Db\Adapter\AbstractAdapter;
-use Phalcon\Db\Column;
-use Phalcon\Db\Exception;
-use Phalcon\Db\Result\Pdo;
-use Phalcon\Db\ResultInterface;
-use Phalcon\Events\ManagerInterface;
 
 /**
  * Phalcon\Db\Adapter\Pdo is the Phalcon\Db that internally uses PDO to connect

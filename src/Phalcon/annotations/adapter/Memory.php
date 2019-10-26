@@ -2,9 +2,6 @@
 
 namespace Phalcon\Annotations\Adapter;
 
-use Phalcon\Annotations\Adapter\AbstractAdapter;
-use Phalcon\Annotations\Reflection;
-
 /**
  * Stores the parsed annotations in memory. This adapter is the suitable
  * development/testing

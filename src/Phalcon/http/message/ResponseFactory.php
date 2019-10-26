@@ -2,9 +2,8 @@
 
 namespace Phalcon\Http\Message;
 
-use Phalcon\Http\Message\Response;
-use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ResponseFactoryInterface;
+use Psr\Http\Message\ResponseInterface;
 
 /**
  * PSR-17 ResponseFactory

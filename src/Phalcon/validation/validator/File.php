@@ -2,17 +2,7 @@
 
 namespace Phalcon\Validation\Validator;
 
-use Phalcon\Helper\Arr;
-use Phalcon\Messages\Message;
-use Phalcon\Validation;
 use Phalcon\Validation\AbstractValidatorComposite;
-use Phalcon\Validation\Validator\File\MimeType;
-use Phalcon\Validation\Validator\File\Resolution\Equal;
-use Phalcon\Validation\Validator\File\Resolution\Max;
-use Phalcon\Validation\Validator\File\Resolution\Min;
-use Phalcon\Validation\Validator\File\Size\Equal;
-use Phalcon\Validation\Validator\File\Size\Max;
-use Phalcon\Validation\Validator\File\Size\Min;
 
 /**
  * Checks if a value has a correct file

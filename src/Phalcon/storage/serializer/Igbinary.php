@@ -2,8 +2,6 @@
 
 namespace Phalcon\Storage\Serializer;
 
-use Phalcon\Storage\Serializer\AbstractSerializer;
-
 /**
  * This file is part of the Phalcon Framework.
  *

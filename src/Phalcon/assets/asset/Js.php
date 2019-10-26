@@ -2,8 +2,6 @@
 
 namespace Phalcon\Assets\Asset;
 
-use Phalcon\Assets\Asset;
-
 /**
  * Represents Javascript assets
  */

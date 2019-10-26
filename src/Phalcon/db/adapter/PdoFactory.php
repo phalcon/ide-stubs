@@ -2,9 +2,7 @@
 
 namespace Phalcon\Db\Adapter;
 
-use Phalcon\Db\Adapter\AbstractAdapter;
 use Phalcon\Factory\AbstractFactory;
-use Phalcon\Helper\Arr;
 
 /**
  * This file is part of the Phalcon Framework.

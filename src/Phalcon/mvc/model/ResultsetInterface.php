@@ -2,10 +2,8 @@
 
 namespace Phalcon\Mvc\Model;
 
-use Closure;
-use Phalcon\Messages\MessageInterface;
-use Phalcon\Mvc\ModelInterface;
 use Phalcon\Cache\Adapter\AdapterInterface;
+use Phalcon\Mvc\ModelInterface;
 
 /**
  * Phalcon\Mvc\Model\ResultsetInterface

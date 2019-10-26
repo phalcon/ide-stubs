@@ -2,8 +2,6 @@
 
 namespace Phalcon\Assets\Inline;
 
-use Phalcon\Assets\Inline;
-
 /**
  * Represents an inlined CSS
  */

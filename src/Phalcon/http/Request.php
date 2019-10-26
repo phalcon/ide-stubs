@@ -2,15 +2,8 @@
 
 namespace Phalcon\Http;
 
-use Phalcon\Di\DiInterface;
 use Phalcon\Di\AbstractInjectionAware;
-use Phalcon\Events\ManagerInterface;
 use Phalcon\Filter\FilterInterface;
-use Phalcon\Http\Request\File;
-use Phalcon\Http\Request\FileInterface;
-use Phalcon\Http\Request\Exception;
-use UnexpectedValueException;
-use stdClass;
 
 /**
  * Encapsulates request information for easy and secure access from application

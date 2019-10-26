@@ -3,7 +3,6 @@
 namespace Phalcon\Logger\Formatter;
 
 use Phalcon\Logger\Formatter\Formatter;
-use Phalcon\Logger\Item;
 
 /**
  * Phalcon\Logger\Formatter\Line

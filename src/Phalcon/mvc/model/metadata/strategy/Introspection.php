@@ -2,14 +2,6 @@
 
 namespace Phalcon\Mvc\Model\MetaData\Strategy;
 
-use Phalcon\Di\DiInterface;
-use Phalcon\Db\Adapter\AdapterInterface;
-use Phalcon\Db\Column;
-use Phalcon\Mvc\ModelInterface;
-use Phalcon\Mvc\Model\Exception;
-use Phalcon\Mvc\Model\MetaData;
-use Phalcon\Mvc\Model\MetaData\Strategy\StrategyInterface;
-
 /**
  * Phalcon\Mvc\Model\MetaData\Strategy\Introspection
  *

@@ -2,9 +2,6 @@
 
 namespace Phalcon\Di;
 
-use ArrayAccess;
-use Phalcon\Di\ServiceInterface;
-
 /**
  * Interface for Phalcon\Di
  */

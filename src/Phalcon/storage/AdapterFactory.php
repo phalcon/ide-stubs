@@ -3,9 +3,7 @@
 namespace Phalcon\Storage;
 
 use Phalcon\Factory\AbstractFactory;
-use Phalcon\Storage\Adapter\AbstractAdapter;
 use Phalcon\Storage\Adapter\AdapterInterface;
-use Phalcon\Storage\SerializerFactory;
 
 /**
  * This file is part of the Phalcon Framework.

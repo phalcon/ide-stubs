@@ -2,8 +2,6 @@
 
 namespace Phalcon\Storage\Serializer;
 
-use Serializable;
-
 /**
  * This file is part of the Phalcon Framework.
  *

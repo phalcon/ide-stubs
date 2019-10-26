@@ -2,13 +2,8 @@
 
 namespace Phalcon\Mvc\Model;
 
-use Phalcon\Cache\Adapter\AdapterInterface;
 use Phalcon\Di\DiInterface;
-use Phalcon\Di\InjectionAwareInterface;
-use Phalcon\Mvc\Model\Exception;
-use Phalcon\Mvc\Model\MetaData\Strategy\Introspection;
 use Phalcon\Mvc\Model\MetaData\Strategy\StrategyInterface;
-use Phalcon\Mvc\ModelInterface;
 
 /**
  * Phalcon\Mvc\Model\MetaData

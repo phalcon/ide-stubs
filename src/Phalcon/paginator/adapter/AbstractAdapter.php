@@ -2,10 +2,7 @@
 
 namespace Phalcon\Paginator\Adapter;
 
-use Phalcon\Paginator\Exception;
-use Phalcon\Paginator\Repository;
 use Phalcon\Paginator\RepositoryInterface;
-use Phalcon\Paginator\Adapter\AdapterInterface;
 
 /**
  * Phalcon\Paginator\Adapter\AbstractAdapter

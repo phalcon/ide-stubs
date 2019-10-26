@@ -2,9 +2,6 @@
 
 namespace Phalcon\Filter;
 
-use Phalcon\Filter;
-use Phalcon\Filter\FilterInterface;
-
 /**
  * This file is part of the Phalcon Framework.
  *

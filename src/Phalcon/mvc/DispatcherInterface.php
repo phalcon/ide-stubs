@@ -2,9 +2,6 @@
 
 namespace Phalcon\Mvc;
 
-use Phalcon\Mvc\ControllerInterface;
-use Phalcon\Dispatcher\DispatcherInterface;
-
 /**
  * Phalcon\Mvc\DispatcherInterface
  *

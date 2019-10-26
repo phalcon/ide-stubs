@@ -2,9 +2,6 @@
 
 namespace Phalcon\Mvc\Model\MetaData\Strategy;
 
-use Phalcon\Mvc\ModelInterface;
-use Phalcon\Di\DiInterface;
-
 /**
  * This file is part of the Phalcon Framework.
  *

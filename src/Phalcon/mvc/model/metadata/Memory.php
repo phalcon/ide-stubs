@@ -3,7 +3,6 @@
 namespace Phalcon\Mvc\Model\MetaData;
 
 use Phalcon\Mvc\Model\MetaData;
-use Phalcon\Mvc\Model\Exception;
 
 /**
  * Phalcon\Mvc\Model\MetaData\Memory

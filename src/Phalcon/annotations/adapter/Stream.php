@@ -2,10 +2,6 @@
 
 namespace Phalcon\Annotations\Adapter;
 
-use Phalcon\Annotations\Adapter\AbstractAdapter;
-use Phalcon\Annotations\Reflection;
-use Phalcon\Annotations\Exception;
-
 /**
  * Stores the parsed annotations in files. This adapter is suitable for production
  *

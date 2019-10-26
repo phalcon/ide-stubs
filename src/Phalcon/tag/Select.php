@@ -2,11 +2,6 @@
 
 namespace Phalcon\Tag;
 
-use Phalcon\Tag\Exception;
-use Phalcon\Tag;
-use Phalcon\Escaper\EscaperInterface;
-use Phalcon\Mvc\Model\ResultsetInterface;
-
 /**
  * Phalcon\Tag\Select
  *

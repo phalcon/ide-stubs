@@ -2,8 +2,6 @@
 
 namespace Phalcon\Validation\Validator\File\Resolution;
 
-use Phalcon\Messages\Message;
-use Phalcon\Validation;
 use Phalcon\Validation\Validator\File\AbstractFile;
 
 /**

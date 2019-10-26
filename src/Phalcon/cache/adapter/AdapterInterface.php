@@ -2,8 +2,6 @@
 
 namespace Phalcon\Cache\Adapter;
 
-use Phalcon\Storage\Adapter\AdapterInterface;
-
 /**
  * Interface for Phalcon\Cache adapters
  */

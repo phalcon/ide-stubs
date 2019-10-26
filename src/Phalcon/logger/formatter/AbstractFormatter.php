@@ -2,8 +2,6 @@
 
 namespace Phalcon\Logger\Formatter;
 
-use Phalcon\Logger;
-
 /**
  * This file is part of the Phalcon Framework.
  *

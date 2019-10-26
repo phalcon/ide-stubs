@@ -2,17 +2,8 @@
 
 namespace Phalcon\Firewall\Adapter\Micro;
 
-use Phalcon\Acl\Adapter\AdapterInterface;
-use Phalcon\Di;
-use Phalcon\Cache\Adapter\AdapterInterface;
-use Phalcon\Di\DiInterface;
-use Phalcon\Events\Event;
-use Phalcon\Events\ManagerInterface;
 use Phalcon\Firewall\Adapter\AbstractAdapter;
-use Phalcon\Firewall\Exception;
 use Phalcon\Mvc\Micro;
-use Phalcon\Mvc\Model\BinderInterface;
-use Phalcon\Mvc\Router;
 
 /**
  * Firewall for Phalcon\Mvc\Micro which depends on ACL

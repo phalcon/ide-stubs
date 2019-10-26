@@ -2,8 +2,6 @@
 
 namespace Phalcon\Annotations;
 
-use Phalcon\Annotations\Exception;
-
 /**
  * Represents a single annotation in an annotations collection
  */

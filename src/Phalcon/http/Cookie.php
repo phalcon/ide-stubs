@@ -2,14 +2,7 @@
 
 namespace Phalcon\Http;
 
-use Phalcon\Di\DiInterface;
 use Phalcon\Di\AbstractInjectionAware;
-use Phalcon\Crypt\CryptInterface;
-use Phalcon\Crypt\Mismatch;
-use Phalcon\Filter\FilterInterface;
-use Phalcon\Http\Response\Exception;
-use Phalcon\Http\Cookie\Exception;
-use Phalcon\Session\ManagerInterface;
 
 /**
  * Provide OO wrappers to manage a HTTP cookie.

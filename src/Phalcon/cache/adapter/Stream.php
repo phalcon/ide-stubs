@@ -2,9 +2,6 @@
 
 namespace Phalcon\Cache\Adapter;
 
-use Phalcon\Cache\Adapter\AdapterInterface;
-use Phalcon\Storage\Adapter\Stream;
-
 /**
  * Stream adapter
  */

@@ -2,10 +2,6 @@
 
 namespace Phalcon\Db;
 
-use Phalcon\Db\ColumnInterface;
-use Phalcon\Db\ReferenceInterface;
-use Phalcon\Db\IndexInterface;
-
 /**
  * Interface for Phalcon\Db dialects
  */

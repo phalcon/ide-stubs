@@ -2,8 +2,6 @@
 
 namespace Phalcon\Logger\Adapter;
 
-use Phalcon\Logger\Item;
-
 /**
  * Phalcon\Logger\Adapter\Noop
  *

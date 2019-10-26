@@ -2,27 +2,10 @@
 
 namespace Phalcon\Mvc\Model;
 
-use Phalcon\Db\Column;
-use Phalcon\Db\RawValue;
-use Phalcon\Db\ResultInterface;
 use Phalcon\Db\Adapter\AdapterInterface;
 use Phalcon\Di\DiInterface;
-use Phalcon\Helper\Arr;
-use Phalcon\Mvc\Model\Row;
-use Phalcon\Mvc\ModelInterface;
-use Phalcon\Mvc\Model\Exception;
-use Phalcon\Mvc\Model\ManagerInterface;
-use Phalcon\Mvc\Model\QueryInterface;
-use Phalcon\Mvc\Model\Query\Status;
-use Phalcon\Mvc\Model\Resultset\Complex;
 use Phalcon\Mvc\Model\Query\StatusInterface;
-use Phalcon\Mvc\Model\ResultsetInterface;
-use Phalcon\Mvc\Model\Resultset\Simple;
-use Phalcon\Di\InjectionAwareInterface;
-use Phalcon\Mvc\Model\RelationInterface;
-use Phalcon\Mvc\Model\TransactionInterface;
-use Phalcon\Db\DialectInterface;
-use Phalcon\Mvc\Model\Query\Lang;
+use Phalcon\Mvc\ModelInterface;
 
 /**
  * Phalcon\Mvc\Model\Query
