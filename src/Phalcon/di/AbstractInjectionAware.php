@@ -1,20 +1,15 @@
 <?php
 
-/**
- * This file is part of the Phalcon Framework.
- *
- * (c) Phalcon Team <team@phalcon.io>
- *
- * For the full copyright and license information, please view the LICENSE.txt
- * file that was distributed with this source code.
- */
-
 namespace Phalcon\Di;
+
+use Phalcon\Di;
+use Phalcon\Di\DiInterface;
+use Phalcon\Di\InjectionAwareInterface;
 
 /**
  * This abstract class offers common access to the DI in a class
  */
-abstract class AbstractInjectionAware implements InjectionAwareInterface
+abstract class AbstractInjectionAware implements \Phalcon\Di\InjectionAwareInterface
 {
     /**
      * Dependency Injector
@@ -41,4 +36,5 @@ abstract class AbstractInjectionAware implements InjectionAwareInterface
     public function setDI(\Phalcon\Di\DiInterface $container)
     {
     }
+
 }

@@ -1,15 +1,8 @@
 <?php
 
-/**
- * This file is part of the Phalcon Framework.
- *
- * (c) Phalcon Team <team@phalcon.io>
- *
- * For the full copyright and license information, please view the LICENSE.txt
- * file that was distributed with this source code.
- */
-
 namespace Phalcon;
+
+use Phalcon\Helper\Str;
 
 /**
  * Provides utilities to work with texts
@@ -72,7 +65,8 @@ class Text
      * @param string $separator
      * @param string $a
      * @param string $b
-     * @param string $...N
+     * @param string ...N
+     * @param string  ...N
      * @return string
      */
     public static function concat(): string
@@ -277,4 +271,5 @@ class Text
     public static function upper(string $text, string $encoding = 'UTF-8'): string
     {
     }
+
 }

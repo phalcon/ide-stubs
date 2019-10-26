@@ -1,20 +1,13 @@
 <?php
 
-/**
- * This file is part of the Phalcon Framework.
- *
- * (c) Phalcon Team <team@phalcon.io>
- *
- * For the full copyright and license information, please view the LICENSE.txt
- * file that was distributed with this source code.
- */
-
 namespace Phalcon\Validation\Validator;
 
+use Phalcon\Messages\Message;
+use Phalcon\Mvc\Model;
+use Phalcon\Mvc\ModelInterface;
+use Phalcon\Validation;
 use Phalcon\Validation\AbstractCombinedFieldsValidator;
-
-//use Phalcon\Mvc\CollectionInterface;
-//use Phalcon\Mvc\Collection;
+use Phalcon\Validation\Exception;
 
 /**
  * Check that a field is unique in the related table
@@ -136,4 +129,5 @@ class Uniqueness extends AbstractCombinedFieldsValidator
     protected function isUniquenessModel($record, array $field, array $values)
     {
     }
+
 }

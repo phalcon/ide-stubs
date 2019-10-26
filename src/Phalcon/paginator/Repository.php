@@ -1,22 +1,16 @@
 <?php
 
-/**
- * This file is part of the Phalcon Framework.
- *
- * (c) Phalcon Team <team@phalcon.io>
- *
- * For the full copyright and license information, please view the LICENSE.txt
- * file that was distributed with this source code.
- */
-
 namespace Phalcon\Paginator;
+
+use JsonSerializable;
+use Phalcon\Helper\Arr;
 
 /**
  * Phalcon\Paginator\Repository
  *
  * Repository of current state Phalcon\Paginator\AdapterInterface::paginate()
  */
-class Repository implements RepositoryInterface
+class Repository implements \Phalcon\Paginator\RepositoryInterface, \JsonSerializable
 {
     /**
      * @var array
@@ -121,6 +115,15 @@ class Repository implements RepositoryInterface
     }
 
     /**
+     * See [jsonSerialize](https://php.net/manual/en/jsonserializable.jsonserialize.php)
+     *
+     * @return array
+     */
+    public function jsonSerialize(): array
+    {
+    }
+
+    /**
      * {@inheritdoc}
      *
      * @param array $aliases
@@ -160,4 +163,5 @@ class Repository implements RepositoryInterface
     protected function getRealNameProperty(string $property): string
     {
     }
+
 }

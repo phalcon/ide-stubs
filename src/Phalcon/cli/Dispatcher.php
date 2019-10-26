@@ -1,17 +1,11 @@
 <?php
 
-/**
- * This file is part of the Phalcon Framework.
- *
- * (c) Phalcon Team <team@phalcon.io>
- *
- * For the full copyright and license information, please view the LICENSE.txt
- * file that was distributed with this source code.
- */
-
 namespace Phalcon\Cli;
 
-use Phalcon\Dispatcher\AbstractDispatcher as CliDispatcher;
+use Phalcon\Cli\Dispatcher\Exception;
+use Phalcon\Dispatcher\AbstractDispatcher;
+use Phalcon\Events\ManagerInterface;
+use Phalcon\Filter\FilterInterface;
 
 /**
  * Dispatching is the process of taking the command-line arguments, extracting
@@ -35,7 +29,7 @@ use Phalcon\Dispatcher\AbstractDispatcher as CliDispatcher;
  * $handle = $dispatcher->dispatch();
  * ```
  */
-class Dispatcher extends CliDispatcher implements DispatcherInterface
+class Dispatcher extends \Phalcon\Dispatcher\AbstractDispatcher implements \Phalcon\Cli\DispatcherInterface
 {
     /**
      * @var string
@@ -91,9 +85,9 @@ class Dispatcher extends CliDispatcher implements DispatcherInterface
     /**
      * Gets an option by its name or numeric index
      *
-     * @param mixed $option
-     * @param string|array $filters
-     * @param mixed $defaultValue
+     * @param  mixed $option
+     * @param  string|array $filters
+     * @param  mixed $defaultValue
      * @return mixed
      */
     public function getOption($option, $filters = null, $defaultValue = null)
@@ -191,4 +185,5 @@ class Dispatcher extends CliDispatcher implements DispatcherInterface
     protected function throwDispatchException(string $message, int $exceptionCode = 0)
     {
     }
+
 }

@@ -1,18 +1,12 @@
 <?php
 
-/**
- * This file is part of the Phalcon Framework.
- *
- * (c) Phalcon Team <team@phalcon.io>
- *
- * For the full copyright and license information, please view the LICENSE.txt
- * file that was distributed with this source code.
- */
-
 namespace Phalcon\Http\Response;
 
+use Phalcon\Di\DiInterface;
 use Phalcon\Di\AbstractInjectionAware;
 use Phalcon\Http\CookieInterface;
+use Phalcon\Http\Response\CookiesInterface;
+use Phalcon\Http\Cookie\Exception;
 
 /**
  * Phalcon\Http\Response\Cookies
@@ -53,7 +47,7 @@ use Phalcon\Http\CookieInterface;
  *
  *         // The `$key' MUST be at least 32 characters long and generated using a
  *         // cryptographically secure pseudo random generator.
- *         $key = "#1dj8$=dp?.ak//j1V$~%*0XaK\xb1\x8d\xa9\x98\x054t7w!z%C*F-Jk\x98\x05\\\x5c";
+ *         $key = "#1dj8$=dp?.ak//j1V$~%0XaK\xb1\x8d\xa9\x98\x054t7w!z%CF-Jk\x98\x05\\\x5c";
  *
  *         $cookies->setSignKey($key);
  *
@@ -62,7 +56,7 @@ use Phalcon\Http\CookieInterface;
  * );
  * ```
  */
-class Cookies extends AbstractInjectionAware implements CookiesInterface
+class Cookies extends AbstractInjectionAware implements \Phalcon\Http\Response\CookiesInterface
 {
 
     protected $cookies = array();
@@ -217,4 +211,5 @@ class Cookies extends AbstractInjectionAware implements CookiesInterface
     public function useEncryption(bool $useEncryption): CookiesInterface
     {
     }
+
 }

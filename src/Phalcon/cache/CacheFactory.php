@@ -1,17 +1,14 @@
 <?php
 
-/**
- * This file is part of the Phalcon Framework.
- *
- * (c) Phalcon Team <team@phalcon.io>
- *
- * For the full copyright and license information, please view the LICENSE.txt
- * file that was distributed with this source code.
- */
-
 namespace Phalcon\Cache;
 
-use Phalcon\Cache\CacheInterface;
+use Phalcon\Cache\Adapter\AdapterInterface;
+use Phalcon\Cache\AdapterFactory;
+use Phalcon\Cache;
+use Psr\SimpleCache\CacheInterface;
+use Phalcon\Cache\Exception\Exception;
+use Phalcon\Config;
+use Phalcon\Helper\Arr;
 
 /**
  * Creates a new Cache class
@@ -48,9 +45,10 @@ class CacheFactory
      *
      * @param string $name
      * @param array $options
-     * @return \Phalcon\Cache\CacheInterface
+     * @return \Psr\SimpleCache\CacheInterface
      */
     public function newInstance(string $name, array $options = array()): CacheInterface
     {
     }
+
 }

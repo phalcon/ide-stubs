@@ -1,15 +1,13 @@
 <?php
 
-/**
- * This file is part of the Phalcon Framework.
- *
- * (c) Phalcon Team <team@phalcon.io>
- *
- * For the full copyright and license information, please view the LICENSE.txt
- * file that was distributed with this source code.
- */
-
 namespace Phalcon\Storage\Adapter;
+
+use APCuIterator;
+use Phalcon\Helper\Arr;
+use Phalcon\Storage\Adapter\AbstractAdapter;
+use Phalcon\Storage\Exception;
+use Phalcon\Storage\SerializerFactory;
+use Phalcon\Storage\Serializer\SerializerInterface;
 
 /**
  * Apcu adapter
@@ -44,11 +42,10 @@ class Apcu extends AbstractAdapter
     /**
      * Decrements a stored number
      *
+     * @param string $key
      * @param int    $value
      *
-     * @param string $key
-     * @param int $value
-     * @return int|bool
+     * @return bool|int
      */
     public function decrement(string $key, int $value = 1)
     {
@@ -59,7 +56,6 @@ class Apcu extends AbstractAdapter
      *
      * @param string $key
      *
-     * @param string $key
      * @return bool
      */
     public function delete(string $key): bool
@@ -69,10 +65,9 @@ class Apcu extends AbstractAdapter
     /**
      * Reads data from the adapter
      *
+     * @param string $key
      * @param null   $defaultValue
      *
-     * @param string $key
-     * @param mixed $defaultValue
      * @return mixed
      */
     public function get(string $key, $defaultValue = null)
@@ -103,7 +98,6 @@ class Apcu extends AbstractAdapter
      *
      * @param string $key
      *
-     * @param string $key
      * @return bool
      */
     public function has(string $key): bool
@@ -113,11 +107,10 @@ class Apcu extends AbstractAdapter
     /**
      * Increments a stored number
      *
+     * @param string $key
      * @param int    $value
      *
-     * @param string $key
-     * @param int $value
-     * @return int|bool
+     * @return bool|int
      */
     public function increment(string $key, int $value = 1)
     {
@@ -126,15 +119,15 @@ class Apcu extends AbstractAdapter
     /**
      * Stores data in the adapter
      *
+     * @param string $key
+     * @param mixed  $value
      * @param null   $ttl
      *
-     * @throws \Exception
-     * @param string $key
-     * @param mixed $value
-     * @param mixed $ttl
      * @return bool
+     * @throws \Exception
      */
     public function set(string $key, $value, $ttl = null): bool
     {
     }
+
 }

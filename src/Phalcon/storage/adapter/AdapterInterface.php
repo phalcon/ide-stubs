@@ -1,15 +1,8 @@
 <?php
 
-/**
- * This file is part of the Phalcon Framework.
- *
- * (c) Phalcon Team <team@phalcon.io>
- *
- * For the full copyright and license information, please view the LICENSE.txt
- * file that was distributed with this source code.
- */
-
 namespace Phalcon\Storage\Adapter;
+
+use Phalcon\Storage\Serializer\SerializerInterface;
 
 /**
  * Interface for Phalcon\Logger adapters
@@ -97,4 +90,5 @@ interface AdapterInterface
      * @return bool
      */
     public function set(string $key, $value, $ttl = null): bool;
+
 }

@@ -1,17 +1,10 @@
 <?php
 
-/**
- * This file is part of the Phalcon Framework.
- *
- * (c) Phalcon Team <team@phalcon.io>
- *
- * For the full copyright and license information, please view the LICENSE.txt
- * file that was distributed with this source code.
- */
-
 namespace Phalcon\Mvc\Model\Transaction;
 
+use Phalcon\Messages\MessageInterface;
 use Phalcon\Mvc\ModelInterface;
+use Phalcon\Mvc\Model\Transaction\Exception;
 
 /**
  * Phalcon\Mvc\Model\Transaction\Failed
@@ -51,4 +44,5 @@ class Failed extends Exception
     public function getRecordMessages(): array
     {
     }
+
 }

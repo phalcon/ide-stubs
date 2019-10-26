@@ -1,14 +1,5 @@
 <?php
 
-/**
- * This file is part of the Phalcon Framework.
- *
- * (c) Phalcon Team <team@phalcon.io>
- *
- * For the full copyright and license information, please view the LICENSE.txt
- * file that was distributed with this source code.
- */
-
 namespace Phalcon\Mvc\Model;
 
 use Phalcon\Mvc\ModelInterface;
@@ -32,9 +23,9 @@ interface QueryInterface
     /**
      * Executes a parsed PHQL statement
      *
+     * @return mixed
      * @param array $bindParams
      * @param array $bindTypes
-     * @return mixed
      */
     public function execute(array $bindParams = array(), array $bindTypes = array());
 
@@ -123,4 +114,5 @@ interface QueryInterface
      * @return QueryInterface
      */
     public function setUniqueRow(bool $uniqueRow): QueryInterface;
+
 }

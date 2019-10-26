@@ -1,24 +1,18 @@
 <?php
 
-/**
- * This file is part of the Phalcon Framework.
- *
- * (c) Phalcon Team <team@phalcon.io>
- *
- * For the full copyright and license information, please view the LICENSE.txt
- * file that was distributed with this source code.
- */
-
 namespace Phalcon\Translate\Adapter;
 
 use ArrayAccess;
+use Phalcon\Translate\Exception;
+use Phalcon\Translate\Adapter\AbstractAdapter;
+use Phalcon\Translate\InterpolatorFactory;
 
 /**
  * Phalcon\Translate\Adapter\NativeArray
  *
  * Allows to define translation lists using PHP arrays
  */
-class NativeArray extends AbstractAdapter implements ArrayAccess
+class NativeArray extends AbstractAdapter implements \ArrayAccess
 {
     /**
      * @var array
@@ -65,10 +59,11 @@ class NativeArray extends AbstractAdapter implements ArrayAccess
      * Returns the translation related to the given key
      *
      * @param string $index
-     * @param mixed $placeholders
+     * @param array $placeholders
      * @return string
      */
-    public function query(string $index, $placeholders = null): string
+    public function query(string $index, array $placeholders = array()): string
     {
     }
+
 }

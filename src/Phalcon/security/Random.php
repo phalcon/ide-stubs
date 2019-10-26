@@ -1,14 +1,5 @@
 <?php
 
-/**
- * This file is part of the Phalcon Framework.
- *
- * (c) Phalcon Team <team@phalcon.io>
- *
- * For the full copyright and license information, please view the LICENSE.txt
- * file that was distributed with this source code.
- */
-
 namespace Phalcon\Security;
 
 /**
@@ -25,7 +16,7 @@ namespace Phalcon\Security;
  * - Generating random passwords for new user accounts
  * - Encryption systems
  *
- *```php
+ * ```php
  * $random = new \Phalcon\Security\Random();
  *
  * // Random binary string
@@ -70,7 +61,7 @@ namespace Phalcon\Security;
  * echo $random->base58();   // Umjxqf7ZPwh765yR
  * echo $random->base58(24); // qoXcgmw4A9dys26HaNEdCRj9
  * echo $random->base58(7);  // 774SJD3vgP
- *```
+ * ```
  *
  * This class partially borrows SecureRandom library from Ruby
  *
@@ -284,4 +275,5 @@ class Random
     protected function base(string $alphabet, int $base, $n = null): string
     {
     }
+
 }

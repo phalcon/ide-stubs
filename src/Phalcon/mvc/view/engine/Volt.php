@@ -1,25 +1,24 @@
 <?php
 
-/**
- * This file is part of the Phalcon Framework.
- *
- * (c) Phalcon Team <team@phalcon.io>
- *
- * For the full copyright and license information, please view the LICENSE.txt
- * file that was distributed with this source code.
- */
-
 namespace Phalcon\Mvc\View\Engine;
 
+use Phalcon\Di\DiInterface;
+use Phalcon\Events\EventsAwareInterface;
+use Phalcon\Events\ManagerInterface;
+use Phalcon\Mvc\View\Engine\AbstractEngine;
 use Phalcon\Mvc\View\Engine\Volt\Compiler;
+use Phalcon\Mvc\View\Exception;
 
 /**
  * Designer friendly and fast template engine for PHP written in Zephir/C
  */
-class Volt extends AbstractEngine
+class Volt extends AbstractEngine implements \Phalcon\Events\EventsAwareInterface
 {
 
     protected $compiler;
+
+
+    protected $eventsManager;
 
 
     protected $macros;
@@ -57,6 +56,15 @@ class Volt extends AbstractEngine
      * @return \Phalcon\Mvc\View\Engine\Volt\Compiler
      */
     public function getCompiler(): Compiler
+    {
+    }
+
+    /**
+     * Returns the internal event manager
+     *
+     * @return null|\Phalcon\Events\ManagerInterface
+     */
+    public function getEventsManager(): ?ManagerInterface
     {
     }
 
@@ -102,6 +110,15 @@ class Volt extends AbstractEngine
     }
 
     /**
+     * Sets the events manager
+     *
+     * @param \Phalcon\Events\ManagerInterface $eventsManager
+     */
+    public function setEventsManager(\Phalcon\Events\ManagerInterface $eventsManager)
+    {
+    }
+
+    /**
      * Set Volt's options
      *
      * @param array $options
@@ -130,4 +147,5 @@ class Volt extends AbstractEngine
     public function sort(array $value): array
     {
     }
+
 }

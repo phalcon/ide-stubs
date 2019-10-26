@@ -1,18 +1,18 @@
 <?php
 
-/**
- * This file is part of the Phalcon Framework.
- *
- * (c) Phalcon Team <team@phalcon.io>
- *
- * For the full copyright and license information, please view the LICENSE.txt
- * file that was distributed with this source code.
- */
-
 namespace Phalcon\Firewall\Adapter\Micro;
 
+use Phalcon\Acl\Adapter\AdapterInterface;
+use Phalcon\Di;
+use Phalcon\Cache\Adapter\AdapterInterface;
+use Phalcon\Di\DiInterface;
+use Phalcon\Events\Event;
+use Phalcon\Events\ManagerInterface;
 use Phalcon\Firewall\Adapter\AbstractAdapter;
+use Phalcon\Firewall\Exception;
 use Phalcon\Mvc\Micro;
+use Phalcon\Mvc\Model\BinderInterface;
+use Phalcon\Mvc\Router;
 
 /**
  * Firewall for Phalcon\Mvc\Micro which depends on ACL
@@ -241,4 +241,5 @@ class Acl extends AbstractAdapter
     protected function saveAccessInCache(string $key, bool $access)
     {
     }
+
 }

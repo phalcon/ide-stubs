@@ -1,19 +1,14 @@
 <?php
-/**
- * This file is part of the Phalcon.
- *
- * (c) Phalcon Team <team@phalcon.com>
- *
- * For the full copyright and license information, please view the LICENSE
- * file that was distributed with this source code.
- */
 
 namespace Phalcon\Mvc;
 
 use Phalcon\Db\Adapter\AdapterInterface;
+use Phalcon\Di\DiInterface;
+use Phalcon\Messages\MessageInterface;
 use Phalcon\Mvc\Model\CriteriaInterface;
 use Phalcon\Mvc\Model\MetaDataInterface;
 use Phalcon\Mvc\Model\ResultsetInterface;
+use Phalcon\Mvc\Model\TransactionInterface;
 
 /**
  * Phalcon\Mvc\ModelInterface
@@ -34,10 +29,10 @@ interface ModelInterface
     /**
      * Assigns values to a model from an array
      *
+     * @param array $columnMap
      * @param array $data
      * @param mixed $whiteList
      * @param mixed $dataColumnMap
-     * @param array $columnMap
      * @return ModelInterface
      */
     public function assign(array $data, $whiteList = null, $dataColumnMap = null): ModelInterface;
@@ -65,19 +60,19 @@ interface ModelInterface
      * Assigns values to a model from an array returning a new model
      *
      * @param \Phalcon\Mvc\Model $base
-     * @param array $data
      * @param array $columnMap
+     * @return \Phalcon\Mvc\Model result
+     * @param array $data
      * @param int $dirtyState
      * @param bool $keepSnapshots
-     * @return ModelInterface
      */
     public static function cloneResultMap($base, array $data, $columnMap, int $dirtyState = 0, bool $keepSnapshots = null): ModelInterface;
 
     /**
      * Returns an hydrated result based on the data and the column map
      *
-     * @param array $data
      * @param array $columnMap
+     * @param array $data
      * @param int $hydrationMode
      */
     public static function cloneResultMapHydrate(array $data, $columnMap, int $hydrationMode);
@@ -188,9 +183,9 @@ interface ModelInterface
     /**
      * Returns related records based on defined relations
      *
-     * @param string $alias
      * @param array $arguments
      * @return \Phalcon\Mvc\Model\Resultset\Simple|Phalcon\Mvc\Model\Resultset\Simple|false
+     * @param string $alias
      */
     public function getRelated(string $alias, $arguments = null);
 
@@ -290,8 +285,8 @@ interface ModelInterface
      * Sets the record's snapshot data. This method is used internally to set
      * snapshot data when the model was set up to keep snapshot data
      *
-     * @param array $data
      * @param array $columnMap
+     * @param array $data
      */
     public function setSnapshotData(array $data, $columnMap = null);
 
@@ -340,4 +335,5 @@ interface ModelInterface
      * @return bool
      */
     public function update(): bool;
+
 }

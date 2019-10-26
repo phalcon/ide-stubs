@@ -1,15 +1,14 @@
 <?php
 
-/**
- * This file is part of the Phalcon Framework.
- *
- * (c) Phalcon Team <team@phalcon.io>
- *
- * For the full copyright and license information, please view the LICENSE.txt
- * file that was distributed with this source code.
- */
-
 namespace Phalcon\Logger\Adapter;
+
+use LogicException;
+use Phalcon\Helper\Arr;
+use Phalcon\Logger;
+use Phalcon\Logger\Adapter;
+use Phalcon\Logger\Exception;
+use Phalcon\Logger\Formatter\FormatterInterface;
+use Phalcon\Logger\Item;
 
 /**
  * Phalcon\Logger\Adapter\Syslog
@@ -32,9 +31,9 @@ namespace Phalcon\Logger\Adapter;
  * $logger->log("This is a message");
  * $logger->log(Logger::ERROR, "This is an error");
  * $logger->error("This is another error");
- *```
+ * ```
  */
-class Syslog extends AbstractAdapter
+class Syslog extends \Phalcon\Logger\Adapter\AbstractAdapter
 {
     /**
      * Name of the default formatter class
@@ -101,4 +100,5 @@ class Syslog extends AbstractAdapter
     private function logLevelToSyslog(string $level): int
     {
     }
+
 }

@@ -1,17 +1,11 @@
 <?php
 
-/**
- * This file is part of the Phalcon Framework.
- *
- * (c) Phalcon Team <team@phalcon.io>
- *
- * For the full copyright and license information, please view the LICENSE.txt
- * file that was distributed with this source code.
- */
-
 namespace Phalcon\Validation\Validator;
 
+use Phalcon\Messages\Message;
+use Phalcon\Validation;
 use Phalcon\Validation\AbstractValidator;
+use Phalcon\Validation\Exception;
 
 /**
  * Check if a value is not included into a list of values
@@ -74,4 +68,5 @@ class ExclusionIn extends AbstractValidator
     public function validate(\Phalcon\Validation $validation, $field): bool
     {
     }
+
 }

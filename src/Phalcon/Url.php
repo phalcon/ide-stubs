@@ -1,24 +1,18 @@
 <?php
 
-/**
- * This file is part of the Phalcon Framework.
- *
- * (c) Phalcon Team <team@phalcon.io>
- *
- * For the full copyright and license information, please view the LICENSE.txt
- * file that was distributed with this source code.
- */
-
 namespace Phalcon;
 
+use Phalcon\Di\DiInterface;
 use Phalcon\Di\AbstractInjectionAware;
 use Phalcon\Mvc\RouterInterface;
+use Phalcon\Mvc\Router\RouteInterface;
+use Phalcon\Url\Exception;
 use Phalcon\Url\UrlInterface;
 
 /**
  * This components helps in the generation of: URIs, URLs and Paths
  *
- *```php
+ * ```php
  * // Generate a URL appending the URI to the base URI
  * echo $url->get("products/edit/1");
  *
@@ -30,9 +24,9 @@ use Phalcon\Url\UrlInterface;
  *         "year"  => "2012",
  *     ]
  * );
- *```
+ * ```
  */
-class Url extends AbstractInjectionAware implements UrlInterface
+class Url extends AbstractInjectionAware implements \Phalcon\Url\UrlInterface
 {
     /**
      * @var null | string
@@ -45,7 +39,7 @@ class Url extends AbstractInjectionAware implements UrlInterface
     protected $basePath = null;
 
     /**
-     * @var <RouterInterface> | null
+     * @var RouterInterface | null
      */
     protected $router = null;
 
@@ -207,4 +201,5 @@ class Url extends AbstractInjectionAware implements UrlInterface
     public function path(string $path = null): string
     {
     }
+
 }

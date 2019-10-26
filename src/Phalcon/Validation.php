@@ -1,24 +1,22 @@
 <?php
 
-/**
- * This file is part of the Phalcon Framework.
- *
- * (c) Phalcon Team <team@phalcon.io>
- *
- * For the full copyright and license information, please view the LICENSE.txt
- * file that was distributed with this source code.
- */
-
 namespace Phalcon;
 
+use Phalcon\Di;
+use Phalcon\Di\DiInterface;
 use Phalcon\Di\Injectable;
+use Phalcon\Filter\FilterInterface;
+use Phalcon\Messages\MessageInterface;
 use Phalcon\Messages\Messages;
 use Phalcon\Validation\ValidationInterface;
+use Phalcon\Validation\Exception;
+use Phalcon\Validation\ValidatorInterface;
+use Phalcon\Validation\AbstractCombinedFieldsValidator;
 
 /**
  * Allows to validate data using custom or built-in validators
  */
-class Validation extends Injectable implements ValidationInterface
+class Validation extends Injectable implements \Phalcon\Validation\ValidationInterface
 {
 
     protected $combinedFieldsValidators;
@@ -228,4 +226,5 @@ class Validation extends Injectable implements ValidationInterface
     protected function preChecking($field, \Phalcon\Validation\ValidatorInterface $validator): bool
     {
     }
+
 }

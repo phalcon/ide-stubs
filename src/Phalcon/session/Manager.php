@@ -1,29 +1,24 @@
 <?php
 
-/**
- * This file is part of the Phalcon.
- *
- * (c) Phalcon Team <team@phalcon.com>
- *
- * For the full copyright and license information, please view the LICENSE
- * file that was distributed with this source code.
- */
-
 namespace Phalcon\Session;
 
 use InvalidArgumentException;
-use Phalcon\DI\AbstractInjectionAware;
+use RuntimeException;
 use SessionHandlerInterface;
+use Phalcon\Di\AbstractInjectionAware;
+use Phalcon\Di\DiInterface;
+use Phalcon\Helper\Arr;
+use Phalcon\Session\ManagerInterface;
 
 /**
  * Phalcon\Session\Manager
  *
  * Session manager class
  */
-class Manager extends AbstractInjectionAware implements ManagerInterface
+class Manager extends AbstractInjectionAware implements \Phalcon\Session\ManagerInterface
 {
     /**
-     * @var <SessionHandlerInterface>|null
+     * @var SessionHandlerInterface|null
      */
     private $adapter = null;
 
@@ -218,12 +213,10 @@ class Manager extends AbstractInjectionAware implements ManagerInterface
      * Set the session name. Throw exception if the session has started
      * and do not allow poop names
      *
-     * @param  string name
-     *
+     * @param string $name *
      * @throws InvalidArgumentException
      *
-     * @param string $name
-     * @return \Phalcon\Session\ManagerInterface
+     * @return Manager
      */
     public function setName(string $name): ManagerInterface
     {
@@ -266,4 +259,5 @@ class Manager extends AbstractInjectionAware implements ManagerInterface
     private function getUniqueKey(string $key): string
     {
     }
+
 }

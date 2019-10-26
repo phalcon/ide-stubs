@@ -1,18 +1,12 @@
 <?php
 
-/**
- * This file is part of the Phalcon Framework.
- *
- * (c) Phalcon Team <team@phalcon.io>
- *
- * For the full copyright and license information, please view the LICENSE.txt
- * file that was distributed with this source code.
- */
-
 namespace Phalcon\Paginator\Adapter;
 
+use Phalcon\Db\Enum;
 use Phalcon\Mvc\Model\Query\Builder;
+use Phalcon\Paginator\Adapter\AbstractAdapter;
 use Phalcon\Paginator\RepositoryInterface;
+use Phalcon\Paginator\Exception;
 
 /**
  * Phalcon\Paginator\Adapter\QueryBuilder
@@ -34,7 +28,7 @@ use Phalcon\Paginator\RepositoryInterface;
  *         "page"    => 1,
  *     ]
  * );
- *```
+ * ```
  */
 class QueryBuilder extends AbstractAdapter
 {
@@ -94,4 +88,5 @@ class QueryBuilder extends AbstractAdapter
     public function setQueryBuilder(\Phalcon\Mvc\Model\Query\Builder $builder): QueryBuilder
     {
     }
+
 }

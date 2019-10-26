@@ -1,24 +1,20 @@
 <?php
 
-/**
- * This file is part of the Phalcon Framework.
- *
- * (c) Phalcon Team <team@phalcon.io>
- *
- * For the full copyright and license information, please view the LICENSE.txt
- * file that was distributed with this source code.
- */
-
 namespace Phalcon\Mvc\Model;
 
+use Closure;
+use Phalcon\Mvc\Controller\BindModelInterface;
+use Phalcon\Mvc\Model\Binder\BindableInterface;
 use Phalcon\Cache\Adapter\AdapterInterface;
+use ReflectionFunction;
+use ReflectionMethod;
 
 /**
  * Phalcon\Mvc\Model\Binding
  *
  * This is an class for binding models into params for handler
  */
-class Binder implements BinderInterface
+class Binder implements \Phalcon\Mvc\Model\BinderInterface
 {
     /**
      * Array for storing active bound models
@@ -133,4 +129,5 @@ class Binder implements BinderInterface
     public function setCache(\Phalcon\Cache\Adapter\AdapterInterface $cache): BinderInterface
     {
     }
+
 }

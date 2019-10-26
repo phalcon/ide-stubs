@@ -1,22 +1,15 @@
 <?php
 
-/**
- * This file is part of the Phalcon Framework.
- *
- * (c) Phalcon Team <team@phalcon.io>
- *
- * For the full copyright and license information, please view the LICENSE.txt
- * file that was distributed with this source code.
- */
-
 namespace Phalcon\Http\Request;
+
+use Phalcon\Http\Request\FileInterface;
 
 /**
  * Phalcon\Http\Request\File
  *
  * Provides OO wrappers to the $_FILES superglobal
  *
- *```php
+ * ```php
  * use Phalcon\Mvc\Controller;
  *
  * class PostsController extends Controller
@@ -32,9 +25,9 @@ namespace Phalcon\Http\Request;
  *         }
  *     }
  * }
- *```
+ * ```
  */
-class File implements FileInterface
+class File implements \Phalcon\Http\Request\FileInterface
 {
     /**
      * @var string|null
@@ -162,4 +155,5 @@ class File implements FileInterface
     public function moveTo(string $destination): bool
     {
     }
+
 }

@@ -1,15 +1,11 @@
 <?php
 
-/**
- * This file is part of the Phalcon Framework.
- *
- * (c) Phalcon Team <team@phalcon.io>
- *
- * For the full copyright and license information, please view the LICENSE.txt
- * file that was distributed with this source code.
- */
-
 namespace Phalcon\Tag;
+
+use Phalcon\Tag\Exception;
+use Phalcon\Tag;
+use Phalcon\Escaper\EscaperInterface;
+use Phalcon\Mvc\Model\ResultsetInterface;
 
 /**
  * Phalcon\Tag\Select
@@ -46,8 +42,8 @@ abstract class Select
     /**
      * Generate the OPTION tags based on a resultset
      *
-     * @param \Phalcon\Mvc\Model\ResultsetInterface $resultset
      * @param array $using
+     * @param \Phalcon\Mvc\Model\ResultsetInterface $resultset
      * @param mixed $value
      * @param string $closeOption
      * @return string
@@ -55,4 +51,5 @@ abstract class Select
     private static function optionsFromResultset(\Phalcon\Mvc\Model\ResultsetInterface $resultset, $using, $value, string $closeOption): string
     {
     }
+
 }

@@ -1,15 +1,8 @@
 <?php
 
-/**
- * This file is part of the Phalcon Framework.
- *
- * (c) Phalcon Team <team@phalcon.io>
- *
- * For the full copyright and license information, please view the LICENSE.txt
- * file that was distributed with this source code.
- */
-
 namespace Phalcon\Flash;
+
+use Phalcon\Flash\AbstractFlash;
 
 /**
  * This is a variant of the Phalcon\Flash that immediately outputs any message
@@ -37,4 +30,5 @@ class Direct extends AbstractFlash
     public function output(bool $remove = true)
     {
     }
+
 }

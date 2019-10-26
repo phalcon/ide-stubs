@@ -1,5 +1,13 @@
 <?php
 
+namespace Phalcon\Logger\Adapter;
+
+use Phalcon\Logger;
+use Phalcon\Logger\Adapter\AdapterInterface;
+use Phalcon\Logger\Exception;
+use Phalcon\Logger\Formatter\FormatterInterface;
+use Phalcon\Logger\Item;
+
 /**
  * This file is part of the Phalcon Framework.
  *
@@ -8,12 +16,7 @@
  * For the full copyright and license information, please view the LICENSE.txt
  * file that was distributed with this source code.
  */
-
-namespace Phalcon\Logger\Adapter;
-
-use Phalcon\Logger\Formatter\FormatterInterface;
-
-abstract class AbstractAdapter implements AdapterInterface
+abstract class AbstractAdapter implements \Phalcon\Logger\Adapter\AdapterInterface
 {
     /**
      * Name of the default formatter class
@@ -25,7 +28,7 @@ abstract class AbstractAdapter implements AdapterInterface
     /**
      * Formatter
      *
-     * @var <FormatterInterface>
+     * @var FormatterInterface
      */
     protected $formatter;
 
@@ -120,4 +123,5 @@ abstract class AbstractAdapter implements AdapterInterface
     public function setFormatter(\Phalcon\Logger\Formatter\FormatterInterface $formatter): AdapterInterface
     {
     }
+
 }

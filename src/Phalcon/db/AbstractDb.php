@@ -1,15 +1,8 @@
 <?php
 
-/**
- * This file is part of the Phalcon Framework.
- *
- * (c) Phalcon Team <team@phalcon.io>
- *
- * For the full copyright and license information, please view the LICENSE.txt
- * file that was distributed with this source code.
- */
-
 namespace Phalcon\Db;
+
+use \PDO;
 
 /**
  * Phalcon\Db and its related classes provide a simple SQL database interface
@@ -24,7 +17,7 @@ namespace Phalcon\Db;
  * Phalcon\Db\AbstractDb is an abstract class. You only can use it with a
  * database adapter like Phalcon\Db\Adapter\Pdo
  *
- *```php
+ * ```php
  * use Phalcon\Db;
  * use Phalcon\Db\Exception;
  * use Phalcon\Db\Adapter\Pdo\Mysql as MysqlConnection;
@@ -41,7 +34,7 @@ namespace Phalcon\Db;
  *     );
  *
  *     $result = $connection->query(
- *         "SELECT * FROM robots LIMIT 5"
+ *         "SELECT FROM robots LIMIT 5"
  *     );
  *
  *     $result->setFetchMode(Enum::FETCH_NUM);
@@ -65,4 +58,5 @@ abstract class AbstractDb
     public static function setup(array $options)
     {
     }
+
 }

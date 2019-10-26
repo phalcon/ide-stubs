@@ -1,22 +1,20 @@
 <?php
 
-/**
- * This file is part of the Phalcon Framework.
- *
- * (c) Phalcon Team <team@phalcon.io>
- *
- * For the full copyright and license information, please view the LICENSE.txt
- * file that was distributed with this source code.
- */
-
 namespace Phalcon\Http;
 
+use Phalcon\Di\DiInterface;
 use Phalcon\Di\AbstractInjectionAware;
+use Phalcon\Crypt\CryptInterface;
+use Phalcon\Crypt\Mismatch;
+use Phalcon\Filter\FilterInterface;
+use Phalcon\Http\Response\Exception;
+use Phalcon\Http\Cookie\Exception;
+use Phalcon\Session\ManagerInterface;
 
 /**
  * Provide OO wrappers to manage a HTTP cookie.
  */
-class Cookie extends AbstractInjectionAware implements CookieInterface
+class Cookie extends AbstractInjectionAware implements \Phalcon\Http\CookieInterface
 {
 
     protected $domain;
@@ -285,4 +283,5 @@ class Cookie extends AbstractInjectionAware implements CookieInterface
     protected function assertSignKeyIsLongEnough(string $signKey)
     {
     }
+
 }

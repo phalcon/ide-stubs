@@ -1,16 +1,16 @@
 <?php
 
-/**
- * This file is part of the Phalcon Framework.
- *
- * (c) Phalcon Team <team@phalcon.io>
- *
- * For the full copyright and license information, please view the LICENSE.txt
- * file that was distributed with this source code.
- */
-
 namespace Phalcon\Assets;
 
+use Phalcon\Tag;
+use Phalcon\Assets\Asset;
+use Phalcon\Assets\Collection;
+use Phalcon\Assets\Exception;
+use Phalcon\Assets\Asset\Js;
+use Phalcon\Assets\Asset\Css;
+use Phalcon\Assets\Inline\Css;
+use Phalcon\Assets\Inline\Js;
+use Phalcon\Di\DiInterface;
 use Phalcon\Di\AbstractInjectionAware;
 
 /**
@@ -255,9 +255,9 @@ class Manager extends AbstractInjectionAware
     /**
      * Traverses a collection calling the callback to generate its HTML
      *
-     * @param \Phalcon\Assets\Collection $collection
      * @param callback $callback
      * @param string $type
+     * @param \Phalcon\Assets\Collection $collection
      * @return string|null
      */
     public function output(\Phalcon\Assets\Collection $collection, $callback, $type): ?string
@@ -277,8 +277,8 @@ class Manager extends AbstractInjectionAware
     /**
      * Traverses a collection and generate its HTML
      *
-     * @param \Phalcon\Assets\Collection $collection
      * @param string $type
+     * @param \Phalcon\Assets\Collection $collection
      * @return string
      */
     public function outputInline(\Phalcon\Assets\Collection $collection, $type): string
@@ -360,4 +360,5 @@ class Manager extends AbstractInjectionAware
     private function getPrefixedPath(\Phalcon\Assets\Collection $collection, string $path): string
     {
     }
+
 }

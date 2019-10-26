@@ -1,26 +1,19 @@
 <?php
 
-/**
- * This file is part of the Phalcon Framework.
- *
- * (c) Phalcon Team <team@phalcon.io>
- *
- * For the full copyright and license information, please view the LICENSE.txt
- * file that was distributed with this source code.
- */
-
 namespace Phalcon;
 
+use Phalcon\Di\DiInterface;
 use Phalcon\Di\AbstractInjectionAware;
 use Phalcon\Http\RequestInterface;
 use Phalcon\Security\Random;
-use Phalcon\Session\ManagerInterface as SessionInterface;
+use Phalcon\Security\Exception;
+use Phalcon\Session\ManagerInterface;
 
 /**
  * This component provides a set of functions to improve the security in Phalcon
  * applications
  *
- *```php
+ * ```php
  * $login    = $this->request->getPost("login");
  * $password = $this->request->getPost("password");
  *
@@ -31,7 +24,7 @@ use Phalcon\Session\ManagerInterface as SessionInterface;
  *         // The password is valid
  *     }
  * }
- *```
+ * ```
  */
 class Security extends AbstractInjectionAware
 {
@@ -301,4 +294,5 @@ class Security extends AbstractInjectionAware
     private function getLocalSession(): ?SessionInterface
     {
     }
+
 }

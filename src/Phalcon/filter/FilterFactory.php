@@ -1,5 +1,10 @@
 <?php
 
+namespace Phalcon\Filter;
+
+use Phalcon\Filter;
+use Phalcon\Filter\FilterInterface;
+
 /**
  * This file is part of the Phalcon Framework.
  *
@@ -8,9 +13,6 @@
  * For the full copyright and license information, please view the LICENSE.txt
  * file that was distributed with this source code.
  */
-
-namespace Phalcon\Filter;
-
 class FilterFactory
 {
 
@@ -18,9 +20,9 @@ class FilterFactory
      * Returns a Locator object with all the helpers defined in anonynous
      * functions
      *
-     * @return LocatorInterface
+     * @return \Phalcon\Filter\FilterInterface
      */
-    public function newInstance(): LocatorInterface
+    public function newInstance(): FilterInterface
     {
     }
 
@@ -30,4 +32,5 @@ class FilterFactory
     protected function getAdapters(): array
     {
     }
+
 }

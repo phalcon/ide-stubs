@@ -1,29 +1,36 @@
 <?php
 
-/**
- * This file is part of the Phalcon Framework.
- *
- * (c) Phalcon Team <team@phalcon.io>
- *
- * For the full copyright and license information, please view the LICENSE.txt
- * file that was distributed with this source code.
- */
-
 namespace Phalcon\Mvc\Model;
 
+use Phalcon\Db\Column;
+use Phalcon\Db\RawValue;
+use Phalcon\Db\ResultInterface;
 use Phalcon\Db\Adapter\AdapterInterface;
 use Phalcon\Di\DiInterface;
-use Phalcon\Di\InjectionAwareInterface;
-use Phalcon\Mvc\Model\Query\StatusInterface;
+use Phalcon\Helper\Arr;
+use Phalcon\Mvc\Model\Row;
 use Phalcon\Mvc\ModelInterface;
+use Phalcon\Mvc\Model\Exception;
+use Phalcon\Mvc\Model\ManagerInterface;
+use Phalcon\Mvc\Model\QueryInterface;
+use Phalcon\Mvc\Model\Query\Status;
+use Phalcon\Mvc\Model\Resultset\Complex;
+use Phalcon\Mvc\Model\Query\StatusInterface;
+use Phalcon\Mvc\Model\ResultsetInterface;
+use Phalcon\Mvc\Model\Resultset\Simple;
+use Phalcon\Di\InjectionAwareInterface;
+use Phalcon\Mvc\Model\RelationInterface;
+use Phalcon\Mvc\Model\TransactionInterface;
+use Phalcon\Db\DialectInterface;
+use Phalcon\Mvc\Model\Query\Lang;
 
 /**
  * Phalcon\Mvc\Model\Query
  *
  * This class takes a PHQL intermediate representation and executes it.
  *
- *```php
- * $phql = "SELECT c.price*0.16 AS taxes, c.* FROM Cars AS c JOIN Brands AS b
+ * ```php
+ * $phql = "SELECT c.price0.16 AS taxes, c. FROM Cars AS c JOIN Brands AS b
  *          WHERE b.name = :name: ORDER BY c.name";
  *
  * $result = $manager->executeQuery(
@@ -46,7 +53,7 @@ use Phalcon\Mvc\ModelInterface;
  * // $di needs to have the service "db" registered for this to work
  * $di = Phalcon\Di\FactoryDefault::getDefault();
  *
- * $phql = 'SELECT * FROM robot';
+ * $phql = 'SELECT FROM robot';
  *
  * $myTransaction = new Transaction($di);
  * $myTransaction->begin();
@@ -65,9 +72,9 @@ use Phalcon\Mvc\ModelInterface;
  *
  * $queryWithOutTransaction = new Query($phql, $di);
  * $resultWithOutEntries = $queryWithTransaction->execute();
- *```
+ * ```
  */
-class Query implements QueryInterface, InjectionAwareInterface
+class Query implements \Phalcon\Mvc\Model\QueryInterface, \Phalcon\Di\InjectionAwareInterface
 {
 
     const TYPE_DELETE = 303;
@@ -148,7 +155,7 @@ class Query implements QueryInterface, InjectionAwareInterface
     protected $uniqueRow;
 
 
-    protected static $_irPhqlCache;
+    static protected $_irPhqlCache;
 
     /**
      * TransactionInterface so that the query can wrap a transaction
@@ -286,9 +293,9 @@ class Query implements QueryInterface, InjectionAwareInterface
     /**
      * Resolves a table in a SELECT statement checking if the model exists
      *
+     * @return string
      * @param \Phalcon\Mvc\Model\ManagerInterface $manager
      * @param array $qualifiedName
-     * @return string
      */
     final protected function _getTable(\Phalcon\Mvc\Model\ManagerInterface $manager, array $qualifiedName)
     {
@@ -318,8 +325,8 @@ class Query implements QueryInterface, InjectionAwareInterface
     /**
      * Resolves joins involving has-one/belongs-to/has-many relations
      *
-     * @param string $joinType
      * @param string $joinSource
+     * @param string $joinType
      * @param string $modelAlias
      * @param string $joinAlias
      * @param \Phalcon\Mvc\Model\RelationInterface $relation
@@ -332,8 +339,8 @@ class Query implements QueryInterface, InjectionAwareInterface
     /**
      * Resolves joins involving many-to-many relations
      *
-     * @param string $joinType
      * @param string $joinSource
+     * @param string $joinType
      * @param string $modelAlias
      * @param string $joinAlias
      * @param \Phalcon\Mvc\Model\RelationInterface $relation
@@ -514,9 +521,9 @@ class Query implements QueryInterface, InjectionAwareInterface
     /**
      * Executes a parsed PHQL statement
      *
+     * @return mixed
      * @param array $bindParams
      * @param array $bindTypes
-     * @return mixed
      */
     public function execute(array $bindParams = array(), array $bindTypes = array())
     {
@@ -694,4 +701,5 @@ class Query implements QueryInterface, InjectionAwareInterface
     public function setTransaction(\Phalcon\Mvc\Model\TransactionInterface $transaction): QueryInterface
     {
     }
+
 }

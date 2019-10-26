@@ -1,15 +1,8 @@
 <?php
 
-/**
- * This file is part of the Phalcon Framework.
- *
- * (c) Phalcon Team <team@phalcon.io>
- *
- * For the full copyright and license information, please view the LICENSE.txt
- * file that was distributed with this source code.
- */
-
 namespace Phalcon\Mvc\Micro;
+
+use Phalcon\Mvc\Model\BinderInterface;
 
 /**
  * Phalcon\Mvc\Micro\LazyLoader
@@ -42,12 +35,13 @@ class LazyLoader
     /**
      * Calling __call method
      *
-     * @param string $method
      * @param array $arguments
-     * @param \Phalcon\Mvc\Model\BinderInterface $modelBinder
      * @return mixed
+     * @param string $method
+     * @param \Phalcon\Mvc\Model\BinderInterface $modelBinder
      */
     public function callMethod(string $method, $arguments, \Phalcon\Mvc\Model\BinderInterface $modelBinder = null)
     {
     }
+
 }

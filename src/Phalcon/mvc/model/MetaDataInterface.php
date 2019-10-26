@@ -1,17 +1,9 @@
 <?php
 
-/**
- * This file is part of the Phalcon Framework.
- *
- * (c) Phalcon Team <team@phalcon.io>
- *
- * For the full copyright and license information, please view the LICENSE.txt
- * file that was distributed with this source code.
- */
-
 namespace Phalcon\Mvc\Model;
 
-use Phalcon\Mvc\Model\MetaData\StrategyInterface;
+use Phalcon\Mvc\ModelInterface;
+use Phalcon\Mvc\Model\MetaData\Strategy\StrategyInterface;
 
 /**
  * Phalcon\Mvc\Model\MetaDataInterface
@@ -136,7 +128,7 @@ interface MetaDataInterface
     /**
      * Return the strategy to obtain the meta-data
      *
-     * @return \Phalcon\Mvc\Model\MetaData\StrategyInterface
+     * @return \Phalcon\Mvc\Model\MetaData\Strategy\StrategyInterface
      */
     public function getStrategy(): StrategyInterface;
 
@@ -238,9 +230,9 @@ interface MetaDataInterface
     /**
      * Set the meta-data extraction strategy
      *
-     * @param \Phalcon\Mvc\Model\MetaData\StrategyInterface $strategy
+     * @param \Phalcon\Mvc\Model\MetaData\Strategy\StrategyInterface $strategy
      */
-    public function setStrategy(\Phalcon\Mvc\Model\MetaData\StrategyInterface $strategy);
+    public function setStrategy(\Phalcon\Mvc\Model\MetaData\Strategy\StrategyInterface $strategy);
 
     /**
      * Writes meta-data to the adapter
@@ -249,4 +241,5 @@ interface MetaDataInterface
      * @param array $data
      */
     public function write(string $key, array $data);
+
 }

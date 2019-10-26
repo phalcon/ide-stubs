@@ -1,18 +1,16 @@
 <?php
 
-/**
- * This file is part of the Phalcon Framework.
- *
- * (c) Phalcon Team <team@phalcon.io>
- *
- * For the full copyright and license information, please view the LICENSE.txt
- * file that was distributed with this source code.
- */
-
 namespace Phalcon\Http;
 
+use Phalcon\Di\DiInterface;
 use Phalcon\Di\AbstractInjectionAware;
+use Phalcon\Events\ManagerInterface;
 use Phalcon\Filter\FilterInterface;
+use Phalcon\Http\Request\File;
+use Phalcon\Http\Request\FileInterface;
+use Phalcon\Http\Request\Exception;
+use UnexpectedValueException;
+use stdClass;
 
 /**
  * Encapsulates request information for easy and secure access from application
@@ -21,7 +19,7 @@ use Phalcon\Filter\FilterInterface;
  * The request object is a simple value object that is passed between the
  * dispatcher and controller classes. It packages the HTTP request environment.
  *
- *```php
+ * ```php
  * use Phalcon\Http\Request;
  *
  * $request = new Request();
@@ -38,9 +36,9 @@ use Phalcon\Filter\FilterInterface;
  *
  * // An array of languages the client accepts
  * $request->getLanguages();
- *```
+ * ```
  */
-class Request extends AbstractInjectionAware implements RequestInterface
+class Request extends AbstractInjectionAware implements \Phalcon\Http\RequestInterface
 {
 
     private $filterService;
@@ -857,4 +855,5 @@ class Request extends AbstractInjectionAware implements RequestInterface
     private function getServerArray(): array
     {
     }
+
 }

@@ -1,5 +1,10 @@
 <?php
 
+namespace Phalcon\Factory;
+
+use Phalcon\Config;
+use Phalcon\Factory\Exception;
+
 /**
  * This file is part of the Phalcon Framework.
  *
@@ -8,9 +13,6 @@
  * For the full copyright and license information, please view the LICENSE.txt
  * file that was distributed with this source code.
  */
-
-namespace Phalcon\Factory;
-
 abstract class AbstractFactory
 {
     /**
@@ -58,4 +60,5 @@ abstract class AbstractFactory
     protected function init(array $services = array())
     {
     }
+
 }

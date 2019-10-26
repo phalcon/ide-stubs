@@ -1,16 +1,8 @@
 <?php
 
-/**
- * This file is part of the Phalcon Framework.
- *
- * (c) Phalcon Team <team@phalcon.io>
- *
- * For the full copyright and license information, please view the LICENSE.txt
- * file that was distributed with this source code.
- */
-
 namespace Phalcon\Http;
 
+use DateTime;
 use Phalcon\Http\Response\HeadersInterface;
 
 /**
@@ -101,8 +93,8 @@ interface ResponseInterface
     /**
      * Sets the response content-type mime, optionally the charset
      *
-     * @param string $contentType
      * @param string $charset
+     * @param string $contentType
      * @return ResponseInterface
      */
     public function setContentType(string $contentType, $charset = null): ResponseInterface;
@@ -193,4 +185,5 @@ interface ResponseInterface
      * @return bool|ResponseInterface
      */
     public function sendHeaders();
+
 }

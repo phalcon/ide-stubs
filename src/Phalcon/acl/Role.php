@@ -1,20 +1,13 @@
 <?php
 
-/**
- * This file is part of the Phalcon Framework.
- *
- * (c) Phalcon Team <team@phalcon.io>
- *
- * For the full copyright and license information, please view the LICENSE.txt
- * file that was distributed with this source code.
- */
-
 namespace Phalcon\Acl;
+
+use Phalcon\Acl\Exception;
 
 /**
  * This class defines role entity and its description
  */
-class Role implements RoleInterface
+class Role implements \Phalcon\Acl\RoleInterface
 {
     /**
      * Role name
@@ -67,4 +60,5 @@ class Role implements RoleInterface
     public function __construct(string $name, string $description = null)
     {
     }
+
 }

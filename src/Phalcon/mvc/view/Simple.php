@@ -1,25 +1,25 @@
 <?php
 
-/**
- * This file is part of the Phalcon Framework.
- *
- * (c) Phalcon Team <team@phalcon.io>
- *
- * For the full copyright and license information, please view the LICENSE.txt
- * file that was distributed with this source code.
- */
-
 namespace Phalcon\Mvc\View;
 
+use Closure;
+use Phalcon\Di\DiInterface;
 use Phalcon\Di\Injectable;
+use Phalcon\Events\EventsAwareInterface;
+use Phalcon\Events\ManagerInterface;
+use Phalcon\Helper\Arr;
+use Phalcon\Helper\Str;
+use Phalcon\Mvc\View\Exception;
 use Phalcon\Mvc\ViewBaseInterface;
+use Phalcon\Mvc\View\Engine\EngineInterface;
+use Phalcon\Mvc\View\Engine\Php;
 
 /**
  * Phalcon\Mvc\View\Simple
  *
  * This component allows to render views without hierarchical levels
  *
- *```php
+ * ```php
  * use Phalcon\Mvc\View\Simple as View;
  *
  * $view = new View();
@@ -39,9 +39,9 @@ use Phalcon\Mvc\ViewBaseInterface;
  *         "parameter" => $here,
  *     ]
  * );
- *```
+ * ```
  */
-class Simple extends Injectable implements ViewBaseInterface
+class Simple extends Injectable implements \Phalcon\Mvc\ViewBaseInterface, \Phalcon\Events\EventsAwareInterface
 {
 
     protected $activeRenderPath;
@@ -53,6 +53,9 @@ class Simple extends Injectable implements ViewBaseInterface
      * @var \Phalcon\Mvc\View\EngineInterface[]|false
      */
     protected $engines = false;
+
+
+    protected $eventsManager;
 
 
     protected $options;
@@ -131,6 +134,15 @@ class Simple extends Injectable implements ViewBaseInterface
      * @return string
      */
     public function getContent(): string
+    {
+    }
+
+    /**
+     * Returns the internal event manager
+     *
+     * @return null|\Phalcon\Events\ManagerInterface
+     */
+    public function getEventsManager(): ?ManagerInterface
     {
     }
 
@@ -232,6 +244,15 @@ class Simple extends Injectable implements ViewBaseInterface
     }
 
     /**
+     * Sets the events manager
+     *
+     * @param \Phalcon\Events\ManagerInterface $eventsManager
+     */
+    public function setEventsManager(\Phalcon\Events\ManagerInterface $eventsManager)
+    {
+    }
+
+    /**
      * Adds parameters to views (alias of setVar)
      *
      * ```php
@@ -302,10 +323,11 @@ class Simple extends Injectable implements ViewBaseInterface
     /**
      * Tries to render the view with every engine registered in the component
      *
-     * @param string $path
      * @param array $params
+     * @param string $path
      */
     final protected function internalRender(string $path, $params)
     {
     }
+
 }

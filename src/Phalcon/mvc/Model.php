@@ -1,26 +1,39 @@
 <?php
-/**
- * This file is part of the Phalcon.
- *
- * (c) Phalcon Team <team@phalcon.com>
- *
- * For the full copyright and license information, please view the LICENSE
- * file that was distributed with this source code.
- */
 
 namespace Phalcon\Mvc;
 
 use JsonSerializable;
 use Phalcon\Db\Adapter\AdapterInterface;
+use Phalcon\Db\Column;
+use Phalcon\Db\DialectInterface;
+use Phalcon\Db\Enum;
+use Phalcon\Db\RawValue;
 use Phalcon\Di\AbstractInjectionAware;
-use Phalcon\Events\ManagerInterface as EventsManagerInterface;
+use Phalcon\Di;
+use Phalcon\Di\DiInterface;
+use Phalcon\Events\ManagerInterface;
+use Phalcon\Helper\Arr;
+use Phalcon\Messages\Message;
+use Phalcon\Messages\MessageInterface;
+use Phalcon\Mvc\Model\BehaviorInterface;
+use Phalcon\Mvc\Model\Criteria;
 use Phalcon\Mvc\Model\CriteriaInterface;
+use Phalcon\Mvc\Model\Exception;
 use Phalcon\Mvc\Model\ManagerInterface;
 use Phalcon\Mvc\Model\MetaDataInterface;
 use Phalcon\Mvc\Model\Query;
-use Phalcon\Mvc\Model\Relation;
+use Phalcon\Mvc\Model\Query\Builder;
+use Phalcon\Mvc\Model\Query\BuilderInterface;
+use Phalcon\Mvc\Model\QueryInterface;
 use Phalcon\Mvc\Model\ResultInterface;
+use Phalcon\Mvc\Model\Resultset;
 use Phalcon\Mvc\Model\ResultsetInterface;
+use Phalcon\Mvc\Model\Relation;
+use Phalcon\Mvc\Model\RelationInterface;
+use Phalcon\Mvc\Model\TransactionInterface;
+use Phalcon\Mvc\Model\ValidationFailed;
+use Phalcon\Mvc\ModelInterface;
+use Phalcon\Validation\ValidationInterface;
 use Serializable;
 
 /**
@@ -60,7 +73,7 @@ use Serializable;
  * }
  * ```
  */
-abstract class Model extends AbstractInjectionAware implements EntityInterface, ModelInterface, ResultInterface, Serializable, JsonSerializable
+abstract class Model extends AbstractInjectionAware implements \Phalcon\Mvc\EntityInterface, \Phalcon\Mvc\ModelInterface, \Phalcon\Mvc\Model\ResultInterface, \Serializable, \JsonSerializable
 {
 
     const DIRTY_STATE_DETACHED = 2;
@@ -148,9 +161,10 @@ abstract class Model extends AbstractInjectionAware implements EntityInterface, 
     /**
      * Handles method calls when a method is not implemented
      *
+     * @return mixed
+     * @throws \Phalcon\Mvc\Model\Exception If the method doesn't exist
      * @param string $method
      * @param array $arguments
-     * @return mixed
      */
     public function __call(string $method, array $arguments)
     {
@@ -159,9 +173,10 @@ abstract class Model extends AbstractInjectionAware implements EntityInterface, 
     /**
      * Handles method calls when a static method is not implemented
      *
+     * @return mixed
+     * @throws \Phalcon\Mvc\Model\Exception If the method doesn't exist
      * @param string $method
      * @param array $arguments
-     * @return mixed
      */
     public static function __callStatic(string $method, array $arguments)
     {
@@ -171,8 +186,8 @@ abstract class Model extends AbstractInjectionAware implements EntityInterface, 
      * Magic method to get related records using the relation alias as a
      * property
      *
-     * @param string $property
      * @return mixed
+     * @param string $property
      */
     public function __get(string $property)
     {
@@ -191,8 +206,8 @@ abstract class Model extends AbstractInjectionAware implements EntityInterface, 
     /**
      * Magic method to assign values to the the model
      *
-     * @param string $property
      * @param mixed $value
+     * @param string $property
      */
     public function __set(string $property, $value)
     {
@@ -302,9 +317,9 @@ abstract class Model extends AbstractInjectionAware implements EntityInterface, 
      * );
      * ```
      *
-     * @param array $data
-     * @param array $whiteList
      * @param array $dataColumnMap array to transform keys of data to another
+     * @param array $whiteList
+     * @param array $data
      * @return \Phalcon\Mvc\ModelInterface
      */
     public function assign(array $data, $whiteList = null, $dataColumnMap = null): ModelInterface
@@ -381,8 +396,8 @@ abstract class Model extends AbstractInjectionAware implements EntityInterface, 
      * ```
      *
      * @param \Phalcon\Mvc\ModelInterface|\Phalcon\Mvc\Model\Row $base
-     * @param array $data
      * @param array $columnMap
+     * @param array $data
      * @param int $dirtyState
      * @param bool $keepSnapshots
      * @return \Phalcon\Mvc\ModelInterface
@@ -394,10 +409,10 @@ abstract class Model extends AbstractInjectionAware implements EntityInterface, 
     /**
      * Returns an hydrated result based on the data and the column map
      *
-     * @param array $data
      * @param array $columnMap
-     * @param int $hydrationMode
      * @return mixed
+     * @param array $data
+     * @param int $hydrationMode
      */
     public static function cloneResultMapHydrate(array $data, $columnMap, int $hydrationMode)
     {
@@ -419,7 +434,7 @@ abstract class Model extends AbstractInjectionAware implements EntityInterface, 
      * ```
      *
      * @param array $parameters
-     * @return int
+     * @return mixed
      */
     public static function count($parameters = null): int
     {
@@ -886,9 +901,9 @@ abstract class Model extends AbstractInjectionAware implements EntityInterface, 
     /**
      * Returns related records based on defined relations
      *
-     * @param string $alias
      * @param array $arguments
      * @return \Phalcon\Mvc\Model\Resultset\Simple|Phalcon\Mvc\Model\Resultset\Simple|false
+     * @param string $alias
      */
     public function getRelated(string $alias, $arguments = null)
     {
@@ -1249,8 +1264,8 @@ abstract class Model extends AbstractInjectionAware implements EntityInterface, 
      * This method is used internally to set snapshot data when the model was
      * set up to keep snapshot data
      *
-     * @param array $data
      * @param array $columnMap
+     * @param array $data
      */
     public function setSnapshotData(array $data, $columnMap = null)
     {
@@ -1445,10 +1460,10 @@ abstract class Model extends AbstractInjectionAware implements EntityInterface, 
     /**
      * Sends a pre-build INSERT SQL statement to the relational database system
      *
-     * @param \Phalcon\Mvc\Model\MetaDataInterface $metaData
-     * @param \Phalcon\Db\Adapter\AdapterInterface $connection
      * @param string|array $table
      * @param bool|string $identityField
+     * @param \Phalcon\Mvc\Model\MetaDataInterface $metaData
+     * @param \Phalcon\Db\Adapter\AdapterInterface $connection
      * @return bool
      */
     protected function _doLowInsert(\Phalcon\Mvc\Model\MetaDataInterface $metaData, \Phalcon\Db\Adapter\AdapterInterface $connection, $table, $identityField): bool
@@ -1458,9 +1473,9 @@ abstract class Model extends AbstractInjectionAware implements EntityInterface, 
     /**
      * Sends a pre-build UPDATE SQL statement to the relational database system
      *
+     * @param string|array $table
      * @param \Phalcon\Mvc\Model\MetaDataInterface $metaData
      * @param \Phalcon\Db\Adapter\AdapterInterface $connection
-     * @param string|array $table
      * @return bool
      */
     protected function _doLowUpdate(\Phalcon\Mvc\Model\MetaDataInterface $metaData, \Phalcon\Db\Adapter\AdapterInterface $connection, $table): bool
@@ -1479,23 +1494,24 @@ abstract class Model extends AbstractInjectionAware implements EntityInterface, 
     }
 
     /**
-     * Returns related records defined relations depending on the method name
+     * Returns related records defined relations depending on the method name.
+     * Returns false if the relation is non-existent.
      *
      * @param string $modelName
      * @param string $method
-     * @param array $arguments
-     * @return mixed
+     * @param array $arguments *
+     * @return ResultsetInterface|ModelInterface|bool|null
      */
-    protected function _getRelatedRecords(string $modelName, string $method, $arguments)
+    protected function _getRelatedRecords(string $modelName, string $method, array $arguments)
     {
     }
 
     /**
      * Generate a PHQL SELECT statement for an aggregate
      *
+     * @param array $parameters
      * @param string $functionName
      * @param string $alias
-     * @param array $parameters
      * @return \Phalcon\Mvc\Model\ResultsetInterface
      */
     protected static function _groupResult(string $functionName, string $alias, $parameters): ResultsetInterface
@@ -1505,11 +1521,11 @@ abstract class Model extends AbstractInjectionAware implements EntityInterface, 
     /**
      * Try to check if the query must invoke a finder
      *
+     * @return \Phalcon\Mvc\ModelInterface[]|\Phalcon\Mvc\ModelInterface|bool
      * @param string $method
      * @param array $arguments
-     * @return \Phalcon\Mvc\ModelInterface[]|\Phalcon\Mvc\ModelInterface|bool
      */
-    final protected static function _invokeFinder(string $method, array $arguments)
+    protected final static function _invokeFinder(string $method, array $arguments)
     {
     }
 
@@ -1539,8 +1555,10 @@ abstract class Model extends AbstractInjectionAware implements EntityInterface, 
     /**
      * Saves related records that must be stored prior to save the master record
      *
+     * @param \Phalcon\Mvc\ModelInterface[] related
      * @param \Phalcon\Db\Adapter\AdapterInterface $connection
-     * @param \Phalcon\Mvc\ModelInterface[] $related
+     * @param mixed $related
+     * @param \Phalcon\Mvc\ModelInterface  [] related
      * @return bool
      */
     protected function _preSaveRelatedRecords(\Phalcon\Db\Adapter\AdapterInterface $connection, $related): bool
@@ -1561,8 +1579,10 @@ abstract class Model extends AbstractInjectionAware implements EntityInterface, 
     /**
      * Save the related records assigned in the has-one/has-many relations
      *
+     * @param  Phalcon\Mvc\ModelInterface[] related
      * @param \Phalcon\Db\Adapter\AdapterInterface $connection
-     * @param \Phalcon\Mvc\ModelInterface[] $related
+     * @param mixed $related
+     * @param Phalcon\Mvc\ModelInterface  [] related
      * @return bool
      */
     protected function _postSaveRelatedRecords(\Phalcon\Db\Adapter\AdapterInterface $connection, $related): bool
@@ -1688,12 +1708,12 @@ abstract class Model extends AbstractInjectionAware implements EntityInterface, 
      * ```
      *
      * @param string|array $fields
-     * @param string $intermediateModel
      * @param string|array $intermediateFields
      * @param string|array $intermediateReferencedFields
-     * @param string $referenceModel
      * @param string|array $referencedFields
      * @param array $options
+     * @param string $intermediateModel
+     * @param string $referenceModel
      * @return \Phalcon\Mvc\Model\Relation
      */
     protected function hasManyToMany($fields, string $intermediateModel, $intermediateFields, $intermediateReferencedFields, string $referenceModel, $referencedFields, $options = null): Relation
@@ -1946,4 +1966,5 @@ abstract class Model extends AbstractInjectionAware implements EntityInterface, 
     private static function caseInsensitiveColumnMap($columnMap, $key): string
     {
     }
+
 }

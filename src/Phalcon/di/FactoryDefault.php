@@ -1,15 +1,8 @@
 <?php
 
-/**
- * This file is part of the Phalcon Framework.
- *
- * (c) Phalcon Team <team@phalcon.io>
- *
- * For the full copyright and license information, please view the LICENSE.txt
- * file that was distributed with this source code.
- */
-
 namespace Phalcon\Di;
+
+use Phalcon\Filter\FilterFactory;
 
 /**
  * This is a variant of the standard Phalcon\Di. By default it automatically
@@ -26,4 +19,5 @@ class FactoryDefault extends \Phalcon\Di
     public function __construct()
     {
     }
+
 }

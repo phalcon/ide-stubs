@@ -1,17 +1,18 @@
 <?php
 
-/**
- * This file is part of the Phalcon Framework.
- *
- * (c) Phalcon Team <team@phalcon.io>
- *
- * For the full copyright and license information, please view the LICENSE.txt
- * file that was distributed with this source code.
- */
-
 namespace Phalcon\Validation\Validator;
 
+use Phalcon\Helper\Arr;
+use Phalcon\Messages\Message;
+use Phalcon\Validation;
 use Phalcon\Validation\AbstractValidatorComposite;
+use Phalcon\Validation\Validator\File\MimeType;
+use Phalcon\Validation\Validator\File\Resolution\Equal;
+use Phalcon\Validation\Validator\File\Resolution\Max;
+use Phalcon\Validation\Validator\File\Resolution\Min;
+use Phalcon\Validation\Validator\File\Size\Equal;
+use Phalcon\Validation\Validator\File\Size\Max;
+use Phalcon\Validation\Validator\File\Size\Min;
 
 /**
  * Checks if a value has a correct file
@@ -91,4 +92,5 @@ class File extends AbstractValidatorComposite
     public function __construct(array $options = array())
     {
     }
+
 }

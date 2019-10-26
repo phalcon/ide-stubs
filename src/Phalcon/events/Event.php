@@ -1,23 +1,25 @@
 <?php
 
-/**
- * This file is part of the Phalcon Framework.
- *
- * (c) Phalcon Team <team@phalcon.io>
- *
- * For the full copyright and license information, please view the LICENSE.txt
- * file that was distributed with this source code.
- */
-
 namespace Phalcon\Events;
+
+use Phalcon\Events\Exception;
 
 /**
  * Phalcon\Events\Event
  *
  * This class offers contextual information of a fired event in the
  * EventsManager
+ *
+ * ```php
+ * Phalcon\Events\Event;
+ *
+ * $event = new Event("db:afterQuery", $this, ["data" => "mydata"], true);
+ * if ($event->isCancelable()) {
+ *     $event->stop();
+ * }
+ * ```
  */
-class Event implements EventInterface
+class Event implements \Phalcon\Events\EventInterface
 {
     /**
      * Is event cancelable?
@@ -85,8 +87,8 @@ class Event implements EventInterface
     /**
      * Phalcon\Events\Event constructor
      *
-     * @param string $type
      * @param object $source
+     * @param string $type
      * @param mixed $data
      * @param bool $cancelable
      */
@@ -152,4 +154,5 @@ class Event implements EventInterface
     public function stop(): EventInterface
     {
     }
+
 }

@@ -1,22 +1,13 @@
 <?php
 
-/**
- * This file is part of the Phalcon Framework.
- *
- * (c) Phalcon Team <team@phalcon.io>
- *
- * For the full copyright and license information, please view the LICENSE.txt
- * file that was distributed with this source code.
- */
-
 namespace Phalcon\Mvc\View\Engine\Volt;
 
-use Phalcon\Mvc\View\Exception as BaseException;
+use Phalcon\Mvc\View\Exception;
 
 /**
  * Class for exceptions thrown by Phalcon\Mvc\View
  */
-class Exception extends BaseException
+class Exception extends \Phalcon\Mvc\View\Exception
 {
 
     protected $statement;
@@ -40,4 +31,5 @@ class Exception extends BaseException
     public function getStatement(): array
     {
     }
+
 }

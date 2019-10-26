@@ -1,16 +1,8 @@
 <?php
 
-/**
- * This file is part of the Phalcon Framework.
- *
- * (c) Phalcon Team <team@phalcon.io>
- *
- * For the full copyright and license information, please view the LICENSE.txt
- * file that was distributed with this source code.
- */
-
 namespace Phalcon\Html\Helper;
 
+use Phalcon\Html\Exception;
 use Phalcon\Escaper\EscaperInterface;
 
 /**
@@ -21,7 +13,7 @@ use Phalcon\Escaper\EscaperInterface;
 abstract class AbstractHelper
 {
     /**
-     * @var <EscaperInterface>
+     * @var EscaperInterface
      */
     protected $escaper;
 
@@ -62,10 +54,8 @@ abstract class AbstractHelper
     /**
      * Keeps all the attributes sorted - same order all the tome
      *
-     * @param array attributes
-     *
      * @param array $overrides
-     * @param array $attributes
+     * @param array $attributes *
      * @return array
      */
     protected function orderAttributes(array $overrides, array $attributes): array
@@ -92,4 +82,5 @@ abstract class AbstractHelper
     protected function selfClose(string $tag, array $attributes = array()): string
     {
     }
+
 }

@@ -1,24 +1,21 @@
 <?php
 
-/**
- * This file is part of the Phalcon Framework.
- *
- * (c) Phalcon Team <team@phalcon.io>
- *
- * For the full copyright and license information, please view the LICENSE.txt
- * file that was distributed with this source code.
- */
-
 namespace Phalcon\Mvc\Model\MetaData\Strategy;
 
-use Phalcon\Mvc\Model\MetaData\StrategyInterface;
+use Phalcon\Di\DiInterface;
+use Phalcon\Db\Adapter\AdapterInterface;
+use Phalcon\Db\Column;
+use Phalcon\Mvc\ModelInterface;
+use Phalcon\Mvc\Model\Exception;
+use Phalcon\Mvc\Model\MetaData;
+use Phalcon\Mvc\Model\MetaData\Strategy\StrategyInterface;
 
 /**
  * Phalcon\Mvc\Model\MetaData\Strategy\Introspection
  *
  * Queries the table meta-data in order to introspect the model's metadata
  */
-class Introspection implements StrategyInterface
+class Introspection implements \Phalcon\Mvc\Model\MetaData\Strategy\StrategyInterface
 {
 
     /**
@@ -42,4 +39,5 @@ class Introspection implements StrategyInterface
     final public function getMetaData(\Phalcon\Mvc\ModelInterface $model, \Phalcon\Di\DiInterface $container): array
     {
     }
+
 }

@@ -1,23 +1,23 @@
 <?php
 
-/**
- * This file is part of the Phalcon Framework.
- *
- * (c) Phalcon Team <team@phalcon.io>
- *
- * For the full copyright and license information, please view the LICENSE.txt
- * file that was distributed with this source code.
- */
-
 namespace Phalcon\Mvc\Model;
 
-use Phalcon\Db\Adapter\AdapterInterface;
 use Phalcon\Di\DiInterface;
+use Phalcon\Mvc\Model\Relation;
+use Phalcon\Mvc\Model\RelationInterface;
+use Phalcon\Mvc\Model\Exception;
+use Phalcon\Mvc\ModelInterface;
+use Phalcon\Db\Adapter\AdapterInterface;
+use Phalcon\Mvc\Model\ResultsetInterface;
+use Phalcon\Mvc\Model\ManagerInterface;
 use Phalcon\Di\InjectionAwareInterface;
 use Phalcon\Events\EventsAwareInterface;
-use Phalcon\Events\ManagerInterface as EventsManagerInterface;
+use Phalcon\Mvc\Model\Query;
+use Phalcon\Mvc\Model\QueryInterface;
+use Phalcon\Mvc\Model\Query\Builder;
 use Phalcon\Mvc\Model\Query\BuilderInterface;
-use Phalcon\Mvc\ModelInterface;
+use Phalcon\Mvc\Model\BehaviorInterface;
+use Phalcon\Events\ManagerInterface;
 
 /**
  * Phalcon\Mvc\Model\Manager
@@ -44,7 +44,7 @@ use Phalcon\Mvc\ModelInterface;
  * $robot = new Robots($di);
  * ```
  */
-class Manager implements ManagerInterface, InjectionAwareInterface, EventsAwareInterface
+class Manager implements \Phalcon\Mvc\Model\ManagerInterface, \Phalcon\Di\InjectionAwareInterface, \Phalcon\Events\EventsAwareInterface
 {
 
     protected $aliases = array();
@@ -511,11 +511,11 @@ class Manager implements ManagerInterface, InjectionAwareInterface, EventsAwareI
     /**
      * Setup a 1-1 relation between two models
      *
+     * @param array $options
      * @param \Phalcon\Mvc\ModelInterface $model
      * @param mixed $fields
      * @param string $referencedModel
      * @param mixed $referencedFields
-     * @param array $options
      * @return \Phalcon\Mvc\Model\RelationInterface
      */
     public function addHasOne(\Phalcon\Mvc\ModelInterface $model, $fields, string $referencedModel, $referencedFields, $options = null): RelationInterface
@@ -525,11 +525,11 @@ class Manager implements ManagerInterface, InjectionAwareInterface, EventsAwareI
     /**
      * Setup a relation reverse many to one between two models
      *
+     * @param array $options
      * @param \Phalcon\Mvc\ModelInterface $model
      * @param mixed $fields
      * @param string $referencedModel
      * @param mixed $referencedFields
-     * @param array $options
      * @return \Phalcon\Mvc\Model\RelationInterface
      */
     public function addBelongsTo(\Phalcon\Mvc\ModelInterface $model, $fields, string $referencedModel, $referencedFields, $options = null): RelationInterface
@@ -539,11 +539,11 @@ class Manager implements ManagerInterface, InjectionAwareInterface, EventsAwareI
     /**
      * Setup a relation 1-n between two models
      *
+     * @param mixed $referencedFields
+     * @param array $options
      * @param \Phalcon\Mvc\ModelInterface $model
      * @param mixed $fields
      * @param string $referencedModel
-     * @param mixed $referencedFields
-     * @param array $options
      * @return \Phalcon\Mvc\Model\RelationInterface
      */
     public function addHasMany(\Phalcon\Mvc\ModelInterface $model, $fields, string $referencedModel, $referencedFields, $options = null): RelationInterface
@@ -553,14 +553,14 @@ class Manager implements ManagerInterface, InjectionAwareInterface, EventsAwareI
     /**
      * Setups a relation n-m between two models
      *
-     * @param \Phalcon\Mvc\ModelInterface $model
      * @param string $fields
-     * @param string $intermediateModel
      * @param string $intermediateFields
      * @param string $intermediateReferencedFields
-     * @param string $referencedModel
      * @param string $referencedFields
      * @param array $options
+     * @param \Phalcon\Mvc\ModelInterface $model
+     * @param string $intermediateModel
+     * @param string $referencedModel
      * @return \Phalcon\Mvc\Model\RelationInterface
      */
     public function addHasManyToMany(\Phalcon\Mvc\ModelInterface $model, $fields, string $intermediateModel, $intermediateFields, $intermediateReferencedFields, string $referencedModel, $referencedFields, $options = null): RelationInterface
@@ -636,11 +636,11 @@ class Manager implements ManagerInterface, InjectionAwareInterface, EventsAwareI
     /**
      * Helper method to query records based on a relation definition
      *
+     * @return \Phalcon\Mvc\Model\Resultset\Simple|Phalcon\Mvc\Model\Resultset\Simple|int|false
      * @param \Phalcon\Mvc\Model\RelationInterface $relation
      * @param \Phalcon\Mvc\ModelInterface $record
      * @param mixed $parameters
      * @param string $method
-     * @return \Phalcon\Mvc\Model\Resultset\Simple|Phalcon\Mvc\Model\Resultset\Simple|int|false
      */
     public function getRelationRecords(\Phalcon\Mvc\Model\RelationInterface $relation, \Phalcon\Mvc\ModelInterface $record, $parameters = null, string $method = null)
     {
@@ -840,4 +840,5 @@ class Manager implements ManagerInterface, InjectionAwareInterface, EventsAwareI
     public function __destruct()
     {
     }
+
 }

@@ -1,26 +1,22 @@
 <?php
 
-/**
- * This file is part of the Phalcon Framework.
- *
- * (c) Phalcon Team <team@phalcon.io>
- *
- * For the full copyright and license information, please view the LICENSE.txt
- * file that was distributed with this source code.
- */
-
 namespace Phalcon\Mvc\Model\Query;
 
+use Phalcon\Di;
+use Phalcon\Db\Column;
 use Phalcon\Di\DiInterface;
+use Phalcon\Helper\Arr;
+use Phalcon\Mvc\Model\Exception;
 use Phalcon\Di\InjectionAwareInterface;
 use Phalcon\Mvc\Model\QueryInterface;
+use Phalcon\Mvc\Model\Query\BuilderInterface;
 
 /**
  * Phalcon\Mvc\Model\Query\Builder
  *
  * Helps to create PHQL queries using an OO interface
  *
- *```php
+ * ```php
  * $params = [
  *     "models"     => [
  *         Users::class,
@@ -49,9 +45,9 @@ use Phalcon\Mvc\Model\QueryInterface;
  * ];
  *
  * $queryBuilder = new \Phalcon\Mvc\Model\Query\Builder($params);
- *```
+ * ```
  */
-class Builder implements BuilderInterface, InjectionAwareInterface
+class Builder implements \Phalcon\Mvc\Model\Query\BuilderInterface, \Phalcon\Di\InjectionAwareInterface
 {
 
     protected $bindParams;
@@ -919,4 +915,5 @@ class Builder implements BuilderInterface, InjectionAwareInterface
     protected function conditionNotIn(string $clause, string $operator, string $expr, array $values): BuilderInterface
     {
     }
+
 }

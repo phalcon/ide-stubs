@@ -1,18 +1,11 @@
 <?php
 
-/**
- * This file is part of the Phalcon Framework.
- *
- * (c) Phalcon Team <team@phalcon.io>
- *
- * For the full copyright and license information, please view the LICENSE.txt
- * file that was distributed with this source code.
- */
-
 namespace Phalcon\Forms\Element;
 
 use Phalcon\Forms\Form;
+use Phalcon\Messages\MessageInterface;
 use Phalcon\Messages\Messages;
+use Phalcon\Validation\ValidatorInterface;
 
 /**
  * Interface for Phalcon\Forms\Element classes
@@ -39,9 +32,10 @@ interface ElementInterface
     /**
      * Adds a group of validators
      *
+     * @param \Phalcon\Validation\ValidatorInterface[]
      * @param array $validators
      * @param bool $merge
-     * @param \Phalcon\Validation\ValidatorInterface[]
+     * @param \Phalcon\Validation\ValidatorInterface  []
      * @return ElementInterface
      */
     public function addValidators(array $validators, bool $merge = true): ElementInterface;
@@ -264,4 +258,5 @@ interface ElementInterface
      * @return ElementInterface
      */
     public function setUserOptions(array $options): ElementInterface;
+
 }

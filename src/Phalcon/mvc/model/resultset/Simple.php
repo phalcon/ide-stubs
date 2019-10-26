@@ -1,17 +1,15 @@
 <?php
 
-/**
- * This file is part of the Phalcon Framework.
- *
- * (c) Phalcon Team <team@phalcon.io>
- *
- * For the full copyright and license information, please view the LICENSE.txt
- * file that was distributed with this source code.
- */
-
 namespace Phalcon\Mvc\Model\Resultset;
 
+use Phalcon\Cache\Adapter\AdapterInterface;
+use Phalcon\Di;
+use Phalcon\Di\DiInterface;
+use Phalcon\Mvc\Model;
+use Phalcon\Mvc\Model\Exception;
 use Phalcon\Mvc\Model\Resultset;
+use Phalcon\Mvc\ModelInterface;
+use Phalcon\Storage\Serializer\SerializerInterface;
 
 /**
  * Phalcon\Mvc\Model\Resultset\Simple
@@ -49,7 +47,7 @@ class Simple extends Resultset
     /**
      * Returns current row in the resultset
      *
-     * @return null|ModelInterface
+     * @return null|\Phalcon\Mvc\ModelInterface
      */
     final public function current(): ?ModelInterface
     {
@@ -86,4 +84,5 @@ class Simple extends Resultset
     public function unserialize($data)
     {
     }
+
 }

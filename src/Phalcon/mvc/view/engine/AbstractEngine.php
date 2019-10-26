@@ -1,16 +1,8 @@
 <?php
 
-/**
- * This file is part of the Phalcon Framework.
- *
- * (c) Phalcon Team <team@phalcon.io>
- *
- * For the full copyright and license information, please view the LICENSE.txt
- * file that was distributed with this source code.
- */
-
 namespace Phalcon\Mvc\View\Engine;
 
+use Phalcon\Di\DiInterface;
 use Phalcon\Di\Injectable;
 use Phalcon\Mvc\ViewBaseInterface;
 
@@ -18,7 +10,7 @@ use Phalcon\Mvc\ViewBaseInterface;
  * All the template engine adapters must inherit this class. This provides
  * basic interfacing between the engine and the Phalcon\Mvc\View component.
  */
-abstract class AbstractEngine extends Injectable implements EngineInterface
+abstract class AbstractEngine extends Injectable implements \Phalcon\Mvc\View\Engine\EngineInterface
 {
 
     protected $view;
@@ -55,11 +47,11 @@ abstract class AbstractEngine extends Injectable implements EngineInterface
     /**
      * Renders a partial inside another view
      *
-     * @param string $partialPath
      * @param array $params
-     * @return string
+     * @param string $partialPath
      */
-    public function partial(string $partialPath, $params = null): string
+    public function partial(string $partialPath, $params = null)
     {
     }
+
 }

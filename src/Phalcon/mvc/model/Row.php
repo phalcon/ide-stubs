@@ -1,19 +1,13 @@
 <?php
 
-/**
- * This file is part of the Phalcon Framework.
- *
- * (c) Phalcon Team <team@phalcon.io>
- *
- * For the full copyright and license information, please view the LICENSE.txt
- * file that was distributed with this source code.
- */
-
 namespace Phalcon\Mvc\Model;
 
 use ArrayAccess;
 use JsonSerializable;
 use Phalcon\Mvc\EntityInterface;
+use Phalcon\Mvc\Model\Exception;
+use Phalcon\Mvc\Model\ResultInterface;
+use Phalcon\Mvc\ModelInterface;
 
 /**
  * Phalcon\Mvc\Model\Row
@@ -21,7 +15,7 @@ use Phalcon\Mvc\EntityInterface;
  * This component allows Phalcon\Mvc\Model to return rows without an associated entity.
  * This objects implements the ArrayAccess interface to allow access the object as object->x or array[x].
  */
-class Row implements EntityInterface, ResultInterface, ArrayAccess, JsonSerializable
+class Row implements \Phalcon\Mvc\EntityInterface, \Phalcon\Mvc\Model\ResultInterface, \ArrayAccess, \JsonSerializable
 {
 
     /**
@@ -36,10 +30,8 @@ class Row implements EntityInterface, ResultInterface, ArrayAccess, JsonSerializ
     /**
      * Gets a record in a specific position of the row
      *
-     * @param string|int index
-     *
-     * @param mixed $index
-     * @return mixed
+     * @param string|int $index *
+     * @return string|Phalcon\Mvc\ModelInterface
      */
     public function offsetGet($index)
     {
@@ -81,8 +73,8 @@ class Row implements EntityInterface, ResultInterface, ArrayAccess, JsonSerializ
      * echo $robot->readAttribute("name");
      * ```
      *
-     * @param string $attribute
      * @return mixed
+     * @param string $attribute
      */
     public function readAttribute(string $attribute)
     {
@@ -114,10 +106,11 @@ class Row implements EntityInterface, ResultInterface, ArrayAccess, JsonSerializ
      * $robot->writeAttribute("name", "Rosey");
      * ```
      *
-     * @param string $attribute
      * @param mixed $value
+     * @param string $attribute
      */
     public function writeAttribute(string $attribute, $value)
     {
     }
+
 }

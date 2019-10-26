@@ -1,26 +1,16 @@
 <?php
 
-/**
- * This file is part of the Phalcon Framework.
- *
- * (c) Phalcon Team <team@phalcon.io>
- *
- * For the full copyright and license information, please view the LICENSE.txt
- * file that was distributed with this source code.
- *
- * Implementation of this file has been influenced by Zend Diactoros
- * @link    https://github.com/zendframework/zend-diactoros
- * @license https://github.com/zendframework/zend-diactoros/blob/master/LICENSE.md
- */
-
 namespace Phalcon\Http\Message;
 
+use Phalcon\Helper\Number;
+use Phalcon\Http\Message\AbstractMessage;
+use Phalcon\Http\Message\Exception\InvalidArgumentException;
 use Psr\Http\Message\ResponseInterface;
 
 /**
  * PSR-7 Response
  */
-final class Response extends AbstractMessage implements ResponseInterface
+final class Response extends AbstractMessage implements \Psr\Http\Message\ResponseInterface
 {
     /**
      * Gets the response reason phrase associated with the status code.
@@ -82,8 +72,8 @@ final class Response extends AbstractMessage implements ResponseInterface
      * Response constructor.
      *
      * @param string $body
-     * @param int $code
-     * @param array $headers
+     * @param int    $code
+     * @param array  $headers
      */
     public function __construct($body = 'php://memory', int $code = 200, array $headers = array())
     {
@@ -104,10 +94,9 @@ final class Response extends AbstractMessage implements ResponseInterface
      * @see http://tools.ietf.org/html/rfc7231#section-6
      * @see http://www.iana.org/assignments/http-status-codes/http-status-codes.xhtml
      *
+     * @param int    $code
      * @param string $reasonPhrase
      *
-     * @param int $code
-     * @param mixed $reasonPhrase
      * @return Response
      */
     public function withStatus($code, $reasonPhrase = ''): Response
@@ -150,4 +139,5 @@ final class Response extends AbstractMessage implements ResponseInterface
     private function processCode($code, $phrase = '')
     {
     }
+
 }

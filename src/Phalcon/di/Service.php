@@ -1,31 +1,27 @@
 <?php
 
-/**
- * This file is part of the Phalcon Framework.
- *
- * (c) Phalcon Team <team@phalcon.io>
- *
- * For the full copyright and license information, please view the LICENSE.txt
- * file that was distributed with this source code.
- */
-
 namespace Phalcon\Di;
 
+use Closure;
+use Phalcon\Di\DiInterface;
+use Phalcon\Di\Exception;
 use Phalcon\Di\Exception\ServiceResolutionException;
+use Phalcon\Di\ServiceInterface;
+use Phalcon\Di\Service\Builder;
 
 /**
  * Represents individually a service in the services container
  *
- *```php
+ * ```php
  * $service = new \Phalcon\Di\Service(
  *     "request",
  *     \Phalcon\Http\Request::class
  * );
  *
  * $request = service->resolve();
- *```
+ * ```
  */
-class Service implements ServiceInterface
+class Service implements \Phalcon\Di\ServiceInterface
 {
 
     protected $definition;
@@ -66,8 +62,8 @@ class Service implements ServiceInterface
     /**
      * Returns a parameter in a specific position
      *
-     * @param int $position
      * @return array
+     * @param int $position
      */
     public function getParameter(int $position)
     {
@@ -139,4 +135,5 @@ class Service implements ServiceInterface
     public function setSharedInstance($sharedInstance)
     {
     }
+
 }

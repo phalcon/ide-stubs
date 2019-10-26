@@ -1,15 +1,8 @@
 <?php
 
-/**
- * This file is part of the Phalcon Framework.
- *
- * (c) Phalcon Team <team@phalcon.io>
- *
- * For the full copyright and license information, please view the LICENSE.txt
- * file that was distributed with this source code.
- */
-
 namespace Phalcon\Mvc\Model;
+
+use Phalcon\Di\DiInterface;
 
 /**
  * Phalcon\Mvc\Model\CriteriaInterface
@@ -22,9 +15,9 @@ interface CriteriaInterface
     /**
      * Appends a condition to the current conditions using an AND operator
      *
-     * @param string $conditions
      * @param array $bindParams
      * @param array $bindTypes
+     * @param string $conditions
      * @return CriteriaInterface
      */
     public function andWhere(string $conditions, $bindParams = null, $bindTypes = null): CriteriaInterface;
@@ -36,9 +29,9 @@ interface CriteriaInterface
      * $criteria->betweenWhere("price", 100.25, 200.50);
      * ```
      *
-     * @param string $expr
      * @param mixed $minimum
      * @param mixed $maximum
+     * @param string $expr
      * @return CriteriaInterface
      */
     public function betweenWhere(string $expr, $minimum, $maximum): CriteriaInterface;
@@ -252,9 +245,9 @@ interface CriteriaInterface
      * $criteria->notBetweenWhere("price", 100.25, 200.50);
      * ```
      *
-     * @param string $expr
      * @param mixed $minimum
      * @param mixed $maximum
+     * @param string $expr
      * @return CriteriaInterface
      */
     public function notBetweenWhere(string $expr, $minimum, $maximum): CriteriaInterface;
@@ -283,9 +276,9 @@ interface CriteriaInterface
     /**
      * Appends a condition to the current conditions using an OR operator
      *
-     * @param string $conditions
      * @param array $bindParams
      * @param array $bindTypes
+     * @param string $conditions
      * @return CriteriaInterface
      */
     public function orWhere(string $conditions, $bindParams = null, $bindTypes = null): CriteriaInterface;
@@ -331,4 +324,5 @@ interface CriteriaInterface
      * @return CriteriaInterface
      */
     public function where(string $conditions): CriteriaInterface;
+
 }

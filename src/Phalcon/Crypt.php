@@ -1,17 +1,10 @@
 <?php
 
-/**
- * This file is part of the Phalcon Framework.
- *
- * (c) Phalcon Team <team@phalcon.io>
- *
- * For the full copyright and license information, please view the LICENSE.txt
- * file that was distributed with this source code.
- */
-
 namespace Phalcon;
 
 use Phalcon\Crypt\CryptInterface;
+use Phalcon\Crypt\Exception;
+use Phalcon\Crypt\Mismatch;
 
 /**
  * Provides encryption capabilities to Phalcon applications.
@@ -31,7 +24,7 @@ use Phalcon\Crypt\CryptInterface;
  * echo $crypt->decrypt($encrypted, $key);
  * ```
  */
-class Crypt implements CryptInterface
+class Crypt implements \Phalcon\Crypt\CryptInterface
 {
 
     const PADDING_ANSI_X_923 = 1;
@@ -405,4 +398,5 @@ class Crypt implements CryptInterface
     protected function cryptUnpadText(string $text, string $mode, int $blockSize, int $paddingType)
     {
     }
+
 }

@@ -1,20 +1,18 @@
 <?php
 
-/**
- * This file is part of the Phalcon Framework.
- *
- * (c) Phalcon Team <team@phalcon.io>
- *
- * For the full copyright and license information, please view the LICENSE.txt
- * file that was distributed with this source code.
- */
-
 namespace Phalcon;
 
+use Phalcon\Config;
+use Phalcon\Di\Service;
 use Phalcon\Di\DiInterface;
+use Phalcon\Di\Exception;
 use Phalcon\Di\Exception\ServiceResolutionException;
+use Phalcon\Config\Adapter\Php;
+use Phalcon\Config\Adapter\Yaml;
 use Phalcon\Di\ServiceInterface;
 use Phalcon\Events\ManagerInterface;
+use Phalcon\Di\InjectionAwareInterface;
+use Phalcon\Di\ServiceProviderInterface;
 
 /**
  * Phalcon\Di is a component that implements Dependency Injection/Service
@@ -34,7 +32,7 @@ use Phalcon\Events\ManagerInterface;
  * Additionally, this pattern increases testability in the code, thus making it
  * less prone to errors.
  *
- *```php
+ * ```php
  * use Phalcon\Di;
  * use Phalcon\Http\Request;
  *
@@ -52,9 +50,9 @@ use Phalcon\Events\ManagerInterface;
  * );
  *
  * $request = $di->getRequest();
- *```
+ * ```
  */
-class Di implements DiInterface
+class Di implements \Phalcon\Di\DiInterface
 {
     /**
      * List of registered services
@@ -76,7 +74,7 @@ class Di implements DiInterface
     /**
      * Latest DI build
      */
-    protected static $_default;
+    static protected $_default;
 
 
     /**
@@ -419,4 +417,5 @@ class Di implements DiInterface
     public function setShared(string $name, $definition): ServiceInterface
     {
     }
+
 }

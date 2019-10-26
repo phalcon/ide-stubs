@@ -1,17 +1,17 @@
 <?php
 
-/**
- * This file is part of the Phalcon Framework.
- *
- * (c) Phalcon Team <team@phalcon.io>
- *
- * For the full copyright and license information, please view the LICENSE.txt
- * file that was distributed with this source code.
- */
-
 namespace Phalcon\Mvc;
 
+use Closure;
+use Phalcon\Di\DiInterface;
 use Phalcon\Di\Injectable;
+use Phalcon\Events\ManagerInterface;
+use Phalcon\Helper\Arr;
+use Phalcon\Helper\Str;
+use Phalcon\Mvc\View\Exception;
+use Phalcon\Mvc\ViewInterface;
+use Phalcon\Events\EventsAwareInterface;
+use Phalcon\Mvc\View\Engine\Php;
 
 /**
  * Phalcon\Mvc\View
@@ -39,7 +39,7 @@ use Phalcon\Di\Injectable;
  * echo $view->getContent();
  * ```
  */
-class View extends Injectable implements ViewInterface
+class View extends Injectable implements \Phalcon\Mvc\ViewInterface, \Phalcon\Events\EventsAwareInterface
 {
     /**
      * Render Level: To the action view
@@ -97,6 +97,9 @@ class View extends Injectable implements ViewInterface
 
 
     protected $engines = false;
+
+
+    protected $eventsManager;
 
 
     protected $layout;
@@ -322,6 +325,15 @@ class View extends Injectable implements ViewInterface
     }
 
     /**
+     * Returns the internal event manager
+     *
+     * @return null|\Phalcon\Events\ManagerInterface
+     */
+    public function getEventsManager(): ?ManagerInterface
+    {
+    }
+
+    /**
      * Returns the name of the main view
      *
      * @return string
@@ -405,10 +417,10 @@ class View extends Injectable implements ViewInterface
      * );
      * ```
      *
+     * @param mixed $configCallback
      * @param string $controllerName
      * @param string $actionName
      * @param array $params
-     * @param mixed $configCallback
      * @return string
      */
     public function getRender(string $controllerName, string $actionName, array $params = array(), $configCallback = null): string
@@ -573,6 +585,15 @@ class View extends Injectable implements ViewInterface
      * @return View
      */
     public function setContent(string $content): View
+    {
+    }
+
+    /**
+     * Sets the events manager
+     *
+     * @param \Phalcon\Events\ManagerInterface $eventsManager
+     */
+    public function setEventsManager(\Phalcon\Events\ManagerInterface $eventsManager)
     {
     }
 
@@ -800,4 +821,5 @@ class View extends Injectable implements ViewInterface
     public function processRender(string $controllerName, string $actionName, array $params = array(), bool $fireEvents = true): bool
     {
     }
+
 }

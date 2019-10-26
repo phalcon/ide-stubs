@@ -1,27 +1,19 @@
 <?php
 
-/**
- * This file is part of the Phalcon Framework.
- *
- * (c) Phalcon Team <team@phalcon.io>
- *
- * For the full copyright and license information, please view the LICENSE.txt
- * file that was distributed with this source code.
- */
-
 namespace Phalcon\Image\Adapter;
 
 use Phalcon\Image\Enum;
+use Phalcon\Image\Exception;
 
 /**
  * Phalcon\Image\Adapter
  *
  * All image adapters must use this class
  */
-abstract class AbstractAdapter implements AdapterInterface
+abstract class AbstractAdapter implements \Phalcon\Image\Adapter\AdapterInterface
 {
 
-    protected static $checked = false;
+    static protected $checked = false;
 
 
     protected $file;
@@ -159,8 +151,8 @@ abstract class AbstractAdapter implements AdapterInterface
      * This method scales the images using liquid rescaling method. Only support
      * Imagick
      *
-     * @param int $width new width
-     * @param int $height new height
+     * @param int $width   new width
+     * @param int $height  new height
      * @param int $deltaX How much the seam can traverse on x-axis. Passing 0 causes the seams to be straight.
      * @param int $rigidity Introduces a bias for non-straight seams. This parameter is typically 0.
      * @return AbstractAdapter
@@ -283,4 +275,5 @@ abstract class AbstractAdapter implements AdapterInterface
     public function watermark(AdapterInterface $watermark, int $offsetX = 0, int $offsetY = 0, int $opacity = 100): AdapterInterface
     {
     }
+
 }

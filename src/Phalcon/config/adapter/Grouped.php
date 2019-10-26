@@ -1,17 +1,11 @@
 <?php
 
-/**
- * This file is part of the Phalcon Framework.
- *
- * (c) Phalcon Team <team@phalcon.io>
- *
- * For the full copyright and license information, please view the LICENSE.txt
- * file that was distributed with this source code.
- */
-
 namespace Phalcon\Config\Adapter;
 
 use Phalcon\Config;
+use Phalcon\Config\Exception;
+use Phalcon\Factory\Exception;
+use Phalcon\Config\ConfigFactory;
 
 /**
  * Reads multiple files (or arrays) and merges them all together.
@@ -76,4 +70,5 @@ class Grouped extends Config
     public function __construct(array $arrayConfig, string $defaultAdapter = 'php')
     {
     }
+
 }

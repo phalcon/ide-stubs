@@ -1,22 +1,15 @@
 <?php
 
-/**
- * This file is part of the Phalcon Framework.
- *
- * (c) Phalcon Team <team@phalcon.io>
- *
- * For the full copyright and license information, please view the LICENSE.txt
- * file that was distributed with this source code.
- */
-
 namespace Phalcon\Mvc\Router;
+
+use Phalcon\Mvc\Router\Exception;
 
 /**
  * Phalcon\Mvc\Router\Route
  *
  * This class represents every route added to the router
  */
-class Route implements RouteInterface
+class Route implements \Phalcon\Mvc\Router\RouteInterface
 {
 
     protected $beforeMatch;
@@ -52,7 +45,7 @@ class Route implements RouteInterface
     protected $pattern;
 
 
-    protected static $uniqueId = 0;
+    static protected $uniqueId = 0;
 
 
 
@@ -373,4 +366,5 @@ class Route implements RouteInterface
     public function via($httpMethods): RouteInterface
     {
     }
+
 }

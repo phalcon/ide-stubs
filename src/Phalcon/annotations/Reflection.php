@@ -1,20 +1,13 @@
 <?php
 
-/**
- * This file is part of the Phalcon Framework.
- *
- * (c) Phalcon Team <team@phalcon.io>
- *
- * For the full copyright and license information, please view the LICENSE.txt
- * file that was distributed with this source code.
- */
-
 namespace Phalcon\Annotations;
+
+use Phalcon\Annotations\Collection;
 
 /**
  * Allows to manipulate the annotations reflection in an OO manner
  *
- *```php
+ * ```php
  * use Phalcon\Annotations\Reader;
  * use Phalcon\Annotations\Reflection;
  *
@@ -27,7 +20,7 @@ namespace Phalcon\Annotations;
  *
  * // Get the annotations in the class docblock
  * $classAnnotations = $reflection->getClassAnnotations();
- *```
+ * ```
  */
 class Reflection
 {
@@ -91,4 +84,5 @@ class Reflection
     public function getReflectionData(): array
     {
     }
+
 }

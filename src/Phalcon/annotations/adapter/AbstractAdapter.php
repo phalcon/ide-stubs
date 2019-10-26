@@ -1,25 +1,18 @@
 <?php
 
-/**
- * This file is part of the Phalcon Framework.
- *
- * (c) Phalcon Team <team@phalcon.io>
- *
- * For the full copyright and license information, please view the LICENSE.txt
- * file that was distributed with this source code.
- */
-
 namespace Phalcon\Annotations\Adapter;
 
-use Phalcon\Annotations\Collection;
+use Phalcon\Annotations\Adapter\AdapterInterface;
 use Phalcon\Annotations\Reader;
-use Phalcon\Annotations\ReaderInterface;
+use Phalcon\Annotations\Exception;
+use Phalcon\Annotations\Collection;
 use Phalcon\Annotations\Reflection;
+use Phalcon\Annotations\ReaderInterface;
 
 /**
  * This is the base class for Phalcon\Annotations adapters
  */
-abstract class AbstractAdapter implements AdapterInterface
+abstract class AbstractAdapter implements \Phalcon\Annotations\Adapter\AdapterInterface
 {
     /**
      * @var array
@@ -101,4 +94,5 @@ abstract class AbstractAdapter implements AdapterInterface
     public function setReader(\Phalcon\Annotations\ReaderInterface $reader)
     {
     }
+
 }

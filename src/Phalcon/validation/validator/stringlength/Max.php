@@ -1,17 +1,11 @@
 <?php
 
-/**
- * This file is part of the Phalcon Framework.
- *
- * (c) Phalcon Team <team@phalcon.io>
- *
- * For the full copyright and license information, please view the LICENSE.txt
- * file that was distributed with this source code.
- */
-
 namespace Phalcon\Validation\Validator\StringLength;
 
+use Phalcon\Messages\Message;
+use Phalcon\Validation;
 use Phalcon\Validation\AbstractValidator;
+use Phalcon\Validation\Exception;
 
 /**
  * Validates that a string has the specified maximum constraints
@@ -75,4 +69,5 @@ class Max extends AbstractValidator
     public function validate(\Phalcon\Validation $validation, $field): bool
     {
     }
+
 }

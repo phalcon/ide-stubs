@@ -1,15 +1,10 @@
 <?php
 
-/**
- * This file is part of the Phalcon Framework.
- *
- * (c) Phalcon Team <team@phalcon.io>
- *
- * For the full copyright and license information, please view the LICENSE.txt
- * file that was distributed with this source code.
- */
-
 namespace Phalcon\Events;
+
+use Closure;
+use Phalcon\Events\Event;
+use SplPriorityQueue;
 
 /**
  * Phalcon\Events\Manager
@@ -19,7 +14,7 @@ namespace Phalcon\Events;
  * can create hooks or plugins that will offer monitoring of data, manipulation,
  * conditional execution and much more.
  */
-class Manager implements ManagerInterface
+class Manager implements \Phalcon\Events\ManagerInterface
 {
 
     const DEFAULT_PRIORITY = 100;
@@ -44,8 +39,8 @@ class Manager implements ManagerInterface
     /**
      * Attach a listener to the events manager
      *
-     * @param string $eventType
      * @param object|callable $handler
+     * @param string $eventType
      * @param int $priority
      */
     public function attach(string $eventType, $handler, int $priority = self::DEFAULT_PRIORITY)
@@ -74,8 +69,8 @@ class Manager implements ManagerInterface
     /**
      * Detach the listener from the events manager
      *
-     * @param string $eventType
      * @param object $handler
+     * @param string $eventType
      */
     public function detach(string $eventType, $handler)
     {
@@ -107,11 +102,11 @@ class Manager implements ManagerInterface
      * $eventsManager->fire("db", $connection);
      * ```
      *
-     * @param string $eventType
      * @param object $source
      * @param mixed $data
-     * @param bool $cancelable
      * @return mixed
+     * @param string $eventType
+     * @param bool $cancelable
      */
     public function fire(string $eventType, $source, $data = null, bool $cancelable = true)
     {
@@ -120,9 +115,9 @@ class Manager implements ManagerInterface
     /**
      * Internal handler to call a queue of events
      *
+     * @return mixed
      * @param \SplPriorityQueue $queue
      * @param EventInterface $event
-     * @return mixed
      */
     final public function fireQueue(\SplPriorityQueue $queue, EventInterface $event)
     {
@@ -167,4 +162,5 @@ class Manager implements ManagerInterface
     public function isCollecting(): bool
     {
     }
+
 }

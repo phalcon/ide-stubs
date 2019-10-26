@@ -1,17 +1,11 @@
 <?php
 
-/**
- * This file is part of the Phalcon Framework.
- *
- * (c) Phalcon Team <team@phalcon.io>
- *
- * For the full copyright and license information, please view the LICENSE.txt
- * file that was distributed with this source code.
- */
-
 namespace Phalcon\Mvc\Router;
 
+use Phalcon\Di\DiInterface;
 use Phalcon\Mvc\Router;
+use Phalcon\Annotations\Annotation;
+use Phalcon\Mvc\Router\Exception;
 
 /**
  * Phalcon\Mvc\Router\Annotations
@@ -134,4 +128,5 @@ class Annotations extends Router
     public function setControllerSuffix(string $controllerSuffix)
     {
     }
+
 }

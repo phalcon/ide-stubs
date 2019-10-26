@@ -1,18 +1,16 @@
 <?php
 
-/**
- * This file is part of the Phalcon.
- *
- * (c) Phalcon Team <team@phalcon.com>
- *
- * For the full copyright and license information, please view the LICENSE
- * file that was distributed with this source code.
- */
-
 namespace Phalcon\Db\Adapter\Pdo;
 
-use Phalcon\Db\Adapter\Pdo\AbstractPdo as PdoAdapter;
+use Phalcon\Db\Adapter\Pdo\AbstractPdo;
+use Phalcon\Db\Column;
+use Phalcon\Db\ColumnInterface;
+use Phalcon\Db\Enum;
+use Phalcon\Db\Exception;
 use Phalcon\Db\RawValue;
+use Phalcon\Db\Reference;
+use Phalcon\Db\ReferenceInterface;
+use Throwable;
 
 /**
  * Specific functions for the Postgresql database system
@@ -31,7 +29,7 @@ use Phalcon\Db\RawValue;
  * $connection = new Postgresql($config);
  * ```
  */
-class Postgresql extends PdoAdapter
+class Postgresql extends \Phalcon\Db\Adapter\Pdo\AbstractPdo
 {
     /**
      * @var string
@@ -177,4 +175,5 @@ class Postgresql extends PdoAdapter
     protected function getDsnDefaults(): array
     {
     }
+
 }

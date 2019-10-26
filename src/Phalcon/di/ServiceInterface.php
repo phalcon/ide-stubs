@@ -1,15 +1,8 @@
 <?php
 
-/**
- * This file is part of the Phalcon Framework.
- *
- * (c) Phalcon Team <team@phalcon.io>
- *
- * For the full copyright and license information, please view the LICENSE.txt
- * file that was distributed with this source code.
- */
-
 namespace Phalcon\Di;
+
+use Phalcon\Di\DiInterface;
 
 /**
  * Represents a service in the services container
@@ -27,8 +20,8 @@ interface ServiceInterface
     /**
      * Returns a parameter in a specific position
      *
-     * @param int $position
      * @return array
+     * @param int $position
      */
     public function getParameter(int $position);
 
@@ -77,4 +70,5 @@ interface ServiceInterface
      * @param bool $shared
      */
     public function setShared(bool $shared);
+
 }

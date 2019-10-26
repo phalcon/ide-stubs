@@ -1,15 +1,12 @@
 <?php
 
-/**
- * This file is part of the Phalcon Framework.
- *
- * (c) Phalcon Team <team@phalcon.io>
- *
- * For the full copyright and license information, please view the LICENSE.txt
- * file that was distributed with this source code.
- */
-
 namespace Phalcon\Mvc\Model;
+
+use Phalcon\Di\DiInterface;
+use Phalcon\Mvc\ModelInterface;
+use Phalcon\Mvc\Model\Transaction\Failed;
+use Phalcon\Mvc\Model\Transaction\ManagerInterface;
+use Phalcon\Mvc\Model\TransactionInterface;
 
 /**
  * Phalcon\Mvc\Model\Transaction
@@ -55,7 +52,7 @@ namespace Phalcon\Mvc\Model;
  * }
  * ```
  */
-class Transaction implements TransactionInterface
+class Transaction implements \Phalcon\Mvc\Model\TransactionInterface
 {
 
     protected $activeTransaction = false;
@@ -203,4 +200,5 @@ class Transaction implements TransactionInterface
     public function throwRollbackException(bool $status): TransactionInterface
     {
     }
+
 }

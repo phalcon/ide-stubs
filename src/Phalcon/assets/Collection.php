@@ -1,23 +1,21 @@
 <?php
 
-/**
- * This file is part of the Phalcon Framework.
- *
- * (c) Phalcon Team <team@phalcon.io>
- *
- * For the full copyright and license information, please view the LICENSE.txt
- * file that was distributed with this source code.
- */
-
 namespace Phalcon\Assets;
 
 use Countable;
 use Iterator;
+use Phalcon\Assets\Asset;
+use Phalcon\Assets\FilterInterface;
+use Phalcon\Assets\Inline;
+use Phalcon\Assets\Asset\Css;
+use Phalcon\Assets\Asset\Js;
+use Phalcon\Assets\Inline\Js;
+use Phalcon\Assets\Inline\Css;
 
 /**
  * Represents a collection of assets
  */
-class Collection implements Countable, Iterator
+class Collection implements \Countable, \Iterator
 {
     /**
      * @var array
@@ -289,10 +287,10 @@ class Collection implements Countable, Iterator
     /**
      * Adds a javascript asset to the collection
      *
+     * @param array $attributes
      * @param string $path
      * @param mixed $local
      * @param bool $filter
-     * @param array $attributes
      * @param string $version
      * @param bool $autoVersion
      * @return Collection
@@ -493,4 +491,5 @@ class Collection implements Countable, Iterator
     final protected function addAsset(AssetInterface $asset): bool
     {
     }
+
 }

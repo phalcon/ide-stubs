@@ -1,18 +1,11 @@
 <?php
 
-/**
- * This file is part of the Phalcon Framework.
- *
- * (c) Phalcon Team <team@phalcon.io>
- *
- * For the full copyright and license information, please view the LICENSE.txt
- * file that was distributed with this source code.
- */
-
 namespace Phalcon;
 
 use Phalcon\Di\DiInterface;
 use Phalcon\Escaper\EscaperInterface;
+use Phalcon\Tag\Select;
+use Phalcon\Tag\Exception;
 use Phalcon\Url\UrlInterface;
 
 /**
@@ -56,40 +49,40 @@ class Tag
     const XHTML5 = 11;
 
 
-    protected static $autoEscape = true;
+    static protected $autoEscape = true;
 
     /**
      * DI Container
      */
-    protected static $container;
+    static protected $container;
 
     /**
      * Pre-assigned values for components
      */
-    protected static $displayValues;
+    static protected $displayValues;
 
 
-    protected static $documentAppendTitle = null;
+    static protected $documentAppendTitle = null;
 
 
-    protected static $documentPrependTitle = null;
+    static protected $documentPrependTitle = null;
 
     /**
      * HTML document title
      */
-    protected static $documentTitle = null;
+    static protected $documentTitle = null;
 
 
-    protected static $documentTitleSeparator = null;
+    static protected $documentTitleSeparator = null;
 
 
-    protected static $documentType = 11;
+    static protected $documentType = 11;
 
 
-    protected static $escaperService = null;
+    static protected $escaperService = null;
 
 
-    protected static $urlService = null;
+    static protected $urlService = null;
 
 
     /**
@@ -658,7 +651,7 @@ class Tag
      * @param bool $asValue
      * @return string
      */
-    final protected static function inputField(string $type, $parameters, bool $asValue = false): string
+    static final protected function inputField(string $type, $parameters, bool $asValue = false): string
     {
     }
 
@@ -669,7 +662,8 @@ class Tag
      * @param mixed $parameters
      * @return string
      */
-    final protected static function inputFieldChecked(string $type, $parameters): string
+    static final protected function inputFieldChecked(string $type, $parameters): string
     {
     }
+
 }

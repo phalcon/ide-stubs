@@ -1,15 +1,9 @@
 <?php
 
-/**
- * This file is part of the Phalcon Framework.
- *
- * (c) Phalcon Team <team@phalcon.io>
- *
- * For the full copyright and license information, please view the LICENSE.txt
- * file that was distributed with this source code.
- */
-
 namespace Phalcon;
+
+use Phalcon\Collection;
+use Phalcon\Config\Exception;
 
 /**
  * `Phalcon\Config` is designed to simplify the access to, and the use of,
@@ -17,7 +11,7 @@ namespace Phalcon;
  * based user interface for accessing this configuration data within application
  * code.
  *
- *```php
+ * ```php
  * $config = new \Phalcon\Config(
  *     [
  *         "database" => [
@@ -34,7 +28,7 @@ namespace Phalcon;
  *         ],
  *     ]
  * );
- *```
+ * ```
  */
 class Config extends Collection
 {
@@ -138,4 +132,5 @@ class Config extends Collection
     protected function setData($element, $value)
     {
     }
+
 }

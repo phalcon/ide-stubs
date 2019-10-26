@@ -1,5 +1,10 @@
 <?php
 
+namespace Phalcon\Mvc\Model\MetaData\Strategy;
+
+use Phalcon\Mvc\ModelInterface;
+use Phalcon\Di\DiInterface;
+
 /**
  * This file is part of the Phalcon Framework.
  *
@@ -8,9 +13,6 @@
  * For the full copyright and license information, please view the LICENSE.txt
  * file that was distributed with this source code.
  */
-
-namespace Phalcon\Mvc\Model\MetaData;
-
 interface StrategyInterface
 {
 
@@ -32,4 +34,5 @@ interface StrategyInterface
      * @return array
      */
     public function getMetaData(\Phalcon\Mvc\ModelInterface $model, \Phalcon\Di\DiInterface $container): array;
+
 }

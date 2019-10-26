@@ -1,22 +1,20 @@
 <?php
 
-/**
- * This file is part of the Phalcon Framework.
- *
- * (c) Phalcon Team <team@phalcon.io>
- *
- * For the full copyright and license information, please view the LICENSE.txt
- * file that was distributed with this source code.
- */
-
 namespace Phalcon\Mvc\Model;
 
 use ArrayAccess;
+use Closure;
 use Countable;
 use Iterator;
 use JsonSerializable;
-use Phalcon\Cache\Adapter\AdapterInterface;
+use Phalcon\Db\Enum;
+use Phalcon\Messages\MessageInterface;
+use Phalcon\Mvc\Model;
 use Phalcon\Mvc\ModelInterface;
+use Phalcon\Mvc\Model\Exception;
+use Phalcon\Mvc\Model\ResultsetInterface;
+use Phalcon\Cache\Adapter\AdapterInterface;
+use Phalcon\Storage\Serializer\SerializerInterface;
 use SeekableIterator;
 use Serializable;
 
@@ -61,7 +59,7 @@ use Serializable;
  * }
  * ```
  */
-abstract class Resultset implements ResultsetInterface, Iterator, SeekableIterator, Countable, ArrayAccess, Serializable, JsonSerializable
+abstract class Resultset implements \Phalcon\Mvc\Model\ResultsetInterface, \Iterator, \SeekableIterator, \Countable, \ArrayAccess, \Serializable, \JsonSerializable
 {
 
     const HYDRATE_ARRAYS = 1;
@@ -350,4 +348,5 @@ abstract class Resultset implements ResultsetInterface, Iterator, SeekableIterat
     public function valid(): bool
     {
     }
+
 }

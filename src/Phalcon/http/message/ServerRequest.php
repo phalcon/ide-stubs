@@ -1,22 +1,11 @@
 <?php
 
-/**
-* This file is part of the Phalcon Framework.
-*
-* (c) Phalcon Team <team@phalcon.io>
-*
-* For the full copyright and license information, please view the LICENSE.txt
-* file that was distributed with this source code.
-*
-* Implementation of this file has been influenced by Zend Diactoros
-* @link    https://github.com/zendframework/zend-diactoros
-* @license https://github.com/zendframework/zend-diactoros/blob/master/LICENSE.md
-*/
-
 namespace Phalcon\Http\Message;
 
 use Phalcon\Collection;
+use Phalcon\Http\Message\AbstractRequest;
 use Phalcon\Http\Message\Exception\InvalidArgumentException;
+use Phalcon\Http\Message\Stream\Input;
 use Psr\Http\Message\ServerRequestInterface;
 use Psr\Http\Message\StreamInterface;
 use Psr\Http\Message\UploadedFileInterface;
@@ -25,7 +14,7 @@ use Psr\Http\Message\UriInterface;
 /**
  * PSR-7 ServerRequest
  */
-final class ServerRequest extends AbstractRequest implements ServerRequestInterface
+final class ServerRequest extends AbstractRequest implements \Psr\Http\Message\ServerRequestInterface
 {
     /**
      * @var Collection
@@ -178,16 +167,16 @@ final class ServerRequest extends AbstractRequest implements ServerRequestInterf
     /**
      * ServerRequest constructor.
      *
-     * @param string $method
+     * @param string                   $method
      * @param UriInterface|string|null $uri
-     * @param array $serverParams
-     * @param StreamInterface|string $body
-     * @param array $headers
-     * @param array $cookies
-     * @param array $queryParams
-     * @param array $uploadFiles
-     * @param null|array|object $parsedBody
-     * @param string $protocol
+     * @param array                    $serverParams
+     * @param StreamInterface|string   $body
+     * @param array                    $headers
+     * @param array                    $cookies
+     * @param array                    $queryParams
+     * @param array                    $uploadFiles
+     * @param null|array|object        $parsedBody
+     * @param string                   $protocol
      */
     public function __construct(string $method = 'GET', $uri = null, array $serverParams = array(), $body = 'php://input', $headers = array(), array $cookies = array(), array $queryParams = array(), array $uploadFiles = array(), $parsedBody = null, string $protocol = '1.1')
     {
@@ -203,10 +192,9 @@ final class ServerRequest extends AbstractRequest implements ServerRequestInterf
      * This method obviates the need for a hasAttribute() method, as it allows
      * specifying a default value to return if the attribute is not found.
      *
+     * @param string        $name
      * @param mixed|null    $defaultValue
      *
-     * @param string $name
-     * @param mixed $defaultValue
      * @return mixed
      */
     public function getAttribute($name, $defaultValue = null)
@@ -238,10 +226,9 @@ final class ServerRequest extends AbstractRequest implements ServerRequestInterf
      * immutability of the message, and MUST return an instance that has the
      * updated attribute.
      *
+     * @param string $name
      * @param mixed  $value
      *
-     * @param string $name
-     * @param mixed $value
      * @return ServerRequest
      */
     public function withAttribute($name, $value): ServerRequest
@@ -264,7 +251,6 @@ final class ServerRequest extends AbstractRequest implements ServerRequestInterf
      *
      * @param array $cookies
      *
-     * @param array $cookies
      * @return ServerRequest
      */
     public function withCookieParams(array $cookies): ServerRequest
@@ -295,10 +281,9 @@ final class ServerRequest extends AbstractRequest implements ServerRequestInterf
      *
      * @param array|object|null $data
      *
+     * @return ServerRequest
      * @throws InvalidArgumentException if an unsupported argument type is provided.
      *
-     * @param mixed $data
-     * @return ServerRequest
      */
     public function withParsedBody($data): ServerRequest
     {
@@ -324,7 +309,6 @@ final class ServerRequest extends AbstractRequest implements ServerRequestInterf
      *
      * @param array $query
      *
-     * @param array $query
      * @return ServerRequest
      */
     public function withQueryParams(array $query): ServerRequest
@@ -340,10 +324,9 @@ final class ServerRequest extends AbstractRequest implements ServerRequestInterf
      *
      * @param array $uploadedFiles
      *
+     * @return ServerRequest
      * @throws InvalidArgumentException if an invalid structure is provided.
      *
-     * @param array $uploadedFiles
-     * @return ServerRequest
      */
     public function withUploadedFiles(array $uploadedFiles): ServerRequest
     {
@@ -361,7 +344,6 @@ final class ServerRequest extends AbstractRequest implements ServerRequestInterf
      *
      * @param string $name
      *
-     * @param mixed $name
      * @return ServerRequest
      */
     public function withoutAttribute($name): ServerRequest
@@ -376,4 +358,5 @@ final class ServerRequest extends AbstractRequest implements ServerRequestInterf
     private function checkUploadedFiles(array $files)
     {
     }
+
 }

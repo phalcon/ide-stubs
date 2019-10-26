@@ -1,24 +1,17 @@
 <?php
 
-/**
- * This file is part of the Phalcon Framework.
- *
- * (c) Phalcon Team <team@phalcon.io>
- *
- * For the full copyright and license information, please view the LICENSE.txt
- * file that was distributed with this source code.
- */
-
 namespace Phalcon\Annotations;
 
 use Countable;
 use Iterator;
+use Phalcon\Annotations\Annotation;
+use Phalcon\Annotations\Exception;
 
 /**
  * Represents a collection of annotations. This class allows to traverse a group
  * of annotations easily
  *
- *```php
+ * ```php
  * // Traverse annotations
  * foreach ($classAnnotations as $annotation) {
  *     echo "Name=", $annotation->getName(), PHP_EOL;
@@ -29,9 +22,9 @@ use Iterator;
  *
  * // Get an specific annotation in the collection
  * $annotation = $classAnnotations->get("Cacheable");
- *```
+ * ```
  */
-class Collection implements Iterator, Countable
+class Collection implements \Iterator, \Countable
 {
     /**
      * @var array
@@ -141,4 +134,5 @@ class Collection implements Iterator, Countable
     public function valid(): bool
     {
     }
+
 }

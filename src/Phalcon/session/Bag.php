@@ -1,16 +1,9 @@
 <?php
-/**
- * This file is part of the Phalcon.
- *
- * (c) Phalcon Team <team@phalcon.com>
- *
- * For the full copyright and license information, please view the LICENSE
- * file that was distributed with this source code.
- */
 
 namespace Phalcon\Session;
 
 use Phalcon\Collection;
+use Phalcon\Di;
 use Phalcon\Di\DiInterface;
 use Phalcon\Di\InjectionAwareInterface;
 
@@ -28,7 +21,7 @@ use Phalcon\Di\InjectionAwareInterface;
  * $user->age  = 22;
  * ```
  */
-class Bag extends Collection implements InjectionAwareInterface
+class Bag extends Collection implements \Phalcon\Di\InjectionAwareInterface
 {
 
     private $container;
@@ -101,4 +94,5 @@ class Bag extends Collection implements InjectionAwareInterface
     public function setDI(\Phalcon\Di\DiInterface $container)
     {
     }
+
 }

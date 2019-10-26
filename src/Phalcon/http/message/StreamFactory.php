@@ -1,27 +1,16 @@
 <?php
 
-/**
- * This file is part of the Phalcon Framework.
- *
- * (c) Phalcon Team <team@phalcon.io>
- *
- * For the full copyright and license information, please view the LICENSE.txt
- * file that was distributed with this source code.
- *
- * Implementation of this file has been influenced by Zend Diactoros
- * @link    https://github.com/zendframework/zend-diactoros
- * @license https://github.com/zendframework/zend-diactoros/blob/master/LICENSE.md
- */
-
 namespace Phalcon\Http\Message;
 
+use Phalcon\Http\Message\Stream;
+use Phalcon\Http\Message\Exception\InvalidArgumentException;
 use Psr\Http\Message\StreamFactoryInterface;
 use Psr\Http\Message\StreamInterface;
 
 /**
  * PSR-17 StreamFactory
  */
-final class StreamFactory implements StreamFactoryInterface
+final class StreamFactory implements \Psr\Http\Message\StreamFactoryInterface
 {
 
     /**
@@ -31,8 +20,7 @@ final class StreamFactory implements StreamFactoryInterface
      *
      * @param string $content String content with which to populate the stream.
      *
-     * @param string $content
-     * @return \Psr\Http\Message\StreamInterface
+     * @return StreamInterface
      */
     public function createStream(string $content = ''): StreamInterface
     {
@@ -51,9 +39,7 @@ final class StreamFactory implements StreamFactoryInterface
      * @param string $mode     The mode with which to open the underlying
      *                         filename/stream.
      *
-     * @param string $filename
-     * @param string $mode
-     * @return \Psr\Http\Message\StreamInterface
+     * @return StreamInterface
      */
     public function createStreamFromFile(string $filename, string $mode = 'r+b'): StreamInterface
     {
@@ -70,4 +56,5 @@ final class StreamFactory implements StreamFactoryInterface
     public function createStreamFromResource($phpResource): StreamInterface
     {
     }
+
 }

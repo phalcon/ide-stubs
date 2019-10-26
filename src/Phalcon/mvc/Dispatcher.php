@@ -1,17 +1,13 @@
 <?php
 
-/**
- * This file is part of the Phalcon Framework.
- *
- * (c) Phalcon Team <team@phalcon.io>
- *
- * For the full copyright and license information, please view the LICENSE.txt
- * file that was distributed with this source code.
- */
-
 namespace Phalcon\Mvc;
 
-use Phalcon\Dispatcher\AbstractDispatcher as BaseDispatcher;
+use Phalcon\Mvc\DispatcherInterface;
+use Phalcon\Mvc\Dispatcher\Exception;
+use Phalcon\Events\ManagerInterface;
+use Phalcon\Http\ResponseInterface;
+use Phalcon\Mvc\ControllerInterface;
+use Phalcon\Dispatcher\AbstractDispatcher;
 
 /**
  * Dispatching is the process of taking the request object, extracting the
@@ -19,7 +15,7 @@ use Phalcon\Dispatcher\AbstractDispatcher as BaseDispatcher;
  * in it, and then instantiating a controller and calling an action of that
  * controller.
  *
- *```php
+ * ```php
  * $di = new \Phalcon\Di();
  *
  * $dispatcher = new \Phalcon\Mvc\Dispatcher();
@@ -31,9 +27,9 @@ use Phalcon\Dispatcher\AbstractDispatcher as BaseDispatcher;
  * $dispatcher->setParams([]);
  *
  * $controller = $dispatcher->dispatch();
- *```
+ * ```
  */
-class Dispatcher extends BaseDispatcher implements DispatcherInterface
+class Dispatcher extends \Phalcon\Dispatcher\AbstractDispatcher implements \Phalcon\Mvc\DispatcherInterface
 {
 
     protected $defaultAction = 'index';
@@ -104,7 +100,7 @@ class Dispatcher extends BaseDispatcher implements DispatcherInterface
      *
      * @param array $forward
      */
-    public function forward($forward)
+    public function forward(array $forward)
     {
     }
 
@@ -217,4 +213,5 @@ class Dispatcher extends BaseDispatcher implements DispatcherInterface
     protected function throwDispatchException(string $message, int $exceptionCode = 0)
     {
     }
+
 }

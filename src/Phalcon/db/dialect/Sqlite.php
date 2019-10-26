@@ -1,17 +1,14 @@
 <?php
 
-/**
- * This file is part of the Phalcon Framework.
- *
- * (c) Phalcon Team <team@phalcon.io>
- *
- * For the full copyright and license information, please view the LICENSE.txt
- * file that was distributed with this source code.
- */
-
 namespace Phalcon\Db\Dialect;
 
+use Phalcon\Db\Column;
+use Phalcon\Db\Exception;
+use Phalcon\Db\IndexInterface;
 use Phalcon\Db\Dialect;
+use Phalcon\Db\DialectInterface;
+use Phalcon\Db\ColumnInterface;
+use Phalcon\Db\ReferenceInterface;
 
 /**
  * Generates database specific SQL for the SQLite RDBMS
@@ -354,4 +351,5 @@ class Sqlite extends Dialect
     public function viewExists(string $viewName, string $schemaName = null): string
     {
     }
+
 }

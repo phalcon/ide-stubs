@@ -1,25 +1,19 @@
 <?php
 
-/**
- * This file is part of the Phalcon Framework.
- *
- * (c) Phalcon Team <team@phalcon.io>
- *
- * For the full copyright and license information, please view the LICENSE.txt
- * file that was distributed with this source code.
- */
-
 namespace Phalcon\Messages;
 
 use ArrayAccess;
 use Countable;
 use Iterator;
 use JsonSerializable;
+use Phalcon\Messages\Message;
+use Phalcon\Messages\Exception;
+use Phalcon\Messages\MessageInterface;
 
 /**
  * Represents a collection of messages
  */
-class Messages implements ArrayAccess, Countable, Iterator, JsonSerializable
+class Messages implements \ArrayAccess, \Countable, \Iterator, \JsonSerializable
 {
     /**
      * @var int
@@ -63,7 +57,9 @@ class Messages implements ArrayAccess, Countable, Iterator, JsonSerializable
      * $messages->appendMessages($messagesArray);
      * ```
      *
-     * @param \Phalcon\Messages\MessageInterface[] $messages
+     * @param \Phalcon\Messages\MessageInterface[] messages
+     * @param mixed $messages
+     * @param \Phalcon\Messages\MessageInterface  [] messages
      */
     public function appendMessages($messages)
     {
@@ -167,8 +163,8 @@ class Messages implements ArrayAccess, Countable, Iterator, JsonSerializable
      * $messages[0] = new \Phalcon\Messages\Message("This is a message");
      * ```
      *
-     * @param mixed $index
      * @param \Phalcon\Messages\Message $message
+     * @param mixed $index
      */
     public function offsetSet($index, $message)
     {
@@ -202,4 +198,5 @@ class Messages implements ArrayAccess, Countable, Iterator, JsonSerializable
     public function valid(): bool
     {
     }
+
 }

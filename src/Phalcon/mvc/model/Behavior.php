@@ -1,22 +1,16 @@
 <?php
 
-/**
- * This file is part of the Phalcon Framework.
- *
- * (c) Phalcon Team <team@phalcon.io>
- *
- * For the full copyright and license information, please view the LICENSE.txt
- * file that was distributed with this source code.
- */
-
 namespace Phalcon\Mvc\Model;
+
+use Phalcon\Mvc\ModelInterface;
+use Phalcon\Mvc\Model\BehaviorInterface;
 
 /**
  * Phalcon\Mvc\Model\Behavior
  *
  * This is an optional base class for ORM behaviors
  */
-abstract class Behavior implements BehaviorInterface
+abstract class Behavior implements \Phalcon\Mvc\Model\BehaviorInterface
 {
     /**
      * @var array
@@ -36,8 +30,8 @@ abstract class Behavior implements BehaviorInterface
     /**
      * Returns the behavior options related to an event
      *
-     * @param string $eventName
      * @return array
+     * @param string $eventName
      */
     protected function getOptions(string $eventName = null)
     {
@@ -73,4 +67,5 @@ abstract class Behavior implements BehaviorInterface
     public function notify(string $type, \Phalcon\Mvc\ModelInterface $model)
     {
     }
+
 }

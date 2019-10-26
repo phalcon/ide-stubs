@@ -1,22 +1,23 @@
 <?php
 
-/**
- * This file is part of the Phalcon Framework.
- *
- * (c) Phalcon Team <team@phalcon.io>
- *
- * For the full copyright and license information, please view the LICENSE.txt
- * file that was distributed with this source code.
- */
-
 namespace Phalcon\Acl\Adapter;
 
+use Phalcon\Acl\Adapter\AbstractAdapter;
 use Phalcon\Acl\Enum;
+use Phalcon\Acl\Role;
+use Phalcon\Acl\RoleInterface;
+use Phalcon\Acl\Component;
+use Phalcon\Acl\Exception;
+use Phalcon\Events\Manager;
+use Phalcon\Acl\RoleAware;
+use Phalcon\Acl\ComponentAware;
+use Phalcon\Acl\ComponentInterface;
+use ReflectionFunction;
 
 /**
  * Manages ACL lists in memory
  *
- *```php
+ * ```php
  * $acl = new \Phalcon\Acl\Adapter\Memory();
  *
  * $acl->setDefaultAction(
@@ -64,7 +65,7 @@ use Phalcon\Acl\Enum;
  * // Grant access to public areas to both users and guests
  * foreach ($roles as $role) {
  *     foreach ($publicComponents as $component => $actions) {
- *         $acl->allow($role->getName(), $component, "*");
+ *         $acl->allow($role->getName(), $component, "");
  *     }
  * }
  *
@@ -74,7 +75,7 @@ use Phalcon\Acl\Enum;
  *         $acl->allow("Users", $component, $action);
  *     }
  * }
- *```
+ * ```
  */
 class Memory extends AbstractAdapter
 {
@@ -452,4 +453,5 @@ class Memory extends AbstractAdapter
     private function canAccess(string $roleName, string $componentName, string $access)
     {
     }
+
 }

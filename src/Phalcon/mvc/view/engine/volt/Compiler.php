@@ -1,31 +1,25 @@
 <?php
 
-/**
- * This file is part of the Phalcon Framework.
- *
- * (c) Phalcon Team <team@phalcon.io>
- *
- * For the full copyright and license information, please view the LICENSE.txt
- * file that was distributed with this source code.
- */
-
 namespace Phalcon\Mvc\View\Engine\Volt;
 
+use Closure;
 use Phalcon\Di\DiInterface;
+use Phalcon\Mvc\ViewBaseInterface;
 use Phalcon\Di\InjectionAwareInterface;
+use Phalcon\Mvc\View\Engine\Volt\Exception;
 
 /**
  * This class reads and compiles Volt templates into PHP plain code
  *
- *```php
+ * ```php
  * $compiler = new \Phalcon\Mvc\View\Engine\Volt\Compiler();
  *
  * $compiler->compile("views/partials/header.volt");
  *
  * require $compiler->getCompiledTemplatePath();
- *```
+ * ```
  */
-class Compiler implements InjectionAwareInterface
+class Compiler implements \Phalcon\Di\InjectionAwareInterface
 {
 
     protected $autoescape = false;
@@ -242,10 +236,10 @@ class Compiler implements InjectionAwareInterface
      * );
      * ```
      *
+     * @return string|array
      * @param string $path
      * @param string $compiledPath
      * @param bool $extendsMode
-     * @return string|array
      */
     public function compileFile(string $path, string $compiledPath, bool $extendsMode = false)
     {
@@ -362,9 +356,9 @@ class Compiler implements InjectionAwareInterface
     /**
      * Fires an event to registered extensions
      *
-     * @param string $name
      * @param array $arguments
      * @return mixed
+     * @param string $name
      */
     final public function fireExtensionEvent(string $name, $arguments = null)
     {
@@ -428,8 +422,8 @@ class Compiler implements InjectionAwareInterface
     /**
      * Returns a compiler's option
      *
-     * @param string $option
      * @return string
+     * @param string $option
      */
     public function getOption(string $option)
     {
@@ -472,8 +466,8 @@ class Compiler implements InjectionAwareInterface
      * );
      * ```
      *
-     * @param string $viewCode
      * @return array
+     * @param string $viewCode
      */
     public function parse(string $viewCode)
     {
@@ -502,8 +496,8 @@ class Compiler implements InjectionAwareInterface
     /**
      * Sets a single compiler option
      *
-     * @param string $option
      * @param mixed $value
+     * @param string $option
      */
     public function setOption(string $option, $value)
     {
@@ -579,4 +573,5 @@ class Compiler implements InjectionAwareInterface
     final protected function statementListOrExtends($statements)
     {
     }
+
 }

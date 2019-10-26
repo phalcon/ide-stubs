@@ -1,5 +1,9 @@
 <?php
 
+namespace Phalcon\Logger\Formatter;
+
+use Phalcon\Logger;
+
 /**
  * This file is part of the Phalcon Framework.
  *
@@ -8,10 +12,7 @@
  * For the full copyright and license information, please view the LICENSE.txt
  * file that was distributed with this source code.
  */
-
-namespace Phalcon\Logger\Formatter;
-
-abstract class AbstractFormatter implements FormatterInterface
+abstract class AbstractFormatter implements \Phalcon\Logger\Formatter\FormatterInterface
 {
 
     /**
@@ -24,4 +25,5 @@ abstract class AbstractFormatter implements FormatterInterface
     public function interpolate(string $message, $context = null)
     {
     }
+
 }

@@ -1,38 +1,37 @@
 <?php
 
-/**
- * This file is part of the Phalcon Framework.
- *
- * (c) Phalcon Team <team@phalcon.io>
- *
- * For the full copyright and license information, please view the LICENSE.txt
- * file that was distributed with this source code.
- */
-
 namespace Phalcon\Http;
 
+use DateTime;
+use DateTimeZone;
+use Phalcon\Di;
 use Phalcon\Di\DiInterface;
+use Phalcon\Helper\Fs;
+use Phalcon\Http\Response\Exception;
+use Phalcon\Http\Response\HeadersInterface;
+use Phalcon\Http\Response\CookiesInterface;
+use Phalcon\Url\UrlInterface;
+use Phalcon\Mvc\ViewInterface;
+use Phalcon\Http\Response\Headers;
 use Phalcon\Di\InjectionAwareInterface;
 use Phalcon\Events\EventsAwareInterface;
 use Phalcon\Events\ManagerInterface;
-use Phalcon\Http\Response\CookiesInterface;
-use Phalcon\Http\Response\HeadersInterface;
 
 /**
  * Part of the HTTP cycle is return responses to the clients.
  * Phalcon\HTTP\Response is the Phalcon component responsible to achieve this task.
  * HTTP responses are usually composed by headers and body.
  *
- *```php
+ * ```php
  * $response = new \Phalcon\Http\Response();
  *
  * $response->setStatusCode(200, "OK");
  * $response->setContent("<html><body>Hello</body></html>");
  *
  * $response->send();
- *```
+ * ```
  */
-class Response implements ResponseInterface, InjectionAwareInterface, EventsAwareInterface
+class Response implements \Phalcon\Http\ResponseInterface, \Phalcon\Di\InjectionAwareInterface, \Phalcon\Events\EventsAwareInterface
 {
 
     protected $container;
@@ -485,4 +484,5 @@ class Response implements ResponseInterface, InjectionAwareInterface, EventsAwar
     public function setRawHeader(string $header): ResponseInterface
     {
     }
+
 }

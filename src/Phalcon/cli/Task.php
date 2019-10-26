@@ -1,17 +1,10 @@
 <?php
 
-/**
- * This file is part of the Phalcon Framework.
- *
- * (c) Phalcon Team <team@phalcon.io>
- *
- * For the full copyright and license information, please view the LICENSE.txt
- * file that was distributed with this source code.
- */
-
 namespace Phalcon\Cli;
 
 use Phalcon\Di\Injectable;
+use Phalcon\Events\EventsAwareInterface;
+use Phalcon\Events\ManagerInterface;
 
 /**
  * Every command-line task should extend this class that encapsulates all the
@@ -21,7 +14,7 @@ use Phalcon\Di\Injectable;
  * or anything that you want. The Task class should at least have a "mainAction"
  * method.
  *
- *```php
+ * ```php
  * class HelloTask extends \Phalcon\Cli\Task
  * {
  *     // This action will be executed by default
@@ -35,10 +28,13 @@ use Phalcon\Di\Injectable;
  *
  *     }
  * }
- *```
+ * ```
  */
-class Task extends Injectable implements TaskInterface
+class Task extends Injectable implements \Phalcon\Cli\TaskInterface, \Phalcon\Events\EventsAwareInterface
 {
+
+    protected $eventsManager;
+
 
     /**
      * Phalcon\Cli\Task constructor
@@ -46,4 +42,23 @@ class Task extends Injectable implements TaskInterface
     final public function __construct()
     {
     }
+
+    /**
+     * Returns the internal event manager
+     *
+     * @return null|\Phalcon\Events\ManagerInterface
+     */
+    public function getEventsManager(): ?ManagerInterface
+    {
+    }
+
+    /**
+     * Sets the events manager
+     *
+     * @param \Phalcon\Events\ManagerInterface $eventsManager
+     */
+    public function setEventsManager(\Phalcon\Events\ManagerInterface $eventsManager)
+    {
+    }
+
 }

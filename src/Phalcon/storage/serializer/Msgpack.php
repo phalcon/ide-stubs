@@ -1,5 +1,9 @@
 <?php
 
+namespace Phalcon\Storage\Serializer;
+
+use Phalcon\Storage\Serializer\AbstractSerializer;
+
 /**
  * This file is part of the Phalcon Framework.
  *
@@ -8,9 +12,6 @@
  * For the full copyright and license information, please view the LICENSE.txt
  * file that was distributed with this source code.
  */
-
-namespace Phalcon\Storage\Serializer;
-
 class Msgpack extends AbstractSerializer
 {
 
@@ -31,4 +32,5 @@ class Msgpack extends AbstractSerializer
     public function unserialize($data)
     {
     }
+
 }

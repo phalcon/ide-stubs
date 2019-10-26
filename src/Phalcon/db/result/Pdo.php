@@ -1,24 +1,16 @@
 <?php
 
-/**
- * This file is part of the Phalcon Framework.
- *
- * (c) Phalcon Team <team@phalcon.io>
- *
- * For the full copyright and license information, please view the LICENSE.txt
- * file that was distributed with this source code.
- */
-
 namespace Phalcon\Db\Result;
 
 use Phalcon\Db\Enum;
 use Phalcon\Db\ResultInterface;
+use Phalcon\Db\Adapter\AdapterInterface;
 
 /**
  * Encapsulates the resultset internals
  *
  * ```php
- * $result = $connection->query("SELECT * FROM robots ORDER BY name");
+ * $result = $connection->query("SELECT FROM robots ORDER BY name");
  *
  * $result->setFetchMode(
  *     \Phalcon\Db\Enum::FETCH_NUM
@@ -29,7 +21,7 @@ use Phalcon\Db\ResultInterface;
  * }
  * ```
  */
-class Pdo implements ResultInterface
+class Pdo implements \Phalcon\Db\ResultInterface
 {
 
     protected $bindParams;
@@ -235,4 +227,5 @@ class Pdo implements ResultInterface
     public function setFetchMode(int $fetchMode, $colNoOrClassNameOrObject = null, $ctorargs = null): bool
     {
     }
+
 }

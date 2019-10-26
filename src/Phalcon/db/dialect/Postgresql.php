@@ -1,17 +1,14 @@
 <?php
 
-/**
- * This file is part of the Phalcon Framework.
- *
- * (c) Phalcon Team <team@phalcon.io>
- *
- * For the full copyright and license information, please view the LICENSE.txt
- * file that was distributed with this source code.
- */
-
 namespace Phalcon\Db\Dialect;
 
 use Phalcon\Db\Dialect;
+use Phalcon\Db\Column;
+use Phalcon\Db\Exception;
+use Phalcon\Db\IndexInterface;
+use Phalcon\Db\ColumnInterface;
+use Phalcon\Db\ReferenceInterface;
+use Phalcon\Db\DialectInterface;
 
 /**
  * Generates database specific SQL for the PostgreSQL RDBMS
@@ -331,4 +328,5 @@ class Postgresql extends Dialect
     protected function getTableOptions(array $definition): string
     {
     }
+
 }

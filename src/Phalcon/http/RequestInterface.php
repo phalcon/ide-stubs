@@ -1,15 +1,9 @@
 <?php
 
-/**
- * This file is part of the Phalcon Framework.
- *
- * (c) Phalcon Team <team@phalcon.io>
- *
- * For the full copyright and license information, please view the LICENSE.txt
- * file that was distributed with this source code.
- */
-
 namespace Phalcon\Http;
+
+use Phalcon\Http\Request\FileInterface;
+use stdClass;
 
 /**
  * Interface for Phalcon\Http\Request
@@ -504,4 +498,5 @@ interface RequestInterface
      * @return bool
      */
     public function isTrace(): bool;
+
 }

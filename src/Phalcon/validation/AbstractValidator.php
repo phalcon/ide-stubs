@@ -1,22 +1,18 @@
 <?php
 
-/**
- * This file is part of the Phalcon Framework.
- *
- * (c) Phalcon Team <team@phalcon.io>
- *
- * For the full copyright and license information, please view the LICENSE.txt
- * file that was distributed with this source code.
- */
-
 namespace Phalcon\Validation;
 
+use Phalcon\Collection;
+use Phalcon\Helper\Arr;
 use Phalcon\Messages\Message;
+use Phalcon\Validation;
+use Phalcon\Validation\Exception;
+use Phalcon\Validation\ValidatorInterface;
 
 /**
  * This is a base class for validators
  */
-abstract class AbstractValidator implements ValidatorInterface
+abstract class AbstractValidator implements \Phalcon\Validation\ValidatorInterface
 {
     /**
      * Message template
@@ -48,9 +44,9 @@ abstract class AbstractValidator implements ValidatorInterface
     /**
      * Get the template message
      *
+     * @return string
      * @throw InvalidArgumentException When the field does not exists
      * @param string $field
-     * @return string
      */
     public function getTemplate(string $field = null): string
     {
@@ -68,8 +64,8 @@ abstract class AbstractValidator implements ValidatorInterface
     /**
      * Clear current templates and set new from an array,
      *
+     * @return ValidatorInterface
      * @param array $templates
-     * @return \Phalcon\Validation\ValidatorInterface
      */
     public function setTemplates(array $templates): ValidatorInterface
     {
@@ -78,8 +74,8 @@ abstract class AbstractValidator implements ValidatorInterface
     /**
      * Set a new template message
      *
+     * @return ValidatorInterface
      * @param string $template
-     * @return \Phalcon\Validation\ValidatorInterface
      */
     public function setTemplate(string $template): ValidatorInterface
     {
@@ -156,9 +152,9 @@ abstract class AbstractValidator implements ValidatorInterface
      * @param \Phalcon\Validation $validation
      * @param mixed $field
      * @param array $replacements
-     * @return \Phalcon\Messages\Message
      */
     public function messageFactory(\Phalcon\Validation $validation, $field, array $replacements = array()): Message
     {
     }
+
 }
