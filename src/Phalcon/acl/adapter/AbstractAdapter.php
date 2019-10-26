@@ -1,23 +1,13 @@
 <?php
 
-/**
- * This file is part of the Phalcon Framework.
- *
- * (c) Phalcon Team <team@phalcon.io>
- *
- * For the full copyright and license information, please view the LICENSE.txt
- * file that was distributed with this source code.
- */
-
 namespace Phalcon\Acl\Adapter;
 
-use Phalcon\Events\EventsAwareInterface;
 use Phalcon\Events\ManagerInterface;
 
 /**
  * Adapter for Phalcon\Acl adapters
  */
-abstract class AbstractAdapter implements AdapterInterface, EventsAwareInterface
+abstract class AbstractAdapter implements \Phalcon\Acl\Adapter\AdapterInterface, \Phalcon\Events\EventsAwareInterface
 {
     /**
      * Active access which the list is checking if some role can access it

@@ -1,31 +1,20 @@
 <?php
 
-/**
- * This file is part of the Phalcon Framework.
- *
- * (c) Phalcon Team <team@phalcon.io>
- *
- * For the full copyright and license information, please view the LICENSE.txt
- * file that was distributed with this source code.
- */
-
 namespace Phalcon\Di;
-
-use Phalcon\Di\Exception\ServiceResolutionException;
 
 /**
  * Represents individually a service in the services container
  *
- *```php
+ * ```php
  * $service = new \Phalcon\Di\Service(
  *     "request",
  *     \Phalcon\Http\Request::class
  * );
  *
  * $request = service->resolve();
- *```
+ * ```
  */
-class Service implements ServiceInterface
+class Service implements \Phalcon\Di\ServiceInterface
 {
 
     protected $definition;

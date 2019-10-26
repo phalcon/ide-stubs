@@ -1,14 +1,5 @@
 <?php
 
-/**
- * This file is part of the Phalcon Framework.
- *
- * (c) Phalcon Team <team@phalcon.io>
- *
- * For the full copyright and license information, please view the LICENSE.txt
- * file that was distributed with this source code.
- */
-
 namespace Phalcon\Acl\Adapter;
 
 /**
@@ -126,14 +117,14 @@ interface AdapterInterface
     /**
      * Return an array with every role registered in the list
      *
-     * @return array|RoleInterface[]
+     * @return array|\Phalcon\Acl\RoleInterface[]
      */
     public function getRoles(): array;
 
     /**
      * Return an array with every component registered in the list
      *
-     * @return array|ComponentInterface[]
+     * @return array|\Phalcon\Acl\ComponentInterface[]
      */
     public function getComponents(): array;
 

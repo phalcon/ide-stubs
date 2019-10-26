@@ -1,30 +1,20 @@
 <?php
 
-/**
- * This file is part of the Phalcon Framework.
- *
- * (c) Phalcon Team <team@phalcon.io>
- *
- * For the full copyright and license information, please view the LICENSE.txt
- * file that was distributed with this source code.
- */
-
 namespace Phalcon\Flash;
 
 use Phalcon\Di\AbstractInjectionAware;
 use Phalcon\Escaper\EscaperInterface;
-use Phalcon\Session\ManagerInterface as SessionInterface;
 
 /**
  * Shows HTML notifications related to different circumstances. Classes can be
  * stylized using CSS
  *
- *```php
+ * ```php
  * $flash->success("The record was successfully deleted");
  * $flash->error("Cannot open the file");
- *```
+ * ```
  */
-abstract class AbstractFlash extends AbstractInjectionAware implements FlashInterface
+abstract class AbstractFlash extends AbstractInjectionAware implements \Phalcon\Flash\FlashInterface
 {
     /**
      * @var bool
@@ -224,8 +214,8 @@ abstract class AbstractFlash extends AbstractInjectionAware implements FlashInte
      * $flash->outputMessage("error", $message);
      * ```
      *
-     * @param string $type
      * @param string|array $message
+     * @param string $type
      * @return string|void
      */
     public function outputMessage(string $type, $message)

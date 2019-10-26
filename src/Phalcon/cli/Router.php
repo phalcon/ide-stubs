@@ -1,16 +1,8 @@
 <?php
 
-/**
- * This file is part of the Phalcon Framework.
- *
- * (c) Phalcon Team <team@phalcon.io>
- *
- * For the full copyright and license information, please view the LICENSE.txt
- * file that was distributed with this source code.
- */
-
 namespace Phalcon\Cli;
 
+use Phalcon\Cli\Router\RouteInterface;
 use Phalcon\Di\AbstractInjectionAware;
 
 /**
@@ -19,7 +11,7 @@ use Phalcon\Di\AbstractInjectionAware;
  * determine which module, task, and action of that task should receive the
  * request.
  *
- *```php
+ * ```php
  * $router = new \Phalcon\Cli\Router();
  *
  * $router->handle(
@@ -31,7 +23,7 @@ use Phalcon\Di\AbstractInjectionAware;
  * );
  *
  * echo $router->getTaskName();
- *```
+ * ```
  */
 class Router extends AbstractInjectionAware
 {
@@ -92,9 +84,9 @@ class Router extends AbstractInjectionAware
      * $router->add("/about", "About::main");
      * ```
      *
-     * @param string $pattern
      * @param string|array $paths
-     * @return RouteInterface
+     * @param string $pattern
+     * @return \Phalcon\Cli\Router\RouteInterface
      */
     public function add(string $pattern, $paths = null): RouteInterface
     {
@@ -112,7 +104,7 @@ class Router extends AbstractInjectionAware
     /**
      * Returns the route that matches the handled URI
      *
-     * @return RouteInterface
+     * @return \Phalcon\Cli\Router\RouteInterface
      */
     public function getMatchedRoute(): RouteInterface
     {
@@ -149,7 +141,7 @@ class Router extends AbstractInjectionAware
      * Returns a route object by its id
      *
      * @param int $id
-     * @return bool|RouteInterface
+     * @return bool|\Phalcon\Cli\Router\RouteInterface
      */
     public function getRouteById($id)
     {
@@ -159,7 +151,7 @@ class Router extends AbstractInjectionAware
      * Returns a route object by its name
      *
      * @param string $name
-     * @return bool|RouteInterface
+     * @return bool|\Phalcon\Cli\Router\RouteInterface
      */
     public function getRouteByName(string $name)
     {

@@ -1,14 +1,5 @@
 <?php
 
-/**
- * This file is part of the Phalcon.
- *
- * (c) Phalcon Team <team@phalcon.com>
- *
- * For the full copyright and license information, please view the LICENSE
- * file that was distributed with this source code.
- */
-
 namespace Phalcon\Helper;
 
 /**
@@ -22,10 +13,9 @@ class Fs
      * PHP's basename() does not properly support streams or filenames beginning with a non-US-ASCII character.
      * see https://bugs.php.net/bug.php?id=37738
      *
+     * @param string $uri
      * @param string $suffix
      *
-     * @param string $uri
-     * @param mixed $suffix
      * @return string
      */
     final public static function basename(string $uri, $suffix = null): string

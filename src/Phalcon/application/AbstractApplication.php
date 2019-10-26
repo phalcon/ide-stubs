@@ -1,25 +1,15 @@
 <?php
 
-/**
- * This file is part of the Phalcon Framework.
- *
- * (c) Phalcon Team <team@phalcon.io>
- *
- * For the full copyright and license information, please view the LICENSE.txt
- * file that was distributed with this source code.
- */
-
 namespace Phalcon\Application;
 
 use Phalcon\Di\DiInterface;
 use Phalcon\Di\Injectable;
-use Phalcon\Events\EventsAwareInterface;
 use Phalcon\Events\ManagerInterface;
 
 /**
  * Base class for Phalcon\Cli\Console and Phalcon\Mvc\Application.
  */
-abstract class AbstractApplication extends Injectable implements EventsAwareInterface
+abstract class AbstractApplication extends Injectable implements \Phalcon\Events\EventsAwareInterface
 {
     /**
      * @var DiInterface

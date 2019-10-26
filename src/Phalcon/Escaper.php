@@ -1,17 +1,6 @@
 <?php
 
-/**
- * This file is part of the Phalcon Framework.
- *
- * (c) Phalcon Team <team@phalcon.io>
- *
- * For the full copyright and license information, please view the LICENSE.txt
- * file that was distributed with this source code.
- */
-
 namespace Phalcon;
-
-use Phalcon\Escaper\EscaperInterface;
 
 /**
  * Phalcon\Escaper
@@ -22,15 +11,15 @@ use Phalcon\Escaper\EscaperInterface;
  * This component only works with UTF-8. The PREG extension needs to be compiled
  * with UTF-8 support.
  *
- *```php
+ * ```php
  * $escaper = new \Phalcon\Escaper();
  *
  * $escaped = $escaper->escapeCss("font-family: <Verdana>");
  *
  * echo $escaped; // font\2D family\3A \20 \3C Verdana\3E
- *```
+ * ```
  */
-class Escaper implements EscaperInterface
+class Escaper implements \Phalcon\Escaper\EscaperInterface
 {
     /**
      * @var bool

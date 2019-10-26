@@ -1,26 +1,16 @@
 <?php
 
-/**
- * This file is part of the Phalcon Framework.
- *
- * (c) Phalcon Team <team@phalcon.io>
- *
- * For the full copyright and license information, please view the LICENSE.txt
- * file that was distributed with this source code.
- */
-
 namespace Phalcon;
 
 use Phalcon\Di\DiInterface;
-use Psr\Container\ContainerInterface;
 
 /**
  * PSR-11 Wrapper for `Phalcon\Di`
  */
-class Container implements ContainerInterface
+class Container implements \Psr\Container\ContainerInterface
 {
     /**
-     * @var <DiInterface>
+     * @var DiInterface
      */
     protected $container;
 

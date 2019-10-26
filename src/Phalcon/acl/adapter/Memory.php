@@ -1,14 +1,5 @@
 <?php
 
-/**
- * This file is part of the Phalcon Framework.
- *
- * (c) Phalcon Team <team@phalcon.io>
- *
- * For the full copyright and license information, please view the LICENSE.txt
- * file that was distributed with this source code.
- */
-
 namespace Phalcon\Acl\Adapter;
 
 use Phalcon\Acl\Enum;
@@ -16,7 +7,7 @@ use Phalcon\Acl\Enum;
 /**
  * Manages ACL lists in memory
  *
- *```php
+ * ```php
  * $acl = new \Phalcon\Acl\Adapter\Memory();
  *
  * $acl->setDefaultAction(
@@ -64,7 +55,7 @@ use Phalcon\Acl\Enum;
  * // Grant access to public areas to both users and guests
  * foreach ($roles as $role) {
  *     foreach ($publicComponents as $component => $actions) {
- *         $acl->allow($role->getName(), $component, "*");
+ *         $acl->allow($role->getName(), $component, "");
  *     }
  * }
  *
@@ -74,7 +65,7 @@ use Phalcon\Acl\Enum;
  *         $acl->allow("Users", $component, $action);
  *     }
  * }
- *```
+ * ```
  */
 class Memory extends AbstractAdapter
 {

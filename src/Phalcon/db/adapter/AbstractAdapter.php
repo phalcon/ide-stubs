@@ -1,26 +1,16 @@
 <?php
 
-/**
- * This file is part of the Phalcon.
- *
- * (c) Phalcon Team <team@phalcon.com>
- *
- * For the full copyright and license information, please view the LICENSE
- * file that was distributed with this source code.
- */
-
 namespace Phalcon\Db\Adapter;
 
 use Phalcon\Db\DialectInterface;
 use Phalcon\Db\Enum;
 use Phalcon\Db\RawValue;
-use Phalcon\Events\EventsAwareInterface;
 use Phalcon\Events\ManagerInterface;
 
 /**
  * Base class for Phalcon\Db adapters
  */
-abstract class AbstractAdapter implements AdapterInterface, EventsAwareInterface
+abstract class AbstractAdapter implements \Phalcon\Db\Adapter\AdapterInterface, \Phalcon\Events\EventsAwareInterface
 {
     /**
      * Connection ID

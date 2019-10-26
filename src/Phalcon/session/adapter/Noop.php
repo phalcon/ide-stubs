@@ -1,17 +1,6 @@
 <?php
 
-/**
- * This file is part of the Phalcon.
- *
- * (c) Phalcon Team <team@phalcon.com>
- *
- * For the full copyright and license information, please view the LICENSE
- * file that was distributed with this source code.
- */
-
 namespace Phalcon\Session\Adapter;
-
-use SessionHandlerInterface;
 
 /**
  * Phalcon\Session\Adapter\Noop
@@ -29,7 +18,7 @@ use SessionHandlerInterface;
  * $session->setAdapter(new Noop());
  * ```
  */
-class Noop implements SessionHandlerInterface
+class Noop implements \SessionHandlerInterface
 {
     /**
      * The connection of some adapters

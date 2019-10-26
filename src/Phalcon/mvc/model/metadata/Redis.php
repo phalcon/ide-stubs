@@ -1,14 +1,5 @@
 <?php
 
-/**
- * This file is part of the Phalcon Framework.
- *
- * (c) Phalcon Team <team@phalcon.io>
- *
- * For the full copyright and license information, please view the LICENSE.txt
- * file that was distributed with this source code.
- */
-
 namespace Phalcon\Mvc\Model\MetaData;
 
 use Phalcon\Mvc\Model\MetaData;
@@ -20,7 +11,7 @@ use Phalcon\Mvc\Model\MetaData;
  *
  * By default meta-data is stored for 48 hours (172800 seconds)
  *
- *```php
+ * ```php
  * use Phalcon\Mvc\Model\MetaData\Redis;
  *
  * $metaData = new Redis(
@@ -32,7 +23,7 @@ use Phalcon\Mvc\Model\MetaData;
  *         "index"      => 2,
  *     ]
  * );
- *```
+ * ```
  */
 class Redis extends MetaData
 {
@@ -40,8 +31,8 @@ class Redis extends MetaData
     /**
      * Phalcon\Mvc\Model\MetaData\Redis constructor
      *
-     * @param \Phalcon\Cache\AdapterFactory $factory
      * @param array $options
+     * @param \Phalcon\Cache\AdapterFactory $factory
      */
     public function __construct(\Phalcon\Cache\AdapterFactory $factory, array $options = array())
     {

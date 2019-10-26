@@ -1,20 +1,11 @@
 <?php
 
-/**
- * This file is part of the Phalcon.
- *
- * (c) Phalcon Team <team@phalcon.com>
- *
- * For the full copyright and license information, please view the LICENSE
- * file that was distributed with this source code.
- */
-
 namespace Phalcon\Db;
 
 /**
  * Allows to define columns to be used on create or alter table operations
  *
- *```php
+ * ```php
  * use Phalcon\Db\Column as Column;
  *
  * // Column definition
@@ -32,9 +23,9 @@ namespace Phalcon\Db;
  *
  * // Add column to existing table
  * $connection->addColumn("robots", null, $column);
- *```
+ * ```
  */
-class Column implements ColumnInterface
+class Column implements \Phalcon\Db\ColumnInterface
 {
     /**
      * Bind Type Blob

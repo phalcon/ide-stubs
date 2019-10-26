@@ -1,18 +1,5 @@
 <?php
 
-/**
- * This file is part of the Phalcon Framework.
- *
- * (c) Phalcon Team <team@phalcon.io>
- *
- * For the full copyright and license information, please view the LICENSE.txt
- * file that was distributed with this source code.
- *
- * Implementation of this file has been influenced by Zend Diactoros
- * @link    https://github.com/zendframework/zend-diactoros
- * @license https://github.com/zendframework/zend-diactoros/blob/master/LICENSE.md
- */
-
 namespace Phalcon\Http\Message;
 
 use Phalcon\Http\Message\Exception\InvalidArgumentException;
@@ -21,7 +8,7 @@ use Psr\Http\Message\UriInterface;
 /**
  * PSR-7 Uri
  */
-final class Uri extends AbstractCommon implements UriInterface
+final class Uri extends AbstractCommon implements \Psr\Http\Message\UriInterface
 {
     /**
      * Returns the fragment of the URL
@@ -213,7 +200,7 @@ final class Uri extends AbstractCommon implements UriInterface
      * The trailing "@" character is not part of the user information and MUST
      * NOT be added.
      *
-     * @return string
+     * @return string The URI user information, in "username[:password]" format.
      */
     public function getUserInfo(): string
     {
@@ -232,7 +219,6 @@ final class Uri extends AbstractCommon implements UriInterface
      *
      * @param string $fragment
      *
-     * @param mixed $fragment
      * @return Uri
      */
     public function withFragment($fragment): Uri
@@ -259,9 +245,8 @@ final class Uri extends AbstractCommon implements UriInterface
      *
      * @param string $path
      *
-     * @throws InvalidArgumentException for invalid paths.
-     * @param mixed $path
      * @return Uri
+     * @throws InvalidArgumentException for invalid paths.
      */
     public function withPath($path): Uri
     {
@@ -281,9 +266,8 @@ final class Uri extends AbstractCommon implements UriInterface
      *
      * @param int|null $port
      *
-     * @throws InvalidArgumentException for invalid ports.
-     * @param mixed $port
      * @return Uri
+     * @throws InvalidArgumentException for invalid ports.
      */
     public function withPort($port): Uri
     {
@@ -302,9 +286,8 @@ final class Uri extends AbstractCommon implements UriInterface
      *
      * @param string $query
      *
-     * @throws InvalidArgumentException for invalid query strings.
-     * @param mixed $query
      * @return Uri
+     * @throws InvalidArgumentException for invalid query strings.
      */
     public function withQuery($query): Uri
     {
@@ -323,10 +306,9 @@ final class Uri extends AbstractCommon implements UriInterface
      *
      * @param string $scheme
      *
+     * @return Uri
      * @throws InvalidArgumentException for invalid schemes.
      * @throws InvalidArgumentException for unsupported schemes.
-     * @param mixed $scheme
-     * @return Uri
      */
     public function withScheme($scheme): Uri
     {
@@ -335,10 +317,9 @@ final class Uri extends AbstractCommon implements UriInterface
     /**
      * Return an instance with the specified user information.
      *
+     * @param string $user
      * @param string|null $password
      *
-     * @param string $user
-     * @param mixed $password
      * @return Uri
      */
     public function withUserInfo($user, $password = null): Uri
@@ -355,10 +336,9 @@ final class Uri extends AbstractCommon implements UriInterface
      *
      * @param string $host
      *
+     * @return Uri
      * @throws InvalidArgumentException for invalid hostnames.
      *
-     * @param mixed $host
-     * @return Uri
      */
     public function withHost($host): Uri
     {
@@ -368,11 +348,10 @@ final class Uri extends AbstractCommon implements UriInterface
      * If the value passed is empty it returns it prefixed and suffixed with
      * the passed parameters
      *
-     * @param string $suffix
-     *
      * @param string $value
      * @param string $prefix
      * @param string $suffix
+     *
      * @return string
      */
     private function checkValue(string $value, string $prefix = '', string $suffix = ''): string
@@ -394,7 +373,6 @@ final class Uri extends AbstractCommon implements UriInterface
      *
      * @param string $fragment
      *
-     * @param string $fragment
      * @return string
      */
     private function filterFragment(string $fragment): string
@@ -426,8 +404,7 @@ final class Uri extends AbstractCommon implements UriInterface
      *
      * @param string $path
      *
-     * @param string $path
-     * @return string
+     * @return string The URI path.
      */
     private function filterPath(string $path): string
     {
@@ -436,10 +413,9 @@ final class Uri extends AbstractCommon implements UriInterface
     /**
      * Checks the port. If it is a standard one (80,443) then it returns null
      *
-     * @param $port
+     * @param int|null $port
      *
-     * @param mixed $port
-     * @return int
+     * @return int|null
      */
     private function filterPort($port): int
     {
@@ -464,8 +440,7 @@ final class Uri extends AbstractCommon implements UriInterface
      *
      * @param string $query
      *
-     * @param string $query
-     * @return string
+     * @return string The URI query string.
      */
     private function filterQuery(string $query): string
     {
@@ -476,7 +451,6 @@ final class Uri extends AbstractCommon implements UriInterface
      *
      * @param string $scheme
      *
-     * @param string $scheme
      * @return string
      */
     private function filterScheme(string $scheme): string
@@ -486,7 +460,6 @@ final class Uri extends AbstractCommon implements UriInterface
     /**
      * @param string $element
      *
-     * @param string $element
      * @return array
      */
     private function splitQueryValue(string $element): array

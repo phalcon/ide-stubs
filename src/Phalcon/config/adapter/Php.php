@@ -1,14 +1,5 @@
 <?php
 
-/**
- * This file is part of the Phalcon Framework.
- *
- * (c) Phalcon Team <team@phalcon.io>
- *
- * For the full copyright and license information, please view the LICENSE.txt
- * file that was distributed with this source code.
- */
-
 namespace Phalcon\Config\Adapter;
 
 use Phalcon\Config;
@@ -18,7 +9,7 @@ use Phalcon\Config;
  *
  * Given the next configuration file:
  *
- *```php
+ * ```php
  * <?php
  *
  * return [
@@ -35,18 +26,18 @@ use Phalcon\Config;
  *         "viewsDir"       => "../app/views/",
  *     ],
  * ];
- *```
+ * ```
  *
  * You can read it as follows:
  *
- *```php
+ * ```php
  * use Phalcon\Config\Adapter\Php;
  *
  * $config = new Php("path/config.php");
  *
  * echo $config->phalcon->controllersDir;
  * echo $config->database->username;
- *```
+ * ```
  */
 class Php extends Config
 {

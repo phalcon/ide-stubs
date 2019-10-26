@@ -1,14 +1,5 @@
 <?php
 
-/**
- * This file is part of the Phalcon Framework.
- *
- * (c) Phalcon Team <team@phalcon.io>
- *
- * For the full copyright and license information, please view the LICENSE.txt
- * file that was distributed with this source code.
- */
-
 namespace Phalcon\Mvc\Model;
 
 /**
@@ -16,7 +7,7 @@ namespace Phalcon\Mvc\Model;
  *
  * This is an optional base class for ORM behaviors
  */
-abstract class Behavior implements BehaviorInterface
+abstract class Behavior implements \Phalcon\Mvc\Model\BehaviorInterface
 {
     /**
      * @var array

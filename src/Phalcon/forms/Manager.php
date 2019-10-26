@@ -1,14 +1,5 @@
 <?php
 
-/**
- * This file is part of the Phalcon Framework.
- *
- * (c) Phalcon Team <team@phalcon.io>
- *
- * For the full copyright and license information, please view the LICENSE.txt
- * file that was distributed with this source code.
- */
-
 namespace Phalcon\Forms;
 
 /**
@@ -23,8 +14,8 @@ class Manager
     /**
      * Creates a form registering it in the forms manager
      *
-     * @param string $name
      * @param object $entity
+     * @param string $name
      * @return Form
      */
     public function create(string $name, $entity = null): Form
@@ -56,9 +47,9 @@ class Manager
      *
      * @param string $name
      * @param Form $form
-     * @return FormManager
+     * @return Manager
      */
-    public function set(string $name, Form $form): FormManager
+    public function set(string $name, Form $form): Manager
     {
     }
 }

@@ -1,14 +1,5 @@
 <?php
 
-/**
- * This file is part of the Phalcon Framework.
- *
- * (c) Phalcon Team <team@phalcon.io>
- *
- * For the full copyright and license information, please view the LICENSE.txt
- * file that was distributed with this source code.
- */
-
 namespace Phalcon;
 
 use Traversable;
@@ -20,7 +11,7 @@ use Traversable;
  * space. By storing the value in a registry, the same object is always
  * available throughout your application.
  *
- *```php
+ * ```php
  * $registry = new \Phalcon\Registry();
  *
  * // Set value
@@ -42,7 +33,7 @@ use Traversable;
  * unset($registry->something);
  * // or
  * unset($registry["something"]);
- *```
+ * ```
  *
  * In addition to ArrayAccess, Phalcon\Registry also implements Countable
  * (count($registry) will return the number of elements in the registry),
@@ -136,9 +127,10 @@ final class Registry extends Collection
      *
      * @param string $element
      * @param mixed $defaultValue
+     * @param string $cast
      * @return mixed
      */
-    final public function get(string $element, $defaultValue = null)
+    final public function get(string $element, $defaultValue = null, string $cast = null)
     {
     }
 

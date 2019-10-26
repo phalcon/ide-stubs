@@ -1,14 +1,5 @@
 <?php
 
-/**
- * This file is part of the Phalcon Framework.
- *
- * (c) Phalcon Team <team@phalcon.io>
- *
- * For the full copyright and license information, please view the LICENSE.txt
- * file that was distributed with this source code.
- */
-
 namespace Phalcon\Mvc\Model\Query;
 
 use Phalcon\Mvc\Model\QueryInterface;
@@ -49,9 +40,9 @@ interface BuilderInterface
     /**
      * Appends a BETWEEN condition to the current conditions
      *
-     * @param string $expr
      * @param mixed $minimum
      * @param mixed $maximum
+     * @param string $expr
      * @param string $operator
      * @return BuilderInterface
      */
@@ -238,7 +229,6 @@ interface BuilderInterface
      * @param string $model
      * @param string $conditions
      * @param string $alias
-     * @param string $type
      * @return BuilderInterface
      */
     public function join(string $model, string $conditions = null, string $alias = null): BuilderInterface;
@@ -256,8 +246,8 @@ interface BuilderInterface
     /**
      * Sets a LIMIT clause
      *
-     * @param int $limit
      * @param int $offset
+     * @param int $limit
      * @return BuilderInterface
      */
     public function limit(int $limit, $offset = null): BuilderInterface;
@@ -272,9 +262,9 @@ interface BuilderInterface
     /**
      * Appends a NOT BETWEEN condition to the current conditions
      *
-     * @param string $expr
      * @param mixed $minimum
      * @param mixed $maximum
+     * @param string $expr
      * @param string $operator
      * @return BuilderInterface
      */

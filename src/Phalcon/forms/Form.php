@@ -1,18 +1,7 @@
 <?php
 
-/**
- * This file is part of the Phalcon Framework.
- *
- * (c) Phalcon Team <team@phalcon.io>
- *
- * For the full copyright and license information, please view the LICENSE.txt
- * file that was distributed with this source code.
- */
-
 namespace Phalcon\Forms;
 
-use Countable;
-use Iterator;
 use Phalcon\Di\Injectable;
 use Phalcon\Forms\Element\ElementInterface;
 use Phalcon\Html\Attributes;
@@ -22,10 +11,12 @@ use Phalcon\Messages\Messages;
 /**
  * This component allows to build forms using an object-oriented interface
  */
-class Form extends Injectable implements Countable, Iterator, AttributesInterface
+class Form extends Injectable implements \Countable, \Iterator, \Phalcon\Html\Attributes\AttributesInterface
 {
-
-    protected $attributes;
+    /**
+     * @var Attributes | null
+     */
+    protected $attributes = null;
 
 
     protected $data;
@@ -89,9 +80,9 @@ class Form extends Injectable implements Countable, Iterator, AttributesInterfac
     /**
      * Binds data to the entity
      *
-     * @param array $data
      * @param object $entity
      * @param array $whitelist
+     * @param array $data
      * @return Form
      */
     public function bind(array $data, $entity, $whitelist = null): Form
@@ -142,6 +133,15 @@ class Form extends Injectable implements Countable, Iterator, AttributesInterfac
      * @return string
      */
     public function getAction(): string
+    {
+    }
+
+    /**
+     * Get Form attributes collection
+     *
+     * @return \Phalcon\Html\Attributes
+     */
+    public function getAttributes(): Attributes
     {
     }
 
@@ -339,6 +339,16 @@ class Form extends Injectable implements Countable, Iterator, AttributesInterfac
     }
 
     /**
+     * Set form attributes collection
+     *
+     * @param \Phalcon\Html\Attributes $attributes
+     * @return \Phalcon\Html\Attributes\AttributesInterface
+     */
+    public function setAttributes(\Phalcon\Html\Attributes $attributes): AttributesInterface
+    {
+    }
+
+    /**
      * Sets an option for the form
      *
      * @param string $option
@@ -365,25 +375,6 @@ class Form extends Injectable implements Countable, Iterator, AttributesInterfac
      * @return bool
      */
     public function valid(): bool
-    {
-    }
-
-    /**
-     * Get Form attributes collection
-     *
-     * @return \Phalcon\Html\Attributes
-     */
-    public function getAttributes(): Attributes
-    {
-    }
-
-    /**
-     * Set form attributes collection
-     *
-     * @param \Phalcon\Html\Attributes $attributes
-     * @return \Phalcon\Html\Attributes\AttributesInterface
-     */
-    public function setAttributes(\Phalcon\Html\Attributes $attributes): AttributesInterface
     {
     }
 }

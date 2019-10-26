@@ -1,14 +1,5 @@
 <?php
 
-/**
- * This file is part of the Phalcon Framework.
- *
- * (c) Phalcon Team <team@phalcon.io>
- *
- * For the full copyright and license information, please view the LICENSE.txt
- * file that was distributed with this source code.
- */
-
 namespace Phalcon\Translate\Adapter;
 
 use Phalcon\Translate\InterpolatorFactory;
@@ -18,7 +9,7 @@ use Phalcon\Translate\InterpolatorFactory;
  *
  * Base class for Phalcon\Translate adapters
  */
-abstract class AbstractAdapter implements AdapterInterface
+abstract class AbstractAdapter implements \Phalcon\Translate\Adapter\AdapterInterface
 {
     /**
      * @var string
@@ -42,11 +33,11 @@ abstract class AbstractAdapter implements AdapterInterface
     /**
      * Returns the translation string of the given key (alias of method 't')
      *
-     * @param string $translateKey
      * @param array $placeholders
+     * @param string $translateKey
      * @return string
      */
-    public function _(string $translateKey, $placeholders = null): string
+    public function _(string $translateKey, array $placeholders = array()): string
     {
     }
 
@@ -73,8 +64,8 @@ abstract class AbstractAdapter implements AdapterInterface
     /**
      * Sets a translation value
      *
-     * @param mixed $offset
      * @param string $value
+     * @param mixed $offset
      */
     public function offsetSet($offset, $value)
     {
@@ -92,11 +83,11 @@ abstract class AbstractAdapter implements AdapterInterface
     /**
      * Returns the translation string of the given key
      *
-     * @param string $translateKey
      * @param array $placeholders
+     * @param string $translateKey
      * @return string
      */
-    public function t(string $translateKey, $placeholders = null): string
+    public function t(string $translateKey, array $placeholders = array()): string
     {
     }
 
@@ -104,10 +95,10 @@ abstract class AbstractAdapter implements AdapterInterface
      * Replaces placeholders by the values passed
      *
      * @param string $translation
-     * @param mixed $placeholders
+     * @param array $placeholders
      * @return string
      */
-    protected function replacePlaceholders(string $translation, $placeholders = null): string
+    protected function replacePlaceholders(string $translation, array $placeholders = array()): string
     {
     }
 }

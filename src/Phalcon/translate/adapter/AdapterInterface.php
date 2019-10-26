@@ -1,14 +1,5 @@
 <?php
 
-/**
- * This file is part of the Phalcon Framework.
- *
- * (c) Phalcon Team <team@phalcon.io>
- *
- * For the full copyright and license information, please view the LICENSE.txt
- * file that was distributed with this source code.
- */
-
 namespace Phalcon\Translate\Adapter;
 
 /**
@@ -30,18 +21,18 @@ interface AdapterInterface
     /**
      * Returns the translation related to the given key
      *
-     * @param string $translateKey
      * @param array $placeholders
+     * @param string $translateKey
      * @return string
      */
-    public function query(string $translateKey, $placeholders = null): string;
+    public function query(string $translateKey, array $placeholders = array()): string;
 
     /**
      * Returns the translation string of the given key
      *
-     * @param string $translateKey
      * @param array $placeholders
+     * @param string $translateKey
      * @return string
      */
-    public function t(string $translateKey, $placeholders = null): string;
+    public function t(string $translateKey, array $placeholders = array()): string;
 }

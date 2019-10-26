@@ -1,14 +1,5 @@
 <?php
 
-/**
- * This file is part of the Phalcon Framework.
- *
- * (c) Phalcon Team <team@phalcon.io>
- *
- * For the full copyright and license information, please view the LICENSE.txt
- * file that was distributed with this source code.
- */
-
 namespace Phalcon\Db;
 
 /**
@@ -16,7 +7,7 @@ namespace Phalcon\Db;
  * to enhance database performance. An index allows the database server to find
  * and retrieve specific rows much faster than it could do without an index
  *
- *```php
+ * ```php
  * // Define new unique index
  * $index_unique = new \Phalcon\Db\Index(
  *     'column_UNIQUE',
@@ -38,9 +29,9 @@ namespace Phalcon\Db;
  * // Add index to existing table
  * $connection->addIndex("robots", null, $index_unique);
  * $connection->addIndex("robots", null, $index_primary);
- *```
+ * ```
  */
-class Index implements IndexInterface
+class Index implements \Phalcon\Db\IndexInterface
 {
     /**
      * Index columns

@@ -1,14 +1,5 @@
 <?php
 
-/**
- * This file is part of the Phalcon Framework.
- *
- * (c) Phalcon Team <team@phalcon.io>
- *
- * For the full copyright and license information, please view the LICENSE.txt
- * file that was distributed with this source code.
- */
-
 namespace Phalcon\Mvc\Model\Query;
 
 /**
@@ -25,8 +16,10 @@ namespace Phalcon\Mvc\Model\Query;
  * parser with a very low memory footprint that is also thread-safe.
  *
  * ```php
- * $intermediate = Phalcon\Mvc\Model\Query\Lang::parsePHQL(
- *     "SELECT r.* FROM Robots r LIMIT 10"
+ * use Phalcon\Mvc\Model\Query\Lang;
+ *
+ * $intermediate = Lang::parsePHQL(
+ *     "SELECT r. FROM Robots r LIMIT 10"
  * );
  * ```
  */
@@ -37,9 +30,9 @@ abstract class Lang
      * Parses a PHQL statement returning an intermediate representation (IR)
      *
      * @param string $phql
-     * @return string
+     * @return array
      */
-    public static function parsePHQL(string $phql): string
+    public static function parsePHQL(string $phql): array
     {
     }
 }

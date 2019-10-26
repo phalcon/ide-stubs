@@ -1,14 +1,5 @@
 <?php
 
-/**
- * This file is part of the Phalcon Framework.
- *
- * (c) Phalcon Team <team@phalcon.io>
- *
- * For the full copyright and license information, please view the LICENSE.txt
- * file that was distributed with this source code.
- */
-
 namespace Phalcon\Storage\Adapter;
 
 use Phalcon\Storage\Exception;
@@ -37,8 +28,8 @@ class Redis extends AbstractAdapter
     /**
      * Flushes/clears the cache
      *
-     * @throws Exception
      * @return bool
+     * @throws Exception
      */
     public function clear(): bool
     {
@@ -47,12 +38,11 @@ class Redis extends AbstractAdapter
     /**
      * Decrements a stored number
      *
-     * @param int    $value
-     *
-     * @throws Exception
      * @param string $key
      * @param int $value
-     * @return int|bool
+     *
+     * @return bool|int
+     * @throws Exception
      */
     public function decrement(string $key, int $value = 1)
     {
@@ -63,9 +53,8 @@ class Redis extends AbstractAdapter
      *
      * @param string $key
      *
-     * @throws Exception
-     * @param string $key
      * @return bool
+     * @throws Exception
      */
     public function delete(string $key): bool
     {
@@ -74,12 +63,11 @@ class Redis extends AbstractAdapter
     /**
      * Reads data from the adapter
      *
-     * @param null   $defaultValue
-     *
-     * @throws Exception
      * @param string $key
-     * @param mixed $defaultValue
+     * @param null $defaultValue
+     *
      * @return mixed
+     * @throws Exception
      */
     public function get(string $key, $defaultValue = null)
     {
@@ -89,8 +77,8 @@ class Redis extends AbstractAdapter
      * Returns the already connected adapter or connects to the Memcached
      * server(s)
      *
+     * @return mixed|\Redis
      * @throws Exception
-     * @return mixed
      */
     public function getAdapter()
     {
@@ -99,8 +87,8 @@ class Redis extends AbstractAdapter
     /**
      * Stores data in the adapter
      *
-     * @throws Exception
      * @return array
+     * @throws Exception
      */
     public function getKeys(): array
     {
@@ -111,9 +99,8 @@ class Redis extends AbstractAdapter
      *
      * @param string $key
      *
-     * @throws Exception
-     * @param string $key
      * @return bool
+     * @throws Exception
      */
     public function has(string $key): bool
     {
@@ -122,12 +109,11 @@ class Redis extends AbstractAdapter
     /**
      * Increments a stored number
      *
-     * @param int    $value
-     *
-     * @throws Exception
      * @param string $key
      * @param int $value
-     * @return int|bool
+     *
+     * @return bool|int
+     * @throws Exception
      */
     public function increment(string $key, int $value = 1)
     {
@@ -136,13 +122,12 @@ class Redis extends AbstractAdapter
     /**
      * Stores data in the adapter
      *
-     * @param null   $ttl
-     *
-     * @throws Exception
      * @param string $key
      * @param mixed $value
-     * @param mixed $ttl
+     * @param null $ttl
+     *
      * @return bool
+     * @throws Exception
      */
     public function set(string $key, $value, $ttl = null): bool
     {

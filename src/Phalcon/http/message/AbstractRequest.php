@@ -1,18 +1,5 @@
 <?php
 
-/**
- * This file is part of the Phalcon Framework.
- *
- * (c) Phalcon Team <team@phalcon.io>
- *
- * For the full copyright and license information, please view the LICENSE.txt
- * file that was distributed with this source code.
- *
- * Implementation of this file has been influenced by Zend Diactoros
- * @link    https://github.com/zendframework/zend-diactoros
- * @license https://github.com/zendframework/zend-diactoros/blob/master/LICENSE.md
- */
-
 namespace Phalcon\Http\Message;
 
 use Phalcon\Http\Message\Exception\InvalidArgumentException;
@@ -99,10 +86,9 @@ abstract class AbstractRequest extends AbstractMessage
      *
      * @param string $method
      *
+     * @return object
      * @throws InvalidArgumentException for invalid HTTP methods.
      *
-     * @param mixed $method
-     * @return object
      */
     public function withMethod($method)
     {
@@ -125,7 +111,6 @@ abstract class AbstractRequest extends AbstractMessage
      *
      * @param mixed $requestTarget
      *
-     * @param mixed $requestTarget
      * @return object
      */
     public function withRequestTarget($requestTarget)
@@ -160,10 +145,9 @@ abstract class AbstractRequest extends AbstractMessage
      *
      * @see http://tools.ietf.org/html/rfc3986#section-4.3
      *
-     * @param bool         $preserveHost
-     *
      * @param UriInterface $uri
-     * @param mixed $preserveHost
+     * @param bool $preserveHost
+     *
      * @return object
      */
     public function withUri(\Psr\Http\Message\UriInterface $uri, $preserveHost = false)
@@ -175,7 +159,6 @@ abstract class AbstractRequest extends AbstractMessage
      *
      * @param string $method
      *
-     * @param mixed $method
      * @return string
      */
     final protected function processMethod($method = ''): string
@@ -187,8 +170,7 @@ abstract class AbstractRequest extends AbstractMessage
      *
      * @param UriInterface|string|null $uri
      *
-     * @param mixed $uri
-     * @return \Psr\Http\Message\UriInterface
+     * @return UriInterface
      */
     final protected function processUri($uri): UriInterface
     {

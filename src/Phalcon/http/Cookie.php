@@ -1,14 +1,5 @@
 <?php
 
-/**
- * This file is part of the Phalcon Framework.
- *
- * (c) Phalcon Team <team@phalcon.io>
- *
- * For the full copyright and license information, please view the LICENSE.txt
- * file that was distributed with this source code.
- */
-
 namespace Phalcon\Http;
 
 use Phalcon\Di\AbstractInjectionAware;
@@ -16,7 +7,7 @@ use Phalcon\Di\AbstractInjectionAware;
 /**
  * Provide OO wrappers to manage a HTTP cookie.
  */
-class Cookie extends AbstractInjectionAware implements CookieInterface
+class Cookie extends AbstractInjectionAware implements \Phalcon\Http\CookieInterface
 {
 
     protected $domain;
@@ -247,10 +238,10 @@ class Cookie extends AbstractInjectionAware implements CookieInterface
      *
      * Use NULL to disable cookie signing.
      *
-     * @see \Phalcon\Security\Random
-     * @throws \Phalcon\Http\Cookie\Exception
      * @param string $signKey
      * @return CookieInterface
+     * @throws \Phalcon\Http\Cookie\Exception
+     * @see \Phalcon\Security\Random
      */
     public function setSignKey(string $signKey = null): CookieInterface
     {
@@ -279,8 +270,8 @@ class Cookie extends AbstractInjectionAware implements CookieInterface
     /**
      * Assert the cookie's key is enough long.
      *
-     * @throws \Phalcon\Http\Cookie\Exception
      * @param string $signKey
+     * @throws \Phalcon\Http\Cookie\Exception
      */
     protected function assertSignKeyIsLongEnough(string $signKey)
     {

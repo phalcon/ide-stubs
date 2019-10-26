@@ -1,17 +1,8 @@
 <?php
 
-/**
- * This file is part of the Phalcon Framework.
- *
- * (c) Phalcon Team <team@phalcon.io>
- *
- * For the full copyright and license information, please view the LICENSE.txt
- * file that was distributed with this source code.
- */
-
 namespace Phalcon\Cache;
 
-use Phalcon\Cache\Adapter\AbstractAdapter;
+use Phalcon\Cache\Adapter\AdapterInterface;
 use Phalcon\Factory\AbstractFactory;
 use Phalcon\Storage\SerializerFactory;
 
@@ -41,9 +32,9 @@ class AdapterFactory extends AbstractFactory
      *
      * @param string $name
      * @param array $options
-     * @return \Phalcon\Cache\Adapter\AbstractAdapter
+     * @return \Phalcon\Cache\Adapter\AdapterInterface
      */
-    public function newInstance(string $name, array $options = array()): AbstractAdapter
+    public function newInstance(string $name, array $options = array()): AdapterInterface
     {
     }
 

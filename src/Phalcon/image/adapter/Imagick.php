@@ -1,32 +1,22 @@
 <?php
 
-/**
- * This file is part of the Phalcon Framework.
- *
- * (c) Phalcon Team <team@phalcon.io>
- *
- * For the full copyright and license information, please view the LICENSE.txt
- * file that was distributed with this source code.
- */
-
 namespace Phalcon\Image\Adapter;
-
-use Imagick as ImagicNative;
 
 /**
  * Phalcon\Image\Adapter\Imagick
  *
  * Image manipulation support. Allows images to be resized, cropped, etc.
  *
- *```php
+ * ```php
  * $image = new \Phalcon\Image\Adapter\Imagick("upload/test.jpg");
  *
  * $image->resize(200, 200)->rotate(90)->crop(100, 100);
  *
  * if ($image->save()) {
  *     echo "success";
+ *
  * }
- *```
+ * ```
  */
 class Imagick extends AbstractAdapter
 {
@@ -69,7 +59,7 @@ class Imagick extends AbstractAdapter
      *
      * @return \Imagick
      */
-    public function getInternalImInstance(): ImagicNative
+    public function getInternalImInstance(): \Imagick
     {
     }
 

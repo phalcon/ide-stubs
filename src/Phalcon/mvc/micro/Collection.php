@@ -1,14 +1,5 @@
 <?php
 
-/**
- * This file is part of the Phalcon Framework.
- *
- * (c) Phalcon Team <team@phalcon.io>
- *
- * For the full copyright and license information, please view the LICENSE.txt
- * file that was distributed with this source code.
- */
-
 namespace Phalcon\Mvc\Micro;
 
 /**
@@ -16,7 +7,7 @@ namespace Phalcon\Mvc\Micro;
  *
  * Groups Micro-Mvc handlers as controllers
  *
- *```php
+ * ```php
  * $app = new \Phalcon\Mvc\Micro();
  *
  * $collection = new Collection();
@@ -28,9 +19,9 @@ namespace Phalcon\Mvc\Micro;
  * $collection->get("/posts/edit/{id}", "edit");
  *
  * $app->mount($collection);
- *```
+ * ```
  */
-class Collection implements CollectionInterface
+class Collection implements \Phalcon\Mvc\Micro\CollectionInterface
 {
 
     protected $handler;
@@ -48,8 +39,8 @@ class Collection implements CollectionInterface
     /**
      * Maps a route to a handler that only matches if the HTTP method is DELETE.
      *
-     * @param string $routePattern
      * @param callable|string $handler
+     * @param string $routePattern
      * @param string $name
      * @return CollectionInterface
      */
@@ -60,8 +51,8 @@ class Collection implements CollectionInterface
     /**
      * Maps a route to a handler that only matches if the HTTP method is GET.
      *
-     * @param string $routePattern
      * @param callable|string $handler
+     * @param string $routePattern
      * @param string $name
      * @return CollectionInterface
      */
@@ -99,8 +90,8 @@ class Collection implements CollectionInterface
     /**
      * Maps a route to a handler that only matches if the HTTP method is HEAD.
      *
-     * @param string $routePattern
      * @param callable|string $handler
+     * @param string $routePattern
      * @param string $name
      * @return CollectionInterface
      */
@@ -120,8 +111,8 @@ class Collection implements CollectionInterface
     /**
      * Maps a route to a handler.
      *
-     * @param string $routePattern
      * @param callable|string $handler
+     * @param string $routePattern
      * @param string $name
      * @return CollectionInterface
      */
@@ -141,9 +132,9 @@ class Collection implements CollectionInterface
      * );
      * ```
      *
-     * @param string $routePattern
      * @param callable $handler
      * @param string|array $method
+     * @param string $routePattern
      * @param string $name
      * @return CollectionInterface
      */
@@ -155,8 +146,8 @@ class Collection implements CollectionInterface
      * Maps a route to a handler that only matches if the HTTP method is
      * OPTIONS.
      *
-     * @param string $routePattern
      * @param callable|string $handler
+     * @param string $routePattern
      * @param string $name
      * @return CollectionInterface
      */
@@ -167,8 +158,8 @@ class Collection implements CollectionInterface
     /**
      * Maps a route to a handler that only matches if the HTTP method is PATCH.
      *
-     * @param string $routePattern
      * @param callable|string $handler
+     * @param string $routePattern
      * @param string $name
      * @return CollectionInterface
      */
@@ -179,8 +170,8 @@ class Collection implements CollectionInterface
     /**
      * Maps a route to a handler that only matches if the HTTP method is POST.
      *
-     * @param string $routePattern
      * @param callable|string $handler
+     * @param string $routePattern
      * @param string $name
      * @return CollectionInterface
      */
@@ -191,8 +182,8 @@ class Collection implements CollectionInterface
     /**
      * Maps a route to a handler that only matches if the HTTP method is PUT.
      *
-     * @param string $routePattern
      * @param callable|string $handler
+     * @param string $routePattern
      * @param string $name
      * @return CollectionInterface
      */
@@ -235,8 +226,8 @@ class Collection implements CollectionInterface
      * Internal function to add a handler to the group.
      *
      * @param string|array $method
-     * @param string $routePattern
      * @param callable|string $handler
+     * @param string $routePattern
      * @param string $name
      */
     protected function addMap($method, string $routePattern, $handler, string $name)

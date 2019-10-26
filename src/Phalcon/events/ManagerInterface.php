@@ -1,14 +1,5 @@
 <?php
 
-/**
- * This file is part of the Phalcon Framework.
- *
- * (c) Phalcon Team <team@phalcon.io>
- *
- * For the full copyright and license information, please view the LICENSE.txt
- * file that was distributed with this source code.
- */
-
 namespace Phalcon\Events;
 
 /**
@@ -25,16 +16,16 @@ interface ManagerInterface
     /**
      * Attach a listener to the events manager
      *
-     * @param string $eventType
      * @param object|callable $handler
+     * @param string $eventType
      */
     public function attach(string $eventType, $handler);
 
     /**
      * Detach the listener from the events manager
      *
-     * @param string $eventType
      * @param object $handler
+     * @param string $eventType
      */
     public function detach(string $eventType, $handler);
 
@@ -49,12 +40,13 @@ interface ManagerInterface
      * Fires an event in the events manager causing the active listeners to be
      * notified about it
      *
-     * @param string $eventType
      * @param object $source
      * @param mixed $data
+     * @param string $eventType
+     * @param bool $cancelable
      * @return mixed
      */
-    public function fire(string $eventType, $source, $data = null);
+    public function fire(string $eventType, $source, $data = null, bool $cancelable = true);
 
     /**
      * Returns all the attached listeners of a certain type

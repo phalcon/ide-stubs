@@ -1,26 +1,16 @@
 <?php
 
-/**
- * This file is part of the Phalcon Framework.
- *
- * (c) Phalcon Team <team@phalcon.io>
- *
- * For the full copyright and license information, please view the LICENSE.txt
- * file that was distributed with this source code.
- */
-
 namespace Phalcon\Firewall\Adapter;
 
 use Closure;
 use Phalcon\Acl\Enum;
 use Phalcon\Cache\Adapter\AdapterInterface as CacheAdapterInterface;
-use Phalcon\Events\EventsAwareInterface;
 use Phalcon\Events\ManagerInterface;
 
 /**
  * Adapter for Phalcon\Firewall adapters
  */
-abstract class AbstractAdapter implements AdapterInterface, EventsAwareInterface
+abstract class AbstractAdapter implements \Phalcon\Firewall\Adapter\AdapterInterface, \Phalcon\Events\EventsAwareInterface
 {
     /**
      * Storing active identity object implementing Phalcon/Acl/RoleAware
@@ -42,7 +32,7 @@ abstract class AbstractAdapter implements AdapterInterface, EventsAwareInterface
     /**
      * Cache for caching access
      *
-     * @var <CacheAdapterInterface>
+     * @var CacheAdapterInterface
      */
     protected $cache;
 
@@ -158,10 +148,10 @@ abstract class AbstractAdapter implements AdapterInterface, EventsAwareInterface
     /**
      * Sets role callback to fetch role name
      *
-     * @param mixed $callback
+     * @param \Closure $callback
      * @return AdapterInterface
      */
-    public function setRoleCallback($callback): AdapterInterface
+    public function setRoleCallback(\Closure $callback): AdapterInterface
     {
     }
 

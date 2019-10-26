@@ -1,14 +1,5 @@
 <?php
 
-/**
- * This file is part of the Phalcon Framework.
- *
- * (c) Phalcon Team <team@phalcon.io>
- *
- * For the full copyright and license information, please view the LICENSE.txt
- * file that was distributed with this source code.
- */
-
 namespace Phalcon\Paginator;
 
 /**
@@ -16,7 +7,7 @@ namespace Phalcon\Paginator;
  *
  * Repository of current state Phalcon\Paginator\AdapterInterface::paginate()
  */
-class Repository implements RepositoryInterface
+class Repository implements \Phalcon\Paginator\RepositoryInterface, \JsonSerializable
 {
     /**
      * @var array
@@ -117,6 +108,15 @@ class Repository implements RepositoryInterface
      * @return int
      */
     public function getTotalItems(): int
+    {
+    }
+
+    /**
+     * See [jsonSerialize](https://php.net/manual/en/jsonserializable.jsonserialize.php)
+     *
+     * @return array
+     */
+    public function jsonSerialize(): array
     {
     }
 

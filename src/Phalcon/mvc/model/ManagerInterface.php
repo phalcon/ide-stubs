@@ -1,14 +1,5 @@
 <?php
 
-/**
- * This file is part of the Phalcon Framework.
- *
- * (c) Phalcon Team <team@phalcon.io>
- *
- * For the full copyright and license information, please view the LICENSE.txt
- * file that was distributed with this source code.
- */
-
 namespace Phalcon\Mvc\Model;
 
 use Phalcon\Db\Adapter\AdapterInterface;
@@ -34,11 +25,11 @@ interface ManagerInterface
     /**
      * Setup a relation reverse 1-1  between two models
      *
-     * @param \Phalcon\Mvc\ModelInterface $model
      * @param mixed $fields
-     * @param string $referencedModel
      * @param mixed $referencedFields
      * @param array $options
+     * @param \Phalcon\Mvc\ModelInterface $model
+     * @param string $referencedModel
      * @return \Phalcon\Mvc\Model\RelationInterface
      */
     public function addBelongsTo(\Phalcon\Mvc\ModelInterface $model, $fields, string $referencedModel, $referencedFields, $options = null): RelationInterface;
@@ -46,11 +37,11 @@ interface ManagerInterface
     /**
      * Setup a relation 1-n between two models
      *
-     * @param \Phalcon\Mvc\ModelInterface $model
      * @param mixed $fields
-     * @param string $referencedModel
      * @param mixed $referencedFields
      * @param array $options
+     * @param \Phalcon\Mvc\ModelInterface $model
+     * @param string $referencedModel
      * @return \Phalcon\Mvc\Model\RelationInterface
      */
     public function addHasMany(\Phalcon\Mvc\ModelInterface $model, $fields, string $referencedModel, $referencedFields, $options = null): RelationInterface;
@@ -58,11 +49,11 @@ interface ManagerInterface
     /**
      * Setup a 1-1 relation between two models
      *
-     * @param \Phalcon\Mvc\ModelInterface $model
      * @param mixed $fields
-     * @param string $referencedModel
      * @param mixed $referencedFields
      * @param array $options
+     * @param \Phalcon\Mvc\ModelInterface $model
+     * @param string $referencedModel
      * @return \Phalcon\Mvc\Model\RelationInterface
      */
     public function addHasOne(\Phalcon\Mvc\ModelInterface $model, $fields, string $referencedModel, $referencedFields, $options = null): RelationInterface;
@@ -70,14 +61,14 @@ interface ManagerInterface
     /**
      * Setups a relation n-m between two models
      *
-     * @param \Phalcon\Mvc\ModelInterface $model
      * @param string $fields
-     * @param string $intermediateModel
      * @param string $intermediateFields
      * @param string $intermediateReferencedFields
-     * @param string $referencedModel
      * @param string $referencedFields
      * @param array $options
+     * @param \Phalcon\Mvc\ModelInterface $model
+     * @param string $intermediateModel
+     * @param string $referencedModel
      * @return \Phalcon\Mvc\Model\RelationInterface
      */
     public function addHasManyToMany(\Phalcon\Mvc\ModelInterface $model, $fields, string $intermediateModel, $intermediateFields, $intermediateReferencedFields, string $referencedModel, $referencedFields, $options = null): RelationInterface;
@@ -101,8 +92,8 @@ interface ManagerInterface
     /**
      * Creates a Phalcon\Mvc\Model\Query and execute it
      *
-     * @param string $phql
      * @param array $placeholders
+     * @param string $phql
      * @return \Phalcon\Mvc\Model\QueryInterface
      */
     public function executeQuery(string $phql, $placeholders = null): QueryInterface;
@@ -156,8 +147,8 @@ interface ManagerInterface
      *
      * @param string $modelName
      * @param string $modelRelation
-     * @param ModelInterface $record
      * @param array|string|null $parameters
+     * @param ModelInterface $record
      * @param string|null $method
      * @return bool|ResultsetInterface
      */
@@ -176,8 +167,8 @@ interface ManagerInterface
      *
      * @param string $modelName
      * @param string $modelRelation
-     * @param ModelInterface $record
      * @param array|string|null $parameters
+     * @param ModelInterface $record
      * @param string|null $method
      * @return bool|ResultsetInterface
      */
@@ -212,8 +203,8 @@ interface ManagerInterface
      *
      * @param string $modelName
      * @param string $modelRelation
-     * @param ModelInterface $record
      * @param array|string|null $parameters
+     * @param ModelInterface $record
      * @param string|null $method
      * @return bool|\Phalcon\Mvc\ModelInterface
      */
@@ -386,9 +377,9 @@ interface ManagerInterface
      * This method expects that the endpoint listeners/behaviors returns true
      * meaning that a least one is implemented
      *
+     * @param array $data
      * @param \Phalcon\Mvc\ModelInterface $model
      * @param string $eventName
-     * @param array $data
      * @return bool
      */
     public function missingMethod(\Phalcon\Mvc\ModelInterface $model, string $eventName, $data);

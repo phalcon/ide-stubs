@@ -1,15 +1,8 @@
 <?php
 
-/**
- * This file is part of the Phalcon Framework.
- *
- * (c) Phalcon Team <team@phalcon.io>
- *
- * For the full copyright and license information, please view the LICENSE.txt
- * file that was distributed with this source code.
- */
-
 namespace Phalcon\Firewall\Adapter;
+
+use Phalcon\Mvc\DispatcherInterface;
 
 /**
  * Firewall which depends on annotations and dispatcher
@@ -82,9 +75,9 @@ class Annotations extends AbstractAdapter
     /**
      * Gets dispatcher
      *
-     * @return Dispatcher
+     * @return \Phalcon\Mvc\DispatcherInterface
      */
-    public function getDispatcher(): Dispatcher
+    public function getDispatcher(): DispatcherInterface
     {
     }
 

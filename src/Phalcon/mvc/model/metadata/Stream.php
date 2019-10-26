@@ -1,14 +1,5 @@
 <?php
 
-/**
- * This file is part of the Phalcon Framework.
- *
- * (c) Phalcon Team <team@phalcon.io>
- *
- * For the full copyright and license information, please view the LICENSE.txt
- * file that was distributed with this source code.
- */
-
 namespace Phalcon\Mvc\Model\MetaData;
 
 use Phalcon\Mvc\Model\MetaData;
@@ -18,13 +9,13 @@ use Phalcon\Mvc\Model\MetaData;
  *
  * Stores model meta-data in PHP files.
  *
- *```php
+ * ```php
  * $metaData = new \Phalcon\Mvc\Model\MetaData\Files(
  *     [
  *         "metaDataDir" => "app/cache/metadata/",
  *     ]
  * );
- *```
+ * ```
  */
 class Stream extends MetaData
 {

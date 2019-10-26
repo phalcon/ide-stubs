@@ -1,22 +1,11 @@
 <?php
 
-/**
- * This file is part of the Phalcon Framework.
- *
- * (c) Phalcon Team <team@phalcon.io>
- *
- * For the full copyright and license information, please view the LICENSE.txt
- * file that was distributed with this source code.
- */
-
 namespace Phalcon\Di;
-
-use ArrayAccess;
 
 /**
  * Interface for Phalcon\Di
  */
-interface DiInterface extends ArrayAccess
+interface DiInterface extends \ArrayAccess
 {
 
     /**
@@ -24,8 +13,8 @@ interface DiInterface extends ArrayAccess
      * Only is successful if a service hasn't been registered previously
      * with the same name
      *
-     * @param string $name
      * @param mixed $definition
+     * @param string $name
      * @param bool $shared
      * @return bool|\Phalcon\Di\ServiceInterface
      */

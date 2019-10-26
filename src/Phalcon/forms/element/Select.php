@@ -1,14 +1,5 @@
 <?php
 
-/**
- * This file is part of the Phalcon Framework.
- *
- * (c) Phalcon Team <team@phalcon.io>
- *
- * For the full copyright and license information, please view the LICENSE.txt
- * file that was distributed with this source code.
- */
-
 namespace Phalcon\Forms\Element;
 
 /**
@@ -25,9 +16,9 @@ class Select extends AbstractElement
     /**
      * Phalcon\Forms\Element constructor
      *
-     * @param string $name
      * @param object|array $options
      * @param array $attributes
+     * @param string $name
      */
     public function __construct(string $name, $options = null, $attributes = null)
     {
@@ -37,9 +28,9 @@ class Select extends AbstractElement
      * Adds an option to the current options
      *
      * @param array|string $option
-     * @return Element
+     * @return \Phalcon\Forms\Element\ElementInterface
      */
-    public function addOption($option): Element
+    public function addOption($option): ElementInterface
     {
     }
 
@@ -66,9 +57,9 @@ class Select extends AbstractElement
      * Set the choice's options
      *
      * @param array|object $options
-     * @return Element
+     * @return \Phalcon\Forms\Element\ElementInterface
      */
-    public function setOptions($options): Element
+    public function setOptions($options): ElementInterface
     {
     }
 }

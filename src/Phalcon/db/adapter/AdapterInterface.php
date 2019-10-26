@@ -1,14 +1,5 @@
 <?php
 
-/**
- * This file is part of the Phalcon.
- *
- * (c) Phalcon Team <team@phalcon.com>
- *
- * For the full copyright and license information, please view the LICENSE
- * file that was distributed with this source code.
- */
-
 namespace Phalcon\Db\Adapter;
 
 use Phalcon\Db\DialectInterface;
@@ -359,9 +350,9 @@ interface AdapterInterface
     /**
      * Return internal PDO handler
      *
-     * @return \Pdo
+     * @return \PDO
      */
-    public function getInternalHandler(): \Pdo;
+    public function getInternalHandler(): \PDO;
 
     /**
      * Returns the savepoint name to use for nested transactions

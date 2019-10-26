@@ -1,5 +1,7 @@
 <?php
 
+namespace Phalcon\Mvc\Model\MetaData\Strategy;
+
 /**
  * This file is part of the Phalcon Framework.
  *
@@ -8,12 +10,7 @@
  * For the full copyright and license information, please view the LICENSE.txt
  * file that was distributed with this source code.
  */
-
-namespace Phalcon\Mvc\Model\MetaData\Strategy;
-
-use Phalcon\Mvc\Model\MetaData\StrategyInterface;
-
-class Annotations implements StrategyInterface
+class Annotations implements \Phalcon\Mvc\Model\MetaData\Strategy\StrategyInterface
 {
 
     /**

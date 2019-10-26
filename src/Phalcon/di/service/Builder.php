@@ -1,14 +1,5 @@
 <?php
 
-/**
- * This file is part of the Phalcon Framework.
- *
- * (c) Phalcon Team <team@phalcon.io>
- *
- * For the full copyright and license information, please view the LICENSE.txt
- * file that was distributed with this source code.
- */
-
 namespace Phalcon\Di\Service;
 
 /**
@@ -22,9 +13,9 @@ class Builder
     /**
      * Builds a service using a complex service definition
      *
+     * @param array $parameters
      * @param \Phalcon\Di\DiInterface $container
      * @param array $definition
-     * @param array $parameters
      * @return mixed
      */
     public function build(\Phalcon\Di\DiInterface $container, array $definition, $parameters = null)

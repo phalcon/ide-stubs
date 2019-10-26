@@ -1,14 +1,5 @@
 <?php
 
-/**
- * This file is part of the Phalcon Framework.
- *
- * (c) Phalcon Team <team@phalcon.io>
- *
- * For the full copyright and license information, please view the LICENSE.txt
- * file that was distributed with this source code.
- */
-
 namespace Phalcon\Validation;
 
 use Phalcon\Messages\Message;
@@ -16,7 +7,7 @@ use Phalcon\Messages\Message;
 /**
  * This is a base class for validators
  */
-abstract class AbstractValidator implements ValidatorInterface
+abstract class AbstractValidator implements \Phalcon\Validation\ValidatorInterface
 {
     /**
      * Message template
@@ -48,9 +39,9 @@ abstract class AbstractValidator implements ValidatorInterface
     /**
      * Get the template message
      *
-     * @throw InvalidArgumentException When the field does not exists
      * @param string $field
      * @return string
+     * @throw InvalidArgumentException When the field does not exists
      */
     public function getTemplate(string $field = null): string
     {
@@ -69,7 +60,7 @@ abstract class AbstractValidator implements ValidatorInterface
      * Clear current templates and set new from an array,
      *
      * @param array $templates
-     * @return \Phalcon\Validation\ValidatorInterface
+     * @return ValidatorInterface
      */
     public function setTemplates(array $templates): ValidatorInterface
     {
@@ -79,7 +70,7 @@ abstract class AbstractValidator implements ValidatorInterface
      * Set a new template message
      *
      * @param string $template
-     * @return \Phalcon\Validation\ValidatorInterface
+     * @return ValidatorInterface
      */
     public function setTemplate(string $template): ValidatorInterface
     {
@@ -150,13 +141,12 @@ abstract class AbstractValidator implements ValidatorInterface
     /**
      * Create a default message by factory
      *
-     * @return Message
-     *
-     * @throw Exception
      * @param \Phalcon\Validation $validation
      * @param mixed $field
      * @param array $replacements
-     * @return \Phalcon\Messages\Message
+     * @return Message
+     *
+     * @throw Exception
      */
     public function messageFactory(\Phalcon\Validation $validation, $field, array $replacements = array()): Message
     {

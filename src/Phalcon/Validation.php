@@ -1,14 +1,5 @@
 <?php
 
-/**
- * This file is part of the Phalcon Framework.
- *
- * (c) Phalcon Team <team@phalcon.io>
- *
- * For the full copyright and license information, please view the LICENSE.txt
- * file that was distributed with this source code.
- */
-
 namespace Phalcon;
 
 use Phalcon\Di\Injectable;
@@ -18,7 +9,7 @@ use Phalcon\Validation\ValidationInterface;
 /**
  * Allows to validate data using custom or built-in validators
  */
-class Validation extends Injectable implements ValidationInterface
+class Validation extends Injectable implements \Phalcon\Validation\ValidationInterface
 {
 
     protected $combinedFieldsValidators;
@@ -43,7 +34,6 @@ class Validation extends Injectable implements ValidationInterface
 
 
     protected $values;
-
 
 
     public function getData()

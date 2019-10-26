@@ -1,20 +1,9 @@
 <?php
 
-/**
- * This file is part of the Phalcon Framework.
- *
- * (c) Phalcon Team <team@phalcon.io>
- *
- * For the full copyright and license information, please view the LICENSE.txt
- * file that was distributed with this source code.
- */
-
 namespace Phalcon\Mvc\Model;
 
-use Phalcon\Cache\Adapter\AdapterInterface as CacheAdapterInterface;
 use Phalcon\Di\DiInterface;
-use Phalcon\Di\InjectionAwareInterface;
-use Phalcon\Mvc\Model\MetaData\StrategyInterface;
+use Phalcon\Mvc\Model\MetaData\Strategy\StrategyInterface;
 
 /**
  * Phalcon\Mvc\Model\MetaData
@@ -36,7 +25,7 @@ use Phalcon\Mvc\Model\MetaData\StrategyInterface;
  * print_r($attributes);
  * ```
  */
-abstract class MetaData implements InjectionAwareInterface, MetaDataInterface
+abstract class MetaData implements \Phalcon\Di\InjectionAwareInterface, \Phalcon\Mvc\Model\MetaDataInterface
 {
 
     const MODELS_ATTRIBUTES = 0;
@@ -368,7 +357,7 @@ abstract class MetaData implements InjectionAwareInterface, MetaDataInterface
     /**
      * Return the strategy to obtain the meta-data
      *
-     * @return \Phalcon\Mvc\Model\MetaData\StrategyInterface
+     * @return \Phalcon\Mvc\Model\MetaData\Strategy\StrategyInterface
      */
     public function getStrategy(): StrategyInterface
     {
@@ -573,9 +562,9 @@ abstract class MetaData implements InjectionAwareInterface, MetaDataInterface
     /**
      * Set the meta-data extraction strategy
      *
-     * @param \Phalcon\Mvc\Model\MetaData\StrategyInterface $strategy
+     * @param \Phalcon\Mvc\Model\MetaData\Strategy\StrategyInterface $strategy
      */
-    public function setStrategy(\Phalcon\Mvc\Model\MetaData\StrategyInterface $strategy)
+    public function setStrategy(\Phalcon\Mvc\Model\MetaData\Strategy\StrategyInterface $strategy)
     {
     }
 

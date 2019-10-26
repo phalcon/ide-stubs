@@ -1,14 +1,5 @@
 <?php
 
-/**
- * This file is part of the Phalcon.
- *
- * (c) Phalcon Team <team@phalcon.com>
- *
- * For the full copyright and license information, please view the LICENSE
- * file that was distributed with this source code.
- */
-
 namespace Phalcon\Session;
 
 use InvalidArgumentException;
@@ -155,9 +146,9 @@ interface ManagerInterface
      * Set the session name. Throw exception if the session has started
      * and do not allow poop names
      *
-     * @throws InvalidArgumentException
      * @param string $name
      * @return ManagerInterface
+     * @throws InvalidArgumentException
      */
     public function setName(string $name): ManagerInterface;
 

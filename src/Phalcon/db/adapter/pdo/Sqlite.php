@@ -1,17 +1,7 @@
 <?php
 
-/**
- * This file is part of the Phalcon.
- *
- * (c) Phalcon Team <team@phalcon.com>
- *
- * For the full copyright and license information, please view the LICENSE
- * file that was distributed with this source code.
- */
-
 namespace Phalcon\Db\Adapter\Pdo;
 
-use Phalcon\Db\Adapter\Pdo\AbstractPdo as PdoAdapter;
 use Phalcon\Db\RawValue;
 
 /**
@@ -27,7 +17,7 @@ use Phalcon\Db\RawValue;
  * );
  * ```
  */
-class Sqlite extends PdoAdapter
+class Sqlite extends \Phalcon\Db\Adapter\Pdo\AbstractPdo
 {
     /**
      * @var string

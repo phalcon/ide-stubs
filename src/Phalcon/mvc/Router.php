@@ -1,18 +1,8 @@
 <?php
 
-/**
- * This file is part of the Phalcon Framework.
- *
- * (c) Phalcon Team <team@phalcon.io>
- *
- * For the full copyright and license information, please view the LICENSE.txt
- * file that was distributed with this source code.
- */
-
 namespace Phalcon\Mvc;
 
 use Phalcon\Di\AbstractInjectionAware;
-use Phalcon\Events\EventsAwareInterface;
 use Phalcon\Events\ManagerInterface;
 use Phalcon\Mvc\Router\RouteInterface;
 
@@ -44,7 +34,7 @@ use Phalcon\Mvc\Router\RouteInterface;
  * echo $router->getControllerName();
  * ```
  */
-class Router extends AbstractInjectionAware implements RouterInterface, EventsAwareInterface
+class Router extends AbstractInjectionAware implements \Phalcon\Mvc\RouterInterface, \Phalcon\Events\EventsAwareInterface
 {
 
     const POSITION_FIRST = 0;
@@ -111,7 +101,6 @@ class Router extends AbstractInjectionAware implements RouterInterface, EventsAw
 
 
     protected $wasMatched = false;
-
 
 
     public function getKeyRouteNames()

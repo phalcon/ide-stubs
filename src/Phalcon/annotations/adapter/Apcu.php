@@ -1,24 +1,15 @@
 <?php
 
-/**
- * This file is part of the Phalcon Framework.
- *
- * (c) Phalcon Team <team@phalcon.io>
- *
- * For the full copyright and license information, please view the LICENSE.txt
- * file that was distributed with this source code.
- */
-
 namespace Phalcon\Annotations\Adapter;
 
 /**
  * Stores the parsed annotations in APCu. This adapter is suitable for production
  *
- *```php
+ * ```php
  * use Phalcon\Annotations\Adapter\Apcu;
  *
  * $annotations = new Apcu();
- *```
+ * ```
  */
 class Apcu extends AbstractAdapter
 {

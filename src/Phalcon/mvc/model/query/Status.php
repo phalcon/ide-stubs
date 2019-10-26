@@ -1,14 +1,5 @@
 <?php
 
-/**
- * This file is part of the Phalcon Framework.
- *
- * (c) Phalcon Team <team@phalcon.io>
- *
- * For the full copyright and license information, please view the LICENSE.txt
- * file that was distributed with this source code.
- */
-
 namespace Phalcon\Mvc\Model\Query;
 
 use Phalcon\Mvc\ModelInterface;
@@ -21,7 +12,7 @@ use Phalcon\Mvc\ModelInterface;
  * information and the related messages produced by the
  * model which finally executes the operations when it fails
  *
- *```php
+ * ```php
  * $phql = "UPDATE Robots SET name = :name:, type = :type:, year = :year: WHERE id = :id:";
  *
  * $status = $app->modelsManager->executeQuery(
@@ -38,9 +29,9 @@ use Phalcon\Mvc\ModelInterface;
  * if ($status->success()) {
  *     echo "OK";
  * }
- *```
+ * ```
  */
-class Status implements StatusInterface
+class Status implements \Phalcon\Mvc\Model\Query\StatusInterface
 {
 
     protected $model;

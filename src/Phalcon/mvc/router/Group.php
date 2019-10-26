@@ -1,14 +1,5 @@
 <?php
 
-/**
- * This file is part of the Phalcon Framework.
- *
- * (c) Phalcon Team <team@phalcon.io>
- *
- * For the full copyright and license information, please view the LICENSE.txt
- * file that was distributed with this source code.
- */
-
 namespace Phalcon\Mvc\Router;
 
 /**
@@ -16,7 +7,7 @@ namespace Phalcon\Mvc\Router;
  *
  * Helper class to create a group of routes with common attributes
  *
- *```php
+ * ```php
  * $router = new \Phalcon\Mvc\Router();
  *
  * //Create a group with a common module and controller
@@ -57,9 +48,9 @@ namespace Phalcon\Mvc\Router;
  *
  * //Add the group to the router
  * $router->mount($blog);
- *```
+ * ```
  */
-class Group implements GroupInterface
+class Group implements \Phalcon\Mvc\Router\GroupInterface
 {
 
     protected $beforeMatch;
@@ -105,8 +96,8 @@ class Group implements GroupInterface
     /**
      * Adds a route to the router that only match if the HTTP method is CONNECT
      *
-     * @param string $pattern
      * @param string|array $paths
+     * @param string $pattern
      * @return RouteInterface
      */
     public function addConnect(string $pattern, $paths = null): RouteInterface
@@ -116,8 +107,8 @@ class Group implements GroupInterface
     /**
      * Adds a route to the router that only match if the HTTP method is DELETE
      *
-     * @param string $pattern
      * @param string|array $paths
+     * @param string $pattern
      * @return RouteInterface
      */
     public function addDelete(string $pattern, $paths = null): RouteInterface
@@ -127,8 +118,8 @@ class Group implements GroupInterface
     /**
      * Adds a route to the router that only match if the HTTP method is GET
      *
-     * @param string $pattern
      * @param string|array $paths
+     * @param string $pattern
      * @return RouteInterface
      */
     public function addGet(string $pattern, $paths = null): RouteInterface
@@ -138,8 +129,8 @@ class Group implements GroupInterface
     /**
      * Adds a route to the router that only match if the HTTP method is HEAD
      *
-     * @param string $pattern
      * @param string|array $paths
+     * @param string $pattern
      * @return RouteInterface
      */
     public function addHead(string $pattern, $paths = null): RouteInterface
@@ -149,8 +140,8 @@ class Group implements GroupInterface
     /**
      * Add a route to the router that only match if the HTTP method is OPTIONS
      *
-     * @param string $pattern
      * @param string|array $paths
+     * @param string $pattern
      * @return RouteInterface
      */
     public function addOptions(string $pattern, $paths = null): RouteInterface
@@ -160,8 +151,8 @@ class Group implements GroupInterface
     /**
      * Adds a route to the router that only match if the HTTP method is PATCH
      *
-     * @param string $pattern
      * @param string|array $paths
+     * @param string $pattern
      * @return RouteInterface
      */
     public function addPatch(string $pattern, $paths = null): RouteInterface
@@ -171,8 +162,8 @@ class Group implements GroupInterface
     /**
      * Adds a route to the router that only match if the HTTP method is POST
      *
-     * @param string $pattern
      * @param string|array $paths
+     * @param string $pattern
      * @return RouteInterface
      */
     public function addPost(string $pattern, $paths = null): RouteInterface
@@ -182,8 +173,8 @@ class Group implements GroupInterface
     /**
      * Adds a route to the router that only match if the HTTP method is PURGE
      *
-     * @param string $pattern
      * @param string|array $paths
+     * @param string $pattern
      * @return RouteInterface
      */
     public function addPurge(string $pattern, $paths = null): RouteInterface
@@ -193,8 +184,8 @@ class Group implements GroupInterface
     /**
      * Adds a route to the router that only match if the HTTP method is PUT
      *
-     * @param string $pattern
      * @param string|array $paths
+     * @param string $pattern
      * @return RouteInterface
      */
     public function addPut(string $pattern, $paths = null): RouteInterface
@@ -204,8 +195,8 @@ class Group implements GroupInterface
     /**
      * Adds a route to the router that only match if the HTTP method is TRACE
      *
-     * @param string $pattern
      * @param string|array $paths
+     * @param string $pattern
      * @return RouteInterface
      */
     public function addTrace(string $pattern, $paths = null): RouteInterface

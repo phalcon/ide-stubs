@@ -1,14 +1,5 @@
 <?php
 
-/**
- * This file is part of the Phalcon Framework.
- *
- * (c) Phalcon Team <team@phalcon.io>
- *
- * For the full copyright and license information, please view the LICENSE.txt
- * file that was distributed with this source code.
- */
-
 namespace Phalcon\Mvc\Micro;
 
 /**
@@ -23,7 +14,6 @@ class LazyLoader
 
 
     protected $definition;
-
 
 
     public function getDefinition()
@@ -42,8 +32,8 @@ class LazyLoader
     /**
      * Calling __call method
      *
-     * @param string $method
      * @param array $arguments
+     * @param string $method
      * @param \Phalcon\Mvc\Model\BinderInterface $modelBinder
      * @return mixed
      */

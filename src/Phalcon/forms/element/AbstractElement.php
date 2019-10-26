@@ -1,14 +1,5 @@
 <?php
 
-/**
- * This file is part of the Phalcon Framework.
- *
- * (c) Phalcon Team <team@phalcon.io>
- *
- * For the full copyright and license information, please view the LICENSE.txt
- * file that was distributed with this source code.
- */
-
 namespace Phalcon\Forms\Element;
 
 use Phalcon\Forms\Form;
@@ -17,7 +8,7 @@ use Phalcon\Messages\Messages;
 /**
  * This is a base class for form elements
  */
-abstract class AbstractElement implements ElementInterface
+abstract class AbstractElement implements \Phalcon\Forms\Element\ElementInterface
 {
 
     protected $attributes;
@@ -91,8 +82,10 @@ abstract class AbstractElement implements ElementInterface
     /**
      * Adds a group of validators
      *
-     * @param \Phalcon\Validation\ValidatorInterface[] $validators
+     * @param \Phalcon\Validation\ValidatorInterface[] validators
      * @param bool $merge
+     * @param array $validators
+     * @param \Phalcon\Validation\ValidatorInterface  [] validators
      * @return ElementInterface
      */
     public function addValidators(array $validators, bool $merge = true): ElementInterface

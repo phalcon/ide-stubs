@@ -1,14 +1,5 @@
 <?php
 
-/**
- * This file is part of the Phalcon Framework.
- *
- * (c) Phalcon Team <team@phalcon.io>
- *
- * For the full copyright and license information, please view the LICENSE.txt
- * file that was distributed with this source code.
- */
-
 namespace Phalcon\Http\Server;
 
 use Psr\Http\Message\ResponseInterface;
@@ -21,7 +12,7 @@ use Psr\Http\Server\RequestHandlerInterface;
  * An HTTP request handler process an HTTP request in order to produce an
  * HTTP response.
  */
-abstract class AbstractRequestHandler implements RequestHandlerInterface
+abstract class AbstractRequestHandler implements \Psr\Http\Server\RequestHandlerInterface
 {
 
     /**

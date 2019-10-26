@@ -1,22 +1,11 @@
 <?php
 
-/**
- * This file is part of the Phalcon Framework.
- *
- * (c) Phalcon Team <team@phalcon.io>
- *
- * For the full copyright and license information, please view the LICENSE.txt
- * file that was distributed with this source code.
- */
-
 namespace Phalcon;
-
-use Phalcon\Filter\FilterInterface;
 
 /**
  * Lazy loads, stores and exposes sanitizer objects
  */
-class Filter implements FilterInterface
+class Filter implements \Phalcon\Filter\FilterInterface
 {
 
     const FILTER_ABSINT = 'absint';

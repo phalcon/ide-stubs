@@ -1,5 +1,7 @@
 <?php
 
+namespace Phalcon\Storage\Serializer;
+
 /**
  * This file is part of the Phalcon Framework.
  *
@@ -8,10 +10,7 @@
  * For the full copyright and license information, please view the LICENSE.txt
  * file that was distributed with this source code.
  */
-
-namespace Phalcon\Storage\Serializer;
-
-abstract class AbstractSerializer implements SerializerInterface
+abstract class AbstractSerializer implements \Phalcon\Storage\Serializer\SerializerInterface
 {
     /**
      * @var mixed

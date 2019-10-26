@@ -1,14 +1,5 @@
 <?php
 
-/**
- * This file is part of the Phalcon Framework.
- *
- * (c) Phalcon Team <team@phalcon.io>
- *
- * For the full copyright and license information, please view the LICENSE.txt
- * file that was distributed with this source code.
- */
-
 namespace Phalcon;
 
 use Phalcon\Crypt\CryptInterface;
@@ -31,7 +22,7 @@ use Phalcon\Crypt\CryptInterface;
  * echo $crypt->decrypt($encrypted, $key);
  * ```
  */
-class Crypt implements CryptInterface
+class Crypt implements \Phalcon\Crypt\CryptInterface
 {
 
     const PADDING_ANSI_X_923 = 1;
@@ -165,11 +156,11 @@ class Crypt implements CryptInterface
     /**
      * Decrypt a text that is coded as a base64 string.
      *
-     * @throws \Phalcon\Crypt\Mismatch
      * @param string $text
      * @param mixed $key
      * @param bool $safe
      * @return string
+     * @throws \Phalcon\Crypt\Mismatch
      */
     public function decryptBase64(string $text, $key = null, bool $safe = false): string
     {
@@ -293,9 +284,9 @@ class Crypt implements CryptInterface
     /**
      * Set the name of hashing algorithm.
      *
-     * @throws \Phalcon\Crypt\Exception
      * @param string $hashAlgo
      * @return \Phalcon\Crypt\CryptInterface
+     * @throws \Phalcon\Crypt\Exception
      */
     public function setHashAlgo(string $hashAlgo): CryptInterface
     {

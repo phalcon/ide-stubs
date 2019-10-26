@@ -1,18 +1,5 @@
 <?php
 
-/**
- * This file is part of the Phalcon Framework.
- *
- * (c) Phalcon Team <team@phalcon.io>
- *
- * For the full copyright and license information, please view the LICENSE.txt
- * file that was distributed with this source code.
- *
- * Implementation of this file has been influenced by Zend Diactoros
- * @link    https://github.com/zendframework/zend-diactoros
- * @license https://github.com/zendframework/zend-diactoros/blob/master/LICENSE.md
- */
-
 namespace Phalcon\Http\Message;
 
 use Psr\Http\Message\StreamInterface;
@@ -20,7 +7,7 @@ use Psr\Http\Message\StreamInterface;
 /**
  * PSR-7 Stream
  */
-class Stream implements StreamInterface
+class Stream implements \Psr\Http\Message\StreamInterface
 {
     /**
      * @var resource | null
@@ -31,11 +18,6 @@ class Stream implements StreamInterface
      * @var resource | string
      */
     protected $stream;
-
-    /**
-     * @var bool
-     */
-    protected $warning = false;
 
 
     /**
@@ -85,7 +67,7 @@ class Stream implements StreamInterface
      *
      * After the stream has been detached, the stream is in an unusable state.
      *
-     * @return resource|null
+     * @return resource | null
      */
     public function detach()
     {
@@ -117,7 +99,6 @@ class Stream implements StreamInterface
      *
      * @param mixed|null $key
      *
-     * @param mixed $key
      * @return array|mixed|null
      */
     public function getMetadata($key = null)
@@ -165,7 +146,6 @@ class Stream implements StreamInterface
      *
      * @param int $length
      *
-     * @param mixed $length
      * @return string
      */
     public function read($length): string
@@ -216,7 +196,6 @@ class Stream implements StreamInterface
      *
      * @param string $data
      *
-     * @param mixed $data
      * @return int
      */
     public function write($data): int

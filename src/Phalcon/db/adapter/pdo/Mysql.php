@@ -1,22 +1,11 @@
 <?php
 
-/**
- * This file is part of the Phalcon.
- *
- * (c) Phalcon Team <team@phalcon.com>
- *
- * For the full copyright and license information, please view the LICENSE
- * file that was distributed with this source code.
- */
-
 namespace Phalcon\Db\Adapter\Pdo;
-
-use Phalcon\Db\Adapter\Pdo\AbstractPdo as PdoAdapter;
 
 /**
  * Specific functions for the Mysql database system
  *
- *```php
+ * ```php
  * use Phalcon\Db\Adapter\Pdo\Mysql;
  *
  * $config = [
@@ -28,9 +17,9 @@ use Phalcon\Db\Adapter\Pdo\AbstractPdo as PdoAdapter;
  * ];
  *
  * $connection = new Mysql($config);
- *```
+ * ```
  */
-class Mysql extends PdoAdapter
+class Mysql extends \Phalcon\Db\Adapter\Pdo\AbstractPdo
 {
     /**
      * @var string

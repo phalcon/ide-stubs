@@ -1,14 +1,5 @@
 <?php
 
-/**
- * This file is part of the Phalcon Framework.
- *
- * (c) Phalcon Team <team@phalcon.io>
- *
- * For the full copyright and license information, please view the LICENSE.txt
- * file that was distributed with this source code.
- */
-
 namespace Phalcon\Logger\Formatter;
 
 use Phalcon\Logger\Formatter\Formatter;
@@ -18,7 +9,7 @@ use Phalcon\Logger\Formatter\Formatter;
  *
  * Formats messages using an one-line string
  */
-class Line extends AbstractFormatter
+class Line extends \Phalcon\Logger\Formatter\AbstractFormatter
 {
     /**
      * Default date format

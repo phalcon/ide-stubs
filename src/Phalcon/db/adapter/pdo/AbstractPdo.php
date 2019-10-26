@@ -1,14 +1,5 @@
 <?php
 
-/**
- * This file is part of the Phalcon.
- *
- * (c) Phalcon Team <team@phalcon.com>
- *
- * For the full copyright and license information, please view the LICENSE
- * file that was distributed with this source code.
- */
-
 namespace Phalcon\Db\Adapter\Pdo;
 
 use Phalcon\Db\Adapter\AbstractAdapter;
@@ -29,7 +20,7 @@ use Phalcon\Db\Adapter\AbstractAdapter;
  * ];
  *
  * $connection = new Mysql($config);
- *```
+ * ```
  */
 abstract class AbstractPdo extends AbstractAdapter
 {
@@ -41,7 +32,7 @@ abstract class AbstractPdo extends AbstractAdapter
     /**
      * PDO Handler
      *
-     * @var \Pdo
+     * @var \PDO
      */
     protected $pdo;
 
@@ -241,9 +232,9 @@ abstract class AbstractPdo extends AbstractAdapter
     /**
      * Return internal PDO handler
      *
-     * @return \Pdo
+     * @return \PDO
      */
-    public function getInternalHandler(): \Pdo
+    public function getInternalHandler(): \PDO
     {
     }
 

@@ -1,15 +1,8 @@
 <?php
 
-/**
- * This file is part of the Phalcon Framework.
- *
- * (c) Phalcon Team <team@phalcon.io>
- *
- * For the full copyright and license information, please view the LICENSE.txt
- * file that was distributed with this source code.
- */
-
 namespace Phalcon\Firewall\Adapter;
+
+use Closure;
 
 /**
  * Interface for Phalcon\Mvc\Dispatcher\Firewall adapters
@@ -26,8 +19,10 @@ interface AdapterInterface
 
     /**
      * Gets role callback to fetch role name
+     *
+     * @return \Closure
      */
-    public function getRoleCallback();
+    public function getRoleCallback(): Closure;
 
     /**
      * Gets always resolving role option
@@ -62,8 +57,8 @@ interface AdapterInterface
     /**
      * Sets role callback to fetch role name
      *
-     * @param mixed $callback
+     * @param \Closure $callback
      * @return AdapterInterface
      */
-    public function setRoleCallback($callback): AdapterInterface;
+    public function setRoleCallback(\Closure $callback): AdapterInterface;
 }

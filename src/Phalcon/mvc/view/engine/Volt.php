@@ -1,25 +1,20 @@
 <?php
 
-/**
- * This file is part of the Phalcon Framework.
- *
- * (c) Phalcon Team <team@phalcon.io>
- *
- * For the full copyright and license information, please view the LICENSE.txt
- * file that was distributed with this source code.
- */
-
 namespace Phalcon\Mvc\View\Engine;
 
+use Phalcon\Events\ManagerInterface;
 use Phalcon\Mvc\View\Engine\Volt\Compiler;
 
 /**
  * Designer friendly and fast template engine for PHP written in Zephir/C
  */
-class Volt extends AbstractEngine
+class Volt extends AbstractEngine implements \Phalcon\Events\EventsAwareInterface
 {
 
     protected $compiler;
+
+
+    protected $eventsManager;
 
 
     protected $macros;
@@ -61,6 +56,15 @@ class Volt extends AbstractEngine
     }
 
     /**
+     * Returns the internal event manager
+     *
+     * @return null|\Phalcon\Events\ManagerInterface
+     */
+    public function getEventsManager(): ?ManagerInterface
+    {
+    }
+
+    /**
      * Return Volt's options
      *
      * @return array
@@ -98,6 +102,15 @@ class Volt extends AbstractEngine
      * @param bool $mustClean
      */
     public function render(string $templatePath, $params, bool $mustClean = false)
+    {
+    }
+
+    /**
+     * Sets the events manager
+     *
+     * @param \Phalcon\Events\ManagerInterface $eventsManager
+     */
+    public function setEventsManager(\Phalcon\Events\ManagerInterface $eventsManager)
     {
     }
 

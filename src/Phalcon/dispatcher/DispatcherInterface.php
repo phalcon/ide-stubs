@@ -1,14 +1,5 @@
 <?php
 
-/**
- * This file is part of the Phalcon Framework.
- *
- * (c) Phalcon Team <team@phalcon.io>
- *
- * For the full copyright and license information, please view the LICENSE.txt
- * file that was distributed with this source code.
- */
-
 namespace Phalcon\Dispatcher;
 
 /**
@@ -55,8 +46,8 @@ interface DispatcherInterface
     /**
      * Gets a param by its name or numeric index
      *
-     * @param mixed $param
      * @param string|array $filters
+     * @param mixed $param
      * @return mixed
      */
     public function getParam($param, $filters = null);
@@ -143,8 +134,8 @@ interface DispatcherInterface
     /**
      * Set a param by its name or numeric index
      *
-     * @param mixed $param
      * @param mixed $value
+     * @param mixed $param
      */
     public function setParam($param, $value);
 

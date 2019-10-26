@@ -1,18 +1,8 @@
 <?php
 
-/**
- * This file is part of the Phalcon Framework.
- *
- * (c) Phalcon Team <team@phalcon.io>
- *
- * For the full copyright and license information, please view the LICENSE.txt
- * file that was distributed with this source code.
- */
-
 namespace Phalcon\Dispatcher;
 
 use Phalcon\Di\AbstractInjectionAware;
-use Phalcon\Events\EventsAwareInterface;
 use Phalcon\Events\ManagerInterface;
 use Phalcon\Mvc\Model\BinderInterface;
 
@@ -21,7 +11,7 @@ use Phalcon\Mvc\Model\BinderInterface;
  * This class can't be instantiated directly, you can use it to create your own
  * dispatchers.
  */
-abstract class AbstractDispatcher extends AbstractInjectionAware implements DispatcherInterface, EventsAwareInterface
+abstract class AbstractDispatcher extends AbstractInjectionAware implements \Phalcon\Dispatcher\DispatcherInterface, \Phalcon\Events\EventsAwareInterface
 {
 
     protected $activeHandler;
@@ -139,7 +129,6 @@ abstract class AbstractDispatcher extends AbstractInjectionAware implements Disp
      *                      stopped by returning <tt>false</tt> in the exception handler.
      *
      * @throws \Exception if any uncaught or unhandled exception occurs during the dispatcher process.
-     * @return object|bool
      */
     public function dispatch(): bool
     {
@@ -157,8 +146,8 @@ abstract class AbstractDispatcher extends AbstractInjectionAware implements Disp
      * );
      * ```
      *
-     * @throws \Phalcon\Exception
      * @param array $forward
+     * @throws \Phalcon\Exception
      */
     public function forward(array $forward)
     {
@@ -418,9 +407,9 @@ abstract class AbstractDispatcher extends AbstractInjectionAware implements Disp
      *
      * @param \Phalcon\Mvc\Model\BinderInterface $modelBinder
      * @param mixed $cache
-     * @return Dispatcher
+     * @return \Phalcon\Dispatcher\DispatcherInterface
      */
-    public function setModelBinder(\Phalcon\Mvc\Model\BinderInterface $modelBinder, $cache = null): Dispatcher
+    public function setModelBinder(\Phalcon\Mvc\Model\BinderInterface $modelBinder, $cache = null): DispatcherInterface
     {
     }
 

@@ -1,5 +1,10 @@
 <?php
 
+namespace Phalcon\Paginator;
+
+use Phalcon\Factory\AbstractFactory;
+use Phalcon\Paginator\Adapter\AdapterInterface;
+
 /**
  * This file is part of the Phalcon Framework.
  *
@@ -8,12 +13,6 @@
  * For the full copyright and license information, please view the LICENSE.txt
  * file that was distributed with this source code.
  */
-
-namespace Phalcon\Paginator;
-
-use Phalcon\Factory\AbstractFactory;
-use Phalcon\Paginator\Adapter\AbstractAdapter;
-
 class PaginatorFactory extends AbstractFactory
 {
 
@@ -50,9 +49,9 @@ class PaginatorFactory extends AbstractFactory
      * ```
      *
      * @param mixed $config
-     * @return mixed
+     * @return \Phalcon\Paginator\Adapter\AdapterInterface
      */
-    public function load($config)
+    public function load($config): AdapterInterface
     {
     }
 
@@ -61,9 +60,9 @@ class PaginatorFactory extends AbstractFactory
      *
      * @param string $name
      * @param array $options
-     * @return \Phalcon\Paginator\Adapter\AbstractAdapter
+     * @return \Phalcon\Paginator\Adapter\AdapterInterface
      */
-    public function newInstance(string $name, array $options = array()): AbstractAdapter
+    public function newInstance(string $name, array $options = array()): AdapterInterface
     {
     }
 

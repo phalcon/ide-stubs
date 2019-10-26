@@ -1,5 +1,12 @@
 <?php
 
+namespace Phalcon\Storage\Adapter;
+
+use DateInterval;
+use Phalcon\Storage\Exception;
+use Phalcon\Storage\Serializer\SerializerInterface;
+use Phalcon\Storage\SerializerFactory;
+
 /**
  * This file is part of the Phalcon Framework.
  *
@@ -8,15 +15,7 @@
  * For the full copyright and license information, please view the LICENSE.txt
  * file that was distributed with this source code.
  */
-
-namespace Phalcon\Storage\Adapter;
-
-use DateInterval;
-use Phalcon\Storage\Exception;
-use Phalcon\Storage\Serializer\SerializerInterface;
-use Phalcon\Storage\SerializerFactory;
-
-abstract class AbstractAdapter implements AdapterInterface
+abstract class AbstractAdapter implements \Phalcon\Storage\Adapter\AdapterInterface
 {
     /**
      * @var mixed
@@ -45,14 +44,14 @@ abstract class AbstractAdapter implements AdapterInterface
     /**
      * Serializer
      *
-     * @var <SerializerInterface>
+     * @var SerializerInterface
      */
     protected $serializer;
 
     /**
      * Serializer Factory
      *
-     * @var <SerializerFactory>
+     * @var SerializerFactory
      */
     protected $serializerFactory;
 
@@ -190,9 +189,8 @@ abstract class AbstractAdapter implements AdapterInterface
      *
      * @param DateInterval|int|null $ttl
      *
-     * @throws Exception
-     * @param mixed $ttl
      * @return int
+     * @throws Exception
      */
     protected function getTtl($ttl): int
     {

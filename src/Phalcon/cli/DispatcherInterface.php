@@ -1,22 +1,11 @@
 <?php
 
-/**
- * This file is part of the Phalcon Framework.
- *
- * (c) Phalcon Team <team@phalcon.io>
- *
- * For the full copyright and license information, please view the LICENSE.txt
- * file that was distributed with this source code.
- */
-
 namespace Phalcon\Cli;
-
-use Phalcon\Dispatcher\DispatcherInterface as DispatcherInterfaceBase;
 
 /**
  * Interface for Phalcon\Cli\Dispatcher
  */
-interface DispatcherInterface extends DispatcherInterfaceBase
+interface DispatcherInterface extends \Phalcon\Dispatcher\DispatcherInterface
 {
 
     /**

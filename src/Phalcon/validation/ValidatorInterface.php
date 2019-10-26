@@ -1,14 +1,5 @@
 <?php
 
-/**
- * This file is part of the Phalcon Framework.
- *
- * (c) Phalcon Team <team@phalcon.io>
- *
- * For the full copyright and license information, please view the LICENSE.txt
- * file that was distributed with this source code.
- */
-
 namespace Phalcon\Validation;
 
 /**
@@ -31,7 +22,7 @@ interface ValidatorInterface
      * Checks if an option is defined
      *
      * @param string $key
-     * @return bool
+     * @return boolean
      */
     public function hasOption(string $key): bool;
 
@@ -40,16 +31,16 @@ interface ValidatorInterface
      *
      * @param \Phalcon\Validation $validation
      * @param mixed $field
-     * @return bool
+     * @return boolean
      */
     public function validate(\Phalcon\Validation $validation, $field): bool;
 
     /**
      * Get the template message
      *
-     * @throw InvalidArgumentException When the field does not exists
      * @param string $field
      * @return string
+     * @throw InvalidArgumentException When the field does not exists
      */
     public function getTemplate(string $field): string;
 

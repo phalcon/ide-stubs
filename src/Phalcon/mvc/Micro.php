@@ -1,19 +1,10 @@
 <?php
 
-/**
- * This file is part of the Phalcon Framework.
- *
- * (c) Phalcon Team <team@phalcon.io>
- *
- * For the full copyright and license information, please view the LICENSE.txt
- * file that was distributed with this source code.
- */
-
 namespace Phalcon\Mvc;
 
-use ArrayAccess;
 use Phalcon\Di\Injectable;
 use Phalcon\Di\ServiceInterface;
+use Phalcon\Events\ManagerInterface;
 use Phalcon\Mvc\Model\BinderInterface;
 use Phalcon\Mvc\Router\RouteInterface;
 
@@ -25,7 +16,7 @@ use Phalcon\Mvc\Router\RouteInterface;
  * application. Micro applications are suitable to small applications, APIs and
  * prototypes in a practical way.
  *
- *```php
+ * ```php
  * $app = new \Phalcon\Mvc\Micro();
  *
  * $app->get(
@@ -36,9 +27,9 @@ use Phalcon\Mvc\Router\RouteInterface;
  * );
  *
  * $app->handle("/say/welcome/Phalcon");
- *```
+ * ```
  */
-class Micro extends Injectable implements ArrayAccess
+class Micro extends Injectable implements \ArrayAccess, \Phalcon\Events\EventsAwareInterface
 {
 
     protected $activeHandler;
@@ -57,6 +48,9 @@ class Micro extends Injectable implements ArrayAccess
 
 
     protected $errorHandler;
+
+
+    protected $eventsManager;
 
 
     protected $finishHandlers = array();
@@ -125,8 +119,8 @@ class Micro extends Injectable implements ArrayAccess
     /**
      * Maps a route to a handler that only matches if the HTTP method is DELETE
      *
-     * @param string $routePattern
      * @param callable $handler
+     * @param string $routePattern
      * @return \Phalcon\Mvc\Router\RouteInterface
      */
     public function delete(string $routePattern, $handler): RouteInterface
@@ -157,8 +151,8 @@ class Micro extends Injectable implements ArrayAccess
     /**
      * Maps a route to a handler that only matches if the HTTP method is GET
      *
-     * @param string $routePattern
      * @param callable $handler
+     * @param string $routePattern
      * @return \Phalcon\Mvc\Router\RouteInterface
      */
     public function get(string $routePattern, $handler): RouteInterface
@@ -180,6 +174,24 @@ class Micro extends Injectable implements ArrayAccess
      * @return array
      */
     public function getBoundModels(): array
+    {
+    }
+
+    /**
+     * Returns the internal event manager
+     *
+     * @return null|\Phalcon\Events\ManagerInterface
+     */
+    public function getEventsManager(): ?ManagerInterface
+    {
+    }
+
+    /**
+     * Sets the events manager
+     *
+     * @param \Phalcon\Events\ManagerInterface $eventsManager
+     */
+    public function setEventsManager(\Phalcon\Events\ManagerInterface $eventsManager)
     {
     }
 
@@ -262,8 +274,8 @@ class Micro extends Injectable implements ArrayAccess
     /**
      * Maps a route to a handler that only matches if the HTTP method is HEAD
      *
-     * @param string $routePattern
      * @param callable $handler
+     * @param string $routePattern
      * @return \Phalcon\Mvc\Router\RouteInterface
      */
     public function head(string $routePattern, $handler): RouteInterface
@@ -273,8 +285,8 @@ class Micro extends Injectable implements ArrayAccess
     /**
      * Maps a route to a handler without any HTTP method constraint
      *
-     * @param string $routePattern
      * @param callable $handler
+     * @param string $routePattern
      * @return \Phalcon\Mvc\Router\RouteInterface
      */
     public function map(string $routePattern, $handler): RouteInterface
@@ -358,8 +370,8 @@ class Micro extends Injectable implements ArrayAccess
     /**
      * Maps a route to a handler that only matches if the HTTP method is OPTIONS
      *
-     * @param string $routePattern
      * @param callable $handler
+     * @param string $routePattern
      * @return \Phalcon\Mvc\Router\RouteInterface
      */
     public function options(string $routePattern, $handler): RouteInterface
@@ -369,8 +381,8 @@ class Micro extends Injectable implements ArrayAccess
     /**
      * Maps a route to a handler that only matches if the HTTP method is PATCH
      *
-     * @param string $routePattern
      * @param callable $handler
+     * @param string $routePattern
      * @return \Phalcon\Mvc\Router\RouteInterface
      */
     public function patch(string $routePattern, $handler): RouteInterface
@@ -380,8 +392,8 @@ class Micro extends Injectable implements ArrayAccess
     /**
      * Maps a route to a handler that only matches if the HTTP method is POST
      *
-     * @param string $routePattern
      * @param callable $handler
+     * @param string $routePattern
      * @return \Phalcon\Mvc\Router\RouteInterface
      */
     public function post(string $routePattern, $handler): RouteInterface
@@ -391,8 +403,8 @@ class Micro extends Injectable implements ArrayAccess
     /**
      * Maps a route to a handler that only matches if the HTTP method is PUT
      *
-     * @param string $routePattern
      * @param callable $handler
+     * @param string $routePattern
      * @return \Phalcon\Mvc\Router\RouteInterface
      */
     public function put(string $routePattern, $handler): RouteInterface

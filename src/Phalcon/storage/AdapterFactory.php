@@ -1,5 +1,10 @@
 <?php
 
+namespace Phalcon\Storage;
+
+use Phalcon\Factory\AbstractFactory;
+use Phalcon\Storage\Adapter\AdapterInterface;
+
 /**
  * This file is part of the Phalcon Framework.
  *
@@ -8,16 +13,10 @@
  * For the full copyright and license information, please view the LICENSE.txt
  * file that was distributed with this source code.
  */
-
-namespace Phalcon\Storage;
-
-use Phalcon\Factory\AbstractFactory;
-use Phalcon\Storage\Adapter\AbstractAdapter;
-
 class AdapterFactory extends AbstractFactory
 {
     /**
-     * @var <SerializerFactory>
+     * @var SerializerFactory
      */
     private $serializerFactory;
 
@@ -37,9 +36,9 @@ class AdapterFactory extends AbstractFactory
      *
      * @param string $name
      * @param array $options
-     * @return \Phalcon\Storage\Adapter\AbstractAdapter
+     * @return \Phalcon\Storage\Adapter\AdapterInterface
      */
-    public function newInstance(string $name, array $options = array()): AbstractAdapter
+    public function newInstance(string $name, array $options = array()): AdapterInterface
     {
     }
 

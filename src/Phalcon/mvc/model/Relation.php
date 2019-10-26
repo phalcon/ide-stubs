@@ -1,14 +1,5 @@
 <?php
 
-/**
- * This file is part of the Phalcon Framework.
- *
- * (c) Phalcon Team <team@phalcon.io>
- *
- * For the full copyright and license information, please view the LICENSE.txt
- * file that was distributed with this source code.
- */
-
 namespace Phalcon\Mvc\Model;
 
 /**
@@ -16,7 +7,7 @@ namespace Phalcon\Mvc\Model;
  *
  * This class represents a relationship between two models
  */
-class Relation implements RelationInterface
+class Relation implements \Phalcon\Mvc\Model\RelationInterface
 {
 
     const ACTION_CASCADE = 2;
@@ -70,10 +61,10 @@ class Relation implements RelationInterface
     /**
      * Phalcon\Mvc\Model\Relation constructor
      *
-     * @param int $type
-     * @param string $referencedModel
      * @param string|array $fields
      * @param string|array $referencedFields
+     * @param int $type
+     * @param string $referencedModel
      * @param array $options
      */
     public function __construct(int $type, string $referencedModel, $fields, $referencedFields, array $options = array())
@@ -211,8 +202,8 @@ class Relation implements RelationInterface
      * Sets the intermediate model data for has--through relations
      *
      * @param string|array $intermediateFields
-     * @param string $intermediateModel
      * @param string $intermediateReferencedFields
+     * @param string $intermediateModel
      */
     public function setIntermediateRelation($intermediateFields, string $intermediateModel, $intermediateReferencedFields)
     {

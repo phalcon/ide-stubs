@@ -1,5 +1,10 @@
 <?php
 
+namespace Phalcon\Logger;
+
+use Phalcon\Factory\AbstractFactory;
+use Phalcon\Logger\Adapter\AdapterInterface;
+
 /**
  * This file is part of the Phalcon Framework.
  *
@@ -8,11 +13,6 @@
  * For the full copyright and license information, please view the LICENSE.txt
  * file that was distributed with this source code.
  */
-
-namespace Phalcon\Logger;
-
-use Phalcon\Factory\AbstractFactory;
-
 class AdapterFactory extends AbstractFactory
 {
 
@@ -31,7 +31,7 @@ class AdapterFactory extends AbstractFactory
      * @param string $name
      * @param string $fileName
      * @param array $options
-     * @return AdapterInterface
+     * @return \Phalcon\Logger\Adapter\AdapterInterface
      */
     public function newInstance(string $name, string $fileName, array $options = array()): AdapterInterface
     {

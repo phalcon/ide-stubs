@@ -1,18 +1,8 @@
 <?php
 
-/**
- * This file is part of the Phalcon Framework.
- *
- * (c) Phalcon Team <team@phalcon.io>
- *
- * For the full copyright and license information, please view the LICENSE.txt
- * file that was distributed with this source code.
- */
-
 namespace Phalcon;
 
 use Phalcon\Di\DiInterface;
-use Phalcon\Di\Exception\ServiceResolutionException;
 use Phalcon\Di\ServiceInterface;
 use Phalcon\Events\ManagerInterface;
 
@@ -34,7 +24,7 @@ use Phalcon\Events\ManagerInterface;
  * Additionally, this pattern increases testability in the code, thus making it
  * less prone to errors.
  *
- *```php
+ * ```php
  * use Phalcon\Di;
  * use Phalcon\Http\Request;
  *
@@ -52,9 +42,9 @@ use Phalcon\Events\ManagerInterface;
  * );
  *
  * $request = $di->getRequest();
- *```
+ * ```
  */
-class Di implements DiInterface
+class Di implements \Phalcon\Di\DiInterface
 {
     /**
      * List of registered services

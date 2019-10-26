@@ -1,18 +1,7 @@
 <?php
 
-/**
- * This file is part of the Phalcon Framework.
- *
- * (c) Phalcon Team <team@phalcon.io>
- *
- * For the full copyright and license information, please view the LICENSE.txt
- * file that was distributed with this source code.
- */
-
 namespace Phalcon\Di;
 
-use Phalcon\Events\EventsAwareInterface;
-use Phalcon\Events\ManagerInterface;
 use Phalcon\Session\BagInterface;
 
 /**
@@ -44,7 +33,7 @@ use Phalcon\Session\BagInterface;
  * @property \Phalcon\Session\Bag|\Phalcon\Session\BagInterface $persistent
  * @property \Phalcon\Mvc\View|\Phalcon\Mvc\ViewInterface $view
  */
-abstract class Injectable implements InjectionAwareInterface, EventsAwareInterface
+abstract class Injectable implements \Phalcon\Di\InjectionAwareInterface
 {
     /**
      * Dependency Injector
@@ -52,13 +41,6 @@ abstract class Injectable implements InjectionAwareInterface, EventsAwareInterfa
      * @var DiInterface
      */
     protected $container;
-
-    /**
-     * Events Manager
-     *
-     * @var \Phalcon\Events\ManagerInterface
-     */
-    protected $eventsManager;
 
 
     /**
@@ -72,6 +54,16 @@ abstract class Injectable implements InjectionAwareInterface, EventsAwareInterfa
     }
 
     /**
+     * Magic method __isset
+     *
+     * @param string $name
+     * @return bool
+     */
+    public function __isset(string $name): bool
+    {
+    }
+
+    /**
      * Returns the internal dependency injector
      *
      * @return \Phalcon\Di\DiInterface
@@ -81,29 +73,11 @@ abstract class Injectable implements InjectionAwareInterface, EventsAwareInterfa
     }
 
     /**
-     * Returns the internal event manager
-     *
-     * @return null|\Phalcon\Events\ManagerInterface
-     */
-    public function getEventsManager(): ?ManagerInterface
-    {
-    }
-
-    /**
      * Sets the dependency injector
      *
      * @param \Phalcon\Di\DiInterface $container
      */
     public function setDI(\Phalcon\Di\DiInterface $container)
-    {
-    }
-
-    /**
-     * Sets the event manager
-     *
-     * @param \Phalcon\Events\ManagerInterface $eventsManager
-     */
-    public function setEventsManager(\Phalcon\Events\ManagerInterface $eventsManager)
     {
     }
 }

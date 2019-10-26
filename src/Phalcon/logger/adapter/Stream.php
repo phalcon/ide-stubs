@@ -1,14 +1,5 @@
 <?php
 
-/**
- * This file is part of the Phalcon Framework.
- *
- * (c) Phalcon Team <team@phalcon.io>
- *
- * For the full copyright and license information, please view the LICENSE.txt
- * file that was distributed with this source code.
- */
-
 namespace Phalcon\Logger\Adapter;
 
 /**
@@ -16,7 +7,7 @@ namespace Phalcon\Logger\Adapter;
  *
  * Adapter to store logs in plain text files
  *
- *```php
+ * ```php
  * $logger = new \Phalcon\Logger\Adapter\Stream("app/logs/test.log");
  *
  * $logger->log("This is a message");
@@ -24,9 +15,9 @@ namespace Phalcon\Logger\Adapter;
  * $logger->error("This is another error");
  *
  * $logger->close();
- *```
+ * ```
  */
-class Stream extends AbstractAdapter
+class Stream extends \Phalcon\Logger\Adapter\AbstractAdapter
 {
     /**
      * Stream handler resource

@@ -1,18 +1,5 @@
 <?php
 
-/**
- * This file is part of the Phalcon Framework.
- *
- * (c) Phalcon Team <team@phalcon.io>
- *
- * For the full copyright and license information, please view the LICENSE.txt
- * file that was distributed with this source code.
- *
- * Implementation of this file has been influenced by Zend Diactoros
- * @link    https://github.com/zendframework/zend-diactoros
- * @license https://github.com/zendframework/zend-diactoros/blob/master/LICENSE.md
- */
-
 namespace Phalcon\Http\Message;
 
 use Phalcon\Collection;
@@ -28,12 +15,12 @@ abstract class AbstractMessage extends AbstractCommon
     /**
      * Gets the body of the message.
      *
-     * @var <StreamInterface>
+     * @var StreamInterface
      */
     protected $body;
 
     /**
-     * @var <Collection>
+     * @var Collection
      */
     protected $headers;
 
@@ -64,7 +51,7 @@ abstract class AbstractMessage extends AbstractCommon
     /**
      * Gets the body of the message.
      *
-     * @return <StreamInterface>
+     * @return StreamInterface
      */
     public function getBody()
     {
@@ -104,7 +91,6 @@ abstract class AbstractMessage extends AbstractCommon
      *
      * @param string $name
      *
-     * @param mixed $name
      * @return array
      */
     public function getHeader($name): array
@@ -127,7 +113,6 @@ abstract class AbstractMessage extends AbstractCommon
      *
      * @param string $name
      *
-     * @param mixed $name
      * @return string
      */
     public function getHeaderLine($name): string
@@ -166,7 +151,6 @@ abstract class AbstractMessage extends AbstractCommon
      *
      * @param string $name
      *
-     * @param mixed $name
      * @return bool
      */
     public function hasHeader($name): bool
@@ -185,11 +169,13 @@ abstract class AbstractMessage extends AbstractCommon
      * immutability of the message, and MUST return an instance that has the
      * new header and/or value.
      *
+     * @param string $name
      * @param string|string[] $value
      *
-     * @param string $name
      * @param mixed $value
-     * @return object
+     * @param string|string  [] $value
+     *
+     * @return self
      */
     public function withAddedHeader($name, $value)
     {
@@ -206,10 +192,9 @@ abstract class AbstractMessage extends AbstractCommon
      *
      * @param StreamInterface $body
      *
+     * @return self
      * @throws InvalidArgumentException When the body is not valid.
      *
-     * @param \Psr\Http\Message\StreamInterface $body
-     * @return object
      */
     public function withBody(\Psr\Http\Message\StreamInterface $body)
     {
@@ -226,13 +211,15 @@ abstract class AbstractMessage extends AbstractCommon
      * immutability of the message, and MUST return an instance that has the
      * new and/or updated header and value.
      *
+     * @param string $name
      * @param string|string[] $value
      *
+     * @param mixed $value
+     * @param string|string  [] $value
+     *
+     * @return self
      * @throws InvalidArgumentException for invalid header names or values.
      *
-     * @param string $name
-     * @param mixed $value
-     * @return object
      */
     public function withHeader($name, $value)
     {
@@ -250,8 +237,7 @@ abstract class AbstractMessage extends AbstractCommon
      *
      * @param string $version
      *
-     * @param mixed $version
-     * @return object
+     * @return self
      */
     public function withProtocolVersion($version)
     {
@@ -268,8 +254,7 @@ abstract class AbstractMessage extends AbstractCommon
      *
      * @param string $name
      *
-     * @param mixed $name
-     * @return object
+     * @return self
      */
     public function withoutHeader($name)
     {
@@ -282,8 +267,7 @@ abstract class AbstractMessage extends AbstractCommon
      *
      * @param Collection $collection
      *
-     * @param \Phalcon\Collection $collection
-     * @return \Phalcon\Collection
+     * @return Collection
      */
     final protected function checkHeaderHost(\Phalcon\Collection $collection): Collection
     {
@@ -293,9 +277,7 @@ abstract class AbstractMessage extends AbstractCommon
      * Check the name of the header. Throw exception if not valid
      *
      * @see http://tools.ietf.org/html/rfc7230#section-3.2
-     *
      * @param mixed $name
-     * @param $name
      */
     final protected function checkHeaderName($name)
     {
@@ -345,9 +327,7 @@ abstract class AbstractMessage extends AbstractCommon
      * backslash octets occurring within that comment.
      *
      * @see https://tools.ietf.org/html/rfc7230#section-3.2.6
-     *
      * @param mixed $value
-     * @param $value
      */
     final protected function checkHeaderValue($value)
     {
@@ -355,8 +335,6 @@ abstract class AbstractMessage extends AbstractCommon
 
     /**
      * Returns the header values checked for validity
-     *
-     * @param $values
      *
      * @param mixed $values
      * @return array
@@ -370,7 +348,6 @@ abstract class AbstractMessage extends AbstractCommon
      *
      * @param UriInterface $uri
      *
-     * @param \Psr\Http\Message\UriInterface $uri
      * @return string
      */
     final protected function getUriHost(\Psr\Http\Message\UriInterface $uri): string
@@ -382,8 +359,7 @@ abstract class AbstractMessage extends AbstractCommon
      *
      * @param array $headers
      *
-     * @param array $headers
-     * @return \Phalcon\Collection
+     * @return Collection
      */
     final protected function populateHeaderCollection(array $headers): Collection
     {
@@ -392,11 +368,10 @@ abstract class AbstractMessage extends AbstractCommon
     /**
      * Set a valid stream
      *
-     * @param string                          $mode
-     *
      * @param StreamInterface|resource|string $body
      * @param string $mode
-     * @return \Psr\Http\Message\StreamInterface
+     *
+     * @return StreamInterface
      */
     final protected function processBody($body = 'php://memory', string $mode = 'r+b'): StreamInterface
     {
@@ -404,8 +379,6 @@ abstract class AbstractMessage extends AbstractCommon
 
     /**
      * Sets the headers
-     *
-     * @param $headers
      *
      * @param mixed $headers
      * @return \Phalcon\Collection
@@ -419,7 +392,6 @@ abstract class AbstractMessage extends AbstractCommon
      *
      * @param string $protocol
      *
-     * @param mixed $protocol
      * @return string
      */
     final protected function processProtocol($protocol = ''): string

@@ -1,5 +1,9 @@
 <?php
 
+namespace Phalcon\Session\Adapter;
+
+use Phalcon\Storage\Adapter\AdapterInterface;
+
 /**
  * This file is part of the Phalcon.
  *
@@ -8,16 +12,10 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-
-namespace Phalcon\Session\Adapter;
-
-use Phalcon\Storage\Adapter\AdapterInterface;
-use SessionHandlerInterface;
-
-abstract class AbstractAdapter implements SessionHandlerInterface
+abstract class AbstractAdapter implements \SessionHandlerInterface
 {
     /**
-     * @var <AdapterInterface>
+     * @var AdapterInterface
      */
     protected $adapter;
 

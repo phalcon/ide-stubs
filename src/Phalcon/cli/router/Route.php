@@ -1,20 +1,11 @@
 <?php
 
-/**
- * This file is part of the Phalcon Framework.
- *
- * (c) Phalcon Team <team@phalcon.io>
- *
- * For the full copyright and license information, please view the LICENSE.txt
- * file that was distributed with this source code.
- */
-
 namespace Phalcon\Cli\Router;
 
 /**
  * This class represents every route added to the router
  */
-class Route
+class Route implements \Phalcon\Cli\Router\RouteInterface
 {
 
     const DEFAULT_DELIMITER = ' ';
@@ -54,8 +45,8 @@ class Route
 
 
     /**
-     * @param string $pattern
      * @param array|string $paths
+     * @param string $pattern
      */
     public function __construct(string $pattern, $paths = null)
     {
@@ -67,7 +58,7 @@ class Route
      * If the callback returns false the route is treated as not matched
      *
      * @param callback $callback
-     * @return RouteInterface
+     * @return \Phalcon\Cli\Router\RouteInterface
      */
     public function beforeMatch($callback): RouteInterface
     {
@@ -88,9 +79,9 @@ class Route
      * Adds a converter to perform an additional transformation for certain
      * parameter
      *
-     * @param string $name
      * @param callable $converter
-     * @return RouteInterface
+     * @param string $name
+     * @return \Phalcon\Cli\Router\RouteInterface
      */
     public function convert(string $name, $converter): RouteInterface
     {
@@ -208,8 +199,8 @@ class Route
     /**
      * Reconfigure the route adding a new pattern and a set of paths
      *
-     * @param string $pattern
      * @param array|string $paths
+     * @param string $pattern
      */
     public function reConfigure(string $pattern, $paths = null)
     {
@@ -226,7 +217,7 @@ class Route
      * Sets the route's description
      *
      * @param string $description
-     * @return RouteInterface
+     * @return \Phalcon\Cli\Router\RouteInterface
      */
     public function setDescription(string $description): RouteInterface
     {
@@ -245,7 +236,7 @@ class Route
      * ```
      *
      * @param string $name
-     * @return RouteInterface
+     * @return \Phalcon\Cli\Router\RouteInterface
      */
     public function setName(string $name): RouteInterface
     {

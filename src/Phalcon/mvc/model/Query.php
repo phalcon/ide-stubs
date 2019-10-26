@@ -1,19 +1,9 @@
 <?php
 
-/**
- * This file is part of the Phalcon Framework.
- *
- * (c) Phalcon Team <team@phalcon.io>
- *
- * For the full copyright and license information, please view the LICENSE.txt
- * file that was distributed with this source code.
- */
-
 namespace Phalcon\Mvc\Model;
 
 use Phalcon\Db\Adapter\AdapterInterface;
 use Phalcon\Di\DiInterface;
-use Phalcon\Di\InjectionAwareInterface;
 use Phalcon\Mvc\Model\Query\StatusInterface;
 use Phalcon\Mvc\ModelInterface;
 
@@ -22,8 +12,8 @@ use Phalcon\Mvc\ModelInterface;
  *
  * This class takes a PHQL intermediate representation and executes it.
  *
- *```php
- * $phql = "SELECT c.price*0.16 AS taxes, c.* FROM Cars AS c JOIN Brands AS b
+ * ```php
+ * $phql = "SELECT c.price0.16 AS taxes, c. FROM Cars AS c JOIN Brands AS b
  *          WHERE b.name = :name: ORDER BY c.name";
  *
  * $result = $manager->executeQuery(
@@ -46,7 +36,7 @@ use Phalcon\Mvc\ModelInterface;
  * // $di needs to have the service "db" registered for this to work
  * $di = Phalcon\Di\FactoryDefault::getDefault();
  *
- * $phql = 'SELECT * FROM robot';
+ * $phql = 'SELECT FROM robot';
  *
  * $myTransaction = new Transaction($di);
  * $myTransaction->begin();
@@ -65,9 +55,9 @@ use Phalcon\Mvc\ModelInterface;
  *
  * $queryWithOutTransaction = new Query($phql, $di);
  * $resultWithOutEntries = $queryWithTransaction->execute();
- *```
+ * ```
  */
-class Query implements QueryInterface, InjectionAwareInterface
+class Query implements \Phalcon\Mvc\Model\QueryInterface, \Phalcon\Di\InjectionAwareInterface
 {
 
     const TYPE_DELETE = 303;
@@ -318,8 +308,8 @@ class Query implements QueryInterface, InjectionAwareInterface
     /**
      * Resolves joins involving has-one/belongs-to/has-many relations
      *
-     * @param string $joinType
      * @param string $joinSource
+     * @param string $joinType
      * @param string $modelAlias
      * @param string $joinAlias
      * @param \Phalcon\Mvc\Model\RelationInterface $relation
@@ -332,8 +322,8 @@ class Query implements QueryInterface, InjectionAwareInterface
     /**
      * Resolves joins involving many-to-many relations
      *
-     * @param string $joinType
      * @param string $joinSource
+     * @param string $joinType
      * @param string $modelAlias
      * @param string $joinAlias
      * @param \Phalcon\Mvc\Model\RelationInterface $relation

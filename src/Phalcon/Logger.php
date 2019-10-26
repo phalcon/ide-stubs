@@ -1,20 +1,9 @@
 <?php
 
-/**
- * This file is part of the Phalcon Framework.
- *
- * (c) Phalcon Team <team@phalcon.io>
- *
- * For the full copyright and license information, please view the LICENSE.txt
- * file that was distributed with this source code.
- */
-
 namespace Phalcon;
 
 use Phalcon\Logger\Adapter\AdapterInterface;
 use Phalcon\Logger\Exception;
-use Psr\Log\InvalidArgumentException;
-use Psr\Log\LoggerInterface;
 
 /**
  * Phalcon\Logger
@@ -23,7 +12,7 @@ use Psr\Log\LoggerInterface;
  * component accepts multiple adapters, working also as a multiple logger.
  * Phalcon\Logger implements PSR-3.
  *
- *```php
+ * ```php
  * use Phalcon\Logger;
  * use Phalcon\Logger\Adapter\Stream;
  *
@@ -47,9 +36,9 @@ use Psr\Log\LoggerInterface;
  * $logger
  *         ->excludeAdapters(['manager'])
  *         ->info('This does not go to the "manager" logger);
- *```
+ * ```
  */
-class Logger implements LoggerInterface
+class Logger implements \Psr\Log\LoggerInterface
 {
 
     const ALERT = 2;
@@ -86,6 +75,13 @@ class Logger implements LoggerInterface
     protected $adapters = array();
 
     /**
+     * Minimum log level for the logger
+     *
+     * @var int
+     */
+    protected $logLevel = 8;
+
+    /**
      * @var string
      */
     protected $name = '';
@@ -97,6 +93,15 @@ class Logger implements LoggerInterface
      */
     protected $excluded = array();
 
+
+    /**
+     * Minimum log level for the logger
+     *
+     * @return int
+     */
+    public function getLogLevel(): int
+    {
+    }
 
     /**
      * Constructor.
@@ -112,7 +117,7 @@ class Logger implements LoggerInterface
      * Add an adapter to the stack. For processing we use FIFO
      *
      * @param string $name The name of the adapter
-     * @param <AdapterInterface> $adapter The adapter to add to the stack
+     * @param AdapterInterface $adapter The adapter to add to the stack
      * @return Logger
      */
     public function addAdapter(string $name, \Phalcon\Logger\Adapter\AdapterInterface $adapter): Logger
@@ -188,11 +193,10 @@ class Logger implements LoggerInterface
     /**
      * Returns an adapter from the stack
      *
-     * @param string name The name of the adapter
+     * @param string $name The name of the adapter
      *
-     * @throws <Exception>
-     * @param string $name
      * @return \Phalcon\Logger\Adapter\AdapterInterface
+     * @throws Exception
      */
     public function getAdapter(string $name): AdapterInterface
     {
@@ -201,7 +205,7 @@ class Logger implements LoggerInterface
     /**
      * Returns the adapter stack array
      *
-     * @return array
+     * @return AdapterInterface[]
      */
     public function getAdapters(): array
     {
@@ -252,11 +256,10 @@ class Logger implements LoggerInterface
     /**
      * Removes an adapter from the stack
      *
-     * @param string name The name of the adapter
+     * @param string $name The name of the adapter
      *
-     * @throws <Logger\Exception>
-     * @param string $name
      * @return Logger
+     * @throws Logger\Exception
      */
     public function removeAdapter(string $name): Logger
     {
@@ -269,6 +272,16 @@ class Logger implements LoggerInterface
      * @return Logger
      */
     public function setAdapters(array $adapters): Logger
+    {
+    }
+
+    /**
+     * Sets the adapters stack overriding what is already there
+     *
+     * @param int $level
+     * @return Logger
+     */
+    public function setLogLevel(int $level): Logger
     {
     }
 
@@ -288,13 +301,11 @@ class Logger implements LoggerInterface
     /**
      * Adds a message to each handler for processing
      *
-     * @param string message
-     *
-     * @throws <Logger\Exception>
      * @param int $level
-     * @param string $message
+     * @param string $message *
      * @param array $context
      * @return bool
+     * @throws Logger\Exception
      */
     protected function addMessage(int $level, string $message, array $context = array()): bool
     {

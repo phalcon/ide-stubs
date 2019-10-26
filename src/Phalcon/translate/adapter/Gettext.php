@@ -1,17 +1,6 @@
 <?php
 
-/**
- * This file is part of the Phalcon Framework.
- *
- * (c) Phalcon Team <team@phalcon.io>
- *
- * For the full copyright and license information, please view the LICENSE.txt
- * file that was distributed with this source code.
- */
-
 namespace Phalcon\Translate\Adapter;
-
-use ArrayAccess;
 
 /**
  * Phalcon\Translate\Adapter\Gettext
@@ -31,7 +20,7 @@ use ArrayAccess;
  *
  * Allows translate using gettext
  */
-class Gettext extends AbstractAdapter implements ArrayAccess
+class Gettext extends AbstractAdapter implements \ArrayAccess
 {
     /**
      * @var int
@@ -110,11 +99,11 @@ class Gettext extends AbstractAdapter implements ArrayAccess
      * @param string $msgid1
      * @param string $msgid2
      * @param int $count
-     * @param mixed $placeholders
+     * @param array $placeholders
      * @param string $domain
      * @return string
      */
-    public function nquery(string $msgid1, string $msgid2, int $count, $placeholders = null, string $domain = null): string
+    public function nquery(string $msgid1, string $msgid2, int $count, array $placeholders = array(), string $domain = null): string
     {
     }
 
@@ -125,11 +114,11 @@ class Gettext extends AbstractAdapter implements ArrayAccess
      * $translator->query("你好 %name%！", ["name" => "Phalcon"]);
      * ```
      *
-     * @param string $index
      * @param array $placeholders
+     * @param string $index
      * @return string
      */
-    public function query(string $index, $placeholders = null): string
+    public function query(string $index, array $placeholders = array()): string
     {
     }
 

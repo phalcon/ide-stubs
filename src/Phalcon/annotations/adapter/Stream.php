@@ -1,20 +1,11 @@
 <?php
 
-/**
- * This file is part of the Phalcon Framework.
- *
- * (c) Phalcon Team <team@phalcon.io>
- *
- * For the full copyright and license information, please view the LICENSE.txt
- * file that was distributed with this source code.
- */
-
 namespace Phalcon\Annotations\Adapter;
 
 /**
  * Stores the parsed annotations in files. This adapter is suitable for production
  *
- *```php
+ * ```php
  * use Phalcon\Annotations\Adapter\Stream;
  *
  * $annotations = new Stream(
@@ -22,7 +13,7 @@ namespace Phalcon\Annotations\Adapter;
  *         "annotationsDir" => "app/cache/annotations/",
  *     ]
  * );
- *```
+ * ```
  */
 class Stream extends AbstractAdapter
 {

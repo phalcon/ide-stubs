@@ -1,14 +1,5 @@
 <?php
 
-/**
- * This file is part of the Phalcon Framework.
- *
- * (c) Phalcon Team <team@phalcon.io>
- *
- * For the full copyright and license information, please view the LICENSE.txt
- * file that was distributed with this source code.
- */
-
 namespace Phalcon\Security;
 
 /**
@@ -25,7 +16,7 @@ namespace Phalcon\Security;
  * - Generating random passwords for new user accounts
  * - Encryption systems
  *
- *```php
+ * ```php
  * $random = new \Phalcon\Security\Random();
  *
  * // Random binary string
@@ -70,7 +61,7 @@ namespace Phalcon\Security;
  * echo $random->base58();   // Umjxqf7ZPwh765yR
  * echo $random->base58(24); // qoXcgmw4A9dys26HaNEdCRj9
  * echo $random->base58(7);  // 774SJD3vgP
- *```
+ * ```
  *
  * This class partially borrows SecureRandom library from Ruby
  *
@@ -95,11 +86,11 @@ class Random
      * echo $random->base58(); // 4kUgL2pdQMSCQtjE
      * ```
      *
-     * @see    \Phalcon\Security\Random:base64
-     * @link   https://en.wikipedia.org/wiki/Base58
-     * @throws Exception If secure random number generator is not available or unexpected partial read
      * @param int $len
      * @return string
+     * @throws Exception If secure random number generator is not available or unexpected partial read
+     * @link   https://en.wikipedia.org/wiki/Base58
+     * @see    \Phalcon\Security\Random:base64
      */
     public function base58(int $len = null): string
     {
@@ -121,10 +112,10 @@ class Random
      * echo $random->base62(); // z0RkwHfh8ErDM1xw
      * ```
      *
-     * @see    \Phalcon\Security\Random:base58
-     * @throws Exception If secure random number generator is not available or unexpected partial read
      * @param int $len
      * @return string
+     * @throws Exception If secure random number generator is not available or unexpected partial read
+     * @see    \Phalcon\Security\Random:base58
      */
     public function base62(int $len = null): string
     {
@@ -143,9 +134,9 @@ class Random
      * echo $random->base64(12); // 3rcq39QzGK9fUqh8
      * ```
      *
-     * @throws Exception If secure random number generator is not available or unexpected partial read
      * @param int $len
      * @return string
+     * @throws Exception If secure random number generator is not available or unexpected partial read
      */
     public function base64(int $len = null): string
     {
@@ -195,9 +186,9 @@ class Random
      * // Possible output: string(32) "00f6c04b144b41fad6a59111c126e1ee"
      * ```
      *
-     * @throws Exception If secure random number generator is not available or unexpected partial read
      * @param int $len
      * @return string
+     * @throws Exception If secure random number generator is not available or unexpected partial read
      */
     public function bytes(int $len = 16): string
     {
@@ -215,9 +206,9 @@ class Random
      * echo $random->hex(10); // a29f470508d5ccb8e289
      * ```
      *
-     * @throws Exception If secure random number generator is not available or unexpected partial read
      * @param int $len
      * @return string
+     * @throws Exception If secure random number generator is not available or unexpected partial read
      */
     public function hex(int $len = null): string
     {
@@ -234,9 +225,9 @@ class Random
      * echo $random->number(16); // 8
      * ```
      *
-     * @throws Exception If secure random number generator is not available, unexpected partial read or $len <= 0
      * @param int $len
      * @return int
+     * @throws Exception If secure random number generator is not available, unexpected partial read or $len <= 0
      */
     public function number(int $len): int
     {
@@ -275,11 +266,11 @@ class Random
      *
      * If $n is not specified, 16 is assumed. It may be larger in future.
      *
-     * @throws Exception If secure random number generator is not available or unexpected partial read
      * @param string $alphabet
      * @param int $base
      * @param mixed $n
      * @return string
+     * @throws Exception If secure random number generator is not available or unexpected partial read
      */
     protected function base(string $alphabet, int $base, $n = null): string
     {

@@ -1,14 +1,5 @@
 <?php
 
-/**
- * This file is part of the Phalcon Framework.
- *
- * (c) Phalcon Team <team@phalcon.io>
- *
- * For the full copyright and license information, please view the LICENSE.txt
- * file that was distributed with this source code.
- */
-
 namespace Phalcon\Validation;
 
 use Phalcon\Messages\Messages;
@@ -112,8 +103,8 @@ interface ValidationInterface
     /**
      * Adds filters to the field
      *
-     * @param string $field
      * @param array|string $filters
+     * @param string $field
      * @return ValidationInterface
      */
     public function setFilters(string $field, $filters): ValidationInterface;
