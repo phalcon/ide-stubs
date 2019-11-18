@@ -25,5 +25,4 @@ class Replace
     public function __invoke($input, $from, $to)
     {
     }
-
 }

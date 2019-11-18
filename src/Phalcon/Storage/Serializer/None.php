@@ -38,5 +38,4 @@ class None extends \Phalcon\Storage\Serializer\AbstractSerializer
     public function unserialize($data)
     {
     }
-
 }

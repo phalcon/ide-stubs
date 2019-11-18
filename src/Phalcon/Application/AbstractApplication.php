@@ -130,5 +130,4 @@ abstract class AbstractApplication extends Injectable implements \Phalcon\Events
     public function setEventsManager(\Phalcon\Events\ManagerInterface $eventsManager)
     {
     }
-
 }

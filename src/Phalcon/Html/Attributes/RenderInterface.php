@@ -23,5 +23,4 @@ interface RenderInterface
      * @return string
      */
     public function render(): string;
-
 }

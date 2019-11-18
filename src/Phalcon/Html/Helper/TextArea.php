@@ -25,5 +25,4 @@ class TextArea extends \Phalcon\Html\Helper\AbstractHelper
     public function __invoke(string $text, array $attributes = array()): string
     {
     }
-
 }

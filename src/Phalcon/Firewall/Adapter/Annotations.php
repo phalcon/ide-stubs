@@ -133,5 +133,4 @@ class Annotations extends \Phalcon\Firewall\Adapter\AbstractAdapter
     protected function handleAnnotation($annotation, bool $access, $role)
     {
     }
-
 }

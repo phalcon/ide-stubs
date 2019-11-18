@@ -146,5 +146,4 @@ final class Response extends AbstractMessage implements \Psr\Http\Message\Respon
     private function processCode($code, $phrase = '')
     {
     }
-
 }

@@ -56,5 +56,4 @@ class AnnotationsFactory extends AbstractFactory
     protected function getAdapters(): array
     {
     }
-
 }

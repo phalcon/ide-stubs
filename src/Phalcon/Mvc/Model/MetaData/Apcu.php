@@ -41,5 +41,4 @@ class Apcu extends MetaData
     public function __construct(\Phalcon\Cache\AdapterFactory $factory, array $options = null)
     {
     }
-
 }

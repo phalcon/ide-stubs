@@ -235,5 +235,4 @@ abstract class AbstractAdapter implements \Phalcon\Firewall\Adapter\AdapterInter
     protected function throwFirewallException(string $message, int $exceptionCode = 0): bool
     {
     }
-
 }

@@ -86,5 +86,4 @@ interface CookiesInterface
      * @return CookiesInterface
      */
     public function useEncryption(bool $useEncryption): CookiesInterface;
-
 }

@@ -472,5 +472,4 @@ final class Uri extends \Phalcon\Http\Message\AbstractCommon implements \Psr\Htt
     private function splitQueryValue(string $element): array
     {
     }
-
 }

@@ -35,5 +35,4 @@ interface RoleInterface
      * @return string
      */
     public function __toString(): string;
-
 }

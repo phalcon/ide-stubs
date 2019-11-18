@@ -24,5 +24,4 @@ class Form extends \Phalcon\Html\Helper\AbstractHelper
     public function __invoke(array $attributes = array()): string
     {
     }
-
 }

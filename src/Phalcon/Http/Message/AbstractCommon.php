@@ -49,5 +49,4 @@ abstract class AbstractCommon
     final protected function processWith($element, string $property)
     {
     }
-
 }

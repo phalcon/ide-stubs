@@ -56,5 +56,4 @@ interface WriteableInterface
      * @return PayloadInterface
      */
     public function setExtras($extras): PayloadInterface;
-
 }

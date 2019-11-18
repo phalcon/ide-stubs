@@ -132,5 +132,4 @@ interface ValidationInterface
      * @return Messages
      */
     public function validate($data = null, $entity = null): Messages;
-
 }

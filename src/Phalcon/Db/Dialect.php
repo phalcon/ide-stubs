@@ -509,5 +509,4 @@ abstract class Dialect implements \Phalcon\Db\DialectInterface
     protected function prepareQualified(string $column, string $domain = null, string $escapeChar = null): string
     {
     }
-
 }

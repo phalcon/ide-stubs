@@ -134,5 +134,4 @@ class Memory extends \Phalcon\Storage\Adapter\AbstractAdapter
     public function set(string $key, $value, $ttl = null): bool
     {
     }
-
 }

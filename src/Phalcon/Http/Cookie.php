@@ -284,5 +284,4 @@ class Cookie extends AbstractInjectionAware implements \Phalcon\Http\CookieInter
     protected function assertSignKeyIsLongEnough(string $signKey)
     {
     }
-
 }

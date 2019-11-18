@@ -36,5 +36,4 @@ class Reader implements \Phalcon\Annotations\ReaderInterface
     public static function parseDocBlock(string $docBlock, $file = null, $line = null): array
     {
     }
-
 }

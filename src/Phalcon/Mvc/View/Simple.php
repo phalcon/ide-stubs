@@ -328,5 +328,4 @@ class Simple extends Injectable implements \Phalcon\Mvc\ViewBaseInterface, \Phal
     final protected function internalRender(string $path, $params)
     {
     }
-
 }

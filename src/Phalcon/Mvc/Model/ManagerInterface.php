@@ -486,5 +486,4 @@ interface ManagerInterface
      * @return void
      */
     public function useDynamicUpdate(\Phalcon\Mvc\ModelInterface $model, bool $dynamicUpdate);
-
 }

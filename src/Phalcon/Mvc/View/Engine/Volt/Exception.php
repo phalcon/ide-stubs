@@ -36,5 +36,4 @@ class Exception extends \Phalcon\Mvc\View\Exception
     public function getStatement(): array
     {
     }
-
 }

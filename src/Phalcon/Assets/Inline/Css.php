@@ -25,5 +25,4 @@ class Css extends \Phalcon\Assets\Inline
     public function __construct(string $content, bool $filter = true, $attributes = null)
     {
     }
-
 }

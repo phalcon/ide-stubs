@@ -61,5 +61,4 @@ class PresenceOf extends AbstractValidator
     public function validate(\Phalcon\Validation $validation, $field): bool
     {
     }
-
 }

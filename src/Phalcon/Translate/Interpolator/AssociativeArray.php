@@ -30,5 +30,4 @@ class AssociativeArray implements \Phalcon\Translate\Interpolator\InterpolatorIn
     public function replacePlaceholders(string $translation, array $placeholders = array()): string
     {
     }
-
 }

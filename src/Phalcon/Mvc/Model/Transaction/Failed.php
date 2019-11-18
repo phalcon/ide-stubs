@@ -49,5 +49,4 @@ class Failed extends \Phalcon\Mvc\Model\Transaction\Exception
     public function getRecordMessages(): array
     {
     }
-
 }

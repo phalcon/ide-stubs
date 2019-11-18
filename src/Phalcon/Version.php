@@ -92,7 +92,7 @@ class Version
      * @param int $special
      * @return string
      */
-    protected final static function _getSpecial(int $special): string
+    final protected static function _getSpecial(int $special): string
     {
     }
 
@@ -138,5 +138,4 @@ class Version
     public static function getPart(int $part): string
     {
     }
-
 }

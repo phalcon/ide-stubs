@@ -28,10 +28,10 @@ namespace Phalcon\Image\Adapter;
 class Imagick extends \Phalcon\Image\Adapter\AbstractAdapter
 {
 
-    static protected $checked = false;
+    protected static $checked = false;
 
 
-    static protected $version = 0;
+    protected static $version = 0;
 
 
     /**
@@ -242,5 +242,4 @@ class Imagick extends \Phalcon\Image\Adapter\AbstractAdapter
     protected function processWatermark(AdapterInterface $image, int $offsetX, int $offsetY, int $opacity)
     {
     }
-
 }

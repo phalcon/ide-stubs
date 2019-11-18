@@ -263,5 +263,4 @@ interface ElementInterface
      * @return ElementInterface
      */
     public function setUserOptions(array $options): ElementInterface;
-
 }

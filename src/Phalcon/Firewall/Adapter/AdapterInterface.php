@@ -69,5 +69,4 @@ interface AdapterInterface
      * @return AdapterInterface
      */
     public function setRoleCallback(\Closure $callback): AdapterInterface;
-
 }

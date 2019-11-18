@@ -65,5 +65,4 @@ class Csv extends \Phalcon\Translate\Adapter\AbstractAdapter implements \ArrayAc
     private function load(string $file, int $length, string $delimiter, string $enclosure)
     {
     }
-
 }

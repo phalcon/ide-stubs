@@ -42,5 +42,4 @@ class Json extends Config
     public function __construct(string $filePath)
     {
     }
-
 }

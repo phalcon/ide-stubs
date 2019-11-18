@@ -28,5 +28,4 @@ class Number
     final public static function between(int $value, int $from, int $to): bool
     {
     }
-
 }

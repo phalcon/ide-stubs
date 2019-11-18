@@ -95,5 +95,4 @@ class Headers implements \Phalcon\Http\Response\HeadersInterface
     public function toArray(): array
     {
     }
-
 }

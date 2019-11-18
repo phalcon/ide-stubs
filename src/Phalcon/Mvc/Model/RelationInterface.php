@@ -124,5 +124,4 @@ interface RelationInterface
      * @param string $intermediateModel
      */
     public function setIntermediateRelation($intermediateFields, string $intermediateModel, $intermediateReferencedFields);
-
 }

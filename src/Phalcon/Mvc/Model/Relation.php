@@ -215,5 +215,4 @@ class Relation implements \Phalcon\Mvc\Model\RelationInterface
     public function setIntermediateRelation($intermediateFields, string $intermediateModel, $intermediateReferencedFields)
     {
     }
-
 }

@@ -492,5 +492,4 @@ class Collection implements \Countable, \Iterator
     final protected function addAsset(AssetInterface $asset): bool
     {
     }
-
 }

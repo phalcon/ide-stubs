@@ -124,5 +124,4 @@ interface AdapterInterface
      * @return AdapterInterface
      */
     public function watermark(AdapterInterface $watermark, int $offsetX = 0, int $offsetY = 0, int $opacity = 100): AdapterInterface;
-
 }

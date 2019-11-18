@@ -170,5 +170,4 @@ class Manager implements \Phalcon\Events\ManagerInterface
     public function isCollecting(): bool
     {
     }
-
 }

@@ -65,5 +65,4 @@ class Role implements \Phalcon\Acl\RoleInterface
     public function __construct(string $name, string $description = null)
     {
     }
-
 }

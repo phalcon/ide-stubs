@@ -77,5 +77,4 @@ class Complex extends Resultset implements \Phalcon\Mvc\Model\ResultsetInterface
     public function unserialize($data)
     {
     }
-
 }

@@ -144,5 +144,4 @@ class Payload implements \Phalcon\Domain\Payload\PayloadInterface
     public function setStatus($status): PayloadInterface
     {
     }
-
 }

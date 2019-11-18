@@ -233,5 +233,4 @@ class Pdo implements \Phalcon\Db\ResultInterface
     public function setFetchMode(int $fetchMode, $colNoOrClassNameOrObject = null, $ctorargs = null): bool
     {
     }
-
 }

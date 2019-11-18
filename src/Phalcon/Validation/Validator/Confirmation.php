@@ -77,5 +77,4 @@ class Confirmation extends AbstractValidator
     final protected function compare(string $a, string $b): bool
     {
     }
-
 }

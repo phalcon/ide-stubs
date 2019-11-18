@@ -490,5 +490,4 @@ class Micro extends Injectable implements \ArrayAccess, \Phalcon\Events\EventsAw
     public function stop()
     {
     }
-
 }

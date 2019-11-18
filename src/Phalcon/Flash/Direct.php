@@ -36,5 +36,4 @@ class Direct extends \Phalcon\Flash\AbstractFlash
     public function output(bool $remove = true)
     {
     }
-
 }

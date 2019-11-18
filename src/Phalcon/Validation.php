@@ -228,5 +228,4 @@ class Validation extends Injectable implements \Phalcon\Validation\ValidationInt
     protected function preChecking($field, \Phalcon\Validation\ValidatorInterface $validator): bool
     {
     }
-
 }

@@ -30,5 +30,4 @@ final class RequestFactory implements \Psr\Http\Message\RequestFactoryInterface
     public function createRequest(string $method, $uri): RequestInterface
     {
     }
-
 }

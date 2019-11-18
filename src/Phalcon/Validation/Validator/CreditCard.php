@@ -72,5 +72,4 @@ class CreditCard extends AbstractValidator
     private function verifyByLuhnAlgorithm(string $number): bool
     {
     }
-
 }

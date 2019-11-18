@@ -44,5 +44,4 @@ class Noop extends \Phalcon\Logger\Adapter\AbstractAdapter
     public function process(\Phalcon\Logger\Item $item)
     {
     }
-
 }

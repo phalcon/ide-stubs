@@ -89,5 +89,4 @@ class Input extends Stream
     public function read($length): string
     {
     }
-
 }

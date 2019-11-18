@@ -30,5 +30,4 @@ interface SerializerInterface extends \Serializable
      * @return void
      */
     public function setData($data);
-
 }

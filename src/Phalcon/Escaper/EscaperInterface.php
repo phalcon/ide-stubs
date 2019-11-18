@@ -79,5 +79,4 @@ interface EscaperInterface
      * @return void
      */
     public function setHtmlQuoteType(int $quoteType);
-
 }

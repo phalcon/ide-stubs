@@ -28,5 +28,4 @@ class Cli extends FactoryDefault
     public function __construct()
     {
     }
-
 }

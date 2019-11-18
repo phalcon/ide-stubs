@@ -52,5 +52,4 @@ class LoggerFactory
     public function newInstance(string $name, array $adapters = array()): Logger
     {
     }
-
 }

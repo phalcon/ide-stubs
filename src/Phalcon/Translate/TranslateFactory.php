@@ -65,5 +65,4 @@ class TranslateFactory extends AbstractFactory
     protected function getAdapters(): array
     {
     }
-
 }

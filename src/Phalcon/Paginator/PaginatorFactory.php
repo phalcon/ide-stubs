@@ -79,5 +79,4 @@ class PaginatorFactory extends AbstractFactory
     protected function getAdapters(): array
     {
     }
-
 }

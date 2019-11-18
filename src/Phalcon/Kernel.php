@@ -25,5 +25,4 @@ class Kernel
     public static function preComputeHashKey(string $key)
     {
     }
-
 }
