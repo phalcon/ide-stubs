@@ -38,7 +38,7 @@ use Phalcon\Filter\FilterInterface;
  * $request->getLanguages();
  * ```
  */
-class Request extends AbstractInjectionAware implements Phalcon\Http\RequestInterface
+class Request extends AbstractInjectionAware implements \Phalcon\Http\RequestInterface
 {
 
     private $filterService;

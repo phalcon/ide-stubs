@@ -29,7 +29,7 @@ namespace Phalcon\Mvc;
  * $controller = $dispatcher->dispatch();
  * ```
  */
-class Dispatcher extends \Phalcon\Dispatcher\AbstractDispatcher implements Phalcon\Mvc\DispatcherInterface
+class Dispatcher extends \Phalcon\Dispatcher\AbstractDispatcher implements \Phalcon\Mvc\DispatcherInterface
 {
 
     protected $defaultAction = 'index';

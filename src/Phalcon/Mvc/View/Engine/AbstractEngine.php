@@ -16,7 +16,7 @@ use Phalcon\Mvc\ViewBaseInterface;
  * All the template engine adapters must inherit this class. This provides
  * basic interfacing between the engine and the Phalcon\Mvc\View component.
  */
-abstract class AbstractEngine extends Injectable implements Phalcon\Mvc\View\Engine\EngineInterface
+abstract class AbstractEngine extends Injectable implements \Phalcon\Mvc\View\Engine\EngineInterface
 {
 
     protected $view;

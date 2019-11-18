@@ -16,7 +16,7 @@ use Phalcon\Cache\Adapter\AdapterInterface;
  *
  * This is an class for binding models into params for handler
  */
-class Binder implements Phalcon\Mvc\Model\BinderInterface
+class Binder implements \Phalcon\Mvc\Model\BinderInterface
 {
     /**
      * Array for storing active bound models

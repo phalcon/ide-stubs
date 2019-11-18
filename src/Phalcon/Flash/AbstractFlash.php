@@ -22,7 +22,7 @@ use Phalcon\Session\ManagerInterface as SessionInterface;
  * $flash->error("Cannot open the file");
  * ```
  */
-abstract class AbstractFlash extends AbstractInjectionAware implements Phalcon\Flash\FlashInterface
+abstract class AbstractFlash extends AbstractInjectionAware implements \Phalcon\Flash\FlashInterface
 {
     /**
      * @var bool

@@ -14,7 +14,7 @@ use Phalcon\Events\ManagerInterface;
 /**
  * Adapter for Phalcon\Acl adapters
  */
-abstract class AbstractAdapter implements Phalcon\Acl\Adapter\AdapterInterface, \Phalcon\Events\EventsAwareInterface
+abstract class AbstractAdapter implements \Phalcon\Acl\Adapter\AdapterInterface, \Phalcon\Events\EventsAwareInterface
 {
     /**
      * Active access which the list is checking if some role can access it

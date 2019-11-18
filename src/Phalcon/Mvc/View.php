@@ -38,7 +38,7 @@ use Phalcon\Events\ManagerInterface;
  * echo $view->getContent();
  * ```
  */
-class View extends Injectable implements Phalcon\Mvc\ViewInterface, \Phalcon\Events\EventsAwareInterface
+class View extends Injectable implements \Phalcon\Mvc\ViewInterface, \Phalcon\Events\EventsAwareInterface
 {
     /**
      * Render Level: To the action view

@@ -48,7 +48,7 @@ use Phalcon\Mvc\Model\QueryInterface;
  * $queryBuilder = new \Phalcon\Mvc\Model\Query\Builder($params);
  * ```
  */
-class Builder implements Phalcon\Mvc\Model\Query\BuilderInterface, \Phalcon\Di\InjectionAwareInterface
+class Builder implements \Phalcon\Mvc\Model\Query\BuilderInterface, \Phalcon\Di\InjectionAwareInterface
 {
 
     protected $bindParams;

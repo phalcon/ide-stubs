@@ -15,7 +15,7 @@ use Phalcon\Messages\Messages;
 /**
  * This is a base class for form elements
  */
-abstract class AbstractElement implements Phalcon\Forms\Element\ElementInterface
+abstract class AbstractElement implements \Phalcon\Forms\Element\ElementInterface
 {
 
     protected $attributes;

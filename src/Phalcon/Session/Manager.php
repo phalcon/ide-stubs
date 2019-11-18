@@ -18,7 +18,7 @@ use SessionHandlerInterface;
  *
  * Session manager class
  */
-class Manager extends AbstractInjectionAware implements Phalcon\Session\ManagerInterface
+class Manager extends AbstractInjectionAware implements \Phalcon\Session\ManagerInterface
 {
     /**
      * @var SessionHandlerInterface|null

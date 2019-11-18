@@ -19,7 +19,7 @@ use Phalcon\Logger\Formatter\FormatterInterface;
  * For the full copyright and license information, please view the LICENSE.txt
  * file that was distributed with this source code.
  */
-abstract class AbstractAdapter implements Phalcon\Logger\Adapter\AdapterInterface
+abstract class AbstractAdapter implements \Phalcon\Logger\Adapter\AdapterInterface
 {
     /**
      * Name of the default formatter class

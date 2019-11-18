@@ -17,7 +17,7 @@ namespace Phalcon\Mvc\Model\MetaData\Strategy;
  * For the full copyright and license information, please view the LICENSE.txt
  * file that was distributed with this source code.
  */
-class Annotations implements Phalcon\Mvc\Model\MetaData\Strategy\StrategyInterface
+class Annotations implements \Phalcon\Mvc\Model\MetaData\Strategy\StrategyInterface
 {
 
     /**

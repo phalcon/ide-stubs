@@ -17,7 +17,7 @@ namespace Phalcon\Events;
  * can create hooks or plugins that will offer monitoring of data, manipulation,
  * conditional execution and much more.
  */
-class Manager implements Phalcon\Events\ManagerInterface
+class Manager implements \Phalcon\Events\ManagerInterface
 {
 
     const DEFAULT_PRIORITY = 100;

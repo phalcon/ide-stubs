@@ -60,7 +60,7 @@ use Phalcon\Http\CookieInterface;
  * );
  * ```
  */
-class Cookies extends AbstractInjectionAware implements Phalcon\Http\Response\CookiesInterface
+class Cookies extends AbstractInjectionAware implements \Phalcon\Http\Response\CookiesInterface
 {
 
     protected $cookies = array();

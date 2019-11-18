@@ -16,7 +16,7 @@ use Phalcon\Image\Enum;
  *
  * All image adapters must use this class
  */
-abstract class AbstractAdapter implements Phalcon\Image\Adapter\AdapterInterface
+abstract class AbstractAdapter implements \Phalcon\Image\Adapter\AdapterInterface
 {
 
     static protected $checked = false;

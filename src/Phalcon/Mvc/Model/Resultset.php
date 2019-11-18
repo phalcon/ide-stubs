@@ -53,7 +53,7 @@ use Phalcon\Mvc\ModelInterface;
  * }
  * ```
  */
-abstract class Resultset implements Phalcon\Mvc\Model\ResultsetInterface, \Iterator, \SeekableIterator, \Countable, \ArrayAccess, \Serializable, \JsonSerializable
+abstract class Resultset implements \Phalcon\Mvc\Model\ResultsetInterface, \Iterator, \SeekableIterator, \Countable, \ArrayAccess, \Serializable, \JsonSerializable
 {
 
     const HYDRATE_ARRAYS = 1;

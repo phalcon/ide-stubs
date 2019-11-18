@@ -16,7 +16,7 @@ use Phalcon\Translate\InterpolatorFactory;
  *
  * Base class for Phalcon\Translate adapters
  */
-abstract class AbstractAdapter implements Phalcon\Translate\Adapter\AdapterInterface
+abstract class AbstractAdapter implements \Phalcon\Translate\Adapter\AdapterInterface
 {
     /**
      * @var string

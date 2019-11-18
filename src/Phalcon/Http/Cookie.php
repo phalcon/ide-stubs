@@ -14,7 +14,7 @@ use Phalcon\Di\AbstractInjectionAware;
 /**
  * Provide OO wrappers to manage a HTTP cookie.
  */
-class Cookie extends AbstractInjectionAware implements Phalcon\Http\CookieInterface
+class Cookie extends AbstractInjectionAware implements \Phalcon\Http\CookieInterface
 {
 
     protected $domain;

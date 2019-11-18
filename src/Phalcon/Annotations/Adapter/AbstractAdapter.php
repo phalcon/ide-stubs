@@ -17,7 +17,7 @@ use Phalcon\Annotations\Reflection;
 /**
  * This is the base class for Phalcon\Annotations adapters
  */
-abstract class AbstractAdapter implements Phalcon\Annotations\Adapter\AdapterInterface
+abstract class AbstractAdapter implements \Phalcon\Annotations\Adapter\AdapterInterface
 {
     /**
      * @var array

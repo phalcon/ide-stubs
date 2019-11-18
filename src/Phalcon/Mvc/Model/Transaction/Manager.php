@@ -59,7 +59,7 @@ use Phalcon\Mvc\Model\TransactionInterface;
  * }
  * ```
  */
-class Manager implements Phalcon\Mvc\Model\Transaction\ManagerInterface, \Phalcon\Di\InjectionAwareInterface
+class Manager implements \Phalcon\Mvc\Model\Transaction\ManagerInterface, \Phalcon\Di\InjectionAwareInterface
 {
 
     protected $container;

@@ -14,7 +14,7 @@ use Phalcon\Paginator\RepositoryInterface;
 /**
  * Phalcon\Paginator\Adapter\AbstractAdapter
  */
-abstract class AbstractAdapter implements Phalcon\Paginator\Adapter\AdapterInterface
+abstract class AbstractAdapter implements \Phalcon\Paginator\Adapter\AdapterInterface
 {
     /**
      * Configuration of paginator

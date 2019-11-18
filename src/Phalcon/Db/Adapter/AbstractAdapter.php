@@ -17,7 +17,7 @@ use Phalcon\Events\ManagerInterface;
 /**
  * Base class for Phalcon\Db adapters
  */
-abstract class AbstractAdapter implements Phalcon\Db\Adapter\AdapterInterface, \Phalcon\Events\EventsAwareInterface
+abstract class AbstractAdapter implements \Phalcon\Db\Adapter\AdapterInterface, \Phalcon\Events\EventsAwareInterface
 {
     /**
      * Connection ID

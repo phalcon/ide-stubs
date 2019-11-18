@@ -30,7 +30,7 @@ namespace Phalcon\Db;
  * );
  * ```
  */
-class Reference implements Phalcon\Db\ReferenceInterface
+class Reference implements \Phalcon\Db\ReferenceInterface
 {
     /**
      * Local reference columns

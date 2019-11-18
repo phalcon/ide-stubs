@@ -14,7 +14,7 @@ use Phalcon\Messages\Message;
 /**
  * This is a base class for validators
  */
-abstract class AbstractValidator implements Phalcon\Validation\ValidatorInterface
+abstract class AbstractValidator implements \Phalcon\Validation\ValidatorInterface
 {
     /**
      * Message template

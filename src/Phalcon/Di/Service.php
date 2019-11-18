@@ -21,7 +21,7 @@ namespace Phalcon\Di;
  * $request = service->resolve();
  * ```
  */
-class Service implements Phalcon\Di\ServiceInterface
+class Service implements \Phalcon\Di\ServiceInterface
 {
 
     protected $definition;

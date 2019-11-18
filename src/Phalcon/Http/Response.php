@@ -28,7 +28,7 @@ use Phalcon\Http\Response\HeadersInterface;
  * $response->send();
  * ```
  */
-class Response implements Phalcon\Http\ResponseInterface, \Phalcon\Di\InjectionAwareInterface, \Phalcon\Events\EventsAwareInterface
+class Response implements \Phalcon\Http\ResponseInterface, \Phalcon\Di\InjectionAwareInterface, \Phalcon\Events\EventsAwareInterface
 {
 
     protected $container;

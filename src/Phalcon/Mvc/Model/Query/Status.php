@@ -38,7 +38,7 @@ use Phalcon\Mvc\ModelInterface;
  * }
  * ```
  */
-class Status implements Phalcon\Mvc\Model\Query\StatusInterface
+class Status implements \Phalcon\Mvc\Model\Query\StatusInterface
 {
 
     protected $model;

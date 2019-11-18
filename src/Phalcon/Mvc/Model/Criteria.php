@@ -29,7 +29,7 @@ use Phalcon\Mvc\Model\Query\BuilderInterface;
  *     ->execute();
  * ```
  */
-class Criteria implements Phalcon\Mvc\Model\CriteriaInterface, \Phalcon\Di\InjectionAwareInterface
+class Criteria implements \Phalcon\Mvc\Model\CriteriaInterface, \Phalcon\Di\InjectionAwareInterface
 {
 
     protected $bindParams;

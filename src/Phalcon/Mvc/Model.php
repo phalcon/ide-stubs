@@ -56,7 +56,7 @@ use Phalcon\Mvc\Model\ResultsetInterface;
  * }
  * ```
  */
-abstract class Model extends AbstractInjectionAware implements Phalcon\Mvc\EntityInterface, \Phalcon\Mvc\ModelInterface, \Phalcon\Mvc\Model\ResultInterface, \Serializable, \JsonSerializable
+abstract class Model extends AbstractInjectionAware implements \Phalcon\Mvc\EntityInterface, \Phalcon\Mvc\ModelInterface, \Phalcon\Mvc\Model\ResultInterface, \Serializable, \JsonSerializable
 {
 
     const DIRTY_STATE_DETACHED = 2;

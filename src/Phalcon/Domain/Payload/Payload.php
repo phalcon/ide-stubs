@@ -12,7 +12,7 @@ namespace Phalcon\Domain\Payload;
 /**
  * Holds the payload
  */
-class Payload implements Phalcon\Domain\Payload\PayloadInterface
+class Payload implements \Phalcon\Domain\Payload\PayloadInterface
 {
     /**
      * Extra information

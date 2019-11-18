@@ -41,7 +41,7 @@ use Phalcon\Mvc\Router\RouteInterface;
  * echo $router->getControllerName();
  * ```
  */
-class Router extends AbstractInjectionAware implements Phalcon\Mvc\RouterInterface, \Phalcon\Events\EventsAwareInterface
+class Router extends AbstractInjectionAware implements \Phalcon\Mvc\RouterInterface, \Phalcon\Events\EventsAwareInterface
 {
 
     const POSITION_FIRST = 0;

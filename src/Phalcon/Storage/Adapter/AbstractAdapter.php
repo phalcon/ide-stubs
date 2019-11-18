@@ -22,7 +22,7 @@ use Phalcon\Storage\SerializerFactory;
  * For the full copyright and license information, please view the LICENSE.txt
  * file that was distributed with this source code.
  */
-abstract class AbstractAdapter implements Phalcon\Storage\Adapter\AdapterInterface
+abstract class AbstractAdapter implements \Phalcon\Storage\Adapter\AdapterInterface
 {
     /**
      * @var mixed

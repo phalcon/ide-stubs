@@ -64,7 +64,7 @@ use Phalcon\Mvc\ModelInterface;
  * $resultWithOutEntries = $queryWithTransaction->execute();
  * ```
  */
-class Query implements Phalcon\Mvc\Model\QueryInterface, \Phalcon\Di\InjectionAwareInterface
+class Query implements \Phalcon\Mvc\Model\QueryInterface, \Phalcon\Di\InjectionAwareInterface
 {
 
     const TYPE_DELETE = 303;

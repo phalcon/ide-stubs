@@ -18,7 +18,7 @@ use Phalcon\Mvc\Model\BinderInterface;
  * This class can't be instantiated directly, you can use it to create your own
  * dispatchers.
  */
-abstract class AbstractDispatcher extends AbstractInjectionAware implements Phalcon\Dispatcher\DispatcherInterface, \Phalcon\Events\EventsAwareInterface
+abstract class AbstractDispatcher extends AbstractInjectionAware implements \Phalcon\Dispatcher\DispatcherInterface, \Phalcon\Events\EventsAwareInterface
 {
 
     protected $activeHandler;

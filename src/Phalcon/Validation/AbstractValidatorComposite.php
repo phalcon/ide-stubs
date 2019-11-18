@@ -12,7 +12,7 @@ namespace Phalcon\Validation;
 /**
  * This is a base class for combined fields validators
  */
-abstract class AbstractValidatorComposite extends \Phalcon\Validation\AbstractValidator implements Phalcon\Validation\ValidatorCompositeInterface
+abstract class AbstractValidatorComposite extends \Phalcon\Validation\AbstractValidator implements \Phalcon\Validation\ValidatorCompositeInterface
 {
     /**
      * @var array

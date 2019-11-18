@@ -33,7 +33,7 @@ use Phalcon\Mvc\Model\MetaData\Strategy\StrategyInterface;
  * print_r($attributes);
  * ```
  */
-abstract class MetaData implements \Phalcon\Di\InjectionAwareInterface, Phalcon\Mvc\Model\MetaDataInterface
+abstract class MetaData implements \Phalcon\Di\InjectionAwareInterface, \Phalcon\Mvc\Model\MetaDataInterface
 {
 
     const MODELS_ATTRIBUTES = 0;

@@ -17,7 +17,7 @@ use Phalcon\Events\ManagerInterface;
 /**
  * Adapter for Phalcon\Firewall adapters
  */
-abstract class AbstractAdapter implements Phalcon\Firewall\Adapter\AdapterInterface, \Phalcon\Events\EventsAwareInterface
+abstract class AbstractAdapter implements \Phalcon\Firewall\Adapter\AdapterInterface, \Phalcon\Events\EventsAwareInterface
 {
     /**
      * Storing active identity object implementing Phalcon/Acl/RoleAware
