@@ -1,5 +1,12 @@
 <?php
 
+/* This file is part of the Phalcon Framework.
+ *
+ * (c) Phalcon Team <team@phalcon.io>
+ *
+ * For the full copyright and license information, please view the LICENSE.txt
+ * file that was distributed with this source code.
+ */
 namespace Phalcon;
 
 use Phalcon\Di\DiInterface;
@@ -87,6 +94,7 @@ class Tag
      * Appends a text to current document title
      *
      * @param mixed $title
+     * @return void
      */
     public static function appendTitle($title)
     {
@@ -147,6 +155,7 @@ class Tag
      *
      * @param string $id
      * @param mixed $value
+     * @return void
      */
     public static function displayTo(string $id, $value)
     {
@@ -217,7 +226,7 @@ class Tag
      * Obtains the 'escaper' service if required
      *
      * @param array $params
-     * @return null|\Phalcon\Escaper\EscaperInterface
+     * @return mixed
      */
     public static function getEscaper(array $params): ?EscaperInterface
     {
@@ -226,7 +235,7 @@ class Tag
     /**
      * Internally gets the request dispatcher
      *
-     * @return \Phalcon\Di\DiInterface
+     * @return DiInterface
      */
     public static function getDI(): DiInterface
     {
@@ -235,7 +244,7 @@ class Tag
     /**
      * Returns an Escaper service from the default DI
      *
-     * @return \Phalcon\Escaper\EscaperInterface
+     * @return EscaperInterface
      */
     public static function getEscaperService(): EscaperInterface
     {
@@ -264,7 +273,7 @@ class Tag
     /**
      * Returns a URL service from the default DI
      *
-     * @return \Phalcon\Url\UrlInterface
+     * @return UrlInterface
      */
     public static function getUrlService(): UrlInterface
     {
@@ -380,6 +389,7 @@ class Tag
      * Prepends a text to current document title
      *
      * @param mixed $title
+     * @return void
      */
     public static function prependTitle($title)
     {
@@ -433,6 +443,7 @@ class Tag
      *
      * @deprecated Will be removed in 4.0.0
      * @deprecated
+     * @return void
      */
     public static function resetInput()
     {
@@ -474,6 +485,7 @@ class Tag
      * Set autoescape mode in generated html
      *
      * @param bool $autoescape
+     * @return void
      */
     public static function setAutoescape(bool $autoescape)
     {
@@ -484,6 +496,7 @@ class Tag
      *
      * @param string $id
      * @param mixed $value
+     * @return void
      */
     public static function setDefault(string $id, $value)
     {
@@ -494,6 +507,7 @@ class Tag
      *
      * @param array $values
      * @param bool $merge
+     * @return void
      */
     public static function setDefaults(array $values, bool $merge = false)
     {
@@ -503,6 +517,7 @@ class Tag
      * Sets the dependency injector container.
      *
      * @param \Phalcon\Di\DiInterface $container
+     * @return void
      */
     public static function setDI(\Phalcon\Di\DiInterface $container)
     {
@@ -512,6 +527,7 @@ class Tag
      * Set the document type of content
      *
      * @param int $doctype
+     * @return void
      */
     public static function setDocType(int $doctype)
     {
@@ -521,6 +537,7 @@ class Tag
      * Set the title of view content
      *
      * @param string $title
+     * @return void
      */
     public static function setTitle(string $title)
     {
@@ -530,6 +547,7 @@ class Tag
      * Set the title separator of view content
      *
      * @param string $titleSeparator
+     * @return void
      */
     public static function setTitleSeparator(string $titleSeparator)
     {

@@ -1,10 +1,18 @@
 <?php
 
+/* This file is part of the Phalcon Framework.
+ *
+ * (c) Phalcon Team <team@phalcon.io>
+ *
+ * For the full copyright and license information, please view the LICENSE.txt
+ * file that was distributed with this source code.
+ */
 namespace Phalcon;
 
 use Phalcon\Di\AbstractInjectionAware;
 use Phalcon\Http\RequestInterface;
 use Phalcon\Security\Random;
+use Phalcon\Session\ManagerInterface as SessionInterface;
 
 /**
  * This component provides a set of functions to improve the security in Phalcon
@@ -171,7 +179,7 @@ class Security extends AbstractInjectionAware
     /**
      * Returns a secure random number generator instance
      *
-     * @return \Phalcon\Security\Random
+     * @return Random
      */
     public function getRandom(): Random
     {
@@ -279,14 +287,14 @@ class Security extends AbstractInjectionAware
     }
 
     /**
-     * @return null|\Phalcon\Http\RequestInterface
+     * @return mixed
      */
     private function getLocalRequest(): ?RequestInterface
     {
     }
 
     /**
-     * @return null|\Phalcon\Session\ManagerInterface
+     * @return mixed
      */
     private function getLocalSession(): ?SessionInterface
     {

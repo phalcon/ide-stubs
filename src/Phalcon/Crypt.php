@@ -1,5 +1,12 @@
 <?php
 
+/* This file is part of the Phalcon Framework.
+ *
+ * (c) Phalcon Team <team@phalcon.io>
+ *
+ * For the full copyright and license information, please view the LICENSE.txt
+ * file that was distributed with this source code.
+ */
 namespace Phalcon;
 
 use Phalcon\Crypt\CryptInterface;
@@ -156,11 +163,11 @@ class Crypt implements \Phalcon\Crypt\CryptInterface
     /**
      * Decrypt a text that is coded as a base64 string.
      *
+     * @throws \Phalcon\Crypt\Mismatch
      * @param string $text
      * @param mixed $key
      * @param bool $safe
      * @return string
-     * @throws \Phalcon\Crypt\Mismatch
      */
     public function decryptBase64(string $text, $key = null, bool $safe = false): string
     {
@@ -243,7 +250,7 @@ class Crypt implements \Phalcon\Crypt\CryptInterface
 
     /**
      * @param string $tag
-     * @return \Phalcon\Crypt\CryptInterface
+     * @return CryptInterface
      */
     public function setAuthTag(string $tag): CryptInterface
     {
@@ -251,7 +258,7 @@ class Crypt implements \Phalcon\Crypt\CryptInterface
 
     /**
      * @param string $data
-     * @return \Phalcon\Crypt\CryptInterface
+     * @return CryptInterface
      */
     public function setAuthData(string $data): CryptInterface
     {
@@ -259,7 +266,7 @@ class Crypt implements \Phalcon\Crypt\CryptInterface
 
     /**
      * @param int $length
-     * @return \Phalcon\Crypt\CryptInterface
+     * @return CryptInterface
      */
     public function setAuthTagLength(int $length): CryptInterface
     {
@@ -275,7 +282,7 @@ class Crypt implements \Phalcon\Crypt\CryptInterface
      * algorithm for current openssl library version.
      *
      * @param string $cipher
-     * @return \Phalcon\Crypt\CryptInterface
+     * @return CryptInterface
      */
     public function setCipher(string $cipher): CryptInterface
     {
@@ -284,9 +291,9 @@ class Crypt implements \Phalcon\Crypt\CryptInterface
     /**
      * Set the name of hashing algorithm.
      *
-     * @param string $hashAlgo
-     * @return \Phalcon\Crypt\CryptInterface
      * @throws \Phalcon\Crypt\Exception
+     * @param string $hashAlgo
+     * @return CryptInterface
      */
     public function setHashAlgo(string $hashAlgo): CryptInterface
     {
@@ -308,7 +315,7 @@ class Crypt implements \Phalcon\Crypt\CryptInterface
      * "T4\xb1\x8d\xa9\x98\x05\\\x8c\xbe\x1d\x07&[\x99\x18\xa4~Lc1\xbeW\xb3"
      *
      * @param string $key
-     * @return \Phalcon\Crypt\CryptInterface
+     * @return CryptInterface
      */
     public function setKey(string $key): CryptInterface
     {
@@ -318,7 +325,7 @@ class Crypt implements \Phalcon\Crypt\CryptInterface
      * Changes the padding scheme used.
      *
      * @param int $scheme
-     * @return \Phalcon\Crypt\CryptInterface
+     * @return CryptInterface
      */
     public function setPadding(int $scheme): CryptInterface
     {
@@ -328,7 +335,7 @@ class Crypt implements \Phalcon\Crypt\CryptInterface
      * Sets if the calculating message digest must used.
      *
      * @param bool $useSigning
-     * @return \Phalcon\Crypt\CryptInterface
+     * @return CryptInterface
      */
     public function useSigning(bool $useSigning): CryptInterface
     {
@@ -338,6 +345,7 @@ class Crypt implements \Phalcon\Crypt\CryptInterface
      * Assert the cipher is available.
      *
      * @param string $cipher
+     * @return void
      */
     protected function assertCipherIsAvailable(string $cipher)
     {
@@ -347,6 +355,7 @@ class Crypt implements \Phalcon\Crypt\CryptInterface
      * Assert the hash algorithm is available.
      *
      * @param string $hashAlgo
+     * @return void
      */
     protected function assertHashAlgorithmAvailable(string $hashAlgo)
     {
@@ -364,6 +373,8 @@ class Crypt implements \Phalcon\Crypt\CryptInterface
 
     /**
      * Initialize available cipher algorithms.
+     *
+     * @return void
      */
     protected function initializeAvailableCiphers()
     {

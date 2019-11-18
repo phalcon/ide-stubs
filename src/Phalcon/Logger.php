@@ -1,5 +1,12 @@
 <?php
 
+/* This file is part of the Phalcon Framework.
+ *
+ * (c) Phalcon Team <team@phalcon.io>
+ *
+ * For the full copyright and license information, please view the LICENSE.txt
+ * file that was distributed with this source code.
+ */
 namespace Phalcon;
 
 use Phalcon\Logger\Adapter\AdapterInterface;
@@ -132,6 +139,7 @@ class Logger implements \Psr\Log\LoggerInterface
      *
      * @param string $message
      * @param array $context
+     * @return void
      */
     public function alert($message, array $context = array())
     {
@@ -144,6 +152,7 @@ class Logger implements \Psr\Log\LoggerInterface
      *
      * @param string $message
      * @param array $context
+     * @return void
      */
     public function critical($message, array $context = array())
     {
@@ -154,6 +163,7 @@ class Logger implements \Psr\Log\LoggerInterface
      *
      * @param string $message
      * @param array $context
+     * @return void
      */
     public function debug($message, array $context = array())
     {
@@ -165,6 +175,7 @@ class Logger implements \Psr\Log\LoggerInterface
      *
      * @param string $message
      * @param array $context
+     * @return void
      */
     public function error($message, array $context = array())
     {
@@ -175,6 +186,7 @@ class Logger implements \Psr\Log\LoggerInterface
      *
      * @param string $message
      * @param array $context
+     * @return void
      */
     public function emergency($message, array $context = array())
     {
@@ -195,8 +207,8 @@ class Logger implements \Psr\Log\LoggerInterface
      *
      * @param string $name The name of the adapter
      *
-     * @return \Phalcon\Logger\Adapter\AdapterInterface
      * @throws Exception
+     * @return AdapterInterface
      */
     public function getAdapter(string $name): AdapterInterface
     {
@@ -227,6 +239,7 @@ class Logger implements \Psr\Log\LoggerInterface
      *
      * @param string $message
      * @param array $context
+     * @return void
      */
     public function info($message, array $context = array())
     {
@@ -238,6 +251,7 @@ class Logger implements \Psr\Log\LoggerInterface
      * @param mixed $level
      * @param string $message
      * @param array $context
+     * @return void
      */
     public function log($level, $message, array $context = array())
     {
@@ -248,6 +262,7 @@ class Logger implements \Psr\Log\LoggerInterface
      *
      * @param string $message
      * @param array $context
+     * @return void
      */
     public function notice($message, array $context = array())
     {
@@ -258,8 +273,8 @@ class Logger implements \Psr\Log\LoggerInterface
      *
      * @param string $name The name of the adapter
      *
-     * @return Logger
      * @throws Logger\Exception
+     * @return Logger
      */
     public function removeAdapter(string $name): Logger
     {
@@ -293,6 +308,7 @@ class Logger implements \Psr\Log\LoggerInterface
      *
      * @param string $message
      * @param array $context
+     * @return void
      */
     public function warning($message, array $context = array())
     {
@@ -303,9 +319,9 @@ class Logger implements \Psr\Log\LoggerInterface
      *
      * @param int $level
      * @param string $message *
+     * @throws Logger\Exception
      * @param array $context
      * @return bool
-     * @throws Logger\Exception
      */
     protected function addMessage(int $level, string $message, array $context = array()): bool
     {

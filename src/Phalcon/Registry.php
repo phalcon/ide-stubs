@@ -1,5 +1,12 @@
 <?php
 
+/* This file is part of the Phalcon Framework.
+ *
+ * (c) Phalcon Team <team@phalcon.io>
+ *
+ * For the full copyright and license information, please view the LICENSE.txt
+ * file that was distributed with this source code.
+ */
 namespace Phalcon;
 
 use Traversable;
@@ -54,7 +61,7 @@ use Traversable;
  * are implemented using object handlers or similar techniques: this allows to
  * bypass relatively slow method calls.
  */
-final class Registry extends Collection
+final class Registry extends \Phalcon\Collection
 {
 
     /**
@@ -91,6 +98,7 @@ final class Registry extends Collection
      *
      * @param string $element
      * @param mixed $value
+     * @return void
      */
     final public function __set(string $element, $value)
     {
@@ -100,6 +108,7 @@ final class Registry extends Collection
      * Magic unset to remove an element from the collection
      *
      * @param string $element
+     * @return void
      */
     final public function __unset(string $element)
     {
@@ -107,6 +116,8 @@ final class Registry extends Collection
 
     /**
      * Clears the internal collection
+     *
+     * @return void
      */
     final public function clear()
     {
@@ -137,7 +148,7 @@ final class Registry extends Collection
     /**
      * Returns the iterator of the class
      *
-     * @return \Traversable
+     * @return Traversable
      */
     final public function getIterator(): Traversable
     {
@@ -157,6 +168,7 @@ final class Registry extends Collection
      * Initialize internal array
      *
      * @param array $data
+     * @return void
      */
     final public function init(array $data = array())
     {
@@ -200,6 +212,7 @@ final class Registry extends Collection
      * @link https://php.net/manual/en/arrayaccess.offsetset.php
      * @param mixed $element
      * @param mixed $value
+     * @return void
      */
     final public function offsetSet($element, $value)
     {
@@ -210,6 +223,7 @@ final class Registry extends Collection
      *
      * @link https://php.net/manual/en/arrayaccess.offsetunset.php
      * @param mixed $element
+     * @return void
      */
     final public function offsetUnset($element)
     {
@@ -219,6 +233,7 @@ final class Registry extends Collection
      * Delete the element from the collection
      *
      * @param string $element
+     * @return void
      */
     final public function remove(string $element)
     {
@@ -239,6 +254,7 @@ final class Registry extends Collection
      *
      * @param string $element
      * @param mixed $value
+     * @return void
      */
     final public function set(string $element, $value)
     {
@@ -273,6 +289,7 @@ final class Registry extends Collection
      *
      * @link https://php.net/manual/en/serializable.unserialize.php
      * @param mixed $serialized
+     * @return void
      */
     final public function unserialize($serialized)
     {

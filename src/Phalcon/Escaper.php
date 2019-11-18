@@ -1,5 +1,12 @@
 <?php
 
+/* This file is part of the Phalcon Framework.
+ *
+ * (c) Phalcon Team <team@phalcon.io>
+ *
+ * For the full copyright and license information, please view the LICENSE.txt
+ * file that was distributed with this source code.
+ */
 namespace Phalcon;
 
 /**
@@ -129,6 +136,7 @@ class Escaper implements \Phalcon\Escaper\EscaperInterface
      * ```
      *
      * @param bool $doubleEncode
+     * @return void
      */
     public function setDoubleEncode(bool $doubleEncode)
     {
@@ -142,6 +150,7 @@ class Escaper implements \Phalcon\Escaper\EscaperInterface
      * ```
      *
      * @param string $encoding
+     * @return void
      */
     public function setEncoding(string $encoding)
     {
@@ -155,6 +164,7 @@ class Escaper implements \Phalcon\Escaper\EscaperInterface
      * ```
      *
      * @param int $quoteType
+     * @return void
      */
     public function setHtmlQuoteType(int $quoteType)
     {

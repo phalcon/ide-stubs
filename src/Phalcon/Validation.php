@@ -1,5 +1,12 @@
 <?php
 
+/* This file is part of the Phalcon Framework.
+ *
+ * (c) Phalcon Team <team@phalcon.io>
+ *
+ * For the full copyright and license information, please view the LICENSE.txt
+ * file that was distributed with this source code.
+ */
 namespace Phalcon;
 
 use Phalcon\Di\Injectable;
@@ -36,6 +43,7 @@ class Validation extends Injectable implements \Phalcon\Validation\ValidationInt
     protected $values;
 
 
+
     public function getData()
     {
     }
@@ -61,7 +69,7 @@ class Validation extends Injectable implements \Phalcon\Validation\ValidationInt
      *
      * @param mixed $field
      * @param \Phalcon\Validation\ValidatorInterface $validator
-     * @return \Phalcon\Validation\ValidationInterface
+     * @return ValidationInterface
      */
     public function add($field, \Phalcon\Validation\ValidatorInterface $validator): ValidationInterface
     {
@@ -71,7 +79,7 @@ class Validation extends Injectable implements \Phalcon\Validation\ValidationInt
      * Appends a message to the messages list
      *
      * @param \Phalcon\Messages\MessageInterface $message
-     * @return \Phalcon\Validation\ValidationInterface
+     * @return ValidationInterface
      */
     public function appendMessage(\Phalcon\Messages\MessageInterface $message): ValidationInterface
     {
@@ -83,7 +91,7 @@ class Validation extends Injectable implements \Phalcon\Validation\ValidationInt
      *
      * @param object $entity
      * @param array|object $data
-     * @return \Phalcon\Validation\ValidationInterface
+     * @return ValidationInterface
      */
     public function bind($entity, $data): ValidationInterface
     {
@@ -121,7 +129,7 @@ class Validation extends Injectable implements \Phalcon\Validation\ValidationInt
     /**
      * Returns the registered validators
      *
-     * @return \Phalcon\Messages\Messages
+     * @return Messages
      */
     public function getMessages(): Messages
     {
@@ -151,7 +159,7 @@ class Validation extends Injectable implements \Phalcon\Validation\ValidationInt
      *
      * @param mixed $field
      * @param \Phalcon\Validation\ValidatorInterface $validator
-     * @return \Phalcon\Validation\ValidationInterface
+     * @return ValidationInterface
      */
     public function rule($field, \Phalcon\Validation\ValidatorInterface $validator): ValidationInterface
     {
@@ -162,7 +170,7 @@ class Validation extends Injectable implements \Phalcon\Validation\ValidationInt
      *
      * @param mixed $field
      * @param array $validators
-     * @return \Phalcon\Validation\ValidationInterface
+     * @return ValidationInterface
      */
     public function rules($field, array $validators): ValidationInterface
     {
@@ -172,6 +180,7 @@ class Validation extends Injectable implements \Phalcon\Validation\ValidationInt
      * Sets the bound entity
      *
      * @param object $entity
+     * @return void
      */
     public function setEntity($entity)
     {
@@ -182,7 +191,7 @@ class Validation extends Injectable implements \Phalcon\Validation\ValidationInt
      *
      * @param string $field
      * @param array|string $filters
-     * @return \Phalcon\Validation\ValidationInterface
+     * @return ValidationInterface
      */
     public function setFilters($field, $filters): ValidationInterface
     {
@@ -192,6 +201,7 @@ class Validation extends Injectable implements \Phalcon\Validation\ValidationInt
      * Adds labels for fields
      *
      * @param array $labels
+     * @return void
      */
     public function setLabels(array $labels)
     {
@@ -202,7 +212,7 @@ class Validation extends Injectable implements \Phalcon\Validation\ValidationInt
      *
      * @param array|object $data
      * @param object $entity
-     * @return \Phalcon\Messages\Messages
+     * @return Messages
      */
     public function validate($data = null, $entity = null): Messages
     {

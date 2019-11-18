@@ -1,5 +1,12 @@
 <?php
 
+/* This file is part of the Phalcon Framework.
+ *
+ * (c) Phalcon Team <team@phalcon.io>
+ *
+ * For the full copyright and license information, please view the LICENSE.txt
+ * file that was distributed with this source code.
+ */
 namespace Phalcon;
 
 use Traversable;
@@ -69,6 +76,7 @@ class Collection implements \ArrayAccess, \Countable, \IteratorAggregate, \JsonS
      *
      * @param string $element
      * @param mixed $value
+     * @return void
      */
     public function __set(string $element, $value)
     {
@@ -78,6 +86,7 @@ class Collection implements \ArrayAccess, \Countable, \IteratorAggregate, \JsonS
      * Magic unset to remove an element from the collection
      *
      * @param string $element
+     * @return void
      */
     public function __unset(string $element)
     {
@@ -85,6 +94,8 @@ class Collection implements \ArrayAccess, \Countable, \IteratorAggregate, \JsonS
 
     /**
      * Clears the internal collection
+     *
+     * @return void
      */
     public function clear()
     {
@@ -115,9 +126,24 @@ class Collection implements \ArrayAccess, \Countable, \IteratorAggregate, \JsonS
     /**
      * Returns the iterator of the class
      *
-     * @return \Traversable
+     * @return Traversable
      */
     public function getIterator(): Traversable
+    {
+    }
+
+    /**
+     * @param bool $insensitive
+     * @return array
+     */
+    public function getKeys(bool $insensitive = true): array
+    {
+    }
+
+    /**
+     * @return array
+     */
+    public function getValues(): array
     {
     }
 
@@ -135,6 +161,7 @@ class Collection implements \ArrayAccess, \Countable, \IteratorAggregate, \JsonS
      * Initialize internal array
      *
      * @param array $data
+     * @return void
      */
     public function init(array $data = array())
     {
@@ -177,6 +204,7 @@ class Collection implements \ArrayAccess, \Countable, \IteratorAggregate, \JsonS
      *
      * @param mixed $element
      * @param mixed $value
+     * @return void
      */
     public function offsetSet($element, $value)
     {
@@ -187,6 +215,7 @@ class Collection implements \ArrayAccess, \Countable, \IteratorAggregate, \JsonS
      * See [offsetUnset](https://php.net/manual/en/arrayaccess.offsetunset.php)
      *
      * @param mixed $element
+     * @return void
      */
     public function offsetUnset($element)
     {
@@ -196,6 +225,7 @@ class Collection implements \ArrayAccess, \Countable, \IteratorAggregate, \JsonS
      * Delete the element from the collection
      *
      * @param string $element
+     * @return void
      */
     public function remove(string $element)
     {
@@ -206,6 +236,7 @@ class Collection implements \ArrayAccess, \Countable, \IteratorAggregate, \JsonS
      *
      * @param string $element
      * @param mixed $value
+     * @return void
      */
     public function set(string $element, $value)
     {
@@ -252,6 +283,7 @@ class Collection implements \ArrayAccess, \Countable, \IteratorAggregate, \JsonS
      * See [unserialize](https://php.net/manual/en/serializable.unserialize.php)
      *
      * @param mixed $serialized
+     * @return void
      */
     public function unserialize($serialized)
     {
@@ -262,6 +294,7 @@ class Collection implements \ArrayAccess, \Countable, \IteratorAggregate, \JsonS
      *
      * @param string $element
      * @param mixed $value
+     * @return void
      */
     protected function setData(string $element, $value)
     {

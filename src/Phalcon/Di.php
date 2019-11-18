@@ -1,5 +1,12 @@
 <?php
 
+/* This file is part of the Phalcon Framework.
+ *
+ * (c) Phalcon Team <team@phalcon.io>
+ *
+ * For the full copyright and license information, please view the LICENSE.txt
+ * file that was distributed with this source code.
+ */
 namespace Phalcon;
 
 use Phalcon\Di\DiInterface;
@@ -95,7 +102,7 @@ class Di implements \Phalcon\Di\DiInterface
      * @param string $name
      * @param mixed $definition
      * @param bool $shared
-     * @return bool|\Phalcon\Di\ServiceInterface
+     * @return mixed
      */
     public function attempt(string $name, $definition, bool $shared = false)
     {
@@ -115,7 +122,7 @@ class Di implements \Phalcon\Di\DiInterface
     /**
      * Return the latest DI created
      *
-     * @return null|\Phalcon\Di\DiInterface
+     * @return mixed
      */
     public static function getDefault(): ?DiInterface
     {
@@ -124,7 +131,7 @@ class Di implements \Phalcon\Di\DiInterface
     /**
      * Returns the internal event manager
      *
-     * @return \Phalcon\Events\ManagerInterface
+     * @return ManagerInterface
      */
     public function getInternalEventsManager(): ManagerInterface
     {
@@ -144,7 +151,7 @@ class Di implements \Phalcon\Di\DiInterface
      * Returns a Phalcon\Di\Service instance
      *
      * @param string $name
-     * @return \Phalcon\Di\ServiceInterface
+     * @return ServiceInterface
      */
     public function getService(string $name): ServiceInterface
     {
@@ -153,7 +160,7 @@ class Di implements \Phalcon\Di\DiInterface
     /**
      * Return the services registered in the DI
      *
-     * @return array|\Phalcon\Di\ServiceInterface[]
+     * @return array
      */
     public function getServices(): array
     {
@@ -174,9 +181,10 @@ class Di implements \Phalcon\Di\DiInterface
     /**
      * Loads services from a Config object.
      *
-     * @param \Phalcon\Config $config
+     * @param Config $config
+     * @return void
      */
-    protected function loadFromConfig(\Phalcon\Config $config)
+    protected function loadFromConfig(Config $config)
     {
     }
 
@@ -212,6 +220,7 @@ class Di implements \Phalcon\Di\DiInterface
      *
      * @link https://docs.phalcon.io/en/latest/reference/di.html
      * @param string $filePath
+     * @return void
      */
     public function loadFromPhp(string $filePath)
     {
@@ -251,6 +260,7 @@ class Di implements \Phalcon\Di\DiInterface
      * @link https://docs.phalcon.io/en/latest/reference/di.html
      * @param string $filePath
      * @param array $callbacks
+     * @return void
      */
     public function loadFromYaml(string $filePath, array $callbacks = null)
     {
@@ -299,6 +309,7 @@ class Di implements \Phalcon\Di\DiInterface
      *
      * @param mixed $name
      * @param mixed $definition
+     * @return void
      */
     public function offsetSet($name, $definition)
     {
@@ -308,6 +319,7 @@ class Di implements \Phalcon\Di\DiInterface
      * Removes a service from the services container using the array syntax
      *
      * @param mixed $name
+     * @return void
      */
     public function offsetUnset($name)
     {
@@ -335,6 +347,7 @@ class Di implements \Phalcon\Di\DiInterface
      * ```
      *
      * @param \Phalcon\Di\ServiceProviderInterface $provider
+     * @return void
      */
     public function register(\Phalcon\Di\ServiceProviderInterface $provider)
     {
@@ -345,6 +358,7 @@ class Di implements \Phalcon\Di\DiInterface
      * It also removes any shared instance created for the service
      *
      * @param string $name
+     * @return void
      */
     public function remove(string $name)
     {
@@ -352,6 +366,8 @@ class Di implements \Phalcon\Di\DiInterface
 
     /**
      * Resets the internal default DI
+     *
+     * @return void
      */
     public static function reset()
     {
@@ -363,7 +379,7 @@ class Di implements \Phalcon\Di\DiInterface
      * @param string $name
      * @param mixed $definition
      * @param bool $shared
-     * @return \Phalcon\Di\ServiceInterface
+     * @return ServiceInterface
      */
     public function set(string $name, $definition, bool $shared = false): ServiceInterface
     {
@@ -374,6 +390,7 @@ class Di implements \Phalcon\Di\DiInterface
      * methods
      *
      * @param \Phalcon\Di\DiInterface $container
+     * @return void
      */
     public static function setDefault(\Phalcon\Di\DiInterface $container)
     {
@@ -393,7 +410,7 @@ class Di implements \Phalcon\Di\DiInterface
      *
      * @param string $name
      * @param \Phalcon\Di\ServiceInterface $rawDefinition
-     * @return \Phalcon\Di\ServiceInterface
+     * @return ServiceInterface
      */
     public function setRaw(string $name, \Phalcon\Di\ServiceInterface $rawDefinition): ServiceInterface
     {
@@ -404,7 +421,7 @@ class Di implements \Phalcon\Di\DiInterface
      *
      * @param string $name
      * @param mixed $definition
-     * @return \Phalcon\Di\ServiceInterface
+     * @return ServiceInterface
      */
     public function setShared(string $name, $definition): ServiceInterface
     {

@@ -1,5 +1,12 @@
 <?php
 
+/* This file is part of the Phalcon Framework.
+ *
+ * (c) Phalcon Team <team@phalcon.io>
+ *
+ * For the full copyright and license information, please view the LICENSE.txt
+ * file that was distributed with this source code.
+ */
 namespace Phalcon;
 
 use Phalcon\Events\ManagerInterface;
@@ -117,7 +124,7 @@ class Loader implements \Phalcon\Events\EventsAwareInterface
     /**
      * Returns the internal event manager
      *
-     * @return \Phalcon\Events\ManagerInterface
+     * @return ManagerInterface
      */
     public function getEventsManager(): ManagerInterface
     {
@@ -161,6 +168,8 @@ class Loader implements \Phalcon\Events\EventsAwareInterface
 
     /**
      * Checks if a file exists and then adds the file by doing virtual require
+     *
+     * @return void
      */
     public function loadFiles()
     {
@@ -225,6 +234,7 @@ class Loader implements \Phalcon\Events\EventsAwareInterface
      * Sets the events manager
      *
      * @param \Phalcon\Events\ManagerInterface $eventsManager
+     * @return void
      */
     public function setEventsManager(\Phalcon\Events\ManagerInterface $eventsManager)
     {
