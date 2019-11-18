@@ -1,5 +1,12 @@
 <?php
 
+/* This file is part of the Phalcon Framework.
+ *
+ * (c) Phalcon Team <team@phalcon.io>
+ *
+ * For the full copyright and license information, please view the LICENSE.txt
+ * file that was distributed with this source code.
+ */
 namespace Phalcon;
 
 /**
@@ -23,7 +30,7 @@ class Debug
     /**
      * @var bool
      */
-    protected static $isActive;
+    static protected $isActive;
 
     /**
      * @var bool
@@ -95,6 +102,8 @@ class Debug
 
     /**
      * Halts the request showing a backtrace
+     *
+     * @return void
      */
     public function halt()
     {
@@ -147,6 +156,7 @@ class Debug
      * @param mixed $file
      * @param mixed $line
      * @param mixed $context
+     * @return void
      */
     public function onUncaughtLowSeverity($severity, $message, $file, $line, $context)
     {
@@ -244,4 +254,5 @@ class Debug
     final protected function showTraceItem(int $n, array $trace): string
     {
     }
+
 }
