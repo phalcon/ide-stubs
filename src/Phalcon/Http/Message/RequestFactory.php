@@ -9,8 +9,8 @@
  */
 namespace Phalcon\Http\Message;
 
-use Psr\Http\Message\RequestFactoryInterface;
 use Psr\Http\Message\RequestInterface;
+use Psr\Http\Message\RequestFactoryInterface;
 use Psr\Http\Message\UriInterface;
 
 /**
@@ -30,4 +30,5 @@ final class RequestFactory implements \Psr\Http\Message\RequestFactoryInterface
     public function createRequest(string $method, $uri): RequestInterface
     {
     }
+
 }

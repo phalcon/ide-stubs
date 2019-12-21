@@ -9,6 +9,8 @@
  */
 namespace Phalcon\Mvc;
 
+use Phalcon\Cache\Adapter\AdapterInterface;
+
 /**
  * Phalcon\Mvc\ViewInterface
  *
@@ -76,4 +78,5 @@ interface ViewBaseInterface
      * @param string $viewsDir
      */
     public function setViewsDir(string $viewsDir);
+
 }

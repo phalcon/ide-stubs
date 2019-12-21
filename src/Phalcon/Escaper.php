@@ -9,6 +9,10 @@
  */
 namespace Phalcon;
 
+use Phalcon\Di\DiInterface;
+use Phalcon\Escaper\EscaperInterface;
+use Phalcon\Escaper\Exception;
+
 /**
  * Phalcon\Escaper
  *
@@ -85,7 +89,7 @@ class Escaper implements \Phalcon\Escaper\EscaperInterface
      * @param string $text
      * @return string
      */
-    public function escapeHtml(string $text): string
+    public function escapeHtml(string $text = null): string
     {
     }
 
@@ -95,7 +99,7 @@ class Escaper implements \Phalcon\Escaper\EscaperInterface
      * @param string $attribute
      * @return string
      */
-    public function escapeHtmlAttr(string $attribute): string
+    public function escapeHtmlAttr(string $attribute = null): string
     {
     }
 
@@ -169,4 +173,5 @@ class Escaper implements \Phalcon\Escaper\EscaperInterface
     public function setHtmlQuoteType(int $quoteType)
     {
     }
+
 }

@@ -9,6 +9,12 @@
  */
 namespace Phalcon\Logger\Adapter;
 
+use Phalcon\Logger\Adapter;
+use Phalcon\Logger\Exception;
+use Phalcon\Logger\Formatter\FormatterInterface;
+use Phalcon\Logger\Item;
+use UnexpectedValueException;
+
 /**
  * Phalcon\Logger\Adapter\Stream
  *
@@ -67,8 +73,10 @@ class Stream extends \Phalcon\Logger\Adapter\AbstractAdapter
     /**
      * Constructor. Accepts the name and some options
      *
+     * @param array $options = [
+     *     'mode' => 'ab'
+     * ]
      * @param string $name
-     * @param array $options
      */
     public function __construct(string $name, array $options = array())
     {
@@ -92,4 +100,5 @@ class Stream extends \Phalcon\Logger\Adapter\AbstractAdapter
     public function process(\Phalcon\Logger\Item $item)
     {
     }
+
 }

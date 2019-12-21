@@ -9,7 +9,10 @@
  */
 namespace Phalcon\Storage\Adapter;
 
+use Phalcon\Helper\Arr;
 use Phalcon\Storage\Exception;
+use Phalcon\Storage\SerializerFactory;
+use Phalcon\Storage\Serializer\SerializerInterface;
 
 /**
  * Libmemcached adapter
@@ -25,10 +28,22 @@ class Libmemcached extends \Phalcon\Storage\Adapter\AbstractAdapter
     /**
      * Libmemcached constructor.
      *
-     * @param array $options
+     * @param array $options = [
+     *     'servers' => [
+     *         [
+     *             'host' => '127.0.0.1',
+     *             'port' => 11211,
+     *             'weight' => 1
+     *         ]
+     *     ],
+     *     'defaultSerializer' => 'Php',
+     *     'lifetime' => 3600,
+     *     'serializer' => null,
+     *     'prefix' => ''
+     * ]
      * @param \Phalcon\Storage\SerializerFactory $factory
      */
-    public function __construct(\Phalcon\Storage\SerializerFactory $factory = null, array $options = array())
+    public function __construct(\Phalcon\Storage\SerializerFactory $factory, array $options = array())
     {
     }
 
@@ -93,9 +108,9 @@ class Libmemcached extends \Phalcon\Storage\Adapter\AbstractAdapter
      * Stores data in the adapter
      *
      * @return array
-     * @throws Exception
+     * @param string $prefix
      */
-    public function getKeys(): array
+    public function getKeys(string $prefix = ''): array
     {
     }
 
@@ -147,4 +162,5 @@ class Libmemcached extends \Phalcon\Storage\Adapter\AbstractAdapter
     private function setSerializer(\Memcached $connection)
     {
     }
+
 }

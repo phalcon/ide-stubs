@@ -10,6 +10,7 @@
 namespace Phalcon\Session\Adapter;
 
 use Phalcon\Storage\Adapter\AdapterInterface;
+use SessionHandlerInterface;
 
 /**
  * This file is part of the Phalcon.
@@ -87,4 +88,5 @@ abstract class AbstractAdapter implements \SessionHandlerInterface
     public function write($id, $data): bool
     {
     }
+
 }

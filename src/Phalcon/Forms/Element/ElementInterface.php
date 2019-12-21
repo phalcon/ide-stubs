@@ -10,7 +10,9 @@
 namespace Phalcon\Forms\Element;
 
 use Phalcon\Forms\Form;
+use Phalcon\Messages\MessageInterface;
 use Phalcon\Messages\Messages;
+use Phalcon\Validation\ValidatorInterface;
 
 /**
  * Interface for Phalcon\Forms\Element classes
@@ -138,7 +140,7 @@ interface ElementInterface
     /**
      * Returns the validators registered for the element
      *
-     * @return array
+     * @return array|\Phalcon\Validation\ValidatorInterface[]
      */
     public function getValidators(): array;
 
@@ -263,4 +265,5 @@ interface ElementInterface
      * @return ElementInterface
      */
     public function setUserOptions(array $options): ElementInterface;
+
 }

@@ -159,4 +159,5 @@ class Event implements \Phalcon\Events\EventInterface
     public function stop(): EventInterface
     {
     }
+
 }

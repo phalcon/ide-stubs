@@ -10,8 +10,8 @@
 namespace Phalcon\Http\Message;
 
 use Psr\Http\Message\StreamInterface;
-use Psr\Http\Message\UploadedFileFactoryInterface;
 use Psr\Http\Message\UploadedFileInterface;
+use Psr\Http\Message\UploadedFileFactoryInterface;
 
 /**
  * PSR-17 UploadedFileFactory
@@ -41,4 +41,5 @@ final class UploadedFileFactory implements \Psr\Http\Message\UploadedFileFactory
     public function createUploadedFile(\Psr\Http\Message\StreamInterface $stream, int $size = null, int $error = 0, string $clientFilename = null, string $clientMediaType = null): UploadedFileInterface
     {
     }
+
 }

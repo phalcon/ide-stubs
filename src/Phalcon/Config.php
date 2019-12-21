@@ -9,6 +9,9 @@
  */
 namespace Phalcon;
 
+use Phalcon\Collection;
+use Phalcon\Config\Exception;
+
 /**
  * `Phalcon\Config` is designed to simplify the access to, and the use of,
  * configuration data within applications. It provides a nested object property
@@ -137,4 +140,5 @@ class Config extends Collection
     protected function setData($element, $value)
     {
     }
+
 }

@@ -23,4 +23,5 @@ class SpecialFull
     public function __invoke($input)
     {
     }
+
 }

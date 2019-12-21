@@ -9,8 +9,14 @@
  */
 namespace Phalcon\Mvc;
 
+use Phalcon\Di\DiInterface;
 use Phalcon\Di\AbstractInjectionAware;
+use Phalcon\Events\EventsAwareInterface;
 use Phalcon\Events\ManagerInterface;
+use Phalcon\Http\RequestInterface;
+use Phalcon\Mvc\Router\Exception;
+use Phalcon\Mvc\Router\GroupInterface;
+use Phalcon\Mvc\Router\Route;
 use Phalcon\Mvc\Router\RouteInterface;
 
 /**
@@ -165,8 +171,13 @@ class Router extends AbstractInjectionAware implements \Phalcon\Mvc\RouterInterf
      * );
      * ```
      *
+     * @param string|array $paths = [
+     *     'module => '',
+     *     'controller' => '',
+     *     'action' => '',
+     *     'namespace' => ''
+     * ]
      * @param string $pattern
-     * @param mixed $paths
      * @param mixed $httpMethods
      * @param mixed $position
      * @return RouteInterface
@@ -178,8 +189,13 @@ class Router extends AbstractInjectionAware implements \Phalcon\Mvc\RouterInterf
     /**
      * Adds a route to the router that only match if the HTTP method is CONNECT
      *
+     * @param string|array $paths = [
+     *     'module => '',
+     *     'controller' => '',
+     *     'action' => '',
+     *     'namespace' => ''
+     * ]
      * @param string $pattern
-     * @param mixed $paths
      * @param mixed $position
      * @return RouteInterface
      */
@@ -190,8 +206,13 @@ class Router extends AbstractInjectionAware implements \Phalcon\Mvc\RouterInterf
     /**
      * Adds a route to the router that only match if the HTTP method is DELETE
      *
+     * @param string|array $paths = [
+     *     'module => '',
+     *     'controller' => '',
+     *     'action' => '',
+     *     'namespace' => ''
+     * ]
      * @param string $pattern
-     * @param mixed $paths
      * @param mixed $position
      * @return RouteInterface
      */
@@ -202,8 +223,13 @@ class Router extends AbstractInjectionAware implements \Phalcon\Mvc\RouterInterf
     /**
      * Adds a route to the router that only match if the HTTP method is GET
      *
+     * @param string|array $paths = [
+     *     'module => '',
+     *     'controller' => '',
+     *     'action' => '',
+     *     'namespace' => ''
+     * ]
      * @param string $pattern
-     * @param mixed $paths
      * @param mixed $position
      * @return RouteInterface
      */
@@ -214,8 +240,13 @@ class Router extends AbstractInjectionAware implements \Phalcon\Mvc\RouterInterf
     /**
      * Adds a route to the router that only match if the HTTP method is HEAD
      *
+     * @param string|array $paths = [
+     *     'module => '',
+     *     'controller' => '',
+     *     'action' => '',
+     *     'namespace' => ''
+     * ]
      * @param string $pattern
-     * @param mixed $paths
      * @param mixed $position
      * @return RouteInterface
      */
@@ -226,8 +257,13 @@ class Router extends AbstractInjectionAware implements \Phalcon\Mvc\RouterInterf
     /**
      * Add a route to the router that only match if the HTTP method is OPTIONS
      *
+     * @param string|array $paths = [
+     *     'module => '',
+     *     'controller' => '',
+     *     'action' => '',
+     *     'namespace' => ''
+     * ]
      * @param string $pattern
-     * @param mixed $paths
      * @param mixed $position
      * @return RouteInterface
      */
@@ -238,8 +274,13 @@ class Router extends AbstractInjectionAware implements \Phalcon\Mvc\RouterInterf
     /**
      * Adds a route to the router that only match if the HTTP method is PATCH
      *
+     * @param string|array $paths = [
+     *     'module => '',
+     *     'controller' => '',
+     *     'action' => '',
+     *     'namespace' => ''
+     * ]
      * @param string $pattern
-     * @param mixed $paths
      * @param mixed $position
      * @return RouteInterface
      */
@@ -250,8 +291,13 @@ class Router extends AbstractInjectionAware implements \Phalcon\Mvc\RouterInterf
     /**
      * Adds a route to the router that only match if the HTTP method is POST
      *
+     * @param string|array $paths = [
+     *     'module => '',
+     *     'controller' => '',
+     *     'action' => '',
+     *     'namespace' => ''
+     * ]
      * @param string $pattern
-     * @param mixed $paths
      * @param mixed $position
      * @return RouteInterface
      */
@@ -263,8 +309,13 @@ class Router extends AbstractInjectionAware implements \Phalcon\Mvc\RouterInterf
      * Adds a route to the router that only match if the HTTP method is PURGE
      * (Squid and Varnish support)
      *
+     * @param string|array $paths = [
+     *     'module => '',
+     *     'controller' => '',
+     *     'action' => '',
+     *     'namespace' => ''
+     * ]
      * @param string $pattern
-     * @param mixed $paths
      * @param mixed $position
      * @return RouteInterface
      */
@@ -275,8 +326,13 @@ class Router extends AbstractInjectionAware implements \Phalcon\Mvc\RouterInterf
     /**
      * Adds a route to the router that only match if the HTTP method is PUT
      *
+     * @param string|array $paths = [
+     *     'module => '',
+     *     'controller' => '',
+     *     'action' => '',
+     *     'namespace' => ''
+     * ]
      * @param string $pattern
-     * @param mixed $paths
      * @param mixed $position
      * @return RouteInterface
      */
@@ -287,8 +343,13 @@ class Router extends AbstractInjectionAware implements \Phalcon\Mvc\RouterInterf
     /**
      * Adds a route to the router that only match if the HTTP method is TRACE
      *
+     * @param string|array $paths = [
+     *     'module => '',
+     *     'controller' => '',
+     *     'action' => '',
+     *     'namespace' => ''
+     * ]
      * @param string $pattern
-     * @param mixed $paths
      * @param mixed $position
      * @return RouteInterface
      */
@@ -427,7 +488,7 @@ class Router extends AbstractInjectionAware implements \Phalcon\Mvc\RouterInterf
     /**
      * Returns all the routes defined in the router
      *
-     * @return array
+     * @return array|\Phalcon\Mvc\Router\RouteInterface[]
      */
     public function getRoutes(): array
     {
@@ -576,4 +637,5 @@ class Router extends AbstractInjectionAware implements \Phalcon\Mvc\RouterInterf
     public function wasMatched(): bool
     {
     }
+
 }

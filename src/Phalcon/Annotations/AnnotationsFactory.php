@@ -11,6 +11,7 @@ namespace Phalcon\Annotations;
 
 use Phalcon\Annotations\Adapter\AdapterInterface;
 use Phalcon\Factory\AbstractFactory;
+use Phalcon\Helper\Arr;
 
 /**
  * Factory to create annotations components
@@ -28,9 +29,16 @@ class AnnotationsFactory extends AbstractFactory
     }
 
     /**
-     * Factory to create an instace from a Config object
+     * @param array|\Phalcon\Config $config = [
+     *     'adapter' => 'apcu',
+     *     'options' => [
+     *         'prefix' => 'phalcon',
+     *         'lifetime' => 3600,
+     *         'annotationsDir' => 'phalconDir'
+     *     ]
+     * ]
      *
-     * @param mixed $config
+     * Factory to create an instace from a Config object
      * @return mixed
      */
     public function load($config)
@@ -40,8 +48,12 @@ class AnnotationsFactory extends AbstractFactory
     /**
      * Create a new instance of the adapter
      *
+     * @param array $options = [
+     *     'prefix' => 'phalcon',
+     *     'lifetime' => 3600,
+     *     'annotationsDir' => 'phalconDir'
+     * ]
      * @param string $name
-     * @param array $options
      * @return AdapterInterface
      */
     public function newInstance(string $name, array $options = array()): AdapterInterface
@@ -56,4 +68,5 @@ class AnnotationsFactory extends AbstractFactory
     protected function getAdapters(): array
     {
     }
+
 }

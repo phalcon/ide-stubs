@@ -9,6 +9,8 @@
  */
 namespace Phalcon\Session\Adapter;
 
+use SessionHandlerInterface;
+
 /**
  * Phalcon\Session\Adapter\Noop
  *
@@ -57,7 +59,9 @@ class Noop implements \SessionHandlerInterface
     /**
      * Constructor
      *
-     * @param array $options
+     * @param array $options = [
+     *     'prefix' => ''
+     * ]
      */
     public function __construct(array $options = array())
     {
@@ -133,4 +137,5 @@ class Noop implements \SessionHandlerInterface
     protected function getPrefixedName($name): string
     {
     }
+
 }

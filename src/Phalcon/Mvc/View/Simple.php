@@ -9,8 +9,16 @@
  */
 namespace Phalcon\Mvc\View;
 
+use Closure;
+use Phalcon\Di\DiInterface;
 use Phalcon\Di\Injectable;
+use Phalcon\Events\EventsAwareInterface;
 use Phalcon\Events\ManagerInterface;
+use Phalcon\Helper\Arr;
+use Phalcon\Helper\Str;
+use Phalcon\Mvc\ViewBaseInterface;
+use Phalcon\Mvc\View\Engine\EngineInterface;
+use Phalcon\Mvc\View\Engine\Php as PhpEngine;
 
 /**
  * Phalcon\Mvc\View\Simple
@@ -328,4 +336,5 @@ class Simple extends Injectable implements \Phalcon\Mvc\ViewBaseInterface, \Phal
     final protected function internalRender(string $path, $params)
     {
     }
+
 }

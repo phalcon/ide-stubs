@@ -75,4 +75,5 @@ interface ServiceInterface
      * @param bool $shared
      */
     public function setShared(bool $shared);
+
 }

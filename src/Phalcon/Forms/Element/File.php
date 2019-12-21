@@ -9,6 +9,8 @@
  */
 namespace Phalcon\Forms\Element;
 
+use Phalcon\Tag;
+
 /**
  * Component INPUT[type=file] for forms
  */
@@ -24,4 +26,5 @@ class File extends \Phalcon\Forms\Element\AbstractElement
     public function render(array $attributes = array()): string
     {
     }
+
 }

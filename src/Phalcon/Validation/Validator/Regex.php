@@ -9,6 +9,8 @@
  */
 namespace Phalcon\Validation\Validator;
 
+use Phalcon\Messages\Message;
+use Phalcon\Validation;
 use Phalcon\Validation\AbstractValidator;
 
 /**
@@ -57,6 +59,20 @@ class Regex extends AbstractValidator
 
 
     /**
+     * Constructor
+     *
+     * @param array $options = [
+     *     'message' => '',
+     *     'template' => '',
+     *     'allowEmpty' => false,
+     *     'pattern' => ''
+     * ]
+     */
+    public function __construct(array $options = array())
+    {
+    }
+
+    /**
      * Executes the validation
      *
      * @param \Phalcon\Validation $validation
@@ -66,4 +82,5 @@ class Regex extends AbstractValidator
     public function validate(\Phalcon\Validation $validation, $field): bool
     {
     }
+
 }

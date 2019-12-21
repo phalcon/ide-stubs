@@ -9,6 +9,8 @@
  */
 namespace Phalcon\Assets\Inline;
 
+use Phalcon\Assets\Inline as InlineBase;
+
 /**
  * Represents an inlined CSS
  */
@@ -25,4 +27,5 @@ class Css extends \Phalcon\Assets\Inline
     public function __construct(string $content, bool $filter = true, $attributes = null)
     {
     }
+
 }

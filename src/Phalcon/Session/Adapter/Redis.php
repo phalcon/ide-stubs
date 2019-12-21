@@ -9,6 +9,8 @@
  */
 namespace Phalcon\Session\Adapter;
 
+use Phalcon\Storage\AdapterFactory;
+
 /**
  * Phalcon\Session\Adapter\Redis
  */
@@ -18,10 +20,19 @@ class Redis extends \Phalcon\Session\Adapter\AbstractAdapter
     /**
      * Constructor
      *
+     * @param array $options = [
+     *     'prefix' => 'sess-reds-',
+     *     'host' => '127.0.0.1',
+     *     'port' => 6379,
+     *     'index' => 0,
+     *     'persistent' => false,
+     *     'auth' => '',
+     *     'socket' => ''
+     * ]
      * @param \Phalcon\Storage\AdapterFactory $factory
-     * @param array $options
      */
     public function __construct(\Phalcon\Storage\AdapterFactory $factory, array $options = array())
     {
     }
+
 }

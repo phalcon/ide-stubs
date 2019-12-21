@@ -9,6 +9,8 @@
  */
 namespace Phalcon\Validation\Validator\File\Size;
 
+use Phalcon\Messages\Message;
+use Phalcon\Validation;
 use Phalcon\Validation\Validator\File\AbstractFile;
 
 /**
@@ -62,6 +64,20 @@ class Max extends AbstractFile
 
 
     /**
+     * Constructor
+     *
+     * @param array $options = [
+     *     'message' => '',
+     *     'template' => '',
+     *     'size' => '2.5MB',
+     *     'included' => false
+     * ]
+     */
+    public function __construct(array $options = array())
+    {
+    }
+
+    /**
      * Executes the validation
      *
      * @param \Phalcon\Validation $validation
@@ -71,4 +87,5 @@ class Max extends AbstractFile
     public function validate(\Phalcon\Validation $validation, $field): bool
     {
     }
+
 }

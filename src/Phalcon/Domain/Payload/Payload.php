@@ -9,11 +9,20 @@
  */
 namespace Phalcon\Domain\Payload;
 
+use Throwable;
+
 /**
  * Holds the payload
  */
 class Payload implements \Phalcon\Domain\Payload\PayloadInterface
 {
+    /**
+     * Exception if any
+     *
+     * @var Throwable|null
+     */
+    protected $exception = null;
+
     /**
      * Extra information
      *
@@ -96,6 +105,26 @@ class Payload implements \Phalcon\Domain\Payload\PayloadInterface
     }
 
     /**
+     * Gets the potential exception thrown in the domain layer
+     *
+     * @return Throwable|null
+     */
+    public function getException(): ?Throwable
+    {
+    }
+
+    /**
+     * Sets an exception thrown in the domain
+     *
+     * @param Throwable $exception
+     *
+     * @return PayloadInterface
+     */
+    public function setException(\Throwable $exception): PayloadInterface
+    {
+    }
+
+    /**
      * Sets arbitrary extra domain information.
      *
      * @param mixed $extras
@@ -144,4 +173,5 @@ class Payload implements \Phalcon\Domain\Payload\PayloadInterface
     public function setStatus($status): PayloadInterface
     {
     }
+
 }

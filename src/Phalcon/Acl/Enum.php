@@ -19,4 +19,6 @@ class Enum
 
 
     const DENY = 0;
+
+
 }

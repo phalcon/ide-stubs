@@ -9,6 +9,8 @@
  */
 namespace Phalcon\Logger\Adapter;
 
+use Phalcon\Logger\Item;
+
 /**
  * Phalcon\Logger\Adapter\Noop
  *
@@ -44,4 +46,5 @@ class Noop extends \Phalcon\Logger\Adapter\AbstractAdapter
     public function process(\Phalcon\Logger\Item $item)
     {
     }
+
 }

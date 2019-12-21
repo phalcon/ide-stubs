@@ -9,6 +9,10 @@
  */
 namespace Phalcon\Translate\Adapter;
 
+use ArrayAccess;
+use Phalcon\Translate\Exception;
+use Phalcon\Translate\InterpolatorFactory;
+
 /**
  * Phalcon\Translate\Adapter\Gettext
  *
@@ -81,8 +85,13 @@ class Gettext extends \Phalcon\Translate\Adapter\AbstractAdapter implements \Arr
     /**
      * Phalcon\Translate\Adapter\Gettext constructor
      *
+     * @param array $options = [
+     *     'locale' => '',
+     *     'defaultDomain' => '',
+     *     'directory' => '',
+     *     'category' => ''
+     * ]
      * @param \Phalcon\Translate\InterpolatorFactory $interpolator
-     * @param array $options
      */
     public function __construct(\Phalcon\Translate\InterpolatorFactory $interpolator, array $options)
     {
@@ -218,4 +227,5 @@ class Gettext extends \Phalcon\Translate\Adapter\AbstractAdapter implements \Arr
     protected function prepareOptions(array $options)
     {
     }
+
 }

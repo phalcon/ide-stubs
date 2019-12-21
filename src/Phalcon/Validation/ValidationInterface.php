@@ -9,6 +9,8 @@
  */
 namespace Phalcon\Validation;
 
+use Phalcon\Di\Injectable;
+use Phalcon\Messages\MessageInterface;
 use Phalcon\Messages\Messages;
 
 /**
@@ -132,4 +134,5 @@ interface ValidationInterface
      * @return Messages
      */
     public function validate($data = null, $entity = null): Messages;
+
 }

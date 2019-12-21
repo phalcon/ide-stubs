@@ -9,6 +9,7 @@
  */
 namespace Phalcon\Mvc\Model;
 
+use Phalcon\Mvc\ModelInterface;
 use Phalcon\Mvc\Model\MetaData\Strategy\StrategyInterface;
 
 /**
@@ -249,4 +250,5 @@ interface MetaDataInterface
      * @return void
      */
     public function write(string $key, array $data);
+
 }

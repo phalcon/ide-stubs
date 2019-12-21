@@ -30,4 +30,5 @@ interface InjectionAwareInterface
      * @return DiInterface
      */
     public function getDI(): DiInterface;
+
 }

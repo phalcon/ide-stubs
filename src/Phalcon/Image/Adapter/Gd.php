@@ -9,6 +9,9 @@
  */
 namespace Phalcon\Image\Adapter;
 
+use Phalcon\Image\Enum;
+use Phalcon\Image\Exception;
+
 /**
  * This file is part of the Phalcon Framework.
  *
@@ -20,7 +23,7 @@ namespace Phalcon\Image\Adapter;
 class Gd extends \Phalcon\Image\Adapter\AbstractAdapter
 {
 
-    protected static $checked = false;
+    static protected $checked = false;
 
 
     /**
@@ -178,4 +181,5 @@ class Gd extends \Phalcon\Image\Adapter\AbstractAdapter
     protected function processWatermark(AdapterInterface $watermark, int $offsetX, int $offsetY, int $opacity)
     {
     }
+
 }

@@ -29,4 +29,5 @@ class Img extends \Phalcon\Html\Helper\AbstractHelper
     public function __invoke(string $src, array $attributes = array()): string
     {
     }
+
 }

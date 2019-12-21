@@ -9,6 +9,7 @@
  */
 namespace Phalcon\Mvc\Model\Query;
 
+use Phalcon\Messages\MessageInterface;
 use Phalcon\Mvc\ModelInterface;
 
 /**
@@ -60,7 +61,7 @@ class Status implements \Phalcon\Mvc\Model\Query\StatusInterface
     /**
      * Returns the messages produced because of a failed operation
      *
-     * @return array
+     * @return array|\Phalcon\Messages\MessageInterface[]
      */
     public function getMessages(): array
     {
@@ -83,4 +84,5 @@ class Status implements \Phalcon\Mvc\Model\Query\StatusInterface
     public function success(): bool
     {
     }
+
 }

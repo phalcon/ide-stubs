@@ -9,6 +9,8 @@
  */
 namespace Phalcon\Validation\Validator;
 
+use Phalcon\Messages\Message;
+use Phalcon\Validation;
 use Phalcon\Validation\AbstractValidator;
 
 /**
@@ -52,6 +54,19 @@ class Numericality extends AbstractValidator
 
 
     /**
+     * Constructor
+     *
+     * @param array $options = [
+     *     'message' => '',
+     *     'template' => '',
+     *     'allowEmpty' => false
+     * ]
+     */
+    public function __construct(array $options = array())
+    {
+    }
+
+    /**
      * Executes the validation
      *
      * @param \Phalcon\Validation $validation
@@ -61,4 +76,5 @@ class Numericality extends AbstractValidator
     public function validate(\Phalcon\Validation $validation, $field): bool
     {
     }
+
 }

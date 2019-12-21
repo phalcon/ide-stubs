@@ -9,6 +9,9 @@
  */
 namespace Phalcon\Validation\Validator;
 
+use Phalcon\Messages\Message;
+use Phalcon\Validation;
+use Phalcon\Validation\Exception;
 use Phalcon\Validation\AbstractValidator;
 
 /**
@@ -57,6 +60,22 @@ class Confirmation extends AbstractValidator
 
 
     /**
+     * Constructor
+     *
+     * @param array $options = [
+     *     'message' => '',
+     *     'template' => '',
+     *     'with' => '',
+     *     'labelWith' => '',
+     *     'ignoreCase' => false,
+     *     'allowEmpty' => false
+     * ]
+     */
+    public function __construct(array $options = array())
+    {
+    }
+
+    /**
      * Executes the validation
      *
      * @param \Phalcon\Validation $validation
@@ -77,4 +96,5 @@ class Confirmation extends AbstractValidator
     final protected function compare(string $a, string $b): bool
     {
     }
+
 }

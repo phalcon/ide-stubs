@@ -23,4 +23,5 @@ class UpperWords
     public function __invoke(string $input)
     {
     }
+
 }

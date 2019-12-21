@@ -9,7 +9,15 @@
  */
 namespace Phalcon\Db\Adapter\Pdo;
 
+use Phalcon\Db\Adapter\Pdo\AbstractPdo as PdoAdapter;
+use Phalcon\Db\Column;
+use Phalcon\Db\ColumnInterface;
+use Phalcon\Db\Enum;
+use Phalcon\Db\Exception;
 use Phalcon\Db\RawValue;
+use Phalcon\Db\Reference;
+use Phalcon\Db\ReferenceInterface;
+use Throwable;
 
 /**
  * Specific functions for the Postgresql database system
@@ -84,7 +92,7 @@ class Postgresql extends \Phalcon\Db\Adapter\Pdo\AbstractPdo
      *
      * @param string $table
      * @param string $schema
-     * @return array
+     * @return array|\Phalcon\Db\ColumnInterface[]
      */
     public function describeColumns(string $table, string $schema = null): array
     {
@@ -101,7 +109,7 @@ class Postgresql extends \Phalcon\Db\Adapter\Pdo\AbstractPdo
      *
      * @param string $table
      * @param string $schema
-     * @return array
+     * @return array|\Phalcon\Db\ReferenceInterface[]
      */
     public function describeReferences(string $table, string $schema = null): array
     {
@@ -174,4 +182,5 @@ class Postgresql extends \Phalcon\Db\Adapter\Pdo\AbstractPdo
     protected function getDsnDefaults(): array
     {
     }
+
 }

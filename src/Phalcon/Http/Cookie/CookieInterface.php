@@ -7,7 +7,7 @@
  * For the full copyright and license information, please view the LICENSE.txt
  * file that was distributed with this source code.
  */
-namespace Phalcon\Http;
+namespace Phalcon\Http\Cookie;
 
 /**
  * Interface for Phalcon\Http\Cookie
@@ -47,6 +47,13 @@ interface CookieInterface
      * @return string
      */
     public function getName(): string;
+
+    /**
+     * Returns the current cookie's options
+     *
+     * @return array
+     */
+    public function getOptions(): array;
 
     /**
      * Returns the current cookie's path
@@ -111,6 +118,14 @@ interface CookieInterface
     public function setHttpOnly(bool $httpOnly): CookieInterface;
 
     /**
+     * Sets the cookie's options
+     *
+     * @param array $options
+     * @return CookieInterface
+     */
+    public function setOptions(array $options): CookieInterface;
+
+    /**
      * Sets the cookie's expiration time
      *
      * @param string $path
@@ -142,4 +157,5 @@ interface CookieInterface
      * @return CookieInterface
      */
     public function useEncryption(bool $useEncryption): CookieInterface;
+
 }

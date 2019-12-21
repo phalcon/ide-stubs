@@ -11,7 +11,10 @@ namespace Phalcon\Mvc\Model;
 
 use Phalcon\Cache\Adapter\AdapterInterface as CacheAdapterInterface;
 use Phalcon\Di\DiInterface;
+use Phalcon\Di\InjectionAwareInterface;
+use Phalcon\Mvc\Model\MetaData\Strategy\Introspection;
 use Phalcon\Mvc\Model\MetaData\Strategy\StrategyInterface;
+use Phalcon\Mvc\ModelInterface;
 
 /**
  * Phalcon\Mvc\Model\MetaData
@@ -639,4 +642,5 @@ abstract class MetaData implements \Phalcon\Di\InjectionAwareInterface, \Phalcon
     private function throwWriteException($option)
     {
     }
+
 }

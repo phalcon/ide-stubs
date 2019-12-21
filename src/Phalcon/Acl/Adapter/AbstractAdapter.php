@@ -10,6 +10,7 @@
 namespace Phalcon\Acl\Adapter;
 
 use Phalcon\Events\ManagerInterface;
+use Phalcon\Events\EventsAwareInterface;
 
 /**
  * Adapter for Phalcon\Acl adapters
@@ -126,4 +127,5 @@ abstract class AbstractAdapter implements \Phalcon\Acl\Adapter\AdapterInterface,
     public function setEventsManager(\Phalcon\Events\ManagerInterface $eventsManager)
     {
     }
+
 }

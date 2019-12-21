@@ -9,8 +9,10 @@
  */
 namespace Phalcon\Mvc\Model;
 
-use Phalcon\Cache\Adapter\AdapterInterface;
+use Closure;
+use Phalcon\Messages\MessageInterface;
 use Phalcon\Mvc\ModelInterface;
+use Phalcon\Cache\Adapter\AdapterInterface;
 
 /**
  * Phalcon\Mvc\Model\ResultsetInterface
@@ -42,7 +44,7 @@ interface ResultsetInterface
      * ```
      *
      * @param callable $filter
-     * @return array
+     * @return array|\Phalcon\Mvc\ModelInterface[]
      */
     public function filter($filter): array;
 
@@ -77,7 +79,7 @@ interface ResultsetInterface
     /**
      * Returns the error messages produced by a batch operation
      *
-     * @return array
+     * @return array|\Phalcon\Messages\MessageInterface[]
      */
     public function getMessages(): array;
 
@@ -127,4 +129,5 @@ interface ResultsetInterface
      * @return bool
      */
     public function update($data, \Closure $conditionCallback = null): bool;
+
 }

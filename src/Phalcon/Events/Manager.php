@@ -9,6 +9,9 @@
  */
 namespace Phalcon\Events;
 
+use Closure;
+use SplPriorityQueue;
+
 /**
  * Phalcon\Events\Manager
  *
@@ -170,4 +173,5 @@ class Manager implements \Phalcon\Events\ManagerInterface
     public function isCollecting(): bool
     {
     }
+
 }

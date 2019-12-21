@@ -9,6 +9,8 @@
  */
 namespace Phalcon\Logger\Formatter;
 
+use Phalcon\Logger;
+
 /**
  * This file is part of the Phalcon Framework.
  *
@@ -30,4 +32,5 @@ abstract class AbstractFormatter implements \Phalcon\Logger\Formatter\FormatterI
     public function interpolate(string $message, $context = null)
     {
     }
+
 }

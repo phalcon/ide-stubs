@@ -9,6 +9,8 @@
  */
 namespace Phalcon\Assets\Asset;
 
+use Phalcon\Assets\Asset as AssetBase;
+
 /**
  * Represents CSS assets
  */
@@ -28,4 +30,5 @@ class Css extends \Phalcon\Assets\Asset
     public function __construct(string $path, bool $local = true, bool $filter = true, array $attributes = array(), string $version = null, bool $autoVersion = false)
     {
     }
+
 }

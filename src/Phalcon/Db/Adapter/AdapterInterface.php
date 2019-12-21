@@ -10,7 +10,11 @@
 namespace Phalcon\Db\Adapter;
 
 use Phalcon\Db\DialectInterface;
+use Phalcon\Db\ResultInterface;
+use Phalcon\Db\ColumnInterface;
+use Phalcon\Db\IndexInterface;
 use Phalcon\Db\RawValue;
+use Phalcon\Db\ReferenceInterface;
 
 /**
  * Interface for Phalcon\Db adapters
@@ -143,7 +147,7 @@ interface AdapterInterface
      *
      * @param string $table
      * @param string $schema
-     * @return array
+     * @return array|\Phalcon\Db\ColumnInterface[]
      */
     public function describeColumns(string $table, string $schema = null): array;
 
@@ -152,7 +156,7 @@ interface AdapterInterface
      *
      * @param string $table
      * @param string $schema
-     * @return array
+     * @return array|\Phalcon\Db\IndexInterface[]
      */
     public function describeIndexes(string $table, string $schema = null): array;
 
@@ -161,7 +165,7 @@ interface AdapterInterface
      *
      * @param string $table
      * @param string $schema
-     * @return array
+     * @return array|\Phalcon\Db\ReferenceInterface[]
      */
     public function describeReferences(string $table, string $schema = null): array;
 
@@ -628,4 +632,5 @@ interface AdapterInterface
      * @return bool
      */
     public function viewExists(string $viewName, string $schemaName = null): bool;
+
 }

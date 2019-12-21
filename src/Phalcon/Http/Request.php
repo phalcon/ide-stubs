@@ -9,8 +9,16 @@
  */
 namespace Phalcon\Http;
 
+use Phalcon\Di\DiInterface;
 use Phalcon\Di\AbstractInjectionAware;
+use Phalcon\Events\ManagerInterface;
 use Phalcon\Filter\FilterInterface;
+use Phalcon\Helper\Json;
+use Phalcon\Http\Request\File;
+use Phalcon\Http\Request\FileInterface;
+use Phalcon\Http\Request\Exception;
+use UnexpectedValueException;
+use stdClass;
 
 /**
  * Encapsulates request information for easy and secure access from application
@@ -479,7 +487,7 @@ class Request extends AbstractInjectionAware implements \Phalcon\Http\RequestInt
      *
      * @param bool $onlySuccessful
      * @param bool $namedKeys
-     * @return array
+     * @return array|\Phalcon\Http\Request\FileInterface[]
      */
     public function getUploadedFiles(bool $onlySuccessful = false, bool $namedKeys = false): array
     {
@@ -862,4 +870,5 @@ class Request extends AbstractInjectionAware implements \Phalcon\Http\RequestInt
     private function getServerArray(): array
     {
     }
+
 }

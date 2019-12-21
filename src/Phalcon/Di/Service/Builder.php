@@ -9,6 +9,9 @@
  */
 namespace Phalcon\Di\Service;
 
+use Phalcon\Di\DiInterface;
+use Phalcon\Di\Exception;
+
 /**
  * Phalcon\Di\Service\Builder
  *
@@ -51,4 +54,5 @@ class Builder
     private function buildParameters(\Phalcon\Di\DiInterface $container, array $arguments): array
     {
     }
+
 }

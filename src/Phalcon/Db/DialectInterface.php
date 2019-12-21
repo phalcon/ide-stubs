@@ -319,4 +319,5 @@ interface DialectInterface
      * @return string
      */
     public function viewExists(string $viewName, string $schemaName = null): string;
+
 }

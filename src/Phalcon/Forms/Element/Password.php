@@ -9,6 +9,8 @@
  */
 namespace Phalcon\Forms\Element;
 
+use Phalcon\Tag;
+
 /**
  * Phalcon\Forms\Element\Password
  *
@@ -26,4 +28,5 @@ class Password extends \Phalcon\Forms\Element\AbstractElement
     public function render(array $attributes = array()): string
     {
     }
+
 }

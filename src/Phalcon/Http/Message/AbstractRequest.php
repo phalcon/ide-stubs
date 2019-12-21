@@ -9,6 +9,7 @@
  */
 namespace Phalcon\Http\Message;
 
+use Phalcon\Collection;
 use Phalcon\Http\Message\Exception\InvalidArgumentException;
 use Psr\Http\Message\UriInterface;
 
@@ -182,4 +183,5 @@ abstract class AbstractRequest extends \Phalcon\Http\Message\AbstractMessage
     final protected function processUri($uri): UriInterface
     {
     }
+
 }

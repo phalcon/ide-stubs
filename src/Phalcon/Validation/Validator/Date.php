@@ -9,6 +9,9 @@
  */
 namespace Phalcon\Validation\Validator;
 
+use DateTime;
+use Phalcon\Messages\Message;
+use Phalcon\Validation;
 use Phalcon\Validation\AbstractValidator;
 
 /**
@@ -57,6 +60,20 @@ class Date extends AbstractValidator
 
 
     /**
+     * Constructor
+     *
+     * @param array $options = [
+     *     'message' => '',
+     *     'template' => '',
+     *     'format' => 'Y-m-d',
+     *     'allowEmpty' => false
+     * ]
+     */
+    public function __construct(array $options = array())
+    {
+    }
+
+    /**
      * Executes the validation
      *
      * @param \Phalcon\Validation $validation
@@ -75,4 +92,5 @@ class Date extends AbstractValidator
     private function checkDate($value, $format): bool
     {
     }
+
 }

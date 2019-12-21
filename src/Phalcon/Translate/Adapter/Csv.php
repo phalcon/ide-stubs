@@ -9,6 +9,10 @@
  */
 namespace Phalcon\Translate\Adapter;
 
+use ArrayAccess;
+use Phalcon\Translate\Exception;
+use Phalcon\Translate\InterpolatorFactory;
+
 /**
  * Phalcon\Translate\Adapter\Csv
  *
@@ -25,8 +29,12 @@ class Csv extends \Phalcon\Translate\Adapter\AbstractAdapter implements \ArrayAc
     /**
      * Phalcon\Translate\Adapter\Csv constructor
      *
+     * @param array $options = [
+     *     'content' => '',
+     *     'delimiter' => ';',
+     *     'enclosure' => '"'
+     * ]
      * @param \Phalcon\Translate\InterpolatorFactory $interpolator
-     * @param array $options
      */
     public function __construct(\Phalcon\Translate\InterpolatorFactory $interpolator, array $options)
     {
@@ -65,4 +73,5 @@ class Csv extends \Phalcon\Translate\Adapter\AbstractAdapter implements \ArrayAc
     private function load(string $file, int $length, string $delimiter, string $enclosure)
     {
     }
+
 }

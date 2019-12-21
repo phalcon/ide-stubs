@@ -10,6 +10,7 @@
 namespace Phalcon\Config\Adapter;
 
 use Phalcon\Config;
+use Phalcon\Config\Exception;
 
 /**
  * Reads ini files and converts them to Phalcon\Config objects.
@@ -87,4 +88,5 @@ class Ini extends Config
     protected function parseIniString(string $path, $value): array
     {
     }
+
 }

@@ -9,6 +9,9 @@
  */
 namespace Phalcon\Paginator;
 
+use JsonSerializable;
+use Phalcon\Helper\Arr;
+
 /**
  * Phalcon\Paginator\Repository
  *
@@ -167,4 +170,5 @@ class Repository implements \Phalcon\Paginator\RepositoryInterface, \JsonSeriali
     protected function getRealNameProperty(string $property): string
     {
     }
+
 }

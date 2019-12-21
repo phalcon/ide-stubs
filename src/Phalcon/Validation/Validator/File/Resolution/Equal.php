@@ -9,6 +9,8 @@
  */
 namespace Phalcon\Validation\Validator\File\Resolution;
 
+use Phalcon\Messages\Message;
+use Phalcon\Validation;
 use Phalcon\Validation\Validator\File\AbstractFile;
 
 /**
@@ -57,6 +59,19 @@ class Equal extends AbstractFile
 
 
     /**
+     * Constructor
+     *
+     * @param array $options = [
+     *     'message' => '',
+     *     'template' => '',
+     *     'resolution' => '1000x1000'
+     * ]
+     */
+    public function __construct(array $options = array())
+    {
+    }
+
+    /**
      * Executes the validation
      *
      * @param \Phalcon\Validation $validation
@@ -66,4 +81,5 @@ class Equal extends AbstractFile
     public function validate(\Phalcon\Validation $validation, $field): bool
     {
     }
+
 }

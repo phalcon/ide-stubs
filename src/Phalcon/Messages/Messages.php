@@ -9,6 +9,11 @@
  */
 namespace Phalcon\Messages;
 
+use ArrayAccess;
+use Countable;
+use Iterator;
+use JsonSerializable;
+
 /**
  * Represents a collection of messages
  */
@@ -203,4 +208,5 @@ class Messages implements \ArrayAccess, \Countable, \Iterator, \JsonSerializable
     public function valid(): bool
     {
     }
+
 }

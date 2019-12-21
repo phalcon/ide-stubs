@@ -60,4 +60,5 @@ interface DispatcherInterface extends DispatcherInterfaceBase
      * @param string $controllerName
      */
     public function setDefaultController(string $controllerName);
+
 }

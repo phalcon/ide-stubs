@@ -10,6 +10,12 @@
 namespace Phalcon\Db\Dialect;
 
 use Phalcon\Db\Dialect;
+use Phalcon\Db\Column;
+use Phalcon\Db\Exception;
+use Phalcon\Db\IndexInterface;
+use Phalcon\Db\ColumnInterface;
+use Phalcon\Db\ReferenceInterface;
+use Phalcon\Db\DialectInterface;
 
 /**
  * Generates database specific SQL for the PostgreSQL RDBMS
@@ -329,4 +335,5 @@ class Postgresql extends Dialect
     protected function getTableOptions(array $definition): string
     {
     }
+
 }

@@ -9,6 +9,11 @@
  */
 namespace Phalcon\Mvc\Model;
 
+use ArrayAccess;
+use JsonSerializable;
+use Phalcon\Mvc\EntityInterface;
+use Phalcon\Mvc\ModelInterface;
+
 /**
  * Phalcon\Mvc\Model\Row
  *
@@ -115,4 +120,5 @@ class Row implements \Phalcon\Mvc\EntityInterface, \Phalcon\Mvc\Model\ResultInte
     public function writeAttribute(string $attribute, $value)
     {
     }
+
 }

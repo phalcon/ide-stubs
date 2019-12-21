@@ -10,6 +10,7 @@
 namespace Phalcon\Mvc;
 
 use Phalcon\Mvc\Router\RouteInterface;
+use Phalcon\Mvc\Router\GroupInterface;
 
 /**
  * Interface for Phalcon\Mvc\Router
@@ -186,7 +187,7 @@ interface RouterInterface
     /**
      * Return all the routes defined in the router
      *
-     * @return array
+     * @return array|\Phalcon\Mvc\Router\RouteInterface[]
      */
     public function getRoutes(): array;
 
@@ -260,4 +261,5 @@ interface RouterInterface
      * @return bool
      */
     public function wasMatched(): bool;
+
 }

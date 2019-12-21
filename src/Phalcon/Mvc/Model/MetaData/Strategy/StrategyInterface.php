@@ -9,6 +9,9 @@
  */
 namespace Phalcon\Mvc\Model\MetaData\Strategy;
 
+use Phalcon\Mvc\ModelInterface;
+use Phalcon\Di\DiInterface;
+
 /**
  * This file is part of the Phalcon Framework.
  *
@@ -38,4 +41,5 @@ interface StrategyInterface
      * @return array
      */
     public function getMetaData(\Phalcon\Mvc\ModelInterface $model, \Phalcon\Di\DiInterface $container): array;
+
 }

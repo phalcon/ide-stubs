@@ -10,8 +10,15 @@
 namespace Phalcon\Db\Adapter;
 
 use Phalcon\Db\DialectInterface;
+use Phalcon\Db\ColumnInterface;
 use Phalcon\Db\Enum;
+use Phalcon\Db\Exception;
+use Phalcon\Db\Index;
+use Phalcon\Db\IndexInterface;
+use Phalcon\Db\Reference;
+use Phalcon\Db\ReferenceInterface;
 use Phalcon\Db\RawValue;
+use Phalcon\Events\EventsAwareInterface;
 use Phalcon\Events\ManagerInterface;
 
 /**
@@ -22,7 +29,7 @@ abstract class AbstractAdapter implements \Phalcon\Db\Adapter\AdapterInterface, 
     /**
      * Connection ID
      */
-    protected static $connectionConsecutive = 0;
+    static protected $connectionConsecutive = 0;
 
     /**
      * Active connection ID
@@ -124,7 +131,17 @@ abstract class AbstractAdapter implements \Phalcon\Db\Adapter\AdapterInterface, 
     /**
      * Phalcon\Db\Adapter constructor
      *
-     * @param array $descriptor
+     * @param array $descriptor = [
+     *     'host' => 'localhost',
+     *     'port' => '3306',
+     *     'dbname' => 'blog',
+     *     'username' => 'sigma'
+     *     'password' => 'secret',
+     *     'dialectClass' => null,
+     *     'options' => [],
+     *     'dsn' => null,
+     *     'charset' => 'utf8mb4'
+     * ]
      */
     public function __construct(array $descriptor)
     {
@@ -247,7 +264,7 @@ abstract class AbstractAdapter implements \Phalcon\Db\Adapter\AdapterInterface, 
      *
      * @param string $table
      * @param string $schema
-     * @return array
+     * @return array|\Phalcon\Db\IndexInterface[]
      */
     public function describeIndexes(string $table, string $schema = null): array
     {
@@ -264,7 +281,7 @@ abstract class AbstractAdapter implements \Phalcon\Db\Adapter\AdapterInterface, 
      *
      * @param string $table
      * @param string $schema
-     * @return array
+     * @return array|\Phalcon\Db\ReferenceInterface[]
      */
     public function describeReferences(string $table, string $schema = null): array
     {
@@ -927,4 +944,5 @@ abstract class AbstractAdapter implements \Phalcon\Db\Adapter\AdapterInterface, 
     public function viewExists(string $viewName, string $schemaName = null): bool
     {
     }
+
 }

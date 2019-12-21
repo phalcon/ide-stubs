@@ -9,6 +9,8 @@
  */
 namespace Phalcon\Html;
 
+use Phalcon\Di\DiInterface;
+
 /**
  * Phalcon\Html\Breadcrumbs
  *
@@ -128,4 +130,5 @@ class Breadcrumbs
     public function toArray(): array
     {
     }
+
 }

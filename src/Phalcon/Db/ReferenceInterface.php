@@ -70,4 +70,5 @@ interface ReferenceInterface
      * @return string
      */
     public function getSchemaName(): string;
+
 }

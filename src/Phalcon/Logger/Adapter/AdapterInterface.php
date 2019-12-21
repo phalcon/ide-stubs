@@ -10,6 +10,7 @@
 namespace Phalcon\Logger\Adapter;
 
 use Phalcon\Logger\Formatter\FormatterInterface;
+use Phalcon\Logger\Item;
 
 /**
  * Phalcon\Logger\AdapterInterface
@@ -56,6 +57,14 @@ interface AdapterInterface
     public function getFormatter(): FormatterInterface;
 
     /**
+     * Returns the whether the logger is currently in an active transaction or
+     * not
+     *
+     * @return bool
+     */
+    public function inTransaction(): bool;
+
+    /**
      * Processes the message in the adapter
      *
      * @param \Phalcon\Logger\Item $item
@@ -77,4 +86,5 @@ interface AdapterInterface
      * @return AdapterInterface
      */
     public function setFormatter(\Phalcon\Logger\Formatter\FormatterInterface $formatter): AdapterInterface;
+
 }

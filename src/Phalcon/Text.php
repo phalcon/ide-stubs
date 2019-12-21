@@ -9,6 +9,8 @@
  */
 namespace Phalcon;
 
+use Phalcon\Helper\Str;
+
 /**
  * Provides utilities to work with texts
  */
@@ -276,4 +278,5 @@ class Text
     public static function upper(string $text, string $encoding = 'UTF-8'): string
     {
     }
+
 }

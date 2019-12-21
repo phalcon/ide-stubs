@@ -9,6 +9,10 @@
  */
 namespace Phalcon\Translate\Adapter;
 
+use ArrayAccess;
+use Phalcon\Translate\Exception;
+use Phalcon\Translate\InterpolatorFactory;
+
 /**
  * Phalcon\Translate\Adapter\NativeArray
  *
@@ -30,8 +34,11 @@ class NativeArray extends \Phalcon\Translate\Adapter\AbstractAdapter implements 
     /**
      * Phalcon\Translate\Adapter\NativeArray constructor
      *
+     * @param array $options = [
+     *     'content' => '',
+     *     'triggerError' => false
+     * ]
      * @param \Phalcon\Translate\InterpolatorFactory $interpolator
-     * @param array $options
      */
     public function __construct(\Phalcon\Translate\InterpolatorFactory $interpolator, array $options)
     {
@@ -67,4 +74,5 @@ class NativeArray extends \Phalcon\Translate\Adapter\AbstractAdapter implements 
     public function query(string $index, array $placeholders = array()): string
     {
     }
+
 }

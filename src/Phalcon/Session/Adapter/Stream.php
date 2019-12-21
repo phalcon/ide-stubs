@@ -9,6 +9,9 @@
  */
 namespace Phalcon\Session\Adapter;
 
+use Phalcon\Helper\Str;
+use Phalcon\Session\Exception;
+
 /**
  * Phalcon\Session\Adapter\Stream
  *
@@ -38,7 +41,12 @@ class Stream extends \Phalcon\Session\Adapter\Noop
 
 
     /**
-     * @param array $options
+     * Constructor
+     *
+     * @param array $options = [
+     *     'prefix' => '',
+     *     'savePath' => ''
+     * ]
      */
     public function __construct(array $options = array())
     {
@@ -87,4 +95,5 @@ class Stream extends \Phalcon\Session\Adapter\Noop
     public function write($id, $data): bool
     {
     }
+
 }

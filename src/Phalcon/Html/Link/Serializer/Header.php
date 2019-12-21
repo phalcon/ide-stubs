@@ -26,4 +26,5 @@ class Header implements \Phalcon\Html\Link\Serializer\SerializerInterface
     public function serialize(array $links): ?string
     {
     }
+
 }

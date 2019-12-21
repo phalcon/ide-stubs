@@ -9,9 +9,16 @@
  */
 namespace Phalcon;
 
+use Phalcon\Di\Service;
 use Phalcon\Di\DiInterface;
+use Phalcon\Di\Exception;
+use Phalcon\Di\Exception\ServiceResolutionException;
+use Phalcon\Config\Adapter\Php;
+use Phalcon\Config\Adapter\Yaml;
 use Phalcon\Di\ServiceInterface;
 use Phalcon\Events\ManagerInterface;
+use Phalcon\Di\InjectionAwareInterface;
+use Phalcon\Di\ServiceProviderInterface;
 
 /**
  * Phalcon\Di is a component that implements Dependency Injection/Service
@@ -73,7 +80,7 @@ class Di implements \Phalcon\Di\DiInterface
     /**
      * Latest DI build
      */
-    protected static $_default;
+    static protected $_default;
 
 
     /**
@@ -160,7 +167,7 @@ class Di implements \Phalcon\Di\DiInterface
     /**
      * Return the services registered in the DI
      *
-     * @return array
+     * @return array|\Phalcon\Di\ServiceInterface[]
      */
     public function getServices(): array
     {
@@ -412,7 +419,7 @@ class Di implements \Phalcon\Di\DiInterface
      * @param \Phalcon\Di\ServiceInterface $rawDefinition
      * @return ServiceInterface
      */
-    public function setRaw(string $name, \Phalcon\Di\ServiceInterface $rawDefinition): ServiceInterface
+    public function setService(string $name, \Phalcon\Di\ServiceInterface $rawDefinition): ServiceInterface
     {
     }
 
@@ -426,4 +433,5 @@ class Di implements \Phalcon\Di\DiInterface
     public function setShared(string $name, $definition): ServiceInterface
     {
     }
+
 }

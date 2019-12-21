@@ -9,6 +9,9 @@
  */
 namespace Phalcon\Http\Message;
 
+use Phalcon\Helper\Number;
+use Phalcon\Helper\Arr;
+use Phalcon\Helper\Str;
 use Phalcon\Http\Message\Exception\InvalidArgumentException;
 use Psr\Http\Message\StreamInterface;
 use Psr\Http\Message\UploadedFileInterface;
@@ -271,4 +274,5 @@ final class UploadedFile implements \Psr\Http\Message\UploadedFileInterface
     private function storeFile(string $targetPath)
     {
     }
+
 }

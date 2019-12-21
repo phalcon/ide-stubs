@@ -9,8 +9,19 @@
  */
 namespace Phalcon\Mvc\Model;
 
-use Phalcon\Cache\Adapter\AdapterInterface;
+use ArrayAccess;
+use Closure;
+use Countable;
+use Iterator;
+use JsonSerializable;
+use Phalcon\Db\Enum;
+use Phalcon\Messages\MessageInterface;
+use Phalcon\Mvc\Model;
 use Phalcon\Mvc\ModelInterface;
+use Phalcon\Cache\Adapter\AdapterInterface;
+use Phalcon\Storage\Serializer\SerializerInterface;
+use SeekableIterator;
+use Serializable;
 
 /**
  * Phalcon\Mvc\Model\Resultset
@@ -146,7 +157,7 @@ abstract class Resultset implements \Phalcon\Mvc\Model\ResultsetInterface, \Iter
      * ```
      *
      * @param callable $filter
-     * @return array
+     * @return array|\Phalcon\Mvc\ModelInterface[]
      */
     public function filter($filter): array
     {
@@ -191,7 +202,7 @@ abstract class Resultset implements \Phalcon\Mvc\Model\ResultsetInterface, \Iter
     /**
      * Returns the error messages produced by a batch operation
      *
-     * @return array
+     * @return array|\Phalcon\Messages\MessageInterface[]
      */
     public function getMessages(): array
     {
@@ -349,4 +360,5 @@ abstract class Resultset implements \Phalcon\Mvc\Model\ResultsetInterface, \Iter
     public function valid(): bool
     {
     }
+
 }

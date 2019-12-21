@@ -10,6 +10,11 @@
 namespace Phalcon\Db\Adapter\Pdo;
 
 use Phalcon\Db\Adapter\AbstractAdapter;
+use Phalcon\Db\Column;
+use Phalcon\Db\Exception;
+use Phalcon\Db\Result\Pdo as ResultPdo;
+use Phalcon\Db\ResultInterface;
+use Phalcon\Events\ManagerInterface;
 
 /**
  * Phalcon\Db\Adapter\Pdo is the Phalcon\Db that internally uses PDO to connect
@@ -47,7 +52,17 @@ abstract class AbstractPdo extends AbstractAdapter
     /**
      * Constructor for Phalcon\Db\Adapter\Pdo
      *
-     * @param array $descriptor
+     * @param array|\Phalcon\Config $descriptor = [
+     *     'host' => 'localhost',
+     *     'port' => '3306',
+     *     'dbname' => 'blog',
+     *     'username' => 'sigma'
+     *     'password' => 'secret'
+     *     'dialectClass' => null,
+     *     'options' => [],
+     *     'dsn' => null,
+     *     'charset' => 'utf8mb4'
+     * ]
      */
     public function __construct(array $descriptor)
     {
@@ -373,4 +388,5 @@ abstract class AbstractPdo extends AbstractAdapter
      * @return array
      */
     abstract protected function getDsnDefaults(): array;
+
 }

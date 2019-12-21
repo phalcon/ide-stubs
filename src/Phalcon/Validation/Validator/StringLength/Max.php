@@ -9,7 +9,10 @@
  */
 namespace Phalcon\Validation\Validator\StringLength;
 
+use Phalcon\Messages\Message;
+use Phalcon\Validation;
 use Phalcon\Validation\AbstractValidator;
+use Phalcon\Validation\Exception;
 
 /**
  * Validates that a string has the specified maximum constraints
@@ -64,6 +67,21 @@ class Max extends AbstractValidator
 
 
     /**
+     * Constructor
+     *
+     * @param array $options = [
+     *     'message' => '',
+     *     'template' => '',
+     *     'allowEmpty' => false,
+     *     'max' => 1000,
+     *     'included' => false
+     * ]
+     */
+    public function __construct(array $options = array())
+    {
+    }
+
+    /**
      * Executes the validation
      *
      * @param \Phalcon\Validation $validation
@@ -73,4 +91,5 @@ class Max extends AbstractValidator
     public function validate(\Phalcon\Validation $validation, $field): bool
     {
     }
+
 }

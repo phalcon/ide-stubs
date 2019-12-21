@@ -10,6 +10,8 @@
 namespace Phalcon\Db\Result;
 
 use Phalcon\Db\Enum;
+use Phalcon\Db\ResultInterface;
+use Phalcon\Db\Adapter\AdapterInterface;
 
 /**
  * Encapsulates the resultset internals
@@ -233,4 +235,5 @@ class Pdo implements \Phalcon\Db\ResultInterface
     public function setFetchMode(int $fetchMode, $colNoOrClassNameOrObject = null, $ctorargs = null): bool
     {
     }
+
 }

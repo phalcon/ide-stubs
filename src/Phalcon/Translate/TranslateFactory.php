@@ -9,7 +9,9 @@
  */
 namespace Phalcon\Translate;
 
+use Phalcon\Config;
 use Phalcon\Factory\AbstractFactory;
+use Phalcon\Helper\Arr;
 use Phalcon\Translate\Adapter\AdapterInterface;
 
 /**
@@ -41,7 +43,33 @@ class TranslateFactory extends AbstractFactory
     /**
      * Factory to create an instace from a Config object
      *
+     * @param array|\Phalcon\Config = [
+     *     'adapter' => 'ini,
+     *     'options' => [
+     *         'content' => '',
+     *         'delimiter' => ';',
+     *         'enclosure' => '"',
+     *         'locale' => '',
+     *         'defaultDomain' => '',
+     *         'directory' => '',
+     *         'category' => ''
+     *         'triggerError' => false
+     *     ]
+     * ]
      * @param mixed $config
+     * @param array|\Phalcon\Config  = [
+     *     'adapter' => 'ini,
+     *     'options' => [
+     *         'content' => '',
+     *         'delimiter' => ';',
+     *         'enclosure' => '"',
+     *         'locale' => '',
+     *         'defaultDomain' => '',
+     *         'directory' => '',
+     *         'category' => ''
+     *         'triggerError' => false
+     *     ]
+     * ]
      * @return mixed
      */
     public function load($config)
@@ -65,4 +93,5 @@ class TranslateFactory extends AbstractFactory
     protected function getAdapters(): array
     {
     }
+
 }

@@ -10,6 +10,7 @@
 namespace Phalcon\Cli;
 
 use Phalcon\Di\Injectable;
+use Phalcon\Events\EventsAwareInterface;
 use Phalcon\Events\ManagerInterface;
 
 /**
@@ -67,4 +68,5 @@ class Task extends Injectable implements \Phalcon\Cli\TaskInterface, \Phalcon\Ev
     public function setEventsManager(\Phalcon\Events\ManagerInterface $eventsManager)
     {
     }
+
 }

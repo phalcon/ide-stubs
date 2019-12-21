@@ -9,6 +9,14 @@
  */
 namespace Phalcon\Logger\Adapter;
 
+use LogicException;
+use Phalcon\Helper\Arr;
+use Phalcon\Logger;
+use Phalcon\Logger\Adapter;
+use Phalcon\Logger\Exception;
+use Phalcon\Logger\Formatter\FormatterInterface;
+use Phalcon\Logger\Item;
+
 /**
  * Phalcon\Logger\Adapter\Syslog
  *
@@ -65,8 +73,11 @@ class Syslog extends \Phalcon\Logger\Adapter\AbstractAdapter
     /**
      * Phalcon\Logger\Adapter\Syslog constructor
      *
+     * @param array $options = [
+     *     'option' => null,
+     *     'facility' => null
+     * ]
      * @param string $name
-     * @param array $options
      */
     public function __construct(string $name, array $options = array())
     {
@@ -94,10 +105,11 @@ class Syslog extends \Phalcon\Logger\Adapter\AbstractAdapter
     /**
      * Translates a Logger level to a Syslog level
      *
-     * @param string $level
+     * @param int $level
      * @return int
      */
-    private function logLevelToSyslog(string $level): int
+    private function logLevelToSyslog(int $level): int
     {
     }
+
 }

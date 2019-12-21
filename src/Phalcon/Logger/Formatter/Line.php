@@ -9,6 +9,8 @@
  */
 namespace Phalcon\Logger\Formatter;
 
+use Phalcon\Logger\Item;
+
 /**
  * Phalcon\Logger\Formatter\Line
  *
@@ -73,7 +75,7 @@ class Line extends \Phalcon\Logger\Formatter\AbstractFormatter
      * @param string $format
      * @param string $dateFormat
      */
-    public function __construct(string $format = '[%date%][%type%] %message%', string $dateFormat = 'D, d M y H:i:s O')
+    public function __construct(string $format = '[%date%][%type%] %message%', string $dateFormat = 'c')
     {
     }
 
@@ -86,4 +88,5 @@ class Line extends \Phalcon\Logger\Formatter\AbstractFormatter
     public function format(\Phalcon\Logger\Item $item): string
     {
     }
+
 }

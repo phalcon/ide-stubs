@@ -9,6 +9,7 @@
  */
 namespace Phalcon\Html\Helper;
 
+use Phalcon\Html\Exception;
 use Phalcon\Escaper\EscaperInterface;
 
 /**
@@ -88,4 +89,5 @@ abstract class AbstractHelper
     protected function selfClose(string $tag, array $attributes = array()): string
     {
     }
+
 }

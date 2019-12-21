@@ -9,8 +9,11 @@
  */
 namespace Phalcon;
 
+use Phalcon\Di\DiInterface;
 use Phalcon\Di\AbstractInjectionAware;
 use Phalcon\Mvc\RouterInterface;
+use Phalcon\Mvc\Router\RouteInterface;
+use Phalcon\Url\Exception;
 use Phalcon\Url\UrlInterface;
 
 /**
@@ -93,7 +96,9 @@ class Url extends AbstractInjectionAware implements \Phalcon\Url\UrlInterface
      * );
      * ```
      *
-     * @param mixed $uri
+     * @param array|string $uri = [
+     *     'for' => '',
+     * ]
      * @param mixed $args
      * @param bool $local
      * @param mixed $baseUri
@@ -136,7 +141,9 @@ class Url extends AbstractInjectionAware implements \Phalcon\Url\UrlInterface
      * );
      * ```
      *
-     * @param mixed $uri
+     * @param array|string $uri = [
+     *     'for' => ''
+     * ]
      * @return string
      */
     public function getStatic($uri = null): string
@@ -205,4 +212,5 @@ class Url extends AbstractInjectionAware implements \Phalcon\Url\UrlInterface
     public function path(string $path = null): string
     {
     }
+
 }

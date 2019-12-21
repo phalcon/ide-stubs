@@ -32,4 +32,5 @@ interface EventsAwareInterface
      * @return void
      */
     public function setEventsManager(ManagerInterface $eventsManager);
+
 }

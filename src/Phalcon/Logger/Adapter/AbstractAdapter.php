@@ -9,7 +9,10 @@
  */
 namespace Phalcon\Logger\Adapter;
 
+use Phalcon\Logger;
+use Phalcon\Logger\Exception;
 use Phalcon\Logger\Formatter\FormatterInterface;
+use Phalcon\Logger\Item;
 
 /**
  * This file is part of the Phalcon Framework.
@@ -127,4 +130,5 @@ abstract class AbstractAdapter implements \Phalcon\Logger\Adapter\AdapterInterfa
     public function setFormatter(\Phalcon\Logger\Formatter\FormatterInterface $formatter): AdapterInterface
     {
     }
+
 }

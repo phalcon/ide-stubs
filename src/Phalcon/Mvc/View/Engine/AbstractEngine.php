@@ -9,6 +9,7 @@
  */
 namespace Phalcon\Mvc\View\Engine;
 
+use Phalcon\Di\DiInterface;
 use Phalcon\Di\Injectable;
 use Phalcon\Mvc\ViewBaseInterface;
 
@@ -60,4 +61,5 @@ abstract class AbstractEngine extends Injectable implements \Phalcon\Mvc\View\En
     public function partial(string $partialPath, $params = null)
     {
     }
+
 }

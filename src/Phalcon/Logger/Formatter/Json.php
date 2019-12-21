@@ -9,6 +9,9 @@
  */
 namespace Phalcon\Logger\Formatter;
 
+use Phalcon\Helper\Json;
+use Phalcon\Logger\Item;
+
 /**
  * Phalcon\Logger\Formatter\Json
  *
@@ -47,7 +50,7 @@ class Json extends \Phalcon\Logger\Formatter\AbstractFormatter
      *
      * @param string $dateFormat
      */
-    public function __construct(string $dateFormat = 'D, d M y H:i:s O')
+    public function __construct(string $dateFormat = 'c')
     {
     }
 
@@ -60,4 +63,5 @@ class Json extends \Phalcon\Logger\Formatter\AbstractFormatter
     public function format(\Phalcon\Logger\Item $item): string
     {
     }
+
 }

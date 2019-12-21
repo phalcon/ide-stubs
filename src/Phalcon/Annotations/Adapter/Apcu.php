@@ -9,6 +9,8 @@
  */
 namespace Phalcon\Annotations\Adapter;
 
+use Phalcon\Annotations\Reflection;
+
 /**
  * Stores the parsed annotations in APCu. This adapter is suitable for production
  *
@@ -32,9 +34,12 @@ class Apcu extends \Phalcon\Annotations\Adapter\AbstractAdapter
 
 
     /**
-     * Phalcon\Annotations\Adapter\Apcu constructor
+     * @param array $options = [
+     *     'prefix' => 'phalcon'
+     *     'lifetime' => 3600
+     * ]
      *
-     * @param array $options
+     * Phalcon\Annotations\Adapter\Apcu constructor
      */
     public function __construct(array $options = array())
     {
@@ -60,4 +65,5 @@ class Apcu extends \Phalcon\Annotations\Adapter\AbstractAdapter
     public function write(string $key, \Phalcon\Annotations\Reflection $data): bool
     {
     }
+
 }

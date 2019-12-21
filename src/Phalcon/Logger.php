@@ -9,7 +9,9 @@
  */
 namespace Phalcon;
 
+use Psr\Log\LoggerInterface;
 use Phalcon\Logger\Adapter\AdapterInterface;
+use Phalcon\Logger\Item;
 use Phalcon\Logger\Exception;
 
 /**
@@ -291,7 +293,7 @@ class Logger implements \Psr\Log\LoggerInterface
     }
 
     /**
-     * Sets the adapters stack overriding what is already there
+     * Sets the log level above which we can log
      *
      * @param int $level
      * @return Logger
@@ -345,4 +347,5 @@ class Logger implements \Psr\Log\LoggerInterface
     private function getLevelNumber($level): int
     {
     }
+
 }

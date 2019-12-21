@@ -9,6 +9,12 @@
  */
 namespace Phalcon\Storage\Adapter;
 
+use APCuIterator;
+use Phalcon\Helper\Arr;
+use Phalcon\Storage\Exception;
+use Phalcon\Storage\SerializerFactory;
+use Phalcon\Storage\Serializer\SerializerInterface;
+
 /**
  * Apcu adapter
  */
@@ -23,10 +29,15 @@ class Apcu extends \Phalcon\Storage\Adapter\AbstractAdapter
     /**
      * Constructor
      *
+     * @param array $options = [
+     *     'defaultSerializer' => 'Php',
+     *     'lifetime' => 3600,
+     *     'serializer' => null,
+     *     'prefix' => ''
+     * ]
      * @param \Phalcon\Storage\SerializerFactory $factory
-     * @param array $options
      */
-    public function __construct(\Phalcon\Storage\SerializerFactory $factory = null, array $options = array())
+    public function __construct(\Phalcon\Storage\SerializerFactory $factory, array $options = array())
     {
     }
 
@@ -87,8 +98,9 @@ class Apcu extends \Phalcon\Storage\Adapter\AbstractAdapter
      * Stores data in the adapter
      *
      * @return array
+     * @param string $prefix
      */
-    public function getKeys(): array
+    public function getKeys(string $prefix = ''): array
     {
     }
 
@@ -128,4 +140,5 @@ class Apcu extends \Phalcon\Storage\Adapter\AbstractAdapter
     public function set(string $key, $value, $ttl = null): bool
     {
     }
+
 }

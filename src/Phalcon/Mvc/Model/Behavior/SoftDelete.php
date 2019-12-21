@@ -9,7 +9,9 @@
  */
 namespace Phalcon\Mvc\Model\Behavior;
 
+use Phalcon\Mvc\ModelInterface;
 use Phalcon\Mvc\Model\Behavior;
+use Phalcon\Mvc\Model\Exception;
 
 /**
  * Phalcon\Mvc\Model\Behavior\SoftDelete
@@ -29,4 +31,5 @@ class SoftDelete extends Behavior
     public function notify(string $type, \Phalcon\Mvc\ModelInterface $model)
     {
     }
+
 }

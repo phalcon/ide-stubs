@@ -9,6 +9,13 @@
  */
 namespace Phalcon\Mvc\Model\MetaData\Strategy;
 
+use Phalcon\Di\DiInterface;
+use Phalcon\Db\Adapter\AdapterInterface;
+use Phalcon\Db\Column;
+use Phalcon\Mvc\ModelInterface;
+use Phalcon\Mvc\Model\Exception;
+use Phalcon\Mvc\Model\MetaData;
+
 /**
  * Phalcon\Mvc\Model\MetaData\Strategy\Introspection
  *
@@ -38,4 +45,5 @@ class Introspection implements \Phalcon\Mvc\Model\MetaData\Strategy\StrategyInte
     final public function getMetaData(\Phalcon\Mvc\ModelInterface $model, \Phalcon\Di\DiInterface $container): array
     {
     }
+
 }

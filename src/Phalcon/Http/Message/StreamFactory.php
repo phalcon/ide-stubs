@@ -9,6 +9,7 @@
  */
 namespace Phalcon\Http\Message;
 
+use Phalcon\Http\Message\Exception\InvalidArgumentException;
 use Psr\Http\Message\StreamFactoryInterface;
 use Psr\Http\Message\StreamInterface;
 
@@ -61,4 +62,5 @@ final class StreamFactory implements \Psr\Http\Message\StreamFactoryInterface
     public function createStreamFromResource($phpResource): StreamInterface
     {
     }
+
 }

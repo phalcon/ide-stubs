@@ -9,6 +9,8 @@
  */
 namespace Phalcon\Mvc\Model;
 
+use Phalcon\Mvc\ModelInterface;
+
 /**
  * Phalcon\Mvc\Model\ResultInterface
  *
@@ -24,4 +26,5 @@ interface ResultInterface
      * @return mixed
      */
     public function setDirtyState(int $dirtyState);
+
 }

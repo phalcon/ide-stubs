@@ -9,7 +9,9 @@
  */
 namespace Phalcon;
 
+use Phalcon\Loader\Exception;
 use Phalcon\Events\ManagerInterface;
+use Phalcon\Events\EventsAwareInterface;
 
 /**
  * This component helps to load your project classes automatically based on some
@@ -289,4 +291,5 @@ class Loader implements \Phalcon\Events\EventsAwareInterface
     protected function prepareNamespace(array $namespaceName): array
     {
     }
+
 }

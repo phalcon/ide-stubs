@@ -35,4 +35,5 @@ interface ComponentInterface
      * @return string
      */
     public function __toString(): string;
+
 }

@@ -210,7 +210,7 @@ interface GroupInterface
     /**
      * Returns the routes added to the group
      *
-     * @return array
+     * @return array|RouteInterface[]
      */
     public function getRoutes(): array;
 
@@ -237,4 +237,5 @@ interface GroupInterface
      * @return GroupInterface
      */
     public function setPrefix(string $prefix): GroupInterface;
+
 }

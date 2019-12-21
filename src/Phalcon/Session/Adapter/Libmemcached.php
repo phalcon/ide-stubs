@@ -9,6 +9,8 @@
  */
 namespace Phalcon\Session\Adapter;
 
+use Phalcon\Storage\AdapterFactory;
+
 /**
  * Phalcon\Session\Adapter\Libmemcached
  */
@@ -18,10 +20,24 @@ class Libmemcached extends \Phalcon\Session\Adapter\AbstractAdapter
     /**
      * Constructor
      *
+     * @param array $options = [
+     *     'servers' => [
+     *         [
+     *             'host' => 'localhost',
+     *             'port' => 11211,
+     *             'weight' => 1,
+     *
+     *         ]
+     *     ],
+     *     'defaultSerializer' => 'Php',
+     *     'lifetime' => 3600,
+     *     'serializer' => null,
+     *     'prefix' => 'sess-memc-'
+     * ]
      * @param \Phalcon\Storage\AdapterFactory $factory
-     * @param array $options
      */
     public function __construct(\Phalcon\Storage\AdapterFactory $factory, array $options = array())
     {
     }
+
 }

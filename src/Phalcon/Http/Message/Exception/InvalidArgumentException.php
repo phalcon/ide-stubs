@@ -9,6 +9,8 @@
  */
 namespace Phalcon\Http\Message\Exception;
 
+use Throwable;
+
 /**
  * This file is part of the Phalcon Framework.
  *

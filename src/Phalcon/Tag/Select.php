@@ -9,6 +9,10 @@
  */
 namespace Phalcon\Tag;
 
+use Phalcon\Tag as BaseTag;
+use Phalcon\Escaper\EscaperInterface;
+use Phalcon\Mvc\Model\ResultsetInterface;
+
 /**
  * Phalcon\Tag\Select
  *
@@ -21,7 +25,14 @@ abstract class Select
     /**
      * Generates a SELECT tag
      *
-     * @param array $parameters
+     * @param array $parameters = [
+     *     'id' => '',
+     *     'name' => '',
+     *     'value' => '',
+     *     'useEmpty' => false,
+     *     'emptyValue' => '',
+     *     'emptyText' => '',
+     * ]
      * @param array $data
      * @return string
      */
@@ -53,4 +64,5 @@ abstract class Select
     private static function optionsFromResultset(\Phalcon\Mvc\Model\ResultsetInterface $resultset, $using, $value, string $closeOption): string
     {
     }
+
 }
