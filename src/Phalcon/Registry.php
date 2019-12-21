@@ -1,15 +1,24 @@
 <?php
 
+/* This file is part of the Phalcon Framework.
+ *
+ * (c) Phalcon Team <team@phalcon.io>
+ *
+ * For the full copyright and license information, please view the LICENSE.txt
+ * file that was distributed with this source code.
+ */
 namespace Phalcon;
+
+use Traversable;
 
 /**
  * Phalcon\Registry
  *
- * A registry is a container for storing objects and values in the application space.
- * By storing the value in a registry, the same object is always available throughout
- * your application.
+ * A registry is a container for storing objects and values in the application
+ * space. By storing the value in a registry, the same object is always
+ * available throughout your application.
  *
- * <code>
+ * ```php
  * $registry = new \Phalcon\Registry();
  *
  * // Set value
@@ -31,13 +40,13 @@ namespace Phalcon;
  * unset($registry->something);
  * // or
  * unset($registry["something"]);
- * </code>
+ * ```
  *
  * In addition to ArrayAccess, Phalcon\Registry also implements Countable
  * (count($registry) will return the number of elements in the registry),
- * Serializable and Iterator (you can iterate over the registry
- * using a foreach loop) interfaces. For PHP 5.4 and higher, JsonSerializable
- * interface is implemented.
+ * Serializable and Iterator (you can iterate over the registry using a foreach
+ * loop) interfaces. For PHP 5.4 and higher, JsonSerializable interface is
+ * implemented.
  *
  * Phalcon\Registry is very fast (it is typically faster than any userspace
  * implementation of the registry); however, this comes at a price:
@@ -49,112 +58,240 @@ namespace Phalcon;
  * is several times slower than $registry->property.
  *
  * Internally all the magic methods (and interfaces except JsonSerializable)
- * are implemented using object handlers or similar techniques: this allows
- * to bypass relatively slow method calls.
+ * are implemented using object handlers or similar techniques: this allows to
+ * bypass relatively slow method calls.
  */
-final class Registry implements \ArrayAccess, \Countable, \Iterator
+final class Registry extends Collection
 {
 
-    protected $_data;
-
-
     /**
-     * Registry constructor
-     */
-    public final function __construct() {}
-
-    /**
-     * Checks if the element is present in the registry
+     * Constructor
      *
-     * @param mixed $offset
-     * @return bool
+     * @param array $data
      */
-    public final function offsetExists($offset) {}
+    final public function __construct(array $data = null)
+    {
+    }
 
     /**
-     * Returns an index in the registry
+     * Magic getter to get an element from the collection
      *
-     * @param mixed $offset
+     * @param string $element
      * @return mixed
      */
-    public final function offsetGet($offset) {}
+    final public function __get(string $element)
+    {
+    }
 
     /**
-     * Sets an element in the registry
+     * Magic isset to check whether an element exists or not
      *
-     * @param mixed $offset
-     * @param mixed $value
-     */
-    public final function offsetSet($offset, $value) {}
-
-    /**
-     * Unsets an element in the registry
-     *
-     * @param mixed $offset
-     */
-    public final function offsetUnset($offset) {}
-
-    /**
-     * Checks how many elements are in the register
-     *
-     * @return int
-     */
-    public final function count() {}
-
-    /**
-     * Moves cursor to next row in the registry
-     */
-    public final function next() {}
-
-    /**
-     * Gets pointer number of active row in the registry
-     *
-     * @return int
-     */
-    public final function key() {}
-
-    /**
-     * Rewinds the registry cursor to its beginning
-     */
-    public final function rewind() {}
-
-    /**
-     * Checks if the iterator is valid
-     *
+     * @param string $element
      * @return bool
      */
-    public function valid() {}
+    final public function __isset(string $element): bool
+    {
+    }
 
     /**
-     * Obtains the current value in the internal iterator
-     */
-    public function current() {}
-
-    /**
-     * Sets an element in the registry
+     * Magic setter to assign values to an element
      *
-     * @param string $key
+     * @param string $element
      * @param mixed $value
+     * @return void
      */
-    public final function __set($key, $value) {}
+    final public function __set(string $element, $value)
+    {
+    }
 
     /**
-     * Returns an index in the registry
+     * Magic unset to remove an element from the collection
      *
-     * @param string $key
+     * @param string $element
+     * @return void
+     */
+    final public function __unset(string $element)
+    {
+    }
+
+    /**
+     * Clears the internal collection
+     *
+     * @return void
+     */
+    final public function clear()
+    {
+    }
+
+    /**
+     * Count elements of an object
+     *
+     * @link https://php.net/manual/en/countable.count.php
+     * @return int
+     */
+    final public function count(): int
+    {
+    }
+
+    /**
+     * Get the element from the collection
+     *
+     * @param string $element
+     * @param mixed $defaultValue
+     * @param string $cast
      * @return mixed
      */
-    public final function __get($key) {}
+    final public function get(string $element, $defaultValue = null, string $cast = null)
+    {
+    }
 
     /**
-     * @param string $key
+     * Returns the iterator of the class
+     *
+     * @return Traversable
+     */
+    final public function getIterator(): Traversable
+    {
+    }
+
+    /**
+     * Get the element from the collection
+     *
+     * @param string $element
      * @return bool
      */
-    public final function __isset($key) {}
+    final public function has(string $element): bool
+    {
+    }
 
     /**
-     * @param string $key
+     * Initialize internal array
+     *
+     * @param array $data
+     * @return void
      */
-    public final function __unset($key) {}
+    final public function init(array $data = array())
+    {
+    }
 
+    /**
+     * Specify data which should be serialized to JSON
+     *
+     * @link https://php.net/manual/en/jsonserializable.jsonserialize.php
+     * @return array
+     */
+    final public function jsonSerialize(): array
+    {
+    }
+
+    /**
+     * Whether a offset exists
+     *
+     * @link https://php.net/manual/en/arrayaccess.offsetexists.php
+     * @param mixed $element
+     * @return bool
+     */
+    final public function offsetExists($element): bool
+    {
+    }
+
+    /**
+     * Offset to retrieve
+     *
+     * @link https://php.net/manual/en/arrayaccess.offsetget.php
+     * @param mixed $element
+     * @return mixed
+     */
+    final public function offsetGet($element)
+    {
+    }
+
+    /**
+     * Offset to set
+     *
+     * @link https://php.net/manual/en/arrayaccess.offsetset.php
+     * @param mixed $element
+     * @param mixed $value
+     * @return void
+     */
+    final public function offsetSet($element, $value)
+    {
+    }
+
+    /**
+     * Offset to unset
+     *
+     * @link https://php.net/manual/en/arrayaccess.offsetunset.php
+     * @param mixed $element
+     * @return void
+     */
+    final public function offsetUnset($element)
+    {
+    }
+
+    /**
+     * Delete the element from the collection
+     *
+     * @param string $element
+     * @return void
+     */
+    final public function remove(string $element)
+    {
+    }
+
+    /**
+     * String representation of object
+     *
+     * @link https://php.net/manual/en/serializable.serialize.php
+     * @return string
+     */
+    final public function serialize(): string
+    {
+    }
+
+    /**
+     * Set an element in the collection
+     *
+     * @param string $element
+     * @param mixed $value
+     * @return void
+     */
+    final public function set(string $element, $value)
+    {
+    }
+
+    /**
+     * Returns the object in an array format
+     *
+     * @return array
+     */
+    final public function toArray(): array
+    {
+    }
+
+    /**
+     * Returns the object in a JSON format
+     *
+     * The default string uses the following options for json_encode
+     *
+     * JSON_HEX_TAG, JSON_HEX_APOS, JSON_HEX_AMP, JSON_HEX_QUOT, JSON_UNESCAPED_SLASHES
+     *
+     * @see https://www.ietf.org/rfc/rfc4627.txt
+     * @param int $options
+     * @return string
+     */
+    final public function toJson(int $options = 79): string
+    {
+    }
+
+    /**
+     * Constructs the object
+     *
+     * @link https://php.net/manual/en/serializable.unserialize.php
+     * @param mixed $serialized
+     * @return void
+     */
+    final public function unserialize($serialized)
+    {
+    }
 }

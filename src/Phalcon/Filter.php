@@ -1,103 +1,182 @@
 <?php
 
+/* This file is part of the Phalcon Framework.
+ *
+ * (c) Phalcon Team <team@phalcon.io>
+ *
+ * For the full copyright and license information, please view the LICENSE.txt
+ * file that was distributed with this source code.
+ */
 namespace Phalcon;
 
+use Closure;
+use Phalcon\Filter\Exception;
+use Phalcon\Filter\FilterInterface;
+
 /**
- * Phalcon\Filter
- *
- * The Phalcon\Filter component provides a set of commonly needed data filters. It provides
- * object oriented wrappers to the php filter extension. Also allows the developer to
- * define his/her own filters
- *
- * <code>
- * $filter = new \Phalcon\Filter();
- *
- * $filter->sanitize("some(one)@exa\\mple.com", "email"); // returns "someone@example.com"
- * $filter->sanitize("hello<<", "string"); // returns "hello"
- * $filter->sanitize("!100a019", "int"); // returns "100019"
- * $filter->sanitize("!100a019.01a", "float"); // returns "100019.01"
- * </code>
+ * Lazy loads, stores and exposes sanitizer objects
  */
-class Filter implements \Phalcon\FilterInterface
+class Filter implements FilterInterface
 {
-
-    const FILTER_EMAIL = 'email';
-
 
     const FILTER_ABSINT = 'absint';
 
 
-    const FILTER_INT = 'int';
+    const FILTER_ALNUM = 'alnum';
 
 
-    const FILTER_INT_CAST = 'int!';
+    const FILTER_ALPHA = 'alpha';
 
 
-    const FILTER_STRING = 'string';
+    const FILTER_BOOL = 'bool';
+
+
+    const FILTER_EMAIL = 'email';
 
 
     const FILTER_FLOAT = 'float';
 
 
-    const FILTER_FLOAT_CAST = 'float!';
-
-
-    const FILTER_ALPHANUM = 'alphanum';
-
-
-    const FILTER_TRIM = 'trim';
-
-
-    const FILTER_STRIPTAGS = 'striptags';
+    const FILTER_INT = 'int';
 
 
     const FILTER_LOWER = 'lower';
 
 
+    const FILTER_LOWERFIRST = 'lowerFirst';
+
+
+    const FILTER_REGEX = 'regex';
+
+
+    const FILTER_REMOVE = 'remove';
+
+
+    const FILTER_REPLACE = 'replace';
+
+
+    const FILTER_SPECIAL = 'special';
+
+
+    const FILTER_SPECIALFULL = 'specialFull';
+
+
+    const FILTER_STRING = 'string';
+
+
+    const FILTER_STRIPTAGS = 'striptags';
+
+
+    const FILTER_TRIM = 'trim';
+
+
     const FILTER_UPPER = 'upper';
+
+
+    const FILTER_UPPERFIRST = 'upperFirst';
+
+
+    const FILTER_UPPERWORDS = 'upperWords';
 
 
     const FILTER_URL = 'url';
 
+    /**
+     * @var array
+     */
+    protected $mapper = array();
 
-    const FILTER_SPECIAL_CHARS = 'special_chars';
-
-
-    protected $_filters;
+    /**
+     * @var array
+     */
+    protected $services = array();
 
 
     /**
-     * Adds a user-defined filter
+     * Key value pairs with name as the key and a callable as the value for
+     * the service object
+     *
+     * @param array $mapper
+     */
+    public function __construct(array $mapper = array())
+    {
+    }
+
+    /**
+     * Get a service. If it is not in the mapper array, create a new object,
+     * set it and then return it.
      *
      * @param string $name
-     * @param mixed $handler
-     * @return \Phalcon\FilterInterface
+     * @return object
      */
-    public function add($name, $handler) {}
+    public function get(string $name)
+    {
+    }
 
     /**
-     * Sanitizes a value with a specified single or set of filters
+     * Checks if a service exists in the map array
+     *
+     * @param string $name
+     * @return bool
+     */
+    public function has(string $name): bool
+    {
+    }
+
+    /**
+     * Sanitizes a value with a specified single or set of sanitizers
      *
      * @param mixed $value
-     * @param mixed $filters
+     * @param mixed $sanitizers
      * @param bool $noRecursive
      * @return mixed
      */
-    public function sanitize($value, $filters, $noRecursive = false) {}
+    public function sanitize($value, $sanitizers, bool $noRecursive = false)
+    {
+    }
 
     /**
-     * Internal sanitize wrapper to filter_var
+     * Set a new service to the mapper array
      *
-     * @param mixed $value
-     * @param string $filter
+     * @param string $name
+     * @param callable $service
+     * @return void
      */
-    protected function _sanitize($value, $filter) {}
+    public function set(string $name, $service)
+    {
+    }
 
     /**
-     * Return the user-defined filters in the instance
+     * Loads the objects in the internal mapper array
      *
+     * @param array $mapper
+     * @return void
+     */
+    protected function init(array $mapper)
+    {
+    }
+
+    /**
+     * Processes the array values with the relevant sanitizers
+     *
+     * @param array $values
+     * @param string $sanitizerName
+     * @param array $sanitizerParams
      * @return array
      */
-    public function getFilters() {}
+    private function processArrayValues(array $values, string $sanitizerName, array $sanitizerParams = array()): array
+    {
+    }
 
+    /**
+     * Internal sanitize wrapper for recursion
+     *
+     * @param mixed $value
+     * @param string $sanitizerName
+     * @param array $sanitizerParams
+     * @return mixed
+     */
+    private function sanitizer($value, string $sanitizerName, array $sanitizerParams = array())
+    {
+    }
 }
