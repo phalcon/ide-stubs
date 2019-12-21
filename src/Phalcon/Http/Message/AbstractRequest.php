@@ -16,7 +16,7 @@ use Psr\Http\Message\UriInterface;
 /**
  * Request methods
  */
-abstract class AbstractRequest extends \Phalcon\Http\Message\AbstractMessage
+abstract class AbstractRequest extends AbstractMessage
 {
     /**
      * Retrieves the HTTP method of the request.
@@ -158,7 +158,7 @@ abstract class AbstractRequest extends \Phalcon\Http\Message\AbstractMessage
      *
      * @return object
      */
-    public function withUri(\Psr\Http\Message\UriInterface $uri, $preserveHost = false)
+    public function withUri(UriInterface $uri, $preserveHost = false)
     {
     }
 
@@ -183,5 +183,4 @@ abstract class AbstractRequest extends \Phalcon\Http\Message\AbstractMessage
     final protected function processUri($uri): UriInterface
     {
     }
-
 }

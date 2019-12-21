@@ -47,5 +47,4 @@ class SerializerFactory extends AbstractFactory
     protected function getAdapters(): array
     {
     }
-
 }

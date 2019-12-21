@@ -15,7 +15,7 @@ use Phalcon\Events\EventsAwareInterface;
 /**
  * Adapter for Phalcon\Acl adapters
  */
-abstract class AbstractAdapter implements \Phalcon\Acl\Adapter\AdapterInterface, \Phalcon\Events\EventsAwareInterface
+abstract class AbstractAdapter implements AdapterInterface, EventsAwareInterface
 {
     /**
      * Active access which the list is checking if some role can access it
@@ -121,11 +121,10 @@ abstract class AbstractAdapter implements \Phalcon\Acl\Adapter\AdapterInterface,
     /**
      * Sets the events manager
      *
-     * @param \Phalcon\Events\ManagerInterface $eventsManager
+     * @param ManagerInterface $eventsManager
      * @return void
      */
-    public function setEventsManager(\Phalcon\Events\ManagerInterface $eventsManager)
+    public function setEventsManager(ManagerInterface $eventsManager)
     {
     }
-
 }

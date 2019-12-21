@@ -21,7 +21,7 @@ use Phalcon\Helper\Arr;
  *
  * Session manager class
  */
-class Manager extends AbstractInjectionAware implements \Phalcon\Session\ManagerInterface
+class Manager extends AbstractInjectionAware implements ManagerInterface
 {
     /**
      * @var SessionHandlerInterface|null
@@ -206,10 +206,10 @@ class Manager extends AbstractInjectionAware implements \Phalcon\Session\Manager
     /**
      * Set the adapter for the session
      *
-     * @param \SessionHandlerInterface $adapter
+     * @param SessionHandlerInterface $adapter
      * @return ManagerInterface
      */
-    public function setAdapter(\SessionHandlerInterface $adapter): ManagerInterface
+    public function setAdapter(SessionHandlerInterface $adapter): ManagerInterface
     {
     }
 
@@ -274,5 +274,4 @@ class Manager extends AbstractInjectionAware implements \Phalcon\Session\Manager
     private function getUniqueKey(string $key): string
     {
     }
-
 }

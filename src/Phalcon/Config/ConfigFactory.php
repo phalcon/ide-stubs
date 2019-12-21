@@ -49,7 +49,7 @@ class ConfigFactory extends AbstractFactory
     /**
      * Load a config to create a new instance
      *
-     * @param string|array|\Phalcon\Config $config = [
+     * @param string|array|Config $config = [
      *      'adapter' => 'ini',
      *      'filePath' => 'config.ini',
      *      'mode' => null,
@@ -81,5 +81,4 @@ class ConfigFactory extends AbstractFactory
     protected function getAdapters(): array
     {
     }
-
 }

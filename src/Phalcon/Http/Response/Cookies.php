@@ -62,7 +62,7 @@ use Phalcon\Http\Cookie\CookieInterface;
  * );
  * ```
  */
-class Cookies extends AbstractInjectionAware implements \Phalcon\Http\Response\CookiesInterface
+class Cookies extends AbstractInjectionAware implements CookiesInterface
 {
 
     protected $cookies = array();
@@ -218,5 +218,4 @@ class Cookies extends AbstractInjectionAware implements \Phalcon\Http\Response\C
     public function useEncryption(bool $useEncryption): CookiesInterface
     {
     }
-
 }

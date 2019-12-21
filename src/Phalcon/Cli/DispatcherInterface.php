@@ -83,5 +83,4 @@ interface DispatcherInterface extends DispatcherInterfaceBase
      * @return void
      */
     public function setTaskSuffix(string $taskSuffix);
-
 }

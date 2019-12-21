@@ -36,7 +36,7 @@ class LoggerFactory
     /**
      * Factory to create an instace from a Config object
      *
-     * @param array|\Phalcon\Config $config = [
+     * @param array|Config $config = [
      *     'name' => 'messages',
      *     'adapters' => [
      *         'adapter' => 'stream',
@@ -65,5 +65,4 @@ class LoggerFactory
     public function newInstance(string $name, array $adapters = array()): Logger
     {
     }
-
 }

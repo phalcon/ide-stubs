@@ -19,7 +19,7 @@ use Phalcon\Assets\Inline\Css as InlineCss;
 /**
  * Represents a collection of assets
  */
-class Collection implements \Countable, \Iterator
+class Collection implements Countable, Iterator
 {
     /**
      * @var array
@@ -499,5 +499,4 @@ class Collection implements \Countable, \Iterator
     final protected function addAsset(AssetInterface $asset): bool
     {
     }
-
 }

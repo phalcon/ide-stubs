@@ -9,6 +9,9 @@
  */
 namespace Phalcon\Db\Adapter\Pdo;
 
+use PDO;
+use PDOStatement;
+use Phalcon\Config;
 use Phalcon\Db\Adapter\AbstractAdapter;
 use Phalcon\Db\Column;
 use Phalcon\Db\Exception;
@@ -44,7 +47,7 @@ abstract class AbstractPdo extends AbstractAdapter
     /**
      * PDO Handler
      *
-     * @var \PDO
+     * @var PDO
      */
     protected $pdo;
 
@@ -52,7 +55,7 @@ abstract class AbstractPdo extends AbstractAdapter
     /**
      * Constructor for Phalcon\Db\Adapter\Pdo
      *
-     * @param array|\Phalcon\Config $descriptor = [
+     * @param array|Config $descriptor = [
      *     'host' => 'localhost',
      *     'port' => '3306',
      *     'dbname' => 'blog',
@@ -235,12 +238,12 @@ abstract class AbstractPdo extends AbstractAdapter
      * );
      * ```
      *
-     * @param \PDOStatement $statement
+     * @param PDOStatement $statement
      * @param array $placeholders
      * @param mixed $dataTypes
-     * @return \PDOStatement
+     * @return PDOStatement
      */
-    public function executePrepared(\PDOStatement $statement, array $placeholders, $dataTypes): \PDOStatement
+    public function executePrepared(PDOStatement $statement, array $placeholders, $dataTypes): PDOStatement
     {
     }
 
@@ -254,9 +257,9 @@ abstract class AbstractPdo extends AbstractAdapter
     /**
      * Return internal PDO handler
      *
-     * @return \PDO
+     * @return PDO
      */
-    public function getInternalHandler(): \PDO
+    public function getInternalHandler(): PDO
     {
     }
 
@@ -338,9 +341,9 @@ abstract class AbstractPdo extends AbstractAdapter
      * ```
      *
      * @param string $sqlStatement
-     * @return \PDOStatement
+     * @return PDOStatement
      */
-    public function prepare(string $sqlStatement): \PDOStatement
+    public function prepare(string $sqlStatement): PDOStatement
     {
     }
 
@@ -388,5 +391,4 @@ abstract class AbstractPdo extends AbstractAdapter
      * @return array
      */
     abstract protected function getDsnDefaults(): array;
-
 }

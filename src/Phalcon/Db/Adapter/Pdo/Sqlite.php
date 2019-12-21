@@ -33,7 +33,7 @@ use Phalcon\Db\ReferenceInterface;
  * );
  * ```
  */
-class Sqlite extends \Phalcon\Db\Adapter\Pdo\AbstractPdo
+class Sqlite extends AbstractPdo
 {
     /**
      * @var string
@@ -77,7 +77,7 @@ class Sqlite extends \Phalcon\Db\Adapter\Pdo\AbstractPdo
      *
      * @param string $table
      * @param string $schema
-     * @return array|\Phalcon\Db\ColumnInterface[]
+     * @return array|ColumnInterface[]
      */
     public function describeColumns(string $table, string $schema = null): array
     {
@@ -94,7 +94,7 @@ class Sqlite extends \Phalcon\Db\Adapter\Pdo\AbstractPdo
      *
      * @param string $table
      * @param string $schema
-     * @return array|\Phalcon\Db\IndexInterface[]
+     * @return array|IndexInterface[]
      */
     public function describeIndexes(string $table, string $schema = null): array
     {
@@ -105,7 +105,7 @@ class Sqlite extends \Phalcon\Db\Adapter\Pdo\AbstractPdo
      *
      * @param string $table
      * @param string $schema
-     * @return array|\Phalcon\Db\ReferenceInterface[]
+     * @return array|ReferenceInterface[]
      */
     public function describeReferences(string $table, string $schema = null): array
     {
@@ -154,5 +154,4 @@ class Sqlite extends \Phalcon\Db\Adapter\Pdo\AbstractPdo
     protected function getDsnDefaults(): array
     {
     }
-
 }

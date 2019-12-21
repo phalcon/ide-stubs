@@ -16,7 +16,7 @@ use Phalcon\Html\Exception;
  *
  * Creates an element raw
  */
-class ElementRaw extends \Phalcon\Html\Helper\AbstractHelper
+class ElementRaw extends AbstractHelper
 {
 
     /**
@@ -30,5 +30,4 @@ class ElementRaw extends \Phalcon\Html\Helper\AbstractHelper
     public function __invoke(string $tag, string $text, array $attributes = array()): string
     {
     }
-
 }

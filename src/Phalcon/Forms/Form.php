@@ -25,7 +25,7 @@ use Phalcon\Validation\ValidationInterface;
 /**
  * This component allows to build forms using an object-oriented interface
  */
-class Form extends Injectable implements \Countable, \Iterator, \Phalcon\Html\Attributes\AttributesInterface
+class Form extends Injectable implements Countable, Iterator, AttributesInterface
 {
     /**
      * @var Attributes | null
@@ -82,12 +82,12 @@ class Form extends Injectable implements \Countable, \Iterator, \Phalcon\Html\At
     /**
      * Adds an element to the form
      *
-     * @param \Phalcon\Forms\Element\ElementInterface $element
+     * @param ElementInterface $element
      * @param string $position
      * @param bool $type
      * @return Form
      */
-    public function add(\Phalcon\Forms\Element\ElementInterface $element, string $position = null, bool $type = null): Form
+    public function add(ElementInterface $element, string $position = null, bool $type = null): Form
     {
     }
 
@@ -162,7 +162,7 @@ class Form extends Injectable implements \Countable, \Iterator, \Phalcon\Html\At
     /**
      * Returns the form elements added to the form
      *
-     * @return array|\Phalcon\Forms\Element\ElementInterface[]
+     * @return array|ElementInterface[]
      */
     public function getElements(): array
     {
@@ -359,10 +359,10 @@ class Form extends Injectable implements \Countable, \Iterator, \Phalcon\Html\At
     /**
      * Set form attributes collection
      *
-     * @param \Phalcon\Html\Attributes $attributes
+     * @param Attributes $attributes
      * @return AttributesInterface
      */
-    public function setAttributes(\Phalcon\Html\Attributes $attributes): AttributesInterface
+    public function setAttributes(Attributes $attributes): AttributesInterface
     {
     }
 
@@ -395,5 +395,4 @@ class Form extends Injectable implements \Countable, \Iterator, \Phalcon\Html\At
     public function valid(): bool
     {
     }
-
 }

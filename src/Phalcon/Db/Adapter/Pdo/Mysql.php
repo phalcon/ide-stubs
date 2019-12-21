@@ -36,7 +36,7 @@ use Phalcon\Db\ReferenceInterface;
  * $connection = new Mysql($config);
  * ```
  */
-class Mysql extends \Phalcon\Db\Adapter\Pdo\AbstractPdo
+class Mysql extends AbstractPdo
 {
     /**
      * @var string
@@ -54,10 +54,10 @@ class Mysql extends \Phalcon\Db\Adapter\Pdo\AbstractPdo
      *
      * @param string $tableName
      * @param string $schemaName
-     * @param \Phalcon\Db\ReferenceInterface $reference
+     * @param ReferenceInterface $reference
      * @return bool
      */
-    public function addForeignKey(string $tableName, string $schemaName, \Phalcon\Db\ReferenceInterface $reference): bool
+    public function addForeignKey(string $tableName, string $schemaName, ReferenceInterface $reference): bool
     {
     }
 
@@ -72,7 +72,7 @@ class Mysql extends \Phalcon\Db\Adapter\Pdo\AbstractPdo
      *
      * @param string $table
      * @param string $schema
-     * @return array|\Phalcon\Db\ColumnInterface[]
+     * @return array|ColumnInterface[]
      */
     public function describeColumns(string $table, string $schema = null): array
     {
@@ -89,7 +89,7 @@ class Mysql extends \Phalcon\Db\Adapter\Pdo\AbstractPdo
      *
      * @param string $table
      * @param string $schema
-     * @return array|\Phalcon\Db\IndexInterface[]
+     * @return array|IndexInterface[]
      */
     public function describeIndexes(string $table, string $schema = null): array
     {
@@ -106,7 +106,7 @@ class Mysql extends \Phalcon\Db\Adapter\Pdo\AbstractPdo
      *
      * @param string $table
      * @param string $schema
-     * @return array|\Phalcon\Db\ReferenceInterface[]
+     * @return array|ReferenceInterface[]
      */
     public function describeReferences(string $table, string $schema = null): array
     {
@@ -120,5 +120,4 @@ class Mysql extends \Phalcon\Db\Adapter\Pdo\AbstractPdo
     protected function getDsnDefaults(): array
     {
     }
-
 }

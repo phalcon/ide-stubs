@@ -36,7 +36,7 @@ use Throwable;
  * $connection = new Postgresql($config);
  * ```
  */
-class Postgresql extends \Phalcon\Db\Adapter\Pdo\AbstractPdo
+class Postgresql extends AbstractPdo
 {
     /**
      * @var string
@@ -92,7 +92,7 @@ class Postgresql extends \Phalcon\Db\Adapter\Pdo\AbstractPdo
      *
      * @param string $table
      * @param string $schema
-     * @return array|\Phalcon\Db\ColumnInterface[]
+     * @return array|ColumnInterface[]
      */
     public function describeColumns(string $table, string $schema = null): array
     {
@@ -109,7 +109,7 @@ class Postgresql extends \Phalcon\Db\Adapter\Pdo\AbstractPdo
      *
      * @param string $table
      * @param string $schema
-     * @return array|\Phalcon\Db\ReferenceInterface[]
+     * @return array|ReferenceInterface[]
      */
     public function describeReferences(string $table, string $schema = null): array
     {
@@ -146,11 +146,11 @@ class Postgresql extends \Phalcon\Db\Adapter\Pdo\AbstractPdo
      *
      * @param string $tableName
      * @param string $schemaName
-     * @param \Phalcon\Db\ColumnInterface $column
-     * @param \Phalcon\Db\ColumnInterface $currentColumn
+     * @param ColumnInterface $column
+     * @param ColumnInterface $currentColumn
      * @return bool
      */
-    public function modifyColumn(string $tableName, string $schemaName, \Phalcon\Db\ColumnInterface $column, \Phalcon\Db\ColumnInterface $currentColumn = null): bool
+    public function modifyColumn(string $tableName, string $schemaName, ColumnInterface $column, ColumnInterface $currentColumn = null): bool
     {
     }
 
@@ -182,5 +182,4 @@ class Postgresql extends \Phalcon\Db\Adapter\Pdo\AbstractPdo
     protected function getDsnDefaults(): array
     {
     }
-
 }

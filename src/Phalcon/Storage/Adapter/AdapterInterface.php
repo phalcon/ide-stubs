@@ -99,5 +99,4 @@ interface AdapterInterface
      * @return bool
      */
     public function set(string $key, $value, $ttl = null): bool;
-
 }

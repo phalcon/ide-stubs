@@ -16,7 +16,7 @@ use Phalcon\Html\Exception;
  *
  * Creates a label
  */
-class Label extends \Phalcon\Html\Helper\AbstractHelper
+class Label extends AbstractHelper
 {
 
     /**
@@ -28,5 +28,4 @@ class Label extends \Phalcon\Html\Helper\AbstractHelper
     public function __invoke(array $attributes = array()): string
     {
     }
-
 }

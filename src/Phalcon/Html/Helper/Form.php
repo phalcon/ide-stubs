@@ -14,7 +14,7 @@ namespace Phalcon\Html\Helper;
  *
  * Creates a form opening tag
  */
-class Form extends \Phalcon\Html\Helper\AbstractHelper
+class Form extends AbstractHelper
 {
 
     /**
@@ -24,5 +24,4 @@ class Form extends \Phalcon\Html\Helper\AbstractHelper
     public function __invoke(array $attributes = array()): string
     {
     }
-
 }

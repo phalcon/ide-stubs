@@ -9,6 +9,7 @@
  */
 namespace Phalcon\Di;
 
+use Phalcon\Di;
 use Phalcon\Filter\FilterFactory;
 
 /**
@@ -17,7 +18,7 @@ use Phalcon\Filter\FilterFactory;
  * developer does not need to register each service individually providing a
  * full stack framework
  */
-class FactoryDefault extends \Phalcon\Di
+class FactoryDefault extends Di
 {
 
     /**
@@ -26,5 +27,4 @@ class FactoryDefault extends \Phalcon\Di
     public function __construct()
     {
     }
-
 }

@@ -56,40 +56,40 @@ class Tag
     const XHTML5 = 11;
 
 
-    static protected $autoEscape = true;
+    protected static $autoEscape = true;
 
     /**
      * DI Container
      */
-    static protected $container;
+    protected static $container;
 
     /**
      * Pre-assigned values for components
      */
-    static protected $displayValues;
+    protected static $displayValues;
 
 
-    static protected $documentAppendTitle = null;
+    protected static $documentAppendTitle = null;
 
 
-    static protected $documentPrependTitle = null;
+    protected static $documentPrependTitle = null;
 
     /**
      * HTML document title
      */
-    static protected $documentTitle = null;
+    protected static $documentTitle = null;
 
 
-    static protected $documentTitleSeparator = null;
+    protected static $documentTitleSeparator = null;
 
 
-    static protected $documentType = 11;
+    protected static $documentType = 11;
 
 
-    static protected $escaperService = null;
+    protected static $escaperService = null;
 
 
-    static protected $urlService = null;
+    protected static $urlService = null;
 
 
     /**
@@ -652,10 +652,10 @@ class Tag
     /**
      * Sets the dependency injector container.
      *
-     * @param \Phalcon\Di\DiInterface $container
+     * @param DiInterface $container
      * @return void
      */
-    public static function setDI(\Phalcon\Di\DiInterface $container)
+    public static function setDI(DiInterface $container)
     {
     }
 
@@ -843,7 +843,7 @@ class Tag
      * @param bool $asValue
      * @return string
      */
-    static final protected function inputField(string $type, $parameters, bool $asValue = false): string
+    final protected static function inputField(string $type, $parameters, bool $asValue = false): string
     {
     }
 
@@ -854,8 +854,7 @@ class Tag
      * @param mixed $parameters
      * @return string
      */
-    static final protected function inputFieldChecked(string $type, $parameters): string
+    final protected static function inputFieldChecked(string $type, $parameters): string
     {
     }
-
 }

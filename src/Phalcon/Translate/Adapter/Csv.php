@@ -18,7 +18,7 @@ use Phalcon\Translate\InterpolatorFactory;
  *
  * Allows to define translation lists using CSV file
  */
-class Csv extends \Phalcon\Translate\Adapter\AbstractAdapter implements \ArrayAccess
+class Csv extends AbstractAdapter implements ArrayAccess
 {
     /**
      * @var array
@@ -34,9 +34,9 @@ class Csv extends \Phalcon\Translate\Adapter\AbstractAdapter implements \ArrayAc
      *     'delimiter' => ';',
      *     'enclosure' => '"'
      * ]
-     * @param \Phalcon\Translate\InterpolatorFactory $interpolator
+     * @param InterpolatorFactory $interpolator
      */
-    public function __construct(\Phalcon\Translate\InterpolatorFactory $interpolator, array $options)
+    public function __construct(InterpolatorFactory $interpolator, array $options)
     {
     }
 
@@ -73,5 +73,4 @@ class Csv extends \Phalcon\Translate\Adapter\AbstractAdapter implements \ArrayAc
     private function load(string $file, int $length, string $delimiter, string $enclosure)
     {
     }
-
 }

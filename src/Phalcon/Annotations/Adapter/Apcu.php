@@ -20,7 +20,7 @@ use Phalcon\Annotations\Reflection;
  * $annotations = new Apcu();
  * ```
  */
-class Apcu extends \Phalcon\Annotations\Adapter\AbstractAdapter
+class Apcu extends AbstractAdapter
 {
     /**
      * @var string
@@ -59,11 +59,10 @@ class Apcu extends \Phalcon\Annotations\Adapter\AbstractAdapter
      * Writes parsed annotations to APCu
      *
      * @param string $key
-     * @param \Phalcon\Annotations\Reflection $data
+     * @param Reflection $data
      * @return bool
      */
-    public function write(string $key, \Phalcon\Annotations\Reflection $data): bool
+    public function write(string $key, Reflection $data): bool
     {
     }
-
 }

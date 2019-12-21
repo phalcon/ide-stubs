@@ -58,7 +58,7 @@ use Phalcon\Di\ServiceProviderInterface;
  * $request = $di->getRequest();
  * ```
  */
-class Di implements \Phalcon\Di\DiInterface
+class Di implements DiInterface
 {
     /**
      * List of registered services
@@ -80,7 +80,7 @@ class Di implements \Phalcon\Di\DiInterface
     /**
      * Latest DI build
      */
-    static protected $_default;
+    protected static $_default;
 
 
     /**
@@ -167,7 +167,7 @@ class Di implements \Phalcon\Di\DiInterface
     /**
      * Return the services registered in the DI
      *
-     * @return array|\Phalcon\Di\ServiceInterface[]
+     * @return array|ServiceInterface[]
      */
     public function getServices(): array
     {
@@ -353,10 +353,10 @@ class Di implements \Phalcon\Di\DiInterface
      * }
      * ```
      *
-     * @param \Phalcon\Di\ServiceProviderInterface $provider
+     * @param ServiceProviderInterface $provider
      * @return void
      */
-    public function register(\Phalcon\Di\ServiceProviderInterface $provider)
+    public function register(ServiceProviderInterface $provider)
     {
     }
 
@@ -396,19 +396,19 @@ class Di implements \Phalcon\Di\DiInterface
      * Set a default dependency injection container to be obtained into static
      * methods
      *
-     * @param \Phalcon\Di\DiInterface $container
+     * @param DiInterface $container
      * @return void
      */
-    public static function setDefault(\Phalcon\Di\DiInterface $container)
+    public static function setDefault(DiInterface $container)
     {
     }
 
     /**
      * Sets the internal event manager
      *
-     * @param \Phalcon\Events\ManagerInterface $eventsManager
+     * @param ManagerInterface $eventsManager
      */
-    public function setInternalEventsManager(\Phalcon\Events\ManagerInterface $eventsManager)
+    public function setInternalEventsManager(ManagerInterface $eventsManager)
     {
     }
 
@@ -416,10 +416,10 @@ class Di implements \Phalcon\Di\DiInterface
      * Sets a service using a raw Phalcon\Di\Service definition
      *
      * @param string $name
-     * @param \Phalcon\Di\ServiceInterface $rawDefinition
+     * @param ServiceInterface $rawDefinition
      * @return ServiceInterface
      */
-    public function setService(string $name, \Phalcon\Di\ServiceInterface $rawDefinition): ServiceInterface
+    public function setService(string $name, ServiceInterface $rawDefinition): ServiceInterface
     {
     }
 
@@ -433,5 +433,4 @@ class Di implements \Phalcon\Di\DiInterface
     public function setShared(string $name, $definition): ServiceInterface
     {
     }
-
 }

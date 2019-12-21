@@ -14,7 +14,7 @@ namespace Phalcon\Html\Helper;
  *
  * Creates a raw anchor
  */
-class AnchorRaw extends \Phalcon\Html\Helper\AbstractHelper
+class AnchorRaw extends AbstractHelper
 {
 
     /**
@@ -26,5 +26,4 @@ class AnchorRaw extends \Phalcon\Html\Helper\AbstractHelper
     public function __invoke(string $href, string $text, array $attributes = array()): string
     {
     }
-
 }

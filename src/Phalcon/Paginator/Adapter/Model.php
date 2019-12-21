@@ -79,7 +79,7 @@ use Phalcon\Paginator\RepositoryInterface;
  * $paginate = $paginator->paginate();
  * ```
  */
-class Model extends \Phalcon\Paginator\Adapter\AbstractAdapter
+class Model extends AbstractAdapter
 {
 
     /**
@@ -90,5 +90,4 @@ class Model extends \Phalcon\Paginator\Adapter\AbstractAdapter
     public function paginate(): RepositoryInterface
     {
     }
-
 }

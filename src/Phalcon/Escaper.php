@@ -30,7 +30,7 @@ use Phalcon\Escaper\Exception;
  * echo $escaped; // font\2D family\3A \20 \3C Verdana\3E
  * ```
  */
-class Escaper implements \Phalcon\Escaper\EscaperInterface
+class Escaper implements EscaperInterface
 {
     /**
      * @var bool
@@ -173,5 +173,4 @@ class Escaper implements \Phalcon\Escaper\EscaperInterface
     public function setHtmlQuoteType(int $quoteType)
     {
     }
-
 }

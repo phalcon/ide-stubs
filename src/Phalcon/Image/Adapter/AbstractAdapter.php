@@ -17,10 +17,10 @@ use Phalcon\Image\Exception;
  *
  * All image adapters must use this class
  */
-abstract class AbstractAdapter implements \Phalcon\Image\Adapter\AdapterInterface
+abstract class AbstractAdapter implements AdapterInterface
 {
 
-    static protected $checked = false;
+    protected static $checked = false;
 
 
     protected $file;
@@ -282,5 +282,4 @@ abstract class AbstractAdapter implements \Phalcon\Image\Adapter\AdapterInterfac
     public function watermark(AdapterInterface $watermark, int $offsetX = 0, int $offsetY = 0, int $opacity = 100): AdapterInterface
     {
     }
-
 }

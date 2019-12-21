@@ -278,5 +278,4 @@ class Arr
     final public static function whiteList(array $collection, array $whiteList): array
     {
     }
-
 }

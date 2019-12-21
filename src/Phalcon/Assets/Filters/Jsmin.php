@@ -16,7 +16,7 @@ use Phalcon\Assets\FilterInterface;
  * be removed. Tabs will be replaced with spaces. Carriage returns will be
  * replaced with linefeeds. Most spaces and linefeeds will be removed.
  */
-class Jsmin implements \Phalcon\Assets\FilterInterface
+class Jsmin implements FilterInterface
 {
 
     /**
@@ -29,5 +29,4 @@ class Jsmin implements \Phalcon\Assets\FilterInterface
     public function filter(string $content): string
     {
     }
-
 }

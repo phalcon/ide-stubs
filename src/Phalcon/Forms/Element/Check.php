@@ -16,7 +16,7 @@ use Phalcon\Tag;
  *
  * Component INPUT[type=check] for forms
  */
-class Check extends \Phalcon\Forms\Element\AbstractElement
+class Check extends AbstractElement
 {
 
     /**
@@ -28,5 +28,4 @@ class Check extends \Phalcon\Forms\Element\AbstractElement
     public function render(array $attributes = array()): string
     {
     }
-
 }

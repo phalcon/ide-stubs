@@ -25,7 +25,7 @@ use Phalcon\Di\Service\Builder;
  * $request = service->resolve();
  * ```
  */
-class Service implements \Phalcon\Di\ServiceInterface
+class Service implements ServiceInterface
 {
 
     protected $definition;
@@ -142,5 +142,4 @@ class Service implements \Phalcon\Di\ServiceInterface
     public function setSharedInstance($sharedInstance)
     {
     }
-
 }

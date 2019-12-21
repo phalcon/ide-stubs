@@ -39,7 +39,7 @@ use Phalcon\Events\EventsAwareInterface;
  * $adapter = new \Example\Adapter\Some();
  * ```
  */
-class Loader implements \Phalcon\Events\EventsAwareInterface
+class Loader implements EventsAwareInterface
 {
 
     protected $checkedPath = null;
@@ -235,10 +235,10 @@ class Loader implements \Phalcon\Events\EventsAwareInterface
     /**
      * Sets the events manager
      *
-     * @param \Phalcon\Events\ManagerInterface $eventsManager
+     * @param ManagerInterface $eventsManager
      * @return void
      */
-    public function setEventsManager(\Phalcon\Events\ManagerInterface $eventsManager)
+    public function setEventsManager(ManagerInterface $eventsManager)
     {
     }
 
@@ -291,5 +291,4 @@ class Loader implements \Phalcon\Events\EventsAwareInterface
     protected function prepareNamespace(array $namespaceName): array
     {
     }
-
 }

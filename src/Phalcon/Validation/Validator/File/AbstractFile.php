@@ -125,7 +125,7 @@ abstract class AbstractFile extends AbstractValidator
      * @param string $field
      * @return bool
      */
-    public function isAllowEmpty(\Phalcon\Validation $validation, string $field): bool
+    public function isAllowEmpty(Validation $validation, string $field): bool
     {
     }
 
@@ -136,7 +136,7 @@ abstract class AbstractFile extends AbstractValidator
      * @param mixed $field
      * @return bool
      */
-    public function checkUpload(\Phalcon\Validation $validation, $field): bool
+    public function checkUpload(Validation $validation, $field): bool
     {
     }
 
@@ -147,7 +147,7 @@ abstract class AbstractFile extends AbstractValidator
      * @param mixed $field
      * @return boolean
      */
-    public function checkUploadMaxSize(\Phalcon\Validation $validation, $field): bool
+    public function checkUploadMaxSize(Validation $validation, $field): bool
     {
     }
 
@@ -158,7 +158,7 @@ abstract class AbstractFile extends AbstractValidator
      * @param mixed $field
      * @return boolean
      */
-    public function checkUploadIsEmpty(\Phalcon\Validation $validation, $field): bool
+    public function checkUploadIsEmpty(Validation $validation, $field): bool
     {
     }
 
@@ -169,7 +169,7 @@ abstract class AbstractFile extends AbstractValidator
      * @param mixed $field
      * @return boolean
      */
-    public function checkUploadIsValid(\Phalcon\Validation $validation, $field): bool
+    public function checkUploadIsValid(Validation $validation, $field): bool
     {
     }
 
@@ -182,5 +182,4 @@ abstract class AbstractFile extends AbstractValidator
     public function getFileSizeInBytes(string $size): float
     {
     }
-
 }

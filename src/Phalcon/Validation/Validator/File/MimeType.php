@@ -61,7 +61,7 @@ use Phalcon\Validation\Exception;
  * );
  * ```
  */
-class MimeType extends \Phalcon\Validation\Validator\File\AbstractFile
+class MimeType extends AbstractFile
 {
 
     protected $template = 'File :field must be of type: :types';
@@ -74,8 +74,7 @@ class MimeType extends \Phalcon\Validation\Validator\File\AbstractFile
      * @param mixed $field
      * @return bool
      */
-    public function validate(\Phalcon\Validation $validation, $field): bool
+    public function validate(Validation $validation, $field): bool
     {
     }
-
 }

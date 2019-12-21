@@ -26,5 +26,4 @@ interface ResultInterface
      * @return mixed
      */
     public function setDirtyState(int $dirtyState);
-
 }

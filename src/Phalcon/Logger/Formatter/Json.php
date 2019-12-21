@@ -9,7 +9,6 @@
  */
 namespace Phalcon\Logger\Formatter;
 
-use Phalcon\Helper\Json;
 use Phalcon\Logger\Item;
 
 /**
@@ -17,7 +16,7 @@ use Phalcon\Logger\Item;
  *
  * Formats messages using JSON encoding
  */
-class Json extends \Phalcon\Logger\Formatter\AbstractFormatter
+class Json extends AbstractFormatter
 {
     /**
      * Default date format
@@ -57,11 +56,10 @@ class Json extends \Phalcon\Logger\Formatter\AbstractFormatter
     /**
      * Applies a format to a message before sent it to the internal log
      *
-     * @param \Phalcon\Logger\Item $item
+     * @param Item $item
      * @return string
      */
-    public function format(\Phalcon\Logger\Item $item): string
+    public function format(Item $item): string
     {
     }
-
 }

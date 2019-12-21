@@ -30,7 +30,7 @@ namespace Phalcon\Db;
  * );
  * ```
  */
-class Reference implements \Phalcon\Db\ReferenceInterface
+class Reference implements ReferenceInterface
 {
     /**
      * Local reference columns
@@ -170,5 +170,4 @@ class Reference implements \Phalcon\Db\ReferenceInterface
     public function __construct(string $name, array $definition)
     {
     }
-
 }

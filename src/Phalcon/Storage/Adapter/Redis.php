@@ -17,7 +17,7 @@ use Phalcon\Storage\Serializer\SerializerInterface;
 /**
  * Redis adapter
  */
-class Redis extends \Phalcon\Storage\Adapter\AbstractAdapter
+class Redis extends AbstractAdapter
 {
     /**
      * @var array
@@ -40,9 +40,9 @@ class Redis extends \Phalcon\Storage\Adapter\AbstractAdapter
      *     'serializer' => null,
      *     'prefix' => ''
      * ]
-     * @param \Phalcon\Storage\SerializerFactory $factory
+     * @param SerializerFactory $factory
      */
-    public function __construct(\Phalcon\Storage\SerializerFactory $factory, array $options = array())
+    public function __construct(SerializerFactory $factory, array $options = array())
     {
     }
 
@@ -164,5 +164,4 @@ class Redis extends \Phalcon\Storage\Adapter\AbstractAdapter
     private function setSerializer(\Redis $connection)
     {
     }
-
 }

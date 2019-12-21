@@ -19,7 +19,7 @@ use Psr\Link\EvolvableLinkInterface;
  * @property array  rels
  * @property bool   templated
  */
-class EvolvableLink extends \Phalcon\Html\Link\Link implements \Psr\Link\EvolvableLinkInterface
+class EvolvableLink extends Link implements EvolvableLinkInterface
 {
 
     /**
@@ -98,5 +98,4 @@ class EvolvableLink extends \Phalcon\Html\Link\Link implements \Psr\Link\Evolvab
     public function withoutRel($rel)
     {
     }
-
 }

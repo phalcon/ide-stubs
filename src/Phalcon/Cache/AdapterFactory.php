@@ -28,10 +28,10 @@ class AdapterFactory extends AbstractFactory
     /**
      * AdapterFactory constructor.
      *
-     * @param \Phalcon\Storage\SerializerFactory $factory
+     * @param SerializerFactory $factory
      * @param array $services
      */
-    public function __construct(\Phalcon\Storage\SerializerFactory $factory = null, array $services = array())
+    public function __construct(SerializerFactory $factory = null, array $services = array())
     {
     }
 
@@ -73,5 +73,4 @@ class AdapterFactory extends AbstractFactory
     protected function getAdapters(): array
     {
     }
-
 }

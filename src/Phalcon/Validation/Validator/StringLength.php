@@ -98,5 +98,4 @@ class StringLength extends AbstractValidatorComposite
     public function __construct(array $options = array())
     {
     }
-
 }

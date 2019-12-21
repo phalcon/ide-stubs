@@ -18,7 +18,7 @@ use Phalcon\Storage\Serializer\SerializerInterface;
 /**
  * Memory adapter
  */
-class Memory extends \Phalcon\Storage\Adapter\AbstractAdapter
+class Memory extends AbstractAdapter
 {
     /**
      * @var Collection
@@ -40,9 +40,9 @@ class Memory extends \Phalcon\Storage\Adapter\AbstractAdapter
      *     'serializer' => null,
      *     'prefix' => ''
      * ]
-     * @param \Phalcon\Storage\SerializerFactory $factory
+     * @param SerializerFactory $factory
      */
-    public function __construct(\Phalcon\Storage\SerializerFactory $factory, array $options = array())
+    public function __construct(SerializerFactory $factory, array $options = array())
     {
     }
 
@@ -144,5 +144,4 @@ class Memory extends \Phalcon\Storage\Adapter\AbstractAdapter
     public function set(string $key, $value, $ttl = null): bool
     {
     }
-
 }

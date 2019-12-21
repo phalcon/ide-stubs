@@ -16,7 +16,7 @@ use Phalcon\Tag;
  *
  * Component INPUT[type=radio] for forms
  */
-class Radio extends \Phalcon\Forms\Element\AbstractElement
+class Radio extends AbstractElement
 {
 
     /**
@@ -28,5 +28,4 @@ class Radio extends \Phalcon\Forms\Element\AbstractElement
     public function render(array $attributes = array()): string
     {
     }
-
 }

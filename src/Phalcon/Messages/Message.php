@@ -16,7 +16,7 @@ use JsonSerializable;
  *
  * Stores a message from various components
  */
-class Message implements \Phalcon\Messages\MessageInterface, \JsonSerializable
+class Message implements MessageInterface, JsonSerializable
 {
     /**
      * @var int
@@ -159,5 +159,4 @@ class Message implements \Phalcon\Messages\MessageInterface, \JsonSerializable
     public function setType(string $type): MessageInterface
     {
     }
-
 }

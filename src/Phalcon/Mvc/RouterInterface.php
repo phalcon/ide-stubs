@@ -31,11 +31,11 @@ interface RouterInterface
     /**
      * Attach Route object to the routes stack.
      *
-     * @param \Phalcon\Mvc\Router\RouteInterface $route
+     * @param RouteInterface $route
      * @param mixed $position
      * @return RouterInterface
      */
-    public function attach(\Phalcon\Mvc\Router\RouteInterface $route, $position = Router::POSITION_LAST): RouterInterface;
+    public function attach(RouteInterface $route, $position = Router::POSITION_LAST): RouterInterface;
 
     /**
      * Adds a route to the router that only match if the HTTP method is CONNECT
@@ -187,7 +187,7 @@ interface RouterInterface
     /**
      * Return all the routes defined in the router
      *
-     * @return array|\Phalcon\Mvc\Router\RouteInterface[]
+     * @return array|RouteInterface[]
      */
     public function getRoutes(): array;
 
@@ -218,10 +218,10 @@ interface RouterInterface
     /**
      * Mounts a group of routes in the router
      *
-     * @param \Phalcon\Mvc\Router\GroupInterface $group
+     * @param GroupInterface $group
      * @return RouterInterface
      */
-    public function mount(\Phalcon\Mvc\Router\GroupInterface $group): RouterInterface;
+    public function mount(GroupInterface $group): RouterInterface;
 
     /**
      * Sets the default action name
@@ -261,5 +261,4 @@ interface RouterInterface
      * @return bool
      */
     public function wasMatched(): bool;
-
 }

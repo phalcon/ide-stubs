@@ -42,12 +42,12 @@ class Simple extends Resultset
      * Phalcon\Mvc\Model\Resultset\Simple constructor
      *
      * @param array $columnMap
-     * @param \Phalcon\Mvc\ModelInterface|Phalcon\Mvc\Model\Row $model
+     * @param ModelInterface|Phalcon\Mvc\Model\Row $model
      * @param mixed $result
-     * @param \Phalcon\Cache\Adapter\AdapterInterface $cache
+     * @param AdapterInterface $cache
      * @param bool $keepSnapshots
      */
-    public function __construct($columnMap, $model, $result, \Phalcon\Cache\Adapter\AdapterInterface $cache = null, bool $keepSnapshots = null)
+    public function __construct($columnMap, $model, $result, AdapterInterface $cache = null, bool $keepSnapshots = null)
     {
     }
 
@@ -92,5 +92,4 @@ class Simple extends Resultset
     public function unserialize($data)
     {
     }
-
 }

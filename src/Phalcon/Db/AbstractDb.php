@@ -66,5 +66,4 @@ abstract class AbstractDb
     public static function setup(array $options)
     {
     }
-
 }

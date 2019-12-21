@@ -40,7 +40,7 @@ use Phalcon\Logger\Item;
  * $logger->error("This is another error");
  * ```
  */
-class Syslog extends \Phalcon\Logger\Adapter\AbstractAdapter
+class Syslog extends AbstractAdapter
 {
     /**
      * Name of the default formatter class
@@ -95,10 +95,10 @@ class Syslog extends \Phalcon\Logger\Adapter\AbstractAdapter
     /**
      * Processes the message i.e. writes it to the syslog
      *
-     * @param \Phalcon\Logger\Item $item
+     * @param Item $item
      * @return void
      */
-    public function process(\Phalcon\Logger\Item $item)
+    public function process(Item $item)
     {
     }
 
@@ -111,5 +111,4 @@ class Syslog extends \Phalcon\Logger\Adapter\AbstractAdapter
     private function logLevelToSyslog(int $level): int
     {
     }
-
 }

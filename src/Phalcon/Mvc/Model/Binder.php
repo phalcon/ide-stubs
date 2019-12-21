@@ -21,7 +21,7 @@ use ReflectionMethod;
  *
  * This is an class for binding models into params for handler
  */
-class Binder implements \Phalcon\Mvc\Model\BinderInterface
+class Binder implements BinderInterface
 {
     /**
      * Array for storing active bound models
@@ -65,9 +65,9 @@ class Binder implements \Phalcon\Mvc\Model\BinderInterface
     /**
      * Phalcon\Mvc\Model\Binder constructor
      *
-     * @param \Phalcon\Cache\Adapter\AdapterInterface $cache
+     * @param AdapterInterface $cache
      */
-    public function __construct(\Phalcon\Cache\Adapter\AdapterInterface $cache = null)
+    public function __construct(AdapterInterface $cache = null)
     {
     }
 
@@ -130,11 +130,10 @@ class Binder implements \Phalcon\Mvc\Model\BinderInterface
     /**
      * Gets cache instance
      *
-     * @param \Phalcon\Cache\Adapter\AdapterInterface $cache
+     * @param AdapterInterface $cache
      * @return BinderInterface
      */
-    public function setCache(\Phalcon\Cache\Adapter\AdapterInterface $cache): BinderInterface
+    public function setCache(AdapterInterface $cache): BinderInterface
     {
     }
-
 }

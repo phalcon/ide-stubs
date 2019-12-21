@@ -16,7 +16,7 @@ use Phalcon\Tag;
 /**
  * This class helps to work with HTML Attributes
  */
-class Attributes extends Collection implements \Phalcon\Html\Attributes\RenderInterface
+class Attributes extends Collection implements RenderInterface
 {
 
     /**
@@ -36,5 +36,4 @@ class Attributes extends Collection implements \Phalcon\Html\Attributes\RenderIn
     public function __toString(): string
     {
     }
-
 }

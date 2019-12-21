@@ -39,7 +39,7 @@ class CacheFactory
     /**
      * Factory to create an instace from a Config object
      *
-     * @param array|\Phalcon\Config $config = [
+     * @param array|Config $config = [
      *     'adapter' => 'apcu',
      *     'options' => [
      *         'servers' => [
@@ -99,5 +99,4 @@ class CacheFactory
     public function newInstance(string $name, array $options = array()): CacheInterface
     {
     }
-
 }

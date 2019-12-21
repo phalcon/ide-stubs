@@ -28,7 +28,7 @@ use Phalcon\Di\InjectionAwareInterface;
  * $user->age  = 22;
  * ```
  */
-class Bag extends Collection implements \Phalcon\Di\InjectionAwareInterface
+class Bag extends Collection implements InjectionAwareInterface
 {
 
     private $container;
@@ -101,11 +101,10 @@ class Bag extends Collection implements \Phalcon\Di\InjectionAwareInterface
     /**
      * Sets the DependencyInjector container
      *
-     * @param \Phalcon\Di\DiInterface $container
+     * @param DiInterface $container
      * @return void
      */
-    public function setDI(\Phalcon\Di\DiInterface $container)
+    public function setDI(DiInterface $container)
     {
     }
-
 }

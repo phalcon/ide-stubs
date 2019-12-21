@@ -28,13 +28,13 @@ use Phalcon\Image\Exception;
  * }
  * ```
  */
-class Imagick extends \Phalcon\Image\Adapter\AbstractAdapter
+class Imagick extends AbstractAdapter
 {
 
-    static protected $checked = false;
+    protected static $checked = false;
 
 
-    static protected $version = 0;
+    protected static $version = 0;
 
 
     /**
@@ -245,5 +245,4 @@ class Imagick extends \Phalcon\Image\Adapter\AbstractAdapter
     protected function processWatermark(AdapterInterface $image, int $offsetX, int $offsetY, int $opacity)
     {
     }
-
 }

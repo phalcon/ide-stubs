@@ -20,10 +20,10 @@ use Phalcon\Image\Exception;
  * For the full copyright and license information, please view the LICENSE.txt
  * file that was distributed with this source code.
  */
-class Gd extends \Phalcon\Image\Adapter\AbstractAdapter
+class Gd extends AbstractAdapter
 {
 
-    static protected $checked = false;
+    protected static $checked = false;
 
 
     /**
@@ -181,5 +181,4 @@ class Gd extends \Phalcon\Image\Adapter\AbstractAdapter
     protected function processWatermark(AdapterInterface $watermark, int $offsetX, int $offsetY, int $opacity)
     {
     }
-
 }

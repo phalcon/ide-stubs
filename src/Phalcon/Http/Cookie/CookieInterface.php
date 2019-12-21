@@ -157,5 +157,4 @@ interface CookieInterface
      * @return CookieInterface
      */
     public function useEncryption(bool $useEncryption): CookieInterface;
-
 }

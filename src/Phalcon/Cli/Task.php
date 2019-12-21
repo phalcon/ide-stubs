@@ -37,7 +37,7 @@ use Phalcon\Events\ManagerInterface;
  * }
  * ```
  */
-class Task extends Injectable implements \Phalcon\Cli\TaskInterface, \Phalcon\Events\EventsAwareInterface
+class Task extends Injectable implements TaskInterface, EventsAwareInterface
 {
 
     protected $eventsManager;
@@ -62,11 +62,10 @@ class Task extends Injectable implements \Phalcon\Cli\TaskInterface, \Phalcon\Ev
     /**
      * Sets the events manager
      *
-     * @param \Phalcon\Events\ManagerInterface $eventsManager
+     * @param ManagerInterface $eventsManager
      * @return void
      */
-    public function setEventsManager(\Phalcon\Events\ManagerInterface $eventsManager)
+    public function setEventsManager(ManagerInterface $eventsManager)
     {
     }
-
 }

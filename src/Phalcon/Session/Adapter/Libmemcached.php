@@ -14,7 +14,7 @@ use Phalcon\Storage\AdapterFactory;
 /**
  * Phalcon\Session\Adapter\Libmemcached
  */
-class Libmemcached extends \Phalcon\Session\Adapter\AbstractAdapter
+class Libmemcached extends AbstractAdapter
 {
 
     /**
@@ -34,10 +34,9 @@ class Libmemcached extends \Phalcon\Session\Adapter\AbstractAdapter
      *     'serializer' => null,
      *     'prefix' => 'sess-memc-'
      * ]
-     * @param \Phalcon\Storage\AdapterFactory $factory
+     * @param AdapterFactory $factory
      */
-    public function __construct(\Phalcon\Storage\AdapterFactory $factory, array $options = array())
+    public function __construct(AdapterFactory $factory, array $options = array())
     {
     }
-
 }

@@ -24,7 +24,7 @@ use Phalcon\Session\ManagerInterface as SessionInterface;
  * $flash->error("Cannot open the file");
  * ```
  */
-abstract class AbstractFlash extends AbstractInjectionAware implements \Phalcon\Flash\FlashInterface
+abstract class AbstractFlash extends AbstractInjectionAware implements FlashInterface
 {
     /**
      * @var bool
@@ -91,10 +91,10 @@ abstract class AbstractFlash extends AbstractInjectionAware implements \Phalcon\
     /**
      * Phalcon\Flash constructor
      *
-     * @param \Phalcon\Escaper\EscaperInterface $escaper
-     * @param \Phalcon\Session\ManagerInterface $session
+     * @param EscaperInterface $escaper
+     * @param SessionInterface $session
      */
-    public function __construct(\Phalcon\Escaper\EscaperInterface $escaper = null, \Phalcon\Session\ManagerInterface $session = null)
+    public function __construct(EscaperInterface $escaper = null, SessionInterface $session = null)
     {
     }
 
@@ -187,10 +187,10 @@ abstract class AbstractFlash extends AbstractInjectionAware implements \Phalcon\
     /**
      * Sets the Escaper Service
      *
-     * @param \Phalcon\Escaper\EscaperInterface $escaperService
+     * @param EscaperInterface $escaperService
      * @return FlashInterface
      */
-    public function setEscaperService(\Phalcon\Escaper\EscaperInterface $escaperService): FlashInterface
+    public function setEscaperService(EscaperInterface $escaperService): FlashInterface
     {
     }
 
@@ -278,5 +278,4 @@ abstract class AbstractFlash extends AbstractInjectionAware implements \Phalcon\
     private function prepareHtmlMessage(string $type, string $message): string
     {
     }
-
 }

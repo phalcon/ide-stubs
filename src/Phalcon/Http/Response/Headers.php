@@ -14,7 +14,7 @@ namespace Phalcon\Http\Response;
  *
  * This class is a bag to manage the response headers
  */
-class Headers implements \Phalcon\Http\Response\HeadersInterface
+class Headers implements HeadersInterface
 {
 
     protected $headers = array();
@@ -95,5 +95,4 @@ class Headers implements \Phalcon\Http\Response\HeadersInterface
     public function toArray(): array
     {
     }
-
 }

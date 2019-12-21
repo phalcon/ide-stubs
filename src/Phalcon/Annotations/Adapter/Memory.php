@@ -15,7 +15,7 @@ use Phalcon\Annotations\Reflection;
  * Stores the parsed annotations in memory. This adapter is the suitable
  * development/testing
  */
-class Memory extends \Phalcon\Annotations\Adapter\AbstractAdapter
+class Memory extends AbstractAdapter
 {
     /**
      * @var mixed
@@ -37,11 +37,10 @@ class Memory extends \Phalcon\Annotations\Adapter\AbstractAdapter
      * Writes parsed annotations to memory
      *
      * @param string $key
-     * @param \Phalcon\Annotations\Reflection $data
+     * @param Reflection $data
      * @return void
      */
-    public function write(string $key, \Phalcon\Annotations\Reflection $data)
+    public function write(string $key, Reflection $data)
     {
     }
-
 }

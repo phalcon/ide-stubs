@@ -20,7 +20,7 @@ use RuntimeException;
 /**
  * PSR-7 UploadedFile
  */
-final class UploadedFile implements \Psr\Http\Message\UploadedFileInterface
+final class UploadedFile implements UploadedFileInterface
 {
     /**
      * If the file has already been moved, we hold that status here
@@ -274,5 +274,4 @@ final class UploadedFile implements \Psr\Http\Message\UploadedFileInterface
     private function storeFile(string $targetPath)
     {
     }
-
 }

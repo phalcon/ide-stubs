@@ -40,7 +40,7 @@ class Json
      *
      * @return mixed
      *
-     * @throws \InvalidArgumentException if the JSON cannot be decoded.
+     * @throws InvalidArgumentException if the JSON cannot be decoded.
      * @link http://www.php.net/manual/en/function.json-decode.php
      */
     final public static function decode(string $data, bool $associative = false, int $depth = 512, int $options = 0)
@@ -69,11 +69,10 @@ class Json
      *
      * @return mixed
      *
-     * @throws \InvalidArgumentException if the JSON cannot be encoded.
+     * @throws InvalidArgumentException if the JSON cannot be encoded.
      * @link http://www.php.net/manual/en/function.json-encode.php
      */
     final public static function encode($data, int $options = 0, int $depth = 512): string
     {
     }
-
 }

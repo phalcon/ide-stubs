@@ -20,7 +20,7 @@ use Psr\Http\Message\UriInterface;
 /**
  * PSR-7 ServerRequest
  */
-final class ServerRequest extends \Phalcon\Http\Message\AbstractRequest implements \Psr\Http\Message\ServerRequestInterface
+final class ServerRequest extends AbstractRequest implements ServerRequestInterface
 {
     /**
      * @var Collection
@@ -365,5 +365,4 @@ final class ServerRequest extends \Phalcon\Http\Message\AbstractRequest implemen
     private function checkUploadedFiles(array $files)
     {
     }
-
 }

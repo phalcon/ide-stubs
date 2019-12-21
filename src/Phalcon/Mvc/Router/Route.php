@@ -14,7 +14,7 @@ namespace Phalcon\Mvc\Router;
  *
  * This class represents every route added to the router
  */
-class Route implements \Phalcon\Mvc\Router\RouteInterface
+class Route implements RouteInterface
 {
 
     protected $beforeMatch;
@@ -50,7 +50,7 @@ class Route implements \Phalcon\Mvc\Router\RouteInterface
     protected $pattern;
 
 
-    static protected $uniqueId = 0;
+    protected static $uniqueId = 0;
 
 
 
@@ -374,5 +374,4 @@ class Route implements \Phalcon\Mvc\Router\RouteInterface
     public function via($httpMethods): RouteInterface
     {
     }
-
 }

@@ -31,7 +31,7 @@ use Phalcon\Translate\InterpolatorFactory;
  *
  * Allows translate using gettext
  */
-class Gettext extends \Phalcon\Translate\Adapter\AbstractAdapter implements \ArrayAccess
+class Gettext extends AbstractAdapter implements ArrayAccess
 {
     /**
      * @var int
@@ -91,9 +91,9 @@ class Gettext extends \Phalcon\Translate\Adapter\AbstractAdapter implements \Arr
      *     'directory' => '',
      *     'category' => ''
      * ]
-     * @param \Phalcon\Translate\InterpolatorFactory $interpolator
+     * @param InterpolatorFactory $interpolator
      */
-    public function __construct(\Phalcon\Translate\InterpolatorFactory $interpolator, array $options)
+    public function __construct(InterpolatorFactory $interpolator, array $options)
     {
     }
 
@@ -227,5 +227,4 @@ class Gettext extends \Phalcon\Translate\Adapter\AbstractAdapter implements \Arr
     protected function prepareOptions(array $options)
     {
     }
-
 }

@@ -140,5 +140,4 @@ class Config extends Collection
     protected function setData($element, $value)
     {
     }
-
 }

@@ -15,7 +15,7 @@ use Phalcon\Di\DiInterface;
 /**
  * PSR-11 Wrapper for `Phalcon\Di`
  */
-class Container implements \Psr\Container\ContainerInterface
+class Container implements ContainerInterface
 {
     /**
      * @var DiInterface
@@ -26,9 +26,9 @@ class Container implements \Psr\Container\ContainerInterface
     /**
      * Phalcon\Container constructor
      *
-     * @param \Phalcon\Di\DiInterface $container
+     * @param DiInterface $container
      */
-    public function __construct(\Phalcon\Di\DiInterface $container)
+    public function __construct(DiInterface $container)
     {
     }
 
@@ -51,5 +51,4 @@ class Container implements \Psr\Container\ContainerInterface
     public function has($name): bool
     {
     }
-
 }

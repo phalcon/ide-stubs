@@ -17,7 +17,7 @@ namespace Phalcon\Storage\Serializer;
  * For the full copyright and license information, please view the LICENSE.txt
  * file that was distributed with this source code.
  */
-class Igbinary extends \Phalcon\Storage\Serializer\AbstractSerializer
+class Igbinary extends AbstractSerializer
 {
 
     /**
@@ -38,5 +38,4 @@ class Igbinary extends \Phalcon\Storage\Serializer\AbstractSerializer
     public function unserialize($data)
     {
     }
-
 }

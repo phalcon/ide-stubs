@@ -36,7 +36,7 @@ use Phalcon\Paginator\Exception;
  * );
  * ```
  */
-class QueryBuilder extends \Phalcon\Paginator\Adapter\AbstractAdapter
+class QueryBuilder extends AbstractAdapter
 {
     /**
      * Paginator's data
@@ -92,11 +92,10 @@ class QueryBuilder extends \Phalcon\Paginator\Adapter\AbstractAdapter
     /**
      * Set query builder object
      *
-     * @param \Phalcon\Mvc\Model\Query\Builder $builder
+     * @param Builder $builder
      * @return QueryBuilder
      */
-    public function setQueryBuilder(\Phalcon\Mvc\Model\Query\Builder $builder): QueryBuilder
+    public function setQueryBuilder(Builder $builder): QueryBuilder
     {
     }
-
 }

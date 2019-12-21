@@ -48,7 +48,7 @@ use Throwable;
  * $app->handle("/say/welcome/Phalcon");
  * ```
  */
-class Micro extends Injectable implements \ArrayAccess, \Phalcon\Events\EventsAwareInterface
+class Micro extends Injectable implements ArrayAccess, EventsAwareInterface
 {
 
     protected $activeHandler;
@@ -99,9 +99,9 @@ class Micro extends Injectable implements \ArrayAccess, \Phalcon\Events\EventsAw
     /**
      * Phalcon\Mvc\Micro constructor
      *
-     * @param \Phalcon\Di\DiInterface $container
+     * @param DiInterface $container
      */
-    public function __construct(\Phalcon\Di\DiInterface $container = null)
+    public function __construct(DiInterface $container = null)
     {
     }
 
@@ -208,10 +208,10 @@ class Micro extends Injectable implements \ArrayAccess, \Phalcon\Events\EventsAw
     /**
      * Sets the events manager
      *
-     * @param \Phalcon\Events\ManagerInterface $eventsManager
+     * @param ManagerInterface $eventsManager
      * @return void
      */
-    public function setEventsManager(\Phalcon\Events\ManagerInterface $eventsManager)
+    public function setEventsManager(ManagerInterface $eventsManager)
     {
     }
 
@@ -316,10 +316,10 @@ class Micro extends Injectable implements \ArrayAccess, \Phalcon\Events\EventsAw
     /**
      * Mounts a collection of handlers
      *
-     * @param \Phalcon\Mvc\Micro\CollectionInterface $collection
+     * @param CollectionInterface $collection
      * @return Micro
      */
-    public function mount(\Phalcon\Mvc\Micro\CollectionInterface $collection): Micro
+    public function mount(CollectionInterface $collection): Micro
     {
     }
 
@@ -445,10 +445,10 @@ class Micro extends Injectable implements \ArrayAccess, \Phalcon\Events\EventsAw
     /**
      * Sets the DependencyInjector container
      *
-     * @param \Phalcon\Di\DiInterface $container
+     * @param DiInterface $container
      * @return void
      */
-    public function setDI(\Phalcon\Di\DiInterface $container)
+    public function setDI(DiInterface $container)
     {
     }
 
@@ -464,11 +464,11 @@ class Micro extends Injectable implements \ArrayAccess, \Phalcon\Events\EventsAw
      * );
      * ```
      *
-     * @param \Phalcon\Mvc\Model\BinderInterface $modelBinder
+     * @param BinderInterface $modelBinder
      * @param mixed $cache
      * @return Micro
      */
-    public function setModelBinder(\Phalcon\Mvc\Model\BinderInterface $modelBinder, $cache = null): Micro
+    public function setModelBinder(BinderInterface $modelBinder, $cache = null): Micro
     {
     }
 
@@ -502,5 +502,4 @@ class Micro extends Injectable implements \ArrayAccess, \Phalcon\Events\EventsAw
     public function stop()
     {
     }
-
 }

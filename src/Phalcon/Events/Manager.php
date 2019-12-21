@@ -20,7 +20,7 @@ use SplPriorityQueue;
  * can create hooks or plugins that will offer monitoring of data, manipulation,
  * conditional execution and much more.
  */
-class Manager implements \Phalcon\Events\ManagerInterface
+class Manager implements ManagerInterface
 {
 
     const DEFAULT_PRIORITY = 100;
@@ -126,11 +126,11 @@ class Manager implements \Phalcon\Events\ManagerInterface
     /**
      * Internal handler to call a queue of events
      *
-     * @return mixed
-     * @param \SplPriorityQueue $queue
+     * @param SplPriorityQueue $queue
      * @param EventInterface $event
+     *@return mixed
      */
-    final public function fireQueue(\SplPriorityQueue $queue, EventInterface $event)
+    final public function fireQueue(SplPriorityQueue $queue, EventInterface $event)
     {
     }
 
@@ -173,5 +173,4 @@ class Manager implements \Phalcon\Events\ManagerInterface
     public function isCollecting(): bool
     {
     }
-
 }

@@ -12,7 +12,7 @@ namespace Phalcon\Acl;
 /**
  * This class defines role entity and its description
  */
-class Role implements \Phalcon\Acl\RoleInterface
+class Role implements RoleInterface
 {
     /**
      * Role name
@@ -65,5 +65,4 @@ class Role implements \Phalcon\Acl\RoleInterface
     public function __construct(string $name, string $description = null)
     {
     }
-
 }

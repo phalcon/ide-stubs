@@ -41,9 +41,9 @@ class Redis extends MetaData
      * Phalcon\Mvc\Model\MetaData\Redis constructor
      *
      * @param array $options
-     * @param \Phalcon\Cache\AdapterFactory $factory
+     * @param AdapterFactory $factory
      */
-    public function __construct(\Phalcon\Cache\AdapterFactory $factory, array $options = array())
+    public function __construct(AdapterFactory $factory, array $options = array())
     {
     }
 
@@ -55,5 +55,4 @@ class Redis extends MetaData
     public function reset()
     {
     }
-
 }

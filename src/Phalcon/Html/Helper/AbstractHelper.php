@@ -28,9 +28,9 @@ abstract class AbstractHelper
     /**
      * Constructor
      *
-     * @param \Phalcon\Escaper\EscaperInterface $escaper
+     * @param EscaperInterface $escaper
      */
-    public function __construct(\Phalcon\Escaper\EscaperInterface $escaper)
+    public function __construct(EscaperInterface $escaper)
     {
     }
 
@@ -89,5 +89,4 @@ abstract class AbstractHelper
     protected function selfClose(string $tag, array $attributes = array()): string
     {
     }
-
 }

@@ -12,7 +12,7 @@ namespace Phalcon\Acl;
 /**
  * This class defines component entity and its description
  */
-class Component implements \Phalcon\Acl\ComponentInterface
+class Component implements ComponentInterface
 {
     /**
      * Component description
@@ -65,5 +65,4 @@ class Component implements \Phalcon\Acl\ComponentInterface
     public function __construct(string $name, string $description = null)
     {
     }
-
 }

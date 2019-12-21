@@ -39,11 +39,11 @@ interface ValidatorInterface
     /**
      * Executes the validation
      *
-     * @return boolean
-     * @param \Phalcon\Validation $validation
+     * @param Validation $validation
      * @param mixed $field
+     *@return boolean
      */
-    public function validate(\Phalcon\Validation $validation, $field): bool;
+    public function validate(Validation $validation, $field): bool;
 
     /**
      * Get the template message
@@ -76,5 +76,4 @@ interface ValidatorInterface
      * @param string $template
      */
     public function setTemplate(string $template): ValidatorInterface;
-
 }

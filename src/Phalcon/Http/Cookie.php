@@ -22,7 +22,7 @@ use Phalcon\Session\ManagerInterface as SessionManagerInterface;
 /**
  * Provide OO wrappers to manage a HTTP cookie.
  */
-class Cookie extends AbstractInjectionAware implements \Phalcon\Http\Cookie\CookieInterface
+class Cookie extends AbstractInjectionAware implements CookieInterface
 {
     /**
      * @var string
@@ -298,10 +298,10 @@ class Cookie extends AbstractInjectionAware implements \Phalcon\Http\Cookie\Cook
      *
      * Use NULL to disable cookie signing.
      *
-     * @see \Phalcon\Security\Random
-     * @throws \Phalcon\Http\Cookie\Exception
      * @param string $signKey
      * @return CookieInterface
+     *@throws CookieException
+     * @see \Phalcon\Security\Random
      */
     public function setSignKey(string $signKey = null): CookieInterface
     {
@@ -330,12 +330,11 @@ class Cookie extends AbstractInjectionAware implements \Phalcon\Http\Cookie\Cook
     /**
      * Assert the cookie's key is enough long.
      *
-     * @throws \Phalcon\Http\Cookie\Exception
      * @param string $signKey
      * @return void
+     *@throws CookieException
      */
     protected function assertSignKeyIsLongEnough(string $signKey)
     {
     }
-
 }

@@ -18,7 +18,7 @@ use Phalcon\Translate\InterpolatorFactory;
  *
  * Base class for Phalcon\Translate adapters
  */
-abstract class AbstractAdapter implements \Phalcon\Translate\Adapter\AdapterInterface
+abstract class AbstractAdapter implements AdapterInterface
 {
     /**
      * @var string
@@ -32,10 +32,10 @@ abstract class AbstractAdapter implements \Phalcon\Translate\Adapter\AdapterInte
 
 
     /**
-     * @param \Phalcon\Translate\InterpolatorFactory $interpolator
+     * @param InterpolatorFactory $interpolator
      * @param array $options
      */
-    public function __construct(\Phalcon\Translate\InterpolatorFactory $interpolator, array $options)
+    public function __construct(InterpolatorFactory $interpolator, array $options)
     {
     }
 
@@ -112,5 +112,4 @@ abstract class AbstractAdapter implements \Phalcon\Translate\Adapter\AdapterInte
     protected function replacePlaceholders(string $translation, array $placeholders = array()): string
     {
     }
-
 }

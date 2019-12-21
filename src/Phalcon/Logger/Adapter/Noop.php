@@ -25,7 +25,7 @@ use Phalcon\Logger\Item;
  * $logger->close();
  * ```
  */
-class Noop extends \Phalcon\Logger\Adapter\AbstractAdapter
+class Noop extends AbstractAdapter
 {
 
     /**
@@ -40,11 +40,10 @@ class Noop extends \Phalcon\Logger\Adapter\AbstractAdapter
     /**
      * Processes the message i.e. writes it to the file
      *
-     * @param \Phalcon\Logger\Item $item
+     * @param Item $item
      * @return void
      */
-    public function process(\Phalcon\Logger\Item $item)
+    public function process(Item $item)
     {
     }
-
 }

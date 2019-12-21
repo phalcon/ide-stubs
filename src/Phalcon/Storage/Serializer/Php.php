@@ -20,7 +20,7 @@ use Phalcon\Storage\Exception;
  * For the full copyright and license information, please view the LICENSE.txt
  * file that was distributed with this source code.
  */
-class Php extends \Phalcon\Storage\Serializer\AbstractSerializer
+class Php extends AbstractSerializer
 {
 
     /**
@@ -41,5 +41,4 @@ class Php extends \Phalcon\Storage\Serializer\AbstractSerializer
     public function unserialize($data)
     {
     }
-
 }

@@ -17,7 +17,7 @@ use Phalcon\Mvc\ModelInterface;
  *
  * This class will be thrown to exit a try/catch block for isolated transactions
  */
-class Failed extends \Phalcon\Mvc\Model\Transaction\Exception
+class Failed extends Exception
 {
 
     protected $record = null;
@@ -27,9 +27,9 @@ class Failed extends \Phalcon\Mvc\Model\Transaction\Exception
      * Phalcon\Mvc\Model\Transaction\Failed constructor
      *
      * @param string $message
-     * @param \Phalcon\Mvc\ModelInterface $record
+     * @param ModelInterface $record
      */
-    public function __construct(string $message, \Phalcon\Mvc\ModelInterface $record = null)
+    public function __construct(string $message, ModelInterface $record = null)
     {
     }
 
@@ -45,10 +45,9 @@ class Failed extends \Phalcon\Mvc\Model\Transaction\Exception
     /**
      * Returns validation record messages which stop the transaction
      *
-     * @return array|\Phalcon\Messages\MessageInterface[]
+     * @return array|MessageInterface[]
      */
     public function getRecordMessages(): array
     {
     }
-
 }

@@ -47,7 +47,7 @@ use Phalcon\Logger\Exception;
  *         ->info('This does not go to the "manager" logger);
  * ```
  */
-class Logger implements \Psr\Log\LoggerInterface
+class Logger implements LoggerInterface
 {
 
     const ALERT = 2;
@@ -129,7 +129,7 @@ class Logger implements \Psr\Log\LoggerInterface
      * @param AdapterInterface $adapter The adapter to add to the stack
      * @return Logger
      */
-    public function addAdapter(string $name, \Phalcon\Logger\Adapter\AdapterInterface $adapter): Logger
+    public function addAdapter(string $name, AdapterInterface $adapter): Logger
     {
     }
 
@@ -347,5 +347,4 @@ class Logger implements \Psr\Log\LoggerInterface
     private function getLevelNumber($level): int
     {
     }
-
 }

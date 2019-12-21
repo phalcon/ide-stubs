@@ -28,7 +28,7 @@ use stdClass;
  * Complex resultsets may include complete objects and scalar values.
  * This class builds every complex row as it is required
  */
-class Complex extends Resultset implements \Phalcon\Mvc\Model\ResultsetInterface
+class Complex extends Resultset implements ResultsetInterface
 {
 
     protected $columnTypes;
@@ -44,10 +44,10 @@ class Complex extends Resultset implements \Phalcon\Mvc\Model\ResultsetInterface
      * Phalcon\Mvc\Model\Resultset\Complex constructor
      *
      * @param array $columnTypes
-     * @param \Phalcon\Db\ResultInterface $result
-     * @param \Phalcon\Cache\Adapter\AdapterInterface $cache
+     * @param ResultInterface $result
+     * @param AdapterInterface $cache
      */
-    public function __construct($columnTypes, \Phalcon\Db\ResultInterface $result = null, \Phalcon\Cache\Adapter\AdapterInterface $cache = null)
+    public function __construct($columnTypes, ResultInterface $result = null, AdapterInterface $cache = null)
     {
     }
 
@@ -88,5 +88,4 @@ class Complex extends Resultset implements \Phalcon\Mvc\Model\ResultsetInterface
     public function unserialize($data)
     {
     }
-
 }

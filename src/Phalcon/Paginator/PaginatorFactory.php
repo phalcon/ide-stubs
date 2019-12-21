@@ -9,6 +9,7 @@
  */
 namespace Phalcon\Paginator;
 
+use Phalcon\Config;
 use Phalcon\Paginator\Adapter\AdapterInterface;
 use Phalcon\Factory\AbstractFactory;
 use Phalcon\Helper\Arr;
@@ -56,14 +57,14 @@ class PaginatorFactory extends AbstractFactory
      * $paginator = (new PaginatorFactory())->load($options);
      * ```
      *
-     * @param array|\Phalcon\Config = [
+     * @param array|Config = [
      *     'adapter' => 'queryBuilder',
      *     'limit' => 20,
      *     'page' => 1,
      *     'builder' => null
      * ]
      * @param mixed $config
-     * @param array|\Phalcon\Config  = [
+     * @param array|Config  = [
      *     'adapter' => 'queryBuilder',
      *     'limit' => 20,
      *     'page' => 1,
@@ -92,5 +93,4 @@ class PaginatorFactory extends AbstractFactory
     protected function getAdapters(): array
     {
     }
-
 }

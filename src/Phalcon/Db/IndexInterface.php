@@ -35,5 +35,4 @@ interface IndexInterface
      * @return string
      */
     public function getType(): string;
-
 }

@@ -17,7 +17,7 @@ use Psr\Http\Message\UriInterface;
 /**
  * PSR-7 Uri
  */
-final class Uri extends \Phalcon\Http\Message\AbstractCommon implements \Psr\Http\Message\UriInterface
+final class Uri extends AbstractCommon implements UriInterface
 {
     /**
      * Returns the fragment of the URL
@@ -474,5 +474,4 @@ final class Uri extends \Phalcon\Http\Message\AbstractCommon implements \Psr\Htt
     private function splitQueryValue(string $element): array
     {
     }
-
 }

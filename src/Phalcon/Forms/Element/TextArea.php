@@ -14,7 +14,7 @@ use Phalcon\Tag;
 /**
  * Component TEXTAREA for forms
  */
-class TextArea extends \Phalcon\Forms\Element\AbstractElement
+class TextArea extends AbstractElement
 {
 
     /**
@@ -26,5 +26,4 @@ class TextArea extends \Phalcon\Forms\Element\AbstractElement
     public function render(array $attributes = array()): string
     {
     }
-
 }

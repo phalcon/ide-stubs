@@ -23,10 +23,10 @@ interface AdapterInterface
     /**
      * Adds a message in the queue
      *
-     * @param \Phalcon\Logger\Item $item
+     * @param Item $item
      * @return AdapterInterface
      */
-    public function add(\Phalcon\Logger\Item $item): AdapterInterface;
+    public function add(Item $item): AdapterInterface;
 
     /**
      * Starts a transaction
@@ -67,10 +67,10 @@ interface AdapterInterface
     /**
      * Processes the message in the adapter
      *
-     * @param \Phalcon\Logger\Item $item
+     * @param Item $item
      * @return void
      */
-    public function process(\Phalcon\Logger\Item $item);
+    public function process(Item $item);
 
     /**
      * Rollbacks the internal transaction
@@ -82,9 +82,8 @@ interface AdapterInterface
     /**
      * Sets the message formatter
      *
-     * @param \Phalcon\Logger\Formatter\FormatterInterface $formatter
+     * @param FormatterInterface $formatter
      * @return AdapterInterface
      */
-    public function setFormatter(\Phalcon\Logger\Formatter\FormatterInterface $formatter): AdapterInterface;
-
+    public function setFormatter(FormatterInterface $formatter): AdapterInterface;
 }

@@ -170,7 +170,7 @@ class Router extends AbstractInjectionAware
     /**
      * Returns all the routes defined in the router
      *
-     * @return array|\Phalcon\Cli\Router\Route[]
+     * @return array|Route[]
      */
     public function getRoutes(): array
     {
@@ -251,5 +251,4 @@ class Router extends AbstractInjectionAware
     public function wasMatched(): bool
     {
     }
-
 }

@@ -130,14 +130,14 @@ interface AdapterInterface
     /**
      * Return an array with every role registered in the list
      *
-     * @return array|\Phalcon\Acl\RoleInterface[]
+     * @return array|RoleInterface[]
      */
     public function getRoles(): array;
 
     /**
      * Return an array with every component registered in the list
      *
-     * @return array|\Phalcon\Acl\ComponentInterface[]
+     * @return array|ComponentInterface[]
      */
     public function getComponents(): array;
 
@@ -185,5 +185,4 @@ interface AdapterInterface
      * @return void
      */
     public function setNoArgumentsDefaultAction(int $defaultAccess);
-
 }

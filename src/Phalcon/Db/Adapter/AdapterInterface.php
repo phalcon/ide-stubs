@@ -9,6 +9,7 @@
  */
 namespace Phalcon\Db\Adapter;
 
+use PDO;
 use Phalcon\Db\DialectInterface;
 use Phalcon\Db\ResultInterface;
 use Phalcon\Db\ColumnInterface;
@@ -27,40 +28,40 @@ interface AdapterInterface
      *
      * @param string $tableName
      * @param string $schemaName
-     * @param \Phalcon\Db\ColumnInterface $column
+     * @param ColumnInterface $column
      * @return bool
      */
-    public function addColumn(string $tableName, string $schemaName, \Phalcon\Db\ColumnInterface $column): bool;
+    public function addColumn(string $tableName, string $schemaName, ColumnInterface $column): bool;
 
     /**
      * Adds an index to a table
      *
      * @param string $tableName
      * @param string $schemaName
-     * @param \Phalcon\Db\IndexInterface $index
+     * @param IndexInterface $index
      * @return bool
      */
-    public function addIndex(string $tableName, string $schemaName, \Phalcon\Db\IndexInterface $index): bool;
+    public function addIndex(string $tableName, string $schemaName, IndexInterface $index): bool;
 
     /**
      * Adds a foreign key to a table
      *
      * @param string $tableName
      * @param string $schemaName
-     * @param \Phalcon\Db\ReferenceInterface $reference
+     * @param ReferenceInterface $reference
      * @return bool
      */
-    public function addForeignKey(string $tableName, string $schemaName, \Phalcon\Db\ReferenceInterface $reference): bool;
+    public function addForeignKey(string $tableName, string $schemaName, ReferenceInterface $reference): bool;
 
     /**
      * Adds a primary key to a table
      *
      * @param string $tableName
      * @param string $schemaName
-     * @param \Phalcon\Db\IndexInterface $index
+     * @param IndexInterface $index
      * @return bool
      */
-    public function addPrimaryKey(string $tableName, string $schemaName, \Phalcon\Db\IndexInterface $index): bool;
+    public function addPrimaryKey(string $tableName, string $schemaName, IndexInterface $index): bool;
 
     /**
      * Returns the number of affected rows by the last INSERT/UPDATE/DELETE
@@ -147,7 +148,7 @@ interface AdapterInterface
      *
      * @param string $table
      * @param string $schema
-     * @return array|\Phalcon\Db\ColumnInterface[]
+     * @return array|ColumnInterface[]
      */
     public function describeColumns(string $table, string $schema = null): array;
 
@@ -156,7 +157,7 @@ interface AdapterInterface
      *
      * @param string $table
      * @param string $schema
-     * @return array|\Phalcon\Db\IndexInterface[]
+     * @return array|IndexInterface[]
      */
     public function describeIndexes(string $table, string $schema = null): array;
 
@@ -165,7 +166,7 @@ interface AdapterInterface
      *
      * @param string $table
      * @param string $schema
-     * @return array|\Phalcon\Db\ReferenceInterface[]
+     * @return array|ReferenceInterface[]
      */
     public function describeReferences(string $table, string $schema = null): array;
 
@@ -310,10 +311,10 @@ interface AdapterInterface
     /**
      * Returns the SQL column definition from a column
      *
-     * @param \Phalcon\Db\ColumnInterface $column
+     * @param ColumnInterface $column
      * @return string
      */
-    public function getColumnDefinition(\Phalcon\Db\ColumnInterface $column): string;
+    public function getColumnDefinition(ColumnInterface $column): string;
 
     /**
      * Gets a list of columns
@@ -361,9 +362,9 @@ interface AdapterInterface
     /**
      * Return internal PDO handler
      *
-     * @return \PDO
+     * @return PDO
      */
-    public function getInternalHandler(): \PDO;
+    public function getInternalHandler(): PDO;
 
     /**
      * Returns the savepoint name to use for nested transactions
@@ -494,11 +495,11 @@ interface AdapterInterface
      *
      * @param string $tableName
      * @param string $schemaName
-     * @param \Phalcon\Db\ColumnInterface $column
-     * @param \Phalcon\Db\ColumnInterface $currentColumn
+     * @param ColumnInterface $column
+     * @param ColumnInterface $currentColumn
      * @return bool
      */
-    public function modifyColumn(string $tableName, string $schemaName, \Phalcon\Db\ColumnInterface $column, \Phalcon\Db\ColumnInterface $currentColumn = null): bool;
+    public function modifyColumn(string $tableName, string $schemaName, ColumnInterface $column, ColumnInterface $currentColumn = null): bool;
 
     /**
      * Sends SQL statements to the database server returning the success state.
@@ -632,5 +633,4 @@ interface AdapterInterface
      * @return bool
      */
     public function viewExists(string $viewName, string $schemaName = null): bool;
-
 }

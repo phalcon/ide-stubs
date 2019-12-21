@@ -23,5 +23,4 @@ class Special
     public function __invoke($input)
     {
     }
-
 }

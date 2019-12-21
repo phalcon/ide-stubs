@@ -18,7 +18,7 @@ use Phalcon\Storage\Serializer\SerializerInterface;
 /**
  * Apcu adapter
  */
-class Apcu extends \Phalcon\Storage\Adapter\AbstractAdapter
+class Apcu extends AbstractAdapter
 {
     /**
      * @var array
@@ -35,9 +35,9 @@ class Apcu extends \Phalcon\Storage\Adapter\AbstractAdapter
      *     'serializer' => null,
      *     'prefix' => ''
      * ]
-     * @param \Phalcon\Storage\SerializerFactory $factory
+     * @param SerializerFactory $factory
      */
-    public function __construct(\Phalcon\Storage\SerializerFactory $factory, array $options = array())
+    public function __construct(SerializerFactory $factory, array $options = array())
     {
     }
 
@@ -140,5 +140,4 @@ class Apcu extends \Phalcon\Storage\Adapter\AbstractAdapter
     public function set(string $key, $value, $ttl = null): bool
     {
     }
-
 }

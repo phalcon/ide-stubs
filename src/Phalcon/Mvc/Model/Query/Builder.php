@@ -53,7 +53,7 @@ use Phalcon\Mvc\Model\QueryInterface;
  * $queryBuilder = new \Phalcon\Mvc\Model\Query\Builder($params);
  * ```
  */
-class Builder implements \Phalcon\Mvc\Model\Query\BuilderInterface, \Phalcon\Di\InjectionAwareInterface
+class Builder implements BuilderInterface, InjectionAwareInterface
 {
 
     protected $bindParams;
@@ -110,9 +110,9 @@ class Builder implements \Phalcon\Mvc\Model\Query\BuilderInterface, \Phalcon\Di\
      * Phalcon\Mvc\Model\Query\Builder constructor
      *
      * @param mixed $params
-     * @param \Phalcon\Di\DiInterface $container
+     * @param DiInterface $container
      */
-    public function __construct($params = null, \Phalcon\Di\DiInterface $container = null)
+    public function __construct($params = null, DiInterface $container = null)
     {
     }
 
@@ -836,10 +836,10 @@ class Builder implements \Phalcon\Mvc\Model\Query\BuilderInterface, \Phalcon\Di\
     /**
      * Sets the DependencyInjector container
      *
-     * @param \Phalcon\Di\DiInterface $container
+     * @param DiInterface $container
      * @return void
      */
-    public function setDI(\Phalcon\Di\DiInterface $container)
+    public function setDI(DiInterface $container)
     {
     }
 
@@ -922,5 +922,4 @@ class Builder implements \Phalcon\Mvc\Model\Query\BuilderInterface, \Phalcon\Di\
     protected function conditionNotIn(string $clause, string $operator, string $expr, array $values): BuilderInterface
     {
     }
-
 }

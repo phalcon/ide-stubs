@@ -27,10 +27,10 @@ class TagFactory extends AbstractFactory
     /**
      * TagFactory constructor.
      *
-     * @param \Phalcon\Escaper\EscaperInterface $escaper
+     * @param EscaperInterface $escaper
      * @param array $services
      */
-    public function __construct(\Phalcon\Escaper\EscaperInterface $escaper, array $services = array())
+    public function __construct(EscaperInterface $escaper, array $services = array())
     {
     }
 
@@ -49,5 +49,4 @@ class TagFactory extends AbstractFactory
     protected function getAdapters(): array
     {
     }
-
 }

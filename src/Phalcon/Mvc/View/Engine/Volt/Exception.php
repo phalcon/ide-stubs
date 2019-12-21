@@ -14,7 +14,7 @@ use Phalcon\Mvc\View\Exception as BaseException;
 /**
  * Class for exceptions thrown by Phalcon\Mvc\View
  */
-class Exception extends \Phalcon\Mvc\View\Exception
+class Exception extends BaseException
 {
 
     protected $statement;
@@ -38,5 +38,4 @@ class Exception extends \Phalcon\Mvc\View\Exception
     public function getStatement(): array
     {
     }
-
 }

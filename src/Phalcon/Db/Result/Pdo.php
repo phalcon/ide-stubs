@@ -9,6 +9,7 @@
  */
 namespace Phalcon\Db\Result;
 
+use PDOStatement;
 use Phalcon\Db\Enum;
 use Phalcon\Db\ResultInterface;
 use Phalcon\Db\Adapter\AdapterInterface;
@@ -28,7 +29,7 @@ use Phalcon\Db\Adapter\AdapterInterface;
  * }
  * ```
  */
-class Pdo implements \Phalcon\Db\ResultInterface
+class Pdo implements ResultInterface
 {
 
     protected $bindParams;
@@ -47,7 +48,7 @@ class Pdo implements \Phalcon\Db\ResultInterface
     /**
      * Internal resultset
      *
-     * @var \PDOStatement
+     * @var PDOStatement
      */
     protected $pdoStatement;
 
@@ -64,13 +65,13 @@ class Pdo implements \Phalcon\Db\ResultInterface
     /**
      * Phalcon\Db\Result\Pdo constructor
      *
-     * @param \Phalcon\Db\Adapter\AdapterInterface $connection
-     * @param \PDOStatement $result
+     * @param AdapterInterface $connection
+     * @param PDOStatement $result
      * @param mixed $sqlStatement
      * @param mixed $bindParams
      * @param mixed $bindTypes
      */
-    public function __construct(\Phalcon\Db\Adapter\AdapterInterface $connection, \PDOStatement $result, $sqlStatement = null, $bindParams = null, $bindTypes = null)
+    public function __construct(AdapterInterface $connection, PDOStatement $result, $sqlStatement = null, $bindParams = null, $bindTypes = null)
     {
     }
 
@@ -179,9 +180,9 @@ class Pdo implements \Phalcon\Db\ResultInterface
     /**
      * Gets the internal PDO result object
      *
-     * @return \PDOStatement
+     * @return PDOStatement
      */
-    public function getInternalResult(): \PDOStatement
+    public function getInternalResult(): PDOStatement
     {
     }
 
@@ -235,5 +236,4 @@ class Pdo implements \Phalcon\Db\ResultInterface
     public function setFetchMode(int $fetchMode, $colNoOrClassNameOrObject = null, $ctorargs = null): bool
     {
     }
-
 }

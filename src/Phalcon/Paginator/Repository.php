@@ -17,7 +17,7 @@ use Phalcon\Helper\Arr;
  *
  * Repository of current state Phalcon\Paginator\AdapterInterface::paginate()
  */
-class Repository implements \Phalcon\Paginator\RepositoryInterface, \JsonSerializable
+class Repository implements RepositoryInterface, JsonSerializable
 {
     /**
      * @var array
@@ -170,5 +170,4 @@ class Repository implements \Phalcon\Paginator\RepositoryInterface, \JsonSeriali
     protected function getRealNameProperty(string $property): string
     {
     }
-
 }

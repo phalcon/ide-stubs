@@ -182,5 +182,4 @@ class Dump
     protected function output($variable, string $name = null, int $tab = 1): string
     {
     }
-
 }

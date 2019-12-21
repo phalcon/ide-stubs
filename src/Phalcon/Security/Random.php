@@ -282,5 +282,4 @@ class Random
     protected function base(string $alphabet, int $base, $n = null): string
     {
     }
-
 }

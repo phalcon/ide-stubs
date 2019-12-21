@@ -24,7 +24,7 @@ namespace Phalcon\Events;
  * }
  * ```
  */
-class Event implements \Phalcon\Events\EventInterface
+class Event implements EventInterface
 {
     /**
      * Is event cancelable?
@@ -159,5 +159,4 @@ class Event implements \Phalcon\Events\EventInterface
     public function stop(): EventInterface
     {
     }
-
 }

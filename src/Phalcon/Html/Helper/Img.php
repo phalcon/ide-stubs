@@ -16,7 +16,7 @@ use Phalcon\Html\Exception;
  *
  * Creates am img tag
  */
-class Img extends \Phalcon\Html\Helper\AbstractHelper
+class Img extends AbstractHelper
 {
 
     /**
@@ -29,5 +29,4 @@ class Img extends \Phalcon\Html\Helper\AbstractHelper
     public function __invoke(string $src, array $attributes = array()): string
     {
     }
-
 }

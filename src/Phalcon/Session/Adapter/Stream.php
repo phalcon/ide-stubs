@@ -32,7 +32,7 @@ use Phalcon\Session\Exception;
  * $session->setAdapter($files);
  * ```
  */
-class Stream extends \Phalcon\Session\Adapter\Noop
+class Stream extends Noop
 {
     /**
      * @var string
@@ -95,5 +95,4 @@ class Stream extends \Phalcon\Session\Adapter\Noop
     public function write($id, $data): bool
     {
     }
-
 }

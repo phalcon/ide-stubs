@@ -16,7 +16,7 @@ use Phalcon\Logger\Item;
  *
  * Formats messages using an one-line string
  */
-class Line extends \Phalcon\Logger\Formatter\AbstractFormatter
+class Line extends AbstractFormatter
 {
     /**
      * Default date format
@@ -82,11 +82,10 @@ class Line extends \Phalcon\Logger\Formatter\AbstractFormatter
     /**
      * Applies a format to a message before sent it to the internal log
      *
-     * @param \Phalcon\Logger\Item $item
+     * @param Item $item
      * @return string
      */
-    public function format(\Phalcon\Logger\Item $item): string
+    public function format(Item $item): string
     {
     }
-
 }

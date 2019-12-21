@@ -17,7 +17,7 @@ use RuntimeException;
 /**
  * PSR-7 Stream
  */
-class Stream implements \Psr\Http\Message\StreamInterface
+class Stream implements StreamInterface
 {
     /**
      * @var resource | null
@@ -253,5 +253,4 @@ class Stream implements \Psr\Http\Message\StreamInterface
     private function checkWritable()
     {
     }
-
 }

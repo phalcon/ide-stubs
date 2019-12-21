@@ -12,7 +12,7 @@ namespace Phalcon\Mvc\View\Engine;
 /**
  * Adapter to use PHP itself as templating engine
  */
-class Php extends \Phalcon\Mvc\View\Engine\AbstractEngine
+class Php extends AbstractEngine
 {
 
     /**
@@ -25,5 +25,4 @@ class Php extends \Phalcon\Mvc\View\Engine\AbstractEngine
     public function render(string $path, $params, bool $mustClean = false)
     {
     }
-
 }

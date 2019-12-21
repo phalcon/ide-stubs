@@ -23,7 +23,7 @@ interface StatusInterface
     /**
      * Returns the messages produced by an operation failed
      *
-     * @return array|\Phalcon\Messages\MessageInterface[]
+     * @return array|MessageInterface[]
      */
     public function getMessages(): array;
 
@@ -40,5 +40,4 @@ interface StatusInterface
      * @return bool
      */
     public function success(): bool;
-
 }

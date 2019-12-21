@@ -16,7 +16,7 @@ use Phalcon\Filter\FilterInterface;
 /**
  * Lazy loads, stores and exposes sanitizer objects
  */
-class Filter implements \Phalcon\Filter\FilterInterface
+class Filter implements FilterInterface
 {
 
     const FILTER_ABSINT = 'absint';
@@ -179,5 +179,4 @@ class Filter implements \Phalcon\Filter\FilterInterface
     private function sanitizer($value, string $sanitizerName, array $sanitizerParams = array())
     {
     }
-
 }

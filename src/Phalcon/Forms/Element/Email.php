@@ -16,7 +16,7 @@ use Phalcon\Tag;
  *
  * Component INPUT[type=email] for forms
  */
-class Email extends \Phalcon\Forms\Element\AbstractElement
+class Email extends AbstractElement
 {
 
     /**
@@ -28,5 +28,4 @@ class Email extends \Phalcon\Forms\Element\AbstractElement
     public function render(array $attributes = array()): string
     {
     }
-
 }

@@ -11,7 +11,6 @@ namespace Phalcon\Storage\Serializer;
 
 use InvalidArgumentException;
 use JsonSerializable;
-use Phalcon\Helper\Json;
 
 /**
  * This file is part of the Phalcon Framework.
@@ -21,7 +20,7 @@ use Phalcon\Helper\Json;
  * For the full copyright and license information, please view the LICENSE.txt
  * file that was distributed with this source code.
  */
-class Json extends \Phalcon\Storage\Serializer\AbstractSerializer
+class Json extends AbstractSerializer
 {
 
     /**
@@ -42,5 +41,4 @@ class Json extends \Phalcon\Storage\Serializer\AbstractSerializer
     public function unserialize($data)
     {
     }
-
 }

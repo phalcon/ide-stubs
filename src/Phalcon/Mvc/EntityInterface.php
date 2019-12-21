@@ -32,5 +32,4 @@ interface EntityInterface
      * @param mixed $value
      */
     public function writeAttribute(string $attribute, $value);
-
 }

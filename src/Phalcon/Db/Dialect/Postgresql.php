@@ -33,10 +33,10 @@ class Postgresql extends Dialect
      *
      * @param string $tableName
      * @param string $schemaName
-     * @param \Phalcon\Db\ColumnInterface $column
+     * @param ColumnInterface $column
      * @return string
      */
-    public function addColumn(string $tableName, string $schemaName, \Phalcon\Db\ColumnInterface $column): string
+    public function addColumn(string $tableName, string $schemaName, ColumnInterface $column): string
     {
     }
 
@@ -45,10 +45,10 @@ class Postgresql extends Dialect
      *
      * @param string $tableName
      * @param string $schemaName
-     * @param \Phalcon\Db\ReferenceInterface $reference
+     * @param ReferenceInterface $reference
      * @return string
      */
-    public function addForeignKey(string $tableName, string $schemaName, \Phalcon\Db\ReferenceInterface $reference): string
+    public function addForeignKey(string $tableName, string $schemaName, ReferenceInterface $reference): string
     {
     }
 
@@ -57,10 +57,10 @@ class Postgresql extends Dialect
      *
      * @param string $tableName
      * @param string $schemaName
-     * @param \Phalcon\Db\IndexInterface $index
+     * @param IndexInterface $index
      * @return string
      */
-    public function addIndex(string $tableName, string $schemaName, \Phalcon\Db\IndexInterface $index): string
+    public function addIndex(string $tableName, string $schemaName, IndexInterface $index): string
     {
     }
 
@@ -69,10 +69,10 @@ class Postgresql extends Dialect
      *
      * @param string $tableName
      * @param string $schemaName
-     * @param \Phalcon\Db\IndexInterface $index
+     * @param IndexInterface $index
      * @return string
      */
-    public function addPrimaryKey(string $tableName, string $schemaName, \Phalcon\Db\IndexInterface $index): string
+    public function addPrimaryKey(string $tableName, string $schemaName, IndexInterface $index): string
     {
     }
 
@@ -213,10 +213,10 @@ class Postgresql extends Dialect
     /**
      * Gets the column name in PostgreSQL
      *
-     * @param \Phalcon\Db\ColumnInterface $column
+     * @param ColumnInterface $column
      * @return string
      */
-    public function getColumnDefinition(\Phalcon\Db\ColumnInterface $column): string
+    public function getColumnDefinition(ColumnInterface $column): string
     {
     }
 
@@ -251,11 +251,11 @@ class Postgresql extends Dialect
      *
      * @param string $tableName
      * @param string $schemaName
-     * @param \Phalcon\Db\ColumnInterface $column
-     * @param \Phalcon\Db\ColumnInterface $currentColumn
+     * @param ColumnInterface $column
+     * @param ColumnInterface $currentColumn
      * @return string
      */
-    public function modifyColumn(string $tableName, string $schemaName, \Phalcon\Db\ColumnInterface $column, \Phalcon\Db\ColumnInterface $currentColumn = null): string
+    public function modifyColumn(string $tableName, string $schemaName, ColumnInterface $column, ColumnInterface $currentColumn = null): string
     {
     }
 
@@ -321,10 +321,10 @@ class Postgresql extends Dialect
     }
 
     /**
-     * @param \Phalcon\Db\ColumnInterface $column
+     * @param ColumnInterface $column
      * @return string
      */
-    protected function castDefault(\Phalcon\Db\ColumnInterface $column): string
+    protected function castDefault(ColumnInterface $column): string
     {
     }
 
@@ -335,5 +335,4 @@ class Postgresql extends Dialect
     protected function getTableOptions(array $definition): string
     {
     }
-
 }

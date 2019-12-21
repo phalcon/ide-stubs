@@ -22,7 +22,7 @@ use Phalcon\Logger\Item;
  * For the full copyright and license information, please view the LICENSE.txt
  * file that was distributed with this source code.
  */
-abstract class AbstractAdapter implements \Phalcon\Logger\Adapter\AdapterInterface
+abstract class AbstractAdapter implements AdapterInterface
 {
     /**
      * Name of the default formatter class
@@ -63,10 +63,10 @@ abstract class AbstractAdapter implements \Phalcon\Logger\Adapter\AdapterInterfa
     /**
      * Adds a message to the queue
      *
-     * @param \Phalcon\Logger\Item $item
+     * @param Item $item
      * @return AdapterInterface
      */
-    public function add(\Phalcon\Logger\Item $item): AdapterInterface
+    public function add(Item $item): AdapterInterface
     {
     }
 
@@ -107,10 +107,10 @@ abstract class AbstractAdapter implements \Phalcon\Logger\Adapter\AdapterInterfa
     /**
      * Processes the message in the adapter
      *
-     * @param \Phalcon\Logger\Item $item
+     * @param Item $item
      * @return void
      */
-    abstract public function process(\Phalcon\Logger\Item $item);
+    abstract public function process(Item $item);
 
     /**
      * Rollbacks the internal transaction
@@ -124,11 +124,10 @@ abstract class AbstractAdapter implements \Phalcon\Logger\Adapter\AdapterInterfa
     /**
      * Sets the message formatter
      *
-     * @param \Phalcon\Logger\Formatter\FormatterInterface $formatter
+     * @param FormatterInterface $formatter
      * @return AdapterInterface
      */
-    public function setFormatter(\Phalcon\Logger\Formatter\FormatterInterface $formatter): AdapterInterface
+    public function setFormatter(FormatterInterface $formatter): AdapterInterface
     {
     }
-
 }

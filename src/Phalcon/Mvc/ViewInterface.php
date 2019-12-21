@@ -14,7 +14,7 @@ namespace Phalcon\Mvc;
  *
  * Interface for Phalcon\Mvc\View
  */
-interface ViewInterface extends \Phalcon\Mvc\ViewBaseInterface
+interface ViewInterface extends ViewBaseInterface
 {
 
     /**
@@ -202,5 +202,4 @@ interface ViewInterface extends \Phalcon\Mvc\ViewBaseInterface
      * Starts rendering process enabling the output buffering
      */
     public function start();
-
 }

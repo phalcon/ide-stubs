@@ -22,7 +22,7 @@ use RecursiveIteratorIterator;
 /**
  * Stream adapter
  */
-class Stream extends \Phalcon\Storage\Adapter\AbstractAdapter
+class Stream extends AbstractAdapter
 {
     /**
      * @var string
@@ -46,10 +46,10 @@ class Stream extends \Phalcon\Storage\Adapter\AbstractAdapter
      *     'prefix' => ''
      * ]
      *
+     * @param SerializerFactory $factory
      * @throws Exception
-     * @param \Phalcon\Storage\SerializerFactory $factory
      */
-    public function __construct(\Phalcon\Storage\SerializerFactory $factory, array $options = array())
+    public function __construct(SerializerFactory $factory, array $options = array())
     {
     }
 
@@ -207,5 +207,4 @@ class Stream extends \Phalcon\Storage\Adapter\AbstractAdapter
     private function isExpired(array $payload): bool
     {
     }
-
 }

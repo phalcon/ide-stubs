@@ -56,13 +56,12 @@ abstract class Select
      * Generate the OPTION tags based on a resultset
      *
      * @param array $using
-     * @param \Phalcon\Mvc\Model\ResultsetInterface $resultset
+     * @param ResultsetInterface $resultset
      * @param mixed $value
      * @param string $closeOption
      * @return string
      */
-    private static function optionsFromResultset(\Phalcon\Mvc\Model\ResultsetInterface $resultset, $using, $value, string $closeOption): string
+    private static function optionsFromResultset(ResultsetInterface $resultset, $using, $value, string $closeOption): string
     {
     }
-
 }

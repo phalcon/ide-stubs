@@ -57,7 +57,7 @@ namespace Phalcon\Mvc\Router;
  * $router->mount($blog);
  * ```
  */
-class Group implements \Phalcon\Mvc\Router\GroupInterface
+class Group implements GroupInterface
 {
 
     protected $beforeMatch;
@@ -377,5 +377,4 @@ class Group implements \Phalcon\Mvc\Router\GroupInterface
     protected function addRoute(string $pattern, $paths = null, $httpMethods = null): RouteInterface
     {
     }
-
 }

@@ -114,11 +114,11 @@ class Uniqueness extends AbstractCombinedFieldsValidator
     /**
      * Executes the validation
      *
-     * @param \Phalcon\Validation $validation
+     * @param Validation $validation
      * @param mixed $field
      * @return bool
      */
-    public function validate(\Phalcon\Validation $validation, $field): bool
+    public function validate(Validation $validation, $field): bool
     {
     }
 
@@ -134,11 +134,11 @@ class Uniqueness extends AbstractCombinedFieldsValidator
     }
 
     /**
-     * @param \Phalcon\Validation $validation
+     * @param Validation $validation
      * @param mixed $field
      * @return bool
      */
-    protected function isUniqueness(\Phalcon\Validation $validation, $field): bool
+    protected function isUniqueness(Validation $validation, $field): bool
     {
     }
 
@@ -152,5 +152,4 @@ class Uniqueness extends AbstractCombinedFieldsValidator
     protected function isUniquenessModel($record, array $field, array $values)
     {
     }
-
 }

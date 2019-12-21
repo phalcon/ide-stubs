@@ -26,7 +26,7 @@ use RuntimeException;
  * );
  * ```
  */
-class Stream extends \Phalcon\Annotations\Adapter\AbstractAdapter
+class Stream extends AbstractAdapter
 {
     /**
      * @var string
@@ -59,11 +59,10 @@ class Stream extends \Phalcon\Annotations\Adapter\AbstractAdapter
      * Writes parsed annotations to files
      *
      * @param string $key
-     * @param \Phalcon\Annotations\Reflection $data
+     * @param Reflection $data
      * @return void
      */
-    public function write(string $key, \Phalcon\Annotations\Reflection $data)
+    public function write(string $key, Reflection $data)
     {
     }
-
 }

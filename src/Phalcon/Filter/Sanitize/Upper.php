@@ -23,5 +23,4 @@ class Upper
     public function __invoke(string $input)
     {
     }
-
 }

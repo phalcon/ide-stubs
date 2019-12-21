@@ -31,10 +31,10 @@ interface ValidationInterface
     /**
      * Appends a message to the messages list
      *
-     * @param \Phalcon\Messages\MessageInterface $message
+     * @param MessageInterface $message
      * @return ValidationInterface
      */
-    public function appendMessage(\Phalcon\Messages\MessageInterface $message): ValidationInterface;
+    public function appendMessage(MessageInterface $message): ValidationInterface;
 
     /**
      * Assigns the data to an entity
@@ -134,5 +134,4 @@ interface ValidationInterface
      * @return Messages
      */
     public function validate($data = null, $entity = null): Messages;
-
 }

@@ -18,7 +18,7 @@ use Phalcon\Translate\InterpolatorFactory;
  *
  * Allows to define translation lists using PHP arrays
  */
-class NativeArray extends \Phalcon\Translate\Adapter\AbstractAdapter implements \ArrayAccess
+class NativeArray extends AbstractAdapter implements ArrayAccess
 {
     /**
      * @var array
@@ -38,9 +38,9 @@ class NativeArray extends \Phalcon\Translate\Adapter\AbstractAdapter implements 
      *     'content' => '',
      *     'triggerError' => false
      * ]
-     * @param \Phalcon\Translate\InterpolatorFactory $interpolator
+     * @param InterpolatorFactory $interpolator
      */
-    public function __construct(\Phalcon\Translate\InterpolatorFactory $interpolator, array $options)
+    public function __construct(InterpolatorFactory $interpolator, array $options)
     {
     }
 
@@ -74,5 +74,4 @@ class NativeArray extends \Phalcon\Translate\Adapter\AbstractAdapter implements 
     public function query(string $index, array $placeholders = array()): string
     {
     }
-
 }

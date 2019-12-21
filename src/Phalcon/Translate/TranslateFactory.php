@@ -43,7 +43,7 @@ class TranslateFactory extends AbstractFactory
     /**
      * Factory to create an instace from a Config object
      *
-     * @param array|\Phalcon\Config = [
+     * @param array|Config = [
      *     'adapter' => 'ini,
      *     'options' => [
      *         'content' => '',
@@ -57,7 +57,7 @@ class TranslateFactory extends AbstractFactory
      *     ]
      * ]
      * @param mixed $config
-     * @param array|\Phalcon\Config  = [
+     * @param array|Config  = [
      *     'adapter' => 'ini,
      *     'options' => [
      *         'content' => '',
@@ -93,5 +93,4 @@ class TranslateFactory extends AbstractFactory
     protected function getAdapters(): array
     {
     }
-
 }

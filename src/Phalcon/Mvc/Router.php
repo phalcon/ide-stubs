@@ -47,7 +47,7 @@ use Phalcon\Mvc\Router\RouteInterface;
  * echo $router->getControllerName();
  * ```
  */
-class Router extends AbstractInjectionAware implements \Phalcon\Mvc\RouterInterface, \Phalcon\Events\EventsAwareInterface
+class Router extends AbstractInjectionAware implements RouterInterface, EventsAwareInterface
 {
 
     const POSITION_FIRST = 0;
@@ -376,11 +376,11 @@ class Router extends AbstractInjectionAware implements \Phalcon\Mvc\RouterInterf
      * );
      * ```
      *
-     * @param \Phalcon\Mvc\Router\RouteInterface $route
+     * @param RouteInterface $route
      * @param mixed $position
      * @return RouterInterface
      */
-    public function attach(\Phalcon\Mvc\Router\RouteInterface $route, $position = Router::POSITION_LAST): RouterInterface
+    public function attach(RouteInterface $route, $position = Router::POSITION_LAST): RouterInterface
     {
     }
 
@@ -488,7 +488,7 @@ class Router extends AbstractInjectionAware implements \Phalcon\Mvc\RouterInterf
     /**
      * Returns all the routes defined in the router
      *
-     * @return array|\Phalcon\Mvc\Router\RouteInterface[]
+     * @return array|RouteInterface[]
      */
     public function getRoutes(): array
     {
@@ -521,10 +521,10 @@ class Router extends AbstractInjectionAware implements \Phalcon\Mvc\RouterInterf
     /**
      * Mounts a group of routes in the router
      *
-     * @param \Phalcon\Mvc\Router\GroupInterface $group
+     * @param GroupInterface $group
      * @return RouterInterface
      */
-    public function mount(\Phalcon\Mvc\Router\GroupInterface $group): RouterInterface
+    public function mount(GroupInterface $group): RouterInterface
     {
     }
 
@@ -622,10 +622,10 @@ class Router extends AbstractInjectionAware implements \Phalcon\Mvc\RouterInterf
     /**
      * Sets the events manager
      *
-     * @param \Phalcon\Events\ManagerInterface $eventsManager
+     * @param ManagerInterface $eventsManager
      * @return void
      */
-    public function setEventsManager(\Phalcon\Events\ManagerInterface $eventsManager)
+    public function setEventsManager(ManagerInterface $eventsManager)
     {
     }
 
@@ -637,5 +637,4 @@ class Router extends AbstractInjectionAware implements \Phalcon\Mvc\RouterInterf
     public function wasMatched(): bool
     {
     }
-
 }
