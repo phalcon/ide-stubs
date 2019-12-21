@@ -10,6 +10,8 @@
 namespace Phalcon;
 
 use Phalcon\Crypt\CryptInterface;
+use Phalcon\Crypt\Exception;
+use Phalcon\Crypt\Mismatch;
 
 /**
  * Provides encryption capabilities to Phalcon applications.
@@ -29,7 +31,7 @@ use Phalcon\Crypt\CryptInterface;
  * echo $crypt->decrypt($encrypted, $key);
  * ```
  */
-class Crypt implements \Phalcon\Crypt\CryptInterface
+class Crypt implements CryptInterface
 {
 
     const PADDING_ANSI_X_923 = 1;
@@ -163,7 +165,7 @@ class Crypt implements \Phalcon\Crypt\CryptInterface
     /**
      * Decrypt a text that is coded as a base64 string.
      *
-     * @throws \Phalcon\Crypt\Mismatch
+     * @throws Mismatch
      * @param string $text
      * @param mixed $key
      * @param bool $safe
@@ -291,7 +293,7 @@ class Crypt implements \Phalcon\Crypt\CryptInterface
     /**
      * Set the name of hashing algorithm.
      *
-     * @throws \Phalcon\Crypt\Exception
+     * @throws Exception
      * @param string $hashAlgo
      * @return CryptInterface
      */

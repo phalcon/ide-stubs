@@ -9,6 +9,7 @@
  */
 namespace Phalcon\Html\Helper;
 
+use Phalcon\Html\Exception;
 use Phalcon\Escaper\EscaperInterface;
 
 /**
@@ -27,9 +28,9 @@ abstract class AbstractHelper
     /**
      * Constructor
      *
-     * @param \Phalcon\Escaper\EscaperInterface $escaper
+     * @param EscaperInterface $escaper
      */
-    public function __construct(\Phalcon\Escaper\EscaperInterface $escaper)
+    public function __construct(EscaperInterface $escaper)
     {
     }
 

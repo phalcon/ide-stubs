@@ -9,6 +9,8 @@
  */
 namespace Phalcon\Mvc\Micro;
 
+use Phalcon\Mvc\Model\BinderInterface;
+
 /**
  * Phalcon\Mvc\Micro\LazyLoader
  *
@@ -41,11 +43,11 @@ class LazyLoader
      * Calling __call method
      *
      * @param array $arguments
-     * @return mixed
      * @param string $method
-     * @param \Phalcon\Mvc\Model\BinderInterface $modelBinder
+     * @param BinderInterface $modelBinder
+     * @return mixed
      */
-    public function callMethod(string $method, $arguments, \Phalcon\Mvc\Model\BinderInterface $modelBinder = null)
+    public function callMethod(string $method, $arguments, BinderInterface $modelBinder = null)
     {
     }
 }

@@ -20,7 +20,7 @@ use Psr\Link\LinkInterface;
  * @property array  rels
  * @property bool   templated
  */
-class Link implements \Psr\Link\LinkInterface
+class Link implements LinkInterface
 {
     /**
      * @var Collection

@@ -9,15 +9,16 @@
  */
 namespace Phalcon\Annotations\Adapter;
 
-use Phalcon\Annotations\Collection;
 use Phalcon\Annotations\Reader;
-use Phalcon\Annotations\ReaderInterface;
+use Phalcon\Annotations\Exception;
+use Phalcon\Annotations\Collection;
 use Phalcon\Annotations\Reflection;
+use Phalcon\Annotations\ReaderInterface;
 
 /**
  * This is the base class for Phalcon\Annotations adapters
  */
-abstract class AbstractAdapter implements \Phalcon\Annotations\Adapter\AdapterInterface
+abstract class AbstractAdapter implements AdapterInterface
 {
     /**
      * @var array
@@ -94,9 +95,9 @@ abstract class AbstractAdapter implements \Phalcon\Annotations\Adapter\AdapterIn
     /**
      * Sets the annotations parser
      *
-     * @param \Phalcon\Annotations\ReaderInterface $reader
+     * @param ReaderInterface $reader
      */
-    public function setReader(\Phalcon\Annotations\ReaderInterface $reader)
+    public function setReader(ReaderInterface $reader)
     {
     }
 }

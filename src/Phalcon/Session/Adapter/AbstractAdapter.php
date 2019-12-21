@@ -10,6 +10,7 @@
 namespace Phalcon\Session\Adapter;
 
 use Phalcon\Storage\Adapter\AdapterInterface;
+use SessionHandlerInterface;
 
 /**
  * This file is part of the Phalcon.
@@ -19,7 +20,7 @@ use Phalcon\Storage\Adapter\AdapterInterface;
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-abstract class AbstractAdapter implements \SessionHandlerInterface
+abstract class AbstractAdapter implements SessionHandlerInterface
 {
     /**
      * @var AdapterInterface

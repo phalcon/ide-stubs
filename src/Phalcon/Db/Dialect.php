@@ -13,7 +13,7 @@ namespace Phalcon\Db;
  * This is the base class to each database dialect. This implements
  * common methods to transform intermediate code into its RDBMS related syntax
  */
-abstract class Dialect implements \Phalcon\Db\DialectInterface
+abstract class Dialect implements DialectInterface
 {
 
     protected $escapeChar;

@@ -9,6 +9,8 @@
  */
 namespace Phalcon\Validation\Validator\File\Size;
 
+use Phalcon\Messages\Message;
+use Phalcon\Validation;
 use Phalcon\Validation\Validator\File\AbstractFile;
 
 /**
@@ -62,13 +64,26 @@ class Equal extends AbstractFile
 
 
     /**
+     * Constructor
+     *
+     * @param array $options = [
+     *     'message' => '',
+     *     'template' => '',
+     *     'size' => '2.5MB'
+     * ]
+     */
+    public function __construct(array $options = array())
+    {
+    }
+
+    /**
      * Executes the validation
      *
-     * @param \Phalcon\Validation $validation
+     * @param Validation $validation
      * @param mixed $field
      * @return bool
      */
-    public function validate(\Phalcon\Validation $validation, $field): bool
+    public function validate(Validation $validation, $field): bool
     {
     }
 }

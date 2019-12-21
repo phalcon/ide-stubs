@@ -16,7 +16,7 @@ use Phalcon\Html\Exception;
  *
  * Creates a label
  */
-class Label extends \Phalcon\Html\Helper\AbstractHelper
+class Label extends AbstractHelper
 {
 
     /**

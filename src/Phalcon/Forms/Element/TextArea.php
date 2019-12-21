@@ -9,10 +9,12 @@
  */
 namespace Phalcon\Forms\Element;
 
+use Phalcon\Tag;
+
 /**
  * Component TEXTAREA for forms
  */
-class TextArea extends \Phalcon\Forms\Element\AbstractElement
+class TextArea extends AbstractElement
 {
 
     /**

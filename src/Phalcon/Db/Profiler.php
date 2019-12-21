@@ -73,7 +73,7 @@ class Profiler
     /**
      * All the Phalcon\Db\Profiler\Item in the active profile
      *
-     * @var \Phalcon\Db\Profiler\Item[]
+     * @var Item[]
      */
     protected $allProfiles;
 
@@ -115,7 +115,7 @@ class Profiler
     /**
      * Returns all the processed profiles
      *
-     * @return array
+     * @return array|Item[]
      */
     public function getProfiles(): array
     {

@@ -32,7 +32,7 @@ namespace Phalcon\Http\Request;
  * }
  * ```
  */
-class File implements \Phalcon\Http\Request\FileInterface
+class File implements FileInterface
 {
     /**
      * @var string|null

@@ -11,6 +11,7 @@ namespace Phalcon\Http\Message;
 
 use Phalcon\Collection;
 use Phalcon\Http\Message\Exception\InvalidArgumentException;
+use Phalcon\Http\Message\Stream\Input;
 use Psr\Http\Message\ServerRequestInterface;
 use Psr\Http\Message\StreamInterface;
 use Psr\Http\Message\UploadedFileInterface;
@@ -19,7 +20,7 @@ use Psr\Http\Message\UriInterface;
 /**
  * PSR-7 ServerRequest
  */
-final class ServerRequest extends \Phalcon\Http\Message\AbstractRequest implements \Psr\Http\Message\ServerRequestInterface
+final class ServerRequest extends AbstractRequest implements ServerRequestInterface
 {
     /**
      * @var Collection

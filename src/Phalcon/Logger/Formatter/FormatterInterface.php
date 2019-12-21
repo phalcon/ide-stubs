@@ -9,6 +9,8 @@
  */
 namespace Phalcon\Logger\Formatter;
 
+use Phalcon\Logger\Item;
+
 /**
  * Phalcon\Logger\FormatterInterface
  *
@@ -20,8 +22,8 @@ interface FormatterInterface
     /**
      * Applies a format to an item
      *
-     * @param \Phalcon\Logger\Item $item
+     * @param Item $item
      * @return string|array
      */
-    public function format(\Phalcon\Logger\Item $item);
+    public function format(Item $item);
 }

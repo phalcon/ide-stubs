@@ -9,10 +9,14 @@
  */
 namespace Phalcon;
 
+use Closure;
+use Phalcon\Filter\Exception;
+use Phalcon\Filter\FilterInterface;
+
 /**
  * Lazy loads, stores and exposes sanitizer objects
  */
-class Filter implements \Phalcon\Filter\FilterInterface
+class Filter implements FilterInterface
 {
 
     const FILTER_ABSINT = 'absint';

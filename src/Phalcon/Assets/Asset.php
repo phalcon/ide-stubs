@@ -16,7 +16,7 @@ namespace Phalcon\Assets;
  * $asset = new \Phalcon\Assets\Asset("js", "javascripts/jquery.js");
  * ```
  */
-class Asset implements \Phalcon\Assets\AssetInterface
+class Asset implements AssetInterface
 {
     /**
      * @var array | null

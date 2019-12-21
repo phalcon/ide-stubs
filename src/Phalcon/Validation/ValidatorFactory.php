@@ -11,6 +11,7 @@ namespace Phalcon\Validation;
 
 use Phalcon\Factory\AbstractFactory;
 use Phalcon\Factory\ValidatorInterface;
+use Phalcon\Helper\Arr;
 
 /**
  * This file is part of the Phalcon Framework.

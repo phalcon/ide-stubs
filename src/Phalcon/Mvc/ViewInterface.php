@@ -14,7 +14,7 @@ namespace Phalcon\Mvc;
  *
  * Interface for Phalcon\Mvc\View
  */
-interface ViewInterface extends \Phalcon\Mvc\ViewBaseInterface
+interface ViewInterface extends ViewBaseInterface
 {
 
     /**

@@ -14,7 +14,7 @@ namespace Phalcon\Mvc\Router;
  *
  * This class represents every route added to the router
  */
-class Route implements \Phalcon\Mvc\Router\RouteInterface
+class Route implements RouteInterface
 {
 
     protected $beforeMatch;

@@ -10,16 +10,20 @@
 namespace Phalcon\Storage\Adapter;
 
 use Phalcon\Collection;
+use Phalcon\Helper\Arr;
+use Phalcon\Storage\Exception;
+use Phalcon\Storage\SerializerFactory;
+use Phalcon\Storage\Serializer\SerializerInterface;
 
 /**
  * Memory adapter
  */
-class Memory extends \Phalcon\Storage\Adapter\AbstractAdapter
+class Memory extends AbstractAdapter
 {
     /**
      * @var Collection
      */
-    protected $data = array();
+    protected $data;
 
     /**
      * @var array
@@ -30,10 +34,15 @@ class Memory extends \Phalcon\Storage\Adapter\AbstractAdapter
     /**
      * Constructor
      *
-     * @param \Phalcon\Storage\SerializerFactory $factory
-     * @param array $options
+     * @param array $options = [
+     *     'defaultSerializer' => 'Php',
+     *     'lifetime' => 3600,
+     *     'serializer' => null,
+     *     'prefix' => ''
+     * ]
+     * @param SerializerFactory $factory
      */
-    public function __construct(\Phalcon\Storage\SerializerFactory $factory = null, array $options = array())
+    public function __construct(SerializerFactory $factory, array $options = array())
     {
     }
 
@@ -94,8 +103,9 @@ class Memory extends \Phalcon\Storage\Adapter\AbstractAdapter
      * Stores data in the adapter
      *
      * @return array
+     * @param string $prefix
      */
-    public function getKeys(): array
+    public function getKeys(string $prefix = ''): array
     {
     }
 

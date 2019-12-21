@@ -9,6 +9,10 @@
  */
 namespace Phalcon;
 
+use Phalcon\Di\DiInterface;
+use Phalcon\Escaper\EscaperInterface;
+use Phalcon\Escaper\Exception;
+
 /**
  * Phalcon\Escaper
  *
@@ -26,7 +30,7 @@ namespace Phalcon;
  * echo $escaped; // font\2D family\3A \20 \3C Verdana\3E
  * ```
  */
-class Escaper implements \Phalcon\Escaper\EscaperInterface
+class Escaper implements EscaperInterface
 {
     /**
      * @var bool
@@ -85,7 +89,7 @@ class Escaper implements \Phalcon\Escaper\EscaperInterface
      * @param string $text
      * @return string
      */
-    public function escapeHtml(string $text): string
+    public function escapeHtml(string $text = null): string
     {
     }
 
@@ -95,7 +99,7 @@ class Escaper implements \Phalcon\Escaper\EscaperInterface
      * @param string $attribute
      * @return string
      */
-    public function escapeHtmlAttr(string $attribute): string
+    public function escapeHtmlAttr(string $attribute = null): string
     {
     }
 

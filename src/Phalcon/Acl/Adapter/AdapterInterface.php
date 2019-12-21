@@ -9,6 +9,9 @@
  */
 namespace Phalcon\Acl\Adapter;
 
+use Phalcon\Acl\ComponentInterface;
+use Phalcon\Acl\RoleInterface;
+
 /**
  * Interface for Phalcon\Acl adapters
  */
@@ -127,14 +130,14 @@ interface AdapterInterface
     /**
      * Return an array with every role registered in the list
      *
-     * @return array
+     * @return array|RoleInterface[]
      */
     public function getRoles(): array;
 
     /**
      * Return an array with every component registered in the list
      *
-     * @return array
+     * @return array|ComponentInterface[]
      */
     public function getComponents(): array;
 

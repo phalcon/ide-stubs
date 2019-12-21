@@ -11,6 +11,8 @@ namespace Phalcon;
 
 use Phalcon\Di\DiInterface;
 use Phalcon\Escaper\EscaperInterface;
+use Phalcon\Tag\Select;
+use Phalcon\Tag\Exception;
 use Phalcon\Url\UrlInterface;
 
 /**
@@ -103,7 +105,12 @@ class Tag
     /**
      * Builds a HTML input[type="check"] tag
      *
-     * @param mixed $parameters
+     * @param array $parameters = [
+     *     'class' => '',
+     *     'id' => '',
+     *     'name' => ''
+     *     'value' => ''
+     * ]
      * @return string
      */
     public static function checkField($parameters): string
@@ -113,7 +120,12 @@ class Tag
     /**
      * Builds a HTML input[type="color"] tag
      *
-     * @param mixed $parameters
+     * @param array $parameters = [
+     *     'class' => '',
+     *     'id' => '',
+     *     'name' => ''
+     *     'value' => ''
+     * ]
      * @return string
      */
     public static function colorField($parameters): string
@@ -123,7 +135,12 @@ class Tag
     /**
      * Builds a HTML input[type="date"] tag
      *
-     * @param mixed $parameters
+     * @param array $parameters = [
+     *     'class' => '',
+     *     'id' => '',
+     *     'name' => ''
+     *     'value' => ''
+     * ]
      * @return string
      */
     public static function dateField($parameters): string
@@ -133,7 +150,12 @@ class Tag
     /**
      * Builds a HTML input[type="datetime"] tag
      *
-     * @param mixed $parameters
+     * @param array $parameters = [
+     *     'class' => '',
+     *     'id' => '',
+     *     'name' => ''
+     *     'value' => ''
+     * ]
      * @return string
      */
     public static function dateTimeField($parameters): string
@@ -143,7 +165,12 @@ class Tag
     /**
      * Builds a HTML input[type="datetime-local"] tag
      *
-     * @param mixed $parameters
+     * @param array $parameters = [
+     *     'class' => '',
+     *     'id' => '',
+     *     'name' => ''
+     *     'value' => ''
+     * ]
      * @return string
      */
     public static function dateTimeLocalField($parameters): string
@@ -164,7 +191,12 @@ class Tag
     /**
      * Builds a HTML input[type="email"] tag
      *
-     * @param mixed $parameters
+     * @param array $parameters = [
+     *     'class' => '',
+     *     'id' => '',
+     *     'name' => ''
+     *     'value' => ''
+     * ]
      * @return string
      */
     public static function emailField($parameters): string
@@ -183,7 +215,12 @@ class Tag
     /**
      * Builds a HTML input[type="file"] tag
      *
-     * @param mixed $parameters
+     * @param array $parameters = [
+     *     'class' => '',
+     *     'id' => '',
+     *     'name' => ''
+     *     'value' => ''
+     * ]
      * @return string
      */
     public static function fileField($parameters): string
@@ -193,7 +230,14 @@ class Tag
     /**
      * Builds a HTML FORM tag
      *
-     * @param mixed $parameters
+     * @param array $parameters = [
+     *     'method' => 'post',
+     *     'action' => '',
+     *     'parameters' => '',
+     *     'name' => '',
+     *     'class' => '',
+     *     'id' => ''
+     * ]
      * @return string
      */
     public static function form($parameters): string
@@ -304,7 +348,13 @@ class Tag
     /**
      * Builds a HTML input[type="hidden"] tag
      *
-     * @param mixed $parameters
+     * @param array $parameters = [
+     *     'class' => '',
+     *     'name' => '',
+     *     'src' => '',
+     *     'id' => '',
+     *     'value' => ''
+     * ]
      * @return string
      */
     public static function hiddenField($parameters): string
@@ -314,7 +364,12 @@ class Tag
     /**
      * Builds HTML IMG tags
      *
-     * @param mixed $parameters
+     * @param array|string $parameters = [
+     *     'src' => '',
+     *     'class' => '',
+     *     'id' => '',
+     *     'name' => ''
+     * ]
      * @param bool $local
      * @return string
      */
@@ -325,7 +380,12 @@ class Tag
     /**
      * Builds a HTML input[type="image"] tag
      *
-     * @param mixed $parameters
+     * @param array $parameters = [
+     *     'class' => '',
+     *     'name' => '',
+     *     'src' => '',
+     *     'id' => ''
+     * ]
      * @return string
      */
     public static function imageInput($parameters): string
@@ -335,7 +395,12 @@ class Tag
     /**
      * Builds a SCRIPT[type="javascript"] tag
      *
-     * @param mixed $parameters
+     * @param array|string $parameters = [
+     *     'local' => false,
+     *     'src' => '',
+     *     'type' => 'text/javascript'
+     *     'rel' => ''
+     * ]
      * @param bool $local
      * @return string
      */
@@ -346,6 +411,16 @@ class Tag
     /**
      * Builds a HTML A tag using framework conventions
      *
+     * @param parameters $array |string = [
+     *     'action' => '',
+     *     'text' => '',
+     *     'local' => false,
+     *     'query' => '',
+     *     'class' => '',
+     *     'name' => '',
+     *     'href' => '',
+     *     'id' => ''
+     * ]
      * @param mixed $parameters
      * @param mixed $text
      * @param mixed $local
@@ -358,7 +433,13 @@ class Tag
     /**
      * Builds a HTML input[type="month"] tag
      *
-     * @param mixed $parameters
+     * @param array $parameters = [
+     *     'class' => '',
+     *     'name' => '',
+     *     'src' => '',
+     *     'id' => '',
+     *     'value' => ''
+     * ]
      * @return string
      */
     public static function monthField($parameters): string
@@ -368,7 +449,13 @@ class Tag
     /**
      * Builds a HTML input[type="number"] tag
      *
-     * @param mixed $parameters
+     * @param array $parameters = [
+     *     'class' => '',
+     *     'name' => '',
+     *     'src' => '',
+     *     'id' => '',
+     *     'value' => ''
+     * ]
      * @return string
      */
     public static function numericField($parameters): string
@@ -378,7 +465,13 @@ class Tag
     /**
      * Builds a HTML input[type="password"] tag
      *
-     * @param mixed $parameters
+     * @param array $parameters = [
+     *     'class' => '',
+     *     'name' => '',
+     *     'src' => '',
+     *     'id' => '',
+     *     'value' => ''
+     * ]
      * @return string
      */
     public static function passwordField($parameters): string
@@ -398,7 +491,13 @@ class Tag
     /**
      * Builds a HTML input[type="radio"] tag
      *
-     * @param mixed $parameters
+     * @param array $parameters = [
+     *     'class' => '',
+     *     'name' => '',
+     *     'src' => '',
+     *     'id' => '',
+     *     'value' => ''
+     * ]
      * @return string
      */
     public static function radioField($parameters): string
@@ -408,7 +507,13 @@ class Tag
     /**
      * Builds a HTML input[type="range"] tag
      *
-     * @param mixed $parameters
+     * @param array $parameters = [
+     *     'class' => '',
+     *     'name' => '',
+     *     'src' => '',
+     *     'id' => '',
+     *     'value' => ''
+     * ]
      * @return string
      */
     public static function rangeField($parameters): string
@@ -418,8 +523,19 @@ class Tag
     /**
      * Renders parameters keeping order in their HTML attributes
      *
+     * @param array $attributes = [
+     *     'rel' => null,
+     *     'type' => null,
+     *     'for' => null,
+     *     'src' => null,
+     *     'href' => null,
+     *     'action' => null,
+     *     'id' => null,
+     *     'name' => null,
+     *     'value' => null,
+     *     'class' => null
+     * ]
      * @param string $code
-     * @param array $attributes
      * @return string
      */
     public static function renderAttributes(string $code, array $attributes): string
@@ -452,7 +568,13 @@ class Tag
     /**
      * Builds a HTML input[type="search"] tag
      *
-     * @param mixed $parameters
+     * @param array $parameters = [
+     *     'class' => '',
+     *     'name' => '',
+     *     'src' => '',
+     *     'id' => '',
+     *     'value' => ''
+     * ]
      * @return string
      */
     public static function searchField($parameters): string
@@ -462,7 +584,14 @@ class Tag
     /**
      * Builds a HTML SELECT tag using a Phalcon\Mvc\Model resultset as options
      *
-     * @param mixed $parameters
+     * @param array $parameters = [
+     *     'id' => '',
+     *     'name' => '',
+     *     'value' => '',
+     *     'useEmpty' => false,
+     *     'emptyValue' => '',
+     *     'emptyText' => '',
+     * ]
      * @param mixed $data
      * @return string
      */
@@ -473,7 +602,14 @@ class Tag
     /**
      * Builds a HTML SELECT tag using a PHP array for options
      *
-     * @param mixed $parameters
+     * @param array $parameters = [
+     *     'id' => '',
+     *     'name' => '',
+     *     'value' => '',
+     *     'useEmpty' => false,
+     *     'emptyValue' => '',
+     *     'emptyText' => '',
+     * ]
      * @param mixed $data
      * @return string
      */
@@ -516,10 +652,10 @@ class Tag
     /**
      * Sets the dependency injector container.
      *
-     * @param \Phalcon\Di\DiInterface $container
+     * @param DiInterface $container
      * @return void
      */
-    public static function setDI(\Phalcon\Di\DiInterface $container)
+    public static function setDI(DiInterface $container)
     {
     }
 
@@ -602,7 +738,12 @@ class Tag
     /**
      * Builds a HTML input[type="tel"] tag
      *
-     * @param mixed $parameters
+     * @param array $parameters = [
+     *     'id' => '',
+     *     'name' => '',
+     *     'value' => '',
+     *     'class' => ''
+     * ]
      * @return string
      */
     public static function telField($parameters): string
@@ -612,6 +753,12 @@ class Tag
     /**
      * Builds a HTML TEXTAREA tag
      *
+     * @paraym array parameters = [
+     *     'id' => '',
+     *     'name' => '',
+     *     'value' => '',
+     *     'class' => ''
+     * ]
      * @param mixed $parameters
      * @return string
      */
@@ -622,7 +769,12 @@ class Tag
     /**
      * Builds a HTML input[type="text"] tag
      *
-     * @param mixed $parameters
+     * @param array $parameters = [
+     *     'id' => '',
+     *     'name' => '',
+     *     'value' => '',
+     *     'class' => ''
+     * ]
      * @return string
      */
     public static function textField($parameters): string
@@ -632,6 +784,12 @@ class Tag
     /**
      * Builds a HTML input[type="time"] tag
      *
+     * @param array $paramters = [
+     *     'id' => '',
+     *     'name' => '',
+     *     'value' => '',
+     *     'class' => ''
+     * ]
      * @param mixed $parameters
      * @return string
      */
@@ -642,6 +800,12 @@ class Tag
     /**
      * Builds a HTML input[type="url"] tag
      *
+     * @param array $paramters = [
+     *     'id' => '',
+     *     'name' => '',
+     *     'value' => '',
+     *     'class' => ''
+     * ]
      * @param mixed $parameters
      * @return string
      */
@@ -652,7 +816,12 @@ class Tag
     /**
      * Builds a HTML input[type="week"] tag
      *
-     * @param mixed $parameters
+     * @param array $parameters = [
+     *     'id' => '',
+     *     'name' => '',
+     *     'value' => '',
+     *     'class' => ''
+     * ]
      * @return string
      */
     public static function weekField($parameters): string
@@ -662,6 +831,13 @@ class Tag
     /**
      * Builds generic INPUT tags
      *
+     * @param array $paramters = [
+     *     'id' => '',
+     *     'name' => '',
+     *     'value' => '',
+     *     'class' => '',
+     *     'type' => ''
+     * ]
      * @param string $type
      * @param mixed $parameters
      * @param bool $asValue

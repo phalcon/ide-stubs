@@ -10,6 +10,15 @@
 namespace Phalcon\Acl\Adapter;
 
 use Phalcon\Acl\Enum;
+use Phalcon\Acl\Role;
+use Phalcon\Acl\RoleInterface;
+use Phalcon\Acl\Component;
+use Phalcon\Acl\Exception;
+use Phalcon\Events\Manager as EventsManager;
+use Phalcon\Acl\RoleAware;
+use Phalcon\Acl\ComponentAware;
+use Phalcon\Acl\ComponentInterface;
+use ReflectionFunction;
 
 /**
  * Manages ACL lists in memory
@@ -74,7 +83,7 @@ use Phalcon\Acl\Enum;
  * }
  * ```
  */
-class Memory extends \Phalcon\Acl\Adapter\AbstractAdapter
+class Memory extends AbstractAdapter
 {
     /**
      * Access
@@ -362,7 +371,7 @@ class Memory extends \Phalcon\Acl\Adapter\AbstractAdapter
     /**
      * Return an array with every role registered in the list
      *
-     * @return array
+     * @return array|RoleInterface[]
      */
     public function getRoles(): array
     {
@@ -371,7 +380,7 @@ class Memory extends \Phalcon\Acl\Adapter\AbstractAdapter
     /**
      * Return an array with every component registered in the list
      *
-     * @return array
+     * @return array|ComponentInterface[]
      */
     public function getComponents(): array
     {

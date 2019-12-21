@@ -12,7 +12,7 @@ namespace Phalcon\Acl;
 /**
  * This class defines component entity and its description
  */
-class Component implements \Phalcon\Acl\ComponentInterface
+class Component implements ComponentInterface
 {
     /**
      * Component description

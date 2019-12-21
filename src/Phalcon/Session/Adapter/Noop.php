@@ -9,6 +9,8 @@
  */
 namespace Phalcon\Session\Adapter;
 
+use SessionHandlerInterface;
+
 /**
  * Phalcon\Session\Adapter\Noop
  *
@@ -25,7 +27,7 @@ namespace Phalcon\Session\Adapter;
  * $session->setAdapter(new Noop());
  * ```
  */
-class Noop implements \SessionHandlerInterface
+class Noop implements SessionHandlerInterface
 {
     /**
      * The connection of some adapters
@@ -57,7 +59,9 @@ class Noop implements \SessionHandlerInterface
     /**
      * Constructor
      *
-     * @param array $options
+     * @param array $options = [
+     *     'prefix' => ''
+     * ]
      */
     public function __construct(array $options = array())
     {

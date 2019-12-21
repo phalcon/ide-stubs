@@ -9,12 +9,16 @@
  */
 namespace Phalcon\Translate\Adapter;
 
+use ArrayAccess;
+use Phalcon\Translate\Exception;
+use Phalcon\Translate\InterpolatorFactory;
+
 /**
  * Phalcon\Translate\Adapter\Csv
  *
  * Allows to define translation lists using CSV file
  */
-class Csv extends \Phalcon\Translate\Adapter\AbstractAdapter implements \ArrayAccess
+class Csv extends AbstractAdapter implements ArrayAccess
 {
     /**
      * @var array
@@ -25,10 +29,14 @@ class Csv extends \Phalcon\Translate\Adapter\AbstractAdapter implements \ArrayAc
     /**
      * Phalcon\Translate\Adapter\Csv constructor
      *
-     * @param \Phalcon\Translate\InterpolatorFactory $interpolator
-     * @param array $options
+     * @param array $options = [
+     *     'content' => '',
+     *     'delimiter' => ';',
+     *     'enclosure' => '"'
+     * ]
+     * @param InterpolatorFactory $interpolator
      */
-    public function __construct(\Phalcon\Translate\InterpolatorFactory $interpolator, array $options)
+    public function __construct(InterpolatorFactory $interpolator, array $options)
     {
     }
 

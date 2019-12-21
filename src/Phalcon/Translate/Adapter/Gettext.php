@@ -9,6 +9,10 @@
  */
 namespace Phalcon\Translate\Adapter;
 
+use ArrayAccess;
+use Phalcon\Translate\Exception;
+use Phalcon\Translate\InterpolatorFactory;
+
 /**
  * Phalcon\Translate\Adapter\Gettext
  *
@@ -27,7 +31,7 @@ namespace Phalcon\Translate\Adapter;
  *
  * Allows translate using gettext
  */
-class Gettext extends \Phalcon\Translate\Adapter\AbstractAdapter implements \ArrayAccess
+class Gettext extends AbstractAdapter implements ArrayAccess
 {
     /**
      * @var int
@@ -81,10 +85,15 @@ class Gettext extends \Phalcon\Translate\Adapter\AbstractAdapter implements \Arr
     /**
      * Phalcon\Translate\Adapter\Gettext constructor
      *
-     * @param \Phalcon\Translate\InterpolatorFactory $interpolator
-     * @param array $options
+     * @param array $options = [
+     *     'locale' => '',
+     *     'defaultDomain' => '',
+     *     'directory' => '',
+     *     'category' => ''
+     * ]
+     * @param InterpolatorFactory $interpolator
      */
-    public function __construct(\Phalcon\Translate\InterpolatorFactory $interpolator, array $options)
+    public function __construct(InterpolatorFactory $interpolator, array $options)
     {
     }
 

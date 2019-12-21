@@ -9,7 +9,12 @@
  */
 namespace Phalcon\Validation\Validator;
 
+use Phalcon\Messages\Message;
+use Phalcon\Validation\AbstractValidator;
 use Phalcon\Validation\AbstractValidatorComposite;
+use Phalcon\Validation\Validator\StringLength\Max;
+use Phalcon\Validation\Validator\StringLength\Min;
+use Phalcon\Validation\Exception;
 
 /**
  * Validates that a string has the specified maximum and minimum constraints
@@ -79,7 +84,16 @@ class StringLength extends AbstractValidatorComposite
     /**
      * Constructor
      *
-     * @param array $options
+     * @param array $options = [
+     *     'min' => 100,
+     *     'message' => '',
+     *     'messageMinimum' => '',
+     *     'included' => '',
+     *     'includedMinimum' => false,
+     *     'max' => 1000,
+     *     'messageMaximum' => '',
+     *     'includedMaximum' => false
+     * ]
      */
     public function __construct(array $options = array())
     {

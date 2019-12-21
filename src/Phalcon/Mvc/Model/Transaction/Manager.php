@@ -9,7 +9,10 @@
  */
 namespace Phalcon\Mvc\Model\Transaction;
 
+use Phalcon\Di;
 use Phalcon\Di\DiInterface;
+use Phalcon\Di\InjectionAwareInterface;
+use Phalcon\Mvc\Model\Transaction;
 use Phalcon\Mvc\Model\TransactionInterface;
 
 /**
@@ -59,7 +62,7 @@ use Phalcon\Mvc\Model\TransactionInterface;
  * }
  * ```
  */
-class Manager implements \Phalcon\Mvc\Model\Transaction\ManagerInterface, \Phalcon\Di\InjectionAwareInterface
+class Manager implements ManagerInterface, InjectionAwareInterface
 {
 
     protected $container;
@@ -85,9 +88,9 @@ class Manager implements \Phalcon\Mvc\Model\Transaction\ManagerInterface, \Phalc
     /**
      * Phalcon\Mvc\Model\Transaction\Manager constructor
      *
-     * @param \Phalcon\Di\DiInterface $container
+     * @param DiInterface $container
      */
-    public function __construct(\Phalcon\Di\DiInterface $container = null)
+    public function __construct(DiInterface $container = null)
     {
     }
 
@@ -168,20 +171,20 @@ class Manager implements \Phalcon\Mvc\Model\Transaction\ManagerInterface, \Phalc
     /**
      * Notifies the manager about a committed transaction
      *
-     * @param \Phalcon\Mvc\Model\TransactionInterface $transaction
+     * @param TransactionInterface $transaction
      * @return void
      */
-    public function notifyCommit(\Phalcon\Mvc\Model\TransactionInterface $transaction)
+    public function notifyCommit(TransactionInterface $transaction)
     {
     }
 
     /**
      * Notifies the manager about a rollbacked transaction
      *
-     * @param \Phalcon\Mvc\Model\TransactionInterface $transaction
+     * @param TransactionInterface $transaction
      * @return void
      */
-    public function notifyRollback(\Phalcon\Mvc\Model\TransactionInterface $transaction)
+    public function notifyRollback(TransactionInterface $transaction)
     {
     }
 
@@ -218,10 +221,10 @@ class Manager implements \Phalcon\Mvc\Model\Transaction\ManagerInterface, \Phalc
     /**
      * Sets the dependency injection container
      *
-     * @param \Phalcon\Di\DiInterface $container
+     * @param DiInterface $container
      * @return void
      */
-    public function setDI(\Phalcon\Di\DiInterface $container)
+    public function setDI(DiInterface $container)
     {
     }
 
@@ -239,10 +242,10 @@ class Manager implements \Phalcon\Mvc\Model\Transaction\ManagerInterface, \Phalc
     /**
      * Removes transactions from the TransactionManager
      *
-     * @param \Phalcon\Mvc\Model\TransactionInterface $transaction
+     * @param TransactionInterface $transaction
      * @return void
      */
-    protected function collectTransaction(\Phalcon\Mvc\Model\TransactionInterface $transaction)
+    protected function collectTransaction(TransactionInterface $transaction)
     {
     }
 }

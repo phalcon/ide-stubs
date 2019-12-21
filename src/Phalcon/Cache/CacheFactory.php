@@ -9,7 +9,12 @@
  */
 namespace Phalcon\Cache;
 
+use Phalcon\Cache\Adapter\AdapterInterface;
+use Phalcon\Cache;
 use Psr\SimpleCache\CacheInterface;
+use Phalcon\Cache\Exception\Exception;
+use Phalcon\Config;
+use Phalcon\Helper\Arr;
 
 /**
  * Creates a new Cache class
@@ -34,7 +39,30 @@ class CacheFactory
     /**
      * Factory to create an instace from a Config object
      *
-     * @param mixed $config
+     * @param array|Config $config = [
+     *     'adapter' => 'apcu',
+     *     'options' => [
+     *         'servers' => [
+     *             [
+     *                 'host' => 'localhost',
+     *                 'port' => 11211,
+     *                 'weight' => 1,
+     *
+     *             ]
+     *         ],
+     *         'host' => '127.0.0.1',
+     *         'port' => 6379,
+     *         'index' => 0,
+     *         'persistent' => false,
+     *         'auth' => '',
+     *         'socket' => '',
+     *         'defaultSerializer' => 'Php',
+     *         'lifetime' => 3600,
+     *         'serializer' => null,
+     *         'prefix' => 'phalcon',
+     *         'storageDir' => ''
+     *     ]
+     * ]
      * @return mixed
      */
     public function load($config)
@@ -44,8 +72,28 @@ class CacheFactory
     /**
      * Constructs a new Cache instance.
      *
+     * @param array $options = [
+     *     'servers' => [
+     *         [
+     *             'host' => 'localhost',
+     *             'port' => 11211,
+     *             'weight' => 1,
+     *
+     *         ]
+     *     ],
+     *     'host' => '127.0.0.1',
+     *     'port' => 6379,
+     *     'index' => 0,
+     *     'persistent' => false,
+     *     'auth' => '',
+     *     'socket' => '',
+     *     'defaultSerializer' => 'Php',
+     *     'lifetime' => 3600,
+     *     'serializer' => null,
+     *     'prefix' => 'phalcon',
+     *     'storageDir' => ''
+     * ]
      * @param string $name
-     * @param array $options
      * @return CacheInterface
      */
     public function newInstance(string $name, array $options = array()): CacheInterface

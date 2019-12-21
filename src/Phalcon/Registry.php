@@ -61,7 +61,7 @@ use Traversable;
  * are implemented using object handlers or similar techniques: this allows to
  * bypass relatively slow method calls.
  */
-final class Registry extends \Phalcon\Collection
+final class Registry extends Collection
 {
 
     /**

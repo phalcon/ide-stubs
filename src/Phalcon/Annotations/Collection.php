@@ -9,6 +9,9 @@
  */
 namespace Phalcon\Annotations;
 
+use Countable;
+use Iterator;
+
 /**
  * Represents a collection of annotations. This class allows to traverse a group
  * of annotations easily
@@ -26,7 +29,7 @@ namespace Phalcon\Annotations;
  * $annotation = $classAnnotations->get("Cacheable");
  * ```
  */
-class Collection implements \Iterator, \Countable
+class Collection implements Iterator, Countable
 {
     /**
      * @var array
@@ -80,7 +83,7 @@ class Collection implements \Iterator, \Countable
      * Returns all the annotations that match a name
      *
      * @param string $name
-     * @return array
+     * @return array|Annotation[]
      */
     public function getAll(string $name): array
     {
@@ -89,7 +92,7 @@ class Collection implements \Iterator, \Countable
     /**
      * Returns the internal annotations as an array
      *
-     * @return array
+     * @return array|Annotation[]
      */
     public function getAnnotations(): array
     {

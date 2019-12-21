@@ -9,6 +9,8 @@
  */
 namespace Phalcon\Helper;
 
+use stdClass;
+
 /**
  * This class offers quick array functions throughout the framework
  */
@@ -25,6 +27,18 @@ class Arr
      * @return array
      */
     final public static function chunk(array $collection, int $size, bool $preserveKeys = false): array
+    {
+    }
+
+    /**
+     * Helper method to filter the collection
+     *
+     * @param array    $collection
+     * @param callable $method
+     *
+     * @return array
+     */
+    final public static function filter(array $collection, $method = null): array
     {
     }
 
@@ -235,7 +249,7 @@ class Arr
      *
      * @return bool
      */
-    final public static function validateAll(array $collection, $method): bool
+    final public static function validateAll(array $collection, $method = null): bool
     {
     }
 
@@ -248,19 +262,7 @@ class Arr
      *
      * @return bool
      */
-    final public static function validateAny(array $collection, $method): bool
-    {
-    }
-
-    /**
-     * Helper method to filter the collection
-     *
-     * @param array    $collection
-     * @param callable $method
-     *
-     * @return array
-     */
-    final private static function filterCollection(array $collection, $method = null): array
+    final public static function validateAny(array $collection, $method = null): bool
     {
     }
 

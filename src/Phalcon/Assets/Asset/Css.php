@@ -9,10 +9,12 @@
  */
 namespace Phalcon\Assets\Asset;
 
+use Phalcon\Assets\Asset as AssetBase;
+
 /**
  * Represents CSS assets
  */
-class Css extends \Phalcon\Assets\Asset
+class Css extends AssetBase
 {
 
     /**

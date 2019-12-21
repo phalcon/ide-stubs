@@ -12,7 +12,7 @@ namespace Phalcon\Di;
 /**
  * This abstract class offers common access to the DI in a class
  */
-abstract class AbstractInjectionAware implements \Phalcon\Di\InjectionAwareInterface
+abstract class AbstractInjectionAware implements InjectionAwareInterface
 {
     /**
      * Dependency Injector

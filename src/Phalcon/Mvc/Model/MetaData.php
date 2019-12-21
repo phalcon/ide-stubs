@@ -11,7 +11,10 @@ namespace Phalcon\Mvc\Model;
 
 use Phalcon\Cache\Adapter\AdapterInterface as CacheAdapterInterface;
 use Phalcon\Di\DiInterface;
+use Phalcon\Di\InjectionAwareInterface;
+use Phalcon\Mvc\Model\MetaData\Strategy\Introspection;
 use Phalcon\Mvc\Model\MetaData\Strategy\StrategyInterface;
+use Phalcon\Mvc\ModelInterface;
 
 /**
  * Phalcon\Mvc\Model\MetaData
@@ -33,7 +36,7 @@ use Phalcon\Mvc\Model\MetaData\Strategy\StrategyInterface;
  * print_r($attributes);
  * ```
  */
-abstract class MetaData implements \Phalcon\Di\InjectionAwareInterface, \Phalcon\Mvc\Model\MetaDataInterface
+abstract class MetaData implements InjectionAwareInterface, MetaDataInterface
 {
 
     const MODELS_ATTRIBUTES = 0;
@@ -112,10 +115,10 @@ abstract class MetaData implements \Phalcon\Di\InjectionAwareInterface, \Phalcon
      * );
      * ```
      *
-     * @param \Phalcon\Mvc\ModelInterface $model
+     * @param ModelInterface $model
      * @return array
      */
-    public function getAttributes(\Phalcon\Mvc\ModelInterface $model): array
+    public function getAttributes(ModelInterface $model): array
     {
     }
 
@@ -130,10 +133,10 @@ abstract class MetaData implements \Phalcon\Di\InjectionAwareInterface, \Phalcon
      * );
      * ```
      *
-     * @param \Phalcon\Mvc\ModelInterface $model
+     * @param ModelInterface $model
      * @return array
      */
-    public function getAutomaticCreateAttributes(\Phalcon\Mvc\ModelInterface $model): array
+    public function getAutomaticCreateAttributes(ModelInterface $model): array
     {
     }
 
@@ -148,10 +151,10 @@ abstract class MetaData implements \Phalcon\Di\InjectionAwareInterface, \Phalcon
      * );
      * ```
      *
-     * @param \Phalcon\Mvc\ModelInterface $model
+     * @param ModelInterface $model
      * @return array
      */
-    public function getAutomaticUpdateAttributes(\Phalcon\Mvc\ModelInterface $model): array
+    public function getAutomaticUpdateAttributes(ModelInterface $model): array
     {
     }
 
@@ -166,10 +169,10 @@ abstract class MetaData implements \Phalcon\Di\InjectionAwareInterface, \Phalcon
      * );
      * ```
      *
-     * @param \Phalcon\Mvc\ModelInterface $model
+     * @param ModelInterface $model
      * @return array
      */
-    public function getBindTypes(\Phalcon\Mvc\ModelInterface $model): array
+    public function getBindTypes(ModelInterface $model): array
     {
     }
 
@@ -184,10 +187,10 @@ abstract class MetaData implements \Phalcon\Di\InjectionAwareInterface, \Phalcon
      * );
      * ```
      *
-     * @param \Phalcon\Mvc\ModelInterface $model
+     * @param ModelInterface $model
      * @return array
      */
-    public function getColumnMap(\Phalcon\Mvc\ModelInterface $model): array
+    public function getColumnMap(ModelInterface $model): array
     {
     }
 
@@ -202,10 +205,10 @@ abstract class MetaData implements \Phalcon\Di\InjectionAwareInterface, \Phalcon
      * );
      * ```
      *
-     * @param \Phalcon\Mvc\ModelInterface $model
+     * @param ModelInterface $model
      * @return array
      */
-    public function getDefaultValues(\Phalcon\Mvc\ModelInterface $model): array
+    public function getDefaultValues(ModelInterface $model): array
     {
     }
 
@@ -220,10 +223,10 @@ abstract class MetaData implements \Phalcon\Di\InjectionAwareInterface, \Phalcon
      * );
      * ```
      *
-     * @param \Phalcon\Mvc\ModelInterface $model
+     * @param ModelInterface $model
      * @return array
      */
-    public function getDataTypes(\Phalcon\Mvc\ModelInterface $model): array
+    public function getDataTypes(ModelInterface $model): array
     {
     }
 
@@ -238,10 +241,10 @@ abstract class MetaData implements \Phalcon\Di\InjectionAwareInterface, \Phalcon
      * );
      * ```
      *
-     * @param \Phalcon\Mvc\ModelInterface $model
+     * @param ModelInterface $model
      * @return array
      */
-    public function getDataTypesNumeric(\Phalcon\Mvc\ModelInterface $model): array
+    public function getDataTypesNumeric(ModelInterface $model): array
     {
     }
 
@@ -265,10 +268,10 @@ abstract class MetaData implements \Phalcon\Di\InjectionAwareInterface, \Phalcon
      * );
      * ```
      *
-     * @param \Phalcon\Mvc\ModelInterface $model
+     * @param ModelInterface $model
      * @return array
      */
-    public function getEmptyStringAttributes(\Phalcon\Mvc\ModelInterface $model): array
+    public function getEmptyStringAttributes(ModelInterface $model): array
     {
     }
 
@@ -283,10 +286,10 @@ abstract class MetaData implements \Phalcon\Di\InjectionAwareInterface, \Phalcon
      * );
      * ```
      *
-     * @param \Phalcon\Mvc\ModelInterface $model
+     * @param ModelInterface $model
      * @return string|null
      */
-    public function getIdentityField(\Phalcon\Mvc\ModelInterface $model): ?string
+    public function getIdentityField(ModelInterface $model): ?string
     {
     }
 
@@ -301,10 +304,10 @@ abstract class MetaData implements \Phalcon\Di\InjectionAwareInterface, \Phalcon
      * );
      * ```
      *
-     * @param \Phalcon\Mvc\ModelInterface $model
+     * @param ModelInterface $model
      * @return array
      */
-    public function getNonPrimaryKeyAttributes(\Phalcon\Mvc\ModelInterface $model): array
+    public function getNonPrimaryKeyAttributes(ModelInterface $model): array
     {
     }
 
@@ -319,10 +322,10 @@ abstract class MetaData implements \Phalcon\Di\InjectionAwareInterface, \Phalcon
      * );
      * ```
      *
-     * @param \Phalcon\Mvc\ModelInterface $model
+     * @param ModelInterface $model
      * @return array
      */
-    public function getNotNullAttributes(\Phalcon\Mvc\ModelInterface $model): array
+    public function getNotNullAttributes(ModelInterface $model): array
     {
     }
 
@@ -337,10 +340,10 @@ abstract class MetaData implements \Phalcon\Di\InjectionAwareInterface, \Phalcon
      * );
      * ```
      *
-     * @param \Phalcon\Mvc\ModelInterface $model
+     * @param ModelInterface $model
      * @return array
      */
-    public function getPrimaryKeyAttributes(\Phalcon\Mvc\ModelInterface $model): array
+    public function getPrimaryKeyAttributes(ModelInterface $model): array
     {
     }
 
@@ -355,10 +358,10 @@ abstract class MetaData implements \Phalcon\Di\InjectionAwareInterface, \Phalcon
      * );
      * ```
      *
-     * @param \Phalcon\Mvc\ModelInterface $model
+     * @param ModelInterface $model
      * @return array
      */
-    public function getReverseColumnMap(\Phalcon\Mvc\ModelInterface $model): array
+    public function getReverseColumnMap(ModelInterface $model): array
     {
     }
 
@@ -383,11 +386,11 @@ abstract class MetaData implements \Phalcon\Di\InjectionAwareInterface, \Phalcon
      * );
      * ```
      *
-     * @param \Phalcon\Mvc\ModelInterface $model
+     * @param ModelInterface $model
      * @param string $attribute
      * @return bool
      */
-    public function hasAttribute(\Phalcon\Mvc\ModelInterface $model, string $attribute): bool
+    public function hasAttribute(ModelInterface $model, string $attribute): bool
     {
     }
 
@@ -427,10 +430,10 @@ abstract class MetaData implements \Phalcon\Di\InjectionAwareInterface, \Phalcon
      * );
      * ```
      *
-     * @param \Phalcon\Mvc\ModelInterface $model
+     * @param ModelInterface $model
      * @return array|null
      */
-    final public function readColumnMap(\Phalcon\Mvc\ModelInterface $model): ?array
+    final public function readColumnMap(ModelInterface $model): ?array
     {
     }
 
@@ -446,10 +449,10 @@ abstract class MetaData implements \Phalcon\Di\InjectionAwareInterface, \Phalcon
      * );
      * ```
      *
-     * @param \Phalcon\Mvc\ModelInterface $model
+     * @param ModelInterface $model
      * @param int $index
      */
-    final public function readColumnMapIndex(\Phalcon\Mvc\ModelInterface $model, int $index)
+    final public function readColumnMapIndex(ModelInterface $model, int $index)
     {
     }
 
@@ -464,10 +467,10 @@ abstract class MetaData implements \Phalcon\Di\InjectionAwareInterface, \Phalcon
      * );
      * ```
      *
-     * @param \Phalcon\Mvc\ModelInterface $model
+     * @param ModelInterface $model
      * @return array
      */
-    final public function readMetaData(\Phalcon\Mvc\ModelInterface $model): array
+    final public function readMetaData(ModelInterface $model): array
     {
     }
 
@@ -483,10 +486,10 @@ abstract class MetaData implements \Phalcon\Di\InjectionAwareInterface, \Phalcon
      * );
      * ```
      *
-     * @param \Phalcon\Mvc\ModelInterface $model
+     * @param ModelInterface $model
      * @param int $index
      */
-    final public function readMetaDataIndex(\Phalcon\Mvc\ModelInterface $model, int $index)
+    final public function readMetaDataIndex(ModelInterface $model, int $index)
     {
     }
 
@@ -515,11 +518,11 @@ abstract class MetaData implements \Phalcon\Di\InjectionAwareInterface, \Phalcon
      * );
      * ```
      *
-     * @param \Phalcon\Mvc\ModelInterface $model
+     * @param ModelInterface $model
      * @param array $attributes
      * @return void
      */
-    public function setAutomaticCreateAttributes(\Phalcon\Mvc\ModelInterface $model, array $attributes)
+    public function setAutomaticCreateAttributes(ModelInterface $model, array $attributes)
     {
     }
 
@@ -535,11 +538,11 @@ abstract class MetaData implements \Phalcon\Di\InjectionAwareInterface, \Phalcon
      * );
      * ```
      *
-     * @param \Phalcon\Mvc\ModelInterface $model
+     * @param ModelInterface $model
      * @param array $attributes
      * @return void
      */
-    public function setAutomaticUpdateAttributes(\Phalcon\Mvc\ModelInterface $model, array $attributes)
+    public function setAutomaticUpdateAttributes(ModelInterface $model, array $attributes)
     {
     }
 
@@ -555,31 +558,31 @@ abstract class MetaData implements \Phalcon\Di\InjectionAwareInterface, \Phalcon
      * );
      * ```
      *
-     * @param \Phalcon\Mvc\ModelInterface $model
+     * @param ModelInterface $model
      * @param array $attributes
      * @return void
      */
-    public function setEmptyStringAttributes(\Phalcon\Mvc\ModelInterface $model, array $attributes)
+    public function setEmptyStringAttributes(ModelInterface $model, array $attributes)
     {
     }
 
     /**
      * Sets the DependencyInjector container
      *
-     * @param \Phalcon\Di\DiInterface $container
+     * @param DiInterface $container
      * @return void
      */
-    public function setDI(\Phalcon\Di\DiInterface $container)
+    public function setDI(DiInterface $container)
     {
     }
 
     /**
      * Set the meta-data extraction strategy
      *
-     * @param \Phalcon\Mvc\Model\MetaData\Strategy\StrategyInterface $strategy
+     * @param StrategyInterface $strategy
      * @return void
      */
-    public function setStrategy(\Phalcon\Mvc\Model\MetaData\Strategy\StrategyInterface $strategy)
+    public function setStrategy(StrategyInterface $strategy)
     {
     }
 
@@ -609,24 +612,24 @@ abstract class MetaData implements \Phalcon\Di\InjectionAwareInterface, \Phalcon
      * );
      * ```
      *
-     * @param \Phalcon\Mvc\ModelInterface $model
+     * @param ModelInterface $model
      * @param int $index
      * @param mixed $data
      * @return void
      */
-    final public function writeMetaDataIndex(\Phalcon\Mvc\ModelInterface $model, int $index, $data)
+    final public function writeMetaDataIndex(ModelInterface $model, int $index, $data)
     {
     }
 
     /**
      * Initialize the metadata for certain table
      *
-     * @param \Phalcon\Mvc\ModelInterface $model
+     * @param ModelInterface $model
      * @param mixed $key
      * @param mixed $table
      * @param mixed $schema
      */
-    final protected function initialize(\Phalcon\Mvc\ModelInterface $model, $key, $table, $schema)
+    final protected function initialize(ModelInterface $model, $key, $table, $schema)
     {
     }
 

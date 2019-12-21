@@ -10,11 +10,12 @@
 namespace Phalcon\Cache\Adapter;
 
 use Phalcon\Cache\Adapter\AdapterInterface as CacheAdapterInterface;
+use Phalcon\Storage\Adapter\Libmemcached as StorageLibmemcached;
 
 /**
  * Libmemcached adapter
  */
-class Libmemcached extends \Phalcon\Storage\Adapter\Libmemcached implements CacheAdapterInterface
+class Libmemcached extends StorageLibmemcached implements CacheAdapterInterface
 {
 
 }

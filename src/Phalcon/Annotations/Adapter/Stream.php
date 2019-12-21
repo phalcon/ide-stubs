@@ -9,6 +9,10 @@
  */
 namespace Phalcon\Annotations\Adapter;
 
+use Phalcon\Annotations\Reflection;
+use Phalcon\Annotations\Exception;
+use RuntimeException;
+
 /**
  * Stores the parsed annotations in files. This adapter is suitable for production
  *
@@ -22,7 +26,7 @@ namespace Phalcon\Annotations\Adapter;
  * );
  * ```
  */
-class Stream extends \Phalcon\Annotations\Adapter\AbstractAdapter
+class Stream extends AbstractAdapter
 {
     /**
      * @var string
@@ -31,9 +35,11 @@ class Stream extends \Phalcon\Annotations\Adapter\AbstractAdapter
 
 
     /**
-     * Phalcon\Annotations\Adapter\Stream constructor
+     * @param array $options = [
+     *     'annotationsDir' => 'phalconDir'
+     * ]
      *
-     * @param array $options
+     * Phalcon\Annotations\Adapter\Stream constructor
      */
     public function __construct(array $options = array())
     {
@@ -53,10 +59,10 @@ class Stream extends \Phalcon\Annotations\Adapter\AbstractAdapter
      * Writes parsed annotations to files
      *
      * @param string $key
-     * @param \Phalcon\Annotations\Reflection $data
+     * @param Reflection $data
      * @return void
      */
-    public function write(string $key, \Phalcon\Annotations\Reflection $data)
+    public function write(string $key, Reflection $data)
     {
     }
 }

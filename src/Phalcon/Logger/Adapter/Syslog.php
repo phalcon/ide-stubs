@@ -9,6 +9,14 @@
  */
 namespace Phalcon\Logger\Adapter;
 
+use LogicException;
+use Phalcon\Helper\Arr;
+use Phalcon\Logger;
+use Phalcon\Logger\Adapter;
+use Phalcon\Logger\Exception;
+use Phalcon\Logger\Formatter\FormatterInterface;
+use Phalcon\Logger\Item;
+
 /**
  * Phalcon\Logger\Adapter\Syslog
  *
@@ -32,7 +40,7 @@ namespace Phalcon\Logger\Adapter;
  * $logger->error("This is another error");
  * ```
  */
-class Syslog extends \Phalcon\Logger\Adapter\AbstractAdapter
+class Syslog extends AbstractAdapter
 {
     /**
      * Name of the default formatter class
@@ -65,8 +73,11 @@ class Syslog extends \Phalcon\Logger\Adapter\AbstractAdapter
     /**
      * Phalcon\Logger\Adapter\Syslog constructor
      *
+     * @param array $options = [
+     *     'option' => null,
+     *     'facility' => null
+     * ]
      * @param string $name
-     * @param array $options
      */
     public function __construct(string $name, array $options = array())
     {
@@ -84,20 +95,20 @@ class Syslog extends \Phalcon\Logger\Adapter\AbstractAdapter
     /**
      * Processes the message i.e. writes it to the syslog
      *
-     * @param \Phalcon\Logger\Item $item
+     * @param Item $item
      * @return void
      */
-    public function process(\Phalcon\Logger\Item $item)
+    public function process(Item $item)
     {
     }
 
     /**
      * Translates a Logger level to a Syslog level
      *
-     * @param string $level
+     * @param int $level
      * @return int
      */
-    private function logLevelToSyslog(string $level): int
+    private function logLevelToSyslog(int $level): int
     {
     }
 }

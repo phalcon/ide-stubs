@@ -9,6 +9,9 @@
  */
 namespace Phalcon\Di\Service;
 
+use Phalcon\Di\DiInterface;
+use Phalcon\Di\Exception;
+
 /**
  * Phalcon\Di\Service\Builder
  *
@@ -21,34 +24,34 @@ class Builder
      * Builds a service using a complex service definition
      *
      * @param array $parameters
-     * @return mixed
-     * @param \Phalcon\Di\DiInterface $container
+     * @param DiInterface $container
      * @param array $definition
+     *@return mixed
      */
-    public function build(\Phalcon\Di\DiInterface $container, array $definition, $parameters = null)
+    public function build(DiInterface $container, array $definition, $parameters = null)
     {
     }
 
     /**
      * Resolves a constructor/call parameter
      *
-     * @return mixed
-     * @param \Phalcon\Di\DiInterface $container
+     * @param DiInterface $container
      * @param int $position
      * @param array $argument
+     *@return mixed
      */
-    private function buildParameter(\Phalcon\Di\DiInterface $container, int $position, array $argument)
+    private function buildParameter(DiInterface $container, int $position, array $argument)
     {
     }
 
     /**
      * Resolves an array of parameters
      *
-     * @param \Phalcon\Di\DiInterface $container
+     * @param DiInterface $container
      * @param array $arguments
      * @return array
      */
-    private function buildParameters(\Phalcon\Di\DiInterface $container, array $arguments): array
+    private function buildParameters(DiInterface $container, array $arguments): array
     {
     }
 }

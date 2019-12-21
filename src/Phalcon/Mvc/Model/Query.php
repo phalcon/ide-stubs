@@ -9,10 +9,21 @@
  */
 namespace Phalcon\Mvc\Model;
 
+use Phalcon\Db\Column;
+use Phalcon\Db\RawValue;
+use Phalcon\Db\ResultInterface;
 use Phalcon\Db\Adapter\AdapterInterface;
 use Phalcon\Di\DiInterface;
-use Phalcon\Mvc\Model\Query\StatusInterface;
+use Phalcon\Helper\Arr;
 use Phalcon\Mvc\ModelInterface;
+use Phalcon\Mvc\Model\Query\Status;
+use Phalcon\Mvc\Model\Resultset\Complex;
+use Phalcon\Mvc\Model\Query\StatusInterface;
+use Phalcon\Mvc\Model\ResultsetInterface;
+use Phalcon\Mvc\Model\Resultset\Simple;
+use Phalcon\Di\InjectionAwareInterface;
+use Phalcon\Db\DialectInterface;
+use Phalcon\Mvc\Model\Query\Lang;
 
 /**
  * Phalcon\Mvc\Model\Query
@@ -64,7 +75,7 @@ use Phalcon\Mvc\ModelInterface;
  * $resultWithOutEntries = $queryWithTransaction->execute();
  * ```
  */
-class Query implements \Phalcon\Mvc\Model\QueryInterface, \Phalcon\Di\InjectionAwareInterface
+class Query implements QueryInterface, InjectionAwareInterface
 {
 
     const TYPE_DELETE = 303;
@@ -171,20 +182,20 @@ class Query implements \Phalcon\Mvc\Model\QueryInterface, \Phalcon\Di\InjectionA
      * Phalcon\Mvc\Model\Query constructor
      *
      * @param string $phql
-     * @param \Phalcon\Di\DiInterface $container
+     * @param DiInterface $container
      * @param array $options
      */
-    public function __construct(string $phql = null, \Phalcon\Di\DiInterface $container = null, array $options = array())
+    public function __construct(string $phql = null, DiInterface $container = null, array $options = array())
     {
     }
 
     /**
      * Sets the dependency injection container
      *
-     * @param \Phalcon\Di\DiInterface $container
+     * @param DiInterface $container
      * @return void
      */
-    public function setDI(\Phalcon\Di\DiInterface $container)
+    public function setDI(DiInterface $container)
     {
     }
 
@@ -499,13 +510,13 @@ class Query implements \Phalcon\Mvc\Model\QueryInterface, \Phalcon\Di\InjectionA
     /**
      * Query the records on which the UPDATE/DELETE operation will be done
      *
-     * @param \Phalcon\Mvc\ModelInterface $model
+     * @param ModelInterface $model
      * @param array $intermediate
      * @param array $bindParams
      * @param array $bindTypes
      * @return ResultsetInterface
      */
-    final protected function _getRelatedRecords(\Phalcon\Mvc\ModelInterface $model, array $intermediate, array $bindParams, array $bindTypes): ResultsetInterface
+    final protected function _getRelatedRecords(ModelInterface $model, array $intermediate, array $bindParams, array $bindTypes): ResultsetInterface
     {
     }
 
@@ -661,13 +672,13 @@ class Query implements \Phalcon\Mvc\Model\QueryInterface, \Phalcon\Di\InjectionA
      * Gets the read connection from the model if there is no transaction set
      * inside the query object
      *
-     * @param \Phalcon\Mvc\ModelInterface $model
+     * @param ModelInterface $model
      * @param array $intermediate
      * @param array $bindParams
      * @param array $bindTypes
      * @return AdapterInterface
      */
-    protected function getReadConnection(\Phalcon\Mvc\ModelInterface $model, array $intermediate = null, array $bindParams = array(), array $bindTypes = array()): AdapterInterface
+    protected function getReadConnection(ModelInterface $model, array $intermediate = null, array $bindParams = array(), array $bindTypes = array()): AdapterInterface
     {
     }
 
@@ -675,13 +686,13 @@ class Query implements \Phalcon\Mvc\Model\QueryInterface, \Phalcon\Di\InjectionA
      * Gets the write connection from the model if there is no transaction
      * inside the query object
      *
-     * @param \Phalcon\Mvc\ModelInterface $model
+     * @param ModelInterface $model
      * @param array $intermediate
      * @param array $bindParams
      * @param array $bindTypes
      * @return AdapterInterface
      */
-    protected function getWriteConnection(\Phalcon\Mvc\ModelInterface $model, array $intermediate = null, array $bindParams = array(), array $bindTypes = array()): AdapterInterface
+    protected function getWriteConnection(ModelInterface $model, array $intermediate = null, array $bindParams = array(), array $bindTypes = array()): AdapterInterface
     {
     }
 

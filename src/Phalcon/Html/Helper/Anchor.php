@@ -14,7 +14,7 @@ namespace Phalcon\Html\Helper;
  *
  * Creates an anchor
  */
-class Anchor extends \Phalcon\Html\Helper\AbstractHelper
+class Anchor extends AbstractHelper
 {
 
     /**

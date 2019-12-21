@@ -9,6 +9,13 @@
  */
 namespace Phalcon\Mvc\Model;
 
+use Phalcon\Db\Adapter\AdapterInterface;
+use Phalcon\Di\DiInterface;
+use Phalcon\Mvc\ModelInterface;
+use Phalcon\Mvc\Model\Transaction\Failed as TxFailed;
+use Phalcon\Mvc\Model\Transaction\ManagerInterface;
+use Phalcon\Mvc\Model\TransactionInterface;
+
 /**
  * Phalcon\Mvc\Model\Transaction
  *
@@ -83,11 +90,11 @@ class Transaction implements \Phalcon\Mvc\Model\TransactionInterface
     /**
      * Phalcon\Mvc\Model\Transaction constructor
      *
-     * @param \Phalcon\Di\DiInterface $container
+     * @param DiInterface $container
      * @param bool $autoBegin
      * @param string $service
      */
-    public function __construct(\Phalcon\Di\DiInterface $container, bool $autoBegin = false, string $service = 'db')
+    public function __construct(DiInterface $container, bool $autoBegin = false, string $service = 'db')
     {
     }
 
@@ -112,9 +119,9 @@ class Transaction implements \Phalcon\Mvc\Model\TransactionInterface
     /**
      * Returns the connection related to transaction
      *
-     * @return \Phalcon\Db\Adapter\AdapterInterface
+     * @return AdapterInterface
      */
-    public function getConnection(): \Phalcon\Db\Adapter\AdapterInterface
+    public function getConnection(): AdapterInterface
     {
     }
 
@@ -149,10 +156,10 @@ class Transaction implements \Phalcon\Mvc\Model\TransactionInterface
      * Rollbacks the transaction
      *
      * @param string $rollbackMessage
-     * @param \Phalcon\Mvc\ModelInterface $rollbackRecord
+     * @param ModelInterface $rollbackRecord
      * @return bool
      */
-    public function rollback(string $rollbackMessage = null, \Phalcon\Mvc\ModelInterface $rollbackRecord = null): bool
+    public function rollback(string $rollbackMessage = null, ModelInterface $rollbackRecord = null): bool
     {
     }
 
@@ -179,20 +186,20 @@ class Transaction implements \Phalcon\Mvc\Model\TransactionInterface
     /**
      * Sets object which generates rollback action
      *
-     * @param \Phalcon\Mvc\ModelInterface $record
+     * @param ModelInterface $record
      * @return void
      */
-    public function setRollbackedRecord(\Phalcon\Mvc\ModelInterface $record)
+    public function setRollbackedRecord(ModelInterface $record)
     {
     }
 
     /**
      * Sets transaction manager related to the transaction
      *
-     * @param \Phalcon\Mvc\Model\Transaction\ManagerInterface $manager
+     * @param ManagerInterface $manager
      * @return void
      */
-    public function setTransactionManager(\Phalcon\Mvc\Model\Transaction\ManagerInterface $manager)
+    public function setTransactionManager(ManagerInterface $manager)
     {
     }
 

@@ -9,10 +9,12 @@
  */
 namespace Phalcon\Assets\Filters;
 
+use Phalcon\Assets\FilterInterface;
+
 /**
  * Returns the content without make any modification to the original source
  */
-class None implements \Phalcon\Assets\FilterInterface
+class None implements FilterInterface
 {
 
     /**

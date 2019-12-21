@@ -9,7 +9,9 @@
  */
 namespace Phalcon;
 
+use Psr\Log\LoggerInterface;
 use Phalcon\Logger\Adapter\AdapterInterface;
+use Phalcon\Logger\Item;
 use Phalcon\Logger\Exception;
 
 /**
@@ -45,7 +47,7 @@ use Phalcon\Logger\Exception;
  *         ->info('This does not go to the "manager" logger);
  * ```
  */
-class Logger implements \Psr\Log\LoggerInterface
+class Logger implements LoggerInterface
 {
 
     const ALERT = 2;
@@ -127,7 +129,7 @@ class Logger implements \Psr\Log\LoggerInterface
      * @param AdapterInterface $adapter The adapter to add to the stack
      * @return Logger
      */
-    public function addAdapter(string $name, \Phalcon\Logger\Adapter\AdapterInterface $adapter): Logger
+    public function addAdapter(string $name, AdapterInterface $adapter): Logger
     {
     }
 
@@ -291,7 +293,7 @@ class Logger implements \Psr\Log\LoggerInterface
     }
 
     /**
-     * Sets the adapters stack overriding what is already there
+     * Sets the log level above which we can log
      *
      * @param int $level
      * @return Logger

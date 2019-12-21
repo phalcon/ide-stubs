@@ -10,16 +10,17 @@
 namespace Phalcon\Http\Message;
 
 use Phalcon\Collection;
+use Phalcon\Helper\Arr;
 use Phalcon\Http\Message\Exception\InvalidArgumentException;
 use Psr\Http\Message\ServerRequestFactoryInterface;
 use Psr\Http\Message\ServerRequestInterface;
-use Psr\Http\Message\UploadedFileInterface;
 use Psr\Http\Message\UriInterface;
+use Psr\Http\Message\UploadedFileInterface;
 
 /**
  * PSR-17 ServerRequestFactory
  */
-class ServerRequestFactory implements \Psr\Http\Message\ServerRequestFactoryInterface
+class ServerRequestFactory implements ServerRequestFactoryInterface
 {
 
     /**
@@ -83,7 +84,7 @@ class ServerRequestFactory implements \Psr\Http\Message\ServerRequestFactoryInte
      *
      * @return array
      */
-    private function calculateUriHost(\Phalcon\Collection $server, \Phalcon\Collection $headers): array
+    private function calculateUriHost(Collection $server, Collection $headers): array
     {
     }
 
@@ -106,7 +107,7 @@ class ServerRequestFactory implements \Psr\Http\Message\ServerRequestFactoryInte
      *
      * @return string
      */
-    private function calculateUriPath(\Phalcon\Collection $server): string
+    private function calculateUriPath(Collection $server): string
     {
     }
 
@@ -117,7 +118,7 @@ class ServerRequestFactory implements \Psr\Http\Message\ServerRequestFactoryInte
      *
      * @return string
      */
-    private function calculateUriQuery(\Phalcon\Collection $server): string
+    private function calculateUriQuery(Collection $server): string
     {
     }
 
@@ -129,7 +130,7 @@ class ServerRequestFactory implements \Psr\Http\Message\ServerRequestFactoryInte
      *
      * @return string
      */
-    private function calculateUriScheme(\Phalcon\Collection $server, \Phalcon\Collection $headers): string
+    private function calculateUriScheme(Collection $server, Collection $headers): string
     {
     }
 
@@ -167,7 +168,7 @@ class ServerRequestFactory implements \Psr\Http\Message\ServerRequestFactoryInte
      *
      * @return mixed|string
      */
-    private function getHeader(\Phalcon\Collection $headers, string $name, $defaultValue = null)
+    private function getHeader(Collection $headers, string $name, $defaultValue = null)
     {
     }
 
@@ -190,7 +191,7 @@ class ServerRequestFactory implements \Psr\Http\Message\ServerRequestFactoryInte
      *
      * @return Collection
      */
-    private function parseHeaders(\Phalcon\Collection $server): Collection
+    private function parseHeaders(Collection $server): Collection
     {
     }
 
@@ -201,7 +202,7 @@ class ServerRequestFactory implements \Psr\Http\Message\ServerRequestFactoryInte
      *
      * @return string
      */
-    private function parseProtocol(\Phalcon\Collection $server): string
+    private function parseProtocol(Collection $server): string
     {
     }
 
@@ -238,7 +239,7 @@ class ServerRequestFactory implements \Psr\Http\Message\ServerRequestFactoryInte
      *
      * @return Uri
      */
-    private function parseUri(\Phalcon\Collection $server, \Phalcon\Collection $headers): Uri
+    private function parseUri(Collection $server, Collection $headers): Uri
     {
     }
 }

@@ -80,7 +80,7 @@ interface RouterInterface
     /**
      * Return all the routes defined in the router
      *
-     * @return array
+     * @return array|RouteInterface[]
      */
     public function getRoutes(): array;
 

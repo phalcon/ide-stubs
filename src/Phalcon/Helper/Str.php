@@ -9,6 +9,8 @@
  */
 namespace Phalcon\Helper;
 
+use RuntimeException;
+
 /**
  * This class offers quick string functions throughout the framework
  */
@@ -108,6 +110,26 @@ class Str
      * @param string $text
      */
     final public static function decapitalize(string $text, bool $upperRest = false, string $encoding = 'UTF-8'): string
+    {
+    }
+
+    /**
+     * Removes a number from a string or decrements that number if it already is defined.
+     * defined
+     *
+     * ```php
+     * use Phalcon\Helper\Str;
+     *
+     * echo Str::decrement("a_1");    // "a"
+     * echo Str::decrement("a_2");  // "a_1"
+     * ```
+     *
+     * @param string $text
+     * @param string $separator
+     *
+     * @return string
+     */
+    final public static function decrement(string $text, string $separator = '_'): string
     {
     }
 

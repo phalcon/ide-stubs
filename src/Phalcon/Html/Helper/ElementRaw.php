@@ -16,7 +16,7 @@ use Phalcon\Html\Exception;
  *
  * Creates an element raw
  */
-class ElementRaw extends \Phalcon\Html\Helper\AbstractHelper
+class ElementRaw extends AbstractHelper
 {
 
     /**

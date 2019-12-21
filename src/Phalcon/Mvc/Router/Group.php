@@ -57,7 +57,7 @@ namespace Phalcon\Mvc\Router;
  * $router->mount($blog);
  * ```
  */
-class Group implements \Phalcon\Mvc\Router\GroupInterface
+class Group implements GroupInterface
 {
 
     protected $beforeMatch;
@@ -91,8 +91,13 @@ class Group implements \Phalcon\Mvc\Router\GroupInterface
      * $router->add("/about", "About::index");
      * ```
      *
+     * @param string|array $paths = [
+     *     'module => '',
+     *     'controller' => '',
+     *     'action' => '',
+     *     'namespace' => ''
+     * ]
      * @param string $pattern
-     * @param mixed $paths
      * @param mixed $httpMethods
      * @return RouteInterface
      */
@@ -103,7 +108,12 @@ class Group implements \Phalcon\Mvc\Router\GroupInterface
     /**
      * Adds a route to the router that only match if the HTTP method is CONNECT
      *
-     * @param string|array $paths
+     * @param string|array $paths = [
+     *     'module => '',
+     *     'controller' => '',
+     *     'action' => '',
+     *     'namespace' => ''
+     * ]
      * @param string $pattern
      * @return RouteInterface
      */
@@ -114,7 +124,12 @@ class Group implements \Phalcon\Mvc\Router\GroupInterface
     /**
      * Adds a route to the router that only match if the HTTP method is DELETE
      *
-     * @param string|array $paths
+     * @param string|array $paths = [
+     *     'module => '',
+     *     'controller' => '',
+     *     'action' => '',
+     *     'namespace' => ''
+     * ]
      * @param string $pattern
      * @return RouteInterface
      */
@@ -125,7 +140,12 @@ class Group implements \Phalcon\Mvc\Router\GroupInterface
     /**
      * Adds a route to the router that only match if the HTTP method is GET
      *
-     * @param string|array $paths
+     * @param string|array $paths = [
+     *     'module => '',
+     *     'controller' => '',
+     *     'action' => '',
+     *     'namespace' => ''
+     * ]
      * @param string $pattern
      * @return RouteInterface
      */
@@ -136,7 +156,12 @@ class Group implements \Phalcon\Mvc\Router\GroupInterface
     /**
      * Adds a route to the router that only match if the HTTP method is HEAD
      *
-     * @param string|array $paths
+     * @param string|array $paths = [
+     *     'module => '',
+     *     'controller' => '',
+     *     'action' => '',
+     *     'namespace' => ''
+     * ]
      * @param string $pattern
      * @return RouteInterface
      */
@@ -147,7 +172,12 @@ class Group implements \Phalcon\Mvc\Router\GroupInterface
     /**
      * Add a route to the router that only match if the HTTP method is OPTIONS
      *
-     * @param string|array $paths
+     * @param string|array $paths = [
+     *     'module => '',
+     *     'controller' => '',
+     *     'action' => '',
+     *     'namespace' => ''
+     * ]
      * @param string $pattern
      * @return RouteInterface
      */
@@ -158,7 +188,12 @@ class Group implements \Phalcon\Mvc\Router\GroupInterface
     /**
      * Adds a route to the router that only match if the HTTP method is PATCH
      *
-     * @param string|array $paths
+     * @param string|array $paths = [
+     *     'module => '',
+     *     'controller' => '',
+     *     'action' => '',
+     *     'namespace' => ''
+     * ]
      * @param string $pattern
      * @return RouteInterface
      */
@@ -169,7 +204,12 @@ class Group implements \Phalcon\Mvc\Router\GroupInterface
     /**
      * Adds a route to the router that only match if the HTTP method is POST
      *
-     * @param string|array $paths
+     * @param string|array $paths = [
+     *     'module => '',
+     *     'controller' => '',
+     *     'action' => '',
+     *     'namespace' => ''
+     * ]
      * @param string $pattern
      * @return RouteInterface
      */
@@ -180,7 +220,12 @@ class Group implements \Phalcon\Mvc\Router\GroupInterface
     /**
      * Adds a route to the router that only match if the HTTP method is PURGE
      *
-     * @param string|array $paths
+     * @param string|array $paths = [
+     *     'module => '',
+     *     'controller' => '',
+     *     'action' => '',
+     *     'namespace' => ''
+     * ]
      * @param string $pattern
      * @return RouteInterface
      */
@@ -191,7 +236,12 @@ class Group implements \Phalcon\Mvc\Router\GroupInterface
     /**
      * Adds a route to the router that only match if the HTTP method is PUT
      *
-     * @param string|array $paths
+     * @param string|array $paths = [
+     *     'module => '',
+     *     'controller' => '',
+     *     'action' => '',
+     *     'namespace' => ''
+     * ]
      * @param string $pattern
      * @return RouteInterface
      */
@@ -202,7 +252,12 @@ class Group implements \Phalcon\Mvc\Router\GroupInterface
     /**
      * Adds a route to the router that only match if the HTTP method is TRACE
      *
-     * @param string|array $paths
+     * @param string|array $paths = [
+     *     'module => '',
+     *     'controller' => '',
+     *     'action' => '',
+     *     'namespace' => ''
+     * ]
      * @param string $pattern
      * @return RouteInterface
      */
@@ -270,7 +325,7 @@ class Group implements \Phalcon\Mvc\Router\GroupInterface
     /**
      * Returns the routes added to the group
      *
-     * @return array
+     * @return array|RouteInterface[]
      */
     public function getRoutes(): array
     {
@@ -309,8 +364,13 @@ class Group implements \Phalcon\Mvc\Router\GroupInterface
     /**
      * Adds a route applying the common attributes
      *
+     * @param string|array $paths = [
+     *     'module => '',
+     *     'controller' => '',
+     *     'action' => '',
+     *     'namespace' => ''
+     * ]
      * @param string $pattern
-     * @param mixed $paths
      * @param mixed $httpMethods
      * @return RouteInterface
      */

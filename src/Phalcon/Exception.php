@@ -9,12 +9,14 @@
  */
 namespace Phalcon;
 
+use Throwable;
+
 /**
  * Phalcon\Exception
  *
  * All framework exceptions should use or extend this exception
  */
-class Exception extends \Exception implements \Throwable
+class Exception extends \Exception implements Throwable
 {
 
     /**

@@ -9,12 +9,14 @@
  */
 namespace Phalcon\Forms\Element;
 
+use Phalcon\Tag;
+
 /**
  * Phalcon\Forms\Element\Text
  *
  * Component INPUT[type=text] for forms
  */
-class Text extends \Phalcon\Forms\Element\AbstractElement
+class Text extends AbstractElement
 {
 
     /**

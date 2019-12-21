@@ -9,13 +9,14 @@
  */
 namespace Phalcon\Flash;
 
+use Phalcon\Di\DiInterface;
 use Phalcon\Session\ManagerInterface;
 
 /**
  * Temporarily stores the messages in session, then messages can be printed in
  * the next request
  */
-class Session extends \Phalcon\Flash\AbstractFlash
+class Session extends AbstractFlash
 {
 
     /**

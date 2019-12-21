@@ -34,15 +34,34 @@ class AdapterFactory extends AbstractFactory
      * @param SerializerFactory $factory
      * @param array $services
      */
-    public function __construct(SerializerFactory $factory = null, array $services = array())
+    public function __construct(SerializerFactory $factory, array $services = array())
     {
     }
 
     /**
      * Create a new instance of the adapter
      *
+     * @param array $options = [
+     *     'servers' => [
+     *         [
+     *             'host' => '127.0.0.1',
+     *             'port' => 11211,
+     *             'weight' => 1
+     *         ]
+     *     ],
+     *     'defaultSerializer' => 'Php',
+     *     'lifetime' => 3600,
+     *     'serializer' => null,
+     *     'prefix' => '',
+     *     'host' => '127.0.0.1',
+     *     'port' => 6379,
+     *     'index' => 0,
+     *     'persistent' => false,
+     *     'auth' => '',
+     *     'socket' => '',
+     *     'storageDir' => '',
+     * ]
      * @param string $name
-     * @param array $options
      * @return AdapterInterface
      */
     public function newInstance(string $name, array $options = array()): AdapterInterface

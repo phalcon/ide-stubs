@@ -9,10 +9,12 @@
  */
 namespace Phalcon\Di;
 
+use ArrayAccess;
+
 /**
  * Interface for Phalcon\Di
  */
-interface DiInterface extends \ArrayAccess
+interface DiInterface extends ArrayAccess
 {
 
     /**
@@ -62,7 +64,7 @@ interface DiInterface extends \ArrayAccess
     /**
      * Return the services registered in the DI
      *
-     * @return array
+     * @return array|ServiceInterface[]
      */
     public function getServices(): array;
 
@@ -124,7 +126,7 @@ interface DiInterface extends \ArrayAccess
      * @param ServiceInterface $rawDefinition
      * @return ServiceInterface
      */
-    public function setRaw(string $name, ServiceInterface $rawDefinition): ServiceInterface;
+    public function setService(string $name, ServiceInterface $rawDefinition): ServiceInterface;
 
     /**
      * Registers an "always shared" service in the services container

@@ -65,7 +65,7 @@ class Reflection
     /**
      * Returns the annotations found in the methods' docblocks
      *
-     * @return array|bool
+     * @return array|bool|Collection[]
      */
     public function getMethodsAnnotations()
     {
@@ -74,7 +74,7 @@ class Reflection
     /**
      * Returns the annotations found in the properties' docblocks
      *
-     * @return array|bool
+     * @return array|bool|Collection[]
      */
     public function getPropertiesAnnotations()
     {

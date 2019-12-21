@@ -9,13 +9,15 @@
  */
 namespace Phalcon\Http\Message;
 
+use Phalcon\Helper\Arr;
+use Phalcon\Helper\Str;
 use Phalcon\Http\Message\Exception\InvalidArgumentException;
 use Psr\Http\Message\UriInterface;
 
 /**
  * PSR-7 Uri
  */
-final class Uri extends \Phalcon\Http\Message\AbstractCommon implements \Psr\Http\Message\UriInterface
+final class Uri extends AbstractCommon implements UriInterface
 {
     /**
      * Returns the fragment of the URL

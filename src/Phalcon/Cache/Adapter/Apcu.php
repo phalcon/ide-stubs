@@ -10,11 +10,12 @@
 namespace Phalcon\Cache\Adapter;
 
 use Phalcon\Cache\Adapter\AdapterInterface as CacheAdapterInterface;
+use Phalcon\Storage\Adapter\Apcu as StorageApcu;
 
 /**
  * Apcu adapter
  */
-class Apcu extends \Phalcon\Storage\Adapter\Apcu implements CacheAdapterInterface
+class Apcu extends StorageApcu implements CacheAdapterInterface
 {
 
 }

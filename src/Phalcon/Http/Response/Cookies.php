@@ -9,8 +9,10 @@
  */
 namespace Phalcon\Http\Response;
 
+use Phalcon\Di\DiInterface;
 use Phalcon\Di\AbstractInjectionAware;
-use Phalcon\Http\CookieInterface;
+use Phalcon\Http\Cookie\Exception;
+use Phalcon\Http\Cookie\CookieInterface;
 
 /**
  * Phalcon\Http\Response\Cookies
@@ -60,7 +62,7 @@ use Phalcon\Http\CookieInterface;
  * );
  * ```
  */
-class Cookies extends AbstractInjectionAware implements \Phalcon\Http\Response\CookiesInterface
+class Cookies extends AbstractInjectionAware implements CookiesInterface
 {
 
     protected $cookies = array();
@@ -184,9 +186,10 @@ class Cookies extends AbstractInjectionAware implements \Phalcon\Http\Response\C
      * @param bool $secure
      * @param string $domain
      * @param bool $httpOnly
+     * @param array $options
      * @return CookiesInterface
      */
-    public function set(string $name, $value = null, int $expire = 0, string $path = '/', bool $secure = null, string $domain = null, bool $httpOnly = null): CookiesInterface
+    public function set(string $name, $value = null, int $expire = 0, string $path = '/', bool $secure = null, string $domain = null, bool $httpOnly = null, array $options = array()): CookiesInterface
     {
     }
 

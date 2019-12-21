@@ -9,14 +9,20 @@
  */
 namespace Phalcon;
 
+use Phalcon\Di\DiInterface;
 use Phalcon\Di\Injectable;
+use Phalcon\Filter\FilterInterface;
+use Phalcon\Messages\MessageInterface;
 use Phalcon\Messages\Messages;
 use Phalcon\Validation\ValidationInterface;
+use Phalcon\Validation\Exception;
+use Phalcon\Validation\ValidatorInterface;
+use Phalcon\Validation\AbstractCombinedFieldsValidator;
 
 /**
  * Allows to validate data using custom or built-in validators
  */
-class Validation extends Injectable implements \Phalcon\Validation\ValidationInterface
+class Validation extends Injectable implements ValidationInterface
 {
 
     protected $combinedFieldsValidators;
@@ -68,20 +74,20 @@ class Validation extends Injectable implements \Phalcon\Validation\ValidationInt
      * Adds a validator to a field
      *
      * @param mixed $field
-     * @param \Phalcon\Validation\ValidatorInterface $validator
+     * @param ValidatorInterface $validator
      * @return ValidationInterface
      */
-    public function add($field, \Phalcon\Validation\ValidatorInterface $validator): ValidationInterface
+    public function add($field, ValidatorInterface $validator): ValidationInterface
     {
     }
 
     /**
      * Appends a message to the messages list
      *
-     * @param \Phalcon\Messages\MessageInterface $message
+     * @param MessageInterface $message
      * @return ValidationInterface
      */
-    public function appendMessage(\Phalcon\Messages\MessageInterface $message): ValidationInterface
+    public function appendMessage(MessageInterface $message): ValidationInterface
     {
     }
 
@@ -158,10 +164,10 @@ class Validation extends Injectable implements \Phalcon\Validation\ValidationInt
      * Alias of `add` method
      *
      * @param mixed $field
-     * @param \Phalcon\Validation\ValidatorInterface $validator
+     * @param ValidatorInterface $validator
      * @return ValidationInterface
      */
-    public function rule($field, \Phalcon\Validation\ValidatorInterface $validator): ValidationInterface
+    public function rule($field, ValidatorInterface $validator): ValidationInterface
     {
     }
 
@@ -222,10 +228,10 @@ class Validation extends Injectable implements \Phalcon\Validation\ValidationInt
      * Internal validations, if it returns true, then skip the current validator
      *
      * @param mixed $field
-     * @param \Phalcon\Validation\ValidatorInterface $validator
+     * @param ValidatorInterface $validator
      * @return bool
      */
-    protected function preChecking($field, \Phalcon\Validation\ValidatorInterface $validator): bool
+    protected function preChecking($field, ValidatorInterface $validator): bool
     {
     }
 }

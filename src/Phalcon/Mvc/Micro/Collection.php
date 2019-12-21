@@ -28,7 +28,7 @@ namespace Phalcon\Mvc\Micro;
  * $app->mount($collection);
  * ```
  */
-class Collection implements \Phalcon\Mvc\Micro\CollectionInterface
+class Collection implements CollectionInterface
 {
 
     protected $handler;

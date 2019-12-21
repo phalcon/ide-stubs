@@ -10,9 +10,12 @@
 namespace Phalcon\Storage\Adapter;
 
 use DateInterval;
+use DateTime;
+use Phalcon\Helper\Arr;
+use Phalcon\Helper\Str;
 use Phalcon\Storage\Exception;
-use Phalcon\Storage\Serializer\SerializerInterface;
 use Phalcon\Storage\SerializerFactory;
+use Phalcon\Storage\Serializer\SerializerInterface;
 
 /**
  * This file is part of the Phalcon Framework.
@@ -22,7 +25,7 @@ use Phalcon\Storage\SerializerFactory;
  * For the full copyright and license information, please view the LICENSE.txt
  * file that was distributed with this source code.
  */
-abstract class AbstractAdapter implements \Phalcon\Storage\Adapter\AdapterInterface
+abstract class AbstractAdapter implements AdapterInterface
 {
     /**
      * @var mixed
@@ -91,10 +94,15 @@ abstract class AbstractAdapter implements \Phalcon\Storage\Adapter\AdapterInterf
     /**
      * Sets parameters based on options
      *
-     * @param \Phalcon\Storage\SerializerFactory $factory
-     * @param array $options
+     * @param array $options = [
+     *     'defaultSerializer' => 'Php',
+     *     'lifetime' => 3600,
+     *     'serializer' => null,
+     *     'prefix' => ''
+     * ]
+     * @param SerializerFactory $factory
      */
-    protected function __construct(\Phalcon\Storage\SerializerFactory $factory = null, array $options)
+    protected function __construct(SerializerFactory $factory, array $options = array())
     {
     }
 
@@ -126,9 +134,10 @@ abstract class AbstractAdapter implements \Phalcon\Storage\Adapter\AdapterInterf
      * Reads data from the adapter
      *
      * @param string $key
+     * @param mixed $defaultValue
      * @return mixed
      */
-    abstract public function get(string $key);
+    abstract public function get(string $key, $defaultValue = null);
 
     /**
      * Returns the adapter - connects to the storage if not connected
@@ -140,9 +149,10 @@ abstract class AbstractAdapter implements \Phalcon\Storage\Adapter\AdapterInterf
     /**
      * Returns all the keys stored
      *
+     * @param string $prefix
      * @return array
      */
-    abstract public function getKeys(): array;
+    abstract public function getKeys(string $prefix = ''): array;
 
     /**
      * Checks if an element exists in the cache
@@ -170,6 +180,18 @@ abstract class AbstractAdapter implements \Phalcon\Storage\Adapter\AdapterInterf
      * @return bool
      */
     abstract public function set(string $key, $value, $ttl = null): bool;
+
+    /**
+     * Filters the keys array based on global and passed prefix
+     *
+     * @param mixed  $keys
+     * @param string $prefix
+     *
+     * @return array
+     */
+    protected function getFilteredKeys($keys, string $prefix): array
+    {
+    }
 
     /**
      * Returns the key requested, prefixed

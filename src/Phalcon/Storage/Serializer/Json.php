@@ -9,6 +9,9 @@
  */
 namespace Phalcon\Storage\Serializer;
 
+use InvalidArgumentException;
+use JsonSerializable;
+
 /**
  * This file is part of the Phalcon Framework.
  *
@@ -17,7 +20,7 @@ namespace Phalcon\Storage\Serializer;
  * For the full copyright and license information, please view the LICENSE.txt
  * file that was distributed with this source code.
  */
-class Json extends \Phalcon\Storage\Serializer\AbstractSerializer
+class Json extends AbstractSerializer
 {
 
     /**

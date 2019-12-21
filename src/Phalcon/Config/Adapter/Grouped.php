@@ -10,6 +10,9 @@
 namespace Phalcon\Config\Adapter;
 
 use Phalcon\Config;
+use Phalcon\Config\Exception;
+use Phalcon\Factory\Exception as FactoryException;
+use Phalcon\Config\ConfigFactory;
 
 /**
  * Reads multiple files (or arrays) and merges them all together.

@@ -9,6 +9,8 @@
  */
 namespace Phalcon\Storage\Adapter;
 
+use Phalcon\Storage\Serializer\SerializerInterface;
+
 /**
  * Interface for Phalcon\Logger adapters
  */
@@ -43,9 +45,10 @@ interface AdapterInterface
      * Reads data from the adapter
      *
      * @param string $key
+     * @param mixed $defaultValue
      * @return mixed
      */
-    public function get(string $key);
+    public function get(string $key, $defaultValue = null);
 
     /**
      * Returns the already connected adapter or connects to the backend
@@ -58,9 +61,10 @@ interface AdapterInterface
     /**
      * Returns all the keys stored
      *
+     * @param string $prefix
      * @return array
      */
-    public function getKeys(): array;
+    public function getKeys(string $prefix = ''): array;
 
     /**
      * Returns the prefix for the keys

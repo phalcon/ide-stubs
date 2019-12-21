@@ -9,7 +9,10 @@
  */
 namespace Phalcon\Mvc\View\Engine\Volt;
 
+use Closure;
 use Phalcon\Di\DiInterface;
+use Phalcon\Mvc\ViewBaseInterface;
+use Phalcon\Di\InjectionAwareInterface;
 
 /**
  * This class reads and compiles Volt templates into PHP plain code
@@ -22,7 +25,7 @@ use Phalcon\Di\DiInterface;
  * require $compiler->getCompiledTemplatePath();
  * ```
  */
-class Compiler implements \Phalcon\Di\InjectionAwareInterface
+class Compiler implements InjectionAwareInterface
 {
 
     protected $autoescape = false;
@@ -91,9 +94,9 @@ class Compiler implements \Phalcon\Di\InjectionAwareInterface
     /**
      * Phalcon\Mvc\View\Engine\Volt\Compiler
      *
-     * @param \Phalcon\Mvc\ViewBaseInterface $view
+     * @param ViewBaseInterface $view
      */
-    public function __construct(\Phalcon\Mvc\ViewBaseInterface $view = null)
+    public function __construct(ViewBaseInterface $view = null)
     {
     }
 
@@ -490,10 +493,10 @@ class Compiler implements \Phalcon\Di\InjectionAwareInterface
     /**
      * Sets the dependency injector
      *
-     * @param \Phalcon\Di\DiInterface $container
+     * @param DiInterface $container
      * @return void
      */
-    public function setDI(\Phalcon\Di\DiInterface $container)
+    public function setDI(DiInterface $container)
     {
     }
 

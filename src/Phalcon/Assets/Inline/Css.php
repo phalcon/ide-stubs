@@ -9,10 +9,12 @@
  */
 namespace Phalcon\Assets\Inline;
 
+use Phalcon\Assets\Inline as InlineBase;
+
 /**
  * Represents an inlined CSS
  */
-class Css extends \Phalcon\Assets\Inline
+class Css extends InlineBase
 {
 
     /**

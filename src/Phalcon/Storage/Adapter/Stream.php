@@ -9,13 +9,20 @@
  */
 namespace Phalcon\Storage\Adapter;
 
+use FilesystemIterator;
 use Iterator;
+use Phalcon\Helper\Arr;
+use Phalcon\Helper\Str;
 use Phalcon\Storage\Exception;
+use Phalcon\Storage\SerializerFactory;
+use Phalcon\Storage\Serializer\SerializerInterface;
+use RecursiveDirectoryIterator;
+use RecursiveIteratorIterator;
 
 /**
  * Stream adapter
  */
-class Stream extends \Phalcon\Storage\Adapter\AbstractAdapter
+class Stream extends AbstractAdapter
 {
     /**
      * @var string
@@ -27,21 +34,22 @@ class Stream extends \Phalcon\Storage\Adapter\AbstractAdapter
      */
     protected $options = array();
 
-    /**
-     * @var bool
-     */
-    private $warning = false;
-
 
     /**
      * Stream constructor.
      *
-     * @param array $options
+     * @param array $options = [
+     *     'storageDir' => '',
+     *     'defaultSerializer' => 'Php',
+     *     'lifetime' => 3600,
+     *     'serializer' => null,
+     *     'prefix' => ''
+     * ]
      *
+     * @param SerializerFactory $factory
      * @throws Exception
-     * @param \Phalcon\Storage\SerializerFactory $factory
      */
-    public function __construct(\Phalcon\Storage\SerializerFactory $factory = null, array $options = array())
+    public function __construct(SerializerFactory $factory, array $options = array())
     {
     }
 
@@ -102,9 +110,10 @@ class Stream extends \Phalcon\Storage\Adapter\AbstractAdapter
     /**
      * Stores data in the adapter
      *
+     * @param string $prefix
      * @return array
      */
-    public function getKeys(): array
+    public function getKeys(string $prefix = ''): array
     {
     }
 
@@ -135,9 +144,9 @@ class Stream extends \Phalcon\Storage\Adapter\AbstractAdapter
     /**
      * Stores data in the adapter
      *
-     * @param string $key
-     * @param mixed  $value
-     * @param null   $ttl
+     * @param string                $key
+     * @param mixed                 $value
+     * @param DateInterval|int|null $ttl
      *
      * @return bool
      * @throws \Exception

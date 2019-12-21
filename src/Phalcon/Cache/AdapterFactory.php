@@ -10,6 +10,7 @@
 namespace Phalcon\Cache;
 
 use Phalcon\Cache\Adapter\AdapterInterface;
+use Phalcon\Cache\Exception\Exception;
 use Phalcon\Factory\AbstractFactory;
 use Phalcon\Storage\SerializerFactory;
 
@@ -27,18 +28,37 @@ class AdapterFactory extends AbstractFactory
     /**
      * AdapterFactory constructor.
      *
-     * @param \Phalcon\Storage\SerializerFactory $factory
+     * @param SerializerFactory $factory
      * @param array $services
      */
-    public function __construct(\Phalcon\Storage\SerializerFactory $factory = null, array $services = array())
+    public function __construct(SerializerFactory $factory = null, array $services = array())
     {
     }
 
     /**
      * Create a new instance of the adapter
      *
+     * @param array $options = [
+     *     'servers' => [
+     *         [
+     *             'host' => 'localhost',
+     *             'port' => 11211,
+     *             'weight' => 1,
+     *         ]
+     *     ],
+     *     'host' => '127.0.0.1',
+     *     'port' => 6379,
+     *     'index' => 0,
+     *     'persistent' => false,
+     *     'auth' => '',
+     *     'socket' => '',
+     *     'defaultSerializer' => 'Php',
+     *     'lifetime' => 3600,
+     *     'serializer' => null,
+     *     'prefix' => 'phalcon',
+     *     'storageDir' => ''
+     * ]
      * @param string $name
-     * @param array $options
      * @return AdapterInterface
      */
     public function newInstance(string $name, array $options = array()): AdapterInterface

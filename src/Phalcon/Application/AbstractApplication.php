@@ -11,12 +11,13 @@ namespace Phalcon\Application;
 
 use Phalcon\Di\DiInterface;
 use Phalcon\Di\Injectable;
+use Phalcon\Events\EventsAwareInterface;
 use Phalcon\Events\ManagerInterface;
 
 /**
  * Base class for Phalcon\Cli\Console and Phalcon\Mvc\Application.
  */
-abstract class AbstractApplication extends Injectable implements \Phalcon\Events\EventsAwareInterface
+abstract class AbstractApplication extends Injectable implements EventsAwareInterface
 {
     /**
      * @var DiInterface
@@ -42,9 +43,9 @@ abstract class AbstractApplication extends Injectable implements \Phalcon\Events
     /**
      * Phalcon\AbstractApplication constructor
      *
-     * @param \Phalcon\Di\DiInterface $container
+     * @param DiInterface $container
      */
-    public function __construct(\Phalcon\Di\DiInterface $container = null)
+    public function __construct(DiInterface $container = null)
     {
     }
 
@@ -124,10 +125,10 @@ abstract class AbstractApplication extends Injectable implements \Phalcon\Events
     /**
      * Sets the events manager
      *
-     * @param \Phalcon\Events\ManagerInterface $eventsManager
+     * @param ManagerInterface $eventsManager
      * @return void
      */
-    public function setEventsManager(\Phalcon\Events\ManagerInterface $eventsManager)
+    public function setEventsManager(ManagerInterface $eventsManager)
     {
     }
 }

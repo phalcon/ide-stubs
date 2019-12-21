@@ -9,6 +9,7 @@
  */
 namespace Phalcon\Mvc\Model\Query;
 
+use Phalcon\Messages\MessageInterface;
 use Phalcon\Mvc\ModelInterface;
 
 /**
@@ -22,7 +23,7 @@ interface StatusInterface
     /**
      * Returns the messages produced by an operation failed
      *
-     * @return array
+     * @return array|MessageInterface[]
      */
     public function getMessages(): array;
 

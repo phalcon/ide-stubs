@@ -9,6 +9,12 @@
  */
 namespace Phalcon\Logger\Adapter;
 
+use Phalcon\Logger\Adapter;
+use Phalcon\Logger\Exception;
+use Phalcon\Logger\Formatter\FormatterInterface;
+use Phalcon\Logger\Item;
+use UnexpectedValueException;
+
 /**
  * Phalcon\Logger\Adapter\Stream
  *
@@ -24,7 +30,7 @@ namespace Phalcon\Logger\Adapter;
  * $logger->close();
  * ```
  */
-class Stream extends \Phalcon\Logger\Adapter\AbstractAdapter
+class Stream extends AbstractAdapter
 {
     /**
      * Stream handler resource
@@ -67,8 +73,10 @@ class Stream extends \Phalcon\Logger\Adapter\AbstractAdapter
     /**
      * Constructor. Accepts the name and some options
      *
+     * @param array $options = [
+     *     'mode' => 'ab'
+     * ]
      * @param string $name
-     * @param array $options
      */
     public function __construct(string $name, array $options = array())
     {
@@ -86,10 +94,10 @@ class Stream extends \Phalcon\Logger\Adapter\AbstractAdapter
     /**
      * Processes the message i.e. writes it to the file
      *
-     * @param \Phalcon\Logger\Item $item
+     * @param Item $item
      * @return void
      */
-    public function process(\Phalcon\Logger\Item $item)
+    public function process(Item $item)
     {
     }
 }

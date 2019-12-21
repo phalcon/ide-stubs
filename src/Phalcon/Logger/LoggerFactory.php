@@ -9,6 +9,8 @@
  */
 namespace Phalcon\Logger;
 
+use Phalcon\Config;
+use Phalcon\Helper\Arr;
 use Phalcon\Logger;
 
 /**
@@ -34,7 +36,18 @@ class LoggerFactory
     /**
      * Factory to create an instace from a Config object
      *
-     * @param mixed $config
+     * @param array|Config $config = [
+     *     'name' => 'messages',
+     *     'adapters' => [
+     *         'adapter' => 'stream',
+     *         'name' => 'file.log',
+     *         'options' => [
+     *             'mode' => 'ab',
+     *             'option' => null,
+     *             'facility' => null
+     *         ]
+     *     ]
+     * ]
      * @return Logger
      */
     public function load($config): Logger

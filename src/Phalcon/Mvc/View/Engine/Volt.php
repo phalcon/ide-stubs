@@ -9,13 +9,16 @@
  */
 namespace Phalcon\Mvc\View\Engine;
 
+use Phalcon\Di\DiInterface;
+use Phalcon\Events\EventsAwareInterface;
 use Phalcon\Events\ManagerInterface;
 use Phalcon\Mvc\View\Engine\Volt\Compiler;
+use Phalcon\Mvc\View\Exception;
 
 /**
  * Designer friendly and fast template engine for PHP written in Zephir/C
  */
-class Volt extends \Phalcon\Mvc\View\Engine\AbstractEngine implements \Phalcon\Events\EventsAwareInterface
+class Volt extends AbstractEngine implements EventsAwareInterface
 {
 
     protected $compiler;
@@ -115,10 +118,10 @@ class Volt extends \Phalcon\Mvc\View\Engine\AbstractEngine implements \Phalcon\E
     /**
      * Sets the events manager
      *
-     * @param \Phalcon\Events\ManagerInterface $eventsManager
+     * @param ManagerInterface $eventsManager
      * @return void
      */
-    public function setEventsManager(\Phalcon\Events\ManagerInterface $eventsManager)
+    public function setEventsManager(ManagerInterface $eventsManager)
     {
     }
 

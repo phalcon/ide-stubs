@@ -9,38 +9,67 @@
  */
 namespace Phalcon\Http;
 
+use Phalcon\Di\DiInterface;
 use Phalcon\Di\AbstractInjectionAware;
+use Phalcon\Crypt\CryptInterface;
+use Phalcon\Crypt\Mismatch;
+use Phalcon\Filter\FilterInterface;
+use Phalcon\Http\Response\Exception;
+use Phalcon\Http\Cookie\CookieInterface;
+use Phalcon\Http\Cookie\Exception as CookieException;
+use Phalcon\Session\ManagerInterface as SessionManagerInterface;
 
 /**
  * Provide OO wrappers to manage a HTTP cookie.
  */
-class Cookie extends AbstractInjectionAware implements \Phalcon\Http\CookieInterface
+class Cookie extends AbstractInjectionAware implements CookieInterface
 {
-
+    /**
+     * @var string
+     */
     protected $domain;
 
-
+    /**
+     * @var int
+     */
     protected $expire;
 
 
     protected $filter;
 
-
+    /**
+     * @var bool
+     */
     protected $httpOnly;
 
-
+    /**
+     * @var string
+     */
     protected $name;
 
+    /**
+     * @var array
+     */
+    protected $options = array();
 
+    /**
+     * @var string
+     */
     protected $path;
 
-
+    /**
+     * @var bool
+     */
     protected $read = false;
 
-
+    /**
+     * @var bool
+     */
     protected $restored = false;
 
-
+    /**
+     * @var bool
+     */
     protected $secure;
 
     /**
@@ -50,10 +79,14 @@ class Cookie extends AbstractInjectionAware implements \Phalcon\Http\CookieInter
      */
     protected $signKey = null;
 
-
+    /**
+     * @var bool
+     */
     protected $useEncryption = false;
 
-
+    /**
+     * @var mixed
+     */
     protected $value;
 
 
@@ -67,8 +100,9 @@ class Cookie extends AbstractInjectionAware implements \Phalcon\Http\CookieInter
      * @param bool $secure
      * @param string $domain
      * @param bool $httpOnly
+     * @param array $options
      */
-    public function __construct(string $name, $value = null, int $expire = 0, string $path = '/', bool $secure = null, string $domain = null, bool $httpOnly = false)
+    public function __construct(string $name, $value = null, int $expire = 0, string $path = '/', bool $secure = null, string $domain = null, bool $httpOnly = false, array $options = array())
     {
     }
 
@@ -121,6 +155,15 @@ class Cookie extends AbstractInjectionAware implements \Phalcon\Http\CookieInter
      * @return string
      */
     public function getName(): string
+    {
+    }
+
+    /**
+     * Returns the current cookie's options
+     *
+     * @return array
+     */
+    public function getOptions(): array
     {
     }
 
@@ -218,7 +261,17 @@ class Cookie extends AbstractInjectionAware implements \Phalcon\Http\CookieInter
     }
 
     /**
-     * Sets the cookie's expiration time
+     * Sets the cookie's options
+     *
+     * @param array $options
+     * @return CookieInterface
+     */
+    public function setOptions(array $options): CookieInterface
+    {
+    }
+
+    /**
+     * Sets the cookie's path
      *
      * @param string $path
      * @return CookieInterface
@@ -245,10 +298,10 @@ class Cookie extends AbstractInjectionAware implements \Phalcon\Http\CookieInter
      *
      * Use NULL to disable cookie signing.
      *
-     * @see \Phalcon\Security\Random
-     * @throws \Phalcon\Http\Cookie\Exception
      * @param string $signKey
      * @return CookieInterface
+     *@throws CookieException
+     * @see \Phalcon\Security\Random
      */
     public function setSignKey(string $signKey = null): CookieInterface
     {
@@ -277,9 +330,9 @@ class Cookie extends AbstractInjectionAware implements \Phalcon\Http\CookieInter
     /**
      * Assert the cookie's key is enough long.
      *
-     * @throws \Phalcon\Http\Cookie\Exception
      * @param string $signKey
      * @return void
+     *@throws CookieException
      */
     protected function assertSignKeyIsLongEnough(string $signKey)
     {

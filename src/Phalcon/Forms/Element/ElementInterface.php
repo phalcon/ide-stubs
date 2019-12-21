@@ -10,7 +10,9 @@
 namespace Phalcon\Forms\Element;
 
 use Phalcon\Forms\Form;
+use Phalcon\Messages\MessageInterface;
 use Phalcon\Messages\Messages;
+use Phalcon\Validation\ValidatorInterface;
 
 /**
  * Interface for Phalcon\Forms\Element classes
@@ -29,18 +31,18 @@ interface ElementInterface
     /**
      * Adds a validator to the element
      *
-     * @param \Phalcon\Validation\ValidatorInterface $validator
+     * @param ValidatorInterface $validator
      * @return ElementInterface
      */
-    public function addValidator(\Phalcon\Validation\ValidatorInterface $validator): ElementInterface;
+    public function addValidator(ValidatorInterface $validator): ElementInterface;
 
     /**
      * Adds a group of validators
      *
-     * @param \Phalcon\Validation\ValidatorInterface[]
+     * @param ValidatorInterface[]
      * @param array $validators
      * @param bool $merge
-     * @param \Phalcon\Validation\ValidatorInterface  []
+     * @param ValidatorInterface[]
      * @return ElementInterface
      */
     public function addValidators(array $validators, bool $merge = true): ElementInterface;
@@ -48,10 +50,10 @@ interface ElementInterface
     /**
      * Appends a message to the internal message list
      *
-     * @param \Phalcon\Messages\MessageInterface $message
+     * @param MessageInterface $message
      * @return ElementInterface
      */
-    public function appendMessage(\Phalcon\Messages\MessageInterface $message): ElementInterface;
+    public function appendMessage(MessageInterface $message): ElementInterface;
 
     /**
      * Clears every element in the form to its default value
@@ -138,7 +140,7 @@ interface ElementInterface
     /**
      * Returns the validators registered for the element
      *
-     * @return array
+     * @return array|ValidatorInterface[]
      */
     public function getValidators(): array;
 
@@ -218,10 +220,10 @@ interface ElementInterface
     /**
      * Sets the parent form to the element
      *
-     * @param \Phalcon\Forms\Form $form
+     * @param Form $form
      * @return ElementInterface
      */
-    public function setForm(\Phalcon\Forms\Form $form): ElementInterface;
+    public function setForm(Form $form): ElementInterface;
 
     /**
      * Sets the element label
@@ -234,10 +236,10 @@ interface ElementInterface
     /**
      * Sets the validation messages related to the element
      *
-     * @param \Phalcon\Messages\Messages $messages
+     * @param Messages $messages
      * @return ElementInterface
      */
-    public function setMessages(\Phalcon\Messages\Messages $messages): ElementInterface;
+    public function setMessages(Messages $messages): ElementInterface;
 
     /**
      * Sets the element's name

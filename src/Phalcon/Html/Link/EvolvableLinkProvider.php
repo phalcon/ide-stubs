@@ -17,7 +17,7 @@ use Psr\Link\LinkInterface;
  *
  * @property LinkInterface[] links
  */
-class EvolvableLinkProvider extends \Phalcon\Html\Link\LinkProvider implements \Psr\Link\EvolvableLinkProviderInterface
+class EvolvableLinkProvider extends LinkProvider implements EvolvableLinkProviderInterface
 {
 
     /**
@@ -31,7 +31,7 @@ class EvolvableLinkProvider extends \Phalcon\Html\Link\LinkProvider implements \
      *
      * @return static
      */
-    public function withLink(\Psr\Link\LinkInterface $link)
+    public function withLink(LinkInterface $link)
     {
     }
 
@@ -46,7 +46,7 @@ class EvolvableLinkProvider extends \Phalcon\Html\Link\LinkProvider implements \
      *
      * @return static
      */
-    public function withoutLink(\Psr\Link\LinkInterface $link)
+    public function withoutLink(LinkInterface $link)
     {
     }
 }

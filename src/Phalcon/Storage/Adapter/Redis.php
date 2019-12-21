@@ -9,12 +9,15 @@
  */
 namespace Phalcon\Storage\Adapter;
 
+use Phalcon\Helper\Arr;
 use Phalcon\Storage\Exception;
+use Phalcon\Storage\SerializerFactory;
+use Phalcon\Storage\Serializer\SerializerInterface;
 
 /**
  * Redis adapter
  */
-class Redis extends \Phalcon\Storage\Adapter\AbstractAdapter
+class Redis extends AbstractAdapter
 {
     /**
      * @var array
@@ -25,10 +28,21 @@ class Redis extends \Phalcon\Storage\Adapter\AbstractAdapter
     /**
      * Constructor
      *
-     * @param \Phalcon\Storage\SerializerFactory $factory
-     * @param array $options
+     * @param array $options = [
+     *     'host' => '127.0.0.1',
+     *     'port' => 6379,
+     *     'index' => 0,
+     *     'persistent' => false,
+     *     'auth' => '',
+     *     'socket' => '',
+     *     'defaultSerializer' => 'Php',
+     *     'lifetime' => 3600,
+     *     'serializer' => null,
+     *     'prefix' => ''
+     * ]
+     * @param SerializerFactory $factory
      */
-    public function __construct(\Phalcon\Storage\SerializerFactory $factory = null, array $options = array())
+    public function __construct(SerializerFactory $factory, array $options = array())
     {
     }
 
@@ -96,8 +110,9 @@ class Redis extends \Phalcon\Storage\Adapter\AbstractAdapter
      *
      * @return array
      * @throws Exception
+     * @param string $prefix
      */
-    public function getKeys(): array
+    public function getKeys(string $prefix = ''): array
     {
     }
 

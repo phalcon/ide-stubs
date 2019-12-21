@@ -13,7 +13,7 @@ namespace Phalcon\Flash;
  * This is a variant of the Phalcon\Flash that immediately outputs any message
  * passed to it
  */
-class Direct extends \Phalcon\Flash\AbstractFlash
+class Direct extends AbstractFlash
 {
 
     /**

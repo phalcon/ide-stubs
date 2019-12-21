@@ -10,14 +10,21 @@
 namespace Phalcon\Db\Adapter;
 
 use Phalcon\Db\DialectInterface;
+use Phalcon\Db\ColumnInterface;
 use Phalcon\Db\Enum;
+use Phalcon\Db\Exception;
+use Phalcon\Db\Index;
+use Phalcon\Db\IndexInterface;
+use Phalcon\Db\Reference;
+use Phalcon\Db\ReferenceInterface;
 use Phalcon\Db\RawValue;
+use Phalcon\Events\EventsAwareInterface;
 use Phalcon\Events\ManagerInterface;
 
 /**
  * Base class for Phalcon\Db adapters
  */
-abstract class AbstractAdapter implements \Phalcon\Db\Adapter\AdapterInterface, \Phalcon\Events\EventsAwareInterface
+abstract class AbstractAdapter implements AdapterInterface, EventsAwareInterface
 {
     /**
      * Connection ID
@@ -124,7 +131,17 @@ abstract class AbstractAdapter implements \Phalcon\Db\Adapter\AdapterInterface, 
     /**
      * Phalcon\Db\Adapter constructor
      *
-     * @param array $descriptor
+     * @param array $descriptor = [
+     *     'host' => 'localhost',
+     *     'port' => '3306',
+     *     'dbname' => 'blog',
+     *     'username' => 'sigma'
+     *     'password' => 'secret',
+     *     'dialectClass' => null,
+     *     'options' => [],
+     *     'dsn' => null,
+     *     'charset' => 'utf8mb4'
+     * ]
      */
     public function __construct(array $descriptor)
     {
@@ -135,10 +152,10 @@ abstract class AbstractAdapter implements \Phalcon\Db\Adapter\AdapterInterface, 
      *
      * @param string $tableName
      * @param string $schemaName
-     * @param \Phalcon\Db\ColumnInterface $column
+     * @param ColumnInterface $column
      * @return bool
      */
-    public function addColumn(string $tableName, string $schemaName, \Phalcon\Db\ColumnInterface $column): bool
+    public function addColumn(string $tableName, string $schemaName, ColumnInterface $column): bool
     {
     }
 
@@ -147,10 +164,10 @@ abstract class AbstractAdapter implements \Phalcon\Db\Adapter\AdapterInterface, 
      *
      * @param string $tableName
      * @param string $schemaName
-     * @param \Phalcon\Db\ReferenceInterface $reference
+     * @param ReferenceInterface $reference
      * @return bool
      */
-    public function addForeignKey(string $tableName, string $schemaName, \Phalcon\Db\ReferenceInterface $reference): bool
+    public function addForeignKey(string $tableName, string $schemaName, ReferenceInterface $reference): bool
     {
     }
 
@@ -159,10 +176,10 @@ abstract class AbstractAdapter implements \Phalcon\Db\Adapter\AdapterInterface, 
      *
      * @param string $tableName
      * @param string $schemaName
-     * @param \Phalcon\Db\IndexInterface $index
+     * @param IndexInterface $index
      * @return bool
      */
-    public function addIndex(string $tableName, string $schemaName, \Phalcon\Db\IndexInterface $index): bool
+    public function addIndex(string $tableName, string $schemaName, IndexInterface $index): bool
     {
     }
 
@@ -171,10 +188,10 @@ abstract class AbstractAdapter implements \Phalcon\Db\Adapter\AdapterInterface, 
      *
      * @param string $tableName
      * @param string $schemaName
-     * @param \Phalcon\Db\IndexInterface $index
+     * @param IndexInterface $index
      * @return bool
      */
-    public function addPrimaryKey(string $tableName, string $schemaName, \Phalcon\Db\IndexInterface $index): bool
+    public function addPrimaryKey(string $tableName, string $schemaName, IndexInterface $index): bool
     {
     }
 
@@ -247,7 +264,7 @@ abstract class AbstractAdapter implements \Phalcon\Db\Adapter\AdapterInterface, 
      *
      * @param string $table
      * @param string $schema
-     * @return array
+     * @return array|IndexInterface[]
      */
     public function describeIndexes(string $table, string $schema = null): array
     {
@@ -264,7 +281,7 @@ abstract class AbstractAdapter implements \Phalcon\Db\Adapter\AdapterInterface, 
      *
      * @param string $table
      * @param string $schema
-     * @return array
+     * @return array|ReferenceInterface[]
      */
     public function describeReferences(string $table, string $schema = null): array
     {
@@ -465,10 +482,10 @@ abstract class AbstractAdapter implements \Phalcon\Db\Adapter\AdapterInterface, 
     /**
      * Returns the SQL column definition from a column
      *
-     * @param \Phalcon\Db\ColumnInterface $column
+     * @param ColumnInterface $column
      * @return string
      */
-    public function getColumnDefinition(\Phalcon\Db\ColumnInterface $column): string
+    public function getColumnDefinition(ColumnInterface $column): string
     {
     }
 
@@ -717,11 +734,11 @@ abstract class AbstractAdapter implements \Phalcon\Db\Adapter\AdapterInterface, 
      *
      * @param string $tableName
      * @param string $schemaName
-     * @param \Phalcon\Db\ColumnInterface $column
-     * @param \Phalcon\Db\ColumnInterface $currentColumn
+     * @param ColumnInterface $column
+     * @param ColumnInterface $currentColumn
      * @return bool
      */
-    public function modifyColumn(string $tableName, string $schemaName, \Phalcon\Db\ColumnInterface $column, \Phalcon\Db\ColumnInterface $currentColumn = null): bool
+    public function modifyColumn(string $tableName, string $schemaName, ColumnInterface $column, ColumnInterface $currentColumn = null): bool
     {
     }
 
@@ -748,19 +765,19 @@ abstract class AbstractAdapter implements \Phalcon\Db\Adapter\AdapterInterface, 
     /**
      * Sets the event manager
      *
-     * @param \Phalcon\Events\ManagerInterface $eventsManager
+     * @param ManagerInterface $eventsManager
      * @return void
      */
-    public function setEventsManager(\Phalcon\Events\ManagerInterface $eventsManager)
+    public function setEventsManager(ManagerInterface $eventsManager)
     {
     }
 
     /**
      * Sets the dialect used to produce the SQL
      *
-     * @param \Phalcon\Db\DialectInterface $dialect
+     * @param DialectInterface $dialect
      */
-    public function setDialect(\Phalcon\Db\DialectInterface $dialect)
+    public function setDialect(DialectInterface $dialect)
     {
     }
 

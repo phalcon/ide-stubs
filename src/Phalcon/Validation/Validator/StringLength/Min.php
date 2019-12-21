@@ -9,7 +9,10 @@
  */
 namespace Phalcon\Validation\Validator\StringLength;
 
+use Phalcon\Messages\Message;
+use Phalcon\Validation;
 use Phalcon\Validation\AbstractValidator;
+use Phalcon\Validation\Exception;
 
 /**
  * Validates that a string has the specified minimum constraints
@@ -64,13 +67,28 @@ class Min extends AbstractValidator
 
 
     /**
+     * Constructor
+     *
+     * @param array $options = [
+     *     'message' => '',
+     *     'template' => '',
+     *     'allowEmpty' => false,
+     *     'min' => 1000,
+     *     'included' => false
+     * ]
+     */
+    public function __construct(array $options = array())
+    {
+    }
+
+    /**
      * Executes the validation
      *
-     * @param \Phalcon\Validation $validation
+     * @param Validation $validation
      * @param mixed $field
      * @return bool
      */
-    public function validate(\Phalcon\Validation $validation, $field): bool
+    public function validate(Validation $validation, $field): bool
     {
     }
 }

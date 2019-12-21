@@ -9,6 +9,8 @@
  */
 namespace Phalcon\Logger\Formatter;
 
+use Phalcon\Logger;
+
 /**
  * This file is part of the Phalcon Framework.
  *
@@ -17,7 +19,7 @@ namespace Phalcon\Logger\Formatter;
  * For the full copyright and license information, please view the LICENSE.txt
  * file that was distributed with this source code.
  */
-abstract class AbstractFormatter implements \Phalcon\Logger\Formatter\FormatterInterface
+abstract class AbstractFormatter implements FormatterInterface
 {
 
     /**

@@ -9,7 +9,18 @@
  */
 namespace Phalcon\Mvc\Model\Resultset;
 
+use Phalcon\Cache\Adapter\AdapterInterface;
+use Phalcon\Di;
+use Phalcon\Di\DiInterface;
+use Phalcon\Db\ResultInterface;
+use Phalcon\Mvc\Model;
+use Phalcon\Mvc\Model\Exception;
 use Phalcon\Mvc\Model\Resultset;
+use Phalcon\Mvc\Model\ResultsetInterface;
+use Phalcon\Mvc\Model\Row;
+use Phalcon\Mvc\ModelInterface;
+use Phalcon\Storage\Serializer\SerializerInterface;
+use stdClass;
 
 /**
  * Phalcon\Mvc\Model\Resultset\Complex
@@ -17,7 +28,7 @@ use Phalcon\Mvc\Model\Resultset;
  * Complex resultsets may include complete objects and scalar values.
  * This class builds every complex row as it is required
  */
-class Complex extends Resultset implements \Phalcon\Mvc\Model\ResultsetInterface
+class Complex extends Resultset implements ResultsetInterface
 {
 
     protected $columnTypes;
@@ -33,10 +44,10 @@ class Complex extends Resultset implements \Phalcon\Mvc\Model\ResultsetInterface
      * Phalcon\Mvc\Model\Resultset\Complex constructor
      *
      * @param array $columnTypes
-     * @param \Phalcon\Db\ResultInterface $result
-     * @param \Phalcon\Cache\Adapter\AdapterInterface $cache
+     * @param ResultInterface $result
+     * @param AdapterInterface $cache
      */
-    public function __construct($columnTypes, \Phalcon\Db\ResultInterface $result = null, \Phalcon\Cache\Adapter\AdapterInterface $cache = null)
+    public function __construct($columnTypes, ResultInterface $result = null, AdapterInterface $cache = null)
     {
     }
 

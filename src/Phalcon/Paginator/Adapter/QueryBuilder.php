@@ -9,8 +9,10 @@
  */
 namespace Phalcon\Paginator\Adapter;
 
+use Phalcon\Db\Enum;
 use Phalcon\Mvc\Model\Query\Builder;
 use Phalcon\Paginator\RepositoryInterface;
+use Phalcon\Paginator\Exception;
 
 /**
  * Phalcon\Paginator\Adapter\QueryBuilder
@@ -34,7 +36,7 @@ use Phalcon\Paginator\RepositoryInterface;
  * );
  * ```
  */
-class QueryBuilder extends \Phalcon\Paginator\Adapter\AbstractAdapter
+class QueryBuilder extends AbstractAdapter
 {
     /**
      * Paginator's data
@@ -50,7 +52,11 @@ class QueryBuilder extends \Phalcon\Paginator\Adapter\AbstractAdapter
     /**
      * Phalcon\Paginator\Adapter\QueryBuilder
      *
-     * @param array $config
+     * @param array $config = [
+     *     'limit' => 10,
+     *     'builder' => null,
+     *     'columns' => ''
+     * ]
      */
     public function __construct(array $config)
     {
@@ -86,10 +92,10 @@ class QueryBuilder extends \Phalcon\Paginator\Adapter\AbstractAdapter
     /**
      * Set query builder object
      *
-     * @param \Phalcon\Mvc\Model\Query\Builder $builder
+     * @param Builder $builder
      * @return QueryBuilder
      */
-    public function setQueryBuilder(\Phalcon\Mvc\Model\Query\Builder $builder): QueryBuilder
+    public function setQueryBuilder(Builder $builder): QueryBuilder
     {
     }
 }

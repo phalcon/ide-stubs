@@ -9,6 +9,9 @@
  */
 namespace Phalcon\Session\Adapter;
 
+use Phalcon\Helper\Str;
+use Phalcon\Session\Exception;
+
 /**
  * Phalcon\Session\Adapter\Stream
  *
@@ -29,7 +32,7 @@ namespace Phalcon\Session\Adapter;
  * $session->setAdapter($files);
  * ```
  */
-class Stream extends \Phalcon\Session\Adapter\Noop
+class Stream extends Noop
 {
     /**
      * @var string
@@ -38,7 +41,12 @@ class Stream extends \Phalcon\Session\Adapter\Noop
 
 
     /**
-     * @param array $options
+     * Constructor
+     *
+     * @param array $options = [
+     *     'prefix' => '',
+     *     'savePath' => ''
+     * ]
      */
     public function __construct(array $options = array())
     {

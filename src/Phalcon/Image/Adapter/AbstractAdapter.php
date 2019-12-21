@@ -10,13 +10,14 @@
 namespace Phalcon\Image\Adapter;
 
 use Phalcon\Image\Enum;
+use Phalcon\Image\Exception;
 
 /**
  * Phalcon\Image\Adapter
  *
  * All image adapters must use this class
  */
-abstract class AbstractAdapter implements \Phalcon\Image\Adapter\AdapterInterface
+abstract class AbstractAdapter implements AdapterInterface
 {
 
     protected static $checked = false;

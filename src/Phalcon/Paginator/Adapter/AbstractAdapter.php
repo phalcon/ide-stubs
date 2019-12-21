@@ -9,12 +9,14 @@
  */
 namespace Phalcon\Paginator\Adapter;
 
+use Phalcon\Paginator\Exception;
+use Phalcon\Paginator\Repository;
 use Phalcon\Paginator\RepositoryInterface;
 
 /**
  * Phalcon\Paginator\Adapter\AbstractAdapter
  */
-abstract class AbstractAdapter implements \Phalcon\Paginator\Adapter\AdapterInterface
+abstract class AbstractAdapter implements AdapterInterface
 {
     /**
      * Configuration of paginator
@@ -80,10 +82,10 @@ abstract class AbstractAdapter implements \Phalcon\Paginator\Adapter\AdapterInte
     /**
      * Sets current repository for pagination
      *
-     * @param \Phalcon\Paginator\RepositoryInterface $repository
+     * @param RepositoryInterface $repository
      * @return AdapterInterface
      */
-    public function setRepository(\Phalcon\Paginator\RepositoryInterface $repository): AdapterInterface
+    public function setRepository(RepositoryInterface $repository): AdapterInterface
     {
     }
 

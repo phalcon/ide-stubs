@@ -9,12 +9,16 @@
  */
 namespace Phalcon\Storage\Adapter;
 
+use Memcached;
+use Phalcon\Helper\Arr;
 use Phalcon\Storage\Exception;
+use Phalcon\Storage\SerializerFactory;
+use Phalcon\Storage\Serializer\SerializerInterface;
 
 /**
  * Libmemcached adapter
  */
-class Libmemcached extends \Phalcon\Storage\Adapter\AbstractAdapter
+class Libmemcached extends AbstractAdapter
 {
     /**
      * @var array
@@ -25,10 +29,22 @@ class Libmemcached extends \Phalcon\Storage\Adapter\AbstractAdapter
     /**
      * Libmemcached constructor.
      *
-     * @param array $options
-     * @param \Phalcon\Storage\SerializerFactory $factory
+     * @param array $options = [
+     *     'servers' => [
+     *         [
+     *             'host' => '127.0.0.1',
+     *             'port' => 11211,
+     *             'weight' => 1
+     *         ]
+     *     ],
+     *     'defaultSerializer' => 'Php',
+     *     'lifetime' => 3600,
+     *     'serializer' => null,
+     *     'prefix' => ''
+     * ]
+     * @param SerializerFactory $factory
      */
-    public function __construct(\Phalcon\Storage\SerializerFactory $factory = null, array $options = array())
+    public function __construct(SerializerFactory $factory, array $options = array())
     {
     }
 
@@ -82,7 +98,7 @@ class Libmemcached extends \Phalcon\Storage\Adapter\AbstractAdapter
      * Returns the already connected adapter or connects to the Memcached
      * server(s)
      *
-     * @return \Memcached
+     * @return Memcached
      * @throws Exception
      */
     public function getAdapter()
@@ -93,9 +109,9 @@ class Libmemcached extends \Phalcon\Storage\Adapter\AbstractAdapter
      * Stores data in the adapter
      *
      * @return array
-     * @throws Exception
+     * @param string $prefix
      */
-    public function getKeys(): array
+    public function getKeys(string $prefix = ''): array
     {
     }
 
@@ -142,9 +158,9 @@ class Libmemcached extends \Phalcon\Storage\Adapter\AbstractAdapter
      * Checks the serializer. If it is a supported one it is set, otherwise
      * the custom one is set.
      *
-     * @param \Memcached $connection
+     * @param Memcached $connection
      */
-    private function setSerializer(\Memcached $connection)
+    private function setSerializer(Memcached $connection)
     {
     }
 }

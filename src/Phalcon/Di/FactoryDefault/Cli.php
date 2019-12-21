@@ -10,6 +10,8 @@
 namespace Phalcon\Di\FactoryDefault;
 
 use Phalcon\Di\FactoryDefault;
+use Phalcon\Di\Service;
+use Phalcon\Filter\FilterFactory;
 
 /**
  * Phalcon\Di\FactoryDefault\Cli

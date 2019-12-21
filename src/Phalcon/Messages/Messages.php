@@ -9,10 +9,15 @@
  */
 namespace Phalcon\Messages;
 
+use ArrayAccess;
+use Countable;
+use Iterator;
+use JsonSerializable;
+
 /**
  * Represents a collection of messages
  */
-class Messages implements \ArrayAccess, \Countable, \Iterator, \JsonSerializable
+class Messages implements ArrayAccess, Countable, Iterator, JsonSerializable
 {
     /**
      * @var int
@@ -56,9 +61,9 @@ class Messages implements \ArrayAccess, \Countable, \Iterator, \JsonSerializable
      * $messages->appendMessages($messagesArray);
      * ```
      *
-     * @param \Phalcon\Messages\MessageInterface[] messages
+     * @param MessageInterface[] messages
      * @param mixed $messages
-     * @param \Phalcon\Messages\MessageInterface  [] messages
+     * @param MessageInterface[] messages
      */
     public function appendMessages($messages)
     {
@@ -164,7 +169,7 @@ class Messages implements \ArrayAccess, \Countable, \Iterator, \JsonSerializable
      * $messages[0] = new \Phalcon\Messages\Message("This is a message");
      * ```
      *
-     * @param \Phalcon\Messages\Message $message
+     * @param Message $message
      * @param mixed $index
      * @return void
      */

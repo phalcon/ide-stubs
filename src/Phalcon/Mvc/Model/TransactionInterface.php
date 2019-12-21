@@ -9,6 +9,10 @@
  */
 namespace Phalcon\Mvc\Model;
 
+use Phalcon\Db\Adapter\AdapterInterface;
+use Phalcon\Mvc\ModelInterface;
+use Phalcon\Mvc\Model\Transaction\ManagerInterface;
+
 /**
  * Phalcon\Mvc\Model\TransactionInterface
  *
@@ -34,9 +38,9 @@ interface TransactionInterface
     /**
      * Returns connection related to transaction
      *
-     * @return \Phalcon\Db\Adapter\AdapterInterface
+     * @return AdapterInterface
      */
-    public function getConnection(): \Phalcon\Db\Adapter\AdapterInterface;
+    public function getConnection(): AdapterInterface;
 
     /**
      * Returns validations messages from last save try
@@ -63,10 +67,10 @@ interface TransactionInterface
      * Rollbacks the transaction
      *
      * @param string $rollbackMessage
-     * @param \Phalcon\Mvc\ModelInterface $rollbackRecord
+     * @param ModelInterface $rollbackRecord
      * @return bool
      */
-    public function rollback(string $rollbackMessage = null, \Phalcon\Mvc\ModelInterface $rollbackRecord = null): bool;
+    public function rollback(string $rollbackMessage = null, ModelInterface $rollbackRecord = null): bool;
 
     /**
      * Sets if is a reused transaction or new once
@@ -87,18 +91,18 @@ interface TransactionInterface
     /**
      * Sets object which generates rollback action
      *
-     * @param \Phalcon\Mvc\ModelInterface $record
+     * @param ModelInterface $record
      * @return void
      */
-    public function setRollbackedRecord(\Phalcon\Mvc\ModelInterface $record);
+    public function setRollbackedRecord(ModelInterface $record);
 
     /**
      * Sets transaction manager related to the transaction
      *
-     * @param \Phalcon\Mvc\Model\Transaction\ManagerInterface $manager
+     * @param ManagerInterface $manager
      * @return void
      */
-    public function setTransactionManager(\Phalcon\Mvc\Model\Transaction\ManagerInterface $manager);
+    public function setTransactionManager(ManagerInterface $manager);
 
     /**
      * Enables throwing exception

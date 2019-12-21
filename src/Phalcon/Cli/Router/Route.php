@@ -12,7 +12,7 @@ namespace Phalcon\Cli\Router;
 /**
  * This class represents every route added to the router
  */
-class Route implements \Phalcon\Cli\Router\RouteInterface
+class Route implements RouteInterface
 {
 
     const DEFAULT_DELIMITER = ' ';

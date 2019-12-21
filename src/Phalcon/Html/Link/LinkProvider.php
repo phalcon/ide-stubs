@@ -11,13 +11,14 @@ namespace Phalcon\Html\Link;
 
 use Psr\Link\LinkInterface;
 use Psr\Link\LinkProviderInterface;
+use Traversable;
 
 /**
  * Class Phalcon\Http\Link\LinkProvider
  *
  * @property LinkInterface[] links
  */
-class LinkProvider implements \Psr\Link\LinkProviderInterface
+class LinkProvider implements LinkProviderInterface
 {
     /**
      * @var LinkInterface[]
@@ -40,7 +41,7 @@ class LinkProvider implements \Psr\Link\LinkProviderInterface
      * The iterable may be an array or any PHP \Traversable object. If no links
      * are available, an empty array or \Traversable MUST be returned.
      *
-     * @return LinkInterface[]|\Traversable
+     * @return LinkInterface[]|Traversable
      */
     public function getLinks()
     {
@@ -67,7 +68,7 @@ class LinkProvider implements \Psr\Link\LinkProviderInterface
      * @param LinkInterface $link *
      * @return string
      */
-    protected function getKey(\Psr\Link\LinkInterface $link): string
+    protected function getKey(LinkInterface $link): string
     {
     }
 }

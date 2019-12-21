@@ -9,8 +9,19 @@
  */
 namespace Phalcon\Mvc\Model;
 
-use Phalcon\Cache\Adapter\AdapterInterface;
+use ArrayAccess;
+use Closure;
+use Countable;
+use Iterator;
+use JsonSerializable;
+use Phalcon\Db\Enum;
+use Phalcon\Messages\MessageInterface;
+use Phalcon\Mvc\Model;
 use Phalcon\Mvc\ModelInterface;
+use Phalcon\Cache\Adapter\AdapterInterface;
+use Phalcon\Storage\Serializer\SerializerInterface;
+use SeekableIterator;
+use Serializable;
 
 /**
  * Phalcon\Mvc\Model\Resultset
@@ -53,7 +64,7 @@ use Phalcon\Mvc\ModelInterface;
  * }
  * ```
  */
-abstract class Resultset implements \Phalcon\Mvc\Model\ResultsetInterface, \Iterator, \SeekableIterator, \Countable, \ArrayAccess, \Serializable, \JsonSerializable
+abstract class Resultset implements ResultsetInterface, Iterator, SeekableIterator, Countable, ArrayAccess, Serializable, JsonSerializable
 {
 
     const HYDRATE_ARRAYS = 1;
@@ -107,9 +118,9 @@ abstract class Resultset implements \Phalcon\Mvc\Model\ResultsetInterface, \Iter
      * Phalcon\Mvc\Model\Resultset constructor
      *
      * @param \Phalcon\Db\ResultInterface|false $result
-     * @param \Phalcon\Cache\Adapter\AdapterInterface $cache
+     * @param AdapterInterface $cache
      */
-    public function __construct($result, \Phalcon\Cache\Adapter\AdapterInterface $cache = null)
+    public function __construct($result, AdapterInterface $cache = null)
     {
     }
 
@@ -125,10 +136,10 @@ abstract class Resultset implements \Phalcon\Mvc\Model\ResultsetInterface, \Iter
     /**
      * Deletes every record in the resultset
      *
-     * @param \Closure $conditionCallback
+     * @param Closure $conditionCallback
      * @return bool
      */
-    public function delete(\Closure $conditionCallback = null): bool
+    public function delete(Closure $conditionCallback = null): bool
     {
     }
 
@@ -146,7 +157,7 @@ abstract class Resultset implements \Phalcon\Mvc\Model\ResultsetInterface, \Iter
      * ```
      *
      * @param callable $filter
-     * @return array
+     * @return array|ModelInterface[]
      */
     public function filter($filter): array
     {
@@ -191,7 +202,7 @@ abstract class Resultset implements \Phalcon\Mvc\Model\ResultsetInterface, \Iter
     /**
      * Returns the error messages produced by a batch operation
      *
-     * @return array
+     * @return array|MessageInterface[]
      */
     public function getMessages(): array
     {
@@ -273,7 +284,7 @@ abstract class Resultset implements \Phalcon\Mvc\Model\ResultsetInterface, \Iter
      * Resultsets cannot be changed. It has only been implemented to meet the definition of the ArrayAccess interface
      *
      * @param int $index
-     * @param \Phalcon\Mvc\ModelInterface $value
+     * @param ModelInterface $value
      * @return void
      */
     public function offsetSet($index, $value)
@@ -334,10 +345,10 @@ abstract class Resultset implements \Phalcon\Mvc\Model\ResultsetInterface, \Iter
      * Updates every record in the resultset
      *
      * @param array $data
-     * @param \Closure $conditionCallback
+     * @param Closure $conditionCallback
      * @return bool
      */
-    public function update($data, \Closure $conditionCallback = null): bool
+    public function update($data, Closure $conditionCallback = null): bool
     {
     }
 

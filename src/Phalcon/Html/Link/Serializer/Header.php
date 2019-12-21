@@ -14,7 +14,7 @@ use Psr\Link\EvolvableLinkInterface;
 /**
  * Class Phalcon\Http\Link\Serializer\Header
  */
-class Header implements \Phalcon\Html\Link\Serializer\SerializerInterface
+class Header implements SerializerInterface
 {
 
     /**
