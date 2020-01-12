@@ -10,7 +10,6 @@
 namespace Phalcon\Annotations;
 
 use Phalcon\Annotations\Adapter\AdapterInterface;
-use Phalcon\Config;
 use Phalcon\Factory\AbstractFactory;
 use Phalcon\Helper\Arr;
 
@@ -30,7 +29,7 @@ class AnnotationsFactory extends AbstractFactory
     }
 
     /**
-     * @param array|Config $config = [
+     * @param array|\Phalcon\Config $config = [
      *     'adapter' => 'apcu',
      *     'options' => [
      *         'prefix' => 'phalcon',

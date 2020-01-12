@@ -26,9 +26,9 @@ class SoftDelete extends Behavior
      * Listens for notifications from the models manager
      *
      * @param string $type
-     * @param ModelInterface $model
+     * @param \Phalcon\Mvc\ModelInterface $model
      */
-    public function notify(string $type, ModelInterface $model)
+    public function notify(string $type, \Phalcon\Mvc\ModelInterface $model)
     {
     }
 }

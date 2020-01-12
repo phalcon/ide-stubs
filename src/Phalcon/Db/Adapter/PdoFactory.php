@@ -9,7 +9,6 @@
  */
 namespace Phalcon\Db\Adapter;
 
-use Phalcon\Config;
 use Phalcon\Factory\AbstractFactory;
 use Phalcon\Helper\Arr;
 
@@ -36,7 +35,7 @@ class PdoFactory extends AbstractFactory
     /**
      * Factory to create an instace from a Config object
      *
-     * @param array|Config $config = [
+     * @param array|\Phalcon\Config $config = [
      *     'adapter' => 'mysql',
      *     'options' => [
      *         'host' => 'localhost',

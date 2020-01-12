@@ -16,7 +16,7 @@ use Phalcon\Tag;
  *
  * Component INPUT[type=number] for forms
  */
-class Numeric extends AbstractElement
+class Numeric extends \Phalcon\Forms\Element\AbstractElement
 {
 
     /**

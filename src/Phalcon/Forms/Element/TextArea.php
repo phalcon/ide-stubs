@@ -14,7 +14,7 @@ use Phalcon\Tag;
 /**
  * Component TEXTAREA for forms
  */
-class TextArea extends AbstractElement
+class TextArea extends \Phalcon\Forms\Element\AbstractElement
 {
 
     /**

@@ -92,6 +92,7 @@ class Item
     /**
      * Phalcon\Logger\Item constructor
      *
+     * @todo Remove the time or change the signature to an array
      * @param string $message
      * @param string $name
      * @param int $type

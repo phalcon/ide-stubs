@@ -17,7 +17,7 @@ use RuntimeException;
 /**
  * PSR-7 Stream
  */
-class Stream implements StreamInterface
+class Stream implements \Psr\Http\Message\StreamInterface
 {
     /**
      * @var resource | null

@@ -20,7 +20,7 @@ use SessionHandlerInterface;
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-abstract class AbstractAdapter implements SessionHandlerInterface
+abstract class AbstractAdapter implements \SessionHandlerInterface
 {
     /**
      * @var AdapterInterface

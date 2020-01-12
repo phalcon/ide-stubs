@@ -25,7 +25,7 @@ use Phalcon\Di\Service\Builder;
  * $request = service->resolve();
  * ```
  */
-class Service implements ServiceInterface
+class Service implements \Phalcon\Di\ServiceInterface
 {
 
     protected $definition;

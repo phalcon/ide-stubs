@@ -29,8 +29,8 @@ interface AttributesInterface
     /**
      * Set Attributes
      *
-     * @param Attributes $attributes
+     * @param \Phalcon\Html\Attributes $attributes
      * @return AttributesInterface
      */
-    public function setAttributes(Attributes $attributes): AttributesInterface;
+    public function setAttributes(\Phalcon\Html\Attributes $attributes): AttributesInterface;
 }

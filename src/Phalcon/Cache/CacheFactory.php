@@ -39,7 +39,7 @@ class CacheFactory
     /**
      * Factory to create an instace from a Config object
      *
-     * @param array|Config $config = [
+     * @param array|\Phalcon\Config $config = [
      *     'adapter' => 'apcu',
      *     'options' => [
      *         'servers' => [

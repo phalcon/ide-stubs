@@ -14,7 +14,7 @@ namespace Phalcon\Html\Helper;
  *
  * Creates an element
  */
-class Element extends AbstractHelper
+class Element extends \Phalcon\Html\Helper\AbstractHelper
 {
 
     /**

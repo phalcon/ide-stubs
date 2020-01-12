@@ -16,7 +16,7 @@ use Psr\Http\Message\UriInterface;
 /**
  * PSR-17 RequestFactory
  */
-final class RequestFactory implements RequestFactoryInterface
+final class RequestFactory implements \Psr\Http\Message\RequestFactoryInterface
 {
 
     /**

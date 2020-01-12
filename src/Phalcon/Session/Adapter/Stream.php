@@ -32,7 +32,7 @@ use Phalcon\Session\Exception;
  * $session->setAdapter($files);
  * ```
  */
-class Stream extends Noop
+class Stream extends \Phalcon\Session\Adapter\Noop
 {
     /**
      * @var string

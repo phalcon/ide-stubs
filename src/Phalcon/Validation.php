@@ -22,7 +22,7 @@ use Phalcon\Validation\AbstractCombinedFieldsValidator;
 /**
  * Allows to validate data using custom or built-in validators
  */
-class Validation extends Injectable implements ValidationInterface
+class Validation extends Injectable implements \Phalcon\Validation\ValidationInterface
 {
 
     protected $combinedFieldsValidators;
@@ -74,20 +74,20 @@ class Validation extends Injectable implements ValidationInterface
      * Adds a validator to a field
      *
      * @param mixed $field
-     * @param ValidatorInterface $validator
+     * @param \Phalcon\Validation\ValidatorInterface $validator
      * @return ValidationInterface
      */
-    public function add($field, ValidatorInterface $validator): ValidationInterface
+    public function add($field, \Phalcon\Validation\ValidatorInterface $validator): ValidationInterface
     {
     }
 
     /**
      * Appends a message to the messages list
      *
-     * @param MessageInterface $message
+     * @param \Phalcon\Messages\MessageInterface $message
      * @return ValidationInterface
      */
-    public function appendMessage(MessageInterface $message): ValidationInterface
+    public function appendMessage(\Phalcon\Messages\MessageInterface $message): ValidationInterface
     {
     }
 
@@ -164,10 +164,10 @@ class Validation extends Injectable implements ValidationInterface
      * Alias of `add` method
      *
      * @param mixed $field
-     * @param ValidatorInterface $validator
+     * @param \Phalcon\Validation\ValidatorInterface $validator
      * @return ValidationInterface
      */
-    public function rule($field, ValidatorInterface $validator): ValidationInterface
+    public function rule($field, \Phalcon\Validation\ValidatorInterface $validator): ValidationInterface
     {
     }
 
@@ -228,10 +228,10 @@ class Validation extends Injectable implements ValidationInterface
      * Internal validations, if it returns true, then skip the current validator
      *
      * @param mixed $field
-     * @param ValidatorInterface $validator
+     * @param \Phalcon\Validation\ValidatorInterface $validator
      * @return bool
      */
-    protected function preChecking($field, ValidatorInterface $validator): bool
+    protected function preChecking($field, \Phalcon\Validation\ValidatorInterface $validator): bool
     {
     }
 }

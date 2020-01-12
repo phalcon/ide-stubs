@@ -16,7 +16,7 @@ namespace Phalcon\Assets;
  * $inline = new \Phalcon\Assets\Inline("js", "alert('hello world');");
  * ```
  */
-class Inline implements AssetInterface
+class Inline implements \Phalcon\Assets\AssetInterface
 {
     /**
      * @var array | null

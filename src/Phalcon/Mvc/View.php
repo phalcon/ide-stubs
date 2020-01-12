@@ -45,7 +45,7 @@ use Phalcon\Mvc\View\Engine\Php as PhpEngine;
  * echo $view->getContent();
  * ```
  */
-class View extends Injectable implements ViewInterface, EventsAwareInterface
+class View extends Injectable implements \Phalcon\Mvc\ViewInterface, \Phalcon\Events\EventsAwareInterface
 {
     /**
      * Render Level: To the action view
@@ -597,10 +597,10 @@ class View extends Injectable implements ViewInterface, EventsAwareInterface
     /**
      * Sets the events manager
      *
-     * @param ManagerInterface $eventsManager
+     * @param \Phalcon\Events\ManagerInterface $eventsManager
      * @return void
      */
-    public function setEventsManager(ManagerInterface $eventsManager)
+    public function setEventsManager(\Phalcon\Events\ManagerInterface $eventsManager)
     {
     }
 

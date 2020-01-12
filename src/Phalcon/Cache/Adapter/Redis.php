@@ -15,7 +15,7 @@ use Phalcon\Storage\Adapter\Redis as StorageRedis;
 /**
  * Redis adapter
  */
-class Redis extends StorageRedis implements CacheAdapterInterface
+class Redis extends \Phalcon\Storage\Adapter\Redis implements CacheAdapterInterface
 {
 
 }

@@ -16,7 +16,7 @@ use Phalcon\Tag\Select as SelectTag;
  *
  * Component SELECT (choice) for forms
  */
-class Select extends AbstractElement
+class Select extends \Phalcon\Forms\Element\AbstractElement
 {
 
     protected $optionsValues;

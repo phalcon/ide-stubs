@@ -14,7 +14,7 @@ namespace Phalcon\Html\Helper;
  *
  * Creates a textarea tag
  */
-class TextArea extends AbstractHelper
+class TextArea extends \Phalcon\Html\Helper\AbstractHelper
 {
 
     /**

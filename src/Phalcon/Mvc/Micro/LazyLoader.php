@@ -43,11 +43,11 @@ class LazyLoader
      * Calling __call method
      *
      * @param array $arguments
-     * @param string $method
-     * @param BinderInterface $modelBinder
      * @return mixed
+     * @param string $method
+     * @param \Phalcon\Mvc\Model\BinderInterface $modelBinder
      */
-    public function callMethod(string $method, $arguments, BinderInterface $modelBinder = null)
+    public function callMethod(string $method, $arguments, \Phalcon\Mvc\Model\BinderInterface $modelBinder = null)
     {
     }
 }

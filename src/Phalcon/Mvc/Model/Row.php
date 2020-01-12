@@ -20,7 +20,7 @@ use Phalcon\Mvc\ModelInterface;
  * This component allows Phalcon\Mvc\Model to return rows without an associated entity.
  * This objects implements the ArrayAccess interface to allow access the object as object->x or array[x].
  */
-class Row implements EntityInterface, ResultInterface, ArrayAccess, JsonSerializable
+class Row implements \Phalcon\Mvc\EntityInterface, \Phalcon\Mvc\Model\ResultInterface, \ArrayAccess, \JsonSerializable
 {
 
     /**
@@ -56,7 +56,7 @@ class Row implements EntityInterface, ResultInterface, ArrayAccess, JsonSerializ
      * Rows cannot be changed. It has only been implemented to meet the definition of the ArrayAccess interface
      *
      * @param string|int $index
-     * @param ModelInterface $value
+     * @param \Phalcon\Mvc\ModelInterface $value
      * @return void
      */
     public function offsetSet($index, $value)

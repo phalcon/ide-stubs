@@ -16,7 +16,7 @@ use Phalcon\Session\ManagerInterface;
  * Temporarily stores the messages in session, then messages can be printed in
  * the next request
  */
-class Session extends AbstractFlash
+class Session extends \Phalcon\Flash\AbstractFlash
 {
 
     /**

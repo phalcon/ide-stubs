@@ -36,7 +36,7 @@ use Phalcon\Filter\FilterInterface;
  * $handle = $dispatcher->dispatch();
  * ```
  */
-class Dispatcher extends CliDispatcher implements DispatcherInterface
+class Dispatcher extends \Phalcon\Dispatcher\AbstractDispatcher implements \Phalcon\Cli\DispatcherInterface
 {
     /**
      * @var string

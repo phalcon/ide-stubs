@@ -21,7 +21,7 @@ use Psr\Http\Server\RequestHandlerInterface;
  * by acting on the request, generating the response, or forwarding the
  * request to a subsequent middleware and possibly acting on its response.
  */
-abstract class AbstractMiddleware implements MiddlewareInterface
+abstract class AbstractMiddleware implements \Psr\Http\Server\MiddlewareInterface
 {
 
     /**
@@ -31,9 +31,9 @@ abstract class AbstractMiddleware implements MiddlewareInterface
      * If unable to produce the response itself, it may delegate to the provided
      * request handler to do so.
      *
-     * @param ServerRequestInterface $request
-     * @param RequestHandlerInterface $handler
+     * @param \Psr\Http\Message\ServerRequestInterface $request
+     * @param \Psr\Http\Server\RequestHandlerInterface $handler
      * @return ResponseInterface
      */
-    abstract public function process(ServerRequestInterface $request, RequestHandlerInterface $handler): ResponseInterface;
+    abstract public function process(\Psr\Http\Message\ServerRequestInterface $request, \Psr\Http\Server\RequestHandlerInterface $handler): ResponseInterface;
 }

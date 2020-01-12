@@ -25,7 +25,7 @@ use Phalcon\Storage\Serializer\SerializerInterface;
  * For the full copyright and license information, please view the LICENSE.txt
  * file that was distributed with this source code.
  */
-abstract class AbstractAdapter implements AdapterInterface
+abstract class AbstractAdapter implements \Phalcon\Storage\Adapter\AdapterInterface
 {
     /**
      * @var mixed
@@ -100,9 +100,9 @@ abstract class AbstractAdapter implements AdapterInterface
      *     'serializer' => null,
      *     'prefix' => ''
      * ]
-     * @param SerializerFactory $factory
+     * @param \Phalcon\Storage\SerializerFactory $factory
      */
-    protected function __construct(SerializerFactory $factory, array $options = array())
+    protected function __construct(\Phalcon\Storage\SerializerFactory $factory, array $options = array())
     {
     }
 

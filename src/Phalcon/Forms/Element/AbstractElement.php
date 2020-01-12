@@ -20,7 +20,7 @@ use Phalcon\Validation\ValidatorInterface;
 /**
  * This is a base class for form elements
  */
-abstract class AbstractElement implements ElementInterface
+abstract class AbstractElement implements \Phalcon\Forms\Element\ElementInterface
 {
 
     protected $attributes;
@@ -84,20 +84,20 @@ abstract class AbstractElement implements ElementInterface
     /**
      * Adds a validator to the element
      *
-     * @param ValidatorInterface $validator
+     * @param \Phalcon\Validation\ValidatorInterface $validator
      * @return ElementInterface
      */
-    public function addValidator(ValidatorInterface $validator): ElementInterface
+    public function addValidator(\Phalcon\Validation\ValidatorInterface $validator): ElementInterface
     {
     }
 
     /**
      * Adds a group of validators
      *
-     * @param ValidatorInterface[] validators
+     * @param \Phalcon\Validation\ValidatorInterface[] validators
      * @param bool $merge
      * @param array $validators
-     * @param ValidatorInterface[] validators
+     * @param \Phalcon\Validation\ValidatorInterface  [] validators
      * @return ElementInterface
      */
     public function addValidators(array $validators, bool $merge = true): ElementInterface
@@ -107,10 +107,10 @@ abstract class AbstractElement implements ElementInterface
     /**
      * Appends a message to the internal message list
      *
-     * @param MessageInterface $message
+     * @param \Phalcon\Messages\MessageInterface $message
      * @return ElementInterface
      */
-    public function appendMessage(MessageInterface $message): ElementInterface
+    public function appendMessage(\Phalcon\Messages\MessageInterface $message): ElementInterface
     {
     }
 
@@ -221,7 +221,7 @@ abstract class AbstractElement implements ElementInterface
     /**
      * Returns the validators registered for the element
      *
-     * @return array|ValidatorInterface[]
+     * @return array|\Phalcon\Validation\ValidatorInterface[]
      */
     public function getValidators(): array
     {
@@ -312,10 +312,10 @@ abstract class AbstractElement implements ElementInterface
     /**
      * Sets the parent form to the element
      *
-     * @param Form $form
+     * @param \Phalcon\Forms\Form $form
      * @return ElementInterface
      */
-    public function setForm(Form $form): ElementInterface
+    public function setForm(\Phalcon\Forms\Form $form): ElementInterface
     {
     }
 
@@ -332,10 +332,10 @@ abstract class AbstractElement implements ElementInterface
     /**
      * Sets the validation messages related to the element
      *
-     * @param Messages $messages
+     * @param \Phalcon\Messages\Messages $messages
      * @return ElementInterface
      */
-    public function setMessages(Messages $messages): ElementInterface
+    public function setMessages(\Phalcon\Messages\Messages $messages): ElementInterface
     {
     }
 

@@ -35,7 +35,7 @@ use Phalcon\Paginator\RepositoryInterface;
  * );
  * ```
  */
-class NativeArray extends AbstractAdapter
+class NativeArray extends \Phalcon\Paginator\Adapter\AbstractAdapter
 {
 
     /**

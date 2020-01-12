@@ -28,9 +28,9 @@ class Libmemcached extends MetaData
      * Phalcon\Mvc\Model\MetaData\Libmemcached constructor
      *
      * @param array $options
-     * @param AdapterFactory $factory
+     * @param \Phalcon\Cache\AdapterFactory $factory
      */
-    public function __construct(AdapterFactory $factory, array $options = array())
+    public function __construct(\Phalcon\Cache\AdapterFactory $factory, array $options = array())
     {
     }
 

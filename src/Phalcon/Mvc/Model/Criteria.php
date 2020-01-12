@@ -32,7 +32,7 @@ use Phalcon\Mvc\Model\Query\BuilderInterface;
  *     ->execute();
  * ```
  */
-class Criteria implements CriteriaInterface, InjectionAwareInterface
+class Criteria implements \Phalcon\Mvc\Model\CriteriaInterface, \Phalcon\Di\InjectionAwareInterface
 {
 
     protected $bindParams;
@@ -53,10 +53,10 @@ class Criteria implements CriteriaInterface, InjectionAwareInterface
     /**
      * Sets the DependencyInjector container
      *
-     * @param DiInterface $container
+     * @param \Phalcon\Di\DiInterface $container
      * @return void
      */
-    public function setDI(DiInterface $container)
+    public function setDI(\Phalcon\Di\DiInterface $container)
     {
     }
 
@@ -505,13 +505,13 @@ class Criteria implements CriteriaInterface, InjectionAwareInterface
     /**
      * Builds a Phalcon\Mvc\Model\Criteria based on an input array like $_POST
      *
-     * @param DiInterface $container
+     * @param \Phalcon\Di\DiInterface $container
      * @param string $modelName
      * @param array $data
      * @param string $operator
      * @return CriteriaInterface
      */
-    public static function fromInput(DiInterface $container, string $modelName, array $data, string $operator = 'AND'): CriteriaInterface
+    public static function fromInput(\Phalcon\Di\DiInterface $container, string $modelName, array $data, string $operator = 'AND'): CriteriaInterface
     {
     }
 

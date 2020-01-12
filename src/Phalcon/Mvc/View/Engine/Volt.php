@@ -18,7 +18,7 @@ use Phalcon\Mvc\View\Exception;
 /**
  * Designer friendly and fast template engine for PHP written in Zephir/C
  */
-class Volt extends AbstractEngine implements EventsAwareInterface
+class Volt extends \Phalcon\Mvc\View\Engine\AbstractEngine implements \Phalcon\Events\EventsAwareInterface
 {
 
     protected $compiler;
@@ -118,10 +118,10 @@ class Volt extends AbstractEngine implements EventsAwareInterface
     /**
      * Sets the events manager
      *
-     * @param ManagerInterface $eventsManager
+     * @param \Phalcon\Events\ManagerInterface $eventsManager
      * @return void
      */
-    public function setEventsManager(ManagerInterface $eventsManager)
+    public function setEventsManager(\Phalcon\Events\ManagerInterface $eventsManager)
     {
     }
 

@@ -36,7 +36,7 @@ use Throwable;
  * $connection = new Postgresql($config);
  * ```
  */
-class Postgresql extends AbstractPdo
+class Postgresql extends \Phalcon\Db\Adapter\Pdo\AbstractPdo
 {
     /**
      * @var string
@@ -92,7 +92,7 @@ class Postgresql extends AbstractPdo
      *
      * @param string $table
      * @param string $schema
-     * @return array|ColumnInterface[]
+     * @return array|\Phalcon\Db\ColumnInterface[]
      */
     public function describeColumns(string $table, string $schema = null): array
     {
@@ -109,7 +109,7 @@ class Postgresql extends AbstractPdo
      *
      * @param string $table
      * @param string $schema
-     * @return array|ReferenceInterface[]
+     * @return array|\Phalcon\Db\ReferenceInterface[]
      */
     public function describeReferences(string $table, string $schema = null): array
     {
@@ -146,11 +146,11 @@ class Postgresql extends AbstractPdo
      *
      * @param string $tableName
      * @param string $schemaName
-     * @param ColumnInterface $column
-     * @param ColumnInterface $currentColumn
+     * @param \Phalcon\Db\ColumnInterface $column
+     * @param \Phalcon\Db\ColumnInterface $currentColumn
      * @return bool
      */
-    public function modifyColumn(string $tableName, string $schemaName, ColumnInterface $column, ColumnInterface $currentColumn = null): bool
+    public function modifyColumn(string $tableName, string $schemaName, \Phalcon\Db\ColumnInterface $column, \Phalcon\Db\ColumnInterface $currentColumn = null): bool
     {
     }
 

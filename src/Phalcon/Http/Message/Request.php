@@ -18,7 +18,7 @@ use Psr\Http\Message\UriInterface;
 /**
  * PSR-7 Request
  */
-final class Request extends AbstractRequest implements RequestInterface
+final class Request extends AbstractRequest implements \Psr\Http\Message\RequestInterface
 {
 
     /**

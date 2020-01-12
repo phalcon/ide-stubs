@@ -16,7 +16,7 @@ use Phalcon\Tag;
  *
  * Component INPUT[type=radio] for forms
  */
-class Radio extends AbstractElement
+class Radio extends \Phalcon\Forms\Element\AbstractElement
 {
 
     /**

@@ -14,6 +14,7 @@ use Phalcon\Di\AbstractInjectionAware;
 use Phalcon\Crypt\CryptInterface;
 use Phalcon\Crypt\Mismatch;
 use Phalcon\Filter\FilterInterface;
+use Phalcon\Helper\Arr;
 use Phalcon\Http\Response\Exception;
 use Phalcon\Http\Cookie\CookieInterface;
 use Phalcon\Http\Cookie\Exception as CookieException;
@@ -22,7 +23,7 @@ use Phalcon\Session\ManagerInterface as SessionManagerInterface;
 /**
  * Provide OO wrappers to manage a HTTP cookie.
  */
-class Cookie extends AbstractInjectionAware implements CookieInterface
+class Cookie extends AbstractInjectionAware implements \Phalcon\Http\Cookie\CookieInterface
 {
     /**
      * @var string
@@ -298,10 +299,10 @@ class Cookie extends AbstractInjectionAware implements CookieInterface
      *
      * Use NULL to disable cookie signing.
      *
+     * @see \Phalcon\Security\Random
+     * @throws \Phalcon\Http\Cookie\Exception
      * @param string $signKey
      * @return CookieInterface
-     *@throws CookieException
-     * @see \Phalcon\Security\Random
      */
     public function setSignKey(string $signKey = null): CookieInterface
     {
@@ -330,9 +331,9 @@ class Cookie extends AbstractInjectionAware implements CookieInterface
     /**
      * Assert the cookie's key is enough long.
      *
+     * @throws \Phalcon\Http\Cookie\Exception
      * @param string $signKey
      * @return void
-     *@throws CookieException
      */
     protected function assertSignKeyIsLongEnough(string $signKey)
     {

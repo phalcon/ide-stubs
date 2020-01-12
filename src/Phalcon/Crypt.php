@@ -31,7 +31,7 @@ use Phalcon\Crypt\Mismatch;
  * echo $crypt->decrypt($encrypted, $key);
  * ```
  */
-class Crypt implements CryptInterface
+class Crypt implements \Phalcon\Crypt\CryptInterface
 {
 
     const PADDING_ANSI_X_923 = 1;
@@ -165,7 +165,7 @@ class Crypt implements CryptInterface
     /**
      * Decrypt a text that is coded as a base64 string.
      *
-     * @throws Mismatch
+     * @throws \Phalcon\Crypt\Mismatch
      * @param string $text
      * @param mixed $key
      * @param bool $safe
@@ -293,7 +293,7 @@ class Crypt implements CryptInterface
     /**
      * Set the name of hashing algorithm.
      *
-     * @throws Exception
+     * @throws \Phalcon\Crypt\Exception
      * @param string $hashAlgo
      * @return CryptInterface
      */

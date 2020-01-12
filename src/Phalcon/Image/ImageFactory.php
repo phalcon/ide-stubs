@@ -32,7 +32,7 @@ class ImageFactory extends AbstractFactory
     /**
      * Factory to create an instace from a Config object
      *
-     * @param array|Config $config = [
+     * @param array|\Phalcon\Config $config = [
      *     'adapter' => 'gd',
      *     'file' => 'image.jpg',
      *     'height' => null,

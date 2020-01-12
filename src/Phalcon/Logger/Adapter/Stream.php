@@ -30,7 +30,7 @@ use UnexpectedValueException;
  * $logger->close();
  * ```
  */
-class Stream extends AbstractAdapter
+class Stream extends \Phalcon\Logger\Adapter\AbstractAdapter
 {
     /**
      * Stream handler resource
@@ -94,10 +94,10 @@ class Stream extends AbstractAdapter
     /**
      * Processes the message i.e. writes it to the file
      *
-     * @param Item $item
+     * @param \Phalcon\Logger\Item $item
      * @return void
      */
-    public function process(Item $item)
+    public function process(\Phalcon\Logger\Item $item)
     {
     }
 }

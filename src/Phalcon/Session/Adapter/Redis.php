@@ -14,7 +14,7 @@ use Phalcon\Storage\AdapterFactory;
 /**
  * Phalcon\Session\Adapter\Redis
  */
-class Redis extends AbstractAdapter
+class Redis extends \Phalcon\Session\Adapter\AbstractAdapter
 {
 
     /**
@@ -29,9 +29,9 @@ class Redis extends AbstractAdapter
      *     'auth' => '',
      *     'socket' => ''
      * ]
-     * @param AdapterFactory $factory
+     * @param \Phalcon\Storage\AdapterFactory $factory
      */
-    public function __construct(AdapterFactory $factory, array $options = array())
+    public function __construct(\Phalcon\Storage\AdapterFactory $factory, array $options = array())
     {
     }
 }

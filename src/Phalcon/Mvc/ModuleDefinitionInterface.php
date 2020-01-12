@@ -22,14 +22,14 @@ interface ModuleDefinitionInterface
     /**
      * Registers an autoloader related to the module
      *
-     * @param DiInterface $container
+     * @param \Phalcon\Di\DiInterface $container
      */
-    public function registerAutoloaders(DiInterface $container = null);
+    public function registerAutoloaders(\Phalcon\Di\DiInterface $container = null);
 
     /**
      * Registers services related to the module
      *
-     * @param DiInterface $container
+     * @param \Phalcon\Di\DiInterface $container
      */
-    public function registerServices(DiInterface $container);
+    public function registerServices(\Phalcon\Di\DiInterface $container);
 }

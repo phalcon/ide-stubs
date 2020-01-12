@@ -131,10 +131,10 @@ class Security extends AbstractInjectionAware
     /**
      * Phalcon\Security constructor
      *
-     * @param SessionInterface $session
-     * @param RequestInterface $request
+     * @param \Phalcon\Session\ManagerInterface $session
+     * @param \Phalcon\Http\RequestInterface $request
      */
-    public function __construct(SessionInterface $session = null, RequestInterface $request = null)
+    public function __construct(\Phalcon\Session\ManagerInterface $session = null, \Phalcon\Http\RequestInterface $request = null)
     {
     }
 

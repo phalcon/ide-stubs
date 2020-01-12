@@ -36,7 +36,7 @@ class LoggerFactory
     /**
      * Factory to create an instace from a Config object
      *
-     * @param array|Config $config = [
+     * @param array|\Phalcon\Config $config = [
      *     'name' => 'messages',
      *     'adapters' => [
      *         'adapter' => 'stream',

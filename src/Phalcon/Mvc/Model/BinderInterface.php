@@ -47,8 +47,8 @@ interface BinderInterface
     /**
      * Sets cache instance
      *
-     * @param AdapterInterface $cache
+     * @param \Phalcon\Cache\Adapter\AdapterInterface $cache
      * @return BinderInterface
      */
-    public function setCache(AdapterInterface $cache): BinderInterface;
+    public function setCache(\Phalcon\Cache\Adapter\AdapterInterface $cache): BinderInterface;
 }

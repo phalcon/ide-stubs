@@ -28,7 +28,7 @@ use Phalcon\Image\Exception;
  * }
  * ```
  */
-class Imagick extends AbstractAdapter
+class Imagick extends \Phalcon\Image\Adapter\AbstractAdapter
 {
 
     protected static $checked = false;

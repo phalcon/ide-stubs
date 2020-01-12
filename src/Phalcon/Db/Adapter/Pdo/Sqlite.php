@@ -33,7 +33,7 @@ use Phalcon\Db\ReferenceInterface;
  * );
  * ```
  */
-class Sqlite extends AbstractPdo
+class Sqlite extends \Phalcon\Db\Adapter\Pdo\AbstractPdo
 {
     /**
      * @var string
@@ -77,7 +77,7 @@ class Sqlite extends AbstractPdo
      *
      * @param string $table
      * @param string $schema
-     * @return array|ColumnInterface[]
+     * @return array|\Phalcon\Db\ColumnInterface[]
      */
     public function describeColumns(string $table, string $schema = null): array
     {
@@ -94,7 +94,7 @@ class Sqlite extends AbstractPdo
      *
      * @param string $table
      * @param string $schema
-     * @return array|IndexInterface[]
+     * @return array|\Phalcon\Db\IndexInterface[]
      */
     public function describeIndexes(string $table, string $schema = null): array
     {
@@ -105,7 +105,7 @@ class Sqlite extends AbstractPdo
      *
      * @param string $table
      * @param string $schema
-     * @return array|ReferenceInterface[]
+     * @return array|\Phalcon\Db\ReferenceInterface[]
      */
     public function describeReferences(string $table, string $schema = null): array
     {

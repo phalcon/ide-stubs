@@ -47,7 +47,7 @@ use Phalcon\Mvc\View\Engine\Php as PhpEngine;
  * );
  * ```
  */
-class Simple extends Injectable implements ViewBaseInterface, EventsAwareInterface
+class Simple extends Injectable implements \Phalcon\Mvc\ViewBaseInterface, \Phalcon\Events\EventsAwareInterface
 {
 
     protected $activeRenderPath;
@@ -252,10 +252,10 @@ class Simple extends Injectable implements ViewBaseInterface, EventsAwareInterfa
     /**
      * Sets the events manager
      *
-     * @param ManagerInterface $eventsManager
+     * @param \Phalcon\Events\ManagerInterface $eventsManager
      * @return void
      */
-    public function setEventsManager(ManagerInterface $eventsManager)
+    public function setEventsManager(\Phalcon\Events\ManagerInterface $eventsManager)
     {
     }
 

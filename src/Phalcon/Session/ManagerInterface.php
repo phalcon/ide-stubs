@@ -143,10 +143,10 @@ interface ManagerInterface
     /**
      * Set the adapter for the session
      *
-     * @param SessionHandlerInterface $adapter
+     * @param \SessionHandlerInterface $adapter
      * @return ManagerInterface
      */
-    public function setAdapter(SessionHandlerInterface $adapter): ManagerInterface;
+    public function setAdapter(\SessionHandlerInterface $adapter): ManagerInterface;
 
     /**
      * Set session Id

@@ -14,7 +14,7 @@ use Phalcon\Assets\Inline as InlineBase;
 /**
  * Represents an inlined CSS
  */
-class Css extends InlineBase
+class Css extends \Phalcon\Assets\Inline
 {
 
     /**

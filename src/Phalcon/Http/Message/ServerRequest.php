@@ -20,7 +20,7 @@ use Psr\Http\Message\UriInterface;
 /**
  * PSR-7 ServerRequest
  */
-final class ServerRequest extends AbstractRequest implements ServerRequestInterface
+final class ServerRequest extends \Phalcon\Http\Message\AbstractRequest implements \Psr\Http\Message\ServerRequestInterface
 {
     /**
      * @var Collection

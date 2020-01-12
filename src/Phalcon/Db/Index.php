@@ -38,7 +38,7 @@ namespace Phalcon\Db;
  * $connection->addIndex("robots", null, $index_primary);
  * ```
  */
-class Index implements IndexInterface
+class Index implements \Phalcon\Db\IndexInterface
 {
     /**
      * Index columns

@@ -16,7 +16,7 @@ use Phalcon\Tag;
  *
  * Component INPUT[type=hidden] for forms
  */
-class Hidden extends AbstractElement
+class Hidden extends \Phalcon\Forms\Element\AbstractElement
 {
 
     /**

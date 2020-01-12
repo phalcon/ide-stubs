@@ -27,10 +27,10 @@ class TagFactory extends AbstractFactory
     /**
      * TagFactory constructor.
      *
-     * @param EscaperInterface $escaper
+     * @param \Phalcon\Escaper\EscaperInterface $escaper
      * @param array $services
      */
-    public function __construct(EscaperInterface $escaper, array $services = array())
+    public function __construct(\Phalcon\Escaper\EscaperInterface $escaper, array $services = array())
     {
     }
 

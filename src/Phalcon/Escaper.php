@@ -30,7 +30,7 @@ use Phalcon\Escaper\Exception;
  * echo $escaped; // font\2D family\3A \20 \3C Verdana\3E
  * ```
  */
-class Escaper implements EscaperInterface
+class Escaper implements \Phalcon\Escaper\EscaperInterface
 {
     /**
      * @var bool

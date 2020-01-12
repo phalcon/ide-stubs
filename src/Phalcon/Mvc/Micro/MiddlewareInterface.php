@@ -20,7 +20,7 @@ interface MiddlewareInterface
     /**
      * Calls the middleware
      *
-     * @param Micro $application
+     * @param \Phalcon\Mvc\Micro $application
      */
-    public function call(Micro $application);
+    public function call(\Phalcon\Mvc\Micro $application);
 }

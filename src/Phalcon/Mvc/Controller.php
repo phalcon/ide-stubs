@@ -51,7 +51,7 @@ use Phalcon\Di\Injectable;
  * }
  * ```
  */
-abstract class Controller extends Injectable implements ControllerInterface
+abstract class Controller extends Injectable implements \Phalcon\Mvc\ControllerInterface
 {
 
     /**

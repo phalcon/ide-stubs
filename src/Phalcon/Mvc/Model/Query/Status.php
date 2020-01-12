@@ -39,7 +39,7 @@ use Phalcon\Mvc\ModelInterface;
  * }
  * ```
  */
-class Status implements StatusInterface
+class Status implements \Phalcon\Mvc\Model\Query\StatusInterface
 {
 
     protected $model;
@@ -52,16 +52,16 @@ class Status implements StatusInterface
      * Phalcon\Mvc\Model\Query\Status
      *
      * @param bool $success
-     * @param ModelInterface $model
+     * @param \Phalcon\Mvc\ModelInterface $model
      */
-    public function __construct(bool $success, ModelInterface $model = null)
+    public function __construct(bool $success, \Phalcon\Mvc\ModelInterface $model = null)
     {
     }
 
     /**
      * Returns the messages produced because of a failed operation
      *
-     * @return array|MessageInterface[]
+     * @return array|\Phalcon\Messages\MessageInterface[]
      */
     public function getMessages(): array
     {

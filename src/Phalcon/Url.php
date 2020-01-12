@@ -33,7 +33,7 @@ use Phalcon\Url\UrlInterface;
  * );
  * ```
  */
-class Url extends AbstractInjectionAware implements UrlInterface
+class Url extends AbstractInjectionAware implements \Phalcon\Url\UrlInterface
 {
     /**
      * @var null | string
@@ -57,9 +57,9 @@ class Url extends AbstractInjectionAware implements UrlInterface
 
 
     /**
-     * @param RouterInterface $router
+     * @param \Phalcon\Mvc\RouterInterface $router
      */
-    public function __construct(RouterInterface $router = null)
+    public function __construct(\Phalcon\Mvc\RouterInterface $router = null)
     {
     }
 

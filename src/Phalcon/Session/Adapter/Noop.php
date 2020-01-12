@@ -27,7 +27,7 @@ use SessionHandlerInterface;
  * $session->setAdapter(new Noop());
  * ```
  */
-class Noop implements SessionHandlerInterface
+class Noop implements \SessionHandlerInterface
 {
     /**
      * The connection of some adapters

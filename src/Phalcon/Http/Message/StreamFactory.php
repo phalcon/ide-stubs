@@ -16,7 +16,7 @@ use Psr\Http\Message\StreamInterface;
 /**
  * PSR-17 StreamFactory
  */
-final class StreamFactory implements StreamFactoryInterface
+final class StreamFactory implements \Psr\Http\Message\StreamFactoryInterface
 {
 
     /**

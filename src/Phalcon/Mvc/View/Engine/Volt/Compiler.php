@@ -25,7 +25,7 @@ use Phalcon\Di\InjectionAwareInterface;
  * require $compiler->getCompiledTemplatePath();
  * ```
  */
-class Compiler implements InjectionAwareInterface
+class Compiler implements \Phalcon\Di\InjectionAwareInterface
 {
 
     protected $autoescape = false;
@@ -94,9 +94,9 @@ class Compiler implements InjectionAwareInterface
     /**
      * Phalcon\Mvc\View\Engine\Volt\Compiler
      *
-     * @param ViewBaseInterface $view
+     * @param \Phalcon\Mvc\ViewBaseInterface $view
      */
-    public function __construct(ViewBaseInterface $view = null)
+    public function __construct(\Phalcon\Mvc\ViewBaseInterface $view = null)
     {
     }
 
@@ -493,10 +493,10 @@ class Compiler implements InjectionAwareInterface
     /**
      * Sets the dependency injector
      *
-     * @param DiInterface $container
+     * @param \Phalcon\Di\DiInterface $container
      * @return void
      */
-    public function setDI(DiInterface $container)
+    public function setDI(\Phalcon\Di\DiInterface $container)
     {
     }
 

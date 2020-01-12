@@ -14,7 +14,7 @@ namespace Phalcon\Html\Helper;
  *
  * Creates a body tag
  */
-class Body extends AbstractHelper
+class Body extends \Phalcon\Html\Helper\AbstractHelper
 {
 
     /**

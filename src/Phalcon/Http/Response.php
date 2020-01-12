@@ -39,7 +39,7 @@ use Phalcon\Events\ManagerInterface;
  * $response->send();
  * ```
  */
-class Response implements ResponseInterface, InjectionAwareInterface, EventsAwareInterface
+class Response implements \Phalcon\Http\ResponseInterface, \Phalcon\Di\InjectionAwareInterface, \Phalcon\Events\EventsAwareInterface
 {
 
     protected $container;
@@ -322,20 +322,20 @@ class Response implements ResponseInterface, InjectionAwareInterface, EventsAwar
     /**
      * Sets a cookies bag for the response externally
      *
-     * @param CookiesInterface $cookies
+     * @param \Phalcon\Http\Response\CookiesInterface $cookies
      * @return ResponseInterface
      */
-    public function setCookies(CookiesInterface $cookies): ResponseInterface
+    public function setCookies(\Phalcon\Http\Response\CookiesInterface $cookies): ResponseInterface
     {
     }
 
     /**
      * Sets the dependency injector
      *
-     * @param DiInterface $container
+     * @param \Phalcon\Di\DiInterface $container
      * @return void
      */
-    public function setDI(DiInterface $container)
+    public function setDI(\Phalcon\Di\DiInterface $container)
     {
     }
 
@@ -366,20 +366,20 @@ class Response implements ResponseInterface, InjectionAwareInterface, EventsAwar
      * );
      * ```
      *
-     * @param DateTime $datetime
+     * @param \DateTime $datetime
      * @return ResponseInterface
      */
-    public function setExpires(DateTime $datetime): ResponseInterface
+    public function setExpires(\DateTime $datetime): ResponseInterface
     {
     }
 
     /**
      * Sets the events manager
      *
-     * @param ManagerInterface $eventsManager
+     * @param \Phalcon\Events\ManagerInterface $eventsManager
      * @return void
      */
-    public function setEventsManager(ManagerInterface $eventsManager)
+    public function setEventsManager(\Phalcon\Events\ManagerInterface $eventsManager)
     {
     }
 
@@ -413,10 +413,10 @@ class Response implements ResponseInterface, InjectionAwareInterface, EventsAwar
     /**
      * Sets a headers bag for the response externally
      *
-     * @param HeadersInterface $headers
+     * @param \Phalcon\Http\Response\HeadersInterface $headers
      * @return ResponseInterface
      */
-    public function setHeaders(HeadersInterface $headers): ResponseInterface
+    public function setHeaders(\Phalcon\Http\Response\HeadersInterface $headers): ResponseInterface
     {
     }
 
@@ -450,10 +450,10 @@ class Response implements ResponseInterface, InjectionAwareInterface, EventsAwar
      * );
      * ```
      *
-     * @param DateTime $datetime
+     * @param \DateTime $datetime
      * @return ResponseInterface
      */
-    public function setLastModified(DateTime $datetime): ResponseInterface
+    public function setLastModified(\DateTime $datetime): ResponseInterface
     {
     }
 

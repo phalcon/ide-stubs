@@ -652,10 +652,10 @@ class Tag
     /**
      * Sets the dependency injector container.
      *
-     * @param DiInterface $container
+     * @param \Phalcon\Di\DiInterface $container
      * @return void
      */
-    public static function setDI(DiInterface $container)
+    public static function setDI(\Phalcon\Di\DiInterface $container)
     {
     }
 

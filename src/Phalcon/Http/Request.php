@@ -46,7 +46,7 @@ use stdClass;
  * $request->getLanguages();
  * ```
  */
-class Request extends AbstractInjectionAware implements RequestInterface
+class Request extends AbstractInjectionAware implements \Phalcon\Http\RequestInterface
 {
 
     private $filterService;
@@ -487,7 +487,7 @@ class Request extends AbstractInjectionAware implements RequestInterface
      *
      * @param bool $onlySuccessful
      * @param bool $namedKeys
-     * @return array|FileInterface[]
+     * @return array|\Phalcon\Http\Request\FileInterface[]
      */
     public function getUploadedFiles(bool $onlySuccessful = false, bool $namedKeys = false): array
     {

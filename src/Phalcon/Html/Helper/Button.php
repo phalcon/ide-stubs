@@ -14,7 +14,7 @@ namespace Phalcon\Html\Helper;
  *
  * Creates a button tag
  */
-class Button extends AbstractHelper
+class Button extends \Phalcon\Html\Helper\AbstractHelper
 {
 
     /**

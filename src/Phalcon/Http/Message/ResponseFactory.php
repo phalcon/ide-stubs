@@ -15,7 +15,7 @@ use Psr\Http\Message\ResponseFactoryInterface;
 /**
  * PSR-17 ResponseFactory
  */
-final class ResponseFactory implements ResponseFactoryInterface
+final class ResponseFactory implements \Psr\Http\Message\ResponseFactoryInterface
 {
 
     /**

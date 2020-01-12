@@ -16,7 +16,7 @@ use Phalcon\Filter\FilterInterface;
 /**
  * Lazy loads, stores and exposes sanitizer objects
  */
-class Filter implements FilterInterface
+class Filter implements \Phalcon\Filter\FilterInterface
 {
 
     const FILTER_ABSINT = 'absint';

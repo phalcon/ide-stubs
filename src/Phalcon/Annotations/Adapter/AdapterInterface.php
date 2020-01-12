@@ -71,7 +71,7 @@ interface AdapterInterface
     /**
      * Sets the annotations parser
      *
-     * @param ReaderInterface $reader
+     * @param \Phalcon\Annotations\ReaderInterface $reader
      */
-    public function setReader(ReaderInterface $reader);
+    public function setReader(\Phalcon\Annotations\ReaderInterface $reader);
 }

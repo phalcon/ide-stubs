@@ -29,7 +29,7 @@ use Iterator;
  * $annotation = $classAnnotations->get("Cacheable");
  * ```
  */
-class Collection implements Iterator, Countable
+class Collection implements \Iterator, \Countable
 {
     /**
      * @var array

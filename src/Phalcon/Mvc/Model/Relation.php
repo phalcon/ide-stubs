@@ -14,7 +14,7 @@ namespace Phalcon\Mvc\Model;
  *
  * This class represents a relationship between two models
  */
-class Relation implements RelationInterface
+class Relation implements \Phalcon\Mvc\Model\RelationInterface
 {
 
     const ACTION_CASCADE = 2;

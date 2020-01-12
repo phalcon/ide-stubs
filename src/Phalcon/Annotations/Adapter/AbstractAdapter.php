@@ -18,7 +18,7 @@ use Phalcon\Annotations\ReaderInterface;
 /**
  * This is the base class for Phalcon\Annotations adapters
  */
-abstract class AbstractAdapter implements AdapterInterface
+abstract class AbstractAdapter implements \Phalcon\Annotations\Adapter\AdapterInterface
 {
     /**
      * @var array
@@ -95,9 +95,9 @@ abstract class AbstractAdapter implements AdapterInterface
     /**
      * Sets the annotations parser
      *
-     * @param ReaderInterface $reader
+     * @param \Phalcon\Annotations\ReaderInterface $reader
      */
-    public function setReader(ReaderInterface $reader)
+    public function setReader(\Phalcon\Annotations\ReaderInterface $reader)
     {
     }
 }

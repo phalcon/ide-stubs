@@ -15,7 +15,7 @@ use Psr\Http\Message\UriInterface;
 /**
  * PSR-17 UriFactory
  */
-final class UriFactory implements UriFactoryInterface
+final class UriFactory implements \Psr\Http\Message\UriFactoryInterface
 {
 
     /**

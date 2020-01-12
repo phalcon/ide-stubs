@@ -9,8 +9,6 @@
  */
 namespace Phalcon\Db;
 
-use PDOStatement;
-
 /**
  * Interface for Phalcon\Db\Result objects
  */
@@ -64,9 +62,9 @@ interface ResultInterface
     /**
      * Gets the internal PDO result object
      *
-     * @return PDOStatement
+     * @return \PDOStatement
      */
-    public function getInternalResult(): PDOStatement;
+    public function getInternalResult(): \PDOStatement;
 
     /**
      * Gets number of rows returned by a resultset
