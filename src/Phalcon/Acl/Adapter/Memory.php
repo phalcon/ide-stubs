@@ -10,15 +10,6 @@
 namespace Phalcon\Acl\Adapter;
 
 use Phalcon\Acl\Enum;
-use Phalcon\Acl\Role;
-use Phalcon\Acl\RoleInterface;
-use Phalcon\Acl\Component;
-use Phalcon\Acl\Exception;
-use Phalcon\Events\Manager as EventsManager;
-use Phalcon\Acl\RoleAware;
-use Phalcon\Acl\ComponentAware;
-use Phalcon\Acl\ComponentInterface;
-use ReflectionFunction;
 
 /**
  * Manages ACL lists in memory

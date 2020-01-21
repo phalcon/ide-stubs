@@ -9,8 +9,6 @@
  */
 namespace Phalcon\Logger\Formatter;
 
-use Phalcon\Logger\Item;
-
 /**
  * Phalcon\Logger\FormatterInterface
  *

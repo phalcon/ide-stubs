@@ -9,10 +9,6 @@
  */
 namespace Phalcon\Storage\Serializer;
 
-use InvalidArgumentException;
-use JsonSerializable;
-use Phalcon\Helper\Json as JsonHelper;
-
 /**
  * This file is part of the Phalcon Framework.
  *

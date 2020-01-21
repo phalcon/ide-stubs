@@ -9,8 +9,6 @@
  */
 namespace Phalcon\Logger;
 
-use Phalcon\Config;
-use Phalcon\Helper\Arr;
 use Phalcon\Logger;
 
 /**

@@ -9,11 +9,6 @@
  */
 namespace Phalcon\Mvc\Model;
 
-use ArrayAccess;
-use JsonSerializable;
-use Phalcon\Mvc\EntityInterface;
-use Phalcon\Mvc\ModelInterface;
-
 /**
  * Phalcon\Mvc\Model\Row
  *

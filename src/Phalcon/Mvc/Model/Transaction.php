@@ -9,12 +9,6 @@
  */
 namespace Phalcon\Mvc\Model;
 
-use Phalcon\Di\DiInterface;
-use Phalcon\Mvc\ModelInterface;
-use Phalcon\Mvc\Model\Transaction\Failed as TxFailed;
-use Phalcon\Mvc\Model\Transaction\ManagerInterface;
-use Phalcon\Mvc\Model\TransactionInterface;
-
 /**
  * Phalcon\Mvc\Model\Transaction
  *

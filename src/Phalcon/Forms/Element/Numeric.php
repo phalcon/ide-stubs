@@ -9,8 +9,6 @@
  */
 namespace Phalcon\Forms\Element;
 
-use Phalcon\Tag;
-
 /**
  * Phalcon\Forms\Element\Numeric
  *

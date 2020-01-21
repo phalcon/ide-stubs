@@ -10,9 +10,7 @@
 namespace Phalcon\Forms\Element;
 
 use Phalcon\Forms\Form;
-use Phalcon\Messages\MessageInterface;
 use Phalcon\Messages\Messages;
-use Phalcon\Validation\ValidatorInterface;
 
 /**
  * Interface for Phalcon\Forms\Element classes

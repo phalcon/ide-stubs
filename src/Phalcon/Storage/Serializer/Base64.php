@@ -9,8 +9,6 @@
  */
 namespace Phalcon\Storage\Serializer;
 
-use InvalidArgumentException;
-
 /**
  * This file is part of the Phalcon Framework.
  *

@@ -10,7 +10,6 @@
 namespace Phalcon\Cache;
 
 use Phalcon\Cache\Adapter\AdapterInterface;
-use Phalcon\Cache\Exception\Exception;
 use Phalcon\Factory\AbstractFactory;
 use Phalcon\Storage\SerializerFactory;
 

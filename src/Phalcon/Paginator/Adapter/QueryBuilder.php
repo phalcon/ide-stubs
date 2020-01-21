@@ -9,10 +9,8 @@
  */
 namespace Phalcon\Paginator\Adapter;
 
-use Phalcon\Db\Enum;
 use Phalcon\Mvc\Model\Query\Builder;
 use Phalcon\Paginator\RepositoryInterface;
-use Phalcon\Paginator\Exception;
 
 /**
  * Phalcon\Paginator\Adapter\QueryBuilder

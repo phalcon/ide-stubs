@@ -9,9 +9,6 @@
  */
 namespace Phalcon\Paginator;
 
-use JsonSerializable;
-use Phalcon\Helper\Arr;
-
 /**
  * Phalcon\Paginator\Repository
  *

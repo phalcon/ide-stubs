@@ -9,7 +9,6 @@
  */
 namespace Phalcon\Http;
 
-use DateTime;
 use Phalcon\Http\Response\HeadersInterface;
 
 /**

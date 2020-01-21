@@ -9,9 +9,6 @@
  */
 namespace Phalcon\Image\Adapter;
 
-use Phalcon\Image\Enum;
-use Phalcon\Image\Exception;
-
 /**
  * This file is part of the Phalcon Framework.
  *

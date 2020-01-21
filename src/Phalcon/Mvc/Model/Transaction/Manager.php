@@ -9,10 +9,7 @@
  */
 namespace Phalcon\Mvc\Model\Transaction;
 
-use Phalcon\Di;
 use Phalcon\Di\DiInterface;
-use Phalcon\Di\InjectionAwareInterface;
-use Phalcon\Mvc\Model\Transaction;
 use Phalcon\Mvc\Model\TransactionInterface;
 
 /**

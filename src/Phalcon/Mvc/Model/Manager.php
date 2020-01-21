@@ -9,19 +9,11 @@
  */
 namespace Phalcon\Mvc\Model;
 
-use Phalcon\Di\DiInterface;
-use Phalcon\Mvc\ModelInterface;
 use Phalcon\Db\Adapter\AdapterInterface;
-use Phalcon\Mvc\Model\ResultsetInterface;
-use Phalcon\Mvc\Model\ManagerInterface;
-use Phalcon\Di\InjectionAwareInterface;
-use Phalcon\Events\EventsAwareInterface;
-use Phalcon\Mvc\Model\Query;
-use Phalcon\Mvc\Model\QueryInterface;
-use Phalcon\Mvc\Model\Query\Builder;
-use Phalcon\Mvc\Model\Query\BuilderInterface;
-use Phalcon\Mvc\Model\BehaviorInterface;
+use Phalcon\Di\DiInterface;
 use Phalcon\Events\ManagerInterface as EventsManagerInterface;
+use Phalcon\Mvc\Model\Query\BuilderInterface;
+use Phalcon\Mvc\ModelInterface;
 
 /**
  * Phalcon\Mvc\Model\Manager

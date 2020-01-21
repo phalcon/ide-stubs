@@ -9,14 +9,8 @@
  */
 namespace Phalcon\Dispatcher;
 
-use Exception;
-use Phalcon\Di\DiInterface;
 use Phalcon\Di\AbstractInjectionAware;
-use Phalcon\Dispatcher\Exception as PhalconException;
-use Phalcon\Events\EventsAwareInterface;
 use Phalcon\Events\ManagerInterface;
-use Phalcon\Filter\FilterInterface;
-use Phalcon\Mvc\Model\Binder;
 use Phalcon\Mvc\Model\BinderInterface;
 
 /**

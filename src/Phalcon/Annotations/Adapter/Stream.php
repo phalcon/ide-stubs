@@ -9,10 +9,6 @@
  */
 namespace Phalcon\Annotations\Adapter;
 
-use Phalcon\Annotations\Reflection;
-use Phalcon\Annotations\Exception;
-use RuntimeException;
-
 /**
  * Stores the parsed annotations in files. This adapter is suitable for production
  *

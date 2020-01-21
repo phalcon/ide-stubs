@@ -9,7 +9,6 @@
  */
 namespace Phalcon\Mvc\Model\Transaction;
 
-use Phalcon\Messages\MessageInterface;
 use Phalcon\Mvc\ModelInterface;
 
 /**

@@ -9,7 +9,6 @@
  */
 namespace Phalcon\Validation\Validator\File;
 
-use Phalcon\Messages\Message;
 use Phalcon\Validation;
 use Phalcon\Validation\AbstractValidator;
 

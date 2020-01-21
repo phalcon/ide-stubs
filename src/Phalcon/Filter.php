@@ -9,10 +9,6 @@
  */
 namespace Phalcon;
 
-use Closure;
-use Phalcon\Filter\Exception;
-use Phalcon\Filter\FilterInterface;
-
 /**
  * Lazy loads, stores and exposes sanitizer objects
  */

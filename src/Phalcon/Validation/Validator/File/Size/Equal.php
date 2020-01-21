@@ -9,8 +9,6 @@
  */
 namespace Phalcon\Validation\Validator\File\Size;
 
-use Phalcon\Messages\Message;
-use Phalcon\Validation;
 use Phalcon\Validation\Validator\File\AbstractFile;
 
 /**

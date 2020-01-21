@@ -9,8 +9,6 @@
  */
 namespace Phalcon\Assets\Asset;
 
-use Phalcon\Assets\Asset as AssetBase;
-
 /**
  * Represents CSS assets
  */

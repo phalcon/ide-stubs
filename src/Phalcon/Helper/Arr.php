@@ -9,8 +9,6 @@
  */
 namespace Phalcon\Helper;
 
-use stdClass;
-
 /**
  * This class offers quick array functions throughout the framework
  */

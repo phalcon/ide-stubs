@@ -9,9 +9,6 @@
  */
 namespace Phalcon\Validation;
 
-use Phalcon\Collection;
-use Phalcon\Validation;
-
 /**
  * Interface for Phalcon\Validation\AbstractValidator
  */

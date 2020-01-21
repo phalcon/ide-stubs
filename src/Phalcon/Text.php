@@ -9,8 +9,6 @@
  */
 namespace Phalcon;
 
-use Phalcon\Helper\Str;
-
 /**
  * Provides utilities to work with texts
  */

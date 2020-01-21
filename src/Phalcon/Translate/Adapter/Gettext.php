@@ -9,10 +9,6 @@
  */
 namespace Phalcon\Translate\Adapter;
 
-use ArrayAccess;
-use Phalcon\Translate\Exception;
-use Phalcon\Translate\InterpolatorFactory;
-
 /**
  * Phalcon\Translate\Adapter\Gettext
  *

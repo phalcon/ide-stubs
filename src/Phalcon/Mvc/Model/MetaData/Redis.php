@@ -9,9 +9,7 @@
  */
 namespace Phalcon\Mvc\Model\MetaData;
 
-use Phalcon\Helper\Arr;
 use Phalcon\Mvc\Model\MetaData;
-use Phalcon\Cache\AdapterFactory;
 
 /**
  * Phalcon\Mvc\Model\MetaData\Redis

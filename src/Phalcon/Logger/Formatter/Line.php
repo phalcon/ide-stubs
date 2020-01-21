@@ -9,9 +9,6 @@
  */
 namespace Phalcon\Logger\Formatter;
 
-use DateTime;
-use Phalcon\Logger\Item;
-
 /**
  * Phalcon\Logger\Formatter\Line
  *

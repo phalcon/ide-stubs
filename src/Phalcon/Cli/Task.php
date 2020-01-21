@@ -10,7 +10,6 @@
 namespace Phalcon\Cli;
 
 use Phalcon\Di\Injectable;
-use Phalcon\Events\EventsAwareInterface;
 use Phalcon\Events\ManagerInterface;
 
 /**

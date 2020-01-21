@@ -10,8 +10,6 @@
 namespace Phalcon\Html;
 
 use Phalcon\Collection;
-use Phalcon\Html\Attributes\RenderInterface;
-use Phalcon\Tag;
 
 /**
  * This class helps to work with HTML Attributes

@@ -9,10 +9,7 @@
  */
 namespace Phalcon\Logger\Adapter;
 
-use Phalcon\Logger;
-use Phalcon\Logger\Exception;
 use Phalcon\Logger\Formatter\FormatterInterface;
-use Phalcon\Logger\Item;
 
 /**
  * This file is part of the Phalcon Framework.

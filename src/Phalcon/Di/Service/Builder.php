@@ -9,9 +9,6 @@
  */
 namespace Phalcon\Di\Service;
 
-use Phalcon\Di\DiInterface;
-use Phalcon\Di\Exception;
-
 /**
  * Phalcon\Di\Service\Builder
  *

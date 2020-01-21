@@ -9,7 +9,6 @@
  */
 namespace Phalcon\Mvc\View\Engine;
 
-use Phalcon\Di\DiInterface;
 use Phalcon\Di\Injectable;
 use Phalcon\Mvc\ViewBaseInterface;
 

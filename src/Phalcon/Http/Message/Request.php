@@ -9,8 +9,6 @@
  */
 namespace Phalcon\Http\Message;
 
-use Phalcon\Http\Message\Stream\Input;
-use Phalcon\Http\Message\AbstractRequest;
 use Psr\Http\Message\RequestInterface;
 use Psr\Http\Message\StreamInterface;
 use Psr\Http\Message\UriInterface;

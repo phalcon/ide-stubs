@@ -9,7 +9,6 @@
  */
 namespace Phalcon\Html\Helper;
 
-use Phalcon\Html\Exception;
 use Phalcon\Escaper\EscaperInterface;
 
 /**

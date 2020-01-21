@@ -9,8 +9,6 @@
  */
 namespace Phalcon\Mvc\Micro;
 
-use Phalcon\Mvc\Micro;
-
 /**
  * Allows to implement Phalcon\Mvc\Micro middleware in classes
  */

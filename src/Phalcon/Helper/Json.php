@@ -9,8 +9,6 @@
  */
 namespace Phalcon\Helper;
 
-use InvalidArgumentException;
-
 /**
  * This class offers a wrapper for JSON methods to serialize and unserialize
  */

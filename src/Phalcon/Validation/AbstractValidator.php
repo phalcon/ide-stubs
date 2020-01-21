@@ -9,10 +9,7 @@
  */
 namespace Phalcon\Validation;
 
-use Phalcon\Collection;
-use Phalcon\Helper\Arr;
 use Phalcon\Messages\Message;
-use Phalcon\Validation;
 
 /**
  * This is a base class for validators

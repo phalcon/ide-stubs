@@ -9,8 +9,6 @@
  */
 namespace Phalcon\Paginator\Adapter;
 
-use Phalcon\Paginator\Exception;
-use Phalcon\Paginator\Repository;
 use Phalcon\Paginator\RepositoryInterface;
 
 /**

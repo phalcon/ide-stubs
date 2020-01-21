@@ -9,8 +9,6 @@
  */
 namespace Phalcon\Session\Adapter;
 
-use Phalcon\Storage\AdapterFactory;
-
 /**
  * Phalcon\Session\Adapter\Redis
  */

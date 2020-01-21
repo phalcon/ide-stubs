@@ -10,9 +10,7 @@
 namespace Phalcon\Session;
 
 use Phalcon\Collection;
-use Phalcon\Di;
 use Phalcon\Di\DiInterface;
-use Phalcon\Di\InjectionAwareInterface;
 
 /**
  * Phalcon\Session\Bag

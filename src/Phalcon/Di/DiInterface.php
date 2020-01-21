@@ -9,8 +9,6 @@
  */
 namespace Phalcon\Di;
 
-use ArrayAccess;
-
 /**
  * Interface for Phalcon\Di
  */

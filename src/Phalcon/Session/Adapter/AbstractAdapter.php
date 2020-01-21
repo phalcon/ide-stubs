@@ -10,7 +10,6 @@
 namespace Phalcon\Session\Adapter;
 
 use Phalcon\Storage\Adapter\AdapterInterface;
-use SessionHandlerInterface;
 
 /**
  * This file is part of the Phalcon.

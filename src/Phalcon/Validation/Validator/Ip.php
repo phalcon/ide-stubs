@@ -9,9 +9,7 @@
  */
 namespace Phalcon\Validation\Validator;
 
-use Phalcon\Validation;
 use Phalcon\Validation\AbstractValidator;
-use Phalcon\Messages\Message;
 
 /**
  * Check for IP addresses

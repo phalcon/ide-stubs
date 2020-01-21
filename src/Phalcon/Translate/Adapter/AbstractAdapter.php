@@ -9,8 +9,6 @@
  */
 namespace Phalcon\Translate\Adapter;
 
-use Phalcon\Helper\Arr;
-use Phalcon\Translate\Exception;
 use Phalcon\Translate\InterpolatorFactory;
 
 /**

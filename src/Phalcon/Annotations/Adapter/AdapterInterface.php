@@ -9,9 +9,9 @@
  */
 namespace Phalcon\Annotations\Adapter;
 
-use Phalcon\Annotations\Reflection;
 use Phalcon\Annotations\Collection;
 use Phalcon\Annotations\ReaderInterface;
+use Phalcon\Annotations\Reflection;
 
 /**
  * This interface must be implemented by adapters in Phalcon\Annotations
