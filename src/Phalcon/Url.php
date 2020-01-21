@@ -9,11 +9,8 @@
  */
 namespace Phalcon;
 
-use Phalcon\Di\DiInterface;
 use Phalcon\Di\AbstractInjectionAware;
 use Phalcon\Mvc\RouterInterface;
-use Phalcon\Mvc\Router\RouteInterface;
-use Phalcon\Url\Exception;
 use Phalcon\Url\UrlInterface;
 
 /**
@@ -33,7 +30,7 @@ use Phalcon\Url\UrlInterface;
  * );
  * ```
  */
-class Url extends AbstractInjectionAware implements UrlInterface
+class Url extends AbstractInjectionAware implements \Phalcon\Url\UrlInterface
 {
     /**
      * @var null | string
@@ -57,9 +54,9 @@ class Url extends AbstractInjectionAware implements UrlInterface
 
 
     /**
-     * @param RouterInterface $router
+     * @param \Phalcon\Mvc\RouterInterface $router
      */
-    public function __construct(RouterInterface $router = null)
+    public function __construct(\Phalcon\Mvc\RouterInterface $router = null)
     {
     }
 

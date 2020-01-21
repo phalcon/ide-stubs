@@ -17,7 +17,7 @@ use Psr\Http\Message\UriInterface;
 /**
  * Message methods
  */
-abstract class AbstractMessage extends AbstractCommon
+abstract class AbstractMessage extends \Phalcon\Http\Message\AbstractCommon
 {
     /**
      * Gets the body of the message.
@@ -203,7 +203,7 @@ abstract class AbstractMessage extends AbstractCommon
      * @throws InvalidArgumentException When the body is not valid.
      *
      */
-    public function withBody(StreamInterface $body)
+    public function withBody(\Psr\Http\Message\StreamInterface $body)
     {
     }
 
@@ -276,7 +276,7 @@ abstract class AbstractMessage extends AbstractCommon
      *
      * @return Collection
      */
-    final protected function checkHeaderHost(Collection $collection): Collection
+    final protected function checkHeaderHost(\Phalcon\Collection $collection): Collection
     {
     }
 
@@ -359,7 +359,7 @@ abstract class AbstractMessage extends AbstractCommon
      *
      * @return string
      */
-    final protected function getUriHost(UriInterface $uri): string
+    final protected function getUriHost(\Psr\Http\Message\UriInterface $uri): string
     {
     }
 

@@ -9,16 +9,12 @@
  */
 namespace Phalcon\Storage\Adapter;
 
-use Memcached;
-use Phalcon\Helper\Arr;
 use Phalcon\Storage\Exception;
-use Phalcon\Storage\SerializerFactory;
-use Phalcon\Storage\Serializer\SerializerInterface;
 
 /**
  * Libmemcached adapter
  */
-class Libmemcached extends AbstractAdapter
+class Libmemcached extends \Phalcon\Storage\Adapter\AbstractAdapter
 {
     /**
      * @var array
@@ -42,9 +38,9 @@ class Libmemcached extends AbstractAdapter
      *     'serializer' => null,
      *     'prefix' => ''
      * ]
-     * @param SerializerFactory $factory
+     * @param \Phalcon\Storage\SerializerFactory $factory
      */
-    public function __construct(SerializerFactory $factory, array $options = array())
+    public function __construct(\Phalcon\Storage\SerializerFactory $factory, array $options = array())
     {
     }
 
@@ -98,7 +94,7 @@ class Libmemcached extends AbstractAdapter
      * Returns the already connected adapter or connects to the Memcached
      * server(s)
      *
-     * @return Memcached
+     * @return \Memcached
      * @throws Exception
      */
     public function getAdapter()
@@ -158,9 +154,9 @@ class Libmemcached extends AbstractAdapter
      * Checks the serializer. If it is a supported one it is set, otherwise
      * the custom one is set.
      *
-     * @param Memcached $connection
+     * @param \Memcached $connection
      */
-    private function setSerializer(Memcached $connection)
+    private function setSerializer(\Memcached $connection)
     {
     }
 }

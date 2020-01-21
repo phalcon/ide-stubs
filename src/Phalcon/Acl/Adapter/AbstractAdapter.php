@@ -10,12 +10,11 @@
 namespace Phalcon\Acl\Adapter;
 
 use Phalcon\Events\ManagerInterface;
-use Phalcon\Events\EventsAwareInterface;
 
 /**
  * Adapter for Phalcon\Acl adapters
  */
-abstract class AbstractAdapter implements AdapterInterface, EventsAwareInterface
+abstract class AbstractAdapter implements \Phalcon\Acl\Adapter\AdapterInterface, \Phalcon\Events\EventsAwareInterface
 {
     /**
      * Active access which the list is checking if some role can access it
@@ -121,10 +120,10 @@ abstract class AbstractAdapter implements AdapterInterface, EventsAwareInterface
     /**
      * Sets the events manager
      *
-     * @param ManagerInterface $eventsManager
+     * @param \Phalcon\Events\ManagerInterface $eventsManager
      * @return void
      */
-    public function setEventsManager(ManagerInterface $eventsManager)
+    public function setEventsManager(\Phalcon\Events\ManagerInterface $eventsManager)
     {
     }
 }

@@ -9,8 +9,6 @@
  */
 namespace Phalcon\Validation;
 
-use Phalcon\Validation;
-
 /**
  * This is a base class for combined fields validators
  */
@@ -27,9 +25,9 @@ interface ValidatorCompositeInterface
     /**
      * Executes the validation
      *
-     * @param Validation $validation
+     * @param \Phalcon\Validation $validation
      * @param mixed $field
      * @return bool
      */
-    public function validate(Validation $validation, $field): bool;
+    public function validate(\Phalcon\Validation $validation, $field): bool;
 }

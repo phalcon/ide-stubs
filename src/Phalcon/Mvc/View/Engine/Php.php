@@ -12,7 +12,7 @@ namespace Phalcon\Mvc\View\Engine;
 /**
  * Adapter to use PHP itself as templating engine
  */
-class Php extends AbstractEngine
+class Php extends \Phalcon\Mvc\View\Engine\AbstractEngine
 {
 
     /**

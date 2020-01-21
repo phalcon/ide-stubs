@@ -9,12 +9,10 @@
  */
 namespace Phalcon\Validation;
 
-use Phalcon\Validation;
-
 /**
  * This is a base class for combined fields validators
  */
-abstract class AbstractValidatorComposite extends AbstractValidator implements ValidatorCompositeInterface
+abstract class AbstractValidatorComposite extends \Phalcon\Validation\AbstractValidator implements \Phalcon\Validation\ValidatorCompositeInterface
 {
     /**
      * @var array
@@ -32,11 +30,11 @@ abstract class AbstractValidatorComposite extends AbstractValidator implements V
     /**
      * Executes the validation
      *
-     * @param Validation $validation
+     * @param \Phalcon\Validation $validation
      * @param mixed $field
      * @return bool
      */
-    public function validate(Validation $validation, $field): bool
+    public function validate(\Phalcon\Validation $validation, $field): bool
     {
     }
 }

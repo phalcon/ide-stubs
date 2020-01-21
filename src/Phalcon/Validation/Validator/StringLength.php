@@ -9,12 +9,7 @@
  */
 namespace Phalcon\Validation\Validator;
 
-use Phalcon\Messages\Message;
-use Phalcon\Validation\AbstractValidator;
 use Phalcon\Validation\AbstractValidatorComposite;
-use Phalcon\Validation\Validator\StringLength\Max;
-use Phalcon\Validation\Validator\StringLength\Min;
-use Phalcon\Validation\Exception;
 
 /**
  * Validates that a string has the specified maximum and minimum constraints

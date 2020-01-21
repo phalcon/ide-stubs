@@ -9,15 +9,12 @@
  */
 namespace Phalcon\Storage\Adapter;
 
-use Phalcon\Helper\Arr;
 use Phalcon\Storage\Exception;
-use Phalcon\Storage\SerializerFactory;
-use Phalcon\Storage\Serializer\SerializerInterface;
 
 /**
  * Redis adapter
  */
-class Redis extends AbstractAdapter
+class Redis extends \Phalcon\Storage\Adapter\AbstractAdapter
 {
     /**
      * @var array
@@ -40,9 +37,9 @@ class Redis extends AbstractAdapter
      *     'serializer' => null,
      *     'prefix' => ''
      * ]
-     * @param SerializerFactory $factory
+     * @param \Phalcon\Storage\SerializerFactory $factory
      */
-    public function __construct(SerializerFactory $factory, array $options = array())
+    public function __construct(\Phalcon\Storage\SerializerFactory $factory, array $options = array())
     {
     }
 

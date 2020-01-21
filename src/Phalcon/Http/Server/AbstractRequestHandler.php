@@ -19,7 +19,7 @@ use Psr\Http\Server\RequestHandlerInterface;
  * An HTTP request handler process an HTTP request in order to produce an
  * HTTP response.
  */
-abstract class AbstractRequestHandler implements RequestHandlerInterface
+abstract class AbstractRequestHandler implements \Psr\Http\Server\RequestHandlerInterface
 {
 
     /**
@@ -27,8 +27,8 @@ abstract class AbstractRequestHandler implements RequestHandlerInterface
      *
      * May call other collaborating code to generate the response.
      *
-     * @param ServerRequestInterface $request
+     * @param \Psr\Http\Message\ServerRequestInterface $request
      * @return ResponseInterface
      */
-    abstract public function handle(ServerRequestInterface $request): ResponseInterface;
+    abstract public function handle(\Psr\Http\Message\ServerRequestInterface $request): ResponseInterface;
 }

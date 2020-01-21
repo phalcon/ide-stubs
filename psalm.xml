@@ -22,7 +22,7 @@
         <ImplementedParamTypeMismatch errorLevel="info" />
         <MismatchingDocblockParamType errorLevel="info" />
         <UndefinedDocblockClass errorLevel="info" />
-        <PropertyNotSetInConstructor errorLevel="info" />
+        <PropertyNotSetInConstructor errorLevel="suppress" />
         <UndefinedClass errorLevel="info" />
         <OverriddenPropertyAccess errorLevel="info" />
         <InvalidPropertyAssignmentValue errorLevel="info" />

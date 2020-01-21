@@ -9,15 +9,7 @@
  */
 namespace Phalcon\Config;
 
-use Phalcon\Config;
-use Phalcon\Config\Adapter\Grouped;
-use Phalcon\Config\Adapter\Ini;
-use Phalcon\Config\Adapter\Json;
-use Phalcon\Config\Adapter\Php;
-use Phalcon\Config\Adapter\Yaml;
 use Phalcon\Factory\AbstractFactory;
-use Phalcon\Factory\Exception as FactoryException;
-use Phalcon\Helper\Arr;
 
 /**
  * Loads Config Adapter class using 'adapter' option, if no extension is
@@ -49,7 +41,7 @@ class ConfigFactory extends AbstractFactory
     /**
      * Load a config to create a new instance
      *
-     * @param string|array|Config $config = [
+     * @param string|array|\Phalcon\Config $config = [
      *      'adapter' => 'ini',
      *      'filePath' => 'config.ini',
      *      'mode' => null,

@@ -9,17 +9,7 @@
  */
 namespace Phalcon\Validation\Validator;
 
-use Phalcon\Helper\Arr;
-use Phalcon\Messages\Message;
-use Phalcon\Validation;
 use Phalcon\Validation\AbstractValidatorComposite;
-use Phalcon\Validation\Validator\File\MimeType;
-use Phalcon\Validation\Validator\File\Resolution\Equal as EqualResolution;
-use Phalcon\Validation\Validator\File\Resolution\Max as MaxResolution;
-use Phalcon\Validation\Validator\File\Resolution\Min as MinResolution;
-use Phalcon\Validation\Validator\File\Size\Equal as EqualFileSize;
-use Phalcon\Validation\Validator\File\Size\Max as MaxFileSize;
-use Phalcon\Validation\Validator\File\Size\Min as MinFileSize;
 
 /**
  * Checks if a value has a correct file

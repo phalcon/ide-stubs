@@ -9,14 +9,8 @@
  */
 namespace Phalcon\Mvc\Model\Resultset;
 
-use Phalcon\Cache\Adapter\AdapterInterface;
-use Phalcon\Di;
-use Phalcon\Di\DiInterface;
-use Phalcon\Mvc\Model;
-use Phalcon\Mvc\Model\Exception;
 use Phalcon\Mvc\Model\Resultset;
 use Phalcon\Mvc\ModelInterface;
-use Phalcon\Storage\Serializer\SerializerInterface;
 
 /**
  * Phalcon\Mvc\Model\Resultset\Simple
@@ -42,12 +36,12 @@ class Simple extends Resultset
      * Phalcon\Mvc\Model\Resultset\Simple constructor
      *
      * @param array $columnMap
-     * @param ModelInterface|Phalcon\Mvc\Model\Row $model
+     * @param \Phalcon\Mvc\ModelInterface|Phalcon\Mvc\Model\Row $model
      * @param mixed $result
-     * @param AdapterInterface $cache
+     * @param \Phalcon\Cache\Adapter\AdapterInterface $cache
      * @param bool $keepSnapshots
      */
-    public function __construct($columnMap, $model, $result, AdapterInterface $cache = null, bool $keepSnapshots = null)
+    public function __construct($columnMap, $model, $result, \Phalcon\Cache\Adapter\AdapterInterface $cache = null, bool $keepSnapshots = null)
     {
     }
 

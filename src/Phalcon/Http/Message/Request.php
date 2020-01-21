@@ -9,8 +9,6 @@
  */
 namespace Phalcon\Http\Message;
 
-use Phalcon\Http\Message\Stream\Input;
-use Phalcon\Http\Message\AbstractRequest;
 use Psr\Http\Message\RequestInterface;
 use Psr\Http\Message\StreamInterface;
 use Psr\Http\Message\UriInterface;
@@ -18,7 +16,7 @@ use Psr\Http\Message\UriInterface;
 /**
  * PSR-7 Request
  */
-final class Request extends AbstractRequest implements RequestInterface
+final class Request extends AbstractRequest implements \Psr\Http\Message\RequestInterface
 {
 
     /**

@@ -9,12 +9,7 @@
  */
 namespace Phalcon\Mvc\Model\Query;
 
-use Phalcon\Di;
-use Phalcon\Db\Column;
 use Phalcon\Di\DiInterface;
-use Phalcon\Helper\Arr;
-use Phalcon\Mvc\Model\Exception;
-use Phalcon\Di\InjectionAwareInterface;
 use Phalcon\Mvc\Model\QueryInterface;
 
 /**
@@ -53,7 +48,7 @@ use Phalcon\Mvc\Model\QueryInterface;
  * $queryBuilder = new \Phalcon\Mvc\Model\Query\Builder($params);
  * ```
  */
-class Builder implements BuilderInterface, InjectionAwareInterface
+class Builder implements \Phalcon\Mvc\Model\Query\BuilderInterface, \Phalcon\Di\InjectionAwareInterface
 {
 
     protected $bindParams;
@@ -110,9 +105,9 @@ class Builder implements BuilderInterface, InjectionAwareInterface
      * Phalcon\Mvc\Model\Query\Builder constructor
      *
      * @param mixed $params
-     * @param DiInterface $container
+     * @param \Phalcon\Di\DiInterface $container
      */
-    public function __construct($params = null, DiInterface $container = null)
+    public function __construct($params = null, \Phalcon\Di\DiInterface $container = null)
     {
     }
 
@@ -836,10 +831,10 @@ class Builder implements BuilderInterface, InjectionAwareInterface
     /**
      * Sets the DependencyInjector container
      *
-     * @param DiInterface $container
+     * @param \Phalcon\Di\DiInterface $container
      * @return void
      */
-    public function setDI(DiInterface $container)
+    public function setDI(\Phalcon\Di\DiInterface $container)
     {
     }
 

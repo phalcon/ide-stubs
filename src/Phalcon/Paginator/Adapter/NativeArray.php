@@ -9,7 +9,6 @@
  */
 namespace Phalcon\Paginator\Adapter;
 
-use Phalcon\Paginator\Exception;
 use Phalcon\Paginator\RepositoryInterface;
 
 /**
@@ -35,7 +34,7 @@ use Phalcon\Paginator\RepositoryInterface;
  * );
  * ```
  */
-class NativeArray extends AbstractAdapter
+class NativeArray extends \Phalcon\Paginator\Adapter\AbstractAdapter
 {
 
     /**

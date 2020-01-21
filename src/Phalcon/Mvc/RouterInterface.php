@@ -10,7 +10,6 @@
 namespace Phalcon\Mvc;
 
 use Phalcon\Mvc\Router\RouteInterface;
-use Phalcon\Mvc\Router\GroupInterface;
 
 /**
  * Interface for Phalcon\Mvc\Router
@@ -31,11 +30,11 @@ interface RouterInterface
     /**
      * Attach Route object to the routes stack.
      *
-     * @param RouteInterface $route
+     * @param \Phalcon\Mvc\Router\RouteInterface $route
      * @param mixed $position
      * @return RouterInterface
      */
-    public function attach(RouteInterface $route, $position = Router::POSITION_LAST): RouterInterface;
+    public function attach(\Phalcon\Mvc\Router\RouteInterface $route, $position = Router::POSITION_LAST): RouterInterface;
 
     /**
      * Adds a route to the router that only match if the HTTP method is CONNECT
@@ -187,7 +186,7 @@ interface RouterInterface
     /**
      * Return all the routes defined in the router
      *
-     * @return array|RouteInterface[]
+     * @return array|\Phalcon\Mvc\Router\RouteInterface[]
      */
     public function getRoutes(): array;
 
@@ -218,10 +217,10 @@ interface RouterInterface
     /**
      * Mounts a group of routes in the router
      *
-     * @param GroupInterface $group
+     * @param \Phalcon\Mvc\Router\GroupInterface $group
      * @return RouterInterface
      */
-    public function mount(GroupInterface $group): RouterInterface;
+    public function mount(\Phalcon\Mvc\Router\GroupInterface $group): RouterInterface;
 
     /**
      * Sets the default action name

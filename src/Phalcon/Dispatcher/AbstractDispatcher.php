@@ -9,14 +9,8 @@
  */
 namespace Phalcon\Dispatcher;
 
-use Exception;
-use Phalcon\Di\DiInterface;
 use Phalcon\Di\AbstractInjectionAware;
-use Phalcon\Dispatcher\Exception as PhalconException;
-use Phalcon\Events\EventsAwareInterface;
 use Phalcon\Events\ManagerInterface;
-use Phalcon\Filter\FilterInterface;
-use Phalcon\Mvc\Model\Binder;
 use Phalcon\Mvc\Model\BinderInterface;
 
 /**
@@ -24,7 +18,7 @@ use Phalcon\Mvc\Model\BinderInterface;
  * This class can't be instantiated directly, you can use it to create your own
  * dispatchers.
  */
-abstract class AbstractDispatcher extends AbstractInjectionAware implements DispatcherInterface, EventsAwareInterface
+abstract class AbstractDispatcher extends AbstractInjectionAware implements \Phalcon\Dispatcher\DispatcherInterface, \Phalcon\Events\EventsAwareInterface
 {
 
     protected $activeHandler;
@@ -141,7 +135,7 @@ abstract class AbstractDispatcher extends AbstractInjectionAware implements Disp
      *                      for CLI dispatching) or <tt>false</tt> if an exception occurred and the operation was
      *                      stopped by returning <tt>false</tt> in the exception handler.
      *
-     * @throws Exception if any uncaught or unhandled exception occurs during the dispatcher process.
+     * @throws \Exception if any uncaught or unhandled exception occurs during the dispatcher process.
      */
     public function dispatch(): bool
     {
@@ -392,10 +386,10 @@ abstract class AbstractDispatcher extends AbstractInjectionAware implements Disp
     /**
      * Sets the events manager
      *
-     * @param ManagerInterface $eventsManager
+     * @param \Phalcon\Events\ManagerInterface $eventsManager
      * @return void
      */
-    public function setEventsManager(ManagerInterface $eventsManager)
+    public function setEventsManager(\Phalcon\Events\ManagerInterface $eventsManager)
     {
     }
 
@@ -428,11 +422,11 @@ abstract class AbstractDispatcher extends AbstractInjectionAware implements Disp
      * );
      * ```
      *
-     * @param BinderInterface $modelBinder
+     * @param \Phalcon\Mvc\Model\BinderInterface $modelBinder
      * @param mixed $cache
      * @return DispatcherInterface
      */
-    public function setModelBinder(BinderInterface $modelBinder, $cache = null): DispatcherInterface
+    public function setModelBinder(\Phalcon\Mvc\Model\BinderInterface $modelBinder, $cache = null): DispatcherInterface
     {
     }
 

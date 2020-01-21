@@ -9,13 +9,12 @@
  */
 namespace Phalcon;
 
-use Psr\Container\ContainerInterface;
 use Phalcon\Di\DiInterface;
 
 /**
  * PSR-11 Wrapper for `Phalcon\Di`
  */
-class Container implements ContainerInterface
+class Container implements \Psr\Container\ContainerInterface
 {
     /**
      * @var DiInterface
@@ -26,9 +25,9 @@ class Container implements ContainerInterface
     /**
      * Phalcon\Container constructor
      *
-     * @param DiInterface $container
+     * @param \Phalcon\Di\DiInterface $container
      */
-    public function __construct(DiInterface $container)
+    public function __construct(\Phalcon\Di\DiInterface $container)
     {
     }
 

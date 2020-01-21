@@ -9,18 +9,15 @@
  */
 namespace Phalcon;
 
-use DateInterval;
 use Phalcon\Cache\Adapter\AdapterInterface;
-use Phalcon\Cache\Exception\Exception;
 use Phalcon\Cache\Exception\InvalidArgumentException;
 use Psr\SimpleCache\CacheInterface;
-use Traversable;
 
 /**
  * This component offers caching capabilities for your application.
  * Phalcon\Cache implements PSR-16.
  */
-class Cache implements CacheInterface
+class Cache implements \Psr\SimpleCache\CacheInterface
 {
     /**
      * The adapter
@@ -44,7 +41,7 @@ class Cache implements CacheInterface
      *
      * @param AdapterInterface $adapter The cache adapter
      */
-    public function __construct(AdapterInterface $adapter)
+    public function __construct(\Phalcon\Cache\Adapter\AdapterInterface $adapter)
     {
     }
 
@@ -129,7 +126,7 @@ class Cache implements CacheInterface
      *
      * @param string                 $key   The key of the item to store.
      * @param mixed                  $value The value of the item to store. Must be serializable.
-     * @param null|int|DateInterval $ttl   Optional. The TTL value of this item. If no value is sent and
+     * @param null|int|\DateInterval $ttl   Optional. The TTL value of this item. If no value is sent and
      *                                      the driver supports TTL then the library may set a default value
      *                                      for it or let the driver take care of that.
      *
@@ -145,7 +142,7 @@ class Cache implements CacheInterface
      * Persists a set of key => value pairs in the cache, with an optional TTL.
      *
      * @param iterable               $values A list of key => value pairs for a multiple-set operation.
-     * @param null|int|DateInterval $ttl    Optional. The TTL value of this item. If no value is sent and
+     * @param null|int|\DateInterval $ttl    Optional. The TTL value of this item. If no value is sent and
      *                                       the driver supports TTL then the library may set a default value
      *                                       for it or let the driver take care of that.
      *

@@ -14,7 +14,7 @@ use Throwable;
 /**
  * Holds the payload
  */
-class Payload implements PayloadInterface
+class Payload implements \Phalcon\Domain\Payload\PayloadInterface
 {
     /**
      * Exception if any
@@ -120,7 +120,7 @@ class Payload implements PayloadInterface
      *
      * @return PayloadInterface
      */
-    public function setException(Throwable $exception): PayloadInterface
+    public function setException(\Throwable $exception): PayloadInterface
     {
     }
 

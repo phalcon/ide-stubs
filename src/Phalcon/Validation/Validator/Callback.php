@@ -9,9 +9,6 @@
  */
 namespace Phalcon\Validation\Validator;
 
-use Phalcon\Messages\Message;
-use Phalcon\Validation;
-use Phalcon\Validation\ValidatorInterface;
 use Phalcon\Validation\AbstractValidator;
 
 /**
@@ -81,11 +78,11 @@ class Callback extends AbstractValidator
     /**
      * Executes the validation
      *
-     * @param Validation $validation
+     * @param \Phalcon\Validation $validation
      * @param mixed $field
      * @return bool
      */
-    public function validate(Validation $validation, $field): bool
+    public function validate(\Phalcon\Validation $validation, $field): bool
     {
     }
 }

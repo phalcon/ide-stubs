@@ -9,8 +9,6 @@
  */
 namespace Phalcon\Annotations\Adapter;
 
-use Phalcon\Annotations\Reflection;
-
 /**
  * Stores the parsed annotations in APCu. This adapter is suitable for production
  *
@@ -20,7 +18,7 @@ use Phalcon\Annotations\Reflection;
  * $annotations = new Apcu();
  * ```
  */
-class Apcu extends AbstractAdapter
+class Apcu extends \Phalcon\Annotations\Adapter\AbstractAdapter
 {
     /**
      * @var string
@@ -59,10 +57,10 @@ class Apcu extends AbstractAdapter
      * Writes parsed annotations to APCu
      *
      * @param string $key
-     * @param Reflection $data
+     * @param \Phalcon\Annotations\Reflection $data
      * @return bool
      */
-    public function write(string $key, Reflection $data): bool
+    public function write(string $key, \Phalcon\Annotations\Reflection $data): bool
     {
     }
 }

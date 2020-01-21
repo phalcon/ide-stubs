@@ -9,10 +9,7 @@
  */
 namespace Phalcon\Mvc\Model\Behavior;
 
-use Closure;
-use Phalcon\Mvc\ModelInterface;
 use Phalcon\Mvc\Model\Behavior;
-use Phalcon\Mvc\Model\Exception;
 
 /**
  * Phalcon\Mvc\Model\Behavior\Timestampable
@@ -27,9 +24,9 @@ class Timestampable extends Behavior
      * Listens for notifications from the models manager
      *
      * @param string $type
-     * @param ModelInterface $model
+     * @param \Phalcon\Mvc\ModelInterface $model
      */
-    public function notify(string $type, ModelInterface $model)
+    public function notify(string $type, \Phalcon\Mvc\ModelInterface $model)
     {
     }
 

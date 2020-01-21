@@ -14,7 +14,7 @@ namespace Phalcon\Http\Response;
  *
  * This class is a bag to manage the response headers
  */
-class Headers implements HeadersInterface
+class Headers implements \Phalcon\Http\Response\HeadersInterface
 {
 
     protected $headers = array();

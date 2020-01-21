@@ -9,9 +9,6 @@
  */
 namespace Phalcon\Session\Adapter;
 
-use Phalcon\Helper\Str;
-use Phalcon\Session\Exception;
-
 /**
  * Phalcon\Session\Adapter\Stream
  *
@@ -32,7 +29,7 @@ use Phalcon\Session\Exception;
  * $session->setAdapter($files);
  * ```
  */
-class Stream extends Noop
+class Stream extends \Phalcon\Session\Adapter\Noop
 {
     /**
      * @var string

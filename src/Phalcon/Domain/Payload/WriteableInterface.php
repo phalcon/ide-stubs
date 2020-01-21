@@ -24,7 +24,7 @@ interface WriteableInterface
      *
      * @return PayloadInterface
      */
-    public function setException(Throwable $exception): PayloadInterface;
+    public function setException(\Throwable $exception): PayloadInterface;
 
     /**
      * Sets arbitrary extra values produced by the domain layer.

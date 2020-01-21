@@ -9,8 +9,6 @@
  */
 namespace Phalcon\Mvc;
 
-use Phalcon\Cache\Adapter\AdapterInterface;
-
 /**
  * Phalcon\Mvc\ViewInterface
  *

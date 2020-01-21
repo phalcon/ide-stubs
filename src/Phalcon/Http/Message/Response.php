@@ -9,15 +9,12 @@
  */
 namespace Phalcon\Http\Message;
 
-use Phalcon\Helper\Number;
-use Phalcon\Http\Message\AbstractMessage;
-use Phalcon\Http\Message\Exception\InvalidArgumentException;
 use Psr\Http\Message\ResponseInterface;
 
 /**
  * PSR-7 Response
  */
-final class Response extends AbstractMessage implements ResponseInterface
+final class Response extends AbstractMessage implements \Psr\Http\Message\ResponseInterface
 {
     /**
      * Gets the response reason phrase associated with the status code.

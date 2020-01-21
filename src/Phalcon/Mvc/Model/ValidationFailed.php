@@ -17,7 +17,7 @@ use Phalcon\Mvc\ModelInterface;
  * This exception is generated when a model fails to save a record
  * Phalcon\Mvc\Model must be set up to have this behavior
  */
-class ValidationFailed extends Exception
+class ValidationFailed extends \Phalcon\Mvc\Model\Exception
 {
 
     protected $messages;
@@ -30,11 +30,11 @@ class ValidationFailed extends Exception
      * Phalcon\Mvc\Model\ValidationFailed constructor
      *
      * @param Message[] validationMessages
-     * @param ModelInterface $model
+     * @param \Phalcon\Mvc\ModelInterface $model
      * @param array $validationMessages
      * @param Message  [] validationMessages
      */
-    public function __construct(ModelInterface $model, array $validationMessages)
+    public function __construct(\Phalcon\Mvc\ModelInterface $model, array $validationMessages)
     {
     }
 

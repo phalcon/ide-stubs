@@ -9,8 +9,6 @@
  */
 namespace Phalcon\Logger\Formatter;
 
-use Phalcon\Logger;
-
 /**
  * This file is part of the Phalcon Framework.
  *
@@ -19,8 +17,33 @@ use Phalcon\Logger;
  * For the full copyright and license information, please view the LICENSE.txt
  * file that was distributed with this source code.
  */
-abstract class AbstractFormatter implements FormatterInterface
+abstract class AbstractFormatter implements \Phalcon\Logger\Formatter\FormatterInterface
 {
+    /**
+     * Default date format
+     *
+     * @var string
+     */
+    protected $dateFormat;
+
+
+    /**
+     * Default date format
+     *
+     * @return string
+     */
+    public function getDateFormat(): string
+    {
+    }
+
+    /**
+     * Default date format
+     *
+     * @param string $dateFormat
+     */
+    public function setDateFormat(string $dateFormat)
+    {
+    }
 
     /**
      * Interpolates context values into the message placeholders
@@ -30,6 +53,17 @@ abstract class AbstractFormatter implements FormatterInterface
      * @param array $context
      */
     public function interpolate(string $message, $context = null)
+    {
+    }
+
+    /**
+     * Returns the date formatted for the logger.
+     *
+     * @todo Not using the set time from the Item since we have interface
+     * misalignment which will break semver This will change in the future
+     * @return string
+     */
+    protected function getFormattedDate(): string
     {
     }
 }

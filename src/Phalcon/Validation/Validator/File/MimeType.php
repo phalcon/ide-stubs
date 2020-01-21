@@ -9,9 +9,7 @@
  */
 namespace Phalcon\Validation\Validator\File;
 
-use Phalcon\Messages\Message;
 use Phalcon\Validation;
-use Phalcon\Validation\Exception;
 
 /**
  * Checks if a value has a correct file mime type
@@ -61,7 +59,7 @@ use Phalcon\Validation\Exception;
  * );
  * ```
  */
-class MimeType extends AbstractFile
+class MimeType extends \Phalcon\Validation\Validator\File\AbstractFile
 {
 
     protected $template = 'File :field must be of type: :types';
@@ -74,7 +72,7 @@ class MimeType extends AbstractFile
      * @param mixed $field
      * @return bool
      */
-    public function validate(Validation $validation, $field): bool
+    public function validate(\Phalcon\Validation $validation, $field): bool
     {
     }
 }

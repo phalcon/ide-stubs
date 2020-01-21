@@ -9,9 +9,6 @@
  */
 namespace Phalcon\Validation;
 
-use Phalcon\Collection;
-use Phalcon\Validation;
-
 /**
  * Interface for Phalcon\Validation\AbstractValidator
  */
@@ -39,11 +36,11 @@ interface ValidatorInterface
     /**
      * Executes the validation
      *
-     * @param Validation $validation
+     * @return boolean
+     * @param \Phalcon\Validation $validation
      * @param mixed $field
-     *@return boolean
      */
-    public function validate(Validation $validation, $field): bool;
+    public function validate(\Phalcon\Validation $validation, $field): bool;
 
     /**
      * Get the template message

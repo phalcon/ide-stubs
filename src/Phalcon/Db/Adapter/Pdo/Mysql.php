@@ -9,16 +9,6 @@
  */
 namespace Phalcon\Db\Adapter\Pdo;
 
-use Phalcon\Db\Adapter\Pdo\AbstractPdo as PdoAdapter;
-use Phalcon\Db\Column;
-use Phalcon\Db\ColumnInterface;
-use Phalcon\Db\Enum;
-use Phalcon\Db\Exception;
-use Phalcon\Db\Index;
-use Phalcon\Db\IndexInterface;
-use Phalcon\Db\Reference;
-use Phalcon\Db\ReferenceInterface;
-
 /**
  * Specific functions for the Mysql database system
  *
@@ -36,7 +26,7 @@ use Phalcon\Db\ReferenceInterface;
  * $connection = new Mysql($config);
  * ```
  */
-class Mysql extends AbstractPdo
+class Mysql extends \Phalcon\Db\Adapter\Pdo\AbstractPdo
 {
     /**
      * @var string
@@ -54,10 +44,10 @@ class Mysql extends AbstractPdo
      *
      * @param string $tableName
      * @param string $schemaName
-     * @param ReferenceInterface $reference
+     * @param \Phalcon\Db\ReferenceInterface $reference
      * @return bool
      */
-    public function addForeignKey(string $tableName, string $schemaName, ReferenceInterface $reference): bool
+    public function addForeignKey(string $tableName, string $schemaName, \Phalcon\Db\ReferenceInterface $reference): bool
     {
     }
 
@@ -72,7 +62,7 @@ class Mysql extends AbstractPdo
      *
      * @param string $table
      * @param string $schema
-     * @return array|ColumnInterface[]
+     * @return array|\Phalcon\Db\ColumnInterface[]
      */
     public function describeColumns(string $table, string $schema = null): array
     {
@@ -89,7 +79,7 @@ class Mysql extends AbstractPdo
      *
      * @param string $table
      * @param string $schema
-     * @return array|IndexInterface[]
+     * @return array|\Phalcon\Db\IndexInterface[]
      */
     public function describeIndexes(string $table, string $schema = null): array
     {
@@ -106,7 +96,7 @@ class Mysql extends AbstractPdo
      *
      * @param string $table
      * @param string $schema
-     * @return array|ReferenceInterface[]
+     * @return array|\Phalcon\Db\ReferenceInterface[]
      */
     public function describeReferences(string $table, string $schema = null): array
     {

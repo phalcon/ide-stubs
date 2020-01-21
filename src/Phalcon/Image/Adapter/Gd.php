@@ -9,9 +9,6 @@
  */
 namespace Phalcon\Image\Adapter;
 
-use Phalcon\Image\Enum;
-use Phalcon\Image\Exception;
-
 /**
  * This file is part of the Phalcon Framework.
  *
@@ -20,7 +17,7 @@ use Phalcon\Image\Exception;
  * For the full copyright and license information, please view the LICENSE.txt
  * file that was distributed with this source code.
  */
-class Gd extends AbstractAdapter
+class Gd extends \Phalcon\Image\Adapter\AbstractAdapter
 {
 
     protected static $checked = false;

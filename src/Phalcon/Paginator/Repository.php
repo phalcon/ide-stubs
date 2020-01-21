@@ -9,15 +9,12 @@
  */
 namespace Phalcon\Paginator;
 
-use JsonSerializable;
-use Phalcon\Helper\Arr;
-
 /**
  * Phalcon\Paginator\Repository
  *
  * Repository of current state Phalcon\Paginator\AdapterInterface::paginate()
  */
-class Repository implements RepositoryInterface, JsonSerializable
+class Repository implements \Phalcon\Paginator\RepositoryInterface, \JsonSerializable
 {
     /**
      * @var array

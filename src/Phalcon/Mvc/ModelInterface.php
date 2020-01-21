@@ -10,13 +10,9 @@
 namespace Phalcon\Mvc;
 
 use Phalcon\Db\Adapter\AdapterInterface;
-use Phalcon\Di\DiInterface;
-use Phalcon\Messages\MessageInterface;
 use Phalcon\Mvc\Model\CriteriaInterface;
 use Phalcon\Mvc\Model\MetaDataInterface;
-use Phalcon\Mvc\Model\Resultset\Simple;
 use Phalcon\Mvc\Model\ResultsetInterface;
-use Phalcon\Mvc\Model\TransactionInterface;
 
 /**
  * Phalcon\Mvc\ModelInterface
@@ -29,10 +25,10 @@ interface ModelInterface
     /**
      * Appends a customized message on the validation process
      *
-     * @param MessageInterface $message
+     * @param \Phalcon\Messages\MessageInterface $message
      * @return ModelInterface
      */
-    public function appendMessage(MessageInterface $message): ModelInterface;
+    public function appendMessage(\Phalcon\Messages\MessageInterface $message): ModelInterface;
 
     /**
      * Assigns values to a model from an array
@@ -67,12 +63,12 @@ interface ModelInterface
     /**
      * Assigns values to a model from an array returning a new model
      *
-     * @param Model $base
+     * @param \Phalcon\Mvc\Model $base
      * @param array $columnMap
+     * @return \Phalcon\Mvc\Model result
      * @param array $data
      * @param int $dirtyState
      * @param bool $keepSnapshots
-     *@return Model result
      */
     public static function cloneResultMap($base, array $data, $columnMap, int $dirtyState = 0, bool $keepSnapshots = null): ModelInterface;
 
@@ -155,7 +151,7 @@ interface ModelInterface
     /**
      * Returns array of validation messages
      *
-     * @return array|MessageInterface[]
+     * @return array|\Phalcon\Messages\MessageInterface[]
      */
     public function getMessages(): array;
 
@@ -192,7 +188,7 @@ interface ModelInterface
      * Returns related records based on defined relations
      *
      * @param array $arguments
-     * @return Simple|Phalcon\Mvc\Model\Resultset\Simple|false
+     * @return \Phalcon\Mvc\Model\Resultset\Simple|Phalcon\Mvc\Model\Resultset\Simple|false
      * @param string $alias
      */
     public function getRelated(string $alias, $arguments = null);
@@ -246,10 +242,10 @@ interface ModelInterface
     /**
      * Create a criteria for a specific model
      *
-     * @param DiInterface $container
+     * @param \Phalcon\Di\DiInterface $container
      * @return CriteriaInterface
      */
-    public static function query(DiInterface $container = null): CriteriaInterface;
+    public static function query(\Phalcon\Di\DiInterface $container = null): CriteriaInterface;
 
     /**
      * Refreshes the model attributes re-querying the record from the database
@@ -304,10 +300,10 @@ interface ModelInterface
     /**
      * Sets a transaction related to the Model instance
      *
-     * @param TransactionInterface $transaction
+     * @param \Phalcon\Mvc\Model\TransactionInterface $transaction
      * @return ModelInterface
      */
-    public function setTransaction(TransactionInterface $transaction): ModelInterface;
+    public function setTransaction(\Phalcon\Mvc\Model\TransactionInterface $transaction): ModelInterface;
 
     /**
      * Sets the DependencyInjection connection service used to write data

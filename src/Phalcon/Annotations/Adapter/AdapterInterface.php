@@ -9,9 +9,9 @@
  */
 namespace Phalcon\Annotations\Adapter;
 
-use Phalcon\Annotations\Reflection;
 use Phalcon\Annotations\Collection;
 use Phalcon\Annotations\ReaderInterface;
+use Phalcon\Annotations\Reflection;
 
 /**
  * This interface must be implemented by adapters in Phalcon\Annotations
@@ -71,7 +71,7 @@ interface AdapterInterface
     /**
      * Sets the annotations parser
      *
-     * @param ReaderInterface $reader
+     * @param \Phalcon\Annotations\ReaderInterface $reader
      */
-    public function setReader(ReaderInterface $reader);
+    public function setReader(\Phalcon\Annotations\ReaderInterface $reader);
 }

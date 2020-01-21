@@ -57,7 +57,7 @@ namespace Phalcon\Mvc\Router;
  * $router->mount($blog);
  * ```
  */
-class Group implements GroupInterface
+class Group implements \Phalcon\Mvc\Router\GroupInterface
 {
 
     protected $beforeMatch;

@@ -9,19 +9,14 @@
  */
 namespace Phalcon\Mvc\Model;
 
-use Closure;
-use Phalcon\Mvc\Controller\BindModelInterface;
-use Phalcon\Mvc\Model\Binder\BindableInterface;
 use Phalcon\Cache\Adapter\AdapterInterface;
-use ReflectionFunction;
-use ReflectionMethod;
 
 /**
  * Phalcon\Mvc\Model\Binding
  *
  * This is an class for binding models into params for handler
  */
-class Binder implements BinderInterface
+class Binder implements \Phalcon\Mvc\Model\BinderInterface
 {
     /**
      * Array for storing active bound models
@@ -65,9 +60,9 @@ class Binder implements BinderInterface
     /**
      * Phalcon\Mvc\Model\Binder constructor
      *
-     * @param AdapterInterface $cache
+     * @param \Phalcon\Cache\Adapter\AdapterInterface $cache
      */
-    public function __construct(AdapterInterface $cache = null)
+    public function __construct(\Phalcon\Cache\Adapter\AdapterInterface $cache = null)
     {
     }
 
@@ -130,10 +125,10 @@ class Binder implements BinderInterface
     /**
      * Gets cache instance
      *
-     * @param AdapterInterface $cache
+     * @param \Phalcon\Cache\Adapter\AdapterInterface $cache
      * @return BinderInterface
      */
-    public function setCache(AdapterInterface $cache): BinderInterface
+    public function setCache(\Phalcon\Cache\Adapter\AdapterInterface $cache): BinderInterface
     {
     }
 }

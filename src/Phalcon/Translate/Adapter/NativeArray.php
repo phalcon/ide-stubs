@@ -9,16 +9,12 @@
  */
 namespace Phalcon\Translate\Adapter;
 
-use ArrayAccess;
-use Phalcon\Translate\Exception;
-use Phalcon\Translate\InterpolatorFactory;
-
 /**
  * Phalcon\Translate\Adapter\NativeArray
  *
  * Allows to define translation lists using PHP arrays
  */
-class NativeArray extends AbstractAdapter implements ArrayAccess
+class NativeArray extends \Phalcon\Translate\Adapter\AbstractAdapter implements \ArrayAccess
 {
     /**
      * @var array
@@ -38,9 +34,9 @@ class NativeArray extends AbstractAdapter implements ArrayAccess
      *     'content' => '',
      *     'triggerError' => false
      * ]
-     * @param InterpolatorFactory $interpolator
+     * @param \Phalcon\Translate\InterpolatorFactory $interpolator
      */
-    public function __construct(InterpolatorFactory $interpolator, array $options)
+    public function __construct(\Phalcon\Translate\InterpolatorFactory $interpolator, array $options)
     {
     }
 

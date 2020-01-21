@@ -9,23 +9,16 @@
  */
 namespace Phalcon\Forms;
 
-use Countable;
-use Iterator;
 use Phalcon\Di\Injectable;
-use Phalcon\Di\DiInterface;
-use Phalcon\Filter\FilterInterface;
 use Phalcon\Forms\Element\ElementInterface;
 use Phalcon\Html\Attributes;
 use Phalcon\Html\Attributes\AttributesInterface;
 use Phalcon\Messages\Messages;
-use Phalcon\Tag;
-use Phalcon\Validation;
-use Phalcon\Validation\ValidationInterface;
 
 /**
  * This component allows to build forms using an object-oriented interface
  */
-class Form extends Injectable implements Countable, Iterator, AttributesInterface
+class Form extends Injectable implements \Countable, \Iterator, \Phalcon\Html\Attributes\AttributesInterface
 {
     /**
      * @var Attributes | null
@@ -82,12 +75,12 @@ class Form extends Injectable implements Countable, Iterator, AttributesInterfac
     /**
      * Adds an element to the form
      *
-     * @param ElementInterface $element
+     * @param \Phalcon\Forms\Element\ElementInterface $element
      * @param string $position
      * @param bool $type
      * @return Form
      */
-    public function add(ElementInterface $element, string $position = null, bool $type = null): Form
+    public function add(\Phalcon\Forms\Element\ElementInterface $element, string $position = null, bool $type = null): Form
     {
     }
 
@@ -162,7 +155,7 @@ class Form extends Injectable implements Countable, Iterator, AttributesInterfac
     /**
      * Returns the form elements added to the form
      *
-     * @return array|ElementInterface[]
+     * @return array|\Phalcon\Forms\Element\ElementInterface[]
      */
     public function getElements(): array
     {
@@ -359,10 +352,10 @@ class Form extends Injectable implements Countable, Iterator, AttributesInterfac
     /**
      * Set form attributes collection
      *
-     * @param Attributes $attributes
+     * @param \Phalcon\Html\Attributes $attributes
      * @return AttributesInterface
      */
-    public function setAttributes(Attributes $attributes): AttributesInterface
+    public function setAttributes(\Phalcon\Html\Attributes $attributes): AttributesInterface
     {
     }
 

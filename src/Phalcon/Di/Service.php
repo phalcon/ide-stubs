@@ -9,10 +9,6 @@
  */
 namespace Phalcon\Di;
 
-use Closure;
-use Phalcon\Di\Exception\ServiceResolutionException;
-use Phalcon\Di\Service\Builder;
-
 /**
  * Represents individually a service in the services container
  *
@@ -25,7 +21,7 @@ use Phalcon\Di\Service\Builder;
  * $request = service->resolve();
  * ```
  */
-class Service implements ServiceInterface
+class Service implements \Phalcon\Di\ServiceInterface
 {
 
     protected $definition;

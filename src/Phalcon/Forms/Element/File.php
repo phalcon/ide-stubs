@@ -9,12 +9,10 @@
  */
 namespace Phalcon\Forms\Element;
 
-use Phalcon\Tag;
-
 /**
  * Component INPUT[type=file] for forms
  */
-class File extends AbstractElement
+class File extends \Phalcon\Forms\Element\AbstractElement
 {
 
     /**

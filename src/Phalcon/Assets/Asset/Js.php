@@ -9,12 +9,10 @@
  */
 namespace Phalcon\Assets\Asset;
 
-use Phalcon\Assets\Asset as AssetBase;
-
 /**
  * Represents Javascript assets
  */
-class Js extends AssetBase
+class Js extends \Phalcon\Assets\Asset
 {
 
     /**

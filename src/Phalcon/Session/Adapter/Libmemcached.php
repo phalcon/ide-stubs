@@ -9,12 +9,10 @@
  */
 namespace Phalcon\Session\Adapter;
 
-use Phalcon\Storage\AdapterFactory;
-
 /**
  * Phalcon\Session\Adapter\Libmemcached
  */
-class Libmemcached extends AbstractAdapter
+class Libmemcached extends \Phalcon\Session\Adapter\AbstractAdapter
 {
 
     /**
@@ -34,9 +32,9 @@ class Libmemcached extends AbstractAdapter
      *     'serializer' => null,
      *     'prefix' => 'sess-memc-'
      * ]
-     * @param AdapterFactory $factory
+     * @param \Phalcon\Storage\AdapterFactory $factory
      */
-    public function __construct(AdapterFactory $factory, array $options = array())
+    public function __construct(\Phalcon\Storage\AdapterFactory $factory, array $options = array())
     {
     }
 }

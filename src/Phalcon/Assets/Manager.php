@@ -9,12 +9,6 @@
  */
 namespace Phalcon\Assets;
 
-use Phalcon\Tag;
-use Phalcon\Assets\Asset\Js as AssetJs;
-use Phalcon\Assets\Asset\Css as AssetCss;
-use Phalcon\Assets\Inline\Css as InlineCss;
-use Phalcon\Assets\Inline\Js as InlineJs;
-use Phalcon\Di\DiInterface;
 use Phalcon\Di\AbstractInjectionAware;
 
 /**

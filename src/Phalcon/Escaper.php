@@ -9,10 +9,6 @@
  */
 namespace Phalcon;
 
-use Phalcon\Di\DiInterface;
-use Phalcon\Escaper\EscaperInterface;
-use Phalcon\Escaper\Exception;
-
 /**
  * Phalcon\Escaper
  *
@@ -30,7 +26,7 @@ use Phalcon\Escaper\Exception;
  * echo $escaped; // font\2D family\3A \20 \3C Verdana\3E
  * ```
  */
-class Escaper implements EscaperInterface
+class Escaper implements \Phalcon\Escaper\EscaperInterface
 {
     /**
      * @var bool

@@ -9,7 +9,6 @@
  */
 namespace Phalcon\Http;
 
-use DateTime;
 use Phalcon\Http\Response\HeadersInterface;
 
 /**
@@ -109,10 +108,10 @@ interface ResponseInterface
     /**
      * Sets output expire time header
      *
-     * @param DateTime $datetime
+     * @param \DateTime $datetime
      * @return ResponseInterface
      */
-    public function setExpires(DateTime $datetime): ResponseInterface;
+    public function setExpires(\DateTime $datetime): ResponseInterface;
 
     /**
      * Sets an attached file to be sent at the end of the request

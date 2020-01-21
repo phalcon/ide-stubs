@@ -9,8 +9,6 @@
  */
 namespace Phalcon\Storage\Serializer;
 
-use Phalcon\Storage\Exception;
-
 /**
  * This file is part of the Phalcon Framework.
  *
@@ -19,7 +17,7 @@ use Phalcon\Storage\Exception;
  * For the full copyright and license information, please view the LICENSE.txt
  * file that was distributed with this source code.
  */
-abstract class AbstractSerializer implements SerializerInterface
+abstract class AbstractSerializer implements \Phalcon\Storage\Serializer\SerializerInterface
 {
     /**
      * @var mixed

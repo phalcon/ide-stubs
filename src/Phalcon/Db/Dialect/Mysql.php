@@ -10,12 +10,6 @@
 namespace Phalcon\Db\Dialect;
 
 use Phalcon\Db\Dialect;
-use Phalcon\Db\Column;
-use Phalcon\Db\Exception;
-use Phalcon\Db\IndexInterface;
-use Phalcon\Db\ColumnInterface;
-use Phalcon\Db\ReferenceInterface;
-use Phalcon\Db\DialectInterface;
 
 /**
  * Generates database specific SQL for the MySQL RDBMS
@@ -33,10 +27,10 @@ class Mysql extends Dialect
      *
      * @param string $tableName
      * @param string $schemaName
-     * @param ColumnInterface $column
+     * @param \Phalcon\Db\ColumnInterface $column
      * @return string
      */
-    public function addColumn(string $tableName, string $schemaName, ColumnInterface $column): string
+    public function addColumn(string $tableName, string $schemaName, \Phalcon\Db\ColumnInterface $column): string
     {
     }
 
@@ -45,10 +39,10 @@ class Mysql extends Dialect
      *
      * @param string $tableName
      * @param string $schemaName
-     * @param ReferenceInterface $reference
+     * @param \Phalcon\Db\ReferenceInterface $reference
      * @return string
      */
-    public function addForeignKey(string $tableName, string $schemaName, ReferenceInterface $reference): string
+    public function addForeignKey(string $tableName, string $schemaName, \Phalcon\Db\ReferenceInterface $reference): string
     {
     }
 
@@ -57,10 +51,10 @@ class Mysql extends Dialect
      *
      * @param string $tableName
      * @param string $schemaName
-     * @param IndexInterface $index
+     * @param \Phalcon\Db\IndexInterface $index
      * @return string
      */
-    public function addIndex(string $tableName, string $schemaName, IndexInterface $index): string
+    public function addIndex(string $tableName, string $schemaName, \Phalcon\Db\IndexInterface $index): string
     {
     }
 
@@ -69,10 +63,10 @@ class Mysql extends Dialect
      *
      * @param string $tableName
      * @param string $schemaName
-     * @param IndexInterface $index
+     * @param \Phalcon\Db\IndexInterface $index
      * @return string
      */
-    public function addPrimaryKey(string $tableName, string $schemaName, IndexInterface $index): string
+    public function addPrimaryKey(string $tableName, string $schemaName, \Phalcon\Db\IndexInterface $index): string
     {
     }
 
@@ -213,10 +207,10 @@ class Mysql extends Dialect
     /**
      * Gets the column name in MySQL
      *
-     * @param ColumnInterface $column
+     * @param \Phalcon\Db\ColumnInterface $column
      * @return string
      */
-    public function getColumnDefinition(ColumnInterface $column): string
+    public function getColumnDefinition(\Phalcon\Db\ColumnInterface $column): string
     {
     }
 
@@ -260,11 +254,11 @@ class Mysql extends Dialect
      *
      * @param string $tableName
      * @param string $schemaName
-     * @param ColumnInterface $column
-     * @param ColumnInterface $currentColumn
+     * @param \Phalcon\Db\ColumnInterface $column
+     * @param \Phalcon\Db\ColumnInterface $currentColumn
      * @return string
      */
-    public function modifyColumn(string $tableName, string $schemaName, ColumnInterface $column, ColumnInterface $currentColumn = null): string
+    public function modifyColumn(string $tableName, string $schemaName, \Phalcon\Db\ColumnInterface $column, \Phalcon\Db\ColumnInterface $currentColumn = null): string
     {
     }
 
@@ -348,20 +342,20 @@ class Mysql extends Dialect
      * Checks if the size and/or scale are present and encloses those values
      * in parentheses if need be
      *
-     * @param ColumnInterface $column
+     * @param \Phalcon\Db\ColumnInterface $column
      * @return string
      */
-    private function checkColumnSizeAndScale(ColumnInterface $column): string
+    private function checkColumnSizeAndScale(\Phalcon\Db\ColumnInterface $column): string
     {
     }
 
     /**
      * Checks if a column is unsigned or not and returns the relevant SQL syntax
      *
-     * @param ColumnInterface $column
+     * @param \Phalcon\Db\ColumnInterface $column
      * @return string
      */
-    private function checkColumnUnsigned(ColumnInterface $column): string
+    private function checkColumnUnsigned(\Phalcon\Db\ColumnInterface $column): string
     {
     }
 }

@@ -9,9 +9,6 @@
  */
 namespace Phalcon\Image\Adapter;
 
-use Phalcon\Image\Enum;
-use Phalcon\Image\Exception;
-
 /**
  * Phalcon\Image\Adapter\Imagick
  *
@@ -28,7 +25,7 @@ use Phalcon\Image\Exception;
  * }
  * ```
  */
-class Imagick extends AbstractAdapter
+class Imagick extends \Phalcon\Image\Adapter\AbstractAdapter
 {
 
     protected static $checked = false;

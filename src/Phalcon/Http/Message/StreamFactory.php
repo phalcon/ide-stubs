@@ -9,14 +9,13 @@
  */
 namespace Phalcon\Http\Message;
 
-use Phalcon\Http\Message\Exception\InvalidArgumentException;
 use Psr\Http\Message\StreamFactoryInterface;
 use Psr\Http\Message\StreamInterface;
 
 /**
  * PSR-17 StreamFactory
  */
-final class StreamFactory implements StreamFactoryInterface
+final class StreamFactory implements \Psr\Http\Message\StreamFactoryInterface
 {
 
     /**

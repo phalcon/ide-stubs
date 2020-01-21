@@ -9,9 +9,7 @@
  */
 namespace Phalcon\Mvc\Router;
 
-use Phalcon\Di\DiInterface;
 use Phalcon\Mvc\Router;
-use Phalcon\Annotations\Annotation;
 
 /**
  * Phalcon\Mvc\Router\Annotations
@@ -102,9 +100,9 @@ class Annotations extends Router
      * @param string $namespaceName
      * @param string $controller
      * @param string $action
-     * @param Annotation $annotation
+     * @param \Phalcon\Annotations\Annotation $annotation
      */
-    public function processActionAnnotation(string $module, string $namespaceName, string $controller, string $action, Annotation $annotation)
+    public function processActionAnnotation(string $module, string $namespaceName, string $controller, string $action, \Phalcon\Annotations\Annotation $annotation)
     {
     }
 
@@ -112,9 +110,9 @@ class Annotations extends Router
      * Checks for annotations in the controller docblock
      *
      * @param string $handler
-     * @param Annotation $annotation
+     * @param \Phalcon\Annotations\Annotation $annotation
      */
-    public function processControllerAnnotation(string $handler, Annotation $annotation)
+    public function processControllerAnnotation(string $handler, \Phalcon\Annotations\Annotation $annotation)
     {
     }
 

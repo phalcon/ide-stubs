@@ -9,16 +9,9 @@
  */
 namespace Phalcon;
 
-use Phalcon\Di\Service;
 use Phalcon\Di\DiInterface;
-use Phalcon\Di\Exception;
-use Phalcon\Di\Exception\ServiceResolutionException;
-use Phalcon\Config\Adapter\Php;
-use Phalcon\Config\Adapter\Yaml;
 use Phalcon\Di\ServiceInterface;
 use Phalcon\Events\ManagerInterface;
-use Phalcon\Di\InjectionAwareInterface;
-use Phalcon\Di\ServiceProviderInterface;
 
 /**
  * Phalcon\Di is a component that implements Dependency Injection/Service
@@ -58,7 +51,7 @@ use Phalcon\Di\ServiceProviderInterface;
  * $request = $di->getRequest();
  * ```
  */
-class Di implements DiInterface
+class Di implements \Phalcon\Di\DiInterface
 {
     /**
      * List of registered services
@@ -167,7 +160,7 @@ class Di implements DiInterface
     /**
      * Return the services registered in the DI
      *
-     * @return array|ServiceInterface[]
+     * @return array|\Phalcon\Di\ServiceInterface[]
      */
     public function getServices(): array
     {
@@ -353,10 +346,10 @@ class Di implements DiInterface
      * }
      * ```
      *
-     * @param ServiceProviderInterface $provider
+     * @param \Phalcon\Di\ServiceProviderInterface $provider
      * @return void
      */
-    public function register(ServiceProviderInterface $provider)
+    public function register(\Phalcon\Di\ServiceProviderInterface $provider)
     {
     }
 
@@ -396,19 +389,19 @@ class Di implements DiInterface
      * Set a default dependency injection container to be obtained into static
      * methods
      *
-     * @param DiInterface $container
+     * @param \Phalcon\Di\DiInterface $container
      * @return void
      */
-    public static function setDefault(DiInterface $container)
+    public static function setDefault(\Phalcon\Di\DiInterface $container)
     {
     }
 
     /**
      * Sets the internal event manager
      *
-     * @param ManagerInterface $eventsManager
+     * @param \Phalcon\Events\ManagerInterface $eventsManager
      */
-    public function setInternalEventsManager(ManagerInterface $eventsManager)
+    public function setInternalEventsManager(\Phalcon\Events\ManagerInterface $eventsManager)
     {
     }
 
@@ -416,10 +409,10 @@ class Di implements DiInterface
      * Sets a service using a raw Phalcon\Di\Service definition
      *
      * @param string $name
-     * @param ServiceInterface $rawDefinition
+     * @param \Phalcon\Di\ServiceInterface $rawDefinition
      * @return ServiceInterface
      */
-    public function setService(string $name, ServiceInterface $rawDefinition): ServiceInterface
+    public function setService(string $name, \Phalcon\Di\ServiceInterface $rawDefinition): ServiceInterface
     {
     }
 

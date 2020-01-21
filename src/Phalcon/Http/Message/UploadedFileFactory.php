@@ -9,15 +9,14 @@
  */
 namespace Phalcon\Http\Message;
 
-use InvalidArgumentException;
 use Psr\Http\Message\StreamInterface;
-use Psr\Http\Message\UploadedFileInterface;
 use Psr\Http\Message\UploadedFileFactoryInterface;
+use Psr\Http\Message\UploadedFileInterface;
 
 /**
  * PSR-17 UploadedFileFactory
  */
-final class UploadedFileFactory implements UploadedFileFactoryInterface
+final class UploadedFileFactory implements \Psr\Http\Message\UploadedFileFactoryInterface
 {
 
     /**
@@ -36,10 +35,10 @@ final class UploadedFileFactory implements UploadedFileFactoryInterface
      * @param string          $clientFilename  The filename as provided by the client, if any.
      * @param string          $clientMediaType The media type as provided by the client, if any.
      *
-     * @throws InvalidArgumentException If the file resource is not readable.
+     * @throws \InvalidArgumentException If the file resource is not readable.
      * @return UploadedFileInterface
      */
-    public function createUploadedFile(StreamInterface $stream, int $size = null, int $error = 0, string $clientFilename = null, string $clientMediaType = null): UploadedFileInterface
+    public function createUploadedFile(\Psr\Http\Message\StreamInterface $stream, int $size = null, int $error = 0, string $clientFilename = null, string $clientMediaType = null): UploadedFileInterface
     {
     }
 }

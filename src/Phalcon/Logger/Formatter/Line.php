@@ -9,22 +9,13 @@
  */
 namespace Phalcon\Logger\Formatter;
 
-use Phalcon\Logger\Item;
-
 /**
  * Phalcon\Logger\Formatter\Line
  *
  * Formats messages using an one-line string
  */
-class Line extends AbstractFormatter
+class Line extends \Phalcon\Logger\Formatter\AbstractFormatter
 {
-    /**
-     * Default date format
-     *
-     * @var string
-     */
-    protected $dateFormat;
-
     /**
      * Format applied to each message
      *
@@ -32,24 +23,6 @@ class Line extends AbstractFormatter
      */
     protected $format;
 
-
-    /**
-     * Default date format
-     *
-     * @return string
-     */
-    public function getDateFormat(): string
-    {
-    }
-
-    /**
-     * Default date format
-     *
-     * @param string $dateFormat
-     */
-    public function setDateFormat(string $dateFormat)
-    {
-    }
 
     /**
      * Format applied to each message
@@ -82,10 +55,10 @@ class Line extends AbstractFormatter
     /**
      * Applies a format to a message before sent it to the internal log
      *
-     * @param Item $item
+     * @param \Phalcon\Logger\Item $item
      * @return string
      */
-    public function format(Item $item): string
+    public function format(\Phalcon\Logger\Item $item): string
     {
     }
 }

@@ -9,15 +9,12 @@
  */
 namespace Phalcon\Validation;
 
-use Phalcon\Collection;
-use Phalcon\Helper\Arr;
 use Phalcon\Messages\Message;
-use Phalcon\Validation;
 
 /**
  * This is a base class for validators
  */
-abstract class AbstractValidator implements ValidatorInterface
+abstract class AbstractValidator implements \Phalcon\Validation\ValidatorInterface
 {
     /**
      * Message template
@@ -122,11 +119,11 @@ abstract class AbstractValidator implements ValidatorInterface
     /**
      * Executes the validation
      *
-     * @param Validation $validation
+     * @param \Phalcon\Validation $validation
      * @param mixed $field
      * @return bool
      */
-    abstract public function validate(Validation $validation, $field): bool;
+    abstract public function validate(\Phalcon\Validation $validation, $field): bool;
 
     /**
      * Prepares a validation code.
@@ -141,25 +138,25 @@ abstract class AbstractValidator implements ValidatorInterface
     /**
      * Prepares a label for the field.
      *
-     * @param Validation $validation
+     * @param \Phalcon\Validation $validation
      * @param string $field
      * @return mixed
      */
-    protected function prepareLabel(Validation $validation, string $field)
+    protected function prepareLabel(\Phalcon\Validation $validation, string $field)
     {
     }
 
     /**
      * Create a default message by factory
      *
-     * @param Validation $validation
-     * @param mixed $field
-     * @param array $replacements
-     *@return Message
+     * @return Message
      *
      * @throw Exception
+     * @param \Phalcon\Validation $validation
+     * @param mixed $field
+     * @param array $replacements
      */
-    public function messageFactory(Validation $validation, $field, array $replacements = array()): Message
+    public function messageFactory(\Phalcon\Validation $validation, $field, array $replacements = array()): Message
     {
     }
 }

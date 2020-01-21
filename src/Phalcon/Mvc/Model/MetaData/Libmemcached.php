@@ -9,10 +9,7 @@
  */
 namespace Phalcon\Mvc\Model\MetaData;
 
-use Phalcon\Helper\Arr;
-use Phalcon\Mvc\Model\Exception;
 use Phalcon\Mvc\Model\MetaData;
-use Phalcon\Cache\AdapterFactory;
 
 /**
  * Phalcon\Mvc\Model\MetaData\Libmemcached
@@ -28,9 +25,9 @@ class Libmemcached extends MetaData
      * Phalcon\Mvc\Model\MetaData\Libmemcached constructor
      *
      * @param array $options
-     * @param AdapterFactory $factory
+     * @param \Phalcon\Cache\AdapterFactory $factory
      */
-    public function __construct(AdapterFactory $factory, array $options = array())
+    public function __construct(\Phalcon\Cache\AdapterFactory $factory, array $options = array())
     {
     }
 

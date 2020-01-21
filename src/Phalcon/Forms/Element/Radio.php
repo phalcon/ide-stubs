@@ -9,14 +9,12 @@
  */
 namespace Phalcon\Forms\Element;
 
-use Phalcon\Tag;
-
 /**
  * Phalcon\Forms\Element\Radio
  *
  * Component INPUT[type=radio] for forms
  */
-class Radio extends AbstractElement
+class Radio extends \Phalcon\Forms\Element\AbstractElement
 {
 
     /**

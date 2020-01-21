@@ -9,16 +9,10 @@
  */
 namespace Phalcon\Storage\Adapter;
 
-use APCuIterator;
-use Phalcon\Helper\Arr;
-use Phalcon\Storage\Exception;
-use Phalcon\Storage\SerializerFactory;
-use Phalcon\Storage\Serializer\SerializerInterface;
-
 /**
  * Apcu adapter
  */
-class Apcu extends AbstractAdapter
+class Apcu extends \Phalcon\Storage\Adapter\AbstractAdapter
 {
     /**
      * @var array
@@ -35,9 +29,9 @@ class Apcu extends AbstractAdapter
      *     'serializer' => null,
      *     'prefix' => ''
      * ]
-     * @param SerializerFactory $factory
+     * @param \Phalcon\Storage\SerializerFactory $factory
      */
-    public function __construct(SerializerFactory $factory, array $options = array())
+    public function __construct(\Phalcon\Storage\SerializerFactory $factory, array $options = array())
     {
     }
 

@@ -9,12 +9,7 @@
  */
 namespace Phalcon\Cache;
 
-use Phalcon\Cache\Adapter\AdapterInterface;
-use Phalcon\Cache;
 use Psr\SimpleCache\CacheInterface;
-use Phalcon\Cache\Exception\Exception;
-use Phalcon\Config;
-use Phalcon\Helper\Arr;
 
 /**
  * Creates a new Cache class
@@ -39,7 +34,7 @@ class CacheFactory
     /**
      * Factory to create an instace from a Config object
      *
-     * @param array|Config $config = [
+     * @param array|\Phalcon\Config $config = [
      *     'adapter' => 'apcu',
      *     'options' => [
      *         'servers' => [

@@ -9,13 +9,6 @@
  */
 namespace Phalcon;
 
-use ArrayAccess;
-use ArrayIterator;
-use Countable;
-use IteratorAggregate;
-use JsonSerializable;
-use Phalcon\Helper\Json;
-use Serializable;
 use Traversable;
 
 /**
@@ -30,7 +23,7 @@ use Traversable;
  * Such implementations are for instance accessing globals `$_GET`, `$_POST`
  * etc.
  */
-class Collection implements ArrayAccess, Countable, IteratorAggregate, JsonSerializable, Serializable
+class Collection implements \ArrayAccess, \Countable, \IteratorAggregate, \JsonSerializable, \Serializable
 {
     /**
      * @var array

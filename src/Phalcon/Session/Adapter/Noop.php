@@ -9,8 +9,6 @@
  */
 namespace Phalcon\Session\Adapter;
 
-use SessionHandlerInterface;
-
 /**
  * Phalcon\Session\Adapter\Noop
  *
@@ -27,7 +25,7 @@ use SessionHandlerInterface;
  * $session->setAdapter(new Noop());
  * ```
  */
-class Noop implements SessionHandlerInterface
+class Noop implements \SessionHandlerInterface
 {
     /**
      * The connection of some adapters

@@ -9,14 +9,12 @@
  */
 namespace Phalcon\Forms\Element;
 
-use Phalcon\Tag;
-
 /**
  * Phalcon\Forms\Element\Check
  *
  * Component INPUT[type=check] for forms
  */
-class Check extends AbstractElement
+class Check extends \Phalcon\Forms\Element\AbstractElement
 {
 
     /**

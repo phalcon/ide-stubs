@@ -9,9 +9,6 @@
  */
 namespace Phalcon\Events;
 
-use Closure;
-use SplPriorityQueue;
-
 /**
  * Phalcon\Events\Manager
  *
@@ -20,7 +17,7 @@ use SplPriorityQueue;
  * can create hooks or plugins that will offer monitoring of data, manipulation,
  * conditional execution and much more.
  */
-class Manager implements ManagerInterface
+class Manager implements \Phalcon\Events\ManagerInterface
 {
 
     const DEFAULT_PRIORITY = 100;
@@ -126,11 +123,11 @@ class Manager implements ManagerInterface
     /**
      * Internal handler to call a queue of events
      *
-     * @param SplPriorityQueue $queue
+     * @return mixed
+     * @param \SplPriorityQueue $queue
      * @param EventInterface $event
-     *@return mixed
      */
-    final public function fireQueue(SplPriorityQueue $queue, EventInterface $event)
+    final public function fireQueue(\SplPriorityQueue $queue, EventInterface $event)
     {
     }
 

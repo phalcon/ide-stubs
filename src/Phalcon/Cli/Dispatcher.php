@@ -9,11 +9,6 @@
  */
 namespace Phalcon\Cli;
 
-use Phalcon\Cli\Dispatcher\Exception;
-use Phalcon\Dispatcher\AbstractDispatcher as CliDispatcher;
-use Phalcon\Events\ManagerInterface;
-use Phalcon\Filter\FilterInterface;
-
 /**
  * Dispatching is the process of taking the command-line arguments, extracting
  * the module name, task name, action name, and optional parameters contained in
@@ -36,7 +31,7 @@ use Phalcon\Filter\FilterInterface;
  * $handle = $dispatcher->dispatch();
  * ```
  */
-class Dispatcher extends CliDispatcher implements DispatcherInterface
+class Dispatcher extends \Phalcon\Dispatcher\AbstractDispatcher implements \Phalcon\Cli\DispatcherInterface
 {
     /**
      * @var string

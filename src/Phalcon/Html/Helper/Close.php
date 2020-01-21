@@ -14,7 +14,7 @@ namespace Phalcon\Html\Helper;
  *
  * Creates a closing tag
  */
-class Close extends AbstractHelper
+class Close extends \Phalcon\Html\Helper\AbstractHelper
 {
 
     /**

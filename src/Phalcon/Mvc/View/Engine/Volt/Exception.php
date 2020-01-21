@@ -9,12 +9,10 @@
  */
 namespace Phalcon\Mvc\View\Engine\Volt;
 
-use Phalcon\Mvc\View\Exception as BaseException;
-
 /**
  * Class for exceptions thrown by Phalcon\Mvc\View
  */
-class Exception extends BaseException
+class Exception extends \Phalcon\Mvc\View\Exception
 {
 
     protected $statement;

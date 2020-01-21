@@ -9,8 +9,6 @@
  */
 namespace Phalcon\Translate\Adapter;
 
-use Phalcon\Helper\Arr;
-use Phalcon\Translate\Exception;
 use Phalcon\Translate\InterpolatorFactory;
 
 /**
@@ -18,7 +16,7 @@ use Phalcon\Translate\InterpolatorFactory;
  *
  * Base class for Phalcon\Translate adapters
  */
-abstract class AbstractAdapter implements AdapterInterface
+abstract class AbstractAdapter implements \Phalcon\Translate\Adapter\AdapterInterface
 {
     /**
      * @var string
@@ -32,10 +30,10 @@ abstract class AbstractAdapter implements AdapterInterface
 
 
     /**
-     * @param InterpolatorFactory $interpolator
+     * @param \Phalcon\Translate\InterpolatorFactory $interpolator
      * @param array $options
      */
-    public function __construct(InterpolatorFactory $interpolator, array $options)
+    public function __construct(\Phalcon\Translate\InterpolatorFactory $interpolator, array $options)
     {
     }
 

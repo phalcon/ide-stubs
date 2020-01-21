@@ -10,18 +10,15 @@
 namespace Phalcon\Session;
 
 use InvalidArgumentException;
-use RuntimeException;
-use SessionHandlerInterface;
 use Phalcon\Di\AbstractInjectionAware;
-use Phalcon\Di\DiInterface;
-use Phalcon\Helper\Arr;
+use SessionHandlerInterface;
 
 /**
  * Phalcon\Session\Manager
  *
  * Session manager class
  */
-class Manager extends AbstractInjectionAware implements ManagerInterface
+class Manager extends AbstractInjectionAware implements \Phalcon\Session\ManagerInterface
 {
     /**
      * @var SessionHandlerInterface|null
@@ -206,10 +203,10 @@ class Manager extends AbstractInjectionAware implements ManagerInterface
     /**
      * Set the adapter for the session
      *
-     * @param SessionHandlerInterface $adapter
+     * @param \SessionHandlerInterface $adapter
      * @return ManagerInterface
      */
-    public function setAdapter(SessionHandlerInterface $adapter): ManagerInterface
+    public function setAdapter(\SessionHandlerInterface $adapter): ManagerInterface
     {
     }
 

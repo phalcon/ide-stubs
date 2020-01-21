@@ -32,7 +32,7 @@ namespace Phalcon\Db;
  * $connection->addColumn("robots", null, $column);
  * ```
  */
-class Column implements ColumnInterface
+class Column implements \Phalcon\Db\ColumnInterface
 {
     /**
      * Bind Type Blob

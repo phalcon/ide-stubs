@@ -9,9 +9,6 @@
  */
 namespace Phalcon\Http;
 
-use Phalcon\Http\Request\FileInterface;
-use stdClass;
-
 /**
  * Interface for Phalcon\Http\Request
  */
@@ -344,7 +341,7 @@ interface RequestInterface
      *
      * @param bool $onlySuccessful
      * @param bool $namedKeys
-     * @return array|FileInterface[]
+     * @return array|\Phalcon\Http\Request\FileInterface[]
      */
     public function getUploadedFiles(bool $onlySuccessful = false, bool $namedKeys = false): array;
 

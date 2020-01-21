@@ -63,18 +63,18 @@ interface ManagerInterface
     /**
      * Notifies the manager about a committed transaction
      *
-     * @param TransactionInterface $transaction
+     * @param \Phalcon\Mvc\Model\TransactionInterface $transaction
      * @return void
      */
-    public function notifyCommit(TransactionInterface $transaction);
+    public function notifyCommit(\Phalcon\Mvc\Model\TransactionInterface $transaction);
 
     /**
      * Notifies the manager about a rollbacked transaction
      *
-     * @param TransactionInterface $transaction
+     * @param \Phalcon\Mvc\Model\TransactionInterface $transaction
      * @return void
      */
-    public function notifyRollback(TransactionInterface $transaction);
+    public function notifyRollback(\Phalcon\Mvc\Model\TransactionInterface $transaction);
 
     /**
      * Rollbacks active transactions within the manager

@@ -9,11 +9,9 @@
  */
 namespace Phalcon;
 
-use Phalcon\Di\DiInterface;
 use Phalcon\Di\AbstractInjectionAware;
 use Phalcon\Http\RequestInterface;
 use Phalcon\Security\Random;
-use Phalcon\Security\Exception;
 use Phalcon\Session\ManagerInterface as SessionInterface;
 
 /**
@@ -131,10 +129,10 @@ class Security extends AbstractInjectionAware
     /**
      * Phalcon\Security constructor
      *
-     * @param SessionInterface $session
-     * @param RequestInterface $request
+     * @param \Phalcon\Session\ManagerInterface $session
+     * @param \Phalcon\Http\RequestInterface $request
      */
-    public function __construct(SessionInterface $session = null, RequestInterface $request = null)
+    public function __construct(\Phalcon\Session\ManagerInterface $session = null, \Phalcon\Http\RequestInterface $request = null)
     {
     }
 

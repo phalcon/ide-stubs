@@ -10,9 +10,7 @@
 namespace Phalcon\Session;
 
 use Phalcon\Collection;
-use Phalcon\Di;
 use Phalcon\Di\DiInterface;
-use Phalcon\Di\InjectionAwareInterface;
 
 /**
  * Phalcon\Session\Bag
@@ -28,7 +26,7 @@ use Phalcon\Di\InjectionAwareInterface;
  * $user->age  = 22;
  * ```
  */
-class Bag extends Collection implements InjectionAwareInterface
+class Bag extends Collection implements \Phalcon\Di\InjectionAwareInterface
 {
 
     private $container;
@@ -101,10 +99,10 @@ class Bag extends Collection implements InjectionAwareInterface
     /**
      * Sets the DependencyInjector container
      *
-     * @param DiInterface $container
+     * @param \Phalcon\Di\DiInterface $container
      * @return void
      */
-    public function setDI(DiInterface $container)
+    public function setDI(\Phalcon\Di\DiInterface $container)
     {
     }
 }

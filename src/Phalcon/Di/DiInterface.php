@@ -9,12 +9,10 @@
  */
 namespace Phalcon\Di;
 
-use ArrayAccess;
-
 /**
  * Interface for Phalcon\Di
  */
-interface DiInterface extends ArrayAccess
+interface DiInterface extends \ArrayAccess
 {
 
     /**
