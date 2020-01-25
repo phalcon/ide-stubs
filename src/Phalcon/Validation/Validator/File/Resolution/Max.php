@@ -12,7 +12,7 @@ namespace Phalcon\Validation\Validator\File\Resolution;
 use Phalcon\Validation\Validator\File\AbstractFile;
 
 /**
- * Checks if a file has the rigth resolution
+ * Checks if a file has the right resolution
  *
  * ```php
  * use Phalcon\Validation;

@@ -51,7 +51,7 @@ class NativeArray extends \Phalcon\Translate\Adapter\AbstractAdapter implements 
     }
 
     /**
-     * Whenever a key is not found this medhod will be called
+     * Whenever a key is not found this method will be called
      *
      * @param string $index
      * @return string

@@ -10,7 +10,6 @@
 namespace Phalcon\Mvc;
 
 use Phalcon\Application\AbstractApplication;
-use Phalcon\Mvc\ModuleDefinitionInterface;
 
 /**
  * Phalcon\Mvc\Application

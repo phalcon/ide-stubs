@@ -541,7 +541,7 @@ class Tag
     }
 
     /**
-     * Renders the title with title tags. The title is automaticall escaped
+     * Renders the title with title tags. The title is automatically escaped
      *
      * @param bool $prepend
      * @param bool $append
