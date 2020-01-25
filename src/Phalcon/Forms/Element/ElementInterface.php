@@ -138,7 +138,7 @@ interface ElementInterface
     /**
      * Returns the validators registered for the element
      *
-     * @return array|\Phalcon\Validation\ValidatorInterface[]
+     * @return array
      */
     public function getValidators(): array;
 

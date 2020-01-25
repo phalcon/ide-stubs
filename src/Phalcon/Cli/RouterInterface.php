@@ -80,7 +80,7 @@ interface RouterInterface
     /**
      * Return all the routes defined in the router
      *
-     * @return array|\Phalcon\Cli\Router\RouteInterface[]
+     * @return array
      */
     public function getRoutes(): array;
 

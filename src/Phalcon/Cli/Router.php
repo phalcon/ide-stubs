@@ -167,7 +167,7 @@ class Router extends AbstractInjectionAware
     /**
      * Returns all the routes defined in the router
      *
-     * @return array|\Phalcon\Cli\Router\Route[]
+     * @return array
      */
     public function getRoutes(): array
     {

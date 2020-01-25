@@ -44,7 +44,7 @@ class Failed extends \Phalcon\Mvc\Model\Transaction\Exception
     /**
      * Returns validation record messages which stop the transaction
      *
-     * @return array|\Phalcon\Messages\MessageInterface[]
+     * @return array
      */
     public function getRecordMessages(): array
     {

@@ -146,7 +146,7 @@ abstract class Resultset implements \Phalcon\Mvc\Model\ResultsetInterface, \Iter
      * ```
      *
      * @param callable $filter
-     * @return array|\Phalcon\Mvc\ModelInterface[]
+     * @return array
      */
     public function filter($filter): array
     {
@@ -191,7 +191,7 @@ abstract class Resultset implements \Phalcon\Mvc\Model\ResultsetInterface, \Iter
     /**
      * Returns the error messages produced by a batch operation
      *
-     * @return array|\Phalcon\Messages\MessageInterface[]
+     * @return array
      */
     public function getMessages(): array
     {

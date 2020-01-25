@@ -80,7 +80,7 @@ class Collection implements \Iterator, \Countable
      * Returns all the annotations that match a name
      *
      * @param string $name
-     * @return array|Annotation[]
+     * @return array
      */
     public function getAll(string $name): array
     {
@@ -89,7 +89,7 @@ class Collection implements \Iterator, \Countable
     /**
      * Returns the internal annotations as an array
      *
-     * @return array|Annotation[]
+     * @return array
      */
     public function getAnnotations(): array
     {

@@ -216,7 +216,7 @@ abstract class AbstractElement implements \Phalcon\Forms\Element\ElementInterfac
     /**
      * Returns the validators registered for the element
      *
-     * @return array|\Phalcon\Validation\ValidatorInterface[]
+     * @return array
      */
     public function getValidators(): array
     {

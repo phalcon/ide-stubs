@@ -42,7 +42,7 @@ interface ResultsetInterface
      * ```
      *
      * @param callable $filter
-     * @return array|\Phalcon\Mvc\ModelInterface[]
+     * @return array
      */
     public function filter($filter): array;
 
@@ -77,7 +77,7 @@ interface ResultsetInterface
     /**
      * Returns the error messages produced by a batch operation
      *
-     * @return array|\Phalcon\Messages\MessageInterface[]
+     * @return array
      */
     public function getMessages(): array;
 

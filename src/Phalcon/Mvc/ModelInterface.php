@@ -151,7 +151,7 @@ interface ModelInterface
     /**
      * Returns array of validation messages
      *
-     * @return array|\Phalcon\Messages\MessageInterface[]
+     * @return array
      */
     public function getMessages(): array;
 

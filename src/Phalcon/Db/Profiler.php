@@ -115,7 +115,7 @@ class Profiler
     /**
      * Returns all the processed profiles
      *
-     * @return array|\Phalcon\Db\Profiler\Item[]
+     * @return array
      */
     public function getProfiles(): array
     {
