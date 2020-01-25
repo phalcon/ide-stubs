@@ -775,7 +775,7 @@ class Manager implements \Phalcon\Mvc\Model\ManagerInterface, \Phalcon\Di\Inject
      * ```
      *
      * @param \Phalcon\Mvc\ModelInterface $model
-     * @return array
+     * @return array|RelationInterface[]
      */
     public function getBelongsTo(\Phalcon\Mvc\ModelInterface $model): array
     {
@@ -785,7 +785,7 @@ class Manager implements \Phalcon\Mvc\Model\ManagerInterface, \Phalcon\Di\Inject
      * Gets hasMany relations defined on a model
      *
      * @param \Phalcon\Mvc\ModelInterface $model
-     * @return array
+     * @return array|RelationInterface[]
      */
     public function getHasMany(\Phalcon\Mvc\ModelInterface $model): array
     {
@@ -805,7 +805,7 @@ class Manager implements \Phalcon\Mvc\Model\ManagerInterface, \Phalcon\Di\Inject
      * Gets hasOneThrough relations defined on a model
      *
      * @param \Phalcon\Mvc\ModelInterface $model
-     * @return array
+     * @return array|RelationInterface[]
      */
     public function getHasOneThrough(\Phalcon\Mvc\ModelInterface $model): array
     {
@@ -815,7 +815,7 @@ class Manager implements \Phalcon\Mvc\Model\ManagerInterface, \Phalcon\Di\Inject
      * Gets hasManyToMany relations defined on a model
      *
      * @param \Phalcon\Mvc\ModelInterface $model
-     * @return array
+     * @return array|RelationInterface[]
      */
     public function getHasManyToMany(\Phalcon\Mvc\ModelInterface $model): array
     {
@@ -825,7 +825,7 @@ class Manager implements \Phalcon\Mvc\Model\ManagerInterface, \Phalcon\Di\Inject
      * Gets hasOne relations defined on a model
      *
      * @param \Phalcon\Mvc\ModelInterface $model
-     * @return array
+     * @return array|RelationInterface[]
      */
     public function getHasOneAndHasMany(\Phalcon\Mvc\ModelInterface $model): array
     {
@@ -835,7 +835,7 @@ class Manager implements \Phalcon\Mvc\Model\ManagerInterface, \Phalcon\Di\Inject
      * Query all the relationships defined on a model
      *
      * @param string $modelName
-     * @return array
+     * @return array|RelationInterface[]
      */
     public function getRelations(string $modelName): array
     {
@@ -846,7 +846,7 @@ class Manager implements \Phalcon\Mvc\Model\ManagerInterface, \Phalcon\Di\Inject
      *
      * @param string $first
      * @param string $second
-     * @return array|bool
+     * @return array|bool|RelationInterface[]
      */
     public function getRelationsBetween(string $first, string $second)
     {

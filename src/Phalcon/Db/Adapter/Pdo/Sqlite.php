@@ -68,7 +68,7 @@ class Sqlite extends \Phalcon\Db\Adapter\Pdo\AbstractPdo
      *
      * @param string $table
      * @param string $schema
-     * @return array
+     * @return array|\Phalcon\Db\ColumnInterface[]
      */
     public function describeColumns(string $table, string $schema = null): array
     {
@@ -85,7 +85,7 @@ class Sqlite extends \Phalcon\Db\Adapter\Pdo\AbstractPdo
      *
      * @param string $table
      * @param string $schema
-     * @return array
+     * @return array|\Phalcon\Db\IndexInterface[]
      */
     public function describeIndexes(string $table, string $schema = null): array
     {
@@ -96,7 +96,7 @@ class Sqlite extends \Phalcon\Db\Adapter\Pdo\AbstractPdo
      *
      * @param string $table
      * @param string $schema
-     * @return array
+     * @return array|\Phalcon\Db\ReferenceInterface[]
      */
     public function describeReferences(string $table, string $schema = null): array
     {

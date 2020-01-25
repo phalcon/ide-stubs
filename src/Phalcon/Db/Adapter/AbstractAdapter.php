@@ -257,7 +257,7 @@ abstract class AbstractAdapter implements \Phalcon\Db\Adapter\AdapterInterface, 
      *
      * @param string $table
      * @param string $schema
-     * @return array
+     * @return array|\Phalcon\Db\IndexInterface[]
      */
     public function describeIndexes(string $table, string $schema = null): array
     {
@@ -274,7 +274,7 @@ abstract class AbstractAdapter implements \Phalcon\Db\Adapter\AdapterInterface, 
      *
      * @param string $table
      * @param string $schema
-     * @return array
+     * @return array|\Phalcon\Db\ReferenceInterface[]
      */
     public function describeReferences(string $table, string $schema = null): array
     {

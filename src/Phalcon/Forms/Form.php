@@ -155,7 +155,7 @@ class Form extends Injectable implements \Countable, \Iterator, \Phalcon\Html\At
     /**
      * Returns the form elements added to the form
      *
-     * @return array
+     * @return array|\Phalcon\Forms\Element\ElementInterface[]
      */
     public function getElements(): array
     {

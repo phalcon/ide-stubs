@@ -62,7 +62,7 @@ interface DiInterface extends \ArrayAccess
     /**
      * Return the services registered in the DI
      *
-     * @return array
+     * @return array|ServiceInterface[]
      */
     public function getServices(): array;
 

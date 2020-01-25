@@ -482,7 +482,7 @@ class Router extends AbstractInjectionAware implements \Phalcon\Mvc\RouterInterf
     /**
      * Returns all the routes defined in the router
      *
-     * @return array
+     * @return array|\Phalcon\Mvc\Router\RouteInterface[]
      */
     public function getRoutes(): array
     {

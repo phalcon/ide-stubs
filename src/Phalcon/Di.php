@@ -160,7 +160,7 @@ class Di implements \Phalcon\Di\DiInterface
     /**
      * Return the services registered in the DI
      *
-     * @return array
+     * @return array|\Phalcon\Di\ServiceInterface[]
      */
     public function getServices(): array
     {

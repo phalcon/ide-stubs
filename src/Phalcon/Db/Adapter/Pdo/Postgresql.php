@@ -84,7 +84,7 @@ class Postgresql extends \Phalcon\Db\Adapter\Pdo\AbstractPdo
      *
      * @param string $table
      * @param string $schema
-     * @return array
+     * @return array|\Phalcon\Db\ColumnInterface[]
      */
     public function describeColumns(string $table, string $schema = null): array
     {
@@ -101,7 +101,7 @@ class Postgresql extends \Phalcon\Db\Adapter\Pdo\AbstractPdo
      *
      * @param string $table
      * @param string $schema
-     * @return array
+     * @return array|\Phalcon\Db\ReferenceInterface[]
      */
     public function describeReferences(string $table, string $schema = null): array
     {

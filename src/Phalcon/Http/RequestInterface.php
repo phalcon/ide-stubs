@@ -341,7 +341,7 @@ interface RequestInterface
      *
      * @param bool $onlySuccessful
      * @param bool $namedKeys
-     * @return array
+     * @return array|\Phalcon\Http\Request\FileInterface[]
      */
     public function getUploadedFiles(bool $onlySuccessful = false, bool $namedKeys = false): array;
 

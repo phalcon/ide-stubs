@@ -362,7 +362,7 @@ class Memory extends \Phalcon\Acl\Adapter\AbstractAdapter
     /**
      * Return an array with every role registered in the list
      *
-     * @return array
+     * @return array|\Phalcon\Acl\RoleInterface[]
      */
     public function getRoles(): array
     {
@@ -371,7 +371,7 @@ class Memory extends \Phalcon\Acl\Adapter\AbstractAdapter
     /**
      * Return an array with every component registered in the list
      *
-     * @return array
+     * @return array|\Phalcon\Acl\ComponentInterface[]
      */
     public function getComponents(): array
     {

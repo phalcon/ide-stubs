@@ -325,7 +325,7 @@ class Group implements \Phalcon\Mvc\Router\GroupInterface
     /**
      * Returns the routes added to the group
      *
-     * @return array
+     * @return array|RouteInterface[]
      */
     public function getRoutes(): array
     {

@@ -217,7 +217,7 @@ class Manager extends AbstractInjectionAware
     /**
      * Returns existing collections in the manager
      *
-     * @return array
+     * @return array|Collection[]
      */
     public function getCollections(): array
     {

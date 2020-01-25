@@ -860,7 +860,7 @@ abstract class Model extends AbstractInjectionAware implements \Phalcon\Mvc\Enti
      * ```
      *
      * @param mixed $filter
-     * @return array
+     * @return array|\Phalcon\Messages\MessageInterface[]
      */
     public function getMessages($filter = null): array
     {

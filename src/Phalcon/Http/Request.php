@@ -479,7 +479,7 @@ class Request extends AbstractInjectionAware implements \Phalcon\Http\RequestInt
      *
      * @param bool $onlySuccessful
      * @param bool $namedKeys
-     * @return array
+     * @return array|\Phalcon\Http\Request\FileInterface[]
      */
     public function getUploadedFiles(bool $onlySuccessful = false, bool $namedKeys = false): array
     {
