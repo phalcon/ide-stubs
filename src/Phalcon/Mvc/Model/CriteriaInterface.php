@@ -69,6 +69,14 @@ interface CriteriaInterface
     public function cache(array $cache): CriteriaInterface;
 
     /**
+     * Sets the columns to be queried
+     *
+     * @param string|array $columns
+     * @return CriteriaInterface
+     */
+    public function columns($columns): CriteriaInterface;
+    
+    /**
      * Adds the conditions parameter to the criteria
      *
      * @param string $conditions
