@@ -88,7 +88,9 @@ class Builder implements \Phalcon\Mvc\Model\Query\BuilderInterface, \Phalcon\Di\
 
     protected $limit;
 
-
+    /**
+     * @var array|string
+     */
     protected $models;
 
 

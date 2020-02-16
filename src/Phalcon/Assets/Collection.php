@@ -64,7 +64,7 @@ class Collection implements \Countable, \Iterator
     /**
      * @var int
      */
-    protected $position;
+    protected $position = 0;
 
     /**
      * @var string
@@ -270,7 +270,7 @@ class Collection implements \Countable, \Iterator
     }
 
     /**
-     * Adds an inline javascript to the collection
+     * Adds an inline JavaScript to the collection
      *
      * @param string $content
      * @param bool $filter
@@ -282,7 +282,7 @@ class Collection implements \Countable, \Iterator
     }
 
     /**
-     * Adds a javascript asset to the collection
+     * Adds a JavaScript asset to the collection
      *
      * @param array $attributes
      * @param string $path

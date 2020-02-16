@@ -14,7 +14,7 @@ use Phalcon\Di\AbstractInjectionAware;
 /**
  * Phalcon\Assets\Manager
  *
- * Manages collections of CSS/Javascript assets
+ * Manages collections of CSS/JavaScript assets
  */
 class Manager extends AbstractInjectionAware
 {
@@ -78,7 +78,7 @@ class Manager extends AbstractInjectionAware
     }
 
     /**
-     * Adds a Css asset to the 'css' collection
+     * Adds a CSS asset to the 'css' collection
      *
      * ```php
      * $assets->addCss("css/bootstrap.css");
@@ -119,7 +119,7 @@ class Manager extends AbstractInjectionAware
     }
 
     /**
-     * Adds an inline Css to the 'css' collection
+     * Adds an inline CSS to the 'css' collection
      *
      * @param string $content
      * @param mixed $filter
@@ -131,7 +131,7 @@ class Manager extends AbstractInjectionAware
     }
 
     /**
-     * Adds an inline javascript to the 'js' collection
+     * Adds an inline JavaScript to the 'js' collection
      *
      * @param string $content
      * @param mixed $filter
@@ -143,7 +143,7 @@ class Manager extends AbstractInjectionAware
     }
 
     /**
-     * Adds a javascript asset to the 'js' collection
+     * Adds a JavaScript asset to the 'js' collection
      *
      * ```php
      * $assets->addJs("scripts/jquery.js");

@@ -421,7 +421,7 @@ abstract class AbstractAdapter implements \Phalcon\Db\Adapter\AdapterInterface, 
      *
      * // Getting name of last edited robot
      * $robot = $connection->fetchColumn(
-     *     "SELECT id, name FROM robots order by modified desc",
+     *     "SELECT id, name FROM robots ORDER BY modified DESC",
      *     1
      * );
      * print_r($robot);

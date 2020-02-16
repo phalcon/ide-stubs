@@ -143,7 +143,7 @@ abstract class AbstractFlash extends AbstractInjectionAware implements \Phalcon\
     }
 
     /**
-     * Set the autoescape mode in generated html
+     * Set the autoescape mode in generated HTML
      *
      * @param bool $autoescape
      * @return FlashInterface

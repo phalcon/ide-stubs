@@ -616,7 +616,7 @@ class Tag
     }
 
     /**
-     * Set autoescape mode in generated html
+     * Set autoescape mode in generated HTML
      *
      * @param bool $autoescape
      * @return void

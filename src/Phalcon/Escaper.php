@@ -69,7 +69,7 @@ class Escaper implements \Phalcon\Escaper\EscaperInterface
     }
 
     /**
-     * Escape javascript strings by replacing non-alphanumeric chars by their
+     * Escape JavaScript strings by replacing non-alphanumeric chars by their
      * hexadecimal escaped representation
      *
      * @param string $js
