@@ -250,9 +250,11 @@ class Column implements \Phalcon\Db\ColumnInterface
     /**
      * Column not nullable?
      *
+     * Default SQL definition is NOT NULL.
+     *
      * @var bool
      */
-    protected $notNull = false;
+    protected $notNull = true;
 
     /**
      * Column is part of the primary key?

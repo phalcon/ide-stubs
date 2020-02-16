@@ -74,7 +74,7 @@ class Debug
     }
 
     /**
-     * Returns the css sources
+     * Returns the CSS sources
      *
      * @return string
      */
@@ -83,7 +83,7 @@ class Debug
     }
 
     /**
-     * Returns the javascript sources
+     * Returns the JavaScript sources
      *
      * @return string
      */

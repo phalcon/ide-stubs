@@ -18,7 +18,7 @@ class Password extends \Phalcon\Forms\Element\AbstractElement
 {
 
     /**
-     * Renders the element widget returning html
+     * Renders the element widget returning HTML
      *
      * @param array $attributes
      * @return string

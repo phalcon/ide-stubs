@@ -663,7 +663,7 @@ abstract class Model extends AbstractInjectionAware implements \Phalcon\Mvc\Enti
      * $transaction2->rollback();
      * ```
      *
-     * @param arrray|string|int|null $parameters = [
+     * @param array|string|int|null $parameters = [
      *     'conditions' => ''
      *     'columns' => '',
      *     'bind' => [],
@@ -752,7 +752,7 @@ abstract class Model extends AbstractInjectionAware implements \Phalcon\Mvc\Enti
      * );
      * ```
      *
-     * @param arrray|string|int|null $parameters = [
+     * @param array|string|int|null $parameters = [
      *     'conditions' => ''
      *     'columns' => '',
      *     'bind' => [],

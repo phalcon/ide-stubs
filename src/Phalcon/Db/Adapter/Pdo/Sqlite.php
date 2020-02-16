@@ -12,7 +12,7 @@ namespace Phalcon\Db\Adapter\Pdo;
 use Phalcon\Db\RawValue;
 
 /**
- * Specific functions for the Sqlite database system
+ * Specific functions for the SQLite database system
  *
  * ```php
  * use Phalcon\Db\Adapter\Pdo\Sqlite;

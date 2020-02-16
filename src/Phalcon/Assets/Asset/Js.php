@@ -10,7 +10,7 @@
 namespace Phalcon\Assets\Asset;
 
 /**
- * Represents Javascript assets
+ * Represents JavaScript assets
  */
 class Js extends \Phalcon\Assets\Asset
 {

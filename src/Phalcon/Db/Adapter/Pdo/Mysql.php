@@ -10,7 +10,7 @@
 namespace Phalcon\Db\Adapter\Pdo;
 
 /**
- * Specific functions for the Mysql database system
+ * Specific functions for the MySQL database system
  *
  * ```php
  * use Phalcon\Db\Adapter\Pdo\Mysql;
