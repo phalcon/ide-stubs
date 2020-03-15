@@ -69,5 +69,4 @@ class Select extends \Phalcon\Forms\Element\AbstractElement
     public function setOptions($options): ElementInterface
     {
     }
-
 }
