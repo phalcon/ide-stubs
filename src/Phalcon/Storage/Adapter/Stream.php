@@ -200,5 +200,4 @@ class Stream extends \Phalcon\Storage\Adapter\AbstractAdapter
     private function isExpired(array $payload): bool
     {
     }
-
 }

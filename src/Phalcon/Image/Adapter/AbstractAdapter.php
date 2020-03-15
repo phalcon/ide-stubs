@@ -19,7 +19,7 @@ use Phalcon\Image\Enum;
 abstract class AbstractAdapter implements \Phalcon\Image\Adapter\AdapterInterface
 {
 
-    static protected $checked = false;
+    protected static $checked = false;
 
 
     protected $file;
@@ -281,5 +281,4 @@ abstract class AbstractAdapter implements \Phalcon\Image\Adapter\AdapterInterfac
     public function watermark(AdapterInterface $watermark, int $offsetX = 0, int $offsetY = 0, int $opacity = 100): AdapterInterface
     {
     }
-
 }

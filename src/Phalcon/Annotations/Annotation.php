@@ -128,5 +128,4 @@ class Annotation
     public function numberArguments(): int
     {
     }
-
 }

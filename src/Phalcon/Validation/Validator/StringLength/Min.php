@@ -88,5 +88,4 @@ class Min extends AbstractValidator
     public function validate(\Phalcon\Validation $validation, $field): bool
     {
     }
-
 }

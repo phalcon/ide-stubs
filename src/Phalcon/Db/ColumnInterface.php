@@ -126,5 +126,4 @@ interface ColumnInterface
      * @return bool
      */
     public function isUnsigned(): bool;
-
 }

@@ -74,5 +74,4 @@ class Grouped extends Config
     public function __construct(array $arrayConfig, string $defaultAdapter = 'php')
     {
     }
-
 }

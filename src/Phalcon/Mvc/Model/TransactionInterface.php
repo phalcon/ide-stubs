@@ -107,5 +107,4 @@ interface TransactionInterface
      * @return TransactionInterface
      */
     public function throwRollbackException(bool $status): TransactionInterface;
-
 }

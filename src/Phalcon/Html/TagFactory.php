@@ -48,5 +48,4 @@ class TagFactory extends AbstractFactory
     protected function getAdapters(): array
     {
     }
-
 }

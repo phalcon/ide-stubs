@@ -83,5 +83,4 @@ class Status implements \Phalcon\Mvc\Model\Query\StatusInterface
     public function success(): bool
     {
     }
-
 }

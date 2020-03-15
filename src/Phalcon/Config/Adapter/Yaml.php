@@ -60,5 +60,4 @@ class Yaml extends Config
     public function __construct(string $filePath, array $callbacks = null)
     {
     }
-
 }

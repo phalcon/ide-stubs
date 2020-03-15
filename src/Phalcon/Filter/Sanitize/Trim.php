@@ -23,5 +23,4 @@ class Trim
     public function __invoke(string $input)
     {
     }
-
 }

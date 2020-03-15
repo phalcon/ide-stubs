@@ -70,5 +70,4 @@ class NativeArray extends \Phalcon\Translate\Adapter\AbstractAdapter implements 
     public function query(string $index, array $placeholders = array()): string
     {
     }
-
 }

@@ -536,5 +536,4 @@ class Criteria implements \Phalcon\Mvc\Model\CriteriaInterface, \Phalcon\Di\Inje
     public function where(string $conditions, $bindParams = null, $bindTypes = null): CriteriaInterface
     {
     }
-
 }

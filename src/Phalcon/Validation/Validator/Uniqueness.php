@@ -147,5 +147,4 @@ class Uniqueness extends AbstractCombinedFieldsValidator
     protected function isUniquenessModel($record, array $field, array $values)
     {
     }
-
 }

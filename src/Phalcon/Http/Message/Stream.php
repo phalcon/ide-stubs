@@ -250,5 +250,4 @@ class Stream implements \Psr\Http\Message\StreamInterface
     private function checkWritable()
     {
     }
-
 }

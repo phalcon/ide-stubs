@@ -577,5 +577,4 @@ class Compiler implements \Phalcon\Di\InjectionAwareInterface
     final protected function statementListOrExtends($statements)
     {
     }
-
 }

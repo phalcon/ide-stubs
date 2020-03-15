@@ -53,5 +53,4 @@ class Redis extends MetaData
     public function reset()
     {
     }
-
 }

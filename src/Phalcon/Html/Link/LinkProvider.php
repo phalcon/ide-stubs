@@ -70,5 +70,4 @@ class LinkProvider implements \Psr\Link\LinkProviderInterface
     protected function getKey(\Psr\Link\LinkInterface $link): string
     {
     }
-
 }

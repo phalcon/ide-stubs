@@ -406,5 +406,4 @@ abstract class AbstractMessage extends \Phalcon\Http\Message\AbstractCommon
     final protected function processProtocol($protocol = ''): string
     {
     }
-
 }

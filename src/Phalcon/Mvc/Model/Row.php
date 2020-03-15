@@ -115,5 +115,4 @@ class Row implements \Phalcon\Mvc\EntityInterface, \Phalcon\Mvc\Model\ResultInte
     public function writeAttribute(string $attribute, $value)
     {
     }
-
 }

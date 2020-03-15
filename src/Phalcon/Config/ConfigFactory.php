@@ -73,5 +73,4 @@ class ConfigFactory extends AbstractFactory
     protected function getAdapters(): array
     {
     }
-
 }

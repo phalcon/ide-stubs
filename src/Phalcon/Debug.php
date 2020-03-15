@@ -30,7 +30,7 @@ class Debug
     /**
      * @var bool
      */
-    static protected $isActive;
+    protected static $isActive;
 
     /**
      * @var bool
@@ -254,5 +254,4 @@ class Debug
     final protected function showTraceItem(int $n, array $trace): string
     {
     }
-
 }

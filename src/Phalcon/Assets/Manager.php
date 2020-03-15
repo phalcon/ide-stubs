@@ -358,5 +358,4 @@ class Manager extends AbstractInjectionAware
     private function getPrefixedPath(Collection $collection, string $path): string
     {
     }
-
 }

@@ -39,5 +39,4 @@ interface EngineInterface
      * @param bool $mustClean
      */
     public function render(string $path, $params, bool $mustClean = false);
-
 }

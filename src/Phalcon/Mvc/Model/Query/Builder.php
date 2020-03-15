@@ -919,5 +919,4 @@ class Builder implements \Phalcon\Mvc\Model\Query\BuilderInterface, \Phalcon\Di\
     protected function conditionNotIn(string $clause, string $operator, string $expr, array $values): BuilderInterface
     {
     }
-
 }

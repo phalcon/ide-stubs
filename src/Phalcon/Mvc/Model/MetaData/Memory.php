@@ -48,5 +48,4 @@ class Memory extends MetaData
     public function write(string $key, array $data)
     {
     }
-
 }

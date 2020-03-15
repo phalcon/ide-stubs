@@ -34,5 +34,4 @@ class Attributes extends Collection implements \Phalcon\Html\Attributes\RenderIn
     public function __toString(): string
     {
     }
-
 }

@@ -89,5 +89,4 @@ class Date extends AbstractValidator
     private function checkDate($value, $format): bool
     {
     }
-
 }

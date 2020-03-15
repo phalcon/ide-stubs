@@ -508,5 +508,4 @@ interface RequestInterface
      * @return int
      */
     public function numFiles(bool $onlySuccessful = false): int;
-
 }

@@ -67,5 +67,4 @@ interface EventInterface
      * @return EventInterface
      */
     public function stop(): EventInterface;
-
 }

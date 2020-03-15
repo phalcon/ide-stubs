@@ -223,5 +223,4 @@ class Gettext extends \Phalcon\Translate\Adapter\AbstractAdapter implements \Arr
     protected function prepareOptions(array $options)
     {
     }
-
 }

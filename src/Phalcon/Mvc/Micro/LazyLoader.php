@@ -48,5 +48,4 @@ class LazyLoader
     public function callMethod(string $method, $arguments, \Phalcon\Mvc\Model\BinderInterface $modelBinder = null)
     {
     }
-
 }

@@ -30,5 +30,4 @@ final class Request extends AbstractRequest implements \Psr\Http\Message\Request
     public function __construct(string $method = 'GET', $uri = null, $body = 'php://memory', $headers = array())
     {
     }
-
 }

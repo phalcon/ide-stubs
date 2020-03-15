@@ -377,5 +377,4 @@ class Group implements \Phalcon\Mvc\Router\GroupInterface
     protected function addRoute(string $pattern, $paths = null, $httpMethods = null): RouteInterface
     {
     }
-
 }

@@ -20,7 +20,7 @@ namespace Phalcon\Image\Adapter;
 class Gd extends \Phalcon\Image\Adapter\AbstractAdapter
 {
 
-    static protected $checked = false;
+    protected static $checked = false;
 
 
     /**
@@ -178,5 +178,4 @@ class Gd extends \Phalcon\Image\Adapter\AbstractAdapter
     protected function processWatermark(AdapterInterface $watermark, int $offsetX, int $offsetY, int $opacity)
     {
     }
-
 }

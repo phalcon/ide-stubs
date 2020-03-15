@@ -38,5 +38,4 @@ class Php extends \Phalcon\Storage\Serializer\AbstractSerializer
     public function unserialize($data)
     {
     }
-
 }

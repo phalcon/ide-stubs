@@ -33,5 +33,4 @@ interface BehaviorInterface
      * @param \Phalcon\Mvc\ModelInterface $model
      */
     public function notify(string $type, \Phalcon\Mvc\ModelInterface $model);
-
 }

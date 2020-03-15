@@ -92,5 +92,4 @@ class Stream extends \Phalcon\Session\Adapter\Noop
     public function write($id, $data): bool
     {
     }
-
 }

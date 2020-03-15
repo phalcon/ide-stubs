@@ -36,5 +36,4 @@ class Timestampable extends Behavior
     private function getTimestamp(array $options)
     {
     }
-
 }

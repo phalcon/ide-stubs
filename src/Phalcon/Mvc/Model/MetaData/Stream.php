@@ -69,5 +69,4 @@ class Stream extends MetaData
     private function throwWriteException($option)
     {
     }
-
 }

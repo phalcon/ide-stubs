@@ -182,5 +182,4 @@ interface AdapterInterface
      * @return void
      */
     public function setNoArgumentsDefaultAction(int $defaultAccess);
-
 }

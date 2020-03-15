@@ -294,5 +294,4 @@ final class Registry extends \Phalcon\Collection
     final public function unserialize($serialized)
     {
     }
-
 }

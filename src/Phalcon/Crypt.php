@@ -407,5 +407,4 @@ class Crypt implements \Phalcon\Crypt\CryptInterface
     protected function cryptUnpadText(string $text, string $mode, int $blockSize, int $paddingType)
     {
     }
-
 }

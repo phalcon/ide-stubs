@@ -105,5 +105,4 @@ class Bag extends Collection implements \Phalcon\Di\InjectionAwareInterface
     public function setDI(\Phalcon\Di\DiInterface $container)
     {
     }
-
 }

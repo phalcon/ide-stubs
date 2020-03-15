@@ -85,5 +85,4 @@ interface AdapterInterface
      * @return AdapterInterface
      */
     public function setFormatter(\Phalcon\Logger\Formatter\FormatterInterface $formatter): AdapterInterface;
-
 }
