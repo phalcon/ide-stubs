@@ -38,4 +38,5 @@ interface StrategyInterface
      * @return array
      */
     public function getMetaData(\Phalcon\Mvc\ModelInterface $model, \Phalcon\Di\DiInterface $container): array;
+
 }

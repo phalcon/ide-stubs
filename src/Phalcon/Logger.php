@@ -345,4 +345,5 @@ class Logger implements \Psr\Log\LoggerInterface
     private function getLevelNumber($level): int
     {
     }
+
 }

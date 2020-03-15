@@ -38,4 +38,5 @@ class Json extends \Phalcon\Storage\Serializer\AbstractSerializer
     public function unserialize($data)
     {
     }
+
 }

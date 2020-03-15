@@ -25,4 +25,5 @@ class Close extends \Phalcon\Html\Helper\AbstractHelper
     public function __invoke(string $tag): string
     {
     }
+
 }

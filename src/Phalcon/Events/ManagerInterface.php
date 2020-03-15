@@ -70,4 +70,5 @@ interface ManagerInterface
      * @return bool
      */
     public function hasListeners(string $type): bool;
+
 }

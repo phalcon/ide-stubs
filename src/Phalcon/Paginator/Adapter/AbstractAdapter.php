@@ -96,4 +96,5 @@ abstract class AbstractAdapter implements \Phalcon\Paginator\Adapter\AdapterInte
     protected function getRepository(array $properties = null): RepositoryInterface
     {
     }
+
 }

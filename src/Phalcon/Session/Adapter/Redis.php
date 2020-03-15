@@ -32,4 +32,5 @@ class Redis extends \Phalcon\Session\Adapter\AbstractAdapter
     public function __construct(\Phalcon\Storage\AdapterFactory $factory, array $options = array())
     {
     }
+
 }

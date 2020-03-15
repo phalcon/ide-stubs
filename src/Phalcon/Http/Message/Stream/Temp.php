@@ -29,4 +29,5 @@ class Temp extends Stream
     public function __construct($mode = 'rb')
     {
     }
+
 }

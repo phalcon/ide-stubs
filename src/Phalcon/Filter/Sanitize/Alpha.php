@@ -23,4 +23,5 @@ class Alpha
     public function __invoke($input)
     {
     }
+
 }

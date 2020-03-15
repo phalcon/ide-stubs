@@ -169,4 +169,5 @@ class Escaper implements \Phalcon\Escaper\EscaperInterface
     public function setHtmlQuoteType(int $quoteType)
     {
     }
+
 }

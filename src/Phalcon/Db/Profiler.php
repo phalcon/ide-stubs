@@ -150,4 +150,5 @@ class Profiler
     public function stopProfile(): Profiler
     {
     }
+
 }

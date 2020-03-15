@@ -241,4 +241,5 @@ abstract class AbstractAdapter implements \Phalcon\Storage\Adapter\AdapterInterf
     protected function initSerializer()
     {
     }
+
 }

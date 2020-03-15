@@ -61,4 +61,5 @@ class Line extends \Phalcon\Logger\Formatter\AbstractFormatter
     public function format(\Phalcon\Logger\Item $item): string
     {
     }
+
 }

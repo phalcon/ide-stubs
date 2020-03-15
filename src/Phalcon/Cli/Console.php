@@ -47,4 +47,5 @@ class Console extends AbstractApplication
     public function setArgument(array $arguments = null, bool $str = true, bool $shift = true): Console
     {
     }
+
 }

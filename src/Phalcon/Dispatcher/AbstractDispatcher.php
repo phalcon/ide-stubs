@@ -484,4 +484,5 @@ abstract class AbstractDispatcher extends AbstractInjectionAware implements \Pha
     protected function toCamelCase(string $input): string
     {
     }
+
 }

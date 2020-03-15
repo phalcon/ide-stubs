@@ -55,4 +55,5 @@ class ValidationFailed extends \Phalcon\Mvc\Model\Exception
     public function getModel(): ModelInterface
     {
     }
+
 }

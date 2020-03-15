@@ -191,4 +191,5 @@ class Dispatcher extends \Phalcon\Dispatcher\AbstractDispatcher implements \Phal
     protected function throwDispatchException(string $message, int $exceptionCode = 0)
     {
     }
+
 }

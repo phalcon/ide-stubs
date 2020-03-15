@@ -70,4 +70,5 @@ interface WriteableInterface
      * @return PayloadInterface
      */
     public function setStatus($status): PayloadInterface;
+
 }

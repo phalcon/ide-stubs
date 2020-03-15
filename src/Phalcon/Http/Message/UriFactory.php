@@ -28,4 +28,5 @@ final class UriFactory implements \Psr\Http\Message\UriFactoryInterface
     public function createUri(string $uri = ''): UriInterface
     {
     }
+
 }

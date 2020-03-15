@@ -98,4 +98,5 @@ class Session extends \Phalcon\Flash\AbstractFlash
     public function getSessionService(): ManagerInterface
     {
     }
+
 }

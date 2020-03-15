@@ -133,4 +133,5 @@ class Annotations extends Router
     public function setControllerSuffix(string $controllerSuffix)
     {
     }
+
 }

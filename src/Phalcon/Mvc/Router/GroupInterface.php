@@ -237,4 +237,5 @@ interface GroupInterface
      * @return GroupInterface
      */
     public function setPrefix(string $prefix): GroupInterface;
+
 }

@@ -241,4 +241,5 @@ class ServerRequestFactory implements \Psr\Http\Message\ServerRequestFactoryInte
     private function parseUri(\Phalcon\Collection $server, \Phalcon\Collection $headers): Uri
     {
     }
+
 }

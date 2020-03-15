@@ -135,4 +135,5 @@ class Noop implements \SessionHandlerInterface
     protected function getPrefixedName($name): string
     {
     }
+
 }

@@ -74,4 +74,5 @@ interface AdapterInterface
      * @param \Phalcon\Annotations\ReaderInterface $reader
      */
     public function setReader(\Phalcon\Annotations\ReaderInterface $reader);
+
 }

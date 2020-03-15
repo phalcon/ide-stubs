@@ -50,7 +50,7 @@ class Route implements \Phalcon\Mvc\Router\RouteInterface
     protected $pattern;
 
 
-    protected static $uniqueId = 0;
+    static protected $uniqueId = 0;
 
 
 
@@ -374,4 +374,5 @@ class Route implements \Phalcon\Mvc\Router\RouteInterface
     public function via($httpMethods): RouteInterface
     {
     }
+
 }

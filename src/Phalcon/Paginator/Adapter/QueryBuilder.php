@@ -96,4 +96,5 @@ class QueryBuilder extends \Phalcon\Paginator\Adapter\AbstractAdapter
     public function setQueryBuilder(\Phalcon\Mvc\Model\Query\Builder $builder): QueryBuilder
     {
     }
+
 }

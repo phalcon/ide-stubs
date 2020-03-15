@@ -73,4 +73,5 @@ class Json
     final public static function encode($data, int $options = 0, int $depth = 512): string
     {
     }
+
 }

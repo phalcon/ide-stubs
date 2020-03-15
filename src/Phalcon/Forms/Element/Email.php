@@ -26,4 +26,5 @@ class Email extends \Phalcon\Forms\Element\AbstractElement
     public function render(array $attributes = array()): string
     {
     }
+
 }

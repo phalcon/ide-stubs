@@ -66,4 +66,5 @@ abstract class AbstractFactory
     protected function init(array $services = array())
     {
     }
+
 }

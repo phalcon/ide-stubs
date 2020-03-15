@@ -159,4 +159,5 @@ class Libmemcached extends \Phalcon\Storage\Adapter\AbstractAdapter
     private function setSerializer(\Memcached $connection)
     {
     }
+
 }

@@ -74,4 +74,5 @@ class AdapterFactory extends AbstractFactory
     protected function getAdapters(): array
     {
     }
+
 }

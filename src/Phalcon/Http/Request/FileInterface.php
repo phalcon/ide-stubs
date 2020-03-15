@@ -67,4 +67,5 @@ interface FileInterface
      * @return bool
      */
     public function moveTo(string $destination): bool;
+
 }

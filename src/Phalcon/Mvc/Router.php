@@ -631,4 +631,5 @@ class Router extends AbstractInjectionAware implements \Phalcon\Mvc\RouterInterf
     public function wasMatched(): bool
     {
     }
+
 }

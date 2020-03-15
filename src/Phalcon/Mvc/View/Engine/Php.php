@@ -25,4 +25,5 @@ class Php extends \Phalcon\Mvc\View\Engine\AbstractEngine
     public function render(string $path, $params, bool $mustClean = false)
     {
     }
+
 }

@@ -66,4 +66,5 @@ abstract class AbstractFormatter implements \Phalcon\Logger\Formatter\FormatterI
     protected function getFormattedDate(): string
     {
     }
+
 }

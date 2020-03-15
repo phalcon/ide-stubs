@@ -110,4 +110,5 @@ class Mysql extends \Phalcon\Db\Adapter\Pdo\AbstractPdo
     protected function getDsnDefaults(): array
     {
     }
+
 }

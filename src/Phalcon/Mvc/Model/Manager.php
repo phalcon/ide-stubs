@@ -899,4 +899,5 @@ class Manager implements \Phalcon\Mvc\Model\ManagerInterface, \Phalcon\Di\Inject
     public function __destruct()
     {
     }
+
 }

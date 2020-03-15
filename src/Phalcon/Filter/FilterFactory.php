@@ -36,4 +36,5 @@ class FilterFactory
     protected function getAdapters(): array
     {
     }
+
 }

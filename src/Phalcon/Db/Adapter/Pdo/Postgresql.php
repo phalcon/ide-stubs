@@ -174,4 +174,5 @@ class Postgresql extends \Phalcon\Db\Adapter\Pdo\AbstractPdo
     protected function getDsnDefaults(): array
     {
     }
+
 }

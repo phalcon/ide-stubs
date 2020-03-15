@@ -87,4 +87,5 @@ abstract class AbstractAdapter implements \SessionHandlerInterface
     public function write($id, $data): bool
     {
     }
+
 }

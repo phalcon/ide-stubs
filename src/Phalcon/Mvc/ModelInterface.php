@@ -344,4 +344,5 @@ interface ModelInterface
      * @return bool
      */
     public function update(): bool;
+
 }

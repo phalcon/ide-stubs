@@ -67,4 +67,5 @@ class Task extends Injectable implements \Phalcon\Cli\TaskInterface, \Phalcon\Ev
     public function setEventsManager(\Phalcon\Events\ManagerInterface $eventsManager)
     {
     }
+
 }

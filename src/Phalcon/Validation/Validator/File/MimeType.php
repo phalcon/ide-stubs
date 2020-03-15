@@ -75,4 +75,5 @@ class MimeType extends \Phalcon\Validation\Validator\File\AbstractFile
     public function validate(\Phalcon\Validation $validation, $field): bool
     {
     }
+
 }

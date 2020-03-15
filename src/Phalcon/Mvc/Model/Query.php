@@ -145,7 +145,7 @@ class Query implements \Phalcon\Mvc\Model\QueryInterface, \Phalcon\Di\InjectionA
     protected $uniqueRow;
 
 
-    protected static $_irPhqlCache;
+    static protected $_irPhqlCache;
 
     /**
      * TransactionInterface so that the query can wrap a transaction
@@ -694,4 +694,5 @@ class Query implements \Phalcon\Mvc\Model\QueryInterface, \Phalcon\Di\InjectionA
     public function setTransaction(TransactionInterface $transaction): QueryInterface
     {
     }
+
 }

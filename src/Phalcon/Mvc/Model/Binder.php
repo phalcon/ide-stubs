@@ -131,4 +131,5 @@ class Binder implements \Phalcon\Mvc\Model\BinderInterface
     public function setCache(\Phalcon\Cache\Adapter\AdapterInterface $cache): BinderInterface
     {
     }
+
 }

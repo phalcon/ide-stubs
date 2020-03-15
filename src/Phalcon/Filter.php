@@ -175,4 +175,5 @@ class Filter implements \Phalcon\Filter\FilterInterface
     private function sanitizer($value, string $sanitizerName, array $sanitizerParams = array())
     {
     }
+
 }

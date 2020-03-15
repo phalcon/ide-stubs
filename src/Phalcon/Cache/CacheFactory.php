@@ -94,4 +94,5 @@ class CacheFactory
     public function newInstance(string $name, array $options = array()): CacheInterface
     {
     }
+
 }

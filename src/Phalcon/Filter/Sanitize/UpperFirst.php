@@ -23,4 +23,5 @@ class UpperFirst
     public function __invoke(string $input)
     {
     }
+
 }

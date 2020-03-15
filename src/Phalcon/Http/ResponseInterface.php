@@ -191,4 +191,5 @@ interface ResponseInterface
      * @return mixed
      */
     public function sendHeaders();
+
 }

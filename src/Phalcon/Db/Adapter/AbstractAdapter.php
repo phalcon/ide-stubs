@@ -22,7 +22,7 @@ abstract class AbstractAdapter implements \Phalcon\Db\Adapter\AdapterInterface, 
     /**
      * Connection ID
      */
-    protected static $connectionConsecutive = 0;
+    static protected $connectionConsecutive = 0;
 
     /**
      * Active connection ID
@@ -937,4 +937,5 @@ abstract class AbstractAdapter implements \Phalcon\Db\Adapter\AdapterInterface, 
     public function viewExists(string $viewName, string $schemaName = null): bool
     {
     }
+
 }

@@ -71,4 +71,5 @@ abstract class Behavior implements \Phalcon\Mvc\Model\BehaviorInterface
     public function notify(string $type, \Phalcon\Mvc\ModelInterface $model)
     {
     }
+
 }

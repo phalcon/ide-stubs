@@ -1556,7 +1556,7 @@ abstract class Model extends AbstractInjectionAware implements \Phalcon\Mvc\Enti
      * @param string $method
      * @param array $arguments
      */
-    final protected static function _invokeFinder(string $method, array $arguments)
+    protected final static function _invokeFinder(string $method, array $arguments)
     {
     }
 
@@ -2138,4 +2138,5 @@ abstract class Model extends AbstractInjectionAware implements \Phalcon\Mvc\Enti
     private static function caseInsensitiveColumnMap($columnMap, $key): string
     {
     }
+
 }

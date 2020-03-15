@@ -455,4 +455,5 @@ class Column implements \Phalcon\Db\ColumnInterface
     public function isUnsigned(): bool
     {
     }
+
 }

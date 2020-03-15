@@ -24,4 +24,5 @@ class Submit extends \Phalcon\Forms\Element\AbstractElement
     public function render(array $attributes = array()): string
     {
     }
+
 }

@@ -159,4 +159,5 @@ abstract class AbstractValidator implements \Phalcon\Validation\ValidatorInterfa
     public function messageFactory(\Phalcon\Validation $validation, $field, array $replacements = array()): Message
     {
     }
+
 }

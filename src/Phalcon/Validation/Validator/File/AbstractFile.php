@@ -181,4 +181,5 @@ abstract class AbstractFile extends AbstractValidator
     public function getFileSizeInBytes(string $size): float
     {
     }
+
 }

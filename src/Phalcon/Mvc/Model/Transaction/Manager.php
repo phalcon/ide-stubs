@@ -245,4 +245,5 @@ class Manager implements \Phalcon\Mvc\Model\Transaction\ManagerInterface, \Phalc
     protected function collectTransaction(\Phalcon\Mvc\Model\TransactionInterface $transaction)
     {
     }
+
 }

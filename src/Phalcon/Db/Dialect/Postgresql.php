@@ -329,4 +329,5 @@ class Postgresql extends Dialect
     protected function getTableOptions(array $definition): string
     {
     }
+
 }

@@ -86,4 +86,5 @@ class Simple extends Resultset
     public function unserialize($data)
     {
     }
+
 }

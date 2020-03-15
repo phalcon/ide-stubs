@@ -134,4 +134,5 @@ interface DiInterface extends \ArrayAccess
      * @return ServiceInterface
      */
     public function setShared(string $name, $definition): ServiceInterface;
+
 }

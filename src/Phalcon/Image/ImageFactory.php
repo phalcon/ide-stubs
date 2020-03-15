@@ -61,4 +61,5 @@ class ImageFactory extends AbstractFactory
     protected function getAdapters(): array
     {
     }
+
 }

@@ -23,4 +23,5 @@ class Alnum
     public function __invoke($input)
     {
     }
+
 }

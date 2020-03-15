@@ -862,4 +862,5 @@ class Request extends AbstractInjectionAware implements \Phalcon\Http\RequestInt
     private function getServerArray(): array
     {
     }
+
 }

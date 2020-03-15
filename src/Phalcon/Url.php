@@ -209,4 +209,5 @@ class Url extends AbstractInjectionAware implements \Phalcon\Url\UrlInterface
     public function path(string $path = null): string
     {
     }
+
 }

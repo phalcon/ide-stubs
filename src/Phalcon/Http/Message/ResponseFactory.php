@@ -32,4 +32,5 @@ final class ResponseFactory implements \Psr\Http\Message\ResponseFactoryInterfac
     public function createResponse(int $code = 200, string $reasonPhrase = ''): ResponseInterface
     {
     }
+
 }

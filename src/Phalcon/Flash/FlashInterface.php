@@ -57,4 +57,5 @@ interface FlashInterface
      * @return string
      */
     public function warning(string $message): string;
+
 }

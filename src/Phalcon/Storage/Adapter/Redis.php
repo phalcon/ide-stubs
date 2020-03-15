@@ -162,4 +162,5 @@ class Redis extends \Phalcon\Storage\Adapter\AbstractAdapter
     private function setSerializer(\Redis $connection)
     {
     }
+
 }

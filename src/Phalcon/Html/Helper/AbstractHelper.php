@@ -88,4 +88,5 @@ abstract class AbstractHelper
     protected function selfClose(string $tag, array $attributes = array()): string
     {
     }
+
 }

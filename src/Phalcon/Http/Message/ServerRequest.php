@@ -364,4 +364,5 @@ final class ServerRequest extends \Phalcon\Http\Message\AbstractRequest implemen
     private function checkUploadedFiles(array $files)
     {
     }
+
 }

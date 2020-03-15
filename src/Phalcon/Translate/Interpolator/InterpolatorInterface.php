@@ -25,4 +25,5 @@ interface InterpolatorInterface
      * @return string
      */
     public function replacePlaceholders(string $translation, array $placeholders = array()): string;
+
 }

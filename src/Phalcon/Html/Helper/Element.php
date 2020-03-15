@@ -26,4 +26,5 @@ class Element extends \Phalcon\Html\Helper\AbstractHelper
     public function __invoke(string $tag, string $text, array $attributes = array()): string
     {
     }
+
 }

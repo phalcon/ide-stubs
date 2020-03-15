@@ -151,4 +151,5 @@ class Volt extends \Phalcon\Mvc\View\Engine\AbstractEngine implements \Phalcon\E
     public function sort(array $value): array
     {
     }
+
 }

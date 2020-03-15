@@ -326,4 +326,5 @@ class Security extends AbstractInjectionAware
     private function getLocalSession(): ?SessionInterface
     {
     }
+
 }

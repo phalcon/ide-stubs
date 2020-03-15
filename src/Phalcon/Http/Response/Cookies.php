@@ -216,4 +216,5 @@ class Cookies extends AbstractInjectionAware implements \Phalcon\Http\Response\C
     public function useEncryption(bool $useEncryption): CookiesInterface
     {
     }
+
 }

@@ -167,4 +167,5 @@ class Repository implements \Phalcon\Paginator\RepositoryInterface, \JsonSeriali
     protected function getRealNameProperty(string $property): string
     {
     }
+
 }

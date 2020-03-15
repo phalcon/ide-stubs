@@ -352,4 +352,5 @@ class Sqlite extends Dialect
     public function viewExists(string $viewName, string $schemaName = null): string
     {
     }
+
 }

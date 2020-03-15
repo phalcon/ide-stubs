@@ -42,4 +42,5 @@ abstract class Lang
     public static function parsePHQL(string $phql): array
     {
     }
+
 }

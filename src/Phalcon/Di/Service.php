@@ -138,4 +138,5 @@ class Service implements \Phalcon\Di\ServiceInterface
     public function setSharedInstance($sharedInstance)
     {
     }
+
 }

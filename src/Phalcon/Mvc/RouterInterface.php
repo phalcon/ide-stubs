@@ -260,4 +260,5 @@ interface RouterInterface
      * @return bool
      */
     public function wasMatched(): bool;
+
 }

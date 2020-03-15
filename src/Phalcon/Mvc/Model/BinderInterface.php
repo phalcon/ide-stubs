@@ -51,4 +51,5 @@ interface BinderInterface
      * @return BinderInterface
      */
     public function setCache(\Phalcon\Cache\Adapter\AdapterInterface $cache): BinderInterface;
+
 }

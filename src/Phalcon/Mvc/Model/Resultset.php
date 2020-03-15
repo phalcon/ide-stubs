@@ -349,4 +349,5 @@ abstract class Resultset implements \Phalcon\Mvc\Model\ResultsetInterface, \Iter
     public function valid(): bool
     {
     }
+
 }

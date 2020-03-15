@@ -299,4 +299,5 @@ class Collection implements \ArrayAccess, \Countable, \IteratorAggregate, \JsonS
     protected function setData(string $element, $value)
     {
     }
+
 }

@@ -455,4 +455,5 @@ class Memory extends \Phalcon\Acl\Adapter\AbstractAdapter
     private function canAccess(string $roleName, string $componentName, string $access)
     {
     }
+
 }

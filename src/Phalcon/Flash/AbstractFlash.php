@@ -276,4 +276,5 @@ abstract class AbstractFlash extends AbstractInjectionAware implements \Phalcon\
     private function prepareHtmlMessage(string $type, string $message): string
     {
     }
+
 }

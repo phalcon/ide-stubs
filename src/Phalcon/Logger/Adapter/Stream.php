@@ -94,4 +94,5 @@ class Stream extends \Phalcon\Logger\Adapter\AbstractAdapter
     public function process(\Phalcon\Logger\Item $item)
     {
     }
+
 }

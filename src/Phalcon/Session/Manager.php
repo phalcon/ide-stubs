@@ -271,4 +271,5 @@ class Manager extends AbstractInjectionAware implements \Phalcon\Session\Manager
     private function getUniqueKey(string $key): string
     {
     }
+
 }

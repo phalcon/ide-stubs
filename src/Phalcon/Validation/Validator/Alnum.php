@@ -74,4 +74,5 @@ class Alnum extends AbstractValidator
     public function validate(\Phalcon\Validation $validation, $field): bool
     {
     }
+
 }

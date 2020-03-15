@@ -248,4 +248,5 @@ class Router extends AbstractInjectionAware
     public function wasMatched(): bool
     {
     }
+
 }

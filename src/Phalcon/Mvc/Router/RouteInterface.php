@@ -137,4 +137,5 @@ interface RouteInterface
      * @return RouteInterface
      */
     public function via($httpMethods): RouteInterface;
+
 }

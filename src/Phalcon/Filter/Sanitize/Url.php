@@ -23,4 +23,5 @@ class Url
     public function __invoke($input)
     {
     }
+
 }

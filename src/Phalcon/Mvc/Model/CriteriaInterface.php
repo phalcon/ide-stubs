@@ -329,4 +329,5 @@ interface CriteriaInterface
      * @return CriteriaInterface
      */
     public function where(string $conditions): CriteriaInterface;
+
 }

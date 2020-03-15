@@ -58,4 +58,5 @@ interface ReadableInterface
      * @return mixed
      */
     public function getStatus();
+
 }

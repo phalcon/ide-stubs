@@ -38,4 +38,5 @@ class Igbinary extends \Phalcon\Storage\Serializer\AbstractSerializer
     public function unserialize($data)
     {
     }
+
 }

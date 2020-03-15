@@ -26,4 +26,5 @@ class AnchorRaw extends \Phalcon\Html\Helper\AbstractHelper
     public function __invoke(string $href, string $text, array $attributes = array()): string
     {
     }
+
 }

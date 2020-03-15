@@ -30,4 +30,5 @@ class IndexedArray implements \Phalcon\Translate\Interpolator\InterpolatorInterf
     public function replacePlaceholders(string $translation, array $placeholders = array()): string
     {
     }
+
 }

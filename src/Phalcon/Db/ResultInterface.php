@@ -80,4 +80,5 @@ interface ResultInterface
      * @return bool
      */
     public function setFetchMode(int $fetchMode): bool;
+
 }

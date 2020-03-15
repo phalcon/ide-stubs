@@ -107,4 +107,5 @@ interface ManagerInterface
      * @return ManagerInterface
      */
     public function setRollbackPendent(bool $rollbackPendent): ManagerInterface;
+
 }

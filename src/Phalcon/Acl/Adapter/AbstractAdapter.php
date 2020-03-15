@@ -126,4 +126,5 @@ abstract class AbstractAdapter implements \Phalcon\Acl\Adapter\AdapterInterface,
     public function setEventsManager(\Phalcon\Events\ManagerInterface $eventsManager)
     {
     }
+
 }

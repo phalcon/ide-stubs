@@ -358,4 +358,5 @@ class Mysql extends Dialect
     private function checkColumnUnsigned(\Phalcon\Db\ColumnInterface $column): string
     {
     }
+
 }
