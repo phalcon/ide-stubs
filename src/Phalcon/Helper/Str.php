@@ -78,7 +78,7 @@ class Str
      * @param string  ...N
      *
      */
-    final public static function concat(): string
+    final public static function concat(string $separator, string $a, string $b, string ...$str): string
     {
     }
 
