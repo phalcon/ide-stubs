@@ -48,7 +48,10 @@ class Item
     protected $type;
 
 
-
+    /**
+     * Log Context
+     * @return mixed
+     */
     public function getContext()
     {
     }
