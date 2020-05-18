@@ -48,7 +48,7 @@ class Simple extends Resultset
     /**
      * Returns current row in the resultset
      *
-     * @return mixed
+     * @return \Phalcon\Mvc\ModelInterface|null
      */
     final public function current(): ?ModelInterface
     {

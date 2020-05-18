@@ -12,7 +12,7 @@ namespace Phalcon\Mvc\Model;
 use Phalcon\Cache\Adapter\AdapterInterface;
 
 /**
- * Phalcon\Mvc\Model\Binding
+ * Phalcon\Mvc\Model\Binder
  *
  * This is an class for binding models into params for handler
  */
@@ -82,9 +82,9 @@ class Binder implements \Phalcon\Mvc\Model\BinderInterface
     /**
      * Find the model by param value.
      *
+     * @return object|false
      * @param mixed $paramValue
      * @param string $className
-     * @return object|bool
      */
     protected function findBoundModel($paramValue, string $className): bool
     {

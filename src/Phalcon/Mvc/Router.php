@@ -463,7 +463,7 @@ class Router extends AbstractInjectionAware implements \Phalcon\Mvc\RouterInterf
      * Returns a route object by its id
      *
      * @param mixed $id
-     * @return mixed
+     * @return bool|\Phalcon\Mvc\Router\RouteInterface
      */
     public function getRouteById($id)
     {
@@ -473,7 +473,7 @@ class Router extends AbstractInjectionAware implements \Phalcon\Mvc\RouterInterf
      * Returns a route object by its name
      *
      * @param string $name
-     * @return mixed
+     * @return bool|\Phalcon\Mvc\Router\RouteInterface
      */
     public function getRouteByName(string $name)
     {

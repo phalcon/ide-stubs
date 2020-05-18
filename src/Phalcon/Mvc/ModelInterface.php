@@ -46,9 +46,9 @@ interface ModelInterface
      * conditions
      *
      * @param array $parameters
-     * @return double
+     * @return double | ResultsetInterface
      */
-    public static function average($parameters = null): float;
+    public static function average($parameters = null);
 
     /**
      * Assigns values to a model from an array returning a new model
@@ -84,10 +84,14 @@ interface ModelInterface
     /**
      * Allows to count how many records match the specified conditions
      *
+     * Returns an integer for simple queries or a ResultsetInterface
+     * instance for when the GROUP condition is used. The results will
+     * contain the count of each group.
+     *
      * @param array $parameters
-     * @return int
+     * @return int|\Phalcon\Mvc\Model\ResultsetInterface
      */
-    public static function count($parameters = null): int;
+    public static function count($parameters = null);
 
     /**
      * Inserts a model instance. If the instance already exists in the
@@ -117,7 +121,7 @@ interface ModelInterface
      * Allows to query the first record that match the specified conditions
      *
      * @param array $parameters
-     * @return mixed
+     * @return bool|ModelInterface
      */
     public static function findFirst($parameters = null);
 
@@ -275,7 +279,7 @@ interface ModelInterface
      * constants
      *
      * @param int $dirtyState
-     * @return mixed
+     * @return bool|ModelInterface
      */
     public function setDirtyState(int $dirtyState);
 
@@ -325,9 +329,9 @@ interface ModelInterface
      * Allows to calculate a sum on a column that match the specified conditions
      *
      * @param array $parameters
-     * @return double
+     * @return double | ResultsetInterface
      */
-    public static function sum($parameters = null): float;
+    public static function sum($parameters = null);
 
     /**
      * Check whether validation process has generated any messages

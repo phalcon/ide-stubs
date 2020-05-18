@@ -56,9 +56,9 @@ interface ResultsetInterface
     /**
      * Get first row in the resultset
      *
-     * @return mixed
+     * @return ModelInterface|Row|null
      */
-    public function getFirst(): ?ModelInterface;
+    public function getFirst();
 
     /**
      * Returns the current hydration mode
@@ -70,7 +70,7 @@ interface ResultsetInterface
     /**
      * Get last row in the resultset
      *
-     * @return mixed
+     * @return \Phalcon\Mvc\ModelInterface|null
      */
     public function getLast(): ?ModelInterface;
 

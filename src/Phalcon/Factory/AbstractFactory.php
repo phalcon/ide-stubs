@@ -31,16 +31,6 @@ abstract class AbstractFactory
 
 
     /**
-     * Checks if a service exists and throws an exception
-     *
-     * @param string $name
-     * @return void
-     */
-    protected function checkService(string $name)
-    {
-    }
-
-    /**
      * Checks the config if it is a valid object
      *
      * @param mixed $config
@@ -56,6 +46,16 @@ abstract class AbstractFactory
      * @return array
      */
     abstract protected function getAdapters(): array;
+
+    /**
+     * Checks if a service exists and throws an exception
+     *
+     * @param string $name
+     * @return mixed
+     */
+    protected function getService(string $name)
+    {
+    }
 
     /**
      * AdapterFactory constructor.

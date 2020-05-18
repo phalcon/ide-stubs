@@ -20,7 +20,7 @@ use Phalcon\Mvc\ModelInterface;
 class ValidationFailed extends \Phalcon\Mvc\Model\Exception
 {
 
-    protected $messages;
+    protected $messages = array();
 
 
     protected $model;

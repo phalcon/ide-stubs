@@ -9,6 +9,7 @@
  */
 namespace Phalcon\Acl\Adapter;
 
+use Phalcon\Acl\Enum;
 use Phalcon\Events\ManagerInterface;
 
 /**
@@ -19,7 +20,7 @@ abstract class AbstractAdapter implements \Phalcon\Acl\Adapter\AdapterInterface,
     /**
      * Active access which the list is checking if some role can access it
      *
-     * @var string
+     * @var string|null
      */
     protected $activeAccess;
 
@@ -34,28 +35,28 @@ abstract class AbstractAdapter implements \Phalcon\Acl\Adapter\AdapterInterface,
      * Role which the list is checking if it's allowed to certain
      * component/access
      *
-     * @var string
+     * @var string|null
      */
     protected $activeRole;
 
     /**
      * Component which the list is checking if some role can access it
      *
-     * @var string
+     * @var string|null
      */
     protected $activeComponent;
 
     /**
      * Default access
      *
-     * @var bool
+     * @var int
      */
-    protected $defaultAccess = false;
+    protected $defaultAccess = Enum::DENY;
 
     /**
      * Events manager
      *
-     * @var mixed
+     * @var ManagerInterface|null
      */
     protected $eventsManager;
 
@@ -63,9 +64,9 @@ abstract class AbstractAdapter implements \Phalcon\Acl\Adapter\AdapterInterface,
     /**
      * Active access which the list is checking if some role can access it
      *
-     * @return string
+     * @return string|null
      */
-    public function getActiveAccess(): string
+    public function getActiveAccess(): ?string
     {
     }
 
@@ -74,18 +75,18 @@ abstract class AbstractAdapter implements \Phalcon\Acl\Adapter\AdapterInterface,
      *
      * component/access
      *
-     * @return string
+     * @return string|null
      */
-    public function getActiveRole(): string
+    public function getActiveRole(): ?string
     {
     }
 
     /**
      * Component which the list is checking if some role can access it
      *
-     * @return string
+     * @return string|null
      */
-    public function getActiveComponent(): string
+    public function getActiveComponent(): ?string
     {
     }
 

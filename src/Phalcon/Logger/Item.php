@@ -16,7 +16,11 @@ namespace Phalcon\Logger;
  */
 class Item
 {
-
+    /**
+     * Log Context
+     *
+     * @return mixed
+     */
     protected $context;
 
     /**
@@ -50,7 +54,6 @@ class Item
 
     /**
      * Log Context
-     * @return mixed
      */
     public function getContext()
     {

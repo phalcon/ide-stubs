@@ -188,7 +188,7 @@ interface ResponseInterface
     /**
      * Sends headers to the client
      *
-     * @return mixed
+     * @return bool|ResponseInterface
      */
     public function sendHeaders();
 }

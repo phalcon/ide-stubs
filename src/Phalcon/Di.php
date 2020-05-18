@@ -55,23 +55,27 @@ class Di implements \Phalcon\Di\DiInterface
 {
     /**
      * List of registered services
+     *
+     * @var ServiceInterface[]
      */
-    protected $services;
+    protected $services = array();
 
     /**
      * List of shared instances
      */
-    protected $sharedInstances;
+    protected $sharedInstances = array();
 
     /**
      * Events Manager
      *
-     * @var ManagerInterface
+     * @var ManagerInterface | null
      */
     protected $eventsManager;
 
     /**
      * Latest DI build
+     *
+     * @var DiInterface | null
      */
     protected static $_default;
 
@@ -102,7 +106,7 @@ class Di implements \Phalcon\Di\DiInterface
      * @param string $name
      * @param mixed $definition
      * @param bool $shared
-     * @return mixed
+     * @return bool|\Phalcon\Di\ServiceInterface
      */
     public function attempt(string $name, $definition, bool $shared = false)
     {
@@ -122,7 +126,7 @@ class Di implements \Phalcon\Di\DiInterface
     /**
      * Return the latest DI created
      *
-     * @return mixed
+     * @return \Phalcon\Di\DiInterface|null
      */
     public static function getDefault(): ?DiInterface
     {
@@ -131,9 +135,9 @@ class Di implements \Phalcon\Di\DiInterface
     /**
      * Returns the internal event manager
      *
-     * @return ManagerInterface
+     * @return \Phalcon\Events\ManagerInterface|null
      */
-    public function getInternalEventsManager(): ManagerInterface
+    public function getInternalEventsManager(): ?ManagerInterface
     {
     }
 

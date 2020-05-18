@@ -13,6 +13,7 @@ use Phalcon\Db\Adapter\AdapterInterface;
 use Phalcon\Di\DiInterface;
 use Phalcon\Events\ManagerInterface as EventsManagerInterface;
 use Phalcon\Mvc\Model\Query\BuilderInterface;
+use Phalcon\Mvc\Model\Query\StatusInterface;
 use Phalcon\Mvc\ModelInterface;
 
 /**
@@ -206,12 +207,12 @@ class Manager implements \Phalcon\Mvc\Model\ManagerInterface, \Phalcon\Di\Inject
     }
 
     /**
-     * Returns a custom events manager related to a model
+     * Returns a custom events manager related to a model or null if there is no related events manager
      *
      * @param \Phalcon\Mvc\ModelInterface $model
-     * @return mixed
+     * @return \Phalcon\Events\ManagerInterface|null
      */
-    public function getCustomEventsManager(\Phalcon\Mvc\ModelInterface $model)
+    public function getCustomEventsManager(\Phalcon\Mvc\ModelInterface $model): ?EventsManagerInterface
     {
     }
 
@@ -477,10 +478,10 @@ class Manager implements \Phalcon\Mvc\Model\ManagerInterface, \Phalcon\Di\Inject
      * Binds a behavior to a model
      *
      * @param \Phalcon\Mvc\ModelInterface $model
-     * @param \Phalcon\Mvc\Model\BehaviorInterface $behavior
+     * @param BehaviorInterface $behavior
      * @return void
      */
-    public function addBehavior(\Phalcon\Mvc\ModelInterface $model, \Phalcon\Mvc\Model\BehaviorInterface $behavior)
+    public function addBehavior(\Phalcon\Mvc\ModelInterface $model, BehaviorInterface $behavior)
     {
     }
 
@@ -662,7 +663,7 @@ class Manager implements \Phalcon\Mvc\Model\ManagerInterface, \Phalcon\Di\Inject
      *
      * @param string $modelName
      * @param string $alias
-     * @return mixed
+     * @return bool|RelationInterface
      */
     public function getRelationByAlias(string $modelName, string $alias)
     {
@@ -731,7 +732,7 @@ class Manager implements \Phalcon\Mvc\Model\ManagerInterface, \Phalcon\Di\Inject
      * @param \Phalcon\Mvc\ModelInterface $record
      * @param mixed $parameters
      * @param string $method
-     * @return mixed
+     * @return bool|ResultsetInterface
      */
     public function getBelongsToRecords(string $modelName, string $modelRelation, \Phalcon\Mvc\ModelInterface $record, $parameters = null, string $method = null)
     {
@@ -745,7 +746,7 @@ class Manager implements \Phalcon\Mvc\Model\ManagerInterface, \Phalcon\Di\Inject
      * @param \Phalcon\Mvc\ModelInterface $record
      * @param mixed $parameters
      * @param string $method
-     * @return mixed
+     * @return bool|ResultsetInterface
      */
     public function getHasManyRecords(string $modelName, string $modelRelation, \Phalcon\Mvc\ModelInterface $record, $parameters = null, string $method = null)
     {
@@ -759,7 +760,7 @@ class Manager implements \Phalcon\Mvc\Model\ManagerInterface, \Phalcon\Di\Inject
      * @param \Phalcon\Mvc\ModelInterface $record
      * @param mixed $parameters
      * @param string $method
-     * @return mixed
+     * @return bool|\Phalcon\Mvc\ModelInterface
      */
     public function getHasOneRecords(string $modelName, string $modelRelation, \Phalcon\Mvc\ModelInterface $record, $parameters = null, string $method = null)
     {
@@ -865,12 +866,32 @@ class Manager implements \Phalcon\Mvc\Model\ManagerInterface, \Phalcon\Di\Inject
     /**
      * Creates a Phalcon\Mvc\Model\Query and execute it
      *
+     * ```php
+     * $model = new Robots();
+     * $manager = $model->getModelsManager();
+     *
+     * // \Phalcon\Mvc\Model\Resultset\Simple
+     * $manager->executeQuery('SELECT FROM Robots');
+     *
+     * // \Phalcon\Mvc\Model\Resultset\Complex
+     * $manager->executeQuery('SELECT COUNT(type) FROM Robots GROUP BY type');
+     *
+     * // \Phalcon\Mvc\Model\Query\StatusInterface
+     * $manager->executeQuery('INSERT INTO Robots (id) VALUES (1)');
+     *
+     * // \Phalcon\Mvc\Model\Query\StatusInterface
+     * $manager->executeQuery('UPDATE Robots SET id = 0 WHERE id = :id:', ['id' => 1]);
+     *
+     * // \Phalcon\Mvc\Model\Query\StatusInterface
+     * $manager->executeQuery('DELETE FROM Robots WHERE id = :id:', ['id' => 1]);
+     * ```
+     *
+     * @param array|null $placeholders
+     * @param array|null $types
+     * @return ResultsetInterface|StatusInterface
      * @param string $phql
-     * @param mixed $placeholders
-     * @param mixed $types
-     * @return QueryInterface
      */
-    public function executeQuery(string $phql, $placeholders = null, $types = null): QueryInterface
+    public function executeQuery(string $phql, $placeholders = null, $types = null)
     {
     }
 

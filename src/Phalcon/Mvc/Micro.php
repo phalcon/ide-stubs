@@ -187,7 +187,7 @@ class Micro extends Injectable implements \ArrayAccess, \Phalcon\Events\EventsAw
     /**
      * Returns the internal event manager
      *
-     * @return mixed
+     * @return \Phalcon\Events\ManagerInterface|null
      */
     public function getEventsManager(): ?ManagerInterface
     {
@@ -215,7 +215,7 @@ class Micro extends Injectable implements \ArrayAccess, \Phalcon\Events\EventsAw
     /**
      * Gets model binder
      *
-     * @return mixed
+     * @return \Phalcon\Mvc\Model\BinderInterface|null
      */
     public function getModelBinder(): ?BinderInterface
     {

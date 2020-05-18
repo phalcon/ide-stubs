@@ -47,7 +47,7 @@ class Apcu extends \Phalcon\Annotations\Adapter\AbstractAdapter
      * Reads parsed annotations from APCu
      *
      * @param string $key
-     * @return mixed
+     * @return bool|\Phalcon\Annotations\Reflection
      */
     public function read(string $key)
     {

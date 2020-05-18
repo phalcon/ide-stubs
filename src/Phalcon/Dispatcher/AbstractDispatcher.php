@@ -238,7 +238,7 @@ abstract class AbstractDispatcher extends AbstractInjectionAware implements \Pha
     /**
      * Gets model binder
      *
-     * @return mixed
+     * @return \Phalcon\Mvc\Model\BinderInterface|null
      */
     public function getModelBinder(): ?BinderInterface
     {

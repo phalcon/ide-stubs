@@ -207,7 +207,7 @@ class Column implements \Phalcon\Db\ColumnInterface
     /**
      * Column Position
      *
-     * @var string
+     * @var string|null
      */
     protected $after;
 
@@ -271,7 +271,7 @@ class Column implements \Phalcon\Db\ColumnInterface
     /**
      * Integer column size
      *
-     * @var int
+     * @var int | string
      */
     protected $size = 0;
 
@@ -332,9 +332,9 @@ class Column implements \Phalcon\Db\ColumnInterface
     /**
      * Integer column size
      *
-     * @return int
+     * @return int|string
      */
-    public function getSize(): int
+    public function getSize()
     {
     }
 
@@ -378,9 +378,9 @@ class Column implements \Phalcon\Db\ColumnInterface
     /**
      * Check whether field absolute to position in table
      *
-     * @return string
+     * @return string|null
      */
-    public function getAfterPosition(): string
+    public function getAfterPosition(): ?string
     {
     }
 

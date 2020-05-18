@@ -86,7 +86,7 @@ class Row implements \Phalcon\Mvc\EntityInterface, \Phalcon\Mvc\Model\ResultInte
      * Set the current object's state
      *
      * @param int $dirtyState
-     * @return mixed
+     * @return bool|\Phalcon\Mvc\ModelInterface
      */
     public function setDirtyState(int $dirtyState)
     {

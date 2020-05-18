@@ -21,7 +21,7 @@ interface ResultInterface
      * Sets the object's state
      *
      * @param int $dirtyState
-     * @return mixed
+     * @return bool|\Phalcon\Mvc\ModelInterface
      */
     public function setDirtyState(int $dirtyState);
 }

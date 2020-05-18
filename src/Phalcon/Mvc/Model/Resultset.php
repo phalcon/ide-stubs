@@ -74,13 +74,13 @@ abstract class Resultset implements \Phalcon\Mvc\Model\ResultsetInterface, \Iter
     protected $activeRow = null;
 
 
-    protected $cache;
+    protected $cache = null;
 
 
-    protected $count;
+    protected $count = 0;
 
 
-    protected $errorMessages;
+    protected $errorMessages = array();
 
 
     protected $hydrateMode = 0;
@@ -164,9 +164,29 @@ abstract class Resultset implements \Phalcon\Mvc\Model\ResultsetInterface, \Iter
     /**
      * Get first row in the resultset
      *
-     * @return mixed
+     * ```php
+     * $model = new Robots();
+     * $manager = $model->getModelsManager();
+     *
+     * // \Robots
+     * $manager->createQuery('SELECT FROM Robots')
+     *         ->execute()
+     *         ->getFirst();
+     *
+     * // \Phalcon\Mvc\Model\Row
+     * $manager->createQuery('SELECT r.id FROM Robots AS r')
+     *         ->execute()
+     *         ->getFirst();
+     *
+     * // NULL
+     * $manager->createQuery('SELECT r.id FROM Robots AS r WHERE r.name = "NON-EXISTENT"')
+     *         ->execute()
+     *         ->getFirst();
+     * ```
+     *
+     * @return ModelInterface|Row|null
      */
-    public function getFirst(): ?ModelInterface
+    public function getFirst()
     {
     }
 
@@ -182,7 +202,7 @@ abstract class Resultset implements \Phalcon\Mvc\Model\ResultsetInterface, \Iter
     /**
      * Get last row in the resultset
      *
-     * @return mixed
+     * @return \Phalcon\Mvc\ModelInterface|null
      */
     public function getLast(): ?ModelInterface
     {
@@ -253,7 +273,7 @@ abstract class Resultset implements \Phalcon\Mvc\Model\ResultsetInterface, \Iter
      * Gets row in a specific position of the resultset
      *
      * @param mixed $index
-     * @return mixed
+     * @return bool|\Phalcon\Mvc\ModelInterface
      */
     public function offsetGet($index)
     {

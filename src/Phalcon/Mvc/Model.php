@@ -218,8 +218,19 @@ abstract class Model extends AbstractInjectionAware implements \Phalcon\Mvc\Enti
      *         $this->addBehavior(
      *             new Timestampable(
      *                 [
-     *                     "onCreate" => [
+     *                     "beforeCreate" => [
      *                         "field"  => "created_at",
+     *                         "format" => "Y-m-d",
+     *                     ],
+     *                 ]
+     *             )
+     *         );
+     *
+     *         $this->addBehavior(
+     *             new Timestampable(
+     *                 [
+     *                     "beforeUpdate" => [
+     *                         "field"  => "updated_at",
      *                         "format" => "Y-m-d",
      *                     ],
      *                 ]
@@ -320,7 +331,11 @@ abstract class Model extends AbstractInjectionAware implements \Phalcon\Mvc\Enti
 
     /**
      * Returns the average value on a column for a result-set of rows matching
-     * the specified conditions
+     * the specified conditions.
+     *
+     * Returned value will be a float for simple queries or a ResultsetInterface
+     * instance for when the GROUP condition is used. The results will
+     * contain the average of each group.
      *
      * ```php
      * // What's the average price of robots?
@@ -344,9 +359,9 @@ abstract class Model extends AbstractInjectionAware implements \Phalcon\Mvc\Enti
      * ```
      *
      * @param array $parameters
-     * @return double
+     * @return double | ResultsetInterface
      */
-    public static function average($parameters = null): float
+    public static function average($parameters = null)
     {
     }
 
@@ -411,7 +426,11 @@ abstract class Model extends AbstractInjectionAware implements \Phalcon\Mvc\Enti
     }
 
     /**
-     * Counts how many records match the specified conditions
+     * Counts how many records match the specified conditions.
+     *
+     * Returns an integer for simple queries or a ResultsetInterface
+     * instance for when the GROUP condition is used. The results will
+     * contain the count of each group.
      *
      * ```php
      * // How many robots are there?
@@ -426,9 +445,9 @@ abstract class Model extends AbstractInjectionAware implements \Phalcon\Mvc\Enti
      * ```
      *
      * @param array $parameters
-     * @return mixed
+     * @return int|\Phalcon\Mvc\Model\ResultsetInterface
      */
-    public static function count($parameters = null): int
+    public static function count($parameters = null)
     {
     }
 
@@ -769,7 +788,7 @@ abstract class Model extends AbstractInjectionAware implements \Phalcon\Mvc\Enti
      *     ],
      *     'hydration' => null
      * ]
-     * @return mixed
+     * @return bool|\Phalcon\Mvc\ModelInterface
      */
     public static function findFirst($parameters = null)
     {
@@ -828,11 +847,11 @@ abstract class Model extends AbstractInjectionAware implements \Phalcon\Mvc\Enti
     }
 
     /**
-     * Returns the custom events manager
+     * Returns the custom events manager or null if there is no custom events manager
      *
-     * @return EventsManagerInterface
+     * @return \Phalcon\Events\ManagerInterface|null
      */
-    public function getEventsManager(): EventsManagerInterface
+    public function getEventsManager(): ?EventsManagerInterface
     {
     }
 
@@ -1248,7 +1267,7 @@ abstract class Model extends AbstractInjectionAware implements \Phalcon\Mvc\Enti
      * Sets the dirty state of the object using one of the DIRTY_STATE_ constants
      *
      * @param int $dirtyState
-     * @return mixed
+     * @return bool|\Phalcon\Mvc\ModelInterface
      */
     public function setDirtyState(int $dirtyState)
     {
@@ -1400,9 +1419,9 @@ abstract class Model extends AbstractInjectionAware implements \Phalcon\Mvc\Enti
      * ```
      *
      * @param array $parameters
-     * @return double
+     * @return double | ResultsetInterface
      */
-    public static function sum($parameters = null): float
+    public static function sum($parameters = null)
     {
     }
 

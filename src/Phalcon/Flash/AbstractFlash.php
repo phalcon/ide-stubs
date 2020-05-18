@@ -112,10 +112,10 @@ abstract class AbstractFlash extends AbstractInjectionAware implements \Phalcon\
      * $flash->error("This is an error");
      * ```
      *
+     * @return null|string|void
      * @param string $message
-     * @return string
      */
-    public function error(string $message): string
+    public function error(string $message): ?string
     {
     }
 
@@ -135,10 +135,10 @@ abstract class AbstractFlash extends AbstractInjectionAware implements \Phalcon\
      * $flash->notice("This is an information");
      * ```
      *
+     * @return null|string|void
      * @param string $message
-     * @return string
      */
-    public function notice(string $message): string
+    public function notice(string $message): ?string
     {
     }
 
@@ -210,10 +210,10 @@ abstract class AbstractFlash extends AbstractInjectionAware implements \Phalcon\
      * $flash->success("The process was finished successfully");
      * ```
      *
+     * @return null|string|void
      * @param string $message
-     * @return string
      */
-    public function success(string $message): string
+    public function success(string $message): ?string
     {
     }
 
@@ -225,7 +225,7 @@ abstract class AbstractFlash extends AbstractInjectionAware implements \Phalcon\
      * ```
      *
      * @param string|array $message
-     * @return string|void
+     * @return null|string|void
      * @param string $type
      */
     public function outputMessage(string $type, $message)
@@ -239,10 +239,10 @@ abstract class AbstractFlash extends AbstractInjectionAware implements \Phalcon\
      * $flash->warning("Hey, this is important");
      * ```
      *
+     * @return null|string|void
      * @param string $message
-     * @return string
      */
-    public function warning(string $message): string
+    public function warning(string $message): ?string
     {
     }
 

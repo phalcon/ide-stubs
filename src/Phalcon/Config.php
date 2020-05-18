@@ -86,7 +86,7 @@ class Config extends Collection
      * @param string $path
      * @param mixed $defaultValue
      * @param mixed $delimiter
-     * @return mixed
+     * @return mixed|null
      */
     public function path(string $path, $defaultValue = null, $delimiter = null)
     {

@@ -125,7 +125,7 @@ interface ViewInterface extends \Phalcon\Mvc\ViewBaseInterface
      * @param string $controllerName
      * @param string $actionName
      * @param array $params
-     * @return mixed
+     * @return bool|ViewInterface
      */
     public function render(string $controllerName, string $actionName, array $params = array());
 

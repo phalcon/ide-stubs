@@ -361,7 +361,7 @@ abstract class AbstractPdo extends AbstractAdapter
      * @param string $sqlStatement
      * @param mixed $bindParams
      * @param mixed $bindTypes
-     * @return mixed
+     * @return bool|\Phalcon\Db\ResultInterface
      */
     public function query(string $sqlStatement, $bindParams = null, $bindTypes = null)
     {

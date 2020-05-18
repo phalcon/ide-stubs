@@ -19,19 +19,19 @@ class Annotation
      *
      * @var array
      */
-    protected $arguments;
+    protected $arguments = array();
 
     /**
      * Annotation ExprArguments
      *
-     * @var string
+     * @var array
      */
-    protected $exprArguments;
+    protected $exprArguments = array();
 
     /**
      * Annotation Name
      *
-     * @var string
+     * @var string|null
      */
     protected $name;
 
@@ -49,6 +49,7 @@ class Annotation
      * Returns an argument in a specific position
      *
      * @param mixed $position
+     * @return mixed|null
      */
     public function getArgument($position)
     {
@@ -85,9 +86,9 @@ class Annotation
     /**
      * Returns the annotation's name
      *
-     * @return string
+     * @return string|null
      */
-    public function getName(): string
+    public function getName(): ?string
     {
     }
 
@@ -95,6 +96,7 @@ class Annotation
      * Returns a named argument
      *
      * @param string $name
+     * @return mixed|null
      */
     public function getNamedArgument(string $name)
     {

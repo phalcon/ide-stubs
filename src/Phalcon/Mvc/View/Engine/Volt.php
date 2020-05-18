@@ -65,7 +65,7 @@ class Volt extends \Phalcon\Mvc\View\Engine\AbstractEngine implements \Phalcon\E
     /**
      * Returns the internal event manager
      *
-     * @return mixed
+     * @return \Phalcon\Events\ManagerInterface|null
      */
     public function getEventsManager(): ?ManagerInterface
     {

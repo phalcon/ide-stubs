@@ -45,7 +45,7 @@ class Stream extends \Phalcon\Annotations\Adapter\AbstractAdapter
      * Reads parsed annotations from files
      *
      * @param string $key
-     * @return mixed
+     * @return bool|int|\Phalcon\Annotations\Reflection
      */
     public function read(string $key)
     {
