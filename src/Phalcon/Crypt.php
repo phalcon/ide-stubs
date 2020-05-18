@@ -70,7 +70,7 @@ class Crypt implements \Phalcon\Crypt\CryptInterface
     /**
      * @var string
      */
-    protected $key;
+    protected $key = '';
 
     /**
      * @var int

@@ -93,9 +93,8 @@ abstract class AbstractRequest extends \Phalcon\Http\Message\AbstractMessage
      *
      * @param string $method
      *
-     * @return object
+     * @return static
      * @throws InvalidArgumentException for invalid HTTP methods.
-     *
      */
     public function withMethod($method)
     {
@@ -118,7 +117,7 @@ abstract class AbstractRequest extends \Phalcon\Http\Message\AbstractMessage
      *
      * @param mixed $requestTarget
      *
-     * @return object
+     * @return static
      */
     public function withRequestTarget($requestTarget)
     {
@@ -155,7 +154,7 @@ abstract class AbstractRequest extends \Phalcon\Http\Message\AbstractMessage
      * @param UriInterface $uri
      * @param bool         $preserveHost
      *
-     * @return object
+     * @return static
      */
     public function withUri(\Psr\Http\Message\UriInterface $uri, $preserveHost = false)
     {

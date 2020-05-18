@@ -55,9 +55,9 @@ interface MetaDataInterface
      * Returns the column map if any
      *
      * @param \Phalcon\Mvc\ModelInterface $model
-     * @return array
+     * @return array|null
      */
-    public function getColumnMap(\Phalcon\Mvc\ModelInterface $model): array;
+    public function getColumnMap(\Phalcon\Mvc\ModelInterface $model): ?array;
 
     /**
      * Returns attributes (which have default values) and their default values
@@ -127,9 +127,9 @@ interface MetaDataInterface
      * Returns the reverse column map if any
      *
      * @param \Phalcon\Mvc\ModelInterface $model
-     * @return array
+     * @return array|null
      */
-    public function getReverseColumnMap(\Phalcon\Mvc\ModelInterface $model): array;
+    public function getReverseColumnMap(\Phalcon\Mvc\ModelInterface $model): ?array;
 
     /**
      * Return the strategy to obtain the meta-data

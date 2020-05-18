@@ -10,9 +10,9 @@
 namespace Phalcon\Flash;
 
 /**
- * Phalcon\FlashInterface
+ * Phalcon\Flash\FlashInterface
  *
- * Interface for Phalcon\Flash
+ * Interface for Phalcon\Flash classes
  */
 interface FlashInterface
 {
@@ -20,41 +20,41 @@ interface FlashInterface
     /**
      * Shows a HTML error message
      *
+     * @return null|string|void
      * @param string $message
-     * @return string
      */
-    public function error(string $message): string;
+    public function error(string $message): ?string;
 
     /**
      * Outputs a message
      *
+     * @return null|string|void
      * @param string $type
      * @param string $message
-     * @return string|null
      */
     public function message(string $type, string $message): ?string;
 
     /**
      * Shows a HTML notice/information message
      *
+     * @return null|string|void
      * @param string $message
-     * @return string
      */
-    public function notice(string $message): string;
+    public function notice(string $message): ?string;
 
     /**
      * Shows a HTML success message
      *
+     * @return null|string|void
      * @param string $message
-     * @return string
      */
-    public function success(string $message): string;
+    public function success(string $message): ?string;
 
     /**
      * Shows a HTML warning message
      *
+     * @return null|string|void
      * @param string $message
-     * @return string
      */
-    public function warning(string $message): string;
+    public function warning(string $message): ?string;
 }

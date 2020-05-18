@@ -73,7 +73,7 @@ class Application extends AbstractApplication
      * Handles a MVC request
      *
      * @param string $uri
-     * @return mixed
+     * @return bool|\Phalcon\Http\ResponseInterface
      */
     public function handle(string $uri)
     {

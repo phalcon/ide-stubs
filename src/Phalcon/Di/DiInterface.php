@@ -23,7 +23,7 @@ interface DiInterface extends \ArrayAccess
      * @param mixed $definition
      * @param string $name
      * @param bool $shared
-     * @return mixed
+     * @return bool|ServiceInterface
      */
     public function attempt(string $name, $definition, bool $shared = false);
 
@@ -39,7 +39,7 @@ interface DiInterface extends \ArrayAccess
     /**
      * Return the last DI created
      *
-     * @return mixed
+     * @return DiInterface|null
      */
     public static function getDefault(): ?DiInterface;
 

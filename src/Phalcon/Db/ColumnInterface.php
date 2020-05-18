@@ -18,9 +18,9 @@ interface ColumnInterface
     /**
      * Check whether field absolute to position in table
      *
-     * @return string
+     * @return string|null
      */
-    public function getAfterPosition(): string;
+    public function getAfterPosition(): ?string;
 
     /**
      * Returns the type of bind handling
@@ -53,9 +53,9 @@ interface ColumnInterface
     /**
      * Returns column size
      *
-     * @return int
+     * @return int|string
      */
-    public function getSize(): int;
+    public function getSize();
 
     /**
      * Returns column type

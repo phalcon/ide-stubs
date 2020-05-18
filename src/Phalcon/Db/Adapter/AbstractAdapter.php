@@ -13,10 +13,9 @@ use Phalcon\Db\DialectInterface;
 use Phalcon\Db\Enum;
 use Phalcon\Db\RawValue;
 use Phalcon\Events\ManagerInterface;
-use Phalcon\Events\Manager;
 
 /**
- * Base class for Phalcon\Db adapters
+ * Base class for Phalcon\Db\Adapter adapters
  */
 abstract class AbstractAdapter implements \Phalcon\Db\Adapter\AdapterInterface, \Phalcon\Events\EventsAwareInterface
 {
@@ -52,7 +51,7 @@ abstract class AbstractAdapter implements \Phalcon\Db\Adapter\AdapterInterface, 
     /**
      * Event Manager
      *
-     * @var Manager
+     * @var ManagerInterface
      */
     protected $eventsManager;
 

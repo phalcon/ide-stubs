@@ -138,7 +138,7 @@ class Simple extends Injectable implements \Phalcon\Mvc\ViewBaseInterface, \Phal
     /**
      * Returns the internal event manager
      *
-     * @return mixed
+     * @return \Phalcon\Events\ManagerInterface|null
      */
     public function getEventsManager(): ?ManagerInterface
     {

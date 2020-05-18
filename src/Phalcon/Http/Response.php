@@ -60,11 +60,11 @@ class Response implements \Phalcon\Http\ResponseInterface, \Phalcon\Di\Injection
     /**
      * Phalcon\Http\Response constructor
      *
-     * @param mixed $content
+     * @param string $content
      * @param mixed $code
      * @param mixed $status
      */
-    public function __construct($content = null, $code = null, $status = null)
+    public function __construct(string $content = null, $code = null, $status = null)
     {
     }
 
@@ -244,7 +244,7 @@ class Response implements \Phalcon\Http\ResponseInterface, \Phalcon\Di\Injection
     /**
      * Sends headers to the client
      *
-     * @return mixed
+     * @return bool|ResponseInterface
      */
     public function sendHeaders()
     {

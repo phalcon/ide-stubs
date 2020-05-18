@@ -11,6 +11,7 @@ namespace Phalcon\Mvc\Model;
 
 use Phalcon\Db\Adapter\AdapterInterface;
 use Phalcon\Mvc\Model\Query\BuilderInterface;
+use Phalcon\Mvc\Model\Query\StatusInterface;
 use Phalcon\Mvc\ModelInterface;
 
 /**
@@ -115,11 +116,12 @@ interface ManagerInterface
     /**
      * Creates a Phalcon\Mvc\Model\Query and execute it
      *
-     * @param array $placeholders
+     * @param array|null $placeholders
+     * @param array|null $types
+     * @return ResultsetInterface|StatusInterface
      * @param string $phql
-     * @return QueryInterface
      */
-    public function executeQuery(string $phql, $placeholders = null): QueryInterface;
+    public function executeQuery(string $phql, $placeholders = null, $types = null);
 
     /**
      * Checks whether a model has a belongsTo relation with another model
@@ -182,7 +184,7 @@ interface ManagerInterface
      * @param array|string|null $parameters
      * @param ModelInterface    $record
      * @param string|null       $method
-     * @return mixed
+     * @return bool|ResultsetInterface
      */
     public function getBelongsToRecords(string $modelName, string $modelRelation, \Phalcon\Mvc\ModelInterface $record, $parameters = null, string $method = null);
 
@@ -202,7 +204,7 @@ interface ManagerInterface
      * @param array|string|null $parameters
      * @param ModelInterface    $record
      * @param string|null       $method
-     * @return mixed
+     * @return bool|ResultsetInterface
      */
     public function getHasManyRecords(string $modelName, string $modelRelation, \Phalcon\Mvc\ModelInterface $record, $parameters = null, string $method = null);
 
@@ -246,7 +248,7 @@ interface ManagerInterface
      * @param array|string|null $parameters
      * @param ModelInterface    $record
      * @param string|null       $method
-     * @return mixed
+     * @return bool|\Phalcon\Mvc\ModelInterface
      */
     public function getHasOneRecords(string $modelName, string $modelRelation, \Phalcon\Mvc\ModelInterface $record, $parameters = null, string $method = null);
 
@@ -301,7 +303,7 @@ interface ManagerInterface
      *
      * @param string $modelName
      * @param string $alias
-     * @return mixed
+     * @return bool|Relation
      */
     public function getRelationByAlias(string $modelName, string $alias);
 

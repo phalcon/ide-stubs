@@ -118,7 +118,7 @@ class Form extends Injectable implements \Countable, \Iterator, \Phalcon\Html\At
     /**
      * Returns the current element in the iterator
      *
-     * @return mixed
+     * @return bool|\Phalcon\Forms\Element\ElementInterface
      */
     public function current()
     {
@@ -193,7 +193,7 @@ class Form extends Injectable implements \Countable, \Iterator, \Phalcon\Html\At
      * }
      * ```
      *
-     * @return mixed
+     * @return array|\Phalcon\Messages\Messages
      */
     public function getMessages()
     {

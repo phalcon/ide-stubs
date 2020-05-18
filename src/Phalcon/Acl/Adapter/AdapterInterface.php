@@ -89,25 +89,25 @@ interface AdapterInterface
     /**
      * Returns the access which the list is checking if some role can access it
      *
-     * @return string
+     * @return string|null
      */
-    public function getActiveAccess(): string;
+    public function getActiveAccess(): ?string;
 
     /**
      * Returns the role which the list is checking if it's allowed to certain
      * component/access
      *
-     * @return string
+     * @return string|null
      */
-    public function getActiveRole(): string;
+    public function getActiveRole(): ?string;
 
     /**
      * Returns the component which the list is checking if some role can access
      * it
      *
-     * @return string
+     * @return string|null
      */
-    public function getActiveComponent(): string;
+    public function getActiveComponent(): ?string;
 
     /**
      * Returns the default ACL access level

@@ -179,7 +179,7 @@ abstract class AbstractMessage extends \Phalcon\Http\Message\AbstractCommon
      * @param string          $name
      * @param string|string[] $value
      *
-     * @return self
+     * @return static
      * @param mixed $value
      * @param string|string  [] $value
      *
@@ -199,7 +199,7 @@ abstract class AbstractMessage extends \Phalcon\Http\Message\AbstractCommon
      *
      * @param StreamInterface $body
      *
-     * @return self
+     * @return static
      * @throws InvalidArgumentException When the body is not valid.
      *
      */
@@ -221,7 +221,7 @@ abstract class AbstractMessage extends \Phalcon\Http\Message\AbstractCommon
      * @param string          $name
      * @param string|string[] $value
      *
-     * @return self
+     * @return static
      * @throws InvalidArgumentException for invalid header names or values.
      *
      * @param mixed $value
@@ -244,7 +244,7 @@ abstract class AbstractMessage extends \Phalcon\Http\Message\AbstractCommon
      *
      * @param string $version
      *
-     * @return self
+     * @return static
      */
     public function withProtocolVersion($version)
     {
@@ -261,7 +261,7 @@ abstract class AbstractMessage extends \Phalcon\Http\Message\AbstractCommon
      *
      * @param string $name
      *
-     * @return self
+     * @return static
      */
     public function withoutHeader($name)
     {

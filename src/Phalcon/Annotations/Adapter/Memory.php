@@ -25,7 +25,7 @@ class Memory extends \Phalcon\Annotations\Adapter\AbstractAdapter
      * Reads parsed annotations from memory
      *
      * @param string $key
-     * @return mixed
+     * @return bool|\Phalcon\Annotations\Reflection
      */
     public function read(string $key)
     {

@@ -21,7 +21,7 @@ abstract class AbstractCommon
      * @param mixed  $element
      * @param string $property
      *
-     * @return mixed
+     * @return static
      */
     final protected function cloneInstance($element, string $property)
     {
@@ -44,7 +44,7 @@ abstract class AbstractCommon
      * @param mixed  $element
      * @param string $property
      *
-     * @return mixed
+     * @return static
      */
     final protected function processWith($element, string $property)
     {

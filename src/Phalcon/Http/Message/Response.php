@@ -31,7 +31,7 @@ final class Response extends AbstractMessage implements \Psr\Http\Message\Respon
      *
      * @var string
      */
-    private $reasonPhrase = '';
+    protected $reasonPhrase = '';
 
     /**
      * Gets the response status code.
@@ -41,7 +41,7 @@ final class Response extends AbstractMessage implements \Psr\Http\Message\Respon
      *
      * @var int
      */
-    private $statusCode = 200;
+    protected $statusCode = 200;
 
 
     /**
@@ -108,6 +108,26 @@ final class Response extends AbstractMessage implements \Psr\Http\Message\Respon
     }
 
     /**
+     * Returns the list of status codes available
+     *
+     * @return array
+     */
+    protected function getPhrases(): array
+    {
+    }
+
+    /**
+     * Set a valid status code and phrase
+     *
+     * @param mixed $code
+     * @param mixed $phrase
+     * @return void
+     */
+    protected function processCode($code, $phrase = '')
+    {
+    }
+
+    /**
      * Checks if a code is integer or string
      *
      * @param mixed $code
@@ -124,26 +144,6 @@ final class Response extends AbstractMessage implements \Psr\Http\Message\Respon
      * @return void
      */
     private function checkCodeValue(int $code)
-    {
-    }
-
-    /**
-     * Returns the list of status codes available
-     *
-     * @return array
-     */
-    private function getPhrases(): array
-    {
-    }
-
-    /**
-     * Set a valid status code and phrase
-     *
-     * @param mixed $code
-     * @param mixed $phrase
-     * @return void
-     */
-    private function processCode($code, $phrase = '')
     {
     }
 }

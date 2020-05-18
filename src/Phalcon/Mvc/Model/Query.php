@@ -451,7 +451,7 @@ class Query implements \Phalcon\Mvc\Model\QueryInterface, \Phalcon\Di\InjectionA
      * @param array $bindParams
      * @param array $bindTypes
      * @param bool $simulate
-     * @return mixed
+     * @return array|\Phalcon\Mvc\Model\ResultsetInterface
      */
     final protected function _executeSelect(array $intermediate, array $bindParams, array $bindTypes, bool $simulate = false)
     {

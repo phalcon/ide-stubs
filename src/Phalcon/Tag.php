@@ -268,7 +268,7 @@ class Tag
      * Obtains the 'escaper' service if required
      *
      * @param array $params
-     * @return mixed
+     * @return \Phalcon\Escaper\EscaperInterface|null
      */
     public static function getEscaper(array $params): ?EscaperInterface
     {

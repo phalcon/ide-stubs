@@ -315,7 +315,7 @@ class Request extends AbstractInjectionAware implements \Phalcon\Http\RequestInt
      * Gets decoded JSON HTTP raw request body
      *
      * @param bool $associative
-     * @return mixed
+     * @return array|bool|\stdClass
      */
     public function getJsonRawBody(bool $associative = false)
     {

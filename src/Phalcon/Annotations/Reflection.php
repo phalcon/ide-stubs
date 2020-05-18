@@ -56,7 +56,7 @@ class Reflection
     /**
      * Returns the annotations found in the class docblock
      *
-     * @return mixed
+     * @return bool|Collection
      */
     public function getClassAnnotations()
     {

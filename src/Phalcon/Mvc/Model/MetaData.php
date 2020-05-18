@@ -89,7 +89,7 @@ abstract class MetaData implements \Phalcon\Di\InjectionAwareInterface, \Phalcon
     protected $adapter;
 
 
-    protected $columnMap;
+    protected $columnMap = array();
 
 
     protected $container;
@@ -185,9 +185,9 @@ abstract class MetaData implements \Phalcon\Di\InjectionAwareInterface, \Phalcon
      * ```
      *
      * @param \Phalcon\Mvc\ModelInterface $model
-     * @return array
+     * @return array|null
      */
-    public function getColumnMap(\Phalcon\Mvc\ModelInterface $model): array
+    public function getColumnMap(\Phalcon\Mvc\ModelInterface $model): ?array
     {
     }
 
@@ -356,9 +356,9 @@ abstract class MetaData implements \Phalcon\Di\InjectionAwareInterface, \Phalcon
      * ```
      *
      * @param \Phalcon\Mvc\ModelInterface $model
-     * @return array
+     * @return array|null
      */
-    public function getReverseColumnMap(\Phalcon\Mvc\ModelInterface $model): array
+    public function getReverseColumnMap(\Phalcon\Mvc\ModelInterface $model): ?array
     {
     }
 

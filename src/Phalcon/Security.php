@@ -314,14 +314,14 @@ class Security extends AbstractInjectionAware
     }
 
     /**
-     * @return mixed
+     * @return \Phalcon\Http\RequestInterface|null
      */
     private function getLocalRequest(): ?RequestInterface
     {
     }
 
     /**
-     * @return mixed
+     * @return \Phalcon\Session\ManagerInterface|null
      */
     private function getLocalSession(): ?SessionInterface
     {

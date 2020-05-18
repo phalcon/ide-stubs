@@ -12,8 +12,9 @@ namespace Phalcon\Flash;
 use Phalcon\Session\ManagerInterface;
 
 /**
- * Temporarily stores the messages in session, then messages can be printed in
- * the next request
+ * This is an implementation of the Phalcon\Flash\FlashInterface that
+ * temporarily stores the messages in session, then messages can be printed in
+ * the next request.
  */
 class Session extends \Phalcon\Flash\AbstractFlash
 {
@@ -51,9 +52,9 @@ class Session extends \Phalcon\Flash\AbstractFlash
     /**
      * Adds a message to the session flasher
      *
+     * @return null|string|void
      * @param string $type
      * @param string $message
-     * @return string|null
      */
     public function message(string $type, string $message): ?string
     {

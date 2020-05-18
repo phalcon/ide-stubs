@@ -102,9 +102,9 @@ interface CriteriaInterface
     /**
      * Returns the columns to be queried
      *
-     * @return string|null
+     * @return string|array|null
      */
-    public function getColumns(): ?string;
+    public function getColumns();
 
     /**
      * Returns the conditions parameter in the criteria
@@ -124,13 +124,15 @@ interface CriteriaInterface
     public function getHaving();
 
     /**
-     * Returns the limit parameter in the criteria, which will be an integer if
-     * limit was set without an offset, an array with 'number' and 'offset' keys
-     * if an offset was set with the limit, or null if limit has not been set.
+     * Returns the limit parameter in the criteria, which will be
      *
-     * @return string|null
+     * - An integer if 'limit' was set without an 'offset'
+     * - An array with 'number' and 'offset' keys if an offset was set with the limit
+     * - NULL if limit has not been set
+     *
+     * @return int|array|null
      */
-    public function getLimit(): ?string;
+    public function getLimit();
 
     /**
      * Returns an internal model name on which the criteria will be applied

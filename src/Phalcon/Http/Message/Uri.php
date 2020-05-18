@@ -22,7 +22,7 @@ final class Uri extends \Phalcon\Http\Message\AbstractCommon implements \Psr\Htt
      *
      * @return string
      */
-    private $fragment = '';
+    protected $fragment = '';
 
     /**
      * Retrieve the host component of the URI.
@@ -36,19 +36,19 @@ final class Uri extends \Phalcon\Http\Message\AbstractCommon implements \Psr\Htt
      *
      * @return string
      */
-    private $host = '';
+    protected $host = '';
 
     /**
      * @var string
      */
-    private $pass = '';
+    protected $pass = '';
 
     /**
      * Returns the path of the URL
      *
      * @return string
      */
-    private $path = '';
+    protected $path = '';
 
     /**
      * Retrieve the port component of the URI.
@@ -65,14 +65,14 @@ final class Uri extends \Phalcon\Http\Message\AbstractCommon implements \Psr\Htt
      *
      * @return int|null
      */
-    private $port = null;
+    protected $port = null;
 
     /**
      * Returns the query of the URL
      *
      * @return string
      */
-    private $query = '';
+    protected $query = '';
 
     /**
      * Retrieve the scheme component of the URI.

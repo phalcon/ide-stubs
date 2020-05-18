@@ -161,7 +161,7 @@ class Route implements \Phalcon\Mvc\Router\RouteInterface
     /**
      * Returns the group associated with the route
      *
-     * @return mixed
+     * @return GroupInterface|null
      */
     public function getGroup(): ?GroupInterface
     {

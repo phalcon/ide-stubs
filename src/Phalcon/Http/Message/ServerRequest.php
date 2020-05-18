@@ -24,7 +24,7 @@ final class ServerRequest extends \Phalcon\Http\Message\AbstractRequest implemen
     /**
      * @var Collection
      */
-    private $attributes;
+    protected $attributes;
 
     /**
      * Retrieve cookies.
@@ -36,7 +36,7 @@ final class ServerRequest extends \Phalcon\Http\Message\AbstractRequest implemen
      *
      * @var array
      */
-    private $cookieParams = array();
+    protected $cookieParams = array();
 
     /**
      * Retrieve any parameters provided in the request body.
@@ -52,7 +52,7 @@ final class ServerRequest extends \Phalcon\Http\Message\AbstractRequest implemen
      *
      * @var mixed
      */
-    private $parsedBody;
+    protected $parsedBody;
 
     /**
      * Retrieve query string arguments.
@@ -66,7 +66,7 @@ final class ServerRequest extends \Phalcon\Http\Message\AbstractRequest implemen
      *
      * @var array
      */
-    private $queryParams = array();
+    protected $queryParams = array();
 
     /**
      * Retrieve server parameters.
@@ -77,7 +77,7 @@ final class ServerRequest extends \Phalcon\Http\Message\AbstractRequest implemen
      *
      * @var array
      */
-    private $serverParams = array();
+    protected $serverParams = array();
 
     /**
      * Retrieve normalized file upload data.
@@ -90,7 +90,7 @@ final class ServerRequest extends \Phalcon\Http\Message\AbstractRequest implemen
      *
      * @var array
      */
-    private $uploadedFiles = array();
+    protected $uploadedFiles = array();
 
 
     /**

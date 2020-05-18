@@ -201,9 +201,9 @@ class Cookies extends AbstractInjectionAware implements \Phalcon\Http\Response\C
      *
      * @see \Phalcon\Security\Random
      * @param string $signKey
-     * @return CookieInterface
+     * @return CookiesInterface
      */
-    public function setSignKey(string $signKey = null): CookieInterface
+    public function setSignKey(string $signKey = null): CookiesInterface
     {
     }
 

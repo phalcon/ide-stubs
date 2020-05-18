@@ -326,7 +326,7 @@ class View extends Injectable implements \Phalcon\Mvc\ViewInterface, \Phalcon\Ev
     /**
      * Returns the internal event manager
      *
-     * @return mixed
+     * @return \Phalcon\Events\ManagerInterface|null
      */
     public function getEventsManager(): ?ManagerInterface
     {
@@ -543,7 +543,7 @@ class View extends Injectable implements \Phalcon\Mvc\ViewInterface, \Phalcon\Ev
      * @param string $controllerName
      * @param string $actionName
      * @param array $params
-     * @return mixed
+     * @return bool|View
      */
     public function render(string $controllerName, string $actionName, array $params = array())
     {

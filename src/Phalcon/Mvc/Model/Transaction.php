@@ -68,7 +68,7 @@ class Transaction implements \Phalcon\Mvc\Model\TransactionInterface
     protected $manager;
 
 
-    protected $messages;
+    protected $messages = array();
 
 
     protected $rollbackRecord;
