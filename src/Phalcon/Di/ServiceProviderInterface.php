@@ -42,5 +42,5 @@ interface ServiceProviderInterface
      * @param DiInterface $di
      * @return void
      */
-    public function register(DiInterface $di);
+    public function register(DiInterface $di): void;
 }
