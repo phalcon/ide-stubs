@@ -19,7 +19,7 @@ class Item
     /**
      * Log Context
      *
-     * @return mixed
+     * @var mixed
      */
     protected $context;
 
@@ -54,6 +54,8 @@ class Item
 
     /**
      * Log Context
+     *
+     * @return mixed
      */
     public function getContext()
     {
