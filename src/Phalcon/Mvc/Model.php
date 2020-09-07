@@ -790,7 +790,7 @@ abstract class Model extends AbstractInjectionAware implements \Phalcon\Mvc\Enti
      * ]
      * @return null|\Phalcon\Mvc\ModelInterface
      */
-    public static function findFirst($parameters = null): null
+    public static function findFirst($parameters = null): ?\Phalcon\Mvc\ModelInterface
     {
     }
 
