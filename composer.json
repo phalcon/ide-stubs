@@ -37,5 +37,10 @@
     "require-dev": {
         "squizlabs/php_codesniffer": "3.*",
         "vimeo/psalm": "^3.4"
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Phalcon\\": "src/"
+        }
     }
 }
