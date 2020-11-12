@@ -70,7 +70,8 @@ abstract class AbstractApplication extends Injectable implements \Phalcon\Events
      * Gets the module definition registered in the application via module name
      *
      * @param string $name
-     * @return array|object
+     *
+     * @return array
      */
     public function getModule(string $name): array
     {

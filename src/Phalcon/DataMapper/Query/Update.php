@@ -31,12 +31,12 @@ class Update extends \Phalcon\DataMapper\Query\AbstractConditions
      * Sets a column for the `UPDATE` query
      *
      * @param string $column
-     *
-     * @return this
      * @param mixed $value
      * @param int $type
+     *
+     * @return self
      */
-    public function column(string $column, $value = null, int $type = -1): Update
+    public function column(string $column, $value = null, int $type = -1): self
     {
     }
 
@@ -45,9 +45,9 @@ class Update extends \Phalcon\DataMapper\Query\AbstractConditions
      *
      * @param array $columns
      *
-     * @return this
+     * @return self
      */
-    public function columns(array $columns): Update
+    public function columns(array $columns): self
     {
     }
 

@@ -424,7 +424,7 @@ final class Uri extends \Phalcon\Http\Message\AbstractCommon implements \Psr\Htt
      *
      * @param int|null $port
      *
-     * @return int|null
+     * @return int
      */
     private function filterPort($port): int
     {

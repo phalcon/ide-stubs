@@ -31,12 +31,12 @@ class Insert extends \Phalcon\DataMapper\Query\AbstractQuery
      * Sets a column for the `INSERT` query
      *
      * @param string $column
-     *
-     * @return this
      * @param mixed $value
      * @param int $type
+     *
+     * @return self
      */
-    public function column(string $column, $value = null, int $type = -1): Insert
+    public function column(string $column, $value = null, int $type = -1): self
     {
     }
 
@@ -45,9 +45,9 @@ class Insert extends \Phalcon\DataMapper\Query\AbstractQuery
      *
      * @param array $columns
      *
-     * @return this
+     * @return self
      */
-    public function columns(array $columns): Insert
+    public function columns(array $columns): self
     {
     }
 

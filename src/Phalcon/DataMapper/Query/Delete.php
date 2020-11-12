@@ -42,9 +42,9 @@ class Delete extends \Phalcon\DataMapper\Query\AbstractConditions
      *
      * @param string $table
      *
-     * @return AbstractConditions
+     * @return self
      */
-    public function from(string $table): Delete
+    public function from(string $table): self
     {
     }
 
