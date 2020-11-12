@@ -9,8 +9,16 @@
  */
 namespace Phalcon\Http;
 
+use Phalcon\Di\DiInterface;
 use Phalcon\Di\AbstractInjectionAware;
+use Phalcon\Events\ManagerInterface;
 use Phalcon\Filter\FilterInterface;
+use Phalcon\Helper\Json;
+use Phalcon\Http\Request\File;
+use Phalcon\Http\Request\FileInterface;
+use Phalcon\Http\Request\Exception;
+use UnexpectedValueException;
+use stdClass;
 
 /**
  * Encapsulates request information for easy and secure access from application
@@ -149,6 +157,22 @@ class Request extends AbstractInjectionAware implements \Phalcon\Http\RequestInt
      * @return string
      */
     public function getBestLanguage(): string
+    {
+    }
+
+    /**
+     * Gets the preferred ISO locale variant.
+     *
+     * Gets the preferred locale accepted by the client from the
+     * "Accept-Language" request HTTP header and returns the
+     * base part of it i.e. `en` instead of `en-US`.
+     *
+     * Note: This method relies on the `$_SERVER["HTTP_ACCEPT_LANGUAGE"]` header.
+     *
+     * @link https://www.iso.org/standard/50707.html
+     * @return string
+     */
+    public function getPreferredIsoLocaleVariant(): string
     {
     }
 

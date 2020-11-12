@@ -9,21 +9,36 @@
  */
 namespace Phalcon\Html\Helper;
 
+use Phalcon\Html\Exception;
+
 /**
- * Phalcon\Html\Helper\Anchor
- *
- * Creates an anchor
+ * Class Anchor
  */
 class Anchor extends \Phalcon\Html\Helper\AbstractHelper
 {
 
     /**
-     * @param string $href The href tag
-     * @param string $text The text for the anchor
-     * @param array $attributes Any additional attributes
+     * Produce a <a> tag
+     *
+     * @param string $href
+     * @param string $text
+     * @param array  $attributes
+     * @param bool   $raw
+     *
      * @return string
+     * @throws Exception
      */
-    public function __invoke(string $href, string $text, array $attributes = array()): string
+    public function __invoke(string $href, string $text, array $attributes = array(), bool $raw = false): string
+    {
+    }
+
+    /**
+     * @param string $href
+     * @param array  $attributes
+     *
+     * @return array
+     */
+    protected function processAttributes(string $href, array $attributes): array
     {
     }
 }

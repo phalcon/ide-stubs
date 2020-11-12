@@ -9,6 +9,8 @@
  */
 namespace Phalcon\Assets\Filters;
 
+use Phalcon\Assets\FilterInterface;
+
 /**
  * Returns the content without make any modification to the original source
  */

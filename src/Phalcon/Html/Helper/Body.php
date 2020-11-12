@@ -9,17 +9,21 @@
  */
 namespace Phalcon\Html\Helper;
 
+use Phalcon\Html\Exception;
+
 /**
- * Phalcon\Html\Helper\Body
- *
- * Creates a body tag
+ * Class Body
  */
 class Body extends \Phalcon\Html\Helper\AbstractHelper
 {
 
     /**
-     * @param array $attributes Any additional attributes
+     * Produce a `<body>` tag.
+     *
+     * @param array $attributes
+     *
      * @return string
+     * @throws Exception
      */
     public function __invoke(array $attributes = array()): string
     {

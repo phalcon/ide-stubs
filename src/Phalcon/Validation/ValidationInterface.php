@@ -9,6 +9,8 @@
  */
 namespace Phalcon\Validation;
 
+use Phalcon\Di\Injectable;
+use Phalcon\Messages\MessageInterface;
 use Phalcon\Messages\Messages;
 
 /**

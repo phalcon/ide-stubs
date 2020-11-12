@@ -9,6 +9,8 @@
  */
 namespace Phalcon\Helper;
 
+use RuntimeException;
+
 /**
  * This class offers quick string functions throughout the framework
  */
@@ -233,6 +235,21 @@ class Str
      * @return string
      */
     final public static function firstBetween(string $text, string $start, string $end): string
+    {
+    }
+
+    /**
+     * Changes a text to a URL friendly one
+     *
+     * @param string     $text
+     * @param string     $separator
+     * @param bool       $lowercase
+     * @param mixed|null $replace
+     *
+     * @return string
+     * @throws Exception
+     */
+    final public static function friendly(string $text, string $separator = '-', bool $lowercase = true, $replace = null): string
     {
     }
 

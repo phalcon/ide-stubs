@@ -104,9 +104,6 @@ class Router extends AbstractInjectionAware implements \Phalcon\Mvc\RouterInterf
     protected $routes;
 
 
-    protected $uriSource;
-
-
     protected $wasMatched = false;
 
 

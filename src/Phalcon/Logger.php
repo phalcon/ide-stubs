@@ -9,7 +9,9 @@
  */
 namespace Phalcon;
 
+use Psr\Log\LoggerInterface;
 use Phalcon\Logger\Adapter\AdapterInterface;
+use Phalcon\Logger\Item;
 use Phalcon\Logger\Exception;
 
 /**

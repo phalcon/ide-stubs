@@ -9,8 +9,11 @@
  */
 namespace Phalcon;
 
+use Phalcon\Di\DiInterface;
 use Phalcon\Di\AbstractInjectionAware;
 use Phalcon\Mvc\RouterInterface;
+use Phalcon\Mvc\Router\RouteInterface;
+use Phalcon\Url\Exception;
 use Phalcon\Url\UrlInterface;
 
 /**

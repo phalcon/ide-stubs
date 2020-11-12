@@ -9,8 +9,9 @@
  */
 namespace Phalcon\Paginator;
 
-use Phalcon\Factory\AbstractFactory;
 use Phalcon\Paginator\Adapter\AdapterInterface;
+use Phalcon\Factory\AbstractFactory;
+use Phalcon\Helper\Arr;
 
 /**
  * This file is part of the Phalcon Framework.

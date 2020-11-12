@@ -138,6 +138,16 @@ class Sqlite extends \Phalcon\Db\Adapter\Pdo\AbstractPdo
     }
 
     /**
+     * SQLite does not support the DEFAULT keyword
+     *
+     * @deprecated Will re removed in the next version
+     * @return bool
+     */
+    public function supportsDefaultValue(): bool
+    {
+    }
+
+    /**
      * Returns PDO adapter DSN defaults as a key-value map.
      *
      * @return array

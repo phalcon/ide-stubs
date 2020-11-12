@@ -10,6 +10,7 @@
 namespace Phalcon\Http\Message;
 
 use Phalcon\Collection;
+use Phalcon\Collection\CollectionInterface;
 use Phalcon\Http\Message\Exception\InvalidArgumentException;
 use Psr\Http\Message\StreamInterface;
 use Psr\Http\Message\UriInterface;
@@ -27,7 +28,7 @@ abstract class AbstractMessage extends \Phalcon\Http\Message\AbstractCommon
     protected $body;
 
     /**
-     * @var Collection
+     * @var Collection|CollectionInterface
      */
     protected $headers;
 
@@ -272,11 +273,11 @@ abstract class AbstractMessage extends \Phalcon\Http\Message\AbstractCommon
      *
      * @see: http://tools.ietf.org/html/rfc7230#section-5.4
      *
-     * @param Collection $collection
+     * @param CollectionInterface $collection
      *
-     * @return Collection
+     * @return CollectionInterface
      */
-    final protected function checkHeaderHost(\Phalcon\Collection $collection): Collection
+    final protected function checkHeaderHost(\Phalcon\Collection\CollectionInterface $collection): CollectionInterface
     {
     }
 
@@ -368,9 +369,9 @@ abstract class AbstractMessage extends \Phalcon\Http\Message\AbstractCommon
      *
      * @param array $headers
      *
-     * @return Collection
+     * @return CollectionInterface
      */
-    final protected function populateHeaderCollection(array $headers): Collection
+    final protected function populateHeaderCollection(array $headers): CollectionInterface
     {
     }
 
@@ -390,9 +391,9 @@ abstract class AbstractMessage extends \Phalcon\Http\Message\AbstractCommon
      * Sets the headers
      *
      * @param mixed $headers
-     * @return Collection
+     * @return CollectionInterface
      */
-    final protected function processHeaders($headers): Collection
+    final protected function processHeaders($headers): CollectionInterface
     {
     }
 

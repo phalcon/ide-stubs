@@ -10,6 +10,7 @@
 namespace Phalcon\Html\Link;
 
 use Phalcon\Collection;
+use Phalcon\Collection\CollectionInterface;
 use Psr\Link\LinkInterface;
 
 /**
@@ -23,7 +24,7 @@ use Psr\Link\LinkInterface;
 class Link implements \Psr\Link\LinkInterface
 {
     /**
-     * @var Collection
+     * @var Collection|CollectionInterface
      */
     protected $attributes;
 
@@ -33,7 +34,7 @@ class Link implements \Psr\Link\LinkInterface
     protected $href = '';
 
     /**
-     * @var Collection
+     * @var Collection|CollectionInterface
      */
     protected $rels;
 

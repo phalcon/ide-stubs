@@ -31,7 +31,7 @@ class Headers implements \Phalcon\Http\Response\HeadersInterface
     }
 
     /**
-     * Sets a header to be sent at the end of the request
+     * Checks if a header exists
      *
      * @param string $name
      * @return bool

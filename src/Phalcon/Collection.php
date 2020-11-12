@@ -23,7 +23,7 @@ use Traversable;
  * Such implementations are for instance accessing globals `$_GET`, `$_POST`
  * etc.
  */
-class Collection implements \ArrayAccess, \Countable, \IteratorAggregate, \JsonSerializable, \Serializable
+class Collection implements \ArrayAccess, \Phalcon\Collection\CollectionInterface, \Countable, \IteratorAggregate, \JsonSerializable, \Serializable
 {
     /**
      * @var array
@@ -148,7 +148,7 @@ class Collection implements \ArrayAccess, \Countable, \IteratorAggregate, \JsonS
     }
 
     /**
-     * Get the element from the collection
+     * Determines whether an element is present in the collection.
      *
      * @param string $element
      * @return bool

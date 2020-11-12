@@ -9,6 +9,8 @@
  */
 namespace Phalcon\Session\Adapter;
 
+use SessionHandlerInterface;
+
 /**
  * Phalcon\Session\Adapter\Noop
  *

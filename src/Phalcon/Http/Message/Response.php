@@ -9,6 +9,9 @@
  */
 namespace Phalcon\Http\Message;
 
+use Phalcon\Helper\Number;
+use Phalcon\Http\Message\AbstractMessage;
+use Phalcon\Http\Message\Exception\InvalidArgumentException;
 use Psr\Http\Message\ResponseInterface;
 
 /**

@@ -10,19 +10,20 @@
 namespace Phalcon\Html\Helper;
 
 /**
- * Phalcon\Html\Helper\Close
- *
- * Creates a closing tag
+ * Class Close
  */
 class Close extends \Phalcon\Html\Helper\AbstractHelper
 {
 
     /**
-     * @param string $tag The tag
+     * Produce a `</...>` tag.
+     *
+     * @param string $tag
+     * @param bool   $raw
      *
      * @return string
      */
-    public function __invoke(string $tag): string
+    public function __invoke(string $tag, bool $raw = false): string
     {
     }
 }

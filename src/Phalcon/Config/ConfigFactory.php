@@ -9,7 +9,6 @@
  */
 namespace Phalcon\Config;
 
-use Phalcon\Config;
 use Phalcon\Factory\AbstractFactory;
 
 /**
@@ -48,9 +47,9 @@ class ConfigFactory extends AbstractFactory
      *      'mode' => null,
      *      'callbacks' => null
      * ]
-     * @return Config
+     * @return ConfigInterface
      */
-    public function load($config): Config
+    public function load($config): ConfigInterface
     {
     }
 
@@ -60,9 +59,9 @@ class ConfigFactory extends AbstractFactory
      * @param string $name
      * @param string $fileName
      * @param mixed $params
-     * @return Config
+     * @return ConfigInterface
      */
-    public function newInstance(string $name, string $fileName, $params = null): Config
+    public function newInstance(string $name, string $fileName, $params = null): ConfigInterface
     {
     }
 

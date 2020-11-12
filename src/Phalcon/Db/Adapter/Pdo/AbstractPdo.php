@@ -383,4 +383,16 @@ abstract class AbstractPdo extends AbstractAdapter
      * @return array
      */
     abstract protected function getDsnDefaults(): array;
+
+    /**
+     * Constructs the SQL statement (with parameters)
+     *
+     * @see https://stackoverflow.com/a/8403150
+     * @param string $statement
+     * @param array $parameters
+     * @return void
+     */
+    protected function prepareRealSql(string $statement, array $parameters)
+    {
+    }
 }

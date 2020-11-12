@@ -9,21 +9,26 @@
  */
 namespace Phalcon\Html\Helper;
 
+use Phalcon\Html\Exception;
+
 /**
- * Phalcon\Html\Helper\Address
- *
- * Creates an element
+ * Class Element
  */
 class Element extends \Phalcon\Html\Helper\AbstractHelper
 {
 
     /**
-     * @param string $tag The tag name
-     * @param string $text The text for the anchor
-     * @param array $attributes Any additional attributes
+     * Produce a tag.
+     *
+     * @param string $tag
+     * @param string $text
+     * @param array  $attributes
+     * @param bool   $raw
+     *
      * @return string
+     * @throws Exception
      */
-    public function __invoke(string $tag, string $text, array $attributes = array()): string
+    public function __invoke(string $tag, string $text, array $attributes = array(), bool $raw = false): string
     {
     }
 }

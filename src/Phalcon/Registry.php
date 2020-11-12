@@ -155,7 +155,7 @@ final class Registry extends \Phalcon\Collection
     }
 
     /**
-     * Get the element from the collection
+     * Determines whether an element is present in the collection.
      *
      * @param string $element
      * @return bool

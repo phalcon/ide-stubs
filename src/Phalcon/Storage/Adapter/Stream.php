@@ -9,8 +9,15 @@
  */
 namespace Phalcon\Storage\Adapter;
 
+use FilesystemIterator;
 use Iterator;
+use Phalcon\Helper\Arr;
+use Phalcon\Helper\Str;
 use Phalcon\Storage\Exception;
+use Phalcon\Storage\SerializerFactory;
+use Phalcon\Storage\Serializer\SerializerInterface;
+use RecursiveDirectoryIterator;
+use RecursiveIteratorIterator;
 
 /**
  * Stream adapter

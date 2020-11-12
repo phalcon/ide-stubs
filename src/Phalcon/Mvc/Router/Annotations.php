@@ -39,6 +39,9 @@ class Annotations extends Router
     protected $actionSuffix = 'Action';
 
 
+    protected $actionPreformatCallback;
+
+
     protected $controllerSuffix = 'Controller';
 
 
@@ -122,6 +125,39 @@ class Annotations extends Router
      * @param string $actionSuffix
      */
     public function setActionSuffix(string $actionSuffix)
+    {
+    }
+
+    /**
+     * Sets the action preformat callback
+     * $action here already without suffix 'Action'
+     *
+     * ```php
+     * // Array as callback
+     * $annotationRouter->setActionPreformatCallback([Text::class, 'uncamelize']);
+     *
+     * // Function as callback
+     * $annotationRouter->setActionPreformatCallback(function(action){
+     *     return action;
+     * });
+     *
+     * // String as callback
+     * $annotationRouter->setActionPreformatCallback('strtolower');
+     *
+     * // If empty method constructor called [null], sets uncamelize with - delimiter
+     * $annotationRouter->setActionPreformatCallback();
+     * ```
+     *
+     * @param callable|string|null $callback
+     */
+    public function setActionPreformatCallback($callback = null)
+    {
+    }
+
+    /**
+     * @return callable|string|null
+     */
+    public function getActionPreformatCallback()
     {
     }
 

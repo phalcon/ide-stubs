@@ -26,7 +26,7 @@ interface HeadersInterface
     public function get(string $name);
 
     /**
-     * Returns true if the header is set, false otherwise
+     * Checks if a header exists
      *
      * @param string $name
      * @return bool

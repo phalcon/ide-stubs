@@ -185,10 +185,10 @@ class Di implements \Phalcon\Di\DiInterface
     /**
      * Loads services from a Config object.
      *
-     * @param Config $config
+     * @param \Phalcon\Config\ConfigInterface $config
      * @return void
      */
-    protected function loadFromConfig(Config $config)
+    protected function loadFromConfig(\Phalcon\Config\ConfigInterface $config)
     {
     }
 

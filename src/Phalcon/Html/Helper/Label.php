@@ -12,15 +12,15 @@ namespace Phalcon\Html\Helper;
 use Phalcon\Html\Exception;
 
 /**
- * Phalcon\Html\Helper\Label
- *
- * Creates a label
+ * Class Label
  */
 class Label extends \Phalcon\Html\Helper\AbstractHelper
 {
 
     /**
-     * @param array $attributes Any additional attributes
+     * Produce a `<label>` tag.
+     *
+     * @param array $attributes
      *
      * @return string
      * @throws Exception
