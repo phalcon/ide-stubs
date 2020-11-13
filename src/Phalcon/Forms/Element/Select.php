@@ -9,6 +9,8 @@
  */
 namespace Phalcon\Forms\Element;
 
+use Phalcon\Tag\Select as SelectTag;
+
 /**
  * Phalcon\Forms\Element\Select
  *

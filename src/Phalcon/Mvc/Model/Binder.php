@@ -82,7 +82,8 @@ class Binder implements \Phalcon\Mvc\Model\BinderInterface
     /**
      * Find the model by param value.
      *
-     * @return object|false
+     * @return bool
+     *
      * @param mixed $paramValue
      * @param string $className
      */

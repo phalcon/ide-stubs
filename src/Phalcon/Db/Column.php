@@ -25,6 +25,7 @@ namespace Phalcon\Db;
  *         "notNull"       => true,
  *         "autoIncrement" => true,
  *         "first"         => true,
+ *         "comment"       => "",
  *     ]
  * );
  *
@@ -248,6 +249,13 @@ class Column implements \Phalcon\Db\ColumnInterface
     protected $name;
 
     /**
+     * Column's comment
+     *
+     * @var string
+     */
+    protected $comment = null;
+
+    /**
      * Column not nullable?
      *
      * Default SQL definition is NOT NULL.
@@ -317,6 +325,15 @@ class Column implements \Phalcon\Db\ColumnInterface
      * @return string
      */
     public function getName(): string
+    {
+    }
+
+    /**
+     * Column's comment
+     *
+     * @return string
+     */
+    public function getComment(): string
     {
     }
 

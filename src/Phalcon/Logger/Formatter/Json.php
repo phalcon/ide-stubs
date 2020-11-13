@@ -9,6 +9,9 @@
  */
 namespace Phalcon\Logger\Formatter;
 
+use Phalcon\Helper\Json as JsonHelper;
+use Phalcon\Logger\Item;
+
 /**
  * Phalcon\Logger\Formatter\Json
  *

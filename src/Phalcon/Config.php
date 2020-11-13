@@ -9,6 +9,8 @@
  */
 namespace Phalcon;
 
+use Phalcon\Config\ConfigInterface;
+
 /**
  * `Phalcon\Config` is designed to simplify the access to, and the use of,
  * configuration data within applications. It provides a nested object property
@@ -34,7 +36,7 @@ namespace Phalcon;
  * );
  * ```
  */
-class Config extends Collection
+class Config extends Collection implements \Phalcon\Config\ConfigInterface
 {
 
     const DEFAULT_PATH_DELIMITER = '.';
@@ -70,9 +72,9 @@ class Config extends Collection
      * ```
      *
      * @param mixed $toMerge
-     * @return Config
+     * @return ConfigInterface
      */
-    public function merge($toMerge): Config
+    public function merge($toMerge): ConfigInterface
     {
     }
 
@@ -96,9 +98,9 @@ class Config extends Collection
      * Sets the default path delimiter
      *
      * @param string $delimiter
-     * @return Config
+     * @return ConfigInterface
      */
-    public function setPathDelimiter(string $delimiter = null): Config
+    public function setPathDelimiter(string $delimiter = null): ConfigInterface
     {
     }
 

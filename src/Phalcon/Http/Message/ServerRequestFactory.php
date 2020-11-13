@@ -10,11 +10,13 @@
 namespace Phalcon\Http\Message;
 
 use Phalcon\Collection;
+use Phalcon\Collection\CollectionInterface;
+use Phalcon\Helper\Arr;
 use Phalcon\Http\Message\Exception\InvalidArgumentException;
 use Psr\Http\Message\ServerRequestFactoryInterface;
 use Psr\Http\Message\ServerRequestInterface;
-use Psr\Http\Message\UploadedFileInterface;
 use Psr\Http\Message\UriInterface;
+use Psr\Http\Message\UploadedFileInterface;
 
 /**
  * PSR-17 ServerRequestFactory
@@ -78,12 +80,12 @@ class ServerRequestFactory implements \Psr\Http\Message\ServerRequestFactoryInte
     /**
      * Calculates the host and port from the headers or the server superglobal
      *
-     * @param Collection $server
-     * @param Collection $headers
+     * @param CollectionInterface $server
+     * @param CollectionInterface $headers
      *
      * @return array
      */
-    private function calculateUriHost(\Phalcon\Collection $server, \Phalcon\Collection $headers): array
+    private function calculateUriHost(\Phalcon\Collection\CollectionInterface $server, \Phalcon\Collection\CollectionInterface $headers): array
     {
     }
 
@@ -102,34 +104,34 @@ class ServerRequestFactory implements \Psr\Http\Message\ServerRequestFactoryInte
      * Get the path from the request from IIS7/Rewrite, REQUEST_URL or
      * ORIG_PATH_INFO
      *
-     * @param Collection $server
+     * @param CollectionInterface $server
      *
      * @return string
      */
-    private function calculateUriPath(\Phalcon\Collection $server): string
+    private function calculateUriPath(\Phalcon\Collection\CollectionInterface $server): string
     {
     }
 
     /**
      * Get the query string from the server array
      *
-     * @param Collection $server
+     * @param CollectionInterface $server
      *
      * @return string
      */
-    private function calculateUriQuery(\Phalcon\Collection $server): string
+    private function calculateUriQuery(\Phalcon\Collection\CollectionInterface $server): string
     {
     }
 
     /**
      * Calculates the scheme from the server variables
      *
-     * @param Collection $server
-     * @param Collection $headers
+     * @param CollectionInterface $server
+     * @param CollectionInterface $headers
      *
      * @return string
      */
-    private function calculateUriScheme(\Phalcon\Collection $server, \Phalcon\Collection $headers): string
+    private function calculateUriScheme(\Phalcon\Collection\CollectionInterface $server, \Phalcon\Collection\CollectionInterface $headers): string
     {
     }
 
@@ -161,13 +163,13 @@ class ServerRequestFactory implements \Psr\Http\Message\ServerRequestFactoryInte
     /**
      * Returns a header
      *
-     * @param Collection $headers
+     * @param CollectionInterface $headers
      * @param string     $name
      * @param mixed|null $defaultValue
      *
      * @return mixed|string
      */
-    private function getHeader(\Phalcon\Collection $headers, string $name, $defaultValue = null)
+    private function getHeader(\Phalcon\Collection\CollectionInterface $headers, string $name, $defaultValue = null)
     {
     }
 
@@ -186,22 +188,22 @@ class ServerRequestFactory implements \Psr\Http\Message\ServerRequestFactoryInte
     /**
      * Processes headers from SAPI
      *
-     * @param Collection $server
+     * @param CollectionInterface $server
      *
-     * @return Collection
+     * @return CollectionInterface
      */
-    private function parseHeaders(\Phalcon\Collection $server): Collection
+    private function parseHeaders(\Phalcon\Collection\CollectionInterface $server): CollectionInterface
     {
     }
 
     /**
      * Parse the $_SERVER array amd check the server protocol. Raise an
      *
-     * @param Collection $server The server variables
+     * @param CollectionInterface $server The server variables
      *
      * @return string
      */
-    private function parseProtocol(\Phalcon\Collection $server): string
+    private function parseProtocol(\Phalcon\Collection\CollectionInterface $server): string
     {
     }
 
@@ -212,9 +214,9 @@ class ServerRequestFactory implements \Psr\Http\Message\ServerRequestFactoryInte
      * @param array $server Either verbatim, or with an added
      *                      HTTP_AUTHORIZATION header.
      *
-     * @return Collection
+     * @return CollectionInterface
      */
-    private function parseServer(array $server): Collection
+    private function parseServer(array $server): CollectionInterface
     {
     }
 
@@ -224,21 +226,21 @@ class ServerRequestFactory implements \Psr\Http\Message\ServerRequestFactoryInte
      *
      * @param array $files
      *
-     * @return Collection
+     * @return CollectionInterface
      */
-    private function parseUploadedFiles(array $files): Collection
+    private function parseUploadedFiles(array $files): CollectionInterface
     {
     }
 
     /**
      * Calculates the Uri from the server superglobal or the headers
      *
-     * @param Collection $server
-     * @param Collection $headers
+     * @param CollectionInterface $server
+     * @param CollectionInterface $headers
      *
      * @return Uri
      */
-    private function parseUri(\Phalcon\Collection $server, \Phalcon\Collection $headers): Uri
+    private function parseUri(\Phalcon\Collection\CollectionInterface $server, \Phalcon\Collection\CollectionInterface $headers): Uri
     {
     }
 }

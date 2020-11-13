@@ -11,6 +11,12 @@ namespace Phalcon;
 
 use Phalcon\Di\DiInterface;
 use Phalcon\Escaper\EscaperInterface;
+use Phalcon\Html\Link\Link;
+use Phalcon\Html\Link\Serializer\Header;
+use Phalcon\Helper\Str;
+use Phalcon\Helper\Exception as HelperException;
+use Phalcon\Tag\Select;
+use Phalcon\Tag\Exception;
 use Phalcon\Url\UrlInterface;
 
 /**
@@ -483,6 +489,16 @@ class Tag
      * @return void
      */
     public static function prependTitle($title)
+    {
+    }
+
+    /**
+     * Parses the preload element passed and sets the necessary link headers
+     *
+     * @param mixed $parameters
+     * @return string
+     */
+    public static function preload($parameters): string
     {
     }
 

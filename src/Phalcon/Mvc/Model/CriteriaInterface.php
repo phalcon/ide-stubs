@@ -328,7 +328,9 @@ interface CriteriaInterface
      * Sets the conditions parameter in the criteria
      *
      * @param string $conditions
+     * @param mixed $bindParams
+     * @param mixed $bindTypes
      * @return CriteriaInterface
      */
-    public function where(string $conditions): CriteriaInterface;
+    public function where(string $conditions, $bindParams = null, $bindTypes = null): CriteriaInterface;
 }

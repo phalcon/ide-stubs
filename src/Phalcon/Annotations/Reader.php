@@ -9,6 +9,8 @@
  */
 namespace Phalcon\Annotations;
 
+use ReflectionClass;
+
 /**
  * Parses docblocks returning an array with the found annotations
  */

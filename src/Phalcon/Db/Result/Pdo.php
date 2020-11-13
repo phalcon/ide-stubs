@@ -88,7 +88,8 @@ class Pdo implements \Phalcon\Db\ResultInterface
      * $row = $result->fetch();
      * ```
      *
-     * @param long $number
+     * @param int $number
+     *
      * @return void
      */
     public function dataSeek(int $number)

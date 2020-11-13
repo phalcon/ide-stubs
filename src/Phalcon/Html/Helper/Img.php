@@ -12,16 +12,16 @@ namespace Phalcon\Html\Helper;
 use Phalcon\Html\Exception;
 
 /**
- * Phalcon\Html\Helper\Img
- *
- * Creates am img tag
+ * Class Img
  */
 class Img extends \Phalcon\Html\Helper\AbstractHelper
 {
 
     /**
+     * Produce a <img> tag.
+     *
      * @param string $src
-     * @param array  $attributes Any additional attributes
+     * @param array  $attributes
      *
      * @return string
      * @throws Exception

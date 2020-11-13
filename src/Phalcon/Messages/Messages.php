@@ -9,6 +9,11 @@
  */
 namespace Phalcon\Messages;
 
+use ArrayAccess;
+use Countable;
+use Iterator;
+use JsonSerializable;
+
 /**
  * Represents a collection of messages
  */

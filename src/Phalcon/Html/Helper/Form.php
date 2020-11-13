@@ -9,17 +9,21 @@
  */
 namespace Phalcon\Html\Helper;
 
+use Phalcon\Html\Exception;
+
 /**
- * Phalcon\Html\Helper\Form
- *
- * Creates a form opening tag
+ * Class Form
  */
 class Form extends \Phalcon\Html\Helper\AbstractHelper
 {
 
     /**
-     * @param array $attributes Any additional attributes
+     * Produce a <form> tag.
+     *
+     * @param array $attributes
+     *
      * @return string
+     * @throws Exception
      */
     public function __invoke(array $attributes = array()): string
     {

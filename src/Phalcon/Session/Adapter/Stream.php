@@ -9,6 +9,9 @@
  */
 namespace Phalcon\Session\Adapter;
 
+use Phalcon\Helper\Str;
+use Phalcon\Session\Exception;
+
 /**
  * Phalcon\Session\Adapter\Stream
  *

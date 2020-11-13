@@ -66,7 +66,7 @@ class Bag extends Collection implements \Phalcon\Di\InjectionAwareInterface
     }
 
     /**
-     * Removes a property from the internal bag
+     * Initialize internal array
      *
      * @param array $data
      * @return void

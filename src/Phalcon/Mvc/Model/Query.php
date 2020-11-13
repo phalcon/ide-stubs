@@ -499,13 +499,29 @@ class Query implements \Phalcon\Mvc\Model\QueryInterface, \Phalcon\Di\InjectionA
     /**
      * Query the records on which the UPDATE/DELETE operation will be done
      *
+     * @todo Remove in v5.0
+     * @deprecated Use getRelatedRecords()
+     *
+     * @return ResultsetInterface
      * @param \Phalcon\Mvc\ModelInterface $model
      * @param array $intermediate
      * @param array $bindParams
      * @param array $bindTypes
-     * @return ResultsetInterface
      */
     final protected function _getRelatedRecords(\Phalcon\Mvc\ModelInterface $model, array $intermediate, array $bindParams, array $bindTypes): ResultsetInterface
+    {
+    }
+
+    /**
+     * Query the records on which the UPDATE/DELETE operation will be done
+     *
+     * @return ResultsetInterface
+     * @param \Phalcon\Mvc\ModelInterface $model
+     * @param array $intermediate
+     * @param array $bindParams
+     * @param array $bindTypes
+     */
+    final protected function getRelatedRecords(\Phalcon\Mvc\ModelInterface $model, array $intermediate, array $bindParams, array $bindTypes): ResultsetInterface
     {
     }
 

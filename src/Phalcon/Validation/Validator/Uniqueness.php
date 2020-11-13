@@ -9,7 +9,12 @@
  */
 namespace Phalcon\Validation\Validator;
 
+use Phalcon\Messages\Message;
+use Phalcon\Mvc\Model;
+use Phalcon\Mvc\ModelInterface;
+use Phalcon\Validation;
 use Phalcon\Validation\AbstractCombinedFieldsValidator;
+use Phalcon\Validation\Exception;
 
 /**
  * Check that a field is unique in the related table

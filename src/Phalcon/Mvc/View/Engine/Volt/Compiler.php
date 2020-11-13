@@ -170,6 +170,8 @@ class Compiler implements \Phalcon\Di\InjectionAwareInterface
     /**
      * Compiles a "cache" statement returning PHP code
      *
+     * @deprecated Will be removed in 5.0
+     * @todo Remove this in the next major version
      * @param array $statement
      * @param bool $extendsMode
      * @return string

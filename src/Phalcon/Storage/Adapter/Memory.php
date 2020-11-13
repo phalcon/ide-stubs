@@ -10,6 +10,11 @@
 namespace Phalcon\Storage\Adapter;
 
 use Phalcon\Collection;
+use Phalcon\Collection\CollectionInterface;
+use Phalcon\Helper\Arr;
+use Phalcon\Storage\Exception;
+use Phalcon\Storage\SerializerFactory;
+use Phalcon\Storage\Serializer\SerializerInterface;
 
 /**
  * Memory adapter
@@ -17,7 +22,7 @@ use Phalcon\Collection;
 class Memory extends \Phalcon\Storage\Adapter\AbstractAdapter
 {
     /**
-     * @var Collection
+     * @var Collection|CollectionInterface
      */
     protected $data;
 

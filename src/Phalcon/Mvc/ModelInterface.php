@@ -121,9 +121,9 @@ interface ModelInterface
      * Allows to query the first record that match the specified conditions
      *
      * @param array $parameters
-     * @return bool|ModelInterface
+     * @return ModelInterface|null
      */
-    public static function findFirst($parameters = null);
+    public static function findFirst($parameters = null): ?ModelInterface;
 
     /**
      * Fires an event, implicitly calls behaviors and listeners in the events

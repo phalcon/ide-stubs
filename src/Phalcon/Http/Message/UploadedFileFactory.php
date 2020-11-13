@@ -10,8 +10,8 @@
 namespace Phalcon\Http\Message;
 
 use Psr\Http\Message\StreamInterface;
-use Psr\Http\Message\UploadedFileFactoryInterface;
 use Psr\Http\Message\UploadedFileInterface;
+use Psr\Http\Message\UploadedFileFactoryInterface;
 
 /**
  * PSR-17 UploadedFileFactory

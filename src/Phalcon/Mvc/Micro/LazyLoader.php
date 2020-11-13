@@ -24,6 +24,11 @@ class LazyLoader
 
 
 
+    public function getHandler()
+    {
+    }
+
+
     public function getDefinition()
     {
     }

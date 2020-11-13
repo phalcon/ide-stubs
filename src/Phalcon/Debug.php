@@ -254,4 +254,12 @@ class Debug
     final protected function showTraceItem(int $n, array $trace): string
     {
     }
+
+    /**
+     * @param \Throwable $exception
+     * @return string
+     */
+    public function renderHtml(\Throwable $exception): string
+    {
+    }
 }

@@ -9,20 +9,25 @@
  */
 namespace Phalcon\Html\Helper;
 
+use Phalcon\Html\Exception;
+
 /**
- * Phalcon\Html\Helper\Button
- *
- * Creates a button tag
+ * Class Button
  */
 class Button extends \Phalcon\Html\Helper\AbstractHelper
 {
 
     /**
-     * @param string $text The text for the anchor
-     * @param array $attributes Any additional attributes
+     * Produce a `<button>` tag.
+     *
+     * @param string $text
+     * @param array  $attributes
+     * @param bool   $raw
+     *
      * @return string
+     * @throws Exception
      */
-    public function __invoke(string $text, array $attributes = array()): string
+    public function __invoke(string $text, array $attributes = array(), bool $raw = false): string
     {
     }
 }

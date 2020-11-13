@@ -9,6 +9,10 @@
  */
 namespace Phalcon\Paginator\Adapter;
 
+use Phalcon\Helper\Arr;
+use Phalcon\Mvc\ModelInterface;
+use Phalcon\Mvc\Model\ResultsetInterface;
+use Phalcon\Paginator\Exception;
 use Phalcon\Paginator\RepositoryInterface;
 
 /**

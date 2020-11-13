@@ -9,6 +9,8 @@
  */
 namespace Phalcon\Http\Message;
 
+use Phalcon\Helper\Arr;
+use Phalcon\Helper\Str;
 use Phalcon\Http\Message\Exception\InvalidArgumentException;
 use Psr\Http\Message\UriInterface;
 
@@ -89,12 +91,12 @@ final class Uri extends \Phalcon\Http\Message\AbstractCommon implements \Psr\Htt
      *
      * @return string
      */
-    private $scheme = 'https';
+    protected $scheme = 'https';
 
     /**
      * @var string
      */
-    private $user = '';
+    protected $user = '';
 
 
     /**
@@ -422,7 +424,7 @@ final class Uri extends \Phalcon\Http\Message\AbstractCommon implements \Psr\Htt
      *
      * @param int|null $port
      *
-     * @return int|null
+     * @return int
      */
     private function filterPort($port): int
     {

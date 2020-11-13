@@ -9,6 +9,8 @@
  */
 namespace Phalcon\Helper;
 
+use InvalidArgumentException;
+
 /**
  * This class offers a wrapper for JSON methods to serialize and unserialize
  */
@@ -65,9 +67,10 @@ class Json
      * @param int    $options     Bitmask of JSON decode options.
      * @param int    $depth       Recursion depth.
      *
-     * @return mixed
+     * @return string
      *
      * @throws \InvalidArgumentException if the JSON cannot be encoded.
+     *
      * @link http://www.php.net/manual/en/function.json-encode.php
      */
     final public static function encode($data, int $options = 0, int $depth = 512): string

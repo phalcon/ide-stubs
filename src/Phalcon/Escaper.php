@@ -38,12 +38,32 @@ class Escaper implements \Phalcon\Escaper\EscaperInterface
      */
     protected $encoding = 'utf-8';
 
+    /**
+     * @var int
+     */
+    protected $flags = 3;
 
-    protected $htmlEscapeMap = null;
 
+    /**
+     * Escapes a HTML attribute string
+     *
+     * @param string $attribute
+     * @return string
+     */
+    public function attributes(string $attribute = null): string
+    {
+    }
 
-    protected $htmlQuoteType = 3;
-
+    /**
+     * Escape CSS strings by replacing non-alphanumeric chars by their
+     * hexadecimal escaped representation
+     *
+     * @param string $input
+     * @return string
+     */
+    public function css(string $input): string
+    {
+    }
 
     /**
      * Detect the character encoding of a string to be handled by an encoder.
@@ -119,6 +139,36 @@ class Escaper implements \Phalcon\Escaper\EscaperInterface
     }
 
     /**
+     * Returns the current flags for htmlspecialchars
+     *
+     * @return int
+     */
+    public function getFlags(): int
+    {
+    }
+
+    /**
+     * Escapes a HTML string. Internally uses htmlspecialchars
+     *
+     * @param string $input
+     * @return string
+     */
+    public function html(string $input = null): string
+    {
+    }
+
+    /**
+     * Escape javascript strings by replacing non-alphanumeric chars by their
+     * hexadecimal escaped representation
+     *
+     * @param string $input
+     * @return string
+     */
+    public function js(string $input): string
+    {
+    }
+
+    /**
      * Utility to normalize a string's encoding to UTF-32.
      *
      * @param string $str
@@ -160,13 +210,37 @@ class Escaper implements \Phalcon\Escaper\EscaperInterface
      * Sets the HTML quoting type for htmlspecialchars
      *
      * ```php
+     * $escaper->setFlags(ENT_XHTML);
+     * ```
+     *
+     * @param int $flags
+     * @return Escaper
+     */
+    public function setFlags(int $flags): Escaper
+    {
+    }
+
+    /**
+     * Sets the HTML quoting type for htmlspecialchars
+     *
+     * ```php
      * $escaper->setHtmlQuoteType(ENT_XHTML);
      * ```
      *
-     * @param int $quoteType
+     * @param int $flags
      * @return void
      */
-    public function setHtmlQuoteType(int $quoteType)
+    public function setHtmlQuoteType(int $flags)
+    {
+    }
+
+    /**
+     * Escapes a URL. Internally uses rawurlencode
+     *
+     * @param string $url
+     * @return string
+     */
+    public function url(string $url): string
     {
     }
 }

@@ -9,6 +9,8 @@
  */
 namespace Phalcon;
 
+use Phalcon\Helper\Str;
+
 /**
  * Provides utilities to work with texts
  */
@@ -205,7 +207,8 @@ class Text
      * ```
      *
      * @param int $type
-     * @param long $length
+     * @param int $length
+     *
      * @return string
      */
     public static function random(int $type = 0, int $length = 8): string

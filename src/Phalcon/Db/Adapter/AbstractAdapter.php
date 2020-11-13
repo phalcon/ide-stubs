@@ -56,6 +56,13 @@ abstract class AbstractAdapter implements \Phalcon\Db\Adapter\AdapterInterface, 
     protected $eventsManager;
 
     /**
+     * The real SQL statement - what was executed
+     *
+     * @var string
+     */
+    protected $realSqlStatement;
+
+    /**
      * Active SQL Bind Types
      *
      * @var array
@@ -546,6 +553,7 @@ abstract class AbstractAdapter implements \Phalcon\Db\Adapter\AdapterInterface, 
      * );
      * ```
      *
+     * @todo Return NULL if this is not supported by the adapter
      * @return RawValue
      */
     public function getDefaultValue(): RawValue
@@ -918,6 +926,17 @@ abstract class AbstractAdapter implements \Phalcon\Db\Adapter\AdapterInterface, 
      * @return bool
      */
     public function useExplicitIdValue(): bool
+    {
+    }
+
+    /**
+     * Check whether the database system support the DEFAULT
+     * keyword (SQLite does not support it)
+     *
+     * @deprecated Will re removed in the next version
+     * @return bool
+     */
+    public function supportsDefaultValue(): bool
     {
     }
 

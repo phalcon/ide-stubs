@@ -426,6 +426,16 @@ abstract class Model extends AbstractInjectionAware implements \Phalcon\Mvc\Enti
     }
 
     /**
+     * Collects previously queried (belongs-to, has-one and has-one-through)
+     * related records along with freshly added one
+     *
+     * @return array Related records that should be saved
+     */
+    protected function collectRelatedToSave(): array
+    {
+    }
+
+    /**
      * Counts how many records match the specified conditions.
      *
      * Returns an integer for simple queries or a ResultsetInterface
@@ -788,9 +798,9 @@ abstract class Model extends AbstractInjectionAware implements \Phalcon\Mvc\Enti
      *     ],
      *     'hydration' => null
      * ]
-     * @return bool|\Phalcon\Mvc\ModelInterface
+     * @return \Phalcon\Mvc\ModelInterface|null
      */
-    public static function findFirst($parameters = null)
+    public static function findFirst($parameters = null): ?ModelInterface
     {
     }
 
@@ -1510,6 +1520,9 @@ abstract class Model extends AbstractInjectionAware implements \Phalcon\Mvc\Enti
     /**
      * Sends a pre-build INSERT SQL statement to the relational database system
      *
+     * @todo Remove in v5.0
+     * @deprecated Use doLowInsert()
+     *
      * @param string|array $table
      * @param bool|string $identityField
      * @param \Phalcon\Mvc\Model\MetaDataInterface $metaData
@@ -1521,7 +1534,23 @@ abstract class Model extends AbstractInjectionAware implements \Phalcon\Mvc\Enti
     }
 
     /**
+     * Sends a pre-build INSERT SQL statement to the relational database system
+     *
+     * @param string|array $table
+     * @param bool|string $identityField
+     * @param \Phalcon\Mvc\Model\MetaDataInterface $metaData
+     * @param \Phalcon\Db\Adapter\AdapterInterface $connection
+     * @return bool
+     */
+    protected function doLowInsert(\Phalcon\Mvc\Model\MetaDataInterface $metaData, \Phalcon\Db\Adapter\AdapterInterface $connection, $table, $identityField): bool
+    {
+    }
+
+    /**
      * Sends a pre-build UPDATE SQL statement to the relational database system
+     *
+     * @todo Remove in v5.0
+     * @deprecated Use doLowUpdate()
      *
      * @param string|array $table
      * @param \Phalcon\Mvc\Model\MetaDataInterface $metaData
@@ -1533,13 +1562,55 @@ abstract class Model extends AbstractInjectionAware implements \Phalcon\Mvc\Enti
     }
 
     /**
-     * Checks whether the current record already exists
+     * Sends a pre-build UPDATE SQL statement to the relational database system
      *
+     * @param string|array $table
      * @param \Phalcon\Mvc\Model\MetaDataInterface $metaData
      * @param \Phalcon\Db\Adapter\AdapterInterface $connection
      * @return bool
      */
+    protected function doLowUpdate(\Phalcon\Mvc\Model\MetaDataInterface $metaData, \Phalcon\Db\Adapter\AdapterInterface $connection, $table): bool
+    {
+    }
+
+    /**
+     * Checks whether the current record already exists
+     *
+     * @todo Remove in v5.0
+     * @deprecated Use exists()
+     *
+     * @return bool
+     * @param \Phalcon\Mvc\Model\MetaDataInterface $metaData
+     * @param \Phalcon\Db\Adapter\AdapterInterface $connection
+     */
     protected function _exists(\Phalcon\Mvc\Model\MetaDataInterface $metaData, \Phalcon\Db\Adapter\AdapterInterface $connection): bool
+    {
+    }
+
+    /**
+     * Checks whether the current record already exists
+     *
+     * @return bool
+     * @param \Phalcon\Mvc\Model\MetaDataInterface $metaData
+     * @param \Phalcon\Db\Adapter\AdapterInterface $connection
+     */
+    protected function exists(\Phalcon\Mvc\Model\MetaDataInterface $metaData, \Phalcon\Db\Adapter\AdapterInterface $connection): bool
+    {
+    }
+
+    /**
+     * Returns related records defined relations depending on the method name.
+     * Returns false if the relation is non-existent.
+     *
+     * @todo Remove in v5.0
+     * @deprecated Use getRelatedRecords()
+     *
+     * @param string $modelName
+     * @param string $method
+     * @param array $arguments *
+     * @return ResultsetInterface|ModelInterface|bool|null
+     */
+    protected function _getRelatedRecords(string $modelName, string $method, array $arguments)
     {
     }
 
@@ -1552,7 +1623,22 @@ abstract class Model extends AbstractInjectionAware implements \Phalcon\Mvc\Enti
      * @param array $arguments *
      * @return ResultsetInterface|ModelInterface|bool|null
      */
-    protected function _getRelatedRecords(string $modelName, string $method, array $arguments)
+    protected function getRelatedRecords(string $modelName, string $method, array $arguments)
+    {
+    }
+
+    /**
+     * Generate a PHQL SELECT statement for an aggregate
+     *
+     * @todo Remove in v5.0
+     * @deprecated Use groupResult()
+     *
+     * @param array $parameters
+     * @return ResultsetInterface
+     * @param string $functionName
+     * @param string $alias
+     */
+    protected static function _groupResult(string $functionName, string $alias, $parameters): ResultsetInterface
     {
     }
 
@@ -1560,11 +1646,11 @@ abstract class Model extends AbstractInjectionAware implements \Phalcon\Mvc\Enti
      * Generate a PHQL SELECT statement for an aggregate
      *
      * @param array $parameters
+     * @return ResultsetInterface
      * @param string $functionName
      * @param string $alias
-     * @return ResultsetInterface
      */
-    protected static function _groupResult(string $functionName, string $alias, $parameters): ResultsetInterface
+    protected static function groupResult(string $functionName, string $alias, $parameters): ResultsetInterface
     {
     }
 
@@ -1593,17 +1679,35 @@ abstract class Model extends AbstractInjectionAware implements \Phalcon\Mvc\Enti
     /**
      * Executes internal hooks before save a record
      *
+     * @todo Remove in v5.0
+     * @deprecated Use preSave()
+     *
+     * @return bool
      * @param \Phalcon\Mvc\Model\MetaDataInterface $metaData
      * @param bool $exists
      * @param mixed $identityField
-     * @return bool
      */
     protected function _preSave(\Phalcon\Mvc\Model\MetaDataInterface $metaData, bool $exists, $identityField): bool
     {
     }
 
     /**
+     * Executes internal hooks before save a record
+     *
+     * @return bool
+     * @param \Phalcon\Mvc\Model\MetaDataInterface $metaData
+     * @param bool $exists
+     * @param mixed $identityField
+     */
+    protected function preSave(\Phalcon\Mvc\Model\MetaDataInterface $metaData, bool $exists, $identityField): bool
+    {
+    }
+
+    /**
      * Saves related records that must be stored prior to save the master record
+     *
+     * @todo Remove in v5.0
+     * @deprecated Use preSaveRelatedRecords()
      *
      * @param \Phalcon\Mvc\ModelInterface[] related
      * @param \Phalcon\Db\Adapter\AdapterInterface $connection
@@ -1616,26 +1720,69 @@ abstract class Model extends AbstractInjectionAware implements \Phalcon\Mvc\Enti
     }
 
     /**
+     * Saves related records that must be stored prior to save the master record
+     *
+     * @param \Phalcon\Mvc\ModelInterface[] related
+     * @return bool
+     * @param \Phalcon\Db\Adapter\AdapterInterface $connection
+     * @param mixed $related
+     * @param \Phalcon\Mvc\ModelInterface  [] related
+     */
+    protected function preSaveRelatedRecords(\Phalcon\Db\Adapter\AdapterInterface $connection, $related): bool
+    {
+    }
+
+    /**
      * Executes internal events after save a record
      *
+     * @todo Remove in v5.0
+     * @deprecated Use postSave()
+     *
+     * @return bool
      * @param bool $success
      * @param bool $exists
-     * @return bool
      */
     protected function _postSave(bool $success, bool $exists): bool
     {
     }
 
     /**
+     * Executes internal events after save a record
+     *
+     * @return bool
+     * @param bool $success
+     * @param bool $exists
+     */
+    protected function postSave(bool $success, bool $exists): bool
+    {
+    }
+
+    /**
      * Save the related records assigned in the has-one/has-many relations
      *
-     * @param  Phalcon\Mvc\ModelInterface[] related
+     * @todo Remove in v5.0
+     * @deprecated Use postSaveRelatedRecords()
+     *
+     * @param Phalcon\Mvc\ModelInterface[] related
+     * @return bool
      * @param \Phalcon\Db\Adapter\AdapterInterface $connection
      * @param mixed $related
      * @param Phalcon\Mvc\ModelInterface  [] related
-     * @return bool
      */
     protected function _postSaveRelatedRecords(\Phalcon\Db\Adapter\AdapterInterface $connection, $related): bool
+    {
+    }
+
+    /**
+     * Save the related records assigned in the has-one/has-many relations
+     *
+     * @param Phalcon\Mvc\ModelInterface[] related
+     * @return bool
+     * @param \Phalcon\Db\Adapter\AdapterInterface $connection
+     * @param mixed $related
+     * @param Phalcon\Mvc\ModelInterface  [] related
+     */
+    protected function postSaveRelatedRecords(\Phalcon\Db\Adapter\AdapterInterface $connection, $related): bool
     {
     }
 
@@ -1666,8 +1813,18 @@ abstract class Model extends AbstractInjectionAware implements \Phalcon\Mvc\Enti
 
     /**
      * Cancel the current operation
+     *
+     * @todo Remove in v5.0
+     * @deprecated Use cancelOperation()
      */
     protected function _cancelOperation()
+    {
+    }
+
+    /**
+     * Cancel the current operation
+     */
+    protected function cancelOperation()
     {
     }
 

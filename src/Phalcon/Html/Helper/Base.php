@@ -9,20 +9,24 @@
  */
 namespace Phalcon\Html\Helper;
 
+use Phalcon\Html\Exception;
+
 /**
- * Phalcon\Html\Helper\TextArea
- *
- * Creates a textarea tag
+ * Class Base
  */
-class TextArea extends \Phalcon\Html\Helper\AbstractHelper
+class Base extends \Phalcon\Html\Helper\AbstractHelper
 {
 
     /**
-     * @param string $text The text for the anchor
-     * @param array $attributes Any additional attributes
+     * Produce a `<base/>` tag.
+     *
+     * @param string $href
+     * @param array  $attributes
+     *
      * @return string
+     * @throws Exception
      */
-    public function __invoke(string $text, array $attributes = array()): string
+    public function __invoke(string $href = null, array $attributes = array()): string
     {
     }
 }

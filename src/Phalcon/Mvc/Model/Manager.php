@@ -409,11 +409,25 @@ class Manager implements \Phalcon\Mvc\Model\ManagerInterface, \Phalcon\Di\Inject
     /**
      * Returns the connection to read or write data related to a model depending on the connection services.
      *
+     * @todo Remove in v5.0
+     * @deprecated Use getConnection()
+     *
+     * @return AdapterInterface
      * @param \Phalcon\Mvc\ModelInterface $model
      * @param mixed $connectionServices
-     * @return AdapterInterface
      */
     protected function _getConnection(\Phalcon\Mvc\ModelInterface $model, $connectionServices): AdapterInterface
+    {
+    }
+
+    /**
+     * Returns the connection to read or write data related to a model depending on the connection services.
+     *
+     * @return AdapterInterface
+     * @param \Phalcon\Mvc\ModelInterface $model
+     * @param mixed $connectionServices
+     */
+    protected function getConnection(\Phalcon\Mvc\ModelInterface $model, $connectionServices): AdapterInterface
     {
     }
 
@@ -441,11 +455,26 @@ class Manager implements \Phalcon\Mvc\Model\ManagerInterface, \Phalcon\Di\Inject
      * Returns the connection service name used to read or write data related to
      * a model depending on the connection services
      *
+     * @todo Remove in v5.0
+     * @deprecated Use getConnectionService()
+     *
+     * @return string
      * @param \Phalcon\Mvc\ModelInterface $model
      * @param mixed $connectionServices
-     * @return string
      */
     public function _getConnectionService(\Phalcon\Mvc\ModelInterface $model, $connectionServices): string
+    {
+    }
+
+    /**
+     * Returns the connection service name used to read or write data related to
+     * a model depending on the connection services
+     *
+     * @return string
+     * @param \Phalcon\Mvc\ModelInterface $model
+     * @param mixed $connectionServices
+     */
+    public function getConnectionService(\Phalcon\Mvc\ModelInterface $model, $connectionServices): string
     {
     }
 
