@@ -1,4 +1,4 @@
-# Phalcon IDE Stubs v4
+# Phalcon IDE Stubs
 
 This repo provide the most complete Phalcon Framework stubs which enables autocompletion in modern IDEs.
 
