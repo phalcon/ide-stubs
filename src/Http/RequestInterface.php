@@ -184,7 +184,7 @@ interface RequestInterface
      * Gets decoded JSON HTTP raw request body
      *
      * @param bool $associative
-     * @return 0|1|stdClass
+     * @return array|bool|\stdClass
      */
     public function getJsonRawBody(bool $associative = false);
 
