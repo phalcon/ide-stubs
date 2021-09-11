@@ -15,14 +15,14 @@ use Psr\Http\Message\UriInterface;
 /**
  * Request methods
  */
-abstract class AbstractRequest extends \Phalcon\Http\Message\AbstractMessage
+abstract class AbstractRequest extends \Phalcon\Http\Message\AbstractMessage implements \Phalcon\Http\Message\RequestMethodInterface
 {
     /**
      * Retrieves the HTTP method of the request.
      *
      * @var string
      */
-    protected $method = 'GET';
+    protected $method = self::METHOD_GET;
 
     /**
      * The request-target, if it has been provided or calculated.

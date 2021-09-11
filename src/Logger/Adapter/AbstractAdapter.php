@@ -61,6 +61,25 @@ abstract class AbstractAdapter implements \Phalcon\Logger\Adapter\AdapterInterfa
     }
 
     /**
+     * Prevent serialization
+     *
+     * @return array
+     */
+    public function __serialize(): array
+    {
+    }
+
+    /**
+     * Prevent unserialization
+     *
+     * @param array $data
+     * @return void
+     */
+    public function __unserialize(array $data): void
+    {
+    }
+
+    /**
      * Adds a message to the queue
      *
      * @param \Phalcon\Logger\Item $item

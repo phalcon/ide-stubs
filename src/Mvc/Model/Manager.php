@@ -955,7 +955,7 @@ class Manager implements \Phalcon\Mvc\Model\ManagerInterface, \Phalcon\Di\Inject
     /**
      * Creates a Phalcon\Mvc\Model\Query\Builder
      *
-     * @param mixed $params
+     * @param array|string|null $params
      * @return BuilderInterface
      */
     public function createBuilder($params = null): BuilderInterface

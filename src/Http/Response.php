@@ -15,6 +15,7 @@ use Phalcon\Di;
 use Phalcon\Di\DiInterface;
 use Phalcon\Helper\Fs;
 use Phalcon\Helper\Json;
+use Phalcon\Http\Message\ResponseStatusCodeInterface;
 use Phalcon\Http\Response\Exception;
 use Phalcon\Http\Response\HeadersInterface;
 use Phalcon\Http\Response\CookiesInterface;
@@ -39,7 +40,7 @@ use Phalcon\Events\ManagerInterface;
  * $response->send();
  * ```
  */
-class Response implements \Phalcon\Http\ResponseInterface, \Phalcon\Di\InjectionAwareInterface, \Phalcon\Events\EventsAwareInterface
+class Response implements \Phalcon\Http\ResponseInterface, \Phalcon\Di\InjectionAwareInterface, \Phalcon\Events\EventsAwareInterface, \Phalcon\Http\Message\ResponseStatusCodeInterface
 {
     /**
      * @var DiInterface|null

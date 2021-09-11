@@ -100,7 +100,7 @@ interface ManagerInterface
     /**
      * Creates a Phalcon\Mvc\Model\Query\Builder
      *
-     * @param string $params
+     * @param array|string|null $params
      * @return BuilderInterface
      */
     public function createBuilder($params = null): BuilderInterface;

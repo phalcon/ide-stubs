@@ -203,7 +203,7 @@ final class ServerRequest extends \Phalcon\Http\Message\AbstractRequest implemen
      * @param null|array|object        $parsedBody
      * @param string                   $protocol
      */
-    public function __construct(string $method = 'GET', $uri = null, array $serverParams = [], $body = 'php://input', $headers = [], array $cookies = [], array $queryParams = [], array $uploadFiles = [], $parsedBody = null, string $protocol = '1.1')
+    public function __construct(string $method = self::METHOD_GET, $uri = null, array $serverParams = [], $body = 'php://input', $headers = [], array $cookies = [], array $queryParams = [], array $uploadFiles = [], $parsedBody = null, string $protocol = '1.1')
     {
     }
 

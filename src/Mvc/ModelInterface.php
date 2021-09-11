@@ -285,7 +285,7 @@ interface ModelInterface
      * constants
      *
      * @param int $dirtyState
-     * @return bool|ModelInterface
+     * @return 0|ModelInterface
      */
     public function setDirtyState(int $dirtyState);
 

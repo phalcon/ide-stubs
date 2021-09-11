@@ -35,20 +35,20 @@ class Container implements \Psr\Container\ContainerInterface
     /**
      * Return the service
      *
-     * @param mixed $name
+     * @param string $name
      * @return mixed
      */
-    public function get($name)
+    public function get(string $name)
     {
     }
 
     /**
      * Whether a service exists or not in the container
      *
-     * @param mixed $name
+     * @param string $name
      * @return bool
      */
-    public function has($name): bool
+    public function has(string $name): bool
     {
     }
 }

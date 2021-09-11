@@ -21,7 +21,7 @@ use Psr\Http\Message\UploadedFileInterface;
 /**
  * PSR-17 ServerRequestFactory
  */
-class ServerRequestFactory implements \Psr\Http\Message\ServerRequestFactoryInterface
+class ServerRequestFactory implements \Psr\Http\Message\ServerRequestFactoryInterface, \Phalcon\Http\Message\RequestMethodInterface
 {
 
     /**
