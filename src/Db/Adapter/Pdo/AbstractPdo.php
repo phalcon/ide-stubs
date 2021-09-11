@@ -10,6 +10,7 @@
 namespace Phalcon\Db\Adapter\Pdo;
 
 use Phalcon\Db\Adapter\AbstractAdapter;
+use Phalcon\Db\ResultInterface;
 
 /**
  * Phalcon\Db\Adapter\Pdo is the Phalcon\Db that internally uses PDO to connect

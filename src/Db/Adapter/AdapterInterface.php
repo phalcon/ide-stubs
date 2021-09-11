@@ -11,6 +11,7 @@ namespace Phalcon\Db\Adapter;
 
 use Phalcon\Db\DialectInterface;
 use Phalcon\Db\RawValue;
+use Phalcon\Db\ResultInterface;
 
 /**
  * Interface for Phalcon\Db adapters
@@ -530,7 +531,7 @@ interface AdapterInterface
      * @param string $sqlStatement
      * @param array $bindParams
      * @param array $bindTypes
-     * @return 0|ResultInterface
+     * @return bool|ResultInterface
      */
     public function query(string $sqlStatement, array $bindParams = [], array $bindTypes = []);
 
