@@ -1302,7 +1302,7 @@ abstract class Model extends AbstractInjectionAware implements \Phalcon\Mvc\Enti
      * Sets the dirty state of the object using one of the DIRTY_STATE_ constants
      *
      * @param int $dirtyState
-     * @return 0|ModelInterface
+     * @return bool|ModelInterface
      */
     public function setDirtyState(int $dirtyState)
     {
