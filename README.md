@@ -11,8 +11,25 @@ composer require --dev phalcon/ide-stubs
 ## Installing via Git
 
 1. Clone the Phalcon IDE Stubs repository in a common location.
-
 2. Setup your IDE.
+
+## How to update stubs
+
+1. Generate stubs inside `cphalcon` project
+```bash
+php zephir.phar fullclean
+php zephir.phar generate
+php zephir.phar stubs
+```
+
+2. Replace `.zep` inside generated `.php` files
+
+```bash
+find ide/ -type f -exec rename 's/\.zep//' '{}' \;
+```
+
+3. Copy all files inside `ide/%version%/Phalcon` in `cphalcon` project
+4. Paste inside `src/` folder in `ide-stubs` project
 
 ## Sponsors
 
