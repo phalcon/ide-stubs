@@ -9,6 +9,8 @@
  */
 namespace Phalcon\Helper;
 
+use RuntimeException;
+
 /**
  * This class offers quick string functions throughout the framework
  */

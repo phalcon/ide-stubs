@@ -9,6 +9,10 @@
  */
 namespace Phalcon\Logger\Formatter;
 
+use DateTime;
+use Phalcon\Logger\Item;
+use Phalcon\Support\Helper\Str\Interpolate;
+
 /**
  * Phalcon\Logger\Formatter\Line
  *

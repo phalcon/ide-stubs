@@ -9,6 +9,9 @@
  */
 namespace Phalcon\Session\Adapter;
 
+use Phalcon\Helper\Str;
+use Phalcon\Session\Exception;
+
 /**
  * Phalcon\Session\Adapter\Stream
  *
@@ -58,10 +61,11 @@ class Stream extends \Phalcon\Session\Adapter\Noop
     }
 
     /**
+     * Garbage Collector
+     *
      * @param mixed $maxlifetime
-     * @return bool
      */
-    public function gc($maxlifetime): bool
+    public function gc($maxlifetime)
     {
     }
 

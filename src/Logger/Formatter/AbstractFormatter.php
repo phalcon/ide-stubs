@@ -9,6 +9,11 @@
  */
 namespace Phalcon\Logger\Formatter;
 
+use DateTimeImmutable;
+use DateTimeZone;
+use Phalcon\Logger;
+use Phalcon\Logger\Item;
+
 /**
  * This file is part of the Phalcon Framework.
  *

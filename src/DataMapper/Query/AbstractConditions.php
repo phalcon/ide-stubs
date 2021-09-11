@@ -9,6 +9,8 @@
  */
 namespace Phalcon\DataMapper\Query;
 
+use Phalcon\Helper\Arr;
+
 /**
  * Class AbstractConditions
  */

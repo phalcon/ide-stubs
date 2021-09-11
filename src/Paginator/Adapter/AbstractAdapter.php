@@ -9,6 +9,8 @@
  */
 namespace Phalcon\Paginator\Adapter;
 
+use Phalcon\Paginator\Exception;
+use Phalcon\Paginator\Repository;
 use Phalcon\Paginator\RepositoryInterface;
 
 /**
@@ -76,10 +78,10 @@ abstract class AbstractAdapter implements \Phalcon\Paginator\Adapter\AdapterInte
     /**
      * Set current rows limit
      *
-     * @param int $limitRows
+     * @param int $limit
      * @return AdapterInterface
      */
-    public function setLimit(int $limitRows): AdapterInterface
+    public function setLimit(int $limit): AdapterInterface
     {
     }
 

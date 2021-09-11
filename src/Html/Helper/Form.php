@@ -18,7 +18,7 @@ class Form extends \Phalcon\Html\Helper\AbstractHelper
 {
 
     /**
-     * Produce a <form> tag.
+     * Produce a `<form>` tag.
      *
      * @param array $attributes
      *

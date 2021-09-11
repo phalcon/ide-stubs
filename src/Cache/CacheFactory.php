@@ -9,7 +9,13 @@
  */
 namespace Phalcon\Cache;
 
+use Phalcon\Cache\Adapter\AdapterInterface;
+use Phalcon\Cache;
 use Psr\SimpleCache\CacheInterface;
+use Phalcon\Cache\Exception\Exception;
+use Phalcon\Config;
+use Phalcon\Config\ConfigInterface;
+use Phalcon\Helper\Arr;
 
 /**
  * Creates a new Cache class

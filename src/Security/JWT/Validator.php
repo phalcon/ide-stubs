@@ -11,6 +11,7 @@ namespace Phalcon\Security\JWT;
 
 use Phalcon\Security\JWT\Exceptions\ValidatorException;
 use Phalcon\Security\JWT\Signer\SignerInterface;
+use Phalcon\Security\JWT\Token\Enum;
 use Phalcon\Security\JWT\Token\Token;
 
 /**

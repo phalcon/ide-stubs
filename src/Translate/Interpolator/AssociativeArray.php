@@ -9,6 +9,8 @@
  */
 namespace Phalcon\Translate\Interpolator;
 
+use Phalcon\Support\Helper\Str\Interpolate;
+
 /**
  * This file is part of the Phalcon Framework.
  *

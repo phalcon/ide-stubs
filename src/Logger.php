@@ -9,8 +9,11 @@
  */
 namespace Phalcon;
 
+use DateTimeImmutable;
 use DateTimeZone;
+use Psr\Log\LoggerInterface;
 use Phalcon\Logger\Adapter\AdapterInterface;
+use Phalcon\Logger\Item;
 use Phalcon\Logger\Exception;
 
 /**

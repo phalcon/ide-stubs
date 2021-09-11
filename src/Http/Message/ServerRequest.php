@@ -12,6 +12,7 @@ namespace Phalcon\Http\Message;
 use Phalcon\Collection;
 use Phalcon\Collection\CollectionInterface;
 use Phalcon\Http\Message\Exception\InvalidArgumentException;
+use Phalcon\Http\Message\Stream\Input;
 use Psr\Http\Message\ServerRequestInterface;
 use Psr\Http\Message\StreamInterface;
 use Psr\Http\Message\UploadedFileInterface;
@@ -95,11 +96,13 @@ final class ServerRequest extends \Phalcon\Http\Message\AbstractRequest implemen
 
 
     /**
+     *
      * Retrieve cookies.
      *
      * Retrieves cookies sent by the client to the server.
      *
      * The data MUST be compatible with the structure of the $_COOKIE
+     *
      * superglobal.
      *
      * @return array
@@ -109,15 +112,21 @@ final class ServerRequest extends \Phalcon\Http\Message\AbstractRequest implemen
     }
 
     /**
+     *
      * Retrieve any parameters provided in the request body.
      *
      * If the request Content-Type is either application/x-www-form-urlencoded
+     *
      * or multipart/form-data, and the request method is POST, this method MUST
+     *
      * return the contents of $_POST.
      *
      * Otherwise, this method may return any results of deserializing
+     *
      * the request body content; as parsing returns structured content, the
+     *
      * potential types MUST be arrays or objects only. A null value indicates
+     *
      * the absence of body content.
      *
      * @return mixed
@@ -127,13 +136,17 @@ final class ServerRequest extends \Phalcon\Http\Message\AbstractRequest implemen
     }
 
     /**
+     *
      * Retrieve query string arguments.
      *
      * Retrieves the deserialized query string arguments, if any.
      *
      * Note: the query params might not be in sync with the URI or server
+     *
      * params. If you need to ensure you are only getting the original
+     *
      * values, you may need to parse the query string from
+     *
      * `getUri()->getQuery()` or from the `QUERY_STRING` server param.
      *
      * @return array
@@ -143,10 +156,13 @@ final class ServerRequest extends \Phalcon\Http\Message\AbstractRequest implemen
     }
 
     /**
+     *
      * Retrieve server parameters.
      *
      * Retrieves data related to the incoming request environment,
+     *
      * typically derived from PHP's $_SERVER superglobal. The data IS NOT
+     *
      * REQUIRED to originate from $_SERVER.
      *
      * @return array
@@ -156,12 +172,15 @@ final class ServerRequest extends \Phalcon\Http\Message\AbstractRequest implemen
     }
 
     /**
+     *
      * Retrieve normalized file upload data.
      *
      * This method returns upload metadata in a normalized tree, with each leaf
+     *
      * an instance of Psr\Http\Message\UploadedFileInterface.
      *
      * These values MAY be prepared from $_FILES or the message body during
+     *
      * instantiation, or MAY be injected via withUploadedFiles().
      *
      * @return array

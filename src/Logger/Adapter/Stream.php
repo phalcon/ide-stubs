@@ -9,6 +9,12 @@
  */
 namespace Phalcon\Logger\Adapter;
 
+use Phalcon\Logger\Adapter;
+use Phalcon\Logger\Exception;
+use Phalcon\Logger\Formatter\FormatterInterface;
+use Phalcon\Logger\Item;
+use UnexpectedValueException;
+
 /**
  * Phalcon\Logger\Adapter\Stream
  *

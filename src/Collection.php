@@ -9,6 +9,14 @@
  */
 namespace Phalcon;
 
+use ArrayAccess;
+use ArrayIterator;
+use Countable;
+use IteratorAggregate;
+use JsonSerializable;
+use Phalcon\Collection\CollectionInterface;
+use Phalcon\Helper\Json;
+use Serializable;
 use Traversable;
 
 /**

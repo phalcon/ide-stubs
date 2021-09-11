@@ -9,8 +9,8 @@
  */
 namespace Phalcon\Http\Message;
 
-use Psr\Http\Message\ResponseFactoryInterface;
 use Psr\Http\Message\ResponseInterface;
+use Psr\Http\Message\ResponseFactoryInterface;
 
 /**
  * PSR-17 ResponseFactory

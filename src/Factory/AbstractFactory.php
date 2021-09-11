@@ -9,6 +9,9 @@
  */
 namespace Phalcon\Factory;
 
+use Phalcon\Config;
+use Phalcon\Config\ConfigInterface;
+
 /**
  * This file is part of the Phalcon Framework.
  *

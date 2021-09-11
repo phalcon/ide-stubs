@@ -9,6 +9,8 @@
  */
 namespace Phalcon\Session\Adapter;
 
+use SessionHandlerInterface;
+
 /**
  * Phalcon\Session\Adapter\Noop
  *
@@ -90,9 +92,8 @@ class Noop implements \SessionHandlerInterface
      * Garbage Collector
      *
      * @param mixed $maxlifetime
-     * @return bool
      */
-    public function gc($maxlifetime): bool
+    public function gc($maxlifetime)
     {
     }
 

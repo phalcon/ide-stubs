@@ -9,6 +9,14 @@
  */
 namespace Phalcon\Logger\Adapter;
 
+use LogicException;
+use Phalcon\Helper\Arr;
+use Phalcon\Logger;
+use Phalcon\Logger\Adapter;
+use Phalcon\Logger\Exception;
+use Phalcon\Logger\Formatter\FormatterInterface;
+use Phalcon\Logger\Item;
+
 /**
  * Phalcon\Logger\Adapter\Syslog
  *

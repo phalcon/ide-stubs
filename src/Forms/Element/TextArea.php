@@ -9,6 +9,8 @@
  */
 namespace Phalcon\Forms\Element;
 
+use Phalcon\Tag;
+
 /**
  * Component TEXTAREA for forms
  */

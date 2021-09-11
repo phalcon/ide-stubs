@@ -9,6 +9,8 @@
  */
 namespace Phalcon\Filter;
 
+use Phalcon\Filter;
+
 /**
  * This file is part of the Phalcon Framework.
  *

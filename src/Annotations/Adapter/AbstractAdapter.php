@@ -9,10 +9,11 @@
  */
 namespace Phalcon\Annotations\Adapter;
 
-use Phalcon\Annotations\Collection;
 use Phalcon\Annotations\Reader;
-use Phalcon\Annotations\ReaderInterface;
+use Phalcon\Annotations\Exception;
+use Phalcon\Annotations\Collection;
 use Phalcon\Annotations\Reflection;
+use Phalcon\Annotations\ReaderInterface;
 
 /**
  * This is the base class for Phalcon\Annotations adapters

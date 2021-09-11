@@ -9,7 +9,12 @@
  */
 namespace Phalcon\Mvc\Model\Query;
 
+use Phalcon\Di;
+use Phalcon\Db\Column;
 use Phalcon\Di\DiInterface;
+use Phalcon\Helper\Arr;
+use Phalcon\Mvc\Model\Exception;
+use Phalcon\Di\InjectionAwareInterface;
 use Phalcon\Mvc\Model\QueryInterface;
 
 /**
