@@ -1,4 +1,4 @@
-name: main
+name: Stubs code validation
 
 on:
     pull_request:
