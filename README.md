@@ -28,7 +28,7 @@ php zephir.phar stubs
 find ide/ -type f -exec rename 's/\.zep//' '{}' \;
 ```
 
-3. Copy all files inside `ide/%version%/Phalcon` in `cphalcon` project
+3. Copy all files from `ide/%version%/Phalcon/` folder in `cphalcon` project
 4. Paste inside `src/` folder in `ide-stubs` project
 
 ## Sponsors
