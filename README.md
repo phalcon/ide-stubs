@@ -13,6 +13,11 @@ composer require --dev phalcon/ide-stubs
 1. Clone the Phalcon IDE Stubs repository in a common location.
 2. Setup your IDE.
 
+## Read before create PR with fix
+
+All stubs are generated from [cphalcon](https://github.com/phalcon/cphalcon) project via [Zephir stubs](https://docs.zephir-lang.com/0.12/en/config#stubs).  
+Please find the problem inside [Phalcon's Zephir code](https://github.com/phalcon/cphalcon/tree/master/phalcon) and submit pull request with fix [here](https://github.com/phalcon/cphalcon/pulls).
+
 ## How to update stubs
 
 1. Generate stubs inside `cphalcon` project
