@@ -101,5 +101,4 @@ interface CollectionInterface
      * @return string
      */
     public function toJson(int $options = 79): string;
-
 }

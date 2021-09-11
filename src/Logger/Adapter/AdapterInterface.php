@@ -10,7 +10,6 @@
 namespace Phalcon\Logger\Adapter;
 
 use Phalcon\Logger\Formatter\FormatterInterface;
-use Phalcon\Logger\Item;
 
 /**
  * Phalcon\Logger\AdapterInterface
@@ -86,5 +85,4 @@ interface AdapterInterface
      * @return AdapterInterface
      */
     public function setFormatter(\Phalcon\Logger\Formatter\FormatterInterface $formatter): AdapterInterface;
-
 }

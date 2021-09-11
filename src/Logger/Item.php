@@ -111,5 +111,4 @@ class Item
     public function __construct(string $message, string $levelName, int $level, \DateTimeImmutable $time, array $context = [])
     {
     }
-
 }

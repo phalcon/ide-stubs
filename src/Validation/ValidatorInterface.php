@@ -9,8 +9,6 @@
  */
 namespace Phalcon\Validation;
 
-use Phalcon\Validation;
-
 /**
  * Interface for Phalcon\Validation\AbstractValidator
  */
@@ -75,5 +73,4 @@ interface ValidatorInterface
      * @param string $template
      */
     public function setTemplate(string $template): ValidatorInterface;
-
 }

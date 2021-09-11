@@ -9,8 +9,6 @@
  */
 namespace Phalcon\Validation\Validator\File\Resolution;
 
-use Phalcon\Messages\Message;
-use Phalcon\Validation;
 use Phalcon\Validation\Validator\File\AbstractFile;
 
 /**
@@ -87,5 +85,4 @@ class Min extends AbstractFile
     public function validate(\Phalcon\Validation $validation, $field): bool
     {
     }
-
 }

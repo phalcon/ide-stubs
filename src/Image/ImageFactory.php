@@ -9,9 +9,7 @@
  */
 namespace Phalcon\Image;
 
-use Phalcon\Config;
 use Phalcon\Factory\AbstractFactory;
-use Phalcon\Helper\Arr;
 use Phalcon\Image\Adapter\AdapterInterface;
 
 /**
@@ -66,5 +64,4 @@ class ImageFactory extends AbstractFactory
     protected function getAdapters(): array
     {
     }
-
 }

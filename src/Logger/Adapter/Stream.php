@@ -9,12 +9,6 @@
  */
 namespace Phalcon\Logger\Adapter;
 
-use Phalcon\Logger\Adapter;
-use Phalcon\Logger\Exception;
-use Phalcon\Logger\Formatter\FormatterInterface;
-use Phalcon\Logger\Item;
-use UnexpectedValueException;
-
 /**
  * Phalcon\Logger\Adapter\Stream
  *
@@ -100,5 +94,4 @@ class Stream extends \Phalcon\Logger\Adapter\AbstractAdapter
     public function process(\Phalcon\Logger\Item $item): void
     {
     }
-
 }

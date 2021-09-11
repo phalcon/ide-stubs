@@ -9,13 +9,6 @@
  */
 namespace Phalcon\Support\Debug;
 
-use Phalcon\Di;
-use Phalcon\Helper\Json;
-use Reflection;
-use ReflectionClass;
-use ReflectionProperty;
-use stdClass;
-
 /**
  * Dumps information about a variable(s)
  *
@@ -182,5 +175,4 @@ class Dump
     protected function output($variable, string $name = null, int $tab = 1): string
     {
     }
-
 }

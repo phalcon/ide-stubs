@@ -9,9 +9,6 @@
  */
 namespace Phalcon\Logger;
 
-use Phalcon\Config;
-use Phalcon\Config\ConfigInterface;
-use Phalcon\Helper\Arr;
 use Phalcon\Logger;
 
 /**
@@ -66,5 +63,4 @@ class LoggerFactory
     public function newInstance(string $name, array $adapters = []): Logger
     {
     }
-
 }

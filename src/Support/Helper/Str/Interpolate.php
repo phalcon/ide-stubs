@@ -34,5 +34,4 @@ class Interpolate
     public function __invoke(string $message, array $context = [], string $leftToken = '%', string $rightToken = '%'): string
     {
     }
-
 }

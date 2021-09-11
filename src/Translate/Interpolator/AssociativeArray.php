@@ -9,8 +9,6 @@
  */
 namespace Phalcon\Translate\Interpolator;
 
-use Phalcon\Support\Helper\Str\Interpolate;
-
 /**
  * This file is part of the Phalcon Framework.
  *
@@ -32,5 +30,4 @@ class AssociativeArray implements \Phalcon\Translate\Interpolator\InterpolatorIn
     public function replacePlaceholders(string $translation, array $placeholders = []): string
     {
     }
-
 }

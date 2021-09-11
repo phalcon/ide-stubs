@@ -23,5 +23,4 @@ class BoolVal
     public function __invoke($input)
     {
     }
-
 }

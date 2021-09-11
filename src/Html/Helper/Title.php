@@ -111,5 +111,4 @@ class Title extends \Phalcon\Html\Helper\AbstractHelper
     public function prepend(string $text, bool $raw = false): Title
     {
     }
-
 }

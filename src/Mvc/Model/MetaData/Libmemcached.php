@@ -9,10 +9,7 @@
  */
 namespace Phalcon\Mvc\Model\MetaData;
 
-use Phalcon\Helper\Arr;
-use Phalcon\Mvc\Model\Exception;
 use Phalcon\Mvc\Model\MetaData;
-use Phalcon\Cache\AdapterFactory;
 
 /**
  * Phalcon\Mvc\Model\MetaData\Libmemcached
@@ -42,5 +39,4 @@ class Libmemcached extends MetaData
     public function reset(): void
     {
     }
-
 }

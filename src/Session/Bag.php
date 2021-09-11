@@ -10,9 +10,7 @@
 namespace Phalcon\Session;
 
 use Phalcon\Collection;
-use Phalcon\Di;
 use Phalcon\Di\DiInterface;
-use Phalcon\Di\InjectionAwareInterface;
 
 /**
  * Phalcon\Session\Bag
@@ -115,5 +113,4 @@ class Bag extends Collection implements \Phalcon\Di\InjectionAwareInterface
     public function setDI(\Phalcon\Di\DiInterface $container): void
     {
     }
-
 }

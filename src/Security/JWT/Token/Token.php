@@ -81,5 +81,4 @@ class Token
     public function getToken(): string
     {
     }
-
 }

@@ -9,8 +9,6 @@
  */
 namespace Phalcon\Flash;
 
-use Phalcon\Di;
-use Phalcon\Di\DiInterface;
 use Phalcon\Di\AbstractInjectionAware;
 use Phalcon\Escaper\EscaperInterface;
 use Phalcon\Session\ManagerInterface as SessionInterface;
@@ -278,5 +276,4 @@ abstract class AbstractFlash extends AbstractInjectionAware implements \Phalcon\
     private function prepareHtmlMessage(string $type, string $message): string
     {
     }
-
 }

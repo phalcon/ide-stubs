@@ -11,10 +11,8 @@ namespace Phalcon\Mvc\Model;
 
 use Phalcon\Db\Adapter\AdapterInterface;
 use Phalcon\Di\DiInterface;
-use Phalcon\Mvc\ModelInterface;
-use Phalcon\Mvc\Model\Transaction\Failed as TxFailed;
 use Phalcon\Mvc\Model\Transaction\ManagerInterface;
-use Phalcon\Mvc\Model\TransactionInterface;
+use Phalcon\Mvc\ModelInterface;
 
 /**
  * Phalcon\Mvc\Model\Transaction
@@ -228,5 +226,4 @@ class Transaction implements \Phalcon\Mvc\Model\TransactionInterface
     public function throwRollbackException(bool $status): TransactionInterface
     {
     }
-
 }

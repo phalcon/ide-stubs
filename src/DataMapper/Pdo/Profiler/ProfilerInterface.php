@@ -89,5 +89,4 @@ interface ProfilerInterface
      * @return void
      */
     public function start(string $method): void;
-
 }

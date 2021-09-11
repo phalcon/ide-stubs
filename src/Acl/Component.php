@@ -65,5 +65,4 @@ class Component implements \Phalcon\Acl\ComponentInterface
     public function __construct(string $name, string $description = null)
     {
     }
-
 }

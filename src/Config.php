@@ -9,9 +9,7 @@
  */
 namespace Phalcon;
 
-use Phalcon\Collection;
 use Phalcon\Config\ConfigInterface;
-use Phalcon\Config\Exception;
 
 /**
  * `Phalcon\Config` is designed to simplify the access to, and the use of,
@@ -142,5 +140,4 @@ class Config extends Collection implements \Phalcon\Config\ConfigInterface
     protected function setData($element, $value): void
     {
     }
-
 }

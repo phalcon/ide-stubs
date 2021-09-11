@@ -40,7 +40,7 @@ class Route implements \Phalcon\Cli\Router\RouteInterface
     /**
      * @var string
      */
-    static protected $delimiterPath = self::DEFAULT_DELIMITER;
+    protected static $delimiterPath = self::DEFAULT_DELIMITER;
 
     /**
      * @var string|null
@@ -70,7 +70,7 @@ class Route implements \Phalcon\Cli\Router\RouteInterface
     /**
      * @var int|string
      */
-    static protected $uniqueId = 0;
+    protected static $uniqueId = 0;
 
 
     /**
@@ -274,5 +274,4 @@ class Route implements \Phalcon\Cli\Router\RouteInterface
     public function setName(string $name): RouteInterface
     {
     }
-
 }

@@ -9,10 +9,7 @@
  */
 namespace Phalcon\Validation\Validator;
 
-use Phalcon\Messages\Message;
-use Phalcon\Validation;
 use Phalcon\Validation\AbstractValidator;
-use Phalcon\Validation\Exception;
 
 /**
  * Check if a value is not included into a list of values
@@ -90,5 +87,4 @@ class ExclusionIn extends AbstractValidator
     public function validate(\Phalcon\Validation $validation, $field): bool
     {
     }
-
 }

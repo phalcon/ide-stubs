@@ -9,8 +9,6 @@
  */
 namespace Phalcon\Paginator\Adapter;
 
-use Phalcon\Paginator\Exception;
-use Phalcon\Paginator\Repository;
 use Phalcon\Paginator\RepositoryInterface;
 
 /**
@@ -104,5 +102,4 @@ abstract class AbstractAdapter implements \Phalcon\Paginator\Adapter\AdapterInte
     protected function getRepository(array $properties = null): RepositoryInterface
     {
     }
-
 }

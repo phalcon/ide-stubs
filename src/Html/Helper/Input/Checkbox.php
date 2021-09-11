@@ -10,7 +10,6 @@
 namespace Phalcon\Html\Helper\Input;
 
 use Phalcon\Escaper\EscaperInterface;
-use Phalcon\Helper\Arr;
 
 /**
  * Class Checkbox
@@ -76,5 +75,4 @@ class Checkbox extends \Phalcon\Html\Helper\Input\AbstractInput
     private function processUnchecked(): string
     {
     }
-
 }

@@ -9,8 +9,6 @@
  */
 namespace Phalcon\Mvc\Model;
 
-use Closure;
-use Phalcon\Messages\MessageInterface;
 use Phalcon\Mvc\ModelInterface;
 use Psr\SimpleCache\CacheInterface;
 
@@ -129,5 +127,4 @@ interface ResultsetInterface
      * @return bool
      */
     public function update($data, \Closure $conditionCallback = null): bool;
-
 }

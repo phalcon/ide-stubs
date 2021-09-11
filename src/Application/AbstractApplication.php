@@ -11,7 +11,6 @@ namespace Phalcon\Application;
 
 use Phalcon\Di\DiInterface;
 use Phalcon\Di\Injectable;
-use Phalcon\Events\EventsAwareInterface;
 use Phalcon\Events\ManagerInterface;
 
 /**
@@ -131,5 +130,4 @@ abstract class AbstractApplication extends Injectable implements \Phalcon\Events
     public function setEventsManager(\Phalcon\Events\ManagerInterface $eventsManager): void
     {
     }
-
 }

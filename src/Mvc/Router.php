@@ -9,14 +9,9 @@
  */
 namespace Phalcon\Mvc;
 
-use Phalcon\Di\DiInterface;
 use Phalcon\Di\AbstractInjectionAware;
-use Phalcon\Events\EventsAwareInterface;
 use Phalcon\Events\ManagerInterface;
-use Phalcon\Http\RequestInterface;
-use Phalcon\Mvc\Router\Exception;
 use Phalcon\Mvc\Router\GroupInterface;
-use Phalcon\Mvc\Router\Route;
 use Phalcon\Mvc\Router\RouteInterface;
 
 /**
@@ -680,5 +675,4 @@ class Router extends AbstractInjectionAware implements \Phalcon\Mvc\RouterInterf
     public function wasMatched(): bool
     {
     }
-
 }

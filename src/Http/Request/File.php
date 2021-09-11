@@ -9,8 +9,6 @@
  */
 namespace Phalcon\Http\Request;
 
-use Phalcon\Helper\Arr;
-
 /**
  * Phalcon\Http\Request\File
  *
@@ -172,5 +170,4 @@ class File implements \Phalcon\Http\Request\FileInterface
     public function moveTo(string $destination): bool
     {
     }
-
 }

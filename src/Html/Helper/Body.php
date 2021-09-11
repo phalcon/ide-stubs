@@ -28,5 +28,4 @@ class Body extends \Phalcon\Html\Helper\AbstractHelper
     public function __invoke(array $attributes = []): string
     {
     }
-
 }

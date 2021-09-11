@@ -9,8 +9,6 @@
  */
 namespace Phalcon\Mvc\Model;
 
-use Phalcon\Di\DiInterface;
-
 /**
  * Phalcon\Mvc\Model\CriteriaInterface
  *
@@ -335,5 +333,4 @@ interface CriteriaInterface
      * @return CriteriaInterface
      */
     public function where(string $conditions, $bindParams = null, $bindTypes = null): CriteriaInterface;
-
 }

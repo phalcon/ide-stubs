@@ -462,5 +462,4 @@ abstract class AbstractConnection implements \Phalcon\DataMapper\Pdo\Connection\
     protected function fetchData(string $method, array $arguments, string $statement, array $values = []): array
     {
     }
-
 }

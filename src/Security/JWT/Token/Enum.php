@@ -49,6 +49,4 @@ class Enum
 
 
     const SUBJECT = 'sub';
-
-
 }

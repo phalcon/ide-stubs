@@ -9,8 +9,6 @@
  */
 namespace Phalcon\Http\Message;
 
-use Phalcon\Http\Message\Stream\Input;
-use Phalcon\Http\Message\AbstractRequest;
 use Psr\Http\Message\RequestInterface;
 use Psr\Http\Message\StreamInterface;
 use Psr\Http\Message\UriInterface;
@@ -32,5 +30,4 @@ final class Request extends AbstractRequest implements \Psr\Http\Message\Request
     public function __construct(string $method = 'GET', $uri = null, $body = 'php://memory', $headers = [])
     {
     }
-
 }

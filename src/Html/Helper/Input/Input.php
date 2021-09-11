@@ -25,5 +25,4 @@ class Input extends \Phalcon\Html\Helper\Input\AbstractInput
     public function setType(string $type): AbstractInput
     {
     }
-
 }

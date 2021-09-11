@@ -9,10 +9,7 @@
  */
 namespace Phalcon\Http\Message;
 
-use Phalcon\Helper\Arr;
-use Exception;
 use Psr\Http\Message\StreamInterface;
-use RuntimeException;
 
 /**
  * PSR-7 Stream
@@ -253,5 +250,4 @@ class Stream implements \Psr\Http\Message\StreamInterface
     private function checkWritable(): void
     {
     }
-
 }

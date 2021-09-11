@@ -9,9 +9,6 @@
  */
 namespace Phalcon\Session\Adapter;
 
-use Phalcon\Helper\Str;
-use Phalcon\Session\Exception;
-
 /**
  * Phalcon\Session\Adapter\Stream
  *
@@ -95,5 +92,4 @@ class Stream extends \Phalcon\Session\Adapter\Noop
     public function write($id, $data): bool
     {
     }
-
 }

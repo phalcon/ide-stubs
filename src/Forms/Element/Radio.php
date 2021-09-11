@@ -9,8 +9,6 @@
  */
 namespace Phalcon\Forms\Element;
 
-use Phalcon\Tag;
-
 /**
  * Phalcon\Forms\Element\Radio
  *
@@ -28,5 +26,4 @@ class Radio extends \Phalcon\Forms\Element\AbstractElement
     public function render(array $attributes = []): string
     {
     }
-
 }

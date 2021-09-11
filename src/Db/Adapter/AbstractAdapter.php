@@ -10,15 +10,8 @@
 namespace Phalcon\Db\Adapter;
 
 use Phalcon\Db\DialectInterface;
-use Phalcon\Db\ColumnInterface;
 use Phalcon\Db\Enum;
-use Phalcon\Db\Exception;
-use Phalcon\Db\Index;
-use Phalcon\Db\IndexInterface;
-use Phalcon\Db\Reference;
-use Phalcon\Db\ReferenceInterface;
 use Phalcon\Db\RawValue;
-use Phalcon\Events\EventsAwareInterface;
 use Phalcon\Events\ManagerInterface;
 
 /**
@@ -31,7 +24,7 @@ abstract class AbstractAdapter implements \Phalcon\Db\Adapter\AdapterInterface, 
      *
      * @var int
      */
-    static protected $connectionConsecutive = 0;
+    protected static $connectionConsecutive = 0;
 
     /**
      * Active connection ID
@@ -973,5 +966,4 @@ abstract class AbstractAdapter implements \Phalcon\Db\Adapter\AdapterInterface, 
     public function viewExists(string $viewName, string $schemaName = null): bool
     {
     }
-
 }

@@ -33,5 +33,4 @@ class Link extends \Phalcon\Html\Helper\AbstractSeries
     protected function getTag(): string
     {
     }
-
 }

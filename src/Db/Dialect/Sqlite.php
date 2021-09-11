@@ -9,13 +9,7 @@
  */
 namespace Phalcon\Db\Dialect;
 
-use Phalcon\Db\Column;
-use Phalcon\Db\Exception;
-use Phalcon\Db\IndexInterface;
 use Phalcon\Db\Dialect;
-use Phalcon\Db\DialectInterface;
-use Phalcon\Db\ColumnInterface;
-use Phalcon\Db\ReferenceInterface;
 
 /**
  * Generates database specific SQL for the SQLite RDBMS
@@ -358,5 +352,4 @@ class Sqlite extends Dialect
     public function viewExists(string $viewName, string $schemaName = null): string
     {
     }
-
 }

@@ -9,10 +9,6 @@
  */
 namespace Phalcon;
 
-use Phalcon\Di\DiInterface;
-use Phalcon\Escaper\EscaperInterface;
-use Phalcon\Escaper\Exception;
-
 /**
  * Phalcon\Escaper
  *
@@ -247,5 +243,4 @@ class Escaper implements \Phalcon\Escaper\EscaperInterface
     public function url(string $url): string
     {
     }
-
 }

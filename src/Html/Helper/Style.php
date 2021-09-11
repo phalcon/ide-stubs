@@ -48,5 +48,4 @@ class Style extends \Phalcon\Html\Helper\AbstractSeries
     protected function getAttributes(string $href, array $attributes): array
     {
     }
-
 }

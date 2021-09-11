@@ -9,10 +9,6 @@
  */
 namespace Phalcon\Logger\Formatter;
 
-use Phalcon\Helper\Json as JsonHelper;
-use Phalcon\Logger\Item;
-use Phalcon\Support\Helper\Str\Interpolate;
-
 /**
  * Phalcon\Logger\Formatter\Json
  *
@@ -39,5 +35,4 @@ class Json extends \Phalcon\Logger\Formatter\AbstractFormatter
     public function format(\Phalcon\Logger\Item $item): string
     {
     }
-
 }

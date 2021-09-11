@@ -10,11 +10,7 @@
 namespace Phalcon\Db\Adapter;
 
 use Phalcon\Db\DialectInterface;
-use Phalcon\Db\ResultInterface;
-use Phalcon\Db\ColumnInterface;
-use Phalcon\Db\IndexInterface;
 use Phalcon\Db\RawValue;
-use Phalcon\Db\ReferenceInterface;
 
 /**
  * Interface for Phalcon\Db adapters
@@ -666,5 +662,4 @@ interface AdapterInterface
      * @return bool
      */
     public function viewExists(string $viewName, string $schemaName = null): bool;
-
 }

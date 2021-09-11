@@ -56,5 +56,4 @@ class HelperFactory extends AbstractFactory
     protected function getAdapters(): array
     {
     }
-
 }

@@ -9,8 +9,6 @@
  */
 namespace Phalcon\Di;
 
-use ArrayAccess;
-
 /**
  * Interface for Phalcon\Di
  */
@@ -136,5 +134,4 @@ interface DiInterface extends \ArrayAccess
      * @return ServiceInterface
      */
     public function setShared(string $name, $definition): ServiceInterface;
-
 }

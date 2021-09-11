@@ -10,8 +10,6 @@
 namespace Phalcon;
 
 use Phalcon\Crypt\CryptInterface;
-use Phalcon\Crypt\Exception;
-use Phalcon\Crypt\Mismatch;
 
 /**
  * Provides encryption capabilities to Phalcon applications.
@@ -409,5 +407,4 @@ class Crypt implements \Phalcon\Crypt\CryptInterface
     protected function cryptUnpadText(string $text, string $mode, int $blockSize, int $paddingType)
     {
     }
-
 }

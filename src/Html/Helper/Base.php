@@ -29,5 +29,4 @@ class Base extends \Phalcon\Html\Helper\AbstractHelper
     public function __invoke(string $href = null, array $attributes = []): string
     {
     }
-
 }

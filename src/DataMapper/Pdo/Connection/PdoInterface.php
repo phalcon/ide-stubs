@@ -140,5 +140,4 @@ interface PdoInterface
      * @return bool
      */
     public function setAttribute(int $attribute, $value): bool;
-
 }

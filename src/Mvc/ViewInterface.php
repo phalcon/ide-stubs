@@ -202,5 +202,4 @@ interface ViewInterface extends \Phalcon\Mvc\ViewBaseInterface
      * Starts rendering process enabling the output buffering
      */
     public function start();
-
 }

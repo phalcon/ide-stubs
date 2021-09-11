@@ -16,6 +16,4 @@ class Range extends \Phalcon\Html\Helper\Input\AbstractInput
 {
 
     protected $type = 'range';
-
-
 }

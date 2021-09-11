@@ -120,5 +120,4 @@ class Insert extends \Phalcon\DataMapper\Query\AbstractQuery
     private function buildColumns(): string
     {
     }
-
 }

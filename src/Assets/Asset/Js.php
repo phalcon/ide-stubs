@@ -9,8 +9,6 @@
  */
 namespace Phalcon\Assets\Asset;
 
-use Phalcon\Assets\Asset as AssetBase;
-
 /**
  * Represents JavaScript assets
  */
@@ -30,5 +28,4 @@ class Js extends \Phalcon\Assets\Asset
     public function __construct(string $path, bool $local = true, bool $filter = true, array $attributes = [], string $version = null, bool $autoVersion = false)
     {
     }
-
 }

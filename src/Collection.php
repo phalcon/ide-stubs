@@ -9,14 +9,6 @@
  */
 namespace Phalcon;
 
-use ArrayAccess;
-use ArrayIterator;
-use Countable;
-use IteratorAggregate;
-use JsonSerializable;
-use Phalcon\Collection\CollectionInterface;
-use Phalcon\Helper\Json;
-use Serializable;
 use Traversable;
 
 /**
@@ -307,5 +299,4 @@ class Collection implements \ArrayAccess, \Phalcon\Collection\CollectionInterfac
     protected function setData(string $element, $value): void
     {
     }
-
 }

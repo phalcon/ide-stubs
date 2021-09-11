@@ -34,5 +34,4 @@ class Ol extends \Phalcon\Html\Helper\AbstractList
     protected function getTag(): string
     {
     }
-
 }

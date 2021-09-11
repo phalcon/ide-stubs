@@ -9,10 +9,7 @@
  */
 namespace Phalcon\Mvc\Model\Transaction;
 
-use Phalcon\Di;
 use Phalcon\Di\DiInterface;
-use Phalcon\Di\InjectionAwareInterface;
-use Phalcon\Mvc\Model\Transaction;
 use Phalcon\Mvc\Model\TransactionInterface;
 
 /**
@@ -258,5 +255,4 @@ class Manager implements \Phalcon\Mvc\Model\Transaction\ManagerInterface, \Phalc
     protected function collectTransaction(\Phalcon\Mvc\Model\TransactionInterface $transaction): void
     {
     }
-
 }

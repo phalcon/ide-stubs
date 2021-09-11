@@ -9,8 +9,6 @@
  */
 namespace Phalcon\Forms\Element;
 
-use Phalcon\Tag;
-
 /**
  * Phalcon\Forms\Element\Hidden
  *
@@ -28,5 +26,4 @@ class Hidden extends \Phalcon\Forms\Element\AbstractElement
     public function render(array $attributes = []): string
     {
     }
-
 }

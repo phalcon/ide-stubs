@@ -9,8 +9,6 @@
  */
 namespace Phalcon\Validation\Validator;
 
-use Phalcon\Messages\Message;
-use Phalcon\Validation;
 use Phalcon\Validation\AbstractValidator;
 
 /**
@@ -87,5 +85,4 @@ class CreditCard extends AbstractValidator
     private function verifyByLuhnAlgorithm(string $number): bool
     {
     }
-
 }

@@ -9,7 +9,6 @@
  */
 namespace Phalcon\Flash;
 
-use Phalcon\Di\DiInterface;
 use Phalcon\Session\ManagerInterface;
 
 /**
@@ -103,5 +102,4 @@ class Session extends \Phalcon\Flash\AbstractFlash
     public function getSessionService(): ManagerInterface
     {
     }
-
 }

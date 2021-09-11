@@ -79,5 +79,4 @@ class Meta extends \Phalcon\Html\Helper\AbstractSeries
     private function addElement(string $element, string $value, string $content): Meta
     {
     }
-
 }

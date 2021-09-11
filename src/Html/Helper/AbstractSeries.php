@@ -50,5 +50,4 @@ abstract class AbstractSeries extends \Phalcon\Html\Helper\AbstractHelper
      * @return string
      */
     abstract protected function getTag(): string;
-
 }

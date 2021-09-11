@@ -51,5 +51,4 @@ class InterpolatorFactory extends AbstractFactory
     protected function getAdapters(): array
     {
     }
-
 }

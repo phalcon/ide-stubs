@@ -73,5 +73,4 @@ class Hmac extends \Phalcon\Security\JWT\Signer\AbstractSigner
     private function getHash(string $payload, string $passphrase): string
     {
     }
-
 }

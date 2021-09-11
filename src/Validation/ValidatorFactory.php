@@ -10,7 +10,6 @@
 namespace Phalcon\Validation;
 
 use Phalcon\Factory\AbstractFactory;
-use Phalcon\Helper\Arr;
 
 /**
  * This file is part of the Phalcon Framework.
@@ -51,5 +50,4 @@ class ValidatorFactory extends AbstractFactory
     protected function getAdapters(): array
     {
     }
-
 }

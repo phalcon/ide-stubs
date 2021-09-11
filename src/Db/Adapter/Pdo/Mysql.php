@@ -9,16 +9,6 @@
  */
 namespace Phalcon\Db\Adapter\Pdo;
 
-use Phalcon\Db\Adapter\Pdo\AbstractPdo as PdoAdapter;
-use Phalcon\Db\Column;
-use Phalcon\Db\ColumnInterface;
-use Phalcon\Db\Enum;
-use Phalcon\Db\Exception;
-use Phalcon\Db\Index;
-use Phalcon\Db\IndexInterface;
-use Phalcon\Db\Reference;
-use Phalcon\Db\ReferenceInterface;
-
 /**
  * Specific functions for the MySQL database system
  *
@@ -120,5 +110,4 @@ class Mysql extends \Phalcon\Db\Adapter\Pdo\AbstractPdo
     protected function getDsnDefaults(): array
     {
     }
-
 }

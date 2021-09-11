@@ -61,5 +61,4 @@ abstract class AbstractList extends \Phalcon\Html\Helper\AbstractHelper
      *
      */
     abstract protected function getTag(): string;
-
 }

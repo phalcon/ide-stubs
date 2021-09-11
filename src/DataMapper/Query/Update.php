@@ -118,5 +118,4 @@ class Update extends \Phalcon\DataMapper\Query\AbstractConditions
     private function buildColumns(): string
     {
     }
-
 }

@@ -9,7 +9,6 @@
  */
 namespace Phalcon\Di;
 
-use Phalcon\Di;
 use Phalcon\Session\BagInterface;
 
 /**
@@ -89,5 +88,4 @@ abstract class Injectable implements \Phalcon\Di\InjectionAwareInterface
     public function setDI(DiInterface $container): void
     {
     }
-
 }

@@ -181,5 +181,4 @@ abstract class AbstractRequest extends \Phalcon\Http\Message\AbstractMessage
     final protected function processUri($uri): UriInterface
     {
     }
-
 }

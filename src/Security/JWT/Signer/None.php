@@ -57,5 +57,4 @@ class None implements \Phalcon\Security\JWT\Signer\SignerInterface
     public function verify(string $source, string $payload, string $passphrase): bool
     {
     }
-
 }

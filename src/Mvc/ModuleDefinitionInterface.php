@@ -9,8 +9,6 @@
  */
 namespace Phalcon\Mvc;
 
-use Phalcon\Di\DiInterface;
-
 /**
  * Phalcon\Mvc\ModuleDefinitionInterface
  *
@@ -32,5 +30,4 @@ interface ModuleDefinitionInterface
      * @param \Phalcon\Di\DiInterface $container
      */
     public function registerServices(\Phalcon\Di\DiInterface $container);
-
 }

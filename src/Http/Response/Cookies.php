@@ -9,9 +9,7 @@
  */
 namespace Phalcon\Http\Response;
 
-use Phalcon\Di\DiInterface;
 use Phalcon\Di\AbstractInjectionAware;
-use Phalcon\Http\Cookie\Exception;
 use Phalcon\Http\Cookie\CookieInterface;
 
 /**
@@ -238,5 +236,4 @@ class Cookies extends AbstractInjectionAware implements \Phalcon\Http\Response\C
     public function useEncryption(bool $useEncryption): CookiesInterface
     {
     }
-
 }

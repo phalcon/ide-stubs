@@ -9,7 +9,6 @@
  */
 namespace Phalcon\Mvc\Model\Query;
 
-use Phalcon\Messages\MessageInterface;
 use Phalcon\Mvc\ModelInterface;
 
 /**
@@ -88,5 +87,4 @@ class Status implements \Phalcon\Mvc\Model\Query\StatusInterface
     public function success(): bool
     {
     }
-
 }

@@ -24,5 +24,4 @@ class Remove
     public function __invoke($input, $replace)
     {
     }
-
 }

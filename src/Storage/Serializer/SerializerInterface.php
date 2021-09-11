@@ -9,8 +9,6 @@
  */
 namespace Phalcon\Storage\Serializer;
 
-use Serializable;
-
 /**
  * This file is part of the Phalcon Framework.
  *
@@ -32,5 +30,4 @@ interface SerializerInterface extends \Serializable
      * @return void
      */
     public function setData($data): void;
-
 }

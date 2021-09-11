@@ -9,12 +9,6 @@
  */
 namespace Phalcon\Storage\Adapter;
 
-use APCuIterator;
-use Phalcon\Helper\Arr;
-use Phalcon\Storage\Exception;
-use Phalcon\Storage\SerializerFactory;
-use Phalcon\Storage\Serializer\SerializerInterface;
-
 /**
  * Apcu adapter
  */
@@ -140,5 +134,4 @@ class Apcu extends \Phalcon\Storage\Adapter\AbstractAdapter
     public function set(string $key, $value, $ttl = null): bool
     {
     }
-
 }

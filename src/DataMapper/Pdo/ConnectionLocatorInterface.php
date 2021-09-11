@@ -77,5 +77,4 @@ interface ConnectionLocatorInterface
      * @param callable $callableObject
      */
     public function setWrite(string $name, $callableObject): ConnectionLocatorInterface;
-
 }

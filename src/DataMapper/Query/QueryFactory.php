@@ -89,5 +89,4 @@ class QueryFactory
     public function newUpdate(\Phalcon\DataMapper\Pdo\Connection $connection): Update
     {
     }
-
 }

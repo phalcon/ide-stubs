@@ -9,8 +9,6 @@
  */
 namespace Phalcon\Helper;
 
-use RuntimeException;
-
 /**
  * This class offers quick string functions throughout the framework
  */
@@ -477,5 +475,4 @@ class Str
     final public static function upper(string $text, string $encoding = 'UTF-8'): string
     {
     }
-
 }

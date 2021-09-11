@@ -9,8 +9,6 @@
  */
 namespace Phalcon\Storage\Serializer;
 
-use InvalidArgumentException;
-
 /**
  * This file is part of the Phalcon Framework.
  *
@@ -40,5 +38,4 @@ class None extends \Phalcon\Storage\Serializer\AbstractSerializer
     public function unserialize($data): void
     {
     }
-
 }

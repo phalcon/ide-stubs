@@ -9,13 +9,6 @@
  */
 namespace Phalcon\Assets;
 
-use Countable;
-use Iterator;
-use Phalcon\Assets\Asset\Css as AssetCss;
-use Phalcon\Assets\Asset\Js as AssetJs;
-use Phalcon\Assets\Inline\Js as InlineJs;
-use Phalcon\Assets\Inline\Css as InlineCss;
-
 /**
  * Represents a collection of assets
  */
@@ -499,5 +492,4 @@ class Collection implements \Countable, \Iterator
     final protected function addAsset(AssetInterface $asset): bool
     {
     }
-
 }

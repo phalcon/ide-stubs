@@ -9,19 +9,8 @@
  */
 namespace Phalcon\Mvc\Model;
 
-use ArrayAccess;
-use Closure;
-use Countable;
-use Iterator;
-use JsonSerializable;
-use Phalcon\Db\Enum;
-use Phalcon\Messages\MessageInterface;
-use Phalcon\Mvc\Model;
 use Phalcon\Mvc\ModelInterface;
-use Phalcon\Storage\Serializer\SerializerInterface;
 use Psr\SimpleCache\CacheInterface;
-use SeekableIterator;
-use Serializable;
 
 /**
  * Phalcon\Mvc\Model\Resultset
@@ -400,5 +389,4 @@ abstract class Resultset implements \Phalcon\Mvc\Model\ResultsetInterface, \Iter
     public function valid(): bool
     {
     }
-
 }

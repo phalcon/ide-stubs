@@ -36,5 +36,4 @@ abstract class AbstractMiddleware implements \Psr\Http\Server\MiddlewareInterfac
      * @return ResponseInterface
      */
     abstract public function process(\Psr\Http\Message\ServerRequestInterface $request, \Psr\Http\Server\RequestHandlerInterface $handler): ResponseInterface;
-
 }

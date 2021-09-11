@@ -9,8 +9,6 @@
  */
 namespace Phalcon\Config;
 
-use Phalcon\Collection\CollectionInterface;
-
 /**
  * Phalcon\Config\ConfigInterface
  *
@@ -43,5 +41,4 @@ interface ConfigInterface extends \Phalcon\Collection\CollectionInterface
      * @return ConfigInterface
      */
     public function setPathDelimiter(string $delimiter = null): ConfigInterface;
-
 }

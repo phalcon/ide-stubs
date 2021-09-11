@@ -148,5 +148,4 @@ class ConnectionLocator implements \Phalcon\DataMapper\Pdo\ConnectionLocatorInte
     protected function getConnection(string $type, string $name = ''): ConnectionInterface
     {
     }
-
 }

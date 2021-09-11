@@ -9,14 +9,7 @@
  */
 namespace Phalcon\Mvc;
 
-use Closure;
 use Phalcon\Application\AbstractApplication;
-use Phalcon\Di\DiInterface;
-use Phalcon\Http\ResponseInterface;
-use Phalcon\Events\ManagerInterface;
-use Phalcon\Mvc\Application\Exception;
-use Phalcon\Mvc\Router\RouteInterface;
-use Phalcon\Mvc\ModuleDefinitionInterface;
 
 /**
  * Phalcon\Mvc\Application
@@ -122,5 +115,4 @@ class Application extends AbstractApplication
     public function useImplicitView(bool $implicitView): Application
     {
     }
-
 }

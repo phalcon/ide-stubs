@@ -140,5 +140,4 @@ interface CryptInterface
      * @return CryptInterface
      */
     public function setPadding(int $scheme): CryptInterface;
-
 }

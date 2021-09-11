@@ -38,5 +38,4 @@ class Base64
     final public static function decodeUrl(string $input): string
     {
     }
-
 }

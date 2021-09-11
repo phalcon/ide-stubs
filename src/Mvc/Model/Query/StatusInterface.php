@@ -9,7 +9,6 @@
  */
 namespace Phalcon\Mvc\Model\Query;
 
-use Phalcon\Messages\MessageInterface;
 use Phalcon\Mvc\ModelInterface;
 
 /**
@@ -40,5 +39,4 @@ interface StatusInterface
      * @return bool
      */
     public function success(): bool;
-
 }

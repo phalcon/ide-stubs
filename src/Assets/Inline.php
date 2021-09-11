@@ -117,5 +117,4 @@ class Inline implements \Phalcon\Assets\AssetInterface
     public function setType(string $type): AssetInterface
     {
     }
-
 }

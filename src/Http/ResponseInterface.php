@@ -9,7 +9,6 @@
  */
 namespace Phalcon\Http;
 
-use DateTime;
 use Phalcon\Http\Response\HeadersInterface;
 
 /**
@@ -192,5 +191,4 @@ interface ResponseInterface
      * @return 0|ResponseInterface
      */
     public function sendHeaders();
-
 }

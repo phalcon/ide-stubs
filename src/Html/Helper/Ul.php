@@ -21,5 +21,4 @@ class Ul extends \Phalcon\Html\Helper\Ol
     protected function getTag(): string
     {
     }
-
 }

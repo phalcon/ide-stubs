@@ -9,12 +9,6 @@
  */
 namespace Phalcon\Mvc\Model\MetaData\Strategy;
 
-use Phalcon\Di\DiInterface;
-use Phalcon\Db\Column;
-use Phalcon\Mvc\ModelInterface;
-use Phalcon\Mvc\Model\MetaData;
-use Phalcon\Mvc\Model\Exception;
-
 /**
  * This file is part of the Phalcon Framework.
  *
@@ -47,5 +41,4 @@ class Annotations implements \Phalcon\Mvc\Model\MetaData\Strategy\StrategyInterf
     final public function getMetaData(\Phalcon\Mvc\ModelInterface $model, \Phalcon\Di\DiInterface $container): array
     {
     }
-
 }

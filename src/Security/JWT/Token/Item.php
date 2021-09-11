@@ -50,5 +50,4 @@ class Item extends \Phalcon\Security\JWT\Token\AbstractItem
     public function has(string $name): bool
     {
     }
-
 }

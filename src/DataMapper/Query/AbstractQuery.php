@@ -166,5 +166,4 @@ abstract class AbstractQuery
     protected function indent(array $collection, string $glue = ''): string
     {
     }
-
 }

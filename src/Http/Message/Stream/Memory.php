@@ -29,5 +29,4 @@ class Memory extends Stream
     public function __construct($mode = 'rb')
     {
     }
-
 }

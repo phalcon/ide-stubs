@@ -9,11 +9,6 @@
  */
 namespace Phalcon\Security\JWT\Token;
 
-use InvalidArgumentException;
-use Phalcon\Helper\Arr;
-use Phalcon\Helper\Base64;
-use Phalcon\Helper\Json;
-
 /**
  * Class Parser
  */
@@ -75,5 +70,4 @@ class Parser
     private function parseToken(string $token): array
     {
     }
-
 }

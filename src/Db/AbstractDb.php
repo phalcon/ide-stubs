@@ -9,8 +9,6 @@
  */
 namespace Phalcon\Db;
 
-use \PDO as Pdo;
-
 /**
  * Phalcon\Db and its related classes provide a simple SQL database interface
  * for Phalcon Framework. The Phalcon\Db is the basic class you use to connect
@@ -66,5 +64,4 @@ abstract class AbstractDb
     public static function setup(array $options): void
     {
     }
-
 }

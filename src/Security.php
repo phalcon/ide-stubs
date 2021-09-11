@@ -9,11 +9,9 @@
  */
 namespace Phalcon;
 
-use Phalcon\Di\DiInterface;
 use Phalcon\Di\AbstractInjectionAware;
 use Phalcon\Http\RequestInterface;
 use Phalcon\Security\Random;
-use Phalcon\Security\Exception;
 use Phalcon\Session\ManagerInterface as SessionInterface;
 
 /**
@@ -328,5 +326,4 @@ class Security extends AbstractInjectionAware
     private function getLocalSession(): ?SessionInterface
     {
     }
-
 }

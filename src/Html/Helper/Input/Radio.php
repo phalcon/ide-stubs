@@ -18,6 +18,4 @@ class Radio extends \Phalcon\Html\Helper\Input\Checkbox
      * @var string
      */
     protected $type = 'radio';
-
-
 }

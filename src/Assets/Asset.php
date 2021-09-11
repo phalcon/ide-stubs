@@ -304,5 +304,4 @@ class Asset implements \Phalcon\Assets\AssetInterface
     public function setPath(string $path): AssetInterface
     {
     }
-
 }

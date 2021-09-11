@@ -11,7 +11,6 @@ namespace Phalcon\Annotations;
 
 use Phalcon\Annotations\Adapter\AdapterInterface;
 use Phalcon\Factory\AbstractFactory;
-use Phalcon\Helper\Arr;
 
 /**
  * Factory to create annotations components
@@ -71,5 +70,4 @@ class AnnotationsFactory extends AbstractFactory
     protected function getAdapters(): array
     {
     }
-
 }

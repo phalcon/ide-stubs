@@ -210,5 +210,4 @@ interface ConnectionInterface extends \Phalcon\DataMapper\Pdo\Connection\PdoInte
      * @param ProfilerInterface $profiler The Profiler instance.
      */
     public function setProfiler(\Phalcon\DataMapper\Pdo\Profiler\ProfilerInterface $profiler);
-
 }

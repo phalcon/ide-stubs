@@ -9,8 +9,6 @@
  */
 namespace Phalcon\Annotations;
 
-use ReflectionClass;
-
 /**
  * Parses docblocks returning an array with the found annotations
  */
@@ -38,5 +36,4 @@ class Reader implements \Phalcon\Annotations\ReaderInterface
     public static function parseDocBlock(string $docBlock, $file = null, $line = null): array
     {
     }
-
 }

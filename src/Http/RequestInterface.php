@@ -9,9 +9,6 @@
  */
 namespace Phalcon\Http;
 
-use Phalcon\Http\Request\FileInterface;
-use stdClass;
-
 /**
  * Interface for Phalcon\Http\Request
  */
@@ -511,5 +508,4 @@ interface RequestInterface
      * @return int
      */
     public function numFiles(bool $onlySuccessful = false): int;
-
 }

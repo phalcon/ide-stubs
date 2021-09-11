@@ -103,5 +103,4 @@ class Bind
     protected function inlineArray(array $data, int $type): string
     {
     }
-
 }

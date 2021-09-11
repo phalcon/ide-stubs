@@ -23,5 +23,4 @@ class Email
     public function __invoke($input)
     {
     }
-
 }

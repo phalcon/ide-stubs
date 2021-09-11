@@ -9,8 +9,6 @@
  */
 namespace Phalcon\Session\Adapter;
 
-use SessionHandlerInterface;
-
 /**
  * Phalcon\Session\Adapter\Noop
  *
@@ -139,5 +137,4 @@ class Noop implements \SessionHandlerInterface
     protected function getPrefixedName($name): string
     {
     }
-
 }

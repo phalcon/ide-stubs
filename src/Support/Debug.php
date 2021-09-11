@@ -9,12 +9,6 @@
  */
 namespace Phalcon\Support;
 
-use ErrorException;
-use Phalcon\Helper\Arr;
-use Phalcon\Tag;
-use ReflectionClass;
-use ReflectionFunction;
-
 /**
  * Provides debug capabilities to Phalcon applications
  */
@@ -38,7 +32,7 @@ class Debug
     /**
      * @var bool
      */
-    static protected $isActive = false;
+    protected static $isActive = false;
 
     /**
      * @var bool
@@ -270,5 +264,4 @@ class Debug
     final protected function showTraceItem(int $n, array $trace): string
     {
     }
-
 }

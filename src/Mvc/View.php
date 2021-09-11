@@ -9,15 +9,8 @@
  */
 namespace Phalcon\Mvc;
 
-use Closure;
-use Phalcon\Di\DiInterface;
 use Phalcon\Di\Injectable;
 use Phalcon\Events\ManagerInterface;
-use Phalcon\Helper\Arr;
-use Phalcon\Helper\Str;
-use Phalcon\Mvc\View\Exception;
-use Phalcon\Events\EventsAwareInterface;
-use Phalcon\Mvc\View\Engine\Php as PhpEngine;
 
 /**
  * Phalcon\Mvc\View
@@ -880,5 +873,4 @@ class View extends Injectable implements \Phalcon\Mvc\ViewInterface, \Phalcon\Ev
     public function processRender(string $controllerName, string $actionName, array $params = [], bool $fireEvents = true): bool
     {
     }
-
 }

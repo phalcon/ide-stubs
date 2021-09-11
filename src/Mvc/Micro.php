@@ -9,23 +9,12 @@
  */
 namespace Phalcon\Mvc;
 
-use ArrayAccess;
-use Closure;
 use Phalcon\Di\DiInterface;
 use Phalcon\Di\Injectable;
-use Phalcon\Di\FactoryDefault;
-use Phalcon\Mvc\Micro\Exception;
 use Phalcon\Di\ServiceInterface;
-use Phalcon\Mvc\Micro\Collection;
-use Phalcon\Mvc\Micro\LazyLoader;
-use Phalcon\Http\ResponseInterface;
+use Phalcon\Events\ManagerInterface;
 use Phalcon\Mvc\Model\BinderInterface;
 use Phalcon\Mvc\Router\RouteInterface;
-use Phalcon\Events\EventsAwareInterface;
-use Phalcon\Events\ManagerInterface;
-use Phalcon\Mvc\Micro\MiddlewareInterface;
-use Phalcon\Mvc\Micro\CollectionInterface;
-use Throwable;
 
 /**
  * Phalcon\Mvc\Micro
@@ -532,5 +521,4 @@ class Micro extends Injectable implements \ArrayAccess, \Phalcon\Events\EventsAw
     public function stop()
     {
     }
-
 }

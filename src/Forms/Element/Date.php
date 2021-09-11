@@ -9,8 +9,6 @@
  */
 namespace Phalcon\Forms\Element;
 
-use Phalcon\Tag;
-
 /**
  * Component INPUT[type=date] for forms
  */
@@ -26,5 +24,4 @@ class Date extends \Phalcon\Forms\Element\AbstractElement
     public function render(array $attributes = []): string
     {
     }
-
 }

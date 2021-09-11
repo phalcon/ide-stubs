@@ -9,9 +9,7 @@
  */
 namespace Phalcon\DataMapper\Pdo;
 
-use InvalidArgumentException;
 use Phalcon\DataMapper\Pdo\Connection\AbstractConnection;
-use Phalcon\DataMapper\Pdo\Profiler\Profiler;
 use Phalcon\DataMapper\Pdo\Profiler\ProfilerInterface;
 
 /**
@@ -73,5 +71,4 @@ class Connection extends AbstractConnection
     public function disconnect(): void
     {
     }
-
 }

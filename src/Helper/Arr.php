@@ -9,8 +9,6 @@
  */
 namespace Phalcon\Helper;
 
-use stdClass;
-
 /**
  * This class offers quick array functions throughout the framework
  */
@@ -291,5 +289,4 @@ class Arr
     final public static function whiteList(array $collection, array $whiteList): array
     {
     }
-
 }

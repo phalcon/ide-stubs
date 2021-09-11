@@ -12,7 +12,6 @@ namespace Phalcon\Http\Message;
 use Phalcon\Collection;
 use Phalcon\Collection\CollectionInterface;
 use Phalcon\Http\Message\Exception\InvalidArgumentException;
-use Phalcon\Http\Message\Stream\Input;
 use Psr\Http\Message\ServerRequestInterface;
 use Psr\Http\Message\StreamInterface;
 use Psr\Http\Message\UploadedFileInterface;
@@ -366,5 +365,4 @@ final class ServerRequest extends \Phalcon\Http\Message\AbstractRequest implemen
     private function checkUploadedFiles(array $files): void
     {
     }
-
 }

@@ -9,14 +9,12 @@
  */
 namespace Phalcon\Http\Message;
 
-use Phalcon\Collection;
 use Phalcon\Collection\CollectionInterface;
-use Phalcon\Helper\Arr;
 use Phalcon\Http\Message\Exception\InvalidArgumentException;
 use Psr\Http\Message\ServerRequestFactoryInterface;
 use Psr\Http\Message\ServerRequestInterface;
-use Psr\Http\Message\UriInterface;
 use Psr\Http\Message\UploadedFileInterface;
+use Psr\Http\Message\UriInterface;
 
 /**
  * PSR-17 ServerRequestFactory
@@ -243,5 +241,4 @@ class ServerRequestFactory implements \Psr\Http\Message\ServerRequestFactoryInte
     private function parseUri(\Phalcon\Collection\CollectionInterface $server, \Phalcon\Collection\CollectionInterface $headers): Uri
     {
     }
-
 }

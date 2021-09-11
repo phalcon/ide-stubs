@@ -41,5 +41,4 @@ class Anchor extends \Phalcon\Html\Helper\AbstractHelper
     protected function processAttributes(string $href, array $attributes): array
     {
     }
-
 }

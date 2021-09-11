@@ -49,5 +49,4 @@ class EvolvableLinkProvider extends \Phalcon\Html\Link\LinkProvider implements \
     public function withoutLink(\Psr\Link\LinkInterface $link)
     {
     }
-
 }

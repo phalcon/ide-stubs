@@ -9,8 +9,6 @@
  */
 namespace Phalcon\Forms\Element;
 
-use Phalcon\Tag;
-
 /**
  * Component INPUT[type=submit] for forms
  */
@@ -26,5 +24,4 @@ class Submit extends \Phalcon\Forms\Element\AbstractElement
     public function render(array $attributes = []): string
     {
     }
-
 }

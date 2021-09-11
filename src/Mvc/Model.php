@@ -9,39 +9,16 @@
  */
 namespace Phalcon\Mvc;
 
-use JsonSerializable;
 use Phalcon\Db\Adapter\AdapterInterface;
-use Phalcon\Db\Column;
-use Phalcon\Db\DialectInterface;
-use Phalcon\Db\Enum;
-use Phalcon\Db\RawValue;
 use Phalcon\Di\AbstractInjectionAware;
-use Phalcon\Di;
-use Phalcon\Di\DiInterface;
 use Phalcon\Events\ManagerInterface as EventsManagerInterface;
-use Phalcon\Helper\Arr;
-use Phalcon\Messages\Message;
-use Phalcon\Messages\MessageInterface;
-use Phalcon\Mvc\Model\BehaviorInterface;
-use Phalcon\Mvc\Model\Criteria;
 use Phalcon\Mvc\Model\CriteriaInterface;
-use Phalcon\Mvc\Model\Exception;
 use Phalcon\Mvc\Model\ManagerInterface;
 use Phalcon\Mvc\Model\MetaDataInterface;
 use Phalcon\Mvc\Model\Query;
-use Phalcon\Mvc\Model\Query\Builder;
-use Phalcon\Mvc\Model\Query\BuilderInterface;
-use Phalcon\Mvc\Model\QueryInterface;
-use Phalcon\Mvc\Model\ResultInterface;
-use Phalcon\Mvc\Model\Resultset;
-use Phalcon\Mvc\Model\ResultsetInterface;
 use Phalcon\Mvc\Model\Relation;
-use Phalcon\Mvc\Model\RelationInterface;
+use Phalcon\Mvc\Model\ResultsetInterface;
 use Phalcon\Mvc\Model\TransactionInterface;
-use Phalcon\Mvc\Model\ValidationFailed;
-use Phalcon\Mvc\ModelInterface;
-use Phalcon\Validation\ValidationInterface;
-use Serializable;
 
 /**
  * Phalcon\Mvc\Model
@@ -1633,7 +1610,7 @@ abstract class Model extends AbstractInjectionAware implements \Phalcon\Mvc\Enti
      * @param string $method
      * @param array $arguments
      */
-    protected final static function invokeFinder(string $method, array $arguments)
+    final protected static function invokeFinder(string $method, array $arguments)
     {
     }
 
@@ -2210,5 +2187,4 @@ abstract class Model extends AbstractInjectionAware implements \Phalcon\Mvc\Enti
     private static function caseInsensitiveColumnMap($columnMap, $key): string
     {
     }
-
 }

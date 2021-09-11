@@ -9,8 +9,6 @@
  */
 namespace Phalcon\Storage\Adapter;
 
-use Phalcon\Storage\Serializer\SerializerInterface;
-
 /**
  * Interface for Phalcon\Logger adapters
  */
@@ -99,5 +97,4 @@ interface AdapterInterface
      * @return bool
      */
     public function set(string $key, $value, $ttl = null): bool;
-
 }

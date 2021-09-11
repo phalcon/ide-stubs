@@ -10,7 +10,6 @@
 namespace Phalcon\Mvc\Model\MetaData;
 
 use Phalcon\Mvc\Model\MetaData;
-use Phalcon\Mvc\Model\Exception;
 
 /**
  * Phalcon\Mvc\Model\MetaData\Stream
@@ -72,5 +71,4 @@ class Stream extends MetaData
     private function throwWriteException($option): void
     {
     }
-
 }

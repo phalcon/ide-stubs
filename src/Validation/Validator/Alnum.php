@@ -9,7 +9,6 @@
  */
 namespace Phalcon\Validation\Validator;
 
-use Phalcon\Validation;
 use Phalcon\Validation\AbstractValidator;
 
 /**
@@ -75,5 +74,4 @@ class Alnum extends AbstractValidator
     public function validate(\Phalcon\Validation $validation, $field): bool
     {
     }
-
 }

@@ -9,18 +9,9 @@
  */
 namespace Phalcon\Mvc\Model\Resultset;
 
-use Phalcon\Di;
-use Phalcon\Di\DiInterface;
 use Phalcon\Db\ResultInterface;
-use Phalcon\Mvc\Model;
-use Phalcon\Mvc\Model\Exception;
 use Phalcon\Mvc\Model\Resultset;
-use Phalcon\Mvc\Model\ResultsetInterface;
-use Phalcon\Mvc\Model\Row;
-use Phalcon\Mvc\ModelInterface;
-use Phalcon\Storage\Serializer\SerializerInterface;
 use Psr\SimpleCache\CacheInterface;
-use stdClass;
 
 /**
  * Phalcon\Mvc\Model\Resultset\Complex
@@ -92,5 +83,4 @@ class Complex extends Resultset implements \Phalcon\Mvc\Model\ResultsetInterface
     public function unserialize($data): void
     {
     }
-
 }

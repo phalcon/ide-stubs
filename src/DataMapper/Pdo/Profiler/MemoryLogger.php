@@ -107,5 +107,4 @@ class MemoryLogger extends AbstractLogger
     public function log($level, $message, array $context = [])
     {
     }
-
 }

@@ -9,9 +9,6 @@
  */
 namespace Phalcon\Validation\Validator;
 
-use Phalcon\Messages\Message;
-use Phalcon\Validation;
-use Phalcon\Validation\Exception;
 use Phalcon\Validation\AbstractValidator;
 
 /**
@@ -96,5 +93,4 @@ class Confirmation extends AbstractValidator
     final protected function compare(string $a, string $b): bool
     {
     }
-
 }

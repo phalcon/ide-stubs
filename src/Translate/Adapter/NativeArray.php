@@ -9,10 +9,6 @@
  */
 namespace Phalcon\Translate\Adapter;
 
-use ArrayAccess;
-use Phalcon\Translate\Exception;
-use Phalcon\Translate\InterpolatorFactory;
-
 /**
  * Phalcon\Translate\Adapter\NativeArray
  *
@@ -74,5 +70,4 @@ class NativeArray extends \Phalcon\Translate\Adapter\AbstractAdapter implements 
     public function query(string $translateKey, array $placeholders = []): string
     {
     }
-
 }

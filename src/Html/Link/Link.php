@@ -116,5 +116,4 @@ class Link implements \Psr\Link\LinkInterface
     protected function hrefIsTemplated(string $href): bool
     {
     }
-
 }

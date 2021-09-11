@@ -30,5 +30,4 @@ class Button extends \Phalcon\Html\Helper\AbstractHelper
     public function __invoke(string $text, array $attributes = [], bool $raw = false): string
     {
     }
-
 }

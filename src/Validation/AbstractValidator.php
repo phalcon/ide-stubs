@@ -9,9 +9,7 @@
  */
 namespace Phalcon\Validation;
 
-use Phalcon\Helper\Arr;
 use Phalcon\Messages\Message;
-use Phalcon\Validation;
 
 /**
  * This is a base class for validators
@@ -163,5 +161,4 @@ abstract class AbstractValidator implements \Phalcon\Validation\ValidatorInterfa
     public function messageFactory(\Phalcon\Validation $validation, $field, array $replacements = []): Message
     {
     }
-
 }

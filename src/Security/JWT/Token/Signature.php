@@ -31,5 +31,4 @@ class Signature extends \Phalcon\Security\JWT\Token\AbstractItem
     public function getHash(): string
     {
     }
-
 }

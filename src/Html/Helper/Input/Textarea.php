@@ -9,7 +9,6 @@
  */
 namespace Phalcon\Html\Helper\Input;
 
-use Phalcon\Helper\Arr;
 use Phalcon\Html\Exception;
 
 /**
@@ -32,5 +31,4 @@ class Textarea extends \Phalcon\Html\Helper\Input\AbstractInput
     public function __toString()
     {
     }
-
 }

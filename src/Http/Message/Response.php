@@ -9,9 +9,6 @@
  */
 namespace Phalcon\Http\Message;
 
-use Phalcon\Helper\Number;
-use Phalcon\Http\Message\AbstractMessage;
-use Phalcon\Http\Message\Exception\InvalidArgumentException;
 use Psr\Http\Message\ResponseInterface;
 
 /**
@@ -149,5 +146,4 @@ final class Response extends AbstractMessage implements \Psr\Http\Message\Respon
     private function checkCodeValue(int $code): void
     {
     }
-
 }

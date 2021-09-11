@@ -16,6 +16,4 @@ class DateTimeLocal extends \Phalcon\Html\Helper\Input\AbstractInput
 {
 
     protected $type = 'datetime-local';
-
-
 }

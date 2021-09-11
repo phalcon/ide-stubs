@@ -162,5 +162,4 @@ interface DispatcherInterface
      * @return void
      */
     public function setParams(array $params): void;
-
 }

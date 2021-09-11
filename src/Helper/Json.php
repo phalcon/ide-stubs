@@ -9,8 +9,6 @@
  */
 namespace Phalcon\Helper;
 
-use InvalidArgumentException;
-
 /**
  * This class offers a wrapper for JSON methods to serialize and unserialize
  */
@@ -75,5 +73,4 @@ class Json
     final public static function encode($data, int $options = 0, int $depth = 512): string
     {
     }
-
 }

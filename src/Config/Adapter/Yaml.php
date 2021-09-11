@@ -10,7 +10,6 @@
 namespace Phalcon\Config\Adapter;
 
 use Phalcon\Config;
-use Phalcon\Config\Exception;
 
 /**
  * Reads YAML files and converts them to Phalcon\Config objects.
@@ -61,5 +60,4 @@ class Yaml extends Config
     public function __construct(string $filePath, array $callbacks = null)
     {
     }
-
 }

@@ -11,12 +11,6 @@ namespace Phalcon;
 
 use Phalcon\Di\DiInterface;
 use Phalcon\Escaper\EscaperInterface;
-use Phalcon\Html\Link\Link;
-use Phalcon\Html\Link\Serializer\Header;
-use Phalcon\Helper\Str;
-use Phalcon\Helper\Exception as HelperException;
-use Phalcon\Tag\Select;
-use Phalcon\Tag\Exception;
 use Phalcon\Url\UrlInterface;
 
 /**
@@ -62,58 +56,58 @@ class Tag
     /**
      * @var bool
      */
-    static protected $autoEscape = true;
+    protected static $autoEscape = true;
 
     /**
      * DI Container
      *
      * @var DiInterface|null
      */
-    static protected $container = null;
+    protected static $container = null;
 
     /**
      * Pre-assigned values for components
      *
      * @var array
      */
-    static protected $displayValues;
+    protected static $displayValues;
 
     /**
      * @var array
      */
-    static protected $documentAppendTitle;
+    protected static $documentAppendTitle;
 
     /**
      * @var array
      */
-    static protected $documentPrependTitle;
+    protected static $documentPrependTitle;
 
     /**
      * HTML document title
      *
      * @var string|null
      */
-    static protected $documentTitle = null;
+    protected static $documentTitle = null;
 
     /**
      * @var string|null
      */
-    static protected $documentTitleSeparator = null;
+    protected static $documentTitleSeparator = null;
 
     /**
      * @var int
      */
-    static protected $documentType = 11;
+    protected static $documentType = 11;
 
     /**
      * @var EscaperInterface|null
      */
-    static protected $escaperService = null;
+    protected static $escaperService = null;
 
     /**
      * @var UrlInterface|null
      */
-    static protected $urlService = null;
+    protected static $urlService = null;
 
 
     /**
@@ -877,7 +871,7 @@ class Tag
      * @param bool $asValue
      * @return string
      */
-    static final protected function inputField(string $type, $parameters, bool $asValue = false): string
+    final protected static function inputField(string $type, $parameters, bool $asValue = false): string
     {
     }
 
@@ -888,8 +882,7 @@ class Tag
      * @param mixed $parameters
      * @return string
      */
-    static final protected function inputFieldChecked(string $type, $parameters): string
+    final protected static function inputFieldChecked(string $type, $parameters): string
     {
     }
-
 }

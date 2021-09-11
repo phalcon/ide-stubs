@@ -54,5 +54,4 @@ interface SignerInterface
      * @return bool
      */
     public function verify(string $source, string $payload, string $passphrase): bool;
-
 }

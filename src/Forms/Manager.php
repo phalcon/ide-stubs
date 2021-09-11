@@ -61,5 +61,4 @@ class Manager
     public function set(string $name, Form $form): Manager
     {
     }
-
 }

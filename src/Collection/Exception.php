@@ -9,8 +9,6 @@
  */
 namespace Phalcon\Collection;
 
-use Throwable;
-
 /**
  * Exceptions for the Collection object
  */

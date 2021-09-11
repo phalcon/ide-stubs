@@ -9,9 +9,6 @@
  */
 namespace Phalcon\Session\Adapter;
 
-use Phalcon\Storage\AdapterFactory;
-use Phalcon\Helper\Arr;
-
 /**
  * Phalcon\Session\Adapter\Libmemcached
  */
@@ -40,5 +37,4 @@ class Libmemcached extends \Phalcon\Session\Adapter\AbstractAdapter
     public function __construct(\Phalcon\Storage\AdapterFactory $factory, array $options = [])
     {
     }
-
 }

@@ -28,5 +28,4 @@ abstract class AbstractItem
     public function getEncoded(): string
     {
     }
-
 }

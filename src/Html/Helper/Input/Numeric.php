@@ -16,6 +16,4 @@ class Numeric extends \Phalcon\Html\Helper\Input\AbstractInput
 {
 
     protected $type = 'numeric';
-
-
 }

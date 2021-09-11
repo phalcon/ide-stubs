@@ -63,5 +63,4 @@ abstract class AbstractEngine extends Injectable implements \Phalcon\Mvc\View\En
     public function partial(string $partialPath, $params = null): void
     {
     }
-
 }

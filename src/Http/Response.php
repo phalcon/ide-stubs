@@ -9,21 +9,11 @@
  */
 namespace Phalcon\Http;
 
-use DateTime;
-use DateTimeZone;
-use Phalcon\Di;
 use Phalcon\Di\DiInterface;
-use Phalcon\Helper\Fs;
-use Phalcon\Helper\Json;
-use Phalcon\Http\Response\Exception;
-use Phalcon\Http\Response\HeadersInterface;
-use Phalcon\Http\Response\CookiesInterface;
-use Phalcon\Url\UrlInterface;
-use Phalcon\Mvc\ViewInterface;
-use Phalcon\Http\Response\Headers;
-use Phalcon\Di\InjectionAwareInterface;
-use Phalcon\Events\EventsAwareInterface;
 use Phalcon\Events\ManagerInterface;
+use Phalcon\Http\Response\CookiesInterface;
+use Phalcon\Http\Response\Headers;
+use Phalcon\Http\Response\HeadersInterface;
 
 /**
  * Part of the HTTP cycle is return responses to the clients.
@@ -508,5 +498,4 @@ class Response implements \Phalcon\Http\ResponseInterface, \Phalcon\Di\Injection
     public function setRawHeader(string $header): ResponseInterface
     {
     }
-
 }

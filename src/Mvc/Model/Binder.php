@@ -9,12 +9,7 @@
  */
 namespace Phalcon\Mvc\Model;
 
-use Closure;
-use Phalcon\Mvc\Controller\BindModelInterface;
-use Phalcon\Mvc\Model\Binder\BindableInterface;
 use Phalcon\Cache\Adapter\AdapterInterface;
-use ReflectionFunction;
-use ReflectionMethod;
 
 /**
  * Phalcon\Mvc\Model\Binder
@@ -144,5 +139,4 @@ class Binder implements \Phalcon\Mvc\Model\BinderInterface
     public function setCache(\Phalcon\Cache\Adapter\AdapterInterface $cache): BinderInterface
     {
     }
-
 }

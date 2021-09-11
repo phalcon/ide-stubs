@@ -9,11 +9,6 @@
  */
 namespace Phalcon\Logger\Formatter;
 
-use DateTimeImmutable;
-use DateTimeZone;
-use Phalcon\Logger;
-use Phalcon\Logger\Item;
-
 /**
  * This file is part of the Phalcon Framework.
  *
@@ -49,5 +44,4 @@ abstract class AbstractFormatter implements \Phalcon\Logger\Formatter\FormatterI
     public function setDateFormat(string $dateFormat)
     {
     }
-
 }

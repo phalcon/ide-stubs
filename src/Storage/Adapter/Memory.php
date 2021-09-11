@@ -11,10 +11,6 @@ namespace Phalcon\Storage\Adapter;
 
 use Phalcon\Collection;
 use Phalcon\Collection\CollectionInterface;
-use Phalcon\Helper\Arr;
-use Phalcon\Storage\Exception;
-use Phalcon\Storage\SerializerFactory;
-use Phalcon\Storage\Serializer\SerializerInterface;
 
 /**
  * Memory adapter
@@ -144,5 +140,4 @@ class Memory extends \Phalcon\Storage\Adapter\AbstractAdapter
     public function set(string $key, $value, $ttl = null): bool
     {
     }
-
 }

@@ -10,7 +10,6 @@
 namespace Phalcon\Mvc\Model\MetaData;
 
 use Phalcon\Mvc\Model\MetaData;
-use Phalcon\Mvc\Model\Exception;
 
 /**
  * Phalcon\Mvc\Model\MetaData\Memory
@@ -49,5 +48,4 @@ class Memory extends MetaData
     public function write(string $key, array $data): void
     {
     }
-
 }

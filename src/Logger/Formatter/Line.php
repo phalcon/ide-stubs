@@ -9,10 +9,6 @@
  */
 namespace Phalcon\Logger\Formatter;
 
-use DateTime;
-use Phalcon\Logger\Item;
-use Phalcon\Support\Helper\Str\Interpolate;
-
 /**
  * Phalcon\Logger\Formatter\Line
  *
@@ -65,5 +61,4 @@ class Line extends \Phalcon\Logger\Formatter\AbstractFormatter
     public function format(\Phalcon\Logger\Item $item): string
     {
     }
-
 }

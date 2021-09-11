@@ -9,9 +9,6 @@
  */
 namespace Phalcon\Acl\Adapter;
 
-use Phalcon\Acl\ComponentInterface;
-use Phalcon\Acl\RoleInterface;
-
 /**
  * Interface for Phalcon\Acl adapters
  */
@@ -185,5 +182,4 @@ interface AdapterInterface
      * @return void
      */
     public function setNoArgumentsDefaultAction(int $defaultAccess): void;
-
 }

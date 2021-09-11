@@ -9,10 +9,7 @@
  */
 namespace Phalcon\Validation\Validator\StringLength;
 
-use Phalcon\Messages\Message;
-use Phalcon\Validation;
 use Phalcon\Validation\AbstractValidator;
-use Phalcon\Validation\Exception;
 
 /**
  * Validates that a string has the specified maximum constraints
@@ -91,5 +88,4 @@ class Max extends AbstractValidator
     public function validate(\Phalcon\Validation $validation, $field): bool
     {
     }
-
 }

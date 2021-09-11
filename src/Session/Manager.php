@@ -10,11 +10,8 @@
 namespace Phalcon\Session;
 
 use InvalidArgumentException;
-use RuntimeException;
-use SessionHandlerInterface;
 use Phalcon\Di\AbstractInjectionAware;
-use Phalcon\Di\DiInterface;
-use Phalcon\Helper\Arr;
+use SessionHandlerInterface;
 
 /**
  * Phalcon\Session\Manager
@@ -274,5 +271,4 @@ class Manager extends AbstractInjectionAware implements \Phalcon\Session\Manager
     private function getUniqueKey(string $key): string
     {
     }
-
 }

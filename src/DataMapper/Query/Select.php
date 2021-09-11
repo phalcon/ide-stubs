@@ -9,9 +9,6 @@
  */
 namespace Phalcon\DataMapper\Query;
 
-use BadMethodCallException;
-use Phalcon\Helper\Arr;
-
 /**
  * Class Select
  *
@@ -293,5 +290,4 @@ class Select extends \Phalcon\DataMapper\Query\AbstractConditions
     private function buildFrom(): string
     {
     }
-
 }

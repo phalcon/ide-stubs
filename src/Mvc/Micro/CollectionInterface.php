@@ -149,5 +149,4 @@ interface CollectionInterface
      * @return CollectionInterface
      */
     public function setPrefix(string $prefix): CollectionInterface;
-
 }

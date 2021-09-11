@@ -9,8 +9,6 @@
  */
 namespace Phalcon\Mvc\Micro;
 
-use Phalcon\Mvc\Micro;
-
 /**
  * Allows to implement Phalcon\Mvc\Micro middleware in classes
  */
@@ -23,5 +21,4 @@ interface MiddlewareInterface
      * @param \Phalcon\Mvc\Micro $application
      */
     public function call(\Phalcon\Mvc\Micro $application);
-
 }

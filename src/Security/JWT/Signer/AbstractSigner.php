@@ -28,5 +28,4 @@ abstract class AbstractSigner implements \Phalcon\Security\JWT\Signer\SignerInte
     public function getAlgorithm(): string
     {
     }
-
 }

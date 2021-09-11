@@ -74,5 +74,4 @@ class Delete extends \Phalcon\DataMapper\Query\AbstractConditions
     public function reset(): void
     {
     }
-
 }

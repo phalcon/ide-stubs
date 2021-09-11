@@ -9,15 +9,11 @@
  */
 namespace Phalcon;
 
-use Phalcon\Di\DiInterface;
 use Phalcon\Di\Injectable;
-use Phalcon\Filter\FilterInterface;
 use Phalcon\Messages\MessageInterface;
 use Phalcon\Messages\Messages;
 use Phalcon\Validation\ValidationInterface;
-use Phalcon\Validation\Exception;
 use Phalcon\Validation\ValidatorInterface;
-use Phalcon\Validation\AbstractCombinedFieldsValidator;
 
 /**
  * Allows to validate data using custom or built-in validators
@@ -260,5 +256,4 @@ class Validation extends Injectable implements \Phalcon\Validation\ValidationInt
     protected function preChecking($field, \Phalcon\Validation\ValidatorInterface $validator): bool
     {
     }
-
 }

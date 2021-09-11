@@ -33,5 +33,4 @@ class Script extends \Phalcon\Html\Helper\Style
     protected function getTag(): string
     {
     }
-
 }

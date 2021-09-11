@@ -9,9 +9,6 @@
  */
 namespace Phalcon\Mvc\Model;
 
-use Phalcon\Mvc\ModelInterface;
-use Phalcon\Mvc\Model\Transaction\ManagerInterface;
-
 /**
  * Phalcon\Mvc\Model\TransactionInterface
  *
@@ -110,5 +107,4 @@ interface TransactionInterface
      * @return TransactionInterface
      */
     public function throwRollbackException(bool $status): TransactionInterface;
-
 }

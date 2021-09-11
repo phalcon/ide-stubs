@@ -61,5 +61,4 @@ abstract class AbstractInput extends AbstractHelper
     public function setValue(string $value = null): AbstractInput
     {
     }
-
 }

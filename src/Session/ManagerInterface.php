@@ -10,7 +10,6 @@
 namespace Phalcon\Session;
 
 use InvalidArgumentException;
-use RuntimeException;
 use SessionHandlerInterface;
 
 /**
@@ -196,5 +195,4 @@ interface ManagerInterface
      * @return ManagerInterface
      */
     public function regenerateId($deleteOldSession = true): ManagerInterface;
-
 }

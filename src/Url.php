@@ -9,11 +9,8 @@
  */
 namespace Phalcon;
 
-use Phalcon\Di\DiInterface;
 use Phalcon\Di\AbstractInjectionAware;
 use Phalcon\Mvc\RouterInterface;
-use Phalcon\Mvc\Router\RouteInterface;
-use Phalcon\Url\Exception;
 use Phalcon\Url\UrlInterface;
 
 /**
@@ -212,5 +209,4 @@ class Url extends AbstractInjectionAware implements \Phalcon\Url\UrlInterface
     public function path(string $path = null): string
     {
     }
-
 }

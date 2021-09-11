@@ -23,5 +23,4 @@ class FloatVal
     public function __invoke($input)
     {
     }
-
 }

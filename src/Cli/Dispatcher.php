@@ -9,11 +9,6 @@
  */
 namespace Phalcon\Cli;
 
-use Phalcon\Cli\Dispatcher\Exception;
-use Phalcon\Dispatcher\AbstractDispatcher as CliDispatcher;
-use Phalcon\Events\ManagerInterface;
-use Phalcon\Filter\FilterInterface;
-
 /**
  * Dispatching is the process of taking the command-line arguments, extracting
  * the module name, task name, action name, and optional parameters contained in
@@ -194,5 +189,4 @@ class Dispatcher extends \Phalcon\Dispatcher\AbstractDispatcher implements \Phal
     protected function throwDispatchException(string $message, int $exceptionCode = 0)
     {
     }
-
 }
