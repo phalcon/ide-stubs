@@ -363,7 +363,7 @@ abstract class AbstractPdo extends AbstractAdapter
      * @param string $sqlStatement
      * @param array $bindParams
      * @param array $bindTypes
-     * @return 0|ResultInterface
+     * @return bool|ResultInterface
      */
     public function query(string $sqlStatement, array $bindParams = [], array $bindTypes = [])
     {
