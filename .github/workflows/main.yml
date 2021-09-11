@@ -1,21 +1,26 @@
-name: main
+name: Stubs code validation
+
 on:
     pull_request:
     push:
+
 jobs:
   build:
     runs-on: ubuntu-latest
+
     strategy:
       matrix:
-        php-versions: [7.3, 7.4]
+        php-versions: [7.4, 8.0]
+
     steps:
     - uses: actions/checkout@v2
+
     - name: Setup PHP, with composer and extensions
-      uses: shivammathur/setup-php@v1
+      uses: shivammathur/setup-php@v2
       with:
         php-version: ${{ matrix.php-versions }}
         extensions: mbstring, dom, zip, psr
-        tools: prestissimo
+
     - name: Get Composer Cache Directory
       id: composer-cache
       run: echo "::set-output name=dir::$(composer config cache-files-dir)"
@@ -25,9 +30,13 @@ jobs:
         path: ${{ steps.composer-cache.outputs.dir }}
         key: ${{ runner.os }}-composer-${{ hashFiles('**/composer.json') }}
         restore-keys: ${{ runner.os }}-composer-
-    - name: composer install
-      run: composer install --no-interaction --no-ansi --no-progress --no-suggest
+
+    - run: composer install --no-interaction --no-ansi --no-progress
+
     - name: run psalm
+      if: always()
       run: vendor/bin/psalm
+
     - name: run phpcs
+      if: always()
       run: vendor/bin/phpcs
