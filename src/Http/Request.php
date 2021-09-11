@@ -9,8 +9,16 @@
  */
 namespace Phalcon\Http;
 
+use Phalcon\Di\DiInterface;
 use Phalcon\Di\AbstractInjectionAware;
+use Phalcon\Events\ManagerInterface;
 use Phalcon\Filter\FilterInterface;
+use Phalcon\Helper\Json;
+use Phalcon\Http\Request\File;
+use Phalcon\Http\Request\FileInterface;
+use Phalcon\Http\Request\Exception;
+use UnexpectedValueException;
+use stdClass;
 
 /**
  * Encapsulates request information for easy and secure access from application
@@ -337,7 +345,7 @@ class Request extends AbstractInjectionAware implements \Phalcon\Http\RequestInt
      * Gets decoded JSON HTTP raw request body
      *
      * @param bool $associative
-     * @return array|bool|\stdClass
+     * @return 0|1|\stdClass
      */
     public function getJsonRawBody(bool $associative = false)
     {

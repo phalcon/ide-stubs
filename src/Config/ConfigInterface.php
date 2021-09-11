@@ -9,6 +9,8 @@
  */
 namespace Phalcon\Config;
 
+use Phalcon\Collection\CollectionInterface;
+
 /**
  * Phalcon\Config\ConfigInterface
  *

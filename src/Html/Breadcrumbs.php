@@ -9,6 +9,8 @@
  */
 namespace Phalcon\Html;
 
+use Phalcon\Di\DiInterface;
+
 /**
  * Phalcon\Html\Breadcrumbs
  *

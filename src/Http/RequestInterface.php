@@ -9,6 +9,9 @@
  */
 namespace Phalcon\Http;
 
+use Phalcon\Http\Request\FileInterface;
+use stdClass;
+
 /**
  * Interface for Phalcon\Http\Request
  */
@@ -184,7 +187,7 @@ interface RequestInterface
      * Gets decoded JSON HTTP raw request body
      *
      * @param bool $associative
-     * @return array|bool|\stdClass
+     * @return 0|1|stdClass
      */
     public function getJsonRawBody(bool $associative = false);
 

@@ -9,6 +9,8 @@
  */
 namespace Phalcon\Storage\Serializer;
 
+use Phalcon\Storage\Exception;
+
 /**
  * This file is part of the Phalcon Framework.
  *

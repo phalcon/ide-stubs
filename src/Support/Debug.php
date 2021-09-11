@@ -9,6 +9,12 @@
  */
 namespace Phalcon\Support;
 
+use ErrorException;
+use Phalcon\Helper\Arr;
+use Phalcon\Tag;
+use ReflectionClass;
+use ReflectionFunction;
+
 /**
  * Provides debug capabilities to Phalcon applications
  */

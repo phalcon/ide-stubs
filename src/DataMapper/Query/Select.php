@@ -9,6 +9,9 @@
  */
 namespace Phalcon\DataMapper\Query;
 
+use BadMethodCallException;
+use Phalcon\Helper\Arr;
+
 /**
  * Class Select
  *

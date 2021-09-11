@@ -9,6 +9,8 @@
  */
 namespace Phalcon\Annotations\Adapter;
 
+use Phalcon\Annotations\Reflection;
+
 /**
  * Stores the parsed annotations in APCu. This adapter is suitable for production
  *

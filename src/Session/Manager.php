@@ -10,8 +10,11 @@
 namespace Phalcon\Session;
 
 use InvalidArgumentException;
-use Phalcon\Di\AbstractInjectionAware;
+use RuntimeException;
 use SessionHandlerInterface;
+use Phalcon\Di\AbstractInjectionAware;
+use Phalcon\Di\DiInterface;
+use Phalcon\Helper\Arr;
 
 /**
  * Phalcon\Session\Manager

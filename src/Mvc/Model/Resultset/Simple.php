@@ -9,9 +9,14 @@
  */
 namespace Phalcon\Mvc\Model\Resultset;
 
+use Phalcon\Di;
+use Phalcon\Di\DiInterface;
+use Phalcon\Mvc\Model;
+use Phalcon\Mvc\Model\Exception;
 use Phalcon\Mvc\Model\Resultset;
 use Phalcon\Mvc\Model\Row;
 use Phalcon\Mvc\ModelInterface;
+use Phalcon\Storage\Serializer\SerializerInterface;
 use Psr\SimpleCache\CacheInterface;
 
 /**

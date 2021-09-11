@@ -10,6 +10,7 @@
 namespace Phalcon\Session;
 
 use InvalidArgumentException;
+use RuntimeException;
 use SessionHandlerInterface;
 
 /**

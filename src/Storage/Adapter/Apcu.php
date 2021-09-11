@@ -9,6 +9,12 @@
  */
 namespace Phalcon\Storage\Adapter;
 
+use APCuIterator;
+use Phalcon\Helper\Arr;
+use Phalcon\Storage\Exception;
+use Phalcon\Storage\SerializerFactory;
+use Phalcon\Storage\Serializer\SerializerInterface;
+
 /**
  * Apcu adapter
  */

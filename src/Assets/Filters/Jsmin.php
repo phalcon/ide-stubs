@@ -9,6 +9,8 @@
  */
 namespace Phalcon\Assets\Filters;
 
+use Phalcon\Assets\FilterInterface;
+
 /**
  * Deletes the characters which are insignificant to JavaScript. Comments will
  * be removed. Tabs will be replaced with spaces. Carriage returns will be

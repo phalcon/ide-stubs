@@ -10,9 +10,12 @@
 namespace Phalcon\Storage\Adapter;
 
 use DateInterval;
+use DateTime;
+use Phalcon\Helper\Arr;
+use Phalcon\Helper\Str;
 use Phalcon\Storage\Exception;
-use Phalcon\Storage\Serializer\SerializerInterface;
 use Phalcon\Storage\SerializerFactory;
+use Phalcon\Storage\Serializer\SerializerInterface;
 
 /**
  * This file is part of the Phalcon Framework.
@@ -64,6 +67,7 @@ abstract class AbstractAdapter implements \Phalcon\Storage\Adapter\AdapterInterf
 
 
     /**
+     *
      * Name of the default serializer class
      *
      * @return string
@@ -73,6 +77,7 @@ abstract class AbstractAdapter implements \Phalcon\Storage\Adapter\AdapterInterf
     }
 
     /**
+     *
      * Name of the default serializer class
      *
      * @param string $defaultSerializer

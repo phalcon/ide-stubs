@@ -9,6 +9,8 @@
  */
 namespace Phalcon\Mvc\Micro;
 
+use Phalcon\Mvc\Model\BinderInterface;
+
 /**
  * Phalcon\Mvc\Micro\LazyLoader
  *

@@ -9,6 +9,7 @@
  */
 namespace Phalcon\Flash;
 
+use Phalcon\Di\DiInterface;
 use Phalcon\Session\ManagerInterface;
 
 /**

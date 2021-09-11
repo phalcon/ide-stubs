@@ -9,6 +9,7 @@
  */
 namespace Phalcon\Html;
 
+use Phalcon\Escaper;
 use Phalcon\Escaper\EscaperInterface;
 use Phalcon\Factory\AbstractFactory;
 

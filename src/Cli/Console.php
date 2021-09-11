@@ -10,6 +10,10 @@
 namespace Phalcon\Cli;
 
 use Phalcon\Application\AbstractApplication;
+use Phalcon\Cli\Router\Route;
+use Phalcon\Cli\Console\Exception;
+use Phalcon\Di\DiInterface;
+use Phalcon\Events\ManagerInterface;
 
 /**
  * This component allows to create CLI applications using Phalcon

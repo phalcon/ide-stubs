@@ -9,6 +9,7 @@
  */
 namespace Phalcon\Html\Helper\Input;
 
+use Phalcon\Helper\Arr;
 use Phalcon\Html\Exception;
 
 /**

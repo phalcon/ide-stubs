@@ -9,7 +9,10 @@
  */
 namespace Phalcon\Mvc\Model;
 
+use Phalcon\Di;
+use Phalcon\Db\Column;
 use Phalcon\Di\DiInterface;
+use Phalcon\Di\InjectionAwareInterface;
 use Phalcon\Mvc\Model\Query\BuilderInterface;
 
 /**

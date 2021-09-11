@@ -9,6 +9,10 @@
  */
 namespace Phalcon\Tag;
 
+use Phalcon\Tag as BaseTag;
+use Phalcon\Escaper\EscaperInterface;
+use Phalcon\Mvc\Model\ResultsetInterface;
+
 /**
  * Phalcon\Tag\Select
  *

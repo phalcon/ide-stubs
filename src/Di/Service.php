@@ -9,6 +9,10 @@
  */
 namespace Phalcon\Di;
 
+use Closure;
+use Phalcon\Di\Exception\ServiceResolutionException;
+use Phalcon\Di\Service\Builder;
+
 /**
  * Represents individually a service in the services container
  *

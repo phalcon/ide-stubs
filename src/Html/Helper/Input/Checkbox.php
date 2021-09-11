@@ -10,6 +10,7 @@
 namespace Phalcon\Html\Helper\Input;
 
 use Phalcon\Escaper\EscaperInterface;
+use Phalcon\Helper\Arr;
 
 /**
  * Class Checkbox

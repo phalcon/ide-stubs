@@ -88,7 +88,7 @@ class EvolvableLink extends \Phalcon\Html\Link\Link implements \Psr\Link\Evolvab
     /**
      * Returns an instance with the specified relationship excluded.
      *
-     * If the specified rel is already not present, this method MUST return
+     * If the specified rel is not present, this method MUST return
      * normally without errors.
      *
      * @param string $rel *   The relationship value to exclude.

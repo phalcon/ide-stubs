@@ -9,8 +9,10 @@
  */
 namespace Phalcon\Mvc\View\Engine\Volt;
 
+use Closure;
 use Phalcon\Di\DiInterface;
 use Phalcon\Mvc\ViewBaseInterface;
+use Phalcon\Di\InjectionAwareInterface;
 
 /**
  * This class reads and compiles Volt templates into PHP plain code

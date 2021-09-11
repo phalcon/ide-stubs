@@ -10,6 +10,7 @@
 namespace Phalcon\DataMapper\Pdo\Connection;
 
 use Phalcon\DataMapper\Pdo\Exception\CannotDisconnect;
+use Phalcon\DataMapper\Pdo\Profiler\Profiler;
 use Phalcon\DataMapper\Pdo\Profiler\ProfilerInterface;
 
 /**

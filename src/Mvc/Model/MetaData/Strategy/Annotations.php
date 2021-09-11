@@ -9,6 +9,12 @@
  */
 namespace Phalcon\Mvc\Model\MetaData\Strategy;
 
+use Phalcon\Di\DiInterface;
+use Phalcon\Db\Column;
+use Phalcon\Mvc\ModelInterface;
+use Phalcon\Mvc\Model\MetaData;
+use Phalcon\Mvc\Model\Exception;
+
 /**
  * This file is part of the Phalcon Framework.
  *

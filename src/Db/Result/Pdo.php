@@ -9,8 +9,9 @@
  */
 namespace Phalcon\Db\Result;
 
-use Phalcon\Db\Adapter\AdapterInterface;
 use Phalcon\Db\Enum;
+use Phalcon\Db\ResultInterface;
+use Phalcon\Db\Adapter\AdapterInterface;
 
 /**
  * Encapsulates the resultset internals

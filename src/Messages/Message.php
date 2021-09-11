@@ -9,6 +9,8 @@
  */
 namespace Phalcon\Messages;
 
+use JsonSerializable;
+
 /**
  * Phalcon\Messages\Message
  *

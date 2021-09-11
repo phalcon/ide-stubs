@@ -9,6 +9,7 @@
  */
 namespace Phalcon\Di;
 
+use Phalcon\Di;
 use Phalcon\Session\BagInterface;
 
 /**

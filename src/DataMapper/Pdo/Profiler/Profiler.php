@@ -9,7 +9,10 @@
  */
 namespace Phalcon\DataMapper\Pdo\Profiler;
 
+use Phalcon\DataMapper\Pdo\Exception\Exception;
+use Phalcon\Helper\Json;
 use Psr\Log\LoggerInterface;
+use Psr\Log\LogLevel;
 
 /**
  * Sends query profiles to a logger.

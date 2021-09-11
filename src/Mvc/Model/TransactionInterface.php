@@ -9,6 +9,9 @@
  */
 namespace Phalcon\Mvc\Model;
 
+use Phalcon\Mvc\ModelInterface;
+use Phalcon\Mvc\Model\Transaction\ManagerInterface;
+
 /**
  * Phalcon\Mvc\Model\TransactionInterface
  *
