@@ -23,7 +23,7 @@ interface ResultInterface
      * Sets the object's state
      *
      * @param int $dirtyState
-     * @return bool|ModelInterface
+     * @return 0|ModelInterface
      */
     public function setDirtyState(int $dirtyState);
 }

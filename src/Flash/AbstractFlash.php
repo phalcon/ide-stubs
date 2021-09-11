@@ -14,6 +14,7 @@ use Phalcon\Di\DiInterface;
 use Phalcon\Di\AbstractInjectionAware;
 use Phalcon\Escaper\EscaperInterface;
 use Phalcon\Session\ManagerInterface as SessionInterface;
+use Phalcon\Support\Helper\Str\Interpolate;
 
 /**
  * Shows HTML notifications related to different circumstances. Classes can be
@@ -42,6 +43,11 @@ abstract class AbstractFlash extends AbstractInjectionAware implements \Phalcon\
     protected $cssClasses = [];
 
     /**
+     * @var array
+     */
+    protected $cssIconClasses = [];
+
+    /**
      * @var string
      */
     protected $customTemplate = '';
@@ -55,6 +61,11 @@ abstract class AbstractFlash extends AbstractInjectionAware implements \Phalcon\
      * @var bool
      */
     protected $implicitFlush = true;
+
+    /**
+     * @var Interpolate
+     */
+    protected $interpolator;
 
     /**
      * @var array
@@ -78,6 +89,13 @@ abstract class AbstractFlash extends AbstractInjectionAware implements \Phalcon\
      * @return array
      */
     public function getCssClasses(): array
+    {
+    }
+
+    /**
+     * @return array
+     */
+    public function getCssIconClasses(): array
     {
     }
 
@@ -175,7 +193,17 @@ abstract class AbstractFlash extends AbstractInjectionAware implements \Phalcon\
     }
 
     /**
-     * Set an custom template for showing the messages
+     * Set an array with CSS classes to format the icon messages
+     *
+     * @param array $cssIconClasses
+     * @return FlashInterface
+     */
+    public function setCssIconClasses(array $cssIconClasses): FlashInterface
+    {
+    }
+
+    /**
+     * Set a custom template for showing the messages
      *
      * @param string $customTemplate
      * @return FlashInterface
@@ -249,10 +277,13 @@ abstract class AbstractFlash extends AbstractInjectionAware implements \Phalcon\
     }
 
     /**
+     * Gets the template (custom or default)
+     *
      * @param string $cssClassses
+     * @param string $cssIconClasses
      * @return string
      */
-    private function getTemplate(string $cssClassses): string
+    private function getTemplate(string $cssClassses, string $cssIconClasses): string
     {
     }
 

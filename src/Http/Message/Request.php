@@ -29,7 +29,7 @@ final class Request extends AbstractRequest implements \Psr\Http\Message\Request
      * @param StreamInterface|resource|string $body
      * @param array                           $headers
      */
-    public function __construct(string $method = 'GET', $uri = null, $body = 'php://memory', $headers = [])
+    public function __construct(string $method = self::METHOD_GET, $uri = null, $body = 'php://memory', $headers = [])
     {
     }
 }

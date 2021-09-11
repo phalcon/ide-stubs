@@ -818,13 +818,12 @@ class Tag
     /**
      * Builds a HTML input[type="time"] tag
      *
-     * @param array $paramters = [
+     * @param array $parameters = [
      *     'id' => '',
      *     'name' => '',
      *     'value' => '',
      *     'class' => ''
      * ]
-     * @param mixed $parameters
      * @return string
      */
     public static function timeField($parameters): string
@@ -834,13 +833,12 @@ class Tag
     /**
      * Builds a HTML input[type="url"] tag
      *
-     * @param array $paramters = [
+     * @param array $parameters = [
      *     'id' => '',
      *     'name' => '',
      *     'value' => '',
      *     'class' => ''
      * ]
-     * @param mixed $parameters
      * @return string
      */
     public static function urlField($parameters): string
@@ -865,7 +863,7 @@ class Tag
     /**
      * Builds generic INPUT tags
      *
-     * @param array $paramters = [
+     * @param array $parameters = [
      *     'id' => '',
      *     'name' => '',
      *     'value' => '',
@@ -873,7 +871,6 @@ class Tag
      *     'type' => ''
      * ]
      * @param string $type
-     * @param mixed $parameters
      * @param bool $asValue
      * @return string
      */
