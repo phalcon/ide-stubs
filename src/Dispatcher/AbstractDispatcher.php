@@ -165,13 +165,13 @@ abstract class AbstractDispatcher extends AbstractInjectionAware implements \Pha
      * Process the results of the router by calling into the appropriate
      * controller action(s) including any routing data or injected parameters.
      *
-     * @return bool Returns the dispatched handler class (the Controller for Mvc dispatching or a Task
+     * @return mixed Returns the dispatched handler class (the Controller for Mvc dispatching or a Task
      *               for CLI dispatching) or <tt>false</tt> if an exception occurred and the operation was
      *               stopped by returning <tt>false</tt> in the exception handler.
      *
      * @throws \Exception if any uncaught or unhandled exception occurs during the dispatcher process.
      */
-    public function dispatch(): bool
+    public function dispatch()
     {
     }
 

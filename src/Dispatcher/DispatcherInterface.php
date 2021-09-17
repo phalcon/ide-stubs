@@ -18,9 +18,9 @@ interface DispatcherInterface
     /**
      * Dispatches a handle action taking into account the routing parameters
      *
-     * @return bool
+     * @return mixed
      */
-    public function dispatch(): bool;
+    public function dispatch();
 
     /**
      * Forwards the execution flow to another controller/action

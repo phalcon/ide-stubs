@@ -44,7 +44,6 @@ abstract class AbstractRequest extends \Phalcon\Http\Message\AbstractMessage imp
 
 
     /**
-     *
      * Retrieves the HTTP method of the request.
      *
      * @return string
@@ -54,7 +53,6 @@ abstract class AbstractRequest extends \Phalcon\Http\Message\AbstractMessage imp
     }
 
     /**
-     *
      * Retrieves the URI instance.
      *
      * This method MUST return a UriInterface instance.

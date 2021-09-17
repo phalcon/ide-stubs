@@ -95,11 +95,11 @@ class Binder implements \Phalcon\Mvc\Model\BinderInterface
     /**
      * Find the model by param value.
      *
-     * @return bool
+     * @return mixed
      * @param mixed $paramValue
      * @param string $className
      */
-    protected function findBoundModel($paramValue, string $className): bool
+    protected function findBoundModel($paramValue, string $className)
     {
     }
 
