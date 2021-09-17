@@ -67,7 +67,7 @@ class Json
      * @param int    $options     Bitmask of JSON decode options.
      * @param int    $depth       Recursion depth.
      *
-     * @return string
+     * @return mixed
      *
      * @throws \InvalidArgumentException if the JSON cannot be encoded.
      * @link http://www.php.net/manual/en/function.json-encode.php

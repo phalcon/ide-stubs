@@ -70,6 +70,18 @@ class Builder
     }
 
     /**
+     * Adds a custom claim
+     *
+     * @param string $name
+     * @param mixed  $value
+     *
+     * @return Builder
+     */
+    public function addClaim(string $name, $value): Builder
+    {
+    }
+
+    /**
      * @return array|string
      */
     public function getAudience()

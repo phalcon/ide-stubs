@@ -67,7 +67,6 @@ abstract class AbstractAdapter implements \Phalcon\Storage\Adapter\AdapterInterf
 
 
     /**
-     *
      * Name of the default serializer class
      *
      * @return string
@@ -77,7 +76,6 @@ abstract class AbstractAdapter implements \Phalcon\Storage\Adapter\AdapterInterf
     }
 
     /**
-     *
      * Name of the default serializer class
      *
      * @param string $defaultSerializer

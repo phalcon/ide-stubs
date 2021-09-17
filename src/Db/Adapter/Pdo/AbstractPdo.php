@@ -112,9 +112,9 @@ abstract class AbstractPdo extends AbstractAdapter
      * Closes the active connection returning success. Phalcon automatically
      * closes and destroys active connections when the request ends
      *
-     * @return bool
+     * @return void
      */
-    public function close(): bool
+    public function close(): void
     {
     }
 
@@ -143,9 +143,9 @@ abstract class AbstractPdo extends AbstractAdapter
      * ```
      *
      * @param array $descriptor
-     * @return bool
+     * @return void
      */
-    public function connect(array $descriptor = null): bool
+    public function connect(array $descriptor = []): void
     {
     }
 
@@ -248,8 +248,10 @@ abstract class AbstractPdo extends AbstractAdapter
 
     /**
      * Return the error info, if any
+     *
+     * @return array
      */
-    public function getErrorInfo()
+    public function getErrorInfo(): array
     {
     }
 
@@ -311,10 +313,10 @@ abstract class AbstractPdo extends AbstractAdapter
      * $id = $connection->lastInsertId();
      * ```
      *
-     * @param mixed $sequenceName
-     * @return int|bool
+     * @param string|null $name
+     * @return string|bool
      */
-    public function lastInsertId($sequenceName = null)
+    public function lastInsertId(string $name = null)
     {
     }
 
