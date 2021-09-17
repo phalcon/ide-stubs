@@ -171,7 +171,7 @@ abstract class AbstractDispatcher extends AbstractInjectionAware implements \Pha
      *
      * @throws \Exception if any uncaught or unhandled exception occurs during the dispatcher process.
      */
-    public function dispatch(): bool
+    public function dispatch()
     {
     }
 

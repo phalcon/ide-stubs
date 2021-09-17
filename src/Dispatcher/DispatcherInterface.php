@@ -20,7 +20,7 @@ interface DispatcherInterface
      *
      * @return mixed
      */
-    public function dispatch(): bool;
+    public function dispatch();
 
     /**
      * Forwards the execution flow to another controller/action
