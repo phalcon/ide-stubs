@@ -33,8 +33,14 @@ php zephir.phar stubs
 find ide/ -type f -exec rename 's/\.zep//' '{}' \;
 ```
 
-3. Copy all files from `ide/%version%/Phalcon/` folder in `cphalcon` project
-4. Paste inside `src/` folder in `ide-stubs` project
+3. Mass fix code style
+
+```bash
+vendor/bin/phpcbf
+```
+
+4. Copy all files from `ide/%version%/Phalcon/` folder in `cphalcon` project
+5. Paste inside `src/` folder in `ide-stubs` project
 
 ## Sponsors
 
