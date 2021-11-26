@@ -23,6 +23,7 @@ use Phalcon\Html\Exception;
  */
 class Title extends \Phalcon\Html\Helper\AbstractHelper
 {
+
     /**
      * @var array
      */
@@ -42,7 +43,6 @@ class Title extends \Phalcon\Html\Helper\AbstractHelper
      * @var string
      */
     protected $separator = '';
-
 
     /**
      * Sets the separator and returns the object back

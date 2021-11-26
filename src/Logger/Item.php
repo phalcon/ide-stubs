@@ -15,57 +15,49 @@ use DateTimeImmutable;
  * Phalcon\Logger\Item
  *
  * Represents each item in a logging transaction
+ *
+ * @property array             $context
+ * @property string            $message
+ * @property int               $level
+ * @property string            $levelName
+ * @property DateTimeImmutable $datetime
  */
 class Item
 {
-    /**
-     * Log Context
-     *
-     * @var mixed
-     */
-    protected $context;
 
     /**
-     * Log message
-     *
+     * @var array
+     */
+    protected $context = [];
+
+    /**
      * @var string
      */
     protected $message;
 
     /**
-     * Log type
-     *
-     * @var integer
+     * @var int
      */
     protected $level;
 
     /**
-     * Log message
-     *
      * @var string
      */
     protected $levelName;
 
     /**
-     * Log timestamp
-     *
      * @var DateTimeImmutable
      */
-    protected $time;
-
+    protected $dateTime;
 
     /**
-     * Log Context
-     *
-     * @return mixed
+     * @return array
      */
-    public function getContext()
+    public function getContext(): array
     {
     }
 
     /**
-     * Log message
-     *
      * @return string
      */
     public function getMessage(): string
@@ -73,17 +65,13 @@ class Item
     }
 
     /**
-     * Log type
-     *
-     * @return mixed
+     * @return int
      */
-    public function getLevel()
+    public function getLevel(): int
     {
     }
 
     /**
-     * Log message
-     *
      * @return string
      */
     public function getLevelName(): string
@@ -91,24 +79,23 @@ class Item
     }
 
     /**
-     * Log timestamp
-     *
      * @return mixed
      */
-    public function getTime()
+    public function getDateTime()
     {
     }
 
     /**
-     * Phalcon\Logger\Item constructor
+     * Item constructor.
      *
-     * @param string $message
-     * @param string $levelName
-     * @param int $level
-     * @param \DateTimeImmutable $time
-     * @param array $context
+     * @param string            $message
+     * @param string            $levelName
+     * @param int               $level
+     * @param DateTimeImmutable $datetime
+     * @param array             $context
+     * @param \DateTimeImmutable $dateTime
      */
-    public function __construct(string $message, string $levelName, int $level, \DateTimeImmutable $time, array $context = [])
+    public function __construct(string $message, string $levelName, int $level, \DateTimeImmutable $dateTime, array $context = [])
     {
     }
 }

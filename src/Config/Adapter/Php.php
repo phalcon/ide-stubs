@@ -9,10 +9,10 @@
  */
 namespace Phalcon\Config\Adapter;
 
-use Phalcon\Config;
+use Phalcon\Config\Config;
 
 /**
- * Reads php files and converts them to Phalcon\Config objects.
+ * Reads php files and converts them to Phalcon\Config\Config objects.
  *
  * Given the next configuration file:
  *
@@ -48,6 +48,7 @@ use Phalcon\Config;
  */
 class Php extends Config
 {
+
 
     /**
      * Phalcon\Config\Adapter\Php constructor

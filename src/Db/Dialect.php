@@ -15,6 +15,7 @@ namespace Phalcon\Db;
  */
 abstract class Dialect implements \Phalcon\Db\DialectInterface
 {
+
     /**
      * @var string
      */
@@ -24,7 +25,6 @@ abstract class Dialect implements \Phalcon\Db\DialectInterface
      * @var array
      */
     protected $customFunctions = [];
-
 
     /**
      * Generate SQL to create a new savepoint

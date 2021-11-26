@@ -30,6 +30,7 @@ use stdClass;
  */
 class Complex extends Resultset implements \Phalcon\Mvc\Model\ResultsetInterface
 {
+
     /**
      * @var array
      */
@@ -42,7 +43,6 @@ class Complex extends Resultset implements \Phalcon\Mvc\Model\ResultsetInterface
      * @var bool
      */
     protected $disableHydration = false;
-
 
     /**
      * Phalcon\Mvc\Model\Resultset\Complex constructor
@@ -58,7 +58,7 @@ class Complex extends Resultset implements \Phalcon\Mvc\Model\ResultsetInterface
     /**
      * Returns current row in the resultset
      *
-     * @return 0|ModelInterface
+     * @return bool|ModelInterface
      */
     final public function current()
     {

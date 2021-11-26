@@ -36,6 +36,7 @@ use Phalcon\Events\ManagerInterface;
  */
 abstract class AbstractPdo extends AbstractAdapter
 {
+
     /**
      * Last affected rows
      *
@@ -49,7 +50,6 @@ abstract class AbstractPdo extends AbstractAdapter
      * @var \PDO
      */
     protected $pdo;
-
 
     /**
      * Constructor for Phalcon\Db\Adapter\Pdo
@@ -258,9 +258,9 @@ abstract class AbstractPdo extends AbstractAdapter
     /**
      * Return internal PDO handler
      *
-     * @return \PDO
+     * @return mixed
      */
-    public function getInternalHandler(): \PDO
+    public function getInternalHandler()
     {
     }
 
@@ -370,7 +370,7 @@ abstract class AbstractPdo extends AbstractAdapter
      * @param string $sqlStatement
      * @param array $bindParams
      * @param array $bindTypes
-     * @return 0|ResultInterface
+     * @return bool|ResultInterface
      */
     public function query(string $sqlStatement, array $bindParams = [], array $bindTypes = [])
     {

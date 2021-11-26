@@ -26,12 +26,13 @@ use Phalcon\Events\ManagerInterface;
  */
 abstract class AbstractAdapter implements \Phalcon\Db\Adapter\AdapterInterface, \Phalcon\Events\EventsAwareInterface
 {
+
     /**
      * Connection ID
      *
      * @var int
      */
-    protected static $connectionConsecutive = 0;
+    static protected $connectionConsecutive = 0;
 
     /**
      * Active connection ID
@@ -94,7 +95,7 @@ abstract class AbstractAdapter implements \Phalcon\Db\Adapter\AdapterInterface, 
      *
      * @var array
      */
-    protected $sqlVariables;
+    protected $sqlVariables = [];
 
     /**
      * Current transaction level
@@ -117,22 +118,12 @@ abstract class AbstractAdapter implements \Phalcon\Db\Adapter\AdapterInterface, 
      */
     protected $type;
 
-
     /**
      * Name of the dialect used
      *
      * @return string
      */
     public function getDialectType(): string
-    {
-    }
-
-    /**
-     * Active SQL bound parameter variables
-     *
-     * @return array
-     */
-    public function getSqlVariables(): array
     {
     }
 
@@ -637,6 +628,15 @@ abstract class AbstractAdapter implements \Phalcon\Db\Adapter\AdapterInterface, 
      * @return string
      */
     public function getSQLStatement(): string
+    {
+    }
+
+    /**
+     * Active SQL variables in the object
+     *
+     * @return array
+     */
+    public function getSQLVariables(): array
     {
     }
 

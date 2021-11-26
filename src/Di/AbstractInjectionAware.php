@@ -14,13 +14,13 @@ namespace Phalcon\Di;
  */
 abstract class AbstractInjectionAware implements \Phalcon\Di\InjectionAwareInterface
 {
+
     /**
      * Dependency Injector
      *
      * @var DiInterface
      */
     protected $container;
-
 
     /**
      * Returns the internal dependency injector

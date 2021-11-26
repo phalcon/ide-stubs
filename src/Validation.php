@@ -24,6 +24,7 @@ use Phalcon\Validation\AbstractCombinedFieldsValidator;
  */
 class Validation extends Injectable implements \Phalcon\Validation\ValidationInterface
 {
+
     /**
      * @var array
      */
@@ -67,7 +68,6 @@ class Validation extends Injectable implements \Phalcon\Validation\ValidationInt
      * @var array
      */
     protected $values = [];
-
 
     /**
      * @return mixed
@@ -172,6 +172,28 @@ class Validation extends Injectable implements \Phalcon\Validation\ValidationInt
      * @return array
      */
     public function getValidators(): array
+    {
+    }
+
+    /**
+     * Gets the a value to validate in the object entity source
+     *
+     * @param mixed $entity
+     * @param string $field
+     * @return mixed|null
+     */
+    public function getValueByEntity($entity, string $field)
+    {
+    }
+
+    /**
+     * Gets the a value to validate in the array/object data source
+     *
+     * @param mixed $data
+     * @param string $field
+     * @return mixed|null
+     */
+    public function getValueByData($data, string $field)
     {
     }
 

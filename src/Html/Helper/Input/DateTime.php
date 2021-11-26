@@ -16,4 +16,5 @@ class DateTime extends \Phalcon\Html\Helper\Input\AbstractInput
 {
 
     protected $type = 'datetime';
+
 }

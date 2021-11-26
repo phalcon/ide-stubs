@@ -27,6 +27,7 @@ use Phalcon\Di\InjectionAwareInterface;
  */
 class Compiler implements \Phalcon\Di\InjectionAwareInterface
 {
+
     /**
      * @var bool
      */
@@ -135,7 +136,6 @@ class Compiler implements \Phalcon\Di\InjectionAwareInterface
      * @var ViewBaseInterface|null
      */
     protected $view;
-
 
     /**
      * Phalcon\Mvc\View\Engine\Volt\Compiler

@@ -10,14 +10,15 @@
 namespace Phalcon\Acl\Adapter;
 
 use Phalcon\Acl\Enum;
-use Phalcon\Events\ManagerInterface;
+use Phalcon\Events\AbstractEventsAware;
 use Phalcon\Events\EventsAwareInterface;
 
 /**
  * Adapter for Phalcon\Acl adapters
  */
-abstract class AbstractAdapter implements \Phalcon\Acl\Adapter\AdapterInterface, \Phalcon\Events\EventsAwareInterface
+abstract class AbstractAdapter extends AbstractEventsAware implements \Phalcon\Acl\Adapter\AdapterInterface, \Phalcon\Events\EventsAwareInterface
 {
+
     /**
      * Active access which the list is checking if some role can access it
      *
@@ -53,14 +54,6 @@ abstract class AbstractAdapter implements \Phalcon\Acl\Adapter\AdapterInterface,
      * @var int
      */
     protected $defaultAccess = Enum::DENY;
-
-    /**
-     * Events manager
-     *
-     * @var ManagerInterface|null
-     */
-    protected $eventsManager;
-
 
     /**
      * Active access which the list is checking if some role can access it
@@ -101,31 +94,12 @@ abstract class AbstractAdapter implements \Phalcon\Acl\Adapter\AdapterInterface,
     }
 
     /**
-     * Returns the internal event manager
-     *
-     * @return ManagerInterface|null
-     */
-    public function getEventsManager(): ?ManagerInterface
-    {
-    }
-
-    /**
      * Sets the default access level (Phalcon\Acl::ALLOW or Phalcon\Acl::DENY)
      *
      * @param int $defaultAccess
      * @return void
      */
     public function setDefaultAction(int $defaultAccess): void
-    {
-    }
-
-    /**
-     * Sets the events manager
-     *
-     * @param \Phalcon\Events\ManagerInterface $eventsManager
-     * @return void
-     */
-    public function setEventsManager(\Phalcon\Events\ManagerInterface $eventsManager): void
     {
     }
 }

@@ -13,7 +13,6 @@ use Phalcon\Di\DiInterface;
 use Phalcon\Di\AbstractInjectionAware;
 use Phalcon\Events\ManagerInterface;
 use Phalcon\Filter\FilterInterface;
-use Phalcon\Helper\Json;
 use Phalcon\Http\Message\RequestMethodInterface;
 use Phalcon\Http\Request\File;
 use Phalcon\Http\Request\FileInterface;
@@ -49,6 +48,7 @@ use stdClass;
  */
 class Request extends AbstractInjectionAware implements \Phalcon\Http\RequestInterface, \Phalcon\Http\Message\RequestMethodInterface
 {
+
     /**
      * @var FilterInterface|null
      */
@@ -78,7 +78,6 @@ class Request extends AbstractInjectionAware implements \Phalcon\Http\RequestInt
      * @var bool
      */
     private $strictHostCheck = false;
-
 
     /**
      * @return bool
@@ -346,7 +345,7 @@ class Request extends AbstractInjectionAware implements \Phalcon\Http\RequestInt
      * Gets decoded JSON HTTP raw request body
      *
      * @param bool $associative
-     * @return 0|1|\stdClass
+     * @return array|bool|\stdClass
      */
     public function getJsonRawBody(bool $associative = false)
     {

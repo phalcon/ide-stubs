@@ -9,8 +9,8 @@
  */
 namespace Phalcon\Http\Message;
 
-use Phalcon\Collection;
-use Phalcon\Collection\CollectionInterface;
+use Phalcon\Support\Collection;
+use Phalcon\Support\Collection\CollectionInterface;
 use Phalcon\Http\Message\Exception\InvalidArgumentException;
 use Phalcon\Http\Message\Stream\Input;
 use Psr\Http\Message\ServerRequestInterface;
@@ -23,6 +23,7 @@ use Psr\Http\Message\UriInterface;
  */
 final class ServerRequest extends \Phalcon\Http\Message\AbstractRequest implements \Psr\Http\Message\ServerRequestInterface
 {
+
     /**
      * @var Collection|CollectionInterface
      */
@@ -93,7 +94,6 @@ final class ServerRequest extends \Phalcon\Http\Message\AbstractRequest implemen
      * @var array
      */
     protected $uploadedFiles = [];
-
 
     /**
      * Retrieve cookies.

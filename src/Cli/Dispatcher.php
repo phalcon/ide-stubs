@@ -56,7 +56,6 @@ class Dispatcher extends \Phalcon\Dispatcher\AbstractDispatcher implements \Phal
      */
     protected $options = [];
 
-
     /**
      * Calls the action method.
      *

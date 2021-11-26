@@ -49,9 +49,7 @@ use Phalcon\Mvc\Router\RouteInterface;
  */
 class Router extends AbstractInjectionAware implements \Phalcon\Mvc\RouterInterface, \Phalcon\Events\EventsAwareInterface
 {
-
     const POSITION_FIRST = 0;
-
 
     const POSITION_LAST = 1;
 
@@ -149,7 +147,6 @@ class Router extends AbstractInjectionAware implements \Phalcon\Mvc\RouterInterf
      * @var bool
      */
     protected $wasMatched = false;
-
 
     /**
      * @return array

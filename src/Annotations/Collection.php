@@ -31,6 +31,7 @@ use Iterator;
  */
 class Collection implements \Iterator, \Countable
 {
+
     /**
      * @var array
      */
@@ -40,7 +41,6 @@ class Collection implements \Iterator, \Countable
      * @var int
      */
     protected $position = 0;
-
 
     /**
      * Phalcon\Annotations\Collection constructor
@@ -63,7 +63,7 @@ class Collection implements \Iterator, \Countable
     /**
      * Returns the current annotation in the iterator
      *
-     * @return 0|Annotation
+     * @return bool|Annotation
      */
     public function current()
     {

@@ -22,11 +22,11 @@ use Phalcon\Db\DialectInterface;
  */
 class Postgresql extends Dialect
 {
+
     /**
      * @var string
      */
     protected $escapeChar = '\\\"';
-
 
     /**
      * Generates SQL to add a column to a table

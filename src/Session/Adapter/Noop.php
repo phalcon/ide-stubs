@@ -29,6 +29,7 @@ use SessionHandlerInterface;
  */
 class Noop implements \SessionHandlerInterface
 {
+
     /**
      * The connection of some adapters
      *
@@ -56,7 +57,6 @@ class Noop implements \SessionHandlerInterface
      * @var int
      */
     protected $ttl = 8600;
-
 
     /**
      * Constructor

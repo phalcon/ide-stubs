@@ -16,6 +16,7 @@ use Throwable;
  */
 class Payload implements \Phalcon\Domain\Payload\PayloadInterface
 {
+
     /**
      * Exception if any
      *
@@ -57,7 +58,6 @@ class Payload implements \Phalcon\Domain\Payload\PayloadInterface
      * @var mixed
      */
     protected $output;
-
 
     /**
      * Extra information

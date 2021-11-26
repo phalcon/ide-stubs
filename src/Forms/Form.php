@@ -27,6 +27,7 @@ use Phalcon\Validation\ValidationInterface;
  */
 class Form extends Injectable implements \Countable, \Iterator, \Phalcon\Html\Attributes\AttributesInterface
 {
+
     /**
      * @var AttributesInterface|null
      */
@@ -36,6 +37,11 @@ class Form extends Injectable implements \Countable, \Iterator, \Phalcon\Html\At
      * @var array
      */
     protected $data = [];
+
+    /**
+     * @var array
+     */
+    protected $filteredData = [];
 
     /**
      * @var array
@@ -72,18 +78,22 @@ class Form extends Injectable implements \Countable, \Iterator, \Phalcon\Html\At
      */
     protected $validation = null;
 
-
     /**
-     * @param mixed $validation
+     * @var array
      */
-    public function setValidation($validation)
-    {
-    }
+    protected $whitelist = [];
 
     /**
      * @return ValidationInterface|null
      */
     public function getValidation()
+    {
+    }
+
+    /**
+     * @return array
+     */
+    public function getWhitelist(): array
     {
     }
 
@@ -117,7 +127,7 @@ class Form extends Injectable implements \Countable, \Iterator, \Phalcon\Html\At
      * @param array $data
      * @return Form
      */
-    public function bind(array $data, $entity, $whitelist = null): Form
+    public function bind(array $data, $entity = null, array $whitelist = []): Form
     {
     }
 
@@ -143,7 +153,7 @@ class Form extends Injectable implements \Countable, \Iterator, \Phalcon\Html\At
     /**
      * Returns the current element in the iterator
      *
-     * @return 0|ElementInterface
+     * @return bool|ElementInterface
      */
     public function current()
     {
@@ -218,7 +228,7 @@ class Form extends Injectable implements \Countable, \Iterator, \Phalcon\Html\At
      * }
      * ```
      *
-     * @return 0|Messages
+     * @return array|Messages
      */
     public function getMessages()
     {
@@ -251,6 +261,16 @@ class Form extends Injectable implements \Countable, \Iterator, \Phalcon\Html\At
      * @return array
      */
     public function getUserOptions(): array
+    {
+    }
+
+    /**
+     * Gets a value from the internal filtered data or calls getValue(name)
+     *
+     * @param string $name
+     * @return mixed|null
+     */
+    public function getFilteredValue(string $name)
     {
     }
 
@@ -289,9 +309,10 @@ class Form extends Injectable implements \Countable, \Iterator, \Phalcon\Html\At
      *
      * @param array $data
      * @param object $entity
+     * @param array $whitelist
      * @return bool
      */
-    public function isValid($data = null, $entity = null): bool
+    public function isValid($data = null, $entity = null, array $whitelist = []): bool
     {
     }
 
@@ -371,6 +392,26 @@ class Form extends Injectable implements \Countable, \Iterator, \Phalcon\Html\At
      * @return Form
      */
     public function setEntity($entity): Form
+    {
+    }
+
+    /**
+     * Sets the default validation
+     *
+     * @param ValidationInterface $validation
+     * @return Form
+     */
+    public function setValidation(\Phalcon\Validation\ValidationInterface $validation): Form
+    {
+    }
+
+    /**
+     * Sets the default whitelist
+     *
+     * @param array $whitelist
+     * @return Form
+     */
+    public function setWhitelist(array $whitelist): Form
     {
     }
 

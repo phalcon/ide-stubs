@@ -21,6 +21,7 @@ use Phalcon\Http\Message\Stream;
 class Temp extends Stream
 {
 
+
     /**
      * Constructor
      *

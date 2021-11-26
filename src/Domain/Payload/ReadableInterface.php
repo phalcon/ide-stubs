@@ -17,6 +17,7 @@ use Throwable;
 interface ReadableInterface
 {
 
+
     /**
      * Gets the potential exception thrown in the domain layer
      *

@@ -22,6 +22,7 @@ use Phalcon\Image\Enum;
 interface AdapterInterface
 {
 
+
     /**
      * @param string $color
      * @param int $opacity

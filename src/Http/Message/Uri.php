@@ -9,8 +9,6 @@
  */
 namespace Phalcon\Http\Message;
 
-use Phalcon\Helper\Arr;
-use Phalcon\Helper\Str;
 use Phalcon\Http\Message\Exception\InvalidArgumentException;
 use Psr\Http\Message\UriInterface;
 
@@ -19,6 +17,7 @@ use Psr\Http\Message\UriInterface;
  */
 final class Uri extends \Phalcon\Http\Message\AbstractCommon implements \Psr\Http\Message\UriInterface
 {
+
     /**
      * Returns the fragment of the URL
      *
@@ -97,7 +96,6 @@ final class Uri extends \Phalcon\Http\Message\AbstractCommon implements \Psr\Htt
      * @var string
      */
     protected $user = '';
-
 
     /**
      * Returns the fragment of the URL
@@ -484,6 +482,17 @@ final class Uri extends \Phalcon\Http\Message\AbstractCommon implements \Psr\Htt
      * @return array
      */
     private function splitQueryValue(string $element): array
+    {
+    }
+
+    /**
+     * @todo Remove this when we get traits
+     * @param array $collection
+     * @param mixed $index
+     * @param mixed $defaultValue
+     * @return mixed
+     */
+    private function getArrVal(array $collection, $index, $defaultValue = null)
     {
     }
 }

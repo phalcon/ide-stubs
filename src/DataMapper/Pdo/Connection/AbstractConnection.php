@@ -22,6 +22,7 @@ use Phalcon\DataMapper\Pdo\Profiler\ProfilerInterface;
  */
 abstract class AbstractConnection implements \Phalcon\DataMapper\Pdo\Connection\ConnectionInterface
 {
+
     /**
      * @var \PDO
      */
@@ -31,7 +32,6 @@ abstract class AbstractConnection implements \Phalcon\DataMapper\Pdo\Connection\
      * @var ProfilerInterface
      */
     protected $profiler;
-
 
     /**
      * Proxies to PDO methods created for specific drivers; in particular,

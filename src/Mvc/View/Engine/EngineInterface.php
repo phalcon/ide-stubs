@@ -15,6 +15,7 @@ namespace Phalcon\Mvc\View\Engine;
 interface EngineInterface
 {
 
+
     /**
      * Returns cached output on another view stage
      *

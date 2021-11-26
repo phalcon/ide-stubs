@@ -17,6 +17,7 @@ use Phalcon\Html\Exception;
 class Base extends \Phalcon\Html\Helper\AbstractHelper
 {
 
+
     /**
      * Produce a `<base/>` tag.
      *

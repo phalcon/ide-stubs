@@ -21,6 +21,7 @@ use Phalcon\DataMapper\Pdo\Exception\ConnectionNotFound;
  */
 class ConnectionLocator implements \Phalcon\DataMapper\Pdo\ConnectionLocatorInterface
 {
+
     /**
      * A default Connection connection factory/instance.
      *
@@ -48,7 +49,6 @@ class ConnectionLocator implements \Phalcon\DataMapper\Pdo\ConnectionLocatorInte
      * @var array
      */
     private $instances = [];
-
 
     /**
      * Constructor.

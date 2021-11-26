@@ -22,6 +22,7 @@ use Phalcon\Validation\ValidatorInterface;
  */
 abstract class AbstractElement implements \Phalcon\Forms\Element\ElementInterface
 {
+
     /**
      * @var array
      */
@@ -66,7 +67,6 @@ abstract class AbstractElement implements \Phalcon\Forms\Element\ElementInterfac
      * @var mixed|null
      */
     protected $value = null;
-
 
     /**
      * Phalcon\Forms\Element constructor

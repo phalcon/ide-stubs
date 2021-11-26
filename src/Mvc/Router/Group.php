@@ -59,6 +59,7 @@ namespace Phalcon\Mvc\Router;
  */
 class Group implements \Phalcon\Mvc\Router\GroupInterface
 {
+
     /**
      * @var callable|null
      */
@@ -83,7 +84,6 @@ class Group implements \Phalcon\Mvc\Router\GroupInterface
      * @var array
      */
     protected $routes = [];
-
 
     /**
      * Phalcon\Mvc\Router\Group constructor

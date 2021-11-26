@@ -9,35 +9,30 @@
  */
 namespace Phalcon\Translate;
 
-use Phalcon\Config;
+use Phalcon\Config\ConfigInterface;
 use Phalcon\Factory\AbstractFactory;
-use Phalcon\Helper\Arr;
 use Phalcon\Translate\Adapter\AdapterInterface;
 
 /**
- * This file is part of the Phalcon Framework.
+ * Class TranslateFactory
  *
- * (c) Phalcon Team <team@phalcon.io>
+ * @package Phalcon\Translate
  *
- * For the full copyright and license information, please view the LICENSE.txt
- * file that was distributed with this source code.
+ * @property InterpolatorFactory $interpolator
  */
 class TranslateFactory extends AbstractFactory
 {
-
-    protected $exception = 'Phalcon\\\\Translate\\\\Exception';
 
     /**
      * @var InterpolatorFactory
      */
     private $interpolator;
 
-
     /**
      * AdapterFactory constructor.
      *
      * @param InterpolatorFactory $interpolator
-     * @param array $services
+     * @param array               $services
      */
     public function __construct(InterpolatorFactory $interpolator, array $services = [])
     {
@@ -46,23 +41,24 @@ class TranslateFactory extends AbstractFactory
     /**
      * Factory to create an instance from a Config object
      *
-     * @param array|\Phalcon\Config = [
+     * @param array|ConfigInterface $config = [
      *     'adapter' => 'ini,
      *     'options' => [
-     *         'content' => '',
-     *         'delimiter' => ';',
-     *         'enclosure' => '"',
-     *         'locale' => '',
+     *         'content'       => '',
+     *         'delimiter'     => ';',
+     *         'enclosure'     => '"',
+     *         'locale'        => '',
      *         'defaultDomain' => '',
-     *         'directory' => '',
-     *         'category' => ''
-     *         'triggerError' => false
+     *         'directory'     => '',
+     *         'category'      => ''
+     *         'triggerError'  => false
      *     ]
      * ]
-     * @param mixed $config
-     * @return mixed
+     *
+     * @return AdapterInterface
+     * @throws Exception
      */
-    public function load($config)
+    public function load($config): AdapterInterface
     {
     }
 
@@ -70,17 +66,28 @@ class TranslateFactory extends AbstractFactory
      * Create a new instance of the adapter
      *
      * @param string $name
-     * @param array $options
+     * @param array  $options
+     *
      * @return AdapterInterface
+     * @throws Exception
      */
     public function newInstance(string $name, array $options = []): AdapterInterface
     {
     }
 
     /**
-     * @return array
+     * @return string
      */
-    protected function getAdapters(): array
+    protected function getExceptionClass(): string
+    {
+    }
+
+    /**
+     * Returns the available adapters
+     *
+     * @return string[]
+     */
+    protected function getServices(): array
     {
     }
 }

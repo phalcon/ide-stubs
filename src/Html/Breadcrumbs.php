@@ -20,6 +20,7 @@ use Phalcon\Di\DiInterface;
  */
 class Breadcrumbs
 {
+
     /**
      * Keeps all the breadcrumbs
      *
@@ -40,7 +41,6 @@ class Breadcrumbs
      * @var string
      */
     private $template = '<dt><a href=\\\"%link%\\\">%label%</a></dt>';
-
 
     /**
      * Crumb separator

@@ -10,14 +10,13 @@
 namespace Phalcon;
 
 use Phalcon\Di\DiInterface;
-use Phalcon\Escaper\EscaperInterface;
+use Phalcon\Html\Escaper\EscaperInterface;
 use Phalcon\Html\Link\Link;
 use Phalcon\Html\Link\Serializer\Header;
-use Phalcon\Helper\Str;
-use Phalcon\Helper\Exception as HelperException;
 use Phalcon\Tag\Select;
 use Phalcon\Tag\Exception;
 use Phalcon\Url\UrlInterface;
+use Phalcon\Support\Helper\Str\Friendly;
 
 /**
  * Phalcon\Tag is designed to simplify building of HTML tags.
@@ -26,95 +25,83 @@ use Phalcon\Url\UrlInterface;
  */
 class Tag
 {
-
     const HTML32 = 1;
-
 
     const HTML401_STRICT = 2;
 
-
     const HTML401_TRANSITIONAL = 3;
-
 
     const HTML401_FRAMESET = 4;
 
-
     const HTML5 = 5;
-
 
     const XHTML10_STRICT = 6;
 
-
     const XHTML10_TRANSITIONAL = 7;
-
 
     const XHTML10_FRAMESET = 8;
 
-
     const XHTML11 = 9;
 
-
     const XHTML20 = 10;
-
 
     const XHTML5 = 11;
 
     /**
      * @var bool
      */
-    protected static $autoEscape = true;
+    static protected $autoEscape = true;
 
     /**
      * DI Container
      *
      * @var DiInterface|null
      */
-    protected static $container = null;
+    static protected $container = null;
 
     /**
      * Pre-assigned values for components
      *
      * @var array
      */
-    protected static $displayValues;
+    static protected $displayValues;
 
     /**
      * @var array
      */
-    protected static $documentAppendTitle;
+    static protected $documentAppendTitle;
 
     /**
      * @var array
      */
-    protected static $documentPrependTitle;
+    static protected $documentPrependTitle;
 
     /**
      * HTML document title
      *
      * @var string|null
      */
-    protected static $documentTitle = null;
+    static protected $documentTitle = null;
 
     /**
      * @var string|null
      */
-    protected static $documentTitleSeparator = null;
+    static protected $documentTitleSeparator = null;
 
     /**
      * @var int
      */
-    protected static $documentType = 11;
+    static protected $documentType = 11;
 
     /**
      * @var EscaperInterface|null
      */
-    protected static $escaperService = null;
+    static protected $escaperService = null;
 
     /**
      * @var UrlInterface|null
      */
-    protected static $urlService = null;
-
+    static protected $urlService = null;
 
     /**
      * Appends a text to current document title
@@ -874,7 +861,7 @@ class Tag
      * @param bool $asValue
      * @return string
      */
-    final protected static function inputField(string $type, $parameters, bool $asValue = false): string
+    static final protected function inputField(string $type, $parameters, bool $asValue = false): string
     {
     }
 
@@ -885,7 +872,7 @@ class Tag
      * @param mixed $parameters
      * @return string
      */
-    final protected static function inputFieldChecked(string $type, $parameters): string
+    static final protected function inputFieldChecked(string $type, $parameters): string
     {
     }
 }

@@ -18,15 +18,42 @@ class Style extends \Phalcon\Html\Helper\AbstractSeries
 {
 
     /**
+     * @var bool
+     */
+    private $isStyle = false;
+
+    /**
      * Add an element to the list
      *
-     * @param string $href
+     * @param string $url
      * @param array  $attributes
      *
      * @return $this
      * @throws Exception
      */
-    public function add(string $href, array $attributes = [])
+    public function add(string $url, array $attributes = [])
+    {
+    }
+
+    /**
+     * Sets if this is a style or link tag
+     *
+     * @param bool $flag
+     * @return Style
+     */
+    public function setStyle(bool $flag): Style
+    {
+    }
+
+    /**
+     * Returns the necessary attributes
+     *
+     * @param string $url
+     * @param array  $attributes
+     *
+     * @return array
+     */
+    protected function getAttributes(string $url, array $attributes): array
     {
     }
 
@@ -34,18 +61,6 @@ class Style extends \Phalcon\Html\Helper\AbstractSeries
      * @return string
      */
     protected function getTag(): string
-    {
-    }
-
-    /**
-     * Returns the necessary attributes
-     *
-     * @param string $href
-     * @param array  $attributes
-     *
-     * @return array
-     */
-    protected function getAttributes(string $href, array $attributes): array
     {
     }
 }

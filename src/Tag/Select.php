@@ -10,7 +10,7 @@
 namespace Phalcon\Tag;
 
 use Phalcon\Tag as BaseTag;
-use Phalcon\Escaper\EscaperInterface;
+use Phalcon\Html\Escaper\EscaperInterface;
 use Phalcon\Mvc\Model\ResultsetInterface;
 
 /**
@@ -21,6 +21,7 @@ use Phalcon\Mvc\Model\ResultsetInterface;
  */
 abstract class Select
 {
+
 
     /**
      * Generates a SELECT tag

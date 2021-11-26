@@ -19,10 +19,11 @@ use Phalcon\Image\Exception;
  */
 abstract class AbstractAdapter implements \Phalcon\Image\Adapter\AdapterInterface
 {
+
     /**
      * @var bool
      */
-    protected static $checked = false;
+    static protected $checked = false;
 
     /**
      * @var string
@@ -68,7 +69,6 @@ abstract class AbstractAdapter implements \Phalcon\Image\Adapter\AdapterInterfac
      * @var int
      */
     protected $width;
-
 
     /**
      * Image height

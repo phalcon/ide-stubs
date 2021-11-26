@@ -27,7 +27,7 @@ use Phalcon\Http\Cookie\CookieInterface;
  *
  * ```php
  * use Phalcon\Di;
- * use Phalcon\Crypt;
+ * use Phalcon\Encryption\Crypt;
  * use Phalcon\Http\Response\Cookies;
  *
  * $di = new Di();
@@ -64,6 +64,7 @@ use Phalcon\Http\Cookie\CookieInterface;
  */
 class Cookies extends AbstractInjectionAware implements \Phalcon\Http\Response\CookiesInterface
 {
+
     /**
      * @var array
      */
@@ -90,7 +91,6 @@ class Cookies extends AbstractInjectionAware implements \Phalcon\Http\Response\C
      * @var bool
      */
     protected $useEncryption = true;
-
 
     /**
      * Phalcon\Http\Response\Cookies constructor

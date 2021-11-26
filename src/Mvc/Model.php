@@ -19,7 +19,6 @@ use Phalcon\Di\AbstractInjectionAware;
 use Phalcon\Di;
 use Phalcon\Di\DiInterface;
 use Phalcon\Events\ManagerInterface as EventsManagerInterface;
-use Phalcon\Helper\Arr;
 use Phalcon\Messages\Message;
 use Phalcon\Messages\MessageInterface;
 use Phalcon\Mvc\Model\BehaviorInterface;
@@ -82,27 +81,19 @@ use Serializable;
  */
 abstract class Model extends AbstractInjectionAware implements \Phalcon\Mvc\EntityInterface, \Phalcon\Mvc\ModelInterface, \Phalcon\Mvc\Model\ResultInterface, \Serializable, \JsonSerializable
 {
-
     const DIRTY_STATE_DETACHED = 2;
-
 
     const DIRTY_STATE_PERSISTENT = 0;
 
-
     const DIRTY_STATE_TRANSIENT = 1;
-
 
     const OP_CREATE = 1;
 
-
     const OP_DELETE = 3;
-
 
     const OP_NONE = 0;
 
-
     const OP_UPDATE = 2;
-
 
     const TRANSACTION_INDEX = 'transaction';
 
@@ -176,7 +167,6 @@ abstract class Model extends AbstractInjectionAware implements \Phalcon\Mvc\Enti
      * TODO: Make it always array in code
      */
     protected $uniqueTypes = null;
-
 
     /**
      * @return TransactionInterface|null
@@ -503,7 +493,7 @@ abstract class Model extends AbstractInjectionAware implements \Phalcon\Mvc\Enti
      * ```
      *
      * @param array|string|null $parameters
-     * @return 0|ResultsetInterface
+     * @return int|ResultsetInterface
      */
     public static function count($parameters = null)
     {
@@ -1325,7 +1315,7 @@ abstract class Model extends AbstractInjectionAware implements \Phalcon\Mvc\Enti
      * Sets the dirty state of the object using one of the DIRTY_STATE_ constants
      *
      * @param int $dirtyState
-     * @return 0|ModelInterface
+     * @return bool|ModelInterface
      */
     public function setDirtyState(int $dirtyState)
     {
@@ -1633,7 +1623,7 @@ abstract class Model extends AbstractInjectionAware implements \Phalcon\Mvc\Enti
      * @param string $method
      * @param array $arguments
      */
-    final protected static function invokeFinder(string $method, array $arguments)
+    protected final static function invokeFinder(string $method, array $arguments)
     {
     }
 
@@ -1782,9 +1772,9 @@ abstract class Model extends AbstractInjectionAware implements \Phalcon\Mvc\Enti
      *
      * @param mixed $params
      * @param mixed $limit
-     * @return Query
+     * @return QueryInterface
      */
-    private static function getPreparedQuery($params, $limit = null): Query
+    private static function getPreparedQuery($params, $limit = null): QueryInterface
     {
     }
 

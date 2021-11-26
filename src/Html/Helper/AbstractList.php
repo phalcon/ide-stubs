@@ -16,6 +16,7 @@ use Phalcon\Html\Exception;
  */
 abstract class AbstractList extends \Phalcon\Html\Helper\AbstractHelper
 {
+
     /**
      * @var array
      */
@@ -31,7 +32,6 @@ abstract class AbstractList extends \Phalcon\Html\Helper\AbstractHelper
      */
     protected $store = [];
 
-
     /**
      * @param string $indent
      * @param string $delimiter
@@ -39,7 +39,7 @@ abstract class AbstractList extends \Phalcon\Html\Helper\AbstractHelper
      *
      * @return AbstractList
      */
-    public function __invoke(string $indent = null, string $delimiter = null, array $attributes = []): AbstractList
+    public function __invoke(string $indent = '    ', string $delimiter = null, array $attributes = []): AbstractList
     {
     }
 

@@ -9,7 +9,6 @@
  */
 namespace Phalcon\Session\Adapter;
 
-use Phalcon\Helper\Str;
 use Phalcon\Session\Exception;
 
 /**
@@ -34,11 +33,11 @@ use Phalcon\Session\Exception;
  */
 class Stream extends \Phalcon\Session\Adapter\Noop
 {
+
     /**
      * @var string
      */
     private $path = '';
-
 
     /**
      * Constructor
@@ -94,6 +93,15 @@ class Stream extends \Phalcon\Session\Adapter\Noop
      * @return bool
      */
     public function write($id, $data): bool
+    {
+    }
+
+    /**
+     * @todo Remove this when we get traits
+     * @param string $directory
+     * @return string
+     */
+    private function getDirSeparator(string $directory): string
     {
     }
 }

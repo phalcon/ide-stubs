@@ -10,7 +10,6 @@
 namespace Phalcon\Validation;
 
 use Phalcon\Factory\AbstractFactory;
-use Phalcon\Helper\Arr;
 
 /**
  * This file is part of the Phalcon Framework.
@@ -22,8 +21,6 @@ use Phalcon\Helper\Arr;
  */
 class ValidatorFactory extends AbstractFactory
 {
-
-    protected $exception = 'Phalcon\\\\Validation\\\\Exception';
 
 
     /**
@@ -46,9 +43,18 @@ class ValidatorFactory extends AbstractFactory
     }
 
     /**
-     * @return array
+     * @return string
      */
-    protected function getAdapters(): array
+    protected function getExceptionClass(): string
+    {
+    }
+
+    /**
+     * Returns the available adapters
+     *
+     * @return string[]
+     */
+    protected function getServices(): array
     {
     }
 }

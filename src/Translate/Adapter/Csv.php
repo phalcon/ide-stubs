@@ -14,27 +14,31 @@ use Phalcon\Translate\Exception;
 use Phalcon\Translate\InterpolatorFactory;
 
 /**
- * Phalcon\Translate\Adapter\Csv
+ * Class Csv
  *
- * Allows to define translation lists using CSV file
+ * @package Phalcon\Translate\Adapter
+ *
+ * @property array $translate
  */
 class Csv extends \Phalcon\Translate\Adapter\AbstractAdapter implements \ArrayAccess
 {
+
     /**
      * @var array
      */
     protected $translate = [];
 
-
     /**
-     * Phalcon\Translate\Adapter\Csv constructor
+     * Csv constructor.
      *
-     * @param array $options = [
-     *     'content' => '',
-     *     'delimiter' => ';',
-     *     'enclosure' => '"'
-     * ]
-     * @param \Phalcon\Translate\InterpolatorFactory $interpolator
+     * @param InterpolatorFactory $interpolator
+     * @param array               $options = [
+     *                                       'content'   => '',
+     *                                       'delimiter' => ';',
+     *                                       'enclosure' => '"'
+     *                                       ]
+     *
+     * @throws Exception
      */
     public function __construct(\Phalcon\Translate\InterpolatorFactory $interpolator, array $options)
     {
@@ -44,6 +48,7 @@ class Csv extends \Phalcon\Translate\Adapter\AbstractAdapter implements \ArrayAc
      * Check whether is defined a translation key in the internal array
      *
      * @param string $index
+     *
      * @return bool
      */
     public function exists(string $index): bool
@@ -54,7 +59,8 @@ class Csv extends \Phalcon\Translate\Adapter\AbstractAdapter implements \ArrayAc
      * Returns the translation related to the given key
      *
      * @param string $translateKey
-     * @param array $placeholders
+     * @param array  $placeholders
+     *
      * @return string
      */
     public function query(string $translateKey, array $placeholders = []): string
@@ -62,15 +68,27 @@ class Csv extends \Phalcon\Translate\Adapter\AbstractAdapter implements \ArrayAc
     }
 
     /**
-     * Load translates from file
+     * Load translations from file
      *
      * @param string $file
-     * @param int $length
-     * @param string $delimiter
+     * @param int    $length
+     * @param string $separator
      * @param string $enclosure
+     *
+     * @throws Exception
+     * @param string $delimiter
      * @return void
      */
     private function load(string $file, int $length, string $delimiter, string $enclosure): void
+    {
+    }
+
+    /**
+     * @todo to be removed when we get traits
+     * @param string $filename
+     * @param string $mode
+     */
+    protected function phpFopen(string $filename, string $mode)
     {
     }
 }

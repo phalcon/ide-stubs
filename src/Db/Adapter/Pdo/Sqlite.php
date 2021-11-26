@@ -35,6 +35,7 @@ use Phalcon\Db\ReferenceInterface;
  */
 class Sqlite extends \Phalcon\Db\Adapter\Pdo\AbstractPdo
 {
+
     /**
      * @var string
      */
@@ -44,7 +45,6 @@ class Sqlite extends \Phalcon\Db\Adapter\Pdo\AbstractPdo
      * @var string
      */
     protected $type = 'sqlite';
-
 
     /**
      * Constructor for Phalcon\Db\Adapter\Pdo\Sqlite

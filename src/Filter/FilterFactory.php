@@ -9,18 +9,16 @@
  */
 namespace Phalcon\Filter;
 
-use Phalcon\Filter;
+use Phalcon\Filter\Filter;
 
 /**
- * This file is part of the Phalcon Framework.
+ * Class FilterFactory
  *
- * (c) Phalcon Team <team@phalcon.io>
- *
- * For the full copyright and license information, please view the LICENSE.txt
- * file that was distributed with this source code.
+ * @package Phalcon\Filter
  */
 class FilterFactory
 {
+
 
     /**
      * Returns a Locator object with all the helpers defined in anonymous
@@ -33,9 +31,11 @@ class FilterFactory
     }
 
     /**
-     * @return array
+     * Returns the available adapters
+     *
+     * @return string[]
      */
-    protected function getAdapters(): array
+    protected function getServices(): array
     {
     }
 }

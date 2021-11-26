@@ -10,23 +10,24 @@
 namespace Phalcon\Cache;
 
 use Phalcon\Cache\Adapter\AdapterInterface;
-use Phalcon\Cache;
-use Psr\SimpleCache\CacheInterface;
+use Phalcon\Cache\Cache;
 use Phalcon\Cache\Exception\Exception;
-use Phalcon\Config;
 use Phalcon\Config\ConfigInterface;
-use Phalcon\Helper\Arr;
+use Phalcon\Factory\AbstractConfigFactory;
+use Psr\SimpleCache\CacheInterface;
 
 /**
  * Creates a new Cache class
+ *
+ * @property AdapterFactory $adapterFactory;
  */
-class CacheFactory
+class CacheFactory extends AbstractConfigFactory
 {
+
     /**
      * @var AdapterFactory
      */
     protected $adapterFactory;
-
 
     /**
      * Constructor
@@ -40,7 +41,7 @@ class CacheFactory
     /**
      * Factory to create an instance from a Config object
      *
-     * @param array|\Phalcon\Config $config = [
+     * @param array $config = [
      *     'adapter' => 'apcu',
      *     'options' => [
      *         'servers' => [
@@ -48,7 +49,6 @@ class CacheFactory
      *                 'host' => 'localhost',
      *                 'port' => 11211,
      *                 'weight' => 1,
-     *
      *             ]
      *         ],
      *         'host' => '127.0.0.1',
@@ -64,40 +64,50 @@ class CacheFactory
      *         'storageDir' => ''
      *     ]
      * ]
-     * @return mixed
+     *
+     * @return CacheInterface
+     * @throws Exception
      */
-    public function load($config)
+    public function load($config): CacheInterface
     {
     }
 
     /**
      * Constructs a new Cache instance.
      *
-     * @param array $options = [
-     *     'servers' => [
-     *         [
-     *             'host' => 'localhost',
-     *             'port' => 11211,
-     *             'weight' => 1,
-     *
-     *         ]
-     *     ],
-     *     'host' => '127.0.0.1',
-     *     'port' => 6379,
-     *     'index' => 0,
-     *     'persistent' => false,
-     *     'auth' => '',
-     *     'socket' => '',
-     *     'defaultSerializer' => 'Php',
-     *     'lifetime' => 3600,
-     *     'serializer' => null,
-     *     'prefix' => 'phalcon',
-     *     'storageDir' => ''
-     * ]
      * @param string $name
+     * @param array  $options = [
+     *      'servers'           => [
+     *          [
+     *              'host' => 'localhost',
+     *              'port' => 11211,
+     *              'weight' => 1,
+     *          ]
+     *      ],
+     *      'host'              => '127.0.0.1',
+     *      'port'              => 6379,
+     *      'index'             => 0,
+     *      'persistent'        => false,
+     *      'auth'              => '',
+     *      'socket'            => '',
+     *      'defaultSerializer' => 'Php',
+     *      'lifetime'          => 3600,
+     *      'serializer'        => null,
+     *      'prefix'            => 'phalcon',
+     *      'storageDir'        => '',
+     * ]
+     *
      * @return CacheInterface
+     * @throws Exception
      */
     public function newInstance(string $name, array $options = []): CacheInterface
+    {
+    }
+
+    /**
+     * @return string
+     */
+    protected function getExceptionClass(): string
     {
     }
 }

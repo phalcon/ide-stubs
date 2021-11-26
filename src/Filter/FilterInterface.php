@@ -15,12 +15,14 @@ namespace Phalcon\Filter;
 interface FilterInterface
 {
 
+
     /**
      * Sanitizes a value with a specified single or set of sanitizers
      *
      * @param mixed $value
      * @param mixed $sanitizers
-     * @param bool $noRecursive
+     * @param bool  $noRecursive
+     *
      * @return mixed
      */
     public function sanitize($value, $sanitizers, bool $noRecursive = false);

@@ -18,6 +18,7 @@ use Phalcon\Mvc\Model\BinderInterface;
  */
 class LazyLoader
 {
+
     /**
      * @var object|null
      */
@@ -27,7 +28,6 @@ class LazyLoader
      * @var string
      */
     protected $definition;
-
 
     /**
      * @return object|null

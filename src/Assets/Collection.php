@@ -9,18 +9,30 @@
  */
 namespace Phalcon\Assets;
 
+use ArrayIterator;
 use Countable;
-use Iterator;
-use Phalcon\Assets\Asset\Css as AssetCss;
-use Phalcon\Assets\Asset\Js as AssetJs;
-use Phalcon\Assets\Inline\Js as InlineJs;
-use Phalcon\Assets\Inline\Css as InlineCss;
+use IteratorAggregate;
 
 /**
- * Represents a collection of assets
+ * Collection of asset objects
+ *
+ * @property array  $assets
+ * @property array  $attributes
+ * @property bool   $autoVersion
+ * @property array  $codes
+ * @property array  $filters
+ * @property bool   $join
+ * @property bool   $isLocal
+ * @property string $prefix
+ * @property string $sourcePath
+ * @property bool   $targetIsLocal
+ * @property string $targetPath
+ * @property string $targetUri
+ * @property string $version
  */
-class Collection implements \Countable, \Iterator
+class Collection implements \Countable, \IteratorAggregate
 {
+
     /**
      * @var array
      */
@@ -49,11 +61,6 @@ class Collection implements \Countable, \Iterator
     protected $filters = [];
 
     /**
-     * @var array
-     */
-    protected $includedAssets;
-
-    /**
      * @var bool
      */
     protected $join = true;
@@ -61,45 +68,37 @@ class Collection implements \Countable, \Iterator
     /**
      * @var bool
      */
-    protected $local = true;
+    protected $isLocal = true;
 
     /**
      * @var string
      */
-    protected $prefix;
-
-    /**
-     * @var int
-     */
-    protected $position = 0;
+    protected $prefix = '';
 
     /**
      * @var string
      */
-    protected $sourcePath;
+    protected $sourcePath = '';
 
     /**
      * @var bool
      */
-    protected $targetLocal = true;
+    protected $targetIsLocal = true;
 
     /**
      * @var string
      */
-    protected $targetPath;
+    protected $targetPath = '';
 
     /**
      * @var string
      */
-    protected $targetUri;
+    protected $targetUri = '';
 
     /**
-     * Version of resource
-     *
      * @var string
      */
-    protected $version;
-
+    protected $version = '';
 
     /**
      * @return array
@@ -112,15 +111,6 @@ class Collection implements \Countable, \Iterator
      * @return array
      */
     public function getAttributes(): array
-    {
-    }
-
-    /**
-     * Should version be determined from file modification time
-     *
-     * @param bool $autoVersion
-     */
-    public function setAutoVersion(bool $autoVersion)
     {
     }
 
@@ -146,23 +136,9 @@ class Collection implements \Countable, \Iterator
     }
 
     /**
-     * @return bool
-     */
-    public function getLocal(): bool
-    {
-    }
-
-    /**
      * @return string
      */
     public function getPrefix(): string
-    {
-    }
-
-    /**
-     * @return int
-     */
-    public function getPosition(): int
     {
     }
 
@@ -176,7 +152,7 @@ class Collection implements \Countable, \Iterator
     /**
      * @return bool
      */
-    public function getTargetLocal(): bool
+    public function getTargetIsLocal(): bool
     {
     }
 
@@ -195,8 +171,6 @@ class Collection implements \Countable, \Iterator
     }
 
     /**
-     * Version of resource
-     *
      * @return string
      */
     public function getVersion(): string
@@ -204,23 +178,7 @@ class Collection implements \Countable, \Iterator
     }
 
     /**
-     * Version of resource
-     *
-     * @param string $version
-     */
-    public function setVersion(string $version)
-    {
-    }
-
-    /**
-     * Phalcon\Assets\Collection constructor
-     */
-    public function __construct()
-    {
-    }
-
-    /**
-     * Adds a asset to the collection
+     * Adds an asset to the collection
      *
      * @param AssetInterface $asset
      * @return Collection
@@ -232,15 +190,15 @@ class Collection implements \Countable, \Iterator
     /**
      * Adds a CSS asset to the collection
      *
-     * @param string $path
-     * @param mixed $local
-     * @param bool $filter
-     * @param mixed $attributes
-     * @param string $version
-     * @param bool $autoVersion
+     * @param string      $path
+     * @param bool|null   $isLocal
+     * @param bool        $filter
+     * @param array       $attributes
+     * @param string|null $version
+     * @param bool        $autoVersion
      * @return Collection
      */
-    public function addCss(string $path, $local = null, bool $filter = true, $attributes = null, string $version = null, bool $autoVersion = false): Collection
+    public function addCss(string $path, $isLocal = null, bool $filter = true, array $attributes = [], string $version = null, bool $autoVersion = false): Collection
     {
     }
 
@@ -268,11 +226,11 @@ class Collection implements \Countable, \Iterator
      * Adds an inline CSS to the collection
      *
      * @param string $content
-     * @param bool $filter
-     * @param mixed $attributes
+     * @param bool   $filter
+     * @param array  $attributes
      * @return Collection
      */
-    public function addInlineCss(string $content, bool $filter = true, $attributes = null): Collection
+    public function addInlineCss(string $content, bool $filter = true, array $attributes = []): Collection
     {
     }
 
@@ -280,44 +238,46 @@ class Collection implements \Countable, \Iterator
      * Adds an inline JavaScript to the collection
      *
      * @param string $content
-     * @param bool $filter
-     * @param mixed $attributes
+     * @param bool   $filter
+     * @param array  $attributes
      * @return Collection
      */
-    public function addInlineJs(string $content, bool $filter = true, $attributes = null): Collection
+    public function addInlineJs(string $content, bool $filter = true, array $attributes = []): Collection
     {
     }
 
     /**
      * Adds a JavaScript asset to the collection
      *
-     * @param array $attributes
-     * @param string $path
-     * @param mixed $local
-     * @param bool $filter
-     * @param string $version
-     * @param bool $autoVersion
+     * @param string      $path
+     * @param bool|null   $isLocal
+     * @param bool        $filter
+     * @param array       $attributes
+     * @param string|null $version
+     * @param bool        $autoVersion
      * @return Collection
      */
-    public function addJs(string $path, $local = null, bool $filter = true, $attributes = null, string $version = null, bool $autoVersion = false): Collection
+    public function addJs(string $path, $isLocal = null, bool $filter = true, array $attributes = [], string $version = null, bool $autoVersion = false): Collection
     {
     }
 
     /**
-     * Returns the number of elements in the form
+     * Return the count of the assets
      *
      * @return int
+     *
+     * @link https://php.net/manual/en/countable.count.php
      */
     public function count(): int
     {
     }
 
     /**
-     * Returns the current asset in the iterator
+     * Returns the generator of the class
      *
-     * @return Asset
+     * @link https://php.net/manual/en/iteratoraggregate.getiterator.php
      */
-    public function current(): Asset
+    public function getIterator()
     {
     }
 
@@ -326,6 +286,7 @@ class Collection implements \Countable, \Iterator
      * be written
      *
      * @param string $basePath
+     *
      * @return string
      */
     public function getRealTargetPath(string $basePath): string
@@ -348,6 +309,7 @@ class Collection implements \Countable, \Iterator
      * ```
      *
      * @param AssetInterface $asset
+     *
      * @return bool
      */
     public function has(AssetInterface $asset): bool
@@ -364,40 +326,21 @@ class Collection implements \Countable, \Iterator
     }
 
     /**
+     * @return bool
+     */
+    public function isLocal(): bool
+    {
+    }
+
+    /**
      * Sets if all filtered assets in the collection must be joined in a single
      * result file
      *
-     * @param bool $join
+     * @param bool $flag
+     *
      * @return Collection
      */
-    public function join(bool $join): Collection
-    {
-    }
-
-    /**
-     * Returns the current position/key in the iterator
-     *
-     * @return int
-     */
-    public function key(): int
-    {
-    }
-
-    /**
-     * Moves the internal iteration pointer to the next position
-     *
-     * @return void
-     */
-    public function next(): void
-    {
-    }
-
-    /**
-     * Rewinds the internal iterator
-     *
-     * @return void
-     */
-    public function rewind(): void
+    public function join(bool $flag): Collection
     {
     }
 
@@ -408,6 +351,14 @@ class Collection implements \Countable, \Iterator
      * @return Collection
      */
     public function setAttributes(array $attributes): Collection
+    {
+    }
+
+    /**
+     * @param bool $flag
+     * @return Collection
+     */
+    public function setAutoVersion(bool $flag): Collection
     {
     }
 
@@ -424,10 +375,10 @@ class Collection implements \Countable, \Iterator
     /**
      * Sets if the collection uses local assets by default
      *
-     * @param bool $local
+     * @param bool $flag
      * @return Collection
      */
-    public function setLocal(bool $local): Collection
+    public function setIsLocal(bool $flag): Collection
     {
     }
 
@@ -442,12 +393,12 @@ class Collection implements \Countable, \Iterator
     }
 
     /**
-     * Sets the target local
+     * Sets if the target local or not
      *
-     * @param bool $targetLocal
+     * @param bool $flag
      * @return Collection
      */
-    public function setTargetLocal(bool $targetLocal): Collection
+    public function setTargetIsLocal(bool $flag): Collection
     {
     }
 
@@ -482,21 +433,61 @@ class Collection implements \Countable, \Iterator
     }
 
     /**
-     * Check if the current element in the iterator is valid
+     * Sets the version
      *
-     * @return bool
+     * @param string $version
+     * @return Collection
      */
-    public function valid(): bool
+    public function setVersion(string $version): Collection
     {
     }
 
     /**
-     * Adds a asset or inline-code to the collection
+     * Adds an asset or inline-code to the collection
      *
      * @param AssetInterface $asset
+     *
      * @return bool
      */
     final protected function addAsset(AssetInterface $asset): bool
+    {
+    }
+
+    /**
+     * Adds an inline asset
+     *
+     * @param string $className
+     * @param string $path
+     * @param mixed $isLocal
+     * @param bool $filter
+     * @param array $attributes
+     * @param string $version
+     * @param bool $autoVersion
+     * @return Collection
+     */
+    private function processAdd(string $className, string $path, $isLocal = null, bool $filter = true, array $attributes = [], string $version = null, bool $autoVersion = false): Collection
+    {
+    }
+
+    /**
+     * Adds an inline asset
+     *
+     * @param string $className
+     * @param string $content
+     * @param bool $filter
+     * @param array $attributes
+     * @return Collection
+     */
+    private function processAddInline(string $className, string $content, bool $filter = true, array $attributes = []): Collection
+    {
+    }
+
+    /**
+     * @param array $attributes
+     *
+     * @return array
+     */
+    private function processAttributes(array $attributes): array
     {
     }
 }

@@ -18,11 +18,11 @@ use Phalcon\Mvc\ModelInterface;
  */
 abstract class Behavior implements \Phalcon\Mvc\Model\BehaviorInterface
 {
+
     /**
      * @var array
      */
     protected $options;
-
 
     /**
      * Phalcon\Mvc\Model\Behavior

@@ -17,4 +17,5 @@ namespace Phalcon\Storage;
 class Exception extends \Phalcon\Exception
 {
 
+
 }

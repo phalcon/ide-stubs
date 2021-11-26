@@ -9,8 +9,8 @@
  */
 namespace Phalcon\DataMapper\Pdo\Profiler;
 
+use InvalidArgumentException;
 use Phalcon\DataMapper\Pdo\Exception\Exception;
-use Phalcon\Helper\Json;
 use Psr\Log\LoggerInterface;
 use Psr\Log\LogLevel;
 
@@ -25,6 +25,7 @@ use Psr\Log\LogLevel;
  */
 class Profiler implements \Phalcon\DataMapper\Pdo\Profiler\ProfilerInterface
 {
+
     /**
      * @var bool
      */
@@ -49,7 +50,6 @@ class Profiler implements \Phalcon\DataMapper\Pdo\Profiler\ProfilerInterface
      * @var LoggerInterface
      */
     protected $logger;
-
 
     /**
      * Constructor.
@@ -147,6 +147,17 @@ class Profiler implements \Phalcon\DataMapper\Pdo\Profiler\ProfilerInterface
      * @return void
      */
     public function start(string $method): void
+    {
+    }
+
+    /**
+     * @todo This will be removed when traits are introduced
+     * @param mixed $data
+     * @param int $options
+     * @param int $depth
+     * @return string
+     */
+    private function encode($data, int $options = 0, int $depth = 512): string
     {
     }
 }

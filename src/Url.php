@@ -35,6 +35,7 @@ use Phalcon\Url\UrlInterface;
  */
 class Url extends AbstractInjectionAware implements \Phalcon\Url\UrlInterface
 {
+
     /**
      * @var null | string
      */
@@ -54,7 +55,6 @@ class Url extends AbstractInjectionAware implements \Phalcon\Url\UrlInterface
      * @var null | string
      */
     protected $staticBaseUri = null;
-
 
     /**
      * @param \Phalcon\Mvc\RouterInterface $router

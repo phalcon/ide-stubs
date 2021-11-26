@@ -15,6 +15,7 @@ namespace Phalcon\Db;
 interface ReferenceInterface
 {
 
+
     /**
      * Gets local columns which reference is based
      *

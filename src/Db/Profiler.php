@@ -63,6 +63,7 @@ use Phalcon\Db\Profiler\Item;
  */
 class Profiler
 {
+
     /**
      * Active Item
      *
@@ -83,7 +84,6 @@ class Profiler
      * @var float
      */
     protected $totalSeconds = 0;
-
 
     /**
      * Returns the last profile executed in the profiler

@@ -9,7 +9,6 @@
  */
 namespace Phalcon\Mvc\Model\MetaData;
 
-use Phalcon\Helper\Arr;
 use Phalcon\Mvc\Model\Exception;
 use Phalcon\Mvc\Model\MetaData;
 use Phalcon\Cache\AdapterFactory;
@@ -23,6 +22,7 @@ use Phalcon\Cache\AdapterFactory;
  */
 class Libmemcached extends MetaData
 {
+
 
     /**
      * Phalcon\Mvc\Model\MetaData\Libmemcached constructor

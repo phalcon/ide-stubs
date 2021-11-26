@@ -10,44 +10,20 @@
 namespace Phalcon\Logger\Adapter;
 
 use LogicException;
-use Phalcon\Helper\Arr;
-use Phalcon\Logger;
-use Phalcon\Logger\Adapter;
-use Phalcon\Logger\Exception;
-use Phalcon\Logger\Formatter\FormatterInterface;
 use Phalcon\Logger\Item;
+use Phalcon\Logger\Logger;
 
 /**
- * Phalcon\Logger\Adapter\Syslog
+ * Class Syslog
  *
- * Sends logs to the system logger
- *
- * ```php
- * use Phalcon\Logger;
- * use Phalcon\Logger\Adapter\Syslog;
- *
- * // LOG_USER is the only valid log type under Windows operating systems
- * $logger = new Syslog(
- *     "ident",
- *     [
- *         "option"   => LOG_CONS | LOG_NDELAY | LOG_PID,
- *         "facility" => LOG_USER,
- *     ]
- * );
- *
- * $logger->log("This is a message");
- * $logger->log(Logger::ERROR, "This is an error");
- * $logger->error("This is another error");
- * ```
+ * @property string $defaultFormatter
+ * @property int    $facility
+ * @property string $name
+ * @property bool   $opened
+ * @property int    $option
  */
 class Syslog extends \Phalcon\Logger\Adapter\AbstractAdapter
 {
-    /**
-     * Name of the default formatter class
-     *
-     * @var string
-     */
-    protected $defaultFormatter = 'Line';
 
     /**
      * @var int
@@ -69,15 +45,11 @@ class Syslog extends \Phalcon\Logger\Adapter\AbstractAdapter
      */
     protected $option = 0;
 
-
     /**
-     * Phalcon\Logger\Adapter\Syslog constructor
+     * Syslog constructor.
      *
-     * @param array $options = [
-     *     'option' => null,
-     *     'facility' => null
-     * ]
      * @param string $name
+     * @param array  $options
      */
     public function __construct(string $name, array $options = [])
     {
@@ -95,7 +67,9 @@ class Syslog extends \Phalcon\Logger\Adapter\AbstractAdapter
     /**
      * Processes the message i.e. writes it to the syslog
      *
-     * @param \Phalcon\Logger\Item $item
+     * @param Item $item
+     *
+     * @throws LogicException
      * @return void
      */
     public function process(\Phalcon\Logger\Item $item): void
@@ -103,9 +77,25 @@ class Syslog extends \Phalcon\Logger\Adapter\AbstractAdapter
     }
 
     /**
+     * Open connection to system logger
+     *
+     * @link https://php.net/manual/en/function.openlog.php
+     *
+     * @param string $ident
+     * @param int    $option
+     * @param int    $facility
+     *
+     * @return bool
+     */
+    protected function openlog(string $ident, int $option, int $facility): bool
+    {
+    }
+
+    /**
      * Translates a Logger level to a Syslog level
      *
      * @param int $level
+     *
      * @return int
      */
     private function logLevelToSyslog(int $level): int

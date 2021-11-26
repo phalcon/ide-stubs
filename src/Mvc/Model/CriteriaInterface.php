@@ -19,6 +19,7 @@ use Phalcon\Di\DiInterface;
 interface CriteriaInterface
 {
 
+
     /**
      * Appends a condition to the current conditions using an AND operator
      *

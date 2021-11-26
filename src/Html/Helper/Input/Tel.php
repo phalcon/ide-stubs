@@ -16,4 +16,5 @@ class Tel extends \Phalcon\Html\Helper\Input\AbstractInput
 {
 
     protected $type = 'tel';
+
 }

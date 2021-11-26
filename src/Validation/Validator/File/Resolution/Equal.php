@@ -57,7 +57,6 @@ class Equal extends AbstractFile
 
     protected $template = 'The resolution of the field :field has to be equal :resolution';
 
-
     /**
      * Constructor
      *

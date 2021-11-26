@@ -36,6 +36,7 @@ namespace Phalcon\Di;
 interface ServiceProviderInterface
 {
 
+
     /**
      * Registers a service provider.
      *

@@ -19,6 +19,7 @@ use Phalcon\Events\ManagerInterface;
  */
 abstract class AbstractApplication extends Injectable implements \Phalcon\Events\EventsAwareInterface
 {
+
     /**
      * @var DiInterface|null
      */
@@ -38,7 +39,6 @@ abstract class AbstractApplication extends Injectable implements \Phalcon\Events
      * @var array
      */
     protected $modules = [];
-
 
     /**
      * Phalcon\AbstractApplication constructor
@@ -71,7 +71,7 @@ abstract class AbstractApplication extends Injectable implements \Phalcon\Events
      * Gets the module definition registered in the application via module name
      *
      * @param string $name *
-     * @return array|object
+     * @return array|mixed
      */
     public function getModule(string $name)
     {

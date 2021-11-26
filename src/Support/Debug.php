@@ -10,16 +10,18 @@
 namespace Phalcon\Support;
 
 use ErrorException;
-use Phalcon\Helper\Arr;
-use Phalcon\Tag;
+use Phalcon\Support\Debug\Exception;
 use ReflectionClass;
+use ReflectionException;
 use ReflectionFunction;
+use Throwable;
 
 /**
  * Provides debug capabilities to Phalcon applications
  */
 class Debug
 {
+
     /**
      * @var array
      */
@@ -38,7 +40,7 @@ class Debug
     /**
      * @var bool
      */
-    protected static $isActive = false;
+    static protected $isActive = false;
 
     /**
      * @var bool
@@ -60,7 +62,6 @@ class Debug
      */
     protected $uri = 'https://assets.phalcon.io/debug/5.0.x/';
 
-
     /**
      * Clears are variables added previously
      *
@@ -73,11 +74,11 @@ class Debug
     /**
      * Adds a variable to the debug output
      *
+     * @param mixed $variable
      * @param mixed $varz
-     * @param string $key
      * @return Debug
      */
-    public function debugVar($varz, string $key = null): Debug
+    public function debugVar($varz): Debug
     {
     }
 
@@ -111,6 +112,7 @@ class Debug
     /**
      * Halts the request showing a backtrace
      *
+     * @throws Exception
      * @return void
      */
     public function halt(): void
@@ -118,7 +120,7 @@ class Debug
     }
 
     /**
-     * Listen for uncaught exceptions and unsilent notices or warnings
+     * Listen for uncaught exceptions and non silent notices or warnings
      *
      * @param bool $exceptions
      * @param bool $lowSeverity
@@ -138,7 +140,7 @@ class Debug
     }
 
     /**
-     * Listen for unsilent notices or warnings
+     * Listen for non silent notices or warnings
      *
      * @return Debug
      */
@@ -171,8 +173,12 @@ class Debug
     }
 
     /**
-     * @param \Throwable $exception
+     * Render exception to html format.
+     *
+     * @param Throwable $exception
+     *
      * @return string
+     * @throws ReflectionException
      */
     public function renderHtml(\Throwable $exception): string
     {
@@ -232,19 +238,22 @@ class Debug
     /**
      * Escapes a string with htmlentities
      *
-     * @param mixed $value
+     * @param string $value
      * @return string
      */
-    protected function escapeString($value): string
+    protected function escapeString(string $value): string
     {
     }
 
     /**
      * Produces a recursive representation of an array
      *
+     * @param array $arguments
+     * @param int   $number
+     *
+     * @return string|null
      * @param array $argument
      * @param mixed $n
-     * @return string|null
      */
     protected function getArrayDump(array $argument, $n = 0): ?string
     {
@@ -263,11 +272,24 @@ class Debug
     /**
      * Shows a backtrace item
      *
-     * @param int $n
+     * @param int   $n
      * @param array $trace
+     *
      * @return string
+     * @throws ReflectionException
      */
     final protected function showTraceItem(int $n, array $trace): string
+    {
+    }
+
+    /**
+     * @todo Remove this when we get traits
+     * @param array $collection
+     * @param mixed $index
+     * @param mixed $defaultValue
+     * @return mixed
+     */
+    private function getArrVal(array $collection, $index, $defaultValue = null)
     {
     }
 }

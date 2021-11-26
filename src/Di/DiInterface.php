@@ -17,6 +17,7 @@ use ArrayAccess;
 interface DiInterface extends \ArrayAccess
 {
 
+
     /**
      * Attempts to register a service in the services container
      * Only is successful if a service hasn't been registered previously
@@ -25,7 +26,7 @@ interface DiInterface extends \ArrayAccess
      * @param mixed $definition
      * @param string $name
      * @param bool $shared
-     * @return 0|ServiceInterface
+     * @return bool|ServiceInterface
      */
     public function attempt(string $name, $definition, bool $shared = false);
 

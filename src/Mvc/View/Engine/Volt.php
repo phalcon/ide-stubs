@@ -20,6 +20,7 @@ use Phalcon\Mvc\View\Exception;
  */
 class Volt extends \Phalcon\Mvc\View\Engine\AbstractEngine implements \Phalcon\Events\EventsAwareInterface
 {
+
     /**
      * @var Compiler
      */
@@ -39,7 +40,6 @@ class Volt extends \Phalcon\Mvc\View\Engine\AbstractEngine implements \Phalcon\E
      * @var array
      */
     protected $options = [];
-
 
     /**
      * Checks if a macro is defined and calls it

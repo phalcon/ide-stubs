@@ -23,6 +23,7 @@ use Phalcon\Mvc\ModelInterface;
 class Row implements \Phalcon\Mvc\EntityInterface, \Phalcon\Mvc\Model\ResultInterface, \ArrayAccess, \JsonSerializable
 {
 
+
     /**
      * Serializes the object for json_encode
      *
@@ -91,7 +92,7 @@ class Row implements \Phalcon\Mvc\EntityInterface, \Phalcon\Mvc\Model\ResultInte
      * Set the current object's state
      *
      * @param int $dirtyState
-     * @return 0|ModelInterface
+     * @return bool|ModelInterface
      */
     public function setDirtyState(int $dirtyState)
     {

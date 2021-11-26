@@ -64,6 +64,7 @@ use Phalcon\Mvc\Model\TransactionInterface;
  */
 class Manager implements \Phalcon\Mvc\Model\Transaction\ManagerInterface, \Phalcon\Di\InjectionAwareInterface
 {
+
     /**
      * @var DiInterface|null
      */
@@ -93,7 +94,6 @@ class Manager implements \Phalcon\Mvc\Model\Transaction\ManagerInterface, \Phalc
      * @var array
      */
     protected $transactions = [];
-
 
     /**
      * Phalcon\Mvc\Model\Transaction\Manager constructor

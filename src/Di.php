@@ -61,6 +61,7 @@ use Phalcon\Di\ServiceProviderInterface;
  */
 class Di implements \Phalcon\Di\DiInterface
 {
+
     /**
      * List of registered services
      *
@@ -87,8 +88,7 @@ class Di implements \Phalcon\Di\DiInterface
      *
      * @var DiInterface|null
      */
-    protected static $_default;
-
+    static protected $_default;
 
     /**
      * Phalcon\Di constructor
@@ -116,7 +116,7 @@ class Di implements \Phalcon\Di\DiInterface
      * @param string $name
      * @param mixed $definition
      * @param bool $shared
-     * @return 0|ServiceInterface
+     * @return bool|ServiceInterface
      */
     public function attempt(string $name, $definition, bool $shared = false)
     {

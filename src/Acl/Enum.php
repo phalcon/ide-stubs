@@ -14,9 +14,9 @@ namespace Phalcon\Acl;
  */
 class Enum
 {
-
     const ALLOW = 1;
 
-
     const DENY = 0;
+
+
 }

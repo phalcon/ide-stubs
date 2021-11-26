@@ -15,6 +15,7 @@ namespace Phalcon\Html\Link\Serializer;
 interface SerializerInterface
 {
 
+
     /**
      * Serializer method
      *

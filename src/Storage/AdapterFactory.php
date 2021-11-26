@@ -23,13 +23,10 @@ use Phalcon\Storage\Adapter\AdapterInterface;
 class AdapterFactory extends AbstractFactory
 {
 
-    protected $exception = 'Phalcon\\\\Storage\\\\Exception';
-
     /**
      * @var SerializerFactory
      */
     private $serializerFactory;
-
 
     /**
      * AdapterFactory constructor.
@@ -64,17 +61,28 @@ class AdapterFactory extends AbstractFactory
      *     'socket' => '',
      *     'storageDir' => '',
      * ]
-     * @param string $name
+     *
      * @return AdapterInterface
+     * @throws Exception
+     * @param string $name
      */
     public function newInstance(string $name, array $options = []): AdapterInterface
     {
     }
 
     /**
-     * @return array
+     * @return string
      */
-    protected function getAdapters(): array
+    protected function getExceptionClass(): string
+    {
+    }
+
+    /**
+     * Returns the available adapters
+     *
+     * @return string[]
+     */
+    protected function getServices(): array
     {
     }
 }

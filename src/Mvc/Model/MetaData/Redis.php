@@ -9,7 +9,6 @@
  */
 namespace Phalcon\Mvc\Model\MetaData;
 
-use Phalcon\Helper\Arr;
 use Phalcon\Mvc\Model\MetaData;
 use Phalcon\Cache\AdapterFactory;
 
@@ -36,6 +35,7 @@ use Phalcon\Cache\AdapterFactory;
  */
 class Redis extends MetaData
 {
+
 
     /**
      * Phalcon\Mvc\Model\MetaData\Redis constructor

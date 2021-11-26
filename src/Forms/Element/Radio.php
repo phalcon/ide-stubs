@@ -19,6 +19,7 @@ use Phalcon\Tag;
 class Radio extends \Phalcon\Forms\Element\AbstractElement
 {
 
+
     /**
      * Renders the element widget returning HTML
      *

@@ -15,4 +15,5 @@ namespace Phalcon\Cli\Dispatcher;
 class Exception extends \Phalcon\Dispatcher\Exception
 {
 
+
 }

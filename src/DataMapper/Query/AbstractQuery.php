@@ -20,6 +20,7 @@ use Phalcon\DataMapper\Pdo\Connection;
  */
 abstract class AbstractQuery
 {
+
     /**
      * @var Bind
      */
@@ -34,7 +35,6 @@ abstract class AbstractQuery
      * @var array
      */
     protected $store = [];
-
 
     /**
      * AbstractQuery constructor.

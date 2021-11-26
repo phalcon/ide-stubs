@@ -16,11 +16,11 @@ use Phalcon\Validation;
  */
 abstract class AbstractValidatorComposite extends \Phalcon\Validation\AbstractValidator implements \Phalcon\Validation\ValidatorCompositeInterface
 {
+
     /**
      * @var array
      */
     protected $validators = [];
-
 
     /**
      * @return array

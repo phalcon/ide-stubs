@@ -20,6 +20,7 @@ use Phalcon\Http\Message\Stream;
  */
 class Input extends Stream
 {
+
     /**
      * @var string
      */
@@ -29,7 +30,6 @@ class Input extends Stream
      * @var bool
      */
     private $eof = false;
-
 
     /**
      * Input constructor.

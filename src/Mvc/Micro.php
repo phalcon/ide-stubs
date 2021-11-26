@@ -50,6 +50,7 @@ use Throwable;
  */
 class Micro extends Injectable implements \ArrayAccess, \Phalcon\Events\EventsAwareInterface
 {
+
     /**
      * @var callable|null
      */
@@ -124,7 +125,6 @@ class Micro extends Injectable implements \ArrayAccess, \Phalcon\Events\EventsAw
      * @var bool
      */
     protected $stopped = false;
-
 
     /**
      * Phalcon\Mvc\Micro constructor

@@ -66,7 +66,6 @@ class MimeType extends \Phalcon\Validation\Validator\File\AbstractFile
 
     protected $template = 'File :field must be of type: :types';
 
-
     /**
      * Executes the validation
      *

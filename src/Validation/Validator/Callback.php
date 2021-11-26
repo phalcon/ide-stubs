@@ -63,15 +63,13 @@ class Callback extends AbstractValidator
 
     protected $template = 'Field :field must match the callback function';
 
-
     /**
      * Constructor
      *
      * @param array $options = [
      *     'message' => '',
      *     'template' => '',
-     *     'callback' => null,
-     *     'allowEmpty' => false
+     *     'callback' => null
      * ]
      */
     public function __construct(array $options = [])

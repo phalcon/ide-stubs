@@ -52,7 +52,6 @@ class PresenceOf extends AbstractValidator
 
     protected $template = 'Field :field is required';
 
-
     /**
      * Constructor
      *

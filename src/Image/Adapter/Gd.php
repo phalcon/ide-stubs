@@ -22,11 +22,11 @@ use Phalcon\Image\Exception;
  */
 class Gd extends \Phalcon\Image\Adapter\AbstractAdapter
 {
+
     /**
      * @var bool
      */
-    protected static $checked = false;
-
+    static protected $checked = false;
 
     /**
      * @param string $file
@@ -36,7 +36,6 @@ class Gd extends \Phalcon\Image\Adapter\AbstractAdapter
     public function __construct(string $file, int $width = null, int $height = null)
     {
     }
-
 
     public function __destruct()
     {

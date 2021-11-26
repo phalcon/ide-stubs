@@ -9,7 +9,7 @@
  */
 namespace Phalcon\Validation;
 
-use Phalcon\Helper\Arr;
+use Phalcon\Support\Helper\Arr\Whitelist;
 use Phalcon\Messages\Message;
 use Phalcon\Validation;
 
@@ -18,6 +18,7 @@ use Phalcon\Validation;
  */
 abstract class AbstractValidator implements \Phalcon\Validation\ValidatorInterface
 {
+
     /**
      * Message template
      *
@@ -36,7 +37,6 @@ abstract class AbstractValidator implements \Phalcon\Validation\ValidatorInterfa
      * @var array
      */
     protected $options = [];
-
 
     /**
      * Phalcon\Validation\Validator constructor
@@ -147,6 +147,17 @@ abstract class AbstractValidator implements \Phalcon\Validation\ValidatorInterfa
      * @return mixed
      */
     protected function prepareLabel(\Phalcon\Validation $validation, string $field)
+    {
+    }
+
+    /**
+     * Checks if field can be empty.
+     *
+     * @param mixed $field
+     * @param mixed $value *
+     * @return bool
+     */
+    protected function allowEmpty($field, $value): bool
     {
     }
 

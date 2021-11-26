@@ -17,8 +17,11 @@ namespace Phalcon\Filter\Sanitize;
 class FloatVal
 {
 
+
     /**
      * @param mixed $input The text to sanitize
+     *
+     * @return float
      */
     public function __invoke($input)
     {

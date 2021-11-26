@@ -62,7 +62,6 @@ class Max extends AbstractFile
 
     protected $template = 'File :field exceeds the size of :size';
 
-
     /**
      * Constructor
      *

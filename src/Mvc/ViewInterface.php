@@ -17,6 +17,7 @@ namespace Phalcon\Mvc;
 interface ViewInterface extends \Phalcon\Mvc\ViewBaseInterface
 {
 
+
     /**
      * Resets any template before layouts
      */
@@ -125,7 +126,7 @@ interface ViewInterface extends \Phalcon\Mvc\ViewBaseInterface
      * @param string $controllerName
      * @param string $actionName
      * @param array $params
-     * @return 0|ViewInterface
+     * @return bool|ViewInterface
      */
     public function render(string $controllerName, string $actionName, array $params = []);
 

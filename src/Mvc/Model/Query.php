@@ -14,7 +14,6 @@ use Phalcon\Db\RawValue;
 use Phalcon\Db\ResultInterface;
 use Phalcon\Db\Adapter\AdapterInterface;
 use Phalcon\Di\DiInterface;
-use Phalcon\Helper\Arr;
 use Phalcon\Mvc\ModelInterface;
 use Phalcon\Mvc\Model\Query\Status;
 use Phalcon\Mvc\Model\Resultset\Complex;
@@ -78,15 +77,11 @@ use Psr\SimpleCache\CacheInterface;
  */
 class Query implements \Phalcon\Mvc\Model\QueryInterface, \Phalcon\Di\InjectionAwareInterface
 {
-
     const TYPE_DELETE = 303;
-
 
     const TYPE_INSERT = 306;
 
-
     const TYPE_SELECT = 309;
-
 
     const TYPE_UPDATE = 300;
 
@@ -214,8 +209,7 @@ class Query implements \Phalcon\Mvc\Model\QueryInterface, \Phalcon\Di\InjectionA
     /**
      * @var array|null
      */
-    protected static $internalPhqlCache;
-
+    static protected $internalPhqlCache;
 
     /**
      * TransactionInterface so that the query can wrap a transaction
@@ -493,7 +487,7 @@ class Query implements \Phalcon\Mvc\Model\QueryInterface, \Phalcon\Di\InjectionA
      * @param array $bindParams
      * @param array $bindTypes
      * @param bool $simulate
-     * @return 0|ResultsetInterface
+     * @return array|ResultsetInterface
      */
     final protected function executeSelect(array $intermediate, array $bindParams, array $bindTypes, bool $simulate = false)
     {
@@ -533,13 +527,13 @@ class Query implements \Phalcon\Mvc\Model\QueryInterface, \Phalcon\Di\InjectionA
     }
 
     /**
-     * Resolves an expression from its intermediate code into a string
+     * Resolves an expression from its intermediate code into an array
      *
      * @param array $expr
      * @param bool $quoting
-     * @return string
+     * @return array
      */
-    final protected function getExpression(array $expr, bool $quoting = true): string
+    final protected function getExpression(array $expr, bool $quoting = true): array
     {
     }
 

@@ -14,6 +14,7 @@ namespace Phalcon\Acl;
  */
 class Role implements \Phalcon\Acl\RoleInterface
 {
+
     /**
      * Role name
      *
@@ -27,7 +28,6 @@ class Role implements \Phalcon\Acl\RoleInterface
      * @var string
      */
     private $description;
-
 
     /**
      * Role name
