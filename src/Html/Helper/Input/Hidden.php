@@ -16,5 +16,4 @@ class Hidden extends \Phalcon\Html\Helper\Input\AbstractInput
 {
 
     protected $type = 'hidden';
-
 }

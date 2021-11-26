@@ -1,6 +1,7 @@
 <?php
 
-class interfaceErrorDetector {
+class interfaceErrorDetector
+{
     public $errors=[];
 
     public function __construct()
@@ -8,11 +9,13 @@ class interfaceErrorDetector {
         set_error_handler([$this, 'logError']);
     }
 
-    public function logError ( $num, $str, $file, $line, $context = null) {
+    public function logError($num, $str, $file, $line, $context = null)
+    {
         $this->errors[$file] = $str;
     }
 
-    public function scanFile($file) {
+    public function scanFile($file)
+    {
         $content = str_replace("<?php", "", file_get_contents($file));
         eval($content);
     }

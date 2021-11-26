@@ -215,6 +215,4 @@ interface ResponseStatusCodeInterface
     const STATUS_NETWORK_READ_TIMEOUT_ERROR = 598;
 
     const STATUS_NETWORK_CONNECT_TIMEOUT_ERROR = 599;
-
-
 }

@@ -33,12 +33,12 @@ class Imagick extends \Phalcon\Image\Adapter\AbstractAdapter
     /**
      * @var bool
      */
-    static protected $checked = false;
+    protected static $checked = false;
 
     /**
      * @var int
      */
-    static protected $version = 0;
+    protected static $version = 0;
 
     /**
      * \Phalcon\Image\Adapter\Imagick constructor

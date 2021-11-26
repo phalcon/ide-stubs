@@ -41,6 +41,4 @@ class Enum
     const NOT_BEFORE = 'nbf';
 
     const SUBJECT = 'sub';
-
-
 }

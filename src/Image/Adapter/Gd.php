@@ -26,7 +26,7 @@ class Gd extends \Phalcon\Image\Adapter\AbstractAdapter
     /**
      * @var bool
      */
-    static protected $checked = false;
+    protected static $checked = false;
 
     /**
      * @param string $file

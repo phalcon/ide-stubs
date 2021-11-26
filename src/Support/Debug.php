@@ -40,7 +40,7 @@ class Debug
     /**
      * @var bool
      */
-    static protected $isActive = false;
+    protected static $isActive = false;
 
     /**
      * @var bool

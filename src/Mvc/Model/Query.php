@@ -209,7 +209,7 @@ class Query implements \Phalcon\Mvc\Model\QueryInterface, \Phalcon\Di\InjectionA
     /**
      * @var array|null
      */
-    static protected $internalPhqlCache;
+    protected static $internalPhqlCache;
 
     /**
      * TransactionInterface so that the query can wrap a transaction

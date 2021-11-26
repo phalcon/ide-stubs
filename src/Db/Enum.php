@@ -47,6 +47,4 @@ class Enum
     const FETCH_SERIALIZE = 524288;
 
     const FETCH_UNIQUE = 196608;
-
-
 }
