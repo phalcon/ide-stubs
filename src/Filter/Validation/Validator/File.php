@@ -7,26 +7,26 @@
  * For the full copyright and license information, please view the LICENSE.txt
  * file that was distributed with this source code.
  */
-namespace Phalcon\Validation\Validator;
+namespace Phalcon\Filter\Validation\Validator;
 
 use Phalcon\Messages\Message;
 use Phalcon\Support\Helper\Arr\Get;
-use Phalcon\Validation;
-use Phalcon\Validation\AbstractValidatorComposite;
-use Phalcon\Validation\Validator\File\MimeType;
-use Phalcon\Validation\Validator\File\Resolution\Equal as EqualResolution;
-use Phalcon\Validation\Validator\File\Resolution\Max as MaxResolution;
-use Phalcon\Validation\Validator\File\Resolution\Min as MinResolution;
-use Phalcon\Validation\Validator\File\Size\Equal as EqualFileSize;
-use Phalcon\Validation\Validator\File\Size\Max as MaxFileSize;
-use Phalcon\Validation\Validator\File\Size\Min as MinFileSize;
+use Phalcon\Filter\Validation;
+use Phalcon\Filter\Validation\AbstractValidatorComposite;
+use Phalcon\Filter\Validation\Validator\File\MimeType;
+use Phalcon\Filter\Validation\Validator\File\Resolution\Equal as EqualResolution;
+use Phalcon\Filter\Validation\Validator\File\Resolution\Max as MaxResolution;
+use Phalcon\Filter\Validation\Validator\File\Resolution\Min as MinResolution;
+use Phalcon\Filter\Validation\Validator\File\Size\Equal as EqualFileSize;
+use Phalcon\Filter\Validation\Validator\File\Size\Max as MaxFileSize;
+use Phalcon\Filter\Validation\Validator\File\Size\Min as MinFileSize;
 
 /**
  * Checks if a value has a correct file
  *
  * ```php
- * use Phalcon\Validation;
- * use Phalcon\Validation\Validator\File as FileValidator;
+ * use Phalcon\Filter\Validation;
+ * use Phalcon\Filter\Validation\Validator\File as FileValidator;
  *
  * $validator = new Validation();
  *

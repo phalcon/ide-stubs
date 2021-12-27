@@ -10,7 +10,7 @@
 namespace Phalcon\Support\Debug;
 
 use InvalidArgumentException;
-use Phalcon\Di;
+use Phalcon\Di\Di;
 use Reflection;
 use ReflectionClass;
 use ReflectionProperty;

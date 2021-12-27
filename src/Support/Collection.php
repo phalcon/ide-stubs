@@ -141,6 +141,8 @@ class Collection implements \ArrayAccess, \Phalcon\Support\Collection\Collection
     }
 
     /**
+     * Return the keys as an array
+     *
      * @param bool $insensitive
      * @return array
      */
@@ -149,6 +151,8 @@ class Collection implements \ArrayAccess, \Phalcon\Support\Collection\Collection
     }
 
     /**
+     * Return the values as an array
+     *
      * @return array
      */
     public function getValues(): array
@@ -315,6 +319,17 @@ class Collection implements \ArrayAccess, \Phalcon\Support\Collection\Collection
      * @param int $depth
      */
     protected function phpJsonEncode($value, int $flags = 0, int $depth = 512)
+    {
+    }
+
+    /**
+     * Checks if we need insensitive keys and if so, converts the element to
+     * lowercase
+     *
+     * @param string $element
+     * @return string
+     */
+    protected function processKey(string $element): string
     {
     }
 }

@@ -17,10 +17,11 @@ use Phalcon\Filter\FilterInterface;
 use Phalcon\Forms\Element\ElementInterface;
 use Phalcon\Html\Attributes;
 use Phalcon\Html\Attributes\AttributesInterface;
+use Phalcon\Html\TagFactory;
 use Phalcon\Messages\Messages;
 use Phalcon\Tag;
-use Phalcon\Validation;
-use Phalcon\Validation\ValidationInterface;
+use Phalcon\Filter\Validation;
+use Phalcon\Filter\Validation\ValidationInterface;
 
 /**
  * This component allows to build forms using an object-oriented interface
@@ -72,6 +73,11 @@ class Form extends Injectable implements \Countable, \Iterator, \Phalcon\Html\At
      * @var array
      */
     protected $options = [];
+
+    /**
+     * @var TagFactory|null
+     */
+    protected $tagFactory = null;
 
     /**
      * @var ValidationInterface|null
@@ -206,6 +212,16 @@ class Form extends Injectable implements \Countable, \Iterator, \Phalcon\Html\At
     }
 
     /**
+     * Gets a value from the internal filtered data or calls getValue(name)
+     *
+     * @param string $name
+     * @return mixed|null
+     */
+    public function getFilteredValue(string $name)
+    {
+    }
+
+    /**
      * Returns a label for an element
      *
      * @param string $name
@@ -245,6 +261,15 @@ class Form extends Injectable implements \Countable, \Iterator, \Phalcon\Html\At
     }
 
     /**
+     * Returns the tagFactory object
+     *
+     * @return TagFactory|null
+     */
+    public function getTagFactory(): ?TagFactory
+    {
+    }
+
+    /**
      * Returns the value of an option if present
      *
      * @param string $option
@@ -261,16 +286,6 @@ class Form extends Injectable implements \Countable, \Iterator, \Phalcon\Html\At
      * @return array
      */
     public function getUserOptions(): array
-    {
-    }
-
-    /**
-     * Gets a value from the internal filtered data or calls getValue(name)
-     *
-     * @param string $name
-     * @return mixed|null
-     */
-    public function getFilteredValue(string $name)
     {
     }
 
@@ -386,6 +401,16 @@ class Form extends Injectable implements \Countable, \Iterator, \Phalcon\Html\At
     }
 
     /**
+     * Set form attributes collection
+     *
+     * @param \Phalcon\Html\Attributes $attributes
+     * @return AttributesInterface
+     */
+    public function setAttributes(\Phalcon\Html\Attributes $attributes): AttributesInterface
+    {
+    }
+
+    /**
      * Sets the entity related to the model
      *
      * @param object $entity
@@ -396,12 +421,22 @@ class Form extends Injectable implements \Countable, \Iterator, \Phalcon\Html\At
     }
 
     /**
+     * Sets the tagFactory for the form
+     *
+     * @param \Phalcon\Html\TagFactory $tagFactory
+     * @return Form
+     */
+    public function setTagFactory(\Phalcon\Html\TagFactory $tagFactory): Form
+    {
+    }
+
+    /**
      * Sets the default validation
      *
      * @param ValidationInterface $validation
      * @return Form
      */
-    public function setValidation(\Phalcon\Validation\ValidationInterface $validation): Form
+    public function setValidation(\Phalcon\Filter\Validation\ValidationInterface $validation): Form
     {
     }
 
@@ -412,16 +447,6 @@ class Form extends Injectable implements \Countable, \Iterator, \Phalcon\Html\At
      * @return Form
      */
     public function setWhitelist(array $whitelist): Form
-    {
-    }
-
-    /**
-     * Set form attributes collection
-     *
-     * @param \Phalcon\Html\Attributes $attributes
-     * @return AttributesInterface
-     */
-    public function setAttributes(\Phalcon\Html\Attributes $attributes): AttributesInterface
     {
     }
 

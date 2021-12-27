@@ -42,9 +42,11 @@ class Escaper implements \Phalcon\Html\Escaper\EscaperInterface
     protected $encoding = 'utf-8';
 
     /**
+     * ENT_QUOTES | ENT_SUBSTITUTE | ENT_HTML401
+     *
      * @var int
      */
-    protected $flags = 3;
+    protected $flags = 11;
 
     /**
      * @return string
@@ -54,6 +56,8 @@ class Escaper implements \Phalcon\Html\Escaper\EscaperInterface
     }
 
     /**
+     * ENT_QUOTES | ENT_SUBSTITUTE | ENT_HTML401
+     *
      * @return int
      */
     public function getFlags(): int

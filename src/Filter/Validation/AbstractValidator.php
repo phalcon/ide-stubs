@@ -162,17 +162,6 @@ abstract class AbstractValidator implements \Phalcon\Filter\Validation\Validator
     }
 
     /**
-     * Checks if field can be empty.
-     *
-     * @param mixed $field
-     * @param mixed $value *
-     * @return bool
-     */
-    protected function allowEmpty($field, $value): bool
-    {
-    }
-
-    /**
      * Create a default message by factory
      *
      * @return Message

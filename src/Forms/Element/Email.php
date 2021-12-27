@@ -19,7 +19,6 @@ use Phalcon\Tag;
 class Email extends \Phalcon\Forms\Element\AbstractElement
 {
 
-
     /**
      * @var string
      */

@@ -17,7 +17,6 @@ use Phalcon\Tag;
 class File extends \Phalcon\Forms\Element\AbstractElement
 {
 
-
     /**
      * @var string
      */
