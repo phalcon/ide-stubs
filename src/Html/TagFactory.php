@@ -94,11 +94,11 @@ class TagFactory extends AbstractFactory
      * Magic call to make the helper objects available as methods.
      *
      * @param string $name
-     * @param array  $args
+     * @param array  $arguments
      *
      * @return false|mixed
      */
-    public function __call(string $name, array $args)
+    public function __call(string $name, array $arguments)
     {
     }
 

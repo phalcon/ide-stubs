@@ -37,13 +37,15 @@ class LoggerFactory extends AbstractConfigFactory
      * @param array|ConfigInterface $config = [
      *     'name'     => 'messages',
      *     'adapters' => [
-     *         'adapter' => 'stream',
-     *         'name'    => 'file.log',
-     *         'options' => [
-     *             'mode'     => 'ab',
-     *             'option'   => null,
-     *             'facility' => null
-     *         ]
+     *         'adapter-name' => [
+     *              'adapter' => 'stream',
+     *              'name'    => 'file.log',
+     *              'options' => [
+     *                  'mode'     => 'ab',
+     *                  'option'   => null,
+     *                  'facility' => null
+     *              ],
+     *         ],
      *     ]
      * ]
      * @return Logger

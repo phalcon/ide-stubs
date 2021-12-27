@@ -9,24 +9,14 @@
  */
 namespace Phalcon\Forms\Element;
 
-use Phalcon\Tag;
-
 /**
- * Phalcon\Forms\Element\Check
- *
  * Component INPUT[type=check] for forms
  */
 class Check extends \Phalcon\Forms\Element\AbstractElement
 {
 
-
     /**
-     * Renders the element widget returning HTML
-     *
-     * @param array $attributes
-     * @return string
+     * @var string
      */
-    public function render(array $attributes = []): string
-    {
-    }
+    protected $method = 'inputCheckbox';
 }

@@ -267,7 +267,7 @@ class Asset implements \Phalcon\Assets\AssetInterface
      *
      * @return AssetInterface
      */
-    public function setLocal(bool $flag): AssetInterface
+    public function setIsLocal(bool $flag): AssetInterface
     {
     }
 

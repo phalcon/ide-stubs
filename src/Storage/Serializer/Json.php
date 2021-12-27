@@ -24,7 +24,7 @@ class Json extends \Phalcon\Storage\Serializer\AbstractSerializer
     /**
      * Serializes data
      *
-     * @return string|null
+     * @return JsonSerializable|mixed|string
      */
     public function serialize()
     {

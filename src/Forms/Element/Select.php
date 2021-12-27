@@ -73,4 +73,15 @@ class Select extends \Phalcon\Forms\Element\AbstractElement
     public function setOptions($options): ElementInterface
     {
     }
+
+    /**
+     * Returns an array of prepared attributes for Phalcon\Html\TagFactory
+     * helpers according to the element parameters
+     *
+     * @param array $attributes
+     * @return array
+     */
+    protected function prepareAttributes(array $attributes = []): array
+    {
+    }
 }

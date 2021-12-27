@@ -28,10 +28,10 @@ use ReflectionProperty;
  * relations between the different models of the application.
  *
  * A ModelsManager is injected to a model via a Dependency Injector/Services
- * Container such as Phalcon\Di.
+ * Container such as Phalcon\Di\Di.
  *
  * ```php
- * use Phalcon\Di;
+ * use Phalcon\Di\Di;
  * use Phalcon\Mvc\Model\Manager as ModelsManager;
  *
  * $di = new Di();
@@ -665,6 +665,7 @@ class Manager implements \Phalcon\Mvc\Model\ManagerInterface, \Phalcon\Di\Inject
     /**
      * Checks whether a model has a belongsTo relation with another model
      *
+     * @deprecated
      * @param string $modelName
      * @param string $modelRelation
      * @return bool
@@ -676,6 +677,7 @@ class Manager implements \Phalcon\Mvc\Model\ManagerInterface, \Phalcon\Di\Inject
     /**
      * Checks whether a model has a hasMany relation with another model
      *
+     * @deprecated
      * @param string $modelName
      * @param string $modelRelation
      * @return bool
@@ -687,6 +689,7 @@ class Manager implements \Phalcon\Mvc\Model\ManagerInterface, \Phalcon\Di\Inject
     /**
      * Checks whether a model has a hasOne relation with another model
      *
+     * @deprecated
      * @param string $modelName
      * @param string $modelRelation
      * @return bool
@@ -698,6 +701,7 @@ class Manager implements \Phalcon\Mvc\Model\ManagerInterface, \Phalcon\Di\Inject
     /**
      * Checks whether a model has a hasOneThrough relation with another model
      *
+     * @deprecated
      * @param string $modelName
      * @param string $modelRelation
      * @return bool
@@ -709,6 +713,7 @@ class Manager implements \Phalcon\Mvc\Model\ManagerInterface, \Phalcon\Di\Inject
     /**
      * Checks whether a model has a hasManyToMany relation with another model
      *
+     * @deprecated
      * @param string $modelName
      * @param string $modelRelation
      * @return bool
@@ -759,6 +764,61 @@ class Manager implements \Phalcon\Mvc\Model\ManagerInterface, \Phalcon\Di\Inject
      * @param string $key
      */
     public function getReusableRecords(string $modelName, string $key)
+    {
+    }
+
+    /**
+     * Checks whether a model has a belongsTo relation with another model
+     *
+     * @param string $modelName
+     * @param string $modelRelation
+     * @return bool
+     */
+    public function hasBelongsTo(string $modelName, string $modelRelation): bool
+    {
+    }
+
+    /**
+     * Checks whether a model has a hasMany relation with another model
+     *
+     * @param string $modelName
+     * @param string $modelRelation
+     * @return bool
+     */
+    public function hasHasMany(string $modelName, string $modelRelation): bool
+    {
+    }
+
+    /**
+     * Checks whether a model has a hasOne relation with another model
+     *
+     * @param string $modelName
+     * @param string $modelRelation
+     * @return bool
+     */
+    public function hasHasOne(string $modelName, string $modelRelation): bool
+    {
+    }
+
+    /**
+     * Checks whether a model has a hasOneThrough relation with another model
+     *
+     * @param string $modelName
+     * @param string $modelRelation
+     * @return bool
+     */
+    public function hasHasOneThrough(string $modelName, string $modelRelation): bool
+    {
+    }
+
+    /**
+     * Checks whether a model has a hasManyToMany relation with another model
+     *
+     * @param string $modelName
+     * @param string $modelRelation
+     * @return bool
+     */
+    public function hasHasManyToMany(string $modelName, string $modelRelation): bool
     {
     }
 
@@ -977,6 +1037,16 @@ class Manager implements \Phalcon\Mvc\Model\ManagerInterface, \Phalcon\Di\Inject
      * Destroys the current PHQL cache
      */
     public function __destruct()
+    {
+    }
+
+    /**
+     * @param string $collection
+     * @param string $modelName
+     * @param string $modelRelation
+     * @return bool
+     */
+    private function checkHasRelationship(string $collection, string $modelName, string $modelRelation): bool
     {
     }
 }

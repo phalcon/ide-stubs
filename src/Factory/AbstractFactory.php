@@ -50,7 +50,7 @@ abstract class AbstractFactory extends \Phalcon\Factory\AbstractConfigFactory
     }
 
     /**
-     * AdapterFactory constructor.
+     * Initialize services/add new services
      *
      * @param array $services
      * @return void

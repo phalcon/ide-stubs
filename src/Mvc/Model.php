@@ -16,7 +16,7 @@ use Phalcon\Db\DialectInterface;
 use Phalcon\Db\Enum;
 use Phalcon\Db\RawValue;
 use Phalcon\Di\AbstractInjectionAware;
-use Phalcon\Di;
+use Phalcon\Di\Di;
 use Phalcon\Di\DiInterface;
 use Phalcon\Events\ManagerInterface as EventsManagerInterface;
 use Phalcon\Messages\Message;
@@ -39,7 +39,7 @@ use Phalcon\Mvc\Model\RelationInterface;
 use Phalcon\Mvc\Model\TransactionInterface;
 use Phalcon\Mvc\Model\ValidationFailed;
 use Phalcon\Mvc\ModelInterface;
-use Phalcon\Validation\ValidationInterface;
+use Phalcon\Filter\Validation\ValidationInterface;
 use Serializable;
 
 /**
@@ -615,7 +615,7 @@ abstract class Model extends AbstractInjectionAware implements \Phalcon\Mvc\Enti
      * // encapsulate find it into an running transaction esp. useful for application unit-tests
      * // or complex business logic where we wanna control which transactions are used.
      *
-     * $myTransaction = new Transaction(\Phalcon\Di::getDefault());
+     * $myTransaction = new Transaction(\Phalcon\Di\Di::getDefault());
      * $myTransaction->begin();
      *
      * $newRobot = new Robot();
@@ -652,9 +652,9 @@ abstract class Model extends AbstractInjectionAware implements \Phalcon\Mvc\Enti
      * $myTransaction->rollback();
      *
      * // creating two different transactions
-     * $myTransaction1 = new Transaction(\Phalcon\Di::getDefault());
+     * $myTransaction1 = new Transaction(\Phalcon\Di\Di::getDefault());
      * $myTransaction1->begin();
-     * $myTransaction2 = new Transaction(\Phalcon\Di::getDefault());
+     * $myTransaction2 = new Transaction(\Phalcon\Di\Di::getDefault());
      * $myTransaction2->begin();
      *
      *  // add a new robots
@@ -780,7 +780,7 @@ abstract class Model extends AbstractInjectionAware implements \Phalcon\Mvc\Enti
      * echo "The first virtual robot name is ", $robot->name;
      *
      * // behaviour with transaction
-     * $myTransaction = new Transaction(\Phalcon\Di::getDefault());
+     * $myTransaction = new Transaction(\Phalcon\Di\Di::getDefault());
      * $myTransaction->begin();
      *
      * $newRobot = new Robot();
@@ -1587,7 +1587,7 @@ abstract class Model extends AbstractInjectionAware implements \Phalcon\Mvc\Enti
      * @param \Phalcon\Mvc\Model\MetaDataInterface $metaData
      * @param \Phalcon\Db\Adapter\AdapterInterface $connection
      */
-    protected function exists(\Phalcon\Mvc\Model\MetaDataInterface $metaData, \Phalcon\Db\Adapter\AdapterInterface $connection): bool
+    protected function has(\Phalcon\Mvc\Model\MetaDataInterface $metaData, \Phalcon\Db\Adapter\AdapterInterface $connection): bool
     {
     }
 
@@ -2120,8 +2120,8 @@ abstract class Model extends AbstractInjectionAware implements \Phalcon\Mvc\Enti
      *
      * ```php
      * use Phalcon\Mvc\Model;
-     * use Phalcon\Validation;
-     * use Phalcon\Validation\Validator\ExclusionIn;
+     * use Phalcon\Filter\Validation;
+     * use Phalcon\Filter\Validation\Validator\ExclusionIn;
      *
      * class Subscriptors extends Model
      * {
@@ -2146,10 +2146,10 @@ abstract class Model extends AbstractInjectionAware implements \Phalcon\Mvc\Enti
      * }
      * ```
      *
-     * @param \Phalcon\Validation\ValidationInterface $validator
+     * @param \Phalcon\Filter\Validation\ValidationInterface $validator
      * @return bool
      */
-    protected function validate(\Phalcon\Validation\ValidationInterface $validator): bool
+    protected function validate(\Phalcon\Filter\Validation\ValidationInterface $validator): bool
     {
     }
 
@@ -2158,8 +2158,8 @@ abstract class Model extends AbstractInjectionAware implements \Phalcon\Mvc\Enti
      *
      * ```php
      * use Phalcon\Mvc\Model;
-     * use Phalcon\Validation;
-     * use Phalcon\Validation\Validator\ExclusionIn;
+     * use Phalcon\Filter\Validation;
+     * use Phalcon\Filter\Validation\Validator\ExclusionIn;
      *
      * class Subscriptors extends Model
      * {
