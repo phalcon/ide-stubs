@@ -15,4 +15,5 @@ namespace Phalcon\Cache\Exception;
 class Exception extends \Phalcon\Exception implements \Psr\SimpleCache\CacheException
 {
 
+
 }

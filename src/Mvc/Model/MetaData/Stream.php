@@ -27,11 +27,11 @@ use Phalcon\Mvc\Model\Exception;
  */
 class Stream extends MetaData
 {
+
     /**
      * @var string
      */
     protected $metaDataDir = './';
-
 
     /**
      * Phalcon\Mvc\Model\MetaData\Files constructor

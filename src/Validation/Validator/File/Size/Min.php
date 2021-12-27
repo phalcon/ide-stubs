@@ -62,7 +62,6 @@ class Min extends AbstractFile
 
     protected $template = 'File :field can not have the minimum size of :size';
 
-
     /**
      * Constructor
      *

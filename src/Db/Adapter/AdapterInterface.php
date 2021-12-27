@@ -22,6 +22,7 @@ use Phalcon\Db\ReferenceInterface;
 interface AdapterInterface
 {
 
+
     /**
      * Adds a column to a table
      *
@@ -387,9 +388,9 @@ interface AdapterInterface
     /**
      * Return internal PDO handler
      *
-     * @return \PDO
+     * @return mixed
      */
-    public function getInternalHandler(): \PDO;
+    public function getInternalHandler();
 
     /**
      * Returns the savepoint name to use for nested transactions
@@ -535,7 +536,7 @@ interface AdapterInterface
      * @param string $sqlStatement
      * @param array $bindParams
      * @param array $bindTypes
-     * @return 0|ResultInterface
+     * @return bool|ResultInterface
      */
     public function query(string $sqlStatement, array $bindParams = [], array $bindTypes = []);
 

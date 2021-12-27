@@ -18,11 +18,11 @@ use Psr\Log\AbstractLogger;
  */
 class MemoryLogger extends AbstractLogger
 {
+
     /**
      * @var array
      */
     protected $messages = [];
-
 
     /**
      * Returns the logged messages.

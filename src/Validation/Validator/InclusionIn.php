@@ -58,7 +58,6 @@ class InclusionIn extends AbstractValidator
 
     protected $template = 'Field :field must be a part of list: :domain';
 
-
     /**
      * Constructor
      *

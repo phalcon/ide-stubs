@@ -11,10 +11,9 @@ namespace Phalcon\Http;
 
 use DateTime;
 use DateTimeZone;
+use InvalidArgumentException;
 use Phalcon\Di;
 use Phalcon\Di\DiInterface;
-use Phalcon\Helper\Fs;
-use Phalcon\Helper\Json;
 use Phalcon\Http\Message\ResponseStatusCodeInterface;
 use Phalcon\Http\Response\Exception;
 use Phalcon\Http\Response\HeadersInterface;
@@ -42,6 +41,7 @@ use Phalcon\Events\ManagerInterface;
  */
 class Response implements \Phalcon\Http\ResponseInterface, \Phalcon\Di\InjectionAwareInterface, \Phalcon\Events\EventsAwareInterface, \Phalcon\Http\Message\ResponseStatusCodeInterface
 {
+
     /**
      * @var DiInterface|null
      */
@@ -81,7 +81,6 @@ class Response implements \Phalcon\Http\ResponseInterface, \Phalcon\Di\Injection
      * @var array
      */
     protected $statusCodes = [];
-
 
     /**
      * Phalcon\Http\Response constructor
@@ -270,7 +269,7 @@ class Response implements \Phalcon\Http\ResponseInterface, \Phalcon\Di\Injection
     /**
      * Sends headers to the client
      *
-     * @return 0|ResponseInterface
+     * @return bool|ResponseInterface
      */
     public function sendHeaders()
     {
@@ -507,6 +506,27 @@ class Response implements \Phalcon\Http\ResponseInterface, \Phalcon\Di\Injection
      * @return ResponseInterface
      */
     public function setRawHeader(string $header): ResponseInterface
+    {
+    }
+
+    /**
+     * @todo Remove this when we get traits
+     * @param string $uri
+     * @param mixed $suffix
+     * @return string
+     */
+    private function getBasename(string $uri, $suffix = null): string
+    {
+    }
+
+    /**
+     * @todo This will be removed when traits are introduced
+     * @param mixed $data
+     * @param int $options
+     * @param int $depth
+     * @return string
+     */
+    private function encode($data, int $options = 0, int $depth = 512): string
     {
     }
 }

@@ -20,6 +20,7 @@ use Phalcon\Html\Helper\AbstractList;
  */
 class Select extends AbstractList
 {
+
     /**
      * @var string
      */
@@ -34,7 +35,6 @@ class Select extends AbstractList
      * @var string
      */
     protected $selected = '';
-
 
     /**
      * Add an element to the list

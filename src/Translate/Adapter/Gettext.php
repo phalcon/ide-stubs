@@ -30,9 +30,15 @@ use Phalcon\Translate\InterpolatorFactory;
  * ```
  *
  * Allows translate using gettext
+ *
+ * @property int          $category
+ * @property string       $defaultDomain
+ * @property string|array $directory
+ * @property string|false $locale
  */
 class Gettext extends \Phalcon\Translate\Adapter\AbstractAdapter implements \ArrayAccess
 {
+
     /**
      * @var int
      */
@@ -52,7 +58,6 @@ class Gettext extends \Phalcon\Translate\Adapter\AbstractAdapter implements \Arr
      * @var string
      */
     protected $locale;
-
 
     /**
      * @return int
@@ -83,15 +88,17 @@ class Gettext extends \Phalcon\Translate\Adapter\AbstractAdapter implements \Arr
     }
 
     /**
-     * Phalcon\Translate\Adapter\Gettext constructor
+     * Gettext constructor.
      *
-     * @param array $options = [
-     *     'locale' => '',
-     *     'defaultDomain' => '',
-     *     'directory' => '',
-     *     'category' => ''
-     * ]
-     * @param \Phalcon\Translate\InterpolatorFactory $interpolator
+     * @param InterpolatorFactory $interpolator
+     * @param array               $options = [
+     *                                       'locale'        => '',
+     *                                       'defaultDomain' => '',
+     *                                       'directory'     => '',
+     *                                       'category'      => ''
+     *                                       ]
+     *
+     * @throws Exception
      */
     public function __construct(\Phalcon\Translate\InterpolatorFactory $interpolator, array $options)
     {
@@ -101,6 +108,7 @@ class Gettext extends \Phalcon\Translate\Adapter\AbstractAdapter implements \Arr
      * Check whether is defined a translation key in the internal array
      *
      * @param string $index
+     *
      * @return bool
      */
     public function exists(string $index): bool
@@ -112,11 +120,12 @@ class Gettext extends \Phalcon\Translate\Adapter\AbstractAdapter implements \Arr
      * Some languages have more than one form for plural messages dependent on
      * the count.
      *
-     * @param string $msgid1
-     * @param string $msgid2
-     * @param int $count
-     * @param array $placeholders
-     * @param string $domain
+     * @param string      $msgid1
+     * @param string      $msgid2
+     * @param int         $count
+     * @param array       $placeholders
+     * @param string|null $domain
+     *
      * @return string
      */
     public function nquery(string $msgid1, string $msgid2, int $count, array $placeholders = [], string $domain = null): string
@@ -131,7 +140,8 @@ class Gettext extends \Phalcon\Translate\Adapter\AbstractAdapter implements \Arr
      * ```
      *
      * @param string $translateKey
-     * @param array $placeholders
+     * @param array  $placeholders
+     *
      * @return string
      */
     public function query(string $translateKey, array $placeholders = []): string
@@ -173,7 +183,7 @@ class Gettext extends \Phalcon\Translate\Adapter\AbstractAdapter implements \Arr
      * );
      * ```
      *
-     * @param string|array $directory The directory path or an array of directories and domains
+     * @param string|array $directory
      * @return void
      */
     public function setDirectory($directory): void
@@ -183,10 +193,11 @@ class Gettext extends \Phalcon\Translate\Adapter\AbstractAdapter implements \Arr
     /**
      * Changes the current domain (i.e. the translation file)
      *
-     * @param mixed $domain
+     * @param string|null $domain
+     *
      * @return string
      */
-    public function setDomain($domain): string
+    public function setDomain(string $domain = null): string
     {
     }
 
@@ -201,9 +212,10 @@ class Gettext extends \Phalcon\Translate\Adapter\AbstractAdapter implements \Arr
      * $gettext->setLocale(LC_ALL, "de_DE@euro", "de_DE", "de", "ge");
      * ```
      *
-     * @param int $category
+     * @param int   $category
      * @param array $localeArray
-     * @return string|bool
+     *
+     * @return false|string
      */
     public function setLocale(int $category, array $localeArray = [])
     {
@@ -222,9 +234,20 @@ class Gettext extends \Phalcon\Translate\Adapter\AbstractAdapter implements \Arr
      * Validator for constructor
      *
      * @param array $options
+     *
+     * @throws Exception
      * @return void
      */
     protected function prepareOptions(array $options): void
+    {
+    }
+
+    /**
+     * @todo to be removed when we get traits
+     * @param string $name
+     * @return bool
+     */
+    protected function phpFunctionExists(string $name): bool
     {
     }
 }

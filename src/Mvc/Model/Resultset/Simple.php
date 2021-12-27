@@ -27,6 +27,7 @@ use Psr\SimpleCache\CacheInterface;
  */
 class Simple extends Resultset
 {
+
     /**
      * @var array|string
      */
@@ -41,7 +42,6 @@ class Simple extends Resultset
      * @var bool
      */
     protected $keepSnapshots = false;
-
 
     /**
      * Phalcon\Mvc\Model\Resultset\Simple constructor

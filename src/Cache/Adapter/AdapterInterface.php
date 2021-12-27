@@ -17,4 +17,5 @@ use Phalcon\Storage\Adapter\AdapterInterface as StorageAdapterInterface;
 interface AdapterInterface extends StorageAdapterInterface
 {
 
+
 }

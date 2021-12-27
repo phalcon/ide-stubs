@@ -32,6 +32,7 @@ namespace Phalcon\Db;
  */
 class Reference implements \Phalcon\Db\ReferenceInterface
 {
+
     /**
      * Local reference columns
      *
@@ -87,7 +88,6 @@ class Reference implements \Phalcon\Db\ReferenceInterface
      * @var string
      */
     protected $onUpdate;
-
 
     /**
      * Local reference columns

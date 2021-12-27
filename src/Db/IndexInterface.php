@@ -15,6 +15,7 @@ namespace Phalcon\Db;
 interface IndexInterface
 {
 
+
     /**
      * Gets the columns that corresponds the index
      *

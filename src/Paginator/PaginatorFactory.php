@@ -11,7 +11,6 @@ namespace Phalcon\Paginator;
 
 use Phalcon\Paginator\Adapter\AdapterInterface;
 use Phalcon\Factory\AbstractFactory;
-use Phalcon\Helper\Arr;
 
 /**
  * This file is part of the Phalcon Framework.
@@ -23,8 +22,6 @@ use Phalcon\Helper\Arr;
  */
 class PaginatorFactory extends AbstractFactory
 {
-
-    protected $exception = 'Phalcon\\\\Annotations\\\\Exception';
 
 
     /**
@@ -84,9 +81,18 @@ class PaginatorFactory extends AbstractFactory
     }
 
     /**
-     * @return array
+     * @return string
      */
-    protected function getAdapters(): array
+    protected function getExceptionClass(): string
+    {
+    }
+
+    /**
+     * Returns the available adapters
+     *
+     * @return string[]
+     */
+    protected function getServices(): array
     {
     }
 }

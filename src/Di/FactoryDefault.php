@@ -9,6 +9,9 @@
  */
 namespace Phalcon\Di;
 
+use Phalcon\Assets\Manager as AssetManager;
+use Phalcon\Html\Escaper;
+use Phalcon\Html\TagFactory;
 use Phalcon\Filter\FilterFactory;
 
 /**
@@ -19,6 +22,7 @@ use Phalcon\Filter\FilterFactory;
  */
 class FactoryDefault extends \Phalcon\Di
 {
+
 
     /**
      * Phalcon\Di\FactoryDefault constructor

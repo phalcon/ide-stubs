@@ -62,7 +62,6 @@ class Equal extends AbstractFile
 
     protected $template = 'File :field does not have the exact :size file size';
 
-
     /**
      * Constructor
      *

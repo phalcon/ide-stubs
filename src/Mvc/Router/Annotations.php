@@ -37,6 +37,7 @@ use Phalcon\Annotations\Annotation;
  */
 class Annotations extends Router
 {
+
     /**
      * @var string
      */
@@ -61,7 +62,6 @@ class Annotations extends Router
      * @var string
      */
     protected $routePrefix = '';
-
 
     /**
      * Adds a resource to the annotations handler
@@ -147,12 +147,19 @@ class Annotations extends Router
      *
      * ```php
      * // Array as callback
-     * $annotationRouter->setActionPreformatCallback([Text::class, 'uncamelize']);
+     * $annotationRouter->setActionPreformatCallback(
+     *      [
+     *          new Uncamelize(),
+     *          '__invoke'
+     *      ]
+     *  );
      *
      * // Function as callback
-     * $annotationRouter->setActionPreformatCallback(function(action){
-     *     return action;
-     * });
+     * $annotationRouter->setActionPreformatCallback(
+     *     function ($action) {
+     *         return $action;
+     *     }
+     * );
      *
      * // String as callback
      * $annotationRouter->setActionPreformatCallback('strtolower');

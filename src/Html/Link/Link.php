@@ -9,8 +9,8 @@
  */
 namespace Phalcon\Html\Link;
 
-use Phalcon\Collection;
-use Phalcon\Collection\CollectionInterface;
+use Phalcon\Support\Collection;
+use Phalcon\Support\Collection\CollectionInterface;
 use Psr\Link\LinkInterface;
 
 /**
@@ -23,6 +23,7 @@ use Psr\Link\LinkInterface;
  */
 class Link implements \Psr\Link\LinkInterface
 {
+
     /**
      * @var Collection|CollectionInterface
      */
@@ -42,7 +43,6 @@ class Link implements \Psr\Link\LinkInterface
      * @var bool
      */
     protected $templated = false;
-
 
     /**
      * Link constructor.

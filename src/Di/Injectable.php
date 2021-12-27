@@ -29,9 +29,9 @@ use Phalcon\Session\BagInterface;
  * @property \Phalcon\Events\Manager|\Phalcon\Events\ManagerInterface $eventsManager
  * @property \Phalcon\Db\Adapter\AdapterInterface $db
  * @property \Phalcon\Security $security
- * @property \Phalcon\Crypt|\Phalcon\CryptInterface $crypt
+ * @property \Phalcon\Crypt\Crypt|\Phalcon\Crypt\CryptInterface $crypt
  * @property \Phalcon\Tag $tag
- * @property \Phalcon\Escaper|\Phalcon\Escaper\EscaperInterface $escaper
+ * @property \Phalcon\Html\Escaper|\Phalcon\Html\Escaper\EscaperInterface $escaper
  * @property \Phalcon\Annotations\Adapter\Memory|\Phalcon\Annotations\Adapter $annotations
  * @property \Phalcon\Mvc\Model\Manager|\Phalcon\Mvc\Model\ManagerInterface $modelsManager
  * @property \Phalcon\Mvc\Model\MetaData\Memory|\Phalcon\Mvc\Model\MetadataInterface $modelsMetadata
@@ -43,13 +43,13 @@ use Phalcon\Session\BagInterface;
  */
 abstract class Injectable implements \Phalcon\Di\InjectionAwareInterface
 {
+
     /**
      * Dependency Injector
      *
      * @var DiInterface|null
      */
     protected $container = null;
-
 
     /**
      * Magic method __get

@@ -17,6 +17,7 @@ use Phalcon\Validation;
 interface ValidatorCompositeInterface
 {
 
+
     /**
      * Executes the validation
      *

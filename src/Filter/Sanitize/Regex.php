@@ -17,10 +17,13 @@ namespace Phalcon\Filter\Sanitize;
 class Regex
 {
 
+
     /**
-     * @param mixed $input The text to sanitize
+     * @param mixed $input
      * @param mixed $pattern
      * @param mixed $replace
+     *
+     * @return string|string[]|null
      */
     public function __invoke($input, $pattern, $replace)
     {

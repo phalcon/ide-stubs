@@ -52,7 +52,6 @@ class Alpha extends AbstractValidator
 
     protected $template = 'Field :field must contain only letters';
 
-
     /**
      * Constructor
      *

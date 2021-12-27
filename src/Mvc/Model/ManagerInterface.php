@@ -22,6 +22,7 @@ use Phalcon\Mvc\Model\Query\StatusInterface;
 interface ManagerInterface
 {
 
+
     /**
      * Binds a behavior to a model
      *
@@ -184,7 +185,7 @@ interface ManagerInterface
      * @param array|string|null $parameters
      * @param ModelInterface    $record
      * @param string|null       $method
-     * @return 0|ResultsetInterface
+     * @return bool|ResultsetInterface
      */
     public function getBelongsToRecords(string $modelName, string $modelRelation, \Phalcon\Mvc\ModelInterface $record, $parameters = null, string $method = null);
 
@@ -204,7 +205,7 @@ interface ManagerInterface
      * @param array|string|null $parameters
      * @param ModelInterface    $record
      * @param string|null       $method
-     * @return 0|ResultsetInterface
+     * @return bool|ResultsetInterface
      */
     public function getHasManyRecords(string $modelName, string $modelRelation, \Phalcon\Mvc\ModelInterface $record, $parameters = null, string $method = null);
 
@@ -248,7 +249,7 @@ interface ManagerInterface
      * @param array|string|null $parameters
      * @param ModelInterface    $record
      * @param string|null       $method
-     * @return 0|ModelInterface
+     * @return bool|ModelInterface
      */
     public function getHasOneRecords(string $modelName, string $modelRelation, \Phalcon\Mvc\ModelInterface $record, $parameters = null, string $method = null);
 

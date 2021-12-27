@@ -15,6 +15,7 @@ namespace Phalcon\Acl;
 interface ComponentInterface
 {
 
+
     /**
      * Returns component description
      *

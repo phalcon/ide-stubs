@@ -14,7 +14,7 @@ use RuntimeException;
 use SessionHandlerInterface;
 use Phalcon\Di\AbstractInjectionAware;
 use Phalcon\Di\DiInterface;
-use Phalcon\Helper\Arr;
+use Phalcon\Support\Helper\Arr\Get;
 
 /**
  * Phalcon\Session\Manager
@@ -23,6 +23,7 @@ use Phalcon\Helper\Arr;
  */
 class Manager extends AbstractInjectionAware implements \Phalcon\Session\ManagerInterface
 {
+
     /**
      * @var SessionHandlerInterface|null
      */
@@ -42,7 +43,6 @@ class Manager extends AbstractInjectionAware implements \Phalcon\Session\Manager
      * @var string
      */
     private $uniqueId = '';
-
 
     /**
      * Manager constructor.
@@ -272,6 +272,17 @@ class Manager extends AbstractInjectionAware implements \Phalcon\Session\Manager
      * @return string
      */
     private function getUniqueKey(string $key): string
+    {
+    }
+
+    /**
+     * @todo Remove this when we get traits
+     * @param array $collection
+     * @param mixed $index
+     * @param mixed $defaultValue
+     * @return mixed
+     */
+    private function getArrVal(array $collection, $index, $defaultValue = null)
     {
     }
 }

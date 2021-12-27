@@ -18,6 +18,7 @@ use Phalcon\Acl\RoleInterface;
 interface AdapterInterface
 {
 
+
     /**
      * Do a role inherit from another existing role
      *
@@ -113,11 +114,28 @@ interface AdapterInterface
     public function getActiveComponent(): ?string;
 
     /**
+     * Return an array with every component registered in the list
+     *
+     * @return array|\Phalcon\Acl\ComponentInterface[]
+     */
+    public function getComponents(): array;
+
+    /**
      * Returns the default ACL access level
      *
      * @return int
      */
     public function getDefaultAction(): int;
+
+    /**
+     * Returns the inherited roles for a passed role name. If no role name
+     * has been specified it will return the whole array. If the role has not
+     * been found it returns an empty array
+     *
+     * @param string $roleName
+     * @return array
+     */
+    public function getInheritedRoles(string $roleName = ''): array;
 
     /**
      * Returns the default ACL access level for no arguments provided in
@@ -133,13 +151,6 @@ interface AdapterInterface
      * @return array|\Phalcon\Acl\RoleInterface[]
      */
     public function getRoles(): array;
-
-    /**
-     * Return an array with every component registered in the list
-     *
-     * @return array|\Phalcon\Acl\ComponentInterface[]
-     */
-    public function getComponents(): array;
 
     /**
      * Check whether a role is allowed to access an action from a component

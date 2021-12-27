@@ -16,27 +16,19 @@ namespace Phalcon\Mvc\Model;
  */
 class Relation implements \Phalcon\Mvc\Model\RelationInterface
 {
-
     const ACTION_CASCADE = 2;
-
 
     const ACTION_RESTRICT = 1;
 
-
     const BELONGS_TO = 0;
-
 
     const HAS_MANY = 2;
 
-
     const HAS_MANY_THROUGH = 4;
-
 
     const HAS_ONE = 1;
 
-
     const HAS_ONE_THROUGH = 3;
-
 
     const NO_ACTION = 0;
 
@@ -79,7 +71,6 @@ class Relation implements \Phalcon\Mvc\Model\RelationInterface
      * @var int
      */
     protected $type;
-
 
     /**
      * Phalcon\Mvc\Model\Relation constructor

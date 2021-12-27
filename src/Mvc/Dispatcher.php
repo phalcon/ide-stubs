@@ -39,12 +39,9 @@ class Dispatcher extends \Phalcon\Dispatcher\AbstractDispatcher implements \Phal
 
     protected $defaultAction = 'index';
 
-
     protected $defaultHandler = 'index';
 
-
     protected $handlerSuffix = 'Controller';
-
 
     /**
      * Forwards the execution flow to another controller/action.

@@ -63,7 +63,6 @@ class Between extends AbstractValidator
 
     protected $template = 'Field :field must be within the range of :min to :max';
 
-
     /**
      * Constructor
      *

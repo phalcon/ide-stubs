@@ -9,8 +9,8 @@
  */
 namespace Phalcon\Validation\Validator;
 
-use Phalcon\Helper\Arr;
 use Phalcon\Messages\Message;
+use Phalcon\Support\Helper\Arr\Get;
 use Phalcon\Validation;
 use Phalcon\Validation\AbstractValidatorComposite;
 use Phalcon\Validation\Validator\File\MimeType;
@@ -43,6 +43,9 @@ use Phalcon\Validation\Validator\File\Size\Min as MinFileSize;
  *             "messageType"          => "Allowed file types are :types",
  *             "maxResolution"        => "800x600",
  *             "messageMaxResolution" => "Max resolution of :field is :resolution",
+ *             "messageFileEmpty"     => "File is empty",
+ *             "messageIniSize"       => "Ini size is not valid",
+ *             "messageValid"         => "File is not valid",
  *         ]
  *     )
  * );
@@ -91,6 +94,7 @@ use Phalcon\Validation\Validator\File\Size\Min as MinFileSize;
 class File extends AbstractValidatorComposite
 {
 
+
     /**
      * Constructor
      *
@@ -113,7 +117,10 @@ class File extends AbstractValidatorComposite
      *     'messageMinResolution' => '',
      *     'equalResolution' => '1000x1000',
      *     'messageEqualResolution' => '',
-     *     'allowEmpty' => false
+     *     'allowEmpty' => false,
+     *     'messageFileEmpty' => '',
+     *     'messageIniSize' => '',
+     *     'messageValid' => ''
      * ]
      */
     public function __construct(array $options = [])

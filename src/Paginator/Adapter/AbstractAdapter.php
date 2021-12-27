@@ -18,6 +18,7 @@ use Phalcon\Paginator\RepositoryInterface;
  */
 abstract class AbstractAdapter implements \Phalcon\Paginator\Adapter\AdapterInterface
 {
+
     /**
      * Configuration of paginator
      *
@@ -45,7 +46,6 @@ abstract class AbstractAdapter implements \Phalcon\Paginator\Adapter\AdapterInte
      * @var RepositoryInterface
      */
     protected $repository;
-
 
     /**
      * Phalcon\Paginator\Adapter\AbstractAdapter constructor

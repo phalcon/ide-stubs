@@ -14,6 +14,7 @@ namespace Phalcon\Acl;
  */
 class Component implements \Phalcon\Acl\ComponentInterface
 {
+
     /**
      * Component description
      *
@@ -27,7 +28,6 @@ class Component implements \Phalcon\Acl\ComponentInterface
      * @var string
      */
     private $name;
-
 
     /**
      * Component description

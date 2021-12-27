@@ -15,4 +15,5 @@ namespace Phalcon\Validation;
 abstract class AbstractCombinedFieldsValidator extends \Phalcon\Validation\AbstractValidator
 {
 
+
 }

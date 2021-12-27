@@ -20,6 +20,7 @@ use Phalcon\Annotations\ReaderInterface;
  */
 abstract class AbstractAdapter implements \Phalcon\Annotations\Adapter\AdapterInterface
 {
+
     /**
      * @var array
      */
@@ -29,7 +30,6 @@ abstract class AbstractAdapter implements \Phalcon\Annotations\Adapter\AdapterIn
      * @var Reader
      */
     protected $reader;
-
 
     /**
      * Parses or retrieves all the annotations found in a class

@@ -16,11 +16,11 @@ use Phalcon\Mvc\View\Exception as BaseException;
  */
 class Exception extends \Phalcon\Mvc\View\Exception
 {
+
     /**
      * @var array
      */
     protected $statement = [];
-
 
     /**
      * @param string $message

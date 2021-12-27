@@ -54,6 +54,7 @@ use Phalcon\Validation\AbstractValidator;
  */
 abstract class AbstractFile extends AbstractValidator
 {
+
     /**
      * Empty is empty
      *
@@ -74,7 +75,6 @@ abstract class AbstractFile extends AbstractValidator
      * @var string
      */
     protected $messageValid = 'Field :field is not valid';
-
 
     /**
      * Empty is empty

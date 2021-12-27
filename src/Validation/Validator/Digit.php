@@ -52,7 +52,6 @@ class Digit extends AbstractValidator
 
     protected $template = 'Field :field must be numeric';
 
-
     /**
      * Constructor
      *

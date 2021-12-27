@@ -9,13 +9,12 @@
  */
 namespace Phalcon\DataMapper\Query;
 
-use Phalcon\Helper\Arr;
-
 /**
  * Class AbstractConditions
  */
 abstract class AbstractConditions extends \Phalcon\DataMapper\Query\AbstractQuery
 {
+
 
     /**
      * Sets the `LIMIT` clause

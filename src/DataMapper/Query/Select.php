@@ -10,7 +10,6 @@
 namespace Phalcon\DataMapper\Query;
 
 use BadMethodCallException;
-use Phalcon\Helper\Arr;
 
 /**
  * Class Select
@@ -31,15 +30,11 @@ use Phalcon\Helper\Arr;
  */
 class Select extends \Phalcon\DataMapper\Query\AbstractConditions
 {
-
     const JOIN_INNER = 'INNER';
-
 
     const JOIN_LEFT = 'LEFT';
 
-
     const JOIN_NATURAL = 'NATURAL';
-
 
     const JOIN_RIGHT = 'RIGHT';
 
@@ -52,7 +47,6 @@ class Select extends \Phalcon\DataMapper\Query\AbstractConditions
      * @var bool
      */
     protected $forUpdate = false;
-
 
     /**
      * Proxied methods to the connection

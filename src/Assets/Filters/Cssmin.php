@@ -18,6 +18,7 @@ use Phalcon\Assets\FilterInterface;
 class Cssmin implements \Phalcon\Assets\FilterInterface
 {
 
+
     /**
      * Filters the content using CSSMIN
      * NOTE: This functionality is not currently available

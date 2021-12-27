@@ -15,6 +15,7 @@ namespace Phalcon\Db;
 interface DialectInterface
 {
 
+
     /**
      * Generates SQL to add a column to a table
      *

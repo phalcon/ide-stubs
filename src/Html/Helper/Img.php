@@ -17,6 +17,7 @@ use Phalcon\Html\Exception;
 class Img extends \Phalcon\Html\Helper\AbstractHelper
 {
 
+
     /**
      * Produce a <img> tag.
      *

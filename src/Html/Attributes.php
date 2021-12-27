@@ -9,7 +9,7 @@
  */
 namespace Phalcon\Html;
 
-use Phalcon\Collection;
+use Phalcon\Support\Collection;
 use Phalcon\Html\Attributes\RenderInterface;
 use Phalcon\Tag;
 
@@ -18,6 +18,7 @@ use Phalcon\Tag;
  */
 class Attributes extends Collection implements \Phalcon\Html\Attributes\RenderInterface
 {
+
 
     /**
      * Render attributes as HTML attributes

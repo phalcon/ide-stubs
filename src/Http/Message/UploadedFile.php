@@ -9,9 +9,6 @@
  */
 namespace Phalcon\Http\Message;
 
-use Phalcon\Helper\Number;
-use Phalcon\Helper\Arr;
-use Phalcon\Helper\Str;
 use Phalcon\Http\Message\Exception\InvalidArgumentException;
 use Psr\Http\Message\StreamInterface;
 use Psr\Http\Message\UploadedFileInterface;
@@ -22,6 +19,7 @@ use RuntimeException;
  */
 final class UploadedFile implements \Psr\Http\Message\UploadedFileInterface
 {
+
     /**
      * If the file has already been moved, we hold that status here
      *
@@ -98,7 +96,6 @@ final class UploadedFile implements \Psr\Http\Message\UploadedFileInterface
      * @var StreamInterface|string|null
      */
     private $stream;
-
 
     /**
      * Retrieve the filename sent by the client.
@@ -272,6 +269,17 @@ final class UploadedFile implements \Psr\Http\Message\UploadedFileInterface
      * @return void
      */
     private function storeFile(string $targetPath): void
+    {
+    }
+
+    /**
+     * @todo Remove this when we get traits
+     * @param int $value
+     * @param int $from
+     * @param int $to
+     * @return bool
+     */
+    private function isBetween(int $value, int $from, int $to): bool
     {
     }
 }

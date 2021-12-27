@@ -10,28 +10,28 @@
 namespace Phalcon\Cache;
 
 use Phalcon\Cache\Adapter\AdapterInterface;
+use Phalcon\Cache\Exception\Exception;
 use Phalcon\Factory\AbstractFactory;
 use Phalcon\Storage\SerializerFactory;
 
 /**
  * Factory to create Cache adapters
+ *
+ * @property SerializerFactory $serializerFactory
  */
 class AdapterFactory extends AbstractFactory
 {
-
-    protected $exception = 'Phalcon\\\\Cache\\\\Exception\\\\Exception';
 
     /**
      * @var SerializerFactory
      */
     private $serializerFactory;
 
-
     /**
      * AdapterFactory constructor.
      *
-     * @param \Phalcon\Storage\SerializerFactory $factory
-     * @param array $services
+     * @param SerializerFactory $factory
+     * @param array             $services
      */
     public function __construct(\Phalcon\Storage\SerializerFactory $factory, array $services = [])
     {
@@ -40,39 +40,48 @@ class AdapterFactory extends AbstractFactory
     /**
      * Create a new instance of the adapter
      *
-     * @param array $options = [
+     * @param string $name
+     * @param array  $options = [
      *     'servers' => [
      *         [
-     *             'host' => 'localhost',
-     *             'port' => 11211,
+     *             'host'   => 'localhost',
+     *             'port'   => 11211,
      *             'weight' => 1,
      *         ]
      *     ],
-     *     'host' => '127.0.0.1',
-     *     'port' => 6379,
-     *     'index' => 0,
-     *     'persistent' => false,
-     *     'auth' => '',
-     *     'socket' => '',
+     *     'host'              => '127.0.0.1',
+     *     'port'              => 6379,
+     *     'index'             => 0,
+     *     'persistent'        => false,
+     *     'auth'              => '',
+     *     'socket'            => '',
      *     'defaultSerializer' => 'Php',
-     *     'lifetime' => 3600,
-     *     'serializer' => null,
-     *     'prefix' => 'phalcon',
-     *     'storageDir' => ''
+     *     'lifetime'          => 3600,
+     *     'serializer'        => null,
+     *     'prefix'            => 'phalcon',
+     *     'storageDir'        => ''
      * ]
-     * @param string $name
+     *
      * @return AdapterInterface
+     * @throws Exception
      */
     public function newInstance(string $name, array $options = []): AdapterInterface
     {
     }
 
     /**
+     * @return string
+     */
+    protected function getExceptionClass(): string
+    {
+    }
+
+    /**
      * Returns the available adapters
      *
-     * @return array
+     * @return string[]
      */
-    protected function getAdapters(): array
+    protected function getServices(): array
     {
     }
 }

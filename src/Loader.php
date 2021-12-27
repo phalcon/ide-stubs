@@ -41,6 +41,7 @@ use Phalcon\Events\EventsAwareInterface;
  */
 class Loader implements \Phalcon\Events\EventsAwareInterface
 {
+
     /**
      * @var string|null
      */
@@ -90,7 +91,6 @@ class Loader implements \Phalcon\Events\EventsAwareInterface
      * @var bool
      */
     protected $registered = false;
-
 
     /**
      * Autoloads the registered classes

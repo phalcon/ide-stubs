@@ -9,7 +9,6 @@
  */
 namespace Phalcon\Http\Message;
 
-use Phalcon\Helper\Number;
 use Phalcon\Http\Message\AbstractMessage;
 use Phalcon\Http\Message\Exception\InvalidArgumentException;
 use Psr\Http\Message\ResponseInterface;
@@ -19,6 +18,7 @@ use Psr\Http\Message\ResponseInterface;
  */
 final class Response extends AbstractMessage implements \Psr\Http\Message\ResponseInterface, \Phalcon\Http\Message\ResponseStatusCodeInterface
 {
+
     /**
      * Gets the response reason phrase associated with the status code.
      *
@@ -45,7 +45,6 @@ final class Response extends AbstractMessage implements \Psr\Http\Message\Respon
      * @var int
      */
     protected $statusCode = 200;
-
 
     /**
      * Gets the response reason phrase associated with the status code.
@@ -147,6 +146,17 @@ final class Response extends AbstractMessage implements \Psr\Http\Message\Respon
      * @return void
      */
     private function checkCodeValue(int $code): void
+    {
+    }
+
+    /**
+     * @todo Remove this when we get traits
+     * @param int $value
+     * @param int $from
+     * @param int $to
+     * @return bool
+     */
+    private function isBetween(int $value, int $from, int $to): bool
     {
     }
 }

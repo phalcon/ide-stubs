@@ -17,27 +17,19 @@ namespace Phalcon\Paginator;
  */
 interface RepositoryInterface
 {
-
     const PROPERTY_CURRENT_PAGE = 'current';
-
 
     const PROPERTY_FIRST_PAGE = 'first';
 
-
     const PROPERTY_ITEMS = 'items';
-
 
     const PROPERTY_LAST_PAGE = 'last';
 
-
     const PROPERTY_LIMIT = 'limit';
-
 
     const PROPERTY_NEXT_PAGE = 'next';
 
-
     const PROPERTY_PREVIOUS_PAGE = 'previous';
-
 
     const PROPERTY_TOTAL_ITEMS = 'total_items';
 

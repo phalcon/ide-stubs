@@ -58,7 +58,6 @@ class Date extends AbstractValidator
 
     protected $template = 'Field :field is not a valid date';
 
-
     /**
      * Constructor
      *

@@ -66,15 +66,11 @@ use Phalcon\Messages\Message;
  */
 class Ip extends AbstractValidator
 {
-
     const VERSION_4 = 1048576;
-
 
     const VERSION_6 = 2097152;
 
-
     protected $template = 'Field :field must be a valid IP address';
-
 
     /**
      * Constructor

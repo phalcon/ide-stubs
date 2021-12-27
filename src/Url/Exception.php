@@ -17,4 +17,5 @@ namespace Phalcon\Url;
 class Exception extends \Phalcon\Exception
 {
 
+
 }

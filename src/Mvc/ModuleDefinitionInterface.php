@@ -19,6 +19,7 @@ use Phalcon\Di\DiInterface;
 interface ModuleDefinitionInterface
 {
 
+
     /**
      * Registers an autoloader related to the module
      *

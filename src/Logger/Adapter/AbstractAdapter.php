@@ -9,32 +9,33 @@
  */
 namespace Phalcon\Logger\Adapter;
 
-use Phalcon\Logger;
 use Phalcon\Logger\Exception;
 use Phalcon\Logger\Formatter\FormatterInterface;
+use Phalcon\Logger\Formatter\Line;
 use Phalcon\Logger\Item;
 
 /**
- * This file is part of the Phalcon Framework.
+ * Class AbstractAdapter
  *
- * (c) Phalcon Team <team@phalcon.io>
- *
- * For the full copyright and license information, please view the LICENSE.txt
- * file that was distributed with this source code.
+ * @property string             $defaultFormatter
+ * @property FormatterInterface $formatter
+ * @property bool               $inTransaction
+ * @property array              $queue
  */
 abstract class AbstractAdapter implements \Phalcon\Logger\Adapter\AdapterInterface
 {
+
     /**
      * Name of the default formatter class
      *
      * @var string
      */
-    protected $defaultFormatter = 'Line';
+    protected $defaultFormatter = 'Phalcon\\\\Logger\\Formatter\\\\Line';
 
     /**
      * Formatter
      *
-     * @var FormatterInterface
+     * @var FormatterInterface|null
      */
     protected $formatter;
 
@@ -52,9 +53,10 @@ abstract class AbstractAdapter implements \Phalcon\Logger\Adapter\AdapterInterfa
      */
     protected $queue = [];
 
-
     /**
      * Destructor cleanup
+     *
+     * @throws Exception
      */
     public function __destruct()
     {
@@ -82,7 +84,8 @@ abstract class AbstractAdapter implements \Phalcon\Logger\Adapter\AdapterInterfa
     /**
      * Adds a message to the queue
      *
-     * @param \Phalcon\Logger\Item $item
+     * @param Item $item
+     *
      * @return AdapterInterface
      */
     public function add(\Phalcon\Logger\Item $item): AdapterInterface
@@ -102,6 +105,7 @@ abstract class AbstractAdapter implements \Phalcon\Logger\Adapter\AdapterInterfa
      * Commits the internal transaction
      *
      * @return AdapterInterface
+     * @throws Exception
      */
     public function commit(): AdapterInterface
     {
@@ -115,7 +119,8 @@ abstract class AbstractAdapter implements \Phalcon\Logger\Adapter\AdapterInterfa
     }
 
     /**
-     * Returns the whether the logger is currently in an active transaction or not
+     * Returns the whether the logger is currently in an active transaction or
+     * not
      *
      * @return bool
      */
@@ -126,7 +131,7 @@ abstract class AbstractAdapter implements \Phalcon\Logger\Adapter\AdapterInterfa
     /**
      * Processes the message in the adapter
      *
-     * @param \Phalcon\Logger\Item $item
+     * @param Item $item
      * @return void
      */
     abstract public function process(\Phalcon\Logger\Item $item): void;
@@ -135,6 +140,7 @@ abstract class AbstractAdapter implements \Phalcon\Logger\Adapter\AdapterInterfa
      * Rollbacks the internal transaction
      *
      * @return AdapterInterface
+     * @throws Exception
      */
     public function rollback(): AdapterInterface
     {
@@ -143,7 +149,8 @@ abstract class AbstractAdapter implements \Phalcon\Logger\Adapter\AdapterInterfa
     /**
      * Sets the message formatter
      *
-     * @param \Phalcon\Logger\Formatter\FormatterInterface $formatter
+     * @param FormatterInterface $formatter
+     *
      * @return AdapterInterface
      */
     public function setFormatter(\Phalcon\Logger\Formatter\FormatterInterface $formatter): AdapterInterface
@@ -157,6 +164,25 @@ abstract class AbstractAdapter implements \Phalcon\Logger\Adapter\AdapterInterfa
      * @return string
      */
     protected function getFormattedItem(\Phalcon\Logger\Item $item): string
+    {
+    }
+
+    /**
+     * Checks if the transaction is active
+     *
+     * @throws Exception
+     * @return void
+     */
+    private function checkTransaction(): void
+    {
+    }
+
+    /**
+     * Resets the transaction flag and queue array
+     *
+     * @return void
+     */
+    private function resetTransaction(): void
     {
     }
 }

@@ -15,6 +15,7 @@ namespace Phalcon\DataMapper\Pdo\Connection;
 interface PdoInterface
 {
 
+
     /**
      * Begins a transaction. If the profiler is enabled, the operation will
      * be recorded.

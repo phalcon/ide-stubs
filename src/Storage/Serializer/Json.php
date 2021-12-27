@@ -11,35 +11,56 @@ namespace Phalcon\Storage\Serializer;
 
 use InvalidArgumentException;
 use JsonSerializable;
-use Phalcon\Helper\Json as JsonHelper;
 
 /**
- * This file is part of the Phalcon Framework.
+ * Class Json
  *
- * (c) Phalcon Team <team@phalcon.io>
- *
- * For the full copyright and license information, please view the LICENSE.txt
- * file that was distributed with this source code.
+ * @package Phalcon\Storage\Serializer
  */
 class Json extends \Phalcon\Storage\Serializer\AbstractSerializer
 {
 
+
     /**
      * Serializes data
      *
-     * @return string
+     * @return string|null
      */
-    public function serialize(): string
+    public function serialize()
     {
     }
 
     /**
      * Unserializes data
      *
-     * @param mixed $data
+     * @param string $data
+     *
      * @return void
      */
     public function unserialize($data): void
+    {
+    }
+
+    /**
+     * @todo Remove this when we get traits
+     * @param string $data
+     * @param bool $associative
+     * @param int $depth
+     * @param int $options
+     * @return mixed
+     */
+    private function getDecode(string $data, bool $associative = false, int $depth = 512, int $options = 0)
+    {
+    }
+
+    /**
+     * @todo Remove this when we get traits
+     * @param mixed $data
+     * @param int $options
+     * @param int $depth
+     * @return string
+     */
+    private function getEncode($data, int $options = 0, int $depth = 512): string
     {
     }
 }

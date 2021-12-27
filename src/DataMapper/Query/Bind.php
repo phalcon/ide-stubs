@@ -17,6 +17,7 @@ namespace Phalcon\DataMapper\Query;
  */
 class Bind
 {
+
     /**
      * @var int
      */
@@ -26,7 +27,6 @@ class Bind
      * @var array
      */
     protected $store = [];
-
 
     /**
      * @param mixed $value

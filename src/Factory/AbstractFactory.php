@@ -9,7 +9,6 @@
  */
 namespace Phalcon\Factory;
 
-use Phalcon\Config;
 use Phalcon\Config\ConfigInterface;
 
 /**
@@ -20,12 +19,8 @@ use Phalcon\Config\ConfigInterface;
  * For the full copyright and license information, please view the LICENSE.txt
  * file that was distributed with this source code.
  */
-abstract class AbstractFactory
+abstract class AbstractFactory extends \Phalcon\Factory\AbstractConfigFactory
 {
-    /**
-     * @var string
-     */
-    protected $exception = 'Phalcon\\\\Exception';
 
     /**
      * @var array
@@ -37,23 +32,12 @@ abstract class AbstractFactory
      */
     protected $services = [];
 
-
-    /**
-     * Checks the config if it is a valid object
-     *
-     * @param mixed $config
-     * @return array
-     */
-    protected function checkConfig($config): array
-    {
-    }
-
     /**
      * Returns the adapters for the factory
      *
-     * @return array
+     * @return string[]
      */
-    abstract protected function getAdapters(): array;
+    abstract protected function getServices(): array;
 
     /**
      * Checks if a service exists and throws an exception
@@ -72,16 +56,6 @@ abstract class AbstractFactory
      * @return void
      */
     protected function init(array $services = []): void
-    {
-    }
-
-    /**
-     * Returns the exception object for the child class
-     *
-     * @param string $message
-     * @return \Exception
-     */
-    protected function getException(string $message): \Exception
     {
     }
 }

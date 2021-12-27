@@ -17,4 +17,5 @@ namespace Phalcon\Messages;
 class Exception extends \Phalcon\Exception
 {
 
+
 }

@@ -15,6 +15,7 @@ namespace Phalcon\Annotations;
 interface ReaderInterface
 {
 
+
     /**
      * Reads annotations from the class docblocks, its methods and/or properties
      *

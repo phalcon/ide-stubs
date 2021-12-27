@@ -96,7 +96,6 @@ class Uniqueness extends AbstractCombinedFieldsValidator
      */
     private $columnMap = null;
 
-
     /**
      * Constructor
      *

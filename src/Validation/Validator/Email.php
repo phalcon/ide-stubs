@@ -52,7 +52,6 @@ class Email extends AbstractValidator
 
     protected $template = 'Field :field must be an email address';
 
-
     /**
      * Constructor
      *

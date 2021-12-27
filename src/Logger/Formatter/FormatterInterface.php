@@ -19,11 +19,13 @@ use Phalcon\Logger\Item;
 interface FormatterInterface
 {
 
+
     /**
      * Applies a format to an item
      *
-     * @param \Phalcon\Logger\Item $item
-     * @return string|array
+     * @param Item $item
+     *
+     * @return string
      */
     public function format(\Phalcon\Logger\Item $item);
 }

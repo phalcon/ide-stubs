@@ -17,6 +17,7 @@ use Phalcon\DataMapper\Pdo\Connection;
 class Insert extends \Phalcon\DataMapper\Query\AbstractQuery
 {
 
+
     /**
      * Insert constructor.
      *

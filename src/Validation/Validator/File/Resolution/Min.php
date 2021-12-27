@@ -62,7 +62,6 @@ class Min extends AbstractFile
 
     protected $template = 'File :field can not have the minimum resolution of :resolution';
 
-
     /**
      * Constructor
      *

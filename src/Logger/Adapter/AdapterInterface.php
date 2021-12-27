@@ -20,10 +20,12 @@ use Phalcon\Logger\Item;
 interface AdapterInterface
 {
 
+
     /**
      * Adds a message in the queue
      *
-     * @param \Phalcon\Logger\Item $item
+     * @param Item $item
+     *
      * @return AdapterInterface
      */
     public function add(\Phalcon\Logger\Item $item): AdapterInterface;
@@ -67,7 +69,7 @@ interface AdapterInterface
     /**
      * Processes the message in the adapter
      *
-     * @param \Phalcon\Logger\Item $item
+     * @param Item $item
      * @return void
      */
     public function process(\Phalcon\Logger\Item $item): void;
@@ -82,7 +84,8 @@ interface AdapterInterface
     /**
      * Sets the message formatter
      *
-     * @param \Phalcon\Logger\Formatter\FormatterInterface $formatter
+     * @param FormatterInterface $formatter
+     *
      * @return AdapterInterface
      */
     public function setFormatter(\Phalcon\Logger\Formatter\FormatterInterface $formatter): AdapterInterface;

@@ -14,8 +14,6 @@ use Phalcon\Di\DiInterface;
 use Phalcon\Di\Injectable;
 use Phalcon\Events\EventsAwareInterface;
 use Phalcon\Events\ManagerInterface;
-use Phalcon\Helper\Arr;
-use Phalcon\Helper\Str;
 use Phalcon\Mvc\ViewBaseInterface;
 use Phalcon\Mvc\View\Engine\EngineInterface;
 use Phalcon\Mvc\View\Engine\Php as PhpEngine;
@@ -49,6 +47,7 @@ use Phalcon\Mvc\View\Engine\Php as PhpEngine;
  */
 class Simple extends Injectable implements \Phalcon\Mvc\ViewBaseInterface, \Phalcon\Events\EventsAwareInterface
 {
+
     /**
      * @var string
      */
@@ -88,7 +87,6 @@ class Simple extends Injectable implements \Phalcon\Mvc\ViewBaseInterface, \Phal
      * @var array
      */
     protected $viewParams = [];
-
 
     /**
      * @return array|null
@@ -348,6 +346,15 @@ class Simple extends Injectable implements \Phalcon\Mvc\ViewBaseInterface, \Phal
      * @return void
      */
     final protected function internalRender(string $path, $params): void
+    {
+    }
+
+    /**
+     * @todo Remove this when we get traits
+     * @param string $directory
+     * @return string
+     */
+    private function getDirSeparator(string $directory): string
     {
     }
 }

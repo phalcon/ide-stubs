@@ -18,11 +18,11 @@ use Phalcon\DataMapper\Pdo\Connection;
  */
 class QueryFactory
 {
+
     /**
      * @var string
      */
     protected $selectClass = '';
-
 
     /**
      * QueryFactory constructor.

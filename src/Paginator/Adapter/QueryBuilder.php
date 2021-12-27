@@ -38,6 +38,7 @@ use Phalcon\Paginator\Exception;
  */
 class QueryBuilder extends \Phalcon\Paginator\Adapter\AbstractAdapter
 {
+
     /**
      * Paginator's data
      *
@@ -51,7 +52,6 @@ class QueryBuilder extends \Phalcon\Paginator\Adapter\AbstractAdapter
      * @var array|string
      */
     protected $columns;
-
 
     /**
      * Phalcon\Paginator\Adapter\QueryBuilder

@@ -14,11 +14,11 @@ namespace Phalcon\Forms;
  */
 class Manager
 {
+
     /**
      * @var array
      */
     protected $forms = [];
-
 
     /**
      * Creates a form registering it in the forms manager

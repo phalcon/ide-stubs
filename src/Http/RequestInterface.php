@@ -18,6 +18,7 @@ use stdClass;
 interface RequestInterface
 {
 
+
     /**
      * Gets a variable from the $_REQUEST superglobal applying filters if
      * needed. If no parameters are given the $_REQUEST superglobal is returned
@@ -187,7 +188,7 @@ interface RequestInterface
      * Gets decoded JSON HTTP raw request body
      *
      * @param bool $associative
-     * @return 0|1|stdClass
+     * @return array|bool|stdClass
      */
     public function getJsonRawBody(bool $associative = false);
 

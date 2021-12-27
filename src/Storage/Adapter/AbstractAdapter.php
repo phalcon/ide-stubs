@@ -11,24 +11,29 @@ namespace Phalcon\Storage\Adapter;
 
 use DateInterval;
 use DateTime;
-use Phalcon\Helper\Arr;
-use Phalcon\Helper\Str;
-use Phalcon\Storage\Exception;
-use Phalcon\Storage\SerializerFactory;
+use Exception;
 use Phalcon\Storage\Serializer\SerializerInterface;
+use Phalcon\Storage\SerializerFactory;
+use Phalcon\Support\Exception as SupportException;
 
 /**
- * This file is part of the Phalcon Framework.
+ * Class AbstractAdapter
  *
- * (c) Phalcon Team <team@phalcon.io>
+ * @package Phalcon\Storage\Adapter
  *
- * For the full copyright and license information, please view the LICENSE.txt
- * file that was distributed with this source code.
+ * @property mixed               $adapter
+ * @property string              $defaultSerializer
+ * @property int                 $lifetime
+ * @property array               $options
+ * @property string              $prefix
+ * @property SerializerInterface $serializer
+ * @property SerializerFactory   $serializerFactory
  */
 abstract class AbstractAdapter implements \Phalcon\Storage\Adapter\AdapterInterface
 {
+
     /**
-     * @var mixed|null
+     * @var mixed
      */
     protected $adapter;
 
@@ -37,7 +42,7 @@ abstract class AbstractAdapter implements \Phalcon\Storage\Adapter\AdapterInterf
      *
      * @var string
      */
-    protected $defaultSerializer = 'Php';
+    protected $defaultSerializer = 'php';
 
     /**
      * Name of the default TTL (time to live)
@@ -47,14 +52,19 @@ abstract class AbstractAdapter implements \Phalcon\Storage\Adapter\AdapterInterf
     protected $lifetime = 3600;
 
     /**
+     * @var array
+     */
+    protected $options = [];
+
+    /**
      * @var string
      */
-    protected $prefix = '';
+    protected $prefix = 'ph-memo-';
 
     /**
      * Serializer
      *
-     * @var SerializerInterface
+     * @var SerializerInterface|null
      */
     protected $serializer;
 
@@ -64,7 +74,6 @@ abstract class AbstractAdapter implements \Phalcon\Storage\Adapter\AdapterInterf
      * @var SerializerFactory
      */
     protected $serializerFactory;
-
 
     /**
      * Name of the default serializer class
@@ -76,31 +85,10 @@ abstract class AbstractAdapter implements \Phalcon\Storage\Adapter\AdapterInterf
     }
 
     /**
-     * Name of the default serializer class
+     * AbstractAdapter constructor.
      *
-     * @param string $defaultSerializer
-     */
-    public function setDefaultSerializer(string $defaultSerializer)
-    {
-    }
-
-    /**
-     * @return string
-     */
-    public function getPrefix(): string
-    {
-    }
-
-    /**
-     * Sets parameters based on options
-     *
-     * @param array $options = [
-     *     'defaultSerializer' => 'Php',
-     *     'lifetime' => 3600,
-     *     'serializer' => null,
-     *     'prefix' => ''
-     * ]
-     * @param \Phalcon\Storage\SerializerFactory $factory
+     * @param SerializerFactory $factory
+     * @param array             $options
      */
     protected function __construct(\Phalcon\Storage\SerializerFactory $factory, array $options = [])
     {
@@ -117,8 +105,9 @@ abstract class AbstractAdapter implements \Phalcon\Storage\Adapter\AdapterInterf
      * Decrements a stored number
      *
      * @param string $key
-     * @param int $value
-     * @return int|bool
+     * @param int    $value
+     *
+     * @return int | bool
      */
     abstract public function decrement(string $key, int $value = 1);
 
@@ -126,6 +115,7 @@ abstract class AbstractAdapter implements \Phalcon\Storage\Adapter\AdapterInterf
      * Deletes data from the adapter
      *
      * @param string $key
+     *
      * @return bool
      */
     abstract public function delete(string $key): bool;
@@ -133,8 +123,9 @@ abstract class AbstractAdapter implements \Phalcon\Storage\Adapter\AdapterInterf
     /**
      * Reads data from the adapter
      *
-     * @param string $key
-     * @param mixed|null $defaultValue *
+     * @param string     $key
+     * @param mixed|null $defaultValue
+     *
      * @return mixed
      */
     abstract public function get(string $key, $defaultValue = null);
@@ -144,20 +135,33 @@ abstract class AbstractAdapter implements \Phalcon\Storage\Adapter\AdapterInterf
      *
      * @return mixed
      */
-    abstract public function getAdapter();
+    public function getAdapter()
+    {
+    }
 
     /**
      * Returns all the keys stored
      *
      * @param string $prefix
+     *
      * @return array
      */
     abstract public function getKeys(string $prefix = ''): array;
 
     /**
+     * Returns the prefix
+     *
+     * @return string
+     */
+    public function getPrefix(): string
+    {
+    }
+
+    /**
      * Checks if an element exists in the cache
      *
      * @param string $key
+     *
      * @return bool
      */
     abstract public function has(string $key): bool;
@@ -166,20 +170,30 @@ abstract class AbstractAdapter implements \Phalcon\Storage\Adapter\AdapterInterf
      * Increments a stored number
      *
      * @param string $key
-     * @param int $value
-     * @return int|bool
+     * @param int    $value
+     *
+     * @return int | bool
      */
     abstract public function increment(string $key, int $value = 1);
 
     /**
      * Stores data in the adapter
      *
-     * @param string $key
-     * @param mixed $value
+     * @param string                $key
+     * @param mixed                 $value
      * @param DateInterval|int|null $ttl
+     *
      * @return bool
      */
     abstract public function set(string $key, $value, $ttl = null): bool;
+
+    /**
+     * @param string $serializer
+     * @return void
+     */
+    public function setDefaultSerializer(string $serializer): void
+    {
+    }
 
     /**
      * Filters the keys array based on global and passed prefix
@@ -196,7 +210,8 @@ abstract class AbstractAdapter implements \Phalcon\Storage\Adapter\AdapterInterf
     /**
      * Returns the key requested, prefixed
      *
-     * @param mixed $key
+     * @param string $key
+     *
      * @return string
      */
     protected function getPrefixedKey($key): string
@@ -207,6 +222,7 @@ abstract class AbstractAdapter implements \Phalcon\Storage\Adapter\AdapterInterf
      * Returns serialized data
      *
      * @param mixed $content
+     *
      * @return mixed
      */
     protected function getSerializedData($content)
@@ -228,19 +244,34 @@ abstract class AbstractAdapter implements \Phalcon\Storage\Adapter\AdapterInterf
     /**
      * Returns unserialized data
      *
-     * @param mixed $content
+     * @param mixed      $content
+     * @param mixed|null $defaultValue
+     *
      * @return mixed
      */
-    protected function getUnserializedData($content)
+    protected function getUnserializedData($content, $defaultValue = null)
     {
     }
 
     /**
      * Initializes the serializer
      *
+     * @throws SupportException
      * @return void
      */
     protected function initSerializer(): void
+    {
+    }
+
+    /**
+     * @todo Remove this when we get traits
+     * @param array $collection
+     * @param mixed $index
+     * @param mixed $defaultValue
+     * @param string $cast
+     * @return mixed
+     */
+    protected function getArrVal(array $collection, $index, $defaultValue = null, string $cast = null)
     {
     }
 }

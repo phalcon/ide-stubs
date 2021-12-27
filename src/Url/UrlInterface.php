@@ -15,6 +15,7 @@ namespace Phalcon\Url;
 interface UrlInterface
 {
 
+
     /**
      * Generates a URL
      *

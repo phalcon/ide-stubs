@@ -20,6 +20,7 @@ use Phalcon\Http\Response\HeadersInterface;
 interface ResponseInterface
 {
 
+
     /**
      * Appends a string to the HTTP response body
      *
@@ -189,7 +190,7 @@ interface ResponseInterface
     /**
      * Sends headers to the client
      *
-     * @return 0|ResponseInterface
+     * @return bool|ResponseInterface
      */
     public function sendHeaders();
 }

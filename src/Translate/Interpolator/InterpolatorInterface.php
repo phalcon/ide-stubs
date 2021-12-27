@@ -17,11 +17,13 @@ namespace Phalcon\Translate\Interpolator;
 interface InterpolatorInterface
 {
 
+
     /**
      * Replaces placeholders by the values passed
      *
      * @param string $translation
-     * @param array $placeholders
+     * @param array  $placeholders
+     *
      * @return string
      */
     public function replacePlaceholders(string $translation, array $placeholders = []): string;

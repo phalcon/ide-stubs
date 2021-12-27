@@ -19,6 +19,7 @@ use JsonSerializable;
  */
 class Messages implements \ArrayAccess, \Countable, \Iterator, \JsonSerializable
 {
+
     /**
      * @var int
      */
@@ -28,7 +29,6 @@ class Messages implements \ArrayAccess, \Countable, \Iterator, \JsonSerializable
      * @var array
      */
     protected $messages;
-
 
     /**
      * Phalcon\Messages\Messages constructor

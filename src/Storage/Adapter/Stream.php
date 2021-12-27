@@ -9,45 +9,50 @@
  */
 namespace Phalcon\Storage\Adapter;
 
+use DateInterval;
 use FilesystemIterator;
 use Iterator;
-use Phalcon\Helper\Arr;
-use Phalcon\Helper\Str;
 use Phalcon\Storage\Exception;
 use Phalcon\Storage\SerializerFactory;
-use Phalcon\Storage\Serializer\SerializerInterface;
+use Phalcon\Storage\Traits\StorageErrorHandlerTrait;
+use Phalcon\Support\Exception as SupportException;
+use Phalcon\Traits\Helper\Str\DirFromFileTrait;
+use Phalcon\Traits\Helper\Str\DirSeparatorTrait;
+use Phalcon\Traits\Php\FileTrait;
 use RecursiveDirectoryIterator;
 use RecursiveIteratorIterator;
 
 /**
  * Stream adapter
+ *
+ * @property string $storageDir
+ * @property array  $options
  */
 class Stream extends \Phalcon\Storage\Adapter\AbstractAdapter
 {
+
+    /**
+     * @var string
+     */
+    protected $prefix = 'ph-strm';
+
     /**
      * @var string
      */
     protected $storageDir = '';
 
     /**
-     * @var array
-     */
-    protected $options = [];
-
-
-    /**
      * Stream constructor.
      *
-     * @param array $options = [
-     *     'storageDir' => '',
-     *     'defaultSerializer' => 'Php',
-     *     'lifetime' => 3600,
-     *     'serializer' => null,
-     *     'prefix' => ''
+     * @param SerializerFactory $factory
+     * @param array             $options = [
+     *     'storageDir'        => '',
+     *     'defaultSerializer' => 'php',
+     *     'lifetime'          => 3600,
+     *     'prefix'            => ''
      * ]
      *
      * @throws Exception
-     * @param \Phalcon\Storage\SerializerFactory $factory
      */
     public function __construct(\Phalcon\Storage\SerializerFactory $factory, array $options = [])
     {
@@ -69,7 +74,6 @@ class Stream extends \Phalcon\Storage\Adapter\AbstractAdapter
      * @param int    $value
      *
      * @return bool|int
-     * @throws \Exception
      */
     public function decrement(string $key, int $value = 1)
     {
@@ -89,20 +93,12 @@ class Stream extends \Phalcon\Storage\Adapter\AbstractAdapter
     /**
      * Reads data from the adapter
      *
-     * @param string $key
-     * @param mixed|null $defaultValue *
-     * @return mixed
+     * @param string     $key
+     * @param mixed|null $defaultValue
+     *
+     * @return mixed|null
      */
     public function get(string $key, $defaultValue = null)
-    {
-    }
-
-    /**
-     * Always returns null
-     *
-     * @return null
-     */
-    public function getAdapter()
     {
     }
 
@@ -110,6 +106,7 @@ class Stream extends \Phalcon\Storage\Adapter\AbstractAdapter
      * Stores data in the adapter
      *
      * @param string $prefix
+     *
      * @return array
      */
     public function getKeys(string $prefix = ''): array
@@ -134,7 +131,6 @@ class Stream extends \Phalcon\Storage\Adapter\AbstractAdapter
      * @param int    $value
      *
      * @return bool|int
-     * @throws \Exception
      */
     public function increment(string $key, int $value = 1)
     {
@@ -143,14 +139,26 @@ class Stream extends \Phalcon\Storage\Adapter\AbstractAdapter
     /**
      * Stores data in the adapter
      *
-     * @param string                $key
-     * @param mixed                 $value
+     * @param string                 $key
+     * @param mixed                  $value
      * @param \DateInterval|int|null $ttl
      *
      * @return bool
-     * @throws \Exception
      */
     public function set(string $key, $value, $ttl = null): bool
+    {
+    }
+
+    /**
+     * Stores data in the adapter forever. The key needs to manually deleted
+     * from the adapter.
+     *
+     * @param string $key
+     * @param mixed  $value
+     *
+     * @return bool
+     */
+    public function setForever(string $key, $value): bool
     {
     }
 
@@ -169,6 +177,7 @@ class Stream extends \Phalcon\Storage\Adapter\AbstractAdapter
      * Returns the full path to the file
      *
      * @param string $key
+     *
      * @return string
      */
     private function getFilepath(string $key): string
@@ -179,6 +188,7 @@ class Stream extends \Phalcon\Storage\Adapter\AbstractAdapter
      * Returns an iterator for the directory contents
      *
      * @param string $dir
+     *
      * @return Iterator
      */
     private function getIterator(string $dir): Iterator
@@ -190,6 +200,7 @@ class Stream extends \Phalcon\Storage\Adapter\AbstractAdapter
      * went wrong
      *
      * @param string $filepath
+     *
      * @return array
      */
     private function getPayload(string $filepath): array
@@ -204,6 +215,36 @@ class Stream extends \Phalcon\Storage\Adapter\AbstractAdapter
      * @return bool
      */
     private function isExpired(array $payload): bool
+    {
+    }
+
+    /**
+     * Stores an array payload on the file system
+     *
+     * @param array  $payload
+     * @param string $key
+     *
+     * @return bool
+     */
+    private function storePayload(array $payload, string $key): bool
+    {
+    }
+
+    /**
+     * @todo Remove this when we get traits
+     * @param string $file
+     * @return string
+     */
+    private function getDirFromFile(string $file): string
+    {
+    }
+
+    /**
+     * @todo Remove this when we get traits
+     * @param string $directory
+     * @return string
+     */
+    private function getDirSeparator(string $directory): string
     {
     }
 }
