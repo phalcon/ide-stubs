@@ -12,21 +12,13 @@ namespace Phalcon\Logger\Adapter;
 use Phalcon\Logger\Item;
 
 /**
- * Phalcon\Logger\Adapter\Noop
+ * Class Noop
  *
- * Adapter to store logs in plain text files
- *
- * ```php
- * $logger = new \Phalcon\Logger\Adapter\Noop();
- *
- * $logger->log(\Phalcon\Logger::ERROR, "This is an error");
- * $logger->error("This is another error");
- *
- * $logger->close();
- * ```
+ * @package Phalcon\Logger\Adapter
  */
 class Noop extends \Phalcon\Logger\Adapter\AbstractAdapter
 {
+
 
     /**
      * Closes the stream
@@ -40,7 +32,7 @@ class Noop extends \Phalcon\Logger\Adapter\AbstractAdapter
     /**
      * Processes the message i.e. writes it to the file
      *
-     * @param \Phalcon\Logger\Item $item
+     * @param Item $item
      * @return void
      */
     public function process(\Phalcon\Logger\Item $item): void

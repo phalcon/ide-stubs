@@ -14,7 +14,6 @@ namespace Phalcon\Cli\Router;
  */
 class Route implements \Phalcon\Cli\Router\RouteInterface
 {
-
     const DEFAULT_DELIMITER = ' ';
 
     /**
@@ -71,7 +70,6 @@ class Route implements \Phalcon\Cli\Router\RouteInterface
      * @var int|string
      */
     protected static $uniqueId = 0;
-
 
     /**
      * @param array|string $paths

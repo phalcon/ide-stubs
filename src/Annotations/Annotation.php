@@ -14,6 +14,7 @@ namespace Phalcon\Annotations;
  */
 class Annotation
 {
+
     /**
      * Annotation Arguments
      *
@@ -34,7 +35,6 @@ class Annotation
      * @var string|null
      */
     protected $name;
-
 
     /**
      * Phalcon\Annotations\Annotation constructor

@@ -329,7 +329,6 @@ class Column implements \Phalcon\Db\ColumnInterface
      */
     protected $unsigned = false;
 
-
     /**
      * Default column value
      *

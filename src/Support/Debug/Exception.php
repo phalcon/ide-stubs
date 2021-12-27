@@ -12,7 +12,8 @@ namespace Phalcon\Support\Debug;
 /**
  * Exceptions thrown in Phalcon\Debug will use this class
  */
-class Exception extends \Phalcon\Exception
+class Exception extends \Exception
 {
+
 
 }

@@ -14,7 +14,8 @@ namespace Phalcon\Http\Request;
  *
  * Exceptions thrown in Phalcon\Http\Request will use this class
  */
-class Exception extends \Phalcon\Exception
+class Exception extends \Exception
 {
+
 
 }

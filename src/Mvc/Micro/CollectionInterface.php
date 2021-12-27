@@ -17,6 +17,7 @@ namespace Phalcon\Mvc\Micro;
 interface CollectionInterface
 {
 
+
     /**
      * Maps a route to a handler that only matches if the HTTP method is DELETE
      *

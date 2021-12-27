@@ -9,17 +9,21 @@
  */
 namespace Phalcon\Translate\Adapter;
 
-use Phalcon\Helper\Arr;
+use Phalcon\Support\Helper\Arr\Get;
 use Phalcon\Translate\Exception;
 use Phalcon\Translate\InterpolatorFactory;
 
 /**
- * Phalcon\Translate\Adapter
+ * Class AbstractAdapter
  *
- * Base class for Phalcon\Translate adapters
+ * @package Phalcon\Translate\Adapter
+ *
+ * @property string              $defaultInterpolator
+ * @property InterpolatorFactory $interpolatorFactory
  */
 abstract class AbstractAdapter implements \Phalcon\Translate\Adapter\AdapterInterface
 {
+
     /**
      * @var string
      */
@@ -30,20 +34,22 @@ abstract class AbstractAdapter implements \Phalcon\Translate\Adapter\AdapterInte
      */
     protected $interpolatorFactory;
 
-
     /**
-     * @param \Phalcon\Translate\InterpolatorFactory $interpolator
-     * @param array $options
+     * AbstractAdapter constructor.
+     *
+     * @param InterpolatorFactory $interpolator
+     * @param array               $options
      */
-    public function __construct(\Phalcon\Translate\InterpolatorFactory $interpolator, array $options)
+    public function __construct(\Phalcon\Translate\InterpolatorFactory $interpolator, array $options = [])
     {
     }
 
     /**
      * Returns the translation string of the given key (alias of method 't')
      *
-     * @param array $placeholders
      * @param string $translateKey
+     * @param array  $placeholders
+     *
      * @return string
      */
     public function _(string $translateKey, array $placeholders = []): string
@@ -54,6 +60,7 @@ abstract class AbstractAdapter implements \Phalcon\Translate\Adapter\AdapterInte
      * Check whether a translation key exists
      *
      * @param mixed $translateKey
+     *
      * @return bool
      */
     public function offsetExists($translateKey): bool
@@ -64,6 +71,7 @@ abstract class AbstractAdapter implements \Phalcon\Translate\Adapter\AdapterInte
      * Returns the translation related to the given key
      *
      * @param mixed $translateKey
+     *
      * @return mixed
      */
     public function offsetGet($translateKey)
@@ -73,8 +81,10 @@ abstract class AbstractAdapter implements \Phalcon\Translate\Adapter\AdapterInte
     /**
      * Sets a translation value
      *
-     * @param string $value
      * @param mixed $offset
+     * @param mixed $value
+     *
+     * @throws Exception
      * @return void
      */
     public function offsetSet($offset, $value): void
@@ -85,6 +95,8 @@ abstract class AbstractAdapter implements \Phalcon\Translate\Adapter\AdapterInte
      * Unsets a translation from the dictionary
      *
      * @param mixed $offset
+     *
+     * @throws Exception
      * @return void
      */
     public function offsetUnset($offset): void
@@ -94,8 +106,9 @@ abstract class AbstractAdapter implements \Phalcon\Translate\Adapter\AdapterInte
     /**
      * Returns the translation string of the given key
      *
-     * @param array $placeholders
      * @param string $translateKey
+     * @param array  $placeholders
+     *
      * @return string
      */
     public function t(string $translateKey, array $placeholders = []): string
@@ -106,7 +119,8 @@ abstract class AbstractAdapter implements \Phalcon\Translate\Adapter\AdapterInte
      * Replaces placeholders by the values passed
      *
      * @param string $translation
-     * @param array $placeholders
+     * @param array  $placeholders
+     *
      * @return string
      */
     protected function replacePlaceholders(string $translation, array $placeholders = []): string

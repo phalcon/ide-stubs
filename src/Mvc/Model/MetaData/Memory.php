@@ -20,6 +20,7 @@ use Phalcon\Mvc\Model\Exception;
 class Memory extends MetaData
 {
 
+
     /**
      * Phalcon\Mvc\Model\MetaData\Memory constructor
      *

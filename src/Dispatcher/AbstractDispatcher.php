@@ -26,6 +26,7 @@ use Phalcon\Mvc\Model\BinderInterface;
  */
 abstract class AbstractDispatcher extends AbstractInjectionAware implements \Phalcon\Dispatcher\DispatcherInterface, \Phalcon\Events\EventsAwareInterface
 {
+
     /**
      * @var object|null
      */
@@ -151,7 +152,6 @@ abstract class AbstractDispatcher extends AbstractInjectionAware implements \Pha
      */
     protected $returnedValue = null;
 
-
     /**
      * @param mixed $handler
      * @param string $actionMethod
@@ -187,7 +187,7 @@ abstract class AbstractDispatcher extends AbstractInjectionAware implements \Pha
      * );
      * ```
      *
-     * @throws \Phalcon\Exception
+     * @throws PhalconException
      * @param array $forward
      * @return void
      */

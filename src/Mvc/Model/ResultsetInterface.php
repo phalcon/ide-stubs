@@ -22,6 +22,7 @@ use Psr\SimpleCache\CacheInterface;
 interface ResultsetInterface
 {
 
+
     /**
      * Deletes every record in the resultset
      *

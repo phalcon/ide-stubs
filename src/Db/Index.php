@@ -40,6 +40,7 @@ namespace Phalcon\Db;
  */
 class Index implements \Phalcon\Db\IndexInterface
 {
+
     /**
      * Index columns
      *
@@ -60,7 +61,6 @@ class Index implements \Phalcon\Db\IndexInterface
      * @var string
      */
     protected $type;
-
 
     /**
      * Index columns

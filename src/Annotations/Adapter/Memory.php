@@ -17,17 +17,17 @@ use Phalcon\Annotations\Reflection;
  */
 class Memory extends \Phalcon\Annotations\Adapter\AbstractAdapter
 {
+
     /**
      * @var mixed
      */
     protected $data;
 
-
     /**
      * Reads parsed annotations from memory
      *
      * @param string $key
-     * @return 0|Reflection
+     * @return bool|Reflection
      */
     public function read(string $key)
     {

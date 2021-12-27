@@ -22,7 +22,6 @@ use SplPriorityQueue;
  */
 class Manager implements \Phalcon\Events\ManagerInterface
 {
-
     const DEFAULT_PRIORITY = 100;
 
     /**
@@ -44,7 +43,6 @@ class Manager implements \Phalcon\Events\ManagerInterface
      * @var array
      */
     protected $responses = [];
-
 
     /**
      * Attach a listener to the events manager

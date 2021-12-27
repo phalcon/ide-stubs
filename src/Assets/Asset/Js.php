@@ -17,6 +17,7 @@ use Phalcon\Assets\Asset as AssetBase;
 class Js extends \Phalcon\Assets\Asset
 {
 
+
     /**
      * Phalcon\Assets\Asset\Js constructor
      *

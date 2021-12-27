@@ -16,10 +16,9 @@ use Phalcon\Db\DialectInterface;
 use Phalcon\Db\Enum;
 use Phalcon\Db\RawValue;
 use Phalcon\Di\AbstractInjectionAware;
-use Phalcon\Di;
+use Phalcon\Di\Di;
 use Phalcon\Di\DiInterface;
 use Phalcon\Events\ManagerInterface as EventsManagerInterface;
-use Phalcon\Helper\Arr;
 use Phalcon\Messages\Message;
 use Phalcon\Messages\MessageInterface;
 use Phalcon\Mvc\Model\BehaviorInterface;
@@ -40,7 +39,7 @@ use Phalcon\Mvc\Model\RelationInterface;
 use Phalcon\Mvc\Model\TransactionInterface;
 use Phalcon\Mvc\Model\ValidationFailed;
 use Phalcon\Mvc\ModelInterface;
-use Phalcon\Validation\ValidationInterface;
+use Phalcon\Filter\Validation\ValidationInterface;
 use Serializable;
 
 /**
@@ -82,27 +81,19 @@ use Serializable;
  */
 abstract class Model extends AbstractInjectionAware implements \Phalcon\Mvc\EntityInterface, \Phalcon\Mvc\ModelInterface, \Phalcon\Mvc\Model\ResultInterface, \Serializable, \JsonSerializable
 {
-
     const DIRTY_STATE_DETACHED = 2;
-
 
     const DIRTY_STATE_PERSISTENT = 0;
 
-
     const DIRTY_STATE_TRANSIENT = 1;
-
 
     const OP_CREATE = 1;
 
-
     const OP_DELETE = 3;
-
 
     const OP_NONE = 0;
 
-
     const OP_UPDATE = 2;
-
 
     const TRANSACTION_INDEX = 'transaction';
 
@@ -176,7 +167,6 @@ abstract class Model extends AbstractInjectionAware implements \Phalcon\Mvc\Enti
      * TODO: Make it always array in code
      */
     protected $uniqueTypes = null;
-
 
     /**
      * @return TransactionInterface|null
@@ -503,7 +493,7 @@ abstract class Model extends AbstractInjectionAware implements \Phalcon\Mvc\Enti
      * ```
      *
      * @param array|string|null $parameters
-     * @return 0|ResultsetInterface
+     * @return int|ResultsetInterface
      */
     public static function count($parameters = null)
     {
@@ -625,7 +615,7 @@ abstract class Model extends AbstractInjectionAware implements \Phalcon\Mvc\Enti
      * // encapsulate find it into an running transaction esp. useful for application unit-tests
      * // or complex business logic where we wanna control which transactions are used.
      *
-     * $myTransaction = new Transaction(\Phalcon\Di::getDefault());
+     * $myTransaction = new Transaction(\Phalcon\Di\Di::getDefault());
      * $myTransaction->begin();
      *
      * $newRobot = new Robot();
@@ -662,9 +652,9 @@ abstract class Model extends AbstractInjectionAware implements \Phalcon\Mvc\Enti
      * $myTransaction->rollback();
      *
      * // creating two different transactions
-     * $myTransaction1 = new Transaction(\Phalcon\Di::getDefault());
+     * $myTransaction1 = new Transaction(\Phalcon\Di\Di::getDefault());
      * $myTransaction1->begin();
-     * $myTransaction2 = new Transaction(\Phalcon\Di::getDefault());
+     * $myTransaction2 = new Transaction(\Phalcon\Di\Di::getDefault());
      * $myTransaction2->begin();
      *
      *  // add a new robots
@@ -790,7 +780,7 @@ abstract class Model extends AbstractInjectionAware implements \Phalcon\Mvc\Enti
      * echo "The first virtual robot name is ", $robot->name;
      *
      * // behaviour with transaction
-     * $myTransaction = new Transaction(\Phalcon\Di::getDefault());
+     * $myTransaction = new Transaction(\Phalcon\Di\Di::getDefault());
      * $myTransaction->begin();
      *
      * $newRobot = new Robot();
@@ -1325,7 +1315,7 @@ abstract class Model extends AbstractInjectionAware implements \Phalcon\Mvc\Enti
      * Sets the dirty state of the object using one of the DIRTY_STATE_ constants
      *
      * @param int $dirtyState
-     * @return 0|ModelInterface
+     * @return bool|ModelInterface
      */
     public function setDirtyState(int $dirtyState)
     {
@@ -1597,7 +1587,7 @@ abstract class Model extends AbstractInjectionAware implements \Phalcon\Mvc\Enti
      * @param \Phalcon\Mvc\Model\MetaDataInterface $metaData
      * @param \Phalcon\Db\Adapter\AdapterInterface $connection
      */
-    protected function exists(\Phalcon\Mvc\Model\MetaDataInterface $metaData, \Phalcon\Db\Adapter\AdapterInterface $connection): bool
+    protected function has(\Phalcon\Mvc\Model\MetaDataInterface $metaData, \Phalcon\Db\Adapter\AdapterInterface $connection): bool
     {
     }
 
@@ -1782,9 +1772,9 @@ abstract class Model extends AbstractInjectionAware implements \Phalcon\Mvc\Enti
      *
      * @param mixed $params
      * @param mixed $limit
-     * @return Query
+     * @return QueryInterface
      */
-    private static function getPreparedQuery($params, $limit = null): Query
+    private static function getPreparedQuery($params, $limit = null): QueryInterface
     {
     }
 
@@ -2130,8 +2120,8 @@ abstract class Model extends AbstractInjectionAware implements \Phalcon\Mvc\Enti
      *
      * ```php
      * use Phalcon\Mvc\Model;
-     * use Phalcon\Validation;
-     * use Phalcon\Validation\Validator\ExclusionIn;
+     * use Phalcon\Filter\Validation;
+     * use Phalcon\Filter\Validation\Validator\ExclusionIn;
      *
      * class Subscriptors extends Model
      * {
@@ -2156,10 +2146,10 @@ abstract class Model extends AbstractInjectionAware implements \Phalcon\Mvc\Enti
      * }
      * ```
      *
-     * @param \Phalcon\Validation\ValidationInterface $validator
+     * @param \Phalcon\Filter\Validation\ValidationInterface $validator
      * @return bool
      */
-    protected function validate(\Phalcon\Validation\ValidationInterface $validator): bool
+    protected function validate(\Phalcon\Filter\Validation\ValidationInterface $validator): bool
     {
     }
 
@@ -2168,8 +2158,8 @@ abstract class Model extends AbstractInjectionAware implements \Phalcon\Mvc\Enti
      *
      * ```php
      * use Phalcon\Mvc\Model;
-     * use Phalcon\Validation;
-     * use Phalcon\Validation\Validator\ExclusionIn;
+     * use Phalcon\Filter\Validation;
+     * use Phalcon\Filter\Validation\Validator\ExclusionIn;
      *
      * class Subscriptors extends Model
      * {

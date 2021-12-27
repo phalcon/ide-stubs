@@ -9,23 +9,20 @@
  */
 namespace Phalcon\Logger;
 
-use Phalcon\Config;
+use DateTimeZone;
 use Phalcon\Config\ConfigInterface;
-use Phalcon\Helper\Arr;
-use Phalcon\Logger;
+use Phalcon\Factory\AbstractConfigFactory;
 
 /**
- * Phalcon\Logger\LoggerFactory
- *
- * Logger factory
+ * Factory creating logger objects
  */
-class LoggerFactory
+class LoggerFactory extends AbstractConfigFactory
 {
+
     /**
      * @var AdapterFactory
      */
     private $adapterFactory;
-
 
     /**
      * @param AdapterFactory $factory
@@ -37,16 +34,18 @@ class LoggerFactory
     /**
      * Factory to create an instance from a Config object
      *
-     * @param array|\Phalcon\Config $config = [
-     *     'name' => 'messages',
+     * @param array|ConfigInterface $config = [
+     *     'name'     => 'messages',
      *     'adapters' => [
-     *         'adapter' => 'stream',
-     *         'name' => 'file.log',
-     *         'options' => [
-     *             'mode' => 'ab',
-     *             'option' => null,
-     *             'facility' => null
-     *         ]
+     *         'adapter-name' => [
+     *              'adapter' => 'stream',
+     *              'name'    => 'file.log',
+     *              'options' => [
+     *                  'mode'     => 'ab',
+     *                  'option'   => null,
+     *                  'facility' => null
+     *              ],
+     *         ],
      *     ]
      * ]
      * @return Logger
@@ -58,12 +57,31 @@ class LoggerFactory
     /**
      * Returns a Logger object
      *
-     * @param string $name
-     * @param array  $adapters
+     * @param string            $name
+     * @param array             $adapters
+     * @param DateTimeZone|null $timezone
      *
      * @return Logger
      */
-    public function newInstance(string $name, array $adapters = []): Logger
+    public function newInstance(string $name, array $adapters = [], \DateTimeZone $timezone = null): Logger
+    {
+    }
+
+    /**
+     * @todo Remove this when we get traits
+     * @param array $collection
+     * @param mixed $index
+     * @param mixed $defaultValue
+     * @return mixed
+     */
+    protected function getArrVal(array $collection, $index, $defaultValue = null)
+    {
+    }
+
+    /**
+     * @return string
+     */
+    protected function getExceptionClass(): string
     {
     }
 }

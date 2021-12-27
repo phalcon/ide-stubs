@@ -27,6 +27,7 @@ use Phalcon\Di\InjectionAwareInterface;
  */
 class Compiler implements \Phalcon\Di\InjectionAwareInterface
 {
+
     /**
      * @var bool
      */
@@ -135,7 +136,6 @@ class Compiler implements \Phalcon\Di\InjectionAwareInterface
      * @var ViewBaseInterface|null
      */
     protected $view;
-
 
     /**
      * Phalcon\Mvc\View\Engine\Volt\Compiler
@@ -406,10 +406,11 @@ class Compiler implements \Phalcon\Di\InjectionAwareInterface
      * Fires an event to registered extensions
      *
      * @param string $name
-     * @param array $arguments *
+     * @param array  $arguments
+     *
      * @return mixed
      */
-    final public function fireExtensionEvent(string $name, $arguments = null)
+    final public function fireExtensionEvent(string $name, array $arguments = [])
     {
     }
 

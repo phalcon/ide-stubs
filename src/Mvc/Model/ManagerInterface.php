@@ -22,6 +22,7 @@ use Phalcon\Mvc\Model\Query\StatusInterface;
 interface ManagerInterface
 {
 
+
     /**
      * Binds a behavior to a model
      *
@@ -124,51 +125,6 @@ interface ManagerInterface
     public function executeQuery(string $phql, $placeholders = null, $types = null);
 
     /**
-     * Checks whether a model has a belongsTo relation with another model
-     *
-     * @param string $modelName
-     * @param string $modelRelation
-     * @return bool
-     */
-    public function existsBelongsTo(string $modelName, string $modelRelation): bool;
-
-    /**
-     * Checks whether a model has a hasMany relation with another model
-     *
-     * @param string $modelName
-     * @param string $modelRelation
-     * @return bool
-     */
-    public function existsHasMany(string $modelName, string $modelRelation): bool;
-
-    /**
-     * Checks whether a model has a hasOne relation with another model
-     *
-     * @param string $modelName
-     * @param string $modelRelation
-     * @return bool
-     */
-    public function existsHasOne(string $modelName, string $modelRelation): bool;
-
-    /**
-     * Checks whether a model has a hasOneThrough relation with another model
-     *
-     * @param string $modelName
-     * @param string $modelRelation
-     * @return bool
-     */
-    public function existsHasOneThrough(string $modelName, string $modelRelation): bool;
-
-    /**
-     * Checks whether a model has a hasManyToMany relation with another model
-     *
-     * @param string $modelName
-     * @param string $modelRelation
-     * @return bool
-     */
-    public function existsHasManyToMany(string $modelName, string $modelRelation): bool;
-
-    /**
      * Gets belongsTo relations defined on a model
      *
      * @param \Phalcon\Mvc\ModelInterface $model
@@ -184,7 +140,7 @@ interface ManagerInterface
      * @param array|string|null $parameters
      * @param ModelInterface    $record
      * @param string|null       $method
-     * @return 0|ResultsetInterface
+     * @return bool|ResultsetInterface
      */
     public function getBelongsToRecords(string $modelName, string $modelRelation, \Phalcon\Mvc\ModelInterface $record, $parameters = null, string $method = null);
 
@@ -204,7 +160,7 @@ interface ManagerInterface
      * @param array|string|null $parameters
      * @param ModelInterface    $record
      * @param string|null       $method
-     * @return 0|ResultsetInterface
+     * @return bool|ResultsetInterface
      */
     public function getHasManyRecords(string $modelName, string $modelRelation, \Phalcon\Mvc\ModelInterface $record, $parameters = null, string $method = null);
 
@@ -248,7 +204,7 @@ interface ManagerInterface
      * @param array|string|null $parameters
      * @param ModelInterface    $record
      * @param string|null       $method
-     * @return 0|ModelInterface
+     * @return bool|ModelInterface
      */
     public function getHasOneRecords(string $modelName, string $modelRelation, \Phalcon\Mvc\ModelInterface $record, $parameters = null, string $method = null);
 
@@ -350,6 +306,51 @@ interface ManagerInterface
      * @return string
      */
     public function getWriteConnectionService(\Phalcon\Mvc\ModelInterface $model): string;
+
+    /**
+     * Checks whether a model has a belongsTo relation with another model
+     *
+     * @param string $modelName
+     * @param string $modelRelation
+     * @return bool
+     */
+    public function hasBelongsTo(string $modelName, string $modelRelation): bool;
+
+    /**
+     * Checks whether a model has a hasMany relation with another model
+     *
+     * @param string $modelName
+     * @param string $modelRelation
+     * @return bool
+     */
+    public function hasHasMany(string $modelName, string $modelRelation): bool;
+
+    /**
+     * Checks whether a model has a hasOne relation with another model
+     *
+     * @param string $modelName
+     * @param string $modelRelation
+     * @return bool
+     */
+    public function hasHasOne(string $modelName, string $modelRelation): bool;
+
+    /**
+     * Checks whether a model has a hasOneThrough relation with another model
+     *
+     * @param string $modelName
+     * @param string $modelRelation
+     * @return bool
+     */
+    public function hasHasOneThrough(string $modelName, string $modelRelation): bool;
+
+    /**
+     * Checks whether a model has a hasManyToMany relation with another model
+     *
+     * @param string $modelName
+     * @param string $modelRelation
+     * @return bool
+     */
+    public function hasHasManyToMany(string $modelName, string $modelRelation): bool;
 
     /**
      * Loads a model throwing an exception if it doesn't exist

@@ -19,6 +19,7 @@ use Phalcon\Mvc\Model\TransactionInterface;
 interface ManagerInterface
 {
 
+
     /**
      * Remove all the transactions from the manager
      *

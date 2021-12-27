@@ -9,7 +9,6 @@
  */
 namespace Phalcon\Html\Helper\Input;
 
-use Phalcon\Helper\Arr;
 use Phalcon\Html\Exception;
 
 /**
@@ -17,11 +16,11 @@ use Phalcon\Html\Exception;
  */
 class Textarea extends \Phalcon\Html\Helper\Input\AbstractInput
 {
+
     /**
      * @var string
      */
     protected $type = 'textarea';
-
 
     /**
      * Returns the HTML for the input.

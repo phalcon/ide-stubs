@@ -20,6 +20,7 @@ use Phalcon\Html\Helper\AbstractHelper;
  */
 abstract class AbstractInput extends AbstractHelper
 {
+
     /**
      * @var string
      */
@@ -29,7 +30,6 @@ abstract class AbstractInput extends AbstractHelper
      * @var array
      */
     protected $attributes = [];
-
 
     /**
      * @param string      $name

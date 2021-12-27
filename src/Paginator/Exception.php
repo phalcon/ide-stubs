@@ -14,7 +14,8 @@ namespace Phalcon\Paginator;
  *
  * Exceptions thrown in Phalcon\Paginator will use this class
  */
-class Exception extends \Phalcon\Exception
+class Exception extends \Exception
 {
+
 
 }

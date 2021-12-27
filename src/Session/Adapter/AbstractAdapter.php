@@ -22,11 +22,11 @@ use SessionHandlerInterface;
  */
 abstract class AbstractAdapter implements \SessionHandlerInterface
 {
+
     /**
      * @var AdapterInterface
      */
     protected $adapter;
-
 
     /**
      * Close
@@ -85,6 +85,17 @@ abstract class AbstractAdapter implements \SessionHandlerInterface
      * @return bool
      */
     public function write($id, $data): bool
+    {
+    }
+
+    /**
+     * @todo Remove this when we get traits
+     * @param array $collection
+     * @param mixed $index
+     * @param mixed $defaultValue
+     * @return mixed
+     */
+    protected function getArrVal(array $collection, $index, $defaultValue = null)
     {
     }
 }

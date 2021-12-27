@@ -30,6 +30,7 @@ use Phalcon\Db\Adapter\AdapterInterface;
  */
 class Pdo implements \Phalcon\Db\ResultInterface
 {
+
     /**
      * @var array
      */
@@ -74,7 +75,6 @@ class Pdo implements \Phalcon\Db\ResultInterface
      * @var string|null
      */
     protected $sqlStatement = null;
-
 
     /**
      * Phalcon\Db\Result\Pdo constructor

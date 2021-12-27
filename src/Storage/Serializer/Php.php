@@ -10,7 +10,7 @@
 namespace Phalcon\Storage\Serializer;
 
 use InvalidArgumentException;
-use Phalcon\Storage\Exception;
+use Phalcon\Storage\Traits\StorageErrorHandlerTrait;
 
 /**
  * This file is part of the Phalcon Framework.
@@ -22,6 +22,7 @@ use Phalcon\Storage\Exception;
  */
 class Php extends \Phalcon\Storage\Serializer\AbstractSerializer
 {
+
 
     /**
      * Serializes data
@@ -35,10 +36,26 @@ class Php extends \Phalcon\Storage\Serializer\AbstractSerializer
     /**
      * Unserializes data
      *
-     * @param mixed $data
+     * @param string $data
      * @return void
      */
     public function unserialize($data): void
+    {
+    }
+
+    /**
+     * @param mixed $data
+     * @return void
+     */
+    private function processSerializable($data): void
+    {
+    }
+
+    /**
+     * @param mixed $data
+     * @return void
+     */
+    private function processNotSerializable($data): void
     {
     }
 }

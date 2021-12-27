@@ -17,6 +17,7 @@ use Phalcon\Storage\Serializer\SerializerInterface;
 interface AdapterInterface
 {
 
+
     /**
      * Flushes/clears the cache
      *
@@ -91,12 +92,28 @@ interface AdapterInterface
     public function increment(string $key, int $value = 1);
 
     /**
-     * Stores data in the adapter
+     * Stores data in the adapter. If the TTL is `null` (default) or not defined
+     * then the default TTL will be used, as set in this adapter. If the TTL
+     * is `0` or a negative number, a `delete()` will be issued, since this
+     * item has expired. If you need to set this key forever, you should use
+     * the `setForever()` method.
      *
-     * @param string $key
-     * @param mixed $value
+     * @param string                 $key
+     * @param mixed                  $value
      * @param \DateInterval|int|null $ttl
+     *
      * @return bool
      */
     public function set(string $key, $value, $ttl = null): bool;
+
+    /**
+     * Stores data in the adapter forever. The key needs to manually deleted
+     * from the adapter.
+     *
+     * @param string $key
+     * @param mixed  $value
+     *
+     * @return bool
+     */
+    public function setForever(string $key, $value): bool;
 }

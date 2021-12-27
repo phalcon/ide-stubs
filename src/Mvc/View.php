@@ -13,8 +13,6 @@ use Closure;
 use Phalcon\Di\DiInterface;
 use Phalcon\Di\Injectable;
 use Phalcon\Events\ManagerInterface;
-use Phalcon\Helper\Arr;
-use Phalcon\Helper\Str;
 use Phalcon\Mvc\View\Exception;
 use Phalcon\Events\EventsAwareInterface;
 use Phalcon\Mvc\View\Engine\Php as PhpEngine;
@@ -192,7 +190,6 @@ class View extends Injectable implements \Phalcon\Mvc\ViewInterface, \Phalcon\Ev
      */
     protected $viewParams = [];
 
-
     /**
      * @return int
      */
@@ -321,6 +318,7 @@ class View extends Injectable implements \Phalcon\Mvc\ViewInterface, \Phalcon\Ev
     /**
      * Checks whether view exists
      *
+     * @deprecated
      * @param string $view
      * @return bool
      */
@@ -513,6 +511,16 @@ class View extends Injectable implements \Phalcon\Mvc\ViewInterface, \Phalcon\Ev
     }
 
     /**
+     * Checks whether view exists
+     *
+     * @param string $view
+     * @return bool
+     */
+    public function has(string $view): bool
+    {
+    }
+
+    /**
      * Whether automatic rendering is enabled
      *
      * @return bool
@@ -602,7 +610,7 @@ class View extends Injectable implements \Phalcon\Mvc\ViewInterface, \Phalcon\Ev
      * @param string $controllerName
      * @param string $actionName
      * @param array $params
-     * @return 0|View
+     * @return bool|View
      */
     public function render(string $controllerName, string $actionName, array $params = [])
     {
@@ -878,6 +886,15 @@ class View extends Injectable implements \Phalcon\Mvc\ViewInterface, \Phalcon\Ev
      * @return bool
      */
     public function processRender(string $controllerName, string $actionName, array $params = [], bool $fireEvents = true): bool
+    {
+    }
+
+    /**
+     * @todo Remove this when we get traits
+     * @param string $directory
+     * @return string
+     */
+    private function getDirSeparator(string $directory): string
     {
     }
 }

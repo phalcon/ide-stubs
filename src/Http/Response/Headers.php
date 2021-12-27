@@ -16,6 +16,7 @@ namespace Phalcon\Http\Response;
  */
 class Headers implements \Phalcon\Http\Response\HeadersInterface
 {
+
     /**
      * @var array
      */
@@ -25,7 +26,6 @@ class Headers implements \Phalcon\Http\Response\HeadersInterface
      * @var bool
      */
     protected $isSent = false;
-
 
     /**
      * Gets a header value from the internal bag

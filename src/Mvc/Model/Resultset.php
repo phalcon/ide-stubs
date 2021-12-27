@@ -66,18 +66,13 @@ use Serializable;
  */
 abstract class Resultset implements \Phalcon\Mvc\Model\ResultsetInterface, \Iterator, \SeekableIterator, \Countable, \ArrayAccess, \Serializable, \JsonSerializable
 {
-
     const HYDRATE_ARRAYS = 1;
-
 
     const HYDRATE_OBJECTS = 2;
 
-
     const HYDRATE_RECORDS = 0;
 
-
     const TYPE_RESULT_FULL = 0;
-
 
     const TYPE_RESULT_PARTIAL = 1;
 
@@ -132,7 +127,6 @@ abstract class Resultset implements \Phalcon\Mvc\Model\ResultsetInterface, \Iter
      * @var ResultInterface|bool
      */
     protected $result;
-
 
     /**
      * Phalcon\Mvc\Model\Resultset constructor
@@ -304,7 +298,7 @@ abstract class Resultset implements \Phalcon\Mvc\Model\ResultsetInterface, \Iter
      * Gets row in a specific position of the resultset
      *
      * @param mixed $index
-     * @return 0|ModelInterface
+     * @return bool|ModelInterface
      */
     public function offsetGet($index)
     {

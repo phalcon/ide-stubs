@@ -9,7 +9,7 @@
  */
 namespace Phalcon\Config\Adapter;
 
-use Phalcon\Config;
+use Phalcon\Config\Config;
 use Phalcon\Config\ConfigFactory;
 use Phalcon\Config\ConfigInterface;
 use Phalcon\Config\Exception;
@@ -68,6 +68,7 @@ use Phalcon\Factory\Exception as FactoryException;
  */
 class Grouped extends Config
 {
+
 
     /**
      * Phalcon\Config\Adapter\Grouped constructor

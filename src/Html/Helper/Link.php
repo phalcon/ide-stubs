@@ -10,20 +10,19 @@
 namespace Phalcon\Html\Helper;
 
 /**
- * Class Link
+ * Creates <link> tags
  */
-class Link extends \Phalcon\Html\Helper\AbstractSeries
+class Link extends \Phalcon\Html\Helper\Style
 {
+
 
     /**
      * Add an element to the list
      *
-     * @param string $rel
-     * @param string $href
-     *
-     * @return Link
+     * @param string $url
+     * @param array  $attributes
      */
-    public function add(string $rel, string $href): Link
+    public function add(string $url, array $attributes = [])
     {
     }
 
@@ -31,6 +30,18 @@ class Link extends \Phalcon\Html\Helper\AbstractSeries
      * @return string
      */
     protected function getTag(): string
+    {
+    }
+
+    /**
+     * Returns the necessary attributes
+     *
+     * @param string $url
+     * @param array  $attributes
+     *
+     * @return array
+     */
+    protected function getAttributes(string $url, array $attributes): array
     {
     }
 }

@@ -18,11 +18,11 @@ use Phalcon\Tag\Select as SelectTag;
  */
 class Select extends \Phalcon\Forms\Element\AbstractElement
 {
+
     /**
      * @var object|array|null
      */
     protected $optionsValues = null;
-
 
     /**
      * Phalcon\Forms\Element constructor
@@ -71,6 +71,17 @@ class Select extends \Phalcon\Forms\Element\AbstractElement
      * @return ElementInterface
      */
     public function setOptions($options): ElementInterface
+    {
+    }
+
+    /**
+     * Returns an array of prepared attributes for Phalcon\Html\TagFactory
+     * helpers according to the element parameters
+     *
+     * @param array $attributes
+     * @return array
+     */
+    protected function prepareAttributes(array $attributes = []): array
     {
     }
 }

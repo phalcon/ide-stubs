@@ -17,6 +17,7 @@ use Phalcon\Html\Exception;
 class Meta extends \Phalcon\Html\Helper\AbstractSeries
 {
 
+
     /**
      * Add an element to the list
      *

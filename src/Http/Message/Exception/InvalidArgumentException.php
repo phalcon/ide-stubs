@@ -22,4 +22,5 @@ use Throwable;
 class InvalidArgumentException extends \InvalidArgumentException implements \Throwable
 {
 
+
 }

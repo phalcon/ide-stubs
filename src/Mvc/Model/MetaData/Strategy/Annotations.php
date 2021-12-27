@@ -26,6 +26,7 @@ use Phalcon\Mvc\Model\Exception;
 class Annotations implements \Phalcon\Mvc\Model\MetaData\Strategy\StrategyInterface
 {
 
+
     /**
      * Read the model's column map, this can't be inferred
      *

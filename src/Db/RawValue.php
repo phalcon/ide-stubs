@@ -25,13 +25,13 @@ namespace Phalcon\Db;
  */
 class RawValue
 {
+
     /**
      * Raw value without quoting or formatting
      *
      * @var string
      */
     protected $value;
-
 
     /**
      * Raw value without quoting or formatting

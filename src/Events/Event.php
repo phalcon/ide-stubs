@@ -26,6 +26,7 @@ namespace Phalcon\Events;
  */
 class Event implements \Phalcon\Events\EventInterface
 {
+
     /**
      * Is event cancelable?
      *
@@ -43,7 +44,7 @@ class Event implements \Phalcon\Events\EventInterface
     /**
      * Event source
      *
-     * @var object
+     * @var object|null
      */
     protected $source;
 
@@ -61,7 +62,6 @@ class Event implements \Phalcon\Events\EventInterface
      */
     protected $type;
 
-
     /**
      * Event data
      *
@@ -74,7 +74,7 @@ class Event implements \Phalcon\Events\EventInterface
     /**
      * Event source
      *
-     * @return object
+     * @return object|null
      */
     public function getSource()
     {
@@ -97,7 +97,7 @@ class Event implements \Phalcon\Events\EventInterface
      * @param mixed $data
      * @param bool $cancelable
      */
-    public function __construct(string $type, $source, $data = null, bool $cancelable = true)
+    public function __construct(string $type, $source = null, $data = null, bool $cancelable = true)
     {
     }
 

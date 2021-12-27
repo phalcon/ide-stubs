@@ -20,19 +20,21 @@ namespace Phalcon\Storage\Serializer;
 class Igbinary extends \Phalcon\Storage\Serializer\AbstractSerializer
 {
 
+
     /**
      * Serializes data
      *
      * @return string
      */
-    public function serialize(): string
+    public function serialize()
     {
     }
 
     /**
      * Unserializes data
      *
-     * @param mixed $data
+     * @param string $data
+     *
      * @return void
      */
     public function unserialize($data): void

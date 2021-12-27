@@ -11,10 +11,9 @@ namespace Phalcon\Http;
 
 use Phalcon\Di\DiInterface;
 use Phalcon\Di\AbstractInjectionAware;
-use Phalcon\Crypt\CryptInterface;
-use Phalcon\Crypt\Mismatch;
+use Phalcon\Encryption\Crypt\CryptInterface;
+use Phalcon\Encryption\Crypt\Mismatch;
 use Phalcon\Filter\FilterInterface;
-use Phalcon\Helper\Arr;
 use Phalcon\Http\Response\Exception;
 use Phalcon\Http\Cookie\CookieInterface;
 use Phalcon\Http\Cookie\Exception as CookieException;
@@ -25,6 +24,7 @@ use Phalcon\Session\ManagerInterface as SessionManagerInterface;
  */
 class Cookie extends AbstractInjectionAware implements \Phalcon\Http\Cookie\CookieInterface
 {
+
     /**
      * @var string
      */
@@ -91,7 +91,6 @@ class Cookie extends AbstractInjectionAware implements \Phalcon\Http\Cookie\Cook
      * @var mixed|null
      */
     protected $value = null;
-
 
     /**
      * Phalcon\Http\Cookie constructor.
@@ -338,6 +337,17 @@ class Cookie extends AbstractInjectionAware implements \Phalcon\Http\Cookie\Cook
      * @return void
      */
     protected function assertSignKeyIsLongEnough(string $signKey): void
+    {
+    }
+
+    /**
+     * @todo Remove this when we get traits
+     * @param array $collection
+     * @param mixed $index
+     * @param mixed $defaultValue
+     * @return mixed
+     */
+    private function getArrVal(array $collection, $index, $defaultValue = null)
     {
     }
 }

@@ -21,7 +21,7 @@ use Phalcon\Dispatcher\AbstractDispatcher as BaseDispatcher;
  * controller.
  *
  * ```php
- * $di = new \Phalcon\Di();
+ * $di = new \Phalcon\Di\Di();
  *
  * $dispatcher = new \Phalcon\Mvc\Dispatcher();
  *
@@ -39,12 +39,9 @@ class Dispatcher extends \Phalcon\Dispatcher\AbstractDispatcher implements \Phal
 
     protected $defaultAction = 'index';
 
-
     protected $defaultHandler = 'index';
 
-
     protected $handlerSuffix = 'Controller';
-
 
     /**
      * Forwards the execution flow to another controller/action.

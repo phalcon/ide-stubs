@@ -20,6 +20,7 @@ namespace Phalcon\Storage\Serializer;
 class Msgpack extends \Phalcon\Storage\Serializer\AbstractSerializer
 {
 
+
     /**
      * Serializes data
      *
@@ -32,7 +33,8 @@ class Msgpack extends \Phalcon\Storage\Serializer\AbstractSerializer
     /**
      * Unserializes data
      *
-     * @param mixed $data
+     * @param string $data
+     *
      * @return void
      */
     public function unserialize($data): void

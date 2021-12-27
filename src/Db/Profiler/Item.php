@@ -14,6 +14,7 @@ namespace Phalcon\Db\Profiler;
  */
 class Item
 {
+
     /**
      * Timestamp when the profile ended
      *
@@ -48,7 +49,6 @@ class Item
      * @var array
      */
     protected $sqlVariables;
-
 
     /**
      * Timestamp when the profile ended

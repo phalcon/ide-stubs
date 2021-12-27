@@ -20,6 +20,7 @@ use Phalcon\Mvc\Model\MetaData\Strategy\StrategyInterface;
 interface MetaDataInterface
 {
 
+
     /**
      * Returns table attributes names (fields)
      *

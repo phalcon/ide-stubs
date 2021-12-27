@@ -14,12 +14,18 @@ use Phalcon\Translate\Exception;
 use Phalcon\Translate\InterpolatorFactory;
 
 /**
- * Phalcon\Translate\Adapter\NativeArray
+ * Class NativeArray
  *
- * Allows to define translation lists using PHP arrays
+ * Defines translation lists using PHP arrays
+ *
+ * @package Phalcon\Translate\Adapter
+ *
+ * @property array $translate
+ * @property bool  $triggerError
  */
 class NativeArray extends \Phalcon\Translate\Adapter\AbstractAdapter implements \ArrayAccess
 {
+
     /**
      * @var array
      */
@@ -30,15 +36,16 @@ class NativeArray extends \Phalcon\Translate\Adapter\AbstractAdapter implements 
      */
     private $triggerError = false;
 
-
     /**
-     * Phalcon\Translate\Adapter\NativeArray constructor
+     * NativeArray constructor.
      *
-     * @param array $options = [
-     *     'content' => '',
-     *     'triggerError' => false
-     * ]
-     * @param \Phalcon\Translate\InterpolatorFactory $interpolator
+     * @param InterpolatorFactory $interpolator
+     * @param array               $options = [
+     *                                'content'      => '',
+     *                                'triggerError' => false
+     *                            ]
+     *
+     * @throws Exception
      */
     public function __construct(\Phalcon\Translate\InterpolatorFactory $interpolator, array $options)
     {
@@ -48,9 +55,22 @@ class NativeArray extends \Phalcon\Translate\Adapter\AbstractAdapter implements 
      * Check whether is defined a translation key in the internal array
      *
      * @param string $index
+     *
      * @return bool
+     * @deprecated
      */
     public function exists(string $index): bool
+    {
+    }
+
+    /**
+     * Check whether is defined a translation key in the internal array
+     *
+     * @param string $index
+     *
+     * @return bool
+     */
+    public function has(string $index): bool
     {
     }
 
@@ -58,7 +78,9 @@ class NativeArray extends \Phalcon\Translate\Adapter\AbstractAdapter implements 
      * Whenever a key is not found this method will be called
      *
      * @param string $index
+     *
      * @return string
+     * @throws Exception
      */
     public function notFound(string $index): string
     {
@@ -67,9 +89,12 @@ class NativeArray extends \Phalcon\Translate\Adapter\AbstractAdapter implements 
     /**
      * Returns the translation related to the given key
      *
-     * @param string $translateKey
-     * @param array $placeholders
+     * @param string $index
+     * @param array  $placeholders
+     *
      * @return string
+     * @throws Exception
+     * @param string $translateKey
      */
     public function query(string $translateKey, array $placeholders = []): string
     {

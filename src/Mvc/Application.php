@@ -66,6 +66,7 @@ use Phalcon\Mvc\ModuleDefinitionInterface;
  */
 class Application extends AbstractApplication
 {
+
     /**
      * @var bool
      */
@@ -81,12 +82,11 @@ class Application extends AbstractApplication
      */
     protected $sendHeaders = true;
 
-
     /**
      * Handles a MVC request
      *
      * @param string $uri
-     * @return 0|ResponseInterface
+     * @return bool|ResponseInterface
      */
     public function handle(string $uri)
     {

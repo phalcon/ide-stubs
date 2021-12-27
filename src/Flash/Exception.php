@@ -12,7 +12,8 @@ namespace Phalcon\Flash;
 /**
  * Exceptions thrown in Phalcon\Flash classes will use this class
  */
-class Exception extends \Phalcon\Exception
+class Exception extends \Exception
 {
+
 
 }

@@ -9,7 +9,7 @@
  */
 namespace Phalcon\Di;
 
-use Phalcon\Di;
+use Phalcon\Di\Di;
 use Phalcon\Session\BagInterface;
 
 /**
@@ -18,7 +18,7 @@ use Phalcon\Session\BagInterface;
  *
  * @property \Phalcon\Mvc\Dispatcher|\Phalcon\Mvc\DispatcherInterface $dispatcher
  * @property \Phalcon\Mvc\Router|\Phalcon\Mvc\RouterInterface $router
- * @property \Phalcon\Url|\Phalcon\Url\UrlInterface $url
+ * @property \Phalcon\Mvc\Url|\Phalcon\Mvc\Url\UrlInterface $url
  * @property \Phalcon\Http\Request|\Phalcon\Http\RequestInterface $request
  * @property \Phalcon\Http\Response|\Phalcon\Http\ResponseInterface $response
  * @property \Phalcon\Http\Response\Cookies|\Phalcon\Http\Response\CookiesInterface $cookies
@@ -29,27 +29,27 @@ use Phalcon\Session\BagInterface;
  * @property \Phalcon\Events\Manager|\Phalcon\Events\ManagerInterface $eventsManager
  * @property \Phalcon\Db\Adapter\AdapterInterface $db
  * @property \Phalcon\Security $security
- * @property \Phalcon\Crypt|\Phalcon\CryptInterface $crypt
+ * @property \Phalcon\Crypt\Crypt|\Phalcon\Crypt\CryptInterface $crypt
  * @property \Phalcon\Tag $tag
- * @property \Phalcon\Escaper|\Phalcon\Escaper\EscaperInterface $escaper
+ * @property \Phalcon\Html\Escaper|\Phalcon\Html\Escaper\EscaperInterface $escaper
  * @property \Phalcon\Annotations\Adapter\Memory|\Phalcon\Annotations\Adapter $annotations
  * @property \Phalcon\Mvc\Model\Manager|\Phalcon\Mvc\Model\ManagerInterface $modelsManager
  * @property \Phalcon\Mvc\Model\MetaData\Memory|\Phalcon\Mvc\Model\MetadataInterface $modelsMetadata
  * @property \Phalcon\Mvc\Model\Transaction\Manager|\Phalcon\Mvc\Model\Transaction\ManagerInterface $transactionManager
  * @property \Phalcon\Assets\Manager $assets
- * @property \Phalcon\Di|\Phalcon\Di\DiInterface $di
+ * @property \Phalcon\Di\Di|\Phalcon\Di\Di\DiInterface $di
  * @property \Phalcon\Session\Bag|\Phalcon\Session\BagInterface $persistent
  * @property \Phalcon\Mvc\View|\Phalcon\Mvc\ViewInterface $view
  */
 abstract class Injectable implements \Phalcon\Di\InjectionAwareInterface
 {
+
     /**
      * Dependency Injector
      *
      * @var DiInterface|null
      */
     protected $container = null;
-
 
     /**
      * Magic method __get

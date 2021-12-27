@@ -14,6 +14,7 @@ namespace Phalcon\Html\Helper\Input;
  */
 class Radio extends \Phalcon\Html\Helper\Input\Checkbox
 {
+
     /**
      * @var string
      */

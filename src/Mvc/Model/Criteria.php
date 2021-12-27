@@ -9,7 +9,7 @@
  */
 namespace Phalcon\Mvc\Model;
 
-use Phalcon\Di;
+use Phalcon\Di\Di;
 use Phalcon\Db\Column;
 use Phalcon\Di\DiInterface;
 use Phalcon\Di\InjectionAwareInterface;
@@ -34,6 +34,7 @@ use Phalcon\Mvc\Model\Query\BuilderInterface;
  */
 class Criteria implements \Phalcon\Mvc\Model\CriteriaInterface, \Phalcon\Di\InjectionAwareInterface
 {
+
     /**
      * @var array
      */
@@ -58,7 +59,6 @@ class Criteria implements \Phalcon\Mvc\Model\CriteriaInterface, \Phalcon\Di\Inje
      * @var array
      */
     protected $params = [];
-
 
     /**
      * Appends a condition to the current conditions using an AND operator

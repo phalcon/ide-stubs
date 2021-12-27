@@ -23,11 +23,9 @@ use Phalcon\Translate\Interpolator\InterpolatorInterface;
 class InterpolatorFactory extends AbstractFactory
 {
 
-    protected $exception = 'Phalcon\\\\Translate\\\\Exception';
-
 
     /**
-     * AdapterFactory constructor.
+     * InterpolatorFactor constructor.
      *
      * @param array $services
      */
@@ -39,16 +37,27 @@ class InterpolatorFactory extends AbstractFactory
      * Create a new instance of the adapter
      *
      * @param string $name
+     *
      * @return InterpolatorInterface
+     * @throws Exception
      */
     public function newInstance(string $name): InterpolatorInterface
     {
     }
 
     /**
-     * @return array
+     * @return string
      */
-    protected function getAdapters(): array
+    protected function getExceptionClass(): string
+    {
+    }
+
+    /**
+     * Returns the available adapters
+     *
+     * @return string[]
+     */
+    protected function getServices(): array
     {
     }
 }

@@ -38,6 +38,7 @@ use Throwable;
  */
 class Postgresql extends \Phalcon\Db\Adapter\Pdo\AbstractPdo
 {
+
     /**
      * @var string
      */
@@ -47,7 +48,6 @@ class Postgresql extends \Phalcon\Db\Adapter\Pdo\AbstractPdo
      * @var string
      */
     protected $type = 'pgsql';
-
 
     /**
      * Constructor for Phalcon\Db\Adapter\Pdo\Postgresql

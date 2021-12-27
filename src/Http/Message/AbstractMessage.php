@@ -9,8 +9,8 @@
  */
 namespace Phalcon\Http\Message;
 
-use Phalcon\Collection;
-use Phalcon\Collection\CollectionInterface;
+use Phalcon\Support\Collection;
+use Phalcon\Support\Collection\CollectionInterface;
 use Phalcon\Http\Message\Exception\InvalidArgumentException;
 use Psr\Http\Message\StreamInterface;
 use Psr\Http\Message\UriInterface;
@@ -20,6 +20,7 @@ use Psr\Http\Message\UriInterface;
  */
 abstract class AbstractMessage extends \Phalcon\Http\Message\AbstractCommon
 {
+
     /**
      * Gets the body of the message.
      *
@@ -54,7 +55,6 @@ abstract class AbstractMessage extends \Phalcon\Http\Message\AbstractCommon
      * @var UriInterface
      */
     protected $uri;
-
 
     /**
      * Gets the body of the message.
@@ -271,7 +271,7 @@ abstract class AbstractMessage extends \Phalcon\Http\Message\AbstractCommon
      *
      * @return CollectionInterface
      */
-    final protected function checkHeaderHost(\Phalcon\Collection\CollectionInterface $collection): CollectionInterface
+    final protected function checkHeaderHost(\Phalcon\Support\Collection\CollectionInterface $collection): CollectionInterface
     {
     }
 

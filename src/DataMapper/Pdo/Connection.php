@@ -24,11 +24,11 @@ use Phalcon\DataMapper\Pdo\Profiler\ProfilerInterface;
  */
 class Connection extends AbstractConnection
 {
+
     /**
      * @var array
      */
     protected $arguments = [];
-
 
     /**
      * Constructor.

@@ -37,6 +37,7 @@ use Phalcon\Cli\Router\RouteInterface;
  */
 class Router extends AbstractInjectionAware
 {
+
     /**
      * @var string|null
      */
@@ -97,7 +98,6 @@ class Router extends AbstractInjectionAware
      * @var bool
      */
     protected $wasMatched = false;
-
 
     /**
      * Phalcon\Cli\Router constructor
@@ -172,7 +172,7 @@ class Router extends AbstractInjectionAware
      * Returns a route object by its id
      *
      * @param int $id
-     * @return 0|RouteInterface
+     * @return bool|RouteInterface
      */
     public function getRouteById($id)
     {
@@ -182,7 +182,7 @@ class Router extends AbstractInjectionAware
      * Returns a route object by its name
      *
      * @param string $name
-     * @return 0|RouteInterface
+     * @return bool|RouteInterface
      */
     public function getRouteByName(string $name)
     {

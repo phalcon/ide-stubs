@@ -25,6 +25,7 @@ use Phalcon\Mvc\Model\TransactionInterface;
 interface ModelInterface
 {
 
+
     /**
      * Appends a customized message on the validation process
      *
@@ -92,7 +93,7 @@ interface ModelInterface
      * contain the count of each group.
      *
      * @param array|string|null $parameters
-     * @return 0|ResultsetInterface
+     * @return int|ResultsetInterface
      */
     public static function count($parameters = null);
 
@@ -285,7 +286,7 @@ interface ModelInterface
      * constants
      *
      * @param int $dirtyState
-     * @return 0|ModelInterface
+     * @return bool|ModelInterface
      */
     public function setDirtyState(int $dirtyState);
 

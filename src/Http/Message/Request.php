@@ -21,6 +21,7 @@ use Psr\Http\Message\UriInterface;
 final class Request extends AbstractRequest implements \Psr\Http\Message\RequestInterface
 {
 
+
     /**
      * Request constructor.
      *

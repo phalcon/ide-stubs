@@ -22,6 +22,7 @@ use Phalcon\Annotations\Reflection;
  */
 class Apcu extends \Phalcon\Annotations\Adapter\AbstractAdapter
 {
+
     /**
      * @var string
      */
@@ -31,7 +32,6 @@ class Apcu extends \Phalcon\Annotations\Adapter\AbstractAdapter
      * @var int
      */
     protected $ttl = 172800;
-
 
     /**
      * @param array $options = [
@@ -49,7 +49,7 @@ class Apcu extends \Phalcon\Annotations\Adapter\AbstractAdapter
      * Reads parsed annotations from APCu
      *
      * @param string $key
-     * @return 0|Reflection
+     * @return bool|Reflection
      */
     public function read(string $key)
     {

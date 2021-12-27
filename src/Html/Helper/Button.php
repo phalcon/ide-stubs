@@ -17,6 +17,7 @@ use Phalcon\Html\Exception;
 class Button extends \Phalcon\Html\Helper\AbstractHelper
 {
 
+
     /**
      * Produce a `<button>` tag.
      *

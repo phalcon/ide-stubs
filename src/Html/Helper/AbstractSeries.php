@@ -10,10 +10,12 @@
 namespace Phalcon\Html\Helper;
 
 /**
- * Class AbstractSeries
+ * @property array $attributes
+ * @property array $store
  */
 abstract class AbstractSeries extends \Phalcon\Html\Helper\AbstractHelper
 {
+
     /**
      * @var array
      */
@@ -24,14 +26,13 @@ abstract class AbstractSeries extends \Phalcon\Html\Helper\AbstractHelper
      */
     protected $store = [];
 
-
     /**
      * @param string $indent
      * @param string $delimiter
      *
      * @return AbstractSeries
      */
-    public function __invoke(string $indent = null, string $delimiter = null): AbstractSeries
+    public function __invoke(string $indent = '    ', string $delimiter = null): AbstractSeries
     {
     }
 

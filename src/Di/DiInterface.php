@@ -12,10 +12,11 @@ namespace Phalcon\Di;
 use ArrayAccess;
 
 /**
- * Interface for Phalcon\Di
+ * Interface for Phalcon\Di\Di
  */
 interface DiInterface extends \ArrayAccess
 {
+
 
     /**
      * Attempts to register a service in the services container
@@ -25,7 +26,7 @@ interface DiInterface extends \ArrayAccess
      * @param mixed $definition
      * @param string $name
      * @param bool $shared
-     * @return 0|ServiceInterface
+     * @return bool|ServiceInterface
      */
     public function attempt(string $name, $definition, bool $shared = false);
 

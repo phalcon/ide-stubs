@@ -15,6 +15,7 @@ namespace Phalcon\Mvc\View\Engine;
 class Php extends \Phalcon\Mvc\View\Engine\AbstractEngine
 {
 
+
     /**
      * Renders a view using the template engine
      *

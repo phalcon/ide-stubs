@@ -9,8 +9,8 @@
  */
 namespace Phalcon\Session;
 
-use Phalcon\Collection;
-use Phalcon\Di;
+use Phalcon\Support\Collection;
+use Phalcon\Di\Di;
 use Phalcon\Di\DiInterface;
 use Phalcon\Di\InjectionAwareInterface;
 
@@ -30,6 +30,7 @@ use Phalcon\Di\InjectionAwareInterface;
  */
 class Bag extends Collection implements \Phalcon\Di\InjectionAwareInterface
 {
+
     /**
      * @var DiInterface|null
      */
@@ -47,13 +48,13 @@ class Bag extends Collection implements \Phalcon\Di\InjectionAwareInterface
      */
     private $session;
 
-
     /**
      * Phalcon\Session\Bag constructor
      *
      * @param string $name
+     * @param \Phalcon\Di\DiInterface $container
      */
-    public function __construct(string $name)
+    public function __construct(string $name, \Phalcon\Di\DiInterface $container = null)
     {
     }
 

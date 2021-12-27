@@ -20,6 +20,7 @@ use Phalcon\Events\ManagerInterface;
  */
 class Console extends AbstractApplication
 {
+
     /**
      * @var array
      */
@@ -29,7 +30,6 @@ class Console extends AbstractApplication
      * @var array
      */
     protected $options = [];
-
 
     /**
      * Handle the whole command-line tasks

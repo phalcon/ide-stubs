@@ -30,6 +30,7 @@ namespace Phalcon\Mvc\Micro;
  */
 class Collection implements \Phalcon\Mvc\Micro\CollectionInterface
 {
+
     /**
      * @var callable
      */
@@ -49,7 +50,6 @@ class Collection implements \Phalcon\Mvc\Micro\CollectionInterface
      * @var string
      */
     protected $prefix = '';
-
 
     /**
      * Maps a route to a handler that only matches if the HTTP method is DELETE.

@@ -18,6 +18,7 @@ namespace Phalcon\Assets;
  */
 class Inline implements \Phalcon\Assets\AssetInterface
 {
+
     /**
      * @var array | null
      */
@@ -37,7 +38,6 @@ class Inline implements \Phalcon\Assets\AssetInterface
      * @var string
      */
     protected $type;
-
 
     /**
      * @return array|null

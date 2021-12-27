@@ -15,6 +15,7 @@ namespace Phalcon\Dispatcher;
 interface DispatcherInterface
 {
 
+
     /**
      * Dispatches a handle action taking into account the routing parameters
      *

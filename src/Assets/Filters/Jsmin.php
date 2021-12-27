@@ -19,6 +19,7 @@ use Phalcon\Assets\FilterInterface;
 class Jsmin implements \Phalcon\Assets\FilterInterface
 {
 
+
     /**
      * Filters the content using JSMIN
      * NOTE: This functionality is not currently available

@@ -17,6 +17,7 @@ use Phalcon\DataMapper\Pdo\Connection\ConnectionInterface;
 interface ConnectionLocatorInterface
 {
 
+
     /**
      * Returns the default connection object.
      *

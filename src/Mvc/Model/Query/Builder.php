@@ -9,10 +9,9 @@
  */
 namespace Phalcon\Mvc\Model\Query;
 
-use Phalcon\Di;
+use Phalcon\Di\Di;
 use Phalcon\Db\Column;
 use Phalcon\Di\DiInterface;
-use Phalcon\Helper\Arr;
 use Phalcon\Mvc\Model\Exception;
 use Phalcon\Di\InjectionAwareInterface;
 use Phalcon\Mvc\Model\QueryInterface;
@@ -55,6 +54,7 @@ use Phalcon\Mvc\Model\QueryInterface;
  */
 class Builder implements \Phalcon\Mvc\Model\Query\BuilderInterface, \Phalcon\Di\InjectionAwareInterface
 {
+
     /**
      * @var array
      */
@@ -134,7 +134,6 @@ class Builder implements \Phalcon\Mvc\Model\Query\BuilderInterface, \Phalcon\Di\
      * @var bool
      */
     protected $sharedLock = false;
-
 
     /**
      * Phalcon\Mvc\Model\Query\Builder constructor

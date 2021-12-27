@@ -9,9 +9,7 @@
  */
 namespace Phalcon\Image;
 
-use Phalcon\Config;
 use Phalcon\Factory\AbstractFactory;
-use Phalcon\Helper\Arr;
 use Phalcon\Image\Adapter\AdapterInterface;
 
 /**
@@ -19,8 +17,6 @@ use Phalcon\Image\Adapter\AdapterInterface;
  */
 class ImageFactory extends AbstractFactory
 {
-
-    protected $exception = 'Phalcon\\\\Image\\\\Exception';
 
 
     /**
@@ -35,7 +31,7 @@ class ImageFactory extends AbstractFactory
     /**
      * Factory to create an instance from a Config object
      *
-     * @param array|\Phalcon\Config $config = [
+     * @param array|\Phalcon\Config\Config $config = [
      *     'adapter' => 'gd',
      *     'file' => 'image.jpg',
      *     'height' => null,
@@ -61,9 +57,29 @@ class ImageFactory extends AbstractFactory
     }
 
     /**
-     * @return array
+     * @return string
      */
-    protected function getAdapters(): array
+    protected function getExceptionClass(): string
+    {
+    }
+
+    /**
+     * Returns the available adapters
+     *
+     * @return string[]
+     */
+    protected function getServices(): array
+    {
+    }
+
+    /**
+     * @todo Remove this when we get traits
+     * @param array $collection
+     * @param mixed $index
+     * @param mixed $defaultValue
+     * @return mixed
+     */
+    private function getArrVal(array $collection, $index, $defaultValue = null)
     {
     }
 }

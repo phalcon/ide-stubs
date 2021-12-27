@@ -15,6 +15,7 @@ namespace Phalcon\Html\Helper;
 class Close extends \Phalcon\Html\Helper\AbstractHelper
 {
 
+
     /**
      * Produce a `</...>` tag.
      *

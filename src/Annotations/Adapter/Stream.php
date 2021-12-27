@@ -28,11 +28,11 @@ use RuntimeException;
  */
 class Stream extends \Phalcon\Annotations\Adapter\AbstractAdapter
 {
+
     /**
      * @var string
      */
     protected $annotationsDir = './';
-
 
     /**
      * @param array $options = [
@@ -49,7 +49,7 @@ class Stream extends \Phalcon\Annotations\Adapter\AbstractAdapter
      * Reads parsed annotations from files
      *
      * @param string $key
-     * @return 0|1|Reflection
+     * @return bool|int|Reflection
      */
     public function read(string $key)
     {

@@ -29,6 +29,7 @@ namespace Phalcon\Annotations;
  */
 class Reflection
 {
+
     /**
      * @var array
      * TODO: Make always array
@@ -52,7 +53,6 @@ class Reflection
      */
     protected $reflectionData = [];
 
-
     /**
      * Phalcon\Annotations\Reflection constructor
      *
@@ -65,7 +65,7 @@ class Reflection
     /**
      * Returns the annotations found in the class docblock
      *
-     * @return 0|Collection
+     * @return bool|Collection
      */
     public function getClassAnnotations()
     {

@@ -17,6 +17,7 @@ use Psr\Log\LoggerInterface;
 interface ProfilerInterface
 {
 
+
     /**
      * Finishes and logs a profile entry.
      *

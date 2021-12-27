@@ -20,6 +20,7 @@ use Phalcon\Mvc\ModelInterface;
  */
 class ValidationFailed extends \Phalcon\Mvc\Model\Exception
 {
+
     /**
      * @var array
      */
@@ -29,7 +30,6 @@ class ValidationFailed extends \Phalcon\Mvc\Model\Exception
      * @var ModelInterface
      */
     protected $model;
-
 
     /**
      * Phalcon\Mvc\Model\ValidationFailed constructor

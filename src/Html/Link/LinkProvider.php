@@ -17,11 +17,11 @@ use Psr\Link\LinkProviderInterface;
  */
 class LinkProvider implements \Psr\Link\LinkProviderInterface
 {
+
     /**
      * @var LinkInterface[]
      */
     protected $links = [];
-
 
     /**
      * LinkProvider constructor.

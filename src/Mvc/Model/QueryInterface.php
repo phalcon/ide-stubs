@@ -19,6 +19,7 @@ use Phalcon\Mvc\ModelInterface;
 interface QueryInterface
 {
 
+
     /**
      * Sets the cache parameters of the query
      *

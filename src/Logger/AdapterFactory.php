@@ -11,19 +11,13 @@ namespace Phalcon\Logger;
 
 use Phalcon\Factory\AbstractFactory;
 use Phalcon\Logger\Adapter\AdapterInterface;
+use Phalcon\Logger\Exception;
 
 /**
- * This file is part of the Phalcon Framework.
- *
- * (c) Phalcon Team <team@phalcon.io>
- *
- * For the full copyright and license information, please view the LICENSE.txt
- * file that was distributed with this source code.
+ * Factory used to create adapters used for Logging
  */
 class AdapterFactory extends AbstractFactory
 {
-
-    protected $exception = 'Phalcon\\\\Logger\\\\Exception';
 
 
     /**
@@ -40,17 +34,28 @@ class AdapterFactory extends AbstractFactory
      *
      * @param string $name
      * @param string $fileName
-     * @param array $options
+     * @param array  $options
+     *
      * @return AdapterInterface
+     * @throws Exception
      */
     public function newInstance(string $name, string $fileName, array $options = []): AdapterInterface
     {
     }
 
     /**
-     * @return array
+     * @return string
      */
-    protected function getAdapters(): array
+    protected function getExceptionClass(): string
+    {
+    }
+
+    /**
+     * Returns the available adapters
+     *
+     * @return string[]
+     */
+    protected function getServices(): array
     {
     }
 }

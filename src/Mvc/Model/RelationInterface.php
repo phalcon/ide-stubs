@@ -17,6 +17,7 @@ namespace Phalcon\Mvc\Model;
 interface RelationInterface
 {
 
+
     /**
      * Returns the fields
      *
