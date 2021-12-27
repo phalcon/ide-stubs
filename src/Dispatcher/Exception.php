@@ -12,7 +12,7 @@ namespace Phalcon\Dispatcher;
 /**
  * Exceptions thrown in Phalcon\Dispatcher/ will use this class
  */
-class Exception extends \Phalcon\Exception
+class Exception extends \Exception
 {
     const EXCEPTION_ACTION_NOT_FOUND = 5;
 

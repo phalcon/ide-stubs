@@ -406,10 +406,11 @@ class Compiler implements \Phalcon\Di\InjectionAwareInterface
      * Fires an event to registered extensions
      *
      * @param string $name
-     * @param array $arguments *
+     * @param array  $arguments
+     *
      * @return mixed
      */
-    final public function fireExtensionEvent(string $name, $arguments = null)
+    final public function fireExtensionEvent(string $name, array $arguments = [])
     {
     }
 

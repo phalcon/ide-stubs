@@ -318,6 +318,7 @@ class View extends Injectable implements \Phalcon\Mvc\ViewInterface, \Phalcon\Ev
     /**
      * Checks whether view exists
      *
+     * @deprecated
      * @param string $view
      * @return bool
      */
@@ -506,6 +507,16 @@ class View extends Injectable implements \Phalcon\Mvc\ViewInterface, \Phalcon\Ev
      * @return array
      */
     protected function getViewsDirs(): array
+    {
+    }
+
+    /**
+     * Checks whether view exists
+     *
+     * @param string $view
+     * @return bool
+     */
+    public function has(string $view): bool
     {
     }
 

@@ -19,12 +19,7 @@ class Date extends \Phalcon\Forms\Element\AbstractElement
 
 
     /**
-     * Renders the element widget returning html
-     *
-     * @param array $attributes
-     * @return string
+     * @var string
      */
-    public function render(array $attributes = []): string
-    {
-    }
+    protected $method = 'inputDate';
 }

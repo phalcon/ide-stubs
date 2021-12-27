@@ -12,6 +12,8 @@ namespace Phalcon\Mvc\View\Engine;
 use Phalcon\Di\DiInterface;
 use Phalcon\Events\EventsAwareInterface;
 use Phalcon\Events\ManagerInterface;
+use Phalcon\Html\Link\Link;
+use Phalcon\Html\Link\Serializer\Header;
 use Phalcon\Mvc\View\Engine\Volt\Compiler;
 use Phalcon\Mvc\View\Exception;
 
@@ -112,6 +114,17 @@ class Volt extends \Phalcon\Mvc\View\Engine\AbstractEngine implements \Phalcon\E
      * @return int
      */
     public function length($item): int
+    {
+    }
+
+    /**
+     * Parses the preload element passed and sets the necessary link headers
+     *
+     * @todo find a better way to handle this
+     * @param mixed $parameters
+     * @return string
+     */
+    public function preload($parameters): string
     {
     }
 

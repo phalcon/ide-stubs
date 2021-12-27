@@ -10,12 +10,12 @@
 namespace Phalcon\Forms\Element;
 
 use InvalidArgumentException;
+use Phalcon\Filter\Validation\ValidatorInterface;
 use Phalcon\Forms\Form;
 use Phalcon\Forms\Exception;
+use Phalcon\Html\TagFactory;
 use Phalcon\Messages\MessageInterface;
 use Phalcon\Messages\Messages;
-use Phalcon\Tag;
-use Phalcon\Validation\ValidatorInterface;
 
 /**
  * This is a base class for form elements
@@ -44,6 +44,11 @@ abstract class AbstractElement implements \Phalcon\Forms\Element\ElementInterfac
     protected $label = null;
 
     /**
+     * @var string
+     */
+    protected $method = 'inputText';
+
+    /**
      * @var Messages
      */
     protected $messages;
@@ -57,6 +62,11 @@ abstract class AbstractElement implements \Phalcon\Forms\Element\ElementInterfac
      * @var array
      */
     protected $options = [];
+
+    /**
+     * @var TagFactory|null
+     */
+    protected $tagFactory = null;
 
     /**
      * @var array
@@ -100,17 +110,17 @@ abstract class AbstractElement implements \Phalcon\Forms\Element\ElementInterfac
     /**
      * Adds a validator to the element
      *
-     * @param \Phalcon\Validation\ValidatorInterface $validator
+     * @param \Phalcon\Filter\Validation\ValidatorInterface $validator
      * @return ElementInterface
      */
-    public function addValidator(\Phalcon\Validation\ValidatorInterface $validator): ElementInterface
+    public function addValidator(\Phalcon\Filter\Validation\ValidatorInterface $validator): ElementInterface
     {
     }
 
     /**
      * Adds a group of validators
      *
-     * @param \Phalcon\Validation\ValidatorInterface[] $validators
+     * @param \Phalcon\Filter\Validation\ValidatorInterface[] $validators
      * @param bool $merge
      * @return ElementInterface
      */
@@ -213,6 +223,15 @@ abstract class AbstractElement implements \Phalcon\Forms\Element\ElementInterfac
     }
 
     /**
+     * Returns the tagFactory; throws exception if not present
+     *
+     * @return TagFactory|null
+     */
+    public function getTagFactory(): ?TagFactory
+    {
+    }
+
+    /**
      * Returns the value of an option if present
      *
      * @param string $option
@@ -235,7 +254,7 @@ abstract class AbstractElement implements \Phalcon\Forms\Element\ElementInterfac
     /**
      * Returns the validators registered for the element
      *
-     * @return array|\Phalcon\Validation\ValidatorInterface[]
+     * @return array|\Phalcon\Filter\Validation\ValidatorInterface[]
      */
     public function getValidators(): array
     {
@@ -270,14 +289,12 @@ abstract class AbstractElement implements \Phalcon\Forms\Element\ElementInterfac
     }
 
     /**
-     * Returns an array of prepared attributes for Phalcon\Tag helpers
-     * according to the element parameters
+     * Renders the element widget returning HTML
      *
      * @param array $attributes
-     * @param bool $useChecked
-     * @return array
+     * @return string
      */
-    public function prepareAttributes(array $attributes = [], bool $useChecked = false): array
+    public function render(array $attributes = []): string
     {
     }
 
@@ -364,6 +381,16 @@ abstract class AbstractElement implements \Phalcon\Forms\Element\ElementInterfac
     }
 
     /**
+     * Sets the TagFactory
+     *
+     * @param \Phalcon\Html\TagFactory $tagFactory
+     * @return AbstractElement
+     */
+    public function setTagFactory(\Phalcon\Html\TagFactory $tagFactory): AbstractElement
+    {
+    }
+
+    /**
      * Sets an option for the element
      *
      * @param string $option
@@ -381,6 +408,15 @@ abstract class AbstractElement implements \Phalcon\Forms\Element\ElementInterfac
      * @return ElementInterface
      */
     public function setUserOptions(array $options): ElementInterface
+    {
+    }
+
+    /**
+     * Returns the tagFactory; throws exception if not present
+     *
+     * @return TagFactory
+     */
+    protected function getLocalTagFactory(): TagFactory
     {
     }
 }

@@ -187,7 +187,7 @@ abstract class AbstractDispatcher extends AbstractInjectionAware implements \Pha
      * );
      * ```
      *
-     * @throws \Phalcon\Exception
+     * @throws PhalconException
      * @param array $forward
      * @return void
      */
