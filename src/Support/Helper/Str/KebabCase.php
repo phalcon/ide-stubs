@@ -10,20 +10,19 @@
 namespace Phalcon\Support\Helper\Str;
 
 /**
- * Converts strings to upperCamelCase or lowerCamelCase
+ * Converts strings to kebab-case style
  */
-class Camelize extends \Phalcon\Support\Helper\Str\PascalCase
+class KebabCase extends \Phalcon\Support\Helper\Str\PascalCase
 {
 
 
     /**
      * @param string      $text
      * @param string|null $delimiters
-     * @param bool        $lowerFirst
      *
      * @return string
      */
-    public function __invoke(string $text, string $delimiters = null, bool $lowerFirst = false): string
+    public function __invoke(string $text, string $delimiters = null): string
     {
     }
 }

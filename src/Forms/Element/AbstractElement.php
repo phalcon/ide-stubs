@@ -10,9 +10,12 @@
 namespace Phalcon\Forms\Element;
 
 use InvalidArgumentException;
+use Phalcon\Di\DiInterface;
+use Phalcon\Di\Di;
 use Phalcon\Filter\Validation\ValidatorInterface;
 use Phalcon\Forms\Form;
 use Phalcon\Forms\Exception;
+use Phalcon\Html\Escaper;
 use Phalcon\Html\TagFactory;
 use Phalcon\Messages\MessageInterface;
 use Phalcon\Messages\Messages;
