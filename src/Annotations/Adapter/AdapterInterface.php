@@ -18,8 +18,6 @@ use Phalcon\Annotations\ReaderInterface;
  */
 interface AdapterInterface
 {
-
-
     /**
      * Parses or retrieves all the annotations found in a class
      *

@@ -21,8 +21,6 @@ use Phalcon\Db\ReferenceInterface;
  */
 interface AdapterInterface
 {
-
-
     /**
      * Adds a column to a table
      *

@@ -16,8 +16,6 @@ namespace Phalcon\Filter\Sanitize;
  */
 class AbsInt
 {
-
-
     /**
      * @param mixed $input The text to sanitize
      *

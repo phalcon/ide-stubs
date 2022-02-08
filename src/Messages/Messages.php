@@ -19,7 +19,6 @@ use JsonSerializable;
  */
 class Messages implements \ArrayAccess, \Countable, \Iterator, \JsonSerializable
 {
-
     /**
      * @var int
      */

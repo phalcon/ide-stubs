@@ -30,7 +30,6 @@ use RecursiveIteratorIterator;
  */
 class Stream extends \Phalcon\Storage\Adapter\AbstractAdapter
 {
-
     /**
      * @var string
      */

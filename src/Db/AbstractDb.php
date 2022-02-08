@@ -56,8 +56,6 @@ use PDO as Pdo;
  */
 abstract class AbstractDb
 {
-
-
     /**
      * Enables/disables options in the Database component
      *

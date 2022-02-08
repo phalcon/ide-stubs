@@ -23,7 +23,6 @@ use Traversable;
  */
 class Cache implements \Psr\SimpleCache\CacheInterface
 {
-
     /**
      * The adapter
      *

@@ -16,8 +16,6 @@ namespace Phalcon\Filter\Sanitize;
  */
 class BoolVal
 {
-
-
     /**
      * @param mixed $input The text to sanitize
      *

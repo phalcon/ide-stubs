@@ -23,7 +23,6 @@ use Psr\Link\LinkInterface;
  */
 class Link implements \Psr\Link\LinkInterface
 {
-
     /**
      * @var Collection|CollectionInterface
      */

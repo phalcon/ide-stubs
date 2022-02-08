@@ -27,7 +27,6 @@ use Phalcon\Di\InjectionAwareInterface;
  */
 class Compiler implements \Phalcon\Di\InjectionAwareInterface
 {
-
     /**
      * @var bool
      */

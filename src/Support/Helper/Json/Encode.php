@@ -24,8 +24,6 @@ use JsonException;
  */
 class Encode
 {
-
-
     /**
      * @param mixed $data    JSON data to parse
      * @param int   $options Bitmask of JSON decode options.

@@ -20,8 +20,6 @@ use Phalcon\Http\Message\Stream;
  */
 class Memory extends Stream
 {
-
-
     /**
      * Constructor
      *

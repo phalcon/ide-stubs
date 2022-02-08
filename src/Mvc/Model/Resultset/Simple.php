@@ -27,7 +27,6 @@ use Psr\SimpleCache\CacheInterface;
  */
 class Simple extends Resultset
 {
-
     /**
      * @var array|string
      */

@@ -23,8 +23,6 @@ use Psr\Http\Server\RequestHandlerInterface;
  */
 abstract class AbstractMiddleware implements \Psr\Http\Server\MiddlewareInterface
 {
-
-
     /**
      * Process an incoming server request.
      *

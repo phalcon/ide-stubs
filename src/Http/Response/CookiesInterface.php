@@ -18,8 +18,6 @@ use Phalcon\Http\Cookie\CookieInterface;
  */
 interface CookiesInterface
 {
-
-
     /**
      * Deletes a cookie by its name
      * This method does not removes cookies from the _COOKIE superglobal

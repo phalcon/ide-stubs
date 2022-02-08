@@ -14,6 +14,4 @@ namespace Phalcon\DataMapper\Pdo\Exception;
  */
 class ConnectionNotFound extends \Phalcon\DataMapper\Pdo\Exception\Exception
 {
-
-
 }

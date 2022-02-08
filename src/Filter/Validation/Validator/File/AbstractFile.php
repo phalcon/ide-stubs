@@ -54,7 +54,6 @@ use Phalcon\Filter\Validation\AbstractValidator;
  */
 abstract class AbstractFile extends AbstractValidator
 {
-
     /**
      * Empty is empty
      *

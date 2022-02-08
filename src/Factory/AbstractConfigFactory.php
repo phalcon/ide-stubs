@@ -21,8 +21,6 @@ use Phalcon\Config\ConfigInterface;
  */
 abstract class AbstractConfigFactory
 {
-
-
     /**
      * Checks the config if it is a valid object
      *

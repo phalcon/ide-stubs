@@ -30,7 +30,6 @@ use stdClass;
  */
 class Complex extends Resultset implements \Phalcon\Mvc\Model\ResultsetInterface
 {
-
     /**
      * @var array
      */

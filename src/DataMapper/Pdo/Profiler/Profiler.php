@@ -25,7 +25,6 @@ use Psr\Log\LogLevel;
  */
 class Profiler implements \Phalcon\DataMapper\Pdo\Profiler\ProfilerInterface
 {
-
     /**
      * @var bool
      */

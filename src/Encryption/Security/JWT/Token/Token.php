@@ -20,7 +20,6 @@ namespace Phalcon\Encryption\Security\JWT\Token;
  */
 class Token
 {
-
     /**
      * @var Item
      */

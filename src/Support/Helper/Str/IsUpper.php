@@ -14,8 +14,6 @@ namespace Phalcon\Support\Helper\Str;
  */
 class IsUpper extends \Phalcon\Support\Helper\Str\AbstractStr
 {
-
-
     /**
      * @param string $text
      * @param string $encoding

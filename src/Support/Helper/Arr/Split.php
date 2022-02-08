@@ -15,8 +15,6 @@ namespace Phalcon\Support\Helper\Arr;
  */
 class Split
 {
-
-
     /**
      * @param array $collection
      *

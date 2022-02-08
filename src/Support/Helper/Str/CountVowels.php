@@ -15,8 +15,6 @@ namespace Phalcon\Support\Helper\Str;
  */
 class CountVowels
 {
-
-
     /**
      * @param string $text
      *

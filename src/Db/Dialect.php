@@ -15,7 +15,6 @@ namespace Phalcon\Db;
  */
 abstract class Dialect implements \Phalcon\Db\DialectInterface
 {
-
     /**
      * @var string
      */

@@ -37,8 +37,6 @@ use Phalcon\Paginator\RepositoryInterface;
  */
 class NativeArray extends \Phalcon\Paginator\Adapter\AbstractAdapter
 {
-
-
     /**
      * Returns a slice of the resultset to show in the pagination
      *

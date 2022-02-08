@@ -17,7 +17,6 @@ use Phalcon\Di\DiInterface;
  */
 class Container implements \Psr\Container\ContainerInterface
 {
-
     /**
      * @var DiInterface
      */

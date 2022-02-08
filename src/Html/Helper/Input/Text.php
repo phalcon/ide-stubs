@@ -14,6 +14,4 @@ namespace Phalcon\Html\Helper\Input;
  */
 class Text extends \Phalcon\Html\Helper\Input\AbstractInput
 {
-
-
 }

@@ -18,8 +18,6 @@ use Phalcon\Paginator\RepositoryInterface;
  */
 interface AdapterInterface
 {
-
-
     /**
      * Get current rows limit
      *

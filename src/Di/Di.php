@@ -61,7 +61,6 @@ use Phalcon\Di\ServiceProviderInterface;
  */
 class Di implements \Phalcon\Di\DiInterface
 {
-
     /**
      * List of registered services
      *

@@ -17,7 +17,6 @@ use Psr\Http\Message\UriInterface;
  */
 abstract class AbstractRequest extends \Phalcon\Http\Message\AbstractMessage implements \Phalcon\Http\Message\RequestMethodInterface
 {
-
     /**
      * Retrieves the HTTP method of the request.
      *

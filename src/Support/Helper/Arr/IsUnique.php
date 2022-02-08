@@ -15,8 +15,6 @@ namespace Phalcon\Support\Helper\Arr;
  */
 class IsUnique
 {
-
-
     /**
      * @param array $collection
      *

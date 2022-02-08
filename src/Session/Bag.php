@@ -30,7 +30,6 @@ use Phalcon\Di\InjectionAwareInterface;
  */
 class Bag extends Collection implements \Phalcon\Di\InjectionAwareInterface
 {
-
     /**
      * @var DiInterface|null
      */

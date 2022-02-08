@@ -14,8 +14,6 @@ namespace Phalcon\Support\Helper\Arr;
  */
 class Set
 {
-
-
     /**
      * @param array $collection
      * @param mixed $value

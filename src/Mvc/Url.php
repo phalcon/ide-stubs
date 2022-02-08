@@ -35,7 +35,6 @@ use Phalcon\Mvc\Url\UrlInterface;
  */
 class Url extends AbstractInjectionAware implements \Phalcon\Mvc\Url\UrlInterface
 {
-
     /**
      * @var null | string
      */

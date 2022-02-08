@@ -18,7 +18,6 @@ use RuntimeException;
  */
 class Stream implements \Psr\Http\Message\StreamInterface
 {
-
     /**
      * @var resource | null
      */

@@ -19,8 +19,6 @@ use Phalcon\Filter\FilterFactory;
  */
 class FactoryDefault extends \Phalcon\Di\Di
 {
-
-
     /**
      * Phalcon\Di\FactoryDefault constructor
      */

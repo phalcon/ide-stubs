@@ -24,7 +24,6 @@ use DateTimeImmutable;
  */
 class Item
 {
-
     /**
      * @var array
      */

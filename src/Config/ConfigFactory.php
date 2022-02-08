@@ -30,8 +30,6 @@ use Phalcon\Factory\AbstractFactory;
  */
 class ConfigFactory extends AbstractFactory
 {
-
-
     /**
      * ConfigFactory constructor.
      *

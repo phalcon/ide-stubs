@@ -21,8 +21,6 @@ use Psr\Http\Server\RequestHandlerInterface;
  */
 abstract class AbstractRequestHandler implements \Psr\Http\Server\RequestHandlerInterface
 {
-
-
     /**
      * Handles a request and produces a response.
      *

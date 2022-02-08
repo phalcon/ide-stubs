@@ -62,7 +62,6 @@ use Phalcon\Mvc\Model\TransactionInterface;
  */
 class Transaction implements \Phalcon\Mvc\Model\TransactionInterface
 {
-
     /**
      * @var bool
      */

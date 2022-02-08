@@ -16,7 +16,6 @@ namespace Phalcon\Http\Response;
  */
 class Headers implements \Phalcon\Http\Response\HeadersInterface
 {
-
     /**
      * @var array
      */

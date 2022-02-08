@@ -18,8 +18,6 @@ use Psr\Http\Message\StreamInterface;
  */
 final class StreamFactory implements \Psr\Http\Message\StreamFactoryInterface
 {
-
-
     /**
      * Create a new stream from a string.
      *

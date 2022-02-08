@@ -16,8 +16,6 @@ namespace Phalcon\Flash;
  */
 class Direct extends \Phalcon\Flash\AbstractFlash
 {
-
-
     /**
      * Outputs a message
      *

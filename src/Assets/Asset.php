@@ -30,7 +30,6 @@ namespace Phalcon\Assets;
  */
 class Asset implements \Phalcon\Assets\AssetInterface
 {
-
     /**
      * @var array
      */

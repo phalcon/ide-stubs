@@ -54,7 +54,6 @@ use Phalcon\Mvc\Model\QueryInterface;
  */
 class Builder implements \Phalcon\Mvc\Model\Query\BuilderInterface, \Phalcon\Di\InjectionAwareInterface
 {
-
     /**
      * @var array
      */

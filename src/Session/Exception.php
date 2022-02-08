@@ -16,6 +16,4 @@ namespace Phalcon\Session;
  */
 class Exception extends \Exception
 {
-
-
 }

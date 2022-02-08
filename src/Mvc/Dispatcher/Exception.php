@@ -16,6 +16,4 @@ namespace Phalcon\Mvc\Dispatcher;
  */
 class Exception extends \Phalcon\Dispatcher\Exception
 {
-
-
 }

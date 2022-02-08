@@ -22,8 +22,6 @@ use Phalcon\Cache\AdapterFactory;
  */
 class Libmemcached extends MetaData
 {
-
-
     /**
      * Phalcon\Mvc\Model\MetaData\Libmemcached constructor
      *

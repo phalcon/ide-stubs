@@ -19,8 +19,6 @@ use Phalcon\Filter\Validation\ValidatorInterface;
  */
 interface ElementInterface
 {
-
-
     /**
      * Adds a filter to current list of filters
      *

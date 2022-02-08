@@ -18,7 +18,6 @@ use Phalcon\Tag;
  */
 class Hidden extends \Phalcon\Forms\Element\AbstractElement
 {
-
     /**
      * @var string
      */

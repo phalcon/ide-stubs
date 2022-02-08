@@ -54,7 +54,6 @@ use Phalcon\Filter\Validation\AbstractValidator;
  */
 class Regex extends AbstractValidator
 {
-
     protected $template = 'Field :field does not match the required format';
 
     /**

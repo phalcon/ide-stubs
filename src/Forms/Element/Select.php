@@ -18,7 +18,6 @@ use Phalcon\Tag\Select as SelectTag;
  */
 class Select extends \Phalcon\Forms\Element\AbstractElement
 {
-
     /**
      * @var object|array|null
      */

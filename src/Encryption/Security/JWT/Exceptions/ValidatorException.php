@@ -22,6 +22,4 @@ use Throwable;
  */
 class ValidatorException extends Exception implements \Throwable
 {
-
-
 }

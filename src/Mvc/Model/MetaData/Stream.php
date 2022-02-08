@@ -27,7 +27,6 @@ use Phalcon\Mvc\Model\Exception;
  */
 class Stream extends MetaData
 {
-
     /**
      * @var string
      */

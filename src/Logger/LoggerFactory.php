@@ -18,7 +18,6 @@ use Phalcon\Factory\AbstractConfigFactory;
  */
 class LoggerFactory extends AbstractConfigFactory
 {
-
     /**
      * @var AdapterFactory
      */

@@ -15,8 +15,6 @@ namespace Phalcon\Support\Helper\Arr;
  */
 class FirstKey extends \Phalcon\Support\Helper\Arr\AbstractArr
 {
-
-
     /**
      * @param array         $collection
      * @param callable|null $method

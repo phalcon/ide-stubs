@@ -17,8 +17,6 @@ use Psr\Http\Message\UriInterface;
  */
 final class UriFactory implements \Psr\Http\Message\UriFactoryInterface
 {
-
-
     /**
      * Returns a Locator object with all the helpers defined in anonynous
      * functions

@@ -14,8 +14,6 @@ namespace Phalcon\Support\Helper\Str;
  */
 class Uncamelize
 {
-
-
     /**
      * @param string $text
      * @param string $delimiters

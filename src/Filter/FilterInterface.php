@@ -14,8 +14,6 @@ namespace Phalcon\Filter;
  */
 interface FilterInterface
 {
-
-
     /**
      * Sanitizes a value with a specified single or set of sanitizers
      *

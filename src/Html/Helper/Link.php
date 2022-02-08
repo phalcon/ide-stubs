@@ -14,8 +14,6 @@ namespace Phalcon\Html\Helper;
  */
 class Link extends \Phalcon\Html\Helper\Style
 {
-
-
     /**
      * Add an element to the list
      *

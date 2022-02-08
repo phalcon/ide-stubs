@@ -35,8 +35,6 @@ use Phalcon\Cache\AdapterFactory;
  */
 class Redis extends MetaData
 {
-
-
     /**
      * Phalcon\Mvc\Model\MetaData\Redis constructor
      *

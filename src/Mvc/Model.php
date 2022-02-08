@@ -836,9 +836,10 @@ abstract class Model extends AbstractInjectionAware implements \Phalcon\Mvc\Enti
      *     ],
      *     'hydration' => null
      * ]
-     * @return ModelInterface|null
+     *
+     * @return \Phalcon\Mvc\ModelInterface|\Phalcon\Mvc\Model\Row|null
      */
-    public static function findFirst($parameters = null): ?ModelInterface
+    public static function findFirst($parameters = null)
     {
     }
 

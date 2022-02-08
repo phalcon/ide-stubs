@@ -69,7 +69,6 @@ use Phalcon\Factory\AbstractFactory;
  */
 class TagFactory extends AbstractFactory
 {
-
     /**
      * @var EscaperInterface
      */

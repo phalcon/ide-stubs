@@ -18,8 +18,6 @@ use Phalcon\Logger\Exception;
  */
 class AdapterFactory extends AbstractFactory
 {
-
-
     /**
      * AdapterFactory constructor.
      *

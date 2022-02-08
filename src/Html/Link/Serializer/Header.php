@@ -16,8 +16,6 @@ use Psr\Link\EvolvableLinkInterface;
  */
 class Header implements \Phalcon\Html\Link\Serializer\SerializerInterface
 {
-
-
     /**
      * Serializes all the passed links to a HTTP link header
      *

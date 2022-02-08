@@ -14,8 +14,6 @@ namespace Phalcon\Html\Helper;
  */
 class Ul extends \Phalcon\Html\Helper\Ol
 {
-
-
     /**
      * @return string
      */

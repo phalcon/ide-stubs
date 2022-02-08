@@ -15,8 +15,6 @@ namespace Phalcon\Di;
  */
 interface InjectionAwareInterface
 {
-
-
     /**
      * Sets the dependency injector
      *

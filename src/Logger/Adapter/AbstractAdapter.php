@@ -24,7 +24,6 @@ use Phalcon\Logger\Item;
  */
 abstract class AbstractAdapter implements \Phalcon\Logger\Adapter\AdapterInterface
 {
-
     /**
      * Name of the default formatter class
      *

@@ -28,7 +28,6 @@ use Phalcon\Filter\Validation\ValidationInterface;
  */
 class Form extends Injectable implements \Countable, \Iterator, \Phalcon\Html\Attributes\AttributesInterface
 {
-
     /**
      * @var AttributesInterface|null
      */

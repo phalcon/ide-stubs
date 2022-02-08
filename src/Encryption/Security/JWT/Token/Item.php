@@ -14,8 +14,6 @@ namespace Phalcon\Encryption\Security\JWT\Token;
  */
 class Item extends \Phalcon\Encryption\Security\JWT\Token\AbstractItem
 {
-
-
     /**
      * Item constructor.
      *
