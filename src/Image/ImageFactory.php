@@ -17,8 +17,6 @@ use Phalcon\Image\Adapter\AdapterInterface;
  */
 class ImageFactory extends AbstractFactory
 {
-
-
     /**
      * TagFactory constructor.
      *

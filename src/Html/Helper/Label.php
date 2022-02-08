@@ -16,8 +16,6 @@ use Phalcon\Html\Exception;
  */
 class Label extends \Phalcon\Html\Helper\AbstractHelper
 {
-
-
     /**
      * Produce a `<label>` tag.
      *

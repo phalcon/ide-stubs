@@ -19,7 +19,6 @@ use RuntimeException;
  */
 final class UploadedFile implements \Psr\Http\Message\UploadedFileInterface
 {
-
     /**
      * If the file has already been moved, we hold that status here
      *

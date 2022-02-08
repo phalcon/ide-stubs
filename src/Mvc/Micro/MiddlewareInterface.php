@@ -16,8 +16,6 @@ use Phalcon\Mvc\Micro;
  */
 interface MiddlewareInterface
 {
-
-
     /**
      * Calls the middleware
      *

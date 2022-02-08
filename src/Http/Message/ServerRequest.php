@@ -23,7 +23,6 @@ use Psr\Http\Message\UriInterface;
  */
 final class ServerRequest extends \Phalcon\Http\Message\AbstractRequest implements \Psr\Http\Message\ServerRequestInterface
 {
-
     /**
      * @var Collection|CollectionInterface
      */

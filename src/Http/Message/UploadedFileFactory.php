@@ -18,8 +18,6 @@ use Psr\Http\Message\UploadedFileFactoryInterface;
  */
 final class UploadedFileFactory implements \Psr\Http\Message\UploadedFileFactoryInterface
 {
-
-
     /**
      * Create a new uploaded file.
      *

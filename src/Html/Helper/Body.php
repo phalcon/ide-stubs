@@ -16,8 +16,6 @@ use Phalcon\Html\Exception;
  */
 class Body extends \Phalcon\Html\Helper\AbstractHelper
 {
-
-
     /**
      * Produce a `<body>` tag.
      *

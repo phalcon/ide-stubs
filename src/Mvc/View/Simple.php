@@ -47,7 +47,6 @@ use Phalcon\Mvc\View\Engine\Php as PhpEngine;
  */
 class Simple extends Injectable implements \Phalcon\Mvc\ViewBaseInterface, \Phalcon\Events\EventsAwareInterface
 {
-
     /**
      * @var string
      */

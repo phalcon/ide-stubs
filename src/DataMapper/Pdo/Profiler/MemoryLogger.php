@@ -18,7 +18,6 @@ use Psr\Log\AbstractLogger;
  */
 class MemoryLogger extends AbstractLogger
 {
-
     /**
      * @var array
      */

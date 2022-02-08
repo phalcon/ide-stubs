@@ -22,8 +22,6 @@ use Phalcon\Storage\Traits\StorageErrorHandlerTrait;
  */
 class Php extends \Phalcon\Storage\Serializer\AbstractSerializer
 {
-
-
     /**
      * Serializes data
      *

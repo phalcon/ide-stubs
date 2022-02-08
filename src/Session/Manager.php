@@ -23,7 +23,6 @@ use Phalcon\Support\Helper\Arr\Get;
  */
 class Manager extends AbstractInjectionAware implements \Phalcon\Session\ManagerInterface
 {
-
     /**
      * @var SessionHandlerInterface|null
      */

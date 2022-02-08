@@ -14,8 +14,6 @@ namespace Phalcon\Support\Helper\Str;
  */
 class KebabCase extends \Phalcon\Support\Helper\Str\PascalCase
 {
-
-
     /**
      * @param string      $text
      * @param string|null $delimiters

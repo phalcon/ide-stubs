@@ -20,7 +20,6 @@ use Phalcon\Di\DiInterface;
  */
 class Breadcrumbs
 {
-
     /**
      * Keeps all the breadcrumbs
      *

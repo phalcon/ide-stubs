@@ -16,6 +16,4 @@ namespace Phalcon\Tag;
  */
 class Exception extends \Exception
 {
-
-
 }

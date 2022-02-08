@@ -22,8 +22,6 @@ use Psr\Http\Message\UploadedFileInterface;
  */
 class ServerRequestFactory implements \Psr\Http\Message\ServerRequestFactoryInterface, \Phalcon\Http\Message\RequestMethodInterface
 {
-
-
     /**
      * Create a new server request.
      *

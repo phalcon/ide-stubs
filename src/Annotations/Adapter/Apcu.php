@@ -22,7 +22,6 @@ use Phalcon\Annotations\Reflection;
  */
 class Apcu extends \Phalcon\Annotations\Adapter\AbstractAdapter
 {
-
     /**
      * @var string
      */

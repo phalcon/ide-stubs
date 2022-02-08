@@ -37,7 +37,6 @@ use Phalcon\Annotations\Annotation;
  */
 class Annotations extends Router
 {
-
     /**
      * @var string
      */

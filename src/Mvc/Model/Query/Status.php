@@ -41,7 +41,6 @@ use Phalcon\Mvc\ModelInterface;
  */
 class Status implements \Phalcon\Mvc\Model\Query\StatusInterface
 {
-
     /**
      * @var ModelInterface|null
      */

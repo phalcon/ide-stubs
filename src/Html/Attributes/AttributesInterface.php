@@ -18,8 +18,6 @@ use Phalcon\Html\Attributes;
  */
 interface AttributesInterface
 {
-
-
     /**
      * Get Attributes
      *

@@ -18,7 +18,6 @@ use JsonSerializable;
  */
 class Repository implements \Phalcon\Paginator\RepositoryInterface, \JsonSerializable
 {
-
     /**
      * @var array
      */

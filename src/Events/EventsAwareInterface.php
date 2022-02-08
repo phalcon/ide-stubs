@@ -17,8 +17,6 @@ namespace Phalcon\Events;
  */
 interface EventsAwareInterface
 {
-
-
     /**
      * Returns the internal event manager
      *

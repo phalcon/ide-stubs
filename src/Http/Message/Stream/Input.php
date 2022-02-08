@@ -20,7 +20,6 @@ use Phalcon\Http\Message\Stream;
  */
 class Input extends Stream
 {
-
     /**
      * @var string
      */

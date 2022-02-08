@@ -20,7 +20,6 @@ use Phalcon\Events\ManagerInterface;
  */
 class Console extends AbstractApplication
 {
-
     /**
      * @var array
      */

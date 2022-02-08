@@ -17,7 +17,6 @@ use Psr\Http\Message\UriInterface;
  */
 final class Uri extends \Phalcon\Http\Message\AbstractCommon implements \Psr\Http\Message\UriInterface
 {
-
     /**
      * Returns the fragment of the URL
      *

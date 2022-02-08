@@ -50,7 +50,6 @@ use Throwable;
  */
 class Micro extends Injectable implements \ArrayAccess, \Phalcon\Events\EventsAwareInterface
 {
-
     /**
      * @var callable|null
      */

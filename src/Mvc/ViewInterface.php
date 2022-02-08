@@ -16,8 +16,6 @@ namespace Phalcon\Mvc;
  */
 interface ViewInterface extends \Phalcon\Mvc\ViewBaseInterface
 {
-
-
     /**
      * Resets any template before layouts
      */

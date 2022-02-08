@@ -17,8 +17,6 @@ use Phalcon\Support\Helper\Exception;
  */
 class Concat extends \Phalcon\Support\Helper\Str\AbstractStr
 {
-
-
     /**
      * @param string $delimiter
      * @param string $first

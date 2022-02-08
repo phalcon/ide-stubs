@@ -62,7 +62,6 @@ use Phalcon\Filter\Validation\Exception;
  */
 class Max extends AbstractValidator
 {
-
     protected $template = 'Field :field must not exceed :max characters long';
 
     /**

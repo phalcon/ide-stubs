@@ -29,7 +29,6 @@ namespace Phalcon\Annotations;
  */
 class Reflection
 {
-
     /**
      * @var array
      * TODO: Make always array

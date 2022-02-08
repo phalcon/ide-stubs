@@ -18,7 +18,6 @@ use Phalcon\Events\EventsAwareInterface;
  */
 abstract class AbstractAdapter extends AbstractEventsAware implements \Phalcon\Acl\Adapter\AdapterInterface, \Phalcon\Events\EventsAwareInterface
 {
-
     /**
      * Active access which the list is checking if some role can access it
      *

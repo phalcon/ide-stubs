@@ -16,8 +16,6 @@ namespace Phalcon\Mvc;
  */
 interface EntityInterface
 {
-
-
     /**
      * Reads an attribute value by its name
      *

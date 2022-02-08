@@ -16,6 +16,4 @@ namespace Phalcon\Paginator;
  */
 class Exception extends \Exception
 {
-
-
 }

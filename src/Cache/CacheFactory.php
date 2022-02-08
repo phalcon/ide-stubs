@@ -23,7 +23,6 @@ use Psr\SimpleCache\CacheInterface;
  */
 class CacheFactory extends AbstractConfigFactory
 {
-
     /**
      * @var AdapterFactory
      */

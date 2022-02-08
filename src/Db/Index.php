@@ -40,7 +40,6 @@ namespace Phalcon\Db;
  */
 class Index implements \Phalcon\Db\IndexInterface
 {
-
     /**
      * Index columns
      *

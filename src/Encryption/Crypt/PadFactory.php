@@ -21,7 +21,6 @@ use Phalcon\Support\Helper\Arr\Get;
  */
 class PadFactory extends AbstractFactory
 {
-
     /**
      * @var string
      */

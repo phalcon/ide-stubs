@@ -22,8 +22,6 @@ use Phalcon\Mvc\ModelInterface;
  */
 class Row implements \Phalcon\Mvc\EntityInterface, \Phalcon\Mvc\Model\ResultInterface, \ArrayAccess, \JsonSerializable
 {
-
-
     /**
      * Serializes the object for json_encode
      *

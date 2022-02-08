@@ -20,7 +20,6 @@ use Psr\Http\Message\UriInterface;
  */
 abstract class AbstractMessage extends \Phalcon\Http\Message\AbstractCommon
 {
-
     /**
      * Gets the body of the message.
      *

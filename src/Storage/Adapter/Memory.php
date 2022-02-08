@@ -22,7 +22,6 @@ use Phalcon\Support\Exception as SupportException;
  */
 class Memory extends \Phalcon\Storage\Adapter\AbstractAdapter
 {
-
     /**
      * @var array
      */

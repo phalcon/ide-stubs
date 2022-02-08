@@ -80,8 +80,6 @@ use Phalcon\Filter\Validation\Exception;
  */
 class StringLength extends AbstractValidatorComposite
 {
-
-
     /**
      * Constructor
      *

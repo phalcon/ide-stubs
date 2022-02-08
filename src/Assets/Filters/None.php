@@ -16,8 +16,6 @@ use Phalcon\Assets\FilterInterface;
  */
 class None implements \Phalcon\Assets\FilterInterface
 {
-
-
     /**
      * Returns the content as is
      *

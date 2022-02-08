@@ -16,8 +16,6 @@ namespace Phalcon\Mvc\Router;
  */
 interface RouteInterface
 {
-
-
     /**
      * Replaces placeholders from pattern returning a valid PCRE regular expression
      *
@@ -45,9 +43,9 @@ interface RouteInterface
     /**
      * Returns the hostname restriction if any
      *
-     * @return string
+     * @return string|null
      */
-    public function getHostname(): string;
+    public function getHostname(): ?string;
 
     /**
      * Returns the HTTP methods that constraint matching the route
@@ -59,9 +57,9 @@ interface RouteInterface
     /**
      * Returns the route's name
      *
-     * @return string
+     * @return string|null
      */
-    public function getName(): string;
+    public function getName(): ?string;
 
     /**
      * Returns the paths

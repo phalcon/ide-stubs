@@ -21,8 +21,6 @@ use Psr\Link\EvolvableLinkInterface;
  */
 class EvolvableLink extends \Phalcon\Html\Link\Link implements \Psr\Link\EvolvableLinkInterface
 {
-
-
     /**
      * Returns an instance with the specified attribute added.
      *

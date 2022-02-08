@@ -23,8 +23,6 @@ use Phalcon\Filter\FilterFactory;
  */
 class Cli extends FactoryDefault
 {
-
-
     /**
      * Phalcon\Di\FactoryDefault\Cli constructor
      */

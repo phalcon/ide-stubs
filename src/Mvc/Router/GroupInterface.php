@@ -57,8 +57,6 @@ namespace Phalcon\Mvc\Router;
  */
 interface GroupInterface
 {
-
-
     /**
      * Adds a route to the router on any HTTP method
      *

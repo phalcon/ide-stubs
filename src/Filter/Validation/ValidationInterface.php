@@ -18,8 +18,6 @@ use Phalcon\Messages\Messages;
  */
 interface ValidationInterface
 {
-
-
     /**
      * Adds a validator to a field
      *

@@ -19,7 +19,6 @@ use Phalcon\Image\Exception;
  */
 abstract class AbstractAdapter implements \Phalcon\Image\Adapter\AdapterInterface
 {
-
     /**
      * @var bool
      */

@@ -43,7 +43,6 @@ use Phalcon\Session\BagInterface;
  */
 abstract class Injectable implements \Phalcon\Di\InjectionAwareInterface
 {
-
     /**
      * Dependency Injector
      *

@@ -59,7 +59,6 @@ use Phalcon\Filter\Validation\Validator\File\AbstractFile;
  */
 class Max extends AbstractFile
 {
-
     protected $template = 'File :field exceeds the maximum resolution of :resolution';
 
     /**

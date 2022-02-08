@@ -81,9 +81,9 @@ class Logger implements \Psr\Log\LoggerInterface
     protected $name = '';
 
     /**
-     * @var DateTimeZone|null
+     * @var DateTimeZone
      */
-    protected $timezone = null;
+    protected $timezone;
 
     /**
      * The adapter stack

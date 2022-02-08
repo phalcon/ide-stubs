@@ -17,8 +17,6 @@ namespace Phalcon\Support\Helper\Arr;
  */
 abstract class AbstractArr
 {
-
-
     /**
      * Helper method to filter the collection
      *

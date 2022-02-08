@@ -25,7 +25,6 @@ use Phalcon\Filter\Validation\AbstractCombinedFieldsValidator;
  */
 class Validation extends Injectable implements \Phalcon\Filter\Validation\ValidationInterface
 {
-
     /**
      * @var array
      */

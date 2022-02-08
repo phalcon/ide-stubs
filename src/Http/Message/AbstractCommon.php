@@ -16,8 +16,6 @@ use Phalcon\Http\Message\Exception\InvalidArgumentException;
  */
 abstract class AbstractCommon
 {
-
-
     /**
      * Returns a new instance having set the parameter
      *

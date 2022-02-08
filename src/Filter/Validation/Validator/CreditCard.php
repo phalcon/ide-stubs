@@ -49,7 +49,6 @@ use Phalcon\Filter\Validation\AbstractValidator;
  */
 class CreditCard extends AbstractValidator
 {
-
     protected $template = 'Field :field is not valid for a credit card number';
 
     /**

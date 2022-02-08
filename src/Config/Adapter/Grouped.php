@@ -68,8 +68,6 @@ use Phalcon\Factory\Exception as FactoryException;
  */
 class Grouped extends Config
 {
-
-
     /**
      * Phalcon\Config\Adapter\Grouped constructor
      *

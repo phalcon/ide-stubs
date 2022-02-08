@@ -38,7 +38,6 @@ use Phalcon\Paginator\Exception;
  */
 class QueryBuilder extends \Phalcon\Paginator\Adapter\AbstractAdapter
 {
-
     /**
      * Paginator's data
      *

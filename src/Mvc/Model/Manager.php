@@ -48,7 +48,6 @@ use ReflectionProperty;
  */
 class Manager implements \Phalcon\Mvc\Model\ManagerInterface, \Phalcon\Di\InjectionAwareInterface, \Phalcon\Events\EventsAwareInterface
 {
-
     /**
      * @var array
      */

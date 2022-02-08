@@ -18,7 +18,6 @@ use Phalcon\DataMapper\Pdo\Connection;
  */
 class QueryFactory
 {
-
     /**
      * @var string
      */

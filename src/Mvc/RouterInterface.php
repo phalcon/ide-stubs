@@ -17,8 +17,6 @@ use Phalcon\Mvc\Router\GroupInterface;
  */
 interface RouterInterface
 {
-
-
     /**
      * Adds a route to the router on any HTTP method
      *

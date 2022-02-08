@@ -34,7 +34,6 @@ namespace Phalcon\Http\Request;
  */
 class File implements \Phalcon\Http\Request\FileInterface
 {
-
     /**
      * @var string|null
      */

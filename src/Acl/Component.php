@@ -14,7 +14,6 @@ namespace Phalcon\Acl;
  */
 class Component implements \Phalcon\Acl\ComponentInterface
 {
-
     /**
      * Component description
      *

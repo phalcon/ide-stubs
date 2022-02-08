@@ -19,8 +19,6 @@ use Phalcon\Logger\Item;
  */
 class Json extends \Phalcon\Logger\Formatter\AbstractFormatter
 {
-
-
     /**
      * Json constructor.
      *

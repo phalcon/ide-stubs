@@ -22,7 +22,6 @@ use Phalcon\Db\DialectInterface;
  */
 class Postgresql extends Dialect
 {
-
     /**
      * @var string
      */
