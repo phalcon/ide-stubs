@@ -38,6 +38,7 @@ use Phalcon\Translate\InterpolatorFactory;
  */
 class Gettext extends \Phalcon\Translate\Adapter\AbstractAdapter implements \ArrayAccess
 {
+
     /**
      * @var int
      */

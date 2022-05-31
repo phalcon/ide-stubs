@@ -16,6 +16,8 @@ namespace Phalcon\Filter\Sanitize;
  */
 class UpperFirst
 {
+
+
     /**
      * @param string $input The text to sanitize
      *

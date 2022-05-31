@@ -15,6 +15,8 @@ namespace Phalcon\Support\Helper\Str;
  */
 class Increment
 {
+
+
     /**
      * @param string $text
      * @param string $separator

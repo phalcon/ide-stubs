@@ -14,12 +14,12 @@ use Closure;
 use Countable;
 use Iterator;
 use JsonSerializable;
+use Phalcon\Cache\CacheInterface;
 use Phalcon\Db\Enum;
 use Phalcon\Messages\MessageInterface;
 use Phalcon\Mvc\Model;
 use Phalcon\Mvc\ModelInterface;
 use Phalcon\Storage\Serializer\SerializerInterface;
-use Psr\SimpleCache\CacheInterface;
 use SeekableIterator;
 use Serializable;
 
@@ -132,9 +132,9 @@ abstract class Resultset implements \Phalcon\Mvc\Model\ResultsetInterface, \Iter
      * Phalcon\Mvc\Model\Resultset constructor
      *
      * @param ResultInterface|false $result
-     * @param CacheInterface|null $cache
+     * @param mixed|null            $cache
      */
-    public function __construct($result, \Psr\SimpleCache\CacheInterface $cache = null)
+    public function __construct($result, $cache = null)
     {
     }
 
@@ -298,7 +298,7 @@ abstract class Resultset implements \Phalcon\Mvc\Model\ResultsetInterface, \Iter
      * Gets row in a specific position of the resultset
      *
      * @param mixed $index
-     * @return bool|ModelInterface
+     * @return mixed
      */
     public function offsetGet($index)
     {

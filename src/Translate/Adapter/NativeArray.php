@@ -25,6 +25,7 @@ use Phalcon\Translate\InterpolatorFactory;
  */
 class NativeArray extends \Phalcon\Translate\Adapter\AbstractAdapter implements \ArrayAccess
 {
+
     /**
      * @var array
      */
@@ -96,6 +97,15 @@ class NativeArray extends \Phalcon\Translate\Adapter\AbstractAdapter implements 
      * @param string $translateKey
      */
     public function query(string $translateKey, array $placeholders = []): string
+    {
+    }
+
+    /**
+     * Returns the internal array
+     *
+     * @return array
+     */
+    public function toArray(): array
     {
     }
 }

@@ -12,12 +12,11 @@ namespace Phalcon\Forms\Element;
 use Phalcon\Tag;
 
 /**
- * Phalcon\Forms\Element\Hidden
- *
  * Component INPUT[type=hidden] for forms
  */
 class Hidden extends \Phalcon\Forms\Element\AbstractElement
 {
+
     /**
      * @var string
      */

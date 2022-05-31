@@ -22,6 +22,7 @@ use Phalcon\Storage\Adapter\AdapterInterface;
  */
 class AdapterFactory extends AbstractFactory
 {
+
     /**
      * @var SerializerFactory
      */

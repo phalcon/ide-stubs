@@ -22,4 +22,6 @@ use Throwable;
  */
 class UnsupportedAlgorithmException extends Exception implements \Throwable
 {
+
+
 }

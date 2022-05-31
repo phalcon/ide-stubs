@@ -16,6 +16,8 @@ use ArrayAccess;
  */
 interface DiInterface extends \ArrayAccess
 {
+
+
     /**
      * Attempts to register a service in the services container
      * Only is successful if a service hasn't been registered previously

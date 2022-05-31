@@ -14,6 +14,7 @@ namespace Phalcon\Db\Profiler;
  */
 class Item
 {
+
     /**
      * Timestamp when the profile ended
      *

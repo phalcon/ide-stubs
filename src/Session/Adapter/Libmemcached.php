@@ -16,10 +16,13 @@ use Phalcon\Storage\AdapterFactory;
  */
 class Libmemcached extends \Phalcon\Session\Adapter\AbstractAdapter
 {
+
+
     /**
-     * Constructor
+     * Libmemcached constructor.
      *
-     * @param array $options = [
+     * @param AdapterFactory $factory
+     * @param array          $options = [
      *     'servers' => [
      *         [
      *             'host' => 'localhost',
@@ -33,7 +36,6 @@ class Libmemcached extends \Phalcon\Session\Adapter\AbstractAdapter
      *     'serializer' => null,
      *     'prefix' => 'sess-memc-'
      * ]
-     * @param \Phalcon\Storage\AdapterFactory $factory
      */
     public function __construct(\Phalcon\Storage\AdapterFactory $factory, array $options = [])
     {

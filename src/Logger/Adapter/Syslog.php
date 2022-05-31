@@ -24,6 +24,7 @@ use Phalcon\Logger\Logger;
  */
 class Syslog extends \Phalcon\Logger\Adapter\AbstractAdapter
 {
+
     /**
      * @var int
      */

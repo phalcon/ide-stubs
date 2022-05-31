@@ -35,6 +35,7 @@ use Phalcon\Db\ReferenceInterface;
  */
 class Sqlite extends \Phalcon\Db\Adapter\Pdo\AbstractPdo
 {
+
     /**
      * @var string
      */

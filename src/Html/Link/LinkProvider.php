@@ -9,27 +9,15 @@
  */
 namespace Phalcon\Html\Link;
 
-use Psr\Link\LinkInterface;
-use Psr\Link\LinkProviderInterface;
+use Phalcon\Html\Link\Interfaces\LinkInterface;
+use Phalcon\Html\Link\Interfaces\LinkProviderInterface;
 
 /**
  * @property LinkInterface[] links
  */
-class LinkProvider implements \Psr\Link\LinkProviderInterface
+class LinkProvider extends \Phalcon\Html\Link\AbstractLinkProvider implements \Phalcon\Html\Link\Interfaces\LinkProviderInterface
 {
-    /**
-     * @var LinkInterface[]
-     */
-    protected $links = [];
 
-    /**
-     * LinkProvider constructor.
-     *
-     * @param array $links
-     */
-    public function __construct(array $links = [])
-    {
-    }
 
     /**
      * Returns an iterable of LinkInterface objects.
@@ -37,9 +25,9 @@ class LinkProvider implements \Psr\Link\LinkProviderInterface
      * The iterable may be an array or any PHP \Traversable object. If no links
      * are available, an empty array or \Traversable MUST be returned.
      *
-     * @return LinkInterface[]|\Traversable
+     * @return array
      */
-    public function getLinks()
+    public function getLinks(): array
     {
     }
 
@@ -51,20 +39,10 @@ class LinkProvider implements \Psr\Link\LinkProviderInterface
      * with that relationship are available, an empty array or \Traversable
      * MUST be returned.
      *
-     * @return LinkInterface[]|\Traversable
      * @param mixed $rel
+     * @return array
      */
-    public function getLinksByRel($rel)
-    {
-    }
-
-    /**
-     * Returns the object hash key
-     *
-     * @param LinkInterface $link *
-     * @return string
-     */
-    protected function getKey(\Psr\Link\LinkInterface $link): string
+    public function getLinksByRel($rel): array
     {
     }
 }

@@ -10,12 +10,12 @@
 namespace Phalcon\Events;
 
 /**
- * Phalcon\Events\EventInterface
- *
  * Interface for Phalcon\Events\Event class
  */
 interface EventInterface
 {
+
+
     /**
      * Gets event data
      *

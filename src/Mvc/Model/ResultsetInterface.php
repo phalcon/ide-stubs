@@ -12,7 +12,6 @@ namespace Phalcon\Mvc\Model;
 use Closure;
 use Phalcon\Messages\MessageInterface;
 use Phalcon\Mvc\ModelInterface;
-use Psr\SimpleCache\CacheInterface;
 
 /**
  * Phalcon\Mvc\Model\ResultsetInterface
@@ -21,6 +20,8 @@ use Psr\SimpleCache\CacheInterface;
  */
 interface ResultsetInterface
 {
+
+
     /**
      * Deletes every record in the resultset
      *
@@ -50,9 +51,9 @@ interface ResultsetInterface
     /**
      * Returns the associated cache for the resultset
      *
-     * @return CacheInterface|null
+     * @return mixed|null
      */
-    public function getCache(): ?CacheInterface;
+    public function getCache();
 
     /**
      * Get first row in the resultset

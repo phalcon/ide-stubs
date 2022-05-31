@@ -22,6 +22,7 @@ use Phalcon\Mvc\View\Exception;
  */
 class Volt extends \Phalcon\Mvc\View\Engine\AbstractEngine implements \Phalcon\Events\EventsAwareInterface
 {
+
     /**
      * @var Compiler
      */

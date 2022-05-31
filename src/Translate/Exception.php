@@ -16,4 +16,6 @@ namespace Phalcon\Translate;
  */
 class Exception extends \Exception
 {
+
+
 }

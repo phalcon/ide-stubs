@@ -26,6 +26,7 @@ use Phalcon\Events\ManagerInterface;
  */
 abstract class AbstractAdapter implements \Phalcon\Db\Adapter\AdapterInterface, \Phalcon\Events\EventsAwareInterface
 {
+
     /**
      * Connection ID
      *

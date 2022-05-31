@@ -16,6 +16,8 @@ use Phalcon\Html\Exception;
  */
 class Script extends \Phalcon\Html\Helper\AbstractSeries
 {
+
+
     /**
      * Add an element to the list
      *

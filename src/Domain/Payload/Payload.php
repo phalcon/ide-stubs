@@ -16,6 +16,7 @@ use Throwable;
  */
 class Payload implements \Phalcon\Domain\Payload\PayloadInterface
 {
+
     /**
      * Exception if any
      *

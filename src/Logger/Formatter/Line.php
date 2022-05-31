@@ -19,6 +19,7 @@ use Phalcon\Logger\Item;
  */
 class Line extends \Phalcon\Logger\Formatter\AbstractFormatter
 {
+
     /**
      * Format applied to each message
      *

@@ -14,6 +14,8 @@ namespace Phalcon\Domain\Payload;
  */
 class PayloadFactory
 {
+
+
     /**
      * Instantiate a new object
      *

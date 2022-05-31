@@ -26,6 +26,8 @@ use Phalcon\DataMapper\Pdo\Connection;
  */
 class Delete extends \Phalcon\DataMapper\Query\AbstractConditions
 {
+
+
     /**
      * Delete constructor.
      *

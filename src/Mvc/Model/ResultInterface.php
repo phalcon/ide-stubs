@@ -18,6 +18,8 @@ use Phalcon\Mvc\ModelInterface;
  */
 interface ResultInterface
 {
+
+
     /**
      * Sets the object's state
      *

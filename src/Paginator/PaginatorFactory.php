@@ -22,6 +22,8 @@ use Phalcon\Factory\AbstractFactory;
  */
 class PaginatorFactory extends AbstractFactory
 {
+
+
     /**
      * AdapterFactory constructor.
      *
@@ -54,13 +56,12 @@ class PaginatorFactory extends AbstractFactory
      * $paginator = (new PaginatorFactory())->load($options);
      * ```
      *
-     * @param array|\Phalcon\Config = [
+     * @param array|\Phalcon\Config\Config $config = [
      *     'adapter' => 'queryBuilder',
      *     'limit' => 20,
      *     'page' => 1,
      *     'builder' => null
      * ]
-     * @param mixed $config
      * @return AdapterInterface
      */
     public function load($config): AdapterInterface

@@ -18,6 +18,7 @@ use JsonSerializable;
  */
 class Message implements \Phalcon\Messages\MessageInterface, \JsonSerializable
 {
+
     /**
      * @var int
      */

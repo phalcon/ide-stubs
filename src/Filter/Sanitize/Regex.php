@@ -16,6 +16,8 @@ namespace Phalcon\Filter\Sanitize;
  */
 class Regex
 {
+
+
     /**
      * @param mixed $input
      * @param mixed $pattern

@@ -17,12 +17,14 @@ use Phalcon\Di\DiInterface;
 use Phalcon\Support\Helper\Arr\Get;
 
 /**
- * Phalcon\Session\Manager
- *
- * Session manager class
+ * @property SessionHandlerInterface|null $adapter
+ * @property string                       $name
+ * @property array                        $options
+ * @property string                       $uniqueId
  */
 class Manager extends AbstractInjectionAware implements \Phalcon\Session\ManagerInterface
 {
+
     /**
      * @var SessionHandlerInterface|null
      */
@@ -58,6 +60,7 @@ class Manager extends AbstractInjectionAware implements \Phalcon\Session\Manager
      * Alias: Gets a session variable from an application context
      *
      * @param string $key
+     *
      * @return mixed
      */
     public function __get(string $key)
@@ -68,6 +71,7 @@ class Manager extends AbstractInjectionAware implements \Phalcon\Session\Manager
      * Alias: Check whether a session variable is set in an application context
      *
      * @param string $key
+     *
      * @return bool
      */
     public function __isset(string $key): bool
@@ -78,7 +82,7 @@ class Manager extends AbstractInjectionAware implements \Phalcon\Session\Manager
      * Alias: Sets a session variable in an application context
      *
      * @param string $key
-     * @param mixed $value
+     * @param mixed  $value
      * @return void
      */
     public function __set(string $key, $value): void
@@ -116,10 +120,11 @@ class Manager extends AbstractInjectionAware implements \Phalcon\Session\Manager
     /**
      * Gets a session variable from an application context
      *
-     * @param string $key
-     * @param mixed $defaultValue
-     * @param bool $remove
-     * @return mixed
+     * @param string     $key
+     * @param mixed|null $defaultValue
+     * @param bool       $remove
+     *
+     * @return mixed|null
      */
     public function get(string $key, $defaultValue = null, bool $remove = false)
     {
@@ -174,10 +179,10 @@ class Manager extends AbstractInjectionAware implements \Phalcon\Session\Manager
     /**
      * Regenerates the session id using the adapter.
      *
-     * @param mixed $deleteOldSession
+     * @param bool $deleteOldSession
      * @return ManagerInterface
      */
-    public function regenerateId($deleteOldSession = true): ManagerInterface
+    public function regenerateId(bool $deleteOldSession = true): ManagerInterface
     {
     }
 
@@ -215,10 +220,10 @@ class Manager extends AbstractInjectionAware implements \Phalcon\Session\Manager
     /**
      * Set session Id
      *
-     * @param string $id
+     * @param string $sessionId
      * @return ManagerInterface
      */
-    public function setId(string $id): ManagerInterface
+    public function setId(string $sessionId): ManagerInterface
     {
     }
 
@@ -226,7 +231,8 @@ class Manager extends AbstractInjectionAware implements \Phalcon\Session\Manager
      * Set the session name. Throw exception if the session has started
      * and do not allow poop names
      *
-     * @param string $name *
+     * @param string $name
+     *
      * @throws InvalidArgumentException
      *
      * @return Manager
@@ -265,9 +271,21 @@ class Manager extends AbstractInjectionAware implements \Phalcon\Session\Manager
     }
 
     /**
+     * Checks if or where headers have been sent
+     *
+     * @return bool
+     *
+     * @link https://php.net/manual/en/function.headers-sent.php
+     */
+    protected function phpHeadersSent(): bool
+    {
+    }
+
+    /**
      * Returns the key prefixed
      *
      * @param string $key
+     *
      * @return string
      */
     private function getUniqueKey(string $key): string

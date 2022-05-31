@@ -16,6 +16,8 @@ namespace Phalcon\Filter\Sanitize;
  */
 class Trim
 {
+
+
     /**
      * @param string $input The text to sanitize
      *

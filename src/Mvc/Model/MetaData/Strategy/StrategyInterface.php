@@ -22,6 +22,8 @@ use Phalcon\Di\DiInterface;
  */
 interface StrategyInterface
 {
+
+
     /**
      * Read the model's column map, this can't be inferred
      *

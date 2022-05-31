@@ -20,6 +20,7 @@ use Phalcon\Mvc\ModelInterface;
  */
 class ValidationFailed extends \Phalcon\Mvc\Model\Exception
 {
+
     /**
      * @var array
      */

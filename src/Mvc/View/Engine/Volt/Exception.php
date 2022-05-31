@@ -16,6 +16,7 @@ use Phalcon\Mvc\View\Exception as BaseException;
  */
 class Exception extends \Phalcon\Mvc\View\Exception
 {
+
     /**
      * @var array
      */

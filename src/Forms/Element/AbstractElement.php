@@ -25,6 +25,7 @@ use Phalcon\Messages\Messages;
  */
 abstract class AbstractElement implements \Phalcon\Forms\Element\ElementInterface
 {
+
     /**
      * @var array
      */
@@ -81,7 +82,7 @@ abstract class AbstractElement implements \Phalcon\Forms\Element\ElementInterfac
     protected $value = null;
 
     /**
-     * Phalcon\Forms\Element constructor
+     * Constructor
      *
      * @param string $name Attribute name (value of 'name' attribute of HTML element)
      * @param array $attributes Additional HTML element attributes

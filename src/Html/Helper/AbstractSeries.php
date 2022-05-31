@@ -15,6 +15,7 @@ namespace Phalcon\Html\Helper;
  */
 abstract class AbstractSeries extends \Phalcon\Html\Helper\AbstractHelper
 {
+
     /**
      * @var array
      */

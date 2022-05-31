@@ -14,4 +14,6 @@ namespace Phalcon\Autoload;
  */
 class Exception extends \Exception
 {
+
+
 }

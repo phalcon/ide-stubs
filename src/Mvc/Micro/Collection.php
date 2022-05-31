@@ -30,6 +30,7 @@ namespace Phalcon\Mvc\Micro;
  */
 class Collection implements \Phalcon\Mvc\Micro\CollectionInterface
 {
+
     /**
      * @var callable
      */
@@ -242,10 +243,10 @@ class Collection implements \Phalcon\Mvc\Micro\CollectionInterface
      * @param string|array $method
      * @param string $routePattern
      * @param callable $handler
-     * @param string $name
+     * @param string|null $name
      * @return void
      */
-    protected function addMap($method, string $routePattern, $handler, string $name): void
+    protected function addMap($method, string $routePattern, $handler, string $name = null): void
     {
     }
 }

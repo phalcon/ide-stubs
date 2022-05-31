@@ -16,6 +16,8 @@ namespace Phalcon\Filter\Sanitize;
  */
 class Lower
 {
+
+
     /**
      * @param string $input The text to sanitize
      *

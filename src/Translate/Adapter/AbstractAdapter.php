@@ -23,6 +23,7 @@ use Phalcon\Translate\InterpolatorFactory;
  */
 abstract class AbstractAdapter implements \Phalcon\Translate\Adapter\AdapterInterface
 {
+
     /**
      * @var string
      */

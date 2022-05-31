@@ -21,6 +21,8 @@ use Phalcon\Mvc\Model\Query\StatusInterface;
  */
 interface ManagerInterface
 {
+
+
     /**
      * Binds a behavior to a model
      *
@@ -40,7 +42,7 @@ interface ManagerInterface
      * @param string $referencedModel
      * @return RelationInterface
      */
-    public function addBelongsTo(\Phalcon\Mvc\ModelInterface $model, $fields, string $referencedModel, $referencedFields, $options = null): RelationInterface;
+    public function addBelongsTo(\Phalcon\Mvc\ModelInterface $model, $fields, string $referencedModel, $referencedFields, array $options = []): RelationInterface;
 
     /**
      * Setup a relation 1-n between two models
@@ -52,7 +54,7 @@ interface ManagerInterface
      * @param string $referencedModel
      * @return RelationInterface
      */
-    public function addHasMany(\Phalcon\Mvc\ModelInterface $model, $fields, string $referencedModel, $referencedFields, $options = null): RelationInterface;
+    public function addHasMany(\Phalcon\Mvc\ModelInterface $model, $fields, string $referencedModel, $referencedFields, array $options = []): RelationInterface;
 
     /**
      * Setup a 1-1 relation between two models
@@ -64,7 +66,7 @@ interface ManagerInterface
      * @param string $referencedModel
      * @return RelationInterface
      */
-    public function addHasOne(\Phalcon\Mvc\ModelInterface $model, $fields, string $referencedModel, $referencedFields, $options = null): RelationInterface;
+    public function addHasOne(\Phalcon\Mvc\ModelInterface $model, $fields, string $referencedModel, $referencedFields, array $options = []): RelationInterface;
 
     /**
      * Setups a 1-1 relation between two models using an intermediate table
@@ -79,7 +81,7 @@ interface ManagerInterface
      * @param string $referencedModel
      * @return RelationInterface
      */
-    public function addHasOneThrough(\Phalcon\Mvc\ModelInterface $model, $fields, string $intermediateModel, $intermediateFields, $intermediateReferencedFields, string $referencedModel, $referencedFields, $options = null): RelationInterface;
+    public function addHasOneThrough(\Phalcon\Mvc\ModelInterface $model, $fields, string $intermediateModel, $intermediateFields, $intermediateReferencedFields, string $referencedModel, $referencedFields, array $options = []): RelationInterface;
 
     /**
      * Setups a relation n-m between two models
@@ -94,7 +96,7 @@ interface ManagerInterface
      * @param string $referencedModel
      * @return RelationInterface
      */
-    public function addHasManyToMany(\Phalcon\Mvc\ModelInterface $model, $fields, string $intermediateModel, $intermediateFields, $intermediateReferencedFields, string $referencedModel, $referencedFields, $options = null): RelationInterface;
+    public function addHasManyToMany(\Phalcon\Mvc\ModelInterface $model, $fields, string $intermediateModel, $intermediateFields, $intermediateReferencedFields, string $referencedModel, $referencedFields, array $options = []): RelationInterface;
 
     /**
      * Creates a Phalcon\Mvc\Model\Query\Builder
@@ -135,8 +137,8 @@ interface ManagerInterface
      *
      * @param string            $modelName
      * @param string            $modelRelation
-     * @param array|string|null $parameters
      * @param ModelInterface    $record
+     * @param array|string|null $parameters
      * @param string|null       $method
      * @return bool|ResultsetInterface
      */
@@ -155,8 +157,8 @@ interface ManagerInterface
      *
      * @param string            $modelName
      * @param string            $modelRelation
-     * @param array|string|null $parameters
      * @param ModelInterface    $record
+     * @param array|string|null $parameters
      * @param string|null       $method
      * @return bool|ResultsetInterface
      */
@@ -199,8 +201,8 @@ interface ManagerInterface
      *
      * @param string            $modelName
      * @param string            $modelRelation
-     * @param array|string|null $parameters
      * @param ModelInterface    $record
+     * @param array|string|null $parameters
      * @param string|null       $method
      * @return bool|ModelInterface
      */

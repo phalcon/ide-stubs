@@ -22,6 +22,8 @@ use Phalcon\Storage\Serializer\SerializerInterface;
  */
 class SerializerFactory extends AbstractFactory
 {
+
+
     /**
      * SerializerFactory constructor.
      *

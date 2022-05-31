@@ -16,6 +16,7 @@ use Phalcon\Html\Exception;
  */
 class Style extends \Phalcon\Html\Helper\AbstractSeries
 {
+
     /**
      * @var bool
      */

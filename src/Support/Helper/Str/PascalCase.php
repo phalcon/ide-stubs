@@ -14,6 +14,8 @@ namespace Phalcon\Support\Helper\Str;
  */
 class PascalCase
 {
+
+
     /**
      * @param string      $text
      * @param string|null $delimiters

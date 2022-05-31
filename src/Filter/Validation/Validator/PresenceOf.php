@@ -49,6 +49,7 @@ use Phalcon\Filter\Validation\AbstractValidator;
  */
 class PresenceOf extends AbstractValidator
 {
+
     protected $template = 'Field :field is required';
 
     /**

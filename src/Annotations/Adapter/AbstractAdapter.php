@@ -20,6 +20,7 @@ use Phalcon\Annotations\ReaderInterface;
  */
 abstract class AbstractAdapter implements \Phalcon\Annotations\Adapter\AdapterInterface
 {
+
     /**
      * @var array
      */
@@ -41,6 +42,48 @@ abstract class AbstractAdapter implements \Phalcon\Annotations\Adapter\AdapterIn
     }
 
     /**
+     * Returns the annotations found in a specific constant
+     *
+     * @param string $className
+     * @param string $constantName
+     * @return Collection
+     */
+    public function getConstant(string $className, string $constantName): Collection
+    {
+    }
+
+    /**
+     * Returns the annotations found in all the class' constants
+     *
+     * @param string $className
+     * @return array
+     */
+    public function getConstants(string $className): array
+    {
+    }
+
+    /**
+     * Returns the annotations found in a specific property
+     *
+     * @param string $className
+     * @param string $propertyName
+     * @return Collection
+     */
+    public function getProperty(string $className, string $propertyName): Collection
+    {
+    }
+
+    /**
+     * Returns the annotations found in all the class' properties
+     *
+     * @param string $className
+     * @return array
+     */
+    public function getProperties(string $className): array
+    {
+    }
+
+    /**
      * Returns the annotations found in a specific method
      *
      * @param string $className
@@ -58,27 +101,6 @@ abstract class AbstractAdapter implements \Phalcon\Annotations\Adapter\AdapterIn
      * @return array
      */
     public function getMethods(string $className): array
-    {
-    }
-
-    /**
-     * Returns the annotations found in a specific property
-     *
-     * @param string $className
-     * @param string $propertyName
-     * @return Collection
-     */
-    public function getProperty(string $className, string $propertyName): Collection
-    {
-    }
-
-    /**
-     * Returns the annotations found in all the class' methods
-     *
-     * @param string $className
-     * @return array
-     */
-    public function getProperties(string $className): array
     {
     }
 

@@ -14,6 +14,8 @@ namespace Phalcon\Encryption\Crypt\Padding;
  */
 interface PadInterface
 {
+
+
     /**
      * @param int $paddingSize
      *

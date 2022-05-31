@@ -16,6 +16,7 @@ namespace Phalcon\Mvc\Router;
  */
 class Route implements \Phalcon\Mvc\Router\RouteInterface
 {
+
     /**
      * @var callable|null
      */

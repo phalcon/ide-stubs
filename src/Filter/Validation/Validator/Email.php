@@ -49,6 +49,7 @@ use Phalcon\Filter\Validation\AbstractValidator;
  */
 class Email extends AbstractValidator
 {
+
     protected $template = 'Field :field must be an email address';
 
     /**

@@ -18,6 +18,7 @@ namespace Phalcon\Assets;
  */
 class Inline implements \Phalcon\Assets\AssetInterface
 {
+
     /**
      * @var array | null
      */

@@ -18,6 +18,8 @@ use RuntimeException;
  */
 class Dynamic
 {
+
+
     /**
      * @param string $text
      * @param string $leftDelimiter

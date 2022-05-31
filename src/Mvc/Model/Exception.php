@@ -16,4 +16,6 @@ namespace Phalcon\Mvc\Model;
  */
 class Exception extends \Exception
 {
+
+
 }

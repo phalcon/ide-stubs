@@ -22,6 +22,7 @@ use Phalcon\Translate\Adapter\AdapterInterface;
  */
 class TranslateFactory extends AbstractFactory
 {
+
     /**
      * @var InterpolatorFactory
      */

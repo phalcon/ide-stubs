@@ -20,6 +20,7 @@ use Phalcon\Html\Helper\AbstractHelper;
  */
 abstract class AbstractInput extends AbstractHelper
 {
+
     /**
      * @var string
      */

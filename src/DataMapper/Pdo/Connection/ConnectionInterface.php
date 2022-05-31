@@ -24,6 +24,8 @@ use Phalcon\DataMapper\Pdo\Profiler\ProfilerInterface;
  */
 interface ConnectionInterface extends \Phalcon\DataMapper\Pdo\Connection\PdoInterface
 {
+
+
     /**
      * Connects to the database.
      *

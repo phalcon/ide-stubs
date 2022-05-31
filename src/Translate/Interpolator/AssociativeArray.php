@@ -18,6 +18,8 @@ use Phalcon\Support\Helper\Str\Interpolate;
  */
 class AssociativeArray implements \Phalcon\Translate\Interpolator\InterpolatorInterface
 {
+
+
     /**
      * Replaces placeholders by the values passed
      *

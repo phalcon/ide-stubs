@@ -16,6 +16,8 @@ use Phalcon\Html\Exception;
  */
 class Anchor extends \Phalcon\Html\Helper\AbstractHelper
 {
+
+
     /**
      * Produce a <a> tag
      *

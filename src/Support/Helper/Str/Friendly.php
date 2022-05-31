@@ -18,6 +18,8 @@ use Phalcon\Support\Helper\Exception;
  */
 class Friendly extends \Phalcon\Support\Helper\Str\AbstractStr
 {
+
+
     /**
      * @param string     $text
      * @param string     $separator

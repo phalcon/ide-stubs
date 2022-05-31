@@ -14,5 +14,6 @@ namespace Phalcon\Html\Helper\Input;
  */
 class Color extends \Phalcon\Html\Helper\Input\AbstractInput
 {
+
     protected $type = 'color';
 }

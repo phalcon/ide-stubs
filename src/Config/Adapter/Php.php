@@ -48,6 +48,8 @@ use Phalcon\Config\Config;
  */
 class Php extends Config
 {
+
+
     /**
      * Phalcon\Config\Adapter\Php constructor
      *

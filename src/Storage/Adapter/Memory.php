@@ -22,6 +22,7 @@ use Phalcon\Support\Exception as SupportException;
  */
 class Memory extends \Phalcon\Storage\Adapter\AbstractAdapter
 {
+
     /**
      * @var array
      */
@@ -72,18 +73,6 @@ class Memory extends \Phalcon\Storage\Adapter\AbstractAdapter
     }
 
     /**
-     * Reads data from the adapter
-     *
-     * @param string     $key
-     * @param mixed|null $defaultValue
-     *
-     * @return mixed
-     */
-    public function get(string $key, $defaultValue = null)
-    {
-    }
-
-    /**
      * Stores data in the adapter
      *
      * @param string $prefix
@@ -118,11 +107,15 @@ class Memory extends \Phalcon\Storage\Adapter\AbstractAdapter
     }
 
     /**
-     * Stores data in the adapter
+     * Stores data in the adapter. If the TTL is `null` (default) or not defined
+     * then the default TTL will be used, as set in this adapter. If the TTL
+     * is `0` or a negative number, a `delete()` will be issued, since this
+     * item has expired. If you need to set this key forever, you should use
+     * the `setForever()` method.
      *
-     * @param string                 $key
-     * @param mixed                  $value
-     * @param \DateInterval|int|null $ttl
+     * @param string                $key
+     * @param mixed                 $value
+     * @param DateInterval|int|null $ttl
      *
      * @return bool
      * @throws BaseException
@@ -141,6 +134,15 @@ class Memory extends \Phalcon\Storage\Adapter\AbstractAdapter
      * @return bool
      */
     public function setForever(string $key, $value): bool
+    {
+    }
+
+    /**
+     * @param string $key
+     *
+     * @return mixed
+     */
+    protected function doGet(string $key)
     {
     }
 }

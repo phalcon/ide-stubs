@@ -731,10 +731,10 @@ abstract class Model extends AbstractInjectionAware implements \Phalcon\Mvc\Enti
      * ```
      *
      * @param array|string|int|null $parameters = [
-     *     'conditions' => ''
+     *     'conditions' => '',
      *     'columns' => '',
      *     'bind' => [],
-     *     'bindTypes => [],
+     *     'bindTypes' => [],
      *     'order' => '',
      *     'limit' => 10,
      *     'offset' => 5,
@@ -820,10 +820,10 @@ abstract class Model extends AbstractInjectionAware implements \Phalcon\Mvc\Enti
      * ```
      *
      * @param array|string|int|null $parameters = [
-     *     'conditions' => ''
+     *     'conditions' => '',
      *     'columns' => '',
      *     'bind' => [],
-     *     'bindTypes => [],
+     *     'bindTypes' => [],
      *     'order' => '',
      *     'limit' => 10,
      *     'offset' => 5,
@@ -1733,7 +1733,7 @@ abstract class Model extends AbstractInjectionAware implements \Phalcon\Mvc\Enti
      * }
      * ```
      *
-     * @param array|null $options = [
+     * @param array $options = [
      *     'reusable' => false,
      *     'alias' => 'someAlias',
      *     'foreignKey' => [
@@ -1742,10 +1742,10 @@ abstract class Model extends AbstractInjectionAware implements \Phalcon\Mvc\Enti
      *         'action' => null
      *     ],
      *     'params' => [
-     *         'conditions' => ''
+     *         'conditions' => '',
      *         'columns' => '',
      *         'bind' => [],
-     *         'bindTypes => [],
+     *         'bindTypes' => [],
      *         'order' => '',
      *         'limit' => 10,
      *         'offset' => 5,
@@ -1764,7 +1764,7 @@ abstract class Model extends AbstractInjectionAware implements \Phalcon\Mvc\Enti
      * @param mixed $referencedFields
      * @return Relation
      */
-    protected function belongsTo($fields, string $referenceModel, $referencedFields, $options = null): Relation
+    protected function belongsTo($fields, string $referenceModel, $referencedFields, array $options = []): Relation
     {
     }
 
@@ -1796,7 +1796,7 @@ abstract class Model extends AbstractInjectionAware implements \Phalcon\Mvc\Enti
      * }
      * ```
      *
-     * @param array|null $options = [
+     * @param array $options = [
      *     'reusable' => false,
      *     'alias' => 'someAlias',
      *     'foreignKey' => [
@@ -1805,10 +1805,10 @@ abstract class Model extends AbstractInjectionAware implements \Phalcon\Mvc\Enti
      *         'action' => null
      *     ],
      *     'params' => [
-     *         'conditions' => ''
+     *         'conditions' => '',
      *         'columns' => '',
      *         'bind' => [],
-     *         'bindTypes => [],
+     *         'bindTypes' => [],
      *         'order' => '',
      *         'limit' => 10,
      *         'offset' => 5,
@@ -1827,7 +1827,7 @@ abstract class Model extends AbstractInjectionAware implements \Phalcon\Mvc\Enti
      * @param mixed $referencedFields
      * @return Relation
      */
-    protected function hasMany($fields, string $referenceModel, $referencedFields, $options = null): Relation
+    protected function hasMany($fields, string $referenceModel, $referencedFields, array $options = []): Relation
     {
     }
 
@@ -1868,10 +1868,10 @@ abstract class Model extends AbstractInjectionAware implements \Phalcon\Mvc\Enti
      *         'action' => null
      *     ],
      *     'params' => [
-     *         'conditions' => ''
+     *         'conditions' => '',
      *         'columns' => '',
      *         'bind' => [],
-     *         'bindTypes => [],
+     *         'bindTypes' => [],
      *         'order' => '',
      *         'limit' => 10,
      *         'offset' => 5,
@@ -1887,7 +1887,7 @@ abstract class Model extends AbstractInjectionAware implements \Phalcon\Mvc\Enti
      * ]
      * @return Relation
      */
-    protected function hasManyToMany($fields, string $intermediateModel, $intermediateFields, $intermediateReferencedFields, string $referenceModel, $referencedFields, $options = []): Relation
+    protected function hasManyToMany($fields, string $intermediateModel, $intermediateFields, $intermediateReferencedFields, string $referenceModel, $referencedFields, array $options = []): Relation
     {
     }
 
@@ -1908,7 +1908,7 @@ abstract class Model extends AbstractInjectionAware implements \Phalcon\Mvc\Enti
      * }
      * ```
      *
-     * @param array|null $options = [
+     * @param array $options = [
      *     'reusable' => false,
      *     'alias' => 'someAlias',
      *     'foreignKey' => [
@@ -1917,10 +1917,10 @@ abstract class Model extends AbstractInjectionAware implements \Phalcon\Mvc\Enti
      *         'action' => null
      *     ],
      *     'params' => [
-     *         'conditions' => ''
+     *         'conditions' => '',
      *         'columns' => '',
      *         'bind' => [],
-     *         'bindTypes => [],
+     *         'bindTypes' => [],
      *         'order' => '',
      *         'limit' => 10,
      *         'offset' => 5,
@@ -1939,7 +1939,7 @@ abstract class Model extends AbstractInjectionAware implements \Phalcon\Mvc\Enti
      * @param mixed $referencedFields
      * @return Relation
      */
-    protected function hasOne($fields, string $referenceModel, $referencedFields, $options = null): Relation
+    protected function hasOne($fields, string $referenceModel, $referencedFields, array $options = []): Relation
     {
     }
 
@@ -1965,16 +1965,16 @@ abstract class Model extends AbstractInjectionAware implements \Phalcon\Mvc\Enti
      * }
      * ```
      *
-     * @param string|array $fields
-     * @param string|array $intermediateFields
-     * @param string|array $intermediateReferencedFields
-     * @param string|array $referencedFields
-     * @param array $options
+     * @param    string|array $fields
+     * @param    string|array $intermediateFields
+     * @param    string|array $intermediateReferencedFields
+     * @param    string|array $referencedFields
+     * @param    array $options
      * @param string $intermediateModel
      * @param string $referenceModel
      * @return Relation
      */
-    protected function hasOneThrough($fields, string $intermediateModel, $intermediateFields, $intermediateReferencedFields, string $referenceModel, $referencedFields, $options = null): Relation
+    protected function hasOneThrough($fields, string $intermediateModel, $intermediateFields, $intermediateReferencedFields, string $referenceModel, $referencedFields, array $options = []): Relation
     {
     }
 
@@ -2199,6 +2199,21 @@ abstract class Model extends AbstractInjectionAware implements \Phalcon\Mvc\Enti
      * @return string
      */
     private static function caseInsensitiveColumnMap($columnMap, $key): string
+    {
+    }
+
+    /**
+     * @return array
+     */
+    public function __serialize(): array
+    {
+    }
+
+    /**
+     * @param array $data
+     * @return void
+     */
+    public function __unserialize(array $data): void
     {
     }
 }

@@ -14,6 +14,8 @@ namespace Phalcon\Support\Helper\Str;
  */
 class Includes
 {
+
+
     /**
      * @param string $haystack
      * @param string $needle

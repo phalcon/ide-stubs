@@ -16,6 +16,8 @@ namespace Phalcon\Filter\Sanitize;
  */
 class Remove
 {
+
+
     /**
      * @param mixed $input
      * @param mixed $replace

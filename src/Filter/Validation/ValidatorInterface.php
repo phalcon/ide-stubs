@@ -16,6 +16,8 @@ use Phalcon\Filter\Validation;
  */
 interface ValidatorInterface
 {
+
+
     /**
      * Returns an option in the validator's options
      * Returns null if the option hasn't set

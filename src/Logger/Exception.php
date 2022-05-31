@@ -16,4 +16,6 @@ namespace Phalcon\Logger;
  */
 class Exception extends \Exception
 {
+
+
 }

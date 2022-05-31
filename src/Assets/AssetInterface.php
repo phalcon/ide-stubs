@@ -14,6 +14,8 @@ namespace Phalcon\Assets;
  */
 interface AssetInterface
 {
+
+
     /**
      * Gets the asset's key.
      *

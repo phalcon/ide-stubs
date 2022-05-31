@@ -9,6 +9,7 @@
  */
 namespace Phalcon\Db\Result;
 
+use Pdo;
 use Phalcon\Db\Enum;
 use Phalcon\Db\ResultInterface;
 use Phalcon\Db\Adapter\AdapterInterface;
@@ -30,6 +31,7 @@ use Phalcon\Db\Adapter\AdapterInterface;
  */
 class PdoResult implements \Phalcon\Db\ResultInterface
 {
+
     /**
      * @var array
      */
@@ -50,7 +52,7 @@ class PdoResult implements \Phalcon\Db\ResultInterface
      *
      * @var int
      */
-    protected $fetchMode = Enum::FETCH_OBJ;
+    protected $fetchMode = Enum::FETCH_DEFAULT;
 
     /**
      * Internal resultset
@@ -139,11 +141,11 @@ class PdoResult implements \Phalcon\Db\ResultInterface
      * }
      * ```
      *
-     * @param mixed $fetchStyle
-     * @param mixed $cursorOrientation
-     * @param mixed $cursorOffset
+     * @param int $fetchStyle
+     * @param int $cursorOrientation
+     * @param int $cursorOffset
      */
-    public function fetch($fetchStyle = null, $cursorOrientation = null, $cursorOffset = null)
+    public function fetch(int $fetchStyle = null, int $cursorOrientation = Pdo::FETCH_ORI_NEXT, int $cursorOffset = 0)
     {
     }
 
@@ -160,12 +162,12 @@ class PdoResult implements \Phalcon\Db\ResultInterface
      * $robots = $result->fetchAll();
      * ```
      *
-     * @param mixed $fetchStyle
-     * @param mixed $fetchArgument
-     * @param mixed $ctorArgs
+     * @param int $fetchStyle
+     * @param int $fetchArgument
+     * @param int $ctorArgs
      * @return array
      */
-    public function fetchAll($fetchStyle = null, $fetchArgument = null, $ctorArgs = null): array
+    public function fetchAll(int $fetchStyle = null, int $fetchArgument = Pdo::FETCH_ORI_NEXT, int $ctorArgs = 0): array
     {
     }
 

@@ -15,6 +15,8 @@ namespace Phalcon\Support\Helper\Arr;
  */
 class ValidateAll extends \Phalcon\Support\Helper\Arr\AbstractArr
 {
+
+
     /**
      * @param array    $collection
      * @param callable $method

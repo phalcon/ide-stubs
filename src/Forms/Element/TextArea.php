@@ -16,6 +16,7 @@ use Phalcon\Tag;
  */
 class TextArea extends \Phalcon\Forms\Element\AbstractElement
 {
+
     /**
      * @var string
      */

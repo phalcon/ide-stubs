@@ -51,6 +51,8 @@ use Phalcon\Config\Exception;
  */
 class Yaml extends Config
 {
+
+
     /**
      * Phalcon\Config\Adapter\Yaml constructor
      *

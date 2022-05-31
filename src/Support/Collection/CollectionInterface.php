@@ -16,6 +16,8 @@ namespace Phalcon\Support\Collection;
  */
 interface CollectionInterface
 {
+
+
     /**
      * @param string $element
      * @return mixed

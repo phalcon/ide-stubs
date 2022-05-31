@@ -29,6 +29,7 @@ use Phalcon\Image\Exception;
  */
 class Imagick extends \Phalcon\Image\Adapter\AbstractAdapter
 {
+
     /**
      * @var bool
      */

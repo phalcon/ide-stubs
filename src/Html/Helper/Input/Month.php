@@ -14,5 +14,6 @@ namespace Phalcon\Html\Helper\Input;
  */
 class Month extends \Phalcon\Html\Helper\Input\AbstractInput
 {
+
     protected $type = 'month';
 }

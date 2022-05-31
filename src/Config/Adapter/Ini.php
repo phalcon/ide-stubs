@@ -57,6 +57,8 @@ use Phalcon\Support\Traits\PhpFileTrait;
  */
 class Ini extends Config
 {
+
+
     /**
      * Ini constructor.
      *

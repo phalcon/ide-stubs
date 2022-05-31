@@ -14,6 +14,8 @@ namespace Phalcon\Encryption\Security\JWT\Token;
  */
 class Signature extends \Phalcon\Encryption\Security\JWT\Token\AbstractItem
 {
+
+
     /**
      * Signature constructor.
      *

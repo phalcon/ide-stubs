@@ -12,12 +12,17 @@ namespace Phalcon\Storage\Serializer;
 use Serializable;
 
 /**
- * Interface SerializerInterface
+ * This file is part of the Phalcon Framework.
  *
- * @package Phalcon\Storage\Serializer
+ * (c) Phalcon Team <team@phalcon.io>
+ *
+ * For the full copyright and license information, please view the LICENSE.txt
+ * file that was distributed with this source code.
  */
 interface SerializerInterface extends \Serializable
 {
+
+
     /**
      * @return mixed
      */

@@ -48,6 +48,7 @@ use stdClass;
  */
 class Request extends AbstractInjectionAware implements \Phalcon\Http\RequestInterface, \Phalcon\Http\Message\RequestMethodInterface
 {
+
     /**
      * @var FilterInterface|null
      */

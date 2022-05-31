@@ -14,4 +14,6 @@ namespace Phalcon\Encryption\Crypt\Exception;
  */
 class Exception extends \Exception
 {
+
+
 }

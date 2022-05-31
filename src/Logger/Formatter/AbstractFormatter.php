@@ -19,6 +19,7 @@ use Phalcon\Support\Helper\Str\AbstractStr;
  */
 abstract class AbstractFormatter extends AbstractStr implements \Phalcon\Logger\Formatter\FormatterInterface
 {
+
     /**
      * Default date format
      *

@@ -31,6 +31,7 @@ use Phalcon\Support\Exception as SupportException;
  */
 abstract class AbstractAdapter implements \Phalcon\Storage\Adapter\AdapterInterface
 {
+
     /**
      * @var mixed
      */
@@ -127,7 +128,9 @@ abstract class AbstractAdapter implements \Phalcon\Storage\Adapter\AdapterInterf
      *
      * @return mixed
      */
-    abstract public function get(string $key, $defaultValue = null);
+    public function get(string $key, $defaultValue = null)
+    {
+    }
 
     /**
      * Returns the adapter - connects to the storage if not connected
@@ -191,6 +194,15 @@ abstract class AbstractAdapter implements \Phalcon\Storage\Adapter\AdapterInterf
      * @return void
      */
     public function setDefaultSerializer(string $serializer): void
+    {
+    }
+
+    /**
+     * @param string $key
+     *
+     * @return mixed
+     */
+    protected function doGet(string $key)
     {
     }
 

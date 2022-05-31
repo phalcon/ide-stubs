@@ -17,7 +17,6 @@ use Phalcon\Mvc\Model\Resultset;
 use Phalcon\Mvc\Model\Row;
 use Phalcon\Mvc\ModelInterface;
 use Phalcon\Storage\Serializer\SerializerInterface;
-use Psr\SimpleCache\CacheInterface;
 
 /**
  * Phalcon\Mvc\Model\Resultset\Simple
@@ -27,6 +26,7 @@ use Psr\SimpleCache\CacheInterface;
  */
 class Simple extends Resultset
 {
+
     /**
      * @var array|string
      */
@@ -48,10 +48,10 @@ class Simple extends Resultset
      * @param array $columnMap
      * @param ModelInterface|Row $model
      * @param \Phalcon\Db\ResultInterface|false $result
-     * @param CacheInterface|null $cache
+     * @param mixed|null $cache
      * @param bool $keepSnapshots false
      */
-    public function __construct($columnMap, $model, $result, \Psr\SimpleCache\CacheInterface $cache = null, bool $keepSnapshots = false)
+    public function __construct($columnMap, $model, $result, $cache = null, bool $keepSnapshots = false)
     {
     }
 
@@ -94,6 +94,21 @@ class Simple extends Resultset
      * @return void
      */
     public function unserialize($data): void
+    {
+    }
+
+    /**
+     * @return array
+     */
+    public function __serialize(): array
+    {
+    }
+
+    /**
+     * @param array $data
+     * @return void
+     */
+    public function __unserialize(array $data): void
     {
     }
 }

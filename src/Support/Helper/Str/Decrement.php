@@ -15,6 +15,8 @@ namespace Phalcon\Support\Helper\Str;
  */
 class Decrement
 {
+
+
     /**
      * @param string $text
      * @param string $separator

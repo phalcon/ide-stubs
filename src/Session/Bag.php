@@ -9,10 +9,11 @@
  */
 namespace Phalcon\Session;
 
-use Phalcon\Support\Collection;
 use Phalcon\Di\Di;
 use Phalcon\Di\DiInterface;
 use Phalcon\Di\InjectionAwareInterface;
+use Phalcon\Session\ManagerInterface;
+use Phalcon\Support\Collection;
 
 /**
  * Phalcon\Session\Bag
@@ -27,9 +28,14 @@ use Phalcon\Di\InjectionAwareInterface;
  * $user->name = "Kimbra Johnson";
  * $user->age  = 22;
  * ```
+ *
+ * @property DiInterface|null $container
+ * @property string           $name
+ * @property ManagerInterface $session;
  */
-class Bag extends Collection implements \Phalcon\Di\InjectionAwareInterface
+class Bag extends Collection implements \Phalcon\Session\BagInterface, \Phalcon\Di\InjectionAwareInterface
 {
+
     /**
      * @var DiInterface|null
      */
@@ -43,17 +49,15 @@ class Bag extends Collection implements \Phalcon\Di\InjectionAwareInterface
     private $name;
 
     /**
-     * @var \Phalcon\Session\ManagerInterface
+     * @var ManagerInterface
      */
     private $session;
 
     /**
-     * Phalcon\Session\Bag constructor
-     *
-     * @param string $name
-     * @param \Phalcon\Di\DiInterface $container
+     * @param ManagerInterface $session
+     * @param string           $name
      */
-    public function __construct(string $name, \Phalcon\Di\DiInterface $container = null)
+    public function __construct(\Phalcon\Session\ManagerInterface $session, string $name)
     {
     }
 

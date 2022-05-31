@@ -15,6 +15,8 @@ namespace Phalcon\Support\Helper\Str;
  */
 class IsAnagram
 {
+
+
     /**
      * @param string $first
      * @param string $second

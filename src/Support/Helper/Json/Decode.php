@@ -17,6 +17,8 @@ use InvalidArgumentException;
  */
 class Decode
 {
+
+
     /**
      * @param string $data        JSON data to parse
      * @param bool   $associative When `true`, objects are converted to arrays
