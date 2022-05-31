@@ -21,5 +21,4 @@ class Hidden extends \Phalcon\Forms\Element\AbstractElement
      * @var string
      */
     protected $method = 'inputHidden';
-
 }

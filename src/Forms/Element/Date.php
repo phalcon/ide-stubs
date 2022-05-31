@@ -21,5 +21,4 @@ class Date extends \Phalcon\Forms\Element\AbstractElement
      * @var string
      */
     protected $method = 'inputDate';
-
 }

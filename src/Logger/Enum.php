@@ -31,6 +31,4 @@ class Enum
     const NOTICE = 5;
 
     const WARNING = 4;
-
-
 }

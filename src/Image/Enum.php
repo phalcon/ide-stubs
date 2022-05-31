@@ -36,6 +36,4 @@ class Enum
     const HORIZONTAL = 11;
 
     const VERTICAL = 12;
-
-
 }

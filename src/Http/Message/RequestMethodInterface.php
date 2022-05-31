@@ -38,6 +38,4 @@ interface RequestMethodInterface
     const METHOD_PUT = 'PUT';
 
     const METHOD_TRACE = 'TRACE';
-
-
 }

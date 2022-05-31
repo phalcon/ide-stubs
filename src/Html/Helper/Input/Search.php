@@ -16,5 +16,4 @@ class Search extends \Phalcon\Html\Helper\Input\AbstractInput
 {
 
     protected $type = 'search';
-
 }

@@ -25,6 +25,4 @@ class Exception extends \Exception
     const EXCEPTION_INVALID_PARAMS = 4;
 
     const EXCEPTION_NO_DI = 0;
-
-
 }
