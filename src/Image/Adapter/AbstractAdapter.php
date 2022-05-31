@@ -21,7 +21,7 @@ abstract class AbstractAdapter implements \Phalcon\Image\Adapter\AdapterInterfac
     /**
      * @var bool
      */
-    static protected $checked = false;
+    protected static $checked = false;
 
     /**
      * @var string

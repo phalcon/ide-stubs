@@ -75,7 +75,7 @@ class Route implements \Phalcon\Mvc\Router\RouteInterface
     /**
      * @var int
      */
-    static protected $uniqueId = 0;
+    protected static $uniqueId = 0;
 
     /**
      * @return string|null
