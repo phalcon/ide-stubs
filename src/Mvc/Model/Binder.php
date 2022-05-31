@@ -23,6 +23,7 @@ use ReflectionMethod;
  */
 class Binder implements \Phalcon\Mvc\Model\BinderInterface
 {
+
     /**
      * Array for storing active bound models
      *

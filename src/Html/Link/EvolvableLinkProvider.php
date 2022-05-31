@@ -9,16 +9,18 @@
  */
 namespace Phalcon\Html\Link;
 
-use Psr\Link\EvolvableLinkProviderInterface;
-use Psr\Link\LinkInterface;
+use Phalcon\Html\Link\Interfaces\EvolvableLinkProviderInterface;
+use Phalcon\Html\Link\Interfaces\LinkInterface;
 
 /**
  * Class Phalcon\Http\Link\LinkProvider
  *
  * @property LinkInterface[] links
  */
-class EvolvableLinkProvider extends \Phalcon\Html\Link\LinkProvider implements \Psr\Link\EvolvableLinkProviderInterface
+class EvolvableLinkProvider extends \Phalcon\Html\Link\LinkProvider implements \Phalcon\Html\Link\Interfaces\EvolvableLinkProviderInterface
 {
+
+
     /**
      * Returns an instance with the specified link included.
      *
@@ -30,7 +32,7 @@ class EvolvableLinkProvider extends \Phalcon\Html\Link\LinkProvider implements \
      *
      * @return static
      */
-    public function withLink(\Psr\Link\LinkInterface $link)
+    public function withLink(\Phalcon\Html\Link\Interfaces\LinkInterface $link): EvolvableLinkProviderInterface
     {
     }
 
@@ -45,7 +47,7 @@ class EvolvableLinkProvider extends \Phalcon\Html\Link\LinkProvider implements \
      *
      * @return static
      */
-    public function withoutLink(\Psr\Link\LinkInterface $link)
+    public function withoutLink(\Phalcon\Html\Link\Interfaces\LinkInterface $link): EvolvableLinkProviderInterface
     {
     }
 }

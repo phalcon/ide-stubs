@@ -14,6 +14,8 @@ namespace Phalcon\Support\Helper\Str;
  */
 class IsLower extends \Phalcon\Support\Helper\Str\AbstractStr
 {
+
+
     /**
      * @param string $text
      * @param string $encoding

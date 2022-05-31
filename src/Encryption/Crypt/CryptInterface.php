@@ -14,6 +14,8 @@ namespace Phalcon\Encryption\Crypt;
  */
 interface CryptInterface
 {
+
+
     /**
      * Decrypts a text
      *

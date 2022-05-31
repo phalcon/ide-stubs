@@ -14,8 +14,10 @@ namespace Phalcon\Forms\Element;
  */
 class Check extends \Phalcon\Forms\Element\AbstractElement
 {
+
     /**
      * @var string
      */
     protected $method = 'inputCheckbox';
+
 }

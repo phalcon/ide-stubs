@@ -35,6 +35,7 @@ use stdClass;
  */
 class Dump
 {
+
     /**
      * @var bool
      */

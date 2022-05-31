@@ -61,6 +61,7 @@ use Phalcon\Filter\Validation\Exception;
  */
 class ExclusionIn extends AbstractValidator
 {
+
     protected $template = 'Field :field must not be a part of list: :domain';
 
     /**

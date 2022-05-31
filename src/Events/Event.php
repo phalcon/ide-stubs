@@ -10,8 +10,6 @@
 namespace Phalcon\Events;
 
 /**
- * Phalcon\Events\Event
- *
  * This class offers contextual information of a fired event in the
  * EventsManager
  *
@@ -26,6 +24,7 @@ namespace Phalcon\Events;
  */
 class Event implements \Phalcon\Events\EventInterface
 {
+
     /**
      * Is event cancelable?
      *

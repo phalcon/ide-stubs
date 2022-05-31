@@ -32,6 +32,7 @@ use IteratorAggregate;
  */
 class Collection implements \Countable, \IteratorAggregate
 {
+
     /**
      * @var array
      */
@@ -275,8 +276,9 @@ class Collection implements \Countable, \IteratorAggregate
      * Returns the generator of the class
      *
      * @link https://php.net/manual/en/iteratoraggregate.getiterator.php
+     * @return \Traversable
      */
-    public function getIterator()
+    public function getIterator(): \Traversable
     {
     }
 

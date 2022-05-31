@@ -16,4 +16,6 @@ namespace Phalcon\Http\Response;
  */
 class Exception extends \Exception
 {
+
+
 }

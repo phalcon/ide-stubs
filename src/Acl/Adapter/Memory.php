@@ -84,6 +84,7 @@ use ReflectionFunction;
  */
 class Memory extends \Phalcon\Acl\Adapter\AbstractAdapter
 {
+
     /**
      * Access
      *

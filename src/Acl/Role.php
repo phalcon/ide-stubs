@@ -14,6 +14,7 @@ namespace Phalcon\Acl;
  */
 class Role implements \Phalcon\Acl\RoleInterface
 {
+
     /**
      * Role name
      *

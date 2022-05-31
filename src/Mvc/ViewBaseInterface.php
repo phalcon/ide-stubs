@@ -18,6 +18,8 @@ use Phalcon\Cache\Adapter\AdapterInterface;
  */
 interface ViewBaseInterface
 {
+
+
     /**
      * Returns cached output from another view stage
      *

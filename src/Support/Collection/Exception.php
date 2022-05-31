@@ -16,4 +16,6 @@ use Throwable;
  */
 class Exception extends \Exception
 {
+
+
 }

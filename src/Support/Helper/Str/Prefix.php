@@ -14,6 +14,8 @@ namespace Phalcon\Support\Helper\Str;
  */
 class Prefix
 {
+
+
     /**
      * @param mixed  $text
      * @param string $prefix

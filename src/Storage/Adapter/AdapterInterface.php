@@ -16,6 +16,8 @@ use Phalcon\Storage\Serializer\SerializerInterface;
  */
 interface AdapterInterface
 {
+
+
     /**
      * Flushes/clears the cache
      *

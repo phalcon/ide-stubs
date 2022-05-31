@@ -16,6 +16,8 @@ use Phalcon\Assets\Inline as InlineBase;
  */
 class Css extends \Phalcon\Assets\Inline
 {
+
+
     /**
      * Phalcon\Assets\Inline\Css constructor
      *

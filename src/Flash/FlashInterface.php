@@ -16,6 +16,8 @@ namespace Phalcon\Flash;
  */
 interface FlashInterface
 {
+
+
     /**
      * Shows a HTML error message
      *

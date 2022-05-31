@@ -14,6 +14,8 @@ namespace Phalcon\Support\Helper\Str;
  */
 class StartsWith extends \Phalcon\Support\Helper\Str\AbstractStr
 {
+
+
     /**
      * @param string $haystack
      * @param string $needle

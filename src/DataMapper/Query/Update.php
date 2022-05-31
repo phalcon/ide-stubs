@@ -16,6 +16,8 @@ use Phalcon\DataMapper\Pdo\Connection;
  */
 class Update extends \Phalcon\DataMapper\Query\AbstractConditions
 {
+
+
     /**
      * Update constructor.
      *

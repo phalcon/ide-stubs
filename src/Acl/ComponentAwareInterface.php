@@ -14,6 +14,8 @@ namespace Phalcon\Acl;
  */
 interface ComponentAwareInterface
 {
+
+
     /**
      * Returns component name
      *

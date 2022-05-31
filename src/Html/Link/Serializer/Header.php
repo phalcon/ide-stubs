@@ -9,13 +9,13 @@
  */
 namespace Phalcon\Html\Link\Serializer;
 
-use Psr\Link\EvolvableLinkInterface;
-
 /**
  * Class Phalcon\Http\Link\Serializer\Header
  */
 class Header implements \Phalcon\Html\Link\Serializer\SerializerInterface
 {
+
+
     /**
      * Serializes all the passed links to a HTTP link header
      *

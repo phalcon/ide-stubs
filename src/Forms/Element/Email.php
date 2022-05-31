@@ -12,14 +12,14 @@ namespace Phalcon\Forms\Element;
 use Phalcon\Tag;
 
 /**
- * Phalcon\Forms\Element\Email
- *
  * Component INPUT[type=email] for forms
  */
 class Email extends \Phalcon\Forms\Element\AbstractElement
 {
+
     /**
      * @var string
      */
     protected $method = 'inputEmail';
+
 }

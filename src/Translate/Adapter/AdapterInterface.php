@@ -16,6 +16,8 @@ namespace Phalcon\Translate\Adapter;
  */
 interface AdapterInterface
 {
+
+
     /**
      * Check whether is defined a translation key in the internal array
      *

@@ -14,6 +14,8 @@ namespace Phalcon\Support\Helper\Str;
  */
 class Ucwords
 {
+
+
     /**
      * @param string $text
      * @param string $encoding

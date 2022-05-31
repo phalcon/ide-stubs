@@ -22,6 +22,8 @@ use Phalcon\Translate\Interpolator\InterpolatorInterface;
  */
 class InterpolatorFactory extends AbstractFactory
 {
+
+
     /**
      * InterpolatorFactor constructor.
      *

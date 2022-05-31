@@ -23,6 +23,7 @@ use Phalcon\Html\Exception;
  */
 class Title extends \Phalcon\Html\Helper\AbstractHelper
 {
+
     /**
      * @var array
      */

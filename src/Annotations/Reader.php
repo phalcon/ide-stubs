@@ -16,6 +16,8 @@ use ReflectionClass;
  */
 class Reader implements \Phalcon\Annotations\ReaderInterface
 {
+
+
     /**
      * Reads annotations from the class docblocks, its methods and/or properties
      *

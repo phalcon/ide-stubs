@@ -30,6 +30,7 @@ use Phalcon\Html\Escaper\EscaperInterface;
  */
 class Escaper implements \Phalcon\Html\Escaper\EscaperInterface
 {
+
     /**
      * @var bool
      */

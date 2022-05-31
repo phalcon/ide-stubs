@@ -37,6 +37,7 @@ use Traversable;
  */
 class Collection implements \ArrayAccess, \Phalcon\Support\Collection\CollectionInterface, \Countable, \IteratorAggregate, \JsonSerializable, \Serializable
 {
+
     /**
      * @var array
      */
@@ -208,6 +209,7 @@ class Collection implements \ArrayAccess, \Phalcon\Support\Collection\Collection
      * See [offsetGet](https://php.net/manual/en/arrayaccess.offsetget.php)
      *
      * @param mixed $element
+     * @return mixed
      */
     public function offsetGet($element)
     {
@@ -297,10 +299,25 @@ class Collection implements \ArrayAccess, \Phalcon\Support\Collection\Collection
      * Constructs the object
      * See [unserialize](https://php.net/manual/en/serializable.unserialize.php)
      *
-     * @param mixed $serialized
+     * @param string $serialized
      * @return void
      */
-    public function unserialize($serialized): void
+    public function unserialize(string $serialized): void
+    {
+    }
+
+    /**
+     * @return array
+     */
+    public function __serialize(): array
+    {
+    }
+
+    /**
+     * @param array $data
+     * @return void
+     */
+    public function __unserialize(array $data): void
     {
     }
 

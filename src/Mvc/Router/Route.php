@@ -16,6 +16,7 @@ namespace Phalcon\Mvc\Router;
  */
 class Route implements \Phalcon\Mvc\Router\RouteInterface
 {
+
     /**
      * @var callable|null
      */
@@ -74,7 +75,7 @@ class Route implements \Phalcon\Mvc\Router\RouteInterface
     /**
      * @var int
      */
-    protected static $uniqueId = 0;
+    static protected $uniqueId = 0;
 
     /**
      * @return string|null

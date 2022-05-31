@@ -13,15 +13,16 @@ use Phalcon\Storage\Adapter\AdapterInterface;
 use SessionHandlerInterface;
 
 /**
- * This file is part of the Phalcon.
+ * This file is part of the Phalcon Framework.
  *
- * (c) Phalcon Team <team@phalcon.com>
+ * (c) Phalcon Team <team@phalcon.io>
  *
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
 abstract class AbstractAdapter implements \SessionHandlerInterface
 {
+
     /**
      * @var AdapterInterface
      */
@@ -39,29 +40,30 @@ abstract class AbstractAdapter implements \SessionHandlerInterface
     /**
      * Destroy
      *
-     * @param mixed $id
+     * @param mixed $sessionId
      * @return bool
      */
-    public function destroy($id): bool
+    public function destroy($sessionId): bool
     {
     }
 
     /**
      * Garbage Collector
      *
-     * @param mixed $maxlifetime
+     * @param int $maxlifetime
+     * @return false|int
      */
-    public function gc($maxlifetime)
+    public function gc(int $maxlifetime)
     {
     }
 
     /**
      * Read
      *
-     * @param mixed $id
+     * @param mixed $sessionId
      * @return string
      */
-    public function read($id): string
+    public function read($sessionId): string
     {
     }
 
@@ -79,11 +81,11 @@ abstract class AbstractAdapter implements \SessionHandlerInterface
     /**
      * Write
      *
-     * @param mixed $id
+     * @param mixed $sessionId
      * @param mixed $data
      * @return bool
      */
-    public function write($id, $data): bool
+    public function write($sessionId, $data): bool
     {
     }
 

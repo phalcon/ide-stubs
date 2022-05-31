@@ -15,6 +15,8 @@ namespace Phalcon\Support\Helper\Arr;
  */
 class Whitelist extends \Phalcon\Support\Helper\Arr\AbstractArr
 {
+
+
     /**
      * @param array $collection
      * @param array $whiteList

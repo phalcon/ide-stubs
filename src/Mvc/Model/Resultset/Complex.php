@@ -19,7 +19,6 @@ use Phalcon\Mvc\Model\ResultsetInterface;
 use Phalcon\Mvc\Model\Row;
 use Phalcon\Mvc\ModelInterface;
 use Phalcon\Storage\Serializer\SerializerInterface;
-use Psr\SimpleCache\CacheInterface;
 use stdClass;
 
 /**
@@ -30,6 +29,7 @@ use stdClass;
  */
 class Complex extends Resultset implements \Phalcon\Mvc\Model\ResultsetInterface
 {
+
     /**
      * @var array
      */
@@ -46,18 +46,18 @@ class Complex extends Resultset implements \Phalcon\Mvc\Model\ResultsetInterface
     /**
      * Phalcon\Mvc\Model\Resultset\Complex constructor
      *
-     * @param array $columnTypes
+     * @param array                $columnTypes
      * @param ResultInterface|null $result
-     * @param CacheInterface|null $cache
+     * @param mixed|null           $cache
      */
-    public function __construct($columnTypes, \Phalcon\Db\ResultInterface $result = null, \Psr\SimpleCache\CacheInterface $cache = null)
+    public function __construct($columnTypes, \Phalcon\Db\ResultInterface $result = null, $cache = null)
     {
     }
 
     /**
      * Returns current row in the resultset
      *
-     * @return bool|ModelInterface
+     * @return mixed
      */
     final public function current()
     {
@@ -89,6 +89,21 @@ class Complex extends Resultset implements \Phalcon\Mvc\Model\ResultsetInterface
      * @return void
      */
     public function unserialize($data): void
+    {
+    }
+
+    /**
+     * @return array
+     */
+    public function __serialize(): array
+    {
+    }
+
+    /**
+     * @param array $data
+     * @return void
+     */
+    public function __unserialize(array $data): void
     {
     }
 }

@@ -14,6 +14,8 @@ namespace Phalcon\Acl;
  */
 interface RoleAwareInterface
 {
+
+
     /**
      * Returns role name
      *

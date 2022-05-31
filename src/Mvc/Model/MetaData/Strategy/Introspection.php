@@ -23,6 +23,8 @@ use Phalcon\Mvc\Model\MetaData;
  */
 class Introspection implements \Phalcon\Mvc\Model\MetaData\Strategy\StrategyInterface
 {
+
+
     /**
      * Read the model's column map, this can't be inferred
      *

@@ -15,6 +15,8 @@ namespace Phalcon\Support\Helper\Arr;
  */
 class Has
 {
+
+
     /**
      * @param array      $collection
      * @param string|int $index

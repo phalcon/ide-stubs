@@ -22,6 +22,7 @@ use Phalcon\Translate\InterpolatorFactory;
  */
 class Csv extends \Phalcon\Translate\Adapter\AbstractAdapter implements \ArrayAccess
 {
+
     /**
      * @var array
      */
@@ -91,6 +92,15 @@ class Csv extends \Phalcon\Translate\Adapter\AbstractAdapter implements \ArrayAc
      * @return void
      */
     private function load(string $file, int $length, string $delimiter, string $enclosure): void
+    {
+    }
+
+    /**
+     * Returns the internal array
+     *
+     * @return array
+     */
+    public function toArray(): array
     {
     }
 

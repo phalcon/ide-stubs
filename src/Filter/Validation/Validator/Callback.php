@@ -60,6 +60,7 @@ use Phalcon\Filter\Validation\AbstractValidator;
  */
 class Callback extends AbstractValidator
 {
+
     protected $template = 'Field :field must match the callback function';
 
     /**

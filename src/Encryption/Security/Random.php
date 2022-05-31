@@ -76,6 +76,8 @@ namespace Phalcon\Encryption\Security;
  */
 class Random
 {
+
+
     /**
      * Generates a random base58 string
      *

@@ -54,34 +54,34 @@ class Router extends AbstractInjectionAware implements \Phalcon\Mvc\RouterInterf
     const POSITION_LAST = 1;
 
     /**
-     * @var string|null
+     * @var string
      */
-    protected $action = null;
+    protected $action = '';
 
     /**
-     * @var string|null
+     * @var string
      */
-    protected $controller = null;
+    protected $controller = '';
 
     /**
-     * @var string|null
+     * @var string
      */
-    protected $defaultAction = null;
+    protected $defaultAction = '';
 
     /**
-     * @var string|null
+     * @var string
      */
-    protected $defaultController = null;
+    protected $defaultController = '';
 
     /**
-     * @var string|null
+     * @var string
      */
-    protected $defaultModule = null;
+    protected $defaultModule = '';
 
     /**
-     * @var string|null
+     * @var string
      */
-    protected $defaultNamespace = null;
+    protected $defaultNamespace = '';
 
     /**
      * @var array
@@ -114,14 +114,14 @@ class Router extends AbstractInjectionAware implements \Phalcon\Mvc\RouterInterf
     protected $matches = [];
 
     /**
-     * @var string|null
+     * @var string
      */
-    protected $module = null;
+    protected $module = '';
 
     /**
-     * @var string|null
+     * @var string
      */
-    protected $namespaceName = null;
+    protected $namespaceName = '';
 
     /**
      * @var array|string|null

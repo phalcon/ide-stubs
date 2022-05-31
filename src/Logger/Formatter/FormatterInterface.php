@@ -18,6 +18,8 @@ use Phalcon\Logger\Item;
  */
 interface FormatterInterface
 {
+
+
     /**
      * Applies a format to an item
      *
@@ -25,5 +27,5 @@ interface FormatterInterface
      *
      * @return string
      */
-    public function format(\Phalcon\Logger\Item $item);
+    public function format(\Phalcon\Logger\Item $item): string;
 }

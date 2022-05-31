@@ -31,6 +31,7 @@ use Phalcon\Encryption\Security\JWT\Token\Token;
  */
 class Builder
 {
+
     /**
      * @var CollectionInterface
      */

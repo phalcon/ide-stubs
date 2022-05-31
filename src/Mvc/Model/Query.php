@@ -23,7 +23,6 @@ use Phalcon\Mvc\Model\Resultset\Simple;
 use Phalcon\Di\InjectionAwareInterface;
 use Phalcon\Db\DialectInterface;
 use Phalcon\Mvc\Model\Query\Lang;
-use Psr\SimpleCache\CacheInterface;
 
 /**
  * Phalcon\Mvc\Model\Query
@@ -102,7 +101,7 @@ class Query implements \Phalcon\Mvc\Model\QueryInterface, \Phalcon\Di\InjectionA
     protected $bindTypes = [];
 
     /**
-     * @var \Psr\SimpleCache\CacheInterface|null
+     * @var mixed|null
      */
     protected $cache = null;
 
@@ -209,7 +208,7 @@ class Query implements \Phalcon\Mvc\Model\QueryInterface, \Phalcon\Di\InjectionA
     /**
      * @var array|null
      */
-    protected static $internalPhqlCache;
+    static protected $internalPhqlCache;
 
     /**
      * TransactionInterface so that the query can wrap a transaction

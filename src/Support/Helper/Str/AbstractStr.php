@@ -17,6 +17,8 @@ namespace Phalcon\Support\Helper\Str;
  */
 abstract class AbstractStr
 {
+
+
     /**
      * Check if a string ends with a given string
      *

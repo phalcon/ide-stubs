@@ -18,6 +18,7 @@ use Phalcon\Html\Escaper\EscaperInterface;
  */
 class Checkbox extends \Phalcon\Html\Helper\Input\AbstractInput
 {
+
     /**
      * @var array
      */

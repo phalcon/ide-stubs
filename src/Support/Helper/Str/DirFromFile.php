@@ -15,6 +15,8 @@ namespace Phalcon\Support\Helper\Str;
  */
 class DirFromFile
 {
+
+
     /**
      * @param string $file
      *

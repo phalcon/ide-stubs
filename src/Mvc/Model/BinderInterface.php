@@ -18,6 +18,8 @@ use Phalcon\Cache\Adapter\AdapterInterface;
  */
 interface BinderInterface
 {
+
+
     /**
      * Bind models into params in proper handler
      *

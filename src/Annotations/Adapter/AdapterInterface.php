@@ -18,6 +18,8 @@ use Phalcon\Annotations\ReaderInterface;
  */
 interface AdapterInterface
 {
+
+
     /**
      * Parses or retrieves all the annotations found in a class
      *
@@ -27,21 +29,21 @@ interface AdapterInterface
     public function get(string $className): Reflection;
 
     /**
-     * Returns the annotations found in a specific method
+     * Returns the annotations found in a specific constant
      *
      * @param string $className
-     * @param string $methodName
+     * @param string $constantName
      * @return Collection
      */
-    public function getMethod(string $className, string $methodName): Collection;
+    public function getConstant(string $className, string $constantName): Collection;
 
     /**
-     * Returns the annotations found in all the class' methods
+     * Returns the annotations found in all the class' constants
      *
      * @param string $className
      * @return array
      */
-    public function getMethods(string $className): array;
+    public function getConstants(string $className): array;
 
     /**
      * Returns the annotations found in a specific property
@@ -59,6 +61,23 @@ interface AdapterInterface
      * @return array
      */
     public function getProperties(string $className): array;
+
+    /**
+     * Returns the annotations found in a specific method
+     *
+     * @param string $className
+     * @param string $methodName
+     * @return Collection
+     */
+    public function getMethod(string $className, string $methodName): Collection;
+
+    /**
+     * Returns the annotations found in all the class' methods
+     *
+     * @param string $className
+     * @return array
+     */
+    public function getMethods(string $className): array;
 
     /**
      * Returns the annotation reader

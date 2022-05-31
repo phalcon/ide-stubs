@@ -148,10 +148,10 @@ interface ManagerInterface
     /**
      * Set session Id
      *
-     * @param string $id
+     * @param string $sessionId
      * @return ManagerInterface
      */
-    public function setId(string $id): ManagerInterface;
+    public function setId(string $sessionId): ManagerInterface;
 
     /**
      * Set the session name. Throw exception if the session has started
@@ -189,8 +189,8 @@ interface ManagerInterface
     /**
      * Regenerates the session id using the adapter.
      *
-     * @param mixed $deleteOldSession
+     * @param bool $deleteOldSession
      * @return ManagerInterface
      */
-    public function regenerateId($deleteOldSession = true): ManagerInterface;
+    public function regenerateId(bool $deleteOldSession = true): ManagerInterface;
 }

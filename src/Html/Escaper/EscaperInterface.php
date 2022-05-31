@@ -14,6 +14,8 @@ namespace Phalcon\Html\Escaper;
  */
 interface EscaperInterface
 {
+
+
     /**
      * Escapes a HTML attribute string
      *

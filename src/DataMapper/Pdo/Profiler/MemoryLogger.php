@@ -9,19 +9,97 @@
  */
 namespace Phalcon\DataMapper\Pdo\Profiler;
 
-use Psr\Log\AbstractLogger;
+use Phalcon\Logger\Enum;
+use Phalcon\Logger\Adapter\AdapterInterface;
+use Phalcon\Logger\Adapter\Noop;
+use Phalcon\Logger\LoggerInterface;
 
 /**
- * A naive memory-based logger.
+ * A memory-based logger.
  *
  * @property array $messages
  */
-class MemoryLogger extends AbstractLogger
+class MemoryLogger implements \Phalcon\Logger\LoggerInterface
 {
+
     /**
      * @var array
      */
     protected $messages = [];
+
+    /**
+     * @param string $message
+     * @param mixed[] $context
+     * @return void
+     */
+    public function alert(string $message, array $context = []): void
+    {
+    }
+
+    /**
+     * @param string $message
+     * @param mixed[] $context
+     * @return void
+     */
+    public function critical(string $message, array $context = []): void
+    {
+    }
+
+    /**
+     * @param string $message
+     * @param mixed[] $context
+     * @return void
+     */
+    public function debug(string $message, array $context = []): void
+    {
+    }
+
+    /**
+     * @param string $message
+     * @param mixed[] $context
+     * @return void
+     */
+    public function emergency(string $message, array $context = []): void
+    {
+    }
+
+    /**
+     * @param string $message
+     * @param mixed[] $context
+     * @return void
+     */
+    public function error(string $message, array $context = []): void
+    {
+    }
+
+    /**
+     * Returns an adapter from the stack
+     *
+     * @param string $name The name of the adapter
+     *
+     * @return AdapterInterface
+     */
+    public function getAdapter(string $name): AdapterInterface
+    {
+    }
+
+    /**
+     * Returns the adapter stack array
+     *
+     * @return AdapterInterface[]
+     */
+    public function getAdapters(): array
+    {
+    }
+
+    /**
+     * Returns the log level
+     *
+     * @return int
+     */
+    public function getLogLevel(): int
+    {
+    }
 
     /**
      * Returns the logged messages.
@@ -33,66 +111,38 @@ class MemoryLogger extends AbstractLogger
     }
 
     /**
-     * @param string $message
-     * @param mixed[] $context
+     * Returns the name of the logger
+     *
+     * @return string
      */
-    public function emergency($message, array $context = [])
+    public function getName(): string
     {
     }
 
     /**
      * @param string $message
      * @param mixed[] $context
+     * @return void
      */
-    public function alert($message, array $context = [])
+    public function info(string $message, array $context = []): void
     {
     }
 
     /**
      * @param string $message
      * @param mixed[] $context
+     * @return void
      */
-    public function critical($message, array $context = [])
+    public function notice(string $message, array $context = []): void
     {
     }
 
     /**
      * @param string $message
      * @param mixed[] $context
+     * @return void
      */
-    public function error($message, array $context = [])
-    {
-    }
-
-    /**
-     * @param string $message
-     * @param mixed[] $context
-     */
-    public function warning($message, array $context = [])
-    {
-    }
-
-    /**
-     * @param string $message
-     * @param mixed[] $context
-     */
-    public function notice($message, array $context = [])
-    {
-    }
-
-    /**
-     * @param string $message
-     * @param mixed[] $context
-     */
-    public function info($message, array $context = [])
-    {
-    }
-
-    /**
-     * @param string $message
-     * @param mixed[] $context
-     */
-    public function debug($message, array $context = [])
+    public function warning(string $message, array $context = []): void
     {
     }
 
@@ -102,8 +152,9 @@ class MemoryLogger extends AbstractLogger
      * @param mixed  $level
      * @param string $message
      * @param array  $context
+     * @return void
      */
-    public function log($level, $message, array $context = [])
+    public function log($level, string $message, array $context = []): void
     {
     }
 }

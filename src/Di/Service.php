@@ -27,6 +27,7 @@ use Phalcon\Di\Service\Builder;
  */
 class Service implements \Phalcon\Di\ServiceInterface
 {
+
     /**
      * @var mixed
      */

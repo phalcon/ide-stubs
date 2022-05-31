@@ -12,12 +12,17 @@ namespace Phalcon\Storage\Serializer;
 use InvalidArgumentException;
 
 /**
- * Class Base64
+ * This file is part of the Phalcon Framework.
  *
- * @package Phalcon\Storage\Serializer
+ * (c) Phalcon Team <team@phalcon.io>
+ *
+ * For the full copyright and license information, please view the LICENSE.txt
+ * file that was distributed with this source code.
  */
 class Base64 extends \Phalcon\Storage\Serializer\AbstractSerializer
 {
+
+
     /**
      * Serializes data
      *
@@ -30,12 +35,24 @@ class Base64 extends \Phalcon\Storage\Serializer\AbstractSerializer
     /**
      * Unserializes data
      *
-     * @param string $data
+     * @param mixed $data
      *
      * @retrun void
      * @return void
      */
     public function unserialize($data): void
+    {
+    }
+
+    /**
+     * Wrapper for base64_decode
+     *
+     * @param string $input
+     * @param bool   $strict
+     *
+     * @return string|false
+     */
+    protected function phpBase64Decode(string $input, bool $strict = false)
     {
     }
 }

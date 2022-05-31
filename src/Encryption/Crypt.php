@@ -278,6 +278,18 @@ class Crypt implements \Phalcon\Encryption\Crypt\CryptInterface
     }
 
     /**
+     * Returns if the input length for decryption is valid or not
+     * (number of bytes required by the cipher).
+     *
+     * @param string $input
+     *
+     * @return bool
+     */
+    public function isValidDecryptLength(string $input): bool
+    {
+    }
+
+    /**
      * @param string $data
      *
      * @return CryptInterface
@@ -530,6 +542,14 @@ class Crypt implements \Phalcon\Encryption\Crypt\CryptInterface
      * @return bool
      */
     protected function phpFunctionExists(string $name): bool
+    {
+    }
+
+    /**
+     * @param string $cipher
+     * @return int|bool
+     */
+    protected function phpOpensslCipherIvLength(string $cipher)
     {
     }
 

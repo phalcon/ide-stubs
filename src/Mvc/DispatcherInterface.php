@@ -18,6 +18,8 @@ use Phalcon\Dispatcher\DispatcherInterface as DispatcherInterfaceBase;
  */
 interface DispatcherInterface extends DispatcherInterfaceBase
 {
+
+
     /**
      * Returns the active controller in the dispatcher
      *

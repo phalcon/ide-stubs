@@ -31,6 +31,7 @@ use Phalcon\Support\Helper\Str\Interpolate;
  */
 abstract class AbstractFlash extends AbstractInjectionAware implements \Phalcon\Flash\FlashInterface
 {
+
     /**
      * @var bool
      */

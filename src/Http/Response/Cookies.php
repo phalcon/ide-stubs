@@ -64,6 +64,7 @@ use Phalcon\Http\Cookie\CookieInterface;
  */
 class Cookies extends AbstractInjectionAware implements \Phalcon\Http\Response\CookiesInterface
 {
+
     /**
      * @var array
      */

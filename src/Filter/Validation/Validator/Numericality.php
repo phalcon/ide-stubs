@@ -49,6 +49,7 @@ use Phalcon\Filter\Validation\AbstractValidator;
  */
 class Numericality extends AbstractValidator
 {
+
     protected $template = 'Field :field does not have a valid numeric format';
 
     /**

@@ -19,6 +19,8 @@ use Phalcon\Logger\Item;
  */
 interface AdapterInterface
 {
+
+
     /**
      * Adds a message in the queue
      *

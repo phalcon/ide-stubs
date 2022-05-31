@@ -50,6 +50,7 @@ use Throwable;
  */
 class Micro extends Injectable implements \ArrayAccess, \Phalcon\Events\EventsAwareInterface
 {
+
     /**
      * @var callable|null
      */
@@ -367,10 +368,10 @@ class Micro extends Injectable implements \ArrayAccess, \Phalcon\Events\EventsAw
      * Check if a service is registered in the internal services container using
      * the array syntax
      *
-     * @param mixed $alias
+     * @param mixed $offset
      * @return bool
      */
-    public function offsetExists($alias): bool
+    public function offsetExists($offset): bool
     {
     }
 
@@ -384,10 +385,10 @@ class Micro extends Injectable implements \ArrayAccess, \Phalcon\Events\EventsAw
      * );
      * ```
      *
-     * @param mixed $alias
+     * @param mixed $offset
      * @return mixed
      */
-    public function offsetGet($alias)
+    public function offsetGet($offset)
     {
     }
 
@@ -399,11 +400,11 @@ class Micro extends Injectable implements \ArrayAccess, \Phalcon\Events\EventsAw
      *    $app["request"] = new \Phalcon\Http\Request();
      * ```
      *
-     * @param mixed $alias
-     * @param mixed $definition
+     * @param mixed $offset
+     * @param mixed $value
      * @return void
      */
-    public function offsetSet($alias, $definition): void
+    public function offsetSet($offset, $value): void
     {
     }
 
@@ -411,10 +412,10 @@ class Micro extends Injectable implements \ArrayAccess, \Phalcon\Events\EventsAw
      * Removes a service from the internal services container using the array
      * syntax
      *
-     * @param mixed $alias
+     * @param mixed $offset
      * @return void
      */
-    public function offsetUnset($alias): void
+    public function offsetUnset($offset): void
     {
     }
 

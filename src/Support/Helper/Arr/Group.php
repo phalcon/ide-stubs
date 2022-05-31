@@ -14,6 +14,8 @@ namespace Phalcon\Support\Helper\Arr;
  */
 class Group
 {
+
+
     /**
      * @param array           $collection
      * @param callable|string $method

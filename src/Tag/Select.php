@@ -21,6 +21,8 @@ use Phalcon\Mvc\Model\ResultsetInterface;
  */
 abstract class Select
 {
+
+
     /**
      * Generates a SELECT tag
      *

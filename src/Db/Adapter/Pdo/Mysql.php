@@ -38,6 +38,7 @@ use Phalcon\Db\ReferenceInterface;
  */
 class Mysql extends \Phalcon\Db\Adapter\Pdo\AbstractPdo
 {
+
     /**
      * @var string
      */

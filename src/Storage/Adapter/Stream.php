@@ -30,6 +30,7 @@ use RecursiveIteratorIterator;
  */
 class Stream extends \Phalcon\Storage\Adapter\AbstractAdapter
 {
+
     /**
      * @var string
      */
@@ -136,11 +137,15 @@ class Stream extends \Phalcon\Storage\Adapter\AbstractAdapter
     }
 
     /**
-     * Stores data in the adapter
+     * Stores data in the adapter. If the TTL is `null` (default) or not defined
+     * then the default TTL will be used, as set in this adapter. If the TTL
+     * is `0` or a negative number, a `delete()` will be issued, since this
+     * item has expired. If you need to set this key forever, you should use
+     * the `setForever()` method.
      *
-     * @param string                 $key
-     * @param mixed                  $value
-     * @param \DateInterval|int|null $ttl
+     * @param string                $key
+     * @param mixed                 $value
+     * @param DateInterval|int|null $ttl
      *
      * @return bool
      */
@@ -230,7 +235,51 @@ class Stream extends \Phalcon\Storage\Adapter\AbstractAdapter
     }
 
     /**
-     * @todo Remove this when we get traits
+     * @todo Remove the methods below when we get traits
+     * @param string $filename
+     * @return bool
+     */
+    protected function phpFileExists(string $filename): bool
+    {
+    }
+
+    /**
+     * @param string $filename
+     * @return string|bool
+     */
+    protected function phpFileGetContents(string $filename)
+    {
+    }
+
+    /**
+     * @param string $filename
+     * @param mixed $data
+     * @param int $flags
+     * @param mixed $context
+     * @return int|bool
+     */
+    protected function phpFilePutContents(string $filename, $data, int $flags = 0, $context = null)
+    {
+    }
+
+    /**
+     * @param string $filename
+     * @param string $mode
+     * @return mixed
+     */
+    protected function phpFopen(string $filename, string $mode)
+    {
+    }
+
+    /**
+     * @param string $filename
+     * @return bool
+     */
+    protected function phpUnlink(string $filename): bool
+    {
+    }
+
+    /**
      * @param string $file
      * @return string
      */
@@ -239,7 +288,6 @@ class Stream extends \Phalcon\Storage\Adapter\AbstractAdapter
     }
 
     /**
-     * @todo Remove this when we get traits
      * @param string $directory
      * @return string
      */

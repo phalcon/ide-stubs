@@ -17,6 +17,8 @@ use Phalcon\Acl\RoleInterface;
  */
 interface AdapterInterface
 {
+
+
     /**
      * Do a role inherit from another existing role
      *

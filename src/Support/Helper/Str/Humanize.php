@@ -14,6 +14,8 @@ namespace Phalcon\Support\Helper\Str;
  */
 class Humanize
 {
+
+
     /**
      * @param string $text
      *

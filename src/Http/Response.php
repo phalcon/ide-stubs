@@ -41,6 +41,7 @@ use Phalcon\Events\ManagerInterface;
  */
 class Response implements \Phalcon\Http\ResponseInterface, \Phalcon\Di\InjectionAwareInterface, \Phalcon\Events\EventsAwareInterface, \Phalcon\Http\Message\ResponseStatusCodeInterface
 {
+
     /**
      * @var DiInterface|null
      */

@@ -64,6 +64,8 @@ use Traversable;
  */
 final class Registry extends Collection
 {
+
+
     /**
      * Constructor
      *

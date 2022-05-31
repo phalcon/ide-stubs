@@ -17,6 +17,8 @@ use stdClass;
  */
 interface RequestInterface
 {
+
+
     /**
      * Gets a variable from the $_REQUEST superglobal applying filters if
      * needed. If no parameters are given the $_REQUEST superglobal is returned

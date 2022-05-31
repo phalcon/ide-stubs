@@ -14,6 +14,8 @@ namespace Phalcon\Support\Helper\Str;
  */
 class EndsWith extends \Phalcon\Support\Helper\Str\AbstractStr
 {
+
+
     /**
      * @param string $haystack
      * @param string $needle

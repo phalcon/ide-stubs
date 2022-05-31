@@ -16,4 +16,6 @@ namespace Phalcon\Html;
  */
 class Exception extends \Exception
 {
+
+
 }

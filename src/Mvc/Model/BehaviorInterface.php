@@ -18,6 +18,8 @@ use Phalcon\Mvc\ModelInterface;
  */
 interface BehaviorInterface
 {
+
+
     /**
      * Calls a method when it's missing in the model
      *

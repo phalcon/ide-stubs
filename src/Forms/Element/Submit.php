@@ -16,8 +16,10 @@ use Phalcon\Tag;
  */
 class Submit extends \Phalcon\Forms\Element\AbstractElement
 {
+
     /**
      * @var string
      */
     protected $method = 'inputSubmit';
+
 }

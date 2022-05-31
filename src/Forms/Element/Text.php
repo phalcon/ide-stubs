@@ -12,10 +12,10 @@ namespace Phalcon\Forms\Element;
 use Phalcon\Forms\Exception;
 
 /**
- * Phalcon\Forms\Element\Text
- *
  * Component INPUT[type=text] for forms
  */
 class Text extends \Phalcon\Forms\Element\AbstractElement
 {
+
+
 }

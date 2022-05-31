@@ -17,25 +17,26 @@ namespace Phalcon\Storage\Serializer;
  * For the full copyright and license information, please view the LICENSE.txt
  * file that was distributed with this source code.
  */
-class Msgpack extends \Phalcon\Storage\Serializer\AbstractSerializer
+class Msgpack extends \Phalcon\Storage\Serializer\Igbinary
 {
+
+
     /**
      * Serializes data
      *
-     * @return string|null
+     * @return string
+     * @param mixed $value
      */
-    public function serialize(): ?string
+    protected function doSerialize($value): string
     {
     }
 
     /**
-     * Unserializes data
+     * @param mixed $value
      *
-     * @param string $data
-     *
-     * @return void
+     * @return mixed
      */
-    public function unserialize($data): void
+    protected function doUnserialize($value)
     {
     }
 }

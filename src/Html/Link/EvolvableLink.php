@@ -9,7 +9,7 @@
  */
 namespace Phalcon\Html\Link;
 
-use Psr\Link\EvolvableLinkInterface;
+use Phalcon\Html\Link\Interfaces\EvolvableLinkInterface;
 
 /**
  * Class Phalcon\Http\Link\EvolvableLink
@@ -19,8 +19,10 @@ use Psr\Link\EvolvableLinkInterface;
  * @property array  rels
  * @property bool   templated
  */
-class EvolvableLink extends \Phalcon\Html\Link\Link implements \Psr\Link\EvolvableLinkInterface
+class EvolvableLink extends \Phalcon\Html\Link\Link implements \Phalcon\Html\Link\Interfaces\EvolvableLinkInterface
 {
+
+
     /**
      * Returns an instance with the specified attribute added.
      *
@@ -28,11 +30,10 @@ class EvolvableLink extends \Phalcon\Html\Link\Link implements \Psr\Link\Evolvab
      * with the new value.
      *
      * @param string $attribute The attribute to include.
-     * @param string $value The value of the attribute to set.
-     *
-     * @return static
+     * @param string $value     The value of the attribute to set.
+     * @return EvolvableLinkInterface
      */
-    public function withAttribute($attribute, $value)
+    public function withAttribute($attribute, $value): EvolvableLinkInterface
     {
     }
 
@@ -50,9 +51,10 @@ class EvolvableLink extends \Phalcon\Html\Link\Link implements \Psr\Link\Evolvab
      * An implementing library SHOULD evaluate a passed object to a string
      * immediately rather than waiting for it to be returned later.
      *
-     * @return static
+     * @param string $rel The relationship value to add.
+     * @return EvolvableLinkInterface
      */
-    public function withHref($href)
+    public function withHref(string $href): EvolvableLinkInterface
     {
     }
 
@@ -62,11 +64,10 @@ class EvolvableLink extends \Phalcon\Html\Link\Link implements \Psr\Link\Evolvab
      * If the specified rel is already present, this method MUST return
      * normally without errors, but without adding the rel a second time.
      *
-     * @param string $rel *   The relationship value to add.
-     *
-     * @return static
+     * @param string $rel The relationship value to add.
+     * @return EvolvableLinkInterface
      */
-    public function withRel($rel)
+    public function withRel(string $rel): EvolvableLinkInterface
     {
     }
 
@@ -76,11 +77,10 @@ class EvolvableLink extends \Phalcon\Html\Link\Link implements \Psr\Link\Evolvab
      * If the specified attribute is not present, this method MUST return
      * normally without errors.
      *
-     * @param string $attribute *   The attribute to remove.
-     *
-     * @return static
+     * @param string $attribute The attribute to remove.
+     * @return EvolvableLinkInterface
      */
-    public function withoutAttribute($attribute)
+    public function withoutAttribute(string $attribute): EvolvableLinkInterface
     {
     }
 
@@ -90,11 +90,10 @@ class EvolvableLink extends \Phalcon\Html\Link\Link implements \Psr\Link\Evolvab
      * If the specified rel is not present, this method MUST return
      * normally without errors.
      *
-     * @param string $rel *   The relationship value to exclude.
-     *
-     * @return static
+     * @param string $rel The relationship value to exclude.
+     * @return EvolvableLinkInterface
      */
-    public function withoutRel($rel)
+    public function withoutRel(string $rel): EvolvableLinkInterface
     {
     }
 }

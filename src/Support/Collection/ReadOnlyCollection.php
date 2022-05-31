@@ -16,6 +16,8 @@ use Phalcon\Support\Collection;
  */
 class ReadOnlyCollection extends Collection
 {
+
+
     /**
      * Delete the element from the collection
      *

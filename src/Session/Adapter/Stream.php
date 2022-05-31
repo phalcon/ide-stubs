@@ -30,9 +30,14 @@ use Phalcon\Session\Exception;
  * );
  * $session->setAdapter($files);
  * ```
+ *
+ * @property array  $options
+ * @property string $prefix
+ * @property string $path
  */
 class Stream extends \Phalcon\Session\Adapter\Noop
 {
+
     /**
      * @var string
      */
@@ -51,19 +56,20 @@ class Stream extends \Phalcon\Session\Adapter\Noop
     }
 
     /**
-     * @param mixed $id
+     * @param mixed $sessionId
      * @return bool
      */
-    public function destroy($id): bool
+    public function destroy($sessionId): bool
     {
     }
 
     /**
      * Garbage Collector
      *
-     * @param mixed $maxlifetime
+     * @param int $maxlifetime
+     * @return false|int
      */
-    public function gc($maxlifetime)
+    public function gc(int $maxlifetime)
     {
     }
 
@@ -79,28 +85,116 @@ class Stream extends \Phalcon\Session\Adapter\Noop
     }
 
     /**
-     * @param mixed $id
+     * Reads data from the adapter
+     *
+     * @param mixed $sessionId
      * @return string
      */
-    public function read($id): string
+    public function read($sessionId): string
     {
     }
 
     /**
-     * @param mixed $id
+     * @param mixed $sessionId
      * @param mixed $data
      * @return bool
      */
-    public function write($id, $data): bool
+    public function write($sessionId, $data): bool
     {
     }
 
     /**
      * @todo Remove this when we get traits
+     * @param array $collection
+     * @param mixed $index
+     * @param mixed $defaultValue
+     * @param string $cast
+     * @return mixed
+     */
+    protected function getArrVal(array $collection, $index, $defaultValue = null, string $cast = null)
+    {
+    }
+
+    /**
      * @param string $directory
      * @return string
      */
     private function getDirSeparator(string $directory): string
+    {
+    }
+
+    /**
+     * @param string $filename
+     *
+     * @return bool
+     *
+     * @link https://php.net/manual/en/function.file-exists.php
+     */
+    protected function phpFileExists(string $filename)
+    {
+    }
+
+    /**
+     * @param string $filename
+     *
+     * @return string|false
+     *
+     * @link https://php.net/manual/en/function.file-get-contents.php
+     */
+    protected function phpFileGetContents(string $filename)
+    {
+    }
+
+    /**
+     * @param string   $filename
+     * @param mixed    $data
+     * @param int      $flags
+     * @param resource $context
+     *
+     * @return int|false
+     *
+     * @link https://php.net/manual/en/function.file-put-contents.php
+     */
+    protected function phpFilePutContents(string $filename, $data, int $flags = 0, $context = null)
+    {
+    }
+
+    /**
+     * @param string $filename
+     * @param string $mode
+     *
+     * @return resource|false
+     *
+     * @link https://php.net/manual/en/function.fopen.php
+     */
+    protected function phpFopen(string $filename, string $mode)
+    {
+    }
+
+    /**
+     * Gets the value of a configuration option
+     *
+     * @param string $varname
+     *
+     * @return string
+     *
+     * @link https://php.net/manual/en/function.ini-get.php
+     * @link https://php.net/manual/en/ini.list.php
+     */
+    protected function phpIniGet(string $varname): string
+    {
+    }
+
+    /**
+     * Tells whether the filename is writable
+     *
+     * @param string $filename
+     *
+     * @return bool
+     *
+     * @link https://php.net/manual/en/function.is-writable.php
+     */
+    protected function phpIsWritable(string $filename): bool
     {
     }
 }

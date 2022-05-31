@@ -14,6 +14,8 @@ namespace Phalcon\Db;
  */
 interface ResultInterface
 {
+
+
     /**
      * Moves internal resultset cursor to another position letting us to fetch a
      * certain row

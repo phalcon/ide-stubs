@@ -20,6 +20,7 @@ use Phalcon\Html\Exception;
  */
 abstract class AbstractHelper
 {
+
     /**
      * @var string
      */

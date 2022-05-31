@@ -26,6 +26,7 @@ use Phalcon\Mvc\Model\BinderInterface;
  */
 abstract class AbstractDispatcher extends AbstractInjectionAware implements \Phalcon\Dispatcher\DispatcherInterface, \Phalcon\Events\EventsAwareInterface
 {
+
     /**
      * @var object|null
      */

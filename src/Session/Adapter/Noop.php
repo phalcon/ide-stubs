@@ -29,6 +29,7 @@ use SessionHandlerInterface;
  */
 class Noop implements \SessionHandlerInterface
 {
+
     /**
      * The connection of some adapters
      *
@@ -80,29 +81,30 @@ class Noop implements \SessionHandlerInterface
     /**
      * Destroy
      *
-     * @param mixed $id
+     * @param mixed $sessionId
      * @return bool
      */
-    public function destroy($id): bool
+    public function destroy($sessionId): bool
     {
     }
 
     /**
      * Garbage Collector
      *
-     * @param mixed $maxlifetime
+     * @param int $maxlifetime
+     * @return false|int
      */
-    public function gc($maxlifetime)
+    public function gc(int $maxlifetime)
     {
     }
 
     /**
      * Read
      *
-     * @param mixed $id
+     * @param mixed $sessionId
      * @return string
      */
-    public function read($id): string
+    public function read($sessionId): string
     {
     }
 
@@ -120,11 +122,11 @@ class Noop implements \SessionHandlerInterface
     /**
      * Write
      *
-     * @param mixed $id
+     * @param mixed $sessionId
      * @param mixed $data
      * @return bool
      */
-    public function write($id, $data): bool
+    public function write($sessionId, $data): bool
     {
     }
 

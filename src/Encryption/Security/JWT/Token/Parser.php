@@ -16,6 +16,8 @@ use InvalidArgumentException;
  */
 class Parser
 {
+
+
     /**
      * Parse a token and return it
      *

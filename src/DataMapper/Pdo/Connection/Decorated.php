@@ -18,6 +18,8 @@ use Phalcon\DataMapper\Pdo\Profiler\ProfilerInterface;
  */
 class Decorated extends \Phalcon\DataMapper\Pdo\Connection\AbstractConnection
 {
+
+
     /**
      *
      * Constructor.

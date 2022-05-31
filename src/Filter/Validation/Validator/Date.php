@@ -55,6 +55,7 @@ use Phalcon\Filter\Validation\AbstractValidator;
  */
 class Date extends AbstractValidator
 {
+
     protected $template = 'Field :field is not a valid date';
 
     /**

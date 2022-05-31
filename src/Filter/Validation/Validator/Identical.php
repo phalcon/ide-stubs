@@ -54,6 +54,7 @@ use Phalcon\Filter\Validation\AbstractValidator;
  */
 class Identical extends AbstractValidator
 {
+
     protected $template = 'Field :field does not have the expected value';
 
     /**

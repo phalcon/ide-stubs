@@ -14,6 +14,8 @@ namespace Phalcon\Mvc\Url;
  */
 interface UrlInterface
 {
+
+
     /**
      * Generates a URL
      *

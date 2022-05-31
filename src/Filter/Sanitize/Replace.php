@@ -16,6 +16,8 @@ namespace Phalcon\Filter\Sanitize;
  */
 class Replace
 {
+
+
     /**
      * @param mixed $input
      * @param mixed $source

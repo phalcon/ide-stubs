@@ -16,6 +16,8 @@ namespace Phalcon\Filter\Sanitize;
  */
 class SpecialFull
 {
+
+
     /**
      * @param mixed $input The text to sanitize
      *

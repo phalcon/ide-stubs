@@ -36,6 +36,7 @@ use Phalcon\Dispatcher\AbstractDispatcher as BaseDispatcher;
  */
 class Dispatcher extends \Phalcon\Dispatcher\AbstractDispatcher implements \Phalcon\Mvc\DispatcherInterface
 {
+
     protected $defaultAction = 'index';
 
     protected $defaultHandler = 'index';

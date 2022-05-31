@@ -16,6 +16,7 @@ namespace Phalcon\Encryption\Security\JWT\Token;
  */
 abstract class AbstractItem
 {
+
     /**
      * @var array
      */

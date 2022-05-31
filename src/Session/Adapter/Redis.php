@@ -16,19 +16,21 @@ use Phalcon\Storage\AdapterFactory;
  */
 class Redis extends \Phalcon\Session\Adapter\AbstractAdapter
 {
+
+
     /**
      * Constructor
      *
-     * @param array $options = [
-     *     'prefix' => 'sess-reds-',
-     *     'host' => '127.0.0.1',
-     *     'port' => 6379,
-     *     'index' => 0,
-     *     'persistent' => false,
-     *     'auth' => '',
-     *     'socket' => ''
+     * @param AdapterFactory $factory
+     * @param array          $options = [
+     *                                'prefix'     => 'sess-reds-',
+     *                                'host'       => '127.0.0.1',
+     *                                'port'       => 6379,
+     *                                'index'      => 0,
+     *                                'persistent' => false,
+     *                                'auth'       => '',
+     *                                'socket'     => '',
      * ]
-     * @param \Phalcon\Storage\AdapterFactory $factory
      */
     public function __construct(\Phalcon\Storage\AdapterFactory $factory, array $options = [])
     {

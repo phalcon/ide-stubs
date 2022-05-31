@@ -88,6 +88,7 @@ use Phalcon\Filter\Validation\Exception;
  */
 class Uniqueness extends AbstractCombinedFieldsValidator
 {
+
     protected $template = 'Field :field must be unique';
 
     /**

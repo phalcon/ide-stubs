@@ -19,6 +19,8 @@ use Phalcon\Http\Response\HeadersInterface;
  */
 interface ResponseInterface
 {
+
+
     /**
      * Appends a string to the HTTP response body
      *

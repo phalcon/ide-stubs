@@ -14,10 +14,12 @@ use Phalcon\Support\Collection\CollectionInterface;
 /**
  * Phalcon\Config\ConfigInterface
  *
- * Interface for Phalcon\Config class
+ * Interface for Phalcon\Config\Config class
  */
 interface ConfigInterface extends \Phalcon\Support\Collection\CollectionInterface
 {
+
+
     /**
      * @return string
      */

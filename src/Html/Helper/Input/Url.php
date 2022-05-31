@@ -14,5 +14,7 @@ namespace Phalcon\Html\Helper\Input;
  */
 class Url extends \Phalcon\Html\Helper\Input\AbstractInput
 {
+
     protected $type = 'url';
+
 }

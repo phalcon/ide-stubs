@@ -73,6 +73,8 @@ use Phalcon\Factory\AbstractFactory;
  */
 class HelperFactory extends AbstractFactory
 {
+
+
     /**
      * FactoryTrait constructor.
      *

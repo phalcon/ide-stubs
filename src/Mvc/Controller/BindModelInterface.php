@@ -16,6 +16,8 @@ namespace Phalcon\Mvc\Controller;
  */
 interface BindModelInterface
 {
+
+
     /**
      * Return the model name associated with this controller
      *

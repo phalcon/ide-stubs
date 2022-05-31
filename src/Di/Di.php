@@ -18,6 +18,7 @@ use Phalcon\Config\Adapter\Yaml;
 use Phalcon\Config\ConfigInterface;
 use Phalcon\Di\ServiceInterface;
 use Phalcon\Events\ManagerInterface;
+use Phalcon\Di\InitializationAwareInterface;
 use Phalcon\Di\InjectionAwareInterface;
 use Phalcon\Di\ServiceProviderInterface;
 
@@ -61,6 +62,7 @@ use Phalcon\Di\ServiceProviderInterface;
  */
 class Di implements \Phalcon\Di\DiInterface
 {
+
     /**
      * List of registered services
      *
@@ -87,7 +89,7 @@ class Di implements \Phalcon\Di\DiInterface
      *
      * @var DiInterface|null
      */
-    protected static $_default;
+    static protected $_default;
 
     /**
      * Phalcon\Di\Di constructor

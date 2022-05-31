@@ -16,6 +16,8 @@ namespace Phalcon\Filter\Sanitize;
  */
 class Email
 {
+
+
     /**
      * @param mixed $input The text to sanitize
      *

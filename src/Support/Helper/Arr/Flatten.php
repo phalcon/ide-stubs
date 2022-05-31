@@ -15,6 +15,8 @@ namespace Phalcon\Support\Helper\Arr;
  */
 class Flatten
 {
+
+
     /**
      * @param array $collection
      * @param bool  $deep

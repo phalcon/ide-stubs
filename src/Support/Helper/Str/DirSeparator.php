@@ -15,6 +15,8 @@ namespace Phalcon\Support\Helper\Str;
  */
 class DirSeparator
 {
+
+
     /**
      * @param string $directory
      *

@@ -14,6 +14,8 @@ namespace Phalcon\Support\Helper\Str;
  */
 class Suffix
 {
+
+
     /**
      * @param mixed  $text
      * @param string $suffix

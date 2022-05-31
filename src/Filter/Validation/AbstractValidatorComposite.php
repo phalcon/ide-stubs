@@ -16,6 +16,7 @@ use Phalcon\Filter\Validation;
  */
 abstract class AbstractValidatorComposite extends \Phalcon\Filter\Validation\AbstractValidator implements \Phalcon\Filter\Validation\ValidatorCompositeInterface
 {
+
     /**
      * @var array
      */

@@ -16,6 +16,8 @@ namespace Phalcon\Encryption\Crypt\Padding;
  */
 class Pkcs7 implements \Phalcon\Encryption\Crypt\Padding\PadInterface
 {
+
+
     /**
      * @param int $paddingSize
      *

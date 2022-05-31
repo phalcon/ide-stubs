@@ -29,15 +29,16 @@ use Phalcon\Image\Exception;
  */
 class Imagick extends \Phalcon\Image\Adapter\AbstractAdapter
 {
+
     /**
      * @var bool
      */
-    protected static $checked = false;
+    static protected $checked = false;
 
     /**
      * @var int
      */
-    protected static $version = 0;
+    static protected $version = 0;
 
     /**
      * \Phalcon\Image\Adapter\Imagick constructor

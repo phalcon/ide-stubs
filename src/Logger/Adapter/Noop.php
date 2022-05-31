@@ -18,6 +18,8 @@ use Phalcon\Logger\Item;
  */
 class Noop extends \Phalcon\Logger\Adapter\AbstractAdapter
 {
+
+
     /**
      * Closes the stream
      *
