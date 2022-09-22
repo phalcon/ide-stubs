@@ -14,6 +14,4 @@ namespace Phalcon\Storage\Serializer;
  */
 class RedisNone extends \Phalcon\Storage\Serializer\None
 {
-
-
 }

@@ -237,11 +237,18 @@ class Column implements \Phalcon\Db\ColumnInterface
     protected $bindType = 2;
 
     /**
+     * Column's comment
+     *
+     * @var string|null
+     */
+    protected $comment = null;
+
+    /**
      * Default column value
      *
      * @var mixed|null
      */
-    protected $_default = null;
+    protected $defaultValue = null;
 
     /**
      * Position is first
@@ -263,13 +270,6 @@ class Column implements \Phalcon\Db\ColumnInterface
      * @var string
      */
     protected $name;
-
-    /**
-     * Column's comment
-     *
-     * @var string|null
-     */
-    protected $comment = null;
 
     /**
      * Column not nullable?
@@ -330,9 +330,46 @@ class Column implements \Phalcon\Db\ColumnInterface
     protected $unsigned = false;
 
     /**
+     * Phalcon\Db\Column constructor
+     *
+     * @param string $name
+     * @param array $definition
+     */
+    public function __construct(string $name, array $definition)
+    {
+    }
+
+    /**
+     * Check whether field absolute to position in table
+     *
+     * @return string|null
+     */
+    public function getAfterPosition(): ?string
+    {
+    }
+
+    /**
+     * Returns the type of bind handling
+     *
+     * @return int
+     */
+    public function getBindType(): int
+    {
+    }
+
+    /**
+     * Column's comment
+     *
+     * @return string|null
+     */
+    public function getComment(): ?string
+    {
+    }
+
+    /**
      * Default column value
      *
-     * @return mixed|null
+     * @return mixed
      */
     public function getDefault()
     {
@@ -344,15 +381,6 @@ class Column implements \Phalcon\Db\ColumnInterface
      * @return string
      */
     public function getName(): string
-    {
-    }
-
-    /**
-     * Column's comment
-     *
-     * @return string|null
-     */
-    public function getComment(): ?string
     {
     }
 
@@ -398,34 +426,6 @@ class Column implements \Phalcon\Db\ColumnInterface
      * @return array|string
      */
     public function getTypeValues()
-    {
-    }
-
-    /**
-     * Phalcon\Db\Column constructor
-     *
-     * @param string $name
-     * @param array $definition
-     */
-    public function __construct(string $name, array $definition)
-    {
-    }
-
-    /**
-     * Check whether field absolute to position in table
-     *
-     * @return string|null
-     */
-    public function getAfterPosition(): ?string
-    {
-    }
-
-    /**
-     * Returns the type of bind handling
-     *
-     * @return int
-     */
-    public function getBindType(): int
     {
     }
 

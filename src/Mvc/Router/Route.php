@@ -16,7 +16,6 @@ namespace Phalcon\Mvc\Router;
  */
 class Route implements \Phalcon\Mvc\Router\RouteInterface
 {
-
     /**
      * @var callable|null
      */
@@ -76,13 +75,6 @@ class Route implements \Phalcon\Mvc\Router\RouteInterface
      * @var int
      */
     protected static $uniqueId = 0;
-
-    /**
-     * @return string|null
-     */
-    public function getId(): ?string
-    {
-    }
 
     /**
      * Phalcon\Mvc\Router\Route constructor
@@ -208,6 +200,13 @@ class Route implements \Phalcon\Mvc\Router\RouteInterface
      * @return string|null
      */
     public function getHostname(): ?string
+    {
+    }
+
+    /**
+     * @return string | null
+     */
+    public function getId(): ?string
     {
     }
 

@@ -14,8 +14,6 @@ namespace Phalcon\Support\Helper\Arr;
  */
 class Chunk
 {
-
-
     /**
      * @param array $collection
      * @param int   $size

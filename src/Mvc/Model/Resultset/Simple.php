@@ -26,7 +26,6 @@ use Phalcon\Storage\Serializer\SerializerInterface;
  */
 class Simple extends Resultset
 {
-
     /**
      * @var array|string
      */

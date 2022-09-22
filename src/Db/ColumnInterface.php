@@ -14,8 +14,6 @@ namespace Phalcon\Db;
  */
 interface ColumnInterface
 {
-
-
     /**
      * Check whether field absolute to position in table
      *

@@ -21,7 +21,6 @@ use Phalcon\Config\ConfigInterface;
  */
 abstract class AbstractFactory extends \Phalcon\Factory\AbstractConfigFactory
 {
-
     /**
      * @var array
      */

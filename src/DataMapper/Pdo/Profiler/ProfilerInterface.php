@@ -16,8 +16,6 @@ use Phalcon\Logger\LoggerInterface;
  */
 interface ProfilerInterface
 {
-
-
     /**
      * Finishes and logs a profile entry.
      *

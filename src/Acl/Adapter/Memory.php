@@ -84,7 +84,6 @@ use ReflectionFunction;
  */
 class Memory extends \Phalcon\Acl\Adapter\AbstractAdapter
 {
-
     /**
      * Access
      *
@@ -118,7 +117,7 @@ class Memory extends \Phalcon\Acl\Adapter\AbstractAdapter
      *
      * @var string|null
      */
-    protected $activeKey;
+    protected $activeKey = null;
 
     /**
      * Components
@@ -161,33 +160,6 @@ class Memory extends \Phalcon\Acl\Adapter\AbstractAdapter
      * @var mixed
      */
     protected $roleInherits;
-
-    /**
-     * Returns latest function used to acquire access
-     *
-     * @return mixed
-     */
-    public function getActiveFunction()
-    {
-    }
-
-    /**
-     * Returns number of additional arguments(excluding role and resource) for active function
-     *
-     * @return int
-     */
-    public function getActiveFunctionCustomArgumentsCount(): int
-    {
-    }
-
-    /**
-     * Returns latest key used to acquire access
-     *
-     * @return string|null
-     */
-    public function getActiveKey(): ?string
-    {
-    }
 
     /**
      * Phalcon\Acl\Adapter\Memory constructor
@@ -347,6 +319,33 @@ class Memory extends \Phalcon\Acl\Adapter\AbstractAdapter
      * @return void
      */
     public function dropComponentAccess(string $componentName, $accessList): void
+    {
+    }
+
+    /**
+     * Returns latest function used to acquire access
+     *
+     * @return mixed
+     */
+    public function getActiveFunction()
+    {
+    }
+
+    /**
+     * Returns number of additional arguments(excluding role and resource) for active function
+     *
+     * @return int
+     */
+    public function getActiveFunctionCustomArgumentsCount(): int
+    {
+    }
+
+    /**
+     * Returns latest key used to acquire access
+     *
+     * @return string|null
+     */
+    public function getActiveKey(): ?string
     {
     }
 

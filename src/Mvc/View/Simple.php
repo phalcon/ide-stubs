@@ -47,7 +47,6 @@ use Phalcon\Mvc\View\Engine\Php as PhpEngine;
  */
 class Simple extends Injectable implements \Phalcon\Mvc\ViewBaseInterface, \Phalcon\Events\EventsAwareInterface
 {
-
     /**
      * @var string
      */
@@ -74,9 +73,9 @@ class Simple extends Injectable implements \Phalcon\Mvc\ViewBaseInterface, \Phal
     protected $options = [];
 
     /**
-     * @var array|null
+     * @var array
      */
-    protected $registeredEngines;
+    protected $registeredEngines = [];
 
     /**
      * @var string
@@ -87,13 +86,6 @@ class Simple extends Injectable implements \Phalcon\Mvc\ViewBaseInterface, \Phal
      * @var array
      */
     protected $viewParams = [];
-
-    /**
-     * @return array|null
-     */
-    public function getRegisteredEngines(): ?array
-    {
-    }
 
     /**
      * Phalcon\Mvc\View\Simple constructor
@@ -166,6 +158,13 @@ class Simple extends Injectable implements \Phalcon\Mvc\ViewBaseInterface, \Phal
      * @return array
      */
     public function getParamsToView(): array
+    {
+    }
+
+    /**
+     * @return array
+     */
+    public function getRegisteredEngines(): array
     {
     }
 

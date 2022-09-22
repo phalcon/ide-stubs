@@ -17,8 +17,6 @@ use Phalcon\Html\Link\Interfaces\LinkProviderInterface;
  */
 class LinkProvider extends \Phalcon\Html\Link\AbstractLinkProvider implements \Phalcon\Html\Link\Interfaces\LinkProviderInterface
 {
-
-
     /**
      * Returns an iterable of LinkInterface objects.
      *

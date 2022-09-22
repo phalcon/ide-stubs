@@ -62,7 +62,6 @@ use Phalcon\Di\ServiceProviderInterface;
  */
 class Di implements \Phalcon\Di\DiInterface
 {
-
     /**
      * List of registered services
      *
@@ -89,7 +88,7 @@ class Di implements \Phalcon\Di\DiInterface
      *
      * @var DiInterface|null
      */
-    protected static $_default;
+    protected static $defaultDi;
 
     /**
      * Phalcon\Di\Di constructor

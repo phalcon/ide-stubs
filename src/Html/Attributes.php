@@ -17,8 +17,6 @@ use Phalcon\Html\Attributes\RenderInterface;
  */
 class Attributes extends Collection implements \Phalcon\Html\Attributes\RenderInterface
 {
-
-
     /**
      * Render attributes as HTML attributes
      *

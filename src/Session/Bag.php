@@ -35,7 +35,6 @@ use Phalcon\Support\Collection;
  */
 class Bag extends Collection implements \Phalcon\Session\BagInterface, \Phalcon\Di\InjectionAwareInterface
 {
-
     /**
      * @var DiInterface|null
      */

@@ -16,8 +16,6 @@ namespace Phalcon\Translate\Interpolator;
  */
 interface InterpolatorInterface
 {
-
-
     /**
      * Replaces placeholders by the values passed
      *

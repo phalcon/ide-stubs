@@ -203,25 +203,12 @@ class Query implements \Phalcon\Mvc\Model\QueryInterface, \Phalcon\Di\InjectionA
      *
      * @var TransactionInterface|null
      */
-    protected $transaction;
+    protected $transaction = null;
 
     /**
      * @var array|null
      */
     protected static $internalPhqlCache;
-
-    /**
-     * TransactionInterface so that the query can wrap a transaction
-     *
-     * around batch updates and intermediate selects within the transaction.
-     * however if a model got a transaction set inside it will use the local
-     * transaction instead of this one
-     *
-     * @return TransactionInterface|null
-     */
-    public function getTransaction()
-    {
-    }
 
     /**
      * Phalcon\Mvc\Model\Query constructor
@@ -355,6 +342,13 @@ class Query implements \Phalcon\Mvc\Model\QueryInterface, \Phalcon\Di\InjectionA
      * @return bool
      */
     public function getUniqueRow(): bool
+    {
+    }
+
+    /**
+     * @return TransactionInterface|null
+     */
+    public function getTransaction(): ?TransactionInterface
     {
     }
 

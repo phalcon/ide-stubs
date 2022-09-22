@@ -62,7 +62,6 @@ use Phalcon\Filter\Validation\Exception;
  */
 class Min extends AbstractValidator
 {
-
     protected $template = 'Field :field must be at least :min characters long';
 
     /**

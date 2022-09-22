@@ -14,8 +14,6 @@ namespace Phalcon\Support\Helper\Str;
  */
 class ReduceSlashes
 {
-
-
     /**
      * @param string $text
      *

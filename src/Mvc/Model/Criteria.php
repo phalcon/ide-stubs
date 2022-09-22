@@ -34,7 +34,6 @@ use Phalcon\Mvc\Model\Query\BuilderInterface;
  */
 class Criteria implements \Phalcon\Mvc\Model\CriteriaInterface, \Phalcon\Di\InjectionAwareInterface
 {
-
     /**
      * @var array
      */

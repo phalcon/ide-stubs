@@ -23,8 +23,6 @@ use Phalcon\Html\Link\Interfaces\LinkInterface;
  */
 class Link extends \Phalcon\Html\Link\AbstractLink implements \Phalcon\Html\Link\Interfaces\LinkInterface
 {
-
-
     /**
      * Returns a list of attributes that describe the target URI.
      *

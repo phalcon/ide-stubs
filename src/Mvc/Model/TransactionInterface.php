@@ -19,8 +19,6 @@ use Phalcon\Mvc\Model\Transaction\ManagerInterface;
  */
 interface TransactionInterface
 {
-
-
     /**
      * Starts the transaction
      *

@@ -14,7 +14,6 @@ namespace Phalcon\Annotations;
  */
 class Annotation
 {
-
     /**
      * Annotation Arguments
      *

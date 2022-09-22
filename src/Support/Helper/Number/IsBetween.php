@@ -14,8 +14,6 @@ namespace Phalcon\Support\Helper\Number;
  */
 class IsBetween
 {
-
-
     /**
      * @param int $value
      * @param int $start

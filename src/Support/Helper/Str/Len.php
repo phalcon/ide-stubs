@@ -14,8 +14,6 @@ namespace Phalcon\Support\Helper\Str;
  */
 class Len
 {
-
-
     /**
      * @param string $text
      * @param string $encoding

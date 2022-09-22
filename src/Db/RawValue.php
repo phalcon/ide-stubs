@@ -25,7 +25,6 @@ namespace Phalcon\Db;
  */
 class RawValue
 {
-
     /**
      * Raw value without quoting or formatting
      *
@@ -34,17 +33,15 @@ class RawValue
     protected $value;
 
     /**
-     * Raw value without quoting or formatting
+     * Phalcon\Db\RawValue constructor
      *
-     * @return string
+     * @param mixed $value
      */
-    public function getValue(): string
+    public function __construct($value)
     {
     }
 
     /**
-     * Raw value without quoting or formatting
-     *
      * @return string
      */
     public function __toString(): string
@@ -52,11 +49,9 @@ class RawValue
     }
 
     /**
-     * Phalcon\Db\RawValue constructor
-     *
-     * @param mixed $value
+     * @return string
      */
-    public function __construct($value)
+    public function getValue(): string
     {
     }
 }

@@ -20,7 +20,6 @@ use Phalcon\Annotations\ReaderInterface;
  */
 abstract class AbstractAdapter implements \Phalcon\Annotations\Adapter\AdapterInterface
 {
-
     /**
      * @var array
      */

@@ -25,7 +25,6 @@ use Phalcon\Logger\LoggerInterface;
  */
 class Profiler implements \Phalcon\DataMapper\Pdo\Profiler\ProfilerInterface
 {
-
     /**
      * @var bool
      */

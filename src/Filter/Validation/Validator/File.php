@@ -93,8 +93,6 @@ use Phalcon\Filter\Validation\Validator\File\Size\Min as MinFileSize;
  */
 class File extends AbstractValidatorComposite
 {
-
-
     /**
      * Constructor
      *

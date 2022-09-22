@@ -22,8 +22,6 @@ use Phalcon\Support\Helper\Arr\Get;
  */
 class PdoFactory extends AbstractFactory
 {
-
-
     /**
      * Constructor
      *

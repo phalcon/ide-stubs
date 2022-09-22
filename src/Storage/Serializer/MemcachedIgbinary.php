@@ -14,6 +14,4 @@ namespace Phalcon\Storage\Serializer;
  */
 class MemcachedIgbinary extends \Phalcon\Storage\Serializer\None
 {
-
-
 }

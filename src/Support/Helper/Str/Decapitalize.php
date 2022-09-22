@@ -16,8 +16,6 @@ namespace Phalcon\Support\Helper\Str;
  */
 class Decapitalize extends \Phalcon\Support\Helper\Str\AbstractStr
 {
-
-
     /**
      * @param string $text
      * @param bool   $upperRest

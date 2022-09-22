@@ -204,9 +204,11 @@ interface BuilderInterface
      * Sets a HAVING condition clause
      *
      * @param string $conditions
+     * @param array $bindParams
+     * @param array $bindTypes
      * @return BuilderInterface
      */
-    public function having(string $conditions): BuilderInterface;
+    public function having(string $conditions, array $bindParams = [], array $bindTypes = []): BuilderInterface;
 
     /**
      * Adds an INNER join to the query

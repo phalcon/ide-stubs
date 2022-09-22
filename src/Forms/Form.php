@@ -28,7 +28,6 @@ use Phalcon\Filter\Validation\ValidationInterface;
  */
 class Form extends Injectable implements \Countable, \Iterator, \Phalcon\Html\Attributes\AttributesInterface
 {
-
     /**
      * @var AttributesInterface|null
      */
@@ -88,20 +87,6 @@ class Form extends Injectable implements \Countable, \Iterator, \Phalcon\Html\At
      * @var array
      */
     protected $whitelist = [];
-
-    /**
-     * @return ValidationInterface|null
-     */
-    public function getValidation()
-    {
-    }
-
-    /**
-     * @return array
-     */
-    public function getWhitelist(): array
-    {
-    }
 
     /**
      * Phalcon\Forms\Form constructor
@@ -296,6 +281,24 @@ class Form extends Injectable implements \Countable, \Iterator, \Phalcon\Html\At
      * @return mixed|null
      */
     public function getValue(string $name)
+    {
+    }
+
+    /**
+     * return ValidationInterface|null
+     *
+     * @return ValidationInterface|null
+     */
+    public function getValidation(): ?ValidationInterface
+    {
+    }
+
+    /**
+     * return array
+     *
+     * @return array
+     */
+    public function getWhitelist(): array
     {
     }
 

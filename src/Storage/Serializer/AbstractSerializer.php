@@ -15,7 +15,6 @@ namespace Phalcon\Storage\Serializer;
  */
 abstract class AbstractSerializer implements \Phalcon\Storage\Serializer\SerializerInterface
 {
-
     /**
      * @var mixed
      */
@@ -32,6 +31,25 @@ abstract class AbstractSerializer implements \Phalcon\Storage\Serializer\Seriali
      * @param mixed|null $data
      */
     public function __construct($data = null)
+    {
+    }
+
+    /**
+     * Serialize data
+     *
+     * @return array
+     */
+    public function __serialize(): array
+    {
+    }
+
+    /**
+     * Unserialize data
+     *
+     * @param array $data
+     * @return void
+     */
+    public function __unserialize(array $data): void
     {
     }
 
@@ -68,21 +86,6 @@ abstract class AbstractSerializer implements \Phalcon\Storage\Serializer\Seriali
      * @return bool
      */
     protected function isSerializable($data): bool
-    {
-    }
-
-    /**
-     * @return array
-     */
-    public function __serialize(): array
-    {
-    }
-
-    /**
-     * @param array $data
-     * @return void
-     */
-    public function __unserialize(array $data): void
     {
     }
 }

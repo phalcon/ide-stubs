@@ -16,8 +16,6 @@ namespace Phalcon\Translate\Interpolator;
  */
 class IndexedArray implements \Phalcon\Translate\Interpolator\InterpolatorInterface
 {
-
-
     /**
      * Replaces placeholders by the values passed
      *

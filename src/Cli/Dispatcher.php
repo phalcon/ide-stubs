@@ -38,7 +38,6 @@ use Phalcon\Filter\FilterInterface;
  */
 class Dispatcher extends \Phalcon\Dispatcher\AbstractDispatcher implements \Phalcon\Cli\DispatcherInterface
 {
-
     protected $defaultHandler = 'main';
 
     /**

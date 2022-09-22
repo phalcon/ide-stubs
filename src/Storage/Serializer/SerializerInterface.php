@@ -21,8 +21,6 @@ use Serializable;
  */
 interface SerializerInterface extends \Serializable
 {
-
-
     /**
      * @return mixed
      */

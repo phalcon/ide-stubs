@@ -16,8 +16,6 @@ namespace Phalcon\Mvc\Micro;
  */
 interface CollectionInterface
 {
-
-
     /**
      * Maps a route to a handler that only matches if the HTTP method is DELETE
      *
@@ -130,7 +128,8 @@ interface CollectionInterface
      * Sets the main handler
      *
      * @param mixed $handler
-     * @param bool $lazy *
+     * @param bool  $lazy
+     *
      * @return CollectionInterface
      */
     public function setHandler($handler, bool $lazy = false): CollectionInterface;

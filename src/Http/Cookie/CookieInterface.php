@@ -14,8 +14,6 @@ namespace Phalcon\Http\Cookie;
  */
 interface CookieInterface
 {
-
-
     /**
      * Deletes the cookie
      */

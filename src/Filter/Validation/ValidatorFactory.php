@@ -21,8 +21,6 @@ use Phalcon\Factory\AbstractFactory;
  */
 class ValidatorFactory extends AbstractFactory
 {
-
-
     /**
      * TagFactory constructor.
      *

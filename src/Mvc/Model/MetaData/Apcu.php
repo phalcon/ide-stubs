@@ -33,8 +33,6 @@ use Phalcon\Cache\AdapterFactory;
  */
 class Apcu extends MetaData
 {
-
-
     /**
      * Phalcon\Mvc\Model\MetaData\Apcu constructor
      *

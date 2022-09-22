@@ -17,8 +17,6 @@ namespace Phalcon\Support\Helper\Str;
  */
 class Interpolate
 {
-
-
     /**
      * @param string $message
      * @param array  $context

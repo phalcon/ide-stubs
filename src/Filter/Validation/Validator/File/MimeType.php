@@ -63,7 +63,6 @@ use Phalcon\Filter\Validation\Exception;
  */
 class MimeType extends \Phalcon\Filter\Validation\Validator\File\AbstractFile
 {
-
     protected $template = 'File :field must be of type: :types';
 
     /**

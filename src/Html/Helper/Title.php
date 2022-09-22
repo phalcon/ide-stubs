@@ -23,7 +23,6 @@ use Phalcon\Html\Exception;
  */
 class Title extends \Phalcon\Html\Helper\AbstractHelper
 {
-
     /**
      * @var array
      */
@@ -47,12 +46,12 @@ class Title extends \Phalcon\Html\Helper\AbstractHelper
     /**
      * Sets the separator and returns the object back
      *
-     * @param string|null $indent
+     * @param string      $indent
      * @param string|null $delimiter
      *
      * @return Title
      */
-    public function __invoke(string $indent = null, string $delimiter = null): Title
+    public function __invoke(string $indent = '    ', string $delimiter = null): Title
     {
     }
 

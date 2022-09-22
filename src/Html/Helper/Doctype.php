@@ -55,9 +55,9 @@ class Doctype
      *
      * @param int    $flag
      * @param string $delimiter
-     * @return void
+     * @return Doctype
      */
-    public function __invoke(int $flag = self::HTML5, string $delimiter = '\\n'): void
+    public function __invoke(int $flag = self::HTML5, string $delimiter = '\\n'): Doctype
     {
     }
 

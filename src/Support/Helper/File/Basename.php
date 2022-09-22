@@ -16,8 +16,6 @@ namespace Phalcon\Support\Helper\File;
  */
 class Basename
 {
-
-
     /**
      * @see https://bugs.php.net/bug.php?id=37738
      *

@@ -14,8 +14,6 @@ namespace Phalcon\Html;
  */
 class EscaperFactory
 {
-
-
     /**
      * Create a new instance of the object
      *

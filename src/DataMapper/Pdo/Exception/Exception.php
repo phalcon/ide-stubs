@@ -14,6 +14,4 @@ namespace Phalcon\DataMapper\Pdo\Exception;
  */
 class Exception extends \Exception
 {
-
-
 }

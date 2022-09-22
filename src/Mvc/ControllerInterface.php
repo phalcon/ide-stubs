@@ -16,6 +16,4 @@ namespace Phalcon\Mvc;
  */
 interface ControllerInterface
 {
-
-
 }

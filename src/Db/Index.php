@@ -40,7 +40,6 @@ namespace Phalcon\Db;
  */
 class Index implements \Phalcon\Db\IndexInterface
 {
-
     /**
      * Index columns
      *
@@ -61,6 +60,17 @@ class Index implements \Phalcon\Db\IndexInterface
      * @var string
      */
     protected $type;
+
+    /**
+     * Phalcon\Db\Index constructor
+     *
+     * @param string $name
+     * @param array $columns
+     * @param string $type
+     */
+    public function __construct(string $name, array $columns, string $type = '')
+    {
+    }
 
     /**
      * Index columns
@@ -86,17 +96,6 @@ class Index implements \Phalcon\Db\IndexInterface
      * @return string
      */
     public function getType(): string
-    {
-    }
-
-    /**
-     * Phalcon\Db\Index constructor
-     *
-     * @param string $name
-     * @param array $columns
-     * @param string $type
-     */
-    public function __construct(string $name, array $columns, string $type = '')
     {
     }
 }

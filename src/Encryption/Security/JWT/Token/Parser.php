@@ -12,12 +12,14 @@ namespace Phalcon\Encryption\Security\JWT\Token;
 use InvalidArgumentException;
 
 /**
- * Class Parser
+ * Token Parser class.
+ *
+ * It parses a token by validating if it is formed properly and splits it into
+ * three parts. The headers are decoded, then the claims and finally the
+ * signature. It returns a token object populated with the decoded information.
  */
 class Parser
 {
-
-
     /**
      * Parse a token and return it
      *

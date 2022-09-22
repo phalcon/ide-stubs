@@ -14,6 +14,4 @@ namespace Phalcon\Storage\Serializer;
  */
 class MemcachedJson extends \Phalcon\Storage\Serializer\None
 {
-
-
 }

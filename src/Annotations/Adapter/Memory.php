@@ -17,7 +17,6 @@ use Phalcon\Annotations\Reflection;
  */
 class Memory extends \Phalcon\Annotations\Adapter\AbstractAdapter
 {
-
     /**
      * @var mixed
      */

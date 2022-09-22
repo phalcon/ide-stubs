@@ -16,8 +16,6 @@ namespace Phalcon\Http\Response;
  */
 interface HeadersInterface
 {
-
-
     /**
      * Gets a header value from the internal bag
      *

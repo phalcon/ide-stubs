@@ -117,13 +117,6 @@ class Security extends AbstractInjectionAware
     private $localRequest = null;
 
     /**
-     * @return int
-     */
-    public function getWorkFactor(): int
-    {
-    }
-
-    /**
      * Security constructor.
      *
      * @param SessionInterface|null $session
@@ -274,6 +267,13 @@ class Security extends AbstractInjectionAware
      * @throws Exception
      */
     public function getTokenKey(): ?string
+    {
+    }
+
+    /**
+     * @return int
+     */
+    public function getWorkFactor(): int
     {
     }
 

@@ -16,6 +16,4 @@ namespace Phalcon\Filter;
  */
 class Exception extends \Exception
 {
-
-
 }

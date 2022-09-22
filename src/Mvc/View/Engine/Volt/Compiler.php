@@ -27,7 +27,6 @@ use Phalcon\Di\InjectionAwareInterface;
  */
 class Compiler implements \Phalcon\Di\InjectionAwareInterface
 {
-
     /**
      * @var bool
      */
@@ -395,10 +394,12 @@ class Compiler implements \Phalcon\Di\InjectionAwareInterface
     /**
      * Resolves an expression node in an AST volt tree
      *
-     * @param array $expr *
+     * @param array $expr
+     * @param bool  $doubleQuotes
+     *
      * @return string
      */
-    final public function expression(array $expr): string
+    final public function expression(array $expr, bool $doubleQuotes = false): string
     {
     }
 
@@ -417,11 +418,13 @@ class Compiler implements \Phalcon\Di\InjectionAwareInterface
     /**
      * Resolves function intermediate code into PHP function calls
      *
-     * @param array $expr *
+     * @param array $expr
+     * @param bool  $doubleQuotes
+     *
      * @throws \Phalcon\Mvc\View\Engine\Volt\Exception
      * @return string
      */
-    public function functionCall(array $expr): string
+    public function functionCall(array $expr, bool $doubleQuotes = false): string
     {
     }
 
@@ -623,6 +626,14 @@ class Compiler implements \Phalcon\Di\InjectionAwareInterface
      * @return string|array
      */
     final protected function statementListOrExtends($statements)
+    {
+    }
+
+    /**
+     * @param array $expression
+     * @return bool
+     */
+    private function isTagFactory(array $expression): bool
     {
     }
 }

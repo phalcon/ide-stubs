@@ -17,8 +17,6 @@ use Phalcon\Cache\Exception\InvalidArgumentException;
  */
 interface CacheInterface
 {
-
-
     /**
      * Wipes clean the entire cache's keys.
      *

@@ -16,8 +16,6 @@ namespace Phalcon\Session;
  */
 interface BagInterface
 {
-
-
     /**
      * @param string $element
      * @return mixed

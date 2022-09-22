@@ -37,7 +37,6 @@ use Phalcon\Session\Exception;
  */
 class Stream extends \Phalcon\Session\Adapter\Noop
 {
-
     /**
      * @var string
      */

@@ -20,7 +20,9 @@ use Phalcon\Encryption\Security\JWT\Token\Signature;
 use Phalcon\Encryption\Security\JWT\Token\Token;
 
 /**
- * Class Builder
+ * Builder
+ *
+ * The builder offers
  *
  * @property CollectionInterface  $claims
  * @property CollectionInterface  $jose
@@ -31,7 +33,6 @@ use Phalcon\Encryption\Security\JWT\Token\Token;
  */
 class Builder
 {
-
     /**
      * @var CollectionInterface
      */

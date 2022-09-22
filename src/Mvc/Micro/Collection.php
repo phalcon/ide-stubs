@@ -30,7 +30,6 @@ namespace Phalcon\Mvc\Micro;
  */
 class Collection implements \Phalcon\Mvc\Micro\CollectionInterface
 {
-
     /**
      * @var callable
      */

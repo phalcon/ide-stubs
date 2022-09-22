@@ -22,7 +22,6 @@ use Phalcon\Factory\AbstractConfigFactory;
  */
 class CacheFactory extends AbstractConfigFactory
 {
-
     /**
      * @var AdapterFactory
      */

@@ -49,7 +49,6 @@ use Phalcon\Filter\Validation\AbstractValidator;
  */
 class Url extends AbstractValidator
 {
-
     protected $template = 'Field :field must be a url';
 
     /**

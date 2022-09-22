@@ -14,8 +14,6 @@ namespace Phalcon\Support\Helper\Arr;
  */
 class SliceLeft
 {
-
-
     /**
      * @param array $collection
      * @param int   $elements

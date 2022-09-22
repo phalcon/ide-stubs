@@ -32,7 +32,6 @@ use IteratorAggregate;
  */
 class Collection implements \Countable, \IteratorAggregate
 {
-
     /**
      * @var array
      */
@@ -63,12 +62,12 @@ class Collection implements \Countable, \IteratorAggregate
     /**
      * @var bool
      */
-    protected $join = true;
+    protected $isLocal = true;
 
     /**
      * @var bool
      */
-    protected $isLocal = true;
+    protected $join = true;
 
     /**
      * @var string
@@ -99,83 +98,6 @@ class Collection implements \Countable, \IteratorAggregate
      * @var string
      */
     protected $version = '';
-
-    /**
-     * @return array
-     */
-    public function getAssets(): array
-    {
-    }
-
-    /**
-     * @return array
-     */
-    public function getAttributes(): array
-    {
-    }
-
-    /**
-     * @return array
-     */
-    public function getCodes(): array
-    {
-    }
-
-    /**
-     * @return array
-     */
-    public function getFilters(): array
-    {
-    }
-
-    /**
-     * @return bool
-     */
-    public function getJoin(): bool
-    {
-    }
-
-    /**
-     * @return string
-     */
-    public function getPrefix(): string
-    {
-    }
-
-    /**
-     * @return string
-     */
-    public function getSourcePath(): string
-    {
-    }
-
-    /**
-     * @return bool
-     */
-    public function getTargetIsLocal(): bool
-    {
-    }
-
-    /**
-     * @return string
-     */
-    public function getTargetPath(): string
-    {
-    }
-
-    /**
-     * @return string
-     */
-    public function getTargetUri(): string
-    {
-    }
-
-    /**
-     * @return string
-     */
-    public function getVersion(): string
-    {
-    }
 
     /**
      * Adds an asset to the collection
@@ -273,12 +195,54 @@ class Collection implements \Countable, \IteratorAggregate
     }
 
     /**
+     * @return array
+     */
+    public function getAssets(): array
+    {
+    }
+
+    /**
+     * @return array
+     */
+    public function getAttributes(): array
+    {
+    }
+
+    /**
+     * @return array
+     */
+    public function getCodes(): array
+    {
+    }
+
+    /**
+     * @return array
+     */
+    public function getFilters(): array
+    {
+    }
+
+    /**
      * Returns the generator of the class
      *
      * @link https://php.net/manual/en/iteratoraggregate.getiterator.php
      * @return \Traversable
      */
     public function getIterator(): \Traversable
+    {
+    }
+
+    /**
+     * @return bool
+     */
+    public function getJoin(): bool
+    {
+    }
+
+    /**
+     * @return string
+     */
+    public function getPrefix(): string
     {
     }
 
@@ -291,6 +255,41 @@ class Collection implements \Countable, \IteratorAggregate
      * @return string
      */
     public function getRealTargetPath(string $basePath): string
+    {
+    }
+
+    /**
+     * @return string
+     */
+    public function getSourcePath(): string
+    {
+    }
+
+    /**
+     * @return bool
+     */
+    public function getTargetIsLocal(): bool
+    {
+    }
+
+    /**
+     * @return string
+     */
+    public function getTargetPath(): string
+    {
+    }
+
+    /**
+     * @return string
+     */
+    public function getTargetUri(): string
+    {
+    }
+
+    /**
+     * @return string
+     */
+    public function getVersion(): string
     {
     }
 

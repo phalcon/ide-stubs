@@ -21,7 +21,6 @@ use Throwable;
  */
 class Debug
 {
-
     /**
      * @var array
      */
