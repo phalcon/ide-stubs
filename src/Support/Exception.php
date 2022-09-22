@@ -14,6 +14,4 @@ namespace Phalcon\Support;
  */
 class Exception extends \Exception
 {
-
-
 }

@@ -28,21 +28,12 @@ use Phalcon\Logger\Item;
  * $logger->close();
  * ```
  *
- * @property resource|null $handler
  * @property string        $mode
  * @property string        $name
  * @property array         $options
  */
 class Stream extends \Phalcon\Logger\Adapter\AbstractAdapter
 {
-
-    /**
-     * Stream handler resource
-     *
-     * @var resource|null
-     */
-    protected $handler = null;
-
     /**
      * The file open mode. Defaults to 'ab'
      *
@@ -65,15 +56,6 @@ class Stream extends \Phalcon\Logger\Adapter\AbstractAdapter
     protected $options;
 
     /**
-     * Stream name
-     *
-     * @return string
-     */
-    public function getName(): string
-    {
-    }
-
-    /**
      * Stream constructor.
      *
      * @param string $name
@@ -91,6 +73,15 @@ class Stream extends \Phalcon\Logger\Adapter\AbstractAdapter
      * @return bool
      */
     public function close(): bool
+    {
+    }
+
+    /**
+     * Stream name
+     *
+     * @return string
+     */
+    public function getName(): string
     {
     }
 

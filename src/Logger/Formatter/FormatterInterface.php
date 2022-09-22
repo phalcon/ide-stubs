@@ -18,8 +18,6 @@ use Phalcon\Logger\Item;
  */
 interface FormatterInterface
 {
-
-
     /**
      * Applies a format to an item
      *

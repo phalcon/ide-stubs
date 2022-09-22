@@ -10,14 +10,10 @@
 namespace Phalcon\Http\Request;
 
 /**
- * Phalcon\Http\Request\FileInterface
- *
  * Interface for Phalcon\Http\Request\File
  */
 interface FileInterface
 {
-
-
     /**
      * Returns the error if any
      *

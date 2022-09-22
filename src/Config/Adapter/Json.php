@@ -34,8 +34,6 @@ use Phalcon\Config\Config;
  */
 class Json extends Config
 {
-
-
     /**
      * Phalcon\Config\Adapter\Json constructor
      *

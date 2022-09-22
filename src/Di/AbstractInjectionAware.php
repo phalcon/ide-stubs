@@ -14,7 +14,6 @@ namespace Phalcon\Di;
  */
 abstract class AbstractInjectionAware implements \Phalcon\Di\InjectionAwareInterface
 {
-
     /**
      * Dependency Injector
      *

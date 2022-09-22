@@ -34,7 +34,6 @@ namespace Phalcon\Http\Request;
  */
 class File implements \Phalcon\Http\Request\FileInterface
 {
-
     /**
      * @var string|null
      */
@@ -76,6 +75,16 @@ class File implements \Phalcon\Http\Request\FileInterface
     protected $type;
 
     /**
+     * Phalcon\Http\Request\File constructor
+     *
+     * @param array $file
+     * @param mixed $key
+     */
+    public function __construct(array $file, $key = null)
+    {
+    }
+
+    /**
      * @return string|null
      */
     public function getError(): ?string
@@ -93,16 +102,6 @@ class File implements \Phalcon\Http\Request\FileInterface
      * @return string|null
      */
     public function getKey(): ?string
-    {
-    }
-
-    /**
-     * Phalcon\Http\Request\File constructor
-     *
-     * @param array $file
-     * @param mixed $key
-     */
-    public function __construct(array $file, $key = null)
     {
     }
 

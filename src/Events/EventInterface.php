@@ -14,8 +14,6 @@ namespace Phalcon\Events;
  */
 interface EventInterface
 {
-
-
     /**
      * Gets event data
      *

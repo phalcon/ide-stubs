@@ -27,6 +27,7 @@ namespace Phalcon\Filter;
  * @method special(string $input): string
  * @method specialfull(string $input): string
  * @method string(string $input): string
+ * @method stringlegacy(mixed $input): string
  * @method striptags(string $input): string
  * @method trim(string $input): string
  * @method upper(string $input): string
@@ -68,6 +69,8 @@ class Filter implements \Phalcon\Filter\FilterInterface
     const FILTER_SPECIALFULL = 'specialfull';
 
     const FILTER_STRING = 'string';
+
+    const FILTER_STRING_LEGACY = 'stringlegacy';
 
     const FILTER_STRIPTAGS = 'striptags';
 

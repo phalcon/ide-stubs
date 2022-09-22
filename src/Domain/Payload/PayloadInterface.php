@@ -14,6 +14,4 @@ namespace Phalcon\Domain\Payload;
  */
 interface PayloadInterface extends \Phalcon\Domain\Payload\ReadableInterface, \Phalcon\Domain\Payload\WriteableInterface
 {
-
-
 }

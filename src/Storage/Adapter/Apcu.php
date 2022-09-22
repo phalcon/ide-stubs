@@ -22,7 +22,6 @@ use Phalcon\Support\Exception as SupportException;
  */
 class Apcu extends \Phalcon\Storage\Adapter\AbstractAdapter
 {
-
     /**
      * @var string
      */

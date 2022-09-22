@@ -18,14 +18,6 @@ use Phalcon\Events\EventsAwareInterface;
  */
 abstract class AbstractAdapter extends AbstractEventsAware implements \Phalcon\Acl\Adapter\AdapterInterface, \Phalcon\Events\EventsAwareInterface
 {
-
-    /**
-     * Active access which the list is checking if some role can access it
-     *
-     * @var string|null
-     */
-    protected $activeAccess;
-
     /**
      * Access Granted
      *
@@ -34,19 +26,26 @@ abstract class AbstractAdapter extends AbstractEventsAware implements \Phalcon\A
     protected $accessGranted = false;
 
     /**
-     * Role which the list is checking if it's allowed to certain
-     * component/access
+     * Active access which the list is checking if some role can access it
      *
      * @var string|null
      */
-    protected $activeRole;
+    protected $activeAccess = null;
 
     /**
      * Component which the list is checking if some role can access it
      *
      * @var string|null
      */
-    protected $activeComponent;
+    protected $activeComponent = null;
+
+    /**
+     * Role which the list is checking if it's allowed to certain
+     * component/access
+     *
+     * @var string|null
+     */
+    protected $activeRole = null;
 
     /**
      * Default access
@@ -65,22 +64,21 @@ abstract class AbstractAdapter extends AbstractEventsAware implements \Phalcon\A
     }
 
     /**
-     * Role which the list is checking if it's allowed to certain
-     *
-     * component/access
-     *
-     * @return string|null
-     */
-    public function getActiveRole(): ?string
-    {
-    }
-
-    /**
      * Component which the list is checking if some role can access it
      *
      * @return string|null
      */
     public function getActiveComponent(): ?string
+    {
+    }
+
+    /**
+     * Role which the list is checking if it's allowed to certain
+     * component/access
+     *
+     * @return string|null
+     */
+    public function getActiveRole(): ?string
     {
     }
 

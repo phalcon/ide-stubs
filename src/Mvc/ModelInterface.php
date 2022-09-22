@@ -24,8 +24,6 @@ use Phalcon\Mvc\Model\TransactionInterface;
  */
 interface ModelInterface
 {
-
-
     /**
      * Appends a customized message on the validation process
      *

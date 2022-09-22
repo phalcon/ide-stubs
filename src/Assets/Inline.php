@@ -18,9 +18,8 @@ namespace Phalcon\Assets;
  */
 class Inline implements \Phalcon\Assets\AssetInterface
 {
-
     /**
-     * @var array | null
+     * @var array
      */
     protected $attributes;
 
@@ -40,9 +39,30 @@ class Inline implements \Phalcon\Assets\AssetInterface
     protected $type;
 
     /**
-     * @return array|null
+     * Phalcon\Assets\Inline constructor
+     *
+     * @param string $type
+     * @param string $content
+     * @param bool $filter
+     * @param array $attributes
      */
-    public function getAttributes(): ?array
+    public function __construct(string $type, string $content, bool $filter = true, array $attributes = [])
+    {
+    }
+
+    /**
+     * Gets the asset's key.
+     *
+     * @return string
+     */
+    public function getAssetKey(): string
+    {
+    }
+
+    /**
+     * @return array
+     */
+    public function getAttributes(): array
     {
     }
 
@@ -64,27 +84,6 @@ class Inline implements \Phalcon\Assets\AssetInterface
      * @return string
      */
     public function getType(): string
-    {
-    }
-
-    /**
-     * Phalcon\Assets\Inline constructor
-     *
-     * @param string $type
-     * @param string $content
-     * @param bool $filter
-     * @param array $attributes
-     */
-    public function __construct(string $type, string $content, bool $filter = true, array $attributes = [])
-    {
-    }
-
-    /**
-     * Gets the asset's key.
-     *
-     * @return string
-     */
-    public function getAssetKey(): string
     {
     }
 

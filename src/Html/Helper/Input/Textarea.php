@@ -16,7 +16,6 @@ use Phalcon\Html\Exception;
  */
 class Textarea extends \Phalcon\Html\Helper\Input\AbstractInput
 {
-
     /**
      * @var string
      */

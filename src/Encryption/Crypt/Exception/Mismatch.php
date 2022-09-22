@@ -14,6 +14,4 @@ namespace Phalcon\Encryption\Crypt\Exception;
  */
 class Mismatch extends \Phalcon\Encryption\Crypt\Exception\Exception
 {
-
-
 }

@@ -15,6 +15,4 @@ namespace Phalcon\DataMapper\Pdo\Exception;
  */
 class CannotDisconnect extends \Phalcon\DataMapper\Pdo\Exception\Exception
 {
-
-
 }

@@ -21,16 +21,14 @@ use Phalcon\Html\Link\Interfaces\EvolvableLinkInterface;
  */
 class EvolvableLink extends \Phalcon\Html\Link\Link implements \Phalcon\Html\Link\Interfaces\EvolvableLinkInterface
 {
-
-
     /**
      * Returns an instance with the specified attribute added.
      *
      * If the specified attribute is already present, it will be overwritten
      * with the new value.
      *
-     * @param string $attribute The attribute to include.
-     * @param string $value     The value of the attribute to set.
+     * @param string       $attribute The attribute to include.
+     * @param string|array $value     The value of the attribute to set.
      * @return EvolvableLinkInterface
      */
     public function withAttribute($attribute, $value): EvolvableLinkInterface

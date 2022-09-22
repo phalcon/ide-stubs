@@ -24,7 +24,6 @@ use Phalcon\Session\ManagerInterface as SessionManagerInterface;
  */
 class Cookie extends AbstractInjectionAware implements \Phalcon\Http\Cookie\CookieInterface
 {
-
     /**
      * @var string
      */

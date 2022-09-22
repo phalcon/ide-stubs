@@ -16,8 +16,6 @@ namespace Phalcon\Support\Helper\Arr;
  */
 class Get
 {
-
-
     /**
      * @param array       $collection
      * @param mixed       $index

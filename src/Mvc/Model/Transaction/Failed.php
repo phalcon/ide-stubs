@@ -19,7 +19,6 @@ use Phalcon\Mvc\ModelInterface;
  */
 class Failed extends \Phalcon\Mvc\Model\Transaction\Exception
 {
-
     /**
      * @var ModelInterface|null
      */

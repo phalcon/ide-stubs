@@ -19,8 +19,6 @@ use Phalcon\Mvc\ModelInterface;
  */
 interface StatusInterface
 {
-
-
     /**
      * Returns the messages produced by an operation failed
      *

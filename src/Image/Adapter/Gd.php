@@ -22,59 +22,58 @@ use Phalcon\Image\Exception;
  */
 class Gd extends \Phalcon\Image\Adapter\AbstractAdapter
 {
-
     /**
-     * @var bool
-     */
-    protected static $checked = false;
-
-    /**
-     * @param string $file
-     * @param int $width
-     * @param int $height
+     * @param string   $file
+     * @param int|null $width
+     * @param int|null $height
+     *
+     * @throws Exception
      */
     public function __construct(string $file, int $width = null, int $height = null)
     {
     }
 
+    /**
+     * Destructor
+     */
     public function __destruct()
     {
     }
 
     /**
-     * @return bool
-     */
-    public static function check(): bool
-    {
-    }
-
-    /**
      * @return string
+     * @throws Exception
      */
-    public static function getVersion(): string
+    public function getVersion(): string
     {
     }
 
     /**
-     * @param int $r
-     * @param int $g
-     * @param int $b
+     * @param int $red
+     * @param int $green
+     * @param int $blue
      * @param int $opacity
+     *
+     * @return void
      */
-    protected function processBackground(int $r, int $g, int $b, int $opacity)
+    protected function processBackground(int $red, int $green, int $blue, int $opacity): void
     {
     }
 
     /**
      * @param int $radius
+     *
+     * @return void
      */
-    protected function processBlur(int $radius)
+    protected function processBlur(int $radius): void
     {
     }
 
     /**
      * @param int $width
      * @param int $height
+     *
+     * @return false|resource
      */
     protected function processCreate(int $width, int $height)
     {
@@ -85,20 +84,26 @@ class Gd extends \Phalcon\Image\Adapter\AbstractAdapter
      * @param int $height
      * @param int $offsetX
      * @param int $offsetY
+     *
+     * @return void
      */
-    protected function processCrop(int $width, int $height, int $offsetX, int $offsetY)
+    protected function processCrop(int $width, int $height, int $offsetX, int $offsetY): void
     {
     }
 
     /**
      * @param int $direction
+     *
+     * @return void
      */
-    protected function processFlip(int $direction)
+    protected function processFlip(int $direction): void
     {
     }
 
     /**
      * @param AdapterInterface $mask
+     *
+     * @return void
      */
     protected function processMask(AdapterInterface $mask)
     {
@@ -106,70 +111,89 @@ class Gd extends \Phalcon\Image\Adapter\AbstractAdapter
 
     /**
      * @param int $amount
+     *
+     * @return void
      */
-    protected function processPixelate(int $amount)
+    protected function processPixelate(int $amount): void
     {
     }
 
     /**
-     * @param int $height
-     * @param int $opacity
+     * @param int  $height
+     * @param int  $opacity
      * @param bool $fadeIn
+     *
+     * @return void
      */
-    protected function processReflection(int $height, int $opacity, bool $fadeIn)
+    protected function processReflection(int $height, int $opacity, bool $fadeIn): void
     {
     }
 
     /**
-     * @param string $ext
-     * @param int $quality
+     * @param string $extension
+     * @param int    $quality
+     *
+     * @return false|string
+     * @throws Exception
      */
-    protected function processRender(string $ext, int $quality)
+    protected function processRender(string $extension, int $quality)
     {
     }
 
     /**
      * @param int $width
      * @param int $height
+     *
+     * @return void
      */
-    protected function processResize(int $width, int $height)
+    protected function processResize(int $width, int $height): void
     {
     }
 
     /**
      * @param int $degrees
+     *
+     * @return void
      */
-    protected function processRotate(int $degrees)
+    protected function processRotate(int $degrees): void
     {
     }
 
     /**
      * @param string $file
-     * @param int $quality
+     * @param int    $quality
+     *
+     * @return bool
+     * @throws Exception
      */
-    protected function processSave(string $file, int $quality)
+    protected function processSave(string $file, int $quality): bool
     {
     }
 
     /**
      * @param int $amount
+     *
+     * @return void
      */
-    protected function processSharpen(int $amount)
+    protected function processSharpen(int $amount): void
     {
     }
 
     /**
-     * @param string $text
-     * @param int $offsetX
-     * @param int $offsetY
-     * @param int $opacity
-     * @param int $r
-     * @param int $g
-     * @param int $b
-     * @param int $size
-     * @param string $fontfile
+     * @param string      $text
+     * @param mixed       $offsetX
+     * @param mixed       $offsetY
+     * @param int         $opacity
+     * @param int         $red
+     * @param int         $green
+     * @param int         $blue
+     * @param int         $size
+     * @param string|null $fontFile
+     *
+     * @return void
+     * @throws Exception
      */
-    protected function processText(string $text, int $offsetX, int $offsetY, int $opacity, int $r, int $g, int $b, int $size, string $fontfile)
+    protected function processText(string $text, $offsetX, $offsetY, int $opacity, int $red, int $green, int $blue, int $size, string $fontFile = null): void
     {
     }
 
@@ -178,8 +202,19 @@ class Gd extends \Phalcon\Image\Adapter\AbstractAdapter
      * @param int $offsetX
      * @param int $offsetY
      * @param int $opacity
+     * @return void
      */
-    protected function processWatermark(AdapterInterface $watermark, int $offsetX, int $offsetY, int $opacity)
+    protected function processWatermark(AdapterInterface $watermark, int $offsetX, int $offsetY, int $opacity): void
+    {
+    }
+
+    /**
+     * Checks the installed version of GD
+     *
+     * @return void
+     * @throws Exception
+     */
+    private function check(): void
     {
     }
 }

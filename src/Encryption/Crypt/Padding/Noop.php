@@ -16,8 +16,6 @@ namespace Phalcon\Encryption\Crypt\Padding;
  */
 class Noop implements \Phalcon\Encryption\Crypt\Padding\PadInterface
 {
-
-
     /**
      * @param int $paddingSize
      *

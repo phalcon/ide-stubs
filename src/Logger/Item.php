@@ -24,11 +24,15 @@ use DateTimeImmutable;
  */
 class Item
 {
-
     /**
      * @var array
      */
     protected $context = [];
+
+    /**
+     * @var DateTimeImmutable
+     */
+    protected $dateTime;
 
     /**
      * @var string
@@ -46,14 +50,30 @@ class Item
     protected $levelName;
 
     /**
-     * @var DateTimeImmutable
+     * Item constructor.
+     *
+     * @param string            $message
+     * @param string            $levelName
+     * @param int               $level
+     * @param DateTimeImmutable $datetime
+     * @param array             $context
+     * @param \DateTimeImmutable $dateTime
      */
-    protected $dateTime;
+    public function __construct(string $message, string $levelName, int $level, \DateTimeImmutable $dateTime, array $context = [])
+    {
+    }
 
     /**
      * @return array
      */
     public function getContext(): array
+    {
+    }
+
+    /**
+     * @return DateTimeImmutable
+     */
+    public function getDateTime(): DateTimeImmutable
     {
     }
 
@@ -75,27 +95,6 @@ class Item
      * @return string
      */
     public function getLevelName(): string
-    {
-    }
-
-    /**
-     * @return mixed
-     */
-    public function getDateTime()
-    {
-    }
-
-    /**
-     * Item constructor.
-     *
-     * @param string            $message
-     * @param string            $levelName
-     * @param int               $level
-     * @param DateTimeImmutable $datetime
-     * @param array             $context
-     * @param \DateTimeImmutable $dateTime
-     */
-    public function __construct(string $message, string $levelName, int $level, \DateTimeImmutable $dateTime, array $context = [])
     {
     }
 }

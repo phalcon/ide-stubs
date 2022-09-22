@@ -14,6 +14,4 @@ namespace Phalcon\Storage\Serializer;
  */
 class MemcachedPhp extends \Phalcon\Storage\Serializer\None
 {
-
-
 }

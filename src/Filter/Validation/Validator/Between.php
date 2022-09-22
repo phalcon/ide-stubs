@@ -60,7 +60,6 @@ use Phalcon\Filter\Validation\AbstractValidator;
  */
 class Between extends AbstractValidator
 {
-
     protected $template = 'Field :field must be within the range of :min to :max';
 
     /**

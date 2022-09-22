@@ -30,7 +30,6 @@ namespace Phalcon\Assets;
  */
 class Asset implements \Phalcon\Assets\AssetInterface
 {
-
     /**
      * @var array
      */
@@ -84,57 +83,6 @@ class Asset implements \Phalcon\Assets\AssetInterface
     protected $version;
 
     /**
-     * @return bool
-     */
-    public function getFilter(): bool
-    {
-    }
-
-    /**
-     * @return string
-     */
-    public function getPath(): string
-    {
-    }
-
-    /**
-     * @return string
-     */
-    public function getSourcePath(): string
-    {
-    }
-
-    /**
-     * @return string
-     */
-    public function getTargetPath(): string
-    {
-    }
-
-    /**
-     * @return string
-     */
-    public function getTargetUri(): string
-    {
-    }
-
-    /**
-     * @return string
-     */
-    public function getType(): string
-    {
-    }
-
-    /**
-     * Version of resource
-     *
-     * @return string|null
-     */
-    public function getVersion(): ?string
-    {
-    }
-
-    /**
      * Asset constructor.
      *
      * @param string      $type
@@ -181,6 +129,20 @@ class Asset implements \Phalcon\Assets\AssetInterface
     }
 
     /**
+     * @return bool
+     */
+    public function getFilter(): bool
+    {
+    }
+
+    /**
+     * @return string
+     */
+    public function getPath(): string
+    {
+    }
+
+    /**
      * Returns the complete location where the asset is located
      *
      * @param string|null $basePath
@@ -208,6 +170,43 @@ class Asset implements \Phalcon\Assets\AssetInterface
      * @return string
      */
     public function getRealTargetUri(): string
+    {
+    }
+
+    /**
+     * @return string
+     */
+    public function getSourcePath(): string
+    {
+    }
+
+    /**
+     * @return string
+     */
+    public function getTargetPath(): string
+    {
+    }
+
+    /**
+     * @return string
+     */
+    public function getTargetUri(): string
+    {
+    }
+
+    /**
+     * @return string
+     */
+    public function getType(): string
+    {
+    }
+
+    /**
+     * Version of resource
+     *
+     * @return string|null
+     */
+    public function getVersion(): ?string
     {
     }
 

@@ -26,7 +26,6 @@ use Phalcon\Events\ManagerInterface;
  */
 abstract class AbstractAdapter implements \Phalcon\Db\Adapter\AdapterInterface, \Phalcon\Events\EventsAwareInterface
 {
-
     /**
      * Connection ID
      *
@@ -117,24 +116,6 @@ abstract class AbstractAdapter implements \Phalcon\Db\Adapter\AdapterInterface, 
      * @var string
      */
     protected $type;
-
-    /**
-     * Name of the dialect used
-     *
-     * @return string
-     */
-    public function getDialectType(): string
-    {
-    }
-
-    /**
-     * Type of database system the adapter is used for
-     *
-     * @return string
-     */
-    public function getType(): string
-    {
-    }
 
     /**
      * Phalcon\Db\Adapter constructor
@@ -587,6 +568,15 @@ abstract class AbstractAdapter implements \Phalcon\Db\Adapter\AdapterInterface, 
     }
 
     /**
+     * Name of the dialect used
+     *
+     * @return string
+     */
+    public function getDialectType(): string
+    {
+    }
+
+    /**
      * Returns the internal event manager
      *
      * @return ManagerInterface|null
@@ -637,6 +627,15 @@ abstract class AbstractAdapter implements \Phalcon\Db\Adapter\AdapterInterface, 
      * @return array
      */
     public function getSQLVariables(): array
+    {
+    }
+
+    /**
+     * Type of database system the adapter is used for
+     *
+     * @return string
+     */
+    public function getType(): string
     {
     }
 

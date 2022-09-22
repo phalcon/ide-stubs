@@ -63,7 +63,6 @@ use Phalcon\Db\Profiler\Item;
  */
 class Profiler
 {
-
     /**
      * Active Item
      *

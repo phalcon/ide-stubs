@@ -191,27 +191,6 @@ class View extends Injectable implements \Phalcon\Mvc\ViewInterface, \Phalcon\Ev
     protected $viewParams = [];
 
     /**
-     * @return int
-     */
-    public function getCurrentRenderLevel(): int
-    {
-    }
-
-    /**
-     * @return array
-     */
-    public function getRegisteredEngines(): array
-    {
-    }
-
-    /**
-     * @return int
-     */
-    public function getRenderLevel(): int
-    {
-    }
-
-    /**
      * Phalcon\Mvc\View constructor
      *
      * @param array $options
@@ -377,6 +356,27 @@ class View extends Injectable implements \Phalcon\Mvc\ViewInterface, \Phalcon\Ev
      * @return string
      */
     public function getControllerName(): string
+    {
+    }
+
+    /**
+     * @return int
+     */
+    public function getCurrentRenderLevel(): int
+    {
+    }
+
+    /**
+     * @return array
+     */
+    public function getRegisteredEngines(): array
+    {
+    }
+
+    /**
+     * @return int
+     */
+    public function getRenderLevel(): int
     {
     }
 

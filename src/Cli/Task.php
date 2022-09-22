@@ -39,7 +39,6 @@ use Phalcon\Events\ManagerInterface;
  */
 class Task extends Injectable implements \Phalcon\Cli\TaskInterface, \Phalcon\Events\EventsAwareInterface
 {
-
     /**
      * @var ManagerInterface
      */

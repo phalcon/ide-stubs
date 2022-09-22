@@ -16,6 +16,4 @@ namespace Phalcon\Http\Cookie;
  */
 class Exception extends \Exception
 {
-
-
 }

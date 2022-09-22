@@ -14,6 +14,4 @@ namespace Phalcon\Image;
  */
 class Exception extends \Exception
 {
-
-
 }

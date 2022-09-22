@@ -14,8 +14,6 @@ namespace Phalcon\Acl;
  */
 interface RoleInterface
 {
-
-
     /**
      * Returns the role name
      *

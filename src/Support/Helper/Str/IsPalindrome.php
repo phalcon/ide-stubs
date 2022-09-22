@@ -14,8 +14,6 @@ namespace Phalcon\Support\Helper\Str;
  */
 class IsPalindrome
 {
-
-
     /**
      * @param string $text
      *

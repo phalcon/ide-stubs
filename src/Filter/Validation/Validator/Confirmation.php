@@ -55,7 +55,6 @@ use Phalcon\Filter\Validation\AbstractValidator;
  */
 class Confirmation extends AbstractValidator
 {
-
     protected $template = 'Field :field must be the same as :with';
 
     /**

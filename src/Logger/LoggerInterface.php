@@ -16,8 +16,6 @@ use Phalcon\Logger\Adapter\AdapterInterface;
  */
 interface LoggerInterface
 {
-
-
     /**
      * Action must be taken immediately.
      *

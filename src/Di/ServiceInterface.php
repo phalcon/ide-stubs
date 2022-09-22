@@ -14,8 +14,6 @@ namespace Phalcon\Di;
  */
 interface ServiceInterface
 {
-
-
     /**
      * Returns the service definition
      *

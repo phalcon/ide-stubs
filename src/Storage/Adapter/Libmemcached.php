@@ -20,7 +20,6 @@ use Phalcon\Support\Exception as SupportException;
  */
 class Libmemcached extends \Phalcon\Storage\Adapter\AbstractAdapter
 {
-
     /**
      * @var string
      */

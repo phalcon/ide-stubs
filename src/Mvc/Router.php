@@ -149,34 +149,6 @@ class Router extends AbstractInjectionAware implements \Phalcon\Mvc\RouterInterf
     protected $wasMatched = false;
 
     /**
-     * @return array
-     */
-    public function getKeyRouteNames(): array
-    {
-    }
-
-    /**
-     * @param array $keyRouteNames
-     */
-    public function setKeyRouteNames(array $keyRouteNames)
-    {
-    }
-
-    /**
-     * @return array
-     */
-    public function getKeyRouteIds(): array
-    {
-    }
-
-    /**
-     * @param array $keyRouteIds
-     */
-    public function setKeyRouteIds(array $keyRouteIds)
-    {
-    }
-
-    /**
      * Phalcon\Mvc\Router constructor
      *
      * @param bool $defaultRoutes
@@ -459,11 +431,34 @@ class Router extends AbstractInjectionAware implements \Phalcon\Mvc\RouterInterf
     }
 
     /**
+     * Returns an array of default parameters
+     *
+     * @return array
+     */
+    public function getDefaults(): array
+    {
+    }
+
+    /**
+     * @return array
+     */
+    public function getKeyRouteNames(): array
+    {
+    }
+
+    /**
+     * @return array
+     */
+    public function getKeyRouteIds(): array
+    {
+    }
+
+    /**
      * Returns the route that matches the handled URI
      *
-     * @return RouteInterface
+     * @return RouteInterface|null
      */
-    public function getMatchedRoute(): RouteInterface
+    public function getMatchedRoute(): ?RouteInterface
     {
     }
 
@@ -651,21 +646,30 @@ class Router extends AbstractInjectionAware implements \Phalcon\Mvc\RouterInterf
     }
 
     /**
-     * Returns an array of default parameters
-     *
-     * @return array
-     */
-    public function getDefaults(): array
-    {
-    }
-
-    /**
      * Sets the events manager
      *
      * @param ManagerInterface $eventsManager *
      * @return void
      */
     public function setEventsManager(\Phalcon\Events\ManagerInterface $eventsManager): void
+    {
+    }
+
+    /**
+     * @param array $routeNames
+     *
+     * @return Router
+     */
+    public function setKeyRouteNames(array $routeNames): Router
+    {
+    }
+
+    /**
+     * @param array $routeIds
+     *
+     * @return Router
+     */
+    public function setKeyRouteIds(array $routeIds): Router
     {
     }
 

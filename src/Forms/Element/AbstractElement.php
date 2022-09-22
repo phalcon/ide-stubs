@@ -25,7 +25,6 @@ use Phalcon\Messages\Messages;
  */
 abstract class AbstractElement implements \Phalcon\Forms\Element\ElementInterface
 {
-
     /**
      * @var array
      */

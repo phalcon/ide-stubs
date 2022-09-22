@@ -22,7 +22,6 @@ use Phalcon\Translate\InterpolatorFactory;
  */
 class Csv extends \Phalcon\Translate\Adapter\AbstractAdapter implements \ArrayAccess
 {
-
     /**
      * @var array
      */

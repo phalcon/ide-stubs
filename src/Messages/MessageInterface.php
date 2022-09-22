@@ -16,8 +16,6 @@ namespace Phalcon\Messages;
  */
 interface MessageInterface
 {
-
-
     /**
      * Magic __toString method returns verbose message
      *

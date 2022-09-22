@@ -163,17 +163,9 @@ abstract class Model extends AbstractInjectionAware implements \Phalcon\Mvc\Enti
     protected $uniqueParams = [];
 
     /**
-     * @var array|null
-     * TODO: Make it always array in code
+     * @var array
      */
-    protected $uniqueTypes = null;
-
-    /**
-     * @return TransactionInterface|null
-     */
-    public function getTransaction()
-    {
-    }
+    protected $uniqueTypes = [];
 
     /**
      * Phalcon\Mvc\Model constructor
@@ -232,12 +224,31 @@ abstract class Model extends AbstractInjectionAware implements \Phalcon\Mvc\Enti
     }
 
     /**
+     * Serializes a model
+     *
+     * @return array
+     */
+    public function __serialize(): array
+    {
+    }
+
+    /**
      * Magic method to assign values to the the model
      *
      * @param mixed $value
      * @param string $property
      */
     public function __set(string $property, $value)
+    {
+    }
+
+    /**
+     * Unserializes an array to the model
+     *
+     * @param array $data
+     * @return void
+     */
+    public function __unserialize(array $data): void
     {
     }
 
@@ -1413,6 +1424,13 @@ abstract class Model extends AbstractInjectionAware implements \Phalcon\Mvc\Enti
     }
 
     /**
+     * @return TransactionInterface|null
+     */
+    public function getTransaction(): ?TransactionInterface
+    {
+    }
+
+    /**
      * Enables/disables options in the ORM
      *
      * @param array $options
@@ -2039,8 +2057,9 @@ abstract class Model extends AbstractInjectionAware implements \Phalcon\Mvc\Enti
      * ```
      *
      * @param array $attributes
+     * @return void
      */
-    protected function skipAttributes(array $attributes)
+    protected function skipAttributes(array $attributes): void
     {
     }
 
@@ -2199,21 +2218,6 @@ abstract class Model extends AbstractInjectionAware implements \Phalcon\Mvc\Enti
      * @return string
      */
     private static function caseInsensitiveColumnMap($columnMap, $key): string
-    {
-    }
-
-    /**
-     * @return array
-     */
-    public function __serialize(): array
-    {
-    }
-
-    /**
-     * @param array $data
-     * @return void
-     */
-    public function __unserialize(array $data): void
     {
     }
 }

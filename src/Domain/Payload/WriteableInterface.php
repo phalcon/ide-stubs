@@ -16,8 +16,6 @@ use Throwable;
  */
 interface WriteableInterface
 {
-
-
     /**
      * Sets an exception produced by the domain layer.
      *

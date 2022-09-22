@@ -20,7 +20,6 @@ use Phalcon\Html\Helper\AbstractList;
  */
 class Select extends AbstractList
 {
-
     /**
      * @var string
      */

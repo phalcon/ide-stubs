@@ -10,7 +10,7 @@
 namespace Phalcon\Encryption\Security\JWT\Token;
 
 /**
- * Class Enum
+ * Constants for Tokens. It offers constants for Headers as well as Claims
  *
  * @link https://tools.ietf.org/html/rfc7519
  */

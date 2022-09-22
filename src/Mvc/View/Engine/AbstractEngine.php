@@ -19,7 +19,6 @@ use Phalcon\Mvc\ViewBaseInterface;
  */
 abstract class AbstractEngine extends Injectable implements \Phalcon\Mvc\View\Engine\EngineInterface
 {
-
     /**
      * @var ViewBaseInterface
      */

@@ -48,7 +48,6 @@ use stdClass;
  */
 class Request extends AbstractInjectionAware implements \Phalcon\Http\RequestInterface, \Phalcon\Http\Message\RequestMethodInterface
 {
-
     /**
      * @var FilterInterface|null
      */
@@ -78,20 +77,6 @@ class Request extends AbstractInjectionAware implements \Phalcon\Http\RequestInt
      * @var bool
      */
     private $strictHostCheck = false;
-
-    /**
-     * @return bool
-     */
-    public function getHttpMethodParameterOverride(): bool
-    {
-    }
-
-    /**
-     * @param bool $httpMethodParameterOverride
-     */
-    public function setHttpMethodParameterOverride(bool $httpMethodParameterOverride)
-    {
-    }
 
     /**
      * Gets a variable from the $_REQUEST superglobal applying filters if
@@ -163,6 +148,15 @@ class Request extends AbstractInjectionAware implements \Phalcon\Http\RequestInt
      * @return string
      */
     public function getBestLanguage(): string
+    {
+    }
+
+    /**
+     * Return the HTTP method parameter override flag
+     *
+     * @return bool
+     */
+    public function getHttpMethodParameterOverride(): bool
     {
     }
 
@@ -777,6 +771,17 @@ class Request extends AbstractInjectionAware implements \Phalcon\Http\RequestInt
      * @return int
      */
     public function numFiles(bool $onlySuccessful = false): int
+    {
+    }
+
+    /**
+     * Set the HTTP method parameter override flag
+     *
+     * @param bool $override
+     *
+     * @return Request
+     */
+    public function setHttpMethodParameterOverride(bool $override): Request
     {
     }
 

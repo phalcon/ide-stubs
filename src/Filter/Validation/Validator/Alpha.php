@@ -49,7 +49,6 @@ use Phalcon\Filter\Validation\AbstractValidator;
  */
 class Alpha extends AbstractValidator
 {
-
     protected $template = 'Field :field must contain only letters';
 
     /**

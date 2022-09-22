@@ -30,7 +30,7 @@ use Phalcon\Session\BagInterface;
  * @property \Phalcon\Db\Adapter\AdapterInterface $db
  * @property \Phalcon\Encryption\Security $security
  * @property \Phalcon\Encryption\Crypt|\Phalcon\Encryption\Crypt\CryptInterface $crypt
- * @property \Phalcon\Tag $tag
+ * @property \Phalcon\Html\TagFactory $tag
  * @property \Phalcon\Html\Escaper|\Phalcon\Html\Escaper\EscaperInterface $escaper
  * @property \Phalcon\Annotations\Adapter\Memory|\Phalcon\Annotations\Adapter $annotations
  * @property \Phalcon\Mvc\Model\Manager|\Phalcon\Mvc\Model\ManagerInterface $modelsManager
@@ -43,7 +43,6 @@ use Phalcon\Session\BagInterface;
  */
 abstract class Injectable implements \Phalcon\Di\InjectionAwareInterface
 {
-
     /**
      * Dependency Injector
      *

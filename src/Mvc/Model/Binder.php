@@ -23,7 +23,6 @@ use ReflectionMethod;
  */
 class Binder implements \Phalcon\Mvc\Model\BinderInterface
 {
-
     /**
      * Array for storing active bound models
      *
@@ -51,24 +50,6 @@ class Binder implements \Phalcon\Mvc\Model\BinderInterface
      * @var array
      */
     protected $originalValues = [];
-
-    /**
-     * Array for storing active bound models
-     *
-     * @return array
-     */
-    public function getBoundModels(): array
-    {
-    }
-
-    /**
-     * Array for original values
-     *
-     * @return array
-     */
-    public function getOriginalValues(): array
-    {
-    }
 
     /**
      * Phalcon\Mvc\Model\Binder constructor
@@ -100,6 +81,24 @@ class Binder implements \Phalcon\Mvc\Model\BinderInterface
      * @param string $className
      */
     protected function findBoundModel($paramValue, string $className)
+    {
+    }
+
+    /**
+     * Return the active bound models
+     *
+     * @return array
+     */
+    public function getBoundModels(): array
+    {
+    }
+
+    /**
+     * Return the array for original values
+     *
+     * @return array
+     */
+    public function getOriginalValues(): array
     {
     }
 

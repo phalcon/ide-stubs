@@ -15,8 +15,6 @@ namespace Phalcon\Support\Helper\Str;
  */
 class FirstBetween
 {
-
-
     /**
      * @param string $text
      * @param string $start

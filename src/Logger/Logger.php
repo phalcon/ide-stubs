@@ -23,8 +23,6 @@ use Phalcon\Logger\Exception as LoggerException;
  */
 class Logger extends \Phalcon\Logger\AbstractLogger implements \Phalcon\Logger\LoggerInterface
 {
-
-
     /**
      * Action must be taken immediately.
      *

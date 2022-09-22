@@ -28,7 +28,6 @@ use RuntimeException;
  */
 class Stream extends \Phalcon\Annotations\Adapter\AbstractAdapter
 {
-
     /**
      * @var string
      */

@@ -14,8 +14,6 @@ namespace Phalcon\Html\Helper\Input;
  */
 class Input extends \Phalcon\Html\Helper\Input\AbstractInput
 {
-
-
     /**
      * Sets the type of the input
      *

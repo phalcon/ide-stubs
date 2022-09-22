@@ -66,7 +66,6 @@ use Phalcon\Mvc\ModuleDefinitionInterface;
  */
 class Application extends AbstractApplication
 {
-
     /**
      * @var bool
      */

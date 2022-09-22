@@ -16,9 +16,6 @@ use Phalcon\Storage\Exception;
 use Phalcon\Storage\SerializerFactory;
 use Phalcon\Storage\Traits\StorageErrorHandlerTrait;
 use Phalcon\Support\Exception as SupportException;
-use Phalcon\Traits\Helper\Str\DirFromFileTrait;
-use Phalcon\Traits\Helper\Str\DirSeparatorTrait;
-use Phalcon\Traits\Php\FileTrait;
 use RecursiveDirectoryIterator;
 use RecursiveIteratorIterator;
 
@@ -30,7 +27,6 @@ use RecursiveIteratorIterator;
  */
 class Stream extends \Phalcon\Storage\Adapter\AbstractAdapter
 {
-
     /**
      * @var string
      */

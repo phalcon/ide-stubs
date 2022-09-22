@@ -16,8 +16,6 @@ use Phalcon\Html\Exception;
  */
 class Form extends \Phalcon\Html\Helper\AbstractHelper
 {
-
-
     /**
      * Produce a `<form>` tag.
      *

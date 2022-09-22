@@ -21,8 +21,6 @@ use InvalidArgumentException;
  */
 class Php extends \Phalcon\Storage\Serializer\AbstractSerializer
 {
-
-
     /**
      * Serializes data
      *

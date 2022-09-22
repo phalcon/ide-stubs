@@ -14,6 +14,4 @@ namespace Phalcon\Di\Exception;
  */
 class ServiceResolutionException extends \Phalcon\Di\Exception
 {
-
-
 }

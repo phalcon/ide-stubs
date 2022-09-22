@@ -17,12 +17,6 @@ use Phalcon\Image\Exception;
  */
 abstract class AbstractAdapter implements \Phalcon\Image\Adapter\AdapterInterface
 {
-
-    /**
-     * @var bool
-     */
-    protected static $checked = false;
-
     /**
      * @var string
      */
@@ -36,7 +30,7 @@ abstract class AbstractAdapter implements \Phalcon\Image\Adapter\AdapterInterfac
     protected $height;
 
     /**
-     * @var object|null
+     * @var mixed|null
      */
     protected $image = null;
 
@@ -69,8 +63,54 @@ abstract class AbstractAdapter implements \Phalcon\Image\Adapter\AdapterInterfac
     protected $width;
 
     /**
-     * Image height
+     * Set the background color of an image
      *
+     * @param string $color
+     * @param int    $opacity
+     *
+     * @return AdapterInterface
+     */
+    public function background(string $color, int $opacity = 100): AdapterInterface
+    {
+    }
+
+    /**
+     * Blur image
+     *
+     * @param int $radius
+     *
+     * @return AdapterInterface
+     */
+    public function blur(int $radius): AdapterInterface
+    {
+    }
+
+    /**
+     * Crop an image to the given size
+     *
+     * @param int      $width
+     * @param int      $height
+     * @param int|null $offsetX
+     * @param int|null $offsetY
+     *
+     * @return AdapterInterface
+     */
+    public function crop(int $width, int $height, int $offsetX = null, int $offsetY = null): AdapterInterface
+    {
+    }
+
+    /**
+     * Flip the image along the horizontal or vertical axis
+     *
+     * @param int $direction
+     *
+     * @return AdapterInterface
+     */
+    public function flip(int $direction): AdapterInterface
+    {
+    }
+
+    /**
      * @return int
      */
     public function getHeight(): int
@@ -85,8 +125,6 @@ abstract class AbstractAdapter implements \Phalcon\Image\Adapter\AdapterInterfac
     }
 
     /**
-     * Image mime type
-     *
      * @return string
      */
     public function getMime(): string
@@ -101,10 +139,6 @@ abstract class AbstractAdapter implements \Phalcon\Image\Adapter\AdapterInterfac
     }
 
     /**
-     * Image type
-     *
-     * Driver dependent
-     *
      * @return int
      */
     public function getType(): int
@@ -112,8 +146,6 @@ abstract class AbstractAdapter implements \Phalcon\Image\Adapter\AdapterInterfac
     }
 
     /**
-     * Image width
-     *
      * @return int
      */
     public function getWidth(): int
@@ -121,70 +153,13 @@ abstract class AbstractAdapter implements \Phalcon\Image\Adapter\AdapterInterfac
     }
 
     /**
-     * Set the background color of an image
-     *
-     * @param string $color
-     * @param int $opacity
-     * @return AdapterInterface
-     */
-    public function background(string $color, int $opacity = 100): AdapterInterface
-    {
-    }
-
-    /**
-     * Blur image
-     *
-     * @param int $radius
-     * @return AdapterInterface
-     */
-    public function blur(int $radius): AdapterInterface
-    {
-    }
-
-    /**
-     * Crop an image to the given size
-     *
-     * @param int $width
-     * @param int $height
-     * @param int $offsetX
-     * @param int $offsetY
-     * @return AdapterInterface
-     */
-    public function crop(int $width, int $height, int $offsetX = null, int $offsetY = null): AdapterInterface
-    {
-    }
-
-    /**
-     * Flip the image along the horizontal or vertical axis
-     *
-     * @param int $direction
-     * @return AdapterInterface
-     */
-    public function flip(int $direction): AdapterInterface
-    {
-    }
-
-    /**
-     * This method scales the images using liquid rescaling method. Only support
-     * Imagick
-     *
-     * @param int $width   new width
-     * @param int $height  new height
-     * @param int $deltaX How much the seam can traverse on x-axis. Passing 0 causes the seams to be straight.
-     * @param int $rigidity Introduces a bias for non-straight seams. This parameter is typically 0.
-     * @return AbstractAdapter
-     */
-    public function liquidRescale(int $width, int $height, int $deltaX = 0, int $rigidity = 0): AbstractAdapter
-    {
-    }
-
-    /**
      * Composite one image onto another
      *
-     * @param AdapterInterface $watermark
+     * @param AdapterInterface $mask
+     *
      * @return AdapterInterface
      */
-    public function mask(AdapterInterface $watermark): AdapterInterface
+    public function mask(AdapterInterface $mask): AdapterInterface
     {
     }
 
@@ -192,6 +167,7 @@ abstract class AbstractAdapter implements \Phalcon\Image\Adapter\AdapterInterfac
      * Pixelate image
      *
      * @param int $amount
+     *
      * @return AdapterInterface
      */
     public function pixelate(int $amount): AdapterInterface
@@ -201,9 +177,10 @@ abstract class AbstractAdapter implements \Phalcon\Image\Adapter\AdapterInterfac
     /**
      * Add a reflection to an image
      *
-     * @param int $height
-     * @param int $opacity
+     * @param int  $height
+     * @param int  $opacity
      * @param bool $fadeIn
+     *
      * @return AdapterInterface
      */
     public function reflection(int $height, int $opacity = 100, bool $fadeIn = false): AdapterInterface
@@ -213,21 +190,24 @@ abstract class AbstractAdapter implements \Phalcon\Image\Adapter\AdapterInterfac
     /**
      * Render the image and return the binary string
      *
-     * @param string $ext
-     * @param int $quality
+     * @param string|null $extension
+     * @param int         $quality
+     *
      * @return string
      */
-    public function render(string $ext = null, int $quality = 100): string
+    public function render(string $extension = null, int $quality = 100): string
     {
     }
 
     /**
      * Resize the image to the given size
      *
-     * @param int $width
-     * @param int $height
-     * @param int $master
+     * @param int|null $width
+     * @param int|null $height
+     * @param int      $master
+     *
      * @return AdapterInterface
+     * @throws Exception
      */
     public function resize(int $width = null, int $height = null, int $master = Enum::AUTO): AdapterInterface
     {
@@ -237,6 +217,7 @@ abstract class AbstractAdapter implements \Phalcon\Image\Adapter\AdapterInterfac
      * Rotate the image by a given amount
      *
      * @param int $degrees
+     *
      * @return AdapterInterface
      */
     public function rotate(int $degrees): AdapterInterface
@@ -246,8 +227,9 @@ abstract class AbstractAdapter implements \Phalcon\Image\Adapter\AdapterInterfac
     /**
      * Save the image
      *
-     * @param string $file
-     * @param int $quality
+     * @param string|null $file
+     * @param int         $quality
+     *
      * @return AdapterInterface
      */
     public function save(string $file = null, int $quality = -1): AdapterInterface
@@ -258,6 +240,7 @@ abstract class AbstractAdapter implements \Phalcon\Image\Adapter\AdapterInterfac
      * Sharpen the image by a given amount
      *
      * @param int $amount
+     *
      * @return AdapterInterface
      */
     public function sharpen(int $amount): AdapterInterface
@@ -267,16 +250,17 @@ abstract class AbstractAdapter implements \Phalcon\Image\Adapter\AdapterInterfac
     /**
      * Add a text to an image with a specified opacity
      *
-     * @param string $text
-     * @param mixed $offsetX
-     * @param mixed $offsetY
-     * @param int $opacity
-     * @param string $color
-     * @param int $size
-     * @param string $fontfile
+     * @param string      $text
+     * @param mixed       $offsetX
+     * @param mixed       $offsetY
+     * @param int         $opacity
+     * @param string      $color
+     * @param int         $size
+     * @param string|null $fontFile
+     *
      * @return AdapterInterface
      */
-    public function text(string $text, $offsetX = false, $offsetY = false, int $opacity = 100, string $color = '000000', int $size = 12, string $fontfile = null): AdapterInterface
+    public function text(string $text, $offsetX = false, $offsetY = false, int $opacity = 100, string $color = '000000', int $size = 12, string $fontFile = null): AdapterInterface
     {
     }
 
@@ -284,12 +268,24 @@ abstract class AbstractAdapter implements \Phalcon\Image\Adapter\AdapterInterfac
      * Add a watermark to an image with the specified opacity
      *
      * @param AdapterInterface $watermark
-     * @param int $offsetX
-     * @param int $offsetY
-     * @param int $opacity
+     * @param int              $offsetX
+     * @param int              $offsetY
+     * @param int              $opacity
+     *
      * @return AdapterInterface
      */
     public function watermark(AdapterInterface $watermark, int $offsetX = 0, int $offsetY = 0, int $opacity = 100): AdapterInterface
+    {
+    }
+
+    /**
+     * @param int $value
+     * @param int $min
+     * @param int $max
+     *
+     * @return int
+     */
+    protected function checkHighLow(int $value, int $min = 0, int $max = 100): int
     {
     }
 }

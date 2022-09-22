@@ -31,7 +31,6 @@ use Phalcon\Support\Helper\Str\Interpolate;
  */
 abstract class AbstractFlash extends AbstractInjectionAware implements \Phalcon\Flash\FlashInterface
 {
-
     /**
      * @var bool
      */
@@ -83,34 +82,6 @@ abstract class AbstractFlash extends AbstractInjectionAware implements \Phalcon\
     protected $sessionService = null;
 
     /**
-     * @return bool
-     */
-    public function getAutoescape(): bool
-    {
-    }
-
-    /**
-     * @return array
-     */
-    public function getCssClasses(): array
-    {
-    }
-
-    /**
-     * @return array
-     */
-    public function getCssIconClasses(): array
-    {
-    }
-
-    /**
-     * @return string
-     */
-    public function getCustomTemplate(): string
-    {
-    }
-
-    /**
      * AbstractFlash constructor.
      *
      * @param EscaperInterface|null $escaper
@@ -141,6 +112,41 @@ abstract class AbstractFlash extends AbstractInjectionAware implements \Phalcon\
      * @return string|null
      */
     public function error(string $message): ?string
+    {
+    }
+
+    /**
+     * @return bool
+     */
+    public function getAutoescape(): bool
+    {
+    }
+
+    /**
+     * @return bool
+     */
+    public function getAutomaticHtml(): bool
+    {
+    }
+
+    /**
+     * @return array
+     */
+    public function getCssClasses(): array
+    {
+    }
+
+    /**
+     * @return array
+     */
+    public function getCssIconClasses(): array
+    {
+    }
+
+    /**
+     * @return string
+     */
+    public function getCustomTemplate(): string
     {
     }
 

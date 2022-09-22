@@ -16,7 +16,6 @@ use Phalcon\Html\Link\Interfaces\LinkInterface;
  */
 abstract class AbstractLinkProvider
 {
-
     /**
      * @var array
      */

@@ -18,7 +18,6 @@ use Phalcon\Filter\Validation;
  */
 abstract class AbstractValidator implements \Phalcon\Filter\Validation\ValidatorInterface
 {
-
     /**
      * Message template
      *

@@ -32,7 +32,6 @@ namespace Phalcon\Db;
  */
 class Reference implements \Phalcon\Db\ReferenceInterface
 {
-
     /**
      * Local reference columns
      *
@@ -88,6 +87,16 @@ class Reference implements \Phalcon\Db\ReferenceInterface
      * @var string
      */
     protected $onUpdate;
+
+    /**
+     * Phalcon\Db\Reference constructor
+     *
+     * @param string $name
+     * @param array $definition
+     */
+    public function __construct(string $name, array $definition)
+    {
+    }
 
     /**
      * Local reference columns
@@ -158,16 +167,6 @@ class Reference implements \Phalcon\Db\ReferenceInterface
      * @return string
      */
     public function getOnUpdate(): string
-    {
-    }
-
-    /**
-     * Phalcon\Db\Reference constructor
-     *
-     * @param string $name
-     * @param array $definition
-     */
-    public function __construct(string $name, array $definition)
     {
     }
 }

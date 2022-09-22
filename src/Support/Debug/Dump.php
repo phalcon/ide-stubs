@@ -35,7 +35,6 @@ use stdClass;
  */
 class Dump
 {
-
     /**
      * @var bool
      */
@@ -50,20 +49,6 @@ class Dump
      * @var array
      */
     protected $styles = [];
-
-    /**
-     * @return bool
-     */
-    public function getDetailed(): bool
-    {
-    }
-
-    /**
-     * @param bool $detailed
-     */
-    public function setDetailed(bool $detailed)
-    {
-    }
 
     /**
      * Phalcon\Debug\Dump constructor
@@ -81,6 +66,21 @@ class Dump
      * @return string
      */
     public function all(): string
+    {
+    }
+
+    /**
+     * @return bool
+     */
+    public function getDetailed(): bool
+    {
+    }
+
+    /**
+     * @param bool $detailed
+     * @return void
+     */
+    public function setDetailed(bool $detailed): void
     {
     }
 

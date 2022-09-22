@@ -14,8 +14,6 @@ namespace Phalcon\Dispatcher;
  */
 interface DispatcherInterface
 {
-
-
     /**
      * Dispatches a handle action taking into account the routing parameters
      *
@@ -137,7 +135,7 @@ interface DispatcherInterface
      * @param string $moduleName
      * @return void
      */
-    public function setModuleName(string $moduleName): void;
+    public function setModuleName(string $moduleName = null): void;
 
     /**
      * Sets the namespace which the controller belongs to

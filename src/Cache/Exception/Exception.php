@@ -14,6 +14,4 @@ namespace Phalcon\Cache\Exception;
  */
 class Exception extends \Exception
 {
-
-
 }

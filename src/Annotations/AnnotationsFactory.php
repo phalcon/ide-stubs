@@ -18,8 +18,6 @@ use Phalcon\Support\Helper\Arr\Get;
  */
 class AnnotationsFactory extends AbstractFactory
 {
-
-
     /**
      * AdapterFactory constructor.
      *

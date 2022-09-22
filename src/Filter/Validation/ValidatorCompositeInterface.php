@@ -16,8 +16,6 @@ use Phalcon\Filter\Validation;
  */
 interface ValidatorCompositeInterface
 {
-
-
     /**
      * Executes the validation
      *

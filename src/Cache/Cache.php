@@ -21,8 +21,6 @@ use Phalcon\Cache\Exception\InvalidArgumentException;
  */
 class Cache extends \Phalcon\Cache\AbstractCache
 {
-
-
     /**
      * Wipes clean the entire cache's keys.
      *

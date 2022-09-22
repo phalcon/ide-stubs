@@ -22,6 +22,10 @@ use Phalcon\Encryption\Security\JWT\Token\Token;
  */
 class Validator
 {
+    /**
+     * @var array
+     */
+    private $errors = [];
 
     /**
      * @var int
@@ -44,6 +48,13 @@ class Validator
     }
 
     /**
+     * @return array
+     */
+    public function getErrors(): array
+    {
+    }
+
+    /**
      * @param Token $token
      *
      * @return Validator
@@ -53,12 +64,12 @@ class Validator
     }
 
     /**
-     * @param string $audience
+     * @param string|array $audience
      *
      * @return Validator
      * @throws ValidatorException
      */
-    public function validateAudience(string $audience): Validator
+    public function validateAudience($audience): Validator
     {
     }
 

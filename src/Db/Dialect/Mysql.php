@@ -22,7 +22,6 @@ use Phalcon\Db\DialectInterface;
  */
 class Mysql extends Dialect
 {
-
     /**
      * @var string
      */

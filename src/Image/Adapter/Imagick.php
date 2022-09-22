@@ -9,13 +9,19 @@
  */
 namespace Phalcon\Image\Adapter;
 
+use Imagick as ImagickNative;
+use ImagickDraw;
+use ImagickDrawException;
+use ImagickException;
+use ImagickPixel;
+use ImagickPixelException;
 use Phalcon\Image\Enum;
 use Phalcon\Image\Exception;
 
 /**
  * Phalcon\Image\Adapter\Imagick
  *
- * Image manipulation support. Allows images to be resized, cropped, etc.
+ * Image manipulation support. Resize, rotate, crop etc.
  *
  * ```php
  * $image = new \Phalcon\Image\Adapter\Imagick("upload/test.jpg");
@@ -29,23 +35,20 @@ use Phalcon\Image\Exception;
  */
 class Imagick extends \Phalcon\Image\Adapter\AbstractAdapter
 {
-
-    /**
-     * @var bool
-     */
-    protected static $checked = false;
-
     /**
      * @var int
      */
-    protected static $version = 0;
+    protected $version = 0;
 
     /**
-     * \Phalcon\Image\Adapter\Imagick constructor
+     * Constructor
      *
-     * @param string $file
-     * @param int $width
-     * @param int $height
+     * @param string   $file
+     * @param int|null $width
+     * @param int|null $height
+     *
+     * @throws Exception
+     * @throws ImagickException
      */
     public function __construct(string $file, int $width = null, int $height = null)
     {
@@ -59,30 +62,35 @@ class Imagick extends \Phalcon\Image\Adapter\AbstractAdapter
     }
 
     /**
-     * Checks if Imagick is enabled
+     * This method scales the images using liquid rescaling method. Only support
+     * Imagick
      *
-     * @return bool
-     */
-    public static function check(): bool
-    {
-    }
-
-    /**
-     * Get instance
+     * @param int $width    new width
+     * @param int $height   new height
+     * @param int $deltaX   How much the seam can traverse on x-axis. Passing
+     *                      0 causes the seams to be straight.
+     * @param int $rigidity Introduces a bias for non-straight seams. This
+     *                      parameter is typically 0.
      *
-     * @return \Imagick
+     * @return AbstractAdapter
+     * @throws Exception
+     * @throws ImagickException
      */
-    public function getInternalImInstance(): \Imagick
+    public function liquidRescale(int $width, int $height, int $deltaX = 0, int $rigidity = 0): AbstractAdapter
     {
     }
 
     /**
      * Sets the limit for a particular resource in megabytes
      *
-     * @link http://php.net/manual/ru/imagick.constants.php#imagick.constants.resourcetypes
      * @param int $type
      * @param int $limit
+     *
      * @return void
+     * @throws Exception
+     * @throws ImagickException
+     *
+     * @link https://www.php.net/manual/en/imagick.constants.php#imagick.constants.resourcetypes
      */
     public function setResourceLimit(int $type, int $limit): void
     {
@@ -91,13 +99,17 @@ class Imagick extends \Phalcon\Image\Adapter\AbstractAdapter
     /**
      * Execute a background.
      *
-     * @param int $r
-     * @param int $g
-     * @param int $b
+     * @param int $red
+     * @param int $green
+     * @param int $blue
      * @param int $opacity
+     *
      * @return void
+     * @throws Exception
+     * @throws ImagickException
+     * @throws ImagickPixelException
      */
-    protected function processBackground(int $r, int $g, int $b, int $opacity): void
+    protected function processBackground(int $red, int $green, int $blue, int $opacity): void
     {
     }
 
@@ -105,7 +117,9 @@ class Imagick extends \Phalcon\Image\Adapter\AbstractAdapter
      * Blur image
      *
      * @param int $radius Blur radius
+     *
      * @return void
+     * @throws ImagickException
      */
     protected function processBlur(int $radius): void
     {
@@ -118,7 +132,9 @@ class Imagick extends \Phalcon\Image\Adapter\AbstractAdapter
      * @param int $height
      * @param int $offsetX
      * @param int $offsetY
+     *
      * @return void
+     * @throws ImagickException
      */
     protected function processCrop(int $width, int $height, int $offsetX, int $offsetY): void
     {
@@ -128,23 +144,11 @@ class Imagick extends \Phalcon\Image\Adapter\AbstractAdapter
      * Execute a flip.
      *
      * @param int $direction
+     *
      * @return void
+     * @throws ImagickException
      */
     protected function processFlip(int $direction): void
-    {
-    }
-
-    /**
-     * This method scales the images using liquid rescaling method. Only support
-     * Imagick
-     *
-     * @param int $width   new width
-     * @param int $height  new height
-     * @param int $deltaX How much the seam can traverse on x-axis. Passing 0 causes the seams to be straight.
-     * @param int $rigidity Introduces a bias for non-straight seams. This parameter is typically 0.
-     * @return void
-     */
-    protected function processLiquidRescale(int $width, int $height, int $deltaX, int $rigidity): void
     {
     }
 
@@ -152,7 +156,10 @@ class Imagick extends \Phalcon\Image\Adapter\AbstractAdapter
      * Composite one image onto another
      *
      * @param AdapterInterface $image
+     *
      * @return void
+     * @throws Exception
+     * @throws ImagickException
      */
     protected function processMask(AdapterInterface $image): void
     {
@@ -162,7 +169,9 @@ class Imagick extends \Phalcon\Image\Adapter\AbstractAdapter
      * Pixelate image
      *
      * @param int $amount amount to pixelate
+     *
      * @return void
+     * @throws ImagickException
      */
     protected function processPixelate(int $amount): void
     {
@@ -171,10 +180,13 @@ class Imagick extends \Phalcon\Image\Adapter\AbstractAdapter
     /**
      * Execute a reflection.
      *
-     * @param int $height
-     * @param int $opacity
+     * @param int  $height
+     * @param int  $opacity
      * @param bool $fadeIn
+     *
      * @return void
+     * @throws Exception
+     * @throws ImagickException
      */
     protected function processReflection(int $height, int $opacity, bool $fadeIn): void
     {
@@ -184,8 +196,10 @@ class Imagick extends \Phalcon\Image\Adapter\AbstractAdapter
      * Execute a render.
      *
      * @param string $extension
-     * @param int $quality
+     * @param int    $quality
+     *
      * @return string
+     * @throws ImagickException
      */
     protected function processRender(string $extension, int $quality): string
     {
@@ -196,7 +210,9 @@ class Imagick extends \Phalcon\Image\Adapter\AbstractAdapter
      *
      * @param int $width
      * @param int $height
+     *
      * @return void
+     * @throws ImagickException
      */
     protected function processResize(int $width, int $height): void
     {
@@ -206,7 +222,9 @@ class Imagick extends \Phalcon\Image\Adapter\AbstractAdapter
      * Execute a rotation.
      *
      * @param int $degrees
+     *
      * @return void
+     * @throws ImagickException
      */
     protected function processRotate(int $degrees): void
     {
@@ -216,8 +234,10 @@ class Imagick extends \Phalcon\Image\Adapter\AbstractAdapter
      * Execute a save.
      *
      * @param string $file
-     * @param int $quality
+     * @param int    $quality
+     *
      * @return void
+     * @throws ImagickException
      */
     protected function processSave(string $file, int $quality): void
     {
@@ -227,37 +247,59 @@ class Imagick extends \Phalcon\Image\Adapter\AbstractAdapter
      * Execute a sharpen.
      *
      * @param int $amount
+     *
+     * @return void
+     * @throws ImagickException
      */
-    protected function processSharpen(int $amount)
+    protected function processSharpen(int $amount): void
     {
     }
 
     /**
      * Execute a text
      *
-     * @param string $text
-     * @param mixed $offsetX
-     * @param mixed $offsetY
-     * @param int $opacity
-     * @param int $r
-     * @param int $g
-     * @param int $b
-     * @param int $size
-     * @param string $fontfile
+     * @param string      $text
+     * @param mixed       $offsetX
+     * @param mixed       $offsetY
+     * @param int         $opacity
+     * @param int         $red
+     * @param int         $green
+     * @param int         $blue
+     * @param int         $size
+     * @param string|null $fontFile
+     *
+     * @return void
+     * @throws ImagickDrawException
+     * @throws ImagickException
+     * @throws ImagickPixelException
      */
-    protected function processText(string $text, $offsetX, $offsetY, int $opacity, int $r, int $g, int $b, int $size, string $fontfile)
+    protected function processText(string $text, $offsetX, $offsetY, int $opacity, int $red, int $green, int $blue, int $size, string $fontFile = null): void
     {
     }
 
     /**
-     * Execute a watermarking.
+     * Add Watermark
      *
      * @param AdapterInterface $image
-     * @param int $offsetX
-     * @param int $offsetY
-     * @param int $opacity
+     * @param int              $offsetX
+     * @param int              $offsetY
+     * @param int              $opacity
+     *
+     * @return void
+     * @throws Exception
+     * @throws ImagickException
      */
-    protected function processWatermark(AdapterInterface $image, int $offsetX, int $offsetY, int $opacity)
+    protected function processWatermark(AdapterInterface $image, int $offsetX, int $offsetY, int $opacity): void
+    {
+    }
+
+    /**
+     * Checks if Imagick is enabled
+     *
+     * @return void
+     * @throws Exception
+     */
+    private function check(): void
     {
     }
 }

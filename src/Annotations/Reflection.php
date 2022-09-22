@@ -29,30 +29,25 @@ namespace Phalcon\Annotations;
  */
 class Reflection
 {
+    /**
+     * @var Collection|null
+     */
+    protected $classAnnotations = null;
 
     /**
      * @var array
-     * TODO: Make always array
      */
-    protected $classAnnotations;
+    protected $constantAnnotations = [];
 
     /**
      * @var array
-     * TODO: Make always array
      */
-    protected $constantAnnotations;
+    protected $propertyAnnotations = [];
 
     /**
      * @var array
-     * TODO: Make always array
      */
-    protected $propertyAnnotations;
-
-    /**
-     * @var array
-     * TODO: Make always array
-     */
-    protected $methodAnnotations;
+    protected $methodAnnotations = [];
 
     /**
      * @var array
@@ -60,8 +55,6 @@ class Reflection
     protected $reflectionData = [];
 
     /**
-     * Phalcon\Annotations\Reflection constructor
-     *
      * @param array $reflectionData
      */
     public function __construct(array $reflectionData = [])
@@ -71,36 +64,36 @@ class Reflection
     /**
      * Returns the annotations found in the class docblock
      *
-     * @return bool|Collection
+     * @return Collection|null
      */
-    public function getClassAnnotations()
+    public function getClassAnnotations(): ?Collection
     {
     }
 
     /**
      * Returns the annotations found in the constants' docblocks
      *
-     * @return array|bool|Collection[]
+     * @return Collection[]
      */
-    public function getConstantsAnnotations()
+    public function getConstantsAnnotations(): array
     {
     }
 
     /**
      * Returns the annotations found in the properties' docblocks
      *
-     * @return array|bool|Collection[]
+     * @return Collection[]
      */
-    public function getPropertiesAnnotations()
+    public function getPropertiesAnnotations(): array
     {
     }
 
     /**
      * Returns the annotations found in the methods' docblocks
      *
-     * @return array|bool|Collection[]
+     * @return Collection[]
      */
-    public function getMethodsAnnotations()
+    public function getMethodsAnnotations(): array
     {
     }
 

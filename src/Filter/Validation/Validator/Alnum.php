@@ -48,7 +48,6 @@ use Phalcon\Filter\Validation\AbstractValidator;
  */
 class Alnum extends AbstractValidator
 {
-
     protected $template = 'Field :field must contain only letters and numbers';
 
     /**
