@@ -25,6 +25,11 @@ class Validator
     /**
      * @var array
      */
+    private $claims = [];
+
+    /**
+     * @var array
+     */
     private $errors = [];
 
     /**
@@ -51,6 +56,23 @@ class Validator
      * @return array
      */
     public function getErrors(): array
+    {
+    }
+
+    /**
+     * @param string $claim
+     * @return mixed|null
+     */
+    public function get(string $claim)
+    {
+    }
+
+    /**
+     * @param string $claim
+     * @param mixed $value
+     * @return Validator
+     */
+    public function set(string $claim, $value): Validator
     {
     }
 
