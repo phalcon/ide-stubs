@@ -350,7 +350,7 @@ class Form extends Injectable implements \Countable, \Iterator, \Phalcon\Html\At
      * @param array $attributes
      * @return string
      */
-    public function label(string $name, array $attributes = null): string
+    public function label(string $name, array $attributes = []): string
     {
     }
 

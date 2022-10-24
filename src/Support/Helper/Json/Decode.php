@@ -26,7 +26,7 @@ class Decode
      * @return mixed
      *
      * @throws InvalidArgumentException if the JSON cannot be decoded.
-     * @link http://www.php.net/manual/en/function.json-decode.php
+     * @link https://www.php.net/manual/en/function.json-decode.php
      */
     public function __invoke(string $data, bool $associative = false, int $depth = 512, int $options = 0)
     {

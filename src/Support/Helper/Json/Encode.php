@@ -32,7 +32,7 @@ class Encode
      * @return string
      *
      * @throws JsonException if the JSON cannot be encoded.
-     * @link http://www.php.net/manual/en/function.json-encode.php
+     * @link https://www.php.net/manual/en/function.json-encode.php
      */
     public function __invoke($data, int $options = 4194383, int $depth = 512): string
     {

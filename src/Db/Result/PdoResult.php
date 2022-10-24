@@ -161,12 +161,12 @@ class PdoResult implements \Phalcon\Db\ResultInterface
      * $robots = $result->fetchAll();
      * ```
      *
-     * @param int $fetchStyle
-     * @param int $fetchArgument
-     * @param int $ctorArgs
+     * @param int                      $mode
+     * @param int|string|callable|null $fetchArgument
+     * @param array|null               $constructorArgs
      * @return array
      */
-    public function fetchAll(int $fetchStyle = null, int $fetchArgument = Pdo::FETCH_ORI_NEXT, int $ctorArgs = 0): array
+    public function fetchAll(int $mode = Enum::FETCH_DEFAULT, $fetchArgument = Pdo::FETCH_ORI_NEXT, $constructorArgs = null): array
     {
     }
 
