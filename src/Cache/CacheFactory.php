@@ -17,8 +17,6 @@ use Phalcon\Factory\AbstractConfigFactory;
 
 /**
  * Creates a new Cache class
- *
- * @property AdapterFactory $adapterFactory;
  */
 class CacheFactory extends AbstractConfigFactory
 {

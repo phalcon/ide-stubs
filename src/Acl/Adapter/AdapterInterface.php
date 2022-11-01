@@ -40,7 +40,7 @@ interface AdapterInterface
      * Adds a component to the ACL list
      *
      * Access names can be a particular action, by example
-     * search, update, delete, etc or a list of them
+     * search, update, delete, etc. or a list of them
      *
      * @param mixed $componentValue
      * @param mixed $accessList
@@ -80,7 +80,7 @@ interface AdapterInterface
     public function deny(string $roleName, string $componentName, $access, $func = null): void;
 
     /**
-     * Removes an access from a component
+     * Removes access from a component
      *
      * @param string $componentName
      * @param mixed $accessList

@@ -60,11 +60,27 @@ interface DispatcherInterface
     public function getParam($param, $filters = null);
 
     /**
+     * Gets a param by its name or numeric index
+     *
+     * @param string|array $filters
+     * @param mixed $param
+     * @return mixed
+     */
+    public function getParameter($param, $filters = null);
+
+    /**
      * Gets action params
      *
      * @return array
      */
     public function getParams(): array;
+
+    /**
+     * Gets action params
+     *
+     * @return array
+     */
+    public function getParameters(): array;
 
     /**
      * Returns value returned by the latest dispatched action

@@ -66,6 +66,11 @@ class Request extends AbstractInjectionAware implements \Phalcon\Http\RequestInt
     /**
      * @var array|null
      */
+    private $patchCache = null;
+
+    /**
+     * @var array|null
+     */
     private $putCache = null;
 
     /**
@@ -231,6 +236,19 @@ class Request extends AbstractInjectionAware implements \Phalcon\Http\RequestInt
     }
 
     /**
+     * Retrieves a patch value always sanitized with the preset filters
+     *
+     * @param string $name
+     * @param mixed $defaultValue
+     * @param bool $notAllowEmpty
+     * @param bool $noRecursive
+     * @return mixed
+     */
+    public function getFilteredPatch(string $name = null, $defaultValue = null, bool $notAllowEmpty = false, bool $noRecursive = false)
+    {
+    }
+
+    /**
      * Retrieves a post value always sanitized with the preset filters
      *
      * @param string $name
@@ -369,6 +387,28 @@ class Request extends AbstractInjectionAware implements \Phalcon\Http\RequestInt
      * @return string
      */
     final public function getMethod(): string
+    {
+    }
+
+    /**
+     * Gets a variable from put request
+     *
+     * ```php
+     * // Returns value from $_PATCH["user_email"] without sanitizing
+     * $userEmail = $request->getPatch("user_email");
+     *
+     * // Returns value from $_PATCH["user_email"] with sanitizing
+     * $userEmail = $request->getPatch("user_email", "email");
+     * ```
+     *
+     * @param string $name
+     * @param mixed $filters
+     * @param mixed $defaultValue
+     * @param bool $notAllowEmpty
+     * @param bool $noRecursive
+     * @return mixed
+     */
+    public function getPatch(string $name = null, $filters = null, $defaultValue = null, bool $notAllowEmpty = false, bool $noRecursive = false)
     {
     }
 
@@ -562,6 +602,16 @@ class Request extends AbstractInjectionAware implements \Phalcon\Http\RequestInt
      * @return bool
      */
     final public function hasHeader(string $header): bool
+    {
+    }
+
+    /**
+     * Checks whether the PATCH data has certain index
+     *
+     * @param string $name
+     * @return bool
+     */
+    public function hasPatch(string $name): bool
     {
     }
 
@@ -895,6 +945,44 @@ class Request extends AbstractInjectionAware implements \Phalcon\Http\RequestInt
      * @return array
      */
     private function getServerArray(): array
+    {
+    }
+
+    /**
+     * Gets filtered data
+     *
+     * @param string $methodKey
+     * @param string $method
+     * @param string $name
+     * @param mixed $defaultValue
+     * @param bool $notAllowEmpty
+     * @param bool $noRecursive
+     * @return mixed
+     */
+    public function getFilteredData(string $methodKey, string $method, string $name = null, $defaultValue = null, bool $notAllowEmpty = false, bool $noRecursive = false)
+    {
+    }
+
+    /**
+     * Gets a variable from put request
+     *
+     * ```php
+     * // Returns value from $_PATCH["user_email"] without sanitizing
+     * $userEmail = $request->getPatch("user_email");
+     *
+     * // Returns value from $_PATCH["user_email"] with sanitizing
+     * $userEmail = $request->getPatch("user_email", "email");
+     * ```
+     *
+     * @param string $collection
+     * @param string $name
+     * @param mixed $filters
+     * @param mixed $defaultValue
+     * @param bool $notAllowEmpty
+     * @param bool $noRecursive
+     * @return mixed
+     */
+    private function getPatchPut(string $collection, string $name = null, $filters = null, $defaultValue = null, bool $notAllowEmpty = false, bool $noRecursive = false)
     {
     }
 }

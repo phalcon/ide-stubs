@@ -16,8 +16,6 @@ use Phalcon\Logger\LoggerInterface;
 
 /**
  * A memory-based logger.
- *
- * @property array $messages
  */
 class MemoryLogger implements \Phalcon\Logger\LoggerInterface
 {

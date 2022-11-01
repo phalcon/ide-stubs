@@ -12,7 +12,7 @@ namespace Phalcon\DataMapper\Query;
 use Phalcon\DataMapper\Pdo\Connection;
 
 /**
- * Class Insert
+ * Insert Query
  */
 class Insert extends \Phalcon\DataMapper\Query\AbstractQuery
 {

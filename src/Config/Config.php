@@ -35,8 +35,6 @@ use Phalcon\Support\Collection;
  *     ]
  * );
  * ```
- *
- * @property string $pathDelimiter
  */
 class Config extends Collection implements \Phalcon\Config\ConfigInterface
 {

@@ -22,9 +22,9 @@ class Route implements \Phalcon\Cli\Router\RouteInterface
     protected $beforeMatch = null;
 
     /**
-     * @var string|null
+     * @var string
      */
-    protected $compiledPattern = null;
+    protected $compiledPattern = '';
 
     /**
      * @var array
@@ -42,19 +42,19 @@ class Route implements \Phalcon\Cli\Router\RouteInterface
     protected static $delimiterPath = self::DEFAULT_DELIMITER;
 
     /**
-     * @var string|null
+     * @var string
      */
-    protected $description = null;
+    protected $description = '';
 
     /**
      * @var string
      */
-    protected $id;
+    protected $routeId;
 
     /**
-     * @var string|null
+     * @var string
      */
-    protected $name = null;
+    protected $name = '';
 
     /**
      * @var array
@@ -64,10 +64,10 @@ class Route implements \Phalcon\Cli\Router\RouteInterface
     /**
      * @var string
      */
-    protected $pattern;
+    protected $pattern = '';
 
     /**
-     * @var int|string
+     * @var int
      */
     protected static $uniqueId = 0;
 

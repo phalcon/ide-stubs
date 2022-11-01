@@ -37,9 +37,9 @@ abstract class AbstractDispatcher extends AbstractInjectionAware implements \Pha
     protected $activeMethodMap = [];
 
     /**
-     * @var string|null
+     * @var string
      */
-    protected $actionName = null;
+    protected $actionName = '';
 
     /**
      * @var string
@@ -57,14 +57,14 @@ abstract class AbstractDispatcher extends AbstractInjectionAware implements \Pha
     protected $defaultAction = '';
 
     /**
-     * @var string|null
+     * @var string
      */
-    protected $defaultNamespace = null;
+    protected $defaultNamespace = '';
 
     /**
-     * @var string|null
+     * @var string
      */
-    protected $defaultHandler = null;
+    protected $defaultHandler = '';
 
     /**
      * @var array
@@ -72,9 +72,9 @@ abstract class AbstractDispatcher extends AbstractInjectionAware implements \Pha
     protected $handlerHashes = [];
 
     /**
-     * @var string|null
+     * @var string
      */
-    protected $handlerName = null;
+    protected $handlerName = '';
 
     /**
      * @var string
@@ -117,14 +117,14 @@ abstract class AbstractDispatcher extends AbstractInjectionAware implements \Pha
     protected $modelBinding = false;
 
     /**
-     * @var string|null
+     * @var string
      */
-    protected $moduleName = null;
+    protected $moduleName = '';
 
     /**
-     * @var string|null
+     * @var string
      */
-    protected $namespaceName = null;
+    protected $namespaceName = '';
 
     /**
      * @var array
@@ -134,17 +134,17 @@ abstract class AbstractDispatcher extends AbstractInjectionAware implements \Pha
     /**
      * @var string|null
      */
-    protected $previousActionName = null;
+    protected $previousActionName = '';
 
     /**
      * @var string|null
      */
-    protected $previousHandlerName = null;
+    protected $previousHandlerName = '';
 
     /**
      * @var string|null
      */
-    protected $previousNamespaceName = null;
+    protected $previousNamespaceName = '';
 
     /**
      * @var string|null
@@ -302,8 +302,32 @@ abstract class AbstractDispatcher extends AbstractInjectionAware implements \Pha
      * @param string|array $filters
      * @param mixed $defaultValue
      * @return mixed
+     *
+     * @todo remove this in future versions
      */
     public function getParam($param, $filters = null, $defaultValue = null)
+    {
+    }
+
+    /**
+     * Gets a param by its name or numeric index
+     *
+     * @param mixed $param
+     * @param string|array $filters
+     * @param mixed $defaultValue
+     * @return mixed
+     */
+    public function getParameter($param, $filters = null, $defaultValue = null)
+    {
+    }
+
+    /**
+     * Gets action params
+     *
+     * @todo remove this in future versions
+     * @return array
+     */
+    public function getParams(): array
     {
     }
 
@@ -312,7 +336,18 @@ abstract class AbstractDispatcher extends AbstractInjectionAware implements \Pha
      *
      * @return array
      */
-    public function getParams(): array
+    public function getParameters(): array
+    {
+    }
+
+    /**
+     * Check if a param exists
+     *
+     * @todo deprecate this in the future
+     * @param mixed $param
+     * @return bool
+     */
+    public function hasParam($param): bool
     {
     }
 
@@ -322,7 +357,7 @@ abstract class AbstractDispatcher extends AbstractInjectionAware implements \Pha
      * @param mixed $param
      * @return bool
      */
-    public function hasParam($param): bool
+    public function hasParameter($param): bool
     {
     }
 
@@ -378,6 +413,7 @@ abstract class AbstractDispatcher extends AbstractInjectionAware implements \Pha
     /**
      * Set a param by its name or numeric index
      *
+     * @todo deprecate this in the future
      * @param mixed $param
      * @param mixed $value
      * @return void
@@ -387,12 +423,34 @@ abstract class AbstractDispatcher extends AbstractInjectionAware implements \Pha
     }
 
     /**
+     * Set a param by its name or numeric index
+     *
+     * @param mixed $param
+     * @param mixed $value
+     * @return void
+     */
+    public function setParameter($param, $value): void
+    {
+    }
+
+    /**
+     * Sets action params to be dispatched
+     *
+     * @todo deprecate this in the future
+     * @param array $params
+     * @return void
+     */
+    public function setParams(array $params): void
+    {
+    }
+
+    /**
      * Sets action params to be dispatched
      *
      * @param array $params
      * @return void
      */
-    public function setParams(array $params): void
+    public function setParameters(array $params): void
     {
     }
 
