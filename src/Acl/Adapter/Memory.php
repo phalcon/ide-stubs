@@ -99,7 +99,7 @@ class Memory extends \Phalcon\Acl\Adapter\AbstractAdapter
     protected $accessList;
 
     /**
-     * Returns latest function used to acquire access
+     * Returns the latest function used to acquire access
      *
      * @var mixed
      */
@@ -113,7 +113,7 @@ class Memory extends \Phalcon\Acl\Adapter\AbstractAdapter
     protected $activeFunctionCustomArgumentsCount = 0;
 
     /**
-     * Returns latest key used to acquire access
+     * Returns the latest key used to acquire access
      *
      * @var string|null
      */
@@ -141,7 +141,7 @@ class Memory extends \Phalcon\Acl\Adapter\AbstractAdapter
     protected $func;
 
     /**
-     * Default action for no arguments is allow
+     * Default action for no arguments is `allow`
      *
      * @var mixed
      */
@@ -172,11 +172,11 @@ class Memory extends \Phalcon\Acl\Adapter\AbstractAdapter
      * Adds a component to the ACL list
      *
      * Access names can be a particular action, by example
-     * search, update, delete, etc or a list of them
+     * search, update, delete, etc. or a list of them
      *
      * Example:
      * ```php
-     * // Add a component to the the list allowing access to an action
+     * // Add a component to the list allowing access to an action
      * $acl->addComponent(
      *     new Phalcon\Acl\Component("customers"),
      *     "search"
@@ -312,7 +312,7 @@ class Memory extends \Phalcon\Acl\Adapter\AbstractAdapter
     }
 
     /**
-     * Removes an access from a component
+     * Removes access from a component
      *
      * @param string $componentName
      * @param mixed $accessList
@@ -323,7 +323,7 @@ class Memory extends \Phalcon\Acl\Adapter\AbstractAdapter
     }
 
     /**
-     * Returns latest function used to acquire access
+     * Returns the latest function used to acquire access
      *
      * @return mixed
      */
@@ -341,7 +341,7 @@ class Memory extends \Phalcon\Acl\Adapter\AbstractAdapter
     }
 
     /**
-     * Returns latest key used to acquire access
+     * Returns the latest key used to acquire access
      *
      * @return string|null
      */

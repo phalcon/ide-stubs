@@ -56,9 +56,17 @@ interface RouterInterface
     /**
      * Returns processed extra params
      *
+     * @todo deprecate this in the future
      * @return array
      */
     public function getParams(): array;
+
+    /**
+     * Returns processed extra params
+     *
+     * @return array
+     */
+    public function getParameters(): array;
 
     /**
      * Returns a route object by its id

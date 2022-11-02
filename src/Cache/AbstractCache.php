@@ -16,9 +16,6 @@ use Traversable;
 
 /**
  * This component offers caching capabilities for your application.
- * Phalcon\Cache implements PSR-16.
- *
- * @property AdapterInterface $adapter
  */
 abstract class AbstractCache implements \Phalcon\Cache\CacheInterface
 {

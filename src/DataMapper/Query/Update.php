@@ -12,7 +12,7 @@ namespace Phalcon\DataMapper\Query;
 use Phalcon\DataMapper\Pdo\Connection;
 
 /**
- * Class Update
+ * Update Query
  */
 class Update extends \Phalcon\DataMapper\Query\AbstractConditions
 {

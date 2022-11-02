@@ -19,7 +19,9 @@ class Cssmin implements \Phalcon\Assets\FilterInterface
 {
     /**
      * Filters the content using CSSMIN
-     * NOTE: This functionality is not currently available
+     *
+     * > NOTE: This functionality is not currently available
+     * {: .alert .alert-info }
      *
      * @param string $content
      * @return string

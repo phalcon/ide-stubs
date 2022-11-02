@@ -20,7 +20,9 @@ class Jsmin implements \Phalcon\Assets\FilterInterface
 {
     /**
      * Filters the content using JSMIN
-     * NOTE: This functionality is not currently available
+     *
+     * > NOTE: This functionality is not currently available
+     * {: .alert .alert-info }
      *
      * @param string $content
      * @return string

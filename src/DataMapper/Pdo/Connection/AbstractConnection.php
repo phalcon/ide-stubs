@@ -16,9 +16,6 @@ use Phalcon\DataMapper\Pdo\Profiler\ProfilerInterface;
 /**
  * Provides array quoting, profiling, a new `perform()` method, new `fetch()`
  * methods
- *
- * @property PDO               $pdo
- * @property ProfilerInterface $profiler
  */
 abstract class AbstractConnection implements \Phalcon\DataMapper\Pdo\Connection\ConnectionInterface
 {

@@ -16,12 +16,6 @@ use Phalcon\Logger\LoggerInterface;
 
 /**
  * Sends query profiles to a logger.
- *
- * @property bool            $active
- * @property array           $context
- * @property string          $logFormat
- * @property string          $logLevel
- * @property LoggerInterface $logger
  */
 class Profiler implements \Phalcon\DataMapper\Pdo\Profiler\ProfilerInterface
 {
