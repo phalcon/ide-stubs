@@ -95,6 +95,24 @@ class Item
     }
 
     /**
+     * Returns the total time in nanoseconds spent by the profile
+     *
+     * @return float
+     */
+    public function getTotalElapsedNanoseconds(): float
+    {
+    }
+
+    /**
+     * Returns the total time in milliseconds spent by the profile
+     *
+     * @return float
+     */
+    public function getTotalElapsedMilliseconds(): float
+    {
+    }
+
+    /**
      * Returns the total time in seconds spent by the profile
      *
      * @return float

@@ -78,11 +78,11 @@ class Profiler
     protected $allProfiles;
 
     /**
-     * Total time spent by all profiles to complete
+     * Total time spent by all profiles to complete in nanoseconds
      *
      * @var float
      */
-    protected $totalSeconds = 0;
+    protected $totalNanoseconds = 0;
 
     /**
      * Returns the last profile executed in the profiler
@@ -99,6 +99,24 @@ class Profiler
      * @return int
      */
     public function getNumberTotalStatements(): int
+    {
+    }
+
+    /**
+     * Returns the total time in nanoseconds spent by the profiles
+     *
+     * @return float
+     */
+    public function getTotalElapsedNanoseconds(): float
+    {
+    }
+
+    /**
+     * Returns the total time in milliseconds spent by the profiles
+     *
+     * @return float
+     */
+    public function getTotalElapsedMilliseconds(): float
     {
     }
 
@@ -133,11 +151,11 @@ class Profiler
      * Starts the profile of a SQL sentence
      *
      * @param string $sqlStatement
-     * @param mixed $sqlVariables
-     * @param mixed $sqlBindTypes
+     * @param array $sqlVariables
+     * @param array $sqlBindTypes
      * @return Profiler
      */
-    public function startProfile(string $sqlStatement, $sqlVariables = null, $sqlBindTypes = null): Profiler
+    public function startProfile(string $sqlStatement, array $sqlVariables = [], array $sqlBindTypes = []): Profiler
     {
     }
 

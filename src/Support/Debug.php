@@ -62,6 +62,18 @@ class Debug
     protected $uri = 'https://assets.phalcon.io/debug/5.0.x/';
 
     /**
+     * @var Version
+     */
+    private $version;
+
+    /**
+     * Constructor setting a reusable version object
+     */
+    public function __construct()
+    {
+    }
+
+    /**
      * Clears are variables added previously
      *
      * @return Debug
