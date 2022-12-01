@@ -9,9 +9,40 @@
  */
 namespace Phalcon\Html;
 
-use Phalcon\Html\Escaper;
 use Phalcon\Html\Escaper\EscaperInterface;
 use Phalcon\Factory\AbstractFactory;
+use Phalcon\Html\Helper\Doctype;
+use Phalcon\Html\Helper\Input\Checkbox;
+use Phalcon\Html\Helper\Input\Color;
+use Phalcon\Html\Helper\Input\Date;
+use Phalcon\Html\Helper\Input\DateTime;
+use Phalcon\Html\Helper\Input\DateTimeLocal;
+use Phalcon\Html\Helper\Input\Email;
+use Phalcon\Html\Helper\Input\File;
+use Phalcon\Html\Helper\Input\Hidden;
+use Phalcon\Html\Helper\Input\Image;
+use Phalcon\Html\Helper\Input\Input;
+use Phalcon\Html\Helper\Input\Month;
+use Phalcon\Html\Helper\Input\Numeric;
+use Phalcon\Html\Helper\Input\Password;
+use Phalcon\Html\Helper\Input\Radio;
+use Phalcon\Html\Helper\Input\Range;
+use Phalcon\Html\Helper\Input\Search;
+use Phalcon\Html\Helper\Input\Select;
+use Phalcon\Html\Helper\Input\Submit;
+use Phalcon\Html\Helper\Input\Tel;
+use Phalcon\Html\Helper\Input\Text;
+use Phalcon\Html\Helper\Input\Textarea;
+use Phalcon\Html\Helper\Input\Time;
+use Phalcon\Html\Helper\Input\Url;
+use Phalcon\Html\Helper\Input\Week;
+use Phalcon\Html\Helper\Meta;
+use Phalcon\Html\Helper\Ol;
+use Phalcon\Html\Helper\Script;
+use Phalcon\Html\Helper\Style;
+use Phalcon\Html\Helper\Title;
+use Phalcon\Html\Helper\Ul;
+use Phalcon\Html\Link\Link;
 
 /**
  * ServiceLocator implementation for Tag helpers.
@@ -63,7 +94,7 @@ use Phalcon\Factory\AbstractFactory;
  * @method Meta          meta(string $indent = '    ', string $delimiter = PHP_EOL)
  * @method Ol            ol(string $text, array $attributes = [], bool $raw = false)
  * @method Script        script(string $indent = '    ', string $delimiter = PHP_EOL)
- * @method Stype         style(string $indent = '    ', string $delimiter = PHP_EOL)
+ * @method Style         style(string $indent = '    ', string $delimiter = PHP_EOL)
  * @method Title         title(string $indent = '    ', string $delimiter = PHP_EOL)
  * @method Ul            ul(string $text, array $attributes = [], bool $raw = false)
  */
