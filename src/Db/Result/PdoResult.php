@@ -9,7 +9,6 @@
  */
 namespace Phalcon\Db\Result;
 
-use Pdo;
 use Phalcon\Db\Enum;
 use Phalcon\Db\ResultInterface;
 use Phalcon\Db\Adapter\AdapterInterface;
@@ -144,7 +143,7 @@ class PdoResult implements \Phalcon\Db\ResultInterface
      * @param int $cursorOrientation
      * @param int $cursorOffset
      */
-    public function fetch(int $fetchStyle = null, int $cursorOrientation = Pdo::FETCH_ORI_NEXT, int $cursorOffset = 0)
+    public function fetch(int $fetchStyle = null, int $cursorOrientation = Enum::FETCH_ORI_NEXT, int $cursorOffset = 0)
     {
     }
 
@@ -166,7 +165,7 @@ class PdoResult implements \Phalcon\Db\ResultInterface
      * @param array|null               $constructorArgs
      * @return array
      */
-    public function fetchAll(int $mode = Enum::FETCH_DEFAULT, $fetchArgument = Pdo::FETCH_ORI_NEXT, $constructorArgs = null): array
+    public function fetchAll(int $mode = Enum::FETCH_DEFAULT, $fetchArgument = Enum::FETCH_ORI_NEXT, $constructorArgs = null): array
     {
     }
 

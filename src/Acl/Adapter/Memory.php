@@ -17,6 +17,7 @@ use Phalcon\Acl\Exception;
 use Phalcon\Acl\RoleAwareInterface;
 use Phalcon\Acl\ComponentAwareInterface;
 use Phalcon\Acl\ComponentInterface;
+use ReflectionClass;
 use ReflectionFunction;
 
 /**

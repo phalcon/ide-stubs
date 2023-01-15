@@ -42,6 +42,8 @@ class Enum
 
     const FETCH_OBJ = 5;
 
+    const FETCH_ORI_NEXT = 0;
+
     const FETCH_PROPS_LATE = 1048576;
 
     const FETCH_SERIALIZE = 524288;

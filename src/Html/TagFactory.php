@@ -9,8 +9,8 @@
  */
 namespace Phalcon\Html;
 
-use Phalcon\Html\Escaper\EscaperInterface;
 use Phalcon\Factory\AbstractFactory;
+use Phalcon\Html\Escaper\EscaperInterface;
 use Phalcon\Html\Helper\Doctype;
 use Phalcon\Html\Helper\Input\Checkbox;
 use Phalcon\Html\Helper\Input\Color;
