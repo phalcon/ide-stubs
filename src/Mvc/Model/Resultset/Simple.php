@@ -110,4 +110,9 @@ class Simple extends Resultset
     public function __unserialize(array $data): void
     {
     }
+    
+    /**
+    * @return int
+    */
+    public function count(): int
 }
