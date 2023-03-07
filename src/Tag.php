@@ -51,58 +51,58 @@ class Tag
     /**
      * @var bool
      */
-    protected static $autoEscape = true;
+    static protected $autoEscape = true;
 
     /**
      * DI Container
      *
      * @var DiInterface|null
      */
-    protected static $container = null;
+    static protected $container = null;
 
     /**
      * Pre-assigned values for components
      *
      * @var array
      */
-    protected static $displayValues;
+    static protected $displayValues;
 
     /**
      * @var array
      */
-    protected static $documentAppendTitle;
+    static protected $documentAppendTitle;
 
     /**
      * @var array
      */
-    protected static $documentPrependTitle;
+    static protected $documentPrependTitle;
 
     /**
      * HTML document title
      *
      * @var string|null
      */
-    protected static $documentTitle = null;
+    static protected $documentTitle = null;
 
     /**
      * @var string|null
      */
-    protected static $documentTitleSeparator = null;
+    static protected $documentTitleSeparator = null;
 
     /**
      * @var int
      */
-    protected static $documentType = 11;
+    static protected $documentType = 11;
 
     /**
      * @var EscaperInterface|null
      */
-    protected static $escaperService = null;
+    static protected $escaperService = null;
 
     /**
      * @var UrlInterface|null
      */
-    protected static $urlService = null;
+    static protected $urlService = null;
 
     /**
      * Appends a text to current document title
@@ -862,7 +862,7 @@ class Tag
      * @param bool $asValue
      * @return string
      */
-    final protected static function inputField(string $type, $parameters, bool $asValue = false): string
+    static final protected function inputField(string $type, $parameters, bool $asValue = false): string
     {
     }
 
@@ -873,7 +873,7 @@ class Tag
      * @param mixed $parameters
      * @return string
      */
-    final protected static function inputFieldChecked(string $type, $parameters): string
+    static final protected function inputFieldChecked(string $type, $parameters): string
     {
     }
 }

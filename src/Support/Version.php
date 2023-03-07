@@ -87,7 +87,7 @@ class Version
      * @param int $special
      * @return string
      */
-    final protected function getSpecial(int $special): string
+    protected final function getSpecial(int $special): string
     {
     }
 

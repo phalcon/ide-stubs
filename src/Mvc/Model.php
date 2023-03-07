@@ -1642,7 +1642,7 @@ abstract class Model extends AbstractInjectionAware implements \Phalcon\Mvc\Enti
      * @param string $method
      * @param array $arguments
      */
-    final protected static function invokeFinder(string $method, array $arguments)
+    protected final static function invokeFinder(string $method, array $arguments)
     {
     }
 
