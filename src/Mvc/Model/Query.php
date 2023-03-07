@@ -208,7 +208,7 @@ class Query implements \Phalcon\Mvc\Model\QueryInterface, \Phalcon\Di\InjectionA
     /**
      * @var array|null
      */
-    static protected $internalPhqlCache;
+    protected static $internalPhqlCache;
 
     /**
      * Phalcon\Mvc\Model\Query constructor

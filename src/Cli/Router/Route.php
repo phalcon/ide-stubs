@@ -39,7 +39,7 @@ class Route implements \Phalcon\Cli\Router\RouteInterface
     /**
      * @var string
      */
-    static protected $delimiterPath = self::DEFAULT_DELIMITER;
+    protected static $delimiterPath = self::DEFAULT_DELIMITER;
 
     /**
      * @var string
@@ -69,7 +69,7 @@ class Route implements \Phalcon\Cli\Router\RouteInterface
     /**
      * @var int
      */
-    static protected $uniqueId = 0;
+    protected static $uniqueId = 0;
 
     /**
      * @param array|string $paths
