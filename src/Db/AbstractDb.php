@@ -9,7 +9,7 @@
  */
 namespace Phalcon\Db;
 
-use PDO as Pdo;
+use \PDO as Pdo;
 
 /**
  * Phalcon\Db and its related classes provide a simple SQL database interface

@@ -137,7 +137,7 @@ class Micro extends Injectable implements \ArrayAccess, \Phalcon\Events\EventsAw
     /**
      * Appends an 'after' middleware to be called after execute the route
      *
-     * @param callable $handler
+     * @param callable|MiddlewareInterface $handler
      * @return Micro
      */
     public function after($handler): Micro
@@ -157,7 +157,7 @@ class Micro extends Injectable implements \ArrayAccess, \Phalcon\Events\EventsAw
     /**
      * Appends a before middleware to be called before execute the route
      *
-     * @param callable $handler
+     * @param callable|MiddlewareInterface $handler
      * @return Micro
      */
     public function before($handler): Micro
