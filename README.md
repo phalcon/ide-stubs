@@ -36,7 +36,8 @@ find ide/ -type f -exec rename 's/\.zep//' '{}' \;
 3. Mass fix code style
 
 ```bash
-vendor/bin/phpcbf
+# Pick latest .phar from here: https://github.com/squizlabs/PHP_CodeSniffer/releases
+php phpcbf.phar --standard=PSR12 src
 ```
 
 4. Copy all files from `ide/%version%/Phalcon/` folder in `cphalcon` project
