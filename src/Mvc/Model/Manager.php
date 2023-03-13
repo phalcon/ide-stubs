@@ -724,6 +724,8 @@ class Manager implements \Phalcon\Mvc\Model\ManagerInterface, \Phalcon\Di\Inject
      *
      * @param string $modelName
      * @param string $key
+     *
+     * @return mixed
      */
     public function getReusableRecords(string $modelName, string $key)
     {
