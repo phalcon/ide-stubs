@@ -96,6 +96,15 @@ abstract class MetaData implements \Phalcon\Di\InjectionAwareInterface, \Phalcon
     protected $strategy = null;
 
     /**
+     * Return the internal cache adapter
+     *
+     * @return CacheAdapterInterface|null
+     */
+    public function getAdapter(): ?CacheAdapterInterface
+    {
+    }
+
+    /**
      * Returns table attributes names (fields)
      *
      * ```php

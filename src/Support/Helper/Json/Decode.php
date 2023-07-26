@@ -14,6 +14,15 @@ use InvalidArgumentException;
 /**
  * Decodes a string using `json_decode` and throws an exception if the
  * JSON data cannot be decoded
+ *
+ * The following options are used if none specified for json_encode
+ *
+ * JSON_HEX_TAG, JSON_HEX_APOS, JSON_HEX_AMP, JSON_HEX_QUOT,
+ * JSON_UNESCAPED_SLASHES
+ *
+ * If JSON_THROW_ON_ERROR is defined in the options a JsonException will be
+ * thrown in the case of an error. Otherwise, any error will throw
+ * InvalidArgumentException
  */
 class Decode
 {
@@ -28,7 +37,7 @@ class Decode
      * @throws InvalidArgumentException if the JSON cannot be decoded.
      * @link https://www.php.net/manual/en/function.json-decode.php
      */
-    public function __invoke(string $data, bool $associative = false, int $depth = 512, int $options = 0)
+    public function __invoke(string $data, bool $associative = false, int $depth = 512, int $options = 79)
     {
     }
 }

@@ -10,6 +10,7 @@
 namespace Phalcon\Encryption\Security\JWT\Token;
 
 use InvalidArgumentException;
+use Phalcon\Support\Helper\Json\Decode;
 
 /**
  * Token Parser class.
@@ -20,6 +21,18 @@ use InvalidArgumentException;
  */
 class Parser
 {
+    /**
+     * @var Decode
+     */
+    private $decode;
+
+    /**
+     * @param \Phalcon\Support\Helper\Json\Decode $decode
+     */
+    public function __construct(\Phalcon\Support\Helper\Json\Decode $decode = null)
+    {
+    }
+
     /**
      * Parse a token and return it
      *
@@ -73,18 +86,6 @@ class Parser
      * @return array
      */
     private function parseToken(string $token): array
-    {
-    }
-
-    /**
-     * @todo This will be removed when traits are introduced
-     * @param string $data
-     * @param bool $associative
-     * @param int $depth
-     * @param int $options
-     * @return mixed
-     */
-    private function decode(string $data, bool $associative = false, int $depth = 512, int $options = 0)
     {
     }
 

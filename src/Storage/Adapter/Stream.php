@@ -185,6 +185,18 @@ class Stream extends \Phalcon\Storage\Adapter\AbstractAdapter
     }
 
     /**
+     * Check if the key has the prefix and remove it, otherwise just return the
+     * key unaltered
+     *
+     * @param string $key
+     *
+     * @return string
+     */
+    private function getKeyWithoutPrefix(string $key): string
+    {
+    }
+
+    /**
      * Returns an iterator for the directory contents
      *
      * @param string $dir
