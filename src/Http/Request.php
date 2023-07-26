@@ -17,6 +17,7 @@ use Phalcon\Http\Message\RequestMethodInterface;
 use Phalcon\Http\Request\File;
 use Phalcon\Http\Request\FileInterface;
 use Phalcon\Http\Request\Exception;
+use Phalcon\Support\Helper\Json\Decode;
 use UnexpectedValueException;
 use stdClass;
 

@@ -9,8 +9,8 @@
  */
 namespace Phalcon\Config\Adapter;
 
-use InvalidArgumentException;
 use Phalcon\Config\Config;
+use Phalcon\Support\Helper\Json\Decode;
 
 /**
  * Reads JSON files and converts them to Phalcon\Config\Config objects.
@@ -40,18 +40,6 @@ class Json extends Config
      * @param string $filePath
      */
     public function __construct(string $filePath)
-    {
-    }
-
-    /**
-     * @todo This will be removed when traits are introduced
-     * @param string $data
-     * @param bool $associative
-     * @param int $depth
-     * @param int $options
-     * @return mixed
-     */
-    private function decode(string $data, bool $associative = false, int $depth = 512, int $options = 0)
     {
     }
 }

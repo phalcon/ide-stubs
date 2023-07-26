@@ -9,8 +9,8 @@
  */
 namespace Phalcon\Support\Debug;
 
-use InvalidArgumentException;
 use Phalcon\Di\Di;
+use Phalcon\Support\Helper\Json\Encode;
 use Reflection;
 use ReflectionClass;
 use ReflectionProperty;
@@ -49,6 +49,11 @@ class Dump
      * @var array
      */
     protected $styles = [];
+
+    /**
+     * @var Encode
+     */
+    private $encode;
 
     /**
      * Phalcon\Debug\Dump constructor
@@ -180,17 +185,6 @@ class Dump
      * @return string
      */
     protected function output($variable, string $name = null, int $tab = 1): string
-    {
-    }
-
-    /**
-     * @todo This will be removed when traits are introduced
-     * @param mixed $data
-     * @param int $options
-     * @param int $depth
-     * @return string
-     */
-    private function encode($data, int $options = 0, int $depth = 512): string
     {
     }
 }

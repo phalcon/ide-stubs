@@ -486,6 +486,7 @@ class View extends Injectable implements \Phalcon\Mvc\ViewInterface, \Phalcon\Ev
     /**
      * Returns a parameter previously set in the view
      *
+     * @return mixed|null
      * @param string $key
      */
     public function getVar(string $key)

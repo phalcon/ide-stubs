@@ -11,19 +11,19 @@ namespace Phalcon\Http;
 
 use DateTime;
 use DateTimeZone;
-use InvalidArgumentException;
 use Phalcon\Di\Di;
 use Phalcon\Di\DiInterface;
-use Phalcon\Http\Message\ResponseStatusCodeInterface;
-use Phalcon\Http\Response\Exception;
-use Phalcon\Http\Response\HeadersInterface;
-use Phalcon\Http\Response\CookiesInterface;
-use Phalcon\Mvc\Url\UrlInterface;
-use Phalcon\Mvc\ViewInterface;
-use Phalcon\Http\Response\Headers;
 use Phalcon\Di\InjectionAwareInterface;
 use Phalcon\Events\EventsAwareInterface;
 use Phalcon\Events\ManagerInterface;
+use Phalcon\Http\Message\ResponseStatusCodeInterface;
+use Phalcon\Http\Response\CookiesInterface;
+use Phalcon\Http\Response\Exception;
+use Phalcon\Http\Response\HeadersInterface;
+use Phalcon\Mvc\Url\UrlInterface;
+use Phalcon\Mvc\ViewInterface;
+use Phalcon\Http\Response\Headers;
+use Phalcon\Support\Helper\Json\Encode;
 
 /**
  * Part of the HTTP cycle is return responses to the clients.
@@ -80,6 +80,11 @@ class Response implements \Phalcon\Http\ResponseInterface, \Phalcon\Di\Injection
      * @var array
      */
     protected $statusCodes = [];
+
+    /**
+     * @var Encode
+     */
+    private $encode;
 
     /**
      * Phalcon\Http\Response constructor
@@ -515,17 +520,6 @@ class Response implements \Phalcon\Http\ResponseInterface, \Phalcon\Di\Injection
      * @return string
      */
     private function getBasename(string $uri, $suffix = null): string
-    {
-    }
-
-    /**
-     * @todo This will be removed when traits are introduced
-     * @param mixed $data
-     * @param int $options
-     * @param int $depth
-     * @return string
-     */
-    private function encode($data, int $options = 0, int $depth = 512): string
     {
     }
 }

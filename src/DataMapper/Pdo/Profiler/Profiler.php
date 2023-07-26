@@ -9,10 +9,10 @@
  */
 namespace Phalcon\DataMapper\Pdo\Profiler;
 
-use InvalidArgumentException;
 use Phalcon\DataMapper\Pdo\Exception\Exception;
 use Phalcon\Logger\Enum;
 use Phalcon\Logger\LoggerInterface;
+use Phalcon\Support\Helper\Json\Encode;
 
 /**
  * Sends query profiles to a logger.
@@ -43,6 +43,11 @@ class Profiler implements \Phalcon\DataMapper\Pdo\Profiler\ProfilerInterface
      * @var LoggerInterface
      */
     protected $logger;
+
+    /**
+     * @var Encode
+     */
+    private $encode;
 
     /**
      * Constructor.
@@ -140,17 +145,6 @@ class Profiler implements \Phalcon\DataMapper\Pdo\Profiler\ProfilerInterface
      * @return void
      */
     public function start(string $method): void
-    {
-    }
-
-    /**
-     * @todo This will be removed when traits are introduced
-     * @param mixed $data
-     * @param int $options
-     * @param int $depth
-     * @return string
-     */
-    private function encode($data, int $options = 0, int $depth = 512): string
     {
     }
 }
