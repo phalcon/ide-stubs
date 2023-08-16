@@ -986,4 +986,13 @@ class Request extends AbstractInjectionAware implements \Phalcon\Http\RequestInt
     private function getPatchPut(string $collection, string $name = null, $filters = null, $defaultValue = null, bool $notAllowEmpty = false, bool $noRecursive = false)
     {
     }
+
+    /**
+     * parse multipart/form-data from raw data
+     *
+     * @return array
+     */
+    private function getFormData(): array
+    {
+    }
 }

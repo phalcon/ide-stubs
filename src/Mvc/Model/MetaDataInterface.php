@@ -175,25 +175,26 @@ interface MetaDataInterface
      *
      * @param \Phalcon\Mvc\ModelInterface $model
      * @param int $index
+     * @return array|null
      */
-    public function readColumnMapIndex(\Phalcon\Mvc\ModelInterface $model, int $index);
+    public function readColumnMapIndex(\Phalcon\Mvc\ModelInterface $model, int $index): ?array;
 
     /**
      * Reads meta-data for certain model
      *
      * @param \Phalcon\Mvc\ModelInterface $model
-     * @return array
+     * @return array|null
      */
-    public function readMetaData(\Phalcon\Mvc\ModelInterface $model): array;
+    public function readMetaData(\Phalcon\Mvc\ModelInterface $model): ?array;
 
     /**
      * Reads meta-data for certain model using a MODEL_ constant
      *
      * @param \Phalcon\Mvc\ModelInterface $model
      * @param int $index
-     * @return mixed
+     * @return array|null
      */
-    public function readMetaDataIndex(\Phalcon\Mvc\ModelInterface $model, int $index);
+    public function readMetaDataIndex(\Phalcon\Mvc\ModelInterface $model, int $index): ?array;
 
     /**
      * Resets internal meta-data in order to regenerate it

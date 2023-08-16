@@ -20,7 +20,14 @@ use Phalcon\Support\Collection\CollectionInterface;
 use Phalcon\Support\Helper\Json\Encode;
 
 /**
- * JWT Builder
+ * Builder
+ *
+ * The builder offers
+ *
+ * @property CollectionInterface $claims
+ * @property CollectionInterface $jose
+ * @property string              $passphrase
+ * @property SignerInterface     $signer
  *
  * @link https://tools.ietf.org/html/rfc7519
  */
@@ -76,6 +83,18 @@ class Builder
      * @return Builder
      */
     public function addClaim(string $name, $value): Builder
+    {
+    }
+
+    /**
+     * Adds a custom header
+     *
+     * @param string $name
+     * @param mixed  $value
+     *
+     * @return Builder
+     */
+    public function addHeader(string $name, $value): Builder
     {
     }
 
