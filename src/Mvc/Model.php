@@ -2220,4 +2220,14 @@ abstract class Model extends AbstractInjectionAware implements \Phalcon\Mvc\Enti
     private static function caseInsensitiveColumnMap($columnMap, $key): string
     {
     }
+
+    /**
+     * Append messages to this model from another Model.
+     *
+     * @param mixed $model
+     * @return void
+     */
+    public function appendMessagesFrom($model): void
+    {
+    }
 }
