@@ -40,6 +40,8 @@ use Phalcon\Mvc\Model\TransactionInterface;
 use Phalcon\Mvc\Model\ValidationFailed;
 use Phalcon\Mvc\ModelInterface;
 use Phalcon\Filter\Validation\ValidationInterface;
+use Phalcon\Support\Collection;
+use Phalcon\Support\Collection\CollectionInterface;
 use Serializable;
 
 /**
@@ -1295,6 +1297,17 @@ abstract class Model extends AbstractInjectionAware implements \Phalcon\Mvc\Enti
     }
 
     /**
+     * Inserted or updates model instance, expects a visited list of objects.
+     *
+     * @param CollectionInterface $visited
+     *
+     * @return bool
+     */
+    public function doSave(\Phalcon\Support\Collection\CollectionInterface $visited): bool
+    {
+    }
+
+    /**
      * Serializes the object ignoring connections, services, related objects or
      * static properties
      *
@@ -1673,10 +1686,11 @@ abstract class Model extends AbstractInjectionAware implements \Phalcon\Mvc\Enti
      * Saves related records that must be stored prior to save the master record
      *
      * @param ModelInterface[] $related
+     * @param CollectionInterface $visited
      * @return bool
      * @param \Phalcon\Db\Adapter\AdapterInterface $connection
      */
-    protected function preSaveRelatedRecords(\Phalcon\Db\Adapter\AdapterInterface $connection, $related): bool
+    protected function preSaveRelatedRecords(\Phalcon\Db\Adapter\AdapterInterface $connection, $related, \Phalcon\Support\Collection\CollectionInterface $visited): bool
     {
     }
 
@@ -1695,10 +1709,11 @@ abstract class Model extends AbstractInjectionAware implements \Phalcon\Mvc\Enti
      * Save the related records assigned in the has-one/has-many relations
      *
      * @param ModelInterface[] $related
+     * @param CollectionInterface $visited
      * @return bool
      * @param \Phalcon\Db\Adapter\AdapterInterface $connection
      */
-    protected function postSaveRelatedRecords(\Phalcon\Db\Adapter\AdapterInterface $connection, $related): bool
+    protected function postSaveRelatedRecords(\Phalcon\Db\Adapter\AdapterInterface $connection, $related, \Phalcon\Support\Collection\CollectionInterface $visited): bool
     {
     }
 
