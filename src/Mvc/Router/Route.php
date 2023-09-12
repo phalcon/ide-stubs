@@ -42,9 +42,9 @@ class Route implements \Phalcon\Mvc\Router\RouteInterface
     protected $hostname = null;
 
     /**
-     * @var string|null
+     * @var string
      */
-    protected $id = null;
+    protected $id = '';
 
     /**
      * @var array|string
@@ -204,9 +204,9 @@ class Route implements \Phalcon\Mvc\Router\RouteInterface
     }
 
     /**
-     * @return string | null
+     * @return string
      */
-    public function getId(): ?string
+    public function getId(): string
     {
     }
 
