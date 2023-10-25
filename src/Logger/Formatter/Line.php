@@ -29,8 +29,10 @@ class Line extends \Phalcon\Logger\Formatter\AbstractFormatter
      *
      * @param string $format
      * @param string $dateFormat
+     * @param string $interpolatorLeft
+     * @param string $interpolatorRight
      */
-    public function __construct(string $format = '[%date%][%level%] %message%', string $dateFormat = 'c')
+    public function __construct(string $format = '[%date%][%level%] %message%', string $dateFormat = 'c', string $interpolatorLeft = '%', string $interpolatorRight = '%')
     {
     }
 

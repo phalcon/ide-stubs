@@ -9,9 +9,9 @@
  */
 namespace Phalcon\Filter\Validation\Validator\File;
 
-use Phalcon\Messages\Message;
 use Phalcon\Filter\Validation;
 use Phalcon\Filter\Validation\AbstractValidator;
+use Phalcon\Messages\Message;
 
 /**
  * Checks if a value has a correct file
@@ -79,10 +79,12 @@ abstract class AbstractFile extends AbstractValidator
      * Check upload
      *
      * @param Validation $validation
-     * @param mixed $field
+     * @param string     $field
+     *
      * @return bool
+     * @throws Validation\Exception
      */
-    public function checkUpload(\Phalcon\Filter\Validation $validation, $field): bool
+    public function checkUpload(\Phalcon\Filter\Validation $validation, string $field): bool
     {
     }
 
@@ -90,10 +92,12 @@ abstract class AbstractFile extends AbstractValidator
      * Check if upload is empty
      *
      * @param Validation $validation
-     * @param mixed $field
-     * @return boolean
+     * @param string     $field
+     *
+     * @return bool
+     * @throws Validation\Exception
      */
-    public function checkUploadIsEmpty(\Phalcon\Filter\Validation $validation, $field): bool
+    public function checkUploadIsEmpty(\Phalcon\Filter\Validation $validation, string $field): bool
     {
     }
 
@@ -101,10 +105,12 @@ abstract class AbstractFile extends AbstractValidator
      * Check if upload is valid
      *
      * @param Validation $validation
-     * @param mixed $field
-     * @return boolean
+     * @param string     $field
+     *
+     * @return bool
+     * @throws Validation\Exception
      */
-    public function checkUploadIsValid(\Phalcon\Filter\Validation $validation, $field): bool
+    public function checkUploadIsValid(\Phalcon\Filter\Validation $validation, string $field): bool
     {
     }
 
@@ -112,10 +118,12 @@ abstract class AbstractFile extends AbstractValidator
      * Check if uploaded file is larger than PHP allowed size
      *
      * @param Validation $validation
-     * @param mixed $field
-     * @return boolean
+     * @param string     $field
+     *
+     * @return bool
+     * @throws Validation\Exception
      */
-    public function checkUploadMaxSize(\Phalcon\Filter\Validation $validation, $field): bool
+    public function checkUploadMaxSize(\Phalcon\Filter\Validation $validation, string $field): bool
     {
     }
 
@@ -123,6 +131,7 @@ abstract class AbstractFile extends AbstractValidator
      * Convert a string like "2.5MB" in bytes
      *
      * @param string $size
+     *
      * @return float
      */
     public function getFileSizeInBytes(string $size): float
@@ -160,8 +169,10 @@ abstract class AbstractFile extends AbstractValidator
      * Check on empty
      *
      * @param Validation $validation
-     * @param string $field
+     * @param string     $field
+     *
      * @return bool
+     * @throws Validation\Exception
      */
     public function isAllowEmpty(\Phalcon\Filter\Validation $validation, string $field): bool
     {
@@ -202,9 +213,10 @@ abstract class AbstractFile extends AbstractValidator
 
     /**
      * Checks if a file has been uploaded; Internal check that can be
-     * overriden in a subclass if you do not want to check uploaded files
+     * overridden in a subclass if you do not want to check uploaded files
      *
      * @param string $name
+     *
      * @return bool
      */
     protected function checkIsUploadedFile(string $name): bool

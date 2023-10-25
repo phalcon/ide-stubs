@@ -45,6 +45,15 @@ abstract class AbstractSeries extends \Phalcon\Html\Helper\AbstractHelper
     }
 
     /**
+     * Resets the internal store.
+     *
+     * @return AbstractSeries
+     */
+    public function reset(): AbstractSeries
+    {
+    }
+
+    /**
      * Returns the tag name.
      *
      * @return string
