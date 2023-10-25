@@ -9,10 +9,6 @@
  */
 namespace Phalcon\Filter\Validation\Validator\File\Size;
 
-use Phalcon\Messages\Message;
-use Phalcon\Filter\Validation;
-use Phalcon\Filter\Validation\Validator\File\AbstractFile;
-
 /**
  * Checks if a value has a correct file
  *
@@ -57,32 +53,23 @@ use Phalcon\Filter\Validation\Validator\File\AbstractFile;
  * );
  * ```
  */
-class Max extends AbstractFile
+class Max extends \Phalcon\Filter\Validation\Validator\File\Size\Equal
 {
+    /**
+     * @var string|null
+     */
     protected $template = 'File :field exceeds the size of :size';
 
     /**
-     * Constructor
+     * Executes the conditional
      *
-     * @param array $options = [
-     *     'message' => '',
-     *     'template' => '',
-     *     'size' => '2.5MB',
-     *     'included' => false
-     * ]
-     */
-    public function __construct(array $options = [])
-    {
-    }
-
-    /**
-     * Executes the validation
+     * @param float $source
+     * @param float $target
+     * @param bool  $included
      *
-     * @param \Phalcon\Filter\Validation $validation
-     * @param mixed $field
      * @return bool
      */
-    public function validate(\Phalcon\Filter\Validation $validation, $field): bool
+    protected function getConditional(float $source, float $target, bool $included = false)
     {
     }
 }

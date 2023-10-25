@@ -9,7 +9,6 @@
  */
 namespace Phalcon\Filter\Validation\Validator\File\Size;
 
-use Phalcon\Messages\Message;
 use Phalcon\Filter\Validation;
 use Phalcon\Filter\Validation\Validator\File\AbstractFile;
 
@@ -59,29 +58,34 @@ use Phalcon\Filter\Validation\Validator\File\AbstractFile;
  */
 class Equal extends AbstractFile
 {
-    protected $template = 'File :field does not have the exact :size file size';
-
     /**
-     * Constructor
-     *
-     * @param array $options = [
-     *     'message' => '',
-     *     'template' => '',
-     *     'size' => '2.5MB'
-     * ]
+     * @var string|null
      */
-    public function __construct(array $options = [])
-    {
-    }
+    protected $template = 'File :field does not have the exact :size file size';
 
     /**
      * Executes the validation
      *
-     * @param \Phalcon\Filter\Validation $validation
-     * @param mixed $field
+     * @param Validation $validation
+     * @param mixed      $field
+     *
      * @return bool
+     * @throws Validation\Exception
      */
     public function validate(\Phalcon\Filter\Validation $validation, $field): bool
+    {
+    }
+
+    /**
+     * Executes the conditional
+     *
+     * @param float $source
+     * @param float $target
+     * @param bool  $included
+     *
+     * @return bool
+     */
+    protected function getConditional(float $source, float $target, bool $included = false)
     {
     }
 }

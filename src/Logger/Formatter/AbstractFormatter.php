@@ -26,11 +26,27 @@ abstract class AbstractFormatter extends AbstractStr implements \Phalcon\Logger\
     protected $dateFormat = 'c';
 
     /**
-     * Return the default date format
-     *
+     * @var string
+     */
+    protected $interpolatorLeft = '%';
+
+    /**
+     * @var string
+     */
+    protected $interpolatorRight = '%';
+
+    /**
      * @return string
      */
     public function getDateFormat(): string
+    {
+    }
+
+    /**
+     * @param string $format
+     * @return void
+     */
+    public function setDateFormat(string $format): void
     {
     }
 
@@ -46,13 +62,12 @@ abstract class AbstractFormatter extends AbstractStr implements \Phalcon\Logger\
     }
 
     /**
-     * Set the default date format
+     * @param Item   $item
+     * @param string $message
      *
-     * @param string $format
-     *
-     * @return void
+     * @return string
      */
-    public function setDateFormat(string $format): void
+    protected function getInterpolatedMessage(\Phalcon\Logger\Item $item, string $message): string
     {
     }
 }

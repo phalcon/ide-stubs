@@ -27,23 +27,6 @@ interface ValidatorInterface
     public function getOption(string $key, $defaultValue = null);
 
     /**
-     * Checks if an option is defined
-     *
-     * @return boolean
-     * @param string $key
-     */
-    public function hasOption(string $key): bool;
-
-    /**
-     * Executes the validation
-     *
-     * @return boolean
-     * @param \Phalcon\Filter\Validation $validation
-     * @param mixed $field
-     */
-    public function validate(\Phalcon\Filter\Validation $validation, $field): bool;
-
-    /**
      * Get the template message
      *
      * @return string
@@ -60,12 +43,12 @@ interface ValidatorInterface
     public function getTemplates(): array;
 
     /**
-     * Clear current template and set new from an array,
+     * Checks if an option is defined
      *
-     * @return ValidatorInterface
-     * @param array $templates
+     * @return boolean
+     * @param string $key
      */
-    public function setTemplates(array $templates): ValidatorInterface;
+    public function hasOption(string $key): bool;
 
     /**
      * Set a new template message
@@ -74,4 +57,21 @@ interface ValidatorInterface
      * @param string $template
      */
     public function setTemplate(string $template): ValidatorInterface;
+
+    /**
+     * Clear current template and set new from an array,
+     *
+     * @return ValidatorInterface
+     * @param array $templates
+     */
+    public function setTemplates(array $templates): ValidatorInterface;
+
+    /**
+     * Executes the validation
+     *
+     * @return boolean
+     * @param \Phalcon\Filter\Validation $validation
+     * @param mixed $field
+     */
+    public function validate(\Phalcon\Filter\Validation $validation, $field): bool;
 }

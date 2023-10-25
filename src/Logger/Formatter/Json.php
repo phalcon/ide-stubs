@@ -21,8 +21,10 @@ class Json extends \Phalcon\Logger\Formatter\AbstractFormatter
      * Json constructor.
      *
      * @param string $dateFormat
+     * @param string $interpolatorLeft
+     * @param string $interpolatorRight
      */
-    public function __construct(string $dateFormat = 'c')
+    public function __construct(string $dateFormat = 'c', string $interpolatorLeft = '%', string $interpolatorRight = '%')
     {
     }
 

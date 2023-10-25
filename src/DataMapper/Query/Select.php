@@ -97,14 +97,14 @@ class Select extends \Phalcon\DataMapper\Query\AbstractConditions
     }
 
     /**
-     * The columns to select from. If a key is set in an array element, the
+     * The columns to select from. If a key is set in the array element, the
      * key will be used as the alias
      *
-     * @param string ...$column
+     * @param array $columns
      *
      * @return Select
      */
-    public function columns(): Select
+    public function columns(array $columns): Select
     {
     }
 
