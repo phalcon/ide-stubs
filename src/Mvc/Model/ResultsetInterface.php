@@ -51,14 +51,14 @@ interface ResultsetInterface
      *
      * @return mixed|null
      */
-    public function getCache();
+    public function getCache(): mixed;
 
     /**
      * Get first row in the resultset
      *
      * @return ModelInterface|Row|null
      */
-    public function getFirst();
+    public function getFirst(): mixed;
 
     /**
      * Returns the current hydration mode
@@ -72,7 +72,7 @@ interface ResultsetInterface
      *
      * @return ModelInterface|null
      */
-    public function getLast(): ?ModelInterface;
+    public function getLast(): ModelInterface|null;
 
     /**
      * Returns the error messages produced by a batch operation

@@ -41,7 +41,7 @@ interface CollectionInterface
      *
      * @return mixed
      */
-    public function getHandler();
+    public function getHandler(): mixed;
 
     /**
      * Returns the registered handlers

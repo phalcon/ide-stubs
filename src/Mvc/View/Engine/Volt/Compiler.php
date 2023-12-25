@@ -479,7 +479,7 @@ class Compiler implements \Phalcon\Di\InjectionAwareInterface
      * @param string $option *
      * @return string|null
      */
-    public function getOption(string $option): ?string
+    public function getOption(string $option): string|null
     {
     }
 

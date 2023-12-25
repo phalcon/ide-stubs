@@ -99,7 +99,7 @@ abstract class AbstractAdapter implements \Phalcon\Storage\Adapter\AdapterInterf
      *
      * @return int | bool
      */
-    abstract public function decrement(string $key, int $value = 1);
+    abstract public function decrement(string $key, int $value = 1): int|bool;
 
     /**
      * Deletes data from the adapter
@@ -118,7 +118,7 @@ abstract class AbstractAdapter implements \Phalcon\Storage\Adapter\AdapterInterf
      *
      * @return mixed
      */
-    public function get(string $key, $defaultValue = null)
+    public function get(string $key, $defaultValue = null): mixed
     {
     }
 
@@ -127,7 +127,7 @@ abstract class AbstractAdapter implements \Phalcon\Storage\Adapter\AdapterInterf
      *
      * @return mixed
      */
-    public function getAdapter()
+    public function getAdapter(): mixed
     {
     }
 
@@ -175,7 +175,7 @@ abstract class AbstractAdapter implements \Phalcon\Storage\Adapter\AdapterInterf
      *
      * @return int | bool
      */
-    abstract public function increment(string $key, int $value = 1);
+    abstract public function increment(string $key, int $value = 1): int|bool;
 
     /**
      * Stores data in the adapter
@@ -235,7 +235,7 @@ abstract class AbstractAdapter implements \Phalcon\Storage\Adapter\AdapterInterf
      *
      * @return mixed
      */
-    protected function getSerializedData($content)
+    protected function getSerializedData($content): mixed
     {
     }
 
@@ -259,7 +259,7 @@ abstract class AbstractAdapter implements \Phalcon\Storage\Adapter\AdapterInterf
      *
      * @return mixed
      */
-    protected function getUnserializedData($content, $defaultValue = null)
+    protected function getUnserializedData($content, $defaultValue = null): mixed
     {
     }
 
@@ -281,7 +281,7 @@ abstract class AbstractAdapter implements \Phalcon\Storage\Adapter\AdapterInterf
      * @param string $cast
      * @return mixed
      */
-    protected function getArrVal(array $collection, $index, $defaultValue = null, string $cast = null)
+    protected function getArrVal(array $collection, $index, $defaultValue = null, string $cast = null): mixed
     {
     }
 }

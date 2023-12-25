@@ -65,7 +65,7 @@ class Validator
      *
      * @return mixed
      */
-    public function get(string $claim)
+    public function get(string $claim): mixed
     {
     }
 

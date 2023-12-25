@@ -79,7 +79,7 @@ class Collection implements \Phalcon\Mvc\Micro\CollectionInterface
      *
      * @return mixed
      */
-    public function getHandler()
+    public function getHandler(): mixed
     {
     }
 

@@ -39,7 +39,7 @@ interface ResponseInterface
      *
      * @return int|null
      */
-    public function getStatusCode(): ?int;
+    public function getStatusCode(): int|null;
 
     /**
      * Returns headers set by the user
@@ -190,5 +190,5 @@ interface ResponseInterface
      *
      * @return bool|ResponseInterface
      */
-    public function sendHeaders();
+    public function sendHeaders(): ResponseInterface|bool;
 }

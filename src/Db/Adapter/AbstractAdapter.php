@@ -428,7 +428,7 @@ abstract class AbstractAdapter implements \Phalcon\Db\Adapter\AdapterInterface, 
      * @param mixed $column
      * @return string|bool
      */
-    public function fetchColumn(string $sqlQuery, array $placeholders = [], $column = 0)
+    public function fetchColumn(string $sqlQuery, array $placeholders = [], $column = 0): bool|string
     {
     }
 
@@ -581,7 +581,7 @@ abstract class AbstractAdapter implements \Phalcon\Db\Adapter\AdapterInterface, 
      *
      * @return ManagerInterface|null
      */
-    public function getEventsManager(): ?ManagerInterface
+    public function getEventsManager(): ManagerInterface|null
     {
     }
 

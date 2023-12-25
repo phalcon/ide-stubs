@@ -104,7 +104,7 @@ class Di implements \Phalcon\Di\DiInterface
      * @param array $arguments
      * @return mixed|null
      */
-    public function __call(string $method, array $arguments = [])
+    public function __call(string $method, array $arguments = []): mixed
     {
     }
 
@@ -118,7 +118,7 @@ class Di implements \Phalcon\Di\DiInterface
      * @param bool $shared
      * @return bool|ServiceInterface
      */
-    public function attempt(string $name, $definition, bool $shared = false)
+    public function attempt(string $name, $definition, bool $shared = false): ServiceInterface|bool
     {
     }
 
@@ -129,7 +129,7 @@ class Di implements \Phalcon\Di\DiInterface
      * @param mixed $parameters
      * @return mixed
      */
-    public function get(string $name, $parameters = null)
+    public function get(string $name, $parameters = null): mixed
     {
     }
 
@@ -138,7 +138,7 @@ class Di implements \Phalcon\Di\DiInterface
      *
      * @return DiInterface|null
      */
-    public static function getDefault(): ?DiInterface
+    public static function getDefault(): DiInterface|null
     {
     }
 
@@ -147,7 +147,7 @@ class Di implements \Phalcon\Di\DiInterface
      *
      * @return ManagerInterface|null
      */
-    public function getInternalEventsManager(): ?ManagerInterface
+    public function getInternalEventsManager(): ManagerInterface|null
     {
     }
 
@@ -157,7 +157,7 @@ class Di implements \Phalcon\Di\DiInterface
      * @param string $name
      * @return mixed
      */
-    public function getRaw(string $name)
+    public function getRaw(string $name): mixed
     {
     }
 
@@ -188,7 +188,7 @@ class Di implements \Phalcon\Di\DiInterface
      * @param mixed $parameters
      * @return mixed
      */
-    public function getShared(string $name, $parameters = null)
+    public function getShared(string $name, $parameters = null): mixed
     {
     }
 
@@ -300,7 +300,7 @@ class Di implements \Phalcon\Di\DiInterface
      * @param mixed $name
      * @return mixed
      */
-    public function offsetGet($name)
+    public function offsetGet($name): mixed
     {
     }
 
@@ -321,11 +321,11 @@ class Di implements \Phalcon\Di\DiInterface
      * $di["request"] = new \Phalcon\Http\Request();
      * ```
      *
-     * @param mixed $name
-     * @param mixed $definition
+     * @param mixed $offset
+     * @param mixed $value
      * @return void
      */
-    public function offsetSet($name, $definition): void
+    public function offsetSet($offset, $value): void
     {
     }
 

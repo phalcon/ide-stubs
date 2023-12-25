@@ -75,9 +75,9 @@ class Ini extends Config
      *
      * @param mixed $ini
      *
-     * @return array|float|int|mixed|string|null
+     * @return mixed
      */
-    protected function cast($ini)
+    protected function cast($ini): mixed
     {
     }
 

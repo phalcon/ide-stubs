@@ -274,6 +274,7 @@ class Memory extends \Phalcon\Acl\Adapter\AbstractAdapter
      *
      * // Allow access to any role to browse on any component
      * $acl->allow("", "", "browse");
+     * ```
      *
      * @param string $roleName
      * @param string $componentName
@@ -328,7 +329,7 @@ class Memory extends \Phalcon\Acl\Adapter\AbstractAdapter
      *
      * @return mixed
      */
-    public function getActiveFunction()
+    public function getActiveFunction(): mixed
     {
     }
 
@@ -346,7 +347,7 @@ class Memory extends \Phalcon\Acl\Adapter\AbstractAdapter
      *
      * @return string|null
      */
-    public function getActiveKey(): ?string
+    public function getActiveKey(): string|null
     {
     }
 
@@ -465,7 +466,7 @@ class Memory extends \Phalcon\Acl\Adapter\AbstractAdapter
      * @param string $access
      * @return string|bool
      */
-    private function canAccess(string $roleName, string $componentName, string $access)
+    private function canAccess(string $roleName, string $componentName, string $access): bool|string
     {
     }
 

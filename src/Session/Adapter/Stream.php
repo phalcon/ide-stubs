@@ -68,7 +68,7 @@ class Stream extends \Phalcon\Session\Adapter\Noop
      * @param int $maxlifetime
      * @return false|int
      */
-    public function gc(int $maxlifetime)
+    public function gc(int $maxlifetime): int|false
     {
     }
 
@@ -76,10 +76,10 @@ class Stream extends \Phalcon\Session\Adapter\Noop
      * Ignore the savePath and use local defined path
      *
      * @return bool
-     * @param mixed $savePath
-     * @param mixed $sessionName
+     * @param mixed $path
+     * @param mixed $name
      */
-    public function open($savePath, $sessionName): bool
+    public function open($path, $name): bool
     {
     }
 
@@ -94,11 +94,11 @@ class Stream extends \Phalcon\Session\Adapter\Noop
     }
 
     /**
-     * @param mixed $sessionId
+     * @param mixed $id
      * @param mixed $data
      * @return bool
      */
-    public function write($sessionId, $data): bool
+    public function write($id, $data): bool
     {
     }
 
@@ -110,7 +110,7 @@ class Stream extends \Phalcon\Session\Adapter\Noop
      * @param string $cast
      * @return mixed
      */
-    protected function getArrVal(array $collection, $index, $defaultValue = null, string $cast = null)
+    protected function getArrVal(array $collection, $index, $defaultValue = null, string $cast = null): mixed
     {
     }
 

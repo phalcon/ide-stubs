@@ -197,7 +197,7 @@ interface GroupInterface
      *
      * @return array|string
      */
-    public function getPaths();
+    public function getPaths(): string|array;
 
     /**
      * Returns the common prefix for all the routes

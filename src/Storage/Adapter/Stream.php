@@ -71,7 +71,7 @@ class Stream extends \Phalcon\Storage\Adapter\AbstractAdapter
      *
      * @return bool|int
      */
-    public function decrement(string $key, int $value = 1)
+    public function decrement(string $key, int $value = 1): int|bool
     {
     }
 
@@ -94,7 +94,7 @@ class Stream extends \Phalcon\Storage\Adapter\AbstractAdapter
      *
      * @return mixed|null
      */
-    public function get(string $key, $defaultValue = null)
+    public function get(string $key, $defaultValue = null): mixed
     {
     }
 
@@ -128,7 +128,7 @@ class Stream extends \Phalcon\Storage\Adapter\AbstractAdapter
      *
      * @return bool|int
      */
-    public function increment(string $key, int $value = 1)
+    public function increment(string $key, int $value = 1): int|bool
     {
     }
 
@@ -255,7 +255,7 @@ class Stream extends \Phalcon\Storage\Adapter\AbstractAdapter
      * @param string $filename
      * @return string|bool
      */
-    protected function phpFileGetContents(string $filename)
+    protected function phpFileGetContents(string $filename): bool|string
     {
     }
 
@@ -266,7 +266,7 @@ class Stream extends \Phalcon\Storage\Adapter\AbstractAdapter
      * @param mixed $context
      * @return int|bool
      */
-    protected function phpFilePutContents(string $filename, $data, int $flags = 0, $context = null)
+    protected function phpFilePutContents(string $filename, $data, int $flags = 0, $context = null): int|bool
     {
     }
 
@@ -275,7 +275,7 @@ class Stream extends \Phalcon\Storage\Adapter\AbstractAdapter
      * @param string $mode
      * @return mixed
      */
-    protected function phpFopen(string $filename, string $mode)
+    protected function phpFopen(string $filename, string $mode): mixed
     {
     }
 

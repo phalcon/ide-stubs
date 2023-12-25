@@ -76,7 +76,7 @@ interface CookieInterface
      * @param mixed $defaultValue
      * @return mixed
      */
-    public function getValue($filters = null, $defaultValue = null);
+    public function getValue($filters = null, $defaultValue = null): mixed;
 
     /**
      * Check if the cookie is using implicit encryption

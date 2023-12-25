@@ -34,7 +34,7 @@ class Memory extends MetaData
      * @param string $key
      * @return array|null
      */
-    public function read(string $key): ?array
+    public function read(string $key): array|null
     {
     }
 

@@ -25,7 +25,7 @@ class Direct extends \Phalcon\Flash\AbstractFlash
      * @return string|null
      * @throws Exception
      */
-    public function message(string $type, $message): ?string
+    public function message(string $type, $message): string|null
     {
     }
 

@@ -333,7 +333,7 @@ class Group implements \Phalcon\Mvc\Router\GroupInterface
      *
      * @return array|string
      */
-    public function getPaths()
+    public function getPaths(): string|array
     {
     }
 

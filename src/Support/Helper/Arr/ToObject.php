@@ -19,7 +19,7 @@ class ToObject
      *
      * @return object
      */
-    public function __invoke(array $collection)
+    public function __invoke(array $collection): object
     {
     }
 }

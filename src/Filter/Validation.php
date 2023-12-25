@@ -115,7 +115,7 @@ class Validation extends Injectable implements \Phalcon\Filter\Validation\Valida
     /**
      * @return mixed
      */
-    public function getData()
+    public function getData(): mixed
     {
     }
 
@@ -124,7 +124,7 @@ class Validation extends Injectable implements \Phalcon\Filter\Validation\Valida
      *
      * @return object
      */
-    public function getEntity()
+    public function getEntity(): mixed
     {
     }
 
@@ -134,7 +134,7 @@ class Validation extends Injectable implements \Phalcon\Filter\Validation\Valida
      * @param string $field
      * @return mixed|null
      */
-    public function getFilters(string $field = null)
+    public function getFilters(string $field = null): mixed
     {
     }
 
@@ -173,7 +173,7 @@ class Validation extends Injectable implements \Phalcon\Filter\Validation\Valida
      * @param string $field
      * @return mixed|null
      */
-    public function getValueByEntity($entity, string $field)
+    public function getValueByEntity($entity, string $field): mixed
     {
     }
 
@@ -184,7 +184,7 @@ class Validation extends Injectable implements \Phalcon\Filter\Validation\Valida
      * @param string $field
      * @return mixed|null
      */
-    public function getValueByData($data, string $field)
+    public function getValueByData($data, string $field): mixed
     {
     }
 
@@ -194,7 +194,7 @@ class Validation extends Injectable implements \Phalcon\Filter\Validation\Valida
      * @param string $field
      * @return mixed|null
      */
-    public function getValue(string $field)
+    public function getValue(string $field): mixed
     {
     }
 

@@ -287,7 +287,7 @@ interface AdapterInterface
      * @param mixed $column
      * @return string|bool
      */
-    public function fetchColumn(string $sqlQuery, array $placeholders = [], $column = 0);
+    public function fetchColumn(string $sqlQuery, array $placeholders = [], $column = 0): bool|string;
 
     /**
      * Returns the first row in a SQL query result
@@ -388,7 +388,7 @@ interface AdapterInterface
      *
      * @return mixed
      */
-    public function getInternalHandler();
+    public function getInternalHandler(): mixed;
 
     /**
      * Returns the savepoint name to use for nested transactions
@@ -488,7 +488,7 @@ interface AdapterInterface
      * @param string|null $name Name of the sequence object from which the ID should be returned.
      * @return string|bool
      */
-    public function lastInsertId(string $name = null);
+    public function lastInsertId(string $name = null): bool|string;
 
     /**
      * Appends a LIMIT clause to sqlQuery argument
@@ -536,7 +536,7 @@ interface AdapterInterface
      * @param array $bindTypes
      * @return bool|ResultInterface
      */
-    public function query(string $sqlStatement, array $bindParams = [], array $bindTypes = []);
+    public function query(string $sqlStatement, array $bindParams = [], array $bindTypes = []): ResultInterface|bool;
 
     /**
      * Releases given savepoint

@@ -52,7 +52,7 @@ class Volt extends \Phalcon\Mvc\View\Engine\AbstractEngine implements \Phalcon\E
      * @param string $name
      * @param array $arguments
      */
-    public function callMacro(string $name, array $arguments = [])
+    public function callMacro(string $name, array $arguments = []): mixed
     {
     }
 
@@ -82,7 +82,7 @@ class Volt extends \Phalcon\Mvc\View\Engine\AbstractEngine implements \Phalcon\E
      *
      * @return ManagerInterface|null
      */
-    public function getEventsManager(): ?ManagerInterface
+    public function getEventsManager(): ManagerInterface|null
     {
     }
 

@@ -146,7 +146,7 @@ class Form extends Injectable implements \Countable, \Iterator, \Phalcon\Html\At
      *
      * @return mixed
      */
-    public function current()
+    public function current(): mixed
     {
     }
 
@@ -202,7 +202,7 @@ class Form extends Injectable implements \Countable, \Iterator, \Phalcon\Html\At
      * @param string $name
      * @return mixed|null
      */
-    public function getFilteredValue(string $name)
+    public function getFilteredValue(string $name): mixed
     {
     }
 
@@ -231,7 +231,7 @@ class Form extends Injectable implements \Countable, \Iterator, \Phalcon\Html\At
      *
      * @return array|Messages
      */
-    public function getMessages()
+    public function getMessages(): Messages|array
     {
     }
 
@@ -250,7 +250,7 @@ class Form extends Injectable implements \Countable, \Iterator, \Phalcon\Html\At
      *
      * @return TagFactory|null
      */
-    public function getTagFactory(): ?TagFactory
+    public function getTagFactory(): TagFactory|null
     {
     }
 
@@ -261,7 +261,7 @@ class Form extends Injectable implements \Countable, \Iterator, \Phalcon\Html\At
      * @param mixed $defaultValue
      * @return mixed
      */
-    public function getUserOption(string $option, $defaultValue = null)
+    public function getUserOption(string $option, $defaultValue = null): mixed
     {
     }
 
@@ -280,7 +280,7 @@ class Form extends Injectable implements \Countable, \Iterator, \Phalcon\Html\At
      * @param string $name
      * @return mixed|null
      */
-    public function getValue(string $name)
+    public function getValue(string $name): mixed
     {
     }
 
@@ -289,7 +289,7 @@ class Form extends Injectable implements \Countable, \Iterator, \Phalcon\Html\At
      *
      * @return ValidationInterface|null
      */
-    public function getValidation(): ?ValidationInterface
+    public function getValidation(): ValidationInterface|null
     {
     }
 

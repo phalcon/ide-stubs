@@ -59,7 +59,7 @@ abstract class AbstractAdapter extends AbstractEventsAware implements \Phalcon\A
      *
      * @return string|null
      */
-    public function getActiveAccess(): ?string
+    public function getActiveAccess(): string|null
     {
     }
 
@@ -68,7 +68,7 @@ abstract class AbstractAdapter extends AbstractEventsAware implements \Phalcon\A
      *
      * @return string|null
      */
-    public function getActiveComponent(): ?string
+    public function getActiveComponent(): string|null
     {
     }
 
@@ -78,7 +78,7 @@ abstract class AbstractAdapter extends AbstractEventsAware implements \Phalcon\A
      *
      * @return string|null
      */
-    public function getActiveRole(): ?string
+    public function getActiveRole(): string|null
     {
     }
 

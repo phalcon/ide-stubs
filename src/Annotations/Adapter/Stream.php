@@ -50,7 +50,7 @@ class Stream extends \Phalcon\Annotations\Adapter\AbstractAdapter
      * @param string $key
      * @return bool|int|Reflection
      */
-    public function read(string $key)
+    public function read(string $key): Reflection|int|bool
     {
     }
 

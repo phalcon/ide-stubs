@@ -19,14 +19,14 @@ interface EventInterface
      *
      * @return mixed
      */
-    public function getData();
+    public function getData(): mixed;
 
     /**
      * Gets event type
      *
      * @return mixed
      */
-    public function getType();
+    public function getType(): mixed;
 
     /**
      * Check whether the event is cancelable

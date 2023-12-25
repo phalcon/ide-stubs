@@ -344,7 +344,7 @@ class Column implements \Phalcon\Db\ColumnInterface
      *
      * @return string|null
      */
-    public function getAfterPosition(): ?string
+    public function getAfterPosition(): string|null
     {
     }
 
@@ -362,7 +362,7 @@ class Column implements \Phalcon\Db\ColumnInterface
      *
      * @return string|null
      */
-    public function getComment(): ?string
+    public function getComment(): string|null
     {
     }
 
@@ -371,7 +371,7 @@ class Column implements \Phalcon\Db\ColumnInterface
      *
      * @return mixed
      */
-    public function getDefault()
+    public function getDefault(): mixed
     {
     }
 
@@ -398,7 +398,7 @@ class Column implements \Phalcon\Db\ColumnInterface
      *
      * @return int|string
      */
-    public function getSize()
+    public function getSize(): int|string
     {
     }
 
@@ -425,7 +425,7 @@ class Column implements \Phalcon\Db\ColumnInterface
      *
      * @return array|string
      */
-    public function getTypeValues()
+    public function getTypeValues(): string|array
     {
     }
 

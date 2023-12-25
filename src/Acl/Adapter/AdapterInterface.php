@@ -93,7 +93,7 @@ interface AdapterInterface
      *
      * @return string|null
      */
-    public function getActiveAccess(): ?string;
+    public function getActiveAccess(): string|null;
 
     /**
      * Returns the role which the list is checking if it's allowed to certain
@@ -101,7 +101,7 @@ interface AdapterInterface
      *
      * @return string|null
      */
-    public function getActiveRole(): ?string;
+    public function getActiveRole(): string|null;
 
     /**
      * Returns the component which the list is checking if some role can access
@@ -109,7 +109,7 @@ interface AdapterInterface
      *
      * @return string|null
      */
-    public function getActiveComponent(): ?string;
+    public function getActiveComponent(): string|null;
 
     /**
      * Return an array with every component registered in the list

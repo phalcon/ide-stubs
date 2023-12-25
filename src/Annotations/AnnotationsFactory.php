@@ -40,7 +40,7 @@ class AnnotationsFactory extends AbstractFactory
      * Factory to create an instance from a Config object
      * @return mixed
      */
-    public function load($config)
+    public function load($config): mixed
     {
     }
 

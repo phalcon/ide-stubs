@@ -50,7 +50,7 @@ interface ValidationInterface
      *
      * @return object
      */
-    public function getEntity();
+    public function getEntity(): mixed;
 
     /**
      * Returns all the filters or a specific one
@@ -58,7 +58,7 @@ interface ValidationInterface
      * @param string $field
      * @return mixed|null
      */
-    public function getFilters(string $field = null);
+    public function getFilters(string $field = null): mixed;
 
     /**
      * Get label for field
@@ -88,7 +88,7 @@ interface ValidationInterface
      * @param string $field
      * @return mixed|null
      */
-    public function getValue(string $field);
+    public function getValue(string $field): mixed;
 
     /**
      * Alias of `add` method

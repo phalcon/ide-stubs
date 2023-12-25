@@ -182,7 +182,7 @@ abstract class Resultset implements \Phalcon\Mvc\Model\ResultsetInterface, \Iter
      *
      * @return CacheInterface|null
      */
-    public function getCache(): ?CacheInterface
+    public function getCache(): CacheInterface|null
     {
     }
 
@@ -211,7 +211,7 @@ abstract class Resultset implements \Phalcon\Mvc\Model\ResultsetInterface, \Iter
      *
      * @return ModelInterface|Row|null
      */
-    public function getFirst()
+    public function getFirst(): mixed
     {
     }
 
@@ -229,7 +229,7 @@ abstract class Resultset implements \Phalcon\Mvc\Model\ResultsetInterface, \Iter
      *
      * @return ModelInterface|null
      */
-    public function getLast(): ?ModelInterface
+    public function getLast(): ModelInterface|null
     {
     }
 
@@ -281,7 +281,7 @@ abstract class Resultset implements \Phalcon\Mvc\Model\ResultsetInterface, \Iter
      *
      * @return int|null
      */
-    public function key(): ?int
+    public function key(): int|null
     {
     }
 
@@ -300,7 +300,7 @@ abstract class Resultset implements \Phalcon\Mvc\Model\ResultsetInterface, \Iter
      * @param mixed $index
      * @return mixed
      */
-    public function offsetGet($index)
+    public function offsetGet($index): mixed
     {
     }
 
@@ -317,11 +317,11 @@ abstract class Resultset implements \Phalcon\Mvc\Model\ResultsetInterface, \Iter
     /**
      * Resultsets cannot be changed. It has only been implemented to meet the definition of the ArrayAccess interface
      *
-     * @param int $index
+     * @param int $offset
      * @param \Phalcon\Mvc\ModelInterface $value
      * @return void
      */
-    public function offsetSet($index, $value): void
+    public function offsetSet($offset, $value): void
     {
     }
 

@@ -87,7 +87,7 @@ class Application extends AbstractApplication
      * @param string $uri
      * @return bool|ResponseInterface
      */
-    public function handle(string $uri)
+    public function handle(string $uri): ResponseInterface|bool
     {
     }
 

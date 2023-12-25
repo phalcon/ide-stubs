@@ -56,7 +56,7 @@ class Apcu extends \Phalcon\Storage\Adapter\AbstractAdapter
      *
      * @return bool|int
      */
-    public function decrement(string $key, int $value = 1)
+    public function decrement(string $key, int $value = 1): int|bool
     {
     }
 
@@ -101,7 +101,7 @@ class Apcu extends \Phalcon\Storage\Adapter\AbstractAdapter
      *
      * @return bool|int
      */
-    public function increment(string $key, int $value = 1)
+    public function increment(string $key, int $value = 1): int|bool
     {
     }
 
@@ -153,7 +153,7 @@ class Apcu extends \Phalcon\Storage\Adapter\AbstractAdapter
      * @param int $ttl
      * @return bool|int
      */
-    protected function phpApcuDec($key, int $step = 1, $success = null, int $ttl = 0)
+    protected function phpApcuDec($key, int $step = 1, $success = null, int $ttl = 0): int|bool
     {
     }
 
@@ -161,7 +161,7 @@ class Apcu extends \Phalcon\Storage\Adapter\AbstractAdapter
      * @param mixed $key
      * @return bool|array
      */
-    protected function phpApcuDelete($key)
+    protected function phpApcuDelete($key): bool|array
     {
     }
 
@@ -169,7 +169,7 @@ class Apcu extends \Phalcon\Storage\Adapter\AbstractAdapter
      * @param mixed $key
      * @return bool|array
      */
-    protected function phpApcuExists($key)
+    protected function phpApcuExists($key): bool|array
     {
     }
 
@@ -180,7 +180,7 @@ class Apcu extends \Phalcon\Storage\Adapter\AbstractAdapter
      * @param int $ttl
      * @return bool|int
      */
-    protected function phpApcuInc($key, int $step = 1, $success = null, int $ttl = 0)
+    protected function phpApcuInc($key, int $step = 1, $success = null, int $ttl = 0): int|bool
     {
     }
 
@@ -189,7 +189,7 @@ class Apcu extends \Phalcon\Storage\Adapter\AbstractAdapter
      * @param mixed $success
      * @return mixed
      */
-    protected function phpApcuFetch($key, $success = null)
+    protected function phpApcuFetch($key, $success = null): mixed
     {
     }
 
@@ -197,7 +197,7 @@ class Apcu extends \Phalcon\Storage\Adapter\AbstractAdapter
      * @param string $pattern
      * @return bool|APCUIterator
      */
-    protected function phpApcuIterator(string $pattern)
+    protected function phpApcuIterator(string $pattern): APCUIterator|bool
     {
     }
 
@@ -207,7 +207,7 @@ class Apcu extends \Phalcon\Storage\Adapter\AbstractAdapter
      * @param int $ttl
      * @return bool|array
      */
-    protected function phpApcuStore($key, $payload, int $ttl = 0)
+    protected function phpApcuStore($key, $payload, int $ttl = 0): bool|array
     {
     }
 }

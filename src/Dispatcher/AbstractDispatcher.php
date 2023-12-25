@@ -170,7 +170,7 @@ abstract class AbstractDispatcher extends AbstractInjectionAware implements \Pha
      *
      * @throws \Exception if any uncaught or unhandled exception occurs during the dispatcher process.
      */
-    public function dispatch()
+    public function dispatch(): mixed
     {
     }
 
@@ -255,7 +255,7 @@ abstract class AbstractDispatcher extends AbstractInjectionAware implements \Pha
      *
      * @return ManagerInterface|null
      */
-    public function getEventsManager(): ?ManagerInterface
+    public function getEventsManager(): ManagerInterface|null
     {
     }
 
@@ -273,7 +273,7 @@ abstract class AbstractDispatcher extends AbstractInjectionAware implements \Pha
      *
      * @return BinderInterface|null
      */
-    public function getModelBinder(): ?BinderInterface
+    public function getModelBinder(): BinderInterface|null
     {
     }
 
@@ -282,7 +282,7 @@ abstract class AbstractDispatcher extends AbstractInjectionAware implements \Pha
      *
      * @return string|null
      */
-    public function getModuleName(): ?string
+    public function getModuleName(): string|null
     {
     }
 
@@ -305,7 +305,7 @@ abstract class AbstractDispatcher extends AbstractInjectionAware implements \Pha
      *
      * @todo remove this in future versions
      */
-    public function getParam($param, $filters = null, $defaultValue = null)
+    public function getParam($param, $filters = null, $defaultValue = null): mixed
     {
     }
 
@@ -317,7 +317,7 @@ abstract class AbstractDispatcher extends AbstractInjectionAware implements \Pha
      * @param mixed $defaultValue
      * @return mixed
      */
-    public function getParameter($param, $filters = null, $defaultValue = null)
+    public function getParameter($param, $filters = null, $defaultValue = null): mixed
     {
     }
 
@@ -546,7 +546,7 @@ abstract class AbstractDispatcher extends AbstractInjectionAware implements \Pha
      *
      * @return mixed
      */
-    public function getReturnedValue()
+    public function getReturnedValue(): mixed
     {
     }
 
