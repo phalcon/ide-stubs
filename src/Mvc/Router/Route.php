@@ -145,7 +145,7 @@ class Route implements \Phalcon\Mvc\Router\RouteInterface
      * @param string $pattern
      * @return array|bool
      */
-    public function extractNamedParams(string $pattern)
+    public function extractNamedParams(string $pattern): bool|array
     {
     }
 
@@ -181,7 +181,7 @@ class Route implements \Phalcon\Mvc\Router\RouteInterface
      *
      * @return GroupInterface|null
      */
-    public function getGroup(): ?GroupInterface
+    public function getGroup(): GroupInterface|null
     {
     }
 
@@ -190,7 +190,7 @@ class Route implements \Phalcon\Mvc\Router\RouteInterface
      *
      * @return array|string
      */
-    public function getHttpMethods()
+    public function getHttpMethods(): string|array
     {
     }
 
@@ -199,7 +199,7 @@ class Route implements \Phalcon\Mvc\Router\RouteInterface
      *
      * @return string|null
      */
-    public function getHostname(): ?string
+    public function getHostname(): string|null
     {
     }
 
@@ -224,7 +224,7 @@ class Route implements \Phalcon\Mvc\Router\RouteInterface
      *
      * @return string|null
      */
-    public function getName(): ?string
+    public function getName(): string|null
     {
     }
 

@@ -441,7 +441,7 @@ class Builder implements \Phalcon\Mvc\Model\Query\BuilderInterface, \Phalcon\Di\
      *
      * @return string|array|null
      */
-    public function getModels()
+    public function getModels(): string|array|null
     {
     }
 

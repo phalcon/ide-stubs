@@ -348,7 +348,7 @@ class Query implements \Phalcon\Mvc\Model\QueryInterface, \Phalcon\Di\InjectionA
     /**
      * @return TransactionInterface|null
      */
-    public function getTransaction(): ?TransactionInterface
+    public function getTransaction(): TransactionInterface|null
     {
     }
 
@@ -482,7 +482,7 @@ class Query implements \Phalcon\Mvc\Model\QueryInterface, \Phalcon\Di\InjectionA
      * @param bool $simulate
      * @return array|ResultsetInterface
      */
-    final protected function executeSelect(array $intermediate, array $bindParams, array $bindTypes, bool $simulate = false)
+    final protected function executeSelect(array $intermediate, array $bindParams, array $bindTypes, bool $simulate = false): ResultsetInterface|array
     {
     }
 

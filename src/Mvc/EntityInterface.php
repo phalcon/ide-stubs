@@ -22,7 +22,7 @@ interface EntityInterface
      * @param string $attribute
      * @return mixed|null
      */
-    public function readAttribute(string $attribute);
+    public function readAttribute(string $attribute): mixed;
 
     /**
      * Writes an attribute value by its name

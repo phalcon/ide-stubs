@@ -50,7 +50,7 @@ interface ModelInterface
      * @param array $parameters
      * @return ResultsetInterface|float
      */
-    public static function average(array $parameters = []);
+    public static function average(array $parameters = []): ResultsetInterface|float;
 
     /**
      * Assigns values to a model from an array returning a new model
@@ -93,7 +93,7 @@ interface ModelInterface
      * @param array|string|null $parameters
      * @return int|ResultsetInterface
      */
-    public static function count($parameters = null);
+    public static function count($parameters = null): ResultsetInterface|int;
 
     /**
      * Inserts a model instance. If the instance already exists in the
@@ -129,7 +129,7 @@ interface ModelInterface
      * @see https://github.com/phalcon/cphalcon/issues/15212
      * @see https://github.com/phalcon/cphalcon/issues/15883
      */
-    public static function findFirst($parameters = null);
+    public static function findFirst($parameters = null): mixed;
 
     /**
      * Fires an event, implicitly calls behaviors and listeners in the events
@@ -208,7 +208,7 @@ interface ModelInterface
      *
      * @return string|null
      */
-    public function getSchema(): ?string;
+    public function getSchema(): string|null;
 
     /**
      * Returns table name mapped in the model
@@ -238,7 +238,7 @@ interface ModelInterface
      * @param array $parameters
      * @return mixed
      */
-    public static function maximum($parameters = null);
+    public static function maximum($parameters = null): mixed;
 
     /**
      * Allows to get the minimum value of a column that match the specified
@@ -247,7 +247,7 @@ interface ModelInterface
      * @param array $parameters
      * @return mixed
      */
-    public static function minimum($parameters = null);
+    public static function minimum($parameters = null): mixed;
 
     /**
      * Create a criteria for a specific model
@@ -287,7 +287,7 @@ interface ModelInterface
      * @param int $dirtyState
      * @return bool|ModelInterface
      */
-    public function setDirtyState(int $dirtyState);
+    public function setDirtyState(int $dirtyState): ModelInterface|bool;
 
     /**
      * Sets the DependencyInjection connection service used to read data
@@ -337,7 +337,7 @@ interface ModelInterface
      * @param array $parameters
      * @return float|ResultsetInterface
      */
-    public static function sum($parameters = null);
+    public static function sum($parameters = null): ResultsetInterface|float;
 
     /**
      * Check whether validation process has generated any messages

@@ -259,7 +259,7 @@ abstract class AbstractPdo extends AbstractAdapter
      *
      * @return mixed
      */
-    public function getInternalHandler()
+    public function getInternalHandler(): mixed
     {
     }
 
@@ -315,7 +315,7 @@ abstract class AbstractPdo extends AbstractAdapter
      * @param string|null $name
      * @return string|bool
      */
-    public function lastInsertId(string $name = null)
+    public function lastInsertId(string $name = null): bool|string
     {
     }
 
@@ -371,7 +371,7 @@ abstract class AbstractPdo extends AbstractAdapter
      * @param array $bindTypes
      * @return bool|ResultInterface
      */
-    public function query(string $sqlStatement, array $bindParams = [], array $bindTypes = [])
+    public function query(string $sqlStatement, array $bindParams = [], array $bindTypes = []): ResultInterface|bool
     {
     }
 

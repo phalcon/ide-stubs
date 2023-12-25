@@ -59,7 +59,7 @@ class LazyLoader
     /**
      * @return object|null
      */
-    public function getHandler()
+    public function getHandler(): object|null
     {
     }
 }

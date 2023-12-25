@@ -58,7 +58,7 @@ class Complex extends Resultset implements \Phalcon\Mvc\Model\ResultsetInterface
      *
      * @return mixed
      */
-    final public function current()
+    final public function current(): mixed
     {
     }
 

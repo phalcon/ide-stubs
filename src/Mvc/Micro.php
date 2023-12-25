@@ -230,7 +230,7 @@ class Micro extends Injectable implements \ArrayAccess, \Phalcon\Events\EventsAw
      *
      * @return ManagerInterface|null
      */
-    public function getEventsManager(): ?ManagerInterface
+    public function getEventsManager(): ManagerInterface|null
     {
     }
 
@@ -258,7 +258,7 @@ class Micro extends Injectable implements \ArrayAccess, \Phalcon\Events\EventsAw
      *
      * @return BinderInterface|null
      */
-    public function getModelBinder(): ?BinderInterface
+    public function getModelBinder(): BinderInterface|null
     {
     }
 
@@ -387,7 +387,7 @@ class Micro extends Injectable implements \ArrayAccess, \Phalcon\Events\EventsAw
      * @param mixed $offset
      * @return mixed
      */
-    public function offsetGet($offset)
+    public function offsetGet($offset): mixed
     {
     }
 

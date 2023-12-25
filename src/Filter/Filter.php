@@ -125,7 +125,7 @@ class Filter implements \Phalcon\Filter\FilterInterface
      * @return mixed
      * @throws Exception
      */
-    public function get(string $name)
+    public function get(string $name): mixed
     {
     }
 
@@ -150,7 +150,7 @@ class Filter implements \Phalcon\Filter\FilterInterface
      * @return array|false|mixed|null
      * @throws Exception
      */
-    public function sanitize($value, $sanitizers, bool $noRecursive = false)
+    public function sanitize($value, $sanitizers, bool $noRecursive = false): mixed
     {
     }
 

@@ -130,7 +130,7 @@ class Route implements \Phalcon\Cli\Router\RouteInterface
      * @param string $pattern
      * @return array|bool
      */
-    public function extractNamedParams(string $pattern)
+    public function extractNamedParams(string $pattern): bool|array
     {
     }
 
@@ -139,7 +139,7 @@ class Route implements \Phalcon\Cli\Router\RouteInterface
      *
      * @return mixed
      */
-    public function getBeforeMatch()
+    public function getBeforeMatch(): mixed
     {
     }
 

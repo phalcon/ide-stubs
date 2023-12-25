@@ -59,7 +59,7 @@ class Simple extends Resultset
      *
      * @return ModelInterface|null
      */
-    final public function current(): ?ModelInterface
+    final public function current(): ModelInterface|null
     {
     }
 

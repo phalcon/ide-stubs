@@ -56,7 +56,7 @@ class Task extends Injectable implements \Phalcon\Cli\TaskInterface, \Phalcon\Ev
      *
      * @return ManagerInterface|null
      */
-    public function getEventsManager(): ?ManagerInterface
+    public function getEventsManager(): ManagerInterface|null
     {
     }
 

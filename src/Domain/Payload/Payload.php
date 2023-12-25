@@ -63,7 +63,7 @@ class Payload implements \Phalcon\Domain\Payload\PayloadInterface
      *
      * @return Throwable|null
      */
-    public function getException(): ?Throwable
+    public function getException(): Throwable|null
     {
     }
 
@@ -72,7 +72,7 @@ class Payload implements \Phalcon\Domain\Payload\PayloadInterface
      *
      * @return mixed
      */
-    public function getExtras()
+    public function getExtras(): mixed
     {
     }
 
@@ -81,7 +81,7 @@ class Payload implements \Phalcon\Domain\Payload\PayloadInterface
      *
      * @return mixed
      */
-    public function getInput()
+    public function getInput(): mixed
     {
     }
 
@@ -90,7 +90,7 @@ class Payload implements \Phalcon\Domain\Payload\PayloadInterface
      *
      * @return mixed
      */
-    public function getMessages()
+    public function getMessages(): mixed
     {
     }
 
@@ -99,7 +99,7 @@ class Payload implements \Phalcon\Domain\Payload\PayloadInterface
      *
      * @return mixed
      */
-    public function getStatus()
+    public function getStatus(): mixed
     {
     }
 
@@ -108,7 +108,7 @@ class Payload implements \Phalcon\Domain\Payload\PayloadInterface
      *
      * @return mixed
      */
-    public function getOutput()
+    public function getOutput(): mixed
     {
     }
 

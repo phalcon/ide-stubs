@@ -79,7 +79,7 @@ final class Registry extends Collection
      * @param string $element
      * @return mixed
      */
-    final public function __get(string $element)
+    final public function __get(string $element): mixed
     {
     }
 
@@ -141,7 +141,7 @@ final class Registry extends Collection
      * @param string $cast
      * @return mixed
      */
-    final public function get(string $element, $defaultValue = null, string $cast = null)
+    final public function get(string $element, $defaultValue = null, string $cast = null): mixed
     {
     }
 
@@ -202,7 +202,7 @@ final class Registry extends Collection
      * @param mixed $element
      * @return mixed
      */
-    final public function offsetGet($element)
+    final public function offsetGet($element): mixed
     {
     }
 
@@ -210,11 +210,11 @@ final class Registry extends Collection
      * Offset to set
      *
      * @link https://php.net/manual/en/arrayaccess.offsetset.php
-     * @param mixed $element
+     * @param mixed $offset
      * @param mixed $value
      * @return void
      */
-    final public function offsetSet($element, $value): void
+    final public function offsetSet($offset, $value): void
     {
     }
 

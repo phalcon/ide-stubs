@@ -64,7 +64,7 @@ class Collection implements \Iterator, \Countable
      *
      * @return mixed
      */
-    public function current()
+    public function current(): mixed
     {
     }
 

@@ -222,7 +222,7 @@ class Security extends AbstractInjectionAware
      *
      * @return string|null
      */
-    public function getRequestToken(): ?string
+    public function getRequestToken(): string|null
     {
     }
 
@@ -231,7 +231,7 @@ class Security extends AbstractInjectionAware
      *
      * @return string|null
      */
-    public function getSessionToken(): ?string
+    public function getSessionToken(): string|null
     {
     }
 
@@ -255,7 +255,7 @@ class Security extends AbstractInjectionAware
      * @return string
      * @throws Exception
      */
-    public function getToken(): ?string
+    public function getToken(): string|null
     {
     }
 
@@ -266,7 +266,7 @@ class Security extends AbstractInjectionAware
      * @return string|null
      * @throws Exception
      */
-    public function getTokenKey(): ?string
+    public function getTokenKey(): string|null
     {
     }
 
@@ -383,7 +383,7 @@ class Security extends AbstractInjectionAware
      *
      * @return string|null
      */
-    private function processTokenKey(string $tokenKey = null): ?string
+    private function processTokenKey(string $tokenKey = null): string|null
     {
     }
 
@@ -393,7 +393,7 @@ class Security extends AbstractInjectionAware
      *
      * @return string|null
      */
-    private function processUserToken(string $tokenKey, string $tokenValue = null): ?string
+    private function processUserToken(string $tokenKey, string $tokenValue = null): string|null
     {
     }
 }

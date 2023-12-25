@@ -87,7 +87,7 @@ class Builder
     }
 
     /**
-     * Adds a custom header
+     * Adds a custom claim
      *
      * @param string $name
      * @param mixed  $value
@@ -115,14 +115,14 @@ class Builder
     /**
      * @return string|null
      */
-    public function getContentType(): ?string
+    public function getContentType(): string|null
     {
     }
 
     /**
      * @return int|null
      */
-    public function getExpirationTime(): ?int
+    public function getExpirationTime(): int|null
     {
     }
 
@@ -136,35 +136,35 @@ class Builder
     /**
      * @return string|null
      */
-    public function getId(): ?string
+    public function getId(): string|null
     {
     }
 
     /**
      * @return int|null
      */
-    public function getIssuedAt(): ?int
+    public function getIssuedAt(): int|null
     {
     }
 
     /**
      * @return string|null
      */
-    public function getIssuer(): ?string
+    public function getIssuer(): string|null
     {
     }
 
     /**
      * @return int|null
      */
-    public function getNotBefore(): ?int
+    public function getNotBefore(): int|null
     {
     }
 
     /**
      * @return string|null
      */
-    public function getSubject(): ?string
+    public function getSubject(): string|null
     {
     }
 

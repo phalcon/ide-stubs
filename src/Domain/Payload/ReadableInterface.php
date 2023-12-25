@@ -21,40 +21,40 @@ interface ReadableInterface
      *
      * @return Throwable|null
      */
-    public function getException(): ?Throwable;
+    public function getException(): Throwable|null;
 
     /**
      * Gets arbitrary extra values produced by the domain layer.
      *
      * @return mixed
      */
-    public function getExtras();
+    public function getExtras(): mixed;
 
     /**
      * Gets the input received by the domain layer.
      *
      * @return mixed
      */
-    public function getInput();
+    public function getInput(): mixed;
 
     /**
      * Gets the messages produced by the domain layer.
      *
      * @return mixed
      */
-    public function getMessages();
+    public function getMessages(): mixed;
 
     /**
      * Gets the output produced from the domain layer.
      *
      * @return mixed
      */
-    public function getOutput();
+    public function getOutput(): mixed;
 
     /**
      * Gets the status of this payload.
      *
      * @return mixed
      */
-    public function getStatus();
+    public function getStatus(): mixed;
 }

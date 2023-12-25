@@ -24,5 +24,5 @@ interface ResultInterface
      * @param int $dirtyState
      * @return bool|ModelInterface
      */
-    public function setDirtyState(int $dirtyState);
+    public function setDirtyState(int $dirtyState): ModelInterface|bool;
 }

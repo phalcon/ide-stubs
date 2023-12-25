@@ -194,7 +194,7 @@ class Cookie extends AbstractInjectionAware implements \Phalcon\Http\Cookie\Cook
      * @param mixed $defaultValue
      * @return mixed
      */
-    public function getValue($filters = null, $defaultValue = null)
+    public function getValue($filters = null, $defaultValue = null): mixed
     {
     }
 
@@ -346,7 +346,7 @@ class Cookie extends AbstractInjectionAware implements \Phalcon\Http\Cookie\Cook
      * @param mixed $defaultValue
      * @return mixed
      */
-    private function getArrVal(array $collection, $index, $defaultValue = null)
+    private function getArrVal(array $collection, $index, $defaultValue = null): mixed
     {
     }
 }

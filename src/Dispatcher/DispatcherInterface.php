@@ -19,7 +19,7 @@ interface DispatcherInterface
      *
      * @return mixed
      */
-    public function dispatch();
+    public function dispatch(): mixed;
 
     /**
      * Forwards the execution flow to another controller/action
@@ -57,7 +57,7 @@ interface DispatcherInterface
      * @param mixed $param
      * @return mixed
      */
-    public function getParam($param, $filters = null);
+    public function getParam($param, $filters = null): mixed;
 
     /**
      * Gets a param by its name or numeric index
@@ -66,7 +66,7 @@ interface DispatcherInterface
      * @param mixed $param
      * @return mixed
      */
-    public function getParameter($param, $filters = null);
+    public function getParameter($param, $filters = null): mixed;
 
     /**
      * Gets action params
@@ -87,7 +87,7 @@ interface DispatcherInterface
      *
      * @return mixed
      */
-    public function getReturnedValue();
+    public function getReturnedValue(): mixed;
 
     /**
      * Check if a param exists

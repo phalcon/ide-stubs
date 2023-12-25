@@ -70,7 +70,7 @@ class Redis extends \Phalcon\Storage\Adapter\AbstractAdapter
      * @return bool|int
      * @throws StorageException
      */
-    public function decrement(string $key, int $value = 1)
+    public function decrement(string $key, int $value = 1): int|bool
     {
     }
 
@@ -93,7 +93,7 @@ class Redis extends \Phalcon\Storage\Adapter\AbstractAdapter
      * @return mixed|\Redis
      * @throws StorageException
      */
-    public function getAdapter()
+    public function getAdapter(): mixed
     {
     }
 
@@ -130,7 +130,7 @@ class Redis extends \Phalcon\Storage\Adapter\AbstractAdapter
      * @return bool|false|int
      * @throws StorageException
      */
-    public function increment(string $key, int $value = 1)
+    public function increment(string $key, int $value = 1): int|bool
     {
     }
 

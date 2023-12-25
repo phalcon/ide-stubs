@@ -87,7 +87,7 @@ class File implements \Phalcon\Http\Request\FileInterface
     /**
      * @return string|null
      */
-    public function getError(): ?string
+    public function getError(): string|null
     {
     }
 
@@ -101,7 +101,7 @@ class File implements \Phalcon\Http\Request\FileInterface
     /**
      * @return string|null
      */
-    public function getKey(): ?string
+    public function getKey(): string|null
     {
     }
 
@@ -177,7 +177,7 @@ class File implements \Phalcon\Http\Request\FileInterface
      * @param mixed $defaultValue
      * @return mixed
      */
-    private function getArrVal(array $collection, $index, $defaultValue = null)
+    private function getArrVal(array $collection, $index, $defaultValue = null): mixed
     {
     }
 }

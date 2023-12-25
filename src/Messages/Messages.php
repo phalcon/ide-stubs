@@ -155,7 +155,7 @@ class Messages implements \ArrayAccess, \Countable, \Iterator, \JsonSerializable
      * @param mixed $index
      * @return mixed
      */
-    public function offsetGet($index)
+    public function offsetGet($index): mixed
     {
     }
 
@@ -167,10 +167,11 @@ class Messages implements \ArrayAccess, \Countable, \Iterator, \JsonSerializable
      * ```
      *
      * @param \Phalcon\Messages\Message $message
-     * @param mixed $index
+     * @param mixed $offset
+     * @param mixed $value
      * @return void
      */
-    public function offsetSet($index, $message): void
+    public function offsetSet($offset, $value): void
     {
     }
 
