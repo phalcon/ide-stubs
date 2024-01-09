@@ -212,9 +212,9 @@ class Select extends \Phalcon\DataMapper\Query\AbstractConditions
     /**
      * Resets the internal collections
      *
-     * @return Select
+     * @return void
      */
-    public function reset(): Select
+    public function reset(): void
     {
     }
 

@@ -232,7 +232,7 @@ class Di implements \Phalcon\Di\DiInterface
      * ];
      * ```
      *
-     * @link https://docs.phalcon.io/en/latest/reference/di.html
+     * @link https://docs.phalcon.io/latest/di/
      * @param string $filePath
      * @return void
      */
@@ -271,7 +271,7 @@ class Di implements \Phalcon\Di\DiInterface
      *    className: \Acme\User
      * ```
      *
-     * @link https://docs.phalcon.io/en/latest/reference/di.html
+     * @link https://docs.phalcon.io/latest/di/
      * @param string $filePath
      * @param array $callbacks
      * @return void

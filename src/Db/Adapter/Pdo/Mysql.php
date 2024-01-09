@@ -49,25 +49,6 @@ class Mysql extends \Phalcon\Db\Adapter\Pdo\AbstractPdo
     protected $type = 'mysql';
 
     /**
-     * Constructor for Phalcon\Db\Adapter\Pdo
-     *
-     * @param array $descriptor = [
-     *     'host' => 'localhost',
-     *     'port' => '3306',
-     *     'dbname' => 'blog',
-     *     'username' => 'sigma'
-     *     'password' => 'secret'
-     *     'dialectClass' => null,
-     *     'options' => [],
-     *     'dsn' => null,
-     *     'charset' => 'utf8mb4'
-     * ]
-     */
-    public function __construct(array $descriptor)
-    {
-    }
-
-    /**
      * Adds a foreign key to a table
      *
      * @param string $tableName
