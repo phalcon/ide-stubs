@@ -149,11 +149,9 @@ class Apcu extends \Phalcon\Storage\Adapter\AbstractAdapter
      * @todo Remove the below once we get traits
      * @param mixed $key
      * @param int $step
-     * @param mixed $success
-     * @param int $ttl
      * @return bool|int
      */
-    protected function phpApcuDec($key, int $step = 1, $success = null, int $ttl = 0): int|bool
+    protected function phpApcuDec($key, int $step = 1): int|bool
     {
     }
 
@@ -176,20 +174,17 @@ class Apcu extends \Phalcon\Storage\Adapter\AbstractAdapter
     /**
      * @param mixed $key
      * @param int $step
-     * @param mixed $success
-     * @param int $ttl
      * @return bool|int
      */
-    protected function phpApcuInc($key, int $step = 1, $success = null, int $ttl = 0): int|bool
+    protected function phpApcuInc($key, int $step = 1): int|bool
     {
     }
 
     /**
      * @param mixed $key
-     * @param mixed $success
      * @return mixed
      */
-    protected function phpApcuFetch($key, $success = null): mixed
+    protected function phpApcuFetch($key): mixed
     {
     }
 

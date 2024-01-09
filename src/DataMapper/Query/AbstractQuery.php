@@ -127,8 +127,82 @@ abstract class AbstractQuery
 
     /**
      * Resets the internal array
+     *
+     * @return void
      */
-    public function reset()
+    public function reset(): void
+    {
+    }
+
+    /**
+     * Resets the columns
+     *
+     * @return void
+     */
+    public function resetColumns(): void
+    {
+    }
+
+    /**
+     * Resets the from
+     *
+     * @return void
+     */
+    public function resetFrom(): void
+    {
+    }
+
+    /**
+     * Resets the where
+     *
+     * @return void
+     */
+    public function resetWhere(): void
+    {
+    }
+
+    /**
+     * Resets the group by
+     *
+     * @return void
+     */
+    public function resetGroupBy(): void
+    {
+    }
+
+    /**
+     * Resets the having
+     *
+     * @return void
+     */
+    public function resetHaving(): void
+    {
+    }
+
+    /**
+     * Resets the order by
+     *
+     * @return void
+     */
+    public function resetOrderBy(): void
+    {
+    }
+
+    /**
+     * Resets the limit and offset
+     *
+     * @return void
+     */
+    public function resetLimit(): void
+    {
+    }
+
+    /**
+     * Resets the flags
+     *
+     * @return void
+     */
+    public function resetFlags(): void
     {
     }
 

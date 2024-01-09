@@ -13,10 +13,6 @@ use Phalcon\Html\Helper\AbstractList;
 
 /**
  * Class Select
- *
- * @property string $elementTag
- * @property bool   $inOptGroup
- * @property string $selected
  */
 class Select extends AbstractList
 {
