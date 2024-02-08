@@ -227,9 +227,8 @@ class Router extends AbstractInjectionAware
      * Sets the default action name
      *
      * @param string $actionName
-     * @return Router
      */
-    public function setDefaultAction(string $actionName): Router
+    public function setDefaultAction(string $actionName)
     {
     }
 
@@ -237,9 +236,8 @@ class Router extends AbstractInjectionAware
      * Sets the name of the default module
      *
      * @param string $moduleName
-     * @return Router
      */
-    public function setDefaultModule(string $moduleName): Router
+    public function setDefaultModule(string $moduleName)
     {
     }
 

@@ -130,7 +130,7 @@ interface ValidationInterface
      *
      * @param array|object $data
      * @param object $entity
-     * @return Messages|false
+     * @return Messages
      */
-    public function validate($data = null, $entity = null): Messages|bool;
+    public function validate($data = null, $entity = null): Messages;
 }

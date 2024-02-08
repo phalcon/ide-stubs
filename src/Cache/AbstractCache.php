@@ -114,7 +114,7 @@ abstract class AbstractCache implements \Phalcon\Cache\CacheInterface
      * @throws InvalidArgumentException MUST be thrown if the $key string is
      * not a legal value.
      */
-    protected function doGet(string $key, $defaultValue = null): mixed
+    protected function doGet(string $key, $defaultValue = null)
     {
     }
 
@@ -123,9 +123,8 @@ abstract class AbstractCache implements \Phalcon\Cache\CacheInterface
      *
      * @param mixed $keys
      * @param mixed $defaultValue
-     * @return array
      */
-    protected function doGetMultiple($keys, $defaultValue = null): array
+    protected function doGetMultiple($keys, $defaultValue = null)
     {
     }
 
