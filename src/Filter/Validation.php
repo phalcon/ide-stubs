@@ -264,7 +264,7 @@ class Validation extends Injectable implements \Phalcon\Filter\Validation\Valida
      * Validate a set of data according to a set of rules
      *
      * @param array|object $data
-     * @param object $entity 
+     * @param object $entity
      * @return Messages|false
      */
     public function validate($data = null, $entity = null): Messages|bool
