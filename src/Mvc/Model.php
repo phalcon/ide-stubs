@@ -80,6 +80,8 @@ use Serializable;
  *     echo "Great, a new robot was saved successfully!";
  * }
  * ```
+ *
+ * @template T of static
  */
 abstract class Model extends AbstractInjectionAware implements \Phalcon\Mvc\EntityInterface, \Phalcon\Mvc\ModelInterface, \Phalcon\Mvc\Model\ResultInterface, \Serializable, \JsonSerializable
 {
@@ -760,9 +762,9 @@ abstract class Model extends AbstractInjectionAware implements \Phalcon\Mvc\Enti
      *     ],
      *     'hydration' => null
      * ]
-     * @return ResultsetInterface
+     * @return T[]|\Phalcon\Mvc\Model\Resultset<int, T>
      */
-    public static function find($parameters = null): ResultsetInterface
+    public static function find($parameters = null)
     {
     }
 
@@ -850,7 +852,7 @@ abstract class Model extends AbstractInjectionAware implements \Phalcon\Mvc\Enti
      *     'hydration' => null
      * ]
      *
-     * @return \Phalcon\Mvc\ModelInterface|\Phalcon\Mvc\Model\Row|null
+     * @return T|\Phalcon\Mvc\ModelInterface|\Phalcon\Mvc\Model\Row|null
      */
     public static function findFirst($parameters = null): mixed
     {

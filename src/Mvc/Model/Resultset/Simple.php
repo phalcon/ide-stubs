@@ -23,6 +23,9 @@ use Phalcon\Storage\Serializer\SerializerInterface;
  *
  * Simple resultsets only contains a complete objects
  * This class builds every complete object as it is required
+ *
+ * @template TKey of int
+ * @template TValue of \Phalcon\Mvc\ModelInterface
  */
 class Simple extends Resultset
 {
@@ -57,7 +60,7 @@ class Simple extends Resultset
     /**
      * Returns current row in the resultset
      *
-     * @return ModelInterface|null
+     * @return TValue
      */
     final public function current(): ModelInterface|null
     {
