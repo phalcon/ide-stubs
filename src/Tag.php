@@ -423,7 +423,7 @@ class Tag
     /**
      * Builds a HTML A tag using framework conventions
      *
-     * @param parameters $array |string = [
+     * @param array|string $parameters = [
      *     'action' => '',
      *     'text' => '',
      *     'local' => false,
@@ -433,9 +433,8 @@ class Tag
      *     'href' => '',
      *     'id' => ''
      * ]
-     * @param mixed $parameters
-     * @param mixed $text
-     * @param mixed $local
+     * @param string $text
+     * @param bool $local
      * @return string
      */
     public static function linkTo($parameters, $text = null, $local = true): string

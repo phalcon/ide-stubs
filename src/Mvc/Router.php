@@ -501,7 +501,8 @@ class Router extends AbstractInjectionAware implements \Phalcon\Mvc\RouterInterf
     /**
      * Returns a route object by its id
      *
-     * @param mixed $id *
+     * @param mixed $id
+     *
      * @return RouteInterface|bool
      */
     public function getRouteById($id): RouteInterface|bool

@@ -14,6 +14,7 @@ use Phalcon\Di\AbstractInjectionAware;
 use Phalcon\Cli\Router\Route;
 use Phalcon\Cli\Router\Exception;
 use Phalcon\Cli\Router\RouteInterface;
+use Phalcon\Cli\RouterInterface;
 
 /**
  * Phalcon\Cli\Router is the standard framework router. Routing is the process
@@ -35,7 +36,7 @@ use Phalcon\Cli\Router\RouteInterface;
  * echo $router->getTaskName();
  * ```
  */
-class Router extends AbstractInjectionAware
+class Router extends AbstractInjectionAware implements \Phalcon\Cli\RouterInterface
 {
     /**
      * @var string
@@ -113,8 +114,8 @@ class Router extends AbstractInjectionAware
      * $router->add("/about", "About::main");
      * ```
      *
-     * @param string|array $paths
-     * @param string $pattern
+     * @param string     $pattern
+     * @param mixed|null $paths
      * @return RouteInterface
      */
     public function add(string $pattern, $paths = null): RouteInterface
@@ -179,7 +180,7 @@ class Router extends AbstractInjectionAware
     /**
      * Returns a route object by its id
      *
-     * @param int $id
+     * @param mixed $id
      * @return bool|RouteInterface
      */
     public function getRouteById($id): RouteInterface|bool
@@ -227,9 +228,9 @@ class Router extends AbstractInjectionAware
      * Sets the default action name
      *
      * @param string $actionName
-     * @return Router
+     * @return RouterInterface
      */
-    public function setDefaultAction(string $actionName): Router
+    public function setDefaultAction(string $actionName): RouterInterface
     {
     }
 
@@ -237,9 +238,9 @@ class Router extends AbstractInjectionAware
      * Sets the name of the default module
      *
      * @param string $moduleName
-     * @return Router
+     * @return RouterInterface
      */
-    public function setDefaultModule(string $moduleName): Router
+    public function setDefaultModule(string $moduleName): RouterInterface
     {
     }
 
@@ -258,9 +259,9 @@ class Router extends AbstractInjectionAware
      * ```
      *
      * @param array $defaults
-     * @return Router
+     * @return RouterInterface
      */
-    public function setDefaults(array $defaults): Router
+    public function setDefaults(array $defaults): RouterInterface
     {
     }
 

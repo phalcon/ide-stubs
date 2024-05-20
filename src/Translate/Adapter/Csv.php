@@ -79,11 +79,10 @@ class Csv extends \Phalcon\Translate\Adapter\AbstractAdapter implements \ArrayAc
      *
      * @param string $file
      * @param int    $length
-     * @param string $separator
+     * @param string $delimiter
      * @param string $enclosure
      *
      * @throws Exception
-     * @param string $delimiter
      * @return void
      */
     private function load(string $file, int $length, string $delimiter, string $enclosure): void

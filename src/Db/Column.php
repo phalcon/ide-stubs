@@ -83,7 +83,7 @@ class Column implements \Phalcon\Db\ColumnInterface
     /**
      * Binary abstract data type
      */
-    const TYPE_BINARY = 26;
+    const TYPE_BINARY = 27;
 
     /**
      * Blob abstract data type
@@ -208,7 +208,7 @@ class Column implements \Phalcon\Db\ColumnInterface
     /**
      * Varbinary abstract data type
      */
-    const TYPE_VARBINARY = 27;
+    const TYPE_VARBINARY = 28;
 
     /**
      * Varchar abstract data type

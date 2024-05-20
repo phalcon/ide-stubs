@@ -10,6 +10,7 @@
 namespace Phalcon\Translate\Adapter;
 
 use ArrayAccess;
+use Phalcon\Translate\Adapter\AbstractAdapter;
 use Phalcon\Translate\Exception;
 use Phalcon\Translate\InterpolatorFactory;
 
@@ -23,7 +24,7 @@ use Phalcon\Translate\InterpolatorFactory;
  * @property array $translate
  * @property bool  $triggerError
  */
-class NativeArray extends \Phalcon\Translate\Adapter\AbstractAdapter implements \ArrayAccess
+class NativeArray extends AbstractAdapter implements \ArrayAccess
 {
     /**
      * @var array
@@ -88,12 +89,11 @@ class NativeArray extends \Phalcon\Translate\Adapter\AbstractAdapter implements 
     /**
      * Returns the translation related to the given key
      *
-     * @param string $index
+     * @param string $translateKey
      * @param array  $placeholders
      *
      * @return string
      * @throws Exception
-     * @param string $translateKey
      */
     public function query(string $translateKey, array $placeholders = []): string
     {
