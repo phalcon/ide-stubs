@@ -170,7 +170,7 @@ abstract class AbstractDispatcher extends AbstractInjectionAware implements \Pha
      *
      * @throws \Exception if any uncaught or unhandled exception occurs during the dispatcher process.
      */
-    public function dispatch(): mixed
+    public function dispatch()
     {
     }
 
@@ -255,7 +255,7 @@ abstract class AbstractDispatcher extends AbstractInjectionAware implements \Pha
      *
      * @return ManagerInterface|null
      */
-    public function getEventsManager(): ManagerInterface|null
+    public function getEventsManager(): ?ManagerInterface
     {
     }
 
@@ -273,7 +273,7 @@ abstract class AbstractDispatcher extends AbstractInjectionAware implements \Pha
      *
      * @return BinderInterface|null
      */
-    public function getModelBinder(): BinderInterface|null
+    public function getModelBinder(): ?BinderInterface
     {
     }
 
@@ -282,7 +282,7 @@ abstract class AbstractDispatcher extends AbstractInjectionAware implements \Pha
      *
      * @return string|null
      */
-    public function getModuleName(): string|null
+    public function getModuleName(): ?string
     {
     }
 
@@ -305,7 +305,7 @@ abstract class AbstractDispatcher extends AbstractInjectionAware implements \Pha
      *
      * @todo remove this in future versions
      */
-    public function getParam($param, $filters = null, $defaultValue = null): mixed
+    public function getParam($param, $filters = null, $defaultValue = null)
     {
     }
 
@@ -317,7 +317,7 @@ abstract class AbstractDispatcher extends AbstractInjectionAware implements \Pha
      * @param mixed $defaultValue
      * @return mixed
      */
-    public function getParameter($param, $filters = null, $defaultValue = null): mixed
+    public function getParameter($param, $filters = null, $defaultValue = null)
     {
     }
 
@@ -546,7 +546,7 @@ abstract class AbstractDispatcher extends AbstractInjectionAware implements \Pha
      *
      * @return mixed
      */
-    public function getReturnedValue(): mixed
+    public function getReturnedValue()
     {
     }
 

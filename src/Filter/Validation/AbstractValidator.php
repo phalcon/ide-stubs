@@ -55,7 +55,7 @@ abstract class AbstractValidator implements \Phalcon\Filter\Validation\Validator
      *
      * @return mixed
      */
-    public function getOption(string $key, $defaultValue = null): mixed
+    public function getOption(string $key, $defaultValue = null)
     {
     }
 
@@ -166,7 +166,7 @@ abstract class AbstractValidator implements \Phalcon\Filter\Validation\Validator
      *
      * @return mixed
      */
-    protected function checkArray($value, string $field): mixed
+    protected function checkArray($value, string $field)
     {
     }
 
@@ -189,7 +189,7 @@ abstract class AbstractValidator implements \Phalcon\Filter\Validation\Validator
      *
      * @return mixed
      */
-    protected function prepareLabel(\Phalcon\Filter\Validation $validation, string $field): mixed
+    protected function prepareLabel(\Phalcon\Filter\Validation $validation, string $field)
     {
     }
 }

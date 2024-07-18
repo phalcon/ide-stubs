@@ -45,21 +45,21 @@ interface RouteInterface
      *
      * @return string|null
      */
-    public function getHostname(): string|null;
+    public function getHostname(): ?string;
 
     /**
      * Returns the HTTP methods that constraint matching the route
      *
      * @return string|array
      */
-    public function getHttpMethods(): string|array;
+    public function getHttpMethods();
 
     /**
      * Returns the route's name
      *
      * @return string|null
      */
-    public function getName(): string|null;
+    public function getName(): ?string;
 
     /**
      * Returns the paths

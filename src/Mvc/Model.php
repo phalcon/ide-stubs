@@ -414,7 +414,7 @@ abstract class Model extends AbstractInjectionAware implements \Phalcon\Mvc\Enti
      * @param array $parameters
      * @return float | ResultsetInterface
      */
-    public static function average(array $parameters = []): ResultsetInterface|float
+    public static function average(array $parameters = [])
     {
     }
 
@@ -510,7 +510,7 @@ abstract class Model extends AbstractInjectionAware implements \Phalcon\Mvc\Enti
      * @param array|string|null $parameters
      * @return int|ResultsetInterface
      */
-    public static function count($parameters = null): ResultsetInterface|int
+    public static function count($parameters = null)
     {
     }
 
@@ -854,7 +854,7 @@ abstract class Model extends AbstractInjectionAware implements \Phalcon\Mvc\Enti
      *
      * @return T|\Phalcon\Mvc\ModelInterface|\Phalcon\Mvc\Model\Row|null
      */
-    public static function findFirst($parameters = null): mixed
+    public static function findFirst($parameters = null)
     {
     }
 
@@ -915,7 +915,7 @@ abstract class Model extends AbstractInjectionAware implements \Phalcon\Mvc\Enti
      *
      * @return EventsManagerInterface|null
      */
-    public function getEventsManager(): EventsManagerInterface|null
+    public function getEventsManager(): ?EventsManagerInterface
     {
     }
 
@@ -1048,7 +1048,7 @@ abstract class Model extends AbstractInjectionAware implements \Phalcon\Mvc\Enti
      *
      * @return string|null
      */
-    final public function getSchema(): string|null
+    final public function getSchema(): ?string
     {
     }
 
@@ -1201,7 +1201,7 @@ abstract class Model extends AbstractInjectionAware implements \Phalcon\Mvc\Enti
      * @param array $parameters
      * @return mixed
      */
-    public static function maximum($parameters = null): mixed
+    public static function maximum($parameters = null)
     {
     }
 
@@ -1233,7 +1233,7 @@ abstract class Model extends AbstractInjectionAware implements \Phalcon\Mvc\Enti
      * @param array $parameters
      * @return mixed
      */
-    public static function minimum($parameters = null): mixed
+    public static function minimum($parameters = null)
     {
     }
 
@@ -1257,7 +1257,7 @@ abstract class Model extends AbstractInjectionAware implements \Phalcon\Mvc\Enti
      * @param string $attribute
      * @return mixed|null
      */
-    public function readAttribute(string $attribute): mixed
+    public function readAttribute(string $attribute)
     {
     }
 
@@ -1313,18 +1313,19 @@ abstract class Model extends AbstractInjectionAware implements \Phalcon\Mvc\Enti
      * Serializes the object ignoring connections, services, related objects or
      * static properties
      *
-     * @return string
+     * @return string|null
      */
-    public function serialize(): string
+    public function serialize(): ?string
     {
     }
 
     /**
      * Unserializes the object from a serialized string
      *
-     * @param mixed $data
+     * @param string $data
+     * @return void
      */
-    public function unserialize($data)
+    public function unserialize(string $data): void
     {
     }
 
@@ -1344,7 +1345,7 @@ abstract class Model extends AbstractInjectionAware implements \Phalcon\Mvc\Enti
      * @param int $dirtyState
      * @return bool|ModelInterface
      */
-    public function setDirtyState(int $dirtyState): ModelInterface|bool
+    public function setDirtyState(int $dirtyState)
     {
     }
 
@@ -1441,7 +1442,7 @@ abstract class Model extends AbstractInjectionAware implements \Phalcon\Mvc\Enti
     /**
      * @return TransactionInterface|null
      */
-    public function getTransaction(): TransactionInterface|null
+    public function getTransaction(): ?TransactionInterface
     {
     }
 
@@ -1503,7 +1504,7 @@ abstract class Model extends AbstractInjectionAware implements \Phalcon\Mvc\Enti
      * @param array $parameters
      * @return double | ResultsetInterface
      */
-    public static function sum($parameters = null): ResultsetInterface|float
+    public static function sum($parameters = null)
     {
     }
 

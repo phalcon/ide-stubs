@@ -38,7 +38,7 @@ interface ResultInterface
      *
      * @return mixed
      */
-    public function fetch(): mixed;
+    public function fetch();
 
     /**
      * Returns an array of arrays containing all the records in the result. This
@@ -56,7 +56,7 @@ interface ResultInterface
      *
      * @return mixed
      */
-    public function fetchArray(): mixed;
+    public function fetchArray();
 
     /**
      * Gets the internal PDO result object

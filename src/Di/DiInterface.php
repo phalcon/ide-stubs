@@ -26,7 +26,7 @@ interface DiInterface extends \ArrayAccess
      * @param bool $shared
      * @return bool|ServiceInterface
      */
-    public function attempt(string $name, $definition, bool $shared = false): ServiceInterface|bool;
+    public function attempt(string $name, $definition, bool $shared = false);
 
     /**
      * Resolves the service based on its configuration
@@ -35,14 +35,14 @@ interface DiInterface extends \ArrayAccess
      * @param mixed $parameters
      * @return mixed
      */
-    public function get(string $name, $parameters = null): mixed;
+    public function get(string $name, $parameters = null);
 
     /**
      * Return the last DI created
      *
      * @return DiInterface|null
      */
-    public static function getDefault(): DiInterface|null;
+    public static function getDefault(): ?DiInterface;
 
     /**
      * Returns a service definition without resolving
@@ -50,7 +50,7 @@ interface DiInterface extends \ArrayAccess
      * @param string $name
      * @return mixed
      */
-    public function getRaw(string $name): mixed;
+    public function getRaw(string $name);
 
     /**
      * Returns the corresponding Phalcon\Di\Service instance for a service
@@ -74,7 +74,7 @@ interface DiInterface extends \ArrayAccess
      * @param mixed $parameters
      * @return mixed
      */
-    public function getShared(string $name, $parameters = null): mixed;
+    public function getShared(string $name, $parameters = null);
 
     /**
      * Check whether the DI contains a service by a name

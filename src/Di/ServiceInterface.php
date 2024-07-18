@@ -19,7 +19,7 @@ interface ServiceInterface
      *
      * @return mixed
      */
-    public function getDefinition(): mixed;
+    public function getDefinition();
 
     /**
      * Returns a parameter in a specific position
@@ -50,7 +50,7 @@ interface ServiceInterface
      * @param DiInterface $container
      * @return mixed
      */
-    public function resolve($parameters = null, DiInterface $container = null): mixed;
+    public function resolve($parameters = null, DiInterface $container = null);
 
     /**
      * Set the service definition

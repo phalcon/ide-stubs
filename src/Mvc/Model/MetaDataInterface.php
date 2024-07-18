@@ -57,7 +57,7 @@ interface MetaDataInterface
      * @param \Phalcon\Mvc\ModelInterface $model
      * @return array|null
      */
-    public function getColumnMap(\Phalcon\Mvc\ModelInterface $model): array|null;
+    public function getColumnMap(\Phalcon\Mvc\ModelInterface $model): ?array;
 
     /**
      * Returns attributes (which have default values) and their default values
@@ -97,7 +97,7 @@ interface MetaDataInterface
      * @param \Phalcon\Mvc\ModelInterface $model
      * @return string|null
      */
-    public function getIdentityField(\Phalcon\Mvc\ModelInterface $model): string|null;
+    public function getIdentityField(\Phalcon\Mvc\ModelInterface $model): ?string;
 
     /**
      * Returns an array of fields which are not part of the primary key
@@ -129,7 +129,7 @@ interface MetaDataInterface
      * @param \Phalcon\Mvc\ModelInterface $model
      * @return array|null
      */
-    public function getReverseColumnMap(\Phalcon\Mvc\ModelInterface $model): array|null;
+    public function getReverseColumnMap(\Phalcon\Mvc\ModelInterface $model): ?array;
 
     /**
      * Return the strategy to obtain the meta-data
@@ -160,7 +160,7 @@ interface MetaDataInterface
      * @param string $key
      * @return array|null
      */
-    public function read(string $key): array|null;
+    public function read(string $key): ?array;
 
     /**
      * Reads the ordered/reversed column map for certain model
@@ -168,7 +168,7 @@ interface MetaDataInterface
      * @param \Phalcon\Mvc\ModelInterface $model
      * @return array|null
      */
-    public function readColumnMap(\Phalcon\Mvc\ModelInterface $model): array|null;
+    public function readColumnMap(\Phalcon\Mvc\ModelInterface $model): ?array;
 
     /**
      * Reads column-map information for certain model using a MODEL_ constant
@@ -177,7 +177,7 @@ interface MetaDataInterface
      * @param int $index
      * @return array|null
      */
-    public function readColumnMapIndex(\Phalcon\Mvc\ModelInterface $model, int $index): array|null;
+    public function readColumnMapIndex(\Phalcon\Mvc\ModelInterface $model, int $index): ?array;
 
     /**
      * Reads meta-data for certain model
@@ -185,7 +185,7 @@ interface MetaDataInterface
      * @param \Phalcon\Mvc\ModelInterface $model
      * @return array|null
      */
-    public function readMetaData(\Phalcon\Mvc\ModelInterface $model): array|null;
+    public function readMetaData(\Phalcon\Mvc\ModelInterface $model): ?array;
 
     /**
      * Reads meta-data for certain model using a MODEL_ constant
@@ -194,7 +194,7 @@ interface MetaDataInterface
      * @param int $index
      * @return array|null
      */
-    public function readMetaDataIndex(\Phalcon\Mvc\ModelInterface $model, int $index): array|null;
+    public function readMetaDataIndex(\Phalcon\Mvc\ModelInterface $model, int $index): ?array;
 
     /**
      * Resets internal meta-data in order to regenerate it

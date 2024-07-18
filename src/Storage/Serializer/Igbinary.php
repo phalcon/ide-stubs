@@ -46,7 +46,7 @@ class Igbinary extends \Phalcon\Storage\Serializer\AbstractSerializer
      *
      * @return string|null
      */
-    protected function phpIgbinarySerialize($value): string|null
+    protected function phpIgbinarySerialize($value): ?string
     {
     }
 
@@ -57,7 +57,7 @@ class Igbinary extends \Phalcon\Storage\Serializer\AbstractSerializer
      *
      * @return string|null
      */
-    protected function doSerialize($value): string|null
+    protected function doSerialize($value): ?string
     {
     }
 

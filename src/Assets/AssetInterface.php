@@ -26,7 +26,7 @@ interface AssetInterface
      *
      * @return array|null
      */
-    public function getAttributes(): array|null;
+    public function getAttributes(): ?array;
 
     /**
      * Gets if the asset must be filtered or not.

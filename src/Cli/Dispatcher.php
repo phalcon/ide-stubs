@@ -66,7 +66,7 @@ class Dispatcher extends \Phalcon\Dispatcher\AbstractDispatcher implements \Phal
      * @param array $params
      * @return mixed
      */
-    public function callActionMethod($handler, string $actionMethod, array $params = []): mixed
+    public function callActionMethod($handler, string $actionMethod, array $params = [])
     {
     }
 
@@ -96,7 +96,7 @@ class Dispatcher extends \Phalcon\Dispatcher\AbstractDispatcher implements \Phal
      * @param  mixed $defaultValue
      * @return mixed
      */
-    public function getOption($option, $filters = null, $defaultValue = null): mixed
+    public function getOption($option, $filters = null, $defaultValue = null)
     {
     }
 

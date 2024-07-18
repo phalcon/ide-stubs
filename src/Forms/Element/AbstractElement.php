@@ -156,7 +156,7 @@ abstract class AbstractElement implements \Phalcon\Forms\Element\ElementInterfac
      * @param mixed $defaultValue
      * @return mixed
      */
-    public function getAttribute(string $attribute, $defaultValue = null): mixed
+    public function getAttribute(string $attribute, $defaultValue = null)
     {
     }
 
@@ -174,7 +174,7 @@ abstract class AbstractElement implements \Phalcon\Forms\Element\ElementInterfac
      *
      * @return mixed
      */
-    public function getDefault(): mixed
+    public function getDefault()
     {
     }
 
@@ -229,7 +229,7 @@ abstract class AbstractElement implements \Phalcon\Forms\Element\ElementInterfac
      *
      * @return TagFactory|null
      */
-    public function getTagFactory(): TagFactory|null
+    public function getTagFactory(): ?TagFactory
     {
     }
 
@@ -240,7 +240,7 @@ abstract class AbstractElement implements \Phalcon\Forms\Element\ElementInterfac
      * @param mixed $defaultValue
      * @return mixed
      */
-    public function getUserOption(string $option, $defaultValue = null): mixed
+    public function getUserOption(string $option, $defaultValue = null)
     {
     }
 
@@ -267,7 +267,7 @@ abstract class AbstractElement implements \Phalcon\Forms\Element\ElementInterfac
      *
      * @return mixed
      */
-    public function getValue(): mixed
+    public function getValue()
     {
     }
 

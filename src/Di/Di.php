@@ -104,7 +104,7 @@ class Di implements \Phalcon\Di\DiInterface
      * @param array $arguments
      * @return mixed|null
      */
-    public function __call(string $method, array $arguments = []): mixed
+    public function __call(string $method, array $arguments = [])
     {
     }
 
@@ -118,7 +118,7 @@ class Di implements \Phalcon\Di\DiInterface
      * @param bool $shared
      * @return bool|ServiceInterface
      */
-    public function attempt(string $name, $definition, bool $shared = false): ServiceInterface|bool
+    public function attempt(string $name, $definition, bool $shared = false)
     {
     }
 
@@ -129,7 +129,7 @@ class Di implements \Phalcon\Di\DiInterface
      * @param mixed $parameters
      * @return mixed
      */
-    public function get(string $name, $parameters = null): mixed
+    public function get(string $name, $parameters = null)
     {
     }
 
@@ -138,7 +138,7 @@ class Di implements \Phalcon\Di\DiInterface
      *
      * @return DiInterface|null
      */
-    public static function getDefault(): DiInterface|null
+    public static function getDefault(): ?DiInterface
     {
     }
 
@@ -147,7 +147,7 @@ class Di implements \Phalcon\Di\DiInterface
      *
      * @return ManagerInterface|null
      */
-    public function getInternalEventsManager(): ManagerInterface|null
+    public function getInternalEventsManager(): ?ManagerInterface
     {
     }
 
@@ -157,7 +157,7 @@ class Di implements \Phalcon\Di\DiInterface
      * @param string $name
      * @return mixed
      */
-    public function getRaw(string $name): mixed
+    public function getRaw(string $name)
     {
     }
 
@@ -188,7 +188,7 @@ class Di implements \Phalcon\Di\DiInterface
      * @param mixed $parameters
      * @return mixed
      */
-    public function getShared(string $name, $parameters = null): mixed
+    public function getShared(string $name, $parameters = null)
     {
     }
 
@@ -300,7 +300,7 @@ class Di implements \Phalcon\Di\DiInterface
      * @param mixed $name
      * @return mixed
      */
-    public function offsetGet($name): mixed
+    public function offsetGet($name)
     {
     }
 

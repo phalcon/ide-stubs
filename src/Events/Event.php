@@ -74,14 +74,14 @@ class Event implements \Phalcon\Events\EventInterface
     /**
      * @return mixed
      */
-    public function getData(): mixed
+    public function getData()
     {
     }
 
     /**
      * @return object|null
      */
-    public function getSource(): object|null
+    public function getSource()
     {
     }
 

@@ -104,7 +104,7 @@ class Gettext extends \Phalcon\Translate\Adapter\AbstractAdapter implements \Arr
     /**
      * @return string|array
      */
-    public function getDirectory(): string|array
+    public function getDirectory()
     {
     }
 
@@ -228,7 +228,7 @@ class Gettext extends \Phalcon\Translate\Adapter\AbstractAdapter implements \Arr
      *
      * @return false|string
      */
-    public function setLocale(int $category, array $localeArray = []): bool|string
+    public function setLocale(int $category, array $localeArray = [])
     {
     }
 

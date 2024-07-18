@@ -56,7 +56,7 @@ class Libmemcached extends \Phalcon\Storage\Adapter\AbstractAdapter
      * @return bool|int
      * @throws StorageException
      */
-    public function decrement(string $key, int $value = 1): int|bool
+    public function decrement(string $key, int $value = 1)
     {
     }
 
@@ -79,7 +79,7 @@ class Libmemcached extends \Phalcon\Storage\Adapter\AbstractAdapter
      * @return \Memcached|null
      * @throws StorageException
      */
-    public function getAdapter(): mixed
+    public function getAdapter()
     {
     }
 
@@ -116,7 +116,7 @@ class Libmemcached extends \Phalcon\Storage\Adapter\AbstractAdapter
      * @return bool|int
      * @throws StorageException
      */
-    public function increment(string $key, int $value = 1): int|bool
+    public function increment(string $key, int $value = 1)
     {
     }
 

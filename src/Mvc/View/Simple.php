@@ -106,7 +106,7 @@ class Simple extends Injectable implements \Phalcon\Mvc\ViewBaseInterface, \Phal
      * @return mixed|null
      * @param string $key
      */
-    public function __get(string $key): mixed
+    public function __get(string $key)
     {
     }
 
@@ -148,7 +148,7 @@ class Simple extends Injectable implements \Phalcon\Mvc\ViewBaseInterface, \Phal
      *
      * @return ManagerInterface|null
      */
-    public function getEventsManager(): ManagerInterface|null
+    public function getEventsManager(): ?ManagerInterface
     {
     }
 
@@ -174,7 +174,7 @@ class Simple extends Injectable implements \Phalcon\Mvc\ViewBaseInterface, \Phal
      * @return mixed|null
      * @param string $key
      */
-    public function getVar(string $key): mixed
+    public function getVar(string $key)
     {
     }
 

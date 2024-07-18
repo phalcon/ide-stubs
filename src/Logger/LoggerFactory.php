@@ -73,7 +73,7 @@ class LoggerFactory extends AbstractConfigFactory
      * @param mixed $defaultValue
      * @return mixed
      */
-    protected function getArrVal(array $collection, $index, $defaultValue = null): mixed
+    protected function getArrVal(array $collection, $index, $defaultValue = null)
     {
     }
 

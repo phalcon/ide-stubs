@@ -272,7 +272,7 @@ class Manager extends AbstractInjectionAware
      * @return string|null
      * @throws Exception
      */
-    public function output(Collection $collection, string $type): string|null
+    public function output(Collection $collection, string $type): ?string
     {
     }
 

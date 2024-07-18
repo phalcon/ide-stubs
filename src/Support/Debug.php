@@ -266,7 +266,7 @@ class Debug
      * @param array $argument
      * @param mixed $n
      */
-    protected function getArrayDump(array $argument, $n = 0): string|null
+    protected function getArrayDump(array $argument, $n = 0): ?string
     {
     }
 
@@ -300,7 +300,7 @@ class Debug
      * @param mixed $defaultValue
      * @return mixed
      */
-    private function getArrVal(array $collection, $index, $defaultValue = null): mixed
+    private function getArrVal(array $collection, $index, $defaultValue = null)
     {
     }
 }

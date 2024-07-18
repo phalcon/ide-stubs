@@ -66,7 +66,7 @@ class Reflection
      *
      * @return Collection|null
      */
-    public function getClassAnnotations(): Collection|null
+    public function getClassAnnotations(): ?Collection
     {
     }
 

@@ -19,7 +19,7 @@ interface ColumnInterface
      *
      * @return string|null
      */
-    public function getAfterPosition(): string|null;
+    public function getAfterPosition(): ?string;
 
     /**
      * Returns the type of bind handling
@@ -33,7 +33,7 @@ interface ColumnInterface
      *
      * @return mixed
      */
-    public function getDefault(): mixed;
+    public function getDefault();
 
     /**
      * Returns column name
@@ -54,7 +54,7 @@ interface ColumnInterface
      *
      * @return int|string
      */
-    public function getSize(): int|string;
+    public function getSize();
 
     /**
      * Returns column type
@@ -75,7 +75,7 @@ interface ColumnInterface
      *
      * @return array|string
      */
-    public function getTypeValues(): string|array;
+    public function getTypeValues();
 
     /**
      * Check whether column has default value

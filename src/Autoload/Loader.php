@@ -155,7 +155,7 @@ class Loader extends AbstractEventsAware
      *
      * @return string|null
      */
-    public function getCheckedPath(): string|null
+    public function getCheckedPath(): ?string
     {
     }
 
@@ -209,7 +209,7 @@ class Loader extends AbstractEventsAware
      *
      * @return string|null
      */
-    public function getFoundPath(): string|null
+    public function getFoundPath(): ?string
     {
     }
 

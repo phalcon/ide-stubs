@@ -14,7 +14,6 @@ use Phalcon\Di\AbstractInjectionAware;
 use Phalcon\Cli\Router\Route;
 use Phalcon\Cli\Router\Exception;
 use Phalcon\Cli\Router\RouteInterface;
-use Phalcon\Cli\RouterInterface;
 
 /**
  * Phalcon\Cli\Router is the standard framework router. Routing is the process
@@ -36,7 +35,7 @@ use Phalcon\Cli\RouterInterface;
  * echo $router->getTaskName();
  * ```
  */
-class Router extends AbstractInjectionAware implements \Phalcon\Cli\RouterInterface
+class Router extends AbstractInjectionAware
 {
     /**
      * @var string
@@ -114,8 +113,8 @@ class Router extends AbstractInjectionAware implements \Phalcon\Cli\RouterInterf
      * $router->add("/about", "About::main");
      * ```
      *
-     * @param string     $pattern
-     * @param mixed|null $paths
+     * @param string|array $paths
+     * @param string $pattern
      * @return RouteInterface
      */
     public function add(string $pattern, $paths = null): RouteInterface
@@ -136,7 +135,7 @@ class Router extends AbstractInjectionAware implements \Phalcon\Cli\RouterInterf
      *
      * @return RouteInterface|null
      */
-    public function getMatchedRoute(): RouteInterface|null
+    public function getMatchedRoute(): ?RouteInterface
     {
     }
 
@@ -180,10 +179,10 @@ class Router extends AbstractInjectionAware implements \Phalcon\Cli\RouterInterf
     /**
      * Returns a route object by its id
      *
-     * @param mixed $id
+     * @param int $id
      * @return bool|RouteInterface
      */
-    public function getRouteById($id): RouteInterface|bool
+    public function getRouteById($id)
     {
     }
 
@@ -193,7 +192,7 @@ class Router extends AbstractInjectionAware implements \Phalcon\Cli\RouterInterf
      * @param string $name
      * @return bool|RouteInterface
      */
-    public function getRouteByName(string $name): RouteInterface|bool
+    public function getRouteByName(string $name)
     {
     }
 
@@ -228,9 +227,9 @@ class Router extends AbstractInjectionAware implements \Phalcon\Cli\RouterInterf
      * Sets the default action name
      *
      * @param string $actionName
-     * @return RouterInterface
+     * @return Router
      */
-    public function setDefaultAction(string $actionName): RouterInterface
+    public function setDefaultAction(string $actionName): Router
     {
     }
 
@@ -238,9 +237,9 @@ class Router extends AbstractInjectionAware implements \Phalcon\Cli\RouterInterf
      * Sets the name of the default module
      *
      * @param string $moduleName
-     * @return RouterInterface
+     * @return Router
      */
-    public function setDefaultModule(string $moduleName): RouterInterface
+    public function setDefaultModule(string $moduleName): Router
     {
     }
 
@@ -259,9 +258,9 @@ class Router extends AbstractInjectionAware implements \Phalcon\Cli\RouterInterf
      * ```
      *
      * @param array $defaults
-     * @return RouterInterface
+     * @return Router
      */
-    public function setDefaults(array $defaults): RouterInterface
+    public function setDefaults(array $defaults): Router
     {
     }
 

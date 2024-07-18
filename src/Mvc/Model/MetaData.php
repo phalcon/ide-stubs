@@ -100,7 +100,7 @@ abstract class MetaData implements \Phalcon\Di\InjectionAwareInterface, \Phalcon
      *
      * @return CacheAdapterInterface|null
      */
-    public function getAdapter(): CacheAdapterInterface|null
+    public function getAdapter(): ?CacheAdapterInterface
     {
     }
 
@@ -190,7 +190,7 @@ abstract class MetaData implements \Phalcon\Di\InjectionAwareInterface, \Phalcon
      * @param \Phalcon\Mvc\ModelInterface $model
      * @return array|null
      */
-    public function getColumnMap(\Phalcon\Mvc\ModelInterface $model): array|null
+    public function getColumnMap(\Phalcon\Mvc\ModelInterface $model): ?array
     {
     }
 
@@ -289,7 +289,7 @@ abstract class MetaData implements \Phalcon\Di\InjectionAwareInterface, \Phalcon
      * @param \Phalcon\Mvc\ModelInterface $model
      * @return string|null
      */
-    public function getIdentityField(\Phalcon\Mvc\ModelInterface $model): string|null
+    public function getIdentityField(\Phalcon\Mvc\ModelInterface $model): ?string
     {
     }
 
@@ -361,7 +361,7 @@ abstract class MetaData implements \Phalcon\Di\InjectionAwareInterface, \Phalcon
      * @param \Phalcon\Mvc\ModelInterface $model
      * @return array|null
      */
-    public function getReverseColumnMap(\Phalcon\Mvc\ModelInterface $model): array|null
+    public function getReverseColumnMap(\Phalcon\Mvc\ModelInterface $model): ?array
     {
     }
 
@@ -415,7 +415,7 @@ abstract class MetaData implements \Phalcon\Di\InjectionAwareInterface, \Phalcon
      * @param string $key
      * @return array|null
      */
-    public function read(string $key): array|null
+    public function read(string $key): ?array
     {
     }
 
@@ -433,7 +433,7 @@ abstract class MetaData implements \Phalcon\Di\InjectionAwareInterface, \Phalcon
      * @param \Phalcon\Mvc\ModelInterface $model
      * @return array|null
      */
-    final public function readColumnMap(\Phalcon\Mvc\ModelInterface $model): array|null
+    final public function readColumnMap(\Phalcon\Mvc\ModelInterface $model): ?array
     {
     }
 
@@ -453,7 +453,7 @@ abstract class MetaData implements \Phalcon\Di\InjectionAwareInterface, \Phalcon
      * @param int $index
      * @return array|null
      */
-    final public function readColumnMapIndex(\Phalcon\Mvc\ModelInterface $model, int $index): array|null
+    final public function readColumnMapIndex(\Phalcon\Mvc\ModelInterface $model, int $index): ?array
     {
     }
 
@@ -471,7 +471,7 @@ abstract class MetaData implements \Phalcon\Di\InjectionAwareInterface, \Phalcon
      * @param \Phalcon\Mvc\ModelInterface $model
      * @return array|null
      */
-    final public function readMetaData(\Phalcon\Mvc\ModelInterface $model): array|null
+    final public function readMetaData(\Phalcon\Mvc\ModelInterface $model): ?array
     {
     }
 
@@ -491,7 +491,7 @@ abstract class MetaData implements \Phalcon\Di\InjectionAwareInterface, \Phalcon
      * @param int $index
      * @return array|null
      */
-    final public function readMetaDataIndex(\Phalcon\Mvc\ModelInterface $model, int $index): array|null
+    final public function readMetaDataIndex(\Phalcon\Mvc\ModelInterface $model, int $index): ?array
     {
     }
 
@@ -674,7 +674,7 @@ abstract class MetaData implements \Phalcon\Di\InjectionAwareInterface, \Phalcon
      * @param mixed $defaultValue
      * @return mixed
      */
-    protected function getArrVal(array $collection, $index, $defaultValue = null): mixed
+    protected function getArrVal(array $collection, $index, $defaultValue = null)
     {
     }
 
@@ -684,7 +684,7 @@ abstract class MetaData implements \Phalcon\Di\InjectionAwareInterface, \Phalcon
      * @return string
      * @param \Phalcon\Mvc\ModelInterface $model
      */
-    final public function getMetaDataUniqueKey(\Phalcon\Mvc\ModelInterface $model): string|null
+    final public function getMetaDataUniqueKey(\Phalcon\Mvc\ModelInterface $model): ?string
     {
     }
 
@@ -694,7 +694,7 @@ abstract class MetaData implements \Phalcon\Di\InjectionAwareInterface, \Phalcon
      * @return string
      * @param \Phalcon\Mvc\ModelInterface $model
      */
-    final public function getColumnMapUniqueKey(\Phalcon\Mvc\ModelInterface $model): string|null
+    final public function getColumnMapUniqueKey(\Phalcon\Mvc\ModelInterface $model): ?string
     {
     }
 }
