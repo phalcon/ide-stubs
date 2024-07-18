@@ -60,7 +60,7 @@ interface RepositoryInterface
      *
      * @return mixed
      */
-    public function getItems();
+    public function getItems(): mixed;
 
     /**
      * Gets number of the last page

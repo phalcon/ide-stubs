@@ -26,7 +26,7 @@ abstract class AbstractEventsAware
      *
      * @return ManagerInterface|null
      */
-    public function getEventsManager(): ?ManagerInterface
+    public function getEventsManager(): ManagerInterface|null
     {
     }
 
@@ -49,7 +49,7 @@ abstract class AbstractEventsAware
      *
      * @return mixed|bool
      */
-    protected function fireManagerEvent(string $eventName, $data = null, bool $cancellable = true)
+    protected function fireManagerEvent(string $eventName, $data = null, bool $cancellable = true): mixed
     {
     }
 }

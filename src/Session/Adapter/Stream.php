@@ -68,7 +68,7 @@ class Stream extends \Phalcon\Session\Adapter\Noop
      * @param int $max_lifetime
      * @return false|int
      */
-    public function gc(int $max_lifetime): int
+    public function gc(int $max_lifetime): int|false
     {
     }
 
@@ -110,7 +110,7 @@ class Stream extends \Phalcon\Session\Adapter\Noop
      * @param string $cast
      * @return mixed
      */
-    protected function getArrVal(array $collection, $index, $defaultValue = null, string $cast = null)
+    protected function getArrVal(array $collection, $index, $defaultValue = null, string $cast = null): mixed
     {
     }
 

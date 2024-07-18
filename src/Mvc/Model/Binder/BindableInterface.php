@@ -22,5 +22,5 @@ interface BindableInterface
      *
      * @return string|array
      */
-    public function getModelName();
+    public function getModelName(): string|array;
 }

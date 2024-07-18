@@ -28,7 +28,7 @@ class Memory extends \Phalcon\Annotations\Adapter\AbstractAdapter
      * @param string $key
      * @return bool|Reflection
      */
-    public function read(string $key)
+    public function read(string $key): Reflection|bool
     {
     }
 

@@ -24,7 +24,7 @@ class None extends \Phalcon\Storage\Serializer\AbstractSerializer
      *
      * @return mixed
      */
-    public function serialize()
+    public function serialize(): mixed
     {
     }
 

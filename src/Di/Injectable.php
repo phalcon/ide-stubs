@@ -57,7 +57,7 @@ abstract class Injectable extends stdClass implements \Phalcon\Di\InjectionAware
      * @param string $propertyName
      * @return mixed|null
      */
-    public function __get(string $propertyName)
+    public function __get(string $propertyName): mixed
     {
     }
 

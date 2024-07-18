@@ -68,7 +68,7 @@ abstract class AbstractCache implements \Phalcon\Cache\CacheInterface, \Phalcon\
      *
      * @return ManagerInterface|null
      */
-    public function getEventsManager(): ?ManagerInterface
+    public function getEventsManager(): ManagerInterface|null
     {
     }
 
@@ -142,7 +142,7 @@ abstract class AbstractCache implements \Phalcon\Cache\CacheInterface, \Phalcon\
      * @throws InvalidArgumentException MUST be thrown if the $key string is
      * not a legal value.
      */
-    protected function doGet(string $key, $defaultValue = null)
+    protected function doGet(string $key, $defaultValue = null): mixed
     {
     }
 

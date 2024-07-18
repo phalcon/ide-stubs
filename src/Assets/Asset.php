@@ -194,7 +194,7 @@ class Asset implements \Phalcon\Assets\AssetInterface
      *
      * @return string|null
      */
-    public function getVersion(): ?string
+    public function getVersion(): string|null
     {
     }
 

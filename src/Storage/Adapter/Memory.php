@@ -56,7 +56,7 @@ class Memory extends \Phalcon\Storage\Adapter\AbstractAdapter
      *
      * @return bool|int
      */
-    public function decrement(string $key, int $value = 1)
+    public function decrement(string $key, int $value = 1): int|bool
     {
     }
 
@@ -101,7 +101,7 @@ class Memory extends \Phalcon\Storage\Adapter\AbstractAdapter
      *
      * @return bool|int
      */
-    public function increment(string $key, int $value = 1)
+    public function increment(string $key, int $value = 1): int|bool
     {
     }
 

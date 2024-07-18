@@ -86,7 +86,7 @@ class Escaper implements \Phalcon\Html\Escaper\EscaperInterface
      *
      * @return string|null
      */
-    final public function detectEncoding(string $input): ?string
+    final public function detectEncoding(string $input): string|null
     {
     }
 

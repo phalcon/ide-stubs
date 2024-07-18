@@ -82,7 +82,7 @@ class ImageFactory extends AbstractFactory
      * @param mixed $defaultValue
      * @return mixed
      */
-    private function getArrVal(array $collection, $index, $defaultValue = null)
+    private function getArrVal(array $collection, $index, $defaultValue = null): mixed
     {
     }
 }

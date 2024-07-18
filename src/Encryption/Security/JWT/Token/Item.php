@@ -30,7 +30,7 @@ class Item extends \Phalcon\Encryption\Security\JWT\Token\AbstractItem
      *
      * @return mixed|null
      */
-    public function get(string $name, $defaultValue = null)
+    public function get(string $name, $defaultValue = null): mixed
     {
     }
 

@@ -34,7 +34,7 @@ class Repository implements \Phalcon\Paginator\RepositoryInterface, \JsonSeriali
      * @param string $property
      * @return mixed|null
      */
-    public function __get(string $property)
+    public function __get(string $property): mixed
     {
     }
 
@@ -70,7 +70,7 @@ class Repository implements \Phalcon\Paginator\RepositoryInterface, \JsonSeriali
      *
      * @return mixed
      */
-    public function getItems()
+    public function getItems(): mixed
     {
     }
 
@@ -155,7 +155,7 @@ class Repository implements \Phalcon\Paginator\RepositoryInterface, \JsonSeriali
      * @param mixed $defaultValue
      * @return mixed
      */
-    protected function getProperty(string $property, $defaultValue = null)
+    protected function getProperty(string $property, $defaultValue = null): mixed
     {
     }
 

@@ -324,7 +324,7 @@ class Group implements \Phalcon\Mvc\Router\GroupInterface
      *
      * @return string|null
      */
-    public function getHostname(): ?string
+    public function getHostname(): string|null
     {
     }
 
@@ -333,7 +333,7 @@ class Group implements \Phalcon\Mvc\Router\GroupInterface
      *
      * @return array|string
      */
-    public function getPaths()
+    public function getPaths(): string|array
     {
     }
 

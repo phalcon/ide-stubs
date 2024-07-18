@@ -52,7 +52,7 @@ abstract class AbstractAdapter implements \SessionHandlerInterface
      * @param int $max_lifetime
      * @return false|int
      */
-    public function gc(int $max_lifetime): int
+    public function gc(int $max_lifetime): int|false
     {
     }
 
@@ -95,7 +95,7 @@ abstract class AbstractAdapter implements \SessionHandlerInterface
      * @param mixed $defaultValue
      * @return mixed
      */
-    protected function getArrVal(array $collection, $index, $defaultValue = null)
+    protected function getArrVal(array $collection, $index, $defaultValue = null): mixed
     {
     }
 }

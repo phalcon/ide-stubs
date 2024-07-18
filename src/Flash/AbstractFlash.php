@@ -111,7 +111,7 @@ abstract class AbstractFlash extends AbstractInjectionAware implements \Phalcon\
      *
      * @return string|null
      */
-    public function error(string $message): ?string
+    public function error(string $message): string|null
     {
     }
 
@@ -171,7 +171,7 @@ abstract class AbstractFlash extends AbstractInjectionAware implements \Phalcon\
      *
      * @return string|null
      */
-    public function notice(string $message): ?string
+    public function notice(string $message): string|null
     {
     }
 
@@ -257,7 +257,7 @@ abstract class AbstractFlash extends AbstractInjectionAware implements \Phalcon\
      *
      * @return string|null
      */
-    public function success(string $message): ?string
+    public function success(string $message): string|null
     {
     }
 
@@ -274,7 +274,7 @@ abstract class AbstractFlash extends AbstractInjectionAware implements \Phalcon\
      * @return string|null
      * @throws Exception
      */
-    public function outputMessage(string $type, $message): ?string
+    public function outputMessage(string $type, $message): string|null
     {
     }
 
@@ -289,7 +289,7 @@ abstract class AbstractFlash extends AbstractInjectionAware implements \Phalcon\
      *
      * @return string|null
      */
-    public function warning(string $message): ?string
+    public function warning(string $message): string|null
     {
     }
 

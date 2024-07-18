@@ -44,7 +44,7 @@ abstract class AbstractFactory extends \Phalcon\Factory\AbstractConfigFactory
      * @param string $name
      * @return mixed
      */
-    protected function getService(string $name)
+    protected function getService(string $name): mixed
     {
     }
 

@@ -24,7 +24,7 @@ class Get
      *
      * @return mixed|null
      */
-    public function __invoke(array $collection, $index, $defaultValue = null, string $cast = null)
+    public function __invoke(array $collection, $index, $defaultValue = null, string $cast = null): mixed
     {
     }
 }

@@ -36,7 +36,7 @@ interface RequestInterface
      * @param bool $noRecursive
      * @return mixed
      */
-    public function get(string $name = null, $filters = null, $defaultValue = null, bool $notAllowEmpty = false, bool $noRecursive = false);
+    public function get(string $name = null, $filters = null, $defaultValue = null, bool $notAllowEmpty = false, bool $noRecursive = false): mixed;
 
     /**
      * Gets an array with mime/types and their quality accepted by the
@@ -52,7 +52,7 @@ interface RequestInterface
      *
      * @return array|null
      */
-    public function getBasicAuth(): ?array;
+    public function getBasicAuth(): array|null;
 
     /**
      * Gets best mime/type accepted by the browser/client from
@@ -86,7 +86,7 @@ interface RequestInterface
      * @param bool $trustForwardedHeader
      * @return string|bool
      */
-    public function getClientAddress(bool $trustForwardedHeader = false);
+    public function getClientAddress(bool $trustForwardedHeader = false): bool|string;
 
     /**
      * Gets a charsets array and their quality accepted by the browser/client
@@ -101,7 +101,7 @@ interface RequestInterface
      *
      * @return string|null
      */
-    public function getContentType(): ?string;
+    public function getContentType(): string|null;
 
     /**
      * Gets auth info accepted by the browser/client from
@@ -188,7 +188,7 @@ interface RequestInterface
      * @param bool $associative
      * @return array|bool|stdClass
      */
-    public function getJsonRawBody(bool $associative = false);
+    public function getJsonRawBody(bool $associative = false): stdClass|bool|array;
 
     /**
      * Gets languages array and their quality accepted by the browser/client
@@ -255,7 +255,7 @@ interface RequestInterface
      * @param bool $noRecursive
      * @return mixed
      */
-    public function getPost(string $name = null, $filters = null, $defaultValue = null, bool $notAllowEmpty = false, bool $noRecursive = false);
+    public function getPost(string $name = null, $filters = null, $defaultValue = null, bool $notAllowEmpty = false, bool $noRecursive = false): mixed;
 
     /**
      * Gets a variable from put request
@@ -275,7 +275,7 @@ interface RequestInterface
      * @param bool $noRecursive
      * @return mixed
      */
-    public function getPut(string $name = null, $filters = null, $defaultValue = null, bool $notAllowEmpty = false, bool $noRecursive = false);
+    public function getPut(string $name = null, $filters = null, $defaultValue = null, bool $notAllowEmpty = false, bool $noRecursive = false): mixed;
 
     /**
      * Gets variable from $_GET superglobal applying filters if needed
@@ -299,7 +299,7 @@ interface RequestInterface
      * @param bool $noRecursive
      * @return mixed
      */
-    public function getQuery(string $name = null, $filters = null, $defaultValue = null, bool $notAllowEmpty = false, bool $noRecursive = false);
+    public function getQuery(string $name = null, $filters = null, $defaultValue = null, bool $notAllowEmpty = false, bool $noRecursive = false): mixed;
 
     /**
      * Gets HTTP raw request body
@@ -321,7 +321,7 @@ interface RequestInterface
      * @param string $name
      * @return string|null
      */
-    public function getServer(string $name): ?string;
+    public function getServer(string $name): string|null;
 
     /**
      * Gets active server address IP

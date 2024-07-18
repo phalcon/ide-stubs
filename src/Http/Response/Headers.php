@@ -32,7 +32,7 @@ class Headers implements \Phalcon\Http\Response\HeadersInterface
      * @param string $name
      * @return string|bool
      */
-    public function get(string $name)
+    public function get(string $name): bool|string
     {
     }
 

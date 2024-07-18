@@ -209,7 +209,7 @@ class View extends Injectable implements \Phalcon\Mvc\ViewInterface, \Phalcon\Ev
      * @param string $key
      * @return mixed|null
      */
-    public function __get(string $key)
+    public function __get(string $key): mixed
     {
     }
 
@@ -328,7 +328,7 @@ class View extends Injectable implements \Phalcon\Mvc\ViewInterface, \Phalcon\Ev
      *
      * @return string|array
      */
-    public function getActiveRenderPath()
+    public function getActiveRenderPath(): string|array
     {
     }
 
@@ -385,7 +385,7 @@ class View extends Injectable implements \Phalcon\Mvc\ViewInterface, \Phalcon\Ev
      *
      * @return ManagerInterface|null
      */
-    public function getEventsManager(): ?ManagerInterface
+    public function getEventsManager(): ManagerInterface|null
     {
     }
 
@@ -489,7 +489,7 @@ class View extends Injectable implements \Phalcon\Mvc\ViewInterface, \Phalcon\Ev
      * @return mixed|null
      * @param string $key
      */
-    public function getVar(string $key)
+    public function getVar(string $key): mixed
     {
     }
 
@@ -498,7 +498,7 @@ class View extends Injectable implements \Phalcon\Mvc\ViewInterface, \Phalcon\Ev
      *
      * @return string|array
      */
-    public function getViewsDir()
+    public function getViewsDir(): string|array
     {
     }
 
@@ -613,7 +613,7 @@ class View extends Injectable implements \Phalcon\Mvc\ViewInterface, \Phalcon\Ev
      * @param array $params
      * @return bool|View
      */
-    public function render(string $controllerName, string $actionName, array $params = [])
+    public function render(string $controllerName, string $actionName, array $params = []): View|bool
     {
     }
 

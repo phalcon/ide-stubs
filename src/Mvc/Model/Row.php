@@ -35,7 +35,7 @@ class Row extends \stdClass implements \Phalcon\Mvc\EntityInterface, \Phalcon\Mv
      * @param string|int $index *
      * @return string|ModelInterface
      */
-    public function offsetGet($index)
+    public function offsetGet($index): mixed
     {
     }
 
@@ -91,7 +91,7 @@ class Row extends \stdClass implements \Phalcon\Mvc\EntityInterface, \Phalcon\Mv
      * @param int $dirtyState
      * @return bool|ModelInterface
      */
-    public function setDirtyState(int $dirtyState)
+    public function setDirtyState(int $dirtyState): ModelInterface|bool
     {
     }
 

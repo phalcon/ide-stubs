@@ -73,7 +73,7 @@ abstract class AbstractAdapter implements \Phalcon\Translate\Adapter\AdapterInte
      *
      * @return mixed
      */
-    public function offsetGet($translateKey)
+    public function offsetGet($translateKey): mixed
     {
     }
 
