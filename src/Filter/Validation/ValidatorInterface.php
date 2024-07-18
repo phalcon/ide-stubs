@@ -24,7 +24,7 @@ interface ValidatorInterface
      * @param string $key
      * @param mixed $defaultValue
      */
-    public function getOption(string $key, $defaultValue = null);
+    public function getOption(string $key, $defaultValue = null): mixed;
 
     /**
      * Get the template message

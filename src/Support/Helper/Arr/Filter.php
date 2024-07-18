@@ -20,7 +20,7 @@ class Filter extends \Phalcon\Support\Helper\Arr\AbstractArr
      *
      * @return mixed
      */
-    public function __invoke(array $collection, $method = null)
+    public function __invoke(array $collection, $method = null): mixed
     {
     }
 }

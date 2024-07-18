@@ -20,7 +20,7 @@ interface BagInterface
      * @param string $element
      * @return mixed
      */
-    public function __get(string $element);
+    public function __get(string $element): mixed;
 
     /**
      * @param string $element
@@ -53,7 +53,7 @@ interface BagInterface
      * @param string $cast
      * @return mixed
      */
-    public function get(string $element, $defaultValue = null, string $cast = null);
+    public function get(string $element, $defaultValue = null, string $cast = null): mixed;
 
     /**
      * @param string $element

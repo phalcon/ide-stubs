@@ -66,7 +66,7 @@ interface ElementInterface
      * @param mixed $defaultValue
      * @return mixed
      */
-    public function getAttribute(string $attribute, $defaultValue = null);
+    public function getAttribute(string $attribute, $defaultValue = null): mixed;
 
     /**
      * Returns the default attributes for the element
@@ -80,7 +80,7 @@ interface ElementInterface
      *
      * @return mixed
      */
-    public function getDefault();
+    public function getDefault(): mixed;
 
     /**
      * Returns the element's filters
@@ -125,7 +125,7 @@ interface ElementInterface
      * @param mixed $defaultValue
      * @return mixed
      */
-    public function getUserOption(string $option, $defaultValue = null);
+    public function getUserOption(string $option, $defaultValue = null): mixed;
 
     /**
      * Returns the options for the element
@@ -146,7 +146,7 @@ interface ElementInterface
      *
      * @return mixed
      */
-    public function getValue();
+    public function getValue(): mixed;
 
     /**
      * Checks whether there are messages attached to the element

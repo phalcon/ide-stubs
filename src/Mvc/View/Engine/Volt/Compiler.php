@@ -531,7 +531,7 @@ class Compiler implements \Phalcon\Di\InjectionAwareInterface
      * @param string $option *
      * @return string|null
      */
-    public function getOption(string $option): ?string
+    public function getOption(string $option): string|null
     {
     }
 
@@ -636,7 +636,7 @@ class Compiler implements \Phalcon\Di\InjectionAwareInterface
      * @param bool $extendsMode
      * @return array|string
      */
-    protected function compileSource(string $viewCode, bool $extendsMode = false)
+    protected function compileSource(string $viewCode, bool $extendsMode = false): string|array
     {
     }
 

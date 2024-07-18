@@ -414,7 +414,7 @@ abstract class Model extends AbstractInjectionAware implements \Phalcon\Mvc\Enti
      * @param array $parameters
      * @return float | ResultsetInterface
      */
-    public static function average(array $parameters = [])
+    public static function average(array $parameters = []): ResultsetInterface|float
     {
     }
 
@@ -510,7 +510,7 @@ abstract class Model extends AbstractInjectionAware implements \Phalcon\Mvc\Enti
      * @param array|string|null $parameters
      * @return int|ResultsetInterface
      */
-    public static function count($parameters = null)
+    public static function count($parameters = null): ResultsetInterface|int
     {
     }
 
@@ -854,7 +854,7 @@ abstract class Model extends AbstractInjectionAware implements \Phalcon\Mvc\Enti
      *
      * @return T|\Phalcon\Mvc\ModelInterface|\Phalcon\Mvc\Model\Row|null
      */
-    public static function findFirst($parameters = null)
+    public static function findFirst($parameters = null): mixed
     {
     }
 
@@ -915,7 +915,7 @@ abstract class Model extends AbstractInjectionAware implements \Phalcon\Mvc\Enti
      *
      * @return EventsManagerInterface|null
      */
-    public function getEventsManager(): ?EventsManagerInterface
+    public function getEventsManager(): EventsManagerInterface|null
     {
     }
 
@@ -1048,7 +1048,7 @@ abstract class Model extends AbstractInjectionAware implements \Phalcon\Mvc\Enti
      *
      * @return string|null
      */
-    final public function getSchema(): ?string
+    final public function getSchema(): string|null
     {
     }
 
@@ -1201,7 +1201,7 @@ abstract class Model extends AbstractInjectionAware implements \Phalcon\Mvc\Enti
      * @param array $parameters
      * @return mixed
      */
-    public static function maximum($parameters = null)
+    public static function maximum($parameters = null): mixed
     {
     }
 
@@ -1233,7 +1233,7 @@ abstract class Model extends AbstractInjectionAware implements \Phalcon\Mvc\Enti
      * @param array $parameters
      * @return mixed
      */
-    public static function minimum($parameters = null)
+    public static function minimum($parameters = null): mixed
     {
     }
 
@@ -1257,7 +1257,7 @@ abstract class Model extends AbstractInjectionAware implements \Phalcon\Mvc\Enti
      * @param string $attribute
      * @return mixed|null
      */
-    public function readAttribute(string $attribute)
+    public function readAttribute(string $attribute): mixed
     {
     }
 
@@ -1315,7 +1315,7 @@ abstract class Model extends AbstractInjectionAware implements \Phalcon\Mvc\Enti
      *
      * @return string|null
      */
-    public function serialize(): ?string
+    public function serialize(): string|null
     {
     }
 
@@ -1345,7 +1345,7 @@ abstract class Model extends AbstractInjectionAware implements \Phalcon\Mvc\Enti
      * @param int $dirtyState
      * @return bool|ModelInterface
      */
-    public function setDirtyState(int $dirtyState)
+    public function setDirtyState(int $dirtyState): ModelInterface|bool
     {
     }
 
@@ -1442,7 +1442,7 @@ abstract class Model extends AbstractInjectionAware implements \Phalcon\Mvc\Enti
     /**
      * @return TransactionInterface|null
      */
-    public function getTransaction(): ?TransactionInterface
+    public function getTransaction(): TransactionInterface|null
     {
     }
 
@@ -1504,7 +1504,7 @@ abstract class Model extends AbstractInjectionAware implements \Phalcon\Mvc\Enti
      * @param array $parameters
      * @return double | ResultsetInterface
      */
-    public static function sum($parameters = null)
+    public static function sum($parameters = null): ResultsetInterface|float
     {
     }
 

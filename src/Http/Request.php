@@ -103,7 +103,7 @@ class Request extends AbstractInjectionAware implements \Phalcon\Http\RequestInt
      * @param bool $noRecursive
      * @return mixed
      */
-    public function get(string $name = null, $filters = null, $defaultValue = null, bool $notAllowEmpty = false, bool $noRecursive = false)
+    public function get(string $name = null, $filters = null, $defaultValue = null, bool $notAllowEmpty = false, bool $noRecursive = false): mixed
     {
     }
 
@@ -123,7 +123,7 @@ class Request extends AbstractInjectionAware implements \Phalcon\Http\RequestInt
      *
      * @return array|null
      */
-    public function getBasicAuth(): ?array
+    public function getBasicAuth(): array|null
     {
     }
 
@@ -190,7 +190,7 @@ class Request extends AbstractInjectionAware implements \Phalcon\Http\RequestInt
      * @param bool $trustForwardedHeader
      * @return string|bool
      */
-    public function getClientAddress(bool $trustForwardedHeader = false)
+    public function getClientAddress(bool $trustForwardedHeader = false): bool|string
     {
     }
 
@@ -209,7 +209,7 @@ class Request extends AbstractInjectionAware implements \Phalcon\Http\RequestInt
      *
      * @return string|null
      */
-    public function getContentType(): ?string
+    public function getContentType(): string|null
     {
     }
 
@@ -232,7 +232,7 @@ class Request extends AbstractInjectionAware implements \Phalcon\Http\RequestInt
      * @param bool $noRecursive
      * @return mixed
      */
-    public function getFilteredQuery(string $name = null, $defaultValue = null, bool $notAllowEmpty = false, bool $noRecursive = false)
+    public function getFilteredQuery(string $name = null, $defaultValue = null, bool $notAllowEmpty = false, bool $noRecursive = false): mixed
     {
     }
 
@@ -245,7 +245,7 @@ class Request extends AbstractInjectionAware implements \Phalcon\Http\RequestInt
      * @param bool $noRecursive
      * @return mixed
      */
-    public function getFilteredPatch(string $name = null, $defaultValue = null, bool $notAllowEmpty = false, bool $noRecursive = false)
+    public function getFilteredPatch(string $name = null, $defaultValue = null, bool $notAllowEmpty = false, bool $noRecursive = false): mixed
     {
     }
 
@@ -258,7 +258,7 @@ class Request extends AbstractInjectionAware implements \Phalcon\Http\RequestInt
      * @param bool $noRecursive
      * @return mixed
      */
-    public function getFilteredPost(string $name = null, $defaultValue = null, bool $notAllowEmpty = false, bool $noRecursive = false)
+    public function getFilteredPost(string $name = null, $defaultValue = null, bool $notAllowEmpty = false, bool $noRecursive = false): mixed
     {
     }
 
@@ -271,7 +271,7 @@ class Request extends AbstractInjectionAware implements \Phalcon\Http\RequestInt
      * @param bool $noRecursive
      * @return mixed
      */
-    public function getFilteredPut(string $name = null, $defaultValue = null, bool $notAllowEmpty = false, bool $noRecursive = false)
+    public function getFilteredPut(string $name = null, $defaultValue = null, bool $notAllowEmpty = false, bool $noRecursive = false): mixed
     {
     }
 
@@ -360,7 +360,7 @@ class Request extends AbstractInjectionAware implements \Phalcon\Http\RequestInt
      * @param bool $associative
      * @return array|bool|\stdClass
      */
-    public function getJsonRawBody(bool $associative = false)
+    public function getJsonRawBody(bool $associative = false): \stdClass|bool|array
     {
     }
 
@@ -409,7 +409,7 @@ class Request extends AbstractInjectionAware implements \Phalcon\Http\RequestInt
      * @param bool $noRecursive
      * @return mixed
      */
-    public function getPatch(string $name = null, $filters = null, $defaultValue = null, bool $notAllowEmpty = false, bool $noRecursive = false)
+    public function getPatch(string $name = null, $filters = null, $defaultValue = null, bool $notAllowEmpty = false, bool $noRecursive = false): mixed
     {
     }
 
@@ -441,7 +441,7 @@ class Request extends AbstractInjectionAware implements \Phalcon\Http\RequestInt
      * @param bool $noRecursive
      * @return mixed
      */
-    public function getPost(string $name = null, $filters = null, $defaultValue = null, bool $notAllowEmpty = false, bool $noRecursive = false)
+    public function getPost(string $name = null, $filters = null, $defaultValue = null, bool $notAllowEmpty = false, bool $noRecursive = false): mixed
     {
     }
 
@@ -463,7 +463,7 @@ class Request extends AbstractInjectionAware implements \Phalcon\Http\RequestInt
      * @param bool $noRecursive
      * @return mixed
      */
-    public function getPut(string $name = null, $filters = null, $defaultValue = null, bool $notAllowEmpty = false, bool $noRecursive = false)
+    public function getPut(string $name = null, $filters = null, $defaultValue = null, bool $notAllowEmpty = false, bool $noRecursive = false): mixed
     {
     }
 
@@ -489,7 +489,7 @@ class Request extends AbstractInjectionAware implements \Phalcon\Http\RequestInt
      * @param bool $noRecursive
      * @return mixed
      */
-    public function getQuery(string $name = null, $filters = null, $defaultValue = null, bool $notAllowEmpty = false, bool $noRecursive = false)
+    public function getQuery(string $name = null, $filters = null, $defaultValue = null, bool $notAllowEmpty = false, bool $noRecursive = false): mixed
     {
     }
 
@@ -517,7 +517,7 @@ class Request extends AbstractInjectionAware implements \Phalcon\Http\RequestInt
      * @param string $name
      * @return string|null
      */
-    public function getServer(string $name): ?string
+    public function getServer(string $name): string|null
     {
     }
 
@@ -883,7 +883,7 @@ class Request extends AbstractInjectionAware implements \Phalcon\Http\RequestInt
      * @param bool $noRecursive
      * @return mixed
      */
-    final protected function getHelper(array $source, string $name = null, $filters = null, $defaultValue = null, bool $notAllowEmpty = false, bool $noRecursive = false)
+    final protected function getHelper(array $source, string $name = null, $filters = null, $defaultValue = null, bool $notAllowEmpty = false, bool $noRecursive = false): mixed
     {
     }
 
@@ -960,7 +960,7 @@ class Request extends AbstractInjectionAware implements \Phalcon\Http\RequestInt
      * @param bool $noRecursive
      * @return mixed
      */
-    public function getFilteredData(string $methodKey, string $method, string $name = null, $defaultValue = null, bool $notAllowEmpty = false, bool $noRecursive = false)
+    public function getFilteredData(string $methodKey, string $method, string $name = null, $defaultValue = null, bool $notAllowEmpty = false, bool $noRecursive = false): mixed
     {
     }
 
@@ -983,7 +983,7 @@ class Request extends AbstractInjectionAware implements \Phalcon\Http\RequestInt
      * @param bool $noRecursive
      * @return mixed
      */
-    private function getPatchPut(string $collection, string $name = null, $filters = null, $defaultValue = null, bool $notAllowEmpty = false, bool $noRecursive = false)
+    private function getPatchPut(string $collection, string $name = null, $filters = null, $defaultValue = null, bool $notAllowEmpty = false, bool $noRecursive = false): mixed
     {
     }
 

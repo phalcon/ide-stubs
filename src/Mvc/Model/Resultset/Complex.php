@@ -61,7 +61,7 @@ class Complex extends Resultset
      *
      * @return mixed
      */
-    final public function current()
+    final public function current(): mixed
     {
     }
 

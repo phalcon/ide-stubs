@@ -408,7 +408,7 @@ class Router extends AbstractInjectionAware implements \Phalcon\Mvc\RouterInterf
      *
      * @return ManagerInterface|null
      */
-    public function getEventsManager(): ?ManagerInterface
+    public function getEventsManager(): ManagerInterface|null
     {
     }
 
@@ -458,7 +458,7 @@ class Router extends AbstractInjectionAware implements \Phalcon\Mvc\RouterInterf
      *
      * @return RouteInterface|null
      */
-    public function getMatchedRoute(): ?RouteInterface
+    public function getMatchedRoute(): RouteInterface|null
     {
     }
 
@@ -504,7 +504,7 @@ class Router extends AbstractInjectionAware implements \Phalcon\Mvc\RouterInterf
      * @param mixed $id *
      * @return RouteInterface|bool
      */
-    public function getRouteById($id)
+    public function getRouteById($id): RouteInterface|bool
     {
     }
 
@@ -514,7 +514,7 @@ class Router extends AbstractInjectionAware implements \Phalcon\Mvc\RouterInterf
      * @param string $name *
      * @return RouteInterface|bool
      */
-    public function getRouteByName(string $name)
+    public function getRouteByName(string $name): RouteInterface|bool
     {
     }
 

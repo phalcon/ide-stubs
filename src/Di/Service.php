@@ -62,7 +62,7 @@ class Service implements \Phalcon\Di\ServiceInterface
      *
      * @return mixed
      */
-    public function getDefinition()
+    public function getDefinition(): mixed
     {
     }
 
@@ -101,7 +101,7 @@ class Service implements \Phalcon\Di\ServiceInterface
      * @param DiInterface $container
      * @return mixed
      */
-    public function resolve($parameters = null, DiInterface $container = null)
+    public function resolve($parameters = null, DiInterface $container = null): mixed
     {
     }
 

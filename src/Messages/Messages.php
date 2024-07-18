@@ -155,7 +155,7 @@ class Messages implements \ArrayAccess, \Countable, \Iterator, \JsonSerializable
      * @param mixed $index
      * @return mixed
      */
-    public function offsetGet($index)
+    public function offsetGet($index): mixed
     {
     }
 

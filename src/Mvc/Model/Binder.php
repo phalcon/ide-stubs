@@ -80,7 +80,7 @@ class Binder implements \Phalcon\Mvc\Model\BinderInterface
      * @param mixed $paramValue
      * @param string $className
      */
-    protected function findBoundModel($paramValue, string $className)
+    protected function findBoundModel($paramValue, string $className): mixed
     {
     }
 
@@ -117,7 +117,7 @@ class Binder implements \Phalcon\Mvc\Model\BinderInterface
      * @param string $cacheKey
      * @return array|null
      */
-    protected function getParamsFromCache(string $cacheKey): ?array
+    protected function getParamsFromCache(string $cacheKey): array|null
     {
     }
 

@@ -24,7 +24,7 @@ interface SerializerInterface extends \Serializable
     /**
      * @return mixed
      */
-    public function getData();
+    public function getData(): mixed;
 
     /**
      * @param mixed $data

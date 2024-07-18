@@ -50,7 +50,7 @@ class Annotation
      * @param mixed $position
      * @return mixed|null
      */
-    public function getArgument($position)
+    public function getArgument($position): mixed
     {
     }
 
@@ -78,7 +78,7 @@ class Annotation
      * @param array $expr
      * @return mixed
      */
-    public function getExpression(array $expr)
+    public function getExpression(array $expr): mixed
     {
     }
 
@@ -87,7 +87,7 @@ class Annotation
      *
      * @return string|null
      */
-    public function getName(): ?string
+    public function getName(): string|null
     {
     }
 
@@ -97,7 +97,7 @@ class Annotation
      * @param string $name
      * @return mixed|null
      */
-    public function getNamedArgument(string $name)
+    public function getNamedArgument(string $name): mixed
     {
     }
 
@@ -107,7 +107,7 @@ class Annotation
      * @param string $name
      * @return mixed
      */
-    public function getNamedParameter(string $name)
+    public function getNamedParameter(string $name): mixed
     {
     }
 

@@ -135,7 +135,7 @@ class Router extends AbstractInjectionAware
      *
      * @return RouteInterface|null
      */
-    public function getMatchedRoute(): ?RouteInterface
+    public function getMatchedRoute(): RouteInterface|null
     {
     }
 
@@ -182,7 +182,7 @@ class Router extends AbstractInjectionAware
      * @param int $id
      * @return bool|RouteInterface
      */
-    public function getRouteById($id)
+    public function getRouteById($id): RouteInterface|bool
     {
     }
 
@@ -192,7 +192,7 @@ class Router extends AbstractInjectionAware
      * @param string $name
      * @return bool|RouteInterface
      */
-    public function getRouteByName(string $name)
+    public function getRouteByName(string $name): RouteInterface|bool
     {
     }
 

@@ -284,7 +284,7 @@ class Tag
      * @param array $params
      * @return EscaperInterface|null
      */
-    public static function getEscaper(array $params): ?EscaperInterface
+    public static function getEscaper(array $params): EscaperInterface|null
     {
     }
 

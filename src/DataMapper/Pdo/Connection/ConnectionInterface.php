@@ -111,7 +111,7 @@ interface ConnectionInterface extends \Phalcon\DataMapper\Pdo\Connection\PdoInte
      * @return object
      * @param string $className
      */
-    public function fetchObject(string $statement, array $values = [], string $className = 'stdClass', array $arguments = []);
+    public function fetchObject(string $statement, array $values = [], string $className = 'stdClass', array $arguments = []): object;
 
     /**
      * Fetches a sequential array of rows from the database; the rows are
@@ -162,7 +162,7 @@ interface ConnectionInterface extends \Phalcon\DataMapper\Pdo\Connection\PdoInte
      *
      * @return mixed
      */
-    public function fetchValue(string $statement, array $values = []);
+    public function fetchValue(string $statement, array $values = []): mixed;
 
     /**
      * Return the inner PDO (if any)

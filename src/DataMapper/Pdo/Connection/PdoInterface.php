@@ -35,7 +35,7 @@ interface PdoInterface
      *
      * @return string|null
      */
-    public function errorCode(): ?string;
+    public function errorCode(): string|null;
 
     /**
      * Gets the most recent error info.
@@ -61,7 +61,7 @@ interface PdoInterface
      *
      * @return mixed
      */
-    public function getAttribute(int $attribute);
+    public function getAttribute(int $attribute): mixed;
 
     /**
      * Return an array of available PDO drivers (empty array if none available)
@@ -97,7 +97,7 @@ interface PdoInterface
      *
      * @return \PDOStatement|false
      */
-    public function prepare(string $statement, array $options = []);
+    public function prepare(string $statement, array $options = []): \PDOStatement|bool;
 
     /**
      * Queries the database and returns a PDOStatement. If the profiler is
@@ -108,7 +108,7 @@ interface PdoInterface
      *
      * @return \PDOStatement|false
      */
-    public function query(string $statement);
+    public function query(string $statement): \PDOStatement|bool;
 
     /**
      * Quotes a value for use in an SQL statement. This differs from

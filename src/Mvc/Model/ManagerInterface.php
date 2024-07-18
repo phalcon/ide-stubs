@@ -120,7 +120,7 @@ interface ManagerInterface
      * @return ResultsetInterface|StatusInterface
      * @param string $phql
      */
-    public function executeQuery(string $phql, $placeholders = null, $types = null);
+    public function executeQuery(string $phql, $placeholders = null, $types = null): mixed;
 
     /**
      * Gets belongsTo relations defined on a model
@@ -140,14 +140,14 @@ interface ManagerInterface
      * @param string|null       $method
      * @return bool|ResultsetInterface
      */
-    public function getBelongsToRecords(string $modelName, string $modelRelation, \Phalcon\Mvc\ModelInterface $record, $parameters = null, string $method = null);
+    public function getBelongsToRecords(string $modelName, string $modelRelation, \Phalcon\Mvc\ModelInterface $record, $parameters = null, string $method = null): ResultsetInterface|bool;
 
     /**
      * Returns the newly created Phalcon\Mvc\Model\Query\Builder or null
      *
      * @return BuilderInterface|null
      */
-    public function getBuilder(): ?BuilderInterface;
+    public function getBuilder(): BuilderInterface|null;
 
     /**
      * Gets hasMany relations defined on a model
@@ -167,7 +167,7 @@ interface ManagerInterface
      * @param string|null       $method
      * @return bool|ResultsetInterface
      */
-    public function getHasManyRecords(string $modelName, string $modelRelation, \Phalcon\Mvc\ModelInterface $record, $parameters = null, string $method = null);
+    public function getHasManyRecords(string $modelName, string $modelRelation, \Phalcon\Mvc\ModelInterface $record, $parameters = null, string $method = null): ResultsetInterface|bool;
 
     /**
      * Gets hasManyToMany relations defined on a model
@@ -211,7 +211,7 @@ interface ManagerInterface
      * @param string|null       $method
      * @return bool|ModelInterface
      */
-    public function getHasOneRecords(string $modelName, string $modelRelation, \Phalcon\Mvc\ModelInterface $record, $parameters = null, string $method = null);
+    public function getHasOneRecords(string $modelName, string $modelRelation, \Phalcon\Mvc\ModelInterface $record, $parameters = null, string $method = null): ModelInterface|bool;
 
     /**
      * Get last initialized model
@@ -233,7 +233,7 @@ interface ManagerInterface
      * @param \Phalcon\Mvc\ModelInterface $model
      * @return string|null
      */
-    public function getModelSchema(\Phalcon\Mvc\ModelInterface $model): ?string;
+    public function getModelSchema(\Phalcon\Mvc\ModelInterface $model): string|null;
 
     /**
      * Returns the mapped source for a model
@@ -266,7 +266,7 @@ interface ManagerInterface
      * @param string $alias *
      * @return RelationInterface|bool
      */
-    public function getRelationByAlias(string $modelName, string $alias);
+    public function getRelationByAlias(string $modelName, string $alias): RelationInterface|bool;
 
     /**
      * Helper method to query records based on a relation definition
@@ -294,7 +294,7 @@ interface ManagerInterface
      * @param string $second
      * @return array|bool|RelationInterface[]
      */
-    public function getRelationsBetween(string $first, string $second);
+    public function getRelationsBetween(string $first, string $second): bool|array;
 
     /**
      * Returns the connection to write data related to a model

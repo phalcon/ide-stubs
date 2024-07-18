@@ -93,7 +93,7 @@ class Noop implements \SessionHandlerInterface
      * @param int $max_lifetime
      * @return false|int
      */
-    public function gc(int $max_lifetime): int
+    public function gc(int $max_lifetime): int|false
     {
     }
 

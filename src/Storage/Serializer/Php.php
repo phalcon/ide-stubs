@@ -46,7 +46,7 @@ class Php extends \Phalcon\Storage\Serializer\AbstractSerializer
      *
      * @return mixed
      */
-    private function phpUnserialize(string $data, array $options = [])
+    private function phpUnserialize(string $data, array $options = []): mixed
     {
     }
 }

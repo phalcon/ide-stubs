@@ -305,7 +305,7 @@ interface BuilderInterface
      *
      * @return string|array|null
      */
-    public function getModels();
+    public function getModels(): string|array|null;
 
     /**
      * Appends a NOT BETWEEN condition to the current conditions

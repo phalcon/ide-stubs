@@ -19,7 +19,7 @@ interface FileInterface
      *
      * @return string|null
      */
-    public function getError(): ?string;
+    public function getError(): string|null;
 
     /**
      * Returns the real name of the uploaded file

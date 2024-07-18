@@ -549,7 +549,7 @@ class Crypt implements \Phalcon\Encryption\Crypt\CryptInterface
      * @param string $cipher
      * @return int|bool
      */
-    protected function phpOpensslCipherIvLength(string $cipher)
+    protected function phpOpensslCipherIvLength(string $cipher): int|bool
     {
     }
 

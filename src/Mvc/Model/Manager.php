@@ -378,7 +378,7 @@ class Manager implements \Phalcon\Mvc\Model\ManagerInterface, \Phalcon\Di\Inject
      *
      * @return ResultsetInterface|StatusInterface
      */
-    public function executeQuery(string $phql, $placeholders = null, $types = null)
+    public function executeQuery(string $phql, $placeholders = null, $types = null): mixed
     {
     }
 
@@ -470,7 +470,7 @@ class Manager implements \Phalcon\Mvc\Model\ManagerInterface, \Phalcon\Di\Inject
      *
      * @return ResultsetInterface | bool
      */
-    public function getBelongsToRecords(string $modelName, string $modelRelation, \Phalcon\Mvc\ModelInterface $record, $parameters = null, string $method = null)
+    public function getBelongsToRecords(string $modelName, string $modelRelation, \Phalcon\Mvc\ModelInterface $record, $parameters = null, string $method = null): ResultsetInterface|bool
     {
     }
 
@@ -479,7 +479,7 @@ class Manager implements \Phalcon\Mvc\Model\ManagerInterface, \Phalcon\Di\Inject
      *
      * @return BuilderInterface | null
      */
-    public function getBuilder(): ?BuilderInterface
+    public function getBuilder(): BuilderInterface|null
     {
     }
 
@@ -504,7 +504,7 @@ class Manager implements \Phalcon\Mvc\Model\ManagerInterface, \Phalcon\Di\Inject
      *
      * @return EventsManagerInterface | null
      */
-    public function getCustomEventsManager(\Phalcon\Mvc\ModelInterface $model): ?EventsManagerInterface
+    public function getCustomEventsManager(\Phalcon\Mvc\ModelInterface $model): EventsManagerInterface|null
     {
     }
 
@@ -522,7 +522,7 @@ class Manager implements \Phalcon\Mvc\Model\ManagerInterface, \Phalcon\Di\Inject
      *
      * @return EventsManagerInterface|null
      */
-    public function getEventsManager(): ?EventsManagerInterface
+    public function getEventsManager(): EventsManagerInterface|null
     {
     }
 
@@ -546,7 +546,7 @@ class Manager implements \Phalcon\Mvc\Model\ManagerInterface, \Phalcon\Di\Inject
      * @param string $method
      * @return bool|ResultsetInterface
      */
-    public function getHasManyRecords(string $modelName, string $modelRelation, \Phalcon\Mvc\ModelInterface $record, $parameters = null, string $method = null)
+    public function getHasManyRecords(string $modelName, string $modelRelation, \Phalcon\Mvc\ModelInterface $record, $parameters = null, string $method = null): ResultsetInterface|bool
     {
     }
 
@@ -590,7 +590,7 @@ class Manager implements \Phalcon\Mvc\Model\ManagerInterface, \Phalcon\Di\Inject
      * @param string $method
      * @return bool|ModelInterface
      */
-    public function getHasOneRecords(string $modelName, string $modelRelation, \Phalcon\Mvc\ModelInterface $record, $parameters = null, string $method = null)
+    public function getHasOneRecords(string $modelName, string $modelRelation, \Phalcon\Mvc\ModelInterface $record, $parameters = null, string $method = null): ModelInterface|bool
     {
     }
 
@@ -637,7 +637,7 @@ class Manager implements \Phalcon\Mvc\Model\ManagerInterface, \Phalcon\Di\Inject
      * @param \Phalcon\Mvc\ModelInterface $model
      * @return string|null
      */
-    public function getModelSchema(\Phalcon\Mvc\ModelInterface $model): ?string
+    public function getModelSchema(\Phalcon\Mvc\ModelInterface $model): string|null
     {
     }
 
@@ -678,7 +678,7 @@ class Manager implements \Phalcon\Mvc\Model\ManagerInterface, \Phalcon\Di\Inject
      * @param string $alias *
      * @return RelationInterface|bool
      */
-    public function getRelationByAlias(string $modelName, string $alias)
+    public function getRelationByAlias(string $modelName, string $alias): RelationInterface|bool
     {
     }
 
@@ -715,7 +715,7 @@ class Manager implements \Phalcon\Mvc\Model\ManagerInterface, \Phalcon\Di\Inject
      *
      * @return RelationInterface[] | bool
      */
-    public function getRelationsBetween(string $first, string $second)
+    public function getRelationsBetween(string $first, string $second): bool|array
     {
     }
 

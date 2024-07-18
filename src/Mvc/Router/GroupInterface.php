@@ -190,14 +190,14 @@ interface GroupInterface
      *
      * @return string|null
      */
-    public function getHostname(): ?string;
+    public function getHostname(): string|null;
 
     /**
      * Returns the common paths defined for this group
      *
      * @return array|string
      */
-    public function getPaths();
+    public function getPaths(): string|array;
 
     /**
      * Returns the common prefix for all the routes
