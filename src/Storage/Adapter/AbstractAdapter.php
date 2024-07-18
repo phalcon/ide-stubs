@@ -12,6 +12,8 @@ namespace Phalcon\Storage\Adapter;
 use DateInterval;
 use DateTime;
 use Exception;
+use Phalcon\Events\EventsAwareInterface;
+use Phalcon\Events\ManagerInterface;
 use Phalcon\Storage\Serializer\SerializerInterface;
 use Phalcon\Storage\SerializerFactory;
 use Phalcon\Support\Exception as SupportException;
@@ -29,7 +31,7 @@ use Phalcon\Support\Exception as SupportException;
  * @property SerializerInterface $serializer
  * @property SerializerFactory   $serializerFactory
  */
-abstract class AbstractAdapter implements \Phalcon\Storage\Adapter\AdapterInterface
+abstract class AbstractAdapter implements \Phalcon\Storage\Adapter\AdapterInterface, \Phalcon\Events\EventsAwareInterface
 {
     /**
      * @var mixed
@@ -75,6 +77,20 @@ abstract class AbstractAdapter implements \Phalcon\Storage\Adapter\AdapterInterf
     protected $serializerFactory;
 
     /**
+     * Event Manager
+     *
+     * @var ManagerInterface|null
+     */
+    protected $eventsManager = null;
+
+    /**
+     * EventType prefix.
+     *
+     * @var string
+     */
+    protected $eventType = 'storage';
+
+    /**
      * AbstractAdapter constructor.
      *
      * @param SerializerFactory $factory
@@ -99,7 +115,7 @@ abstract class AbstractAdapter implements \Phalcon\Storage\Adapter\AdapterInterf
      *
      * @return int | bool
      */
-    abstract public function decrement(string $key, int $value = 1): int|bool;
+    abstract public function decrement(string $key, int $value = 1);
 
     /**
      * Deletes data from the adapter
@@ -118,7 +134,7 @@ abstract class AbstractAdapter implements \Phalcon\Storage\Adapter\AdapterInterf
      *
      * @return mixed
      */
-    public function get(string $key, $defaultValue = null): mixed
+    public function get(string $key, $defaultValue = null)
     {
     }
 
@@ -127,7 +143,7 @@ abstract class AbstractAdapter implements \Phalcon\Storage\Adapter\AdapterInterf
      *
      * @return mixed
      */
-    public function getAdapter(): mixed
+    public function getAdapter()
     {
     }
 
@@ -175,7 +191,7 @@ abstract class AbstractAdapter implements \Phalcon\Storage\Adapter\AdapterInterf
      *
      * @return int | bool
      */
-    abstract public function increment(string $key, int $value = 1): int|bool;
+    abstract public function increment(string $key, int $value = 1);
 
     /**
      * Stores data in the adapter
@@ -235,7 +251,7 @@ abstract class AbstractAdapter implements \Phalcon\Storage\Adapter\AdapterInterf
      *
      * @return mixed
      */
-    protected function getSerializedData($content): mixed
+    protected function getSerializedData($content)
     {
     }
 
@@ -259,7 +275,7 @@ abstract class AbstractAdapter implements \Phalcon\Storage\Adapter\AdapterInterf
      *
      * @return mixed
      */
-    protected function getUnserializedData($content, $defaultValue = null): mixed
+    protected function getUnserializedData($content, $defaultValue = null)
     {
     }
 
@@ -281,7 +297,37 @@ abstract class AbstractAdapter implements \Phalcon\Storage\Adapter\AdapterInterf
      * @param string $cast
      * @return mixed
      */
-    protected function getArrVal(array $collection, $index, $defaultValue = null, string $cast = null): mixed
+    protected function getArrVal(array $collection, $index, $defaultValue = null, string $cast = null)
+    {
+    }
+
+    /**
+     * Sets the event manager
+     *
+     * @param \Phalcon\Events\ManagerInterface $eventsManager
+     * @return void
+     */
+    public function setEventsManager(\Phalcon\Events\ManagerInterface $eventsManager): void
+    {
+    }
+
+    /**
+     * Get the event manager
+     *
+     * @return ManagerInterface|null
+     */
+    public function getEventsManager(): ?ManagerInterface
+    {
+    }
+
+    /**
+     * Trigger an event for the eventsManager.
+     *
+     * @param string $eventName
+     * @param mixed $keys
+     * @return void
+     */
+    protected function fire(string $eventName, $keys): void
     {
     }
 }

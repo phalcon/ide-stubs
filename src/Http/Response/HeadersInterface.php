@@ -22,7 +22,7 @@ interface HeadersInterface
      * @param string $name
      * @return string|bool
      */
-    public function get(string $name): bool|string;
+    public function get(string $name);
 
     /**
      * Checks if a header exists

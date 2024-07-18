@@ -37,7 +37,7 @@ interface ViewBaseInterface
      *
      * @return string|array
      */
-    public function getViewsDir(): string|array;
+    public function getViewsDir();
 
     /**
      * Renders a partial view

@@ -23,5 +23,5 @@ interface FilterInterface
      *
      * @return mixed
      */
-    public function sanitize($value, $sanitizers, bool $noRecursive = false): mixed;
+    public function sanitize($value, $sanitizers, bool $noRecursive = false);
 }

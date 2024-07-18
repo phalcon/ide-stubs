@@ -20,7 +20,7 @@ interface EventsAwareInterface
      *
      * @return ManagerInterface|null
      */
-    public function getEventsManager(): ManagerInterface|null;
+    public function getEventsManager(): ?ManagerInterface;
 
     /**
      * Sets the events manager

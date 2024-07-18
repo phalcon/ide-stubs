@@ -115,14 +115,14 @@ class Builder
     /**
      * @return string|null
      */
-    public function getContentType(): string|null
+    public function getContentType(): ?string
     {
     }
 
     /**
      * @return int|null
      */
-    public function getExpirationTime(): int|null
+    public function getExpirationTime(): ?int
     {
     }
 
@@ -136,35 +136,35 @@ class Builder
     /**
      * @return string|null
      */
-    public function getId(): string|null
+    public function getId(): ?string
     {
     }
 
     /**
      * @return int|null
      */
-    public function getIssuedAt(): int|null
+    public function getIssuedAt(): ?int
     {
     }
 
     /**
      * @return string|null
      */
-    public function getIssuer(): string|null
+    public function getIssuer(): ?string
     {
     }
 
     /**
      * @return int|null
      */
-    public function getNotBefore(): int|null
+    public function getNotBefore(): ?int
     {
     }
 
     /**
      * @return string|null
      */
-    public function getSubject(): string|null
+    public function getSubject(): ?string
     {
     }
 

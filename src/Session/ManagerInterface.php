@@ -33,7 +33,7 @@ interface ManagerInterface
      * @param string $key
      * @return mixed
      */
-    public function __get(string $key): mixed;
+    public function __get(string $key);
 
     /**
      * Alias: Check whether a session variable is set in an application context
@@ -82,7 +82,7 @@ interface ManagerInterface
      * @param bool $remove
      * @return mixed
      */
-    public function get(string $key, $defaultValue = null, bool $remove = false): mixed;
+    public function get(string $key, $defaultValue = null, bool $remove = false);
 
     /**
      * Returns the session id

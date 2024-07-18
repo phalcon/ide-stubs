@@ -188,16 +188,16 @@ interface GroupInterface
     /**
      * Returns the hostname restriction
      *
-     * @return string
+     * @return string|null
      */
-    public function getHostname(): string;
+    public function getHostname(): ?string;
 
     /**
      * Returns the common paths defined for this group
      *
      * @return array|string
      */
-    public function getPaths(): string|array;
+    public function getPaths();
 
     /**
      * Returns the common prefix for all the routes

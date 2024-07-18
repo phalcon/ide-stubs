@@ -149,7 +149,7 @@ class TagFactory extends AbstractFactory
      * @return mixed
      * @throws Exception
      */
-    public function newInstance(string $name): mixed
+    public function newInstance(string $name)
     {
     }
 

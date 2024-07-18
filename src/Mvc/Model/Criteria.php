@@ -247,7 +247,7 @@ class Criteria implements \Phalcon\Mvc\Model\CriteriaInterface, \Phalcon\Di\Inje
      *
      * @return string|array|null
      */
-    public function getColumns(): string|array|null
+    public function getColumns()
     {
     }
 
@@ -256,7 +256,7 @@ class Criteria implements \Phalcon\Mvc\Model\CriteriaInterface, \Phalcon\Di\Inje
      *
      * @return string|null
      */
-    public function getConditions(): string|null
+    public function getConditions(): ?string
     {
     }
 
@@ -292,7 +292,7 @@ class Criteria implements \Phalcon\Mvc\Model\CriteriaInterface, \Phalcon\Di\Inje
      *
      * @return int|array|null
      */
-    public function getLimit(): int|array|null
+    public function getLimit()
     {
     }
 
@@ -310,7 +310,7 @@ class Criteria implements \Phalcon\Mvc\Model\CriteriaInterface, \Phalcon\Di\Inje
      *
      * @return string|null
      */
-    public function getOrderBy(): string|null
+    public function getOrderBy(): ?string
     {
     }
 
@@ -328,7 +328,7 @@ class Criteria implements \Phalcon\Mvc\Model\CriteriaInterface, \Phalcon\Di\Inje
      *
      * @return string|null
      */
-    public function getWhere(): string|null
+    public function getWhere(): ?string
     {
     }
 

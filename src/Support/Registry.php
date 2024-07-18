@@ -79,7 +79,7 @@ final class Registry extends Collection
      * @param string $element
      * @return mixed
      */
-    final public function __get(string $element): mixed
+    final public function __get(string $element)
     {
     }
 
@@ -141,7 +141,7 @@ final class Registry extends Collection
      * @param string $cast
      * @return mixed
      */
-    final public function get(string $element, $defaultValue = null, string $cast = null): mixed
+    final public function get(string $element, $defaultValue = null, string $cast = null)
     {
     }
 
@@ -202,7 +202,7 @@ final class Registry extends Collection
      * @param mixed $element
      * @return mixed
      */
-    final public function offsetGet($element): mixed
+    final public function offsetGet($element)
     {
     }
 
@@ -243,9 +243,9 @@ final class Registry extends Collection
      * String representation of object
      *
      * @link https://php.net/manual/en/serializable.serialize.php
-     * @return string
+     * @return string|null
      */
-    final public function serialize(): string
+    final public function serialize(): ?string
     {
     }
 
@@ -288,10 +288,10 @@ final class Registry extends Collection
      * Constructs the object
      *
      * @link https://php.net/manual/en/serializable.unserialize.php
-     * @param mixed $serialized
+     * @param string $data
      * @return void
      */
-    final public function unserialize($serialized): void
+    final public function unserialize(string $data): void
     {
     }
 }

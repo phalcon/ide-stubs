@@ -329,7 +329,7 @@ class Memory extends \Phalcon\Acl\Adapter\AbstractAdapter
      *
      * @return mixed
      */
-    public function getActiveFunction(): mixed
+    public function getActiveFunction()
     {
     }
 
@@ -347,7 +347,7 @@ class Memory extends \Phalcon\Acl\Adapter\AbstractAdapter
      *
      * @return string|null
      */
-    public function getActiveKey(): string|null
+    public function getActiveKey(): ?string
     {
     }
 
@@ -466,7 +466,7 @@ class Memory extends \Phalcon\Acl\Adapter\AbstractAdapter
      * @param string $access
      * @return string|bool
      */
-    private function canAccess(string $roleName, string $componentName, string $access): bool|string
+    private function canAccess(string $roleName, string $componentName, string $access)
     {
     }
 

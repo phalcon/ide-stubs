@@ -53,7 +53,7 @@ interface ViewInterface extends \Phalcon\Mvc\ViewBaseInterface
      *
      * @return string|array
      */
-    public function getActiveRenderPath(): string|array;
+    public function getActiveRenderPath();
 
     /**
      * Gets base path
@@ -126,7 +126,7 @@ interface ViewInterface extends \Phalcon\Mvc\ViewBaseInterface
      * @param array $params
      * @return bool|ViewInterface
      */
-    public function render(string $controllerName, string $actionName, array $params = []): ViewInterface|bool;
+    public function render(string $controllerName, string $actionName, array $params = []);
 
     /**
      * Resets the view component to its factory default values

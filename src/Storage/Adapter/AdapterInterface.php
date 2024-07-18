@@ -30,7 +30,7 @@ interface AdapterInterface
      * @param int $value
      * @return int|bool
      */
-    public function decrement(string $key, int $value = 1): int|bool;
+    public function decrement(string $key, int $value = 1);
 
     /**
      * Deletes data from the adapter
@@ -47,7 +47,7 @@ interface AdapterInterface
      * @param mixed|null $defaultValue *
      * @return mixed
      */
-    public function get(string $key, $defaultValue = null): mixed;
+    public function get(string $key, $defaultValue = null);
 
     /**
      * Returns the already connected adapter or connects to the backend
@@ -55,7 +55,7 @@ interface AdapterInterface
      *
      * @return mixed
      */
-    public function getAdapter(): mixed;
+    public function getAdapter();
 
     /**
      * Returns all the keys stored
@@ -87,7 +87,7 @@ interface AdapterInterface
      * @param int $value
      * @return int|bool
      */
-    public function increment(string $key, int $value = 1): int|bool;
+    public function increment(string $key, int $value = 1);
 
     /**
      * Stores data in the adapter. If the TTL is `null` (default) or not defined

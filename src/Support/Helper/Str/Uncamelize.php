@@ -16,9 +16,10 @@ class Uncamelize
 {
     /**
      * @param string $text
-     * @param string $delimiter
+     * @param string $delimiters
      *
      * @return string
+     * @param string $delimiter
      */
     public function __invoke(string $text, string $delimiter = '_'): string
     {

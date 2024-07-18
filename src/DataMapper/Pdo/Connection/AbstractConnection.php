@@ -82,7 +82,7 @@ abstract class AbstractConnection implements \Phalcon\DataMapper\Pdo\Connection\
      *
      * @return string|null
      */
-    public function errorCode(): string|null
+    public function errorCode(): ?string
     {
     }
 
@@ -195,7 +195,7 @@ abstract class AbstractConnection implements \Phalcon\DataMapper\Pdo\Connection\
      * @return object
      * @param string $className
      */
-    public function fetchObject(string $statement, array $values = [], string $className = 'stdClass', array $arguments = []): object
+    public function fetchObject(string $statement, array $values = [], string $className = 'stdClass', array $arguments = [])
     {
     }
 
@@ -274,7 +274,7 @@ abstract class AbstractConnection implements \Phalcon\DataMapper\Pdo\Connection\
      *
      * @return mixed
      */
-    public function getAttribute(int $attribute): mixed
+    public function getAttribute(int $attribute)
     {
     }
 
@@ -371,7 +371,7 @@ abstract class AbstractConnection implements \Phalcon\DataMapper\Pdo\Connection\
      *
      * @return \PDOStatement|false
      */
-    public function prepare(string $statement, array $options = []): \PDOStatement|bool
+    public function prepare(string $statement, array $options = [])
     {
     }
 
@@ -384,7 +384,7 @@ abstract class AbstractConnection implements \Phalcon\DataMapper\Pdo\Connection\
      *
      * @return \PDOStatement|false
      */
-    public function query(string $statement): \PDOStatement|bool
+    public function query(string $statement)
     {
     }
 

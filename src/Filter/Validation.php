@@ -115,7 +115,7 @@ class Validation extends Injectable implements \Phalcon\Filter\Validation\Valida
     /**
      * @return mixed
      */
-    public function getData(): mixed
+    public function getData()
     {
     }
 
@@ -124,7 +124,7 @@ class Validation extends Injectable implements \Phalcon\Filter\Validation\Valida
      *
      * @return object
      */
-    public function getEntity(): mixed
+    public function getEntity()
     {
     }
 
@@ -134,7 +134,7 @@ class Validation extends Injectable implements \Phalcon\Filter\Validation\Valida
      * @param string $field
      * @return mixed|null
      */
-    public function getFilters(string $field = null): mixed
+    public function getFilters(string $field = null)
     {
     }
 
@@ -173,7 +173,7 @@ class Validation extends Injectable implements \Phalcon\Filter\Validation\Valida
      * @param string $field
      * @return mixed|null
      */
-    public function getValueByEntity($entity, string $field): mixed
+    public function getValueByEntity($entity, string $field)
     {
     }
 
@@ -184,7 +184,7 @@ class Validation extends Injectable implements \Phalcon\Filter\Validation\Valida
      * @param string $field
      * @return mixed|null
      */
-    public function getValueByData($data, string $field): mixed
+    public function getValueByData($data, string $field)
     {
     }
 
@@ -194,7 +194,7 @@ class Validation extends Injectable implements \Phalcon\Filter\Validation\Valida
      * @param string $field
      * @return mixed|null
      */
-    public function getValue(string $field): mixed
+    public function getValue(string $field)
     {
     }
 
@@ -264,10 +264,10 @@ class Validation extends Injectable implements \Phalcon\Filter\Validation\Valida
      * Validate a set of data according to a set of rules
      *
      * @param array|object $data
-     * @param object $entity
+     * @param object $entity *
      * @return Messages|false
      */
-    public function validate($data = null, $entity = null): Messages|bool
+    public function validate($data = null, $entity = null)
     {
     }
 

@@ -20,7 +20,7 @@ interface CollectionInterface
      * @param string $element
      * @return mixed
      */
-    public function __get(string $element): mixed;
+    public function __get(string $element);
 
     /**
      * @param string $element
@@ -52,7 +52,7 @@ interface CollectionInterface
      * @param string $cast
      * @return mixed
      */
-    public function get(string $element, $defaultValue = null, string $cast = null): mixed;
+    public function get(string $element, $defaultValue = null, string $cast = null);
 
     /**
      * @param bool $insensitive

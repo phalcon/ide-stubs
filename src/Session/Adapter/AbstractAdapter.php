@@ -39,30 +39,30 @@ abstract class AbstractAdapter implements \SessionHandlerInterface
     /**
      * Destroy
      *
-     * @param mixed $sessionId
+     * @param mixed $id
      * @return bool
      */
-    public function destroy($sessionId): bool
+    public function destroy($id): bool
     {
     }
 
     /**
      * Garbage Collector
      *
-     * @param int $maxlifetime
+     * @param int $max_lifetime
      * @return false|int
      */
-    public function gc(int $maxlifetime): int|false
+    public function gc(int $max_lifetime): int
     {
     }
 
     /**
      * Read
      *
-     * @param mixed $sessionId
+     * @param mixed $id
      * @return string
      */
-    public function read($sessionId): string
+    public function read($id): string
     {
     }
 
@@ -95,7 +95,7 @@ abstract class AbstractAdapter implements \SessionHandlerInterface
      * @param mixed $defaultValue
      * @return mixed
      */
-    protected function getArrVal(array $collection, $index, $defaultValue = null): mixed
+    protected function getArrVal(array $collection, $index, $defaultValue = null)
     {
     }
 }

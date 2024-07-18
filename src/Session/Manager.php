@@ -62,7 +62,7 @@ class Manager extends AbstractInjectionAware implements \Phalcon\Session\Manager
      *
      * @return mixed
      */
-    public function __get(string $key): mixed
+    public function __get(string $key)
     {
     }
 
@@ -125,7 +125,7 @@ class Manager extends AbstractInjectionAware implements \Phalcon\Session\Manager
      *
      * @return mixed|null
      */
-    public function get(string $key, $defaultValue = null, bool $remove = false): mixed
+    public function get(string $key, $defaultValue = null, bool $remove = false)
     {
     }
 
@@ -298,7 +298,7 @@ class Manager extends AbstractInjectionAware implements \Phalcon\Session\Manager
      * @param mixed $defaultValue
      * @return mixed
      */
-    private function getArrVal(array $collection, $index, $defaultValue = null): mixed
+    private function getArrVal(array $collection, $index, $defaultValue = null)
     {
     }
 }

@@ -139,7 +139,7 @@ class Response implements \Phalcon\Http\ResponseInterface, \Phalcon\Di\Injection
      *
      * @return ManagerInterface|null
      */
-    public function getEventsManager(): ManagerInterface|null
+    public function getEventsManager(): ?ManagerInterface
     {
     }
 
@@ -161,7 +161,7 @@ class Response implements \Phalcon\Http\ResponseInterface, \Phalcon\Di\Injection
      *
      * @return string|null
      */
-    public function getReasonPhrase(): string|null
+    public function getReasonPhrase(): ?string
     {
     }
 
@@ -174,7 +174,7 @@ class Response implements \Phalcon\Http\ResponseInterface, \Phalcon\Di\Injection
      *
      * @return int|null
      */
-    public function getStatusCode(): int|null
+    public function getStatusCode(): ?int
     {
     }
 
@@ -275,7 +275,7 @@ class Response implements \Phalcon\Http\ResponseInterface, \Phalcon\Di\Injection
      *
      * @return bool|ResponseInterface
      */
-    public function sendHeaders(): ResponseInterface|bool
+    public function sendHeaders()
     {
     }
 

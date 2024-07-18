@@ -186,7 +186,7 @@ abstract class Resultset implements \Phalcon\Mvc\Model\ResultsetInterface, \Iter
      *
      * @return CacheInterface|null
      */
-    public function getCache(): CacheInterface|null
+    public function getCache(): ?CacheInterface
     {
     }
 
@@ -215,7 +215,7 @@ abstract class Resultset implements \Phalcon\Mvc\Model\ResultsetInterface, \Iter
      *
      * @return ModelInterface|Row|null
      */
-    public function getFirst(): mixed
+    public function getFirst()
     {
     }
 
@@ -233,7 +233,7 @@ abstract class Resultset implements \Phalcon\Mvc\Model\ResultsetInterface, \Iter
      *
      * @return ModelInterface|null
      */
-    public function getLast(): ModelInterface|null
+    public function getLast(): ?ModelInterface
     {
     }
 
@@ -285,7 +285,7 @@ abstract class Resultset implements \Phalcon\Mvc\Model\ResultsetInterface, \Iter
      *
      * @return TKey|null
      */
-    public function key(): int|null
+    public function key(): ?int
     {
     }
 
@@ -304,7 +304,7 @@ abstract class Resultset implements \Phalcon\Mvc\Model\ResultsetInterface, \Iter
      * @param mixed $index
      * @return mixed
      */
-    public function offsetGet($index): mixed
+    public function offsetGet($index)
     {
     }
 

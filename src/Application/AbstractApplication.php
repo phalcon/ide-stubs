@@ -62,7 +62,7 @@ abstract class AbstractApplication extends Injectable implements \Phalcon\Events
      *
      * @return ManagerInterface|null
      */
-    public function getEventsManager(): ManagerInterface|null
+    public function getEventsManager(): ?ManagerInterface
     {
     }
 
@@ -72,7 +72,7 @@ abstract class AbstractApplication extends Injectable implements \Phalcon\Events
      * @param string $name *
      * @return array|mixed
      */
-    public function getModule(string $name): object|array
+    public function getModule(string $name)
     {
     }
 

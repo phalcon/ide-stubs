@@ -12,12 +12,14 @@ namespace Phalcon\Cache;
 use DateInterval;
 use Phalcon\Cache\Adapter\AdapterInterface;
 use Phalcon\Cache\Exception\InvalidArgumentException;
+use Phalcon\Events\EventsAwareInterface;
+use Phalcon\Events\ManagerInterface;
 use Traversable;
 
 /**
  * This component offers caching capabilities for your application.
  */
-abstract class AbstractCache implements \Phalcon\Cache\CacheInterface
+abstract class AbstractCache implements \Phalcon\Cache\CacheInterface, \Phalcon\Events\EventsAwareInterface
 {
     /**
      * The adapter
@@ -25,6 +27,13 @@ abstract class AbstractCache implements \Phalcon\Cache\CacheInterface
      * @var AdapterInterface
      */
     protected $adapter;
+
+    /**
+     * Event Manager
+     *
+     * @var ManagerInterface|null
+     */
+    protected $eventsManager = null;
 
     /**
      * Constructor.
@@ -41,6 +50,25 @@ abstract class AbstractCache implements \Phalcon\Cache\CacheInterface
      * @return AdapterInterface
      */
     public function getAdapter(): AdapterInterface
+    {
+    }
+
+    /**
+     * Sets the event manager
+     *
+     * @param \Phalcon\Events\ManagerInterface $eventsManager
+     * @return void
+     */
+    public function setEventsManager(\Phalcon\Events\ManagerInterface $eventsManager): void
+    {
+    }
+
+    /**
+     * Get the event manager
+     *
+     * @return ManagerInterface|null
+     */
+    public function getEventsManager(): ?ManagerInterface
     {
     }
 
@@ -114,7 +142,7 @@ abstract class AbstractCache implements \Phalcon\Cache\CacheInterface
      * @throws InvalidArgumentException MUST be thrown if the $key string is
      * not a legal value.
      */
-    protected function doGet(string $key, $defaultValue = null): mixed
+    protected function doGet(string $key, $defaultValue = null)
     {
     }
 
@@ -173,6 +201,17 @@ abstract class AbstractCache implements \Phalcon\Cache\CacheInterface
      * @return bool
      */
     protected function doSetMultiple($values, $ttl = null): bool
+    {
+    }
+
+    /**
+     * Trigger an event for the eventsManager.
+     *
+     * @param string $eventName
+     * @param mixed $keys
+     * @return void
+     */
+    protected function fire(string $eventName, $keys): void
     {
     }
 
