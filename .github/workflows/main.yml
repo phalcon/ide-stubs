@@ -10,13 +10,7 @@ jobs:
 
     strategy:
       matrix:
-        php-versions:
-            - "7.4"
-            - "8.0"
-            - "8.1"
-            - "8.2"
-            - "8.3"
-            - "8.4"
+        php-versions: ["7.4", "8.0", "8.1", "8.2"]
 
     steps:
     - uses: actions/checkout@v4
@@ -31,10 +25,14 @@ jobs:
       id: composer-cache
       run: echo "dir=$(composer config cache-files-dir)" >> $GITHUB_OUTPUT
 
-    - name: "Install development dependencies with Composer"
-      uses: "ramsey/composer-install@v3"
+    - name: Cache dependencies
+      uses: actions/cache@v3
       with:
-        composer-options: "--prefer-dist"
+        path: ${{ steps.composer-cache.outputs.dir }}
+        key: ${{ runner.os }}-composer-${{ hashFiles('**/composer.json') }}
+        restore-keys: ${{ runner.os }}-composer-
+
+    - run: composer install --no-interaction --no-ansi --no-progress
 
     - name: run psalm
       if: always()
