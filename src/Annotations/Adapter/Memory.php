@@ -22,6 +22,10 @@ class Memory extends \Phalcon\Annotations\Adapter\AbstractAdapter
      */
     protected $data;
 
+    public function __construct()
+    {
+    }
+
     /**
      * Reads parsed annotations from memory
      *

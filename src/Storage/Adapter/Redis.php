@@ -43,6 +43,7 @@ class Redis extends \Phalcon\Storage\Adapter\AbstractAdapter
      *     "connectTimeout" => 0,
      *     "retryInterval"  => 0,
      *     "readTimeout"    => 0,
+     *     "ssl"            => [],
      * ]
      *
      * @throws SupportException

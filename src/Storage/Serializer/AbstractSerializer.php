@@ -56,7 +56,7 @@ abstract class AbstractSerializer implements \Phalcon\Storage\Serializer\Seriali
     /**
      * @return mixed
      */
-    public function getData()
+    public function getData(): mixed
     {
     }
 

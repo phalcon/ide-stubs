@@ -24,7 +24,7 @@ class Igbinary extends \Phalcon\Storage\Serializer\AbstractSerializer
      *
      * @return string
      */
-    public function serialize()
+    public function serialize(): string
     {
     }
 

@@ -103,7 +103,7 @@ class Cookie extends AbstractInjectionAware implements \Phalcon\Http\Cookie\Cook
      * @param bool $httpOnly
      * @param array $options
      */
-    public function __construct(string $name, $value = null, int $expire = 0, string $path = '/', bool $secure = null, string $domain = null, bool $httpOnly = null, array $options = [])
+    public function __construct(string $name, $value = null, int $expire = 0, string $path = '/', bool $secure = false, string $domain = '', bool $httpOnly = false, array $options = [])
     {
     }
 
