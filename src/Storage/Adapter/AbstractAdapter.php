@@ -166,11 +166,29 @@ abstract class AbstractAdapter implements \Phalcon\Storage\Adapter\AdapterInterf
     abstract public function getKeys(string $prefix = ''): array;
 
     /**
+     * Returns the lifetime
+     *
+     * @return int
+     */
+    public function getLifetime(): int
+    {
+    }
+
+    /**
      * Returns the prefix
      *
      * @return string
      */
     public function getPrefix(): string
+    {
+    }
+
+    /**
+     * Get the serializer
+     *
+     * @return SerializerInterface
+     */
+    public function getSerializer(): SerializerInterface
     {
     }
 

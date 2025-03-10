@@ -208,7 +208,7 @@ class Cookies extends AbstractInjectionAware implements \Phalcon\Http\Response\C
      * @param array $options
      * @return CookiesInterface
      */
-    public function set(string $name, $value = null, int $expire = 0, string $path = '/', bool $secure = null, string $domain = null, bool $httpOnly = null, array $options = []): CookiesInterface
+    public function set(string $name, $value = null, int $expire = 0, string $path = '/', bool $secure = false, string $domain = '', bool $httpOnly = false, array $options = []): CookiesInterface
     {
     }
 

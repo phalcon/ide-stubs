@@ -123,6 +123,17 @@ class Stream extends \Phalcon\Session\Adapter\Noop
     }
 
     /**
+     * Gets the glob array or returns false on failure
+     *
+     * @param string $pattern
+     *
+     * @return array|false
+     */
+    protected function getGlobFiles(string $pattern): false|array
+    {
+    }
+
+    /**
      * @param string $filename
      *
      * @return bool
