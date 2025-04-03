@@ -125,9 +125,10 @@ class Di implements \Phalcon\Di\DiInterface
     /**
      * Resolves the service based on its configuration
      *
-     * @param string $name
+     * @template T
+     * @param string|class-string<T> $name
      * @param mixed $parameters
-     * @return mixed
+     * @return mixed|T
      */
     public function get(string $name, $parameters = null): mixed
     {
