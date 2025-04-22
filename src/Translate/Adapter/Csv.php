@@ -30,7 +30,8 @@ class Csv extends \Phalcon\Translate\Adapter\AbstractAdapter implements \ArrayAc
      * @param array               $options = [
      *                                       'content'   => '',
      *                                       'delimiter' => ';',
-     *                                       'enclosure' => '"'
+     *                                       'enclosure' => '"',
+     *                                       'escape' => '\\'
      *                                       ]
      *
      * @throws Exception
@@ -81,12 +82,13 @@ class Csv extends \Phalcon\Translate\Adapter\AbstractAdapter implements \ArrayAc
      * @param int    $length
      * @param string $separator
      * @param string $enclosure
+     * @param string $escape
      *
      * @throws Exception
      * @param string $delimiter
      * @return void
      */
-    private function load(string $file, int $length, string $delimiter, string $enclosure): void
+    private function load(string $file, int $length, string $delimiter, string $enclosure, string $escape): void
     {
     }
 
