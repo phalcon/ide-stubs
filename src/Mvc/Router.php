@@ -53,6 +53,10 @@ class Router extends AbstractInjectionAware implements \Phalcon\Mvc\RouterInterf
 
     const POSITION_LAST = 1;
 
+    const URI_SOURCE_GET_URL = 0;
+
+    const URI_SOURCE_SERVER_REQUEST_URI = 1;
+
     /**
      * @var string
      */
@@ -144,6 +148,11 @@ class Router extends AbstractInjectionAware implements \Phalcon\Mvc\RouterInterf
     protected $routes = [];
 
     /**
+     * @var int
+     */
+    protected $uriSource = self::URI_SOURCE_GET_URL;
+
+    /**
      * @var bool
      */
     protected $wasMatched = false;
@@ -179,15 +188,16 @@ class Router extends AbstractInjectionAware implements \Phalcon\Mvc\RouterInterf
      * );
      * ```
      *
-     * @param string $pattern
-     * @param string|array|null $paths = [
-     *     'module => '',
-     *     'controller' => '',
-     *     'action' => '',
-     *     'namespace' => ''
-     * ]
-     * @param string|array|null $httpMethods
-     * @param int $position *
+     * @param string            $pattern
+     * @param array|string|null $paths = [
+     *                                 'module => '',
+     *                                 'controller' => '',
+     *                                 'action' => '',
+     *                                 'namespace' => ''
+     *                                 ]
+     * @param array|string|null $httpMethods
+     * @param int               $position
+     *
      * @return RouteInterface
      */
     public function add(string $pattern, $paths = null, $httpMethods = null, int $position = Router::POSITION_LAST): RouteInterface
@@ -197,14 +207,15 @@ class Router extends AbstractInjectionAware implements \Phalcon\Mvc\RouterInterf
     /**
      * Adds a route to the router that only match if the HTTP method is CONNECT
      *
-     * @param string $pattern
-     * @param string|array|null $paths = [
-     *     'module => '',
-     *     'controller' => '',
-     *     'action' => '',
-     *     'namespace' => ''
-     * ]
-     * @param int $position *
+     * @param string            $pattern
+     * @param array|string|null $paths  = [
+     *                                  'module => '',
+     *                                  'controller' => '',
+     *                                  'action' => '',
+     *                                  'namespace' => ''
+     *                                  ]
+     * @param int               $position
+     *
      * @return RouteInterface
      */
     public function addConnect(string $pattern, $paths = null, int $position = Router::POSITION_LAST): RouteInterface
@@ -214,16 +225,16 @@ class Router extends AbstractInjectionAware implements \Phalcon\Mvc\RouterInterf
     /**
      * Adds a route to the router that only match if the HTTP method is DELETE
      *
-     * @param string $param
-     * @param string|array|null $paths = [
-     *     'module => '',
-     *     'controller' => '',
-     *     'action' => '',
-     *     'namespace' => ''
-     * ]
-     * @param int $position *
+     * @param string            $pattern
+     * @param array|string|null $paths  = [
+     *                                  'module => '',
+     *                                  'controller' => '',
+     *                                  'action' => '',
+     *                                  'namespace' => ''
+     *                                  ]
+     * @param int               $position
+     *
      * @return RouteInterface
-     * @param string $pattern
      */
     public function addDelete(string $pattern, $paths = null, int $position = Router::POSITION_LAST): RouteInterface
     {
@@ -232,16 +243,16 @@ class Router extends AbstractInjectionAware implements \Phalcon\Mvc\RouterInterf
     /**
      * Adds a route to the router that only match if the HTTP method is GET
      *
-     * @param string $param
-     * @param string|array|null $paths = [
-     *     'module => '',
-     *     'controller' => '',
-     *     'action' => '',
-     *     'namespace' => ''
-     * ]
-     * @param int $position *
+     * @param string            $pattern
+     * @param array|string|null $paths  = [
+     *                                  'module => '',
+     *                                  'controller' => '',
+     *                                  'action' => '',
+     *                                  'namespace' => ''
+     *                                  ]
+     * @param int               $position
+     *
      * @return RouteInterface
-     * @param string $pattern
      */
     public function addGet(string $pattern, $paths = null, int $position = Router::POSITION_LAST): RouteInterface
     {
@@ -250,14 +261,15 @@ class Router extends AbstractInjectionAware implements \Phalcon\Mvc\RouterInterf
     /**
      * Adds a route to the router that only match if the HTTP method is HEAD
      *
-     * @param string $pattern
-     * @param string|array|null $paths = [
-     *     'module => '',
-     *     'controller' => '',
-     *     'action' => '',
-     *     'namespace' => ''
-     * ]
-     * @param int $position *
+     * @param string            $pattern
+     * @param array|string|null $paths  = [
+     *                                  'module => '',
+     *                                  'controller' => '',
+     *                                  'action' => '',
+     *                                  'namespace' => ''
+     *                                  ]
+     * @param int               $position
+     *
      * @return RouteInterface
      */
     public function addHead(string $pattern, $paths = null, int $position = Router::POSITION_LAST): RouteInterface
@@ -267,14 +279,15 @@ class Router extends AbstractInjectionAware implements \Phalcon\Mvc\RouterInterf
     /**
      * Add a route to the router that only match if the HTTP method is OPTIONS
      *
-     * @param string $pattern
-     * @param string|array|null $paths = [
-     *     'module => '',
-     *     'controller' => '',
-     *     'action' => '',
-     *     'namespace' => ''
-     * ]
-     * @param int $position *
+     * @param string            $pattern
+     * @param array|string|null $paths  = [
+     *                                  'module => '',
+     *                                  'controller' => '',
+     *                                  'action' => '',
+     *                                  'namespace' => ''
+     *                                  ]
+     * @param int               $position
+     *
      * @return RouteInterface
      */
     public function addOptions(string $pattern, $paths = null, int $position = Router::POSITION_LAST): RouteInterface
@@ -284,14 +297,15 @@ class Router extends AbstractInjectionAware implements \Phalcon\Mvc\RouterInterf
     /**
      * Adds a route to the router that only match if the HTTP method is PATCH
      *
-     * @param string $pattern
-     * @param string|array|null $paths = [
-     *     'module => '',
-     *     'controller' => '',
-     *     'action' => '',
-     *     'namespace' => ''
-     * ]
-     * @param int $position *
+     * @param string            $pattern
+     * @param array|string|null $paths  = [
+     *                                  'module => '',
+     *                                  'controller' => '',
+     *                                  'action' => '',
+     *                                  'namespace' => ''
+     *                                  ]
+     * @param int               $position
+     *
      * @return RouteInterface
      */
     public function addPatch(string $pattern, $paths = null, int $position = Router::POSITION_LAST): RouteInterface
@@ -301,14 +315,15 @@ class Router extends AbstractInjectionAware implements \Phalcon\Mvc\RouterInterf
     /**
      * Adds a route to the router that only match if the HTTP method is POST
      *
-     * @param string $pattern
-     * @param string|array|null $paths = [
-     *     'module => '',
-     *     'controller' => '',
-     *     'action' => '',
-     *     'namespace' => ''
-     * ]
-     * @param int $position *
+     * @param string            $pattern
+     * @param array|string|null $paths  = [
+     *                                  'module => '',
+     *                                  'controller' => '',
+     *                                  'action' => '',
+     *                                  'namespace' => ''
+     *                                  ]
+     * @param int               $position
+     *
      * @return RouteInterface
      */
     public function addPost(string $pattern, $paths = null, int $position = Router::POSITION_LAST): RouteInterface
@@ -319,14 +334,15 @@ class Router extends AbstractInjectionAware implements \Phalcon\Mvc\RouterInterf
      * Adds a route to the router that only match if the HTTP method is PURGE
      * (Squid and Varnish support)
      *
-     * @param string $pattern
-     * @param string|array|null $paths = [
-     *     'module => '',
-     *     'controller' => '',
-     *     'action' => '',
-     *     'namespace' => ''
-     * ]
-     * @param int $position *
+     * @param string            $pattern
+     * @param array|string|null $paths  = [
+     *                                  'module => '',
+     *                                  'controller' => '',
+     *                                  'action' => '',
+     *                                  'namespace' => ''
+     *                                  ]
+     * @param int               $position
+     *
      * @return RouteInterface
      */
     public function addPurge(string $pattern, $paths = null, int $position = Router::POSITION_LAST): RouteInterface
@@ -336,14 +352,15 @@ class Router extends AbstractInjectionAware implements \Phalcon\Mvc\RouterInterf
     /**
      * Adds a route to the router that only match if the HTTP method is PUT
      *
-     * @param string $pattern
-     * @param string|array $paths = [
-     *     'module => '',
-     *     'controller' => '',
-     *     'action' => '',
-     *     'namespace' => ''
-     * ]
-     * @param int $position *
+     * @param string            $pattern
+     * @param array|string|null $paths  = [
+     *                                  'module => '',
+     *                                  'controller' => '',
+     *                                  'action' => '',
+     *                                  'namespace' => ''
+     *                                  ]
+     * @param int               $position
+     *
      * @return RouteInterface
      */
     public function addPut(string $pattern, $paths = null, int $position = Router::POSITION_LAST): RouteInterface
@@ -353,14 +370,15 @@ class Router extends AbstractInjectionAware implements \Phalcon\Mvc\RouterInterf
     /**
      * Adds a route to the router that only match if the HTTP method is TRACE
      *
-     * @param string $pattern
-     * @param string|array|null $paths = [
-     *     'module => '',
-     *     'controller' => '',
-     *     'action' => '',
-     *     'namespace' => ''
-     * ]
-     * @param int $position *
+     * @param string            $pattern
+     * @param array|string|null $paths  = [
+     *                                  'module => '',
+     *                                  'controller' => '',
+     *                                  'action' => '',
+     *                                  'namespace' => ''
+     *                                  ]
+     * @param int               $position
+     *
      * @return RouteInterface
      */
     public function addTrace(string $pattern, $paths = null, int $position = Router::POSITION_LAST): RouteInterface
@@ -387,7 +405,8 @@ class Router extends AbstractInjectionAware implements \Phalcon\Mvc\RouterInterf
      * ```
      *
      * @param RouteInterface $route
-     * @param int $position *
+     * @param int            $position
+     *
      * @return RouterInterface
      */
     public function attach(\Phalcon\Mvc\Router\RouteInterface $route, int $position = Router::POSITION_LAST): RouterInterface
@@ -495,6 +514,24 @@ class Router extends AbstractInjectionAware implements \Phalcon\Mvc\RouterInterf
      * @return array
      */
     public function getParams(): array
+    {
+    }
+
+    /**
+     * Get rewrite info. This info is read from $_GET["_url"].
+     * This returns '/' if the rewrite information cannot be read
+     *
+     * @return string
+     */
+    public function getRewriteUri(): string
+    {
+    }
+
+    /**
+     * @param string $uri
+     * @return string
+     */
+    protected function extractRealUri(string $uri): string
     {
     }
 
@@ -670,6 +707,22 @@ class Router extends AbstractInjectionAware implements \Phalcon\Mvc\RouterInterf
      * @return Router
      */
     public function setKeyRouteIds(array $routeIds): Router
+    {
+    }
+
+    /**
+     * Sets the URI source. One of the URI_SOURCE_ constants
+     *
+     * ```php
+     * $router->setUriSource(
+     *     Router::URI_SOURCE_SERVER_REQUEST_URI
+     * );
+     * ```
+     *
+     * @param int $uriSource
+     * @return Router
+     */
+    public function setUriSource(int $uriSource): Router
     {
     }
 
