@@ -10,6 +10,7 @@
 namespace Phalcon\Html\Helper\Input;
 
 use Phalcon\Html\Helper\AbstractHelper;
+use Phalcon\Html\Helper\Doctype;
 
 /**
  * Class AbstractInput

@@ -63,6 +63,27 @@ use Phalcon\Di\ServiceProviderInterface;
 class Di implements \Phalcon\Di\DiInterface
 {
     /**
+     * List of service aliases
+     *
+     * @var array
+     */
+    protected $aliases = [];
+
+    /**
+     * Latest DI build
+     *
+     * @var DiInterface|null
+     */
+    protected static $defaultContainer = null;
+
+    /**
+     * Events Manager
+     *
+     * @var ManagerInterface|null
+     */
+    protected $eventsManager = null;
+
+    /**
      * List of registered services
      *
      * @var ServiceInterface[]
@@ -75,20 +96,6 @@ class Di implements \Phalcon\Di\DiInterface
      * @var array
      */
     protected $sharedInstances = [];
-
-    /**
-     * Events Manager
-     *
-     * @var ManagerInterface|null
-     */
-    protected $eventsManager = null;
-
-    /**
-     * Latest DI build
-     *
-     * @var DiInterface|null
-     */
-    protected static $defaultDi;
 
     /**
      * Phalcon\Di\Di constructor
@@ -130,6 +137,18 @@ class Di implements \Phalcon\Di\DiInterface
      * @return mixed
      */
     public function get(string $name, $parameters = null): mixed
+    {
+    }
+
+    /**
+     * Return the alias based on a passed key. Returns an empty string if
+     * the alias does not exist
+     *
+     * @param string $name
+     *
+     * @return string
+     */
+    public function getAlias(string $name): string
     {
     }
 
@@ -400,6 +419,19 @@ class Di implements \Phalcon\Di\DiInterface
     }
 
     /**
+     * Sets one or more aliases to the given name.
+     *
+     * @param string       $name
+     * @param string|array $aliases
+     *
+     * @return Di
+     * @throws Exception
+     */
+    public function setAlias(string $name, $aliases): Di
+    {
+    }
+
+    /**
      * Set a default dependency injection container to be obtained into static
      * methods
      *
@@ -438,6 +470,18 @@ class Di implements \Phalcon\Di\DiInterface
      * @return ServiceInterface
      */
     public function setShared(string $name, $definition): ServiceInterface
+    {
+    }
+
+    /**
+     * Resolve an alias to its actual service name
+     *
+     * @param string $name
+     *
+     * @return string
+     * @throws Exception
+     */
+    private function resolveAlias(string $name): string
     {
     }
 }

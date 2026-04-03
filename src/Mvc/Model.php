@@ -754,7 +754,7 @@ abstract class Model extends AbstractInjectionAware implements \Phalcon\Mvc\Enti
      *     'limit' => 10,
      *     'offset' => 5,
      *     'group' => 'name, status',
-     *     'for_updated' => false,
+     *     'for_update' => false,
      *     'shared_lock' => false,
      *     'cache' => [
      *         'lifetime' => 3600,
@@ -843,7 +843,7 @@ abstract class Model extends AbstractInjectionAware implements \Phalcon\Mvc\Enti
      *     'limit' => 10,
      *     'offset' => 5,
      *     'group' => 'name, status',
-     *     'for_updated' => false,
+     *     'for_update' => false,
      *     'shared_lock' => false,
      *     'cache' => [
      *         'lifetime' => 3600,
@@ -1796,7 +1796,7 @@ abstract class Model extends AbstractInjectionAware implements \Phalcon\Mvc\Enti
      *         'limit' => 10,
      *         'offset' => 5,
      *         'group' => 'name, status',
-     *         'for_updated' => false,
+     *         'for_update' => false,
      *         'shared_lock' => false,
      *         'cache' => [
      *             'lifetime' => 3600,
@@ -1859,7 +1859,7 @@ abstract class Model extends AbstractInjectionAware implements \Phalcon\Mvc\Enti
      *         'limit' => 10,
      *         'offset' => 5,
      *         'group' => 'name, status',
-     *         'for_updated' => false,
+     *         'for_update' => false,
      *         'shared_lock' => false,
      *         'cache' => [
      *             'lifetime' => 3600,
@@ -1922,7 +1922,7 @@ abstract class Model extends AbstractInjectionAware implements \Phalcon\Mvc\Enti
      *         'limit' => 10,
      *         'offset' => 5,
      *         'group' => 'name, status',
-     *         'for_updated' => false,
+     *         'for_update' => false,
      *         'shared_lock' => false,
      *         'cache' => [
      *             'lifetime' => 3600,
@@ -1971,7 +1971,7 @@ abstract class Model extends AbstractInjectionAware implements \Phalcon\Mvc\Enti
      *         'limit' => 10,
      *         'offset' => 5,
      *         'group' => 'name, status',
-     *         'for_updated' => false,
+     *         'for_update' => false,
      *         'shared_lock' => false,
      *         'cache' => [
      *             'lifetime' => 3600,

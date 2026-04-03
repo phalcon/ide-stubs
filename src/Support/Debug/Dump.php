@@ -9,7 +9,7 @@
  */
 namespace Phalcon\Support\Debug;
 
-use Phalcon\Di\Di;
+use Phalcon\Di\DiInterface;
 use Phalcon\Support\Helper\Json\Encode;
 use Reflection;
 use ReflectionClass;
@@ -82,14 +82,6 @@ class Dump
     }
 
     /**
-     * @param bool $detailed
-     * @return void
-     */
-    public function setDetailed(bool $detailed): void
-    {
-    }
-
-    /**
      * Alias of variable() method
      *
      * @param mixed $variable
@@ -97,6 +89,14 @@ class Dump
      * @return string
      */
     public function one($variable, string $name = null): string
+    {
+    }
+
+    /**
+     * @param bool $flag
+     * @return void
+     */
+    public function setDetailed(bool $flag): void
     {
     }
 

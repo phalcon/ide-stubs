@@ -84,7 +84,7 @@ class Response implements \Phalcon\Http\ResponseInterface, \Phalcon\Di\Injection
     /**
      * @var Encode
      */
-    private $encode;
+    protected $encode;
 
     /**
      * Phalcon\Http\Response constructor

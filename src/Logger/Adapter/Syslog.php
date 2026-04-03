@@ -10,8 +10,8 @@
 namespace Phalcon\Logger\Adapter;
 
 use LogicException;
+use Phalcon\Logger\Enum;
 use Phalcon\Logger\Item;
-use Phalcon\Logger\Logger;
 
 /**
  * Class Syslog

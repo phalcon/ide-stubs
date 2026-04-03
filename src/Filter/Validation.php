@@ -48,6 +48,11 @@ class Validation extends Injectable implements \Phalcon\Filter\Validation\Valida
     /**
      * @var array
      */
+    protected $whitelist = [];
+
+    /**
+     * @var array
+     */
     protected $labels = [];
 
     /**
@@ -104,11 +109,20 @@ class Validation extends Injectable implements \Phalcon\Filter\Validation\Valida
      * Assigns the data to an entity
      * The entity is used to obtain the validation values
      *
-     * @param object $entity
-     * @param array|object $data
+     * ```php
+     * $entity = new Author();
+     * $fields = ['name', 'email', 'imageUrl'];
+     * $validation = new AuthorValidation();
+     * $validation->bind($entity, $_POST, $fields);
+     * $validation->validate();
+     * ```
+     *
+     * @param object $entity the entity object to assign data to
+     * @param array|object $data the data that needs to be validated
+     * @param array $whitelist only allow these fields to be mutated when entity is used
      * @return ValidationInterface
      */
-    public function bind($entity, $data): ValidationInterface
+    public function bind($entity, $data, array $whitelist = []): ValidationInterface
     {
     }
 
@@ -263,11 +277,38 @@ class Validation extends Injectable implements \Phalcon\Filter\Validation\Valida
     /**
      * Validate a set of data according to a set of rules
      *
-     * @param array|object $data
-     * @param object $entity *
+     * You can use $validation->bind(entity, data, whitelist)->validate()
+     * When you use bind(), the this->data is already set, so you can reuse it here
+     *
+     * ```php
+     * // using bind() with $whitelist fields
+     * $entity = new Author();
+     * $fields = ['name', 'email', 'imageUrl'];
+     * $validation = new AuthorValidation();
+     * $validation->bind($entity, $_POST, $fields);
+     * $validation->validate();
+     *
+     * // directly using validate
+     * $validation = new AuthorValidation();
+     * $validation->validate($_POST, $entity, $fields);
+     * ```
+     *
+     * @param array|object $data the data that needs to be validated
+     * @param object $entity the entity object to assign data to
+     * @param array $whitelist only allow these fields to be mutated when entity is used
+     *
      * @return Messages|false
      */
-    public function validate($data = null, $entity = null): Messages|bool
+    public function validate($data = null, $entity = null, array $whitelist = []): Messages|bool
+    {
+    }
+
+    /**
+     * Verify if validation fails by verifying if there are messages in the current validation
+     *
+     * @return bool
+     */
+    public function fails(): bool
     {
     }
 

@@ -22,18 +22,26 @@ use Phalcon\Logger\Item;
  * $logger = new \Phalcon\Logger\Adapter\Stream('app/logs/test.log');
  *
  * $logger->log('This is a message');
- * $logger->log(\Phalcon\Logger::ERROR, 'This is an error');
+ * $logger->log(\Phalcon\Logger\Enum::ERROR, 'This is an error');
  * $logger->error('This is another error');
  *
  * $logger->close();
  * ```
  *
+ * @property resource|null $handler
  * @property string        $mode
  * @property string        $name
  * @property array         $options
  */
 class Stream extends \Phalcon\Logger\Adapter\AbstractAdapter
 {
+    /**
+     * Stream handler resource
+     *
+     * @var resource|null
+     */
+    protected $handler = null;
+
     /**
      * The file open mode. Defaults to 'ab'
      *
@@ -97,10 +105,28 @@ class Stream extends \Phalcon\Logger\Adapter\AbstractAdapter
 
     /**
      * @todo to be removed when we get traits
+     * @param mixed $handle
+     * @return bool
+     */
+    protected function phpFclose($handle): bool
+    {
+    }
+
+    /**
+     * @todo to be removed when we get traits
      * @param string $filename
      * @param string $mode
      */
     protected function phpFopen(string $filename, string $mode)
+    {
+    }
+
+    /**
+     * @todo to be removed when we get traits
+     * @param mixed $handle
+     * @param string $message
+     */
+    protected function phpFwrite($handle, string $message)
     {
     }
 }

@@ -62,7 +62,7 @@ class Cookie extends AbstractInjectionAware implements \Phalcon\Http\Cookie\Cook
     /**
      * @var bool
      */
-    protected $read = false;
+    protected $isRead = false;
 
     /**
      * @var bool

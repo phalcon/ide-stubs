@@ -52,37 +52,42 @@ class Request extends AbstractInjectionAware implements \Phalcon\Http\RequestInt
     /**
      * @var FilterInterface|null
      */
-    private $filterService = null;
+    protected $filterService = null;
 
     /**
      * @var bool
      */
-    private $httpMethodParameterOverride = false;
+    protected $httpMethodParameterOverride = false;
 
     /**
      * @var array
      */
-    private $queryFilters = [];
+    protected $queryFilters = [];
 
     /**
      * @var array|null
      */
-    private $patchCache = null;
-
-    /**
-     * @var array|null
-     */
-    private $putCache = null;
+    protected $postCache = null;
 
     /**
      * @var string
      */
-    private $rawBody = '';
+    protected $rawBody = '';
 
     /**
      * @var bool
      */
-    private $strictHostCheck = false;
+    protected $strictHostCheck = false;
+
+    /**
+     * @var array
+     */
+    protected $trustedProxies = [];
+
+    /**
+     * @var string
+     */
+    protected $trustedProxyHeader = '';
 
     /**
      * Gets a variable from the $_REQUEST superglobal applying filters if
@@ -183,14 +188,32 @@ class Request extends AbstractInjectionAware implements \Phalcon\Http\RequestInt
     }
 
     /**
-     * Gets most possible client IPv4 Address. This method searches in
+     * Gets most possible client IP Address. This method searches in
      * `$_SERVER["REMOTE_ADDR"]` and optionally in
-     * `$_SERVER["HTTP_X_FORWARDED_FOR"]`
+     * `$_SERVER["HTTP_X_FORWARDED_FOR"]` and returns the first non-private or non-reserved IP address
+     *
+     * The user provided trusted header takes priority before checking X-Forwarded-For header.
+     *
+     * Using trusted proxies list, user has to provide a trusted list of proxy IPs
+     * ```
+     * $request
+     *     ->setTrustedProxies($trustedProxies)
+     *     ->getClientAddress(true);
+     * ```
+     * Using user provided trusted header, header should only ever contain 1 IP address, eg. HTTP_CLIENT_IP
+     * ```
+     * $request
+     *     ->setTrustedProxyHeader('HTTP_CLIENT_IP')
+     *     ->setTrustedProxies($trustedProxies)
+     *     ->getClientAddress(true);
+     * ```
      *
      * @param bool $trustForwardedHeader
-     * @return string|bool
+     *
+     * @return string|false
+     * @throws \Exception
      */
-    public function getClientAddress(bool $trustForwardedHeader = false): bool|string
+    public function getClientAddress(bool $trustForwardedHeader = false): false|string
     {
     }
 
@@ -281,7 +304,7 @@ class Request extends AbstractInjectionAware implements \Phalcon\Http\RequestInt
      * @param string $header
      * @return string
      */
-    final public function getHeader(string $header): string
+    public function getHeader(string $header): string
     {
     }
 
@@ -387,7 +410,7 @@ class Request extends AbstractInjectionAware implements \Phalcon\Http\RequestInt
      *
      * @return string
      */
-    final public function getMethod(): string
+    public function getMethod(): string
     {
     }
 
@@ -564,7 +587,7 @@ class Request extends AbstractInjectionAware implements \Phalcon\Http\RequestInt
      * @param bool $onlyPath If true, query part will be omitted
      * @return string
      */
-    final public function getURI(bool $onlyPath = false): string
+    public function getURI(bool $onlyPath = false): string
     {
     }
 
@@ -662,6 +685,15 @@ class Request extends AbstractInjectionAware implements \Phalcon\Http\RequestInt
      * @return bool
      */
     public function isAjax(): bool
+    {
+    }
+
+    /**
+     * Checks whether request content type contains json data
+     *
+     * @return bool
+     */
+    public function isJson(): bool
     {
     }
 
@@ -861,13 +893,46 @@ class Request extends AbstractInjectionAware implements \Phalcon\Http\RequestInt
     }
 
     /**
+     * Set a trusted proxy list for X-Forwarded-For header
+     *
+     * @param array $trustedProxies
+     * @return RequestInterface
+     * @throws Exception
+     */
+    public function setTrustedProxies(array $trustedProxies): RequestInterface
+    {
+    }
+
+    /**
+     * This header takes priority when parsing HTTP headers
+     * The header return only 1 single IP address, prefixed with HTTP_ eg. HTTP_CLIENT_IP.
+     *
+     * @param  string $trustedProxyHeader
+     * @return RequestInterface
+     */
+    public function setTrustedProxyHeader(string $trustedProxyHeader): RequestInterface
+    {
+    }
+
+    /**
+     * Check if an IP address exists in CIDR range
+     *
+     * @param string $ip The IP address to check.
+     * @param string $cidr The CIDR range to compare against.
+     * @return bool True if the IP is in range, false otherwise.
+     */
+    protected function isIpAddressInCIDR(string $ip, string $cidr): bool
+    {
+    }
+
+    /**
      * Process a request header and return the one with best quality
      *
      * @param array $qualityParts
      * @param string $name
      * @return string
      */
-    final protected function getBestQuality(array $qualityParts, string $name): string
+    protected function getBestQuality(array $qualityParts, string $name): string
     {
     }
 
@@ -883,7 +948,7 @@ class Request extends AbstractInjectionAware implements \Phalcon\Http\RequestInt
      * @param bool $noRecursive
      * @return mixed
      */
-    final protected function getHelper(array $source, string $name = null, $filters = null, $defaultValue = null, bool $notAllowEmpty = false, bool $noRecursive = false): mixed
+    protected function getHelper(array $source, string $name = null, $filters = null, $defaultValue = null, bool $notAllowEmpty = false, bool $noRecursive = false): mixed
     {
     }
 
@@ -894,7 +959,7 @@ class Request extends AbstractInjectionAware implements \Phalcon\Http\RequestInt
      * @param bool $onlySuccessful
      * @return int
      */
-    final protected function hasFileHelper($data, bool $onlySuccessful): int
+    protected function hasFileHelper($data, bool $onlySuccessful): int
     {
     }
 
@@ -905,7 +970,7 @@ class Request extends AbstractInjectionAware implements \Phalcon\Http\RequestInt
      * @param string $name
      * @return array
      */
-    final protected function getQualityHeader(string $serverIndex, string $name): array
+    protected function getQualityHeader(string $serverIndex, string $name): array
     {
     }
 
@@ -929,7 +994,7 @@ class Request extends AbstractInjectionAware implements \Phalcon\Http\RequestInt
      * @param string $prefix
      * @return array
      */
-    final protected function smoothFiles(array $names, array $types, array $tmp_names, array $sizes, array $errors, string $prefix): array
+    protected function smoothFiles(array $names, array $types, array $tmp_names, array $sizes, array $errors, string $prefix): array
     {
     }
 
@@ -965,25 +1030,33 @@ class Request extends AbstractInjectionAware implements \Phalcon\Http\RequestInt
     }
 
     /**
-     * Gets a variable from put request
+     * Verify if given IP address is trusted
      *
-     * ```php
-     * // Returns value from $_PATCH["user_email"] without sanitizing
-     * $userEmail = $request->getPatch("user_email");
-     *
-     * // Returns value from $_PATCH["user_email"] with sanitizing
-     * $userEmail = $request->getPatch("user_email", "email");
-     * ```
-     *
-     * @param string $collection
-     * @param string $name
-     * @param mixed $filters
-     * @param mixed $defaultValue
-     * @param bool $notAllowEmpty
-     * @param bool $noRecursive
-     * @return mixed
+     * @param string $ip
+     * @return bool
      */
-    private function getPatchPut(string $collection, string $name = null, $filters = null, $defaultValue = null, bool $notAllowEmpty = false, bool $noRecursive = false): mixed
+    private function isProxyTrusted(string $ip): bool
+    {
+    }
+
+    /**
+     * Verify if given IP address is public, eg. not private or reserved IP
+     *
+     * @param string $forwardedIp
+     * @return string|false
+     * @throws \Phalcon\Filter\Exception
+     */
+    private function isValidPublicIp(string $forwardedIp): false|string
+    {
+    }
+
+    /**
+     * Return post data from rawBody, form data, or urlencoded form data
+     *
+     * @param array|null $data
+     * @return array
+     */
+    private function getPostData($data): array
     {
     }
 

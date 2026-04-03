@@ -79,7 +79,6 @@ class Random
     /**
      * Generates a random base58 string
      *
-     * If $len is not specified, 16 is assumed. It may be larger in future.
      * The result may contain alphanumeric characters except 0, O, I and l.
      *
      * It is similar to `Phalcon\Encryption\Security\Random::base64()` but has been
@@ -98,14 +97,12 @@ class Random
      * @param int $len
      * @return string
      */
-    public function base58(int $len = null): string
+    public function base58(int $len = 16): string
     {
     }
 
     /**
      * Generates a random base62 string
-     *
-     * If $len is not specified, 16 is assumed. It may be larger in future.
      *
      * It is similar to `Phalcon\Encryption\Security\Random::base58()` but has been
      * modified to provide the largest value that can safely be used in URLs
@@ -123,14 +120,13 @@ class Random
      * @param int $len
      * @return string
      */
-    public function base62(int $len = null): string
+    public function base62(int $len = 16): string
     {
     }
 
     /**
      * Generates a random base64 string
      *
-     * If $len is not specified, 16 is assumed. It may be larger in future.
      * The length of the result string is usually greater of $len.
      * Size formula: 4 ($len / 3) rounded up to a multiple of 4.
      *
@@ -144,14 +140,13 @@ class Random
      * @param int $len
      * @return string
      */
-    public function base64(int $len = null): string
+    public function base64(int $len = 16): string
     {
     }
 
     /**
      * Generates a random URL-safe base64 string
      *
-     * If $len is not specified, 16 is assumed. It may be larger in future.
      * The length of the result string is usually greater of $len.
      *
      * By default, padding is not generated because "=" may be used as a URL
@@ -171,7 +166,7 @@ class Random
      * @param bool $padding
      * @return string
      */
-    public function base64Safe(int $len = null, bool $padding = false): string
+    public function base64Safe(int $len = 16, bool $padding = false): string
     {
     }
 
@@ -203,7 +198,6 @@ class Random
     /**
      * Generates a random hex string
      *
-     * If $len is not specified, 16 is assumed. It may be larger in future.
      * The length of the result string is usually greater of $len.
      *
      * ```php
@@ -216,7 +210,7 @@ class Random
      * @param int $len
      * @return string
      */
-    public function hex(int $len = null): string
+    public function hex(int $len = 16): string
     {
     }
 
@@ -271,15 +265,13 @@ class Random
      * Generates a random string based on the number ($base) of characters
      * ($alphabet).
      *
-     * If $n is not specified, 16 is assumed. It may be larger in future.
-     *
      * @throws Exception If secure random number generator is not available or unexpected partial read
      * @param string $alphabet
      * @param int $base
      * @param mixed $n
      * @return string
      */
-    protected function base(string $alphabet, int $base, $n = null): string
+    protected function base(string $alphabet, int $base, $n = 16): string
     {
     }
 }
