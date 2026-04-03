@@ -611,9 +611,9 @@ class View extends Injectable implements \Phalcon\Mvc\ViewInterface, \Phalcon\Ev
      * @param string $controllerName
      * @param string $actionName
      * @param array $params
-     * @return bool|View
+     * @return false|View
      */
-    public function render(string $controllerName, string $actionName, array $params = []): View|bool
+    public function render(string $controllerName, string $actionName, array $params = []): View|false
     {
     }
 

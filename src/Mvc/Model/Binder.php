@@ -15,6 +15,7 @@ use Phalcon\Mvc\Model\Binder\BindableInterface;
 use Phalcon\Cache\Adapter\AdapterInterface;
 use ReflectionFunction;
 use ReflectionMethod;
+use ReflectionNamedType;
 
 /**
  * Phalcon\Mvc\Model\Binder

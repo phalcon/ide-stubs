@@ -44,7 +44,7 @@ class Doctype
     /**
      * @var int
      */
-    private $flag;
+    private $type;
 
     public function __construct()
     {
@@ -53,11 +53,11 @@ class Doctype
     /**
      * Produce a <doctype> tag
      *
-     * @param int    $flag
+     * @param int    $type
      * @param string $delimiter
      * @return Doctype
      */
-    public function __invoke(int $flag = self::HTML5, string $delimiter = '\\n'): Doctype
+    public function __invoke(int $type = self::HTML5, string $delimiter = '\\n'): Doctype
     {
     }
 
@@ -65,6 +65,13 @@ class Doctype
      * @return string
      */
     public function __toString(): string
+    {
+    }
+
+    /**
+     * @return int
+     */
+    public function getType(): int
     {
     }
 }

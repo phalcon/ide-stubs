@@ -26,6 +26,11 @@ abstract class AbstractHelper
     protected $delimiter = '';
 
     /**
+     * @var Doctype|null
+     */
+    protected $doctype = null;
+
+    /**
      * @var EscaperInterface
      */
     protected $escaper;
@@ -44,8 +49,9 @@ abstract class AbstractHelper
      * AbstractHelper constructor.
      *
      * @param EscaperInterface $escaper
+     * @param Doctype $doctype
      */
-    public function __construct(\Phalcon\Html\Escaper\EscaperInterface $escaper)
+    public function __construct(\Phalcon\Html\Escaper\EscaperInterface $escaper, Doctype $doctype = null)
     {
     }
 

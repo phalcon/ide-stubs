@@ -19,6 +19,7 @@ use Phalcon\Acl\ComponentAwareInterface;
 use Phalcon\Acl\ComponentInterface;
 use ReflectionClass;
 use ReflectionFunction;
+use ReflectionNamedType;
 
 /**
  * Manages ACL lists in memory

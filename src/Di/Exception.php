@@ -14,4 +14,35 @@ namespace Phalcon\Di;
  */
 class Exception extends \Exception
 {
+    /**
+     * @param string $name
+     * @return Exception
+     */
+    public static function serviceCannotBeResolved(string $name): Exception
+    {
+    }
+
+    /**
+     * @param string $name
+     * @return Exception
+     */
+    public static function serviceNotFound(string $name): Exception
+    {
+    }
+
+    /**
+     * @param int $position
+     * @return Exception
+     */
+    public static function unknownServiceInParameter(int $position): Exception
+    {
+    }
+
+    /**
+     * @param string $method
+     * @return Exception
+     */
+    public static function undefinedMethod(string $method): Exception
+    {
+    }
 }

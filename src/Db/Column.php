@@ -218,9 +218,9 @@ class Column implements \Phalcon\Db\ColumnInterface
     /**
      * Column Position
      *
-     * @var string|null
+     * @var string
      */
-    protected $after = null;
+    protected $after = '';
 
     /**
      * Column is autoIncrement?
@@ -320,7 +320,7 @@ class Column implements \Phalcon\Db\ColumnInterface
      *
      * @var array|string
      */
-    protected $typeValues;
+    protected $typeValues = [];
 
     /**
      * Integer column unsigned?
@@ -342,9 +342,9 @@ class Column implements \Phalcon\Db\ColumnInterface
     /**
      * Check whether field absolute to position in table
      *
-     * @return string|null
+     * @return string
      */
-    public function getAfterPosition(): string|null
+    public function getAfterPosition(): string
     {
     }
 

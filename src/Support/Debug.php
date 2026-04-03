@@ -62,18 +62,6 @@ class Debug
     protected $uri = 'https://assets.phalcon.io/debug/5.0.x/';
 
     /**
-     * @var Version
-     */
-    private $version;
-
-    /**
-     * Constructor setting a reusable version object
-     */
-    public function __construct()
-    {
-    }
-
-    /**
      * Clears are variables added previously
      *
      * @return Debug
@@ -282,13 +270,73 @@ class Debug
     /**
      * Shows a backtrace item
      *
-     * @param int   $n
+     * @param int   $number
      * @param array $trace
      *
      * @return string
      * @throws ReflectionException
      */
-    final protected function showTraceItem(int $n, array $trace): string
+    final protected function showTraceItem(int $number, array $trace): string
+    {
+    }
+
+    /**
+     * @return string
+     */
+    private function closeTable(): string
+    {
+    }
+
+    /**
+     * @param Throwable $exception
+     *
+     * @return string
+     * @throws ReflectionException
+     */
+    private function printBacktrace(\Throwable $exception): string
+    {
+    }
+
+    /**
+     * @return string
+     */
+    private function printExtraVariables(): string
+    {
+    }
+
+    /**
+     * @return string
+     */
+    private function printIncludedFiles(): string
+    {
+    }
+
+    /**
+     * @return string
+     */
+    private function printMemoryUsage(): string
+    {
+    }
+
+    /**
+     * @param array  $source
+     * @param string $div
+     *
+     * @return string
+     */
+    private function printSuperglobal(array $source, string $div): string
+    {
+    }
+
+    /**
+     * @param string $divId
+     * @param string $headerOne
+     * @param string $headerTwo
+     * @param string $colspan
+     *
+     * @return string
+     */
+    private function printTableHeader(string $divId, string $headerOne, string $headerTwo, string $colspan = ''): string
     {
     }
 

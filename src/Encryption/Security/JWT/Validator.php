@@ -93,6 +93,18 @@ class Validator
     }
 
     /**
+     * Validate a claim
+     *
+     * @param string          $name
+     * @param bool|int|string $value
+     *
+     * @return Validator
+     */
+    public function validateClaim(string $name, $value): Validator
+    {
+    }
+
+    /**
      * Validate the audience
      *
      * @param string|array $audience

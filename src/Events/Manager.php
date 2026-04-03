@@ -20,8 +20,6 @@ use SplPriorityQueue;
  */
 class Manager implements \Phalcon\Events\ManagerInterface
 {
-    const DEFAULT_PRIORITY = 100;
-
     /**
      * @var bool
      */
