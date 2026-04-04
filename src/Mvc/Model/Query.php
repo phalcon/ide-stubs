@@ -23,6 +23,7 @@ use Phalcon\Mvc\Model\Resultset\Simple;
 use Phalcon\Di\InjectionAwareInterface;
 use Phalcon\Db\DialectInterface;
 use Phalcon\Mvc\Model\Query\Lang;
+use Phalcon\Support\Settings;
 
 /**
  * Phalcon\Mvc\Model\Query
