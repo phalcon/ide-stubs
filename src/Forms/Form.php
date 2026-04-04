@@ -12,6 +12,7 @@ namespace Phalcon\Forms;
 use Countable;
 use Iterator;
 use Phalcon\Di\Injectable;
+use Phalcon\Support\Settings;
 use Phalcon\Di\DiInterface;
 use Phalcon\Filter\FilterInterface;
 use Phalcon\Forms\Element\ElementInterface;

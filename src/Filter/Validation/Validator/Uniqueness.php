@@ -15,6 +15,7 @@ use Phalcon\Mvc\ModelInterface;
 use Phalcon\Filter\Validation;
 use Phalcon\Filter\Validation\AbstractCombinedFieldsValidator;
 use Phalcon\Filter\Validation\Exception;
+use Phalcon\Support\Settings;
 
 /**
  * Check that a field is unique in the related table

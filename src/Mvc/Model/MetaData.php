@@ -15,6 +15,7 @@ use Phalcon\Di\InjectionAwareInterface;
 use Phalcon\Mvc\Model\MetaData\Strategy\Introspection;
 use Phalcon\Mvc\Model\MetaData\Strategy\StrategyInterface;
 use Phalcon\Mvc\ModelInterface;
+use Phalcon\Support\Settings;
 
 /**
  * Phalcon\Mvc\Model\MetaData
