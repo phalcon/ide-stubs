@@ -9,7 +9,11 @@
  */
 namespace Phalcon\Forms\Element;
 
-use Phalcon\Tag\Select as SelectTag;
+use Phalcon\Forms\Exception;
+use Phalcon\Html\Helper\Input\Select\ArrayData;
+use Phalcon\Html\Helper\Input\Select\ResultsetData;
+use Phalcon\Html\TagFactory;
+use Phalcon\Mvc\Model\ResultsetInterface;
 
 /**
  * Component SELECT (choice) for forms
@@ -24,9 +28,9 @@ class Select extends \Phalcon\Forms\Element\AbstractElement
     /**
      * Constructor
      *
-     * @param object|array $options
-     * @param array $attributes
      * @param string $name
+     * @param object|array|null $options
+     * @param array $attributes
      */
     public function __construct(string $name, $options = null, array $attributes = [])
     {

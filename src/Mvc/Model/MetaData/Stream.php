@@ -11,6 +11,7 @@ namespace Phalcon\Mvc\Model\MetaData;
 
 use Phalcon\Mvc\Model\MetaData;
 use Phalcon\Mvc\Model\Exception;
+use Phalcon\Support\Settings;
 
 /**
  * Phalcon\Mvc\Model\MetaData\Stream

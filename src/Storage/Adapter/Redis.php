@@ -63,31 +63,6 @@ class Redis extends \Phalcon\Storage\Adapter\AbstractAdapter
     }
 
     /**
-     * Decrements a stored number
-     *
-     * @param string $key
-     * @param int    $value
-     *
-     * @return bool|int
-     * @throws StorageException
-     */
-    public function decrement(string $key, int $value = 1): int|bool
-    {
-    }
-
-    /**
-     * Reads data from the adapter
-     *
-     * @param string $key
-     *
-     * @return bool
-     * @throws StorageException
-     */
-    public function delete(string $key): bool
-    {
-    }
-
-    /**
      * Returns the already connected adapter or connects to the Redis
      * server(s)
      *
@@ -111,6 +86,54 @@ class Redis extends \Phalcon\Storage\Adapter\AbstractAdapter
     }
 
     /**
+     * Stores data in the adapter forever. The key needs to manually deleted
+     * from the adapter.
+     *
+     * @param string $key
+     * @param mixed  $value
+     *
+     * @return bool
+     */
+    public function setForever(string $key, $value): bool
+    {
+    }
+
+    /**
+     * Decrements a stored number
+     *
+     * @param string $key
+     * @param int    $value
+     *
+     * @return bool|false|int
+     * @throws StorageException
+     */
+    protected function doDecrement(string $key, int $value = 1): int|bool
+    {
+    }
+
+    /**
+     * Deletes data from the adapter
+     *
+     * @param string $key
+     *
+     * @return bool
+     * @throws StorageException
+     */
+    protected function doDelete(string $key): bool
+    {
+    }
+
+    /**
+     * Deletes multiple keys from Redis using a single unlink call
+     *
+     * @param array $keys
+     * @return bool
+     */
+    protected function doDeleteMultiple(array $keys): bool
+    {
+    }
+
+    /**
      * Checks if an element exists in the cache
      *
      * @param string $key
@@ -118,7 +141,7 @@ class Redis extends \Phalcon\Storage\Adapter\AbstractAdapter
      * @return bool
      * @throws StorageException
      */
-    public function has(string $key): bool
+    protected function doHas(string $key): bool
     {
     }
 
@@ -131,7 +154,7 @@ class Redis extends \Phalcon\Storage\Adapter\AbstractAdapter
      * @return bool|false|int
      * @throws StorageException
      */
-    public function increment(string $key, int $value = 1): int|bool
+    protected function doIncrement(string $key, int $value = 1): int|bool
     {
     }
 
@@ -149,20 +172,7 @@ class Redis extends \Phalcon\Storage\Adapter\AbstractAdapter
      * @return bool
      * @throws BaseException
      */
-    public function set(string $key, $value, $ttl = null): bool
-    {
-    }
-
-    /**
-     * Stores data in the adapter forever. The key needs to manually deleted
-     * from the adapter.
-     *
-     * @param string $key
-     * @param mixed  $value
-     *
-     * @return bool
-     */
-    public function setForever(string $key, $value): bool
+    protected function doSet(string $key, $value, $ttl = null): bool
     {
     }
 

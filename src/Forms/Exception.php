@@ -14,4 +14,17 @@ namespace Phalcon\Forms;
  */
 class Exception extends \Exception
 {
+    /**
+     * @return Exception
+     */
+    public static function tagFactoryNotFound(): Exception
+    {
+    }
+
+    /**
+     * @return Exception
+     */
+    public static function usingParameterRequired(): Exception
+    {
+    }
 }

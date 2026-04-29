@@ -46,7 +46,7 @@ class QueryBuilder extends \Phalcon\Paginator\Adapter\AbstractAdapter
     protected $builder;
 
     /**
-     * Columns for count query if builder has having
+     * Columns for count query if builder has having or group by
      *
      * @var array|string
      */

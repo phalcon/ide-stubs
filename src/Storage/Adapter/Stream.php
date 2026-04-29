@@ -64,41 +64,6 @@ class Stream extends \Phalcon\Storage\Adapter\AbstractAdapter
     }
 
     /**
-     * Decrements a stored number
-     *
-     * @param string $key
-     * @param int    $value
-     *
-     * @return bool|int
-     */
-    public function decrement(string $key, int $value = 1): int|bool
-    {
-    }
-
-    /**
-     * Reads data from the adapter
-     *
-     * @param string $key
-     *
-     * @return bool
-     */
-    public function delete(string $key): bool
-    {
-    }
-
-    /**
-     * Reads data from the adapter
-     *
-     * @param string     $key
-     * @param mixed|null $defaultValue
-     *
-     * @return mixed|null
-     */
-    public function get(string $key, $defaultValue = null): mixed
-    {
-    }
-
-    /**
      * Stores data in the adapter
      *
      * @param string $prefix
@@ -110,13 +75,61 @@ class Stream extends \Phalcon\Storage\Adapter\AbstractAdapter
     }
 
     /**
+     * Stores data in the adapter forever. The key needs to manually deleted
+     * from the adapter.
+     *
+     * @param string $key
+     * @param mixed  $value
+     *
+     * @return bool
+     */
+    public function setForever(string $key, $value): bool
+    {
+    }
+
+    /**
+     * Decrements a stored number
+     *
+     * @param string $key
+     * @param int    $value
+     *
+     * @return bool|int
+     */
+    protected function doDecrement(string $key, int $value = 1): int|bool
+    {
+    }
+
+    /**
+     * Deletes data from the adapter
+     *
+     * @param string $key
+     *
+     * @return bool
+     */
+    protected function doDelete(string $key): bool
+    {
+    }
+
+    /**
+     * Reads data from the adapter
+     *
+     * @param string     $key
+     * @param mixed|null $defaultValue
+     *
+     * @return mixed|null
+     */
+    protected function doGet(string $key, $defaultValue = null): mixed
+    {
+    }
+
+    /**
      * Checks if an element exists in the cache and is not expired
      *
      * @param string $key
      *
      * @return bool
      */
-    public function has(string $key): bool
+    protected function doHas(string $key): bool
     {
     }
 
@@ -128,7 +141,7 @@ class Stream extends \Phalcon\Storage\Adapter\AbstractAdapter
      *
      * @return bool|int
      */
-    public function increment(string $key, int $value = 1): int|bool
+    protected function doIncrement(string $key, int $value = 1): int|bool
     {
     }
 
@@ -145,20 +158,7 @@ class Stream extends \Phalcon\Storage\Adapter\AbstractAdapter
      *
      * @return bool
      */
-    public function set(string $key, $value, $ttl = null): bool
-    {
-    }
-
-    /**
-     * Stores data in the adapter forever. The key needs to manually deleted
-     * from the adapter.
-     *
-     * @param string $key
-     * @param mixed  $value
-     *
-     * @return bool
-     */
-    public function setForever(string $key, $value): bool
+    protected function doSet(string $key, $value, $ttl = null): bool
     {
     }
 

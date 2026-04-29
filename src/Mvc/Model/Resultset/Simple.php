@@ -17,6 +17,7 @@ use Phalcon\Mvc\Model\Resultset;
 use Phalcon\Mvc\Model\Row;
 use Phalcon\Mvc\ModelInterface;
 use Phalcon\Storage\Serializer\SerializerInterface;
+use Phalcon\Support\Settings;
 
 /**
  * Phalcon\Mvc\Model\Resultset\Simple

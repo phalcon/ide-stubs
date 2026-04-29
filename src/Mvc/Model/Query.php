@@ -77,12 +77,24 @@ use Phalcon\Support\Settings;
  */
 class Query implements \Phalcon\Mvc\Model\QueryInterface, \Phalcon\Di\InjectionAwareInterface
 {
+    /**
+     * @var int
+     */
     const TYPE_DELETE = 303;
 
+    /**
+     * @var int
+     */
     const TYPE_INSERT = 306;
 
+    /**
+     * @var int
+     */
     const TYPE_SELECT = 309;
 
+    /**
+     * @var int
+     */
     const TYPE_UPDATE = 300;
 
     /**

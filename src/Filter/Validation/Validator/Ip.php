@@ -66,8 +66,14 @@ use Phalcon\Messages\Message;
  */
 class Ip extends AbstractValidator
 {
+    /**
+     * @var int
+     */
     const VERSION_4 = 1048576;
 
+    /**
+     * @var int
+     */
     const VERSION_6 = 2097152;
 
     protected $template = 'Field :field must be a valid IP address';

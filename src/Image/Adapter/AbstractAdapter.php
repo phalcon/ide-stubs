@@ -95,7 +95,7 @@ abstract class AbstractAdapter implements \Phalcon\Image\Adapter\AdapterInterfac
      *
      * @return AdapterInterface
      */
-    public function crop(int $width, int $height, int $offsetX = null, int $offsetY = null): AdapterInterface
+    public function crop(int $width, int $height, $offsetX = null, $offsetY = null): AdapterInterface
     {
     }
 

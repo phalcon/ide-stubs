@@ -614,8 +614,9 @@ class Compiler implements \Phalcon\Di\InjectionAwareInterface
      * Sets the compiler options
      *
      * @param array $options
+     * @return Compiler
      */
-    public function setOptions(array $options)
+    public function setOptions(array $options): Compiler
     {
     }
 
