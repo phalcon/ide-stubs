@@ -66,9 +66,9 @@ class PdoResult implements \Phalcon\Db\ResultInterface
     protected $result;
 
     /**
-     * @var bool
+     * @var int|null
      */
-    protected $rowCount = false;
+    protected $rowCount = null;
 
     /**
      * @var string|null

@@ -353,7 +353,7 @@ class Micro extends Injectable implements \ArrayAccess, \Phalcon\Events\EventsAw
     }
 
     /**
-     * Sets a handler that will be called when the router doesn't match any of
+     * Sets a handler that will be called when the router does not match any of
      * the defined routes
      *
      * @param callable $handler

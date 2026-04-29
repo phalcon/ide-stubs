@@ -10,6 +10,7 @@
 namespace Phalcon\Html\Helper\Input;
 
 use Phalcon\Html\Helper\AbstractList;
+use Phalcon\Html\Helper\Input\Select\SelectDataInterface;
 
 /**
  * Class Select
@@ -56,6 +57,19 @@ class Select extends AbstractList
      * @return Select
      */
     public function addPlaceholder(string $text, $value = null, array $attributes = [], bool $raw = false): Select
+    {
+    }
+
+    /**
+     * Populates the select from a data provider.
+     *
+     * Flat entries: key = option value, value = label string.
+     * Optgroup entries: key = group label, value = [value => label] array.
+     *
+     * @param SelectDataInterface $data *
+     * @return Select
+     */
+    public function fromData(\Phalcon\Html\Helper\Input\Select\SelectDataInterface $data): Select
     {
     }
 

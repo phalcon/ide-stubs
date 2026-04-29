@@ -20,6 +20,7 @@ use Phalcon\Db\ReferenceInterface;
 use Phalcon\Db\RawValue;
 use Phalcon\Events\EventsAwareInterface;
 use Phalcon\Events\ManagerInterface;
+use Phalcon\Support\Settings;
 
 /**
  * Base class for Phalcon\Db\Adapter adapters.

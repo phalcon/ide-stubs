@@ -10,6 +10,8 @@
 namespace Phalcon\Mvc;
 
 use Phalcon\Di\Injectable;
+use Phalcon\Events\EventsAwareInterface;
+use Phalcon\Events\ManagerInterface;
 
 /**
  * Phalcon\Mvc\Controller
@@ -51,12 +53,49 @@ use Phalcon\Di\Injectable;
  * }
  * ```
  */
-abstract class Controller extends Injectable implements \Phalcon\Mvc\ControllerInterface
+abstract class Controller extends Injectable implements \Phalcon\Mvc\ControllerInterface, \Phalcon\Events\EventsAwareInterface
 {
+    /**
+     * @var ManagerInterface|null
+     */
+    protected $eventsManager = null;
+
     /**
      * Phalcon\Mvc\Controller constructor
      */
     final public function __construct()
+    {
+    }
+
+    /**
+     * Returns the internal event manager
+     *
+     * @return ManagerInterface|null
+     */
+    public function getEventsManager(): ManagerInterface|null
+    {
+    }
+
+    /**
+     * Sets the events manager
+     *
+     * @param ManagerInterface $eventsManager
+     * @return void
+     */
+    public function setEventsManager(\Phalcon\Events\ManagerInterface $eventsManager): void
+    {
+    }
+
+    /**
+     * Helper method to fire an event
+     *
+     * @param string     $eventName
+     * @param mixed|null $data
+     * @param bool       $cancellable
+     *
+     * @return mixed|bool
+     */
+    protected function fireManagerEvent(string $eventName, $data = null, bool $cancellable = true): mixed
     {
     }
 }

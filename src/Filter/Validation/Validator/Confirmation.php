@@ -27,7 +27,7 @@ use Phalcon\Filter\Validation\AbstractValidator;
  *     "password",
  *     new Confirmation(
  *         [
- *             "message" => "Password doesn't match confirmation",
+ *             "message" => "Password does not match confirmation",
  *             "with"    => "confirmPassword",
  *         ]
  *     )
@@ -41,8 +41,8 @@ use Phalcon\Filter\Validation\AbstractValidator;
  *     new Confirmation(
  *         [
  *             "message" => [
- *                 "password" => "Password doesn't match confirmation",
- *                 "email"    => "Email doesn't match confirmation",
+ *                 "password" => "Password does not match confirmation",
+ *                 "email"    => "Email does not match confirmation",
  *             ],
  *             "with" => [
  *                 "password" => "confirmPassword",

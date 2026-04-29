@@ -112,7 +112,7 @@ abstract class AbstractApplication extends Injectable implements \Phalcon\Events
     }
 
     /**
-     * Sets the module name to be used if the router doesn't return a valid module
+     * Sets the module name to be used if the router does not return a valid module
      *
      * @param string $defaultModule
      * @return AbstractApplication

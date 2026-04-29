@@ -51,11 +51,17 @@ namespace Phalcon\Encryption\Security;
  * echo $random->base64Safe(8);          // mGyy0evy3ok
  * echo $random->base64Safe(null, true); // DRrAgOFkS4rvRiVHFefcQ==
  *
- * // Random UUID
+ * // Random UUID (version 4) — returns a string
  * echo $random->uuid(); // db082997-2572-4e2c-a046-5eefe97b1235
  * echo $random->uuid(); // da2aa0e2-b4d0-4e3c-99f5-f5ef62c57fe2
- * echo $random->uuid(); // 75e6b628-c562-4117-bb76-61c4153455a9
- * echo $random->uuid(); // dc446df1-0848-4d05-b501-4af3c220c13d
+ *
+ * // For other UUID versions (1, 3, 5, 6, 7) or object-based access use the
+ * // Phalcon\Encryption\Security\Uuid factory instead:
+ * //
+ * // $uuid = new \Phalcon\Encryption\Security\Uuid();
+ * // echo $uuid->v1(); // time-based
+ * // echo $uuid->v6(); // reordered time-based (sortable)
+ * // echo $uuid->v7(); // Unix-timestamp based (sortable)
  *
  * // Random number between 0 and $len
  * echo $random->number(256); // 84
@@ -237,15 +243,12 @@ class Random
     /**
      * Generates a v4 random UUID (Universally Unique IDentifier)
      *
-     * The version 4 UUID is purely random (except the version). It doesn't
+     * The version 4 UUID is purely random (except the version). It does not
      * contain meaningful information such as MAC address, time, etc. See RFC
      * 4122 for details of UUID.
      *
-     * This algorithm sets the version number (4 bits) as well as two reserved
-     * bits. All other bits (the remaining 122 bits) are set using a random or
-     * pseudorandom data source. Version 4 UUIDs have the form
-     * xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx where x is any hexadecimal digit and
-     * y is one of 8, 9, A, or B (e.g., f47ac10b-58cc-4372-a567-0e02b2c3d479).
+     * Delegates to `Phalcon\Encryption\Security\Uuid::v4()`. For other UUID
+     * versions or object-based access use that class directly.
      *
      * ```php
      * $random = new \Phalcon\Encryption\Security\Random();
@@ -254,7 +257,6 @@ class Random
      * ```
      *
      * @link https://www.ietf.org/rfc/rfc4122.txt
-     * @throws Exception If secure random number generator is not available or unexpected partial read
      * @return string
      */
     public function uuid(): string

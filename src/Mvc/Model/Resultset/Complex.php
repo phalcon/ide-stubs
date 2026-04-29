@@ -19,6 +19,7 @@ use Phalcon\Mvc\Model\ResultsetInterface;
 use Phalcon\Mvc\Model\Row;
 use Phalcon\Mvc\ModelInterface;
 use Phalcon\Storage\Serializer\SerializerInterface;
+use Phalcon\Support\Settings;
 use stdClass;
 
 /**

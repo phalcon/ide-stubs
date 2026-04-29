@@ -18,6 +18,7 @@ use Phalcon\Mvc\ModelInterface;
 use Phalcon\Mvc\Model\Query\Builder;
 use Phalcon\Mvc\Model\Query\BuilderInterface;
 use Phalcon\Mvc\Model\Query\StatusInterface;
+use Phalcon\Support\Settings;
 use ReflectionClass;
 use ReflectionProperty;
 
@@ -889,7 +890,7 @@ class Manager implements \Phalcon\Mvc\Model\ManagerInterface, \Phalcon\Di\Inject
     }
 
     /**
-     * Loads a model throwing an exception if it doesn't exist
+     * Loads a model throwing an exception if it does not exist
      *
      * @param string $modelName
      *
