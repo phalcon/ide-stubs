@@ -20,6 +20,7 @@ use Phalcon\Messages\MessageInterface;
 use Phalcon\Mvc\Model;
 use Phalcon\Mvc\ModelInterface;
 use Phalcon\Storage\Serializer\SerializerInterface;
+use Phalcon\Support\Settings;
 use SeekableIterator;
 use Serializable;
 
@@ -71,15 +72,30 @@ use Serializable;
  */
 abstract class Resultset implements \Phalcon\Mvc\Model\ResultsetInterface, \Iterator, \SeekableIterator, \Countable, \ArrayAccess, \Serializable, \JsonSerializable
 {
-    const HYDRATE_ARRAYS = 1;
+    /**
+     * @var int
+     */
+    const int HYDRATE_ARRAYS = 1;
 
-    const HYDRATE_OBJECTS = 2;
+    /**
+     * @var int
+     */
+    const int HYDRATE_OBJECTS = 2;
 
-    const HYDRATE_RECORDS = 0;
+    /**
+     * @var int
+     */
+    const int HYDRATE_RECORDS = 0;
 
-    const TYPE_RESULT_FULL = 0;
+    /**
+     * @var int
+     */
+    const int TYPE_RESULT_FULL = 0;
 
-    const TYPE_RESULT_PARTIAL = 1;
+    /**
+     * @var int
+     */
+    const int TYPE_RESULT_PARTIAL = 1;
 
     /**
      * @var mixed|null
@@ -397,6 +413,20 @@ abstract class Resultset implements \Phalcon\Mvc\Model\ResultsetInterface, \Iter
      * @return bool
      */
     public function valid(): bool
+    {
+    }
+
+    /**
+     * @return bool
+     */
+    public function refresh(): bool
+    {
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getResult(): mixed
     {
     }
 }

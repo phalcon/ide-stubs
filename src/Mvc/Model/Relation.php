@@ -16,21 +16,45 @@ namespace Phalcon\Mvc\Model;
  */
 class Relation implements \Phalcon\Mvc\Model\RelationInterface
 {
-    const ACTION_CASCADE = 2;
+    /**
+     * @var int
+     */
+    const int ACTION_CASCADE = 2;
 
-    const ACTION_RESTRICT = 1;
+    /**
+     * @var int
+     */
+    const int ACTION_RESTRICT = 1;
 
-    const BELONGS_TO = 0;
+    /**
+     * @var int
+     */
+    const int BELONGS_TO = 0;
 
-    const HAS_MANY = 2;
+    /**
+     * @var int
+     */
+    const int HAS_MANY = 2;
 
-    const HAS_MANY_THROUGH = 4;
+    /**
+     * @var int
+     */
+    const int HAS_MANY_THROUGH = 4;
 
-    const HAS_ONE = 1;
+    /**
+     * @var int
+     */
+    const int HAS_ONE = 1;
 
-    const HAS_ONE_THROUGH = 3;
+    /**
+     * @var int
+     */
+    const int HAS_ONE_THROUGH = 3;
 
-    const NO_ACTION = 0;
+    /**
+     * @var int
+     */
+    const int NO_ACTION = 0;
 
     /**
      * @var array|string
@@ -132,7 +156,7 @@ class Relation implements \Phalcon\Mvc\Model\RelationInterface
 
     /**
      * Returns an option by the specified name
-     * If the option doesn't exist null is returned
+     * If the option does not exist null is returned
      *
      * @param string $name
      */

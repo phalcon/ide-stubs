@@ -35,31 +35,70 @@ use Phalcon\Session\ManagerInterface as SessionInterface;
  */
 class Security extends AbstractInjectionAware
 {
-    const CRYPT_ARGON2I = 10;
+    /**
+     * @var int
+     */
+    const int CRYPT_ARGON2I = 10;
 
-    const CRYPT_ARGON2ID = 11;
+    /**
+     * @var int
+     */
+    const int CRYPT_ARGON2ID = 11;
 
-    const CRYPT_BCRYPT = 0;
+    /**
+     * @var int
+     */
+    const int CRYPT_BCRYPT = 0;
 
-    const CRYPT_DEFAULT = 0;
+    /**
+     * @var int
+     */
+    const int CRYPT_DEFAULT = 0;
 
-    const CRYPT_BLOWFISH = 4;
+    /**
+     * @var int
+     */
+    const int CRYPT_BLOWFISH = 4;
 
-    const CRYPT_BLOWFISH_A = 5;
+    /**
+     * @var int
+     */
+    const int CRYPT_BLOWFISH_A = 5;
 
-    const CRYPT_BLOWFISH_X = 6;
+    /**
+     * @var int
+     */
+    const int CRYPT_BLOWFISH_X = 6;
 
-    const CRYPT_BLOWFISH_Y = 7;
+    /**
+     * @var int
+     */
+    const int CRYPT_BLOWFISH_Y = 7;
 
-    const CRYPT_EXT_DES = 2;
+    /**
+     * @var int
+     */
+    const int CRYPT_EXT_DES = 2;
 
-    const CRYPT_MD5 = 3;
+    /**
+     * @var int
+     */
+    const int CRYPT_MD5 = 3;
 
-    const CRYPT_SHA256 = 8;
+    /**
+     * @var int
+     */
+    const int CRYPT_SHA256 = 8;
 
-    const CRYPT_SHA512 = 9;
+    /**
+     * @var int
+     */
+    const int CRYPT_SHA512 = 9;
 
-    const CRYPT_STD_DES = 1;
+    /**
+     * @var int
+     */
+    const int CRYPT_STD_DES = 1;
 
     /**
      * @var int

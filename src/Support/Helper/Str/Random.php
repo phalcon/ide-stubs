@@ -15,17 +15,48 @@ namespace Phalcon\Support\Helper\Str;
  */
 class Random
 {
-    const RANDOM_ALNUM = 0;
+    /**
+     * Only alphanumeric characters [a-zA-Z0-9]
+     *
+     * @var int
+     */
+    const int RANDOM_ALNUM = 0;
 
-    const RANDOM_ALPHA = 1;
+    /**
+     * Only alphabetical characters [azAZ]
+     *
+     * @var int
+     */
+    const int RANDOM_ALPHA = 1;
 
-    const RANDOM_DISTINCT = 5;
+    /**
+     * Only alphanumeric uppercase characters exclude similar
+     * characters [2345679ACDEFHJKLMNPRSTUVWXYZ]
+     *
+     * @var int
+     */
+    const int RANDOM_DISTINCT = 5;
 
-    const RANDOM_HEXDEC = 2;
+    /**
+     * Only hexadecimal characters [0-9a-f]
+     *
+     * @var int
+     */
+    const int RANDOM_HEXDEC = 2;
 
-    const RANDOM_NOZERO = 4;
+    /**
+     * Only numbers without 0 [1-9]
+     *
+     * @var int
+     */
+    const int RANDOM_NOZERO = 4;
 
-    const RANDOM_NUMERIC = 3;
+    /**
+     * Only numbers [0-9]
+     *
+     * @var int
+     */
+    const int RANDOM_NUMERIC = 3;
 
 
     /**

@@ -48,31 +48,6 @@ class Libmemcached extends \Phalcon\Storage\Adapter\AbstractAdapter
     }
 
     /**
-     * Decrements a stored number
-     *
-     * @param string $key
-     * @param int    $value
-     *
-     * @return bool|int
-     * @throws StorageException
-     */
-    public function decrement(string $key, int $value = 1): int|bool
-    {
-    }
-
-    /**
-     * Reads data from the adapter
-     *
-     * @param string $key
-     *
-     * @return bool
-     * @throws StorageException
-     */
-    public function delete(string $key): bool
-    {
-    }
-
-    /**
      * Returns the already connected adapter or connects to the Memcached
      * server(s)
      *
@@ -96,6 +71,54 @@ class Libmemcached extends \Phalcon\Storage\Adapter\AbstractAdapter
     }
 
     /**
+     * Stores data in the adapter forever. The key needs to manually deleted
+     * from the adapter.
+     *
+     * @param string $key
+     * @param mixed  $value
+     *
+     * @return bool
+     */
+    public function setForever(string $key, $value): bool
+    {
+    }
+
+    /**
+     * Decrements a stored number
+     *
+     * @param string $key
+     * @param int    $value
+     *
+     * @return bool|int
+     * @throws StorageException
+     */
+    protected function doDecrement(string $key, int $value = 1): int|bool
+    {
+    }
+
+    /**
+     * Deletes data from the adapter
+     *
+     * @param string $key
+     *
+     * @return bool
+     * @throws StorageException
+     */
+    protected function doDelete(string $key): bool
+    {
+    }
+
+    /**
+     * Deletes multiple keys from Memcached using a single deleteMulti call
+     *
+     * @param array $keys
+     * @return bool
+     */
+    protected function doDeleteMultiple(array $keys): bool
+    {
+    }
+
+    /**
      * Checks if an element exists in the cache
      *
      * @param string $key
@@ -103,7 +126,7 @@ class Libmemcached extends \Phalcon\Storage\Adapter\AbstractAdapter
      * @return bool
      * @throws StorageException
      */
-    public function has(string $key): bool
+    protected function doHas(string $key): bool
     {
     }
 
@@ -116,7 +139,7 @@ class Libmemcached extends \Phalcon\Storage\Adapter\AbstractAdapter
      * @return bool|int
      * @throws StorageException
      */
-    public function increment(string $key, int $value = 1): int|bool
+    protected function doIncrement(string $key, int $value = 1): int|bool
     {
     }
 
@@ -135,20 +158,7 @@ class Libmemcached extends \Phalcon\Storage\Adapter\AbstractAdapter
      * @throws BaseException
      * @throws StorageException
      */
-    public function set(string $key, $value, $ttl = null): bool
-    {
-    }
-
-    /**
-     * Stores data in the adapter forever. The key needs to manually deleted
-     * from the adapter.
-     *
-     * @param string $key
-     * @param mixed  $value
-     *
-     * @return bool
-     */
-    public function setForever(string $key, $value): bool
+    protected function doSet(string $key, $value, $ttl = null): bool
     {
     }
 

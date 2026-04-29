@@ -16,13 +16,25 @@ use BadMethodCallException;
  */
 class Select extends \Phalcon\DataMapper\Query\AbstractConditions
 {
-    const JOIN_INNER = 'INNER';
+    /**
+     * @var string
+     */
+    const string JOIN_INNER = 'INNER';
 
-    const JOIN_LEFT = 'LEFT';
+    /**
+     * @var string
+     */
+    const string JOIN_LEFT = 'LEFT';
 
-    const JOIN_NATURAL = 'NATURAL';
+    /**
+     * @var string
+     */
+    const string JOIN_NATURAL = 'NATURAL';
 
-    const JOIN_RIGHT = 'RIGHT';
+    /**
+     * @var string
+     */
+    const string JOIN_RIGHT = 'RIGHT';
 
     /**
      * @var string

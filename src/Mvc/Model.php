@@ -42,6 +42,7 @@ use Phalcon\Mvc\ModelInterface;
 use Phalcon\Filter\Validation\ValidationInterface;
 use Phalcon\Support\Collection;
 use Phalcon\Support\Collection\CollectionInterface;
+use Phalcon\Support\Settings;
 use Serializable;
 
 /**
@@ -85,21 +86,45 @@ use Serializable;
  */
 abstract class Model extends AbstractInjectionAware implements \Phalcon\Mvc\EntityInterface, \Phalcon\Mvc\ModelInterface, \Phalcon\Mvc\Model\ResultInterface, \Serializable, \JsonSerializable
 {
-    const DIRTY_STATE_DETACHED = 2;
+    /**
+     * @var int
+     */
+    const int DIRTY_STATE_DETACHED = 2;
 
-    const DIRTY_STATE_PERSISTENT = 0;
+    /**
+     * @var int
+     */
+    const int DIRTY_STATE_PERSISTENT = 0;
 
-    const DIRTY_STATE_TRANSIENT = 1;
+    /**
+     * @var int
+     */
+    const int DIRTY_STATE_TRANSIENT = 1;
 
-    const OP_CREATE = 1;
+    /**
+     * @var int
+     */
+    const int OP_CREATE = 1;
 
-    const OP_DELETE = 3;
+    /**
+     * @var int
+     */
+    const int OP_DELETE = 3;
 
-    const OP_NONE = 0;
+    /**
+     * @var int
+     */
+    const int OP_NONE = 0;
 
-    const OP_UPDATE = 2;
+    /**
+     * @var int
+     */
+    const int OP_UPDATE = 2;
 
-    const TRANSACTION_INDEX = 'transaction';
+    /**
+     * @var string
+     */
+    const string TRANSACTION_INDEX = 'transaction';
 
     /**
      * @var int
@@ -140,6 +165,11 @@ abstract class Model extends AbstractInjectionAware implements \Phalcon\Mvc\Enti
      * @var array
      */
     protected $oldSnapshot = [];
+
+    /**
+     * @var array
+     */
+    protected $rawValues = [];
 
     /**
      * @var bool
@@ -186,7 +216,7 @@ abstract class Model extends AbstractInjectionAware implements \Phalcon\Mvc\Enti
      * Handles method calls when a method is not implemented
      *
      * @return mixed
-     * @throws \Phalcon\Mvc\Model\Exception If the method doesn't exist
+     * @throws \Phalcon\Mvc\Model\Exception If the method does not exist
      * @param string $method
      * @param array $arguments
      */
@@ -198,7 +228,7 @@ abstract class Model extends AbstractInjectionAware implements \Phalcon\Mvc\Enti
      * Handles method calls when a static method is not implemented
      *
      * @return mixed
-     * @throws \Phalcon\Mvc\Model\Exception If the method doesn't exist
+     * @throws \Phalcon\Mvc\Model\Exception If the method does not exist
      * @param string $method
      * @param array $arguments
      */
@@ -1526,7 +1556,7 @@ abstract class Model extends AbstractInjectionAware implements \Phalcon\Mvc\Enti
     }
 
     /**
-     * Updates a model instance. If the instance doesn't exist in the
+     * Updates a model instance. If the instance does not exist in the
      * persistence it will throw an exception. Returning `true` on success or
      * `false` otherwise.
      *

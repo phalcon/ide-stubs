@@ -14,45 +14,105 @@ namespace Phalcon\Domain\Payload;
  */
 class Status
 {
-    const ACCEPTED = 'ACCEPTED';
+    /**
+     * @var string
+     */
+    const string ACCEPTED = 'ACCEPTED';
 
-    const AUTHENTICATED = 'AUTHENTICATED';
+    /**
+     * @var string
+     */
+    const string AUTHENTICATED = 'AUTHENTICATED';
 
-    const AUTHORIZED = 'AUTHORIZED';
+    /**
+     * @var string
+     */
+    const string AUTHORIZED = 'AUTHORIZED';
 
-    const CREATED = 'CREATED';
+    /**
+     * @var string
+     */
+    const string CREATED = 'CREATED';
 
-    const DELETED = 'DELETED';
+    /**
+     * @var string
+     */
+    const string DELETED = 'DELETED';
 
-    const ERROR = 'ERROR';
+    /**
+     * @var string
+     */
+    const string ERROR = 'ERROR';
 
-    const FAILURE = 'FAILURE';
+    /**
+     * @var string
+     */
+    const string FAILURE = 'FAILURE';
 
-    const FOUND = 'FOUND';
+    /**
+     * @var string
+     */
+    const string FOUND = 'FOUND';
 
-    const NOT_ACCEPTED = 'NOT_ACCEPTED';
+    /**
+     * @var string
+     */
+    const string NOT_ACCEPTED = 'NOT_ACCEPTED';
 
-    const NOT_AUTHENTICATED = 'NOT_AUTHENTICATED';
+    /**
+     * @var string
+     */
+    const string NOT_AUTHENTICATED = 'NOT_AUTHENTICATED';
 
-    const NOT_AUTHORIZED = 'NOT_AUTHORIZED';
+    /**
+     * @var string
+     */
+    const string NOT_AUTHORIZED = 'NOT_AUTHORIZED';
 
-    const NOT_CREATED = 'NOT_CREATED';
+    /**
+     * @var string
+     */
+    const string NOT_CREATED = 'NOT_CREATED';
 
-    const NOT_DELETED = 'NOT_DELETED';
+    /**
+     * @var string
+     */
+    const string NOT_DELETED = 'NOT_DELETED';
 
-    const NOT_FOUND = 'NOT_FOUND';
+    /**
+     * @var string
+     */
+    const string NOT_FOUND = 'NOT_FOUND';
 
-    const NOT_UPDATED = 'NOT_UPDATED';
+    /**
+     * @var string
+     */
+    const string NOT_UPDATED = 'NOT_UPDATED';
 
-    const NOT_VALID = 'NOT_VALID';
+    /**
+     * @var string
+     */
+    const string NOT_VALID = 'NOT_VALID';
 
-    const PROCESSING = 'PROCESSING';
+    /**
+     * @var string
+     */
+    const string PROCESSING = 'PROCESSING';
 
-    const SUCCESS = 'SUCCESS';
+    /**
+     * @var string
+     */
+    const string SUCCESS = 'SUCCESS';
 
-    const UPDATED = 'UPDATED';
+    /**
+     * @var string
+     */
+    const string UPDATED = 'UPDATED';
 
-    const VALID = 'VALID';
+    /**
+     * @var string
+     */
+    const string VALID = 'VALID';
 
 
     /**

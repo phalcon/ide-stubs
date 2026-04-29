@@ -56,29 +56,6 @@ class Weak extends \Phalcon\Storage\Adapter\AbstractAdapter
     }
 
     /**
-     * Decrements a stored number
-     *
-     * @param string $key
-     * @param int    $value
-     *
-     * @return bool|int
-     */
-    public function decrement(string $key, int $value = 1): int|bool
-    {
-    }
-
-    /**
-     * Deletes data from the adapter
-     *
-     * @param string $key
-     *
-     * @return bool
-     */
-    public function delete(string $key): bool
-    {
-    }
-
-    /**
      * Stores data in the adapter
      *
      * @param string $prefix
@@ -86,57 +63,6 @@ class Weak extends \Phalcon\Storage\Adapter\AbstractAdapter
      * @return array
      */
     public function getKeys(string $prefix = ''): array
-    {
-    }
-
-    /**
-     * Increments a stored number
-     *
-     * @param string $key
-     * @param int    $value
-     *
-     * @return bool|int
-     */
-    public function increment(string $key, int $value = 1): int|bool
-    {
-    }
-
-    /**
-     * Reads data from the adapter
-     *
-     * @param string $key
-     * @param mixed|null $defaultValue *
-     * @return mixed
-     */
-    public function get(string $key, $defaultValue = null): mixed
-    {
-    }
-
-    /**
-     * Checks if an element exists in the cache
-     *
-     * @param string $key *
-     * @return bool
-     */
-    public function has(string $key): bool
-    {
-    }
-
-    /**
-     * Stores data in the adapter. If the TTL is `null` (default) or not defined
-     * then the default TTL will be used, as set in this adapter. If the TTL
-     * is `0` or a negative number, a `delete()` will be issued, since this
-     * item has expired. If you need to set this key forever, you should use
-     * the `setForever()` method.
-     *
-     * @param string                $key
-     * @param mixed                 $value
-     * @param DateInterval|int|null $ttl
-     *
-     * @return bool
-     * @throws BaseException
-     */
-    public function set(string $key, $value, $ttl = null): bool
     {
     }
 
@@ -159,6 +85,82 @@ class Weak extends \Phalcon\Storage\Adapter\AbstractAdapter
      * @return void
      */
     public function setDefaultSerializer(string $serializer): void
+    {
+    }
+
+    /**
+     * Decrements a stored number — not supported for WeakReference
+     *
+     * @param string $key
+     * @param int    $value
+     *
+     * @return bool|int
+     */
+    protected function doDecrement(string $key, int $value = 1): int|bool
+    {
+    }
+
+    /**
+     * Deletes data from the adapter
+     *
+     * @param string $key
+     *
+     * @return bool
+     */
+    protected function doDelete(string $key): bool
+    {
+    }
+
+    /**
+     * Reads data from the adapter
+     *
+     * @param string     $key
+     * @param mixed|null $defaultValue
+     *
+     * @return mixed
+     */
+    protected function doGet(string $key, $defaultValue = null): mixed
+    {
+    }
+
+    /**
+     * Checks if an element exists in the cache
+     *
+     * @param string $key
+     *
+     * @return bool
+     */
+    protected function doHas(string $key): bool
+    {
+    }
+
+    /**
+     * Increments a stored number — not supported for WeakReference
+     *
+     * @param string $key
+     * @param int    $value
+     *
+     * @return bool|int
+     */
+    protected function doIncrement(string $key, int $value = 1): int|bool
+    {
+    }
+
+    /**
+     * Stores data in the adapter. If the TTL is `null` (default) or not defined
+     * then the default TTL will be used, as set in this adapter. If the TTL
+     * is `0` or a negative number, a `delete()` will be issued, since this
+     * item has expired. If you need to set this key forever, you should use
+     * the `setForever()` method.
+     *
+     * @param string                $key
+     * @param mixed                 $value
+     * @param DateInterval|int|null $ttl
+     *
+     * @return bool
+     * @throws BaseException
+     */
+    protected function doSet(string $key, $value, $ttl = null): bool
     {
     }
 }

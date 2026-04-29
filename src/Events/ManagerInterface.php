@@ -14,7 +14,10 @@ namespace Phalcon\Events;
  */
 interface ManagerInterface
 {
-    const DEFAULT_PRIORITY = 100;
+    /**
+     * @var int
+     */
+    const int DEFAULT_PRIORITY = 100;
 
 
     /**

@@ -40,179 +40,443 @@ namespace Phalcon\Http\Message;
  */
 interface ResponseStatusCodeInterface
 {
-    const STATUS_CONTINUE = 100;
-
-    const STATUS_SWITCHING_PROTOCOLS = 101;
-
-    const STATUS_PROCESSING = 102;
-
-    const STATUS_EARLY_HINTS = 103;
-
-    const STATUS_OK = 200;
-
-    const STATUS_CREATED = 201;
-
-    const STATUS_ACCEPTED = 202;
-
-    const STATUS_NON_AUTHORITATIVE_INFORMATION = 203;
-
-    const STATUS_NO_CONTENT = 204;
-
-    const STATUS_RESET_CONTENT = 205;
-
-    const STATUS_PARTIAL_CONTENT = 206;
-
-    const STATUS_MULTI_STATUS = 207;
-
-    const STATUS_ALREADY_REPORTED = 208;
-
-    const STATUS_IM_USED = 226;
-
-    const STATUS_MULTIPLE_CHOICES = 300;
-
-    const STATUS_MOVED_PERMANENTLY = 301;
-
-    const STATUS_FOUND = 302;
-
-    const STATUS_SEE_OTHER = 303;
-
-    const STATUS_NOT_MODIFIED = 304;
-
-    const STATUS_USE_PROXY = 305;
-
-    const STATUS_RESERVED = 306;
-
-    const STATUS_TEMPORARY_REDIRECT = 307;
-
-    const STATUS_PERMANENT_REDIRECT = 308;
-
-    const STATUS_BAD_REQUEST = 400;
-
-    const STATUS_UNAUTHORIZED = 401;
-
-    const STATUS_PAYMENT_REQUIRED = 402;
-
-    const STATUS_FORBIDDEN = 403;
-
-    const STATUS_NOT_FOUND = 404;
-
-    const STATUS_METHOD_NOT_ALLOWED = 405;
-
-    const STATUS_NOT_ACCEPTABLE = 406;
-
-    const STATUS_PROXY_AUTHENTICATION_REQUIRED = 407;
-
-    const STATUS_REQUEST_TIMEOUT = 408;
-
-    const STATUS_CONFLICT = 409;
-
-    const STATUS_GONE = 410;
-
-    const STATUS_LENGTH_REQUIRED = 411;
-
-    const STATUS_PRECONDITION_FAILED = 412;
-
-    const STATUS_PAYLOAD_TOO_LARGE = 413;
-
-    const STATUS_URI_TOO_LONG = 414;
-
-    const STATUS_UNSUPPORTED_MEDIA_TYPE = 415;
-
-    const STATUS_RANGE_NOT_SATISFIABLE = 416;
-
-    const STATUS_EXPECTATION_FAILED = 417;
-
-    const STATUS_IM_A_TEAPOT = 418;
-
-    const STATUS_MISDIRECTED_REQUEST = 421;
-
-    const STATUS_UNPROCESSABLE_ENTITY = 422;
-
-    const STATUS_LOCKED = 423;
-
-    const STATUS_FAILED_DEPENDENCY = 424;
-
-    const STATUS_TOO_EARLY = 425;
-
-    const STATUS_UPGRADE_REQUIRED = 426;
-
-    const STATUS_PRECONDITION_REQUIRED = 428;
-
-    const STATUS_TOO_MANY_REQUESTS = 429;
-
-    const STATUS_REQUEST_HEADER_FIELDS_TOO_LARGE = 431;
-
-    const STATUS_UNAVAILABLE_FOR_LEGAL_REASONS = 451;
-
-    const STATUS_INTERNAL_SERVER_ERROR = 500;
-
-    const STATUS_NOT_IMPLEMENTED = 501;
-
-    const STATUS_BAD_GATEWAY = 502;
-
-    const STATUS_SERVICE_UNAVAILABLE = 503;
-
-    const STATUS_GATEWAY_TIMEOUT = 504;
-
-    const STATUS_VERSION_NOT_SUPPORTED = 505;
-
-    const STATUS_VARIANT_ALSO_NEGOTIATES = 506;
-
-    const STATUS_INSUFFICIENT_STORAGE = 507;
-
-    const STATUS_LOOP_DETECTED = 508;
-
-    const STATUS_NOT_EXTENDED = 510;
-
-    const STATUS_NETWORK_AUTHENTICATION_REQUIRED = 511;
-
-    const STATUS_THIS_IS_FINE = 218;
-
-    const STATUS_PAGE_EXPIRED = 419;
-
-    const STATUS_METHOD_FAILURE = 420;
-
-    const STATUS_LOGIN_TIMEOUT = 440;
-
-    const STATUS_NO_RESPONSE = 444;
-
-    const STATUS_RETRY_WITH = 449;
-
-    const STATUS_BLOCKED_BY_WINDOWS_PARENTAL_CONTROLS = 450;
-
-    const STATUS_REQUEST_HEADER_TOO_LARGE = 494;
-
-    const STATUS_SSL_CERTIFICATE_ERROR = 495;
-
-    const STATUS_SSL_CERTIFICATE_REQUIRED = 496;
-
-    const STATUS_HTTP_REQUEST_SENT_TO_HTTPS_PORT = 497;
-
-    const STATUS_INVALID_TOKEN_ESRI = 498;
-
-    const STATUS_CLIENT_CLOSED_REQUEST = 499;
-
-    const STATUS_BANDWIDTH_LIMIT_EXCEEDED = 509;
-
-    const STATUS_UNKNOWN_ERROR = 520;
-
-    const STATUS_WEB_SERVER_IS_DOWN = 521;
-
-    const STATUS_CONNECTION_TIMEOUT = 522;
-
-    const STATUS_ORIGIN_IS_UNREACHABLE = 523;
-
-    const STATUS_TIMEOUT_OCCURRED = 524;
-
-    const STATUS_SSL_HANDSHAKE_FAILED = 525;
-
-    const STATUS_INVALID_SSL_CERTIFICATE = 526;
-
-    const STATUS_RAILGUN_ERROR = 527;
-
-    const STATUS_ORIGIN_DNS_ERROR = 530;
-
-    const STATUS_NETWORK_READ_TIMEOUT_ERROR = 598;
-
-    const STATUS_NETWORK_CONNECT_TIMEOUT_ERROR = 599;
+    /**
+     * @var int
+     */
+    const int STATUS_CONTINUE = 100;
+
+    /**
+     * @var int
+     */
+    const int STATUS_SWITCHING_PROTOCOLS = 101;
+
+    /**
+     * @var int
+     */
+    const int STATUS_PROCESSING = 102;
+
+    /**
+     * @var int
+     */
+    const int STATUS_EARLY_HINTS = 103;
+
+    /**
+     * @var int
+     */
+    const int STATUS_OK = 200;
+
+    /**
+     * @var int
+     */
+    const int STATUS_CREATED = 201;
+
+    /**
+     * @var int
+     */
+    const int STATUS_ACCEPTED = 202;
+
+    /**
+     * @var int
+     */
+    const int STATUS_NON_AUTHORITATIVE_INFORMATION = 203;
+
+    /**
+     * @var int
+     */
+    const int STATUS_NO_CONTENT = 204;
+
+    /**
+     * @var int
+     */
+    const int STATUS_RESET_CONTENT = 205;
+
+    /**
+     * @var int
+     */
+    const int STATUS_PARTIAL_CONTENT = 206;
+
+    /**
+     * @var int
+     */
+    const int STATUS_MULTI_STATUS = 207;
+
+    /**
+     * @var int
+     */
+    const int STATUS_ALREADY_REPORTED = 208;
+
+    /**
+     * @var int
+     */
+    const int STATUS_IM_USED = 226;
+
+    /**
+     * @var int
+     */
+    const int STATUS_MULTIPLE_CHOICES = 300;
+
+    /**
+     * @var int
+     */
+    const int STATUS_MOVED_PERMANENTLY = 301;
+
+    /**
+     * @var int
+     */
+    const int STATUS_FOUND = 302;
+
+    /**
+     * @var int
+     */
+    const int STATUS_SEE_OTHER = 303;
+
+    /**
+     * @var int
+     */
+    const int STATUS_NOT_MODIFIED = 304;
+
+    /**
+     * @var int
+     */
+    const int STATUS_USE_PROXY = 305;
+
+    /**
+     * @var int
+     */
+    const int STATUS_RESERVED = 306;
+
+    /**
+     * @var int
+     */
+    const int STATUS_TEMPORARY_REDIRECT = 307;
+
+    /**
+     * @var int
+     */
+    const int STATUS_PERMANENT_REDIRECT = 308;
+
+    /**
+     * @var int
+     */
+    const int STATUS_BAD_REQUEST = 400;
+
+    /**
+     * @var int
+     */
+    const int STATUS_UNAUTHORIZED = 401;
+
+    /**
+     * @var int
+     */
+    const int STATUS_PAYMENT_REQUIRED = 402;
+
+    /**
+     * @var int
+     */
+    const int STATUS_FORBIDDEN = 403;
+
+    /**
+     * @var int
+     */
+    const int STATUS_NOT_FOUND = 404;
+
+    /**
+     * @var int
+     */
+    const int STATUS_METHOD_NOT_ALLOWED = 405;
+
+    /**
+     * @var int
+     */
+    const int STATUS_NOT_ACCEPTABLE = 406;
+
+    /**
+     * @var int
+     */
+    const int STATUS_PROXY_AUTHENTICATION_REQUIRED = 407;
+
+    /**
+     * @var int
+     */
+    const int STATUS_REQUEST_TIMEOUT = 408;
+
+    /**
+     * @var int
+     */
+    const int STATUS_CONFLICT = 409;
+
+    /**
+     * @var int
+     */
+    const int STATUS_GONE = 410;
+
+    /**
+     * @var int
+     */
+    const int STATUS_LENGTH_REQUIRED = 411;
+
+    /**
+     * @var int
+     */
+    const int STATUS_PRECONDITION_FAILED = 412;
+
+    /**
+     * @var int
+     */
+    const int STATUS_PAYLOAD_TOO_LARGE = 413;
+
+    /**
+     * @var int
+     */
+    const int STATUS_URI_TOO_LONG = 414;
+
+    /**
+     * @var int
+     */
+    const int STATUS_UNSUPPORTED_MEDIA_TYPE = 415;
+
+    /**
+     * @var int
+     */
+    const int STATUS_RANGE_NOT_SATISFIABLE = 416;
+
+    /**
+     * @var int
+     */
+    const int STATUS_EXPECTATION_FAILED = 417;
+
+    /**
+     * @var int
+     */
+    const int STATUS_IM_A_TEAPOT = 418;
+
+    /**
+     * @var int
+     */
+    const int STATUS_MISDIRECTED_REQUEST = 421;
+
+    /**
+     * @var int
+     */
+    const int STATUS_UNPROCESSABLE_ENTITY = 422;
+
+    /**
+     * @var int
+     */
+    const int STATUS_LOCKED = 423;
+
+    /**
+     * @var int
+     */
+    const int STATUS_FAILED_DEPENDENCY = 424;
+
+    /**
+     * @var int
+     */
+    const int STATUS_TOO_EARLY = 425;
+
+    /**
+     * @var int
+     */
+    const int STATUS_UPGRADE_REQUIRED = 426;
+
+    /**
+     * @var int
+     */
+    const int STATUS_PRECONDITION_REQUIRED = 428;
+
+    /**
+     * @var int
+     */
+    const int STATUS_TOO_MANY_REQUESTS = 429;
+
+    /**
+     * @var int
+     */
+    const int STATUS_REQUEST_HEADER_FIELDS_TOO_LARGE = 431;
+
+    /**
+     * @var int
+     */
+    const int STATUS_UNAVAILABLE_FOR_LEGAL_REASONS = 451;
+
+    /**
+     * @var int
+     */
+    const int STATUS_INTERNAL_SERVER_ERROR = 500;
+
+    /**
+     * @var int
+     */
+    const int STATUS_NOT_IMPLEMENTED = 501;
+
+    /**
+     * @var int
+     */
+    const int STATUS_BAD_GATEWAY = 502;
+
+    /**
+     * @var int
+     */
+    const int STATUS_SERVICE_UNAVAILABLE = 503;
+
+    /**
+     * @var int
+     */
+    const int STATUS_GATEWAY_TIMEOUT = 504;
+
+    /**
+     * @var int
+     */
+    const int STATUS_VERSION_NOT_SUPPORTED = 505;
+
+    /**
+     * @var int
+     */
+    const int STATUS_VARIANT_ALSO_NEGOTIATES = 506;
+
+    /**
+     * @var int
+     */
+    const int STATUS_INSUFFICIENT_STORAGE = 507;
+
+    /**
+     * @var int
+     */
+    const int STATUS_LOOP_DETECTED = 508;
+
+    /**
+     * @var int
+     */
+    const int STATUS_NOT_EXTENDED = 510;
+
+    /**
+     * @var int
+     */
+    const int STATUS_NETWORK_AUTHENTICATION_REQUIRED = 511;
+
+    /**
+     * @var int
+     */
+    const int STATUS_THIS_IS_FINE = 218;
+
+    /**
+     * @var int
+     */
+    const int STATUS_PAGE_EXPIRED = 419;
+
+    /**
+     * @var int
+     */
+    const int STATUS_METHOD_FAILURE = 420;
+
+    /**
+     * @var int
+     */
+    const int STATUS_LOGIN_TIMEOUT = 440;
+
+    /**
+     * @var int
+     */
+    const int STATUS_NO_RESPONSE = 444;
+
+    /**
+     * @var int
+     */
+    const int STATUS_RETRY_WITH = 449;
+
+    /**
+     * @var int
+     */
+    const int STATUS_BLOCKED_BY_WINDOWS_PARENTAL_CONTROLS = 450;
+
+    /**
+     * @var int
+     */
+    const int STATUS_REQUEST_HEADER_TOO_LARGE = 494;
+
+    /**
+     * @var int
+     */
+    const int STATUS_SSL_CERTIFICATE_ERROR = 495;
+
+    /**
+     * @var int
+     */
+    const int STATUS_SSL_CERTIFICATE_REQUIRED = 496;
+
+    /**
+     * @var int
+     */
+    const int STATUS_HTTP_REQUEST_SENT_TO_HTTPS_PORT = 497;
+
+    /**
+     * @var int
+     */
+    const int STATUS_INVALID_TOKEN_ESRI = 498;
+
+    /**
+     * @var int
+     */
+    const int STATUS_CLIENT_CLOSED_REQUEST = 499;
+
+    /**
+     * @var int
+     */
+    const int STATUS_BANDWIDTH_LIMIT_EXCEEDED = 509;
+
+    /**
+     * @var int
+     */
+    const int STATUS_UNKNOWN_ERROR = 520;
+
+    /**
+     * @var int
+     */
+    const int STATUS_WEB_SERVER_IS_DOWN = 521;
+
+    /**
+     * @var int
+     */
+    const int STATUS_CONNECTION_TIMEOUT = 522;
+
+    /**
+     * @var int
+     */
+    const int STATUS_ORIGIN_IS_UNREACHABLE = 523;
+
+    /**
+     * @var int
+     */
+    const int STATUS_TIMEOUT_OCCURRED = 524;
+
+    /**
+     * @var int
+     */
+    const int STATUS_SSL_HANDSHAKE_FAILED = 525;
+
+    /**
+     * @var int
+     */
+    const int STATUS_INVALID_SSL_CERTIFICATE = 526;
+
+    /**
+     * @var int
+     */
+    const int STATUS_RAILGUN_ERROR = 527;
+
+    /**
+     * @var int
+     */
+    const int STATUS_ORIGIN_DNS_ERROR = 530;
+
+    /**
+     * @var int
+     */
+    const int STATUS_NETWORK_READ_TIMEOUT_ERROR = 598;
+
+    /**
+     * @var int
+     */
+    const int STATUS_NETWORK_CONNECT_TIMEOUT_ERROR = 599;
 }

@@ -38,7 +38,10 @@ use Phalcon\Support\Collection;
  */
 class Config extends Collection implements \Phalcon\Config\ConfigInterface
 {
-    const DEFAULT_PATH_DELIMITER = '.';
+    /**
+     * @var string
+     */
+    const string DEFAULT_PATH_DELIMITER = '.';
 
     /**
      * @var string

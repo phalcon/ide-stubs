@@ -15,6 +15,7 @@ use Phalcon\Di\DiInterface;
 use Phalcon\Mvc\Model\Exception;
 use Phalcon\Di\InjectionAwareInterface;
 use Phalcon\Mvc\Model\QueryInterface;
+use Phalcon\Support\Settings;
 
 /**
  * Phalcon\Mvc\Model\Query\Builder

@@ -21,8 +21,10 @@ class Version
      * echo (new Phalcon\Support\Version())
      *          ->getPart(Phalcon\Support\Version::VERSION_MAJOR);
      * ```
+     *
+     * @var int
      */
-    const VERSION_MAJOR = 0;
+    const int VERSION_MAJOR = 0;
 
     /**
      * The constant referencing the major version. Returns 1
@@ -31,8 +33,10 @@ class Version
      * echo (new Phalcon\Support\Version())
      *          ->getPart(Phalcon\Support\Version::VERSION_MEDIUM);
      * ```
+     *
+     * @var int
      */
-    const VERSION_MEDIUM = 1;
+    const int VERSION_MEDIUM = 1;
 
     /**
      * The constant referencing the major version. Returns 2
@@ -41,8 +45,10 @@ class Version
      * echo (new Phalcon\Support\Version())
      *          ->getPart(Phalcon\Support\Version::VERSION_MINOR);
      * ```
+     *
+     * @var int
      */
-    const VERSION_MINOR = 2;
+    const int VERSION_MINOR = 2;
 
     /**
      * The constant referencing the major version. Returns 3
@@ -51,8 +57,10 @@ class Version
      * echo (new Phalcon\Support\Version())
      *          ->getPart(Phalcon\Support\Version::VERSION_SPECIAL);
      * ```
+     *
+     * @var int
      */
-    const VERSION_SPECIAL = 3;
+    const int VERSION_SPECIAL = 3;
 
     /**
      * The constant referencing the major version. Returns 4
@@ -61,8 +69,10 @@ class Version
      * echo (new Phalcon\Support\Version())
      *          ->getPart(Phalcon\Support\Version::VERSION_SPECIAL_NUMBER);
      * ```
+     *
+     * @var int
      */
-    const VERSION_SPECIAL_NUMBER = 4;
+    const int VERSION_SPECIAL_NUMBER = 4;
 
 
     /**

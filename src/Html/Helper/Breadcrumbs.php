@@ -9,8 +9,9 @@
  */
 namespace Phalcon\Html\Helper;
 
-use Phalcon\Support\Helper\Str\Interpolate;
 use Phalcon\Html\Escaper\EscaperInterface;
+use Phalcon\Mvc\Url\UrlInterface;
+use Phalcon\Support\Helper\Str\Interpolate;
 
 /**
  * This component offers an easy way to create breadcrumbs for your application.
@@ -35,6 +36,22 @@ class Breadcrumbs extends \Phalcon\Html\Helper\AbstractHelper
      * @var array<string, string>
      */
     private $attributes = [];
+
+    /**
+     * Link prefix prepended to every non-empty link during rendering.
+     * Auto-populated from the Url service when one is injected.
+     *
+     * @var string
+     */
+    private $prefix = '';
+
+    /**
+     * Optional Url service used to resolve links via get().
+     * When set, takes priority over the string prefix.
+     *
+     * @var UrlInterface|null
+     */
+    private $url = null;
 
     /**
      * Keeps all the breadcrumbs.
@@ -73,10 +90,9 @@ class Breadcrumbs extends \Phalcon\Html\Helper\AbstractHelper
      * AbstractHelper constructor.
      *
      * @param EscaperInterface $escaper
-     * @param string $indent = ""
-     * @param string|null $delimiter = null
+     * @param UrlInterface|null $url
      */
-    public function __construct(\Phalcon\Html\Escaper\EscaperInterface $escaper)
+    public function __construct(\Phalcon\Html\Escaper\EscaperInterface $escaper, \Phalcon\Mvc\Url\UrlInterface $url = null)
     {
     }
 
@@ -147,6 +163,15 @@ class Breadcrumbs extends \Phalcon\Html\Helper\AbstractHelper
     }
 
     /**
+     * Returns the link prefix.
+     *
+     * @return string
+     */
+    public function getPrefix(): string
+    {
+    }
+
+    /**
      * Returns the separator.
      *
      * @return string
@@ -199,6 +224,17 @@ class Breadcrumbs extends \Phalcon\Html\Helper\AbstractHelper
      * @return Breadcrumbs
      */
     public function setAttributes(array $attributes): Breadcrumbs
+    {
+    }
+
+    /**
+     * Set the link prefix prepended to every non-empty link during rendering.
+     * When a Url service was injected, calling this method replaces it.
+     *
+     * @param string $prefix
+     * @return Breadcrumbs
+     */
+    public function setPrefix(string $prefix): Breadcrumbs
     {
     }
 

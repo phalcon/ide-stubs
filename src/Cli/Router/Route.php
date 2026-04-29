@@ -14,7 +14,10 @@ namespace Phalcon\Cli\Router;
  */
 class Route implements \Phalcon\Cli\Router\RouteInterface
 {
-    const DEFAULT_DELIMITER = ' ';
+    /**
+     * @var string
+     */
+    const string DEFAULT_DELIMITER = ' ';
 
     /**
      * @var mixed|null

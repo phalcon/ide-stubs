@@ -11,14 +11,21 @@ namespace Phalcon\Mvc\View\Engine;
 
 use Phalcon\Di\DiInterface;
 use Phalcon\Di\Injectable;
+use Phalcon\Events\EventsAwareInterface;
+use Phalcon\Events\ManagerInterface;
 use Phalcon\Mvc\ViewBaseInterface;
 
 /**
  * All the template engine adapters must inherit this class. This provides
  * basic interfacing between the engine and the Phalcon\Mvc\View component.
  */
-abstract class AbstractEngine extends Injectable implements \Phalcon\Mvc\View\Engine\EngineInterface
+abstract class AbstractEngine extends Injectable implements \Phalcon\Mvc\View\Engine\EngineInterface, \Phalcon\Events\EventsAwareInterface
 {
+    /**
+     * @var ManagerInterface|null
+     */
+    protected $eventsManager = null;
+
     /**
      * @var ViewBaseInterface
      */
@@ -44,6 +51,15 @@ abstract class AbstractEngine extends Injectable implements \Phalcon\Mvc\View\En
     }
 
     /**
+     * Returns the internal event manager
+     *
+     * @return ManagerInterface|null
+     */
+    public function getEventsManager(): ManagerInterface|null
+    {
+    }
+
+    /**
      * Returns the view component related to the adapter
      *
      * @return ViewBaseInterface
@@ -60,6 +76,29 @@ abstract class AbstractEngine extends Injectable implements \Phalcon\Mvc\View\En
      * @return void
      */
     public function partial(string $partialPath, $params = null): void
+    {
+    }
+
+    /**
+     * Sets the events manager
+     *
+     * @param ManagerInterface $eventsManager
+     * @return void
+     */
+    public function setEventsManager(\Phalcon\Events\ManagerInterface $eventsManager): void
+    {
+    }
+
+    /**
+     * Helper method to fire an event
+     *
+     * @param string     $eventName
+     * @param mixed|null $data
+     * @param bool       $cancellable
+     *
+     * @return mixed|bool
+     */
+    protected function fireManagerEvent(string $eventName, $data = null, bool $cancellable = true): mixed
     {
     }
 }

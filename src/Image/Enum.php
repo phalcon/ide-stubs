@@ -19,21 +19,48 @@ namespace Phalcon\Image;
  */
 class Enum
 {
-    const AUTO = 4;
+    /**
+     * @var int
+     */
+    const int AUTO = 4;
 
-    const HEIGHT = 3;
+    /**
+     * @var int
+     */
+    const int HEIGHT = 3;
 
-    const INVERSE = 5;
+    /**
+     * @var int
+     */
+    const int INVERSE = 5;
 
-    const NONE = 1;
+    /**
+     * @var int
+     */
+    const int NONE = 1;
 
-    const PRECISE = 6;
+    /**
+     * @var int
+     */
+    const int PRECISE = 6;
 
-    const TENSILE = 7;
+    /**
+     * @var int
+     */
+    const int TENSILE = 7;
 
-    const WIDTH = 2;
+    /**
+     * @var int
+     */
+    const int WIDTH = 2;
 
-    const HORIZONTAL = 11;
+    /**
+     * @var int
+     */
+    const int HORIZONTAL = 11;
 
-    const VERTICAL = 12;
+    /**
+     * @var int
+     */
+    const int VERTICAL = 12;
 }

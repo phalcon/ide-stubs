@@ -36,28 +36,51 @@ use Phalcon\Encryption\Crypt\PadFactory;
 class Crypt implements \Phalcon\Encryption\Crypt\CryptInterface
 {
     /**
-     * Defaults
+     * @var string
      */
-    const DEFAULT_ALGORITHM = 'sha256';
+    const string DEFAULT_ALGORITHM = 'sha256';
 
-    const DEFAULT_CIPHER = 'aes-256-cfb';
+    /**
+     * @var string
+     */
+    const string DEFAULT_CIPHER = 'aes-256-cfb';
 
     /**
      * Padding
+     *
+     * @var int
      */
-    const PADDING_ANSI_X_923 = 1;
+    const int PADDING_ANSI_X_923 = 1;
 
-    const PADDING_DEFAULT = 0;
+    /**
+     * @var int
+     */
+    const int PADDING_DEFAULT = 0;
 
-    const PADDING_ISO_10126 = 3;
+    /**
+     * @var int
+     */
+    const int PADDING_ISO_10126 = 3;
 
-    const PADDING_ISO_IEC_7816_4 = 4;
+    /**
+     * @var int
+     */
+    const int PADDING_ISO_IEC_7816_4 = 4;
 
-    const PADDING_PKCS7 = 2;
+    /**
+     * @var int
+     */
+    const int PADDING_PKCS7 = 2;
 
-    const PADDING_SPACE = 6;
+    /**
+     * @var int
+     */
+    const int PADDING_SPACE = 6;
 
-    const PADDING_ZERO = 5;
+    /**
+     * @var int
+     */
+    const int PADDING_ZERO = 5;
 
     /**
      * @var string

@@ -18,27 +18,55 @@ class Enum
 {
     /**
      * Headers
+     *
+     * @var string
      */
-    const TYPE = 'typ';
+    const string TYPE = 'typ';
 
-    const ALGO = 'alg';
+    /**
+     * @var string
+     */
+    const string ALGO = 'alg';
 
-    const CONTENT_TYPE = 'cty';
+    /**
+     * @var string
+     */
+    const string CONTENT_TYPE = 'cty';
 
     /**
      * Claims
+     *
+     * @var string
      */
-    const AUDIENCE = 'aud';
+    const string AUDIENCE = 'aud';
 
-    const EXPIRATION_TIME = 'exp';
+    /**
+     * @var string
+     */
+    const string EXPIRATION_TIME = 'exp';
 
-    const ID = 'jti';
+    /**
+     * @var string
+     */
+    const string ID = 'jti';
 
-    const ISSUED_AT = 'iat';
+    /**
+     * @var string
+     */
+    const string ISSUED_AT = 'iat';
 
-    const ISSUER = 'iss';
+    /**
+     * @var string
+     */
+    const string ISSUER = 'iss';
 
-    const NOT_BEFORE = 'nbf';
+    /**
+     * @var string
+     */
+    const string NOT_BEFORE = 'nbf';
 
-    const SUBJECT = 'sub';
+    /**
+     * @var string
+     */
+    const string SUBJECT = 'sub';
 }
