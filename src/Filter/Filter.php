@@ -44,117 +44,117 @@ class Filter implements \Phalcon\Filter\FilterInterface
     /**
      * @var string
      */
-    const FILTER_ABSINT = 'absint';
+    const string FILTER_ABSINT = 'absint';
 
     /**
      * @var string
      */
-    const FILTER_ALNUM = 'alnum';
+    const string FILTER_ALNUM = 'alnum';
 
     /**
      * @var string
      */
-    const FILTER_ALPHA = 'alpha';
+    const string FILTER_ALPHA = 'alpha';
 
     /**
      * @var string
      */
-    const FILTER_BOOL = 'bool';
+    const string FILTER_BOOL = 'bool';
 
     /**
      * @var string
      */
-    const FILTER_EMAIL = 'email';
+    const string FILTER_EMAIL = 'email';
 
     /**
      * @var string
      */
-    const FILTER_FLOAT = 'float';
+    const string FILTER_FLOAT = 'float';
 
     /**
      * @var string
      */
-    const FILTER_INT = 'int';
+    const string FILTER_INT = 'int';
 
     /**
      * @var string
      */
-    const FILTER_IP = 'ip';
+    const string FILTER_IP = 'ip';
 
     /**
      * @var string
      */
-    const FILTER_LOWER = 'lower';
+    const string FILTER_LOWER = 'lower';
 
     /**
      * @var string
      */
-    const FILTER_LOWERFIRST = 'lowerfirst';
+    const string FILTER_LOWERFIRST = 'lowerfirst';
 
     /**
      * @var string
      */
-    const FILTER_REGEX = 'regex';
+    const string FILTER_REGEX = 'regex';
 
     /**
      * @var string
      */
-    const FILTER_REMOVE = 'remove';
+    const string FILTER_REMOVE = 'remove';
 
     /**
      * @var string
      */
-    const FILTER_REPLACE = 'replace';
+    const string FILTER_REPLACE = 'replace';
 
     /**
      * @var string
      */
-    const FILTER_SPECIAL = 'special';
+    const string FILTER_SPECIAL = 'special';
 
     /**
      * @var string
      */
-    const FILTER_SPECIALFULL = 'specialfull';
+    const string FILTER_SPECIALFULL = 'specialfull';
 
     /**
      * @var string
      */
-    const FILTER_STRING = 'string';
+    const string FILTER_STRING = 'string';
 
     /**
      * @var string
      */
-    const FILTER_STRING_LEGACY = 'stringlegacy';
+    const string FILTER_STRING_LEGACY = 'stringlegacy';
 
     /**
      * @var string
      */
-    const FILTER_STRIPTAGS = 'striptags';
+    const string FILTER_STRIPTAGS = 'striptags';
 
     /**
      * @var string
      */
-    const FILTER_TRIM = 'trim';
+    const string FILTER_TRIM = 'trim';
 
     /**
      * @var string
      */
-    const FILTER_UPPER = 'upper';
+    const string FILTER_UPPER = 'upper';
 
     /**
      * @var string
      */
-    const FILTER_UPPERFIRST = 'upperfirst';
+    const string FILTER_UPPERFIRST = 'upperfirst';
 
     /**
      * @var string
      */
-    const FILTER_UPPERWORDS = 'upperwords';
+    const string FILTER_UPPERWORDS = 'upperwords';
 
     /**
      * @var string
      */
-    const FILTER_URL = 'url';
+    const string FILTER_URL = 'url';
 
     /**
      * @var array

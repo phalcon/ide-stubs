@@ -22,45 +22,45 @@ class Enum
     /**
      * @var int
      */
-    const AUTO = 4;
+    const int AUTO = 4;
 
     /**
      * @var int
      */
-    const HEIGHT = 3;
+    const int HEIGHT = 3;
 
     /**
      * @var int
      */
-    const INVERSE = 5;
+    const int INVERSE = 5;
 
     /**
      * @var int
      */
-    const NONE = 1;
+    const int NONE = 1;
 
     /**
      * @var int
      */
-    const PRECISE = 6;
+    const int PRECISE = 6;
 
     /**
      * @var int
      */
-    const TENSILE = 7;
+    const int TENSILE = 7;
 
     /**
      * @var int
      */
-    const WIDTH = 2;
+    const int WIDTH = 2;
 
     /**
      * @var int
      */
-    const HORIZONTAL = 11;
+    const int HORIZONTAL = 11;
 
     /**
      * @var int
      */
-    const VERTICAL = 12;
+    const int VERTICAL = 12;
 }

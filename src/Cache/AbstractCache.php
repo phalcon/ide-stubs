@@ -11,6 +11,7 @@ namespace Phalcon\Cache;
 
 use DateInterval;
 use Phalcon\Cache\Adapter\AdapterInterface;
+use Phalcon\Cache\Adapter\Redis;
 use Phalcon\Cache\Exception\InvalidArgumentException;
 use Phalcon\Events\EventsAwareInterface;
 use Phalcon\Events\ManagerInterface;

@@ -17,19 +17,19 @@ abstract class AbstractUuid implements \Phalcon\Encryption\Security\Uuid\UuidInt
     /**
      * @var string
      */
-    const MAX = 'ffffffff-ffff-ffff-ffff-ffffffffffff';
+    const string MAX = 'ffffffff-ffff-ffff-ffff-ffffffffffff';
 
     /**
      * @var string
      */
-    const NIL = '00000000-0000-0000-0000-000000000000';
+    const string NIL = '00000000-0000-0000-0000-000000000000';
 
     /**
      * 100-nanosecond intervals between UUID epoch (1582-10-15) and Unix epoch (1970-01-01).
      *
      * @var int
      */
-    const TIME_OFFSET_INT = 0x01B21DD213814000;
+    const int TIME_OFFSET_INT = 0x01B21DD213814000;
 
     /**
      * Cached SysNodeProvider instance — shared within the request via static.

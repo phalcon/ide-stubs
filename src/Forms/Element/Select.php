@@ -9,11 +9,7 @@
  */
 namespace Phalcon\Forms\Element;
 
-use Phalcon\Forms\Exception;
-use Phalcon\Html\Helper\Input\Select\ArrayData;
-use Phalcon\Html\Helper\Input\Select\ResultsetData;
-use Phalcon\Html\TagFactory;
-use Phalcon\Mvc\Model\ResultsetInterface;
+use Phalcon\Tag\Select as SelectTag;
 
 /**
  * Component SELECT (choice) for forms

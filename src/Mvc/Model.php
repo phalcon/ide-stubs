@@ -89,42 +89,42 @@ abstract class Model extends AbstractInjectionAware implements \Phalcon\Mvc\Enti
     /**
      * @var int
      */
-    const DIRTY_STATE_DETACHED = 2;
+    const int DIRTY_STATE_DETACHED = 2;
 
     /**
      * @var int
      */
-    const DIRTY_STATE_PERSISTENT = 0;
+    const int DIRTY_STATE_PERSISTENT = 0;
 
     /**
      * @var int
      */
-    const DIRTY_STATE_TRANSIENT = 1;
+    const int DIRTY_STATE_TRANSIENT = 1;
 
     /**
      * @var int
      */
-    const OP_CREATE = 1;
+    const int OP_CREATE = 1;
 
     /**
      * @var int
      */
-    const OP_DELETE = 3;
+    const int OP_DELETE = 3;
 
     /**
      * @var int
      */
-    const OP_NONE = 0;
+    const int OP_NONE = 0;
 
     /**
      * @var int
      */
-    const OP_UPDATE = 2;
+    const int OP_UPDATE = 2;
 
     /**
      * @var string
      */
-    const TRANSACTION_INDEX = 'transaction';
+    const string TRANSACTION_INDEX = 'transaction';
 
     /**
      * @var int
