@@ -192,9 +192,9 @@ interface MetaDataInterface
      *
      * @param \Phalcon\Mvc\ModelInterface $model
      * @param int $index
-     * @return array|null
+     * @return array|string|null
      */
-    public function readMetaDataIndex(\Phalcon\Mvc\ModelInterface $model, int $index): array|null;
+    public function readMetaDataIndex(\Phalcon\Mvc\ModelInterface $model, int $index): string|array|null;
 
     /**
      * Resets internal meta-data in order to regenerate it

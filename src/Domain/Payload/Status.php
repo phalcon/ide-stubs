@@ -17,102 +17,102 @@ class Status
     /**
      * @var string
      */
-    const ACCEPTED = 'ACCEPTED';
+    const string ACCEPTED = 'ACCEPTED';
 
     /**
      * @var string
      */
-    const AUTHENTICATED = 'AUTHENTICATED';
+    const string AUTHENTICATED = 'AUTHENTICATED';
 
     /**
      * @var string
      */
-    const AUTHORIZED = 'AUTHORIZED';
+    const string AUTHORIZED = 'AUTHORIZED';
 
     /**
      * @var string
      */
-    const CREATED = 'CREATED';
+    const string CREATED = 'CREATED';
 
     /**
      * @var string
      */
-    const DELETED = 'DELETED';
+    const string DELETED = 'DELETED';
 
     /**
      * @var string
      */
-    const ERROR = 'ERROR';
+    const string ERROR = 'ERROR';
 
     /**
      * @var string
      */
-    const FAILURE = 'FAILURE';
+    const string FAILURE = 'FAILURE';
 
     /**
      * @var string
      */
-    const FOUND = 'FOUND';
+    const string FOUND = 'FOUND';
 
     /**
      * @var string
      */
-    const NOT_ACCEPTED = 'NOT_ACCEPTED';
+    const string NOT_ACCEPTED = 'NOT_ACCEPTED';
 
     /**
      * @var string
      */
-    const NOT_AUTHENTICATED = 'NOT_AUTHENTICATED';
+    const string NOT_AUTHENTICATED = 'NOT_AUTHENTICATED';
 
     /**
      * @var string
      */
-    const NOT_AUTHORIZED = 'NOT_AUTHORIZED';
+    const string NOT_AUTHORIZED = 'NOT_AUTHORIZED';
 
     /**
      * @var string
      */
-    const NOT_CREATED = 'NOT_CREATED';
+    const string NOT_CREATED = 'NOT_CREATED';
 
     /**
      * @var string
      */
-    const NOT_DELETED = 'NOT_DELETED';
+    const string NOT_DELETED = 'NOT_DELETED';
 
     /**
      * @var string
      */
-    const NOT_FOUND = 'NOT_FOUND';
+    const string NOT_FOUND = 'NOT_FOUND';
 
     /**
      * @var string
      */
-    const NOT_UPDATED = 'NOT_UPDATED';
+    const string NOT_UPDATED = 'NOT_UPDATED';
 
     /**
      * @var string
      */
-    const NOT_VALID = 'NOT_VALID';
+    const string NOT_VALID = 'NOT_VALID';
 
     /**
      * @var string
      */
-    const PROCESSING = 'PROCESSING';
+    const string PROCESSING = 'PROCESSING';
 
     /**
      * @var string
      */
-    const SUCCESS = 'SUCCESS';
+    const string SUCCESS = 'SUCCESS';
 
     /**
      * @var string
      */
-    const UPDATED = 'UPDATED';
+    const string UPDATED = 'UPDATED';
 
     /**
      * @var string
      */
-    const VALID = 'VALID';
+    const string VALID = 'VALID';
 
 
     /**

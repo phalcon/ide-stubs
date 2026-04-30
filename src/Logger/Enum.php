@@ -17,45 +17,45 @@ class Enum
     /**
      * @var int
      */
-    const ALERT = 2;
+    const int ALERT = 2;
 
     /**
      * @var int
      */
-    const CRITICAL = 1;
+    const int CRITICAL = 1;
 
     /**
      * @var int
      */
-    const CUSTOM = 8;
+    const int CUSTOM = 8;
 
     /**
      * @var int
      */
-    const DEBUG = 7;
+    const int DEBUG = 7;
 
     /**
      * @var int
      */
-    const EMERGENCY = 0;
+    const int EMERGENCY = 0;
 
     /**
      * @var int
      */
-    const ERROR = 3;
+    const int ERROR = 3;
 
     /**
      * @var int
      */
-    const INFO = 6;
+    const int INFO = 6;
 
     /**
      * @var int
      */
-    const NOTICE = 5;
+    const int NOTICE = 5;
 
     /**
      * @var int
      */
-    const WARNING = 4;
+    const int WARNING = 4;
 }

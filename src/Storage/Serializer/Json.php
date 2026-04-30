@@ -10,7 +10,6 @@
 namespace Phalcon\Storage\Serializer;
 
 use InvalidArgumentException;
-use JsonSerializable;
 use Phalcon\Support\Helper\Json\Decode;
 use Phalcon\Support\Helper\Json\Encode;
 
@@ -46,7 +45,7 @@ class Json extends \Phalcon\Storage\Serializer\AbstractSerializer
     /**
      * Serializes data
      *
-     * @return JsonSerializable|mixed|string
+     * @return mixed|string
      */
     public function serialize(): mixed
     {

@@ -25,7 +25,7 @@ class Session extends \Phalcon\Flash\AbstractFlash
     /**
      * @var string
      */
-    const SESSION_KEY = '_flashMessages';
+    const string SESSION_KEY = '_flashMessages';
 
 
     /**
