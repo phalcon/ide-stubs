@@ -17,7 +17,7 @@ class Component implements \Phalcon\Acl\ComponentInterface
     /**
      * Component description
      *
-     * @var string
+     * @var string | null
      */
     private $description;
 
@@ -46,9 +46,9 @@ class Component implements \Phalcon\Acl\ComponentInterface
     }
 
     /**
-     * @return string
+     * @return string|null
      */
-    public function getDescription(): string
+    public function getDescription(): string|null
     {
     }
 

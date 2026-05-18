@@ -10,6 +10,7 @@
 namespace Phalcon\Html\Helper\Input\Select;
 
 use InvalidArgumentException;
+use Phalcon\Contracts\Html\Helper\Input\SelectData;
 use Phalcon\Mvc\Model\ResultsetInterface;
 
 /**
@@ -19,9 +20,29 @@ use Phalcon\Mvc\Model\ResultsetInterface;
  *
  * For the full copyright and license information, please view the LICENSE.txt
  * file that was distributed with this source code.
+ *
+ * Implementation of this file has been influenced by AuraPHP
+ *
+ * @link    https://github.com/auraphp/Aura.Html
+ * @license https://github.com/auraphp/Aura.Html/blob/2.x/LICENSE
  */
-class ResultsetData implements \Phalcon\Html\Helper\Input\Select\SelectDataInterface
+class ResultsetData implements \Phalcon\Contracts\Html\Helper\Input\SelectData
 {
+    /**
+     * @var array
+     */
+    protected $attributesMap = [];
+
+    /**
+     * @var array|null
+     */
+    protected $resolvedAttributes = null;
+
+    /**
+     * @var array|null
+     */
+    protected $resolvedOptions = null;
+
     /**
      * @var ResultsetInterface
      */
@@ -35,8 +56,16 @@ class ResultsetData implements \Phalcon\Html\Helper\Input\Select\SelectDataInter
     /**
      * @param ResultsetInterface $resultset
      * @param array $using
+     * @param array $attributesMap
      */
-    public function __construct(\Phalcon\Mvc\Model\ResultsetInterface $resultset, array $using)
+    public function __construct(\Phalcon\Mvc\Model\ResultsetInterface $resultset, array $using, array $attributesMap = [])
+    {
+    }
+
+    /**
+     * @return array
+     */
+    public function getAttributes(): array
     {
     }
 
@@ -44,6 +73,28 @@ class ResultsetData implements \Phalcon\Html\Helper\Input\Select\SelectDataInter
      * @return array
      */
     public function getOptions(): array
+    {
+    }
+
+    /**
+     * Reads a property from the row, supporting both objects (via
+     * `readAttribute` when present) and plain arrays.
+     *
+     * @param mixed $option
+     * @param string $field
+     */
+    protected function readField($option, string $field)
+    {
+    }
+
+    /**
+     * Walks the resultset once, building both the option map and the
+     * per-option resolved attribute map. Closures in `attributesMap`
+     * receive the current row; string values are passed through.
+     *
+     * @return void
+     */
+    protected function resolve(): void
     {
     }
 }

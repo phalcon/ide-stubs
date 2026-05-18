@@ -80,22 +80,22 @@ class Query implements \Phalcon\Mvc\Model\QueryInterface, \Phalcon\Di\InjectionA
     /**
      * @var int
      */
-    const TYPE_DELETE = 303;
+    const int TYPE_DELETE = 303;
 
     /**
      * @var int
      */
-    const TYPE_INSERT = 306;
+    const int TYPE_INSERT = 306;
 
     /**
      * @var int
      */
-    const TYPE_SELECT = 309;
+    const int TYPE_SELECT = 309;
 
     /**
      * @var int
      */
-    const TYPE_UPDATE = 300;
+    const int TYPE_UPDATE = 300;
 
     /**
      * @var array
@@ -722,6 +722,20 @@ class Query implements \Phalcon\Mvc\Model\QueryInterface, \Phalcon\Di\InjectionA
      * @return AdapterInterface
      */
     protected function getWriteConnection(\Phalcon\Mvc\ModelInterface $model, array $intermediate = null, array $bindParams = [], array $bindTypes = []): AdapterInterface
+    {
+    }
+
+    /**
+     * Refreshes the schema/source of every model referenced in a cached
+     * intermediate representation. The PHQL cache is keyed by the PHQL
+     * string only, so a model that switches its schema or source at
+     * runtime (for instance via setSchema()/setSource() in initialize())
+     * would otherwise see the value frozen at first parse. See #17020.
+     *
+     * @param array $irPhql
+     * @return array
+     */
+    final protected function refreshSchemasInIntermediate(array $irPhql): array
     {
     }
 

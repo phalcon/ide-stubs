@@ -36,7 +36,10 @@ abstract class AbstractSeries extends \Phalcon\Html\Helper\AbstractHelper
     }
 
     /**
-     * Generates and returns the HTML for the list.
+     * Generates and returns the HTML for the list. Entries are sorted by
+     * their integer key first, so an asset registered with a lower position
+     * renders before one registered with a higher position regardless of
+     * registration order.
      *
      * @return string
      */
@@ -50,6 +53,22 @@ abstract class AbstractSeries extends \Phalcon\Html\Helper\AbstractHelper
      * @return AbstractSeries
      */
     public function reset(): AbstractSeries
+    {
+    }
+
+    /**
+     * Appends an entry to the store, optionally at a specific integer
+     * position. When `position` is negative the entry is pushed onto the next
+     * available auto-increment slot. When `position` is non-negative the entry
+     * is placed at that key, advancing past any already-occupied slots so
+     * existing entries are not overwritten. The store is ksort()ed in
+     * `__toString`, so positions act as a sort key, not a strict address.
+     *
+     * @param array $entry
+     * @param int   $position
+     * @return void
+     */
+    protected function pushOrPlace(array $entry, int $position = -1): void
     {
     }
 

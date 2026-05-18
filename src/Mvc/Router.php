@@ -9,12 +9,14 @@
  */
 namespace Phalcon\Mvc;
 
+use Phalcon\Config\ConfigInterface;
 use Phalcon\Di\DiInterface;
 use Phalcon\Di\AbstractInjectionAware;
 use Phalcon\Events\EventsAwareInterface;
 use Phalcon\Events\ManagerInterface;
 use Phalcon\Http\RequestInterface;
 use Phalcon\Mvc\Router\Exception;
+use Phalcon\Mvc\Router\Group;
 use Phalcon\Mvc\Router\GroupInterface;
 use Phalcon\Mvc\Router\Route;
 use Phalcon\Mvc\Router\RouteInterface;
@@ -52,22 +54,22 @@ class Router extends AbstractInjectionAware implements \Phalcon\Mvc\RouterInterf
     /**
      * @var int
      */
-    const POSITION_FIRST = 0;
+    const int POSITION_FIRST = 0;
 
     /**
      * @var int
      */
-    const POSITION_LAST = 1;
+    const int POSITION_LAST = 1;
 
     /**
      * @var int
      */
-    const URI_SOURCE_GET_URL = 0;
+    const int URI_SOURCE_GET_URL = 0;
 
     /**
      * @var int
      */
-    const URI_SOURCE_SERVER_REQUEST_URI = 1;
+    const int URI_SOURCE_SERVER_REQUEST_URI = 1;
 
     /**
      * @var string
@@ -128,6 +130,16 @@ class Router extends AbstractInjectionAware implements \Phalcon\Mvc\RouterInterf
      * @var array
      */
     protected $matches = [];
+
+    /**
+     * @var array
+     */
+    protected $methodRoutes = [];
+
+    /**
+     * @var bool
+     */
+    protected $methodRoutesDirty = true;
 
     /**
      * @var string
@@ -503,6 +515,16 @@ class Router extends AbstractInjectionAware implements \Phalcon\Mvc\RouterInterf
     }
 
     /**
+     * Returns the routes indexed by HTTP method.
+     * Routes with no HTTP constraint are stored under the "" key.
+     *
+     * @return array
+     */
+    public function getMethodRoutes(): array
+    {
+    }
+
+    /**
      * Returns the processed module name
      *
      * @return string
@@ -544,6 +566,13 @@ class Router extends AbstractInjectionAware implements \Phalcon\Mvc\RouterInterf
      * @return string
      */
     protected function extractRealUri(string $uri): string
+    {
+    }
+
+    /**
+     * @return void
+     */
+    protected function rebuildMethodIndex(): void
     {
     }
 
@@ -597,6 +626,50 @@ class Router extends AbstractInjectionAware implements \Phalcon\Mvc\RouterInterf
      * @return bool
      */
     public function isExactControllerName(): bool
+    {
+    }
+
+    /**
+     * Loads routes from an array or Phalcon\Config\Config instance.
+     *
+     * ```php
+     * $router->loadFromConfig(
+     *      [
+     *          'routes' => [
+     *              [
+     *                  'method'  => 'get',
+     *                  'pattern' => '/users',
+     *                  'paths'   => 'Users::index',
+     *              ],
+     *          ],
+     *      ]
+     *  );
+     * ```
+     *
+     * @param array|ConfigInterface $config *
+     * @return RouterInterface
+     */
+    public function loadFromConfig($config): RouterInterface
+    {
+    }
+
+    /**
+     * Adds a single route from a config array entry. Used by loadFromConfig.
+     *
+     * @param array $routeData *
+     * @return void
+     */
+    protected function addRouteFromConfig(array $routeData): void
+    {
+    }
+
+    /**
+     * Builds a Group from a config entry and mounts it. Used by loadFromConfig.
+     *
+     * @param array $groupData *
+     * @return void
+     */
+    protected function mountGroupFromConfig(array $groupData): void
     {
     }
 

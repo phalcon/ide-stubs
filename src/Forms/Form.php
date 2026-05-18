@@ -14,7 +14,9 @@ use Iterator;
 use Phalcon\Di\Injectable;
 use Phalcon\Support\Settings;
 use Phalcon\Di\DiInterface;
+use Phalcon\Contracts\Forms\Schema;
 use Phalcon\Filter\FilterInterface;
+use Phalcon\Forms\Element\Check;
 use Phalcon\Forms\Element\ElementInterface;
 use Phalcon\Html\Attributes;
 use Phalcon\Html\Attributes\AttributesInterface;
@@ -341,6 +343,23 @@ class Form extends Injectable implements \Countable, \Iterator, \Phalcon\Html\At
      * @return int
      */
     public function key(): int
+    {
+    }
+
+    /**
+     * Loads elements into the form from a Schema source.
+     *
+     * Each definition in the schema must have at least 'type' and 'name'.
+     * The locator resolves the type string to an element factory; custom
+     * types can be registered on the locator with setElement().
+     *
+     * @param Schema       $schema
+     * @param FormsLocator $locator
+     *
+     * @return Form
+     * @throws Exception
+     */
+    public function load(\Phalcon\Contracts\Forms\Schema $schema, FormsLocator $locator): Form
     {
     }
 

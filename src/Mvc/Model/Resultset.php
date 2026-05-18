@@ -75,27 +75,27 @@ abstract class Resultset implements \Phalcon\Mvc\Model\ResultsetInterface, \Iter
     /**
      * @var int
      */
-    const HYDRATE_ARRAYS = 1;
+    const int HYDRATE_ARRAYS = 1;
 
     /**
      * @var int
      */
-    const HYDRATE_OBJECTS = 2;
+    const int HYDRATE_OBJECTS = 2;
 
     /**
      * @var int
      */
-    const HYDRATE_RECORDS = 0;
+    const int HYDRATE_RECORDS = 0;
 
     /**
      * @var int
      */
-    const TYPE_RESULT_FULL = 0;
+    const int TYPE_RESULT_FULL = 0;
 
     /**
      * @var int
      */
-    const TYPE_RESULT_PARTIAL = 1;
+    const int TYPE_RESULT_PARTIAL = 1;
 
     /**
      * @var mixed|null

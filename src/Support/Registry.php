@@ -210,11 +210,11 @@ final class Registry extends Collection
      * Offset to set
      *
      * @link https://php.net/manual/en/arrayaccess.offsetset.php
-     * @param mixed $offset
+     * @param mixed $element
      * @param mixed $value
      * @return void
      */
-    final public function offsetSet($offset, $value): void
+    final public function offsetSet($element, $value): void
     {
     }
 

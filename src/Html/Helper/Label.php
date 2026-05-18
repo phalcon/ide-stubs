@@ -9,13 +9,30 @@
  */
 namespace Phalcon\Html\Helper;
 
+use Phalcon\Html\Escaper\EscaperInterface;
 use Phalcon\Html\Exception;
 
 /**
  * Class Label
+ *
+ * @property bool $forceRaw
  */
 class Label extends \Phalcon\Html\Helper\AbstractHelper
 {
+    /**
+     * @var bool
+     */
+    protected $forceRaw = false;
+
+    /**
+     * @param EscaperInterface $escaper
+     * @param Doctype          $doctype
+     * @param bool             $forceRaw
+     */
+    public function __construct(\Phalcon\Html\Escaper\EscaperInterface $escaper, Doctype $doctype = null, bool $forceRaw = false)
+    {
+    }
+
     /**
      * Produce a `<label>` tag.
      *

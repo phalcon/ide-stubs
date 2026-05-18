@@ -20,14 +20,14 @@ class Random
      *
      * @var int
      */
-    const RANDOM_ALNUM = 0;
+    const int RANDOM_ALNUM = 0;
 
     /**
      * Only alphabetical characters [azAZ]
      *
      * @var int
      */
-    const RANDOM_ALPHA = 1;
+    const int RANDOM_ALPHA = 1;
 
     /**
      * Only alphanumeric uppercase characters exclude similar
@@ -35,28 +35,28 @@ class Random
      *
      * @var int
      */
-    const RANDOM_DISTINCT = 5;
+    const int RANDOM_DISTINCT = 5;
 
     /**
      * Only hexadecimal characters [0-9a-f]
      *
      * @var int
      */
-    const RANDOM_HEXDEC = 2;
+    const int RANDOM_HEXDEC = 2;
 
     /**
      * Only numbers without 0 [1-9]
      *
      * @var int
      */
-    const RANDOM_NOZERO = 4;
+    const int RANDOM_NOZERO = 4;
 
     /**
      * Only numbers [0-9]
      *
      * @var int
      */
-    const RANDOM_NUMERIC = 3;
+    const int RANDOM_NUMERIC = 3;
 
 
     /**

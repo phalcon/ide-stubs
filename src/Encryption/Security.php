@@ -9,6 +9,7 @@
  */
 namespace Phalcon\Encryption;
 
+use Phalcon\Contracts\Encryption\Security\Security as SecurityContract;
 use Phalcon\Di\DiInterface;
 use Phalcon\Di\AbstractInjectionAware;
 use Phalcon\Http\RequestInterface;
@@ -33,72 +34,77 @@ use Phalcon\Session\ManagerInterface as SessionInterface;
  * }
  * ```
  */
-class Security extends AbstractInjectionAware
+class Security extends AbstractInjectionAware implements SecurityContract
 {
     /**
      * @var int
      */
-    const CRYPT_ARGON2I = 10;
+    const int CRYPT_ARGON2I = 10;
 
     /**
      * @var int
      */
-    const CRYPT_ARGON2ID = 11;
+    const int CRYPT_ARGON2ID = 11;
 
     /**
      * @var int
      */
-    const CRYPT_BCRYPT = 0;
+    const int CRYPT_BCRYPT = 0;
 
     /**
      * @var int
      */
-    const CRYPT_DEFAULT = 0;
+    const int CRYPT_DEFAULT = 0;
 
     /**
      * @var int
      */
-    const CRYPT_BLOWFISH = 4;
+    const int CRYPT_BLOWFISH = 4;
 
     /**
      * @var int
      */
-    const CRYPT_BLOWFISH_A = 5;
+    const int CRYPT_BLOWFISH_A = 5;
 
     /**
      * @var int
      */
-    const CRYPT_BLOWFISH_X = 6;
+    const int CRYPT_BLOWFISH_X = 6;
 
     /**
      * @var int
      */
-    const CRYPT_BLOWFISH_Y = 7;
+    const int CRYPT_BLOWFISH_Y = 7;
 
     /**
      * @var int
      */
-    const CRYPT_EXT_DES = 2;
+    const int CRYPT_EXT_DES = 2;
 
     /**
      * @var int
      */
-    const CRYPT_MD5 = 3;
+    const int CRYPT_MD5 = 3;
 
     /**
      * @var int
      */
-    const CRYPT_SHA256 = 8;
+    const int CRYPT_SHA256 = 8;
 
     /**
      * @var int
      */
-    const CRYPT_SHA512 = 9;
+    const int CRYPT_SHA512 = 9;
 
     /**
      * @var int
      */
-    const CRYPT_STD_DES = 1;
+    const int CRYPT_STD_DES = 1;
+
+    /**
+     * @var bool
+     */
+    protected $autoRefresh = true;
 
     /**
      * @var int
@@ -336,6 +342,32 @@ class Security extends AbstractInjectionAware
      * @return bool
      */
     public function isLegacyHash(string $passwordHash): bool
+    {
+    }
+
+    /**
+     * Forces the regeneration of the CSRF token and key, writing the new
+     * values to the session even when auto-refresh has been disabled. Useful
+     * after a successful login or any other state change where rotating the
+     * token is appropriate.
+     *
+     * @return Security
+     */
+    public function refreshToken(): Security
+    {
+    }
+
+    /**
+     * Toggles automatic regeneration of the CSRF token on every call to
+     * `getToken()` / `getTokenKey()`. When set to `false`, existing session
+     * values are reused (no session write), and a new token is only minted
+     * when none is present or `refreshToken()` is called explicitly.
+     *
+     * @param bool $autoRefresh
+     *
+     * @return Security
+     */
+    public function setAutoRefresh(bool $autoRefresh): Security
     {
     }
 

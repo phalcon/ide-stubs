@@ -60,18 +60,31 @@ abstract class Dialect implements \Phalcon\Db\DialectInterface
     }
 
     /**
-     * Returns a SQL modified with a FOR UPDATE clause
+     * Returns a SQL modified with a FOR UPDATE clause. The optional `modifier`
+     * appends a row-lock disposition keyword.
      *
      * ```php
      * $sql = $dialect->forUpdate("SELECT FROM robots");
-     *
      * echo $sql; // SELECT FROM robots FOR UPDATE
+     *
+     * $sql = $dialect->forUpdate(
+     *     "SELECT FROM robots",
+     *     Dialect::LOCK_NOWAIT
+     * );
+     * echo $sql; // SELECT FROM robots FOR UPDATE NOWAIT
+     *
+     * $sql = $dialect->forUpdate(
+     *     "SELECT FROM robots",
+     *     Dialect::LOCK_SKIP_LOCKED
+     * );
+     * echo $sql; // SELECT FROM robots FOR UPDATE SKIP LOCKED
      * ```
      *
      * @param string $sqlQuery
+     * @param string $modifier
      * @return string
      */
-    public function forUpdate(string $sqlQuery): string
+    public function forUpdate(string $sqlQuery, string $modifier = ''): string
     {
     }
 
@@ -178,6 +191,78 @@ abstract class Dialect implements \Phalcon\Db\DialectInterface
     }
 
     /**
+     * Generates SQL to create a materialized view. Supported by PostgreSQL
+     * (`CREATE MATERIALIZED VIEW name AS <sql>`). Other dialects inherit
+     * this throw — MySQL and SQLite have no materialized-view concept.
+     *
+     * @param string $viewName
+     * @param array $definition
+     * @param string $schemaName
+     * @return string
+     */
+    public function createMaterializedView(string $viewName, array $definition, string $schemaName = null): string
+    {
+    }
+
+    /**
+     * Generates SQL to drop a materialized view. Supported by PostgreSQL.
+     *
+     * @param string $viewName
+     * @param string $schemaName
+     * @param bool $ifExists
+     * @return string
+     */
+    public function dropMaterializedView(string $viewName, string $schemaName = null, bool $ifExists = true): string
+    {
+    }
+
+    /**
+     * Generates SQL to refresh a materialized view. Supported by
+     * PostgreSQL. Pass `concurrent = true` for `REFRESH MATERIALIZED VIEW
+     * CONCURRENTLY ...`, which avoids blocking concurrent SELECTs (requires
+     * the view to have a unique index).
+     *
+     * @param string $viewName
+     * @param string $schemaName
+     * @param bool $concurrent
+     * @return string
+     */
+    public function refreshMaterializedView(string $viewName, string $schemaName = null, bool $concurrent = false): string
+    {
+    }
+
+    /**
+     * Appends an `ON CONFLICT (col, ...) DO UPDATE SET col = excluded.col`
+     * upsert clause to the supplied INSERT statement. The syntax is the
+     * SQL standard form recognized by PostgreSQL (9.5+) and SQLite (3.24+).
+     * MySQL overrides this method to throw because its `ON DUPLICATE KEY
+     * UPDATE` has a different shape (deferred to parser item #23).
+     *
+     * @param string $sqlQuery
+     * @param array $conflictColumns
+     * @param array $updateColumns
+     * @return string
+     */
+    public function onConflictUpdate(string $sqlQuery, array $conflictColumns, array $updateColumns): string
+    {
+    }
+
+    /**
+     * Returns a SQL statement extended with a `RETURNING` clause so the
+     * INSERT/UPDATE/DELETE returns rows. Supported by PostgreSQL and
+     * SQLite 3.35+. Pass `[""]` for `RETURNING`, or a list of column
+     * names. The base implementation throws — MySQL inherits it because
+     * MySQL has no RETURNING construct.
+     *
+     * @param string $sqlQuery
+     * @param array $columns
+     * @return string
+     */
+    public function returning(string $sqlQuery, array $columns): string
+    {
+    }
+
+    /**
      * Generate SQL to release a savepoint
      *
      * @param string $name
@@ -262,6 +347,52 @@ abstract class Dialect implements \Phalcon\Db\DialectInterface
      * @return string
      */
     protected function checkColumnTypeSql(ColumnInterface $column): string
+    {
+    }
+
+    /**
+     * Builds a CHECK constraint clause from a `CheckInterface`, using the
+     * provided escape character for the constraint name (so each dialect
+     * gets its native quoting). Returns the clause body — the dialect's
+     * `createTable()` / `addCheck()` is expected to prefix `ADD` or place
+     * the result on its own line as appropriate.
+     *
+     * @param CheckInterface $check
+     * @param string $escapeChar
+     * @return string
+     */
+    protected function getCheckClause(CheckInterface $check, string $escapeChar = '`'): string
+    {
+    }
+
+    /**
+     * Builds the per-index parenthesized column list, honoring per-column
+     * sort directions when the index declares any. Returns the bare
+     * comma-separated `getColumnList()` output when no directions are set,
+     * preserving the legacy rendering exactly. When directions are set,
+     * each column is followed by ` ASC` or ` DESC`; trailing positions
+     * absent from the directions array default to `ASC`.
+     *
+     * @param IndexInterface $index
+     * @param bool $wrapExpressions
+     * @return string
+     */
+    protected function getIndexColumnList(IndexInterface $index, bool $wrapExpressions = true): string
+    {
+    }
+
+    /**
+     * Builds the `GENERATED ALWAYS AS (<expr>) VIRTUAL|STORED` clause for a
+     * generated/computed column. Returns an empty string when the column is
+     * not generated. When `forceStored` is `true` the clause is always emitted
+     * as `STORED` regardless of the column's `isGenerationStored()` flag —
+     * PostgreSQL uses this since it only supports stored generated columns.
+     *
+     * @param ColumnInterface $column
+     * @param bool $forceStored
+     * @return string
+     */
+    protected function getGeneratedClause(ColumnInterface $column, bool $forceStored = false): string
     {
     }
 

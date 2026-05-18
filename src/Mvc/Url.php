@@ -93,6 +93,17 @@ class Url extends AbstractInjectionAware implements \Phalcon\Mvc\Url\UrlInterfac
      *     null,
      *     false
      * );
+     *
+     * // Override existing query string keys instead of appending duplicates.
+     * // Without the fifth argument: "http://example.com?page=1&page=5".
+     * // With it set to true:        "http://example.com?page=5".
+     * echo $url->get(
+     *     "http://example.com?page=1",
+     *     ["page" => 5],
+     *     null,
+     *     null,
+     *     true
+     * );
      * ```
      *
      * @param array|string $uri = [
@@ -101,9 +112,10 @@ class Url extends AbstractInjectionAware implements \Phalcon\Mvc\Url\UrlInterfac
      * @param mixed $args
      * @param bool $local
      * @param mixed $baseUri
+     * @param bool $replaceArgs
      * @return string
      */
-    public function get($uri = null, $args = null, bool $local = null, $baseUri = null): string
+    public function get($uri = null, $args = null, bool $local = null, $baseUri = null, bool $replaceArgs = false): string
     {
     }
 

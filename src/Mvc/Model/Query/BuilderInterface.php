@@ -21,12 +21,12 @@ interface BuilderInterface
     /**
      * @var string
      */
-    const OPERATOR_AND = 'and';
+    const string OPERATOR_AND = 'and';
 
     /**
      * @var string
      */
-    const OPERATOR_OR = 'or';
+    const string OPERATOR_OR = 'or';
 
 
     /**
@@ -186,9 +186,9 @@ interface BuilderInterface
     /**
      * Returns the HAVING condition clause
      *
-     * @return string
+     * @return string|null
      */
-    public function getHaving(): string;
+    public function getHaving(): string|null;
 
     /**
      * Return join parts of the query
