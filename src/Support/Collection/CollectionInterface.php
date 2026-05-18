@@ -9,95 +9,15 @@
  */
 namespace Phalcon\Support\Collection;
 
+use Phalcon\Contracts\Support\Collection as CollectionContract;
+
 /**
  * Phalcon\Support\Collection\CollectionInterface
  *
- * Interface for Phalcon\Support\Collection class
+ * @psalm-suppress DeprecatedInterface
+ * @deprecated Will be removed in a future major release.
+ *             Use {@see \Phalcon\Contracts\Support\Collection} instead.
  */
-interface CollectionInterface
+interface CollectionInterface extends CollectionContract
 {
-    /**
-     * @param string $element
-     * @return mixed
-     */
-    public function __get(string $element): mixed;
-
-    /**
-     * @param string $element
-     * @return bool
-     */
-    public function __isset(string $element): bool;
-
-    /**
-     * @param string $element
-     * @param mixed $value
-     * @return void
-     */
-    public function __set(string $element, $value): void;
-
-    /**
-     * @param string $element
-     * @return void
-     */
-    public function __unset(string $element): void;
-
-    /**
-     * @return void
-     */
-    public function clear(): void;
-
-    /**
-     * @param string $element
-     * @param mixed $defaultValue
-     * @param string $cast
-     * @return mixed
-     */
-    public function get(string $element, $defaultValue = null, string $cast = null): mixed;
-
-    /**
-     * @param bool $insensitive
-     * @return array
-     */
-    public function getKeys(bool $insensitive = true): array;
-
-    /**
-     * @return array
-     */
-    public function getValues(): array;
-
-    /**
-     * @param string $element
-     * @return bool
-     */
-    public function has(string $element): bool;
-
-    /**
-     * @param array $data
-     * @return void
-     */
-    public function init(array $data = []): void;
-
-    /**
-     * @param string $element
-     * @return void
-     */
-    public function remove(string $element): void;
-
-    /**
-     * @param string $element
-     * @param mixed $value
-     * @return void
-     */
-    public function set(string $element, $value): void;
-
-    /**
-     * @return array
-     */
-    public function toArray(): array;
-
-    /**
-     * @param int $options
-     * @return string
-     */
-    public function toJson(int $options = 79): string;
 }

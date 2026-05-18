@@ -9,120 +9,15 @@
  */
 namespace Phalcon\Db;
 
+use Phalcon\Contracts\Db\Column as ColumnContract;
+
 /**
- * Interface for Phalcon\Db\Column
+ * Phalcon\Db\ColumnInterface
+ *
+ * @psalm-suppress DeprecatedInterface
+ * @deprecated Will be removed in a future major release.
+ *             Use {@see \Phalcon\Contracts\Db\Column} instead.
  */
-interface ColumnInterface
+interface ColumnInterface extends ColumnContract
 {
-    /**
-     * Check whether field absolute to position in table
-     *
-     * @return string|null
-     */
-    public function getAfterPosition(): string|null;
-
-    /**
-     * Returns the type of bind handling
-     *
-     * @return int
-     */
-    public function getBindType(): int;
-
-    /**
-     * Returns default value of column
-     *
-     * @return mixed
-     */
-    public function getDefault(): mixed;
-
-    /**
-     * Returns column name
-     *
-     * @return string
-     */
-    public function getName(): string;
-
-    /**
-     * Returns column scale
-     *
-     * @return int
-     */
-    public function getScale(): int;
-
-    /**
-     * Returns column size
-     *
-     * @return int|string
-     */
-    public function getSize(): int|string;
-
-    /**
-     * Returns column type
-     *
-     * @return int
-     */
-    public function getType(): int;
-
-    /**
-     * Returns column type reference
-     *
-     * @return int
-     */
-    public function getTypeReference(): int;
-
-    /**
-     * Returns column type values
-     *
-     * @return array|string
-     */
-    public function getTypeValues(): string|array;
-
-    /**
-     * Check whether column has default value
-     *
-     * @return bool
-     */
-    public function hasDefault(): bool;
-
-    /**
-     * Auto-Increment
-     *
-     * @return bool
-     */
-    public function isAutoIncrement(): bool;
-
-    /**
-     * Check whether column have first position in table
-     *
-     * @return bool
-     */
-    public function isFirst(): bool;
-
-    /**
-     * Not null
-     *
-     * @return bool
-     */
-    public function isNotNull(): bool;
-
-    /**
-     * Check whether column have an numeric type
-     *
-     * @return bool
-     */
-    public function isNumeric(): bool;
-
-    /**
-     * Column is part of the primary key?
-     *
-     * @return bool
-     */
-    public function isPrimary(): bool;
-
-    /**
-     * Returns true if number column is unsigned
-     *
-     * @return bool
-     */
-    public function isUnsigned(): bool;
 }

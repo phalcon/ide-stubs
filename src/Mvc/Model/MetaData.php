@@ -140,6 +140,16 @@ abstract class MetaData implements \Phalcon\Di\InjectionAwareInterface, \Phalcon
     protected $metaData = [];
 
     /**
+     * Holds metadata index writes that arrived before the model's metadata was
+     * properly initialized (e.g. skipAttributes() called in a parent model's
+     * initialize() while the child's source had not yet been set).  Applied
+     * inside initializeMetaData() after the real schema is loaded.
+     *
+     * @var array
+     */
+    protected $pendingMetaDataWrites = [];
+
+    /**
      * @var StrategyInterface|null
      */
     protected $strategy = null;
@@ -538,9 +548,9 @@ abstract class MetaData implements \Phalcon\Di\InjectionAwareInterface, \Phalcon
      *
      * @param \Phalcon\Mvc\ModelInterface $model
      * @param int $index
-     * @return array|null
+     * @return array|string|null
      */
-    final public function readMetaDataIndex(\Phalcon\Mvc\ModelInterface $model, int $index): array|null
+    final public function readMetaDataIndex(\Phalcon\Mvc\ModelInterface $model, int $index): string|array|null
     {
     }
 

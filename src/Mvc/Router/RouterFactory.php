@@ -1,0 +1,56 @@
+<?php
+
+/* This file is part of the Phalcon Framework.
+ *
+ * (c) Phalcon Team <team@phalcon.io>
+ *
+ * For the full copyright and license information, please view the LICENSE.txt
+ * file that was distributed with this source code.
+ */
+namespace Phalcon\Mvc\Router;
+
+use Phalcon\Config\ConfigInterface;
+use Phalcon\Mvc\Router;
+use Phalcon\Mvc\RouterInterface;
+
+/**
+ * Phalcon\Mvc\Router\RouterFactory
+ *
+ * Builds a Router from an array or ConfigInterface and loads routes via
+ * Router::loadFromConfig.
+ *
+ * ```php
+ * use Phalcon\Mvc\Router\RouterFactory;
+ *
+ * $router = (new RouterFactory())->load(
+ *     [
+ *         "defaultRoutes" : false,
+ *         "routes" : [
+ *             ["method" : "get", "pattern" : "/users", "paths" : "Users::index"]
+ *         ]
+ *     ]
+ * );
+ * ```
+ */
+class RouterFactory
+{
+    /**
+     * Builds a Router from a config array or ConfigInterface and loads routes.
+     *
+     * @param array|\Phalcon\Config\ConfigInterface $config *
+     * @return RouterInterface
+     */
+    public function load($config): RouterInterface
+    {
+    }
+
+    /**
+     * Returns a bare Router instance.
+     *
+     * @param bool $defaultRoutes *
+     * @return RouterInterface
+     */
+    public function newInstance(bool $defaultRoutes = true): RouterInterface
+    {
+    }
+}

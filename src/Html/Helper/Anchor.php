@@ -9,13 +9,30 @@
  */
 namespace Phalcon\Html\Helper;
 
+use Phalcon\Html\Escaper\EscaperInterface;
 use Phalcon\Html\Exception;
 
 /**
  * Class Anchor
+ *
+ * @property bool $forceRaw
  */
 class Anchor extends \Phalcon\Html\Helper\AbstractHelper
 {
+    /**
+     * @var bool
+     */
+    protected $forceRaw = false;
+
+    /**
+     * @param EscaperInterface $escaper
+     * @param Doctype          $doctype
+     * @param bool             $forceRaw
+     */
+    public function __construct(\Phalcon\Html\Escaper\EscaperInterface $escaper, Doctype $doctype = null, bool $forceRaw = false)
+    {
+    }
+
     /**
      * Produce a <a> tag
      *
@@ -28,16 +45,6 @@ class Anchor extends \Phalcon\Html\Helper\AbstractHelper
      * @throws Exception
      */
     public function __invoke(string $href, string $text, array $attributes = [], bool $raw = false): string
-    {
-    }
-
-    /**
-     * @param string $href
-     * @param array  $attributes
-     *
-     * @return array
-     */
-    protected function processAttributes(string $href, array $attributes): array
     {
     }
 }

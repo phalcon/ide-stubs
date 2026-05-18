@@ -22,9 +22,9 @@ class Igbinary extends \Phalcon\Storage\Serializer\AbstractSerializer
     /**
      * Serializes data
      *
-     * @return string
+     * @return mixed
      */
-    public function serialize(): string
+    public function serialize(): mixed
     {
     }
 

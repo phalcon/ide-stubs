@@ -9,131 +9,13 @@
  */
 namespace Phalcon\Paginator;
 
+use Phalcon\Contracts\Paginator\Repository as RepositoryContract;
+
 /**
- * Phalcon\Paginator\RepositoryInterface
- *
- * Interface for the repository of current state
- * Phalcon\Paginator\AdapterInterface::paginate()
+ * @psalm-suppress DeprecatedInterface
+ * @deprecated Will be removed in a future major release.
+ *             Use {@see \Phalcon\Contracts\Paginator\Repository} instead.
  */
-interface RepositoryInterface
+interface RepositoryInterface extends RepositoryContract
 {
-    /**
-     * @var string
-     */
-    const PROPERTY_CURRENT_PAGE = 'current';
-
-    /**
-     * @var string
-     */
-    const PROPERTY_FIRST_PAGE = 'first';
-
-    /**
-     * @var string
-     */
-    const PROPERTY_ITEMS = 'items';
-
-    /**
-     * @var string
-     */
-    const PROPERTY_LAST_PAGE = 'last';
-
-    /**
-     * @var string
-     */
-    const PROPERTY_LIMIT = 'limit';
-
-    /**
-     * @var string
-     */
-    const PROPERTY_NEXT_PAGE = 'next';
-
-    /**
-     * @var string
-     */
-    const PROPERTY_PREVIOUS_PAGE = 'previous';
-
-    /**
-     * @var string
-     */
-    const PROPERTY_TOTAL_ITEMS = 'total_items';
-
-
-    /**
-     * Gets the aliases for properties repository
-     *
-     * @return array
-     */
-    public function getAliases(): array;
-
-    /**
-     * Gets number of the current page
-     *
-     * @return int
-     */
-    public function getCurrent(): int;
-
-    /**
-     * Gets number of the first page
-     *
-     * @return int
-     */
-    public function getFirst(): int;
-
-    /**
-     * Gets the items on the current page
-     *
-     * @return mixed
-     */
-    public function getItems(): mixed;
-
-    /**
-     * Gets number of the last page
-     *
-     * @return int
-     */
-    public function getLast(): int;
-
-    /**
-     * Gets current rows limit
-     *
-     * @return int
-     */
-    public function getLimit(): int;
-
-    /**
-     * Gets number of the next page
-     *
-     * @return int
-     */
-    public function getNext(): int;
-
-    /**
-     * Gets number of the previous page
-     *
-     * @return int
-     */
-    public function getPrevious(): int;
-
-    /**
-     * Gets the total number of items
-     *
-     * @return int
-     */
-    public function getTotalItems(): int;
-
-    /**
-     * Sets the aliases for properties repository
-     *
-     * @param array $aliases
-     * @return RepositoryInterface
-     */
-    public function setAliases(array $aliases): RepositoryInterface;
-
-    /**
-     * Sets values for properties of the repository
-     *
-     * @param array $properties
-     * @return RepositoryInterface
-     */
-    public function setProperties(array $properties): RepositoryInterface;
 }

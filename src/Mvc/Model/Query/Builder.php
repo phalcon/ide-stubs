@@ -437,9 +437,9 @@ class Builder implements \Phalcon\Mvc\Model\Query\BuilderInterface, \Phalcon\Di\
     /**
      * Return the current having clause
      *
-     * @return string
+     * @return string|null
      */
-    public function getHaving(): string
+    public function getHaving(): string|null
     {
     }
 

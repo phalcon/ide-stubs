@@ -213,7 +213,7 @@ class Request extends AbstractInjectionAware implements \Phalcon\Http\RequestInt
      * @return string|false
      * @throws \Exception
      */
-    public function getClientAddress(bool $trustForwardedHeader = false): false|string
+    public function getClientAddress(bool $trustForwardedHeader = false): bool|string
     {
     }
 
@@ -1046,7 +1046,7 @@ class Request extends AbstractInjectionAware implements \Phalcon\Http\RequestInt
      * @return string|false
      * @throws \Phalcon\Filter\Exception
      */
-    private function isValidPublicIp(string $forwardedIp): false|string
+    private function isValidPublicIp(string $forwardedIp): bool|string
     {
     }
 

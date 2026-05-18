@@ -19,8 +19,9 @@ class Link extends \Phalcon\Html\Helper\Style
      *
      * @param string $url
      * @param array  $attributes
+     * @param int $position
      */
-    public function add(string $url, array $attributes = [])
+    public function add(string $url, array $attributes = [], int $position = -1)
     {
     }
 

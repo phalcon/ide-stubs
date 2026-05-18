@@ -9,6 +9,7 @@
  */
 namespace Phalcon\Db\Adapter;
 
+use Phalcon\Db\CheckInterface;
 use Phalcon\Db\DialectInterface;
 use Phalcon\Db\ColumnInterface;
 use Phalcon\Db\Enum;
@@ -192,6 +193,19 @@ abstract class AbstractAdapter implements \Phalcon\Db\Adapter\AdapterInterface, 
     }
 
     /**
+     * Adds a CHECK constraint to a table. MySQL 8.0.16+ and PostgreSQL
+     * issue `ALTER TABLE ... ADD CONSTRAINT ... CHECK (...)`; SQLite throws.
+     *
+     * @param string $tableName
+     * @param string $schemaName
+     * @param \Phalcon\Db\CheckInterface $check
+     * @return bool
+     */
+    public function addCheck(string $tableName, string $schemaName, \Phalcon\Db\CheckInterface $check): bool
+    {
+    }
+
+    /**
      * Adds a foreign key to a table
      *
      * @param string $tableName
@@ -328,6 +342,18 @@ abstract class AbstractAdapter implements \Phalcon\Db\Adapter\AdapterInterface, 
      * @return bool
      */
     public function dropColumn(string $tableName, string $schemaName, string $columnName): bool
+    {
+    }
+
+    /**
+     * Drops a CHECK constraint from a table. SQLite throws.
+     *
+     * @param string $tableName
+     * @param string $schemaName
+     * @param string $checkName
+     * @return bool
+     */
+    public function dropCheck(string $tableName, string $schemaName, string $checkName): bool
     {
     }
 
@@ -502,12 +528,15 @@ abstract class AbstractAdapter implements \Phalcon\Db\Adapter\AdapterInterface, 
     }
 
     /**
-     * Returns a SQL modified with a FOR UPDATE clause
+     * Returns a SQL modified with a FOR UPDATE clause. The optional
+     * `modifier` is passed straight to the dialect (use `Dialect::LOCK_NOWAIT`
+     * / `Dialect::LOCK_SKIP_LOCKED` / `Dialect::LOCK_NONE`).
      *
      * @param string $sqlQuery
+     * @param string $modifier
      * @return string
      */
-    public function forUpdate(string $sqlQuery): string
+    public function forUpdate(string $sqlQuery, string $modifier = ''): string
     {
     }
 
@@ -534,9 +563,9 @@ abstract class AbstractAdapter implements \Phalcon\Db\Adapter\AdapterInterface, 
     /**
      * Gets the active connection unique identifier
      *
-     * @return string
+     * @return int
      */
-    public function getConnectionId(): string
+    public function getConnectionId(): int
     {
     }
 
@@ -862,12 +891,80 @@ abstract class AbstractAdapter implements \Phalcon\Db\Adapter\AdapterInterface, 
     }
 
     /**
-     * Returns a SQL modified with a LOCK IN SHARE MODE clause
+     * Returns a SQL modified with a shared-lock clause. The optional
+     * `modifier` is passed straight to the dialect (use
+     * `Dialect::LOCK_NOWAIT` / `Dialect::LOCK_SKIP_LOCKED` for PostgreSQL).
      *
      * @param string $sqlQuery
+     * @param string $modifier
      * @return string
      */
-    public function sharedLock(string $sqlQuery): string
+    public function sharedLock(string $sqlQuery, string $modifier = ''): string
+    {
+    }
+
+    /**
+     * Creates a materialized view (PostgreSQL only — MySQL and SQLite
+     * throw via the dialect).
+     *
+     * @param string $viewName
+     * @param array $definition
+     * @param string $schemaName
+     * @return bool
+     */
+    public function createMaterializedView(string $viewName, array $definition, string $schemaName = null): bool
+    {
+    }
+
+    /**
+     * Drops a materialized view (PostgreSQL only).
+     *
+     * @param string $viewName
+     * @param string $schemaName
+     * @param bool $ifExists
+     * @return bool
+     */
+    public function dropMaterializedView(string $viewName, string $schemaName = null, bool $ifExists = true): bool
+    {
+    }
+
+    /**
+     * Refreshes a materialized view (PostgreSQL only). Pass
+     * `concurrent = true` for non-blocking refresh.
+     *
+     * @param string $viewName
+     * @param string $schemaName
+     * @param bool $concurrent
+     * @return bool
+     */
+    public function refreshMaterializedView(string $viewName, string $schemaName = null, bool $concurrent = false): bool
+    {
+    }
+
+    /**
+     * Appends an `ON CONFLICT (...) DO UPDATE SET col = excluded.col`
+     * upsert clause to the supplied INSERT statement. Supported by
+     * PostgreSQL and SQLite 3.24+; MySQL throws.
+     *
+     * @param string $sqlQuery
+     * @param array $conflictColumns
+     * @param array $updateColumns
+     * @return string
+     */
+    public function onConflictUpdate(string $sqlQuery, array $conflictColumns, array $updateColumns): string
+    {
+    }
+
+    /**
+     * Appends a RETURNING clause to an INSERT/UPDATE/DELETE SQL statement
+     * and returns the modified SQL. Supported by PostgreSQL and SQLite 3.35+;
+     * MySQL throws (no RETURNING construct). Pass `[""]` for `RETURNING`.
+     *
+     * @param string $sqlQuery
+     * @param array $columns
+     * @return string
+     */
+    public function returning(string $sqlQuery, array $columns): string
     {
     }
 

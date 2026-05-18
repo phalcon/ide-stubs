@@ -135,9 +135,9 @@ class Cookie extends AbstractInjectionAware implements \Phalcon\Http\Cookie\Cook
     /**
      * Returns the current expiration time
      *
-     * @return string
+     * @return int
      */
-    public function getExpiration(): string
+    public function getExpiration(): int
     {
     }
 

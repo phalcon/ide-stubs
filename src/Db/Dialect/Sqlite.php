@@ -9,12 +9,14 @@
  */
 namespace Phalcon\Db\Dialect;
 
+use Phalcon\Db\CheckInterface;
 use Phalcon\Db\Column;
 use Phalcon\Db\Exception;
 use Phalcon\Db\IndexInterface;
 use Phalcon\Db\Dialect;
 use Phalcon\Db\DialectInterface;
 use Phalcon\Db\ColumnInterface;
+use Phalcon\Db\RawValue;
 use Phalcon\Db\ReferenceInterface;
 
 /**
@@ -36,6 +38,19 @@ class Sqlite extends Dialect
      * @return string
      */
     public function addColumn(string $tableName, string $schemaName, \Phalcon\Db\ColumnInterface $column): string
+    {
+    }
+
+    /**
+     * SQLite cannot ALTER an existing table to add a CHECK constraint;
+     * the constraint must be declared at CREATE TABLE time.
+     *
+     * @param string $tableName
+     * @param string $schemaName
+     * @param \Phalcon\Db\CheckInterface $check
+     * @return string
+     */
+    public function addCheck(string $tableName, string $schemaName, \Phalcon\Db\CheckInterface $check): string
     {
     }
 
@@ -149,7 +164,12 @@ class Sqlite extends Dialect
     }
 
     /**
-     * Generates SQL to delete a column from a table
+     * Generates SQL to delete a column from a table.
+     *
+     * SQLite 3.35+ supports `ALTER TABLE ... DROP COLUMN ...` directly. On
+     * older versions the server rejects the statement at execution time;
+     * cphalcon no longer pre-empts that rejection at the dialect level so
+     * callers on 3.35+ can use the feature.
      *
      * @param string $tableName
      * @param string $schemaName
@@ -157,6 +177,18 @@ class Sqlite extends Dialect
      * @return string
      */
     public function dropColumn(string $tableName, string $schemaName, string $columnName): string
+    {
+    }
+
+    /**
+     * SQLite cannot DROP a CHECK constraint from an existing table.
+     *
+     * @param string $tableName
+     * @param string $schemaName
+     * @param string $checkName
+     * @return string
+     */
+    public function dropCheck(string $tableName, string $schemaName, string $checkName): string
     {
     }
 
@@ -220,13 +252,16 @@ class Sqlite extends Dialect
     }
 
     /**
-     * Returns a SQL modified with a FOR UPDATE clause. For SQLite it returns
-     * the original query
+     * Returns a SQL modified with a FOR UPDATE clause. SQLite has no
+     * row-level locking, so the original query is returned unchanged
+     * regardless of the `modifier` argument (`NOWAIT` / `SKIP LOCKED` are
+     * silently ignored).
      *
      * @param string $sqlQuery
+     * @param string $modifier
      * @return string
      */
-    public function forUpdate(string $sqlQuery): string
+    public function forUpdate(string $sqlQuery, string $modifier = ''): string
     {
     }
 
@@ -298,13 +333,27 @@ class Sqlite extends Dialect
     }
 
     /**
-     * Returns a SQL modified a shared lock statement. For now this method
-     * returns the original query
+     * Appends a `RETURNING` clause to the supplied INSERT/UPDATE/DELETE
+     * statement. Supported by SQLite 3.35+. Pass `[""]` for `RETURNING`,
+     * or a list of column names.
      *
      * @param string $sqlQuery
+     * @param array $columns
      * @return string
      */
-    public function sharedLock(string $sqlQuery): string
+    public function returning(string $sqlQuery, array $columns): string
+    {
+    }
+
+    /**
+     * SQLite has no row-level shared-lock construct, so the original query
+     * is returned unchanged regardless of the `modifier` argument.
+     *
+     * @param string $sqlQuery
+     * @param string $modifier
+     * @return string
+     */
+    public function sharedLock(string $sqlQuery, string $modifier = ''): string
     {
     }
 

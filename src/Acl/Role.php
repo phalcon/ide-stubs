@@ -17,7 +17,7 @@ class Role implements \Phalcon\Acl\RoleInterface
     /**
      * Role description
      *
-     * @var string
+     * @var string | null
      */
     private $description;
 
@@ -46,9 +46,9 @@ class Role implements \Phalcon\Acl\RoleInterface
     }
 
     /**
-     * @return string
+     * @return string|null
      */
-    public function getDescription(): string
+    public function getDescription(): string|null
     {
     }
 

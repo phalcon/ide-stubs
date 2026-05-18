@@ -113,6 +113,22 @@ abstract class AbstractHelper
     }
 
     /**
+     * Forces a single key into the attribute array, stripping any user-supplied
+     * value for that key first. Used by helpers whose first positional argument
+     * is itself an attribute (`href` for Anchor, `src` for Img, etc.) to make
+     * sure that argument always wins.
+     *
+     * @param string $key
+     * @param string $value
+     * @param array  $attributes
+     *
+     * @return array
+     */
+    protected function injectAttribute(string $key, string $value, array $attributes): array
+    {
+    }
+
+    /**
      * Renders an element
      *
      * @param string $tag

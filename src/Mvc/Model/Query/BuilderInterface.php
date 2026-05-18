@@ -186,9 +186,9 @@ interface BuilderInterface
     /**
      * Returns the HAVING condition clause
      *
-     * @return string
+     * @return string|null
      */
-    public function getHaving(): string;
+    public function getHaving(): string|null;
 
     /**
      * Return join parts of the query
