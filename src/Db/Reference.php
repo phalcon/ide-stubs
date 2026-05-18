@@ -128,9 +128,9 @@ class Reference implements \Phalcon\Db\ReferenceInterface
     /**
      * Referenced Schema
      *
-     * @return string
+     * @return string|null
      */
-    public function getReferencedSchema(): string
+    public function getReferencedSchema(): string|null
     {
     }
 
@@ -146,27 +146,27 @@ class Reference implements \Phalcon\Db\ReferenceInterface
     /**
      * Schema name
      *
-     * @return string
+     * @return string|null
      */
-    public function getSchemaName(): string
+    public function getSchemaName(): string|null
     {
     }
 
     /**
      * ON DELETE
      *
-     * @return string
+     * @return string|null
      */
-    public function getOnDelete(): string
+    public function getOnDelete(): string|null
     {
     }
 
     /**
      * ON UPDATE
      *
-     * @return string
+     * @return string|null
      */
-    public function getOnUpdate(): string
+    public function getOnUpdate(): string|null
     {
     }
 }

@@ -10,9 +10,10 @@
 namespace Phalcon\Html\Helper\Input;
 
 /**
- * Class Radio
+ * Renders an `<input type="radio">`. Behavior (label wrapping, `unchecked`
+ * companion, loose-by-default `checked` match) lives in `AbstractChecked`.
  */
-class Radio extends \Phalcon\Html\Helper\Input\Checkbox
+class Radio extends \Phalcon\Html\Helper\Input\AbstractChecked
 {
     /**
      * @var string

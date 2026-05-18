@@ -22,7 +22,10 @@ class Memory extends \Phalcon\Annotations\Adapter\AbstractAdapter
      */
     protected $data;
 
-    public function __construct()
+    /**
+     * @param array $options
+     */
+    public function __construct(array $options = [])
     {
     }
 

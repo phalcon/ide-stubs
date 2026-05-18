@@ -29,9 +29,9 @@ interface CookieInterface
     /**
      * Returns the current expiration time
      *
-     * @return string
+     * @return int
      */
-    public function getExpiration(): string;
+    public function getExpiration(): int;
 
     /**
      * Returns if the cookie is accessible only through the HTTP protocol

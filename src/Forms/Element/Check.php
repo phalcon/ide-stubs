@@ -18,4 +18,46 @@ class Check extends \Phalcon\Forms\Element\AbstractElement
      * @var string
      */
     protected $method = 'inputCheckbox';
+
+    /**
+     * @var mixed
+     */
+    protected $uncheckedValue = null;
+
+    /**
+     * @var bool
+     */
+    protected $uncheckedValueSet = false;
+
+    /**
+     * Returns the value to bind when the checkbox is absent from submitted
+     * data. Only meaningful when hasUncheckedValue() is true.
+     *
+     * @return mixed
+     */
+    public function getUncheckedValue(): mixed
+    {
+    }
+
+    /**
+     * Whether an "unchecked value" has been explicitly registered.
+     *
+     * @return bool
+     */
+    public function hasUncheckedValue(): bool
+    {
+    }
+
+    /**
+     * Registers a value to bind when the checkbox is absent from submitted
+     * data (the typical browser behavior for an unchecked input). Without
+     * this opt-in, an unchecked checkbox leaves the entity property
+     * untouched. See cphalcon issue #16982.
+     *
+     * @param mixed $value
+     * @return Check
+     */
+    public function setUncheckedValue($value): Check
+    {
+    }
 }

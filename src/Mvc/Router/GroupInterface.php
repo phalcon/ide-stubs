@@ -202,9 +202,9 @@ interface GroupInterface
     /**
      * Returns the common prefix for all the routes
      *
-     * @return string
+     * @return string|null
      */
-    public function getPrefix(): string;
+    public function getPrefix(): string|null;
 
     /**
      * Returns the routes added to the group

@@ -10,7 +10,7 @@
 namespace Phalcon\Html\Helper\Input;
 
 use Phalcon\Html\Helper\AbstractList;
-use Phalcon\Html\Helper\Input\Select\SelectDataInterface;
+use Phalcon\Contracts\Html\Helper\Input\SelectData;
 
 /**
  * Class Select
@@ -31,6 +31,11 @@ class Select extends AbstractList
      * @var string
      */
     protected $selected = '';
+
+    /**
+     * @var bool
+     */
+    protected $strict = false;
 
     /**
      * Add an element to the list
@@ -66,10 +71,10 @@ class Select extends AbstractList
      * Flat entries: key = option value, value = label string.
      * Optgroup entries: key = group label, value = [value => label] array.
      *
-     * @param SelectDataInterface $data *
+     * @param SelectData $data *
      * @return Select
      */
-    public function fromData(\Phalcon\Html\Helper\Input\Select\SelectDataInterface $data): Select
+    public function fromData(\Phalcon\Contracts\Html\Helper\Input\SelectData $data): Select
     {
     }
 
@@ -86,11 +91,38 @@ class Select extends AbstractList
     }
 
     /**
+     * Adds a non-selectable placeholder option as the first entry. Renders
+     * as `<option value="" disabled selected>$text</option>`, matching the
+     * common HTML idiom for "Choose…"-style prompts.
+     *
+     * @param string $text
+     *
+     * @return Select
+     */
+    public function placeholder(string $text): Select
+    {
+    }
+
+    /**
      * @param string $selected
      *
      * @return Select
      */
     public function selected(string $selected): Select
+    {
+    }
+
+    /**
+     * Toggles strict (`===`) comparison between an option's `value` and
+     * the previously stored `selected` value. Defaults to loose (`==`),
+     * matching the round-tripping fix in `AbstractChecked` so mixed
+     * int/string form data marks the right option as selected.
+     *
+     * @param bool $flag
+     *
+     * @return Select
+     */
+    public function strict(bool $flag = true): Select
     {
     }
 

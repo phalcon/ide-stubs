@@ -99,9 +99,9 @@ interface ElementInterface
     /**
      * Returns the element's label
      *
-     * @return string
+     * @return string|null
      */
-    public function getLabel(): string;
+    public function getLabel(): string|null;
 
     /**
      * Returns the messages that belongs to the element

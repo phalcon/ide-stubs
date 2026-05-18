@@ -10,10 +10,12 @@
 namespace Phalcon\Db\Dialect;
 
 use Phalcon\Db\Dialect;
+use Phalcon\Db\CheckInterface;
 use Phalcon\Db\Column;
 use Phalcon\Db\Exception;
 use Phalcon\Db\IndexInterface;
 use Phalcon\Db\ColumnInterface;
+use Phalcon\Db\RawValue;
 use Phalcon\Db\ReferenceInterface;
 use Phalcon\Db\DialectInterface;
 
@@ -36,6 +38,19 @@ class Mysql extends Dialect
      * @return string
      */
     public function addColumn(string $tableName, string $schemaName, \Phalcon\Db\ColumnInterface $column): string
+    {
+    }
+
+    /**
+     * Generates SQL to add a CHECK constraint to an existing table.
+     * Enforced by MySQL 8.0.16+.
+     *
+     * @param string $tableName
+     * @param string $schemaName
+     * @param \Phalcon\Db\CheckInterface $check
+     * @return string
+     */
+    public function addCheck(string $tableName, string $schemaName, \Phalcon\Db\CheckInterface $check): string
     {
     }
 
@@ -147,6 +162,18 @@ class Mysql extends Dialect
      * @return string
      */
     public function dropColumn(string $tableName, string $schemaName, string $columnName): string
+    {
+    }
+
+    /**
+     * Generates SQL to delete a CHECK constraint from a table
+     *
+     * @param string $tableName
+     * @param string $schemaName
+     * @param string $checkName
+     * @return string
+     */
+    public function dropCheck(string $tableName, string $schemaName, string $checkName): string
     {
     }
 
@@ -268,7 +295,27 @@ class Mysql extends Dialect
     }
 
     /**
-     * Returns a SQL modified with a LOCK IN SHARE MODE clause
+     * MySQL does not support the SQL-standard `ON CONFLICT DO UPDATE`
+     * upsert syntax — it has its own `INSERT ... ON DUPLICATE KEY UPDATE`
+     * which requires PHQL grammar work (deferred). The base helper is
+     * overridden here to throw, preventing accidental emission of invalid
+     * SQL on MySQL connections.
+     *
+     * @param string $sqlQuery
+     * @param array $conflictColumns
+     * @param array $updateColumns
+     * @return string
+     */
+    public function onConflictUpdate(string $sqlQuery, array $conflictColumns, array $updateColumns): string
+    {
+    }
+
+    /**
+     * Returns a SQL modified with a LOCK IN SHARE MODE clause. The `modifier`
+     * argument is accepted for signature parity with the contract but is
+     * silently ignored on MySQL — its legacy `LOCK IN SHARE MODE` syntax has
+     * no `NOWAIT` / `SKIP LOCKED` variant. Callers needing those modifiers
+     * should target PostgreSQL or stay on `forUpdate()`.
      *
      * ```php
      * $sql = $dialect->sharedLock("SELECT FROM robots");
@@ -277,9 +324,10 @@ class Mysql extends Dialect
      * ```
      *
      * @param string $sqlQuery
+     * @param string $modifier
      * @return string
      */
-    public function sharedLock(string $sqlQuery): string
+    public function sharedLock(string $sqlQuery, string $modifier = ''): string
     {
     }
 

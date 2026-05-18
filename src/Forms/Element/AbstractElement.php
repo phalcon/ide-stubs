@@ -198,9 +198,9 @@ abstract class AbstractElement implements \Phalcon\Forms\Element\ElementInterfac
     /**
      * Returns the element label
      *
-     * @return string
+     * @return string|null
      */
-    public function getLabel(): string
+    public function getLabel(): string|null
     {
     }
 

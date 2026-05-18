@@ -592,4 +592,21 @@ class Criteria implements \Phalcon\Mvc\Model\CriteriaInterface, \Phalcon\Di\Inje
     public function where(string $conditions, $bindParams = null, $bindTypes = null): CriteriaInterface
     {
     }
+
+    /**
+     * Appends a JOIN clause to the criteria params under a non-conflicting
+     * name. Internal wrappers (innerJoin/leftJoin/rightJoin/join) all
+     * delegate here so that the call site is not subject to Zephir's
+     * name collision between the public `join()` method and PHP's
+     * built-in `join()` function.
+     *
+     * @param string $model
+     * @param mixed $conditions
+     * @param mixed $alias
+     * @param mixed $type
+     * @return CriteriaInterface
+     */
+    private function addJoinClause(string $model, $conditions = null, $alias = null, $type = null): CriteriaInterface
+    {
+    }
 }

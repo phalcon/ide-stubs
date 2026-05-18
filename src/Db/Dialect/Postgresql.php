@@ -10,10 +10,12 @@
 namespace Phalcon\Db\Dialect;
 
 use Phalcon\Db\Dialect;
+use Phalcon\Db\CheckInterface;
 use Phalcon\Db\Column;
 use Phalcon\Db\Exception;
 use Phalcon\Db\IndexInterface;
 use Phalcon\Db\ColumnInterface;
+use Phalcon\Db\RawValue;
 use Phalcon\Db\ReferenceInterface;
 use Phalcon\Db\DialectInterface;
 
@@ -36,6 +38,18 @@ class Postgresql extends Dialect
      * @return string
      */
     public function addColumn(string $tableName, string $schemaName, \Phalcon\Db\ColumnInterface $column): string
+    {
+    }
+
+    /**
+     * Generates SQL to add a CHECK constraint to an existing table.
+     *
+     * @param string $tableName
+     * @param string $schemaName
+     * @param \Phalcon\Db\CheckInterface $check
+     * @return string
+     */
+    public function addCheck(string $tableName, string $schemaName, \Phalcon\Db\CheckInterface $check): string
     {
     }
 
@@ -84,6 +98,18 @@ class Postgresql extends Dialect
      * @return string
      */
     public function createTable(string $tableName, string $schemaName, array $definition): string
+    {
+    }
+
+    /**
+     * Generates SQL to create a materialized view.
+     *
+     * @param string $viewName
+     * @param array $definition
+     * @param string $schemaName
+     * @return string
+     */
+    public function createMaterializedView(string $viewName, array $definition, string $schemaName = null): string
     {
     }
 
@@ -151,6 +177,18 @@ class Postgresql extends Dialect
     }
 
     /**
+     * Generates SQL to delete a CHECK constraint from a table
+     *
+     * @param string $tableName
+     * @param string $schemaName
+     * @param string $checkName
+     * @return string
+     */
+    public function dropCheck(string $tableName, string $schemaName, string $checkName): string
+    {
+    }
+
+    /**
      * Generates SQL to delete a foreign key from a table
      *
      * @param string $tableName
@@ -198,6 +236,18 @@ class Postgresql extends Dialect
     }
 
     /**
+     * Generates SQL to drop a materialized view.
+     *
+     * @param string $viewName
+     * @param string $schemaName
+     * @param bool $ifExists
+     * @return string
+     */
+    public function dropMaterializedView(string $viewName, string $schemaName = null, bool $ifExists = true): string
+    {
+    }
+
+    /**
      * Generates SQL to drop a view
      *
      * @param string $viewName
@@ -206,6 +256,20 @@ class Postgresql extends Dialect
      * @return string
      */
     public function dropView(string $viewName, string $schemaName = null, bool $ifExists = true): string
+    {
+    }
+
+    /**
+     * Generates SQL to refresh a materialized view. When `concurrent` is
+     * true, emits `REFRESH MATERIALIZED VIEW CONCURRENTLY ...` (avoids
+     * blocking concurrent SELECTs; requires a unique index on the view).
+     *
+     * @param string $viewName
+     * @param string $schemaName
+     * @param bool $concurrent
+     * @return string
+     */
+    public function refreshMaterializedView(string $viewName, string $schemaName = null, bool $concurrent = false): string
     {
     }
 
@@ -259,13 +323,39 @@ class Postgresql extends Dialect
     }
 
     /**
-     * Returns a SQL modified a shared lock statement. For now this method
-     * returns the original query
+     * Appends a `RETURNING` clause to the supplied INSERT/UPDATE/DELETE
+     * statement. Pass `[""]` for `RETURNING`, or a list of column names.
      *
      * @param string $sqlQuery
+     * @param array $columns
      * @return string
      */
-    public function sharedLock(string $sqlQuery): string
+    public function returning(string $sqlQuery, array $columns): string
+    {
+    }
+
+    /**
+     * Returns a SQL modified with a `FOR SHARE` clause — PostgreSQL's
+     * equivalent of MySQL's `LOCK IN SHARE MODE`. The optional `modifier`
+     * appends a row-lock disposition keyword (pass `Dialect::LOCK_NOWAIT`
+     * or `Dialect::LOCK_SKIP_LOCKED`).
+     *
+     * ```php
+     * echo $dialect->sharedLock("SELECT FROM robots");
+     * // SELECT FROM robots FOR SHARE
+     *
+     * echo $dialect->sharedLock(
+     *     "SELECT FROM robots",
+     *     Dialect::LOCK_NOWAIT
+     * );
+     * // SELECT FROM robots FOR SHARE NOWAIT
+     * ```
+     *
+     * @param string $sqlQuery
+     * @param string $modifier
+     * @return string
+     */
+    public function sharedLock(string $sqlQuery, string $modifier = ''): string
     {
     }
 

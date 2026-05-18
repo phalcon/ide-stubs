@@ -274,6 +274,13 @@ class Column implements \Phalcon\Db\ColumnInterface
     const TYPE_TINYTEXT = 25;
 
     /**
+     * UUID abstract data type
+     *
+     * @var int
+     */
+    const TYPE_UUID = 29;
+
+    /**
      * Varbinary abstract data type
      *
      * @var int
@@ -288,11 +295,146 @@ class Column implements \Phalcon\Db\ColumnInterface
     const TYPE_VARCHAR = 2;
 
     /**
+     * PostgreSQL `BYTEA` binary type
+     *
+     * @var int
+     */
+    const TYPE_BYTEA = 30;
+
+    /**
+     * PostgreSQL `INET` IPv4/IPv6 address type
+     *
+     * @var int
+     */
+    const TYPE_INET = 31;
+
+    /**
+     * PostgreSQL `CIDR` network-address type
+     *
+     * @var int
+     */
+    const TYPE_CIDR = 32;
+
+    /**
+     * PostgreSQL `MACADDR` MAC-address type
+     *
+     * @var int
+     */
+    const TYPE_MACADDR = 33;
+
+    /**
+     * PostgreSQL `INT4RANGE` range-of-integer type
+     *
+     * @var int
+     */
+    const TYPE_INT4RANGE = 34;
+
+    /**
+     * PostgreSQL `INT8RANGE` range-of-bigint type
+     *
+     * @var int
+     */
+    const TYPE_INT8RANGE = 35;
+
+    /**
+     * PostgreSQL `NUMRANGE` range-of-numeric type
+     *
+     * @var int
+     */
+    const TYPE_NUMRANGE = 36;
+
+    /**
+     * PostgreSQL `TSRANGE` range-of-timestamp (without time zone) type
+     *
+     * @var int
+     */
+    const TYPE_TSRANGE = 37;
+
+    /**
+     * PostgreSQL `TSTZRANGE` range-of-timestamp (with time zone) type
+     *
+     * @var int
+     */
+    const TYPE_TSTZRANGE = 38;
+
+    /**
+     * PostgreSQL `DATERANGE` range-of-date type
+     *
+     * @var int
+     */
+    const TYPE_DATERANGE = 39;
+
+    /**
+     * Spatial `GEOMETRY` base type (MySQL 5.7+; PostgreSQL + PostGIS)
+     *
+     * @var int
+     */
+    const TYPE_GEOMETRY = 40;
+
+    /**
+     * Spatial `POINT` type (MySQL; PostgreSQL + PostGIS)
+     *
+     * @var int
+     */
+    const TYPE_POINT = 41;
+
+    /**
+     * Spatial `LINESTRING` type (MySQL; PostgreSQL + PostGIS)
+     *
+     * @var int
+     */
+    const TYPE_LINESTRING = 42;
+
+    /**
+     * Spatial `POLYGON` type (MySQL; PostgreSQL + PostGIS)
+     *
+     * @var int
+     */
+    const TYPE_POLYGON = 43;
+
+    /**
+     * Spatial `MULTIPOINT` type (MySQL; PostgreSQL + PostGIS)
+     *
+     * @var int
+     */
+    const TYPE_MULTIPOINT = 44;
+
+    /**
+     * Spatial `MULTILINESTRING` type (MySQL; PostgreSQL + PostGIS)
+     *
+     * @var int
+     */
+    const TYPE_MULTILINESTRING = 45;
+
+    /**
+     * Spatial `MULTIPOLYGON` type (MySQL; PostgreSQL + PostGIS)
+     *
+     * @var int
+     */
+    const TYPE_MULTIPOLYGON = 46;
+
+    /**
+     * Spatial `GEOMETRYCOLLECTION` type (MySQL; PostgreSQL + PostGIS)
+     *
+     * @var int
+     */
+    const TYPE_GEOMETRYCOLLECTION = 47;
+
+    /**
      * Column Position
      *
-     * @var string
+     * @var string|null
      */
-    protected $after = '';
+    protected $after = null;
+
+    /**
+     * Whether the column is an array of its base type. Recognized by the
+     * PostgreSQL dialect (e.g. `INTEGER[]`, `TEXT[]`). MySQL and SQLite
+     * ignore the flag.
+     *
+     * @var bool
+     */
+    protected $isArray = false;
 
     /**
      * Column is autoIncrement?
@@ -330,11 +472,37 @@ class Column implements \Phalcon\Db\ColumnInterface
     protected $first = false;
 
     /**
+     * Generation expression for `GENERATED ALWAYS AS (...)`. Null when the
+     * column is not a generated/computed column.
+     *
+     * @var string|null
+     */
+    protected $generated = null;
+
+    /**
+     * Whether a generated column is `STORED` (true) or `VIRTUAL` (false).
+     * Ignored when the column is not generated. PostgreSQL only supports
+     * `STORED` and emits it regardless of this flag.
+     *
+     * @var bool
+     */
+    protected $generationStored = false;
+
+    /**
      * The column have some numeric type?
      *
      * @var bool
      */
     protected $isNumeric = false;
+
+    /**
+     * Whether the column is `INVISIBLE` (MySQL 8.0.23+). Invisible columns
+     * are excluded from `SELECT` expansion but can still be referenced
+     * explicitly.
+     *
+     * @var bool
+     */
+    protected $invisible = false;
 
     /**
      * Column's name
@@ -414,9 +582,9 @@ class Column implements \Phalcon\Db\ColumnInterface
     /**
      * Check whether field absolute to position in table
      *
-     * @return string
+     * @return string|null
      */
-    public function getAfterPosition(): string
+    public function getAfterPosition(): string|null
     {
     }
 
@@ -444,6 +612,16 @@ class Column implements \Phalcon\Db\ColumnInterface
      * @return mixed
      */
     public function getDefault(): mixed
+    {
+    }
+
+    /**
+     * Returns the generation expression for a generated/computed column.
+     * Returns `null` when the column is not generated.
+     *
+     * @return string|null
+     */
+    public function getGenerationExpression(): string|null
     {
     }
 
@@ -477,9 +655,9 @@ class Column implements \Phalcon\Db\ColumnInterface
     /**
      * Column data type
      *
-     * @return int
+     * @return int|string
      */
-    public function getType(): int
+    public function getType(): int|string
     {
     }
 
@@ -511,6 +689,17 @@ class Column implements \Phalcon\Db\ColumnInterface
     }
 
     /**
+     * Whether the column is an array of its base type. Recognized by the
+     * PostgreSQL dialect (e.g. `INTEGER[]`, `TEXT[]`); MySQL and SQLite
+     * ignore the flag.
+     *
+     * @return bool
+     */
+    public function isArray(): bool
+    {
+    }
+
+    /**
      * Auto-Increment
      *
      * @return bool
@@ -525,6 +714,37 @@ class Column implements \Phalcon\Db\ColumnInterface
      * @return bool
      */
     public function isFirst(): bool
+    {
+    }
+
+    /**
+     * Whether the column is a generated/computed column.
+     *
+     * @return bool
+     */
+    public function isGenerated(): bool
+    {
+    }
+
+    /**
+     * Whether a generated column is `STORED`. `false` means `VIRTUAL`.
+     * Always meaningful only when `isGenerated()` is `true`.
+     *
+     * @return bool
+     */
+    public function isGenerationStored(): bool
+    {
+    }
+
+    /**
+     * Whether the column is declared `INVISIBLE` (MySQL 8.0.23+). Invisible
+     * columns are excluded from `SELECT` expansion but can still be
+     * referenced explicitly. PostgreSQL and SQLite have no equivalent and
+     * dialects targeting them ignore the flag.
+     *
+     * @return bool
+     */
+    public function isInvisible(): bool
     {
     }
 

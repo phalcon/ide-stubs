@@ -29,8 +29,9 @@ class Style extends \Phalcon\Html\Helper\AbstractSeries
      *
      * @return $this
      * @throws Exception
+     * @param int $position
      */
-    public function add(string $url, array $attributes = [])
+    public function add(string $url, array $attributes = [], int $position = -1)
     {
     }
 

@@ -9,6 +9,8 @@
  */
 namespace Phalcon\Events;
 
+use Phalcon\Contracts\Events\Stoppable;
+
 /**
  * This class offers contextual information of a fired event in the
  * EventsManager
@@ -22,7 +24,7 @@ namespace Phalcon\Events;
  * }
  * ```
  */
-class Event implements \Phalcon\Events\EventInterface
+final class Event implements \Phalcon\Events\EventInterface, \Phalcon\Contracts\Events\Stoppable
 {
     /**
      * Is event cancelable?
@@ -104,6 +106,16 @@ class Event implements \Phalcon\Events\EventInterface
      * @return bool
      */
     public function isCancelable(): bool
+    {
+    }
+
+    /**
+     * Returns whether propagation must stop. PSR-14 alias backed by the same
+     * `stopped` flag as `isStopped()`; calling `stop()` flips both.
+     *
+     * @return bool
+     */
+    public function isPropagationStopped(): bool
     {
     }
 

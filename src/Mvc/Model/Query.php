@@ -726,6 +726,20 @@ class Query implements \Phalcon\Mvc\Model\QueryInterface, \Phalcon\Di\InjectionA
     }
 
     /**
+     * Refreshes the schema/source of every model referenced in a cached
+     * intermediate representation. The PHQL cache is keyed by the PHQL
+     * string only, so a model that switches its schema or source at
+     * runtime (for instance via setSchema()/setSource() in initialize())
+     * would otherwise see the value frozen at first parse. See #17020.
+     *
+     * @param array $irPhql
+     * @return array
+     */
+    final protected function refreshSchemasInIntermediate(array $irPhql): array
+    {
+    }
+
+    /**
      * Analyzes a DELETE intermediate code and produces an array to be executed
      * later
      *

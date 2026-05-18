@@ -9,6 +9,7 @@
  */
 namespace Phalcon\Mvc\Model;
 
+use Phalcon\Contracts\Mvc\Model\Relation\CacheKeyProvider;
 use Phalcon\Db\Adapter\AdapterInterface;
 use Phalcon\Di\DiInterface;
 use Phalcon\Di\InjectionAwareInterface;

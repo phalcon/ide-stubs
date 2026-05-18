@@ -310,6 +310,20 @@ class Di implements \Phalcon\Di\DiInterface
     }
 
     /**
+     * Check whether the DI has a cached shared instance for a service name.
+     *
+     * Unlike `has()`, which reports on the servicedefinition registry,
+     * this method reports only on the resolved-instance cache populated by
+     * `getShared()`.
+     *
+     * @param string $name
+     * @return bool
+     */
+    public function hasShared(string $name): bool
+    {
+    }
+
+    /**
      * Allows to obtain a shared service using the array syntax
      *
      * ```php
@@ -394,6 +408,17 @@ class Di implements \Phalcon\Di\DiInterface
      * @return void
      */
     public function remove(string $name): void
+    {
+    }
+
+    /**
+     * Removes the cached shared instance for a service, leaving the service
+     * definition intact so the next `getShared()` call rebuilds it.
+     *
+     * @param string $name
+     * @return void
+     */
+    public function removeShared(string $name): void
     {
     }
 

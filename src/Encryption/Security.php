@@ -9,6 +9,7 @@
  */
 namespace Phalcon\Encryption;
 
+use Phalcon\Contracts\Encryption\Security\Security as SecurityContract;
 use Phalcon\Di\DiInterface;
 use Phalcon\Di\AbstractInjectionAware;
 use Phalcon\Http\RequestInterface;
@@ -33,7 +34,7 @@ use Phalcon\Session\ManagerInterface as SessionInterface;
  * }
  * ```
  */
-class Security extends AbstractInjectionAware
+class Security extends AbstractInjectionAware implements SecurityContract
 {
     /**
      * @var int
@@ -99,6 +100,11 @@ class Security extends AbstractInjectionAware
      * @var int
      */
     const CRYPT_STD_DES = 1;
+
+    /**
+     * @var bool
+     */
+    protected $autoRefresh = true;
 
     /**
      * @var int
@@ -336,6 +342,32 @@ class Security extends AbstractInjectionAware
      * @return bool
      */
     public function isLegacyHash(string $passwordHash): bool
+    {
+    }
+
+    /**
+     * Forces the regeneration of the CSRF token and key, writing the new
+     * values to the session even when auto-refresh has been disabled. Useful
+     * after a successful login or any other state change where rotating the
+     * token is appropriate.
+     *
+     * @return Security
+     */
+    public function refreshToken(): Security
+    {
+    }
+
+    /**
+     * Toggles automatic regeneration of the CSRF token on every call to
+     * `getToken()` / `getTokenKey()`. When set to `false`, existing session
+     * values are reused (no session write), and a new token is only minted
+     * when none is present or `refreshToken()` is called explicitly.
+     *
+     * @param bool $autoRefresh
+     *
+     * @return Security
+     */
+    public function setAutoRefresh(bool $autoRefresh): Security
     {
     }
 

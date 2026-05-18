@@ -20,9 +20,11 @@ interface UrlInterface
      * @param string|array $uri
      * @param array|object $args Optional arguments to be appended to the query string
      * @param bool $local
+     * @param mixed $baseUri
+     * @param bool $replaceArgs
      * @return string
      */
-    public function get($uri = null, $args = null, bool $local = null): string;
+    public function get($uri = null, $args = null, bool $local = null, $baseUri = null, bool $replaceArgs = false): string;
 
     /**
      * Returns a base path

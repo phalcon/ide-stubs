@@ -9,40 +9,13 @@
  */
 namespace Phalcon\Paginator\Adapter;
 
-use Phalcon\Paginator\RepositoryInterface;
+use Phalcon\Contracts\Paginator\Adapter as AdapterContract;
 
 /**
- * Phalcon\Paginator\AdapterInterface
- *
- * Interface for Phalcon\Paginator adapters
+ * @psalm-suppress DeprecatedInterface
+ * @deprecated Will be removed in a future major release.
+ *             Use {@see \Phalcon\Contracts\Paginator\Adapter} instead.
  */
-interface AdapterInterface
+interface AdapterInterface extends AdapterContract
 {
-    /**
-     * Get current rows limit
-     *
-     * @return int
-     */
-    public function getLimit(): int;
-
-    /**
-     * Returns a slice of the resultset to show in the pagination
-     *
-     * @return RepositoryInterface
-     */
-    public function paginate(): RepositoryInterface;
-
-    /**
-     * Set the current page number
-     *
-     * @param int $page
-     */
-    public function setCurrentPage(int $page);
-
-    /**
-     * Set current rows limit
-     *
-     * @param int $limit
-     */
-    public function setLimit(int $limit);
 }

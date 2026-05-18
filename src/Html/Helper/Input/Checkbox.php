@@ -9,71 +9,14 @@
  */
 namespace Phalcon\Html\Helper\Input;
 
-use Phalcon\Html\Escaper\EscaperInterface;
-use Phalcon\Html\Helper\Doctype;
-
 /**
- * Class Checkbox
- *
- * @property array $label
+ * Renders an `<input type="checkbox">`. Behavior (label wrapping, `unchecked`
+ * companion, loose-by-default `checked` match) lives in `AbstractChecked`.
  */
-class Checkbox extends \Phalcon\Html\Helper\Input\AbstractInput
+class Checkbox extends \Phalcon\Html\Helper\Input\AbstractChecked
 {
-    /**
-     * @var array
-     */
-    protected $label = [];
-
     /**
      * @var string
      */
     protected $type = 'checkbox';
-
-    /**
-     * AbstractHelper constructor.
-     *
-     * @param EscaperInterface $escaper
-     * @param \Phalcon\Html\Helper\Doctype $doctype
-     */
-    public function __construct(\Phalcon\Html\Escaper\EscaperInterface $escaper, \Phalcon\Html\Helper\Doctype $doctype = null)
-    {
-    }
-
-    /**
-     * Returns the HTML for the input.
-     *
-     * @return string
-     */
-    public function __toString()
-    {
-    }
-
-    /**
-     * Attaches a label to the element
-     *
-     * @param array $attributes
-     *
-     * @return Checkbox
-     */
-    public function label(array $attributes = []): Checkbox
-    {
-    }
-
-    /**
-     * Processes the checked value
-     *
-     * @return void
-     */
-    private function processChecked(): void
-    {
-    }
-
-    /**
-     * Returns the unchecked hidden element if available
-     *
-     * @return string
-     */
-    private function processUnchecked(): string
-    {
-    }
 }
