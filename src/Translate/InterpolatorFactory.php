@@ -23,8 +23,7 @@ use Phalcon\Translate\Interpolator\InterpolatorInterface;
 class InterpolatorFactory extends AbstractFactory
 {
     /**
-     * InterpolatorFactor constructor.
-     *
+     * @phpstan-param array<string, string> $services
      * @param array $services
      */
     public function __construct(array $services = [])

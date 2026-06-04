@@ -11,6 +11,7 @@ namespace Phalcon\Html;
 
 use Closure;
 use Phalcon\Html\Escaper\EscaperInterface;
+use Phalcon\Html\Exceptions\ServiceNotRegistered;
 use Phalcon\Html\Helper\Anchor;
 use Phalcon\Html\Helper\Base;
 use Phalcon\Html\Helper\Body;
@@ -144,10 +145,10 @@ class TagFactory
      * @phpstan-param array<string, Closure> $services
      * @param \Phalcon\Html\Escaper\EscaperInterface $escaper
      * @param array $services
-     * @param \Phalcon\Http\ResponseInterface $response
-     * @param \Phalcon\Mvc\Url\UrlInterface $url
+     * @param \Phalcon\Http\ResponseInterface|null $response
+     * @param \Phalcon\Mvc\Url\UrlInterface|null $url
      */
-    public function __construct(\Phalcon\Html\Escaper\EscaperInterface $escaper, array $services = [], \Phalcon\Http\ResponseInterface $response = null, \Phalcon\Mvc\Url\UrlInterface $url = null)
+    public function __construct(\Phalcon\Html\Escaper\EscaperInterface $escaper, array $services = [], ?\Phalcon\Http\ResponseInterface $response = null, ?\Phalcon\Mvc\Url\UrlInterface $url = null)
     {
     }
 

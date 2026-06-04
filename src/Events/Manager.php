@@ -11,6 +11,10 @@ namespace Phalcon\Events;
 
 use Closure;
 use Phalcon\Contracts\Events\Subscriber;
+use Phalcon\Events\Exceptions\InvalidEventHandler;
+use Phalcon\Events\Exceptions\InvalidEventType;
+use Phalcon\Events\Exceptions\InvalidSubscriberConfiguration;
+use Phalcon\Events\Exceptions\NoListenersForEvent;
 
 /**
  * Phalcon Events Manager, offers an easy way to intercept and manipulate, if
@@ -93,6 +97,18 @@ class Manager implements \Phalcon\Events\ManagerInterface
      * @var array
      */
     protected $methodExistsCache = [];
+
+    /**
+     * Maximum number of distinct handler classes retained in
+     * methodExistsCache. 0 (default) keeps the original unbounded
+     * behavior; a positive value clears the cache when adding a new
+     * class would exceed it. Re-warming is cheap (method_exists is
+     * O(1)) and the cap is meant for very long-lived workers that see
+     * many distinct listener classes over time.
+     *
+     * @var int
+     */
+    protected $methodExistsCacheLimit = 0;
 
     /**
      * Memoized getSubscribedEvents() maps keyed by Subscriber class name.
@@ -215,10 +231,10 @@ class Manager implements \Phalcon\Events\ManagerInterface
     /**
      * Removes all events from the EventsManager
      *
-     * @param string $type
+     * @param string|null $type
      * @return void
      */
-    public function detachAll(string $type = null): void
+    public function detachAll(?string $type = null): void
     {
     }
 
@@ -254,7 +270,7 @@ class Manager implements \Phalcon\Events\ManagerInterface
      * @param string $eventType
      * @param bool $cancelable
      */
-    final public function fire(string $eventType, $source, $data = null, bool $cancelable = true)
+    public function fire(string $eventType, $source, $data = null, bool $cancelable = true)
     {
     }
 
@@ -314,6 +330,16 @@ class Manager implements \Phalcon\Events\ManagerInterface
      * @return array
      */
     public function getListeners(string $type): array
+    {
+    }
+
+    /**
+     * Returns the configured method_exists-cache cap (0 = unlimited).
+     * See setMethodExistsCacheLimit().
+     *
+     * @return int
+     */
+    public function getMethodExistsCacheLimit(): int
     {
     }
 
@@ -418,6 +444,20 @@ class Manager implements \Phalcon\Events\ManagerInterface
     }
 
     /**
+     * Caps the number of distinct handler classes retained in the
+     * method_exists memoization cache. 0 disables the cap (the
+     * default; preserves the original unbounded behavior). When the
+     * cap is exceeded, the cache is cleared and re-warms on subsequent
+     * fires.
+     *
+     * @param int $methodExistsCacheLimit
+     * @return void
+     */
+    public function setMethodExistsCacheLimit(int $methodExistsCacheLimit): void
+    {
+    }
+
+    /**
      * Enables/disables the stop-on-false short-circuit. When true, a
      * listener returning literal `false` (with cancelable=true) stops
      * the current event's queue and pins the fire() return as `false`.
@@ -441,6 +481,46 @@ class Manager implements \Phalcon\Events\ManagerInterface
      * @return void
      */
     public function setStrict(bool $strict): void
+    {
+    }
+
+    /**
+     * Extension seam invoked after an event has been dispatched to its
+     * listener queues. Receives the computed dispatch result as `status`
+     * and returns the value fire() hands back to its caller; the base
+     * implementation returns `status` unchanged. A subclass can override
+     * it to run bookkeeping or to post-process / rewrite the result.
+     *
+     * Only called when the event was actually dispatched; the halted and
+     * no-listener short-circuits in fire() return before reaching it.
+     *
+     * @param mixed $status
+     * @param string $eventType
+     * @param object $source
+     * @param mixed $data
+     * @param bool $cancelable
+     * @return mixed
+     */
+    protected function afterFire($status, string $eventType, $source, $data = null, bool $cancelable = true): mixed
+    {
+    }
+
+    /**
+     * Extension seam invoked before an event is dispatched. The base
+     * implementation returns true, so dispatch proceeds unchanged. A
+     * subclass can override it to inspect the source and data and, by
+     * returning false, abort the dispatch entirely - for example to
+     * redirect a deferred event onto an external queue. Invoked before the
+     * no-listener short-circuits, so it sees every fire(), including those
+     * with no locally attached listeners.
+     *
+     * @param string $eventType
+     * @param object $source
+     * @param mixed $data
+     * @param bool $cancelable
+     * @return bool
+     */
+    protected function beforeFire(string $eventType, $source, $data = null, bool $cancelable = true): bool
     {
     }
 

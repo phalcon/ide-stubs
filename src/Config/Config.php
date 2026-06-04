@@ -9,6 +9,7 @@
  */
 namespace Phalcon\Config;
 
+use Phalcon\Config\Exceptions\InvalidMergeData;
 use Phalcon\Support\Collection;
 
 /**
@@ -94,7 +95,7 @@ class Config extends Collection implements \Phalcon\Config\ConfigInterface
      *
      * @return mixed
      */
-    public function path(string $path, $defaultValue = null, string $delimiter = null): mixed
+    public function path(string $path, $defaultValue = null, ?string $delimiter = null): mixed
     {
     }
 
@@ -105,7 +106,7 @@ class Config extends Collection implements \Phalcon\Config\ConfigInterface
      *
      * @return ConfigInterface
      */
-    public function setPathDelimiter(string $delimiter = null): ConfigInterface
+    public function setPathDelimiter(?string $delimiter = null): ConfigInterface
     {
     }
 

@@ -9,7 +9,7 @@
  */
 namespace Phalcon\Support\Helper\Str;
 
-use Phalcon\Support\Helper\Exception;
+use Phalcon\Support\Helper\Str\Exceptions\InvalidReplaceFormat;
 
 /**
  * Changes a text to a URL friendly one. Replaces commonly known accented
@@ -25,7 +25,7 @@ class Friendly extends \Phalcon\Support\Helper\Str\AbstractStr
      * @param mixed|null $replace
      *
      * @return string
-     * @throws Exception
+     * @throws InvalidReplaceFormat
      */
     public function __invoke(string $text, string $separator = '-', bool $lowercase = true, $replace = null): string
     {
@@ -35,7 +35,7 @@ class Friendly extends \Phalcon\Support\Helper\Str\AbstractStr
      * @param mixed $replace
      *
      * @return array
-     * @throws Exception
+     * @throws InvalidReplaceFormat
      */
     private function checkReplace($replace): array
     {
@@ -45,7 +45,6 @@ class Friendly extends \Phalcon\Support\Helper\Str\AbstractStr
      * @param mixed $replace
      *
      * @return array
-     * @throws Exception
      */
     private function getMatrix(array $replace): array
     {

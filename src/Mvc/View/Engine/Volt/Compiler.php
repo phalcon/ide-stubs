@@ -11,8 +11,29 @@ namespace Phalcon\Mvc\View\Engine\Volt;
 
 use Closure;
 use Phalcon\Di\DiInterface;
-use Phalcon\Mvc\ViewBaseInterface;
 use Phalcon\Di\InjectionAwareInterface;
+use Phalcon\Mvc\View\Engine\Volt\Exceptions\CannotOpenCompiledFile;
+use Phalcon\Mvc\View\Engine\Volt\Exceptions\CorruptedStatement;
+use Phalcon\Mvc\View\Engine\Volt\Exceptions\CorruptedStatementWithData;
+use Phalcon\Mvc\View\Engine\Volt\Exceptions\InvalidCompilationPrefix;
+use Phalcon\Mvc\View\Engine\Volt\Exceptions\InvalidExtension;
+use Phalcon\Mvc\View\Engine\Volt\Exceptions\InvalidIntermediateRepresentation;
+use Phalcon\Mvc\View\Engine\Volt\Exceptions\InvalidOptionType;
+use Phalcon\Mvc\View\Engine\Volt\Exceptions\InvalidPathClosureReturn;
+use Phalcon\Mvc\View\Engine\Volt\Exceptions\InvalidPathType;
+use Phalcon\Mvc\View\Engine\Volt\Exceptions\InvalidStatement;
+use Phalcon\Mvc\View\Engine\Volt\Exceptions\InvalidUserFilterDefinition;
+use Phalcon\Mvc\View\Engine\Volt\Exceptions\InvalidUserFunctionDefinition;
+use Phalcon\Mvc\View\Engine\Volt\Exceptions\MacroAlreadyDefined;
+use Phalcon\Mvc\View\Engine\Volt\Exceptions\TemplateFileNotFound;
+use Phalcon\Mvc\View\Engine\Volt\Exceptions\TemplateFileNotOpenable;
+use Phalcon\Mvc\View\Engine\Volt\Exceptions\TemplatePathCollision;
+use Phalcon\Mvc\View\Engine\Volt\Exceptions\UnknownVoltExpression;
+use Phalcon\Mvc\View\Engine\Volt\Exceptions\UnknownVoltFilter;
+use Phalcon\Mvc\View\Engine\Volt\Exceptions\UnknownVoltFilterType;
+use Phalcon\Mvc\View\Engine\Volt\Exceptions\UnknownVoltStatement;
+use Phalcon\Mvc\View\Engine\Volt\Exceptions\VoltDirectoryNotWritable;
+use Phalcon\Mvc\ViewBaseInterface;
 
 /**
  * This class reads and compiles Volt templates into PHP plain code
@@ -141,7 +162,7 @@ class Compiler implements \Phalcon\Di\InjectionAwareInterface
      *
      * @param ViewBaseInterface|null $view
      */
-    public function __construct(\Phalcon\Mvc\ViewBaseInterface $view = null)
+    public function __construct(?\Phalcon\Mvc\ViewBaseInterface $view = null)
     {
     }
 
@@ -149,9 +170,9 @@ class Compiler implements \Phalcon\Di\InjectionAwareInterface
      * Registers a Volt's extension
      *
      * @param mixed $extension *
-     * @return Compiler
+     * @return static
      */
-    public function addExtension($extension): Compiler
+    public function addExtension($extension): static
     {
     }
 
@@ -160,9 +181,9 @@ class Compiler implements \Phalcon\Di\InjectionAwareInterface
      *
      * @param string $name
      * @param mixed $definition *
-     * @return Compiler
+     * @return static
      */
-    public function addFilter(string $name, $definition): Compiler
+    public function addFilter(string $name, $definition): static
     {
     }
 
@@ -171,9 +192,9 @@ class Compiler implements \Phalcon\Di\InjectionAwareInterface
      *
      * @param string $name
      * @param mixed $definition *
-     * @return Compiler
+     * @return static
      */
-    public function addFunction(string $name, $definition): Compiler
+    public function addFunction(string $name, $definition): static
     {
     }
 
@@ -222,8 +243,9 @@ class Compiler implements \Phalcon\Di\InjectionAwareInterface
      *
      * @param array $statement
      * @param bool $extendsMode
+     * @return string
      */
-    public function compileCall(array $statement, bool $extendsMode)
+    public function compileCall(array $statement, bool $extendsMode): string
     {
     }
 
@@ -605,8 +627,9 @@ class Compiler implements \Phalcon\Di\InjectionAwareInterface
      *
      * @param mixed $value
      * @param string $option
+     * @return static
      */
-    public function setOption(string $option, $value)
+    public function setOption(string $option, $value): static
     {
     }
 
@@ -614,9 +637,9 @@ class Compiler implements \Phalcon\Di\InjectionAwareInterface
      * Sets the compiler options
      *
      * @param array $options
-     * @return Compiler
+     * @return static
      */
-    public function setOptions(array $options): Compiler
+    public function setOptions(array $options): static
     {
     }
 
@@ -624,9 +647,9 @@ class Compiler implements \Phalcon\Di\InjectionAwareInterface
      * Set a unique prefix to be used as prefix for compiled variables
      *
      * @param string $prefix
-     * @return Compiler
+     * @return static
      */
-    public function setUniquePrefix(string $prefix): Compiler
+    public function setUniquePrefix(string $prefix): static
     {
     }
 

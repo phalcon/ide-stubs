@@ -23,7 +23,7 @@ interface ProfilerInterface
      * @param array  $values
      * @return void
      */
-    public function finish(string $statement = null, array $values = []): void;
+    public function finish(?string $statement = null, array $values = []): void;
 
     /**
      * Returns the underlying logger instance.

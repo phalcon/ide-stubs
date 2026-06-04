@@ -11,6 +11,8 @@ namespace Phalcon\Config\Adapter;
 
 use Phalcon\Config\Config;
 use Phalcon\Config\Exception;
+use Phalcon\Config\Exceptions\CannotLoadConfigFile;
+use Phalcon\Config\Exceptions\MissingYamlExtension;
 
 /**
  * Reads YAML files and converts them to Phalcon\Config\Config objects.
@@ -55,9 +57,9 @@ class Yaml extends Config
      * Phalcon\Config\Adapter\Yaml constructor
      *
      * @param string $filePath
-     * @param array $callbacks
+     * @param array|null $callbacks
      */
-    public function __construct(string $filePath, array $callbacks = null)
+    public function __construct(string $filePath, ?array $callbacks = null)
     {
     }
 

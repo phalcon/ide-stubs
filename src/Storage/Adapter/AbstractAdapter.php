@@ -411,10 +411,10 @@ abstract class AbstractAdapter implements \Phalcon\Storage\Adapter\AdapterInterf
      * @param array $collection
      * @param mixed $index
      * @param mixed $defaultValue
-     * @param string $cast
+     * @param string|null $cast
      * @return mixed
      */
-    protected function getArrVal(array $collection, $index, $defaultValue = null, string $cast = null): mixed
+    protected function getArrVal(array $collection, $index, $defaultValue = null, ?string $cast = null): mixed
     {
     }
 

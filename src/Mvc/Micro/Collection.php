@@ -43,7 +43,7 @@ class Collection implements \Phalcon\Mvc\Micro\CollectionInterface
     /**
      * @var bool
      */
-    protected $lazy = false;
+    protected $isLazy = false;
 
     /**
      * @var string
@@ -58,7 +58,7 @@ class Collection implements \Phalcon\Mvc\Micro\CollectionInterface
      * @param string|null $name *
      * @return CollectionInterface
      */
-    public function delete(string $routePattern, $handler, string $name = null): CollectionInterface
+    public function delete(string $routePattern, $handler, ?string $name = null): CollectionInterface
     {
     }
 
@@ -70,7 +70,7 @@ class Collection implements \Phalcon\Mvc\Micro\CollectionInterface
      * @param string|null $name *
      * @return CollectionInterface
      */
-    public function get(string $routePattern, $handler, string $name = null): CollectionInterface
+    public function get(string $routePattern, $handler, ?string $name = null): CollectionInterface
     {
     }
 
@@ -109,7 +109,7 @@ class Collection implements \Phalcon\Mvc\Micro\CollectionInterface
      * @param string|null $name *
      * @return CollectionInterface
      */
-    public function head(string $routePattern, $handler, string $name = null): CollectionInterface
+    public function head(string $routePattern, $handler, ?string $name = null): CollectionInterface
     {
     }
 
@@ -130,7 +130,7 @@ class Collection implements \Phalcon\Mvc\Micro\CollectionInterface
      * @param string|null $name *
      * @return CollectionInterface
      */
-    public function map(string $routePattern, $handler, string $name = null): CollectionInterface
+    public function map(string $routePattern, $handler, ?string $name = null): CollectionInterface
     {
     }
 
@@ -152,7 +152,7 @@ class Collection implements \Phalcon\Mvc\Micro\CollectionInterface
      * @param string|null $name *
      * @return CollectionInterface
      */
-    public function mapVia(string $routePattern, $handler, $method, string $name = null): CollectionInterface
+    public function mapVia(string $routePattern, $handler, $method, ?string $name = null): CollectionInterface
     {
     }
 
@@ -165,7 +165,7 @@ class Collection implements \Phalcon\Mvc\Micro\CollectionInterface
      * @param string|null $name *
      * @return CollectionInterface
      */
-    public function options(string $routePattern, $handler, string $name = null): CollectionInterface
+    public function options(string $routePattern, $handler, ?string $name = null): CollectionInterface
     {
     }
 
@@ -177,7 +177,7 @@ class Collection implements \Phalcon\Mvc\Micro\CollectionInterface
      * @param string|null $name *
      * @return CollectionInterface
      */
-    public function patch(string $routePattern, $handler, string $name = null): CollectionInterface
+    public function patch(string $routePattern, $handler, ?string $name = null): CollectionInterface
     {
     }
 
@@ -189,7 +189,7 @@ class Collection implements \Phalcon\Mvc\Micro\CollectionInterface
      * @param string|null $name *
      * @return CollectionInterface
      */
-    public function post(string $routePattern, $handler, string $name = null): CollectionInterface
+    public function post(string $routePattern, $handler, ?string $name = null): CollectionInterface
     {
     }
 
@@ -201,7 +201,7 @@ class Collection implements \Phalcon\Mvc\Micro\CollectionInterface
      * @param string|null $name *
      * @return CollectionInterface
      */
-    public function put(string $routePattern, $handler, string $name = null): CollectionInterface
+    public function put(string $routePattern, $handler, ?string $name = null): CollectionInterface
     {
     }
 
@@ -209,20 +209,20 @@ class Collection implements \Phalcon\Mvc\Micro\CollectionInterface
      * Sets the main handler.
      *
      * @param mixed $handler
-     * @param bool $lazy *
+     * @param bool $isLazy *
      * @return CollectionInterface
      */
-    public function setHandler($handler, bool $lazy = false): CollectionInterface
+    public function setHandler($handler, bool $isLazy = false): CollectionInterface
     {
     }
 
     /**
      * Sets if the main handler must be lazy loaded
      *
-     * @param bool $lazy *
+     * @param bool $isLazy *
      * @return CollectionInterface
      */
-    public function setLazy(bool $lazy): CollectionInterface
+    public function setLazy(bool $isLazy): CollectionInterface
     {
     }
 
@@ -245,7 +245,7 @@ class Collection implements \Phalcon\Mvc\Micro\CollectionInterface
      * @param string|null $name
      * @return void
      */
-    protected function addMap($method, string $routePattern, $handler, string $name = null): void
+    protected function addMap($method, string $routePattern, $handler, ?string $name = null): void
     {
     }
 }

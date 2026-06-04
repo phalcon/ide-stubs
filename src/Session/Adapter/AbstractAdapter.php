@@ -57,16 +57,6 @@ abstract class AbstractAdapter implements \SessionHandlerInterface
     }
 
     /**
-     * Read
-     *
-     * @param mixed $id
-     * @return string
-     */
-    public function read($id): string
-    {
-    }
-
-    /**
      * Open
      *
      * @param mixed $path
@@ -74,6 +64,16 @@ abstract class AbstractAdapter implements \SessionHandlerInterface
      * @return bool
      */
     public function open($path, $name): bool
+    {
+    }
+
+    /**
+     * Read
+     *
+     * @param mixed $id
+     * @return string
+     */
+    public function read($id): string
     {
     }
 

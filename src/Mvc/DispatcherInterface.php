@@ -21,9 +21,9 @@ interface DispatcherInterface extends DispatcherInterfaceBase
     /**
      * Returns the active controller in the dispatcher
      *
-     * @return ControllerInterface
+     * @return ControllerInterface|null
      */
-    public function getActiveController(): ControllerInterface;
+    public function getActiveController(): ControllerInterface|null;
 
     /**
      * Gets last dispatched controller name
@@ -35,28 +35,31 @@ interface DispatcherInterface extends DispatcherInterfaceBase
     /**
      * Returns the latest dispatched controller
      *
-     * @return ControllerInterface
+     * @return ControllerInterface|null
      */
-    public function getLastController(): ControllerInterface;
-
-    /**
-     * Sets the default controller suffix
-     *
-     * @param string $controllerSuffix
-     */
-    public function setControllerSuffix(string $controllerSuffix);
+    public function getLastController(): ControllerInterface|null;
 
     /**
      * Sets the controller name to be dispatched
      *
      * @param string $controllerName
+     * @return DispatcherInterfaceBase
      */
-    public function setControllerName(string $controllerName);
+    public function setControllerName(string $controllerName): DispatcherInterfaceBase;
+
+    /**
+     * Sets the default controller suffix
+     *
+     * @param string $controllerSuffix
+     * @return DispatcherInterfaceBase
+     */
+    public function setControllerSuffix(string $controllerSuffix): DispatcherInterfaceBase;
 
     /**
      * Sets the default controller name
      *
      * @param string $controllerName
+     * @return DispatcherInterfaceBase
      */
-    public function setDefaultController(string $controllerName);
+    public function setDefaultController(string $controllerName): DispatcherInterfaceBase;
 }

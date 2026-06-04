@@ -9,16 +9,20 @@
  */
 namespace Phalcon\Http;
 
-use Phalcon\Di\DiInterface;
 use Phalcon\Di\AbstractInjectionAware;
+use Phalcon\Di\DiInterface;
 use Phalcon\Events\ManagerInterface;
 use Phalcon\Filter\FilterInterface;
 use Phalcon\Http\Message\RequestMethodInterface;
+use Phalcon\Http\Request\Exception;
+use Phalcon\Http\Request\Exceptions\FilterServiceUnavailable;
+use Phalcon\Http\Request\Exceptions\InvalidHost;
+use Phalcon\Http\Request\Exceptions\InvalidHttpMethod;
+use Phalcon\Http\Request\Exceptions\MissingFilters;
+use Phalcon\Http\Request\Exceptions\SanitizerNotFound;
 use Phalcon\Http\Request\File;
 use Phalcon\Http\Request\FileInterface;
-use Phalcon\Http\Request\Exception;
 use Phalcon\Support\Helper\Json\Decode;
-use UnexpectedValueException;
 use stdClass;
 
 /**
@@ -57,7 +61,7 @@ class Request extends AbstractInjectionAware implements \Phalcon\Http\RequestInt
     /**
      * @var bool
      */
-    protected $httpMethodParameterOverride = false;
+    protected $methodOverride = false;
 
     /**
      * @var array
@@ -101,14 +105,14 @@ class Request extends AbstractInjectionAware implements \Phalcon\Http\RequestInt
      * $userEmail = $request->get("user_email", "email");
      * ```
      *
-     * @param string $name
+     * @param string|null $name
      * @param mixed $filters
      * @param mixed $defaultValue
      * @param bool $notAllowEmpty
      * @param bool $noRecursive
      * @return mixed
      */
-    public function get(string $name = null, $filters = null, $defaultValue = null, bool $notAllowEmpty = false, bool $noRecursive = false): mixed
+    public function get(?string $name = null, $filters = null, $defaultValue = null, bool $notAllowEmpty = false, bool $noRecursive = false): mixed
     {
     }
 
@@ -159,31 +163,6 @@ class Request extends AbstractInjectionAware implements \Phalcon\Http\RequestInt
      * @return string
      */
     public function getBestLanguage(): string
-    {
-    }
-
-    /**
-     * Return the HTTP method parameter override flag
-     *
-     * @return bool
-     */
-    public function getHttpMethodParameterOverride(): bool
-    {
-    }
-
-    /**
-     * Gets the preferred ISO locale variant.
-     *
-     * Gets the preferred locale accepted by the client from the
-     * "Accept-Language" request HTTP header and returns the
-     * base part of it i.e. `en` instead of `en-US`.
-     *
-     * Note: This method relies on the `$_SERVER["HTTP_ACCEPT_LANGUAGE"]` header.
-     *
-     * @link https://www.iso.org/standard/50707.html
-     * @return string
-     */
-    public function getPreferredIsoLocaleVariant(): string
     {
     }
 
@@ -247,54 +226,69 @@ class Request extends AbstractInjectionAware implements \Phalcon\Http\RequestInt
     }
 
     /**
-     * Retrieves a query/get value always sanitized with the preset filters
+     * Gets filtered data
      *
-     * @param string $name
+     * @param string $methodKey
+     * @param string $method
+     * @param string|null $name
      * @param mixed $defaultValue
      * @param bool $notAllowEmpty
      * @param bool $noRecursive
      * @return mixed
      */
-    public function getFilteredQuery(string $name = null, $defaultValue = null, bool $notAllowEmpty = false, bool $noRecursive = false): mixed
+    public function getFilteredData(string $methodKey, string $method, ?string $name = null, $defaultValue = null, bool $notAllowEmpty = false, bool $noRecursive = false): mixed
     {
     }
 
     /**
      * Retrieves a patch value always sanitized with the preset filters
      *
-     * @param string $name
+     * @param string|null $name
      * @param mixed $defaultValue
      * @param bool $notAllowEmpty
      * @param bool $noRecursive
      * @return mixed
      */
-    public function getFilteredPatch(string $name = null, $defaultValue = null, bool $notAllowEmpty = false, bool $noRecursive = false): mixed
+    public function getFilteredPatch(?string $name = null, $defaultValue = null, bool $notAllowEmpty = false, bool $noRecursive = false): mixed
     {
     }
 
     /**
      * Retrieves a post value always sanitized with the preset filters
      *
-     * @param string $name
+     * @param string|null $name
      * @param mixed $defaultValue
      * @param bool $notAllowEmpty
      * @param bool $noRecursive
      * @return mixed
      */
-    public function getFilteredPost(string $name = null, $defaultValue = null, bool $notAllowEmpty = false, bool $noRecursive = false): mixed
+    public function getFilteredPost(?string $name = null, $defaultValue = null, bool $notAllowEmpty = false, bool $noRecursive = false): mixed
     {
     }
 
     /**
      * Retrieves a put value always sanitized with the preset filters
      *
-     * @param string $name
+     * @param string|null $name
      * @param mixed $defaultValue
      * @param bool $notAllowEmpty
      * @param bool $noRecursive
      * @return mixed
      */
-    public function getFilteredPut(string $name = null, $defaultValue = null, bool $notAllowEmpty = false, bool $noRecursive = false): mixed
+    public function getFilteredPut(?string $name = null, $defaultValue = null, bool $notAllowEmpty = false, bool $noRecursive = false): mixed
+    {
+    }
+
+    /**
+     * Retrieves a query/get value always sanitized with the preset filters
+     *
+     * @param string|null $name
+     * @param mixed $defaultValue
+     * @param bool $notAllowEmpty
+     * @param bool $noRecursive
+     * @return mixed
+     */
+    public function getFilteredQuery(?string $name = null, $defaultValue = null, bool $notAllowEmpty = false, bool $noRecursive = false): mixed
     {
     }
 
@@ -369,6 +363,15 @@ class Request extends AbstractInjectionAware implements \Phalcon\Http\RequestInt
     }
 
     /**
+     * Return the HTTP method parameter override flag
+     *
+     * @return bool
+     */
+    public function getHttpMethodParameterOverride(): bool
+    {
+    }
+
+    /**
      * Gets web page that refers active request. ie: http://www.google.com
      *
      * @return string
@@ -425,14 +428,14 @@ class Request extends AbstractInjectionAware implements \Phalcon\Http\RequestInt
      * $userEmail = $request->getPatch("user_email", "email");
      * ```
      *
-     * @param string $name
+     * @param string|null $name
      * @param mixed $filters
      * @param mixed $defaultValue
      * @param bool $notAllowEmpty
      * @param bool $noRecursive
      * @return mixed
      */
-    public function getPatch(string $name = null, $filters = null, $defaultValue = null, bool $notAllowEmpty = false, bool $noRecursive = false): mixed
+    public function getPatch(?string $name = null, $filters = null, $defaultValue = null, bool $notAllowEmpty = false, bool $noRecursive = false): mixed
     {
     }
 
@@ -457,14 +460,30 @@ class Request extends AbstractInjectionAware implements \Phalcon\Http\RequestInt
      * $userEmail = $request->getPost("user_email", "email");
      * ```
      *
-     * @param string $name
+     * @param string|null $name
      * @param mixed $filters
      * @param mixed $defaultValue
      * @param bool $notAllowEmpty
      * @param bool $noRecursive
      * @return mixed
      */
-    public function getPost(string $name = null, $filters = null, $defaultValue = null, bool $notAllowEmpty = false, bool $noRecursive = false): mixed
+    public function getPost(?string $name = null, $filters = null, $defaultValue = null, bool $notAllowEmpty = false, bool $noRecursive = false): mixed
+    {
+    }
+
+    /**
+     * Gets the preferred ISO locale variant.
+     *
+     * Gets the preferred locale accepted by the client from the
+     * "Accept-Language" request HTTP header and returns the
+     * base part of it i.e. `en` instead of `en-US`.
+     *
+     * Note: This method relies on the `$_SERVER["HTTP_ACCEPT_LANGUAGE"]` header.
+     *
+     * @link https://www.iso.org/standard/50707.html
+     * @return string
+     */
+    public function getPreferredIsoLocaleVariant(): string
     {
     }
 
@@ -479,14 +498,14 @@ class Request extends AbstractInjectionAware implements \Phalcon\Http\RequestInt
      * $userEmail = $request->getPut("user_email", "email");
      * ```
      *
-     * @param string $name
+     * @param string|null $name
      * @param mixed $filters
      * @param mixed $defaultValue
      * @param bool $notAllowEmpty
      * @param bool $noRecursive
      * @return mixed
      */
-    public function getPut(string $name = null, $filters = null, $defaultValue = null, bool $notAllowEmpty = false, bool $noRecursive = false): mixed
+    public function getPut(?string $name = null, $filters = null, $defaultValue = null, bool $notAllowEmpty = false, bool $noRecursive = false): mixed
     {
     }
 
@@ -505,14 +524,14 @@ class Request extends AbstractInjectionAware implements \Phalcon\Http\RequestInt
      * $id = $request->getQuery("id", null, 150);
      * ```
      *
-     * @param string $name
+     * @param string|null $name
      * @param mixed $filters
      * @param mixed $defaultValue
      * @param bool $notAllowEmpty
      * @param bool $noRecursive
      * @return mixed
      */
-    public function getQuery(string $name = null, $filters = null, $defaultValue = null, bool $notAllowEmpty = false, bool $noRecursive = false): mixed
+    public function getQuery(?string $name = null, $filters = null, $defaultValue = null, bool $notAllowEmpty = false, bool $noRecursive = false): mixed
     {
     }
 
@@ -689,15 +708,6 @@ class Request extends AbstractInjectionAware implements \Phalcon\Http\RequestInt
     }
 
     /**
-     * Checks whether request content type contains json data
-     *
-     * @return bool
-     */
-    public function isJson(): bool
-    {
-    }
-
-    /**
      * Checks whether HTTP method is CONNECT.
      * if _SERVER["REQUEST_METHOD"]==="CONNECT"
      *
@@ -734,6 +744,15 @@ class Request extends AbstractInjectionAware implements \Phalcon\Http\RequestInt
      * @return bool
      */
     public function isHead(): bool
+    {
+    }
+
+    /**
+     * Checks whether request content type contains json data
+     *
+     * @return bool
+     */
+    public function isJson(): bool
     {
     }
 
@@ -780,22 +799,22 @@ class Request extends AbstractInjectionAware implements \Phalcon\Http\RequestInt
     }
 
     /**
-     * Checks whether HTTP method is PUT.
-     * if _SERVER["REQUEST_METHOD"]==="PUT"
-     *
-     * @return bool
-     */
-    public function isPut(): bool
-    {
-    }
-
-    /**
      * Checks whether HTTP method is PURGE (Squid and Varnish support).
      * if _SERVER["REQUEST_METHOD"]==="PURGE"
      *
      * @return bool
      */
     public function isPurge(): bool
+    {
+    }
+
+    /**
+     * Checks whether HTTP method is PUT.
+     * if _SERVER["REQUEST_METHOD"]==="PUT"
+     *
+     * @return bool
+     */
+    public function isPut(): bool
     {
     }
 
@@ -809,21 +828,21 @@ class Request extends AbstractInjectionAware implements \Phalcon\Http\RequestInt
     }
 
     /**
+     * Checks whether request has been made using SOAP
+     *
+     * @return bool
+     */
+    public function isSoap(): bool
+    {
+    }
+
+    /**
      * Checks if the `Request::getHttpHost` method will be use strict validation
      * of host name or not
      *
      * @return bool
      */
     public function isStrictHostCheck(): bool
-    {
-    }
-
-    /**
-     * Checks whether request has been made using SOAP
-     *
-     * @return bool
-     */
-    public function isSoap(): bool
     {
     }
 
@@ -862,9 +881,9 @@ class Request extends AbstractInjectionAware implements \Phalcon\Http\RequestInt
      *
      * @param bool $override
      *
-     * @return Request
+     * @return static
      */
-    public function setHttpMethodParameterOverride(bool $override): Request
+    public function setHttpMethodParameterOverride(bool $override): static
     {
     }
 
@@ -875,9 +894,9 @@ class Request extends AbstractInjectionAware implements \Phalcon\Http\RequestInt
      * @param string $name
      * @param array $filters
      * @param array $scope
-     * @return RequestInterface
+     * @return static
      */
-    public function setParameterFilters(string $name, array $filters = [], array $scope = []): RequestInterface
+    public function setParameterFilters(string $name, array $filters = [], array $scope = []): static
     {
     }
 
@@ -886,9 +905,9 @@ class Request extends AbstractInjectionAware implements \Phalcon\Http\RequestInt
      * of host name or not
      *
      * @param bool $flag
-     * @return RequestInterface
+     * @return static
      */
-    public function setStrictHostCheck(bool $flag = true): RequestInterface
+    public function setStrictHostCheck(bool $flag = true): static
     {
     }
 
@@ -896,10 +915,10 @@ class Request extends AbstractInjectionAware implements \Phalcon\Http\RequestInt
      * Set a trusted proxy list for X-Forwarded-For header
      *
      * @param array $trustedProxies
-     * @return RequestInterface
+     * @return static
      * @throws Exception
      */
-    public function setTrustedProxies(array $trustedProxies): RequestInterface
+    public function setTrustedProxies(array $trustedProxies): static
     {
     }
 
@@ -908,20 +927,9 @@ class Request extends AbstractInjectionAware implements \Phalcon\Http\RequestInt
      * The header return only 1 single IP address, prefixed with HTTP_ eg. HTTP_CLIENT_IP.
      *
      * @param  string $trustedProxyHeader
-     * @return RequestInterface
+     * @return static
      */
-    public function setTrustedProxyHeader(string $trustedProxyHeader): RequestInterface
-    {
-    }
-
-    /**
-     * Check if an IP address exists in CIDR range
-     *
-     * @param string $ip The IP address to check.
-     * @param string $cidr The CIDR range to compare against.
-     * @return bool True if the IP is in range, false otherwise.
-     */
-    protected function isIpAddressInCIDR(string $ip, string $cidr): bool
+    public function setTrustedProxyHeader(string $trustedProxyHeader): static
     {
     }
 
@@ -941,14 +949,25 @@ class Request extends AbstractInjectionAware implements \Phalcon\Http\RequestInt
      * If no parameters are given the superglobal is returned.
      *
      * @param array $source
-     * @param string $name
+     * @param string|null $name
      * @param mixed $filters
      * @param mixed $defaultValue
      * @param bool $notAllowEmpty
      * @param bool $noRecursive
      * @return mixed
      */
-    protected function getHelper(array $source, string $name = null, $filters = null, $defaultValue = null, bool $notAllowEmpty = false, bool $noRecursive = false): mixed
+    protected function getHelper(array $source, ?string $name = null, $filters = null, $defaultValue = null, bool $notAllowEmpty = false, bool $noRecursive = false): mixed
+    {
+    }
+
+    /**
+     * Process a request header and return an array of values with their qualities
+     *
+     * @param string $serverIndex
+     * @param string $name
+     * @return array
+     */
+    protected function getQualityHeader(string $serverIndex, string $name): array
     {
     }
 
@@ -964,13 +983,13 @@ class Request extends AbstractInjectionAware implements \Phalcon\Http\RequestInt
     }
 
     /**
-     * Process a request header and return an array of values with their qualities
+     * Check if an IP address exists in CIDR range
      *
-     * @param string $serverIndex
-     * @param string $name
-     * @return array
+     * @param string $ip The IP address to check.
+     * @param string $cidr The CIDR range to compare against.
+     * @return bool True if the IP is in range, false otherwise.
      */
-    protected function getQualityHeader(string $serverIndex, string $name): array
+    protected function isIpAddressInCIDR(string $ip, string $cidr): bool
     {
     }
 
@@ -1008,24 +1027,28 @@ class Request extends AbstractInjectionAware implements \Phalcon\Http\RequestInt
     }
 
     /**
+     * parse multipart/form-data from raw data
+     *
      * @return array
      */
-    private function getServerArray(): array
+    private function getFormData(): array
     {
     }
 
     /**
-     * Gets filtered data
+     * Return post data from rawBody, form data, or urlencoded form data
      *
-     * @param string $methodKey
-     * @param string $method
-     * @param string $name
-     * @param mixed $defaultValue
-     * @param bool $notAllowEmpty
-     * @param bool $noRecursive
-     * @return mixed
+     * @param array|null $data
+     * @return array
      */
-    public function getFilteredData(string $methodKey, string $method, string $name = null, $defaultValue = null, bool $notAllowEmpty = false, bool $noRecursive = false): mixed
+    private function getPostData($data): array
+    {
+    }
+
+    /**
+     * @return array
+     */
+    private function getServerArray(): array
     {
     }
 
@@ -1051,21 +1074,15 @@ class Request extends AbstractInjectionAware implements \Phalcon\Http\RequestInt
     }
 
     /**
-     * Return post data from rawBody, form data, or urlencoded form data
+     * Helper to build the uploaded files array
      *
-     * @param array|null $data
+     * @param array $files
+     * @param bool $namedKeys
+     * @param array $input
+     * @param string $key
      * @return array
      */
-    private function getPostData($data): array
-    {
-    }
-
-    /**
-     * parse multipart/form-data from raw data
-     *
-     * @return array
-     */
-    private function getFormData(): array
+    private function processFiles(array $files, bool $namedKeys, array $input, string $key): array
     {
     }
 }

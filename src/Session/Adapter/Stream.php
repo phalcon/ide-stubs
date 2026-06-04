@@ -9,7 +9,9 @@
  */
 namespace Phalcon\Session\Adapter;
 
-use Phalcon\Session\Exception;
+use Phalcon\Session\Adapter\Exceptions\AdapterRuntimeError;
+use Phalcon\Session\Adapter\Exceptions\InvalidSavePath;
+use Phalcon\Session\Adapter\Exceptions\SavePathUnavailable;
 
 /**
  * Phalcon\Session\Adapter\Stream
@@ -37,6 +39,20 @@ use Phalcon\Session\Exception;
  */
 class Stream extends \Phalcon\Session\Adapter\Noop
 {
+    /**
+     * Session options
+     *
+     * @var array
+     */
+    protected $options = [];
+
+    /**
+     * Session prefix
+     *
+     * @var string
+     */
+    protected $prefix = '';
+
     /**
      * @var string
      */
@@ -107,10 +123,10 @@ class Stream extends \Phalcon\Session\Adapter\Noop
      * @param array $collection
      * @param mixed $index
      * @param mixed $defaultValue
-     * @param string $cast
+     * @param string|null $cast
      * @return mixed
      */
-    protected function getArrVal(array $collection, $index, $defaultValue = null, string $cast = null): mixed
+    protected function getArrVal(array $collection, $index, $defaultValue = null, ?string $cast = null): mixed
     {
     }
 
@@ -130,6 +146,16 @@ class Stream extends \Phalcon\Session\Adapter\Noop
      * @return array|false
      */
     protected function getGlobFiles(string $pattern): false|array
+    {
+    }
+
+    /**
+     * Helper method to get the name prefixed
+     *
+     * @param mixed $name
+     * @return string
+     */
+    protected function getPrefixedName($name): string
     {
     }
 

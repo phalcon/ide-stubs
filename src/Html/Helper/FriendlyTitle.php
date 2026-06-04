@@ -11,6 +11,7 @@ namespace Phalcon\Html\Helper;
 
 use Phalcon\Html\Escaper\EscaperInterface;
 use Phalcon\Html\Exception;
+use Phalcon\Html\Exceptions\FriendlyTitleConversionFailed;
 use Phalcon\Support\Helper\Str\Friendly;
 
 /**

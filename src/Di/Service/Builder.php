@@ -11,6 +11,19 @@ namespace Phalcon\Di\Service;
 
 use Phalcon\Di\DiInterface;
 use Phalcon\Di\Exception;
+use Phalcon\Di\Exceptions\ArgumentTypeRequired;
+use Phalcon\Di\Exceptions\CallArgumentsMustBeArray;
+use Phalcon\Di\Exceptions\MethodCallMustBeArray;
+use Phalcon\Di\Exceptions\MethodNameRequired;
+use Phalcon\Di\Exceptions\MissingClassNameParameter;
+use Phalcon\Di\Exceptions\MissingParameterKey;
+use Phalcon\Di\Exceptions\PropertyInjectionRequiresInstance;
+use Phalcon\Di\Exceptions\PropertyMustBeArray;
+use Phalcon\Di\Exceptions\PropertyNameRequired;
+use Phalcon\Di\Exceptions\PropertyValueRequired;
+use Phalcon\Di\Exceptions\SetterInjectionRequiresInstance;
+use Phalcon\Di\Exceptions\SetterParametersMustBeArray;
+use Phalcon\Di\Exceptions\UnknownServiceType;
 
 /**
  * Phalcon\Di\Service\Builder

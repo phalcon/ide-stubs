@@ -10,11 +10,13 @@
 namespace Phalcon\Session;
 
 use InvalidArgumentException;
-use RuntimeException;
 use SessionHandlerInterface;
 use Phalcon\Di\AbstractInjectionAware;
 use Phalcon\Di\DiInterface;
-use Phalcon\Support\Helper\Arr\Get;
+use Phalcon\Session\Exceptions\InvalidSessionAdapter;
+use Phalcon\Session\Exceptions\InvalidSessionName;
+use Phalcon\Session\Exceptions\SessionAlreadyStarted;
+use Phalcon\Session\Exceptions\SessionModificationDenied;
 
 /**
  * @property SessionHandlerInterface|null $adapter
@@ -132,9 +134,9 @@ class Manager extends AbstractInjectionAware implements \Phalcon\Session\Manager
     /**
      * Returns the stored session adapter
      *
-     * @return SessionHandlerInterface
+     * @return SessionHandlerInterface|null
      */
-    public function getAdapter(): SessionHandlerInterface
+    public function getAdapter(): SessionHandlerInterface|null
     {
     }
 
@@ -157,21 +159,21 @@ class Manager extends AbstractInjectionAware implements \Phalcon\Session\Manager
     }
 
     /**
+     * Get internal options
+     *
+     * @return array
+     */
+    public function getOptions(): array
+    {
+    }
+
+    /**
      * Check whether a session variable is set in an application context
      *
      * @param string $key
      * @return bool
      */
     public function has(string $key): bool
-    {
-    }
-
-    /**
-     * Get internal options
-     *
-     * @return array
-     */
-    public function getOptions(): array
     {
     }
 
@@ -281,17 +283,6 @@ class Manager extends AbstractInjectionAware implements \Phalcon\Session\Manager
     }
 
     /**
-     * Returns the key prefixed
-     *
-     * @param string $key
-     *
-     * @return string
-     */
-    private function getUniqueKey(string $key): string
-    {
-    }
-
-    /**
      * @todo Remove this when we get traits
      * @param array $collection
      * @param mixed $index
@@ -299,6 +290,17 @@ class Manager extends AbstractInjectionAware implements \Phalcon\Session\Manager
      * @return mixed
      */
     private function getArrVal(array $collection, $index, $defaultValue = null): mixed
+    {
+    }
+
+    /**
+     * Returns the key prefixed
+     *
+     * @param string $key
+     *
+     * @return string
+     */
+    private function getUniqueKey(string $key): string
     {
     }
 }

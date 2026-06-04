@@ -9,8 +9,9 @@
  */
 namespace Phalcon\Filter\Validation;
 
-use Phalcon\Messages\Message;
 use Phalcon\Filter\Validation;
+use Phalcon\Filter\Validation\Exceptions\FieldNotPrintable;
+use Phalcon\Messages\Message;
 use Phalcon\Support\Helper\Arr\Whitelist;
 
 /**
@@ -66,7 +67,7 @@ abstract class AbstractValidator implements \Phalcon\Filter\Validation\Validator
      *
      * @return string
      */
-    public function getTemplate(string $field = null): string
+    public function getTemplate(?string $field = null): string
     {
     }
 

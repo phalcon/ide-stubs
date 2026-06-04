@@ -9,14 +9,20 @@
  */
 namespace Phalcon\Translate\Adapter;
 
-use ArrayAccess;
 use Phalcon\Translate\Exception;
+use Phalcon\Translate\Exceptions\MissingRequiredParameter;
+use Phalcon\Translate\Exceptions\FileOpenError;
 use Phalcon\Translate\InterpolatorFactory;
 
 /**
- * @property array $translate
+ * @phpstan-type TOptions array{
+ *      content?: string,
+ *      delimiter?: string,
+ *      enclosure?: string,
+ *      escape?: string
+ * }
  */
-class Csv extends \Phalcon\Translate\Adapter\AbstractAdapter implements \ArrayAccess
+class Csv extends \Phalcon\Translate\Adapter\AbstractAdapter
 {
     /**
      * @var array
@@ -26,15 +32,11 @@ class Csv extends \Phalcon\Translate\Adapter\AbstractAdapter implements \ArrayAc
     /**
      * Csv constructor.
      *
-     * @param InterpolatorFactory $interpolator
-     * @param array               $options = [
-     *                                       'content'   => '',
-     *                                       'delimiter' => ';',
-     *                                       'enclosure' => '"',
-     *                                       'escape' => '\\'
-     *                                       ]
+     * @phpstan-param TOptions            $options
      *
      * @throws Exception
+     * @param \Phalcon\Translate\InterpolatorFactory $interpolator
+     * @param array $options
      */
     public function __construct(\Phalcon\Translate\InterpolatorFactory $interpolator, array $options)
     {
@@ -66,29 +68,13 @@ class Csv extends \Phalcon\Translate\Adapter\AbstractAdapter implements \ArrayAc
     /**
      * Returns the translation related to the given key
      *
-     * @param string $translateKey
-     * @param array  $placeholders
+     * @phpstan-param array<string, string> $placeholders
      *
      * @return string
+     * @param string $translateKey
+     * @param array $placeholders
      */
     public function query(string $translateKey, array $placeholders = []): string
-    {
-    }
-
-    /**
-     * Load translations from file
-     *
-     * @param string $file
-     * @param int    $length
-     * @param string $separator
-     * @param string $enclosure
-     * @param string $escape
-     *
-     * @throws Exception
-     * @param string $delimiter
-     * @return void
-     */
-    private function load(string $file, int $length, string $delimiter, string $enclosure, string $escape): void
     {
     }
 
@@ -107,6 +93,23 @@ class Csv extends \Phalcon\Translate\Adapter\AbstractAdapter implements \ArrayAc
      * @param string $mode
      */
     protected function phpFopen(string $filename, string $mode)
+    {
+    }
+
+    /**
+     * Load translations from file
+     *
+     * @param string $file
+     * @param int    $length
+     * @param string $separator
+     * @param string $enclosure
+     * @param string $escape
+     *
+     * @return void
+     * @throws FileOpenError
+     * @param string $delimiter
+     */
+    private function load(string $file, int $length, string $delimiter, string $enclosure, string $escape): void
     {
     }
 }

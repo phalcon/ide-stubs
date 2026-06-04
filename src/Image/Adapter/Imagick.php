@@ -17,6 +17,11 @@ use ImagickPixel;
 use ImagickPixelException;
 use Phalcon\Image\Enum;
 use Phalcon\Image\Exception;
+use Phalcon\Image\Exceptions\CompositeFailed;
+use Phalcon\Image\Exceptions\ExtensionNotLoaded;
+use Phalcon\Image\Exceptions\ImageLoadFailed;
+use Phalcon\Image\Exceptions\ResizeFailed;
+use Phalcon\Image\Exceptions\ResourceTypeError;
 
 /**
  * Phalcon\Image\Adapter\Imagick
@@ -50,7 +55,7 @@ class Imagick extends \Phalcon\Image\Adapter\AbstractAdapter
      * @throws Exception
      * @throws ImagickException
      */
-    public function __construct(string $file, int $width = null, int $height = null)
+    public function __construct(string $file, ?int $width = null, ?int $height = null)
     {
     }
 
@@ -273,7 +278,7 @@ class Imagick extends \Phalcon\Image\Adapter\AbstractAdapter
      * @throws ImagickException
      * @throws ImagickPixelException
      */
-    protected function processText(string $text, $offsetX, $offsetY, int $opacity, int $red, int $green, int $blue, int $size, string $fontFile = null): void
+    protected function processText(string $text, $offsetX, $offsetY, int $opacity, int $red, int $green, int $blue, int $size, ?string $fontFile = null): void
     {
     }
 

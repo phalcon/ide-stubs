@@ -56,9 +56,9 @@ abstract class AbstractGroup extends AbstractHelper
      * @param mixed  $checked
      * @param array  $attributes
      *
-     * @return AbstractGroup
+     * @return static
      */
-    public function __invoke(string $name, array $options, $checked = null, array $attributes = []): AbstractGroup
+    public function __invoke(string $name, array $options, $checked = null, array $attributes = []): static
     {
     }
 

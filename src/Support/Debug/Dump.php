@@ -85,10 +85,10 @@ class Dump
      * Alias of variable() method
      *
      * @param mixed $variable
-     * @param string $name
+     * @param string|null $name
      * @return string
      */
-    public function one($variable, string $name = null): string
+    public function one($variable, ?string $name = null): string
     {
     }
 
@@ -141,10 +141,10 @@ class Dump
      * ```
      *
      * @param mixed $variable
-     * @param string $name
+     * @param string|null $name
      * @return string
      */
-    public function variable($variable, string $name = null): string
+    public function variable($variable, ?string $name = null): string
     {
     }
 
@@ -180,11 +180,11 @@ class Dump
      * Prepare an HTML string of information about a single variable.
      *
      * @param mixed $variable
-     * @param string $name
+     * @param string|null $name
      * @param int $tab
      * @return string
      */
-    protected function output($variable, string $name = null, int $tab = 1): string
+    protected function output($variable, ?string $name = null, int $tab = 1): string
     {
     }
 }

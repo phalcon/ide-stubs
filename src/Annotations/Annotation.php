@@ -9,6 +9,8 @@
  */
 namespace Phalcon\Annotations;
 
+use Phalcon\Annotations\Exceptions\UnknownAnnotationExpression;
+
 /**
  * Represents a single annotation in an annotations collection
  */

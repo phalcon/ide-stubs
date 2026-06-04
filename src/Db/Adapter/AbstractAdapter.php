@@ -10,15 +10,22 @@
 namespace Phalcon\Db\Adapter;
 
 use Phalcon\Db\CheckInterface;
-use Phalcon\Db\DialectInterface;
 use Phalcon\Db\ColumnInterface;
+use Phalcon\Db\DialectInterface;
 use Phalcon\Db\Enum;
 use Phalcon\Db\Exception;
+use Phalcon\Db\Exceptions\CannotInsertWithoutData;
+use Phalcon\Db\Exceptions\IncompleteBindTypes;
+use Phalcon\Db\Exceptions\InvalidWhereConditions;
+use Phalcon\Db\Exceptions\NestedTransactionChangeBlocked;
+use Phalcon\Db\Exceptions\SavepointsNotSupported;
+use Phalcon\Db\Exceptions\TableMustHaveColumn;
+use Phalcon\Db\Exceptions\UpdateFieldCountMismatch;
 use Phalcon\Db\Index;
 use Phalcon\Db\IndexInterface;
+use Phalcon\Db\RawValue;
 use Phalcon\Db\Reference;
 use Phalcon\Db\ReferenceInterface;
-use Phalcon\Db\RawValue;
 use Phalcon\Events\EventsAwareInterface;
 use Phalcon\Events\ManagerInterface;
 use Phalcon\Support\Settings;
@@ -268,10 +275,10 @@ abstract class AbstractAdapter implements \Phalcon\Db\Adapter\AdapterInterface, 
      *
      * @param string $viewName
      * @param array $definition
-     * @param string $schemaName
+     * @param string|null $schemaName
      * @return bool
      */
-    public function createView(string $viewName, array $definition, string $schemaName = null): bool
+    public function createView(string $viewName, array $definition, ?string $schemaName = null): bool
     {
     }
 
@@ -295,7 +302,7 @@ abstract class AbstractAdapter implements \Phalcon\Db\Adapter\AdapterInterface, 
      * @param array $dataTypes *
      * @return bool
      */
-    public function delete($table, string $whereCondition = null, array $placeholders = [], array $dataTypes = []): bool
+    public function delete($table, ?string $whereCondition = null, array $placeholders = [], array $dataTypes = []): bool
     {
     }
 
@@ -309,10 +316,10 @@ abstract class AbstractAdapter implements \Phalcon\Db\Adapter\AdapterInterface, 
      * ```
      *
      * @param string $table
-     * @param string $schema
+     * @param string|null $schema
      * @return array|\Phalcon\Db\IndexInterface[]
      */
-    public function describeIndexes(string $table, string $schema = null): array
+    public function describeIndexes(string $table, ?string $schema = null): array
     {
     }
 
@@ -326,10 +333,10 @@ abstract class AbstractAdapter implements \Phalcon\Db\Adapter\AdapterInterface, 
      * ```
      *
      * @param string $table
-     * @param string $schema
+     * @param string|null $schema
      * @return array|\Phalcon\Db\ReferenceInterface[]
      */
-    public function describeReferences(string $table, string $schema = null): array
+    public function describeReferences(string $table, ?string $schema = null): array
     {
     }
 
@@ -396,11 +403,11 @@ abstract class AbstractAdapter implements \Phalcon\Db\Adapter\AdapterInterface, 
      * Drops a table from a schema/database
      *
      * @param string $tableName
-     * @param string $schemaName
+     * @param string|null $schemaName
      * @param bool $ifExists
      * @return bool
      */
-    public function dropTable(string $tableName, string $schemaName = null, bool $ifExists = true): bool
+    public function dropTable(string $tableName, ?string $schemaName = null, bool $ifExists = true): bool
     {
     }
 
@@ -408,11 +415,11 @@ abstract class AbstractAdapter implements \Phalcon\Db\Adapter\AdapterInterface, 
      * Drops a view
      *
      * @param string $viewName
-     * @param string $schemaName
+     * @param string|null $schemaName
      * @param bool $ifExists
      * @return bool
      */
-    public function dropView(string $viewName, string $schemaName = null, bool $ifExists = true): bool
+    public function dropView(string $viewName, ?string $schemaName = null, bool $ifExists = true): bool
     {
     }
 
@@ -779,10 +786,10 @@ abstract class AbstractAdapter implements \Phalcon\Db\Adapter\AdapterInterface, 
      * ```
      *
      * @param string $sqlQuery
-     * @param int $number
+     * @param mixed $number
      * @return string
      */
-    public function limit(string $sqlQuery, int $number): string
+    public function limit(string $sqlQuery, $number): string
     {
     }
 
@@ -795,10 +802,10 @@ abstract class AbstractAdapter implements \Phalcon\Db\Adapter\AdapterInterface, 
      * );
      * ```
      *
-     * @param string $schemaName
+     * @param string|null $schemaName
      * @return array
      */
-    public function listTables(string $schemaName = null): array
+    public function listTables(?string $schemaName = null): array
     {
     }
 
@@ -811,10 +818,10 @@ abstract class AbstractAdapter implements \Phalcon\Db\Adapter\AdapterInterface, 
      * );
      * ```
      *
-     * @param string $schemaName
+     * @param string|null $schemaName
      * @return array
      */
-    public function listViews(string $schemaName = null): array
+    public function listViews(?string $schemaName = null): array
     {
     }
 
@@ -824,10 +831,10 @@ abstract class AbstractAdapter implements \Phalcon\Db\Adapter\AdapterInterface, 
      * @param string $tableName
      * @param string $schemaName
      * @param \Phalcon\Db\ColumnInterface $column
-     * @param \Phalcon\Db\ColumnInterface $currentColumn
+     * @param \Phalcon\Db\ColumnInterface|null $currentColumn
      * @return bool
      */
-    public function modifyColumn(string $tableName, string $schemaName, \Phalcon\Db\ColumnInterface $column, \Phalcon\Db\ColumnInterface $currentColumn = null): bool
+    public function modifyColumn(string $tableName, string $schemaName, \Phalcon\Db\ColumnInterface $column, ?\Phalcon\Db\ColumnInterface $currentColumn = null): bool
     {
     }
 
@@ -909,10 +916,10 @@ abstract class AbstractAdapter implements \Phalcon\Db\Adapter\AdapterInterface, 
      *
      * @param string $viewName
      * @param array $definition
-     * @param string $schemaName
+     * @param string|null $schemaName
      * @return bool
      */
-    public function createMaterializedView(string $viewName, array $definition, string $schemaName = null): bool
+    public function createMaterializedView(string $viewName, array $definition, ?string $schemaName = null): bool
     {
     }
 
@@ -920,11 +927,11 @@ abstract class AbstractAdapter implements \Phalcon\Db\Adapter\AdapterInterface, 
      * Drops a materialized view (PostgreSQL only).
      *
      * @param string $viewName
-     * @param string $schemaName
+     * @param string|null $schemaName
      * @param bool $ifExists
      * @return bool
      */
-    public function dropMaterializedView(string $viewName, string $schemaName = null, bool $ifExists = true): bool
+    public function dropMaterializedView(string $viewName, ?string $schemaName = null, bool $ifExists = true): bool
     {
     }
 
@@ -933,11 +940,11 @@ abstract class AbstractAdapter implements \Phalcon\Db\Adapter\AdapterInterface, 
      * `concurrent = true` for non-blocking refresh.
      *
      * @param string $viewName
-     * @param string $schemaName
+     * @param string|null $schemaName
      * @param bool $concurrent
      * @return bool
      */
-    public function refreshMaterializedView(string $viewName, string $schemaName = null, bool $concurrent = false): bool
+    public function refreshMaterializedView(string $viewName, ?string $schemaName = null, bool $concurrent = false): bool
     {
     }
 
@@ -988,10 +995,10 @@ abstract class AbstractAdapter implements \Phalcon\Db\Adapter\AdapterInterface, 
      * ```
      *
      * @param string $tableName
-     * @param string $schemaName
+     * @param string|null $schemaName
      * @return bool
      */
-    public function tableExists(string $tableName, string $schemaName = null): bool
+    public function tableExists(string $tableName, ?string $schemaName = null): bool
     {
     }
 
@@ -1005,10 +1012,10 @@ abstract class AbstractAdapter implements \Phalcon\Db\Adapter\AdapterInterface, 
      * ```
      *
      * @param string $tableName
-     * @param string $schemaName
+     * @param string|null $schemaName
      * @return array
      */
-    public function tableOptions(string $tableName, string $schemaName = null): array
+    public function tableOptions(string $tableName, ?string $schemaName = null): array
     {
     }
 
@@ -1116,10 +1123,10 @@ abstract class AbstractAdapter implements \Phalcon\Db\Adapter\AdapterInterface, 
      * ```
      *
      * @param string $viewName
-     * @param string $schemaName
+     * @param string|null $schemaName
      * @return bool
      */
-    public function viewExists(string $viewName, string $schemaName = null): bool
+    public function viewExists(string $viewName, ?string $schemaName = null): bool
     {
     }
 }

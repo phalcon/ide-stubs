@@ -41,7 +41,7 @@ abstract class AbstractChecked extends \Phalcon\Html\Helper\Input\AbstractInput
      * @param EscaperInterface $escaper
      * @param Doctype          $doctype
      */
-    public function __construct(\Phalcon\Html\Escaper\EscaperInterface $escaper, \Phalcon\Html\Helper\Doctype $doctype = null)
+    public function __construct(\Phalcon\Html\Escaper\EscaperInterface $escaper, ?\Phalcon\Html\Helper\Doctype $doctype = null)
     {
     }
 
@@ -64,9 +64,9 @@ abstract class AbstractChecked extends \Phalcon\Html\Helper\Input\AbstractInput
      *
      * @param array $attributes
      *
-     * @return AbstractChecked
+     * @return static
      */
-    public function label(array $attributes = []): AbstractChecked
+    public function label(array $attributes = []): static
     {
     }
 
@@ -79,9 +79,9 @@ abstract class AbstractChecked extends \Phalcon\Html\Helper\Input\AbstractInput
      *
      * @param bool $flag
      *
-     * @return AbstractChecked
+     * @return static
      */
-    public function strict(bool $flag = true): AbstractChecked
+    public function strict(bool $flag = true): static
     {
     }
 

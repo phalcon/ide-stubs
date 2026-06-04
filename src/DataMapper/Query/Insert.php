@@ -68,7 +68,7 @@ class Insert extends \Phalcon\DataMapper\Query\AbstractQuery
      *
      * @return string
      */
-    public function getLastInsertId(string $name = null): string
+    public function getLastInsertId(?string $name = null): string
     {
     }
 

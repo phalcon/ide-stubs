@@ -10,7 +10,7 @@
 namespace Phalcon\Html\Escaper;
 
 /**
- * Exceptions thrown in Phalcon\Html\Escaper will use this class
+ * Class Exception
  */
 class Exception extends \Exception
 {

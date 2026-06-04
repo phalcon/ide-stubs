@@ -148,10 +148,10 @@ interface DispatcherInterface
     /**
      * Sets the module name which the application belongs to
      *
-     * @param string $moduleName
+     * @param string|null $moduleName
      * @return void
      */
-    public function setModuleName(string $moduleName = null): void;
+    public function setModuleName(?string $moduleName = null): void;
 
     /**
      * Sets the namespace which the controller belongs to

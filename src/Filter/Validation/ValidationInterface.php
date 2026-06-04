@@ -56,10 +56,10 @@ interface ValidationInterface
     /**
      * Returns all the filters or a specific one
      *
-     * @param string $field
+     * @param string|null $field
      * @return mixed|null
      */
-    public function getFilters(string $field = null): mixed;
+    public function getFilters(?string $field = null): mixed;
 
     /**
      * Get label for field

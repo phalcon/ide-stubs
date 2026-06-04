@@ -123,6 +123,7 @@ interface Repository
      * Sets the aliases for properties repository
      *
      * @param array $aliases
+     *
      * @return Repository
      */
     public function setAliases(array $aliases): Repository;
@@ -131,6 +132,7 @@ interface Repository
      * Sets values for properties of the repository
      *
      * @param array $properties
+     *
      * @return Repository
      */
     public function setProperties(array $properties): Repository;

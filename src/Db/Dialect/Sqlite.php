@@ -11,11 +11,21 @@ namespace Phalcon\Db\Dialect;
 
 use Phalcon\Db\CheckInterface;
 use Phalcon\Db\Column;
-use Phalcon\Db\Exception;
-use Phalcon\Db\IndexInterface;
+use Phalcon\Db\ColumnInterface;
 use Phalcon\Db\Dialect;
 use Phalcon\Db\DialectInterface;
-use Phalcon\Db\ColumnInterface;
+use Phalcon\Db\Exception;
+use Phalcon\Db\Exceptions\MissingDefinitionKey;
+use Phalcon\Db\Exceptions\ReturningRequiresColumn;
+use Phalcon\Db\Exceptions\SqliteAlterCheckNotSupported;
+use Phalcon\Db\Exceptions\SqliteAlterColumnNotSupported;
+use Phalcon\Db\Exceptions\SqliteAlterForeignKeyNotSupported;
+use Phalcon\Db\Exceptions\SqliteAlterPrimaryKeyNotSupported;
+use Phalcon\Db\Exceptions\SqliteDropCheckNotSupported;
+use Phalcon\Db\Exceptions\SqliteDropForeignKeyNotSupported;
+use Phalcon\Db\Exceptions\SqliteDropPrimaryKeyNotSupported;
+use Phalcon\Db\Exceptions\UnrecognizedDataType;
+use Phalcon\Db\IndexInterface;
 use Phalcon\Db\RawValue;
 use Phalcon\Db\ReferenceInterface;
 
@@ -107,10 +117,10 @@ class Sqlite extends Dialect
      *
      * @param string $viewName
      * @param array $definition
-     * @param string $schemaName
+     * @param string|null $schemaName
      * @return string
      */
-    public function createView(string $viewName, array $definition, string $schemaName = null): string
+    public function createView(string $viewName, array $definition, ?string $schemaName = null): string
     {
     }
 
@@ -124,10 +134,10 @@ class Sqlite extends Dialect
      * ```
      *
      * @param string $table
-     * @param string $schema
+     * @param string|null $schema
      * @return string
      */
-    public function describeColumns(string $table, string $schema = null): string
+    public function describeColumns(string $table, ?string $schema = null): string
     {
     }
 
@@ -145,10 +155,10 @@ class Sqlite extends Dialect
      * Generates SQL to query indexes on a table
      *
      * @param string $table
-     * @param string $schema
+     * @param string|null $schema
      * @return string
      */
-    public function describeIndexes(string $table, string $schema = null): string
+    public function describeIndexes(string $table, ?string $schema = null): string
     {
     }
 
@@ -156,10 +166,10 @@ class Sqlite extends Dialect
      * Generates SQL to query foreign keys on a table
      *
      * @param string $table
-     * @param string $schema
+     * @param string|null $schema
      * @return string
      */
-    public function describeReferences(string $table, string $schema = null): string
+    public function describeReferences(string $table, ?string $schema = null): string
     {
     }
 
@@ -231,11 +241,11 @@ class Sqlite extends Dialect
      * Generates SQL to drop a table
      *
      * @param string $tableName
-     * @param string $schemaName
+     * @param string|null $schemaName
      * @param bool $ifExists
      * @return string
      */
-    public function dropTable(string $tableName, string $schemaName = null, bool $ifExists = true): string
+    public function dropTable(string $tableName, ?string $schemaName = null, bool $ifExists = true): string
     {
     }
 
@@ -243,11 +253,11 @@ class Sqlite extends Dialect
      * Generates SQL to drop a view
      *
      * @param string $viewName
-     * @param string $schemaName
+     * @param string|null $schemaName
      * @param bool $ifExists
      * @return string
      */
-    public function dropView(string $viewName, string $schemaName = null, bool $ifExists = true): string
+    public function dropView(string $viewName, ?string $schemaName = null, bool $ifExists = true): string
     {
     }
 
@@ -285,11 +295,11 @@ class Sqlite extends Dialect
      * ```
      *
      * @param string $table
-     * @param string $schema
-     * @param string $keyName
+     * @param string|null $schema
+     * @param string|null $keyName
      * @return string
      */
-    public function listIndexesSql(string $table, string $schema = null, string $keyName = null): string
+    public function listIndexesSql(string $table, ?string $schema = null, ?string $keyName = null): string
     {
     }
 
@@ -302,20 +312,20 @@ class Sqlite extends Dialect
      * );
      * ```
      *
-     * @param string $schemaName
+     * @param string|null $schemaName
      * @return string
      */
-    public function listTables(string $schemaName = null): string
+    public function listTables(?string $schemaName = null): string
     {
     }
 
     /**
      * Generates the SQL to list all views of a schema or user
      *
-     * @param string $schemaName
+     * @param string|null $schemaName
      * @return string
      */
-    public function listViews(string $schemaName = null): string
+    public function listViews(?string $schemaName = null): string
     {
     }
 
@@ -325,10 +335,10 @@ class Sqlite extends Dialect
      * @param string $tableName
      * @param string $schemaName
      * @param \Phalcon\Db\ColumnInterface $column
-     * @param \Phalcon\Db\ColumnInterface $currentColumn
+     * @param \Phalcon\Db\ColumnInterface|null $currentColumn
      * @return string
      */
-    public function modifyColumn(string $tableName, string $schemaName, \Phalcon\Db\ColumnInterface $column, \Phalcon\Db\ColumnInterface $currentColumn = null): string
+    public function modifyColumn(string $tableName, string $schemaName, \Phalcon\Db\ColumnInterface $column, ?\Phalcon\Db\ColumnInterface $currentColumn = null): string
     {
     }
 
@@ -367,10 +377,10 @@ class Sqlite extends Dialect
      * ```
      *
      * @param string $tableName
-     * @param string $schemaName
+     * @param string|null $schemaName
      * @return string
      */
-    public function tableExists(string $tableName, string $schemaName = null): string
+    public function tableExists(string $tableName, ?string $schemaName = null): string
     {
     }
 
@@ -378,10 +388,10 @@ class Sqlite extends Dialect
      * Generates the SQL to describe the table creation options
      *
      * @param string $table
-     * @param string $schema
+     * @param string|null $schema
      * @return string
      */
-    public function tableOptions(string $table, string $schema = null): string
+    public function tableOptions(string $table, ?string $schema = null): string
     {
     }
 
@@ -400,10 +410,10 @@ class Sqlite extends Dialect
      * Generates SQL checking for the existence of a schema.view
      *
      * @param string $viewName
-     * @param string $schemaName
+     * @param string|null $schemaName
      * @return string
      */
-    public function viewExists(string $viewName, string $schemaName = null): string
+    public function viewExists(string $viewName, ?string $schemaName = null): string
     {
     }
 }

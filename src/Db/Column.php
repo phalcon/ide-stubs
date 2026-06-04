@@ -9,6 +9,13 @@
  */
 namespace Phalcon\Db;
 
+use Phalcon\Db\Exceptions\ColumnTypeRejectsAutoIncrement;
+use Phalcon\Db\Exceptions\ColumnTypeRejectsScale;
+use Phalcon\Db\Exceptions\ColumnTypeRequired;
+use Phalcon\Db\Exceptions\GeneratedAutoIncrementConflict;
+use Phalcon\Db\Exceptions\GeneratedDefaultConflict;
+use Phalcon\Db\Exceptions\InvalidGenerationExpression;
+
 /**
  * Allows to define columns to be used on create or alter table operations
  *

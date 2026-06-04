@@ -29,7 +29,7 @@ class Preload extends \Phalcon\Html\Helper\AbstractHelper
      * @param EscaperInterface      $escaper
      * @param ResponseInterface|null $response
      */
-    public function __construct(\Phalcon\Html\Escaper\EscaperInterface $escaper, \Phalcon\Http\ResponseInterface $response = null)
+    public function __construct(\Phalcon\Html\Escaper\EscaperInterface $escaper, ?\Phalcon\Http\ResponseInterface $response = null)
     {
     }
 

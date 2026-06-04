@@ -139,11 +139,11 @@ class PdoResult implements \Phalcon\Db\ResultInterface
      * }
      * ```
      *
-     * @param int $fetchStyle
+     * @param int|null $fetchStyle
      * @param int $cursorOrientation
      * @param int $cursorOffset
      */
-    public function fetch(int $fetchStyle = null, int $cursorOrientation = Enum::FETCH_ORI_NEXT, int $cursorOffset = 0)
+    public function fetch(?int $fetchStyle = null, int $cursorOrientation = Enum::FETCH_ORI_NEXT, int $cursorOffset = 0)
     {
     }
 

@@ -1,0 +1,43 @@
+<?php
+
+/* This file is part of the Phalcon Framework.
+ *
+ * (c) Phalcon Team <team@phalcon.io>
+ *
+ * For the full copyright and license information, please view the LICENSE.txt
+ * file that was distributed with this source code.
+ */
+namespace Phalcon\Auth\Mvc;
+
+use Phalcon\Auth\AbstractAuthDispatcherListener;
+use Phalcon\Auth\Exception;
+use Phalcon\Events\Event;
+use Phalcon\Mvc\Dispatcher;
+
+/**
+ * Listener that enforces the active Phalcon\Auth access gate on each MVC
+ * dispatch. Attach to the events manager:
+ *
+ *   $eventsManager->attach('dispatch', new AuthDispatcherListener($manager));
+ *
+ * No-op when no active access has been set on the manager.
+ */
+class AuthDispatcherListener extends AbstractAuthDispatcherListener
+{
+    /**
+     * @throws Exception
+     * @param \Phalcon\Events\Event $event
+     * @param \Phalcon\Mvc\Dispatcher $dispatcher
+     * @return bool
+     */
+    public function beforeExecuteRoute(\Phalcon\Events\Event $event, \Phalcon\Mvc\Dispatcher $dispatcher): bool
+    {
+    }
+
+    /**
+     * @return string
+     */
+    protected function getActionType(): string
+    {
+    }
+}

@@ -9,7 +9,7 @@
  */
 namespace Phalcon\Support\Helper\Str;
 
-use RuntimeException;
+use Phalcon\Support\Helper\Str\Exceptions\SyntaxError;
 
 /**
  * Generates random text in accordance with the template. The template is

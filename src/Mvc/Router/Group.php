@@ -10,8 +10,6 @@
 namespace Phalcon\Mvc\Router;
 
 /**
- * Phalcon\Mvc\Router\Group
- *
  * Helper class to create a group of routes with common attributes
  *
  * ```php
@@ -100,18 +98,15 @@ class Group implements \Phalcon\Mvc\Router\GroupInterface
      * $router->add("/about", "About::index");
      * ```
      *
-     * @param string $pattenr
+     * @param string $pattern
      * @param string|array $paths = [
      *     'module => '',
      *     'controller' => '',
      *     'action' => '',
      *     'namespace' => ''
      * ]
-     * @param httpMethods $array |string|null
-     *
+     * @param array|string|null $httpMethods *
      * @return RouteInterface
-     * @param string $pattern
-     * @param mixed $httpMethods
      */
     public function add(string $pattern, $paths = null, $httpMethods = null): RouteInterface
     {
@@ -292,10 +287,8 @@ class Group implements \Phalcon\Mvc\Router\GroupInterface
      * The developer can implement any arbitrary conditions here
      * If the callback returns false the route is treated as not matched
      *
-     * @paramm callable beforeMatch
-     *
+     * @param callable $beforeMatch *
      * @return GroupInterface
-     * @param callable $beforeMatch
      */
     public function beforeMatch($beforeMatch): GroupInterface
     {
@@ -313,9 +306,9 @@ class Group implements \Phalcon\Mvc\Router\GroupInterface
     /**
      * Returns the 'before match' callback if any
      *
-     * @return mixed
+     * @return mixed|null
      */
-    public function getBeforeMatch()
+    public function getBeforeMatch(): null
     {
     }
 
@@ -331,9 +324,9 @@ class Group implements \Phalcon\Mvc\Router\GroupInterface
     /**
      * Returns the common paths defined for this group
      *
-     * @return array|string
+     * @return array|string|null
      */
-    public function getPaths(): string|array
+    public function getPaths(): string|array|null
     {
     }
 

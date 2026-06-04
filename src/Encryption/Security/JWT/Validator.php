@@ -9,6 +9,7 @@
  */
 namespace Phalcon\Encryption\Security\JWT;
 
+use Phalcon\Encryption\Security\JWT\Exceptions\InvalidAudienceType;
 use Phalcon\Encryption\Security\JWT\Exceptions\ValidatorException;
 use Phalcon\Encryption\Security\JWT\Signer\SignerInterface;
 use Phalcon\Encryption\Security\JWT\Token\Enum;
@@ -75,9 +76,9 @@ class Validator
      * @param string $claim
      * @param mixed  $value
      *
-     * @return Validator
+     * @return static
      */
-    public function set(string $claim, $value): Validator
+    public function set(string $claim, $value): static
     {
     }
 
@@ -86,9 +87,9 @@ class Validator
      *
      * @param Token $token
      *
-     * @return Validator
+     * @return static
      */
-    public function setToken(\Phalcon\Encryption\Security\JWT\Token\Token $token): Validator
+    public function setToken(\Phalcon\Encryption\Security\JWT\Token\Token $token): static
     {
     }
 
@@ -98,9 +99,9 @@ class Validator
      * @param string          $name
      * @param bool|int|string $value
      *
-     * @return Validator
+     * @return static
      */
-    public function validateClaim(string $name, $value): Validator
+    public function validateClaim(string $name, $value): static
     {
     }
 
@@ -109,10 +110,10 @@ class Validator
      *
      * @param string|array $audience
      *
-     * @return Validator
+     * @return static
      * @throws ValidatorException
      */
-    public function validateAudience($audience): Validator
+    public function validateAudience($audience): static
     {
     }
 
@@ -121,10 +122,10 @@ class Validator
      *
      * @param int $timestamp
      *
-     * @return Validator
+     * @return static
      * @throws ValidatorException
      */
-    public function validateExpiration(int $timestamp): Validator
+    public function validateExpiration(int $timestamp): static
     {
     }
 
@@ -133,10 +134,10 @@ class Validator
      *
      * @param string $id
      *
-     * @return Validator
+     * @return static
      * @throws ValidatorException
      */
-    public function validateId(string $id): Validator
+    public function validateId(string $id): static
     {
     }
 
@@ -145,10 +146,10 @@ class Validator
      *
      * @param int $timestamp
      *
-     * @return Validator
+     * @return static
      * @throws ValidatorException
      */
-    public function validateIssuedAt(int $timestamp): Validator
+    public function validateIssuedAt(int $timestamp): static
     {
     }
 
@@ -157,10 +158,10 @@ class Validator
      *
      * @param string $issuer
      *
-     * @return Validator
+     * @return static
      * @throws ValidatorException
      */
-    public function validateIssuer(string $issuer): Validator
+    public function validateIssuer(string $issuer): static
     {
     }
 
@@ -169,10 +170,10 @@ class Validator
      *
      * @param int $timestamp
      *
-     * @return Validator
+     * @return static
      * @throws ValidatorException
      */
-    public function validateNotBefore(int $timestamp): Validator
+    public function validateNotBefore(int $timestamp): static
     {
     }
 
@@ -182,10 +183,10 @@ class Validator
      * @param SignerInterface $signer
      * @param string          $passphrase
      *
-     * @return Validator
+     * @return static
      * @throws ValidatorException
      */
-    public function validateSignature(\Phalcon\Encryption\Security\JWT\Signer\SignerInterface $signer, string $passphrase): Validator
+    public function validateSignature(\Phalcon\Encryption\Security\JWT\Signer\SignerInterface $signer, string $passphrase): static
     {
     }
 

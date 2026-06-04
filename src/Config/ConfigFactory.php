@@ -11,6 +11,9 @@ namespace Phalcon\Config;
 
 use Phalcon\Config\Config;
 use Phalcon\Config\ConfigInterface;
+use Phalcon\Config\Exceptions\ConfigNotArrayOrObject;
+use Phalcon\Config\Exceptions\MissingConfigOption;
+use Phalcon\Config\Exceptions\MissingFileExtension;
 use Phalcon\Factory\AbstractFactory;
 
 /**

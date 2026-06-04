@@ -24,10 +24,10 @@ interface BinderInterface
      * @param object $handler
      * @param array $params
      * @param string $cacheKey
-     * @param string $methodName
+     * @param string|null $methodName
      * @return array
      */
-    public function bindToHandler($handler, array $params, string $cacheKey, string $methodName = null): array;
+    public function bindToHandler($handler, array $params, string $cacheKey, ?string $methodName = null): array;
 
     /**
      * Gets active bound models

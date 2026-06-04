@@ -15,6 +15,18 @@ namespace Phalcon\Html\Link\Interfaces;
 interface EvolvableLinkInterface extends \Phalcon\Html\Link\Interfaces\LinkInterface
 {
     /**
+     * Returns an instance with the specified attribute added.
+     *
+     * If the specified attribute is already present, it will be overwritten
+     * with the new value.
+     *
+     * @param string $attribute The attribute to include.
+     * @param string $value     The value of the attribute to set.
+     * @return EvolvableLinkInterface
+     */
+    public function withAttribute(string $attribute, string $value): EvolvableLinkInterface;
+
+    /**
      * Returns an instance with the specified href.
      *
      * @param string $href
@@ -44,29 +56,6 @@ interface EvolvableLinkInterface extends \Phalcon\Html\Link\Interfaces\LinkInter
     public function withRel(string $rel): EvolvableLinkInterface;
 
     /**
-     * Returns an instance with the specified relationship excluded.
-     *
-     * If the specified rel is already not present, this method MUST return
-     * normally without errors.
-     *
-     * @param string $rel The relationship value to exclude.
-     * @return EvolvableLinkInterface
-     */
-    public function withoutRel(string $rel): EvolvableLinkInterface;
-
-    /**
-     * Returns an instance with the specified attribute added.
-     *
-     * If the specified attribute is already present, it will be overwritten
-     * with the new value.
-     *
-     * @param string $attribute The attribute to include.
-     * @param string $value     The value of the attribute to set.
-     * @return EvolvableLinkInterface
-     */
-    public function withAttribute(string $attribute, string $value): EvolvableLinkInterface;
-
-    /**
      * Returns an instance with the specified attribute excluded.
      *
      * If the specified attribute is not present, this method MUST return
@@ -76,4 +65,15 @@ interface EvolvableLinkInterface extends \Phalcon\Html\Link\Interfaces\LinkInter
      * @return EvolvableLinkInterface
      */
     public function withoutAttribute(string $attribute): EvolvableLinkInterface;
+
+    /**
+     * Returns an instance with the specified relationship excluded.
+     *
+     * If the specified rel is already not present, this method MUST return
+     * normally without errors.
+     *
+     * @param string $rel The relationship value to exclude.
+     * @return EvolvableLinkInterface
+     */
+    public function withoutRel(string $rel): EvolvableLinkInterface;
 }

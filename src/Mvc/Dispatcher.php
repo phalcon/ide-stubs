@@ -9,10 +9,11 @@
  */
 namespace Phalcon\Mvc;
 
-use Phalcon\Mvc\Dispatcher\Exception;
+use Phalcon\Dispatcher\AbstractDispatcher as BaseDispatcher;
 use Phalcon\Events\ManagerInterface;
 use Phalcon\Http\ResponseInterface;
-use Phalcon\Dispatcher\AbstractDispatcher as BaseDispatcher;
+use Phalcon\Mvc\Dispatcher\Exception;
+use Phalcon\Mvc\Dispatcher\Exceptions\ResponseServiceUnavailable;
 
 /**
  * Dispatching is the process of taking the request object, extracting the
@@ -174,8 +175,9 @@ class Dispatcher extends \Phalcon\Dispatcher\AbstractDispatcher implements \Phal
      * Sets the controller name to be dispatched
      *
      * @param string $controllerName
+     * @return DispatcherInterface
      */
-    public function setControllerName(string $controllerName)
+    public function setControllerName(string $controllerName): DispatcherInterface
     {
     }
 
@@ -183,8 +185,9 @@ class Dispatcher extends \Phalcon\Dispatcher\AbstractDispatcher implements \Phal
      * Sets the default controller suffix
      *
      * @param string $controllerSuffix
+     * @return DispatcherInterface
      */
-    public function setControllerSuffix(string $controllerSuffix)
+    public function setControllerSuffix(string $controllerSuffix): DispatcherInterface
     {
     }
 
@@ -192,8 +195,9 @@ class Dispatcher extends \Phalcon\Dispatcher\AbstractDispatcher implements \Phal
      * Sets the default controller name
      *
      * @param string $controllerName
+     * @return DispatcherInterface
      */
-    public function setDefaultController(string $controllerName)
+    public function setDefaultController(string $controllerName): DispatcherInterface
     {
     }
 

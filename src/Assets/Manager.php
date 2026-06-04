@@ -11,6 +11,13 @@ namespace Phalcon\Assets;
 
 use Phalcon\Assets\Asset\Css as AssetCss;
 use Phalcon\Assets\Asset\Js as AssetJs;
+use Phalcon\Assets\Exceptions\AssetSourceTargetCollision;
+use Phalcon\Assets\Exceptions\CollectionNotFound;
+use Phalcon\Assets\Exceptions\InvalidAssetSourcePath;
+use Phalcon\Assets\Exceptions\InvalidAssetTargetPath;
+use Phalcon\Assets\Exceptions\InvalidFilter;
+use Phalcon\Assets\Exceptions\InvalidTargetPath;
+use Phalcon\Assets\Exceptions\TargetPathIsDirectory;
 use Phalcon\Assets\Inline\Css as InlineCss;
 use Phalcon\Assets\Inline\Js as InlineJs;
 use Phalcon\Di\AbstractInjectionAware;
@@ -58,9 +65,9 @@ class Manager extends AbstractInjectionAware
      * Adds a raw asset to the manager
      *
      * @param Asset $asset
-     * @return Manager
+     * @return static
      */
-    public function addAsset(Asset $asset): Manager
+    public function addAsset(Asset $asset): static
     {
     }
 
@@ -69,9 +76,9 @@ class Manager extends AbstractInjectionAware
      *
      * @param string $type
      * @param Asset  $asset
-     * @return Manager
+     * @return static
      */
-    public function addAssetByType(string $type, Asset $asset): Manager
+    public function addAssetByType(string $type, Asset $asset): static
     {
     }
 
@@ -84,9 +91,9 @@ class Manager extends AbstractInjectionAware
      * @param array       $attributes
      * @param string|null $version
      * @param bool        $autoVersion
-     * @return Manager
+     * @return static
      */
-    public function addCss(string $path, bool $local = true, bool $filter = true, array $attributes = [], string $version = null, bool $autoVersion = false): Manager
+    public function addCss(string $path, bool $local = true, bool $filter = true, array $attributes = [], ?string $version = null, bool $autoVersion = false): static
     {
     }
 
@@ -94,9 +101,9 @@ class Manager extends AbstractInjectionAware
      * Adds a raw inline code to the manager
      *
      * @param Inline $code
-     * @return Manager
+     * @return static
      */
-    public function addInlineCode(Inline $code): Manager
+    public function addInlineCode(Inline $code): static
     {
     }
 
@@ -105,9 +112,9 @@ class Manager extends AbstractInjectionAware
      *
      * @param string $type
      * @param Inline $code
-     * @return Manager
+     * @return static
      */
-    public function addInlineCodeByType(string $type, Inline $code): Manager
+    public function addInlineCodeByType(string $type, Inline $code): static
     {
     }
 
@@ -117,9 +124,9 @@ class Manager extends AbstractInjectionAware
      * @param string $content
      * @param bool   $filter
      * @param array  $attributes
-     * @return Manager
+     * @return static
      */
-    public function addInlineCss(string $content, bool $filter = true, array $attributes = []): Manager
+    public function addInlineCss(string $content, bool $filter = true, array $attributes = []): static
     {
     }
 
@@ -129,9 +136,9 @@ class Manager extends AbstractInjectionAware
      * @param string $content
      * @param bool   $filter
      * @param array  $attributes
-     * @return Manager
+     * @return static
      */
-    public function addInlineJs(string $content, bool $filter = true, array $attributes = []): Manager
+    public function addInlineJs(string $content, bool $filter = true, array $attributes = []): static
     {
     }
 
@@ -149,9 +156,9 @@ class Manager extends AbstractInjectionAware
      * @param array       $attributes
      * @param string|null $version
      * @param bool        $autoVersion
-     * @return Manager
+     * @return static
      */
-    public function addJs(string $path, bool $local = true, bool $filter = true, array $attributes = [], string $version = null, bool $autoVersion = false): Manager
+    public function addJs(string $path, bool $local = true, bool $filter = true, array $attributes = [], ?string $version = null, bool $autoVersion = false): static
     {
     }
 
@@ -284,7 +291,7 @@ class Manager extends AbstractInjectionAware
      * @return string
      * @throws Exception
      */
-    public function outputCss(string $name = null): string
+    public function outputCss(?string $name = null): string
     {
     }
 
@@ -308,7 +315,7 @@ class Manager extends AbstractInjectionAware
      *
      * @return string
      */
-    public function outputInlineCss(string $name = null): string
+    public function outputInlineCss(?string $name = null): string
     {
     }
 
@@ -319,7 +326,7 @@ class Manager extends AbstractInjectionAware
      *
      * @return string
      */
-    public function outputInlineJs(string $name = null): string
+    public function outputInlineJs(?string $name = null): string
     {
     }
 
@@ -331,7 +338,7 @@ class Manager extends AbstractInjectionAware
      * @return string
      * @throws Exception
      */
-    public function outputJs(string $name = null): string
+    public function outputJs(?string $name = null): string
     {
     }
 
@@ -344,9 +351,9 @@ class Manager extends AbstractInjectionAware
      *
      * @param string     $name
      * @param Collection $collection
-     * @return Manager
+     * @return static
      */
-    public function set(string $name, Collection $collection): Manager
+    public function set(string $name, Collection $collection): static
     {
     }
 
@@ -354,9 +361,9 @@ class Manager extends AbstractInjectionAware
      * Sets the manager options
      *
      * @param array $options
-     * @return Manager
+     * @return static
      */
-    public function setOptions(array $options): Manager
+    public function setOptions(array $options): static
     {
     }
 
@@ -364,9 +371,9 @@ class Manager extends AbstractInjectionAware
      * Sets if the HTML generated must be directly printed or returned
      *
      * @param bool $implicitOutput
-     * @return Manager
+     * @return static
      */
-    public function useImplicitOutput(bool $implicitOutput): Manager
+    public function useImplicitOutput(bool $implicitOutput): static
     {
     }
 

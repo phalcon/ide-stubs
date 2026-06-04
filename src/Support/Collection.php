@@ -13,10 +13,9 @@ use ArrayAccess;
 use ArrayIterator;
 use Countable;
 use IteratorAggregate;
-use InvalidArgumentException;
 use JsonSerializable;
-use Phalcon\Contracts\Support\Collection as CollectionContract;
 use Phalcon\Support\Collection\CollectionInterface;
+use Phalcon\Support\Collection\Exceptions\InvalidValueType;
 use Phalcon\Support\Helper\Json\Encode;
 use Traversable;
 
@@ -73,9 +72,9 @@ class Collection implements \Phalcon\Support\Collection\CollectionInterface, \Co
      * @param array $data
      * @param bool $insensitive
      * @param bool $strictNull
-     * @param string $type
+     * @param string|null $type
      */
-    public function __construct(array $data = [], bool $insensitive = true, bool $strictNull = false, string $type = null)
+    public function __construct(array $data = [], bool $insensitive = true, bool $strictNull = false, ?string $type = null)
     {
     }
 
@@ -185,7 +184,7 @@ class Collection implements \Phalcon\Support\Collection\CollectionInterface, \Co
      *
      * @return static
      */
-    public function each($callback): CollectionInterface
+    public function each($callback): static
     {
     }
 
@@ -200,7 +199,7 @@ class Collection implements \Phalcon\Support\Collection\CollectionInterface, \Co
      *
      * @return static
      */
-    public function filter($callback): CollectionInterface
+    public function filter($callback): static
     {
     }
 
@@ -226,7 +225,7 @@ class Collection implements \Phalcon\Support\Collection\CollectionInterface, \Co
      *
      * @return mixed
      */
-    public function get(string $element, $defaultValue = null, string $cast = null): mixed
+    public function get(string $element, $defaultValue = null, ?string $cast = null): mixed
     {
     }
 
@@ -347,7 +346,7 @@ class Collection implements \Phalcon\Support\Collection\CollectionInterface, \Co
      *
      * @return static
      */
-    public function map($callback): CollectionInterface
+    public function map($callback): static
     {
     }
 
@@ -471,7 +470,7 @@ class Collection implements \Phalcon\Support\Collection\CollectionInterface, \Co
      *
      * @return static
      */
-    public function sort($callback = null, int $order = 4): CollectionInterface
+    public function sort($callback = null, int $order = 4): static
     {
     }
 
@@ -535,7 +534,7 @@ class Collection implements \Phalcon\Support\Collection\CollectionInterface, \Co
      *
      * @return static
      */
-    public function where(string $propertyOrMethod, $value): CollectionInterface
+    public function where(string $propertyOrMethod, $value): static
     {
     }
 
@@ -547,7 +546,7 @@ class Collection implements \Phalcon\Support\Collection\CollectionInterface, \Co
      *
      * @return static
      */
-    protected function cloneEmpty(array $data = []): CollectionContract
+    protected function cloneEmpty(array $data = []): static
     {
     }
 
@@ -597,7 +596,7 @@ class Collection implements \Phalcon\Support\Collection\CollectionInterface, \Co
      *
      * @param mixed $value
      *
-     * @throws InvalidArgumentException
+     * @throws InvalidValueType
      * @return void
      */
     protected function validateType($value): void

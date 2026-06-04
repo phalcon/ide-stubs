@@ -9,6 +9,7 @@
  */
 namespace Phalcon\Application;
 
+use Phalcon\Application\Exceptions\ModuleNotRegistered;
 use Phalcon\Di\DiInterface;
 use Phalcon\Di\Injectable;
 use Phalcon\Events\EventsAwareInterface;
@@ -42,9 +43,9 @@ abstract class AbstractApplication extends Injectable implements \Phalcon\Events
     /**
      * Phalcon\AbstractApplication constructor
      *
-     * @param \Phalcon\Di\DiInterface $container
+     * @param \Phalcon\Di\DiInterface|null $container
      */
-    public function __construct(\Phalcon\Di\DiInterface $container = null)
+    public function __construct(?\Phalcon\Di\DiInterface $container = null)
     {
     }
 
@@ -105,9 +106,9 @@ abstract class AbstractApplication extends Injectable implements \Phalcon\Events
      *
      * @param array $modules
      * @param bool $merge
-     * @return AbstractApplication
+     * @return static
      */
-    public function registerModules(array $modules, bool $merge = false): AbstractApplication
+    public function registerModules(array $modules, bool $merge = false): static
     {
     }
 
@@ -115,9 +116,9 @@ abstract class AbstractApplication extends Injectable implements \Phalcon\Events
      * Sets the module name to be used if the router does not return a valid module
      *
      * @param string $defaultModule
-     * @return AbstractApplication
+     * @return static
      */
-    public function setDefaultModule(string $defaultModule): AbstractApplication
+    public function setDefaultModule(string $defaultModule): static
     {
     }
 

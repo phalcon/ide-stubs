@@ -10,8 +10,12 @@
 namespace Phalcon\Cli;
 
 use Phalcon\Application\AbstractApplication;
-use Phalcon\Cli\Router\Route;
 use Phalcon\Cli\Console\Exception;
+use Phalcon\Cli\Console\Exceptions\ConsoleModuleNotRegistered;
+use Phalcon\Cli\Console\Exceptions\ContainerRequired;
+use Phalcon\Cli\Console\Exceptions\InvalidModuleDefinitionPath;
+use Phalcon\Cli\Console\Exceptions\ModuleDefinitionPathNotFound;
+use Phalcon\Cli\Router\Route;
 use Phalcon\Di\DiInterface;
 use Phalcon\Events\ManagerInterface;
 
@@ -33,21 +37,21 @@ class Console extends AbstractApplication
     /**
      * Handle the whole command-line tasks
      *
-     * @param array $arguments
+     * @param array|null $arguments
      */
-    public function handle(array $arguments = null)
+    public function handle(?array $arguments = null)
     {
     }
 
     /**
      * Set an specific argument
      *
-     * @param array $arguments
+     * @param array|null $arguments
      * @param bool $str
      * @param bool $shift
-     * @return Console
+     * @return static
      */
-    public function setArgument(array $arguments = null, bool $str = true, bool $shift = true): Console
+    public function setArgument(?array $arguments = null, bool $str = true, bool $shift = true): static
     {
     }
 }

@@ -15,6 +15,9 @@ use Phalcon\Mvc\ModelInterface;
 use Phalcon\Filter\Validation;
 use Phalcon\Filter\Validation\AbstractCombinedFieldsValidator;
 use Phalcon\Filter\Validation\Exception;
+use Phalcon\Filter\Validation\Exceptions\UniquenessConversionMustBeArray;
+use Phalcon\Filter\Validation\Exceptions\UniquenessModelRequired;
+use Phalcon\Filter\Validation\Exceptions\UniquenessOnlyForPhalconModel;
 use Phalcon\Support\Settings;
 
 /**

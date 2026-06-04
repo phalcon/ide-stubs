@@ -62,7 +62,7 @@ class LoggerFactory extends AbstractConfigFactory
      *
      * @return Logger
      */
-    public function newInstance(string $name, array $adapters = [], \DateTimeZone $timezone = null): Logger
+    public function newInstance(string $name, array $adapters = [], ?\DateTimeZone $timezone = null): Logger
     {
     }
 

@@ -31,6 +31,7 @@ interface Schema
     /**
      * Returns an ordered list of normalized element definitions.
      *
+     * @phpstan-return array<int, array<string, mixed>>
      * @return array
      */
     public function load(): array;

@@ -87,7 +87,7 @@ interface PdoInterface
      *
      * @return string
      */
-    public function lastInsertId(string $name = null): string;
+    public function lastInsertId(?string $name = null): string;
 
     /**
      * Prepares an SQL statement for execution.

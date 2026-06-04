@@ -9,7 +9,7 @@
  */
 namespace Phalcon\Support\Helper\Str;
 
-use Phalcon\Support\Helper\Exception;
+use Phalcon\Support\Helper\Str\Exceptions\InsufficientArguments;
 
 /**
  * Concatenates strings using the separator only once without duplication in

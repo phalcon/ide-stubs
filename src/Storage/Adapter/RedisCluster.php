@@ -9,7 +9,7 @@
  */
 namespace Phalcon\Storage\Adapter;
 
-use Phalcon\Storage\Exception as StorageException;
+use Phalcon\Storage\Exceptions\ClusterConnectionFailed;
 use Phalcon\Storage\SerializerFactory;
 
 /**
@@ -75,7 +75,7 @@ class RedisCluster extends \Phalcon\Storage\Adapter\Redis
      * Flushes/clears the cache
      *
      * @return bool
-     * @throws StorageException
+     * @throws ClusterConnectionFailed
      */
     public function clear(): bool
     {
@@ -86,7 +86,7 @@ class RedisCluster extends \Phalcon\Storage\Adapter\Redis
      * Cluster server(s)
      *
      * @return mixed|\RedisCluster
-     * @throws StorageException
+     * @throws ClusterConnectionFailed
      */
     public function getAdapter(): mixed
     {

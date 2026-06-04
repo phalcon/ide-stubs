@@ -29,7 +29,7 @@ class Decorated extends \Phalcon\DataMapper\Pdo\Connection\AbstractConnection
      * @param ProfilerInterface|null $profiler
      *
      */
-    public function __construct(\PDO $pdo, \Phalcon\DataMapper\Pdo\Profiler\ProfilerInterface $profiler = null)
+    public function __construct(\PDO $pdo, ?\Phalcon\DataMapper\Pdo\Profiler\ProfilerInterface $profiler = null)
     {
     }
 

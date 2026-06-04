@@ -10,6 +10,7 @@
 namespace Phalcon\Support\Collection;
 
 use Phalcon\Support\Collection;
+use Phalcon\Support\Collection\Exceptions\ReadOnlyViolation;
 
 /**
  * A read only Collection object
@@ -29,7 +30,7 @@ class ReadOnlyCollection extends Collection
      * @param bool                     $strictNull
      * @param string|null              $type
      */
-    public function __construct(array $data = [], bool $insensitive = true, bool $strictNull = false, string $type = null)
+    public function __construct(array $data = [], bool $insensitive = true, bool $strictNull = false, ?string $type = null)
     {
     }
 
@@ -47,7 +48,7 @@ class ReadOnlyCollection extends Collection
     }
 
     /**
-     * @throws Exception
+     * @throws ReadOnlyViolation
      * @return void
      */
     public function clear(): void
@@ -55,7 +56,7 @@ class ReadOnlyCollection extends Collection
     }
 
     /**
-     * @throws Exception
+     * @throws ReadOnlyViolation
      * @param array $data
      * @return void
      */
@@ -68,7 +69,7 @@ class ReadOnlyCollection extends Collection
      *
      * @param string $element Name of the element
      *
-     * @throws Exception
+     * @throws ReadOnlyViolation
      * @return void
      */
     public function remove(string $element): void
@@ -80,7 +81,7 @@ class ReadOnlyCollection extends Collection
      *
      * @param array<int|string, mixed> $data
      *
-     * @throws Exception
+     * @throws ReadOnlyViolation
      * @return void
      */
     public function replace(array $data): void
@@ -93,7 +94,7 @@ class ReadOnlyCollection extends Collection
      * @param string $element Name of the element
      * @param mixed  $value   Value to store for the element
      *
-     * @throws Exception
+     * @throws ReadOnlyViolation
      * @return void
      */
     public function set(string $element, $value): void

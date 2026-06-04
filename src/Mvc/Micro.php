@@ -11,20 +11,30 @@ namespace Phalcon\Mvc;
 
 use ArrayAccess;
 use Closure;
+use Phalcon\Cache\Adapter\AdapterInterface;
 use Phalcon\Di\DiInterface;
-use Phalcon\Di\Injectable;
 use Phalcon\Di\FactoryDefault;
-use Phalcon\Mvc\Micro\Exception;
+use Phalcon\Di\Injectable;
 use Phalcon\Di\ServiceInterface;
-use Phalcon\Mvc\Micro\Collection;
-use Phalcon\Mvc\Micro\LazyLoader;
-use Phalcon\Http\ResponseInterface;
-use Phalcon\Mvc\Model\BinderInterface;
-use Phalcon\Mvc\Router\RouteInterface;
 use Phalcon\Events\EventsAwareInterface;
 use Phalcon\Events\ManagerInterface;
-use Phalcon\Mvc\Micro\MiddlewareInterface;
+use Phalcon\Http\ResponseInterface;
+use Phalcon\Mvc\Micro\Collection;
 use Phalcon\Mvc\Micro\CollectionInterface;
+use Phalcon\Mvc\Micro\Exception;
+use Phalcon\Mvc\Micro\Exceptions\ContainerRequired;
+use Phalcon\Mvc\Micro\Exceptions\ErrorHandlerNotCallable;
+use Phalcon\Mvc\Micro\Exceptions\HandlerNotCallable;
+use Phalcon\Mvc\Micro\Exceptions\InvalidRegisteredHandler;
+use Phalcon\Mvc\Micro\Exceptions\MissingCollectionMainHandler;
+use Phalcon\Mvc\Micro\Exceptions\NoHandlersToMount;
+use Phalcon\Mvc\Micro\Exceptions\NoMatchedRouteHandler;
+use Phalcon\Mvc\Micro\Exceptions\NotFoundHandlerNotCallable;
+use Phalcon\Mvc\Micro\Exceptions\ResponseHandlerNotCallable;
+use Phalcon\Mvc\Micro\LazyLoader;
+use Phalcon\Mvc\Micro\MiddlewareInterface;
+use Phalcon\Mvc\Model\BinderInterface;
+use Phalcon\Mvc\Router\RouteInterface;
 use Throwable;
 
 /**
@@ -128,9 +138,9 @@ class Micro extends Injectable implements \ArrayAccess, \Phalcon\Events\EventsAw
     /**
      * Phalcon\Mvc\Micro constructor
      *
-     * @param \Phalcon\Di\DiInterface $container
+     * @param \Phalcon\Di\DiInterface|null $container
      */
-    public function __construct(\Phalcon\Di\DiInterface $container = null)
+    public function __construct(?\Phalcon\Di\DiInterface $container = null)
     {
     }
 
@@ -138,9 +148,9 @@ class Micro extends Injectable implements \ArrayAccess, \Phalcon\Events\EventsAw
      * Appends an 'after' middleware to be called after execute the route
      *
      * @param callable|MiddlewareInterface $handler
-     * @return Micro
+     * @return static
      */
-    public function after($handler): Micro
+    public function after($handler): static
     {
     }
 
@@ -148,9 +158,9 @@ class Micro extends Injectable implements \ArrayAccess, \Phalcon\Events\EventsAw
      * Appends a afterBinding middleware to be called after model binding
      *
      * @param callable $handler
-     * @return Micro
+     * @return static
      */
-    public function afterBinding($handler): Micro
+    public function afterBinding($handler): static
     {
     }
 
@@ -158,9 +168,9 @@ class Micro extends Injectable implements \ArrayAccess, \Phalcon\Events\EventsAw
      * Appends a before middleware to be called before execute the route
      *
      * @param callable|MiddlewareInterface $handler
-     * @return Micro
+     * @return static
      */
-    public function before($handler): Micro
+    public function before($handler): static
     {
     }
 
@@ -180,9 +190,9 @@ class Micro extends Injectable implements \ArrayAccess, \Phalcon\Events\EventsAw
      * the route
      *
      * @param callable $handler
-     * @return Micro
+     * @return static
      */
-    public function error($handler): Micro
+    public function error($handler): static
     {
     }
 
@@ -190,9 +200,9 @@ class Micro extends Injectable implements \ArrayAccess, \Phalcon\Events\EventsAw
      * Appends a 'finish' middleware to be called when the request is finished
      *
      * @param callable $handler
-     * @return Micro
+     * @return static
      */
-    public function finish($handler): Micro
+    public function finish($handler): static
     {
     }
 
@@ -346,9 +356,9 @@ class Micro extends Injectable implements \ArrayAccess, \Phalcon\Events\EventsAw
      * Mounts a collection of handlers
      *
      * @param \Phalcon\Mvc\Micro\CollectionInterface $collection
-     * @return Micro
+     * @return static
      */
-    public function mount(\Phalcon\Mvc\Micro\CollectionInterface $collection): Micro
+    public function mount(\Phalcon\Mvc\Micro\CollectionInterface $collection): static
     {
     }
 
@@ -357,9 +367,9 @@ class Micro extends Injectable implements \ArrayAccess, \Phalcon\Events\EventsAw
      * the defined routes
      *
      * @param callable $handler
-     * @return Micro
+     * @return static
      */
-    public function notFound($handler): Micro
+    public function notFound($handler): static
     {
     }
 
@@ -466,8 +476,9 @@ class Micro extends Injectable implements \ArrayAccess, \Phalcon\Events\EventsAw
      * Sets externally the handler that must be called by the matched route
      *
      * @param callable $activeHandler
+     * @return self
      */
-    public function setActiveHandler($activeHandler)
+    public function setActiveHandler($activeHandler): self
     {
     }
 
@@ -495,9 +506,9 @@ class Micro extends Injectable implements \ArrayAccess, \Phalcon\Events\EventsAw
      *
      * @param \Phalcon\Mvc\Model\BinderInterface $modelBinder
      * @param mixed $cache
-     * @return Micro
+     * @return static
      */
-    public function setModelBinder(\Phalcon\Mvc\Model\BinderInterface $modelBinder, $cache = null): Micro
+    public function setModelBinder(\Phalcon\Mvc\Model\BinderInterface $modelBinder, $cache = null): static
     {
     }
 
@@ -506,9 +517,9 @@ class Micro extends Injectable implements \ArrayAccess, \Phalcon\Events\EventsAw
      * response handler
      *
      * @param callable $handler
-     * @return Micro
+     * @return static
      */
-    public function setResponseHandler($handler): Micro
+    public function setResponseHandler($handler): static
     {
     }
 
@@ -517,10 +528,10 @@ class Micro extends Injectable implements \ArrayAccess, \Phalcon\Events\EventsAw
      *
      * @param string $serviceName
      * @param mixed $definition
-     * @param bool $shared
+     * @param bool $isShared
      * @return ServiceInterface
      */
-    public function setService(string $serviceName, $definition, bool $shared = false): ServiceInterface
+    public function setService(string $serviceName, $definition, bool $isShared = false): ServiceInterface
     {
     }
 
@@ -531,6 +542,25 @@ class Micro extends Injectable implements \ArrayAccess, \Phalcon\Events\EventsAw
      * @return void
      */
     public function stop(): void
+    {
+    }
+
+    /**
+     * Helper method to route an action
+     *
+     * @param string $method
+     * @param string $routePattern
+     * @param array|callable $handler *
+     * @return RouteInterface
+     */
+    private function addRoute(string $method, string $routePattern, $handler): RouteInterface
+    {
+    }
+
+    /**
+     * @return void
+     */
+    private function checkDiContainer(): void
     {
     }
 }

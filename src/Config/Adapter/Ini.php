@@ -11,7 +11,7 @@ namespace Phalcon\Config\Adapter;
 
 use Phalcon\Config\Config;
 use Phalcon\Config\Exception;
-use Phalcon\Support\Traits\PhpFileTrait;
+use Phalcon\Config\Exceptions\CannotLoadConfigFile;
 
 /**
  * Reads ini files and converts them to Phalcon\Config\Config objects.

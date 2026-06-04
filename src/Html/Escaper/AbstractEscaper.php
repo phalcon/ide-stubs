@@ -89,22 +89,25 @@ abstract class AbstractEscaper
 
     /**
      * @param bool $doubleEncode
+     * @return static
      */
-    public function setDoubleEncode(bool $doubleEncode)
+    public function setDoubleEncode(bool $doubleEncode): static
     {
     }
 
     /**
      * @param string $encoding
+     * @return static
      */
-    public function setEncoding(string $encoding)
+    public function setEncoding(string $encoding): static
     {
     }
 
     /**
      * @param int $flags
+     * @return static
      */
-    public function setFlags(int $flags)
+    public function setFlags(int $flags): static
     {
     }
 }

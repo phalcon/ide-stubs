@@ -24,11 +24,11 @@ interface CryptoUtils
     /**
      * @param string $data
      * @param string $key
-     * @param string $algo
+     * @param string $algorithm
      * @param bool $raw
      * @return string
      */
-    public function computeHmac(string $data, string $key, string $algo, bool $raw = false): string;
+    public function computeHmac(string $data, string $key, string $algorithm, bool $raw = false): string;
 
     /**
      * @return Random

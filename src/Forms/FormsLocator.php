@@ -11,6 +11,8 @@ namespace Phalcon\Forms;
 
 use Phalcon\Forms\Element\Check;
 use Phalcon\Forms\Element\CheckGroup;
+use Phalcon\Forms\Exceptions\FormNotInLocator;
+use Phalcon\Forms\Exceptions\UnknownFormElementType;
 use Phalcon\Forms\Element\Date;
 use Phalcon\Forms\Element\Email;
 use Phalcon\Forms\Element\File;

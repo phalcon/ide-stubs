@@ -12,6 +12,8 @@ namespace Phalcon\Mvc\Model;
 use ArrayAccess;
 use JsonSerializable;
 use Phalcon\Mvc\EntityInterface;
+use Phalcon\Mvc\Model\Exceptions\IndexNotInRow;
+use Phalcon\Mvc\Model\Exceptions\RowIsImmutable;
 use Phalcon\Mvc\ModelInterface;
 
 /**
@@ -30,22 +32,24 @@ class Row extends \stdClass implements \Phalcon\Mvc\EntityInterface, \Phalcon\Mv
     }
 
     /**
+     * Checks whether offset exists in the row. Returns true when the property
+     * is present on the row, regardless of whether its value is null - column
+     * presence is the contract, not value truthiness.
+     *
+     * @param string|int $index
+     * @return bool
+     */
+    public function offsetExists($index): bool
+    {
+    }
+
+    /**
      * Gets a record in a specific position of the row
      *
      * @param string|int $index *
      * @return string|ModelInterface
      */
     public function offsetGet($index): mixed
-    {
-    }
-
-    /**
-     * Checks whether offset exists in the row
-     *
-     * @param string|int $index
-     * @return bool
-     */
-    public function offsetExists($index): bool
     {
     }
 

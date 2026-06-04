@@ -10,6 +10,10 @@
 namespace Phalcon\Encryption\Security\JWT\Token;
 
 use InvalidArgumentException;
+use Phalcon\Encryption\Security\JWT\Exceptions\InvalidClaims;
+use Phalcon\Encryption\Security\JWT\Exceptions\InvalidHeader;
+use Phalcon\Encryption\Security\JWT\Exceptions\MalformedJwtString;
+use Phalcon\Encryption\Security\JWT\Exceptions\MissingJwtTypHeader;
 use Phalcon\Support\Helper\Json\Decode;
 
 /**
@@ -27,9 +31,9 @@ class Parser
     private $decode;
 
     /**
-     * @param \Phalcon\Support\Helper\Json\Decode $decode
+     * @param \Phalcon\Support\Helper\Json\Decode|null $decode
      */
-    public function __construct(\Phalcon\Support\Helper\Json\Decode $decode = null)
+    public function __construct(?\Phalcon\Support\Helper\Json\Decode $decode = null)
     {
     }
 

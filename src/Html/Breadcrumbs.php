@@ -9,8 +9,6 @@
  */
 namespace Phalcon\Html;
 
-use Phalcon\Di\DiInterface;
-
 /**
  * Phalcon\Html\Breadcrumbs
  *
@@ -57,9 +55,9 @@ class Breadcrumbs
      *
      * @param string $label
      * @param string $link
-     * @return Breadcrumbs
+     * @return static
      */
-    public function add(string $label, string $link = ''): Breadcrumbs
+    public function add(string $label, string $link = ''): static
     {
     }
 
@@ -118,9 +116,9 @@ class Breadcrumbs
     /**
      * @param string $separator
      *
-     * @return Breadcrumbs
+     * @return static
      */
-    public function setSeparator(string $separator): Breadcrumbs
+    public function setSeparator(string $separator): static
     {
     }
 

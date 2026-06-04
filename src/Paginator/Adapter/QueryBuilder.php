@@ -11,8 +11,12 @@ namespace Phalcon\Paginator\Adapter;
 
 use Phalcon\Db\Enum;
 use Phalcon\Mvc\Model\Query\Builder;
-use Phalcon\Paginator\RepositoryInterface;
 use Phalcon\Paginator\Exception;
+use Phalcon\Paginator\Exceptions\BuilderModelNotDefined;
+use Phalcon\Paginator\Exceptions\InvalidBuilderInstance;
+use Phalcon\Paginator\Exceptions\MissingColumnsForHaving;
+use Phalcon\Paginator\Exceptions\MissingRequiredParameter;
+use Phalcon\Paginator\RepositoryInterface;
 
 /**
  * Phalcon\Paginator\Adapter\QueryBuilder
@@ -96,9 +100,9 @@ class QueryBuilder extends \Phalcon\Paginator\Adapter\AbstractAdapter
      * Set query builder object
      *
      * @param \Phalcon\Mvc\Model\Query\Builder $builder
-     * @return QueryBuilder
+     * @return static
      */
-    public function setQueryBuilder(\Phalcon\Mvc\Model\Query\Builder $builder): QueryBuilder
+    public function setQueryBuilder(\Phalcon\Mvc\Model\Query\Builder $builder): static
     {
     }
 }

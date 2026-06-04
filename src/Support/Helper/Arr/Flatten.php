@@ -30,17 +30,7 @@ class Flatten
      * @param mixed $item
      *
      * @return array
-     */
-    private function processNotArray(array $data, $item): array
-    {
-    }
-
-    /**
-     * @param array $data
-     * @param mixed $item
-     * @param bool  $deep
-     *
-     * @return array
+     * @param bool $deep
      */
     private function processArray(array $data, $item, bool $deep): array
     {
@@ -54,6 +44,16 @@ class Flatten
      * @return array
      */
     private function processArrayDeep(array $data, $item, bool $deep): array
+    {
+    }
+
+    /**
+     * @param array $data
+     * @param mixed $item
+     *
+     * @return array
+     */
+    private function processNotArray(array $data, $item): array
     {
     }
 }
