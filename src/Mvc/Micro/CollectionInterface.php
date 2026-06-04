@@ -21,20 +21,20 @@ interface CollectionInterface
      *
      * @param string $routePattern
      * @param callable $handler
-     * @param string $name
+     * @param string|null $name
      * @return CollectionInterface
      */
-    public function delete(string $routePattern, $handler, string $name = null): CollectionInterface;
+    public function delete(string $routePattern, $handler, ?string $name = null): CollectionInterface;
 
     /**
      * Maps a route to a handler that only matches if the HTTP method is GET
      *
      * @param string $routePattern
      * @param callable $handler
-     * @param string $name
+     * @param string|null $name
      * @return CollectionInterface
      */
-    public function get(string $routePattern, $handler, string $name = null): CollectionInterface;
+    public function get(string $routePattern, $handler, ?string $name = null): CollectionInterface;
 
     /**
      * Returns the main handler
@@ -62,10 +62,10 @@ interface CollectionInterface
      *
      * @param string $routePattern
      * @param callable $handler
-     * @param string $name
+     * @param string|null $name
      * @return CollectionInterface
      */
-    public function head(string $routePattern, $handler, string $name = null): CollectionInterface;
+    public function head(string $routePattern, $handler, ?string $name = null): CollectionInterface;
 
     /**
      * Returns if the main handler must be lazy loaded
@@ -79,68 +79,68 @@ interface CollectionInterface
      *
      * @param string $routePattern
      * @param callable $handler
-     * @param string $name
+     * @param string|null $name
      * @return CollectionInterface
      */
-    public function map(string $routePattern, $handler, string $name = null): CollectionInterface;
+    public function map(string $routePattern, $handler, ?string $name = null): CollectionInterface;
 
     /**
      * Maps a route to a handler that only matches if the HTTP method is OPTIONS
      *
      * @param string $routePattern
      * @param callable $handler
-     * @param string $name
+     * @param string|null $name
      * @return CollectionInterface
      */
-    public function options(string $routePattern, $handler, string $name = null): CollectionInterface;
+    public function options(string $routePattern, $handler, ?string $name = null): CollectionInterface;
 
     /**
      * Maps a route to a handler that only matches if the HTTP method is PATCH
      *
      * @param string $routePattern
      * @param callable $handler
-     * @param string $name
+     * @param string|null $name
      * @return CollectionInterface
      */
-    public function patch(string $routePattern, $handler, string $name = null): CollectionInterface;
+    public function patch(string $routePattern, $handler, ?string $name = null): CollectionInterface;
 
     /**
      * Maps a route to a handler that only matches if the HTTP method is POST
      *
      * @param string $routePattern
      * @param callable $handler
-     * @param string $name
+     * @param string|null $name
      * @return CollectionInterface
      */
-    public function post(string $routePattern, $handler, string $name = null): CollectionInterface;
+    public function post(string $routePattern, $handler, ?string $name = null): CollectionInterface;
 
     /**
      * Maps a route to a handler that only matches if the HTTP method is PUT
      *
      * @param string $routePattern
      * @param callable $handler
-     * @param string $name
+     * @param string|null $name
      * @return CollectionInterface
      */
-    public function put(string $routePattern, $handler, string $name = null): CollectionInterface;
+    public function put(string $routePattern, $handler, ?string $name = null): CollectionInterface;
 
     /**
      * Sets the main handler
      *
      * @param mixed $handler
-     * @param bool  $lazy
+     * @param bool  $isLazy
      *
      * @return CollectionInterface
      */
-    public function setHandler($handler, bool $lazy = false): CollectionInterface;
+    public function setHandler($handler, bool $isLazy = false): CollectionInterface;
 
     /**
      * Sets if the main handler must be lazy loaded
      *
-     * @param bool $lazy
+     * @param bool $isLazy
      * @return CollectionInterface
      */
-    public function setLazy(bool $lazy): CollectionInterface;
+    public function setLazy(bool $isLazy): CollectionInterface;
 
     /**
      * Sets a prefix for all routes added to the collection

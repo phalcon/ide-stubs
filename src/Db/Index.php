@@ -9,6 +9,10 @@
  */
 namespace Phalcon\Db;
 
+use Phalcon\Db\Exceptions\InvalidIndexColumns;
+use Phalcon\Db\Exceptions\InvalidIndexDirections;
+use Phalcon\Db\Exceptions\InvalidIndexWhere;
+
 /**
  * Allows to define indexes to be used on tables. Indexes are a common way
  * to enhance database performance. An index allows the database server to find

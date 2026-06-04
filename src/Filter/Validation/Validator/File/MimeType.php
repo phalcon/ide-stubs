@@ -9,9 +9,10 @@
  */
 namespace Phalcon\Filter\Validation\Validator\File;
 
-use Phalcon\Messages\Message;
 use Phalcon\Filter\Validation;
 use Phalcon\Filter\Validation\Exception;
+use Phalcon\Filter\Validation\Exceptions\InvalidAllowedTypes;
+use Phalcon\Messages\Message;
 
 /**
  * Checks if a value has a correct file mime type

@@ -9,8 +9,10 @@
  */
 namespace Phalcon\Annotations\Adapter;
 
-use Phalcon\Annotations\Reflection;
 use Phalcon\Annotations\Exception;
+use Phalcon\Annotations\Exceptions\AnnotationsDirectoryNotWritable;
+use Phalcon\Annotations\Exceptions\CannotReadAnnotationData;
+use Phalcon\Annotations\Reflection;
 use RuntimeException;
 
 /**

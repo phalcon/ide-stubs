@@ -12,8 +12,6 @@ namespace Phalcon\Mvc;
 use Phalcon\Di\DiInterface;
 
 /**
- * Phalcon\Mvc\ModuleDefinitionInterface
- *
  * This interface must be implemented by class module definitions
  */
 interface ModuleDefinitionInterface
@@ -21,9 +19,9 @@ interface ModuleDefinitionInterface
     /**
      * Registers an autoloader related to the module
      *
-     * @param \Phalcon\Di\DiInterface $container
+     * @param \Phalcon\Di\DiInterface|null $container
      */
-    public function registerAutoloaders(\Phalcon\Di\DiInterface $container = null);
+    public function registerAutoloaders(?\Phalcon\Di\DiInterface $container = null);
 
     /**
      * Registers services related to the module

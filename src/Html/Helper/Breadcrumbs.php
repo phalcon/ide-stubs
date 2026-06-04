@@ -92,7 +92,7 @@ class Breadcrumbs extends \Phalcon\Html\Helper\AbstractHelper
      * @param EscaperInterface $escaper
      * @param UrlInterface|null $url
      */
-    public function __construct(\Phalcon\Html\Escaper\EscaperInterface $escaper, \Phalcon\Mvc\Url\UrlInterface $url = null)
+    public function __construct(\Phalcon\Html\Escaper\EscaperInterface $escaper, ?\Phalcon\Mvc\Url\UrlInterface $url = null)
     {
     }
 
@@ -100,10 +100,10 @@ class Breadcrumbs extends \Phalcon\Html\Helper\AbstractHelper
      * Sets the indent and delimiter and returns the object back.
      *
      * @param string $indent
-     * @param string $delimiter
-     * @return Breadcrumbs
+     * @param string|null $delimiter
+     * @return static
      */
-    public function __invoke(string $indent = '    ', string $delimiter = null): Breadcrumbs
+    public function __invoke(string $indent = '    ', ?string $delimiter = null): static
     {
     }
 
@@ -125,9 +125,9 @@ class Breadcrumbs extends \Phalcon\Html\Helper\AbstractHelper
      * @param string $link
      * @param string $icon
      * @param array $attributes
-     * @return Breadcrumbs
+     * @return static
      */
-    public function add(string $text, string $link = '', string $icon = '', array $attributes = []): Breadcrumbs
+    public function add(string $text, string $link = '', string $icon = '', array $attributes = []): static
     {
     }
 
@@ -147,9 +147,9 @@ class Breadcrumbs extends \Phalcon\Html\Helper\AbstractHelper
     /**
      * Clear the attributes of the parent element.
      *
-     * @return Breadcrumbs
+     * @return static
      */
-    public function clearAttributes(): Breadcrumbs
+    public function clearAttributes(): static
     {
     }
 
@@ -221,9 +221,9 @@ class Breadcrumbs extends \Phalcon\Html\Helper\AbstractHelper
      * Set the attributes for the parent element.
      *
      * @param array $attributes
-     * @return Breadcrumbs
+     * @return static
      */
-    public function setAttributes(array $attributes): Breadcrumbs
+    public function setAttributes(array $attributes): static
     {
     }
 
@@ -232,9 +232,9 @@ class Breadcrumbs extends \Phalcon\Html\Helper\AbstractHelper
      * When a Url service was injected, calling this method replaces it.
      *
      * @param string $prefix
-     * @return Breadcrumbs
+     * @return static
      */
-    public function setPrefix(string $prefix): Breadcrumbs
+    public function setPrefix(string $prefix): static
     {
     }
 
@@ -242,9 +242,9 @@ class Breadcrumbs extends \Phalcon\Html\Helper\AbstractHelper
      * Set the separator.
      *
      * @param string $separator
-     * @return Breadcrumbs
+     * @return static
      */
-    public function setSeparator(string $separator): Breadcrumbs
+    public function setSeparator(string $separator): static
     {
     }
 
@@ -254,9 +254,9 @@ class Breadcrumbs extends \Phalcon\Html\Helper\AbstractHelper
      * @param string $main
      * @param string $line
      * @param string $last
-     * @return Breadcrumbs
+     * @return static
      */
-    public function setTemplate(string $main, string $line, string $last): Breadcrumbs
+    public function setTemplate(string $main, string $line, string $last): static
     {
     }
 

@@ -13,8 +13,6 @@ use Phalcon\Support\Collection;
 use Traversable;
 
 /**
- * Phalcon\Registry
- *
  * A registry is a container for storing objects and values in the application
  * space. By storing the value in a registry, the same object is always
  * available throughout your application.
@@ -138,10 +136,10 @@ final class Registry extends Collection
      *
      * @param string $element
      * @param mixed $defaultValue
-     * @param string $cast
+     * @param string|null $cast
      * @return mixed
      */
-    final public function get(string $element, $defaultValue = null, string $cast = null): mixed
+    final public function get(string $element, $defaultValue = null, ?string $cast = null): mixed
     {
     }
 

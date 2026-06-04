@@ -13,6 +13,9 @@ use Phalcon\Di\Di;
 use Phalcon\Di\DiInterface;
 use Phalcon\Mvc\Model;
 use Phalcon\Mvc\Model\Exception;
+use Phalcon\Mvc\Model\Exceptions\InvalidContainer;
+use Phalcon\Mvc\Model\Exceptions\InvalidSerializationData;
+use Phalcon\Mvc\Model\Exceptions\ResultsetColumnNotInMap;
 use Phalcon\Mvc\Model\Resultset;
 use Phalcon\Mvc\Model\Row;
 use Phalcon\Mvc\ModelInterface;
@@ -59,11 +62,35 @@ class Simple extends Resultset
     }
 
     /**
+     * @return array
+     */
+    public function __serialize(): array
+    {
+    }
+
+    /**
+     * @param array $data
+     * @return void
+     */
+    public function __unserialize(array $data): void
+    {
+    }
+
+    /**
      * Returns current row in the resultset
      *
      * @return TValue
      */
-    final public function current(): ModelInterface|null
+    final public function current(): ModelInterface|Row|null
+    {
+    }
+
+    /**
+     * Serializing a resultset will dump all related rows into a big array
+     *
+     * @return string
+     */
+    public function serialize(): string
     {
     }
 
@@ -81,15 +108,6 @@ class Simple extends Resultset
     }
 
     /**
-     * Serializing a resultset will dump all related rows into a big array
-     *
-     * @return string
-     */
-    public function serialize(): string
-    {
-    }
-
-    /**
      * Unserializing a resultset will allow to only works on the rows present in
      * the saved state
      *
@@ -97,21 +115,6 @@ class Simple extends Resultset
      * @return void
      */
     public function unserialize($data): void
-    {
-    }
-
-    /**
-     * @return array
-     */
-    public function __serialize(): array
-    {
-    }
-
-    /**
-     * @param array $data
-     * @return void
-     */
-    public function __unserialize(array $data): void
     {
     }
 }

@@ -156,10 +156,10 @@ interface AdapterInterface
      * @param mixed $roleName
      * @param mixed $componentName
      * @param string $access
-     * @param array $parameters
+     * @param array|null $parameters
      * @return bool
      */
-    public function isAllowed($roleName, $componentName, string $access, array $parameters = null): bool;
+    public function isAllowed($roleName, $componentName, string $access, ?array $parameters = null): bool;
 
     /**
      * Check whether component exist in the components list

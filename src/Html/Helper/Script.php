@@ -22,11 +22,11 @@ class Script extends \Phalcon\Html\Helper\AbstractSeries
      * @param string $url
      * @param array  $attributes
      *
-     * @return $this
+     * @return static
      * @throws Exception
      * @param int $position
      */
-    public function add(string $url, array $attributes = [], int $position = -1)
+    public function add(string $url, array $attributes = [], int $position = -1): static
     {
     }
 
@@ -50,9 +50,9 @@ class Script extends \Phalcon\Html\Helper\AbstractSeries
      * @param array $attributes
      * @param int   $position
      *
-     * @return Script
+     * @return static
      */
-    public function endInternal(array $attributes = [], int $position = -1): Script
+    public function endInternal(array $attributes = [], int $position = -1): static
     {
     }
 

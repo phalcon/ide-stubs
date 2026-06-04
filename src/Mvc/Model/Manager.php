@@ -15,10 +15,16 @@ use Phalcon\Di\DiInterface;
 use Phalcon\Di\InjectionAwareInterface;
 use Phalcon\Events\EventsAwareInterface;
 use Phalcon\Events\ManagerInterface as EventsManagerInterface;
-use Phalcon\Mvc\ModelInterface;
+use Phalcon\Mvc\Model\Exceptions\InvalidConnectionService;
+use Phalcon\Mvc\Model\Exceptions\ManagerOrmServicesUnavailable;
+use Phalcon\Mvc\Model\Exceptions\ModelCouldNotLoad;
+use Phalcon\Mvc\Model\Exceptions\ReferencedFieldsMismatch;
+use Phalcon\Mvc\Model\Exceptions\RelationAliasMustBeString;
+use Phalcon\Mvc\Model\Exceptions\UnknownRelationType;
 use Phalcon\Mvc\Model\Query\Builder;
 use Phalcon\Mvc\Model\Query\BuilderInterface;
 use Phalcon\Mvc\Model\Query\StatusInterface;
+use Phalcon\Mvc\ModelInterface;
 use Phalcon\Support\Settings;
 use ReflectionClass;
 use ReflectionProperty;
@@ -472,7 +478,7 @@ class Manager implements \Phalcon\Mvc\Model\ManagerInterface, \Phalcon\Di\Inject
      *
      * @return ResultsetInterface | bool
      */
-    public function getBelongsToRecords(string $modelName, string $modelRelation, \Phalcon\Mvc\ModelInterface $record, $parameters = null, string $method = null): ResultsetInterface|bool
+    public function getBelongsToRecords(string $modelName, string $modelRelation, \Phalcon\Mvc\ModelInterface $record, $parameters = null, ?string $method = null): ResultsetInterface|bool
     {
     }
 
@@ -545,10 +551,10 @@ class Manager implements \Phalcon\Mvc\Model\ManagerInterface, \Phalcon\Di\Inject
      * @param string $modelRelation
      * @param \Phalcon\Mvc\ModelInterface $record
      * @param mixed $parameters
-     * @param string $method
+     * @param string|null $method
      * @return bool|ResultsetInterface
      */
-    public function getHasManyRecords(string $modelName, string $modelRelation, \Phalcon\Mvc\ModelInterface $record, $parameters = null, string $method = null): ResultsetInterface|bool
+    public function getHasManyRecords(string $modelName, string $modelRelation, \Phalcon\Mvc\ModelInterface $record, $parameters = null, ?string $method = null): ResultsetInterface|bool
     {
     }
 
@@ -589,10 +595,10 @@ class Manager implements \Phalcon\Mvc\Model\ManagerInterface, \Phalcon\Di\Inject
      * @param string $modelRelation
      * @param \Phalcon\Mvc\ModelInterface $record
      * @param mixed $parameters
-     * @param string $method
+     * @param string|null $method
      * @return bool|ModelInterface
      */
-    public function getHasOneRecords(string $modelName, string $modelRelation, \Phalcon\Mvc\ModelInterface $record, $parameters = null, string $method = null): ModelInterface|bool
+    public function getHasOneRecords(string $modelName, string $modelRelation, \Phalcon\Mvc\ModelInterface $record, $parameters = null, ?string $method = null): ModelInterface|bool
     {
     }
 
@@ -609,9 +615,9 @@ class Manager implements \Phalcon\Mvc\Model\ManagerInterface, \Phalcon\Di\Inject
     /**
      * Get last initialized model
      *
-     * @return ModelInterface
+     * @return ModelInterface|null
      */
-    public function getLastInitialized(): ModelInterface
+    public function getLastInitialized(): ModelInterface|null
     {
     }
 
@@ -694,7 +700,7 @@ class Manager implements \Phalcon\Mvc\Model\ManagerInterface, \Phalcon\Di\Inject
      *
      * @return \Phalcon\Mvc\Model\Resultset\Simple|int|false
      */
-    public function getRelationRecords(RelationInterface $relation, \Phalcon\Mvc\ModelInterface $record, $parameters = null, string $method = null)
+    public function getRelationRecords(RelationInterface $relation, \Phalcon\Mvc\ModelInterface $record, $parameters = null, ?string $method = null)
     {
     }
 
@@ -902,6 +908,19 @@ class Manager implements \Phalcon\Mvc\Model\ManagerInterface, \Phalcon\Di\Inject
     }
 
     /**
+     * Dispatch an event to the listeners and behaviors
+     * This method expects that the endpoint listeners/behaviors returns true
+     * meaning that a least one was implemented
+     *
+     * @param ModelInterface $model
+     * @param string         $eventName
+     * @param mixed          $data
+     */
+    public function missingMethod(\Phalcon\Mvc\ModelInterface $model, string $eventName, $data)
+    {
+    }
+
+    /**
      * Receives events generated in the models and dispatches them to an
      * events-manager if available. Notify the behaviors that are listening in
      * the model
@@ -914,15 +933,14 @@ class Manager implements \Phalcon\Mvc\Model\ManagerInterface, \Phalcon\Di\Inject
     }
 
     /**
-     * Dispatch an event to the listeners and behaviors
-     * This method expects that the endpoint listeners/behaviors returns true
-     * meaning that a least one was implemented
+     * Removes a behavior from a model
      *
      * @param ModelInterface $model
-     * @param string         $eventName
-     * @param mixed          $data
+     * @param string         $behaviorClass
+     *
+     * @return void
      */
-    public function missingMethod(\Phalcon\Mvc\ModelInterface $model, string $eventName, $data)
+    public function removeBehavior(\Phalcon\Mvc\ModelInterface $model, string $behaviorClass): void
     {
     }
 

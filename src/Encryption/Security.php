@@ -13,8 +13,9 @@ use Phalcon\Contracts\Encryption\Security\Security as SecurityContract;
 use Phalcon\Di\DiInterface;
 use Phalcon\Di\AbstractInjectionAware;
 use Phalcon\Http\RequestInterface;
-use Phalcon\Encryption\Security\Random;
 use Phalcon\Encryption\Security\Exception;
+use Phalcon\Encryption\Security\Exceptions\UnknownHashAlgorithm;
+use Phalcon\Encryption\Security\Random;
 use Phalcon\Session\ManagerInterface as SessionInterface;
 
 /**
@@ -39,67 +40,67 @@ class Security extends AbstractInjectionAware implements SecurityContract
     /**
      * @var int
      */
-    const CRYPT_ARGON2I = 10;
+    const int CRYPT_ARGON2I = 10;
 
     /**
      * @var int
      */
-    const CRYPT_ARGON2ID = 11;
+    const int CRYPT_ARGON2ID = 11;
 
     /**
      * @var int
      */
-    const CRYPT_BCRYPT = 0;
+    const int CRYPT_BCRYPT = 0;
 
     /**
      * @var int
      */
-    const CRYPT_DEFAULT = 0;
+    const int CRYPT_DEFAULT = 0;
 
     /**
      * @var int
      */
-    const CRYPT_BLOWFISH = 4;
+    const int CRYPT_BLOWFISH = 4;
 
     /**
      * @var int
      */
-    const CRYPT_BLOWFISH_A = 5;
+    const int CRYPT_BLOWFISH_A = 5;
 
     /**
      * @var int
      */
-    const CRYPT_BLOWFISH_X = 6;
+    const int CRYPT_BLOWFISH_X = 6;
 
     /**
      * @var int
      */
-    const CRYPT_BLOWFISH_Y = 7;
+    const int CRYPT_BLOWFISH_Y = 7;
 
     /**
      * @var int
      */
-    const CRYPT_EXT_DES = 2;
+    const int CRYPT_EXT_DES = 2;
 
     /**
      * @var int
      */
-    const CRYPT_MD5 = 3;
+    const int CRYPT_MD5 = 3;
 
     /**
      * @var int
      */
-    const CRYPT_SHA256 = 8;
+    const int CRYPT_SHA256 = 8;
 
     /**
      * @var int
      */
-    const CRYPT_SHA512 = 9;
+    const int CRYPT_SHA512 = 9;
 
     /**
      * @var int
      */
-    const CRYPT_STD_DES = 1;
+    const int CRYPT_STD_DES = 1;
 
     /**
      * @var bool
@@ -167,7 +168,7 @@ class Security extends AbstractInjectionAware implements SecurityContract
      * @param SessionInterface|null $session
      * @param RequestInterface|null $request
      */
-    public function __construct(\Phalcon\Session\ManagerInterface $session = null, \Phalcon\Http\RequestInterface $request = null)
+    public function __construct(?\Phalcon\Session\ManagerInterface $session = null, ?\Phalcon\Http\RequestInterface $request = null)
     {
     }
 
@@ -195,7 +196,7 @@ class Security extends AbstractInjectionAware implements SecurityContract
      *
      * @return bool
      */
-    public function checkToken(string $tokenKey = null, $tokenValue = null, bool $destroyIfValid = true): bool
+    public function checkToken(?string $tokenKey = null, $tokenValue = null, bool $destroyIfValid = true): bool
     {
     }
 
@@ -209,17 +210,18 @@ class Security extends AbstractInjectionAware implements SecurityContract
      *
      * @return string
      * @throws Exception
+     * @param string $algorithm
      */
-    public function computeHmac(string $data, string $key, string $algo, bool $raw = false): string
+    public function computeHmac(string $data, string $key, string $algorithm, bool $raw = false): string
     {
     }
 
     /**
      * Removes the value of the CSRF token and key from session
      *
-     * @return Security
+     * @return static
      */
-    public function destroyToken(): Security
+    public function destroyToken(): static
     {
     }
 
@@ -351,9 +353,9 @@ class Security extends AbstractInjectionAware implements SecurityContract
      * after a successful login or any other state change where rotating the
      * token is appropriate.
      *
-     * @return Security
+     * @return static
      */
-    public function refreshToken(): Security
+    public function refreshToken(): static
     {
     }
 
@@ -365,9 +367,9 @@ class Security extends AbstractInjectionAware implements SecurityContract
      *
      * @param bool $autoRefresh
      *
-     * @return Security
+     * @return static
      */
-    public function setAutoRefresh(bool $autoRefresh): Security
+    public function setAutoRefresh(bool $autoRefresh): static
     {
     }
 
@@ -376,9 +378,9 @@ class Security extends AbstractInjectionAware implements SecurityContract
      *
      * @param int $defaultHash
      *
-     * @return Security
+     * @return static
      */
-    public function setDefaultHash(int $defaultHash): Security
+    public function setDefaultHash(int $defaultHash): static
     {
     }
 
@@ -388,9 +390,9 @@ class Security extends AbstractInjectionAware implements SecurityContract
      *
      * @param int $randomBytes
      *
-     * @return Security
+     * @return static
      */
-    public function setRandomBytes(int $randomBytes): Security
+    public function setRandomBytes(int $randomBytes): static
     {
     }
 
@@ -399,9 +401,9 @@ class Security extends AbstractInjectionAware implements SecurityContract
      *
      * @param int $workFactor
      *
-     * @return Security
+     * @return static
      */
-    public function setWorkFactor(int $workFactor): Security
+    public function setWorkFactor(int $workFactor): static
     {
     }
 
@@ -454,7 +456,7 @@ class Security extends AbstractInjectionAware implements SecurityContract
      *
      * @return string|null
      */
-    private function processTokenKey(string $tokenKey = null): string|null
+    private function processTokenKey(?string $tokenKey = null): string|null
     {
     }
 
@@ -464,7 +466,7 @@ class Security extends AbstractInjectionAware implements SecurityContract
      *
      * @return string|null
      */
-    private function processUserToken(string $tokenKey, string $tokenValue = null): string|null
+    private function processUserToken(string $tokenKey, ?string $tokenValue = null): string|null
     {
     }
 }

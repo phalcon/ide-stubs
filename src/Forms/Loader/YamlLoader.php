@@ -11,6 +11,8 @@ namespace Phalcon\Forms\Loader;
 
 use Phalcon\Contracts\Forms\Schema;
 use Phalcon\Forms\Exception;
+use Phalcon\Forms\Exceptions\YamlExtensionRequired;
+use Phalcon\Forms\Exceptions\YamlSchemaNotArray;
 
 /**
  * Supplies form element definitions from a YAML string or file.
@@ -35,8 +37,9 @@ class YamlLoader implements \Phalcon\Contracts\Forms\Schema
     }
 
     /**
-     * @return array
+     * @phpstan-return array<int, array<string, mixed>>
      * @throws Exception
+     * @return array
      */
     public function load(): array
     {

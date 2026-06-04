@@ -56,11 +56,6 @@ use Phalcon\Events\ManagerInterface;
 abstract class Controller extends Injectable implements \Phalcon\Mvc\ControllerInterface, \Phalcon\Events\EventsAwareInterface
 {
     /**
-     * @var ManagerInterface|null
-     */
-    protected $eventsManager = null;
-
-    /**
      * Phalcon\Mvc\Controller constructor
      */
     final public function __construct()

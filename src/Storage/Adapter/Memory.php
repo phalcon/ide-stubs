@@ -28,6 +28,15 @@ class Memory extends \Phalcon\Storage\Adapter\AbstractAdapter
     protected $data = [];
 
     /**
+     * Maximum number of items retained in the in-memory store.
+     * 0 (default) keeps the original unbounded behavior; a positive
+     * value drops the oldest entry FIFO before a new key is stored.
+     *
+     * @var int
+     */
+    protected $maxItems = 0;
+
+    /**
      * Memory constructor.
      *
      * @param SerializerFactory $factory
@@ -56,6 +65,28 @@ class Memory extends \Phalcon\Storage\Adapter\AbstractAdapter
      * @return array
      */
     public function getKeys(string $prefix = ''): array
+    {
+    }
+
+    /**
+     * Returns the configured store cap (0 = unlimited). See setMaxItems().
+     *
+     * @return int
+     */
+    public function getMaxItems(): int
+    {
+    }
+
+    /**
+     * Caps the number of items retained in the in-memory store.
+     * 0 disables the cap (the default; preserves the original
+     * unbounded behavior). When the cap is exceeded, the oldest
+     * entry is evicted FIFO before a new key is stored.
+     *
+     * @param int $maxItems
+     * @return static
+     */
+    public function setMaxItems(int $maxItems): static
     {
     }
 

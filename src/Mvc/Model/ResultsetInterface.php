@@ -23,10 +23,10 @@ interface ResultsetInterface
     /**
      * Deletes every record in the resultset
      *
-     * @param \Closure $conditionCallback
+     * @param \Closure|null $conditionCallback
      * @return bool
      */
-    public function delete(\Closure $conditionCallback = null): bool;
+    public function delete(?\Closure $conditionCallback = null): bool;
 
     /**
      * Filters a resultset returning only those the developer requires
@@ -123,8 +123,8 @@ interface ResultsetInterface
      * Updates every record in the resultset
      *
      * @param array $data
-     * @param \Closure $conditionCallback
+     * @param \Closure|null $conditionCallback
      * @return bool
      */
-    public function update($data, \Closure $conditionCallback = null): bool;
+    public function update($data, ?\Closure $conditionCallback = null): bool;
 }

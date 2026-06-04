@@ -14,13 +14,14 @@ use Phalcon\Di\DiInterface;
 use Phalcon\Di\Injectable;
 use Phalcon\Events\EventsAwareInterface;
 use Phalcon\Events\ManagerInterface;
-use Phalcon\Mvc\ViewBaseInterface;
 use Phalcon\Mvc\View\Engine\EngineInterface;
 use Phalcon\Mvc\View\Engine\Php as PhpEngine;
+use Phalcon\Mvc\View\Exceptions\InvalidEngineRegistration;
+use Phalcon\Mvc\View\Exceptions\SimpleViewNotFound;
+use Phalcon\Mvc\View\Exceptions\SimpleViewServicesUnavailable;
+use Phalcon\Mvc\ViewBaseInterface;
 
 /**
- * Phalcon\Mvc\View\Simple
- *
  * This component allows to render views without hierarchical levels
  *
  * ```php
@@ -78,14 +79,14 @@ class Simple extends Injectable implements \Phalcon\Mvc\ViewBaseInterface, \Phal
     protected $registeredEngines = [];
 
     /**
-     * @var string
-     */
-    protected $viewsDir;
-
-    /**
      * @var array
      */
     protected $viewParams = [];
+
+    /**
+     * @var string
+     */
+    protected $viewsDir;
 
     /**
      * Phalcon\Mvc\View\Simple constructor
@@ -251,10 +252,10 @@ class Simple extends Injectable implements \Phalcon\Mvc\ViewBaseInterface, \Phal
      * $this->view->setContent("<h1>hello</h1>");
      * ```
      *
-     * @return Simple
+     * @return static
      * @param string $content
      */
-    public function setContent(string $content): Simple
+    public function setContent(string $content): static
     {
     }
 
@@ -275,11 +276,11 @@ class Simple extends Injectable implements \Phalcon\Mvc\ViewBaseInterface, \Phal
      * $this->view->setParamToView("products", $products);
      * ```
      *
-     * @return Simple
+     * @return static
      * @param string $key
      * @param mixed $value
      */
-    public function setParamToView(string $key, $value): Simple
+    public function setParamToView(string $key, $value): static
     {
     }
 
@@ -290,11 +291,11 @@ class Simple extends Injectable implements \Phalcon\Mvc\ViewBaseInterface, \Phal
      * $this->view->setVar("products", $products);
      * ```
      *
-     * @return Simple
+     * @return static
      * @param string $key
      * @param mixed $value
      */
-    public function setVar(string $key, $value): Simple
+    public function setVar(string $key, $value): static
     {
     }
 
@@ -309,11 +310,11 @@ class Simple extends Injectable implements \Phalcon\Mvc\ViewBaseInterface, \Phal
      * );
      * ```
      *
-     * @return Simple
+     * @return static
      * @param array $params
      * @param bool $merge
      */
-    public function setVars(array $params, bool $merge = true): Simple
+    public function setVars(array $params, bool $merge = true): static
     {
     }
 

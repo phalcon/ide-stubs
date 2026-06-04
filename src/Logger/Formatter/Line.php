@@ -62,9 +62,9 @@ class Line extends \Phalcon\Logger\Formatter\AbstractFormatter
      *
      * @param string $format
      *
-     * @return Line
+     * @return static
      */
-    public function setFormat(string $format): Line
+    public function setFormat(string $format): static
     {
     }
 }

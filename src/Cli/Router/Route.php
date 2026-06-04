@@ -9,6 +9,8 @@
  */
 namespace Phalcon\Cli\Router;
 
+use Phalcon\Cli\Router\Exceptions\InvalidRoutePaths;
+
 /**
  * This class represents every route added to the router
  */
@@ -17,7 +19,7 @@ class Route implements \Phalcon\Cli\Router\RouteInterface
     /**
      * @var string
      */
-    const DEFAULT_DELIMITER = ' ';
+    const string DEFAULT_DELIMITER = ' ';
 
     /**
      * @var mixed|null
@@ -120,10 +122,10 @@ class Route implements \Phalcon\Cli\Router\RouteInterface
     /**
      * Set the routing delimiter
      *
-     * @param string $delimiter
+     * @param string|null $delimiter
      * @return void
      */
-    public static function delimiter(string $delimiter = null): void
+    public static function delimiter(?string $delimiter = null): void
     {
     }
 

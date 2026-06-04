@@ -18,42 +18,42 @@ interface Repository
     /**
      * @var string
      */
-    const PROPERTY_CURRENT_PAGE = 'current';
+    const string PROPERTY_CURRENT_PAGE = 'current';
 
     /**
      * @var string
      */
-    const PROPERTY_FIRST_PAGE = 'first';
+    const string PROPERTY_FIRST_PAGE = 'first';
 
     /**
      * @var string
      */
-    const PROPERTY_ITEMS = 'items';
+    const string PROPERTY_ITEMS = 'items';
 
     /**
      * @var string
      */
-    const PROPERTY_LAST_PAGE = 'last';
+    const string PROPERTY_LAST_PAGE = 'last';
 
     /**
      * @var string
      */
-    const PROPERTY_LIMIT = 'limit';
+    const string PROPERTY_LIMIT = 'limit';
 
     /**
      * @var string
      */
-    const PROPERTY_NEXT_PAGE = 'next';
+    const string PROPERTY_NEXT_PAGE = 'next';
 
     /**
      * @var string
      */
-    const PROPERTY_PREVIOUS_PAGE = 'previous';
+    const string PROPERTY_PREVIOUS_PAGE = 'previous';
 
     /**
      * @var string
      */
-    const PROPERTY_TOTAL_ITEMS = 'total_items';
+    const string PROPERTY_TOTAL_ITEMS = 'total_items';
 
 
     /**
@@ -123,6 +123,7 @@ interface Repository
      * Sets the aliases for properties repository
      *
      * @param array $aliases
+     *
      * @return Repository
      */
     public function setAliases(array $aliases): Repository;
@@ -131,6 +132,7 @@ interface Repository
      * Sets values for properties of the repository
      *
      * @param array $properties
+     *
      * @return Repository
      */
     public function setProperties(array $properties): Repository;

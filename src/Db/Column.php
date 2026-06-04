@@ -9,6 +9,13 @@
  */
 namespace Phalcon\Db;
 
+use Phalcon\Db\Exceptions\ColumnTypeRejectsAutoIncrement;
+use Phalcon\Db\Exceptions\ColumnTypeRejectsScale;
+use Phalcon\Db\Exceptions\ColumnTypeRequired;
+use Phalcon\Db\Exceptions\GeneratedAutoIncrementConflict;
+use Phalcon\Db\Exceptions\GeneratedDefaultConflict;
+use Phalcon\Db\Exceptions\InvalidGenerationExpression;
+
 /**
  * Allows to define columns to be used on create or alter table operations
  *
@@ -40,385 +47,385 @@ class Column implements \Phalcon\Db\ColumnInterface
      *
      * @var int
      */
-    const BIND_PARAM_BLOB = 3;
+    const int BIND_PARAM_BLOB = 3;
 
     /**
      * Bind Type Bool
      *
      * @var int
      */
-    const BIND_PARAM_BOOL = 5;
+    const int BIND_PARAM_BOOL = 5;
 
     /**
      * Bind Type Decimal
      *
      * @var int
      */
-    const BIND_PARAM_DECIMAL = 32;
+    const int BIND_PARAM_DECIMAL = 32;
 
     /**
      * Bind Type Integer
      *
      * @var int
      */
-    const BIND_PARAM_INT = 1;
+    const int BIND_PARAM_INT = 1;
 
     /**
      * Bind Type Null
      *
      * @var int
      */
-    const BIND_PARAM_NULL = 0;
+    const int BIND_PARAM_NULL = 0;
 
     /**
      * Bind Type String
      *
      * @var int
      */
-    const BIND_PARAM_STR = 2;
+    const int BIND_PARAM_STR = 2;
 
     /**
      * Skip binding by type
      *
      * @var int
      */
-    const BIND_SKIP = 1024;
+    const int BIND_SKIP = 1024;
 
     /**
      * Big integer abstract data type
      *
      * @var int
      */
-    const TYPE_BIGINTEGER = 14;
+    const int TYPE_BIGINTEGER = 14;
 
     /**
      * Bit abstract data type
      *
      * @var int
      */
-    const TYPE_BIT = 19;
+    const int TYPE_BIT = 19;
 
     /**
      * Binary abstract data type
      *
      * @var int
      */
-    const TYPE_BINARY = 27;
+    const int TYPE_BINARY = 27;
 
     /**
      * Blob abstract data type
      *
      * @var int
      */
-    const TYPE_BLOB = 11;
+    const int TYPE_BLOB = 11;
 
     /**
      * Bool abstract data type
      *
      * @var int
      */
-    const TYPE_BOOLEAN = 8;
+    const int TYPE_BOOLEAN = 8;
 
     /**
      * Char abstract data type
      *
      * @var int
      */
-    const TYPE_CHAR = 5;
+    const int TYPE_CHAR = 5;
 
     /**
      * Date abstract data type
      *
      * @var int
      */
-    const TYPE_DATE = 1;
+    const int TYPE_DATE = 1;
 
     /**
      * Datetime abstract data type
      *
      * @var int
      */
-    const TYPE_DATETIME = 4;
+    const int TYPE_DATETIME = 4;
 
     /**
      * Decimal abstract data type
      *
      * @var int
      */
-    const TYPE_DECIMAL = 3;
+    const int TYPE_DECIMAL = 3;
 
     /**
      * Double abstract data type
      *
      * @var int
      */
-    const TYPE_DOUBLE = 9;
+    const int TYPE_DOUBLE = 9;
 
     /**
      * Enum abstract data type
      *
      * @var int
      */
-    const TYPE_ENUM = 18;
+    const int TYPE_ENUM = 18;
 
     /**
      * Float abstract data type
      *
      * @var int
      */
-    const TYPE_FLOAT = 7;
+    const int TYPE_FLOAT = 7;
 
     /**
      * Int abstract data type
      *
      * @var int
      */
-    const TYPE_INTEGER = 0;
+    const int TYPE_INTEGER = 0;
 
     /**
      * Json abstract data type
      *
      * @var int
      */
-    const TYPE_JSON = 15;
+    const int TYPE_JSON = 15;
 
     /**
      * Jsonb abstract data type
      *
      * @var int
      */
-    const TYPE_JSONB = 16;
+    const int TYPE_JSONB = 16;
 
     /**
      * Longblob abstract data type
      *
      * @var int
      */
-    const TYPE_LONGBLOB = 13;
+    const int TYPE_LONGBLOB = 13;
 
     /**
      * Longtext abstract data type
      *
      * @var int
      */
-    const TYPE_LONGTEXT = 24;
+    const int TYPE_LONGTEXT = 24;
 
     /**
      * Mediumblob abstract data type
      *
      * @var int
      */
-    const TYPE_MEDIUMBLOB = 12;
+    const int TYPE_MEDIUMBLOB = 12;
 
     /**
      * Mediumintegerr abstract data type
      *
      * @var int
      */
-    const TYPE_MEDIUMINTEGER = 21;
+    const int TYPE_MEDIUMINTEGER = 21;
 
     /**
      * Mediumtext abstract data type
      *
      * @var int
      */
-    const TYPE_MEDIUMTEXT = 23;
+    const int TYPE_MEDIUMTEXT = 23;
 
     /**
      * Smallint abstract data type
      *
      * @var int
      */
-    const TYPE_SMALLINTEGER = 22;
+    const int TYPE_SMALLINTEGER = 22;
 
     /**
      * Text abstract data type
      *
      * @var int
      */
-    const TYPE_TEXT = 6;
+    const int TYPE_TEXT = 6;
 
     /**
      * Time abstract data type
      *
      * @var int
      */
-    const TYPE_TIME = 20;
+    const int TYPE_TIME = 20;
 
     /**
      * Timestamp abstract data type
      *
      * @var int
      */
-    const TYPE_TIMESTAMP = 17;
+    const int TYPE_TIMESTAMP = 17;
 
     /**
      * Tinyblob abstract data type
      *
      * @var int
      */
-    const TYPE_TINYBLOB = 10;
+    const int TYPE_TINYBLOB = 10;
 
     /**
      * Tinyint abstract data type
      *
      * @var int
      */
-    const TYPE_TINYINTEGER = 26;
+    const int TYPE_TINYINTEGER = 26;
 
     /**
      * Tinytext abstract data type
      *
      * @var int
      */
-    const TYPE_TINYTEXT = 25;
+    const int TYPE_TINYTEXT = 25;
 
     /**
      * UUID abstract data type
      *
      * @var int
      */
-    const TYPE_UUID = 29;
+    const int TYPE_UUID = 29;
 
     /**
      * Varbinary abstract data type
      *
      * @var int
      */
-    const TYPE_VARBINARY = 28;
+    const int TYPE_VARBINARY = 28;
 
     /**
      * Varchar abstract data type
      *
      * @var int
      */
-    const TYPE_VARCHAR = 2;
+    const int TYPE_VARCHAR = 2;
 
     /**
      * PostgreSQL `BYTEA` binary type
      *
      * @var int
      */
-    const TYPE_BYTEA = 30;
+    const int TYPE_BYTEA = 30;
 
     /**
      * PostgreSQL `INET` IPv4/IPv6 address type
      *
      * @var int
      */
-    const TYPE_INET = 31;
+    const int TYPE_INET = 31;
 
     /**
      * PostgreSQL `CIDR` network-address type
      *
      * @var int
      */
-    const TYPE_CIDR = 32;
+    const int TYPE_CIDR = 32;
 
     /**
      * PostgreSQL `MACADDR` MAC-address type
      *
      * @var int
      */
-    const TYPE_MACADDR = 33;
+    const int TYPE_MACADDR = 33;
 
     /**
      * PostgreSQL `INT4RANGE` range-of-integer type
      *
      * @var int
      */
-    const TYPE_INT4RANGE = 34;
+    const int TYPE_INT4RANGE = 34;
 
     /**
      * PostgreSQL `INT8RANGE` range-of-bigint type
      *
      * @var int
      */
-    const TYPE_INT8RANGE = 35;
+    const int TYPE_INT8RANGE = 35;
 
     /**
      * PostgreSQL `NUMRANGE` range-of-numeric type
      *
      * @var int
      */
-    const TYPE_NUMRANGE = 36;
+    const int TYPE_NUMRANGE = 36;
 
     /**
      * PostgreSQL `TSRANGE` range-of-timestamp (without time zone) type
      *
      * @var int
      */
-    const TYPE_TSRANGE = 37;
+    const int TYPE_TSRANGE = 37;
 
     /**
      * PostgreSQL `TSTZRANGE` range-of-timestamp (with time zone) type
      *
      * @var int
      */
-    const TYPE_TSTZRANGE = 38;
+    const int TYPE_TSTZRANGE = 38;
 
     /**
      * PostgreSQL `DATERANGE` range-of-date type
      *
      * @var int
      */
-    const TYPE_DATERANGE = 39;
+    const int TYPE_DATERANGE = 39;
 
     /**
      * Spatial `GEOMETRY` base type (MySQL 5.7+; PostgreSQL + PostGIS)
      *
      * @var int
      */
-    const TYPE_GEOMETRY = 40;
+    const int TYPE_GEOMETRY = 40;
 
     /**
      * Spatial `POINT` type (MySQL; PostgreSQL + PostGIS)
      *
      * @var int
      */
-    const TYPE_POINT = 41;
+    const int TYPE_POINT = 41;
 
     /**
      * Spatial `LINESTRING` type (MySQL; PostgreSQL + PostGIS)
      *
      * @var int
      */
-    const TYPE_LINESTRING = 42;
+    const int TYPE_LINESTRING = 42;
 
     /**
      * Spatial `POLYGON` type (MySQL; PostgreSQL + PostGIS)
      *
      * @var int
      */
-    const TYPE_POLYGON = 43;
+    const int TYPE_POLYGON = 43;
 
     /**
      * Spatial `MULTIPOINT` type (MySQL; PostgreSQL + PostGIS)
      *
      * @var int
      */
-    const TYPE_MULTIPOINT = 44;
+    const int TYPE_MULTIPOINT = 44;
 
     /**
      * Spatial `MULTILINESTRING` type (MySQL; PostgreSQL + PostGIS)
      *
      * @var int
      */
-    const TYPE_MULTILINESTRING = 45;
+    const int TYPE_MULTILINESTRING = 45;
 
     /**
      * Spatial `MULTIPOLYGON` type (MySQL; PostgreSQL + PostGIS)
      *
      * @var int
      */
-    const TYPE_MULTIPOLYGON = 46;
+    const int TYPE_MULTIPOLYGON = 46;
 
     /**
      * Spatial `GEOMETRYCOLLECTION` type (MySQL; PostgreSQL + PostGIS)
      *
      * @var int
      */
-    const TYPE_GEOMETRYCOLLECTION = 47;
+    const int TYPE_GEOMETRYCOLLECTION = 47;
 
     /**
      * Column Position

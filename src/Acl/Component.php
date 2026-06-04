@@ -9,6 +9,8 @@
  */
 namespace Phalcon\Acl;
 
+use Phalcon\Acl\Exceptions\ForbiddenWildcard;
+
 /**
  * This class defines component entity and its description
  */
@@ -32,9 +34,9 @@ class Component implements \Phalcon\Acl\ComponentInterface
      * Phalcon\Acl\Component constructor
      *
      * @param string $name
-     * @param string $description
+     * @param string|null $description
      */
-    public function __construct(string $name, string $description = null)
+    public function __construct(string $name, ?string $description = null)
     {
     }
 

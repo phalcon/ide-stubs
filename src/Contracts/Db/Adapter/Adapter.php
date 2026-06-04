@@ -43,16 +43,6 @@ interface Adapter
     public function addColumn(string $tableName, string $schemaName, \Phalcon\Db\ColumnInterface $column): bool;
 
     /**
-     * Adds an index to a table
-     *
-     * @param string $tableName
-     * @param string $schemaName
-     * @param \Phalcon\Db\IndexInterface $index
-     * @return bool
-     */
-    public function addIndex(string $tableName, string $schemaName, \Phalcon\Db\IndexInterface $index): bool;
-
-    /**
      * Adds a foreign key to a table
      *
      * @param string $tableName
@@ -61,6 +51,16 @@ interface Adapter
      * @return bool
      */
     public function addForeignKey(string $tableName, string $schemaName, \Phalcon\Db\ReferenceInterface $reference): bool;
+
+    /**
+     * Adds an index to a table
+     *
+     * @param string $tableName
+     * @param string $schemaName
+     * @param \Phalcon\Db\IndexInterface $index
+     * @return bool
+     */
+    public function addIndex(string $tableName, string $schemaName, \Phalcon\Db\IndexInterface $index): bool;
 
     /**
      * Adds a primary key to a table
@@ -136,10 +136,10 @@ interface Adapter
      *
      * @param string $viewName
      * @param array $definition
-     * @param string $schemaName
+     * @param string|null $schemaName
      * @return bool
      */
-    public function createView(string $viewName, array $definition, string $schemaName = null): bool;
+    public function createView(string $viewName, array $definition, ?string $schemaName = null): bool;
 
     /**
      * Deletes data from a table using custom RDBMS SQL syntax
@@ -150,34 +150,34 @@ interface Adapter
      * @param array $dataTypes *
      * @return bool
      */
-    public function delete($table, string $whereCondition = null, array $placeholders = [], array $dataTypes = []): bool;
+    public function delete($table, ?string $whereCondition = null, array $placeholders = [], array $dataTypes = []): bool;
 
     /**
      * Returns an array of Phalcon\Db\Column objects describing a table
      *
      * @param string $table
-     * @param string $schema
+     * @param string|null $schema
      * @return array|\Phalcon\Db\ColumnInterface[]
      */
-    public function describeColumns(string $table, string $schema = null): array;
+    public function describeColumns(string $table, ?string $schema = null): array;
 
     /**
      * Lists table indexes
      *
      * @param string $table
-     * @param string $schema
+     * @param string|null $schema
      * @return array|\Phalcon\Db\IndexInterface[]
      */
-    public function describeIndexes(string $table, string $schema = null): array;
+    public function describeIndexes(string $table, ?string $schema = null): array;
 
     /**
      * Lists table references
      *
      * @param string $table
-     * @param string $schema
+     * @param string|null $schema
      * @return array|\Phalcon\Db\ReferenceInterface[]
      */
-    public function describeReferences(string $table, string $schema = null): array;
+    public function describeReferences(string $table, ?string $schema = null): array;
 
     /**
      * Drops a column from a table
@@ -222,21 +222,21 @@ interface Adapter
      * Drops a table from a schema/database
      *
      * @param string $tableName
-     * @param string $schemaName
+     * @param string|null $schemaName
      * @param bool $ifExists
      * @return bool
      */
-    public function dropTable(string $tableName, string $schemaName = null, bool $ifExists = true): bool;
+    public function dropTable(string $tableName, ?string $schemaName = null, bool $ifExists = true): bool;
 
     /**
      * Drops a view
      *
      * @param string $viewName
-     * @param string $schemaName
+     * @param string|null $schemaName
      * @param bool $ifExists
      * @return bool
      */
-    public function dropView(string $viewName, string $schemaName = null, bool $ifExists = true): bool;
+    public function dropView(string $viewName, ?string $schemaName = null, bool $ifExists = true): bool;
 
     /**
      * Escapes a column/table/schema name
@@ -393,9 +393,9 @@ interface Adapter
      * ```
      *
      * @todo Return NULL if this is not supported by the adapter
-     * @return RawValue
+     * @return RawValue|null
      */
-    public function getDefaultValue(): RawValue;
+    public function getDefaultValue(): RawValue|null;
 
     /**
      * Return internal PDO handler
@@ -421,16 +421,16 @@ interface Adapter
     /**
      * Active SQL statement in the object
      *
-     * @return string
+     * @return array
      */
-    public function getSQLStatement(): string;
+    public function getSQLBindTypes(): array;
 
     /**
      * Active SQL statement in the object
      *
-     * @return array
+     * @return string
      */
-    public function getSQLBindTypes(): array;
+    public function getSQLStatement(): string;
 
     /**
      * Active SQL statement in the object
@@ -502,32 +502,32 @@ interface Adapter
      * @param string|null $name Name of the sequence object from which the ID should be returned.
      * @return string|bool
      */
-    public function lastInsertId(string $name = null): bool|string;
+    public function lastInsertId(?string $name = null): bool|string;
 
     /**
      * Appends a LIMIT clause to sqlQuery argument
      *
      * @param string $sqlQuery
-     * @param int $number
+     * @param mixed $number
      * @return string
      */
-    public function limit(string $sqlQuery, int $number): string;
+    public function limit(string $sqlQuery, $number): string;
 
     /**
      * List all tables on a database
      *
-     * @param string $schemaName
+     * @param string|null $schemaName
      * @return array
      */
-    public function listTables(string $schemaName = null): array;
+    public function listTables(?string $schemaName = null): array;
 
     /**
      * List all views on a database
      *
-     * @param string $schemaName
+     * @param string|null $schemaName
      * @return array
      */
-    public function listViews(string $schemaName = null): array;
+    public function listViews(?string $schemaName = null): array;
 
     /**
      * Modifies a table column based on a definition
@@ -535,10 +535,10 @@ interface Adapter
      * @param string $tableName
      * @param string $schemaName
      * @param \Phalcon\Db\ColumnInterface $column
-     * @param \Phalcon\Db\ColumnInterface $currentColumn
+     * @param \Phalcon\Db\ColumnInterface|null $currentColumn
      * @return bool
      */
-    public function modifyColumn(string $tableName, string $schemaName, \Phalcon\Db\ColumnInterface $column, \Phalcon\Db\ColumnInterface $currentColumn = null): bool;
+    public function modifyColumn(string $tableName, string $schemaName, \Phalcon\Db\ColumnInterface $column, ?\Phalcon\Db\ColumnInterface $currentColumn = null): bool;
 
     /**
      * Sends SQL statements to the database server returning the success state.
@@ -592,9 +592,9 @@ interface Adapter
      * Set if nested transactions should use savepoints
      *
      * @param bool $nestedTransactionsWithSavepoints
-     * @return Adapter
+     * @return \Phalcon\Db\Adapter\AdapterInterface
      */
-    public function setNestedTransactionsWithSavepoints(bool $nestedTransactionsWithSavepoints): Adapter;
+    public function setNestedTransactionsWithSavepoints(bool $nestedTransactionsWithSavepoints): \Phalcon\Db\Adapter\AdapterInterface;
 
     /**
      * Check whether the database system requires a sequence to produce
@@ -608,19 +608,19 @@ interface Adapter
      * Generates SQL checking for the existence of a schema.table
      *
      * @param string $tableName
-     * @param string $schemaName
+     * @param string|null $schemaName
      * @return bool
      */
-    public function tableExists(string $tableName, string $schemaName = null): bool;
+    public function tableExists(string $tableName, ?string $schemaName = null): bool;
 
     /**
      * Gets creation options from a table
      *
      * @param string $tableName
-     * @param string $schemaName
+     * @param string|null $schemaName
      * @return array
      */
-    public function tableOptions(string $tableName, string $schemaName = null): array;
+    public function tableOptions(string $tableName, ?string $schemaName = null): array;
 
     /**
      * Updates data on a table using custom RDBMS SQL syntax
@@ -680,8 +680,8 @@ interface Adapter
      * Generates SQL checking for the existence of a schema.view
      *
      * @param string $viewName
-     * @param string $schemaName
+     * @param string|null $schemaName
      * @return bool
      */
-    public function viewExists(string $viewName, string $schemaName = null): bool;
+    public function viewExists(string $viewName, ?string $schemaName = null): bool;
 }

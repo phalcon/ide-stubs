@@ -9,16 +9,12 @@
  */
 namespace Phalcon\Image;
 
+use Phalcon\Config\ConfigInterface;
 use Phalcon\Factory\AbstractFactory;
 use Phalcon\Image\Adapter\AdapterInterface;
 
 /**
- * This file is part of the Phalcon Framework.
- *
- * (c) Phalcon Team <team@phalcon.io>
- *
- * For the full copyright and license information, please view the LICENSE.txt
- * file that was distributed with this source code.
+ * Factory to create adapters for image manipulation
  */
 class ImageFactory extends AbstractFactory
 {
@@ -34,7 +30,7 @@ class ImageFactory extends AbstractFactory
     /**
      * Factory to create an instance from a Config object
      *
-     * @param array|\Phalcon\Config\Config $config = [
+     * @param array|ConfigInterface $config = [
      *     'adapter' => 'gd',
      *     'file' => 'image.jpg',
      *     'height' => null,
@@ -51,11 +47,11 @@ class ImageFactory extends AbstractFactory
      *
      * @param string $name
      * @param string $file
-     * @param int $width
-     * @param int $height
+     * @param int|null $width
+     * @param int|null $height
      * @return AdapterInterface
      */
-    public function newInstance(string $name, string $file, int $width = null, int $height = null): AdapterInterface
+    public function newInstance(string $name, string $file, ?int $width = null, ?int $height = null): AdapterInterface
     {
     }
 

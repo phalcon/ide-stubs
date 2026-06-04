@@ -12,6 +12,10 @@ namespace Phalcon\Db\Adapter\Pdo;
 use Phalcon\Db\Adapter\AbstractAdapter;
 use Phalcon\Db\Column;
 use Phalcon\Db\Exception;
+use Phalcon\Db\Exceptions\CannotPrepareStatement;
+use Phalcon\Db\Exceptions\InvalidBindParameter;
+use Phalcon\Db\Exceptions\MatchedParameterNotFound;
+use Phalcon\Db\Exceptions\NoActiveTransaction;
 use Phalcon\Db\Result\PdoResult;
 use Phalcon\Db\ResultInterface;
 use Phalcon\Events\ManagerInterface;
@@ -37,6 +41,11 @@ use Phalcon\Support\Settings;
  */
 abstract class AbstractPdo extends AbstractAdapter
 {
+    /**
+     * @var string
+     */
+    const string BIND_PATTERN = '/\\\\?([0-9]+)|:([a-zA-Z0-9_]+):/';
+
     /**
      * Last affected rows
      *
@@ -239,10 +248,10 @@ abstract class AbstractPdo extends AbstractAdapter
      *
      * @param \PDOStatement $statement
      * @param array $placeholders
-     * @param mixed $dataTypes
+     * @param array $dataTypes
      * @return \PDOStatement
      */
-    public function executePrepared(\PDOStatement $statement, array $placeholders, $dataTypes): \PDOStatement
+    public function executePrepared(\PDOStatement $statement, array $placeholders, array $dataTypes = []): \PDOStatement
     {
     }
 
@@ -316,7 +325,7 @@ abstract class AbstractPdo extends AbstractAdapter
      * @param string|null $name
      * @return string|bool
      */
-    public function lastInsertId(string $name = null): bool|string
+    public function lastInsertId(?string $name = null): bool|string
     {
     }
 

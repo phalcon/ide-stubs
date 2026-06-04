@@ -45,9 +45,9 @@ class Select extends AbstractList
      * @param array       $attributes
      * @param bool        $raw
      *
-     * @return Select
+     * @return static
      */
-    public function add(string $text, string $value = null, array $attributes = [], bool $raw = false): Select
+    public function add(string $text, ?string $value = null, array $attributes = [], bool $raw = false): static
     {
     }
 
@@ -59,9 +59,9 @@ class Select extends AbstractList
      * @param array  $attributes
      * @param bool   $raw
      *
-     * @return Select
+     * @return static
      */
-    public function addPlaceholder(string $text, $value = null, array $attributes = [], bool $raw = false): Select
+    public function addPlaceholder(string $text, ?string $value = null, array $attributes = [], bool $raw = false): static
     {
     }
 
@@ -72,9 +72,9 @@ class Select extends AbstractList
      * Optgroup entries: key = group label, value = [value => label] array.
      *
      * @param SelectData $data *
-     * @return Select
+     * @return static
      */
-    public function fromData(\Phalcon\Contracts\Html\Helper\Input\SelectData $data): Select
+    public function fromData(\Phalcon\Contracts\Html\Helper\Input\SelectData $data): static
     {
     }
 
@@ -84,31 +84,31 @@ class Select extends AbstractList
      * @param string $label
      * @param array  $attributes
      *
-     * @return Select
+     * @return static
      */
-    public function optGroup(string $label = null, array $attributes = []): Select
+    public function optGroup(?string $label = null, array $attributes = []): static
     {
     }
 
     /**
      * Adds a non-selectable placeholder option as the first entry. Renders
      * as `<option value="" disabled selected>$text</option>`, matching the
-     * common HTML idiom for "Choose…"-style prompts.
+     * common HTML idiom for "Choose..."-style prompts.
      *
      * @param string $text
      *
-     * @return Select
+     * @return static
      */
-    public function placeholder(string $text): Select
+    public function placeholder(string $text): static
     {
     }
 
     /**
      * @param string $selected
      *
-     * @return Select
+     * @return static
      */
-    public function selected(string $selected): Select
+    public function selected(string $selected): static
     {
     }
 
@@ -120,9 +120,9 @@ class Select extends AbstractList
      *
      * @param bool $flag
      *
-     * @return Select
+     * @return static
      */
-    public function strict(bool $flag = true): Select
+    public function strict(bool $flag = true): static
     {
     }
 
@@ -159,7 +159,7 @@ class Select extends AbstractList
      *
      * @return array
      */
-    private function processValue(array $attributes, $value = null): array
+    private function processValue(array $attributes, ?string $value = null): array
     {
     }
 }

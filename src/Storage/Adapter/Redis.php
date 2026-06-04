@@ -12,6 +12,9 @@ namespace Phalcon\Storage\Adapter;
 use DateInterval;
 use Exception as BaseException;
 use Phalcon\Storage\Exception as StorageException;
+use Phalcon\Storage\Exceptions\AuthenticationFailed;
+use Phalcon\Storage\Exceptions\ConnectionFailed;
+use Phalcon\Storage\Exceptions\DatabaseSelectionFailed;
 use Phalcon\Storage\SerializerFactory;
 use Phalcon\Support\Exception as SupportException;
 
@@ -179,30 +182,30 @@ class Redis extends \Phalcon\Storage\Adapter\AbstractAdapter
     /**
      * @param \Redis $connection
      *
-     * @return Redis
-     * @throws StorageException
+     * @return static
+     * @throws AuthenticationFailed
      */
-    private function checkAuth(\Redis $connection): Redis
+    private function checkAuth(\Redis $connection): static
     {
     }
 
     /**
      * @param \Redis $connection
      *
-     * @return Redis
-     * @throws StorageException
+     * @return static
+     * @throws ConnectionFailed
      */
-    private function checkConnect(\Redis $connection): Redis
+    private function checkConnect(\Redis $connection): static
     {
     }
 
     /**
      * @param \Redis $connection
      *
-     * @return Redis
-     * @throws StorageException
+     * @return static
+     * @throws DatabaseSelectionFailed
      */
-    private function checkIndex(\Redis $connection): Redis
+    private function checkIndex(\Redis $connection): static
     {
     }
 

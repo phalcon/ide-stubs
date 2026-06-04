@@ -13,8 +13,6 @@ use Phalcon\Messages\MessageInterface;
 use Phalcon\Mvc\ModelInterface;
 
 /**
- * Phalcon\Mvc\Model\Query\Status
- *
  * This class represents the status returned by a PHQL
  * statement like INSERT, UPDATE or DELETE. It offers context
  * information and the related messages produced by the
@@ -55,9 +53,9 @@ class Status implements \Phalcon\Mvc\Model\Query\StatusInterface
      * Phalcon\Mvc\Model\Query\Status
      *
      * @param bool $success
-     * @param \Phalcon\Mvc\ModelInterface $model
+     * @param \Phalcon\Mvc\ModelInterface|null $model
      */
-    public function __construct(bool $success, \Phalcon\Mvc\ModelInterface $model = null)
+    public function __construct(bool $success, ?\Phalcon\Mvc\ModelInterface $model = null)
     {
     }
 
@@ -73,9 +71,9 @@ class Status implements \Phalcon\Mvc\Model\Query\StatusInterface
     /**
      * Returns the model that executed the action
      *
-     * @return ModelInterface
+     * @return ModelInterface|null
      */
-    public function getModel(): ModelInterface
+    public function getModel(): ModelInterface|null
     {
     }
 

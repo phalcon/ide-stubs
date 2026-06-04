@@ -14,6 +14,7 @@ use Phalcon\Db\Column;
 use Phalcon\Db\ColumnInterface;
 use Phalcon\Db\Enum;
 use Phalcon\Db\Exception;
+use Phalcon\Db\Exceptions\MissingForeignKeyChecks;
 use Phalcon\Db\Index;
 use Phalcon\Db\IndexInterface;
 use Phalcon\Db\Reference;
@@ -70,10 +71,10 @@ class Mysql extends \Phalcon\Db\Adapter\Pdo\AbstractPdo
      * ```
      *
      * @param string $table
-     * @param string $schema
+     * @param string|null $schema
      * @return array|\Phalcon\Db\ColumnInterface[]
      */
-    public function describeColumns(string $table, string $schema = null): array
+    public function describeColumns(string $table, ?string $schema = null): array
     {
     }
 
@@ -87,10 +88,10 @@ class Mysql extends \Phalcon\Db\Adapter\Pdo\AbstractPdo
      * ```
      *
      * @param string $table
-     * @param string $schema
+     * @param string|null $schema
      * @return array|\Phalcon\Db\IndexInterface[]
      */
-    public function describeIndexes(string $table, string $schema = null): array
+    public function describeIndexes(string $table, ?string $schema = null): array
     {
     }
 
@@ -104,10 +105,10 @@ class Mysql extends \Phalcon\Db\Adapter\Pdo\AbstractPdo
      * ```
      *
      * @param string $table
-     * @param string $schema
+     * @param string|null $schema
      * @return array|\Phalcon\Db\ReferenceInterface[]
      */
-    public function describeReferences(string $table, string $schema = null): array
+    public function describeReferences(string $table, ?string $schema = null): array
     {
     }
 

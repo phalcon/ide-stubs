@@ -21,9 +21,9 @@ abstract class AbstractAdapter extends AbstractEventsAware implements \Phalcon\A
     /**
      * Access Granted
      *
-     * @var bool
+     * @var int
      */
-    protected $accessGranted = false;
+    protected $accessGranted = Enum::DENY;
 
     /**
      * Active access which the list is checking if some role can access it

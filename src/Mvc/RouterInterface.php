@@ -9,8 +9,8 @@
  */
 namespace Phalcon\Mvc;
 
-use Phalcon\Mvc\Router\RouteInterface;
 use Phalcon\Mvc\Router\GroupInterface;
+use Phalcon\Mvc\Router\RouteInterface;
 
 /**
  * Interface for Phalcon\Mvc\Router
@@ -49,16 +49,6 @@ interface RouterInterface
     public function addDelete(string $pattern, $paths = null, int $position = Router::POSITION_LAST): RouteInterface;
 
     /**
-     * Adds a route to the router that only match if the HTTP method is HEAD
-     *
-     * @param string $pattern
-     * @param array|string|null $paths *
-     * @return RouteInterface
-     * @param int $position
-     */
-    public function addHead(string $pattern, $paths = null, int $position = Router::POSITION_LAST): RouteInterface;
-
-    /**
      * Adds a route to the router that only match if the HTTP method is GET
      *
      * @param string $pattern
@@ -67,6 +57,16 @@ interface RouterInterface
      * @param int $position
      */
     public function addGet(string $pattern, $paths = null, int $position = Router::POSITION_LAST): RouteInterface;
+
+    /**
+     * Adds a route to the router that only match if the HTTP method is HEAD
+     *
+     * @param string $pattern
+     * @param array|string|null $paths *
+     * @return RouteInterface
+     * @param int $position
+     */
+    public function addHead(string $pattern, $paths = null, int $position = Router::POSITION_LAST): RouteInterface;
 
     /**
      * Add a route to the router that only match if the HTTP method is OPTIONS
@@ -195,19 +195,12 @@ interface RouterInterface
     public function getParams(): array;
 
     /**
-     * Return all the routes defined in the router
-     *
-     * @return array|\Phalcon\Mvc\Router\RouteInterface[]
-     */
-    public function getRoutes(): array;
-
-    /**
      * Returns a route object by its id
      *
      * @return RouteInterface|bool
-     * @param mixed $id
+     * @param mixed $routeId
      */
-    public function getRouteById($id): RouteInterface|bool;
+    public function getRouteById($routeId): RouteInterface|bool;
 
     /**
      * Returns a route object by its name
@@ -216,6 +209,13 @@ interface RouterInterface
      * @param string $name
      */
     public function getRouteByName(string $name): RouteInterface|bool;
+
+    /**
+     * Return all the routes defined in the router
+     *
+     * @return array|\Phalcon\Mvc\Router\RouteInterface[]
+     */
+    public function getRoutes(): array;
 
     /**
      * Handles routing information received from the rewrite engine

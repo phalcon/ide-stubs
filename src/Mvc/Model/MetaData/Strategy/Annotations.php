@@ -9,11 +9,13 @@
  */
 namespace Phalcon\Mvc\Model\MetaData\Strategy;
 
-use Phalcon\Di\DiInterface;
 use Phalcon\Db\Column;
-use Phalcon\Mvc\ModelInterface;
+use Phalcon\Di\DiInterface;
 use Phalcon\Mvc\Model\MetaData;
-use Phalcon\Mvc\Model\Exception;
+use Phalcon\Mvc\Model\MetaData\Exceptions\InvalidContainer;
+use Phalcon\Mvc\Model\MetaData\Exceptions\NoAnnotationsForClass;
+use Phalcon\Mvc\Model\MetaData\Exceptions\NoPropertyAnnotationsForClass;
+use Phalcon\Mvc\ModelInterface;
 
 /**
  * This file is part of the Phalcon Framework.

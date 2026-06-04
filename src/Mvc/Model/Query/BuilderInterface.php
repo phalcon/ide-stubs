@@ -12,8 +12,6 @@ namespace Phalcon\Mvc\Model\Query;
 use Phalcon\Mvc\Model\QueryInterface;
 
 /**
- * Phalcon\Mvc\Model\Query\BuilderInterface
- *
  * Interface for Phalcon\Mvc\Model\Query\Builder
  */
 interface BuilderInterface
@@ -21,22 +19,22 @@ interface BuilderInterface
     /**
      * @var string
      */
-    const OPERATOR_AND = 'and';
+    const string OPERATOR_AND = 'and';
 
     /**
      * @var string
      */
-    const OPERATOR_OR = 'or';
+    const string OPERATOR_OR = 'or';
 
 
     /**
      * Add a model to take part of the query
      *
      * @param string $model
-     * @param string $alias
+     * @param string|null $alias
      * @return BuilderInterface
      */
-    public function addFrom(string $model, string $alias = null): BuilderInterface;
+    public function addFrom(string $model, ?string $alias = null): BuilderInterface;
 
     /**
      * Appends a condition to the current conditions using a AND operator
@@ -205,6 +203,13 @@ interface BuilderInterface
     public function getLimit();
 
     /**
+     * Returns the models involved in the query
+     *
+     * @return string|array|null
+     */
+    public function getModels(): string|array|null;
+
+    /**
      * Returns the current OFFSET clause
      *
      * @return int
@@ -261,11 +266,11 @@ interface BuilderInterface
      * Adds an INNER join to the query
      *
      * @param string $model
-     * @param string $conditions
-     * @param string $alias
+     * @param string|null $conditions
+     * @param string|null $alias
      * @return BuilderInterface
      */
-    public function innerJoin(string $model, string $conditions = null, string $alias = null): BuilderInterface;
+    public function innerJoin(string $model, ?string $conditions = null, ?string $alias = null): BuilderInterface;
 
     /**
      * Appends an IN condition to the current conditions
@@ -285,17 +290,17 @@ interface BuilderInterface
      * @param string $alias
      * @return BuilderInterface
      */
-    public function join(string $model, string $conditions = null, string $alias = null): BuilderInterface;
+    public function join(string $model, ?string $conditions = null, ?string $alias = null): BuilderInterface;
 
     /**
      * Adds a LEFT join to the query
      *
      * @param string $model
-     * @param string $conditions
-     * @param string $alias
+     * @param string|null $conditions
+     * @param string|null $alias
      * @return BuilderInterface
      */
-    public function leftJoin(string $model, string $conditions = null, string $alias = null): BuilderInterface;
+    public function leftJoin(string $model, ?string $conditions = null, ?string $alias = null): BuilderInterface;
 
     /**
      * Sets a LIMIT clause
@@ -305,13 +310,6 @@ interface BuilderInterface
      * @return BuilderInterface
      */
     public function limit(int $limit, $offset = null): BuilderInterface;
-
-    /**
-     * Returns the models involved in the query
-     *
-     * @return string|array|null
-     */
-    public function getModels(): string|array|null;
 
     /**
      * Appends a NOT BETWEEN condition to the current conditions
@@ -343,14 +341,6 @@ interface BuilderInterface
     public function offset(int $offset): BuilderInterface;
 
     /**
-     * Sets an ORDER BY condition clause
-     *
-     * @param array|string $orderBy
-     * @return BuilderInterface
-     */
-    public function orderBy($orderBy): BuilderInterface;
-
-    /**
      * Appends a condition to the current conditions using an OR operator
      *
      * @param string $conditions
@@ -361,14 +351,22 @@ interface BuilderInterface
     public function orWhere(string $conditions, array $bindParams = [], array $bindTypes = []): BuilderInterface;
 
     /**
+     * Sets an ORDER BY condition clause
+     *
+     * @param array|string $orderBy
+     * @return BuilderInterface
+     */
+    public function orderBy($orderBy): BuilderInterface;
+
+    /**
      * Adds a RIGHT join to the query
      *
      * @param string $model
-     * @param string $conditions
-     * @param string $alias
+     * @param string|null $conditions
+     * @param string|null $alias
      * @return BuilderInterface
      */
-    public function rightJoin(string $model, string $conditions = null, string $alias = null): BuilderInterface;
+    public function rightJoin(string $model, ?string $conditions = null, ?string $alias = null): BuilderInterface;
 
     /**
      * Set default bind parameters

@@ -24,7 +24,7 @@ class Version
      *
      * @var int
      */
-    const VERSION_MAJOR = 0;
+    const int VERSION_MAJOR = 0;
 
     /**
      * The constant referencing the major version. Returns 1
@@ -36,7 +36,7 @@ class Version
      *
      * @var int
      */
-    const VERSION_MEDIUM = 1;
+    const int VERSION_MEDIUM = 1;
 
     /**
      * The constant referencing the major version. Returns 2
@@ -48,7 +48,7 @@ class Version
      *
      * @var int
      */
-    const VERSION_MINOR = 2;
+    const int VERSION_MINOR = 2;
 
     /**
      * The constant referencing the major version. Returns 3
@@ -60,7 +60,7 @@ class Version
      *
      * @var int
      */
-    const VERSION_SPECIAL = 3;
+    const int VERSION_SPECIAL = 3;
 
     /**
      * The constant referencing the major version. Returns 4
@@ -72,34 +72,8 @@ class Version
      *
      * @var int
      */
-    const VERSION_SPECIAL_NUMBER = 4;
+    const int VERSION_SPECIAL_NUMBER = 4;
 
-
-    /**
-     * Area where the version number is set. The format is as follows:
-     * ABBCCDE
-     *
-     * A - Major version
-     * B - Med version (two digits)
-     * C - Min version (two digits)
-     * D - Special release: 1 = alpha, 2 = beta, 3 = RC, 4 = stable
-     * E - Special release version i.e. RC1, Beta2 etc.
-     *
-     * @return array
-     */
-    protected function getVersion(): array
-    {
-    }
-
-    /**
-     * Translates a number to a special release.
-     *
-     * @param int $special
-     * @return string
-     */
-    final protected function getSpecial(int $special): string
-    {
-    }
 
     /**
      * Returns the active version (string)
@@ -136,9 +110,37 @@ class Version
      * ```
      *
      * @param int $part
+     *
      * @return string
      */
     public function getPart(int $part): string
+    {
+    }
+
+    /**
+     * Translates a number to a special release.
+     *
+     * @param int $special
+     *
+     * @return string
+     */
+    final protected function getSpecial(int $special): string
+    {
+    }
+
+    /**
+     * Area where the version number is set. The format is as follows:
+     * ABBCCDE
+     *
+     * A - Major version
+     * B - Med version (two digits)
+     * C - Min version (two digits)
+     * D - Special release: 1 = alpha, 2 = beta, 3 = RC, 4 = stable
+     * E - Special release version i.e. RC1, Beta2 etc.
+     *
+     * @return int[]
+     */
+    protected function getVersion(): array
     {
     }
 }

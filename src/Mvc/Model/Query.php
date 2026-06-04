@@ -15,6 +15,54 @@ use Phalcon\Db\ResultInterface;
 use Phalcon\Db\Adapter\AdapterInterface;
 use Phalcon\Di\DiInterface;
 use Phalcon\Mvc\ModelInterface;
+use Phalcon\Mvc\Model\Query\Exceptions\AmbiguousColumn;
+use Phalcon\Mvc\Model\Query\Exceptions\AmbiguousJoinRelation;
+use Phalcon\Mvc\Model\Query\Exceptions\BindParameterNotInPlaceholders;
+use Phalcon\Mvc\Model\Query\Exceptions\BindTypeRequiresArray;
+use Phalcon\Mvc\Model\Query\Exceptions\BindValueRequired;
+use Phalcon\Mvc\Model\Query\Exceptions\ColumnNotInDomain;
+use Phalcon\Mvc\Model\Query\Exceptions\ColumnNotInSelectedModels;
+use Phalcon\Mvc\Model\Query\Exceptions\CorruptedAst;
+use Phalcon\Mvc\Model\Query\Exceptions\CorruptedDeleteAst;
+use Phalcon\Mvc\Model\Query\Exceptions\CorruptedInsertAst;
+use Phalcon\Mvc\Model\Query\Exceptions\CorruptedSelectAst;
+use Phalcon\Mvc\Model\Query\Exceptions\CorruptedUpdateAst;
+use Phalcon\Mvc\Model\Query\Exceptions\DeleteMultipleNotSupported;
+use Phalcon\Mvc\Model\Query\Exceptions\DuplicateAlias;
+use Phalcon\Mvc\Model\Query\Exceptions\EmptyArrayPlaceholderValue;
+use Phalcon\Mvc\Model\Query\Exceptions\InsertColumnCountMismatch;
+use Phalcon\Mvc\Model\Query\Exceptions\InvalidCachedResultset;
+use Phalcon\Mvc\Model\Query\Exceptions\InvalidCachingOptions;
+use Phalcon\Mvc\Model\Query\Exceptions\InvalidColumnDefinition;
+use Phalcon\Mvc\Model\Query\Exceptions\InvalidInjectedManager;
+use Phalcon\Mvc\Model\Query\Exceptions\InvalidInjectedMetadata;
+use Phalcon\Mvc\Model\Query\Exceptions\InvalidQueryCacheService;
+use Phalcon\Mvc\Model\Query\Exceptions\InvalidResultsetClass;
+use Phalcon\Mvc\Model\Query\Exceptions\JoinAliasAlreadyUsed;
+use Phalcon\Mvc\Model\Query\Exceptions\JoinFieldCountMismatch;
+use Phalcon\Mvc\Model\Query\Exceptions\MissingCacheKey;
+use Phalcon\Mvc\Model\Query\Exceptions\MissingMetaData;
+use Phalcon\Mvc\Model\Query\Exceptions\MissingModelAttribute;
+use Phalcon\Mvc\Model\Query\Exceptions\MissingModelsManager;
+use Phalcon\Mvc\Model\Query\Exceptions\MixedDatabaseSystems;
+use Phalcon\Mvc\Model\Query\Exceptions\ModelsListNotLoaded;
+use Phalcon\Mvc\Model\Query\Exceptions\ModelSourceNotFound;
+use Phalcon\Mvc\Model\Query\Exceptions\MultipleSqlStatementsNotSupported;
+use Phalcon\Mvc\Model\Query\Exceptions\NoModelForAlias;
+use Phalcon\Mvc\Model\Query\Exceptions\PhqlColumnNotInMap;
+use Phalcon\Mvc\Model\Query\Exceptions\ReadConnectionMissing;
+use Phalcon\Mvc\Model\Query\Exceptions\RelationshipNotFound;
+use Phalcon\Mvc\Model\Query\Exceptions\ResultsetClassNotFound;
+use Phalcon\Mvc\Model\Query\Exceptions\ResultsetNonCacheable;
+use Phalcon\Mvc\Model\Query\Exceptions\UnknownBindType;
+use Phalcon\Mvc\Model\Query\Exceptions\UnknownColumnType;
+use Phalcon\Mvc\Model\Query\Exceptions\UnknownJoinType;
+use Phalcon\Mvc\Model\Query\Exceptions\UnknownModelOrAlias;
+use Phalcon\Mvc\Model\Query\Exceptions\UnknownPhqlExpression;
+use Phalcon\Mvc\Model\Query\Exceptions\UnknownPhqlExpressionType;
+use Phalcon\Mvc\Model\Query\Exceptions\UnknownPhqlStatement;
+use Phalcon\Mvc\Model\Query\Exceptions\UpdateMultipleNotSupported;
+use Phalcon\Mvc\Model\Query\Exceptions\WriteConnectionMissing;
 use Phalcon\Mvc\Model\Query\Status;
 use Phalcon\Mvc\Model\Resultset\Complex;
 use Phalcon\Mvc\Model\Query\StatusInterface;
@@ -80,22 +128,22 @@ class Query implements \Phalcon\Mvc\Model\QueryInterface, \Phalcon\Di\InjectionA
     /**
      * @var int
      */
-    const TYPE_DELETE = 303;
+    const int TYPE_DELETE = 303;
 
     /**
      * @var int
      */
-    const TYPE_INSERT = 306;
+    const int TYPE_INSERT = 306;
 
     /**
      * @var int
      */
-    const TYPE_SELECT = 309;
+    const int TYPE_SELECT = 309;
 
     /**
      * @var int
      */
-    const TYPE_UPDATE = 300;
+    const int TYPE_UPDATE = 300;
 
     /**
      * @var array
@@ -137,6 +185,11 @@ class Query implements \Phalcon\Mvc\Model\QueryInterface, \Phalcon\Di\InjectionA
      * @var array
      */
     protected $intermediate;
+
+    /**
+     * @var array|null
+     */
+    protected static $internalPhqlCache;
 
     /**
      * @var \Phalcon\Mvc\Model\ManagerInterface|null
@@ -199,16 +252,6 @@ class Query implements \Phalcon\Mvc\Model\QueryInterface, \Phalcon\Di\InjectionA
     protected $sqlModelsAliases = [];
 
     /**
-     * @var int|null
-     */
-    protected $type;
-
-    /**
-     * @var bool
-     */
-    protected $uniqueRow = false;
-
-    /**
      * TransactionInterface so that the query can wrap a transaction
      * around batch updates and intermediate selects within the transaction.
      * however if a model got a transaction set inside it will use the local
@@ -219,9 +262,14 @@ class Query implements \Phalcon\Mvc\Model\QueryInterface, \Phalcon\Di\InjectionA
     protected $transaction = null;
 
     /**
-     * @var array|null
+     * @var int|null
      */
-    protected static $internalPhqlCache;
+    protected $type;
+
+    /**
+     * @var bool
+     */
+    protected $uniqueRow = false;
 
     /**
      * Phalcon\Mvc\Model\Query constructor
@@ -230,7 +278,7 @@ class Query implements \Phalcon\Mvc\Model\QueryInterface, \Phalcon\Di\InjectionA
      * @param DiInterface|null $container
      * @param array $options
      */
-    public function __construct(string $phql = null, \Phalcon\Di\DiInterface $container = null, array $options = [])
+    public function __construct(?string $phql = null, ?\Phalcon\Di\DiInterface $container = null, array $options = [])
     {
     }
 
@@ -265,24 +313,6 @@ class Query implements \Phalcon\Mvc\Model\QueryInterface, \Phalcon\Di\InjectionA
     }
 
     /**
-     * Returns the current cache backend instance
-     *
-     * @return AdapterInterface
-     */
-    public function getCache(): AdapterInterface
-    {
-    }
-
-    /**
-     * Returns the current cache options
-     *
-     * @return array
-     */
-    public function getCacheOptions(): array
-    {
-    }
-
-    /**
      * Returns default bind params
      *
      * @return array
@@ -297,6 +327,24 @@ class Query implements \Phalcon\Mvc\Model\QueryInterface, \Phalcon\Di\InjectionA
      * @return array
      */
     public function getBindTypes(): array
+    {
+    }
+
+    /**
+     * Returns the current cache backend instance
+     *
+     * @return AdapterInterface
+     */
+    public function getCache(): AdapterInterface
+    {
+    }
+
+    /**
+     * Returns the current cache options
+     *
+     * @return array
+     */
+    public function getCacheOptions(): array
     {
     }
 
@@ -348,6 +396,13 @@ class Query implements \Phalcon\Mvc\Model\QueryInterface, \Phalcon\Di\InjectionA
     }
 
     /**
+     * @return TransactionInterface|null
+     */
+    public function getTransaction(): TransactionInterface|null
+    {
+    }
+
+    /**
      * Gets the type of PHQL statement executed
      *
      * @return int
@@ -363,13 +418,6 @@ class Query implements \Phalcon\Mvc\Model\QueryInterface, \Phalcon\Di\InjectionA
      * @return bool
      */
     public function getUniqueRow(): bool
-    {
-    }
-
-    /**
-     * @return TransactionInterface|null
-     */
-    public function getTransaction(): TransactionInterface|null
     {
     }
 
@@ -572,16 +620,6 @@ class Query implements \Phalcon\Mvc\Model\QueryInterface, \Phalcon\Di\InjectionA
     }
 
     /**
-     * Returns a processed limit clause for a SELECT statement
-     *
-     * @param array $limitClause
-     * @return array
-     */
-    final protected function getLimitClause(array $limitClause): array
-    {
-    }
-
-    /**
      * Resolves a JOIN clause checking if the associated models exist
      *
      * @param ManagerInterface $manager
@@ -610,6 +648,16 @@ class Query implements \Phalcon\Mvc\Model\QueryInterface, \Phalcon\Di\InjectionA
      * @return array
      */
     final protected function getJoins(array $select): array
+    {
+    }
+
+    /**
+     * Returns a processed limit clause for a SELECT statement
+     *
+     * @param array $limitClause
+     * @return array
+     */
+    final protected function getLimitClause(array $limitClause): array
     {
     }
 
@@ -653,12 +701,12 @@ class Query implements \Phalcon\Mvc\Model\QueryInterface, \Phalcon\Di\InjectionA
      * inside the query object
      *
      * @param \Phalcon\Mvc\ModelInterface $model
-     * @param array $intermediate
+     * @param array|null $intermediate
      * @param array $bindParams
      * @param array $bindTypes
      * @return AdapterInterface
      */
-    protected function getReadConnection(\Phalcon\Mvc\ModelInterface $model, array $intermediate = null, array $bindParams = [], array $bindTypes = []): AdapterInterface
+    protected function getReadConnection(\Phalcon\Mvc\ModelInterface $model, ?array $intermediate = null, array $bindParams = [], array $bindTypes = []): AdapterInterface
     {
     }
 
@@ -716,12 +764,53 @@ class Query implements \Phalcon\Mvc\Model\QueryInterface, \Phalcon\Di\InjectionA
      * inside the query object
      *
      * @param \Phalcon\Mvc\ModelInterface $model
-     * @param array $intermediate
+     * @param array|null $intermediate
      * @param array $bindParams
      * @param array $bindTypes
      * @return AdapterInterface
      */
-    protected function getWriteConnection(\Phalcon\Mvc\ModelInterface $model, array $intermediate = null, array $bindParams = [], array $bindTypes = []): AdapterInterface
+    protected function getWriteConnection(\Phalcon\Mvc\ModelInterface $model, ?array $intermediate = null, array $bindParams = [], array $bindTypes = []): AdapterInterface
+    {
+    }
+
+    /**
+     * Analyzes a DELETE intermediate code and produces an array to be executed
+     * later
+     *
+     * @return array
+     */
+    final protected function prepareDelete(): array
+    {
+    }
+
+    /**
+     * Analyzes an INSERT intermediate code and produces an array to be executed
+     * later
+     *
+     * @return array
+     */
+    final protected function prepareInsert(): array
+    {
+    }
+
+    /**
+     * Analyzes a SELECT intermediate code and produces an array to be executed later
+     *
+     * @param mixed $ast
+     * @param bool $merge
+     * @return array
+     */
+    final protected function prepareSelect($ast = null, bool $merge = false): array
+    {
+    }
+
+    /**
+     * Analyzes an UPDATE intermediate code and produces an array to be executed
+     * later
+     *
+     * @return array
+     */
+    final protected function prepareUpdate(): array
     {
     }
 
@@ -736,47 +825,6 @@ class Query implements \Phalcon\Mvc\Model\QueryInterface, \Phalcon\Di\InjectionA
      * @return array
      */
     final protected function refreshSchemasInIntermediate(array $irPhql): array
-    {
-    }
-
-    /**
-     * Analyzes a DELETE intermediate code and produces an array to be executed
-     * later
-     *
-     * @return array
-     */
-    final protected function _prepareDelete(): array
-    {
-    }
-
-    /**
-     * Analyzes an INSERT intermediate code and produces an array to be executed
-     * later
-     *
-     * @return array
-     */
-    final protected function _prepareInsert(): array
-    {
-    }
-
-    /**
-     * Analyzes a SELECT intermediate code and produces an array to be executed later
-     *
-     * @param mixed $ast
-     * @param bool $merge
-     * @return array
-     */
-    final protected function _prepareSelect($ast = null, bool $merge = false): array
-    {
-    }
-
-    /**
-     * Analyzes an UPDATE intermediate code and produces an array to be executed
-     * later
-     *
-     * @return array
-     */
-    final protected function _prepareUpdate(): array
     {
     }
 }

@@ -13,12 +13,21 @@ use Phalcon\Di\Di;
 use Phalcon\Di\DiInterface;
 use Phalcon\Di\Injectable;
 use Phalcon\Filter\FilterInterface;
+use Phalcon\Filter\Validation\AbstractCombinedFieldsValidator;
+use Phalcon\Filter\Validation\Exception;
+use Phalcon\Filter\Validation\Exceptions\FilterServiceUnavailable;
+use Phalcon\Filter\Validation\Exceptions\InvalidFieldType;
+use Phalcon\Filter\Validation\Exceptions\InvalidFilterService;
+use Phalcon\Filter\Validation\Exceptions\InvalidValidationData;
+use Phalcon\Filter\Validation\Exceptions\InvalidValidator;
+use Phalcon\Filter\Validation\Exceptions\InvalidValidatorScope;
+use Phalcon\Filter\Validation\Exceptions\NoDataToValidate;
+use Phalcon\Filter\Validation\Exceptions\NoValidators;
+use Phalcon\Filter\Validation\Exceptions\ValidationEntityNotObject;
+use Phalcon\Filter\Validation\ValidationInterface;
+use Phalcon\Filter\Validation\ValidatorInterface;
 use Phalcon\Messages\MessageInterface;
 use Phalcon\Messages\Messages;
-use Phalcon\Filter\Validation\ValidationInterface;
-use Phalcon\Filter\Validation\Exception;
-use Phalcon\Filter\Validation\ValidatorInterface;
-use Phalcon\Filter\Validation\AbstractCombinedFieldsValidator;
 
 /**
  * Allows to validate data using custom or built-in validators
@@ -56,9 +65,9 @@ class Validation extends Injectable implements \Phalcon\Filter\Validation\Valida
     protected $labels = [];
 
     /**
-     * @var Messages|null
+     * @var Messages
      */
-    protected $messages = null;
+    protected $messages;
 
     /**
      * List of validators
@@ -89,9 +98,9 @@ class Validation extends Injectable implements \Phalcon\Filter\Validation\Valida
      * @param string|array       $field
      * @param ValidatorInterface $validator
      *
-     * @return ValidationInterface
+     * @return static
      */
-    public function add($field, \Phalcon\Filter\Validation\ValidatorInterface $validator): ValidationInterface
+    public function add($field, \Phalcon\Filter\Validation\ValidatorInterface $validator): static
     {
     }
 
@@ -99,9 +108,9 @@ class Validation extends Injectable implements \Phalcon\Filter\Validation\Valida
      * Appends a message to the messages list
      *
      * @param MessageInterface $message
-     * @return ValidationInterface
+     * @return static
      */
-    public function appendMessage(\Phalcon\Messages\MessageInterface $message): ValidationInterface
+    public function appendMessage(\Phalcon\Messages\MessageInterface $message): static
     {
     }
 
@@ -120,9 +129,9 @@ class Validation extends Injectable implements \Phalcon\Filter\Validation\Valida
      * @param object $entity the entity object to assign data to
      * @param array|object $data the data that needs to be validated
      * @param array $whitelist only allow these fields to be mutated when entity is used
-     * @return ValidationInterface
+     * @return static
      */
-    public function bind($entity, $data, array $whitelist = []): ValidationInterface
+    public function bind($entity, $data, array $whitelist = []): static
     {
     }
 
@@ -145,10 +154,10 @@ class Validation extends Injectable implements \Phalcon\Filter\Validation\Valida
     /**
      * Returns all the filters or a specific one
      *
-     * @param string $field
+     * @param string|null $field
      * @return mixed|null
      */
-    public function getFilters(string $field = null): mixed
+    public function getFilters(?string $field = null): mixed
     {
     }
 
@@ -218,9 +227,9 @@ class Validation extends Injectable implements \Phalcon\Filter\Validation\Valida
      * @param string|array       $field
      * @param ValidatorInterface $validator
      *
-     * @return ValidationInterface
+     * @return static
      */
-    public function rule($field, \Phalcon\Filter\Validation\ValidatorInterface $validator): ValidationInterface
+    public function rule($field, \Phalcon\Filter\Validation\ValidatorInterface $validator): static
     {
     }
 
@@ -229,9 +238,9 @@ class Validation extends Injectable implements \Phalcon\Filter\Validation\Valida
      *
      * @param mixed $field
      * @param array $validators
-     * @return ValidationInterface
+     * @return static
      */
-    public function rules($field, array $validators): ValidationInterface
+    public function rules($field, array $validators): static
     {
     }
 
@@ -250,9 +259,9 @@ class Validation extends Injectable implements \Phalcon\Filter\Validation\Valida
      *
      * @param string $field
      * @param array|string $filters
-     * @return ValidationInterface
+     * @return static
      */
-    public function setFilters($field, $filters): ValidationInterface
+    public function setFilters($field, $filters): static
     {
     }
 
@@ -268,9 +277,9 @@ class Validation extends Injectable implements \Phalcon\Filter\Validation\Valida
 
     /**
      * @param array $validators
-     * @return Validation
+     * @return static
      */
-    public function setValidators(array $validators): Validation
+    public function setValidators(array $validators): static
     {
     }
 

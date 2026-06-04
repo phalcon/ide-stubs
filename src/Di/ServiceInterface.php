@@ -47,10 +47,10 @@ interface ServiceInterface
      * Resolves the service
      *
      * @param array $parameters
-     * @param DiInterface $container
+     * @param DiInterface|null $container
      * @return mixed
      */
-    public function resolve($parameters = null, DiInterface $container = null): mixed;
+    public function resolve($parameters = null, ?DiInterface $container = null): mixed;
 
     /**
      * Set the service definition

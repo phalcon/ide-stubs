@@ -22,7 +22,7 @@ interface CryptInterface
      *
      * @return string
      */
-    public function decrypt(string $input, string $key = null): string;
+    public function decrypt(string $input, ?string $key = null): string;
 
     /**
      * Decrypt a text that is coded as a base64 string
@@ -32,7 +32,7 @@ interface CryptInterface
      *
      * @return string
      */
-    public function decryptBase64(string $input, string $key = null): string;
+    public function decryptBase64(string $input, ?string $key = null): string;
 
     /**
      * Encrypts a text
@@ -42,7 +42,7 @@ interface CryptInterface
      *
      * @return string
      */
-    public function encrypt(string $input, string $key = null): string;
+    public function encrypt(string $input, ?string $key = null): string;
 
     /**
      * Encrypts a text returning the result as a base64 string
@@ -52,21 +52,7 @@ interface CryptInterface
      *
      * @return string
      */
-    public function encryptBase64(string $input, string $key = null): string;
-
-    /**
-     * Returns a list of available cyphers
-     *
-     * @return array
-     */
-    public function getAvailableCiphers(): array;
-
-    /**
-     * Returns the authentication tag
-     *
-     * @return string
-     */
-    public function getAuthTag(): string;
+    public function encryptBase64(string $input, ?string $key = null): string;
 
     /**
      * Returns authentication data
@@ -76,11 +62,26 @@ interface CryptInterface
     public function getAuthData(): string;
 
     /**
+     * Returns the authentication tag
+     *
+     * @return string
+     */
+    public function getAuthTag(): string;
+
+    /**
      * Returns the authentication tag length
      *
      * @return int
      */
     public function getAuthTagLength(): int;
+
+    /**
+     * Returns a list of available cyphers
+     *
+     * @phpstan-return array<array-key, string>
+     * @return array
+     */
+    public function getAvailableCiphers(): array;
 
     /**
      * Returns the current cipher
@@ -97,15 +98,6 @@ interface CryptInterface
     public function getKey(): string;
 
     /**
-     * Sets the authentication tag
-     *
-     * @param string $tag
-     *
-     * @return CryptInterface
-     */
-    public function setAuthTag(string $tag): CryptInterface;
-
-    /**
      * Sets authentication data
      *
      * @param string $data
@@ -113,6 +105,15 @@ interface CryptInterface
      * @return CryptInterface
      */
     public function setAuthData(string $data): CryptInterface;
+
+    /**
+     * Sets the authentication tag
+     *
+     * @param string $tag
+     *
+     * @return CryptInterface
+     */
+    public function setAuthTag(string $tag): CryptInterface;
 
     /**
      * Sets the authentication tag length

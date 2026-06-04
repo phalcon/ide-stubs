@@ -19,12 +19,12 @@ class Order
     /**
      * @var int
      */
-    const ORDER_ASC = 1;
+    const int ORDER_ASC = 1;
 
     /**
      * @var int
      */
-    const ORDER_DESC = 2;
+    const int ORDER_DESC = 2;
 
 
     /**
@@ -46,7 +46,7 @@ class Order
      *
      * @return array
      */
-    private function checkObject(array $sorted, $attribute, $item): array
+    private function checkNonObject(array $sorted, $attribute, $item): array
     {
     }
 
@@ -57,7 +57,7 @@ class Order
      *
      * @return array
      */
-    private function checkNonObject(array $sorted, $attribute, $item): array
+    private function checkObject(array $sorted, $attribute, $item): array
     {
     }
 }

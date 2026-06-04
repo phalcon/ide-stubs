@@ -26,9 +26,9 @@ interface RouteInterface
     /**
      * Set the routing delimiter
      *
-     * @param string $delimiter
+     * @param string|null $delimiter
      */
-    public static function delimiter(string $delimiter = null);
+    public static function delimiter(?string $delimiter = null);
 
     /**
      * Returns the route's pattern

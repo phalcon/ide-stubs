@@ -20,7 +20,7 @@ class PascalCase
      *
      * @return string
      */
-    public function __invoke(string $text, string $delimiters = null): string
+    public function __invoke(string $text, ?string $delimiters = null): string
     {
     }
 
@@ -30,7 +30,7 @@ class PascalCase
      *
      * @return array
      */
-    protected function processArray(string $text, string $delimiters = null): array
+    protected function processArray(string $text, ?string $delimiters = null): array
     {
     }
 }

@@ -26,6 +26,16 @@ abstract class AbstractAdapter implements \Phalcon\Annotations\Adapter\AdapterIn
     protected $annotations = [];
 
     /**
+     * Maximum number of class annotation entries retained in the
+     * in-memory cache. 0 (default) keeps the original unbounded
+     * behavior; a positive value clears the cache when adding a new
+     * class would exceed it.
+     *
+     * @var int
+     */
+    protected $annotationsLimit = 0;
+
+    /**
      * @var Reader
      */
     protected $reader;
@@ -37,6 +47,16 @@ abstract class AbstractAdapter implements \Phalcon\Annotations\Adapter\AdapterIn
      * @return Reflection
      */
     public function get($className): Reflection
+    {
+    }
+
+    /**
+     * Returns the configured annotations-cache cap (0 = unlimited).
+     * See setAnnotationsLimit().
+     *
+     * @return int
+     */
+    public function getAnnotationsLimit(): int
     {
     }
 
@@ -109,6 +129,18 @@ abstract class AbstractAdapter implements \Phalcon\Annotations\Adapter\AdapterIn
      * @return ReaderInterface
      */
     public function getReader(): ReaderInterface
+    {
+    }
+
+    /**
+     * Caps the number of class entries retained in the annotations
+     * cache. 0 disables the cap (the default; preserves the original
+     * unbounded behavior). When the cap is exceeded, the cache is
+     * cleared and repopulated on subsequent reads.
+     *
+     * @param int $annotationsLimit
+     */
+    public function setAnnotationsLimit(int $annotationsLimit)
     {
     }
 

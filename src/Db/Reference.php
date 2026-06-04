@@ -9,6 +9,11 @@
  */
 namespace Phalcon\Db;
 
+use Phalcon\Db\Exceptions\ForeignKeyColumnsRequired;
+use Phalcon\Db\Exceptions\ReferencedColumnCountMismatch;
+use Phalcon\Db\Exceptions\ReferencedColumnsRequired;
+use Phalcon\Db\Exceptions\ReferencedTableRequired;
+
 /**
  * Allows to define reference constraints on tables
  *

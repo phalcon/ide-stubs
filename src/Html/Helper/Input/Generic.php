@@ -26,7 +26,7 @@ class Generic extends \Phalcon\Html\Helper\Input\AbstractInput
      * @param Doctype          $doctype
      * @param string           $type
      */
-    public function __construct(\Phalcon\Html\Escaper\EscaperInterface $escaper, \Phalcon\Html\Helper\Doctype $doctype = null, string $type = 'text')
+    public function __construct(\Phalcon\Html\Escaper\EscaperInterface $escaper, ?\Phalcon\Html\Helper\Doctype $doctype = null, string $type = 'text')
     {
     }
 

@@ -32,7 +32,7 @@ class Set
      *
      * @return array
      */
-    private function checkNull(array $collection, $value, $index): array
+    private function checkNotNull(array $collection, $value, $index): array
     {
     }
 
@@ -41,9 +41,9 @@ class Set
      * @param mixed $value
      * @param mixed $index
      *
-     * @return array<int|string,mixed>
+     * @return array
      */
-    private function checkNotNull(array $collection, $value, $index): array
+    private function checkNull(array $collection, $value, $index): array
     {
     }
 }

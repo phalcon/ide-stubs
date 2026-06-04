@@ -13,6 +13,8 @@ use ArrayAccess;
 use Countable;
 use Iterator;
 use JsonSerializable;
+use Phalcon\Messages\Exceptions\MessageNotObject;
+use Phalcon\Messages\Exceptions\MessagesNotIterable;
 
 /**
  * Represents a collection of messages
@@ -48,8 +50,9 @@ class Messages implements \ArrayAccess, \Countable, \Iterator, \JsonSerializable
      * ```
      *
      * @param MessageInterface $message
+     * @return void
      */
-    public function appendMessage(MessageInterface $message)
+    public function appendMessage(MessageInterface $message): void
     {
     }
 

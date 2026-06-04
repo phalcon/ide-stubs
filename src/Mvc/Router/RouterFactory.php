@@ -11,6 +11,7 @@ namespace Phalcon\Mvc\Router;
 
 use Phalcon\Config\ConfigInterface;
 use Phalcon\Mvc\Router;
+use Phalcon\Mvc\Router\Exceptions\InvalidRouterFactoryConfig;
 use Phalcon\Mvc\RouterInterface;
 
 /**

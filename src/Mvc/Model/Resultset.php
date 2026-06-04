@@ -18,6 +18,10 @@ use Phalcon\Cache\CacheInterface;
 use Phalcon\Db\Enum;
 use Phalcon\Messages\MessageInterface;
 use Phalcon\Mvc\Model;
+use Phalcon\Mvc\Model\Exceptions\CursorIsImmutable;
+use Phalcon\Mvc\Model\Exceptions\IndexNotInCursor;
+use Phalcon\Mvc\Model\Exceptions\InvalidResultsetCacheService;
+use Phalcon\Mvc\Model\Exceptions\InvalidReturnedRecord;
 use Phalcon\Mvc\ModelInterface;
 use Phalcon\Storage\Serializer\SerializerInterface;
 use Phalcon\Support\Settings;
@@ -75,27 +79,27 @@ abstract class Resultset implements \Phalcon\Mvc\Model\ResultsetInterface, \Iter
     /**
      * @var int
      */
-    const HYDRATE_ARRAYS = 1;
+    const int HYDRATE_ARRAYS = 1;
 
     /**
      * @var int
      */
-    const HYDRATE_OBJECTS = 2;
+    const int HYDRATE_OBJECTS = 2;
 
     /**
      * @var int
      */
-    const HYDRATE_RECORDS = 0;
+    const int HYDRATE_RECORDS = 0;
 
     /**
      * @var int
      */
-    const TYPE_RESULT_FULL = 0;
+    const int TYPE_RESULT_FULL = 0;
 
     /**
      * @var int
      */
-    const TYPE_RESULT_PARTIAL = 1;
+    const int TYPE_RESULT_PARTIAL = 1;
 
     /**
      * @var mixed|null
@@ -171,10 +175,10 @@ abstract class Resultset implements \Phalcon\Mvc\Model\ResultsetInterface, \Iter
     /**
      * Deletes every record in the resultset
      *
-     * @param \Closure $conditionCallback
+     * @param \Closure|null $conditionCallback
      * @return bool
      */
-    public function delete(\Closure $conditionCallback = null): bool
+    public function delete(?\Closure $conditionCallback = null): bool
     {
     }
 
@@ -316,22 +320,22 @@ abstract class Resultset implements \Phalcon\Mvc\Model\ResultsetInterface, \Iter
     }
 
     /**
-     * Gets row in a specific position of the resultset
-     *
-     * @param mixed $index
-     * @return mixed
-     */
-    public function offsetGet($index): mixed
-    {
-    }
-
-    /**
      * Checks whether offset exists in the resultset
      *
      * @param mixed $index
      * @return bool
      */
     public function offsetExists($index): bool
+    {
+    }
+
+    /**
+     * Gets row in a specific position of the resultset
+     *
+     * @param mixed $index
+     * @return mixed
+     */
+    public function offsetGet($index): mixed
     {
     }
 
@@ -400,10 +404,10 @@ abstract class Resultset implements \Phalcon\Mvc\Model\ResultsetInterface, \Iter
      * Updates every record in the resultset
      *
      * @param array $data
-     * @param \Closure $conditionCallback
+     * @param \Closure|null $conditionCallback
      * @return bool
      */
-    public function update($data, \Closure $conditionCallback = null): bool
+    public function update($data, ?\Closure $conditionCallback = null): bool
     {
     }
 

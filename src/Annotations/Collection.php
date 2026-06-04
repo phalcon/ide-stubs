@@ -11,6 +11,7 @@ namespace Phalcon\Annotations;
 
 use Countable;
 use Iterator;
+use Phalcon\Annotations\Exceptions\AnnotationNotFound;
 
 /**
  * Represents a collection of annotations. This class allows to traverse a group

@@ -13,7 +13,16 @@ use Phalcon\Acl\Enum;
 use Phalcon\Acl\Role;
 use Phalcon\Acl\RoleInterface;
 use Phalcon\Acl\Component;
-use Phalcon\Acl\Exception;
+use Phalcon\Acl\Exceptions\AccessRuleNotFound;
+use Phalcon\Acl\Exceptions\CircularInheritanceError;
+use Phalcon\Acl\Exceptions\ElementNotFound;
+use Phalcon\Acl\Exceptions\InvalidAccessList;
+use Phalcon\Acl\Exceptions\InvalidComponentImplementation;
+use Phalcon\Acl\Exceptions\InvalidRoleImplementation;
+use Phalcon\Acl\Exceptions\InvalidRoleType;
+use Phalcon\Acl\Exceptions\MissingFunctionParameters;
+use Phalcon\Acl\Exceptions\ParameterTypeMismatch;
+use Phalcon\Acl\Exceptions\RoleNotFoundException;
 use Phalcon\Acl\RoleAwareInterface;
 use Phalcon\Acl\ComponentAwareInterface;
 use Phalcon\Acl\ComponentInterface;
@@ -140,7 +149,7 @@ class Memory extends \Phalcon\Acl\Adapter\AbstractAdapter
      *
      * @var mixed
      */
-    protected $func;
+    protected $functions;
 
     /**
      * Default action for no arguments is `allow`
@@ -406,10 +415,10 @@ class Memory extends \Phalcon\Acl\Adapter\AbstractAdapter
      * @param mixed $roleName
      * @param mixed $componentName
      * @param string $access
-     * @param array $parameters
+     * @param array|null $parameters
      * @return bool
      */
-    public function isAllowed($roleName, $componentName, string $access, array $parameters = null): bool
+    public function isAllowed($roleName, $componentName, string $access, ?array $parameters = null): bool
     {
     }
 
@@ -477,7 +486,7 @@ class Memory extends \Phalcon\Acl\Adapter\AbstractAdapter
      * @param string $elementName
      * @param string $suffix
      *
-     * @throws Exception
+     * @throws ElementNotFound
      * @return void
      */
     private function checkExists(array $collection, string $element, string $elementName, string $suffix = 'ACL'): void

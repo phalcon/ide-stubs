@@ -21,10 +21,10 @@ class Meta extends \Phalcon\Html\Helper\AbstractSeries
      *
      * @param array $attributes
      *
-     * @return Meta
+     * @return static
      * @param int $position
      */
-    public function add(array $attributes = [], int $position = -1): Meta
+    public function add(array $attributes = [], int $position = -1): static
     {
     }
 
@@ -33,10 +33,10 @@ class Meta extends \Phalcon\Html\Helper\AbstractSeries
      * @param string $content
      * @param int    $position
      *
-     * @return Meta
+     * @return static
      * @throws Exception
      */
-    public function addHttp(string $httpEquiv, string $content, int $position = -1): Meta
+    public function addHttp(string $httpEquiv, string $content, int $position = -1): static
     {
     }
 
@@ -45,10 +45,10 @@ class Meta extends \Phalcon\Html\Helper\AbstractSeries
      * @param string $content
      * @param int    $position
      *
-     * @return Meta
+     * @return static
      * @throws Exception
      */
-    public function addName(string $name, string $content, int $position = -1): Meta
+    public function addName(string $name, string $content, int $position = -1): static
     {
     }
 
@@ -57,10 +57,10 @@ class Meta extends \Phalcon\Html\Helper\AbstractSeries
      * @param string $content
      * @param int    $position
      *
-     * @return Meta
+     * @return static
      * @throws Exception
      */
-    public function addProperty(string $name, string $content, int $position = -1): Meta
+    public function addProperty(string $name, string $content, int $position = -1): static
     {
     }
 
@@ -77,10 +77,10 @@ class Meta extends \Phalcon\Html\Helper\AbstractSeries
      * @param string $content
      * @param int    $position
      *
-     * @return Meta
+     * @return static
      * @throws Exception
      */
-    private function addElement(string $element, string $value, string $content, int $position = -1): Meta
+    private function addElement(string $element, string $value, string $content, int $position = -1): static
     {
     }
 }

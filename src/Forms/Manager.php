@@ -10,6 +10,7 @@
 namespace Phalcon\Forms;
 
 use Phalcon\Contracts\Forms\Schema;
+use Phalcon\Forms\Exceptions\FormNotRegistered;
 use Phalcon\Forms\Form;
 
 /**
@@ -32,7 +33,7 @@ class Manager
      *
      * @param FormsLocator|null $locator
      */
-    public function __construct(FormsLocator $locator = null)
+    public function __construct(?FormsLocator $locator = null)
     {
     }
 
@@ -96,9 +97,9 @@ class Manager
      *
      * @param string $name
      * @param \Phalcon\Forms\Form $form
-     * @return Manager
+     * @return static
      */
-    public function set(string $name, \Phalcon\Forms\Form $form): Manager
+    public function set(string $name, \Phalcon\Forms\Form $form): static
     {
     }
 }

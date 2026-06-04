@@ -49,9 +49,9 @@ class Title extends \Phalcon\Html\Helper\AbstractHelper
      * @param string      $indent
      * @param string|null $delimiter
      *
-     * @return Title
+     * @return static
      */
-    public function __invoke(string $indent = '    ', string $delimiter = null): Title
+    public function __invoke(string $indent = '    ', ?string $delimiter = null): static
     {
     }
 
@@ -71,9 +71,9 @@ class Title extends \Phalcon\Html\Helper\AbstractHelper
      * @param string $text
      * @param bool   $raw
      *
-     * @return Title
+     * @return static
      */
-    public function append(string $text, bool $raw = false): Title
+    public function append(string $text, bool $raw = false): static
     {
     }
 
@@ -92,9 +92,9 @@ class Title extends \Phalcon\Html\Helper\AbstractHelper
      * @param string $text
      * @param bool   $raw
      *
-     * @return Title
+     * @return static
      */
-    public function set(string $text, bool $raw = false): Title
+    public function set(string $text, bool $raw = false): static
     {
     }
 
@@ -104,9 +104,9 @@ class Title extends \Phalcon\Html\Helper\AbstractHelper
      * @param string $separator
      * @param bool   $raw
      *
-     * @return Title
+     * @return static
      */
-    public function setSeparator(string $separator, bool $raw = false): Title
+    public function setSeparator(string $separator, bool $raw = false): static
     {
     }
 
@@ -116,9 +116,9 @@ class Title extends \Phalcon\Html\Helper\AbstractHelper
      * @param string $text
      * @param bool   $raw
      *
-     * @return Title
+     * @return static
      */
-    public function prepend(string $text, bool $raw = false): Title
+    public function prepend(string $text, bool $raw = false): static
     {
     }
 }

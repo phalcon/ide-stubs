@@ -28,7 +28,7 @@ class Ol extends \Phalcon\Html\Helper\AbstractList
      * @param Doctype          $doctype
      * @param bool             $forceRaw
      */
-    public function __construct(\Phalcon\Html\Escaper\EscaperInterface $escaper, Doctype $doctype = null, bool $forceRaw = false)
+    public function __construct(\Phalcon\Html\Escaper\EscaperInterface $escaper, ?Doctype $doctype = null, bool $forceRaw = false)
     {
     }
 
@@ -39,9 +39,9 @@ class Ol extends \Phalcon\Html\Helper\AbstractList
      * @param array  $attributes
      * @param bool   $raw
      *
-     * @return AbstractList
+     * @return static
      */
-    public function add(string $text, array $attributes = [], bool $raw = false): AbstractList
+    public function add(string $text, array $attributes = [], bool $raw = false): static
     {
     }
 

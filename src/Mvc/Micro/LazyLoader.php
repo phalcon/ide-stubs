@@ -9,6 +9,7 @@
  */
 namespace Phalcon\Mvc\Micro;
 
+use Phalcon\Mvc\Micro\Exceptions\LazyHandlerNotFound;
 use Phalcon\Mvc\Model\BinderInterface;
 
 /**
@@ -43,9 +44,9 @@ class LazyLoader
      * @param array $arguments
      * @return mixed
      * @param string $method
-     * @param \Phalcon\Mvc\Model\BinderInterface $modelBinder
+     * @param \Phalcon\Mvc\Model\BinderInterface|null $modelBinder
      */
-    public function callMethod(string $method, $arguments, \Phalcon\Mvc\Model\BinderInterface $modelBinder = null)
+    public function callMethod(string $method, $arguments, ?\Phalcon\Mvc\Model\BinderInterface $modelBinder = null)
     {
     }
 

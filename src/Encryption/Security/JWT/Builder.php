@@ -9,7 +9,12 @@
  */
 namespace Phalcon\Encryption\Security\JWT;
 
+use Phalcon\Encryption\Security\JWT\Exceptions\EmptyPassphrase;
+use Phalcon\Encryption\Security\JWT\Exceptions\InvalidAudience;
+use Phalcon\Encryption\Security\JWT\Exceptions\InvalidExpirationTime;
+use Phalcon\Encryption\Security\JWT\Exceptions\InvalidNotBefore;
 use Phalcon\Encryption\Security\JWT\Exceptions\ValidatorException;
+use Phalcon\Encryption\Security\JWT\Exceptions\WeakPassphrase;
 use Phalcon\Encryption\Security\JWT\Signer\SignerInterface;
 use Phalcon\Encryption\Security\JWT\Token\Enum;
 use Phalcon\Encryption\Security\JWT\Token\Item;
@@ -20,14 +25,7 @@ use Phalcon\Support\Collection\CollectionInterface;
 use Phalcon\Support\Helper\Json\Encode;
 
 /**
- * Builder
- *
- * The builder offers
- *
- * @property CollectionInterface $claims
- * @property CollectionInterface $jose
- * @property string              $passphrase
- * @property SignerInterface     $signer
+ * JWT Builder
  *
  * @link https://tools.ietf.org/html/rfc7519
  */
@@ -68,9 +66,14 @@ class Builder
     }
 
     /**
-     * @return Builder
+     * Adds a custom claim
+     *
+     * @param string $name
+     * @param mixed  $value
+     *
+     * @return static
      */
-    public function init(): Builder
+    public function addClaim(string $name, $value): static
     {
     }
 
@@ -80,21 +83,9 @@ class Builder
      * @param string $name
      * @param mixed  $value
      *
-     * @return Builder
+     * @return static
      */
-    public function addClaim(string $name, $value): Builder
-    {
-    }
-
-    /**
-     * Adds a custom claim
-     *
-     * @param string $name
-     * @param mixed  $value
-     *
-     * @return Builder
-     */
-    public function addHeader(string $name, $value): Builder
+    public function addHeader(string $name, $value): static
     {
     }
 
@@ -162,6 +153,13 @@ class Builder
     }
 
     /**
+     * @return string
+     */
+    public function getPassphrase(): string
+    {
+    }
+
+    /**
      * @return string|null
      */
     public function getSubject(): string|null
@@ -177,9 +175,9 @@ class Builder
     }
 
     /**
-     * @return string
+     * @return static
      */
-    public function getPassphrase(): string
+    public function init(): static
     {
     }
 
@@ -198,10 +196,10 @@ class Builder
      *
      * @param mixed $audience
      *
-     * @return Builder
+     * @return static
      * @throws ValidatorException
      */
-    public function setAudience($audience): Builder
+    public function setAudience($audience): static
     {
     }
 
@@ -210,9 +208,9 @@ class Builder
      *
      * @param string $contentType
      *
-     * @return Builder
+     * @return static
      */
-    public function setContentType(string $contentType): Builder
+    public function setContentType(string $contentType): static
     {
     }
 
@@ -227,10 +225,10 @@ class Builder
      *
      * @param int $timestamp
      *
-     * @return Builder
+     * @return static
      * @throws ValidatorException
      */
-    public function setExpirationTime(int $timestamp): Builder
+    public function setExpirationTime(int $timestamp): static
     {
     }
 
@@ -244,11 +242,11 @@ class Builder
      * to prevent the JWT from being replayed.  The "jti" value is a case-
      * sensitive string.  Use of this claim is OPTIONAL.
      *
-     * @param string $id
+     * @param string $jwtId
      *
-     * @return Builder
+     * @return static
      */
-    public function setId(string $id): Builder
+    public function setId(string $jwtId): static
     {
     }
 
@@ -260,9 +258,9 @@ class Builder
      *
      * @param int $timestamp
      *
-     * @return Builder
+     * @return static
      */
-    public function setIssuedAt(int $timestamp): Builder
+    public function setIssuedAt(int $timestamp): static
     {
     }
 
@@ -274,9 +272,9 @@ class Builder
      *
      * @param string $issuer
      *
-     * @return Builder
+     * @return static
      */
-    public function setIssuer(string $issuer): Builder
+    public function setIssuer(string $issuer): static
     {
     }
 
@@ -291,10 +289,20 @@ class Builder
      *
      * @param int $timestamp
      *
-     * @return Builder
+     * @return static
      * @throws ValidatorException
      */
-    public function setNotBefore(int $timestamp): Builder
+    public function setNotBefore(int $timestamp): static
+    {
+    }
+
+    /**
+     * @param string $passphrase
+     *
+     * @return static
+     * @throws ValidatorException
+     */
+    public function setPassphrase(string $passphrase): static
     {
     }
 
@@ -309,19 +317,9 @@ class Builder
      *
      * @param string $subject
      *
-     * @return Builder
+     * @return static
      */
-    public function setSubject(string $subject): Builder
-    {
-    }
-
-    /**
-     * @param string $passphrase
-     *
-     * @return Builder
-     * @throws ValidatorException
-     */
-    public function setPassphrase(string $passphrase): Builder
+    public function setSubject(string $subject): static
     {
     }
 

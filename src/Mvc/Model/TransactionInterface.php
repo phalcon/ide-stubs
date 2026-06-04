@@ -13,8 +13,6 @@ use Phalcon\Mvc\ModelInterface;
 use Phalcon\Mvc\Model\Transaction\ManagerInterface;
 
 /**
- * Phalcon\Mvc\Model\TransactionInterface
- *
  * Interface for Phalcon\Mvc\Model\Transaction
  */
 interface TransactionInterface
@@ -64,11 +62,11 @@ interface TransactionInterface
     /**
      * Rollbacks the transaction
      *
-     * @param string $rollbackMessage
-     * @param \Phalcon\Mvc\ModelInterface $rollbackRecord
+     * @param string|null $rollbackMessage
+     * @param \Phalcon\Mvc\ModelInterface|null $rollbackRecord
      * @return bool
      */
-    public function rollback(string $rollbackMessage = null, \Phalcon\Mvc\ModelInterface $rollbackRecord = null): bool;
+    public function rollback(?string $rollbackMessage = null, ?\Phalcon\Mvc\ModelInterface $rollbackRecord = null): bool;
 
     /**
      * Sets if is a reused transaction or new once

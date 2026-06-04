@@ -9,14 +9,13 @@
  */
 namespace Phalcon\Http\Response;
 
-use Phalcon\Di\DiInterface;
 use Phalcon\Di\AbstractInjectionAware;
-use Phalcon\Http\Cookie\Exception;
+use Phalcon\Di\DiInterface;
 use Phalcon\Http\Cookie\CookieInterface;
+use Phalcon\Http\Cookie\Exception;
+use Phalcon\Http\Response\Exceptions\ResponseServiceUnavailable;
 
 /**
- * Phalcon\Http\Response\Cookies
- *
  * This class is a bag to manage the cookies.
  *
  * A cookies bag is automatically registered as part of the 'response' service
@@ -77,7 +76,7 @@ class Cookies extends AbstractInjectionAware implements \Phalcon\Http\Response\C
     /**
      * @var bool
      */
-    protected $registered = false;
+    protected $isRegistered = false;
 
     /**
      * The cookie's sign key.
@@ -95,9 +94,9 @@ class Cookies extends AbstractInjectionAware implements \Phalcon\Http\Response\C
      * Phalcon\Http\Response\Cookies constructor
      *
      * @param bool $useEncryption
-     * @param string $signKey
+     * @param string|null $signKey
      */
-    public function __construct(bool $useEncryption = true, string $signKey = null)
+    public function __construct(bool $useEncryption = true, ?string $signKey = null)
     {
     }
 
@@ -221,10 +220,10 @@ class Cookies extends AbstractInjectionAware implements \Phalcon\Http\Response\C
      * Use NULL to disable cookie signing.
      *
      * @see \Phalcon\Security\Random
-     * @param string $signKey
+     * @param string|null $signKey
      * @return CookiesInterface
      */
-    public function setSignKey(string $signKey = null): CookiesInterface
+    public function setSignKey(?string $signKey = null): CookiesInterface
     {
     }
 

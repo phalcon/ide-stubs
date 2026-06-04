@@ -13,9 +13,9 @@ use Phalcon\Html\Link\Interfaces\EvolvableLinkProviderInterface;
 use Phalcon\Html\Link\Interfaces\LinkInterface;
 
 /**
- * Class Phalcon\Http\Link\LinkProvider
+ * Class Phalcon\Html\Link\EvolvableLinkProvider
  *
- * @property LinkInterface[] links
+ * @property LinkInterface[] $links
  */
 class EvolvableLinkProvider extends \Phalcon\Html\Link\LinkProvider implements \Phalcon\Html\Link\Interfaces\EvolvableLinkProviderInterface
 {
@@ -30,7 +30,7 @@ class EvolvableLinkProvider extends \Phalcon\Html\Link\LinkProvider implements \
      *
      * @return static
      */
-    public function withLink(\Phalcon\Html\Link\Interfaces\LinkInterface $link): EvolvableLinkProviderInterface
+    public function withLink(\Phalcon\Html\Link\Interfaces\LinkInterface $link): static
     {
     }
 
@@ -45,7 +45,7 @@ class EvolvableLinkProvider extends \Phalcon\Html\Link\LinkProvider implements \
      *
      * @return static
      */
-    public function withoutLink(\Phalcon\Html\Link\Interfaces\LinkInterface $link): EvolvableLinkProviderInterface
+    public function withoutLink(\Phalcon\Html\Link\Interfaces\LinkInterface $link): static
     {
     }
 }

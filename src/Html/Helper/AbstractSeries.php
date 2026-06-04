@@ -29,9 +29,9 @@ abstract class AbstractSeries extends \Phalcon\Html\Helper\AbstractHelper
      * @param string $indent
      * @param string $delimiter
      *
-     * @return AbstractSeries
+     * @return static
      */
-    public function __invoke(string $indent = '    ', string $delimiter = null): AbstractSeries
+    public function __invoke(string $indent = '    ', ?string $delimiter = null): static
     {
     }
 
@@ -50,9 +50,9 @@ abstract class AbstractSeries extends \Phalcon\Html\Helper\AbstractHelper
     /**
      * Resets the internal store.
      *
-     * @return AbstractSeries
+     * @return static
      */
-    public function reset(): AbstractSeries
+    public function reset(): static
     {
     }
 

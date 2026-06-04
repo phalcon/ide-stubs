@@ -10,8 +10,6 @@
 namespace Phalcon\Mvc\Router;
 
 /**
- * Phalcon\Mvc\Router\GroupInterface
- *
  * ```php
  * $router = new \Phalcon\Mvc\Router();
  *
@@ -181,9 +179,9 @@ interface GroupInterface
     /**
      * Returns the 'before match' callback if any
      *
-     * @return mixed
+     * @return mixed|null
      */
-    public function getBeforeMatch();
+    public function getBeforeMatch(): null;
 
     /**
      * Returns the hostname restriction
@@ -195,9 +193,9 @@ interface GroupInterface
     /**
      * Returns the common paths defined for this group
      *
-     * @return array|string
+     * @return array|string|null
      */
-    public function getPaths(): string|array;
+    public function getPaths(): string|array|null;
 
     /**
      * Returns the common prefix for all the routes

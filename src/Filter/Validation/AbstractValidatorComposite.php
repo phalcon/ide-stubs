@@ -10,6 +10,7 @@
 namespace Phalcon\Filter\Validation;
 
 use Phalcon\Filter\Validation;
+use Phalcon\Filter\Validation\Exceptions\NoValidatorsInComposite;
 
 /**
  * This is a base class for combined fields validators

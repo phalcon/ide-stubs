@@ -29,7 +29,7 @@ class Element extends \Phalcon\Html\Helper\AbstractHelper
      * @param Doctype          $doctype
      * @param bool             $forceRaw
      */
-    public function __construct(\Phalcon\Html\Escaper\EscaperInterface $escaper, Doctype $doctype = null, bool $forceRaw = false)
+    public function __construct(\Phalcon\Html\Escaper\EscaperInterface $escaper, ?Doctype $doctype = null, bool $forceRaw = false)
     {
     }
 

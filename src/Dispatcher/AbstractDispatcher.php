@@ -13,6 +13,7 @@ use Exception;
 use Phalcon\Di\DiInterface;
 use Phalcon\Di\AbstractInjectionAware;
 use Phalcon\Dispatcher\Exception as PhalconException;
+use Phalcon\Dispatcher\Exceptions\ForwardInInitializeForbidden;
 use Phalcon\Events\EventsAwareInterface;
 use Phalcon\Events\ManagerInterface;
 use Phalcon\Filter\FilterInterface;
@@ -71,6 +72,11 @@ abstract class AbstractDispatcher extends AbstractInjectionAware implements \Pha
      * @var array
      */
     protected $handlerHashes = [];
+
+    /**
+     * @var array
+     */
+    protected $handlerHookCache = [];
 
     /**
      * @var string
@@ -525,10 +531,10 @@ abstract class AbstractDispatcher extends AbstractInjectionAware implements \Pha
     /**
      * Sets the module where the controller is (only informative)
      *
-     * @param string $moduleName
+     * @param string|null $moduleName
      * @return void
      */
-    public function setModuleName(string $moduleName = null): void
+    public function setModuleName(?string $moduleName = null): void
     {
     }
 

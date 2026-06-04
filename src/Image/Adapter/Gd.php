@@ -11,6 +11,11 @@ namespace Phalcon\Image\Adapter;
 
 use Phalcon\Image\Enum;
 use Phalcon\Image\Exception;
+use Phalcon\Image\Exceptions\ExtensionNotLoaded;
+use Phalcon\Image\Exceptions\ImageLoadFailed;
+use Phalcon\Image\Exceptions\TextRenderingFailed;
+use Phalcon\Image\Exceptions\UnsupportedImageType;
+use Phalcon\Image\Exceptions\VersionMismatch;
 
 /**
  * This file is part of the Phalcon Framework.
@@ -29,7 +34,7 @@ class Gd extends \Phalcon\Image\Adapter\AbstractAdapter
      *
      * @throws Exception
      */
-    public function __construct(string $file, int $width = null, int $height = null)
+    public function __construct(string $file, ?int $width = null, ?int $height = null)
     {
     }
 
@@ -193,7 +198,7 @@ class Gd extends \Phalcon\Image\Adapter\AbstractAdapter
      * @return void
      * @throws Exception
      */
-    protected function processText(string $text, $offsetX, $offsetY, int $opacity, int $red, int $green, int $blue, int $size, string $fontFile = null): void
+    protected function processText(string $text, $offsetX, $offsetY, int $opacity, int $red, int $green, int $blue, int $size, ?string $fontFile = null): void
     {
     }
 

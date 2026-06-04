@@ -10,6 +10,7 @@
 namespace Phalcon\Paginator\Adapter;
 
 use Phalcon\Paginator\Exception;
+use Phalcon\Paginator\Exceptions\InvalidLimit;
 use Phalcon\Paginator\Repository;
 use Phalcon\Paginator\RepositoryInterface;
 
@@ -97,10 +98,10 @@ abstract class AbstractAdapter implements \Phalcon\Paginator\Adapter\AdapterInte
     /**
      * Gets current repository for pagination
      *
-     * @param array $properties
+     * @param array|null $properties
      * @return RepositoryInterface
      */
-    protected function getRepository(array $properties = null): RepositoryInterface
+    protected function getRepository(?array $properties = null): RepositoryInterface
     {
     }
 }

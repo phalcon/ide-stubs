@@ -12,12 +12,7 @@ namespace Phalcon\Html\Link;
 use Phalcon\Html\Link\Interfaces\EvolvableLinkInterface;
 
 /**
- * Class Phalcon\Http\Link\EvolvableLink
- *
- * @property array  attributes
- * @property string href
- * @property array  rels
- * @property bool   templated
+ * Class Phalcon\Html\Link\EvolvableLink
  */
 class EvolvableLink extends \Phalcon\Html\Link\Link implements \Phalcon\Html\Link\Interfaces\EvolvableLinkInterface
 {
@@ -29,9 +24,9 @@ class EvolvableLink extends \Phalcon\Html\Link\Link implements \Phalcon\Html\Lin
      *
      * @param string       $attribute The attribute to include.
      * @param string|array $value     The value of the attribute to set.
-     * @return EvolvableLinkInterface
+     * @return static
      */
-    public function withAttribute($attribute, $value): EvolvableLinkInterface
+    public function withAttribute($attribute, $value): static
     {
     }
 
@@ -50,9 +45,9 @@ class EvolvableLink extends \Phalcon\Html\Link\Link implements \Phalcon\Html\Lin
      * immediately rather than waiting for it to be returned later.
      *
      * @param string $rel The relationship value to add.
-     * @return EvolvableLinkInterface
+     * @return static
      */
-    public function withHref(string $href): EvolvableLinkInterface
+    public function withHref(string $href): static
     {
     }
 
@@ -63,9 +58,9 @@ class EvolvableLink extends \Phalcon\Html\Link\Link implements \Phalcon\Html\Lin
      * normally without errors, but without adding the rel a second time.
      *
      * @param string $rel The relationship value to add.
-     * @return EvolvableLinkInterface
+     * @return static
      */
-    public function withRel(string $rel): EvolvableLinkInterface
+    public function withRel(string $rel): static
     {
     }
 
@@ -76,9 +71,9 @@ class EvolvableLink extends \Phalcon\Html\Link\Link implements \Phalcon\Html\Lin
      * normally without errors.
      *
      * @param string $attribute The attribute to remove.
-     * @return EvolvableLinkInterface
+     * @return static
      */
-    public function withoutAttribute(string $attribute): EvolvableLinkInterface
+    public function withoutAttribute(string $attribute): static
     {
     }
 
@@ -89,9 +84,9 @@ class EvolvableLink extends \Phalcon\Html\Link\Link implements \Phalcon\Html\Lin
      * normally without errors.
      *
      * @param string $rel The relationship value to exclude.
-     * @return EvolvableLinkInterface
+     * @return static
      */
-    public function withoutRel(string $rel): EvolvableLinkInterface
+    public function withoutRel(string $rel): static
     {
     }
 }

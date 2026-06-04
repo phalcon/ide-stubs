@@ -35,24 +35,24 @@ namespace Phalcon\Http\Request;
 class File implements \Phalcon\Http\Request\FileInterface
 {
     /**
-     * @var string|null
+     * @var int
      */
-    protected $error = null;
+    protected $error = 0;
 
     /**
      * @var string
      */
-    protected $extension;
-
-    /**
-     * @var string|null
-     */
-    protected $key = null;
+    protected $extension = '';
 
     /**
      * @var string
      */
-    protected $name;
+    protected $key = '';
+
+    /**
+     * @var string
+     */
+    protected $name = '';
 
     /**
      * @var string
@@ -65,29 +65,29 @@ class File implements \Phalcon\Http\Request\FileInterface
     protected $size = 0;
 
     /**
-     * @var string|null
+     * @var string
      */
-    protected $tmp = null;
+    protected $tmpName = '';
 
     /**
      * @var string
      */
-    protected $type;
+    protected $type = '';
 
     /**
      * Phalcon\Http\Request\File constructor
      *
      * @param array $file
-     * @param mixed $key
+     * @param string $key
      */
-    public function __construct(array $file, $key = null)
+    public function __construct(array $file, string $key = '')
     {
     }
 
     /**
-     * @return string|null
+     * @return int
      */
-    public function getError(): string|null
+    public function getError(): int
     {
     }
 
@@ -99,9 +99,9 @@ class File implements \Phalcon\Http\Request\FileInterface
     }
 
     /**
-     * @return string|null
+     * @return string
      */
-    public function getKey(): string|null
+    public function getKey(): string
     {
     }
 

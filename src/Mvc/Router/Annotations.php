@@ -9,9 +9,11 @@
  */
 namespace Phalcon\Mvc\Router;
 
+use Phalcon\Annotations\Annotation;
 use Phalcon\Di\DiInterface;
 use Phalcon\Mvc\Router;
-use Phalcon\Annotations\Annotation;
+use Phalcon\Mvc\Router\Exceptions\AnnotationsServiceUnavailable;
+use Phalcon\Mvc\Router\Exceptions\InvalidCallbackParameter;
 
 /**
  * Phalcon\Mvc\Router\Annotations
@@ -69,10 +71,10 @@ class Annotations extends Router
      *
      * @param string $module
      * @param string $handler
-     * @param string $prefix
-     * @return Annotations
+     * @param string|null $prefix
+     * @return static
      */
-    public function addModuleResource(string $module, string $handler, string $prefix = null): Annotations
+    public function addModuleResource(string $module, string $handler, ?string $prefix = null): static
     {
     }
 
@@ -81,10 +83,10 @@ class Annotations extends Router
      * A resource is a class that contains routing annotations
      *
      * @param string $handler
-     * @param string $prefix
-     * @return Annotations
+     * @param string|null $prefix
+     * @return static
      */
-    public function addResource(string $handler, string $prefix = null): Annotations
+    public function addResource(string $handler, ?string $prefix = null): static
     {
     }
 
@@ -135,8 +137,9 @@ class Annotations extends Router
      * Changes the action method suffix
      *
      * @param string $actionSuffix
+     * @return self
      */
-    public function setActionSuffix(string $actionSuffix)
+    public function setActionSuffix(string $actionSuffix): self
     {
     }
 
@@ -168,8 +171,9 @@ class Annotations extends Router
      * ```
      *
      * @param callable|string|null $callback
+     * @return self
      */
-    public function setActionPreformatCallback($callback = null)
+    public function setActionPreformatCallback($callback = null): self
     {
     }
 
@@ -184,8 +188,9 @@ class Annotations extends Router
      * Changes the controller class suffix
      *
      * @param string $controllerSuffix
+     * @return self
      */
-    public function setControllerSuffix(string $controllerSuffix)
+    public function setControllerSuffix(string $controllerSuffix): self
     {
     }
 }

@@ -29,14 +29,14 @@ interface RequestInterface
      * $userEmail = $request->get("user_email", "email");
      * ```
      *
-     * @param string $name
+     * @param string|null $name
      * @param mixed $filters
      * @param mixed $defaultValue
      * @param bool $notAllowEmpty
      * @param bool $noRecursive
      * @return mixed
      */
-    public function get(string $name = null, $filters = null, $defaultValue = null, bool $notAllowEmpty = false, bool $noRecursive = false): mixed;
+    public function get(?string $name = null, $filters = null, $defaultValue = null, bool $notAllowEmpty = false, bool $noRecursive = false): mixed;
 
     /**
      * Gets an array with mime/types and their quality accepted by the
@@ -221,22 +221,6 @@ interface RequestInterface
     public function getPort(): int;
 
     /**
-     * Gets HTTP URI which request has been made to
-     *
-     * ```php
-     * // Returns /some/path?with=queryParams
-     * $uri = $request->getURI();
-     *
-     * // Returns /some/path
-     * $uri = $request->getURI(true);
-     * ```
-     *
-     * @param bool $onlyPath If true, query part will be omitted
-     * @return string
-     */
-    public function getURI(bool $onlyPath = false): string;
-
-    /**
      * Gets a variable from the $_POST superglobal applying filters if needed
      * If no parameters are given the $_POST superglobal is returned
      *
@@ -248,14 +232,14 @@ interface RequestInterface
      * $userEmail = $request->getPost("user_email", "email");
      * ```
      *
-     * @param string $name
+     * @param string|null $name
      * @param mixed $filters
      * @param mixed $defaultValue
      * @param bool $notAllowEmpty
      * @param bool $noRecursive
      * @return mixed
      */
-    public function getPost(string $name = null, $filters = null, $defaultValue = null, bool $notAllowEmpty = false, bool $noRecursive = false): mixed;
+    public function getPost(?string $name = null, $filters = null, $defaultValue = null, bool $notAllowEmpty = false, bool $noRecursive = false): mixed;
 
     /**
      * Gets a variable from the PUT request
@@ -268,14 +252,14 @@ interface RequestInterface
      * $userEmail = $request->getPut("user_email", "email");
      * ```
      *
-     * @param string $name
+     * @param string|null $name
      * @param mixed $filters
      * @param mixed $defaultValue
      * @param bool $notAllowEmpty
      * @param bool $noRecursive
      * @return mixed
      */
-    public function getPut(string $name = null, $filters = null, $defaultValue = null, bool $notAllowEmpty = false, bool $noRecursive = false): mixed;
+    public function getPut(?string $name = null, $filters = null, $defaultValue = null, bool $notAllowEmpty = false, bool $noRecursive = false): mixed;
 
     /**
      * Gets variable from $_GET superglobal applying filters if needed
@@ -292,14 +276,14 @@ interface RequestInterface
      * $id = $request->getQuery("id", null, 150);
      * ```
      *
-     * @param string $name
+     * @param string|null $name
      * @param mixed $filters
      * @param mixed $defaultValue
      * @param bool $notAllowEmpty
      * @param bool $noRecursive
      * @return mixed
      */
-    public function getQuery(string $name = null, $filters = null, $defaultValue = null, bool $notAllowEmpty = false, bool $noRecursive = false): mixed;
+    public function getQuery(?string $name = null, $filters = null, $defaultValue = null, bool $notAllowEmpty = false, bool $noRecursive = false): mixed;
 
     /**
      * Gets HTTP raw request body
@@ -348,6 +332,22 @@ interface RequestInterface
     public function getUploadedFiles(bool $onlySuccessful = false, bool $namedKeys = false): array;
 
     /**
+     * Gets HTTP URI which request has been made to
+     *
+     * ```php
+     * // Returns /some/path?with=queryParams
+     * $uri = $request->getURI();
+     *
+     * // Returns /some/path
+     * $uri = $request->getURI(true);
+     * ```
+     *
+     * @param bool $onlyPath If true, query part will be omitted
+     * @return string
+     */
+    public function getURI(bool $onlyPath = false): string;
+
+    /**
      * Gets HTTP user agent used to made the request
      *
      * @return string
@@ -378,14 +378,6 @@ interface RequestInterface
     public function hasHeader(string $header): bool;
 
     /**
-     * Checks whether $_GET superglobal has certain index
-     *
-     * @param string $name
-     * @return bool
-     */
-    public function hasQuery(string $name): bool;
-
-    /**
      * Checks whether $_POST superglobal has certain index
      *
      * @param string $name
@@ -400,6 +392,14 @@ interface RequestInterface
      * @return bool
      */
     public function hasPut(string $name): bool;
+
+    /**
+     * Checks whether $_GET superglobal has certain index
+     *
+     * @param string $name
+     * @return bool
+     */
+    public function hasQuery(string $name): bool;
 
     /**
      * Checks whether $_SERVER superglobal has certain index
