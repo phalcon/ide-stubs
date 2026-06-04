@@ -9,18 +9,22 @@
  */
 namespace Phalcon\Di;
 
-use Phalcon\Di\Service;
-use Phalcon\Di\DiInterface;
-use Phalcon\Di\Exception;
-use Phalcon\Di\Exception\ServiceResolutionException;
 use Phalcon\Config\Adapter\Php;
 use Phalcon\Config\Adapter\Yaml;
 use Phalcon\Config\ConfigInterface;
-use Phalcon\Di\ServiceInterface;
-use Phalcon\Events\ManagerInterface;
+use Phalcon\Di\DiInterface;
+use Phalcon\Di\Exception;
+use Phalcon\Di\Exception\ServiceResolutionException;
+use Phalcon\Di\Exceptions\AliasAlreadyInUse;
+use Phalcon\Di\Exceptions\AliasNameMustBeString;
+use Phalcon\Di\Exceptions\CircularAliasReference;
+use Phalcon\Di\Exceptions\ServiceCannotBeResolved;
 use Phalcon\Di\InitializationAwareInterface;
 use Phalcon\Di\InjectionAwareInterface;
+use Phalcon\Di\Service;
+use Phalcon\Di\ServiceInterface;
 use Phalcon\Di\ServiceProviderInterface;
+use Phalcon\Events\ManagerInterface;
 
 /**
  * Phalcon\Di\Di is a component that implements Dependency Injection/Service
@@ -292,10 +296,10 @@ class Di implements \Phalcon\Di\DiInterface
      *
      * @link https://docs.phalcon.io/latest/di/
      * @param string $filePath
-     * @param array $callbacks
+     * @param array|null $callbacks
      * @return void
      */
-    public function loadFromYaml(string $filePath, array $callbacks = null): void
+    public function loadFromYaml(string $filePath, ?array $callbacks = null): void
     {
     }
 
@@ -452,7 +456,7 @@ class Di implements \Phalcon\Di\DiInterface
      * @return Di
      * @throws Exception
      */
-    public function setAlias(string $name, $aliases): Di
+    public function setAlias(string $name, $aliases): self
     {
     }
 

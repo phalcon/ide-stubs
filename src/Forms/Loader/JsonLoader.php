@@ -12,6 +12,8 @@ namespace Phalcon\Forms\Loader;
 use InvalidArgumentException;
 use Phalcon\Contracts\Forms\Schema;
 use Phalcon\Forms\Exception;
+use Phalcon\Forms\Exceptions\InvalidJsonSchema;
+use Phalcon\Forms\Exceptions\JsonSchemaNotArray;
 use Phalcon\Support\Helper\Json\Decode;
 
 /**
@@ -35,8 +37,9 @@ class JsonLoader implements \Phalcon\Contracts\Forms\Schema
     }
 
     /**
-     * @return array
+     * @phpstan-return array<int, array<string, mixed>>
      * @throws Exception
+     * @return array
      */
     public function load(): array
     {

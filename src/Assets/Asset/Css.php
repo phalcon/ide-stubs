@@ -23,10 +23,10 @@ class Css extends \Phalcon\Assets\Asset
      * @param bool $local
      * @param bool $filter
      * @param array $attributes
-     * @param string $version
+     * @param string|null $version
      * @param bool $autoVersion
      */
-    public function __construct(string $path, bool $local = true, bool $filter = true, array $attributes = [], string $version = null, bool $autoVersion = false)
+    public function __construct(string $path, bool $local = true, bool $filter = true, array $attributes = [], ?string $version = null, bool $autoVersion = false)
     {
     }
 }

@@ -9,14 +9,17 @@
  */
 namespace Phalcon\Http;
 
-use Phalcon\Di\DiInterface;
 use Phalcon\Di\AbstractInjectionAware;
+use Phalcon\Di\DiInterface;
 use Phalcon\Encryption\Crypt\CryptInterface;
-use Phalcon\Encryption\Crypt\Mismatch;
 use Phalcon\Filter\FilterInterface;
-use Phalcon\Http\Response\Exception;
 use Phalcon\Http\Cookie\CookieInterface;
 use Phalcon\Http\Cookie\Exception as CookieException;
+use Phalcon\Http\Cookie\Exceptions\CookieKeyTooShort;
+use Phalcon\Http\Cookie\Exceptions\CryptInterfaceRequired;
+use Phalcon\Http\Cookie\Exceptions\CryptServiceUnavailable;
+use Phalcon\Http\Cookie\Exceptions\FilterServiceUnavailable;
+use Phalcon\Http\Response\Exception;
 use Phalcon\Session\ManagerInterface as SessionManagerInterface;
 
 /**
@@ -67,7 +70,7 @@ class Cookie extends AbstractInjectionAware implements \Phalcon\Http\Cookie\Cook
     /**
      * @var bool
      */
-    protected $restored = false;
+    protected $isRestored = false;
 
     /**
      * @var bool
@@ -299,12 +302,12 @@ class Cookie extends AbstractInjectionAware implements \Phalcon\Http\Cookie\Cook
      *
      * Use NULL to disable cookie signing.
      *
-     * @see \Phalcon\Security\Random
+     * @see \Phalcon\Encryption\Security\Random
      * @throws \Phalcon\Http\Cookie\Exception
-     * @param string $signKey
+     * @param string|null $signKey
      * @return CookieInterface
      */
-    public function setSignKey(string $signKey = null): CookieInterface
+    public function setSignKey(?string $signKey = null): CookieInterface
     {
     }
 

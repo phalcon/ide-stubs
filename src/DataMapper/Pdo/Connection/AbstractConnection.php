@@ -10,7 +10,7 @@
 namespace Phalcon\DataMapper\Pdo\Connection;
 
 use BadMethodCallException;
-use Phalcon\DataMapper\Pdo\Exception\CannotBindValue;
+use Phalcon\DataMapper\Pdo\Exception\UnknownDriverMethod;
 use Phalcon\DataMapper\Pdo\Profiler\ProfilerInterface;
 
 /**
@@ -344,7 +344,7 @@ abstract class AbstractConnection implements \Phalcon\DataMapper\Pdo\Connection\
      *
      * @return string
      */
-    public function lastInsertId(string $name = null): string
+    public function lastInsertId(?string $name = null): string
     {
     }
 
@@ -428,8 +428,9 @@ abstract class AbstractConnection implements \Phalcon\DataMapper\Pdo\Connection\
      * Sets the Profiler instance.
      *
      * @param ProfilerInterface $profiler
+     * @return static
      */
-    public function setProfiler(\Phalcon\DataMapper\Pdo\Profiler\ProfilerInterface $profiler)
+    public function setProfiler(\Phalcon\DataMapper\Pdo\Profiler\ProfilerInterface $profiler): static
     {
     }
 

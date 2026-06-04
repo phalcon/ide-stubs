@@ -9,6 +9,7 @@
  */
 namespace Phalcon\Flash;
 
+use Phalcon\Flash\Exceptions\SessionServiceUnavailable;
 use Phalcon\Session\ManagerInterface;
 
 /**
@@ -59,7 +60,7 @@ class Session extends \Phalcon\Flash\AbstractFlash
      * @return bool
      * @throws Exception
      */
-    public function has(string $type = null): bool
+    public function has(?string $type = null): bool
     {
     }
 
@@ -97,7 +98,7 @@ class Session extends \Phalcon\Flash\AbstractFlash
      * @return array
      * @throws Exception
      */
-    protected function getSessionMessages(bool $remove, string $type = null): array
+    protected function getSessionMessages(bool $remove, ?string $type = null): array
     {
     }
 

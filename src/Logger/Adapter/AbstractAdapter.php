@@ -9,7 +9,10 @@
  */
 namespace Phalcon\Logger\Adapter;
 
-use Phalcon\Logger\Exception;
+use Phalcon\Logger\Exceptions\DeserializationFailed;
+use Phalcon\Logger\Exceptions\SerializationFailed;
+use Phalcon\Logger\Exceptions\TransactionAlreadyActive;
+use Phalcon\Logger\Exceptions\TransactionNotActive;
 use Phalcon\Logger\Formatter\FormatterInterface;
 use Phalcon\Logger\Formatter\Line;
 use Phalcon\Logger\Item;
@@ -53,9 +56,19 @@ abstract class AbstractAdapter implements \Phalcon\Logger\Adapter\AdapterInterfa
     protected $queue = [];
 
     /**
+     * Maximum number of items retained in the transaction queue.
+     * 0 (default) keeps the original unbounded behavior; a positive
+     * value drops the oldest queued item FIFO before a new one is
+     * appended in add().
+     *
+     * @var int
+     */
+    protected $queueLimit = 0;
+
+    /**
      * Destructor cleanup
      *
-     * @throws Exception
+     * @throws TransactionAlreadyActive
      */
     public function __destruct()
     {
@@ -104,7 +117,7 @@ abstract class AbstractAdapter implements \Phalcon\Logger\Adapter\AdapterInterfa
      * Commits the internal transaction
      *
      * @return AdapterInterface
-     * @throws Exception
+     * @throws TransactionNotActive
      */
     public function commit(): AdapterInterface
     {
@@ -114,6 +127,15 @@ abstract class AbstractAdapter implements \Phalcon\Logger\Adapter\AdapterInterfa
      * @return FormatterInterface
      */
     public function getFormatter(): FormatterInterface
+    {
+    }
+
+    /**
+     * Returns the configured transaction-queue cap (0 = unlimited)
+     *
+     * @return int
+     */
+    public function getQueueLimit(): int
     {
     }
 
@@ -139,7 +161,7 @@ abstract class AbstractAdapter implements \Phalcon\Logger\Adapter\AdapterInterfa
      * Rollbacks the internal transaction
      *
      * @return AdapterInterface
-     * @throws Exception
+     * @throws TransactionNotActive
      */
     public function rollback(): AdapterInterface
     {
@@ -157,6 +179,18 @@ abstract class AbstractAdapter implements \Phalcon\Logger\Adapter\AdapterInterfa
     }
 
     /**
+     * Sets the maximum number of items retained in the transaction
+     * queue. 0 disables the cap (the default; preserves the original
+     * unbounded behavior).
+     *
+     * @param int $queueLimit
+     * @return AdapterInterface
+     */
+    public function setQueueLimit(int $queueLimit): AdapterInterface
+    {
+    }
+
+    /**
      * Returns the formatted item
      *
      * @param \Phalcon\Logger\Item $item
@@ -169,7 +203,7 @@ abstract class AbstractAdapter implements \Phalcon\Logger\Adapter\AdapterInterfa
     /**
      * Checks if the transaction is active
      *
-     * @throws Exception
+     * @throws TransactionNotActive
      * @return void
      */
     private function checkTransaction(): void

@@ -11,6 +11,8 @@ namespace Phalcon\Di;
 
 use Closure;
 use Phalcon\Di\Exception\ServiceResolutionException;
+use Phalcon\Di\Exceptions\DefinitionMustBeArrayForRead;
+use Phalcon\Di\Exceptions\DefinitionMustBeArrayForUpdate;
 use Phalcon\Di\Service\Builder;
 
 /**
@@ -98,10 +100,10 @@ class Service implements \Phalcon\Di\ServiceInterface
      * Resolves the service
      *
      * @param array $parameters
-     * @param DiInterface $container
+     * @param DiInterface|null $container
      * @return mixed
      */
-    public function resolve($parameters = null, DiInterface $container = null): mixed
+    public function resolve($parameters = null, ?DiInterface $container = null): mixed
     {
     }
 

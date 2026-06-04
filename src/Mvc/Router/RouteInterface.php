@@ -10,8 +10,6 @@
 namespace Phalcon\Mvc\Router;
 
 /**
- * Phalcon\Mvc\Router\RouteInterface
- *
  * Interface for Phalcon\Mvc\Router\Route
  */
 interface RouteInterface
@@ -50,9 +48,9 @@ interface RouteInterface
     /**
      * Returns the HTTP methods that constraint matching the route
      *
-     * @return string|array
+     * @return array|string|null
      */
-    public function getHttpMethods(): string|array;
+    public function getHttpMethods(): string|array|null;
 
     /**
      * Returns the route's name
@@ -90,6 +88,22 @@ interface RouteInterface
     public function getRouteId(): string;
 
     /**
+     * Reconfigure the route adding a new pattern and a set of paths
+     *
+     * @param string $pattern
+     * @param mixed $paths
+     * @return void
+     */
+    public function reConfigure(string $pattern, $paths = null): void;
+
+    /**
+     * Resets the internal route id generator
+     *
+     * @return void
+     */
+    public static function reset(): void;
+
+    /**
      * Sets a hostname restriction to the route
      *
      * @param string $hostname
@@ -114,20 +128,12 @@ interface RouteInterface
     public function setName(string $name): RouteInterface;
 
     /**
-     * Reconfigure the route adding a new pattern and a set of paths
+     * Sets the route's id (intended for restoring cached routes)
      *
-     * @param string $pattern
-     * @param mixed $paths
-     * @return void
+     * @param string $routeId
+     * @return RouteInterface
      */
-    public function reConfigure(string $pattern, $paths = null): void;
-
-    /**
-     * Resets the internal route id generator
-     *
-     * @return void
-     */
-    public static function reset(): void;
+    public function setRouteId(string $routeId): RouteInterface;
 
     /**
      * Set one or more HTTP methods that constraint the matching of the route

@@ -9,8 +9,6 @@
  */
 namespace Phalcon\Time\Clock;
 
-use Throwable;
-
 /**
  * This file is part of the Phalcon Framework.
  *
@@ -26,12 +24,4 @@ use Throwable;
  */
 class Exception extends \Exception
 {
-    /**
-     * @param string $message
-     * @param \Throwable $ex
-     * @return Exception
-     */
-    public static function invalidModifier(string $message, \Throwable $ex = null): Exception
-    {
-    }
 }

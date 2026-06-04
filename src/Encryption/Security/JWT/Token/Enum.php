@@ -17,21 +17,9 @@ namespace Phalcon\Encryption\Security\JWT\Token;
 class Enum
 {
     /**
-     * Headers
-     *
-     * @var string
-     */
-    const TYPE = 'typ';
-
-    /**
      * @var string
      */
     const ALGO = 'alg';
-
-    /**
-     * @var string
-     */
-    const CONTENT_TYPE = 'cty';
 
     /**
      * Claims
@@ -39,6 +27,11 @@ class Enum
      * @var string
      */
     const AUDIENCE = 'aud';
+
+    /**
+     * @var string
+     */
+    const CONTENT_TYPE = 'cty';
 
     /**
      * @var string
@@ -69,4 +62,11 @@ class Enum
      * @var string
      */
     const SUBJECT = 'sub';
+
+    /**
+     * Headers
+     *
+     * @var string
+     */
+    const TYPE = 'typ';
 }

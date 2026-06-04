@@ -82,9 +82,9 @@ interface Column
     /**
      * Returns column type values
      *
-     * @return array|string
+     * @return array|string|int
      */
-    public function getTypeValues(): string|array;
+    public function getTypeValues(): int|string|array;
 
     /**
      * Check whether column has default value

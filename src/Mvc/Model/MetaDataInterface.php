@@ -60,14 +60,6 @@ interface MetaDataInterface
     public function getColumnMap(\Phalcon\Mvc\ModelInterface $model): array|null;
 
     /**
-     * Returns attributes (which have default values) and their default values
-     *
-     * @param \Phalcon\Mvc\ModelInterface $model
-     * @return array
-     */
-    public function getDefaultValues(\Phalcon\Mvc\ModelInterface $model): array;
-
-    /**
      * Returns attributes and their data types
      *
      * @param \Phalcon\Mvc\ModelInterface $model
@@ -84,6 +76,14 @@ interface MetaDataInterface
     public function getDataTypesNumeric(\Phalcon\Mvc\ModelInterface $model): array;
 
     /**
+     * Returns attributes (which have default values) and their default values
+     *
+     * @param \Phalcon\Mvc\ModelInterface $model
+     * @return array
+     */
+    public function getDefaultValues(\Phalcon\Mvc\ModelInterface $model): array;
+
+    /**
      * Returns attributes allow empty strings
      *
      * @param \Phalcon\Mvc\ModelInterface $model
@@ -95,9 +95,9 @@ interface MetaDataInterface
      * Returns the name of identity field (if one is present)
      *
      * @param \Phalcon\Mvc\ModelInterface $model
-     * @return string|null
+     * @return bool|string|null
      */
-    public function getIdentityField(\Phalcon\Mvc\ModelInterface $model): string|null;
+    public function getIdentityField(\Phalcon\Mvc\ModelInterface $model): bool|string|null;
 
     /**
      * Returns an array of fields which are not part of the primary key
@@ -227,15 +227,6 @@ interface MetaDataInterface
     public function setEmptyStringAttributes(\Phalcon\Mvc\ModelInterface $model, array $attributes): void;
 
     /**
-     * Writes meta-data for certain model using a MODEL_ constant
-     *
-     * @param \Phalcon\Mvc\ModelInterface $model
-     * @param int $index
-     * @param mixed $data
-     */
-    public function writeMetaDataIndex(\Phalcon\Mvc\ModelInterface $model, int $index, $data);
-
-    /**
      * Set the meta-data extraction strategy
      *
      * @param \Phalcon\Mvc\Model\MetaData\Strategy\StrategyInterface $strategy
@@ -250,4 +241,13 @@ interface MetaDataInterface
      * @return void
      */
     public function write(string $key, array $data): void;
+
+    /**
+     * Writes meta-data for certain model using a MODEL_ constant
+     *
+     * @param \Phalcon\Mvc\ModelInterface $model
+     * @param int $index
+     * @param mixed $data
+     */
+    public function writeMetaDataIndex(\Phalcon\Mvc\ModelInterface $model, int $index, $data);
 }

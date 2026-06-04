@@ -18,11 +18,14 @@ use Phalcon\Events\EventsAwareInterface;
 use Phalcon\Events\ManagerInterface;
 use Phalcon\Http\Message\ResponseStatusCodeInterface;
 use Phalcon\Http\Response\CookiesInterface;
-use Phalcon\Http\Response\Exception;
+use Phalcon\Http\Response\Exceptions\NonStandardStatusCodeRequiresMessage;
+use Phalcon\Http\Response\Exceptions\ResponseAlreadySent;
+use Phalcon\Http\Response\Exceptions\UrlServiceUnavailable;
+use Phalcon\Http\Response\Headers;
 use Phalcon\Http\Response\HeadersInterface;
 use Phalcon\Mvc\Url\UrlInterface;
 use Phalcon\Mvc\ViewInterface;
-use Phalcon\Http\Response\Headers;
+use Phalcon\Support\Helper\File\Basename;
 use Phalcon\Support\Helper\Json\Encode;
 
 /**
@@ -77,11 +80,6 @@ class Response implements \Phalcon\Http\ResponseInterface, \Phalcon\Di\Injection
     protected $sent = false;
 
     /**
-     * @var array
-     */
-    protected $statusCodes = [];
-
-    /**
      * @var Encode
      */
     protected $encode;
@@ -89,11 +87,11 @@ class Response implements \Phalcon\Http\ResponseInterface, \Phalcon\Di\Injection
     /**
      * Phalcon\Http\Response constructor
      *
-     * @param string $content
+     * @param string|null $content
      * @param mixed $code
      * @param mixed $status
      */
-    public function __construct(string $content = null, $code = null, $status = null)
+    public function __construct(?string $content = null, $code = null, $status = null)
     {
     }
 
@@ -376,6 +374,16 @@ class Response implements \Phalcon\Http\ResponseInterface, \Phalcon\Di\Injection
     }
 
     /**
+     * Sets the events manager
+     *
+     * @param \Phalcon\Events\ManagerInterface $eventsManager
+     * @return void
+     */
+    public function setEventsManager(\Phalcon\Events\ManagerInterface $eventsManager): void
+    {
+    }
+
+    /**
      * Sets an Expires header in the response that allows to use the HTTP cache
      *
      * ```php
@@ -388,16 +396,6 @@ class Response implements \Phalcon\Http\ResponseInterface, \Phalcon\Di\Injection
      * @return ResponseInterface
      */
     public function setExpires(\DateTime $datetime): ResponseInterface
-    {
-    }
-
-    /**
-     * Sets the events manager
-     *
-     * @param \Phalcon\Events\ManagerInterface $eventsManager
-     * @return void
-     */
-    public function setEventsManager(\Phalcon\Events\ManagerInterface $eventsManager): void
     {
     }
 
@@ -485,21 +483,6 @@ class Response implements \Phalcon\Http\ResponseInterface, \Phalcon\Di\Injection
     }
 
     /**
-     * Sets the HTTP response code
-     *
-     * ```php
-     * $response->setStatusCode(404, "Not Found");
-     * ```
-     *
-     * @param int $code
-     * @param string $message
-     * @return ResponseInterface
-     */
-    public function setStatusCode(int $code, string $message = null): ResponseInterface
-    {
-    }
-
-    /**
      * Send a raw header to the response
      *
      * ```php
@@ -514,12 +497,17 @@ class Response implements \Phalcon\Http\ResponseInterface, \Phalcon\Di\Injection
     }
 
     /**
-     * @todo Remove this when we get traits
-     * @param string $uri
-     * @param mixed $suffix
-     * @return string
+     * Sets the HTTP response code
+     *
+     * ```php
+     * $response->setStatusCode(404, "Not Found");
+     * ```
+     *
+     * @param int $code
+     * @param string|null $message
+     * @return ResponseInterface
      */
-    private function getBasename(string $uri, $suffix = null): string
+    public function setStatusCode(int $code, ?string $message = null): ResponseInterface
     {
     }
 }

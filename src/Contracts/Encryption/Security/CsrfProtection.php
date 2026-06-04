@@ -30,12 +30,12 @@ interface CsrfProtection
     public function getTokenKey(): string|null;
 
     /**
-     * @param string $tokenKey
+     * @param string|null $tokenKey
      * @param mixed $tokenValue
      * @param bool $destroyIfValid
      * @return bool
      */
-    public function checkToken(string $tokenKey = null, $tokenValue = null, bool $destroyIfValid = true): bool;
+    public function checkToken(?string $tokenKey = null, $tokenValue = null, bool $destroyIfValid = true): bool;
 
     /**
      * @return Security

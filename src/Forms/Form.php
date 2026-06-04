@@ -11,17 +11,20 @@ namespace Phalcon\Forms;
 
 use Countable;
 use Iterator;
-use Phalcon\Di\Injectable;
-use Phalcon\Support\Settings;
-use Phalcon\Di\DiInterface;
 use Phalcon\Contracts\Forms\Schema;
+use Phalcon\Di\DiInterface;
+use Phalcon\Di\Injectable;
 use Phalcon\Filter\FilterInterface;
 use Phalcon\Forms\Element\Check;
 use Phalcon\Forms\Element\ElementInterface;
+use Phalcon\Forms\Exceptions\ElementNotInForm;
+use Phalcon\Forms\Exceptions\InvalidEntity;
+use Phalcon\Forms\Exceptions\NoFormElements;
 use Phalcon\Html\Attributes;
 use Phalcon\Html\Attributes\AttributesInterface;
 use Phalcon\Html\TagFactory;
 use Phalcon\Messages\Messages;
+use Phalcon\Support\Settings;
 use Phalcon\Tag;
 use Phalcon\Filter\Validation;
 use Phalcon\Filter\Validation\ValidationInterface;
@@ -62,9 +65,9 @@ class Form extends Injectable implements \Countable, \Iterator, \Phalcon\Html\At
     protected $entity = null;
 
     /**
-     * @var Messages|array|null
+     * @var Messages
      */
-    protected $messages = null;
+    protected $messages;
 
     /**
      * @var int
@@ -105,11 +108,11 @@ class Form extends Injectable implements \Countable, \Iterator, \Phalcon\Html\At
      * Adds an element to the form
      *
      * @param \Phalcon\Forms\Element\ElementInterface $element
-     * @param string $position
-     * @param bool $type
-     * @return Form
+     * @param string|null $position
+     * @param bool|null $type
+     * @return static
      */
-    public function add(\Phalcon\Forms\Element\ElementInterface $element, string $position = null, bool $type = null): Form
+    public function add(\Phalcon\Forms\Element\ElementInterface $element, ?string $position = null, ?bool $type = null): static
     {
     }
 
@@ -119,9 +122,9 @@ class Form extends Injectable implements \Countable, \Iterator, \Phalcon\Html\At
      * @param object $entity
      * @param array $whitelist
      * @param array $data
-     * @return Form
+     * @return static
      */
-    public function bind(array $data, $entity = null, array $whitelist = []): Form
+    public function bind(array $data, $entity = null, array $whitelist = []): static
     {
     }
 
@@ -129,9 +132,9 @@ class Form extends Injectable implements \Countable, \Iterator, \Phalcon\Html\At
      * Clears every element in the form to its default value
      *
      * @param array|string|null $fields
-     * @return Form
+     * @return static
      */
-    public function clear($fields = null): Form
+    public function clear($fields = null): static
     {
     }
 
@@ -232,9 +235,9 @@ class Form extends Injectable implements \Countable, \Iterator, \Phalcon\Html\At
      * }
      * ```
      *
-     * @return array|Messages
+     * @return Messages
      */
-    public function getMessages(): Messages|array
+    public function getMessages(): Messages
     {
     }
 
@@ -356,10 +359,10 @@ class Form extends Injectable implements \Countable, \Iterator, \Phalcon\Html\At
      * @param Schema       $schema
      * @param FormsLocator $locator
      *
-     * @return Form
+     * @return static
      * @throws Exception
      */
-    public function load(\Phalcon\Contracts\Forms\Schema $schema, FormsLocator $locator): Form
+    public function load(\Phalcon\Contracts\Forms\Schema $schema, FormsLocator $locator): static
     {
     }
 
@@ -416,10 +419,10 @@ class Form extends Injectable implements \Countable, \Iterator, \Phalcon\Html\At
     /**
      * Sets the form's action
      *
-     * @return Form
+     * @return static
      * @param string $action
      */
-    public function setAction(string $action): Form
+    public function setAction(string $action): static
     {
     }
 
@@ -427,9 +430,9 @@ class Form extends Injectable implements \Countable, \Iterator, \Phalcon\Html\At
      * Set form attributes collection
      *
      * @param \Phalcon\Html\Attributes $attributes
-     * @return AttributesInterface
+     * @return static
      */
-    public function setAttributes(\Phalcon\Html\Attributes $attributes): AttributesInterface
+    public function setAttributes(\Phalcon\Html\Attributes $attributes): static
     {
     }
 
@@ -437,9 +440,9 @@ class Form extends Injectable implements \Countable, \Iterator, \Phalcon\Html\At
      * Sets the entity related to the model
      *
      * @param object $entity
-     * @return Form
+     * @return static
      */
-    public function setEntity($entity): Form
+    public function setEntity($entity): static
     {
     }
 
@@ -447,9 +450,9 @@ class Form extends Injectable implements \Countable, \Iterator, \Phalcon\Html\At
      * Sets the tagFactory for the form
      *
      * @param \Phalcon\Html\TagFactory $tagFactory
-     * @return Form
+     * @return static
      */
-    public function setTagFactory(\Phalcon\Html\TagFactory $tagFactory): Form
+    public function setTagFactory(\Phalcon\Html\TagFactory $tagFactory): static
     {
     }
 
@@ -457,9 +460,9 @@ class Form extends Injectable implements \Countable, \Iterator, \Phalcon\Html\At
      * Sets the default validation
      *
      * @param ValidationInterface $validation
-     * @return Form
+     * @return static
      */
-    public function setValidation(\Phalcon\Filter\Validation\ValidationInterface $validation): Form
+    public function setValidation(\Phalcon\Filter\Validation\ValidationInterface $validation): static
     {
     }
 
@@ -467,9 +470,9 @@ class Form extends Injectable implements \Countable, \Iterator, \Phalcon\Html\At
      * Sets the default whitelist
      *
      * @param array $whitelist
-     * @return Form
+     * @return static
      */
-    public function setWhitelist(array $whitelist): Form
+    public function setWhitelist(array $whitelist): static
     {
     }
 
@@ -478,9 +481,9 @@ class Form extends Injectable implements \Countable, \Iterator, \Phalcon\Html\At
      *
      * @param string $option
      * @param mixed $value
-     * @return Form
+     * @return static
      */
-    public function setUserOption(string $option, $value): Form
+    public function setUserOption(string $option, $value): static
     {
     }
 
@@ -488,9 +491,9 @@ class Form extends Injectable implements \Countable, \Iterator, \Phalcon\Html\At
      * Sets options for the element
      *
      * @param array $options
-     * @return Form
+     * @return static
      */
-    public function setUserOptions(array $options): Form
+    public function setUserOptions(array $options): static
     {
     }
 

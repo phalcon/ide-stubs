@@ -12,8 +12,9 @@ namespace Phalcon\Logger;
 use DateTimeImmutable;
 use DateTimeZone;
 use Exception;
-use Phalcon\Logger\Exception as LoggerException;
 use Phalcon\Logger\Adapter\AdapterInterface;
+use Phalcon\Logger\Exceptions\AdapterNotFound;
+use Phalcon\Logger\Exceptions\NoAdaptersConfigured;
 
 /**
  * Abstract Logger Class
@@ -117,7 +118,7 @@ abstract class AbstractLogger
      * @param DateTimeZone|null $timezone Timezone. If omitted,
      *                                    date_Default_timezone_get() is used
      */
-    public function __construct(string $name, array $adapters = [], \DateTimeZone $timezone = null)
+    public function __construct(string $name, array $adapters = [], ?\DateTimeZone $timezone = null)
     {
     }
 
@@ -127,9 +128,9 @@ abstract class AbstractLogger
      * @param string           $name    The name of the adapter
      * @param AdapterInterface $adapter The adapter to add to the stack
      *
-     * @return AbstractLogger
+     * @return static
      */
-    public function addAdapter(string $name, \Phalcon\Logger\Adapter\AdapterInterface $adapter): AbstractLogger
+    public function addAdapter(string $name, \Phalcon\Logger\Adapter\AdapterInterface $adapter): static
     {
     }
 
@@ -138,9 +139,9 @@ abstract class AbstractLogger
      *
      * @param array $adapters
      *
-     * @return AbstractLogger
+     * @return static
      */
-    public function excludeAdapters(array $adapters = []): AbstractLogger
+    public function excludeAdapters(array $adapters = []): static
     {
     }
 
@@ -150,7 +151,7 @@ abstract class AbstractLogger
      * @param string $name The name of the adapter
      *
      * @return AdapterInterface
-     * @throws LoggerException
+     * @throws AdapterNotFound
      */
     public function getAdapter(string $name): AdapterInterface
     {
@@ -188,10 +189,10 @@ abstract class AbstractLogger
      *
      * @param string $name The name of the adapter
      *
-     * @return AbstractLogger
-     * @throws LoggerException
+     * @return static
+     * @throws AdapterNotFound
      */
-    public function removeAdapter(string $name): AbstractLogger
+    public function removeAdapter(string $name): static
     {
     }
 
@@ -200,9 +201,9 @@ abstract class AbstractLogger
      *
      * @param array $adapters An array of adapters
      *
-     * @return AbstractLogger
+     * @return static
      */
-    public function setAdapters(array $adapters): AbstractLogger
+    public function setAdapters(array $adapters): static
     {
     }
 
@@ -211,9 +212,9 @@ abstract class AbstractLogger
      *
      * @param int $level
      *
-     * @return AbstractLogger
+     * @return static
      */
-    public function setLogLevel(int $level): AbstractLogger
+    public function setLogLevel(int $level): static
     {
     }
 
@@ -226,7 +227,7 @@ abstract class AbstractLogger
      *
      * @return bool
      * @throws Exception
-     * @throws LoggerException
+     * @throws NoAdaptersConfigured
      */
     protected function addMessage(int $level, string $message, array $context = []): bool
     {

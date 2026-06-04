@@ -50,10 +50,10 @@ interface BagInterface
     /**
      * @param string $element
      * @param mixed $defaultValue
-     * @param string $cast
+     * @param string|null $cast
      * @return mixed
      */
-    public function get(string $element, $defaultValue = null, string $cast = null): mixed;
+    public function get(string $element, $defaultValue = null, ?string $cast = null): mixed;
 
     /**
      * @param string $element

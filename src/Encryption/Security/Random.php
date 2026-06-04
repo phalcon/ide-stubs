@@ -9,6 +9,8 @@
  */
 namespace Phalcon\Encryption\Security;
 
+use Phalcon\Encryption\Security\Exceptions\InvalidRandomInput;
+
 /**
  * Phalcon\Encryption\Security\Random
  *
@@ -270,10 +272,10 @@ class Random
      * @throws Exception If secure random number generator is not available or unexpected partial read
      * @param string $alphabet
      * @param int $base
-     * @param mixed $n
+     * @param mixed $number
      * @return string
      */
-    protected function base(string $alphabet, int $base, $n = 16): string
+    protected function base(string $alphabet, int $base, $number = 16): string
     {
     }
 }

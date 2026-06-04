@@ -55,9 +55,9 @@ class Check extends \Phalcon\Forms\Element\AbstractElement
      * untouched. See cphalcon issue #16982.
      *
      * @param mixed $value
-     * @return Check
+     * @return static
      */
-    public function setUncheckedValue($value): Check
+    public function setUncheckedValue($value): static
     {
     }
 }

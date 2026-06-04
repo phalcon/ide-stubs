@@ -9,9 +9,9 @@
  */
 namespace Phalcon\Mvc\Router;
 
+use Phalcon\Mvc\Router\Exceptions\InvalidRoutePaths;
+
 /**
- * Phalcon\Mvc\Router\Route
- *
  * This class represents every route added to the router
  */
 class Route implements \Phalcon\Mvc\Router\RouteInterface
@@ -20,6 +20,15 @@ class Route implements \Phalcon\Mvc\Router\RouteInterface
      * @var callable|null
      */
     protected $beforeMatch = null;
+
+    /**
+     * Cached compiled hostname regex. `false` means "not yet computed";
+     * `null` means "hostname is literal — use string equality"; any string
+     * means "use this as the PCRE pattern."
+     *
+     * @var string|null|false
+     */
+    protected $compiledHostName = false;
 
     /**
      * @var string|null
@@ -42,19 +51,14 @@ class Route implements \Phalcon\Mvc\Router\RouteInterface
     protected $hostname = null;
 
     /**
-     * @var string
-     */
-    protected $id = '';
-
-    /**
-     * @var array|string
-     */
-    protected $methods = [];
-
-    /**
      * @var callable|null
      */
     protected $match = null;
+
+    /**
+     * @var array|string|null
+     */
+    protected $methods = [];
 
     /**
      * @var string|null
@@ -70,6 +74,11 @@ class Route implements \Phalcon\Mvc\Router\RouteInterface
      * @var string
      */
     protected $pattern;
+
+    /**
+     * @var string
+     */
+    protected $routeId = '';
 
     /**
      * @var int
@@ -152,9 +161,22 @@ class Route implements \Phalcon\Mvc\Router\RouteInterface
     /**
      * Returns the 'before match' callback if any
      *
-     * @return mixed
+     * @return mixed|null
      */
-    public function getBeforeMatch()
+    public function getBeforeMatch(): null
+    {
+    }
+
+    /**
+     * Returns the compiled hostname regex, or null when the hostname is
+     * literal and a string-equality comparison should be used.
+     *
+     * The result is cached after first computation; setHostname() clears
+     * the cache.
+     *
+     * @return string|null
+     */
+    public function getCompiledHostName(): string|null
     {
     }
 
@@ -186,15 +208,6 @@ class Route implements \Phalcon\Mvc\Router\RouteInterface
     }
 
     /**
-     * Returns the HTTP methods that constraint matching the route
-     *
-     * @return array|string
-     */
-    public function getHttpMethods(): string|array
-    {
-    }
-
-    /**
      * Returns the hostname restriction if any
      *
      * @return string|null
@@ -204,18 +217,20 @@ class Route implements \Phalcon\Mvc\Router\RouteInterface
     }
 
     /**
-     * @return string
+     * Returns the HTTP methods that constraint matching the route
+     *
+     * @return array|string|null
      */
-    public function getId(): string
+    public function getHttpMethods(): string|array|null
     {
     }
 
     /**
      * Returns the 'match' callback if any
      *
-     * @return mixed
+     * @return mixed|null
      */
-    public function getMatch()
+    public function getMatch(): null
     {
     }
 
@@ -326,6 +341,20 @@ class Route implements \Phalcon\Mvc\Router\RouteInterface
     }
 
     /**
+     * Sets a hostname restriction to the route
+     *
+     * ```php
+     * $route->setHostname("localhost");
+     * ```
+     *
+     * @param string $hostname
+     * @return RouteInterface
+     */
+    public function setHostname(string $hostname): RouteInterface
+    {
+    }
+
+    /**
      * Sets a set of HTTP methods that constraint the matching of the route (alias of via)
      *
      * ```php
@@ -347,20 +376,6 @@ class Route implements \Phalcon\Mvc\Router\RouteInterface
     }
 
     /**
-     * Sets a hostname restriction to the route
-     *
-     * ```php
-     * $route->setHostname("localhost");
-     * ```
-     *
-     * @param string $hostname
-     * @return RouteInterface
-     */
-    public function setHostname(string $hostname): RouteInterface
-    {
-    }
-
-    /**
      * Sets the route's name
      *
      * ```php
@@ -376,6 +391,18 @@ class Route implements \Phalcon\Mvc\Router\RouteInterface
      * @return RouteInterface
      */
     public function setName(string $name): RouteInterface
+    {
+    }
+
+    /**
+     * Sets the route's id. Intended for restoring cached routes — most
+     * applications should rely on the auto-incrementing id assigned by
+     * the constructor.
+     *
+     * @param string $routeId
+     * @return RouteInterface
+     */
+    public function setRouteId(string $routeId): RouteInterface
     {
     }
 

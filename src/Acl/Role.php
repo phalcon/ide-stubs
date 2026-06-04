@@ -9,6 +9,8 @@
  */
 namespace Phalcon\Acl;
 
+use Phalcon\Acl\Exceptions\ForbiddenWildcard;
+
 /**
  * This class defines role entity and its description
  */
@@ -32,9 +34,9 @@ class Role implements \Phalcon\Acl\RoleInterface
      * Phalcon\Acl\Role constructor
      *
      * @param string $name
-     * @param string $description
+     * @param string|null $description
      */
-    public function __construct(string $name, string $description = null)
+    public function __construct(string $name, ?string $description = null)
     {
     }
 

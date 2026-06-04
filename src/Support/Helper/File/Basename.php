@@ -24,7 +24,7 @@ class Basename
      *
      * @return string
      */
-    public function __invoke(string $uri, string $suffix = null): string
+    public function __invoke(string $uri, ?string $suffix = null): string
     {
     }
 }

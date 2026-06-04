@@ -9,6 +9,8 @@
  */
 namespace Phalcon\Assets;
 
+use Phalcon\Assets\Exceptions\CannotReadAsset;
+
 /**
  * Represents an asset
  *
@@ -81,7 +83,7 @@ class Asset implements \Phalcon\Assets\AssetInterface
      * @param string|null $version
      * @param bool        $isAutoVersion
      */
-    public function __construct(string $type, string $path, bool $isLocal = true, bool $filter = true, array $attributes = [], string $version = null, bool $isAutoVersion = false)
+    public function __construct(string $type, string $path, bool $isLocal = true, bool $filter = true, array $attributes = [], ?string $version = null, bool $isAutoVersion = false)
     {
     }
 
@@ -112,7 +114,7 @@ class Asset implements \Phalcon\Assets\AssetInterface
      * @return string
      * @throws Exception
      */
-    public function getContent(string $basePath = null): string
+    public function getContent(?string $basePath = null): string
     {
     }
 
@@ -137,7 +139,7 @@ class Asset implements \Phalcon\Assets\AssetInterface
      *
      * @return string
      */
-    public function getRealSourcePath(string $basePath = null): string
+    public function getRealSourcePath(?string $basePath = null): string
     {
     }
 
@@ -148,7 +150,7 @@ class Asset implements \Phalcon\Assets\AssetInterface
      *
      * @return string
      */
-    public function getRealTargetPath(string $basePath = null): string
+    public function getRealTargetPath(?string $basePath = null): string
     {
     }
 

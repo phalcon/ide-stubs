@@ -13,18 +13,17 @@ use Phalcon\Support\Helper\Str\Interpolate;
 
 /**
  * Class AssociativeArray
- *
- * @package Phalcon\Translate\Interpolator
  */
 class AssociativeArray implements \Phalcon\Translate\Interpolator\InterpolatorInterface
 {
     /**
      * Replaces placeholders by the values passed
      *
-     * @param string $translation
-     * @param array  $placeholders
+     * @phpstan-param array<string, string> $placeholders
      *
      * @return string
+     * @param string $translation
+     * @param array $placeholders
      */
     public function replacePlaceholders(string $translation, array $placeholders = []): string
     {

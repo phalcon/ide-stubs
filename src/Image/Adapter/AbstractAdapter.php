@@ -11,6 +11,9 @@ namespace Phalcon\Image\Adapter;
 
 use Phalcon\Image\Enum;
 use Phalcon\Image\Exception;
+use Phalcon\Image\Exceptions\MissingDimensions;
+use Phalcon\Image\Exceptions\MissingHeight;
+use Phalcon\Image\Exceptions\MissingWidth;
 
 /**
  * All image adapters must use this class
@@ -195,7 +198,7 @@ abstract class AbstractAdapter implements \Phalcon\Image\Adapter\AdapterInterfac
      *
      * @return string
      */
-    public function render(string $extension = null, int $quality = 100): string
+    public function render(?string $extension = null, int $quality = 100): string
     {
     }
 
@@ -209,7 +212,7 @@ abstract class AbstractAdapter implements \Phalcon\Image\Adapter\AdapterInterfac
      * @return AdapterInterface
      * @throws Exception
      */
-    public function resize(int $width = null, int $height = null, int $master = Enum::AUTO): AdapterInterface
+    public function resize(?int $width = null, ?int $height = null, int $master = Enum::AUTO): AdapterInterface
     {
     }
 
@@ -232,7 +235,7 @@ abstract class AbstractAdapter implements \Phalcon\Image\Adapter\AdapterInterfac
      *
      * @return AdapterInterface
      */
-    public function save(string $file = null, int $quality = -1): AdapterInterface
+    public function save(?string $file = null, int $quality = -1): AdapterInterface
     {
     }
 
@@ -260,7 +263,7 @@ abstract class AbstractAdapter implements \Phalcon\Image\Adapter\AdapterInterfac
      *
      * @return AdapterInterface
      */
-    public function text(string $text, $offsetX = false, $offsetY = false, int $opacity = 100, string $color = '000000', int $size = 12, string $fontFile = null): AdapterInterface
+    public function text(string $text, $offsetX = false, $offsetY = false, int $opacity = 100, string $color = '000000', int $size = 12, ?string $fontFile = null): AdapterInterface
     {
     }
 

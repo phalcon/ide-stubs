@@ -73,7 +73,12 @@ class Escaper implements \Phalcon\Html\Escaper\EscaperInterface
      */
     protected $urlEscaper;
 
-    public function __construct()
+    /**
+     * @param string $encoding
+     * @param int $flags
+     * @param bool $doubleEncode
+     */
+    public function __construct(string $encoding = 'utf-8', int $flags = 11, bool $doubleEncode = true)
     {
     }
 
@@ -85,7 +90,7 @@ class Escaper implements \Phalcon\Html\Escaper\EscaperInterface
      *
      * @return string
      */
-    public function attributes($input): string
+    public function attributes($input = null): string
     {
     }
 
@@ -120,32 +125,32 @@ class Escaper implements \Phalcon\Html\Escaper\EscaperInterface
     }
 
     /**
+     * @param string|null $input
+     *
+     * @return string
+     * @deprecated
+     */
+    public function escapeHtml(?string $input = null): string
+    {
+    }
+
+    /**
+     * @param string|null $input
+     *
+     * @return string
+     * @deprecated
+     */
+    public function escapeHtmlAttr(?string $input = null): string
+    {
+    }
+
+    /**
      * @param string $input
      *
      * @return string
      * @deprecated
      */
     public function escapeJs(string $input): string
-    {
-    }
-
-    /**
-     * @param string|null $input
-     *
-     * @return string
-     * @deprecated
-     */
-    public function escapeHtml(string $input = null): string
-    {
-    }
-
-    /**
-     * @param string|null $input
-     *
-     * @return string
-     * @deprecated
-     */
-    public function escapeHtmlAttr(string $input = null): string
     {
     }
 
@@ -215,7 +220,7 @@ class Escaper implements \Phalcon\Html\Escaper\EscaperInterface
      *
      * @return string
      */
-    public function html(string $input = null): string
+    public function html(?string $input = null): string
     {
     }
 
@@ -242,18 +247,18 @@ class Escaper implements \Phalcon\Html\Escaper\EscaperInterface
     /**
      * @param AttributeEscaper $escaper
      *
-     * @return Escaper
+     * @return static
      */
-    public function setAttributeEscaper(\Phalcon\Html\Escaper\AttributeEscaper $escaper): Escaper
+    public function setAttributeEscaper(\Phalcon\Html\Escaper\AttributeEscaper $escaper): static
     {
     }
 
     /**
      * @param CssEscaper $escaper
      *
-     * @return Escaper
+     * @return static
      */
-    public function setCssEscaper(\Phalcon\Html\Escaper\CssEscaper $escaper): Escaper
+    public function setCssEscaper(\Phalcon\Html\Escaper\CssEscaper $escaper): static
     {
     }
 
@@ -261,9 +266,9 @@ class Escaper implements \Phalcon\Html\Escaper\EscaperInterface
      * Sets the double_encode flag. Fans out to all sub-objects.
      *
      * @param bool $doubleEncode
-     * @return Escaper
+     * @return static
      */
-    public function setDoubleEncode(bool $doubleEncode): Escaper
+    public function setDoubleEncode(bool $doubleEncode): static
     {
     }
 
@@ -271,9 +276,9 @@ class Escaper implements \Phalcon\Html\Escaper\EscaperInterface
      * Sets the encoding. Fans out to all sub-objects.
      *
      * @param string $encoding
-     * @return EscaperInterface
+     * @return static
      */
-    public function setEncoding(string $encoding): EscaperInterface
+    public function setEncoding(string $encoding): static
     {
     }
 
@@ -281,18 +286,18 @@ class Escaper implements \Phalcon\Html\Escaper\EscaperInterface
      * Sets the htmlspecialchars flags. Fans out to all sub-objects.
      *
      * @param int $flags
-     * @return EscaperInterface
+     * @return static
      */
-    public function setFlags(int $flags): EscaperInterface
+    public function setFlags(int $flags): static
     {
     }
 
     /**
      * @param HtmlEscaper $escaper
      *
-     * @return Escaper
+     * @return static
      */
-    public function setHtmlEscaper(\Phalcon\Html\Escaper\HtmlEscaper $escaper): Escaper
+    public function setHtmlEscaper(\Phalcon\Html\Escaper\HtmlEscaper $escaper): static
     {
     }
 
@@ -300,27 +305,27 @@ class Escaper implements \Phalcon\Html\Escaper\EscaperInterface
      * @param int $flags
      *
      * @deprecated
-     * @return EscaperInterface
+     * @return static
      */
-    public function setHtmlQuoteType(int $flags): EscaperInterface
+    public function setHtmlQuoteType(int $flags): static
     {
     }
 
     /**
      * @param JsEscaper $escaper
      *
-     * @return Escaper
+     * @return static
      */
-    public function setJsEscaper(\Phalcon\Html\Escaper\JsEscaper $escaper): Escaper
+    public function setJsEscaper(\Phalcon\Html\Escaper\JsEscaper $escaper): static
     {
     }
 
     /**
      * @param UrlEscaper $escaper
      *
-     * @return Escaper
+     * @return static
      */
-    public function setUrlEscaper(\Phalcon\Html\Escaper\UrlEscaper $escaper): Escaper
+    public function setUrlEscaper(\Phalcon\Html\Escaper\UrlEscaper $escaper): static
     {
     }
 

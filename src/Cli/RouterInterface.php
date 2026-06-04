@@ -19,6 +19,7 @@ interface RouterInterface
     /**
      * Adds a route to the router on any HTTP method
      *
+     * @phpstan-param array|string|null $paths
      * @param string $pattern
      * @param mixed $paths
      * @return RouteInterface
@@ -71,18 +72,20 @@ interface RouterInterface
     /**
      * Returns a route object by its id
      *
+     * @todo change param type to string
+     * @phpstan-param string $id
      * @param mixed $id
-     * @return RouteInterface
+     * @return bool|RouteInterface
      */
-    public function getRouteById($id): RouteInterface;
+    public function getRouteById($id): RouteInterface|bool;
 
     /**
      * Returns a route object by its name
      *
      * @param string $name
-     * @return RouteInterface
+     * @return bool|RouteInterface
      */
-    public function getRouteByName(string $name): RouteInterface;
+    public function getRouteByName(string $name): RouteInterface|bool;
 
     /**
      * Return all the routes defined in the router
@@ -109,33 +112,33 @@ interface RouterInterface
      * Sets the default action name
      *
      * @param string $actionName
-     * @return void
+     * @return RouterInterface
      */
-    public function setDefaultAction(string $actionName): void;
+    public function setDefaultAction(string $actionName): RouterInterface;
 
     /**
      * Sets the name of the default module
      *
      * @param string $moduleName
-     * @return void
+     * @return RouterInterface
      */
-    public function setDefaultModule(string $moduleName): void;
+    public function setDefaultModule(string $moduleName): RouterInterface;
 
     /**
      * Sets an array of default paths
      *
      * @param array $defaults
-     * @return void
+     * @return RouterInterface
      */
-    public function setDefaults(array $defaults): void;
+    public function setDefaults(array $defaults): RouterInterface;
 
     /**
      * Sets the default task name
      *
      * @param string $taskName
-     * @return void
+     * @return RouterInterface
      */
-    public function setDefaultTask(string $taskName): void;
+    public function setDefaultTask(string $taskName): RouterInterface;
 
     /**
      * Check if the router matches any of the defined routes

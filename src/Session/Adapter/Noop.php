@@ -30,45 +30,6 @@ use SessionHandlerInterface;
 class Noop implements \SessionHandlerInterface
 {
     /**
-     * The connection of some adapters
-     *
-     * @var null
-     */
-    protected $connection = null;
-
-    /**
-     * Session options
-     *
-     * @var array
-     */
-    protected $options = [];
-
-    /**
-     * Session prefix
-     *
-     * @var string
-     */
-    protected $prefix = '';
-
-    /**
-     * Time To Live
-     *
-     * @var int
-     */
-    protected $ttl = 8600;
-
-    /**
-     * Constructor
-     *
-     * @param array $options = [
-     *     'prefix' => ''
-     * ]
-     */
-    public function __construct(array $options = [])
-    {
-    }
-
-    /**
      * Close
      *
      * @return bool
@@ -98,16 +59,6 @@ class Noop implements \SessionHandlerInterface
     }
 
     /**
-     * Read
-     *
-     * @param mixed $id
-     * @return string
-     */
-    public function read($id): string
-    {
-    }
-
-    /**
      * Open
      *
      * @param mixed $path
@@ -119,6 +70,16 @@ class Noop implements \SessionHandlerInterface
     }
 
     /**
+     * Read
+     *
+     * @param mixed $id
+     * @return string
+     */
+    public function read($id): string
+    {
+    }
+
+    /**
      * Write
      *
      * @param mixed $id
@@ -126,16 +87,6 @@ class Noop implements \SessionHandlerInterface
      * @return bool
      */
     public function write($id, $data): bool
-    {
-    }
-
-    /**
-     * Helper method to get the name prefixed
-     *
-     * @param mixed $name
-     * @return string
-     */
-    protected function getPrefixedName($name): string
     {
     }
 }

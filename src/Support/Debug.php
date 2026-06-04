@@ -9,8 +9,8 @@
  */
 namespace Phalcon\Support;
 
-use ErrorException;
-use Phalcon\Support\Debug\Exception;
+use Phalcon\Support\Debug\Exceptions\RequestHalted;
+use Phalcon\Support\Debug\Exceptions\RuntimeWarning;
 use ReflectionClass;
 use ReflectionException;
 use ReflectionFunction;
@@ -64,9 +64,9 @@ class Debug
     /**
      * Clears are variables added previously
      *
-     * @return Debug
+     * @return static
      */
-    public function clearVars(): Debug
+    public function clearVars(): static
     {
     }
 
@@ -75,9 +75,9 @@ class Debug
      *
      * @param mixed $variable
      * @param mixed $varz
-     * @return Debug
+     * @return static
      */
-    public function debugVar($varz): Debug
+    public function debugVar($varz): static
     {
     }
 
@@ -111,7 +111,7 @@ class Debug
     /**
      * Halts the request showing a backtrace
      *
-     * @throws Exception
+     * @throws RequestHalted
      * @return void
      */
     public function halt(): void
@@ -123,27 +123,27 @@ class Debug
      *
      * @param bool $exceptions
      * @param bool $lowSeverity
-     * @return Debug
+     * @return static
      */
-    public function listen(bool $exceptions = true, bool $lowSeverity = false): Debug
+    public function listen(bool $exceptions = true, bool $lowSeverity = false): static
     {
     }
 
     /**
      * Listen for uncaught exceptions
      *
-     * @return Debug
+     * @return static
      */
-    public function listenExceptions(): Debug
+    public function listenExceptions(): static
     {
     }
 
     /**
      * Listen for non silent notices or warnings
      *
-     * @return Debug
+     * @return static
      */
-    public function listenLowSeverity(): Debug
+    public function listenLowSeverity(): static
     {
     }
 
@@ -186,9 +186,9 @@ class Debug
      * Sets if files the exception's backtrace must be showed
      *
      * @param array $blacklist
-     * @return Debug
+     * @return static
      */
-    public function setBlacklist(array $blacklist): Debug
+    public function setBlacklist(array $blacklist): static
     {
     }
 
@@ -196,9 +196,9 @@ class Debug
      * Sets if files the exception's backtrace must be showed
      *
      * @param bool $showBackTrace
-     * @return Debug
+     * @return static
      */
-    public function setShowBackTrace(bool $showBackTrace): Debug
+    public function setShowBackTrace(bool $showBackTrace): static
     {
     }
 
@@ -207,9 +207,9 @@ class Debug
      * or just the fragment related to the exception
      *
      * @param bool $showFileFragment
-     * @return Debug
+     * @return static
      */
-    public function setShowFileFragment(bool $showFileFragment): Debug
+    public function setShowFileFragment(bool $showFileFragment): static
     {
     }
 
@@ -217,9 +217,9 @@ class Debug
      * Set if files part of the backtrace must be shown in the output
      *
      * @param bool $showFiles
-     * @return Debug
+     * @return static
      */
-    public function setShowFiles(bool $showFiles): Debug
+    public function setShowFiles(bool $showFiles): static
     {
     }
 
@@ -227,9 +227,9 @@ class Debug
      * Change the base URI for static resources
      *
      * @param string $uri
-     * @return Debug
+     * @return static
      */
-    public function setUri(string $uri): Debug
+    public function setUri(string $uri): static
     {
     }
 

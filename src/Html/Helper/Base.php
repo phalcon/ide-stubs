@@ -25,7 +25,7 @@ class Base extends \Phalcon\Html\Helper\AbstractHelper
      * @return string
      * @throws Exception
      */
-    public function __invoke(string $href = null, array $attributes = []): string
+    public function __invoke(?string $href = null, array $attributes = []): string
     {
     }
 }

@@ -9,7 +9,7 @@
  */
 namespace Phalcon\Logger\Adapter;
 
-use LogicException;
+use Phalcon\Logger\Adapter\Exceptions\SyslogOpenFailed;
 use Phalcon\Logger\Enum;
 use Phalcon\Logger\Item;
 
@@ -68,7 +68,7 @@ class Syslog extends \Phalcon\Logger\Adapter\AbstractAdapter
      *
      * @param Item $item
      *
-     * @throws LogicException
+     * @throws SyslogOpenFailed
      * @return void
      */
     public function process(\Phalcon\Logger\Item $item): void

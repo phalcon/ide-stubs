@@ -12,12 +12,11 @@ namespace Phalcon\Mvc\Model\Transaction;
 use Phalcon\Di\Di;
 use Phalcon\Di\DiInterface;
 use Phalcon\Di\InjectionAwareInterface;
+use Phalcon\Mvc\Model\Exceptions\ManagerOrmServicesUnavailable;
 use Phalcon\Mvc\Model\Transaction;
 use Phalcon\Mvc\Model\TransactionInterface;
 
 /**
- * Phalcon\Mvc\Model\Transaction\Manager
- *
  * A transaction acts on a single database connection. If you have multiple
  * class-specific databases, the transaction will not protect interaction among
  * them.
@@ -99,7 +98,7 @@ class Manager implements \Phalcon\Mvc\Model\Transaction\ManagerInterface, \Phalc
      *
      * @param DiInterface|null $container
      */
-    public function __construct(\Phalcon\Di\DiInterface $container = null)
+    public function __construct(?\Phalcon\Di\DiInterface $container = null)
     {
     }
 

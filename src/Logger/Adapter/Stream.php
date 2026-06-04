@@ -9,8 +9,8 @@
  */
 namespace Phalcon\Logger\Adapter;
 
-use LogicException;
-use Phalcon\Logger\Exception;
+use Phalcon\Logger\Adapter\Exceptions\FileOpenFailed;
+use Phalcon\Logger\Adapter\Exceptions\InvalidStreamMode;
 use Phalcon\Logger\Item;
 
 /**
@@ -31,7 +31,6 @@ use Phalcon\Logger\Item;
  * @property resource|null $handler
  * @property string        $mode
  * @property string        $name
- * @property array         $options
  */
 class Stream extends \Phalcon\Logger\Adapter\AbstractAdapter
 {
@@ -57,19 +56,12 @@ class Stream extends \Phalcon\Logger\Adapter\AbstractAdapter
     protected $name;
 
     /**
-     * Path options
-     *
-     * @var array
-     */
-    protected $options;
-
-    /**
      * Stream constructor.
      *
      * @param string $name
      * @param array  $options
      *
-     * @throws Exception
+     * @throws InvalidStreamMode
      */
     public function __construct(string $name, array $options = [])
     {

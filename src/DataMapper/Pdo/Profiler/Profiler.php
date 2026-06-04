@@ -54,7 +54,7 @@ class Profiler implements \Phalcon\DataMapper\Pdo\Profiler\ProfilerInterface
      *
      * @param LoggerInterface $logger
      */
-    public function __construct(\Phalcon\Logger\LoggerInterface $logger = null)
+    public function __construct(?\Phalcon\Logger\LoggerInterface $logger = null)
     {
     }
 
@@ -65,7 +65,7 @@ class Profiler implements \Phalcon\DataMapper\Pdo\Profiler\ProfilerInterface
      * @param array  $values
      * @return void
      */
-    public function finish(string $statement = null, array $values = []): void
+    public function finish(?string $statement = null, array $values = []): void
     {
     }
 

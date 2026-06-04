@@ -11,6 +11,7 @@ namespace Phalcon\Time\Clock;
 
 use DateTimeImmutable;
 use DateTimeZone;
+use Phalcon\Time\Clock\Exceptions\InvalidModifier;
 use Throwable;
 
 /**
@@ -43,11 +44,11 @@ final class FrozenClock implements \Phalcon\Time\Clock\ClockInterface
     /**
      * Mutates the clock to a new value. All consumers receive the same modification
      *
-     * @throws Exception When the modifier string cannot be parsed
+     * @throws InvalidModifier
      * @param string $modifier
-     * @return FrozenClock
+     * @return static
      */
-    public function adjust(string $modifier): FrozenClock
+    public function adjust(string $modifier): static
     {
     }
 
@@ -82,9 +83,9 @@ final class FrozenClock implements \Phalcon\Time\Clock\ClockInterface
      * Sets the clock to a new value. All consumers receive the same modification
      *
      * @param \DateTimeImmutable $now
-     * @return FrozenClock
+     * @return static
      */
-    public function set(\DateTimeImmutable $now): FrozenClock
+    public function set(\DateTimeImmutable $now): static
     {
     }
 }

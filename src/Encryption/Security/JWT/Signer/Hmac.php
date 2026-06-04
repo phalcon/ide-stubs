@@ -10,6 +10,7 @@
 namespace Phalcon\Encryption\Security\JWT\Signer;
 
 use Phalcon\Encryption\Security\JWT\Exceptions\UnsupportedAlgorithmException;
+use Phalcon\Encryption\Security\JWT\Exceptions\UnsupportedHmacAlgorithm;
 
 /**
  * HMAC signing class

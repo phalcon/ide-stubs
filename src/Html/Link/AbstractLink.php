@@ -12,10 +12,10 @@ namespace Phalcon\Html\Link;
 use Phalcon\Support\Collection;
 
 /**
- * @property array  $attributes
- * @property string $href
- * @property array  $rels
- * @property bool   $templated
+ * @property Collection $attributes
+ * @property string     $href
+ * @property Collection $rels
+ * @property bool       $templated
  */
 abstract class AbstractLink
 {
@@ -102,6 +102,52 @@ abstract class AbstractLink
     }
 
     /**
+     * @param string       $key
+     * @param string|array $value
+     *
+     * @return mixed
+     */
+    protected function doWithAttribute(string $key, $value): static
+    {
+    }
+
+    /**
+     * @param string $href
+     *
+     * @return mixed
+     */
+    protected function doWithHref(string $href): static
+    {
+    }
+
+    /**
+     * @param string $key
+     *
+     * @return mixed
+     */
+    protected function doWithRel(string $key): static
+    {
+    }
+
+    /**
+     * @param string $key
+     *
+     * @return mixed
+     */
+    protected function doWithoutAttribute(string $key): static
+    {
+    }
+
+    /**
+     * @param string $key
+     *
+     * @return mixed
+     */
+    protected function doWithoutRel(string $key): static
+    {
+    }
+
+    /**
      * Determines if a href is a templated link or not.
      *
      * @see https://tools.ietf.org/html/rfc6570
@@ -111,52 +157,6 @@ abstract class AbstractLink
      * @return bool
      */
     protected function hrefIsTemplated(string $href): bool
-    {
-    }
-
-    /**
-     * @param string       $key
-     * @param string|array $value
-     *
-     * @return mixed
-     */
-    protected function doWithAttribute(string $key, $value)
-    {
-    }
-
-    /**
-     * @param string $href
-     *
-     * @return mixed
-     */
-    protected function doWithHref(string $href)
-    {
-    }
-
-    /**
-     * @param string $key
-     *
-     * @return mixed
-     */
-    protected function doWithRel(string $key)
-    {
-    }
-
-    /**
-     * @param string $key
-     *
-     * @return mixed
-     */
-    protected function doWithoutAttribute(string $key)
-    {
-    }
-
-    /**
-     * @param string $key
-     *
-     * @return mixed
-     */
-    protected function doWithoutRel(string $key)
     {
     }
 }

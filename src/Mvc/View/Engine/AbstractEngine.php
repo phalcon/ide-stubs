@@ -37,7 +37,7 @@ abstract class AbstractEngine extends Injectable implements \Phalcon\Mvc\View\En
      * @param ViewBaseInterface $view
      * @param DiInterface|null $container
      */
-    public function __construct(\Phalcon\Mvc\ViewBaseInterface $view, \Phalcon\Di\DiInterface $container = null)
+    public function __construct(\Phalcon\Mvc\ViewBaseInterface $view, ?\Phalcon\Di\DiInterface $container = null)
     {
     }
 

@@ -21,7 +21,7 @@ class Camelize extends \Phalcon\Support\Helper\Str\PascalCase
      *
      * @return string
      */
-    public function __invoke(string $text, string $delimiters = null, bool $lowerFirst = false): string
+    public function __invoke(string $text, ?string $delimiters = null, bool $lowerFirst = false): string
     {
     }
 }

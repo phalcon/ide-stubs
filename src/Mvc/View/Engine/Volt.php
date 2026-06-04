@@ -15,6 +15,9 @@ use Phalcon\Events\ManagerInterface;
 use Phalcon\Html\Link\Link;
 use Phalcon\Html\Link\Serializer\Header;
 use Phalcon\Mvc\View\Engine\Volt\Compiler;
+use Phalcon\Mvc\View\Engine\Volt\Exceptions\InvalidHaystack;
+use Phalcon\Mvc\View\Engine\Volt\Exceptions\MacroNotFound;
+use Phalcon\Mvc\View\Engine\Volt\Exceptions\MbstringRequired;
 use Phalcon\Mvc\View\Exception;
 
 /**

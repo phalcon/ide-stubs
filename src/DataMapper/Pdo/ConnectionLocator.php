@@ -98,10 +98,10 @@ class ConnectionLocator implements \Phalcon\DataMapper\Pdo\ConnectionLocatorInte
      *
      * @param ConnectionInterface $callable
      *
-     * @return ConnectionLocatorInterface
+     * @return static
      * @param \Phalcon\DataMapper\Pdo\Connection\ConnectionInterface $callableObject
      */
-    public function setMaster(\Phalcon\DataMapper\Pdo\Connection\ConnectionInterface $callableObject): ConnectionLocatorInterface
+    public function setMaster(\Phalcon\DataMapper\Pdo\Connection\ConnectionInterface $callableObject): static
     {
     }
 
@@ -111,10 +111,10 @@ class ConnectionLocator implements \Phalcon\DataMapper\Pdo\ConnectionLocatorInte
      * @param string   $name
      * @param callable $callable
      *
-     * @return ConnectionLocatorInterface
+     * @return static
      * @param callable $callableObject
      */
-    public function setRead(string $name, $callableObject): ConnectionLocatorInterface
+    public function setRead(string $name, $callableObject): static
     {
     }
 
@@ -124,10 +124,10 @@ class ConnectionLocator implements \Phalcon\DataMapper\Pdo\ConnectionLocatorInte
      * @param string   $name
      * @param callable $callable
      *
-     * @return ConnectionLocatorInterface
+     * @return static
      * @param callable $callableObject
      */
-    public function setWrite(string $name, $callableObject): ConnectionLocatorInterface
+    public function setWrite(string $name, $callableObject): static
     {
     }
 

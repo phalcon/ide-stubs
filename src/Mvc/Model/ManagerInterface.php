@@ -55,6 +55,21 @@ interface ManagerInterface
     public function addHasMany(\Phalcon\Mvc\ModelInterface $model, $fields, string $referencedModel, $referencedFields, array $options = []): RelationInterface;
 
     /**
+     * Setups a relation n-m between two models
+     *
+     * @param string $fields
+     * @param string $intermediateFields
+     * @param string $intermediateReferencedFields
+     * @param string $referencedFields
+     * @param array $options
+     * @param \Phalcon\Mvc\ModelInterface $model
+     * @param string $intermediateModel
+     * @param string $referencedModel
+     * @return RelationInterface
+     */
+    public function addHasManyToMany(\Phalcon\Mvc\ModelInterface $model, $fields, string $intermediateModel, $intermediateFields, $intermediateReferencedFields, string $referencedModel, $referencedFields, array $options = []): RelationInterface;
+
+    /**
      * Setup a 1-1 relation between two models
      *
      * @param mixed $fields
@@ -82,19 +97,11 @@ interface ManagerInterface
     public function addHasOneThrough(\Phalcon\Mvc\ModelInterface $model, $fields, string $intermediateModel, $intermediateFields, $intermediateReferencedFields, string $referencedModel, $referencedFields, array $options = []): RelationInterface;
 
     /**
-     * Setups a relation n-m between two models
+     * Clears the internal reusable list
      *
-     * @param string $fields
-     * @param string $intermediateFields
-     * @param string $intermediateReferencedFields
-     * @param string $referencedFields
-     * @param array $options
-     * @param \Phalcon\Mvc\ModelInterface $model
-     * @param string $intermediateModel
-     * @param string $referencedModel
-     * @return RelationInterface
+     * @return void
      */
-    public function addHasManyToMany(\Phalcon\Mvc\ModelInterface $model, $fields, string $intermediateModel, $intermediateFields, $intermediateReferencedFields, string $referencedModel, $referencedFields, array $options = []): RelationInterface;
+    public function clearReusableObjects(): void;
 
     /**
      * Creates a Phalcon\Mvc\Model\Query\Builder
@@ -111,13 +118,6 @@ interface ManagerInterface
      * @return QueryInterface
      */
     public function createQuery(string $phql): QueryInterface;
-
-    /**
-     * Clears the internal reusable list
-     *
-     * @return void
-     */
-    public function clearReusableObjects(): void;
 
     /**
      * Creates a Phalcon\Mvc\Model\Query and execute it
@@ -147,7 +147,7 @@ interface ManagerInterface
      * @param string|null       $method
      * @return bool|ResultsetInterface
      */
-    public function getBelongsToRecords(string $modelName, string $modelRelation, \Phalcon\Mvc\ModelInterface $record, $parameters = null, string $method = null): ResultsetInterface|bool;
+    public function getBelongsToRecords(string $modelName, string $modelRelation, \Phalcon\Mvc\ModelInterface $record, $parameters = null, ?string $method = null): ResultsetInterface|bool;
 
     /**
      * Returns the newly created Phalcon\Mvc\Model\Query\Builder or null
@@ -174,7 +174,7 @@ interface ManagerInterface
      * @param string|null       $method
      * @return bool|ResultsetInterface
      */
-    public function getHasManyRecords(string $modelName, string $modelRelation, \Phalcon\Mvc\ModelInterface $record, $parameters = null, string $method = null): ResultsetInterface|bool;
+    public function getHasManyRecords(string $modelName, string $modelRelation, \Phalcon\Mvc\ModelInterface $record, $parameters = null, ?string $method = null): ResultsetInterface|bool;
 
     /**
      * Gets hasManyToMany relations defined on a model
@@ -191,14 +191,6 @@ interface ManagerInterface
      * @return array|RelationInterface[]
      */
     public function getHasOne(\Phalcon\Mvc\ModelInterface $model): array;
-
-    /**
-     * Gets hasOneThrough relations defined on a model
-     *
-     * @param \Phalcon\Mvc\ModelInterface $model
-     * @return array|RelationInterface[]
-     */
-    public function getHasOneThrough(\Phalcon\Mvc\ModelInterface $model): array;
 
     /**
      * Gets hasOne relations defined on a model
@@ -218,14 +210,22 @@ interface ManagerInterface
      * @param string|null       $method
      * @return bool|ModelInterface
      */
-    public function getHasOneRecords(string $modelName, string $modelRelation, \Phalcon\Mvc\ModelInterface $record, $parameters = null, string $method = null): ModelInterface|bool;
+    public function getHasOneRecords(string $modelName, string $modelRelation, \Phalcon\Mvc\ModelInterface $record, $parameters = null, ?string $method = null): ModelInterface|bool;
+
+    /**
+     * Gets hasOneThrough relations defined on a model
+     *
+     * @param \Phalcon\Mvc\ModelInterface $model
+     * @return array|RelationInterface[]
+     */
+    public function getHasOneThrough(\Phalcon\Mvc\ModelInterface $model): array;
 
     /**
      * Get last initialized model
      *
-     * @return ModelInterface
+     * @return ModelInterface|null
      */
-    public function getLastInitialized(): ModelInterface;
+    public function getLastInitialized(): ModelInterface|null;
 
     /**
      * Returns the last query created or executed in the models manager
@@ -282,9 +282,9 @@ interface ManagerInterface
      * @param RelationInterface $relation
      * @param \Phalcon\Mvc\ModelInterface $record
      * @param mixed $parameters
-     * @param string $method
+     * @param string|null $method
      */
-    public function getRelationRecords(RelationInterface $relation, \Phalcon\Mvc\ModelInterface $record, $parameters = null, string $method = null);
+    public function getRelationRecords(RelationInterface $relation, \Phalcon\Mvc\ModelInterface $record, $parameters = null, ?string $method = null);
 
     /**
      * Query all the relationships defined on a model
@@ -348,6 +348,15 @@ interface ManagerInterface
     public function hasHasMany(string $modelName, string $modelRelation): bool;
 
     /**
+     * Checks whether a model has a hasManyToMany relation with another model
+     *
+     * @param string $modelName
+     * @param string $modelRelation
+     * @return bool
+     */
+    public function hasHasManyToMany(string $modelName, string $modelRelation): bool;
+
+    /**
      * Checks whether a model has a hasOne relation with another model
      *
      * @param string $modelName
@@ -364,23 +373,6 @@ interface ManagerInterface
      * @return bool
      */
     public function hasHasOneThrough(string $modelName, string $modelRelation): bool;
-
-    /**
-     * Checks whether a model has a hasManyToMany relation with another model
-     *
-     * @param string $modelName
-     * @param string $modelRelation
-     * @return bool
-     */
-    public function hasHasManyToMany(string $modelName, string $modelRelation): bool;
-
-    /**
-     * Loads a model throwing an exception if it does not exist
-     *
-     * @param string $modelName
-     * @return ModelInterface
-     */
-    public function load(string $modelName): ModelInterface;
 
     /**
      * Initializes a model in the model manager
@@ -439,6 +431,14 @@ interface ManagerInterface
     public function keepSnapshots(\Phalcon\Mvc\ModelInterface $model, bool $keepSnapshots): void;
 
     /**
+     * Loads a model throwing an exception if it does not exist
+     *
+     * @param string $modelName
+     * @return ModelInterface
+     */
+    public function load(string $modelName): ModelInterface;
+
+    /**
      * Dispatch an event to the listeners and behaviors
      * This method expects that the endpoint listeners/behaviors returns true
      * meaning that a least one is implemented
@@ -460,6 +460,15 @@ interface ManagerInterface
     public function notifyEvent(string $eventName, \Phalcon\Mvc\ModelInterface $model);
 
     /**
+     * Removes a behavior from a model
+     *
+     * @param \Phalcon\Mvc\ModelInterface $model
+     * @param string $behaviorClass
+     * @return void
+     */
+    public function removeBehavior(\Phalcon\Mvc\ModelInterface $model, string $behaviorClass): void;
+
+    /**
      * Sets both write and read connection service for a model
      *
      * @param \Phalcon\Mvc\ModelInterface $model
@@ -467,6 +476,24 @@ interface ManagerInterface
      * @return void
      */
     public function setConnectionService(\Phalcon\Mvc\ModelInterface $model, string $connectionService): void;
+
+    /**
+     * Sets the mapped schema for a model
+     *
+     * @param \Phalcon\Mvc\ModelInterface $model
+     * @param string $schema
+     * @return void
+     */
+    public function setModelSchema(\Phalcon\Mvc\ModelInterface $model, string $schema): void;
+
+    /**
+     * Sets the mapped source for a model
+     *
+     * @param \Phalcon\Mvc\ModelInterface $model
+     * @param string $source
+     * @return void
+     */
+    public function setModelSource(\Phalcon\Mvc\ModelInterface $model, string $source): void;
 
     /**
      * Sets read connection service for a model
@@ -487,24 +514,6 @@ interface ManagerInterface
      * @return void
      */
     public function setReusableRecords(string $modelName, string $key, $records): void;
-
-    /**
-     * Sets the mapped schema for a model
-     *
-     * @param \Phalcon\Mvc\ModelInterface $model
-     * @param string $schema
-     * @return void
-     */
-    public function setModelSchema(\Phalcon\Mvc\ModelInterface $model, string $schema): void;
-
-    /**
-     * Sets the mapped source for a model
-     *
-     * @param \Phalcon\Mvc\ModelInterface $model
-     * @param string $source
-     * @return void
-     */
-    public function setModelSource(\Phalcon\Mvc\ModelInterface $model, string $source): void;
 
     /**
      * Sets write connection service for a model

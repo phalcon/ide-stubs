@@ -14,11 +14,21 @@ use Phalcon\Factory\AbstractFactory;
 use Phalcon\Translate\Adapter\AdapterInterface;
 
 /**
- * Class TranslateFactory
- *
- * @package Phalcon\Translate
- *
  * @property InterpolatorFactory $interpolator
+ *
+ * @psalm-type TConfig array{
+ *      adapter: string,
+ *      options?: array{
+ *          content: string,
+ *          delimiter: string,
+ *          enclosure: string,
+ *          locale: string,
+ *          defaultDomain: string,
+ *          directory: string,
+ *          category: string,
+ *          triggerError: bool,
+ *      }
+ *  }
  */
 class TranslateFactory extends AbstractFactory
 {
@@ -28,10 +38,9 @@ class TranslateFactory extends AbstractFactory
     private $interpolator;
 
     /**
-     * AdapterFactory constructor.
-     *
+     * @phpstan-param array<string, string> $services
      * @param InterpolatorFactory $interpolator
-     * @param array               $services
+     * @param array $services
      */
     public function __construct(InterpolatorFactory $interpolator, array $services = [])
     {
@@ -40,19 +49,7 @@ class TranslateFactory extends AbstractFactory
     /**
      * Factory to create an instance from a Config object
      *
-     * @param array|ConfigInterface $config = [
-     *     'adapter' => 'ini,
-     *     'options' => [
-     *         'content'       => '',
-     *         'delimiter'     => ';',
-     *         'enclosure'     => '"',
-     *         'locale'        => '',
-     *         'defaultDomain' => '',
-     *         'directory'     => '',
-     *         'category'      => ''
-     *         'triggerError'  => false
-     *     ]
-     * ]
+     * @param ConfigInterface|TConfig $config
      *
      * @return AdapterInterface
      * @throws Exception
@@ -64,11 +61,11 @@ class TranslateFactory extends AbstractFactory
     /**
      * Create a new instance of the adapter
      *
-     * @param string $name
-     * @param array  $options
+     * @phpstan-param array<string, mixed> $options
      *
      * @return AdapterInterface
-     * @throws Exception
+     * @param string $name
+     * @param array $options
      */
     public function newInstance(string $name, array $options = []): AdapterInterface
     {

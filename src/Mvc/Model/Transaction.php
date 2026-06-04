@@ -17,8 +17,6 @@ use Phalcon\Mvc\Model\Transaction\ManagerInterface;
 use Phalcon\Mvc\Model\TransactionInterface;
 
 /**
- * Phalcon\Mvc\Model\Transaction
- *
  * Transactions are protective blocks where SQL statements are only permanent if
  * they can all succeed as one atomic action. Phalcon\Transaction is intended to
  * be used with Phalcon_Model_Base. Phalcon Transactions should be created using
@@ -88,14 +86,14 @@ class Transaction implements \Phalcon\Mvc\Model\TransactionInterface
     protected $messages = [];
 
     /**
-     * @var ModelInterface|null
-     */
-    protected $rollbackRecord = null;
-
-    /**
      * @var bool
      */
     protected $rollbackOnAbort = false;
+
+    /**
+     * @var ModelInterface|null
+     */
+    protected $rollbackRecord = null;
 
     /**
      * @var bool
@@ -170,11 +168,11 @@ class Transaction implements \Phalcon\Mvc\Model\TransactionInterface
     /**
      * Rollbacks the transaction
      *
-     * @param string $rollbackMessage
-     * @param \Phalcon\Mvc\ModelInterface $rollbackRecord
+     * @param string|null $rollbackMessage
+     * @param \Phalcon\Mvc\ModelInterface|null $rollbackRecord
      * @return bool
      */
-    public function rollback(string $rollbackMessage = null, \Phalcon\Mvc\ModelInterface $rollbackRecord = null): bool
+    public function rollback(?string $rollbackMessage = null, ?\Phalcon\Mvc\ModelInterface $rollbackRecord = null): bool
     {
     }
 

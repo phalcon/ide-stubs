@@ -30,25 +30,25 @@ class Failed extends \Phalcon\Mvc\Model\Transaction\Exception
      * @param string $message
      * @param ModelInterface|null $record
      */
-    public function __construct(string $message, \Phalcon\Mvc\ModelInterface $record = null)
+    public function __construct(string $message, ?\Phalcon\Mvc\ModelInterface $record = null)
     {
     }
 
     /**
      * Returns validation record messages which stop the transaction
      *
-     * @return ModelInterface
+     * @return ModelInterface|null
      */
-    public function getRecord(): ModelInterface
+    public function getRecord(): ModelInterface|null
     {
     }
 
     /**
      * Returns validation record messages which stop the transaction
      *
-     * @return MessageInterface[]
+     * @return MessageInterface[]|string
      */
-    public function getRecordMessages(): array
+    public function getRecordMessages(): string|array
     {
     }
 }

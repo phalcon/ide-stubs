@@ -14,6 +14,7 @@ use Phalcon\Di\DiInterface;
 use Phalcon\Messages\MessageInterface;
 use Phalcon\Mvc\Model\CriteriaInterface;
 use Phalcon\Mvc\Model\MetaDataInterface;
+use Phalcon\Mvc\Model\ResultInterface;
 use Phalcon\Mvc\Model\Resultset;
 use Phalcon\Mvc\Model\ResultsetInterface;
 use Phalcon\Mvc\Model\TransactionInterface;
@@ -255,10 +256,10 @@ interface ModelInterface
     /**
      * Create a criteria for a specific model
      *
-     * @param \Phalcon\Di\DiInterface $container
+     * @param \Phalcon\Di\DiInterface|null $container
      * @return CriteriaInterface
      */
-    public static function query(\Phalcon\Di\DiInterface $container = null): CriteriaInterface;
+    public static function query(?\Phalcon\Di\DiInterface $container = null): CriteriaInterface;
 
     /**
      * Refreshes the model attributes re-querying the record from the database
@@ -343,13 +344,6 @@ interface ModelInterface
     public static function sum($parameters = null): ResultsetInterface|float;
 
     /**
-     * Check whether validation process has generated any messages
-     *
-     * @return bool
-     */
-    public function validationHasFailed(): bool;
-
-    /**
      * Updates a model instance. If the instance does not exist in the
      * persistence it will throw an exception. Returning true on success or
      * false otherwise.
@@ -357,4 +351,11 @@ interface ModelInterface
      * @return bool
      */
     public function update(): bool;
+
+    /**
+     * Check whether validation process has generated any messages
+     *
+     * @return bool
+     */
+    public function validationHasFailed(): bool;
 }

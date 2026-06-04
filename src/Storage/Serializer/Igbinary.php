@@ -40,17 +40,6 @@ class Igbinary extends \Phalcon\Storage\Serializer\AbstractSerializer
     }
 
     /**
-     * Wrapper for `igbinary_serialize`
-     *
-     * @param mixed $value
-     *
-     * @return string|null
-     */
-    protected function phpIgbinarySerialize($value): string|null
-    {
-    }
-
-    /**
      * Serialize
      *
      * @param mixed $value
@@ -69,6 +58,17 @@ class Igbinary extends \Phalcon\Storage\Serializer\AbstractSerializer
      * @return mixed|false
      */
     protected function doUnserialize($value)
+    {
+    }
+
+    /**
+     * Wrapper for `igbinary_serialize`
+     *
+     * @param mixed $value
+     *
+     * @return string|null
+     */
+    protected function phpIgbinarySerialize($value): string|null
     {
     }
 }

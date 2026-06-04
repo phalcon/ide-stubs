@@ -9,10 +9,11 @@
  */
 namespace Phalcon\Mvc\Model;
 
-use Phalcon\Di\Di;
 use Phalcon\Db\Column;
+use Phalcon\Di\Di;
 use Phalcon\Di\DiInterface;
 use Phalcon\Di\InjectionAwareInterface;
+use Phalcon\Mvc\Model\Exceptions\InvalidModelName;
 use Phalcon\Mvc\Model\Query\BuilderInterface;
 
 /**
@@ -353,6 +354,21 @@ class Criteria implements \Phalcon\Mvc\Model\CriteriaInterface, \Phalcon\Di\Inje
     }
 
     /**
+     * Appends an IN condition to the current conditions
+     *
+     * ```php
+     * $criteria->inWhere("id", [1, 2, 3]);
+     * ```
+     *
+     * @param string $expr
+     * @param array $values
+     * @return CriteriaInterface
+     */
+    public function inWhere(string $expr, array $values): CriteriaInterface
+    {
+    }
+
+    /**
      * Adds an INNER join to the query
      *
      * ```php
@@ -380,21 +396,6 @@ class Criteria implements \Phalcon\Mvc\Model\CriteriaInterface, \Phalcon\Di\Inje
      * @return CriteriaInterface
      */
     public function innerJoin(string $model, $conditions = null, $alias = null): CriteriaInterface
-    {
-    }
-
-    /**
-     * Appends an IN condition to the current conditions
-     *
-     * ```php
-     * $criteria->inWhere("id", [1, 2, 3]);
-     * ```
-     *
-     * @param string $expr
-     * @param array $values
-     * @return CriteriaInterface
-     */
-    public function inWhere(string $expr, array $values): CriteriaInterface
     {
     }
 
@@ -508,16 +509,6 @@ class Criteria implements \Phalcon\Mvc\Model\CriteriaInterface, \Phalcon\Di\Inje
     }
 
     /**
-     * Adds the order-by clause to the criteria
-     *
-     * @param string $orderColumns
-     * @return CriteriaInterface
-     */
-    public function orderBy(string $orderColumns): CriteriaInterface
-    {
-    }
-
-    /**
      * Appends a condition to the current conditions using an OR operator
      *
      * @param string $conditions
@@ -526,6 +517,16 @@ class Criteria implements \Phalcon\Mvc\Model\CriteriaInterface, \Phalcon\Di\Inje
      * @return CriteriaInterface
      */
     public function orWhere(string $conditions, $bindParams = null, $bindTypes = null): CriteriaInterface
+    {
+    }
+
+    /**
+     * Adds the order-by clause to the criteria
+     *
+     * @param string $orderColumns
+     * @return CriteriaInterface
+     */
+    public function orderBy(string $orderColumns): CriteriaInterface
     {
     }
 

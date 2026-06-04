@@ -75,7 +75,7 @@ interface Collection extends \ArrayAccess, \IteratorAggregate
      *
      * @return static
      */
-    public function each($callback): Collection;
+    public function each($callback): static;
 
     /**
      * Returns a new collection of items for which the callback returns true.
@@ -87,7 +87,7 @@ interface Collection extends \ArrayAccess, \IteratorAggregate
      *
      * @return static
      */
-    public function filter($callback): Collection;
+    public function filter($callback): static;
 
     /**
      * Returns the first value in the collection or null when empty.
@@ -107,7 +107,7 @@ interface Collection extends \ArrayAccess, \IteratorAggregate
      *
      * @return mixed
      */
-    public function get(string $element, $defaultValue = null, string $cast = null): mixed;
+    public function get(string $element, $defaultValue = null, ?string $cast = null): mixed;
 
     /**
      * Returns the keys (insensitive or not) of the collection.
@@ -187,7 +187,7 @@ interface Collection extends \ArrayAccess, \IteratorAggregate
      *
      * @return static
      */
-    public function map($callback): Collection;
+    public function map($callback): static;
 
     /**
      * Reduces the collection to a single value using the callback.
@@ -238,7 +238,7 @@ interface Collection extends \ArrayAccess, \IteratorAggregate
      *
      * @return static
      */
-    public function sort($callback = null, int $order = 4): Collection;
+    public function sort($callback = null, int $order = 4): static;
 
     /**
      * Returns the collection as an array.
@@ -276,5 +276,5 @@ interface Collection extends \ArrayAccess, \IteratorAggregate
      *
      * @return static
      */
-    public function where(string $propertyOrMethod, $value): Collection;
+    public function where(string $propertyOrMethod, $value): static;
 }

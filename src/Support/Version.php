@@ -76,32 +76,6 @@ class Version
 
 
     /**
-     * Area where the version number is set. The format is as follows:
-     * ABBCCDE
-     *
-     * A - Major version
-     * B - Med version (two digits)
-     * C - Min version (two digits)
-     * D - Special release: 1 = alpha, 2 = beta, 3 = RC, 4 = stable
-     * E - Special release version i.e. RC1, Beta2 etc.
-     *
-     * @return array
-     */
-    protected function getVersion(): array
-    {
-    }
-
-    /**
-     * Translates a number to a special release.
-     *
-     * @param int $special
-     * @return string
-     */
-    final protected function getSpecial(int $special): string
-    {
-    }
-
-    /**
      * Returns the active version (string)
      *
      * ```php
@@ -136,9 +110,37 @@ class Version
      * ```
      *
      * @param int $part
+     *
      * @return string
      */
     public function getPart(int $part): string
+    {
+    }
+
+    /**
+     * Translates a number to a special release.
+     *
+     * @param int $special
+     *
+     * @return string
+     */
+    final protected function getSpecial(int $special): string
+    {
+    }
+
+    /**
+     * Area where the version number is set. The format is as follows:
+     * ABBCCDE
+     *
+     * A - Major version
+     * B - Med version (two digits)
+     * C - Min version (two digits)
+     * D - Special release: 1 = alpha, 2 = beta, 3 = RC, 4 = stable
+     * E - Special release version i.e. RC1, Beta2 etc.
+     *
+     * @return int[]
+     */
+    protected function getVersion(): array
     {
     }
 }

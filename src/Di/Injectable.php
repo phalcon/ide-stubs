@@ -9,9 +9,10 @@
  */
 namespace Phalcon\Di;
 
-use stdClass;
 use Phalcon\Di\Di;
+use Phalcon\Di\Exceptions\ContainerRequired;
 use Phalcon\Session\BagInterface;
+use stdClass;
 
 /**
  * This class allows to access services in the services container by just only

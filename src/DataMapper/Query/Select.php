@@ -10,6 +10,7 @@
 namespace Phalcon\DataMapper\Query;
 
 use BadMethodCallException;
+use Phalcon\DataMapper\Pdo\Exception\UnknownQueryMethod;
 
 /**
  * Select Query

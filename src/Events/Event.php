@@ -10,6 +10,8 @@
 namespace Phalcon\Events;
 
 use Phalcon\Contracts\Events\Stoppable;
+use Phalcon\Events\Exceptions\EventNotCancelable;
+use Phalcon\Events\Exceptions\InvalidEventSource;
 
 /**
  * This class offers contextual information of a fired event in the
@@ -24,7 +26,7 @@ use Phalcon\Contracts\Events\Stoppable;
  * }
  * ```
  */
-final class Event implements \Phalcon\Events\EventInterface, \Phalcon\Contracts\Events\Stoppable
+class Event implements \Phalcon\Events\EventInterface, \Phalcon\Contracts\Events\Stoppable
 {
     /**
      * Is event cancelable?

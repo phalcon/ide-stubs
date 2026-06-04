@@ -45,7 +45,7 @@ interface AdapterInterface
      *
      * @return AdapterInterface
      */
-    public function crop(int $width, int $height, int $offsetX = null, int $offsetY = null): AdapterInterface;
+    public function crop(int $width, int $height, ?int $offsetX = null, ?int $offsetY = null): AdapterInterface;
 
     /**
      * Flip an image
@@ -55,6 +55,16 @@ interface AdapterInterface
      * @return AdapterInterface
      */
     public function flip(int $direction): AdapterInterface;
+
+    /**
+     * @return int
+     */
+    public function getHeight(): int;
+
+    /**
+     * @return int
+     */
+    public function getWidth(): int;
 
     /**
      * Add a mask to an image
@@ -93,7 +103,7 @@ interface AdapterInterface
      *
      * @return string
      */
-    public function render(string $extension = null, int $quality = 100): string;
+    public function render(?string $extension = null, int $quality = 100): string;
 
     /**
      * Resize an image
@@ -104,7 +114,7 @@ interface AdapterInterface
      *
      * @return AdapterInterface
      */
-    public function resize(int $width = null, int $height = null, int $master = Enum::AUTO): AdapterInterface;
+    public function resize(?int $width = null, ?int $height = null, int $master = Enum::AUTO): AdapterInterface;
 
     /**
      * Rotate an image
@@ -123,7 +133,7 @@ interface AdapterInterface
      *
      * @return AdapterInterface
      */
-    public function save(string $file = null, int $quality = 100): AdapterInterface;
+    public function save(?string $file = null, int $quality = 100): AdapterInterface;
 
     /**
      * Sharpen an image
@@ -147,7 +157,7 @@ interface AdapterInterface
      *
      * @return AdapterInterface
      */
-    public function text(string $text, int $offsetX = 0, int $offsetY = 0, int $opacity = 100, string $color = '000000', int $size = 12, string $fontFile = null): AdapterInterface;
+    public function text(string $text, int $offsetX = 0, int $offsetY = 0, int $opacity = 100, string $color = '000000', int $size = 12, ?string $fontFile = null): AdapterInterface;
 
     /**
      * Add a watermark on an image

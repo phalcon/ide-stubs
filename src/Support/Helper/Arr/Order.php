@@ -46,7 +46,7 @@ class Order
      *
      * @return array
      */
-    private function checkObject(array $sorted, $attribute, $item): array
+    private function checkNonObject(array $sorted, $attribute, $item): array
     {
     }
 
@@ -57,7 +57,7 @@ class Order
      *
      * @return array
      */
-    private function checkNonObject(array $sorted, $attribute, $item): array
+    private function checkObject(array $sorted, $attribute, $item): array
     {
     }
 }

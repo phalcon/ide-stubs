@@ -9,17 +9,21 @@
  */
 namespace Phalcon\Mvc\Model\Query;
 
-use Phalcon\Di\Di;
 use Phalcon\Db\Column;
+use Phalcon\Di\Di;
 use Phalcon\Di\DiInterface;
-use Phalcon\Mvc\Model\Exception;
 use Phalcon\Di\InjectionAwareInterface;
+use Phalcon\Mvc\Model\Exception;
+use Phalcon\Mvc\Model\Exceptions\ManagerOrmServicesUnavailable;
+use Phalcon\Mvc\Model\Query\Exceptions\Builder\BuilderColumnNotInMap;
+use Phalcon\Mvc\Model\Query\Exceptions\Builder\BuilderConditionInvalid;
+use Phalcon\Mvc\Model\Query\Exceptions\Builder\ModelRequired;
+use Phalcon\Mvc\Model\Query\Exceptions\Builder\NoPrimaryKey;
+use Phalcon\Mvc\Model\Query\Exceptions\Builder\OperatorNotAvailable;
 use Phalcon\Mvc\Model\QueryInterface;
 use Phalcon\Support\Settings;
 
 /**
- * Phalcon\Mvc\Model\Query\Builder
- *
  * Helps to create PHQL queries using an OO interface
  *
  * ```php
@@ -141,7 +145,7 @@ class Builder implements \Phalcon\Mvc\Model\Query\BuilderInterface, \Phalcon\Di\
      * @param array|string|null $params
      * @param DiInterface|null $container
      */
-    public function __construct($params = null, \Phalcon\Di\DiInterface $container = null)
+    public function __construct($params = null, ?\Phalcon\Di\DiInterface $container = null)
     {
     }
 
@@ -162,10 +166,10 @@ class Builder implements \Phalcon\Mvc\Model\Query\BuilderInterface, \Phalcon\Di\
      * ```
      *
      * @param string $model
-     * @param string $alias
+     * @param string|null $alias
      * @return BuilderInterface
      */
-    public function addFrom(string $model, string $alias = null): BuilderInterface
+    public function addFrom(string $model, ?string $alias = null): BuilderInterface
     {
     }
 
@@ -573,6 +577,25 @@ class Builder implements \Phalcon\Mvc\Model\Query\BuilderInterface, \Phalcon\Di\
     }
 
     /**
+     * Appends an IN condition to the current WHERE conditions
+     *
+     * ```php
+     * $builder->inWhere(
+     *     "id",
+     *     [1, 2, 3]
+     * );
+     * ```
+     *
+     * @param string $expr
+     * @param array $values
+     * @param string $operator
+     * @return BuilderInterface
+     */
+    public function inWhere(string $expr, array $values, string $operator = BuilderInterface::OPERATOR_AND): BuilderInterface
+    {
+    }
+
+    /**
      * Adds an INNER join to the query
      *
      * ```php
@@ -596,30 +619,11 @@ class Builder implements \Phalcon\Mvc\Model\Query\BuilderInterface, \Phalcon\Di\
      * ```
      *
      * @param string $model
-     * @param string $conditions
-     * @param string $alias
+     * @param string|null $conditions
+     * @param string|null $alias
      * @return BuilderInterface
      */
-    public function innerJoin(string $model, string $conditions = null, string $alias = null): BuilderInterface
-    {
-    }
-
-    /**
-     * Appends an IN condition to the current WHERE conditions
-     *
-     * ```php
-     * $builder->inWhere(
-     *     "id",
-     *     [1, 2, 3]
-     * );
-     * ```
-     *
-     * @param string $expr
-     * @param array $values
-     * @param string $operator
-     * @return BuilderInterface
-     */
-    public function inWhere(string $expr, array $values, string $operator = BuilderInterface::OPERATOR_AND): BuilderInterface
+    public function innerJoin(string $model, ?string $conditions = null, ?string $alias = null): BuilderInterface
     {
     }
 
@@ -655,12 +659,12 @@ class Builder implements \Phalcon\Mvc\Model\Query\BuilderInterface, \Phalcon\Di\
      * ```
      *
      * @param string $model
-     * @param string $conditions
-     * @param string $alias
-     * @param string $type
+     * @param string|null $conditions
+     * @param string|null $alias
+     * @param string|null $type
      * @return BuilderInterface
      */
-    public function join(string $model, string $conditions = null, string $alias = null, string $type = null): BuilderInterface
+    public function join(string $model, ?string $conditions = null, ?string $alias = null, ?string $type = null): BuilderInterface
     {
     }
 
@@ -676,11 +680,11 @@ class Builder implements \Phalcon\Mvc\Model\Query\BuilderInterface, \Phalcon\Di\
      * ```
      *
      * @param string $model
-     * @param string $conditions
-     * @param string $alias
+     * @param string|null $conditions
+     * @param string|null $alias
      * @return BuilderInterface
      */
-    public function leftJoin(string $model, string $conditions = null, string $alias = null): BuilderInterface
+    public function leftJoin(string $model, ?string $conditions = null, ?string $alias = null): BuilderInterface
     {
     }
 
@@ -782,22 +786,6 @@ class Builder implements \Phalcon\Mvc\Model\Query\BuilderInterface, \Phalcon\Di\
     }
 
     /**
-     * Sets an ORDER BY condition clause
-     *
-     * ```php
-     * $builder->orderBy("Robots.name");
-     * $builder->orderBy(["1", "Robots.name"]);
-     * $builder->orderBy(["Robots.name DESC"]);
-     * ```
-     *
-     * @param array|string $orderBy
-     * @return BuilderInterface
-     */
-    public function orderBy($orderBy): BuilderInterface
-    {
-    }
-
-    /**
      * Appends a condition to the current HAVING conditions clause using an OR operator
      *
      * ```php
@@ -845,6 +833,22 @@ class Builder implements \Phalcon\Mvc\Model\Query\BuilderInterface, \Phalcon\Di\
     }
 
     /**
+     * Sets an ORDER BY condition clause
+     *
+     * ```php
+     * $builder->orderBy("Robots.name");
+     * $builder->orderBy(["1", "Robots.name"]);
+     * $builder->orderBy(["Robots.name DESC"]);
+     * ```
+     *
+     * @param array|string $orderBy
+     * @return BuilderInterface
+     */
+    public function orderBy($orderBy): BuilderInterface
+    {
+    }
+
+    /**
      * Adds a RIGHT join to the query
      *
      * ```php
@@ -856,11 +860,11 @@ class Builder implements \Phalcon\Mvc\Model\Query\BuilderInterface, \Phalcon\Di\
      * ```
      *
      * @param string $model
-     * @param string $conditions
-     * @param string $alias
+     * @param string|null $conditions
+     * @param string|null $alias
      * @return BuilderInterface
      */
-    public function rightJoin(string $model, string $conditions = null, string $alias = null): BuilderInterface
+    public function rightJoin(string $model, ?string $conditions = null, ?string $alias = null): BuilderInterface
     {
     }
 

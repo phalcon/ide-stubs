@@ -21,14 +21,14 @@ use Phalcon\Mvc\ModelInterface;
 class ValidationFailed extends \Phalcon\Mvc\Model\Exception
 {
     /**
-     * @var array
-     */
-    protected $messages = [];
-
-    /**
      * @var ModelInterface
      */
     protected $model;
+
+    /**
+     * @var array
+     */
+    protected $validationMessages = [];
 
     /**
      * Phalcon\Mvc\Model\ValidationFailed constructor

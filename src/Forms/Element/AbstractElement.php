@@ -10,10 +10,12 @@
 namespace Phalcon\Forms\Element;
 
 use InvalidArgumentException;
-use Phalcon\Di\DiInterface;
 use Phalcon\Di\Di;
+use Phalcon\Di\DiInterface;
 use Phalcon\Filter\Validation\ValidatorInterface;
 use Phalcon\Forms\Exception;
+use Phalcon\Forms\Exceptions\FormElementNameRequired;
+use Phalcon\Forms\Exceptions\InvalidFilterType;
 use Phalcon\Forms\Form;
 use Phalcon\Html\TagFactory;
 use Phalcon\Messages\MessageInterface;
@@ -385,9 +387,9 @@ abstract class AbstractElement implements \Phalcon\Forms\Element\ElementInterfac
      * Sets the TagFactory
      *
      * @param \Phalcon\Html\TagFactory $tagFactory
-     * @return AbstractElement
+     * @return static
      */
-    public function setTagFactory(\Phalcon\Html\TagFactory $tagFactory): AbstractElement
+    public function setTagFactory(\Phalcon\Html\TagFactory $tagFactory): static
     {
     }
 

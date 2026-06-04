@@ -9,15 +9,18 @@
  */
 namespace Phalcon\Mvc;
 
-use Phalcon\Di\DiInterface;
 use Phalcon\Di\AbstractInjectionAware;
-use Phalcon\Mvc\RouterInterface;
+use Phalcon\Di\DiInterface;
 use Phalcon\Mvc\Router\RouteInterface;
+use Phalcon\Mvc\RouterInterface;
 use Phalcon\Mvc\Url\Exception;
+use Phalcon\Mvc\Url\Exceptions\MissingRouteName;
+use Phalcon\Mvc\Url\Exceptions\RouteNotFound;
+use Phalcon\Mvc\Url\Exceptions\RouterServiceUnavailable;
 use Phalcon\Mvc\Url\UrlInterface;
 
 /**
- * This components helps in the generation of: URIs, URLs and Paths
+ * This component helps in the generation of: URIs, URLs and Paths
  *
  * ```php
  * // Generate a URL appending the URI to the base URI
@@ -38,12 +41,12 @@ class Url extends AbstractInjectionAware implements \Phalcon\Mvc\Url\UrlInterfac
     /**
      * @var null | string
      */
-    protected $baseUri = null;
+    protected $basePath = null;
 
     /**
      * @var null | string
      */
-    protected $basePath = null;
+    protected $baseUri = null;
 
     /**
      * @var RouterInterface | null
@@ -56,9 +59,9 @@ class Url extends AbstractInjectionAware implements \Phalcon\Mvc\Url\UrlInterfac
     protected $staticBaseUri = null;
 
     /**
-     * @param \Phalcon\Mvc\RouterInterface $router
+     * @param \Phalcon\Mvc\RouterInterface|null $router
      */
-    public function __construct(\Phalcon\Mvc\RouterInterface $router = null)
+    public function __construct(?\Phalcon\Mvc\RouterInterface $router = null)
     {
     }
 
@@ -109,22 +112,22 @@ class Url extends AbstractInjectionAware implements \Phalcon\Mvc\Url\UrlInterfac
      * @param array|string $uri = [
      *     'for' => '',
      * ]
-     * @param mixed $args
-     * @param bool $local
+     * @param mixed $arguments
+     * @param bool|null $local
      * @param mixed $baseUri
      * @param bool $replaceArgs
      * @return string
      */
-    public function get($uri = null, $args = null, bool $local = null, $baseUri = null, bool $replaceArgs = false): string
+    public function get($uri = null, $arguments = null, ?bool $local = null, $baseUri = null, bool $replaceArgs = false): string
     {
     }
 
     /**
      * Returns the base path
      *
-     * @return string
+     * @return string|null
      */
-    public function getBasePath(): string
+    public function getBasePath(): string|null
     {
     }
 
@@ -171,6 +174,16 @@ class Url extends AbstractInjectionAware implements \Phalcon\Mvc\Url\UrlInterfac
     }
 
     /**
+     * Generates a local path
+     *
+     * @param string|null $path
+     * @return string
+     */
+    public function path(?string $path = null): string
+    {
+    }
+
+    /**
      * Sets a base path for all the generated paths
      *
      * ```php
@@ -211,16 +224,6 @@ class Url extends AbstractInjectionAware implements \Phalcon\Mvc\Url\UrlInterfac
      * @return UrlInterface
      */
     public function setStaticBaseUri(string $staticBaseUri): UrlInterface
-    {
-    }
-
-    /**
-     * Generates a local path
-     *
-     * @param string $path
-     * @return string
-     */
-    public function path(string $path = null): string
     {
     }
 }

@@ -75,10 +75,10 @@ interface Manager
     /**
      * Removes all listeners — globally or for a single event type.
      *
-     * @param string $type
+     * @param string|null $type
      * @return void
      */
-    public function detachAll(string $type = null): void;
+    public function detachAll(?string $type = null): void;
 
     /**
      * Toggle priority ordering on/off.

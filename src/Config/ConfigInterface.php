@@ -37,12 +37,12 @@ interface ConfigInterface extends \Phalcon\Support\Collection\CollectionInterfac
      *
      * @return mixed
      */
-    public function path(string $path, $defaultValue = null, string $delimiter = null): mixed;
+    public function path(string $path, $defaultValue = null, ?string $delimiter = null): mixed;
 
     /**
      * @param string|null $delimiter
      *
      * @return ConfigInterface
      */
-    public function setPathDelimiter(string $delimiter = null): ConfigInterface;
+    public function setPathDelimiter(?string $delimiter = null): ConfigInterface;
 }

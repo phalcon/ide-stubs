@@ -9,21 +9,21 @@
  */
 namespace Phalcon\Translate\Adapter;
 
-use ArrayAccess;
 use Phalcon\Translate\Exception;
+use Phalcon\Translate\Exceptions\InvalidDataType;
+use Phalcon\Translate\Exceptions\MissingContent;
+use Phalcon\Translate\Exceptions\KeyNotFound;
 use Phalcon\Translate\InterpolatorFactory;
 
 /**
- * Class NativeArray
- *
  * Defines translation lists using PHP arrays
  *
- * @package Phalcon\Translate\Adapter
- *
- * @property array $translate
- * @property bool  $triggerError
+ * @phpstan-type TOptions array{
+ *      content?: array<string, string>,
+ *      triggerError?: bool
+ * }
  */
-class NativeArray extends \Phalcon\Translate\Adapter\AbstractAdapter implements \ArrayAccess
+class NativeArray extends \Phalcon\Translate\Adapter\AbstractAdapter
 {
     /**
      * @var array
@@ -39,10 +39,7 @@ class NativeArray extends \Phalcon\Translate\Adapter\AbstractAdapter implements 
      * NativeArray constructor.
      *
      * @param InterpolatorFactory $interpolator
-     * @param array               $options = [
-     *                                'content'      => '',
-     *                                'triggerError' => false
-     *                            ]
+     * @param TOptions            $options
      *
      * @throws Exception
      */
@@ -88,12 +85,12 @@ class NativeArray extends \Phalcon\Translate\Adapter\AbstractAdapter implements 
     /**
      * Returns the translation related to the given key
      *
-     * @param string $index
-     * @param array  $placeholders
+     * @phpstan-param array<string, string> $placeholders
      *
      * @return string
      * @throws Exception
      * @param string $translateKey
+     * @param array $placeholders
      */
     public function query(string $translateKey, array $placeholders = []): string
     {
@@ -102,6 +99,7 @@ class NativeArray extends \Phalcon\Translate\Adapter\AbstractAdapter implements 
     /**
      * Returns the internal array
      *
+     * @phpstan-return array<string, string>
      * @return array
      */
     public function toArray(): array

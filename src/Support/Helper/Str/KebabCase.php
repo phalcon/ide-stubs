@@ -20,7 +20,7 @@ class KebabCase extends \Phalcon\Support\Helper\Str\PascalCase
      *
      * @return string
      */
-    public function __invoke(string $text, string $delimiters = null): string
+    public function __invoke(string $text, ?string $delimiters = null): string
     {
     }
 }

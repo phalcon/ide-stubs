@@ -31,6 +31,8 @@ interface Dialect
 {
     /**
      * No row-lock modifier — the default behavior for `forUpdate()`.
+     *
+     * @var string
      */
     const LOCK_NONE = '';
 
@@ -39,6 +41,8 @@ interface Dialect
      * if a row it needs is locked instead of blocking. MySQL 8.0+ and
      * PostgreSQL 9.5+ recognize this. SQLite has no row-level locking and
      * silently ignores the modifier.
+     *
+     * @var string
      */
     const LOCK_NOWAIT = 'NOWAIT';
 
@@ -46,6 +50,8 @@ interface Dialect
      * Append `SKIP LOCKED` to the `FOR UPDATE` clause — the query returns
      * rows that are not currently locked and silently skips ones that are.
      * MySQL 8.0+ and PostgreSQL 9.5+ recognize this. SQLite ignores it.
+     *
+     * @var string
      */
     const LOCK_SKIP_LOCKED = 'SKIP LOCKED';
 
@@ -113,37 +119,37 @@ interface Dialect
      *
      * @param string $viewName
      * @param array $definition
-     * @param string $schemaName
+     * @param string|null $schemaName
      * @return string
      */
-    public function createView(string $viewName, array $definition, string $schemaName = null): string;
+    public function createView(string $viewName, array $definition, ?string $schemaName = null): string;
 
     /**
      * Generates SQL to describe a table
      *
      * @param string $table
-     * @param string $schema
+     * @param string|null $schema
      * @return string
      */
-    public function describeColumns(string $table, string $schema = null): string;
+    public function describeColumns(string $table, ?string $schema = null): string;
 
     /**
      * Generates SQL to query indexes on a table
      *
      * @param string $table
-     * @param string $schema
+     * @param string|null $schema
      * @return string
      */
-    public function describeIndexes(string $table, string $schema = null): string;
+    public function describeIndexes(string $table, ?string $schema = null): string;
 
     /**
      * Generates SQL to query foreign keys on a table
      *
      * @param string $table
-     * @param string $schema
+     * @param string|null $schema
      * @return string
      */
-    public function describeReferences(string $table, string $schema = null): string;
+    public function describeReferences(string $table, ?string $schema = null): string;
 
     /**
      * Generates SQL to delete a column from a table
@@ -198,11 +204,11 @@ interface Dialect
      * Generates SQL to drop a view
      *
      * @param string $viewName
-     * @param string $schemaName
+     * @param string|null $schemaName
      * @param bool $ifExists
      * @return string
      */
-    public function dropView(string $viewName, string $schemaName = null, bool $ifExists = true): string;
+    public function dropView(string $viewName, ?string $schemaName = null, bool $ifExists = true): string;
 
     /**
      * Returns a SQL modified with a FOR UPDATE clause. The optional `modifier`
@@ -243,11 +249,11 @@ interface Dialect
      * database system valid expression
      *
      * @param array $expression
-     * @param string $escapeChar
+     * @param string|null $escapeChar
      * @param array $bindCounts
      * @return string
      */
-    public function getSqlExpression(array $expression, string $escapeChar = null, array $bindCounts = []): string;
+    public function getSqlExpression(array $expression, ?string $escapeChar = null, array $bindCounts = []): string;
 
     /**
      * Generates the SQL for LIMIT clause
@@ -261,10 +267,10 @@ interface Dialect
     /**
      * List all tables in database
      *
-     * @param string $schemaName
+     * @param string|null $schemaName
      * @return string
      */
-    public function listTables(string $schemaName = null): string;
+    public function listTables(?string $schemaName = null): string;
 
     /**
      * Generates SQL to modify a column in a table
@@ -272,10 +278,10 @@ interface Dialect
      * @param string $tableName
      * @param string $schemaName
      * @param \Phalcon\Db\ColumnInterface $column
-     * @param \Phalcon\Db\ColumnInterface $currentColumn
+     * @param \Phalcon\Db\ColumnInterface|null $currentColumn
      * @return string
      */
-    public function modifyColumn(string $tableName, string $schemaName, \Phalcon\Db\ColumnInterface $column, \Phalcon\Db\ColumnInterface $currentColumn = null): string;
+    public function modifyColumn(string $tableName, string $schemaName, \Phalcon\Db\ColumnInterface $column, ?\Phalcon\Db\ColumnInterface $currentColumn = null): string;
 
     /**
      * Registers custom SQL functions
@@ -342,26 +348,26 @@ interface Dialect
      * Generates SQL checking for the existence of a schema.table
      *
      * @param string $tableName
-     * @param string $schemaName
+     * @param string|null $schemaName
      * @return string
      */
-    public function tableExists(string $tableName, string $schemaName = null): string;
+    public function tableExists(string $tableName, ?string $schemaName = null): string;
 
     /**
      * Generates the SQL to describe the table creation options
      *
      * @param string $table
-     * @param string $schema
+     * @param string|null $schema
      * @return string
      */
-    public function tableOptions(string $table, string $schema = null): string;
+    public function tableOptions(string $table, ?string $schema = null): string;
 
     /**
      * Generates SQL checking for the existence of a schema.view
      *
      * @param string $viewName
-     * @param string $schemaName
+     * @param string|null $schemaName
      * @return string
      */
-    public function viewExists(string $viewName, string $schemaName = null): string;
+    public function viewExists(string $viewName, ?string $schemaName = null): string;
 }

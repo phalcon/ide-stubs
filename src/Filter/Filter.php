@@ -9,6 +9,8 @@
  */
 namespace Phalcon\Filter;
 
+use Phalcon\Filter\Exceptions\FilterNotRegistered;
+
 /**
  * Lazy loads, stores and exposes sanitizer objects
  *
@@ -33,8 +35,8 @@ namespace Phalcon\Filter;
  * @method string       trim(string $input)
  * @method string       upper(string $input)
  * @method string       upperFirst(string $input)
- * @method null         upperWords(string $input): strin
- * @method null         url(string $input): strin
+ * @method string|null  upperWords(string $input)
+ * @method string|null  url(string $input)
  *
  * @property array $mapper
  * @property array $services

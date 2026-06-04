@@ -88,9 +88,9 @@ class Doctype
      *
      * @param int    $type
      * @param string $delimiter
-     * @return Doctype
+     * @return static
      */
-    public function __invoke(int $type = self::HTML5, string $delimiter = '\\n'): Doctype
+    public function __invoke(int $type = self::HTML5, string $delimiter = '\\n'): static
     {
     }
 

@@ -27,11 +27,11 @@ class Style extends \Phalcon\Html\Helper\AbstractSeries
      * @param string $url
      * @param array  $attributes
      *
-     * @return $this
+     * @return static
      * @throws Exception
      * @param int $position
      */
-    public function add(string $url, array $attributes = [], int $position = -1)
+    public function add(string $url, array $attributes = [], int $position = -1): static
     {
     }
 
@@ -39,9 +39,9 @@ class Style extends \Phalcon\Html\Helper\AbstractSeries
      * Sets if this is a style or link tag
      *
      * @param bool $flag
-     * @return Style
+     * @return static
      */
-    public function setStyle(bool $flag): Style
+    public function setStyle(bool $flag): static
     {
     }
 

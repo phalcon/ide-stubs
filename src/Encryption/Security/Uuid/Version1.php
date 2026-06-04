@@ -22,10 +22,10 @@ namespace Phalcon\Encryption\Security\Uuid;
 class Version1 extends \Phalcon\Encryption\Security\Uuid\AbstractUuid implements \Phalcon\Encryption\Security\Uuid\TimeBasedUuidInterface
 {
     /**
-     * @param \DateTimeInterface $dateTime
+     * @param \DateTimeInterface|null $dateTime
      * @param mixed $node
      */
-    public function __construct(\DateTimeInterface $dateTime = null, $node = null)
+    public function __construct(?\DateTimeInterface $dateTime = null, $node = null)
     {
     }
 

@@ -9,9 +9,8 @@
  */
 namespace Phalcon\Mvc\Model\MetaData;
 
-use Phalcon\Mvc\Model\MetaData;
-use Phalcon\Mvc\Model\Exception;
 use Phalcon\Cache\AdapterFactory;
+use Phalcon\Mvc\Model\MetaData;
 
 /**
  * Phalcon\Mvc\Model\MetaData\Apcu
@@ -39,7 +38,7 @@ class Apcu extends MetaData
      * @param array $options
      * @param \Phalcon\Cache\AdapterFactory $factory
      */
-    public function __construct(\Phalcon\Cache\AdapterFactory $factory, array $options = null)
+    public function __construct(\Phalcon\Cache\AdapterFactory $factory, ?array $options = null)
     {
     }
 }
