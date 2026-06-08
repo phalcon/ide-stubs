@@ -10,8 +10,6 @@
 namespace Phalcon\Auth\Internal;
 
 use Phalcon\Auth\Exception;
-use Phalcon\Contracts\Container\Service\Collection;
-use Phalcon\Di\DiInterface;
 
 /**
  * Internal option-parsing helpers shared by adapter / guard fromOptions()
@@ -43,23 +41,6 @@ final class Options
      * @return string
      */
     public static function requireString(array $options, string $key, string $context): string
-    {
-    }
-
-    /**
-     * @template T of object
-     *
-     * @phpstan-param class-string<T> $serviceId
-     *
-     * @phpstan-return T
-     *
-     * @throws Exception
-     * @param mixed $container
-     * @param string $serviceId
-     * @param string $context
-     * @return object
-     */
-    public static function resolveService($container, string $serviceId, string $context): object
     {
     }
 

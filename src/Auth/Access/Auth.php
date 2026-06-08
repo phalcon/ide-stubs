@@ -9,6 +9,8 @@
  */
 namespace Phalcon\Auth\Access;
 
+use Phalcon\Contracts\Auth\Guard\Guard;
+
 /**
  * This file is part of the Phalcon Framework.
  *
@@ -24,9 +26,10 @@ namespace Phalcon\Auth\Access;
 class Auth extends \Phalcon\Auth\Access\AbstractAccess
 {
     /**
+     * @param \Phalcon\Contracts\Auth\Guard\Guard $guard
      * @return bool
      */
-    public function allowedIf(): bool
+    protected function allowedIf(\Phalcon\Contracts\Auth\Guard\Guard $guard): bool
     {
     }
 }

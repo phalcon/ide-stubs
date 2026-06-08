@@ -12,12 +12,12 @@ namespace Phalcon\Auth;
 use Phalcon\Auth\Access\AccessLocator;
 use Phalcon\Auth\Adapter\AdapterLocator;
 use Phalcon\Auth\Guard\GuardLocator;
+use Phalcon\Auth\Internal\ContainerResolver;
 use Phalcon\Config\ConfigInterface;
 use Phalcon\Contracts\Auth\Access\Access;
 use Phalcon\Contracts\Auth\Adapter\Adapter;
 use Phalcon\Contracts\Auth\Guard\Guard;
 use Phalcon\Contracts\Container\Service\Collection;
-use Phalcon\Di\DiInterface;
 use Phalcon\Encryption\Security;
 
 /**

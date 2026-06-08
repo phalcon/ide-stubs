@@ -19,42 +19,42 @@ class Relation implements \Phalcon\Mvc\Model\RelationInterface
     /**
      * @var int
      */
-    const ACTION_CASCADE = 2;
+    const int ACTION_CASCADE = 2;
 
     /**
      * @var int
      */
-    const ACTION_RESTRICT = 1;
+    const int ACTION_RESTRICT = 1;
 
     /**
      * @var int
      */
-    const BELONGS_TO = 0;
+    const int BELONGS_TO = 0;
 
     /**
      * @var int
      */
-    const HAS_MANY = 2;
+    const int HAS_MANY = 2;
 
     /**
      * @var int
      */
-    const HAS_MANY_THROUGH = 4;
+    const int HAS_MANY_THROUGH = 4;
 
     /**
      * @var int
      */
-    const HAS_ONE = 1;
+    const int HAS_ONE = 1;
 
     /**
      * @var int
      */
-    const HAS_ONE_THROUGH = 3;
+    const int HAS_ONE_THROUGH = 3;
 
     /**
      * @var int
      */
-    const NO_ACTION = 0;
+    const int NO_ACTION = 0;
 
     /**
      * @var array|string

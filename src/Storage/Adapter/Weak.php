@@ -89,7 +89,7 @@ class Weak extends \Phalcon\Storage\Adapter\AbstractAdapter
     }
 
     /**
-     * Decrements a stored number — not supported for WeakReference
+     * Decrements a stored number - not supported for WeakReference
      *
      * @param string $key
      * @param int    $value
@@ -135,7 +135,7 @@ class Weak extends \Phalcon\Storage\Adapter\AbstractAdapter
     }
 
     /**
-     * Increments a stored number — not supported for WeakReference
+     * Increments a stored number - not supported for WeakReference
      *
      * @param string $key
      * @param int    $value

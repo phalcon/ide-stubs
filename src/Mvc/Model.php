@@ -113,42 +113,42 @@ abstract class Model extends AbstractInjectionAware implements \Phalcon\Mvc\Enti
     /**
      * @var int
      */
-    const DIRTY_STATE_DETACHED = 2;
+    const int DIRTY_STATE_DETACHED = 2;
 
     /**
      * @var int
      */
-    const DIRTY_STATE_PERSISTENT = 0;
+    const int DIRTY_STATE_PERSISTENT = 0;
 
     /**
      * @var int
      */
-    const DIRTY_STATE_TRANSIENT = 1;
+    const int DIRTY_STATE_TRANSIENT = 1;
 
     /**
      * @var int
      */
-    const OP_CREATE = 1;
+    const int OP_CREATE = 1;
 
     /**
      * @var int
      */
-    const OP_DELETE = 3;
+    const int OP_DELETE = 3;
 
     /**
      * @var int
      */
-    const OP_NONE = 0;
+    const int OP_NONE = 0;
 
     /**
      * @var int
      */
-    const OP_UPDATE = 2;
+    const int OP_UPDATE = 2;
 
     /**
      * @var string
      */
-    const TRANSACTION_INDEX = 'transaction';
+    const string TRANSACTION_INDEX = 'transaction';
 
     /**
      * @var int
@@ -204,6 +204,14 @@ abstract class Model extends AbstractInjectionAware implements \Phalcon\Mvc\Enti
      * @var array
      */
     protected $snapshot = [];
+
+    /**
+     * Per-save many-to-many sync overrides, keyed by lowercased relation
+     * alias (or "" wildcard) => bool. Cleared after each save().
+     *
+     * @var array
+     */
+    protected $syncRelated = [];
 
     /**
      * @var TransactionInterface|null
@@ -1444,6 +1452,36 @@ abstract class Model extends AbstractInjectionAware implements \Phalcon\Mvc\Enti
      * @return void
      */
     public function setSnapshotData(array $data, $columnMap = null): void
+    {
+    }
+
+    /**
+     * Marks one or more many-to-many relationships to be synchronized (or not)
+     * on the next save() call, overriding the relation's `sync` option for that
+     * save only. The flag is cleared after save().
+     *
+     * When syncing is enabled, intermediate rows for related records no longer
+     * present in the assigned array are deleted.
+     *
+     * ```php
+     * // Sync only the "tags" relationship on this save
+     * $post->setSync("tags")->save();
+     *
+     * // Sync every many-to-many relationship on this save
+     * $post->setSync()->save();
+     *
+     * // Disable syncing for every relationship on this save
+     * $post->setSync("", false)->save();
+     *
+     * // Disable syncing for specific relationships on this save
+     * $post->setSync(["tags", "categories"], false)->save();
+     * ```
+     *
+     * @param string|array|null $elements
+     * @param bool $enabled
+     * @return ModelInterface
+     */
+    public function setSync($elements = null, bool $enabled = true): ModelInterface
     {
     }
 

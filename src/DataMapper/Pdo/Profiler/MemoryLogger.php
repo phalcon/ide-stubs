@@ -139,6 +139,15 @@ class MemoryLogger implements \Phalcon\Logger\LoggerInterface
      * @param mixed[] $context
      * @return void
      */
+    public function trace(string $message, array $context = []): void
+    {
+    }
+
+    /**
+     * @param string $message
+     * @param mixed[] $context
+     * @return void
+     */
     public function warning(string $message, array $context = []): void
     {
     }

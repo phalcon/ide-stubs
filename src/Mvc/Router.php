@@ -67,30 +67,30 @@ class Router extends AbstractInjectionAware implements \Phalcon\Mvc\RouterInterf
     /**
      * @var int
      */
-    const POSITION_FIRST = 0;
+    const int POSITION_FIRST = 0;
 
     /**
      * @var int
      */
-    const POSITION_LAST = 1;
+    const int POSITION_LAST = 1;
 
     /**
      * Number of alternatives per combined-regex chunk. Empirically derived
-     * (FastRoute uses ~10) — keeps each chunk below PCRE's optimizer cliff.
+     * (FastRoute uses ~10) - keeps each chunk below PCRE's optimizer cliff.
      *
      * @var int
      */
-    const REGEX_CHUNK_SIZE = 10;
+    const int REGEX_CHUNK_SIZE = 10;
 
     /**
      * @var int
      */
-    const URI_SOURCE_GET_URL = 0;
+    const int URI_SOURCE_GET_URL = 0;
 
     /**
      * @var int
      */
-    const URI_SOURCE_SERVER_REQUEST_URI = 1;
+    const int URI_SOURCE_SERVER_REQUEST_URI = 1;
 
     /**
      * @var string
@@ -101,7 +101,7 @@ class Router extends AbstractInjectionAware implements \Phalcon\Mvc\RouterInterf
      * Pre-merged per-method candidate buckets in attach order. For each HTTP
      * method seen on any registered route, the bucket contains the
      * method-specific routes followed by the "" (no-constraint) routes.
-     * The "" key itself holds only the no-constraint routes — used when the
+     * The "" key itself holds only the no-constraint routes - used when the
      * request method has no specific bucket.
      *
      * Built in rebuildMethodIndex(); consumed by handle() in reverse.
@@ -299,7 +299,7 @@ class Router extends AbstractInjectionAware implements \Phalcon\Mvc\RouterInterf
     /**
      * Shadow-detection map. If staticShadowedByMethod[method][uri] is set,
      * the static URI in that bucket is shadowed by a later-attached regex
-     * route — the fast path MUST NOT be used; fall through to the dynamic
+     * route - the fast path MUST NOT be used; fall through to the dynamic
      * loop so the regex wins (reverse-iteration semantics).
      *
      * @var array
@@ -587,7 +587,7 @@ class Router extends AbstractInjectionAware implements \Phalcon\Mvc\RouterInterf
      * (no objects, no closures). Used by dumpDispatcher() and by
      * Phalcon\Cache integration via useCache().
      *
-     * Throws when a route has a Closure beforeMatch or converter — those
+     * Throws when a route has a Closure beforeMatch or converter - those
      * cannot be cached.
      *
      * @throws \Phalcon\Mvc\Router\Exception

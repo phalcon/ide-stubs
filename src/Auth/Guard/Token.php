@@ -10,11 +10,10 @@
 namespace Phalcon\Auth\Guard;
 
 use Phalcon\Auth\Guard\Config\TokenGuardConfig;
+use Phalcon\Auth\Internal\ContainerResolver;
 use Phalcon\Auth\Internal\Options;
 use Phalcon\Contracts\Auth\Adapter\Adapter;
 use Phalcon\Contracts\Auth\AuthUser;
-use Phalcon\Contracts\Container\Service\Collection;
-use Phalcon\Di\DiInterface;
 use Phalcon\Http\RequestInterface;
 
 /**
