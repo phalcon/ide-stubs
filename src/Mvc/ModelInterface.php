@@ -312,6 +312,16 @@ interface ModelInterface
     public function setSnapshotData(array $data, $columnMap = null): void;
 
     /**
+     * Marks one or more many-to-many relationships to be synchronized (or not)
+     * on the next save() call.
+     *
+     * @param string|array|null $elements
+     * @param bool $enabled
+     * @return ModelInterface
+     */
+    public function setSync($elements = null, bool $enabled = true): ModelInterface;
+
+    /**
      * Sets a transaction related to the Model instance
      *
      * @param \Phalcon\Mvc\Model\TransactionInterface $transaction

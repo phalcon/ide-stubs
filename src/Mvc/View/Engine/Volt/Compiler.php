@@ -271,7 +271,7 @@ class Compiler implements \Phalcon\Di\InjectionAwareInterface
     }
 
     /**
-     * Compiles a {% raw %}`{{` `}}`{% endraw %} statement returning PHP code
+     * Compiles a `{{` `}}` statement returning PHP code
      *
      * @param array $statement *
      * @return string
@@ -442,7 +442,7 @@ class Compiler implements \Phalcon\Di\InjectionAwareInterface
      * Compiles a template into a string
      *
      * ```php
-     * echo $compiler->compileString({% raw %}'{{ "hello world" }}'{% endraw %});
+     * echo $compiler->compileString('{{ "hello world" }}');
      * ```
      *
      * @param string $viewCode
@@ -590,7 +590,7 @@ class Compiler implements \Phalcon\Di\InjectionAwareInterface
      *
      * ```php
      * print_r(
-     *     $compiler->parse("{% raw %}{{ 3 + 2 }}{% endraw %}")
+     *     $compiler->parse("{{ 3 + 2 }}")
      * );
      * ```
      *

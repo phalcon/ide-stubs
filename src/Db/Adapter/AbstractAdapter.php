@@ -911,7 +911,7 @@ abstract class AbstractAdapter implements \Phalcon\Db\Adapter\AdapterInterface, 
     }
 
     /**
-     * Creates a materialized view (PostgreSQL only — MySQL and SQLite
+     * Creates a materialized view (PostgreSQL only - MySQL and SQLite
      * throw via the dialect).
      *
      * @param string $viewName

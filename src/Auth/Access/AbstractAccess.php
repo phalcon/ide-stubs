@@ -10,10 +10,11 @@
 namespace Phalcon\Auth\Access;
 
 use Phalcon\Contracts\Auth\Access\Access;
-use Phalcon\Contracts\Auth\Manager;
+use Phalcon\Contracts\Auth\Guard\Guard;
 
 /**
  * @phpstan-import-type ForwardTarget from Access
+ * @phpstan-import-type AccessContext from Access
  */
 abstract class AbstractAccess implements \Phalcon\Contracts\Auth\Access\Access
 {
@@ -23,21 +24,9 @@ abstract class AbstractAccess implements \Phalcon\Contracts\Auth\Access\Access
     protected $exceptActions = [];
 
     /**
-     * @var Manager
-     */
-    protected $manager;
-
-    /**
      * @var array
      */
     protected $onlyActions = [];
-
-    /**
-     * @param \Phalcon\Contracts\Auth\Manager $manager
-     */
-    public function __construct(\Phalcon\Contracts\Auth\Manager $manager)
-    {
-    }
 
     /**
      * @phpstan-return list<string>
@@ -56,10 +45,13 @@ abstract class AbstractAccess implements \Phalcon\Contracts\Auth\Access\Access
     }
 
     /**
+     * @phpstan-param AccessContext $context
+     * @param \Phalcon\Contracts\Auth\Guard\Guard $guard
      * @param string $actionName
+     * @param array $context
      * @return bool
      */
-    public function isAllowed(string $actionName): bool
+    public function isAllowed(\Phalcon\Contracts\Auth\Guard\Guard $guard, string $actionName, array $context = []): bool
     {
     }
 
@@ -86,4 +78,12 @@ abstract class AbstractAccess implements \Phalcon\Contracts\Auth\Access\Access
     public function setOnlyActions(array $onlyActions = []): void
     {
     }
+
+    /**
+     * Whether the gate's base condition holds for the given identity.
+     *
+     * @param \Phalcon\Contracts\Auth\Guard\Guard $guard
+     * @return bool
+     */
+    abstract protected function allowedIf(\Phalcon\Contracts\Auth\Guard\Guard $guard): bool;
 }

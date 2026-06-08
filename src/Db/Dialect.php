@@ -204,7 +204,7 @@ abstract class Dialect implements \Phalcon\Db\DialectInterface
     /**
      * Generates SQL to create a materialized view. Supported by PostgreSQL
      * (`CREATE MATERIALIZED VIEW name AS <sql>`). Other dialects inherit
-     * this throw — MySQL and SQLite have no materialized-view concept.
+     * this throw - MySQL and SQLite have no materialized-view concept.
      *
      * @param string $viewName
      * @param array $definition
@@ -262,7 +262,7 @@ abstract class Dialect implements \Phalcon\Db\DialectInterface
      * Returns a SQL statement extended with a `RETURNING` clause so the
      * INSERT/UPDATE/DELETE returns rows. Supported by PostgreSQL and
      * SQLite 3.35+. Pass `[""]` for `RETURNING`, or a list of column
-     * names. The base implementation throws — MySQL inherits it because
+     * names. The base implementation throws - MySQL inherits it because
      * MySQL has no RETURNING construct.
      *
      * @param string $sqlQuery
@@ -364,7 +364,7 @@ abstract class Dialect implements \Phalcon\Db\DialectInterface
     /**
      * Builds a CHECK constraint clause from a `CheckInterface`, using the
      * provided escape character for the constraint name (so each dialect
-     * gets its native quoting). Returns the clause body — the dialect's
+     * gets its native quoting). Returns the clause body - the dialect's
      * `createTable()` / `addCheck()` is expected to prefix `ADD` or place
      * the result on its own line as appropriate.
      *
@@ -396,7 +396,7 @@ abstract class Dialect implements \Phalcon\Db\DialectInterface
      * Builds the `GENERATED ALWAYS AS (<expr>) VIRTUAL|STORED` clause for a
      * generated/computed column. Returns an empty string when the column is
      * not generated. When `forceStored` is `true` the clause is always emitted
-     * as `STORED` regardless of the column's `isGenerationStored()` flag —
+     * as `STORED` regardless of the column's `isGenerationStored()` flag -
      * PostgreSQL uses this since it only supports stored generated columns.
      *
      * @param ColumnInterface $column
