@@ -46,7 +46,8 @@
         }
     },
     "scripts": {
-        "analyze": "psalm",
-        "cs": "phpcs"
+        "analyze": "psalm -c resources/psalm.xml --no-cache",
+        "cs": "phpcs --standard=resources/phpcs.xml",
+        "cs-fix": "phpcbf --standard=resources/phpcs.xml"
     }
 }

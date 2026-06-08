@@ -9,5 +9,5 @@
         <exclude name="PSR1.Files.SideEffects.FoundWithSymbols"/>
         <exclude name="PSR2.Classes.PropertyDeclaration.Underscore"/>
     </rule>
-    <file>src</file>
+    <file>../src</file>
 </ruleset>

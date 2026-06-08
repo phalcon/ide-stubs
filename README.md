@@ -1,5 +1,8 @@
 # Phalcon IDE Stubs
 
+[![PDS Skeleton](https://img.shields.io/badge/pds-skeleton-blue.svg?style=flat-square)](https://github.com/php-pds/skeleton)
+[![Phalcon CI](https://github.com/phalcon/ide-stubs/actions/workflows/main.yml/badge.svg?branch=master)](https://github.com/phalcon/phalcon/actions/workflows/main.yml)
+
 This repo provides the most complete Phalcon Framework stubs which enables autocompletion in modern IDEs.
 
 ## Installing via Composer
