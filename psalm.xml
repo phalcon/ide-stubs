@@ -2,6 +2,8 @@
 <psalm
     errorLevel="1"
     resolveFromConfigFile="true"
+    findUnusedCode="false"
+    findUnusedBaselineEntry="false"
     xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
     xmlns="https://getpsalm.org/schema/config"
     xsi:schemaLocation="https://getpsalm.org/schema/config vendor/vimeo/psalm/config.xsd"
@@ -13,8 +15,19 @@
         </ignoreFiles>
     </projectFiles>
 
+    <!--
+        These suppressions mirror cphalcon's resources/psalm.xml, which is the
+        authoritative configuration the stubs are generated and validated
+        against. The stubs mirror the framework's public surface verbatim, so
+        Psalm rules about finality, override attributes, and unused code do not
+        apply to a stubs-only library.
+    -->
     <issueHandlers>
+        <ClassMustBeFinal errorLevel="suppress"/>
+        <DeprecatedInterface errorLevel="suppress"/>
         <InvalidReturnType errorLevel="suppress"/>
+        <MissingOverrideAttribute errorLevel="suppress"/>
+        <MissingTemplateParam errorLevel="suppress"/>
         <PropertyNotSetInConstructor errorLevel="suppress"/>
         <UnusedParam errorLevel="suppress"/>
     </issueHandlers>

@@ -1,0 +1,69 @@
+# For local development only - validate the IDE stubs across PHP versions.
+
+name: ${PROJECT_PREFIX:-ide-stubs}
+
+services:
+  ide-stubs-dev-8.1:
+    container_name: ${PROJECT_PREFIX:-ide-stubs}-dev-8.1
+    build:
+      dockerfile: resources/docker/Dockerfile
+      target: dev
+      args:
+        PHP_VERSION: 8.1
+        UID: ${UID:-1000}
+        GID: ${GID:-1000}
+    working_dir: /app
+    volumes:
+      - .:/app
+
+  ide-stubs-dev-8.2:
+    container_name: ${PROJECT_PREFIX:-ide-stubs}-dev-8.2
+    build:
+      dockerfile: resources/docker/Dockerfile
+      target: dev
+      args:
+        PHP_VERSION: 8.2
+        UID: ${UID:-1000}
+        GID: ${GID:-1000}
+    working_dir: /app
+    volumes:
+      - .:/app
+
+  ide-stubs-dev-8.3:
+    container_name: ${PROJECT_PREFIX:-ide-stubs}-dev-8.3
+    build:
+      dockerfile: resources/docker/Dockerfile
+      target: dev
+      args:
+        PHP_VERSION: 8.3
+        UID: ${UID:-1000}
+        GID: ${GID:-1000}
+    working_dir: /app
+    volumes:
+      - .:/app
+
+  ide-stubs-dev-8.4:
+    container_name: ${PROJECT_PREFIX:-ide-stubs}-dev-8.4
+    build:
+      dockerfile: resources/docker/Dockerfile
+      target: dev
+      args:
+        PHP_VERSION: 8.4
+        UID: ${UID:-1000}
+        GID: ${GID:-1000}
+    working_dir: /app
+    volumes:
+      - .:/app
+
+  ide-stubs-dev-8.5:
+    container_name: ${PROJECT_PREFIX:-ide-stubs}-dev-8.5
+    build:
+      dockerfile: resources/docker/Dockerfile
+      target: dev
+      args:
+        PHP_VERSION: 8.5
+        UID: ${UID:-1000}
+        GID: ${GID:-1000}
+    working_dir: /app
+    volumes:
+      - .:/app
