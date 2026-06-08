@@ -36,11 +36,17 @@
     },
     "require-dev": {
         "squizlabs/php_codesniffer": "^4.0",
+        "pds/composer-script-names": "^1.0",
+        "pds/skeleton": "^1.0",
         "vimeo/psalm": "^6.16"
     },
     "autoload-dev": {
         "psr-4": {
             "Phalcon\\": "src/"
         }
+    },
+    "scripts": {
+        "analyze": "psalm",
+        "cs": "phpcs"
     }
 }

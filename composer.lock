@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "a2776c18e3dbda06d363c5de9c78fcdd",
+    "content-hash": "e5b5aa36b958352919582214e9172c4a",
     "packages": [],
     "packages-dev": [
         {
@@ -1692,6 +1692,68 @@
                 "source": "https://github.com/nikic/PHP-Parser/tree/v5.7.0"
             },
             "time": "2025-12-06T11:56:16+00:00"
+        },
+        {
+            "name": "pds/composer-script-names",
+            "version": "1.0.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/php-pds/composer-script-names.git",
+                "reference": "e6a78aaeaee7cef82a995718ab2f5d0445ef8073"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/php-pds/composer-script-names/zipball/e6a78aaeaee7cef82a995718ab2f5d0445ef8073",
+                "reference": "e6a78aaeaee7cef82a995718ab2f5d0445ef8073",
+                "shasum": ""
+            },
+            "type": "standard",
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "CC-BY-SA-4.0"
+            ],
+            "description": "Standard for Composer script names.",
+            "homepage": "https://github.com/php-pds/composer-script-names",
+            "support": {
+                "issues": "https://github.com/php-pds/composer-script-names/issues",
+                "source": "https://github.com/php-pds/composer-script-names/tree/1.0.0"
+            },
+            "time": "2023-04-06T13:42:16+00:00"
+        },
+        {
+            "name": "pds/skeleton",
+            "version": "1.0.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/php-pds/skeleton.git",
+                "reference": "95e476e5d629eadacbd721c5a9553e537514a231"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/php-pds/skeleton/zipball/95e476e5d629eadacbd721c5a9553e537514a231",
+                "reference": "95e476e5d629eadacbd721c5a9553e537514a231",
+                "shasum": ""
+            },
+            "bin": [
+                "bin/pds-skeleton"
+            ],
+            "type": "standard",
+            "autoload": {
+                "psr-4": {
+                    "Pds\\Skeleton\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "CC-BY-SA-4.0"
+            ],
+            "description": "Standard for PHP package skeletons.",
+            "homepage": "https://github.com/php-pds/skeleton",
+            "support": {
+                "issues": "https://github.com/php-pds/skeleton/issues",
+                "source": "https://github.com/php-pds/skeleton/tree/1.x"
+            },
+            "time": "2017-01-25T23:30:41+00:00"
         },
         {
             "name": "phpdocumentor/reflection-common",
