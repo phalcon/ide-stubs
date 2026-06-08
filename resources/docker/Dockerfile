@@ -56,5 +56,8 @@ apt-get clean
 rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
 EOT
 
+# Developer shell aliases / PATH, sourced by interactive `docker exec … bash`.
+COPY --chown=${USER}:${GROUP} resources/docker/.bashrc /home/${USER}/.bashrc
+
 WORKDIR /app
 USER ${USER}
