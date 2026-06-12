@@ -33,6 +33,11 @@ class Mysql extends Dialect
     protected $escapeChar = '`';
 
     /**
+     * @var array
+     */
+    protected $supportedOperators = ['->', '->>'];
+
+    /**
      * Generates SQL to add a column to a table
      *
      * @param string $tableName

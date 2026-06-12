@@ -110,6 +110,27 @@ class Stream extends \Phalcon\Session\Adapter\Noop
     }
 
     /**
+     * Refresh the session file modification time without changing its data
+     *
+     * @param mixed $id
+     * @param mixed $data
+     * @return bool
+     */
+    public function updateTimestamp($id, $data): bool
+    {
+    }
+
+    /**
+     * Validate the session id (used when strict mode is enabled)
+     *
+     * @param mixed $id
+     * @return bool
+     */
+    public function validateId($id): bool
+    {
+    }
+
+    /**
      * @param mixed $id
      * @param mixed $data
      * @return bool

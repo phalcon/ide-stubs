@@ -72,10 +72,14 @@ class Grouped extends Config
     /**
      * Phalcon\Config\Adapter\Grouped constructor
      *
-     * @param array $arrayConfig
-     * @param string $defaultAdapter
+     * @param array              $arrayConfig
+     * @param string             $defaultAdapter
+     * @param ConfigFactory|null $factory        Factory used to load file
+     *                                           based fragments; a default
+     *                                           one is created when not
+     *                                           provided
      */
-    public function __construct(array $arrayConfig, string $defaultAdapter = 'php')
+    public function __construct(array $arrayConfig, string $defaultAdapter = 'php', ?\Phalcon\Config\ConfigFactory $factory = null)
     {
     }
 }

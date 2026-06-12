@@ -20,6 +20,7 @@ use Phalcon\Db\Exceptions\InvalidUnaryExpression;
 use Phalcon\Db\Exceptions\MaterializedViewsNotSupported;
 use Phalcon\Db\Exceptions\MissingDefinitionKey;
 use Phalcon\Db\Exceptions\ReturningNotSupported;
+use Phalcon\Db\Exceptions\UnsupportedOperator;
 use Phalcon\Support\Settings;
 
 /**
@@ -37,6 +38,22 @@ abstract class Dialect implements \Phalcon\Db\DialectInterface
      * @var array
      */
     protected $customFunctions = [];
+
+    /**
+     * Dialect-specific operators that a concrete dialect must opt into
+     * via supportedOperators; using one elsewhere throws.
+     *
+     * @var array
+     */
+    protected $guardedOperators = ['@@', '@>', '<@', '&&', '||', '->', '->>', '#>', '#>>'];
+
+    /**
+     * Subset of guardedOperators that this dialect emits. Overridden per
+     * dialect.
+     *
+     * @var array
+     */
+    protected $supportedOperators = [];
 
     /**
      * Generate SQL to create a new savepoint

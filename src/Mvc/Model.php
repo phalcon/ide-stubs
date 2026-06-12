@@ -13,6 +13,7 @@ use JsonSerializable;
 use Phalcon\Db\Adapter\AdapterInterface;
 use Phalcon\Db\Column;
 use Phalcon\Db\Enum;
+use Phalcon\Db\Geometry\WkbParser;
 use Phalcon\Db\RawValue;
 use Phalcon\Di\AbstractInjectionAware;
 use Phalcon\Di\Di;
@@ -1747,9 +1748,9 @@ abstract class Model extends AbstractInjectionAware implements \Phalcon\Mvc\Enti
      * @param string $functionName
      * @param string $alias
      * @param array|string|null $parameters *
-     * @return ResultsetInterface
+     * @return int|float|string|null|ResultsetInterface
      */
-    protected static function groupResult(string $functionName, string $alias, $parameters = null): ResultsetInterface
+    protected static function groupResult(string $functionName, string $alias, $parameters = null): mixed
     {
     }
 

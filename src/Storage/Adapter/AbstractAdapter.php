@@ -77,6 +77,16 @@ abstract class AbstractAdapter implements \Phalcon\Storage\Adapter\AdapterInterf
     protected $serializerFactory;
 
     /**
+     * Whether a leading prefix is stripped from incoming keys before the
+     * adapter prefix is applied. Disable when keys are externally
+     * generated identifiers that may legitimately start with the prefix
+     * text (e.g. session ids).
+     *
+     * @var bool
+     */
+    protected $stripPrefix = true;
+
+    /**
      * Event Manager
      *
      * @var ManagerInterface|null
@@ -347,6 +357,19 @@ abstract class AbstractAdapter implements \Phalcon\Storage\Adapter\AdapterInterf
      * @return array
      */
     protected function getFilteredKeys($keys, string $prefix): array
+    {
+    }
+
+    /**
+     * Check if the key has the prefix and remove it, otherwise just return the
+     * key unaltered. When the `stripPrefix` option is `false` the key is
+     * always returned unaltered.
+     *
+     * @param string $key
+     *
+     * @return string
+     */
+    protected function getKeyWithoutPrefix(string $key): string
     {
     }
 

@@ -9,10 +9,12 @@
  */
 namespace Phalcon\Filter\Sanitize;
 
+use Phalcon\Contracts\Filter\Sanitizer;
+
 /**
  * Sanitizes a value to string
  */
-class StringVal
+class StringVal implements \Phalcon\Contracts\Filter\Sanitizer
 {
     /**
      * @param string $input The text to sanitize

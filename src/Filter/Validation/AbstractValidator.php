@@ -92,6 +92,20 @@ abstract class AbstractValidator implements \Phalcon\Filter\Validation\Validator
     }
 
     /**
+     * Checks whether the field can be considered empty and therefore
+     * skipped, honoring the `allowEmpty` option (boolean flag, list of
+     * empty values, or per-field map).
+     *
+     * @param Validation $validation
+     * @param string     $field
+     *
+     * @return bool
+     */
+    public function isAllowEmpty(\Phalcon\Filter\Validation $validation, string $field): bool
+    {
+    }
+
+    /**
      * Create a default message by factory
      *
      * @param Validation   $validation
