@@ -126,6 +126,22 @@ class Config extends Collection implements \Phalcon\Config\ConfigInterface
     }
 
     /**
+     * Builds a new collection with the given data, carrying over the
+     * configuration of the current one. Clone-based instead of
+     * constructor-based: adapter subclasses (Ini, Json, Php, Yaml, Grouped)
+     * define file-loading constructors that are incompatible with the
+     * parent's `(array data, ...)` signature, so `filter()`, `map()`,
+     * `sort()` and `where()` would otherwise fail on any adapter instance.
+     *
+     * @param array<int|string, mixed> $data
+     *
+     * @return static
+     */
+    protected function cloneEmpty(array $data = []): static
+    {
+    }
+
+    /**
      * Performs a merge recursively
      *
      * @param array $source
@@ -139,6 +155,11 @@ class Config extends Collection implements \Phalcon\Config\ConfigInterface
 
     /**
      * Sets the collection data
+     *
+     * Array values become nested Config objects carrying the `insensitive`,
+     * `strictNull` and `type` flags of this instance. The `type` guard is
+     * applied to leaf values only — arrays are not validated themselves;
+     * the nested Config validates its own leaves.
      *
      * @param mixed $element
      * @param mixed $value

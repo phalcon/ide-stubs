@@ -9,12 +9,14 @@
  */
 namespace Phalcon\Filter\Sanitize;
 
+use Phalcon\Contracts\Filter\Sanitizer;
+
 /**
  * Phalcon\Filter\Sanitize\SpecialFull
  *
  * Sanitizes a value special characters (htmlspecialchars() and ENT_QUOTES)
  */
-class SpecialFull
+class SpecialFull implements \Phalcon\Contracts\Filter\Sanitizer
 {
     /**
      * @param mixed $input The text to sanitize

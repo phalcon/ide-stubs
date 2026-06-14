@@ -9,12 +9,14 @@
  */
 namespace Phalcon\Filter\Sanitize;
 
+use Phalcon\Contracts\Filter\Sanitizer;
+
 /**
  * Phalcon\Filter\Sanitize\UpperWords
  *
  * Sanitizes a value to uppercase the first character of each word
  */
-class UpperWords
+class UpperWords implements \Phalcon\Contracts\Filter\Sanitizer
 {
     /**
      * @param string $input The text to sanitize

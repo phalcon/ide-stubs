@@ -32,7 +32,8 @@ class Libmemcached extends \Phalcon\Session\Adapter\AbstractAdapter
      *     'defaultSerializer' => 'Php',
      *     'lifetime' => 3600,
      *     'serializer' => null,
-     *     'prefix' => 'sess-memc-'
+     *     'prefix' => 'sess-memc-',
+     *     'stripPrefix' => false
      * ]
      */
     public function __construct(\Phalcon\Storage\AdapterFactory $factory, array $options = [])

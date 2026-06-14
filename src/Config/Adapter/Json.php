@@ -10,6 +10,7 @@
 namespace Phalcon\Config\Adapter;
 
 use Phalcon\Config\Config;
+use Phalcon\Config\Exceptions\CannotLoadConfigFile;
 use Phalcon\Support\Helper\Json\Decode;
 
 /**
@@ -37,6 +38,7 @@ class Json extends Config
     /**
      * Phalcon\Config\Adapter\Json constructor
      *
+     * @throws CannotLoadConfigFile
      * @param string $filePath
      */
     public function __construct(string $filePath)

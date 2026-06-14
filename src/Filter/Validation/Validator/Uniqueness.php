@@ -116,6 +116,22 @@ class Uniqueness extends AbstractCombinedFieldsValidator
     }
 
     /**
+     * Returns an option in the validator's options
+     * Returns null if the option hasn't set
+     *
+     * The `attribute` option can be defined as an array when validating a
+     * combination of fields; in that case resolve it to the mapped value.
+     *
+     * @param string     $key
+     * @param mixed|null $defaultValue
+     *
+     * @return mixed
+     */
+    public function getOption(string $key, $defaultValue = null): mixed
+    {
+    }
+
+    /**
      * Executes the validation
      *
      * @param \Phalcon\Filter\Validation $validation

@@ -178,7 +178,9 @@ class Manager extends AbstractInjectionAware implements \Phalcon\Session\Manager
     }
 
     /**
-     * Regenerates the session id using the adapter.
+     * Regenerates the session id via `session_regenerate_id()` (when the
+     * session is active). The registered save handler persists the data
+     * under the new id.
      *
      * @param bool $deleteOldSession
      * @return ManagerInterface

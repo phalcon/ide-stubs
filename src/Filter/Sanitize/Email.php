@@ -9,12 +9,14 @@
  */
 namespace Phalcon\Filter\Sanitize;
 
+use Phalcon\Contracts\Filter\Sanitizer;
+
 /**
  * Phalcon\Filter\Sanitize\Email
  *
  * Sanitizes an email string
  */
-class Email
+class Email implements \Phalcon\Contracts\Filter\Sanitizer
 {
     /**
      * @param mixed $input The text to sanitize

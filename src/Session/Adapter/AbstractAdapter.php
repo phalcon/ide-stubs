@@ -11,6 +11,7 @@ namespace Phalcon\Session\Adapter;
 
 use Phalcon\Storage\Adapter\AdapterInterface;
 use SessionHandlerInterface;
+use SessionUpdateTimestampHandlerInterface;
 
 /**
  * This file is part of the Phalcon Framework.
@@ -20,7 +21,7 @@ use SessionHandlerInterface;
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-abstract class AbstractAdapter implements \SessionHandlerInterface
+abstract class AbstractAdapter implements \SessionHandlerInterface, \SessionUpdateTimestampHandlerInterface
 {
     /**
      * @var AdapterInterface
@@ -74,6 +75,27 @@ abstract class AbstractAdapter implements \SessionHandlerInterface
      * @return string
      */
     public function read($id): string
+    {
+    }
+
+    /**
+     * Refresh the session lifetime without changing the session data
+     *
+     * @param mixed $id
+     * @param mixed $data
+     * @return bool
+     */
+    public function updateTimestamp($id, $data): bool
+    {
+    }
+
+    /**
+     * Validate the session id (used when strict mode is enabled)
+     *
+     * @param mixed $id
+     * @return bool
+     */
+    public function validateId($id): bool
     {
     }
 

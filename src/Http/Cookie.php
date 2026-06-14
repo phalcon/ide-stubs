@@ -352,4 +352,23 @@ class Cookie extends AbstractInjectionAware implements \Phalcon\Http\Cookie\Cook
     private function getArrVal(array $collection, $index, $defaultValue = null): mixed
     {
     }
+
+    /**
+     * The session key under which this cookie's definition is stored
+     *
+     * @return string
+     */
+    private function getSessionKey(): string
+    {
+    }
+
+    /**
+     * Returns the session manager from the container when the service is
+     * available and the session has been started; `null` otherwise
+     *
+     * @return SessionManagerInterface|null
+     */
+    private function getStartedSession(): SessionManagerInterface|null
+    {
+    }
 }

@@ -9,12 +9,14 @@
  */
 namespace Phalcon\Filter\Sanitize;
 
+use Phalcon\Contracts\Filter\Sanitizer;
+
 /**
  * Phalcon\Filter\Sanitize\Alnum
  *
  * Sanitizes a value to an alphanumeric value
  */
-class Alnum
+class Alnum implements \Phalcon\Contracts\Filter\Sanitizer
 {
     /**
      * @param mixed $input The text to sanitize

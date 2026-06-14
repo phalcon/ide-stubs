@@ -9,15 +9,16 @@
  */
 namespace Phalcon\Cli;
 
+use Closure;
 use Phalcon\Application\AbstractApplication;
 use Phalcon\Cli\Console\Exception;
-use Phalcon\Cli\Console\Exceptions\ConsoleModuleNotRegistered;
 use Phalcon\Cli\Console\Exceptions\ContainerRequired;
-use Phalcon\Cli\Console\Exceptions\InvalidModuleDefinitionPath;
+use Phalcon\Cli\Console\Exceptions\InvalidModuleDefinition;
 use Phalcon\Cli\Console\Exceptions\ModuleDefinitionPathNotFound;
 use Phalcon\Cli\Router\Route;
 use Phalcon\Di\DiInterface;
 use Phalcon\Events\ManagerInterface;
+use Phalcon\Mvc\ModuleDefinitionInterface;
 
 /**
  * This component allows to create CLI applications using Phalcon

@@ -204,6 +204,17 @@ class Filter implements \Phalcon\Filter\FilterInterface
     }
 
     /**
+     * Returns the default sanitizer name to class map. This is the single
+     * source for the built-in sanitizer registry: when adding a sanitizer,
+     * add its `FILTER_` constant and its entry here.
+     *
+     * @return string[]
+     */
+    public static function getDefaultMapper(): array
+    {
+    }
+
+    /**
      * Checks if a service exists in the map array
      *
      * @param string $name
@@ -216,6 +227,14 @@ class Filter implements \Phalcon\Filter\FilterInterface
 
     /**
      * Sanitizes a value with a specified single or set of sanitizers
+     *
+     * Array policy: when `$value` is an array and `$noRecursive` is `false`
+     * (the default), each element is passed to the sanitizer individually
+     * and an array is returned - recursion is one level deep only. Elements
+     * that are themselves arrays are passed to the sanitizer as-is, which
+     * raises a `TypeError` for sanitizers that type their value parameter
+     * (e.g. `trim`). When `$noRecursive` is `true`, the whole array is
+     * passed to the sanitizer as a single value.
      *
      * @param mixed $value
      * @param mixed $sanitizers
