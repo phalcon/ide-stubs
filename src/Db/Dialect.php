@@ -339,6 +339,49 @@ abstract class Dialect implements \Phalcon\Db\DialectInterface
     }
 
     /**
+     * Checks whether the platform supports the full `ALTER TABLE` matrix:
+     * modifying existing columns and adding or dropping foreign keys, primary
+     * keys, and check constraints. SQLite returns false - those operations
+     * throw a dedicated `SqliteNotSupported` exception there (basic
+     * `ADD COLUMN` remains available).
+     *
+     * @return bool
+     */
+    public function supportsAlterTable(): bool
+    {
+    }
+
+    /**
+     * Checks whether the platform supports materialized views. Only PostgreSQL
+     * returns true; `createMaterializedView()` throws on the other dialects.
+     *
+     * @return bool
+     */
+    public function supportsMaterializedViews(): bool
+    {
+    }
+
+    /**
+     * Checks whether the platform supports the `ON CONFLICT (...) DO UPDATE`
+     * upsert clause. MySQL returns false; `onConflictUpdate()` throws there.
+     *
+     * @return bool
+     */
+    public function supportsOnConflictUpdate(): bool
+    {
+    }
+
+    /**
+     * Checks whether the platform supports the `RETURNING` clause. MySQL
+     * returns false; `returning()` throws there.
+     *
+     * @return bool
+     */
+    public function supportsReturning(): bool
+    {
+    }
+
+    /**
      * Returns the size of the column enclosed in parentheses
      *
      * @param ColumnInterface $column

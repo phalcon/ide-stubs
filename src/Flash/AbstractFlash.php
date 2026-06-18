@@ -163,6 +163,18 @@ abstract class AbstractFlash extends AbstractInjectionAware implements \Phalcon\
     }
 
     /**
+     * Outputs a message. Delivery semantics differ per implementation:
+     * `Direct` renders and emits immediately, `Session` stores the raw
+     * message for output on a later request.
+     *
+     * @param string $type
+     * @param mixed  $message
+     *
+     * @return string|null
+     */
+    abstract public function message(string $type, $message): string|null;
+
+    /**
      * Shows a HTML notice/information message
      *
      * ```php
@@ -241,6 +253,10 @@ abstract class AbstractFlash extends AbstractInjectionAware implements \Phalcon\
      * Set whether the output must be implicitly flushed to the output or
      * returned as string
      *
+     * Note: `output()` is an echo API and requires implicit flush to remain
+     * enabled (the default). With implicit flush disabled, `message()` returns
+     * the rendered string while `output()` does not emit it.
+     *
      * @param bool $implicitFlush
      * @return static
      */
@@ -303,9 +319,8 @@ abstract class AbstractFlash extends AbstractInjectionAware implements \Phalcon\
      * @param string $cssIconClasses
      *
      * @return string
-     * @param string $cssClassses
      */
-    private function getTemplate(string $cssClassses, string $cssIconClasses): string
+    private function getTemplate(string $cssClasses, string $cssIconClasses): string
     {
     }
 

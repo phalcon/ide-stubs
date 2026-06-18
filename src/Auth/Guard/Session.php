@@ -9,6 +9,7 @@
  */
 namespace Phalcon\Auth\Guard;
 
+use DateTimeImmutable;
 use Phalcon\Auth\Exception;
 use Phalcon\Auth\Exceptions\DoesNotImplement;
 use Phalcon\Auth\Guard\Config\SessionGuardConfig;
@@ -25,6 +26,8 @@ use Phalcon\Http\RequestInterface;
 use Phalcon\Http\Response\CookiesInterface;
 use Phalcon\Session\ManagerInterface as SessionManagerInterface;
 use Phalcon\Support\Helper\Json\Encode;
+use Phalcon\Time\Clock\ClockInterface;
+use Phalcon\Time\Clock\SystemClock;
 
 /**
  * @phpstan-import-type AuthCredentials from Adapter
@@ -33,6 +36,11 @@ use Phalcon\Support\Helper\Json\Encode;
  */
 class Session extends \Phalcon\Auth\Guard\AbstractGuard implements \Phalcon\Contracts\Auth\Guard\GuardStateful, \Phalcon\Contracts\Auth\Guard\BasicAuth
 {
+    /**
+     * @var ClockInterface
+     */
+    protected $clock;
+
     /**
      * @var CookiesInterface
      */
@@ -59,8 +67,9 @@ class Session extends \Phalcon\Auth\Guard\AbstractGuard implements \Phalcon\Cont
      * @param \Phalcon\Http\Response\CookiesInterface $cookies
      * @param \Phalcon\Session\ManagerInterface $session
      * @param \Phalcon\Auth\Guard\Config\SessionGuardConfig|null $config
+     * @param \Phalcon\Time\Clock\ClockInterface|null $clock
      */
-    public function __construct(\Phalcon\Contracts\Auth\Adapter\Adapter $adapter, \Phalcon\Http\RequestInterface $request, \Phalcon\Http\Response\CookiesInterface $cookies, \Phalcon\Session\ManagerInterface $session, ?\Phalcon\Auth\Guard\Config\SessionGuardConfig $config = null)
+    public function __construct(\Phalcon\Contracts\Auth\Adapter\Adapter $adapter, \Phalcon\Http\RequestInterface $request, \Phalcon\Http\Response\CookiesInterface $cookies, \Phalcon\Session\ManagerInterface $session, ?\Phalcon\Auth\Guard\Config\SessionGuardConfig $config = null, ?\Phalcon\Time\Clock\ClockInterface $clock = null)
     {
     }
 

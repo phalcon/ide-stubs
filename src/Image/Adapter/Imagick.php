@@ -37,6 +37,18 @@ use Phalcon\Image\Exceptions\ResourceTypeError;
  *     echo "success";
  * }
  * ```
+ *
+ * Capabilities:
+ *
+ * | Aspect              | Support                                        |
+ * |---------------------|------------------------------------------------|
+ * | Load formats        | Whatever the linked ImageMagick build supports |
+ * | Render/save formats | Whatever the linked ImageMagick build supports |
+ * | Backend-only API    | liquidRescale(), setResourceLimit()            |
+ *
+ * Visual semantics differ from the Gd adapter: blur() maps the radius to a
+ * blur sigma, while sharpen and reflection use ImageMagick's own scales.
+ * Switching the factory backend can change the rendered output.
  */
 class Imagick extends \Phalcon\Image\Adapter\AbstractAdapter
 {
@@ -46,7 +58,13 @@ class Imagick extends \Phalcon\Image\Adapter\AbstractAdapter
     protected $version = 0;
 
     /**
-     * Constructor
+     * Loads an image from a file, or creates a blank canvas.
+     *
+     * When the file exists it is loaded. When the file does not exist and both
+     * a width and a height are supplied, a blank transparent canvas is created
+     * instead - its realpath, mime and type then describe a PNG canvas rather
+     * than the named file. Prefer Imagick::create() for the canvas case; this
+     * dual mode is slated for removal in the next major version.
      *
      * @param string   $file
      * @param int|null $width
@@ -63,6 +81,21 @@ class Imagick extends \Phalcon\Image\Adapter\AbstractAdapter
      * Destroys the loaded image to free up resources.
      */
     public function __destruct()
+    {
+    }
+
+    /**
+     * Creates a blank transparent canvas of the given dimensions, without the
+     * load-or-create ambiguity of the constructor.
+     *
+     * @param int $width
+     * @param int $height
+     *
+     * @return AbstractAdapter
+     * @throws Exception
+     * @throws ImagickException
+     */
+    public static function create(int $width, int $height): AbstractAdapter
     {
     }
 
@@ -165,8 +198,9 @@ class Imagick extends \Phalcon\Image\Adapter\AbstractAdapter
      * @return void
      * @throws Exception
      * @throws ImagickException
+     * @param AdapterInterface $mask
      */
-    protected function processMask(AdapterInterface $image): void
+    protected function processMask(AdapterInterface $mask): void
     {
     }
 
@@ -293,8 +327,9 @@ class Imagick extends \Phalcon\Image\Adapter\AbstractAdapter
      * @return void
      * @throws Exception
      * @throws ImagickException
+     * @param AdapterInterface $watermark
      */
-    protected function processWatermark(AdapterInterface $image, int $offsetX, int $offsetY, int $opacity): void
+    protected function processWatermark(AdapterInterface $watermark, int $offsetX, int $offsetY, int $opacity): void
     {
     }
 

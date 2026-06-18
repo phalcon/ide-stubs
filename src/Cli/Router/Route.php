@@ -9,6 +9,7 @@
  */
 namespace Phalcon\Cli\Router;
 
+use Phalcon\Cli\Router\Exceptions\BeforeMatchNotCallable;
 use Phalcon\Cli\Router\Exceptions\InvalidRoutePaths;
 
 /**
@@ -120,7 +121,13 @@ class Route implements \Phalcon\Cli\Router\RouteInterface
     }
 
     /**
-     * Set the routing delimiter
+     * Set the routing delimiter.
+     *
+     * This sets a process-global delimiter that each route captures at
+     * construction time. Configure it once during bootstrap, before any routes
+     * are created: routes built before and after a change keep their own
+     * delimiter, and `Console::setArgument()` reads the current value when it
+     * parses arguments.
      *
      * @param string|null $delimiter
      * @return void
@@ -241,7 +248,11 @@ class Route implements \Phalcon\Cli\Router\RouteInterface
     }
 
     /**
-     * Resets the internal route id generator
+     * Resets the internal route id generator.
+     *
+     * Intended for test isolation only. The router keys its route map by the
+     * route id, so resetting the sequence while a router still holds routes
+     * makes newly created routes overwrite existing entries.
      *
      * @return void
      */

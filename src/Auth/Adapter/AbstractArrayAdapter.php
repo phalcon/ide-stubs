@@ -10,6 +10,7 @@
 namespace Phalcon\Auth\Adapter;
 
 use Phalcon\Auth\AuthUser;
+use Phalcon\Auth\Exceptions\DoesNotImplement;
 use Phalcon\Contracts\Auth\Adapter\AdapterConfig;
 use Phalcon\Contracts\Auth\AuthUser as AuthUserContract;
 
@@ -70,6 +71,8 @@ abstract class AbstractArrayAdapter extends \Phalcon\Auth\Adapter\AbstractAdapte
      * Phalcon\Auth\AuthUser value object.
      *
      * @phpstan-param AuthUserRow $row
+     *
+     * @throws DoesNotImplement
      * @param array $row
      * @return AuthUserContract
      */

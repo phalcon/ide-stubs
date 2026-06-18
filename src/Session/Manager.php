@@ -14,6 +14,7 @@ use SessionHandlerInterface;
 use Phalcon\Di\AbstractInjectionAware;
 use Phalcon\Di\DiInterface;
 use Phalcon\Session\Exceptions\InvalidSessionAdapter;
+use Phalcon\Session\Exceptions\InvalidSessionId;
 use Phalcon\Session\Exceptions\InvalidSessionName;
 use Phalcon\Session\Exceptions\SessionAlreadyStarted;
 use Phalcon\Session\Exceptions\SessionModificationDenied;

@@ -17,6 +17,11 @@ use Phalcon\Support\Helper\Str\Interpolate;
 class AssociativeArray implements \Phalcon\Translate\Interpolator\InterpolatorInterface
 {
     /**
+     * @var Interpolate | null
+     */
+    protected $interpolate = null;
+
+    /**
      * Replaces placeholders by the values passed
      *
      * @phpstan-param array<string, string> $placeholders

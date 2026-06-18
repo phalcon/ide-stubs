@@ -28,10 +28,10 @@ use Throwable;
 class InvalidModifier extends Exception
 {
     /**
-     * @param string $message
+     * @param string $modifier
      * @param \Throwable|null $ex
      */
-    public function __construct(string $message, ?\Throwable $ex = null)
+    public function __construct(string $modifier, ?\Throwable $ex = null)
     {
     }
 }

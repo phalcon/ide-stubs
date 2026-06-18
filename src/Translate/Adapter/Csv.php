@@ -71,6 +71,7 @@ class Csv extends \Phalcon\Translate\Adapter\AbstractAdapter
      * @phpstan-param array<string, string> $placeholders
      *
      * @return string
+     * @throws Exception
      * @param string $translateKey
      * @param array $placeholders
      */
@@ -98,6 +99,9 @@ class Csv extends \Phalcon\Translate\Adapter\AbstractAdapter
 
     /**
      * Load translations from file
+     *
+     * Lines whose first column begins with a `#` are treated as comments
+     * and skipped.
      *
      * @param string $file
      * @param int    $length

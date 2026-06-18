@@ -12,15 +12,22 @@ namespace Phalcon\Cache;
 use DateInterval;
 use Phalcon\Cache\Adapter\AdapterInterface;
 use Phalcon\Cache\Adapter\Redis;
-use Phalcon\Cache\Exception\CacheKeysNotIterable;
 use Phalcon\Cache\Exception\InvalidArgumentException;
-use Phalcon\Cache\Exception\InvalidCacheKey;
 use Phalcon\Events\EventsAwareInterface;
 use Phalcon\Events\ManagerInterface;
 use Traversable;
 
 /**
  * This component offers caching capabilities for your application.
+ *
+ * Event layering: cache operations can emit `cache:` events from two layers.
+ * This facade fires `cache:before`/`cache:after` around each operation, and
+ * the underlying `Storage` adapter (whose `eventType` is `"cache"`) also fires
+ * `cache:before`/`cache:after` for the same operation. If an events manager
+ * is wired into both the facade and the adapter, a single call emits the event
+ * twice (once from each object). Wire the manager into one layer only; the
+ * facade is the supported source for cache-level events (it also emits the
+ * multi-key `cache:Multiple` events).
  */
 abstract class AbstractCache implements \Phalcon\Cache\CacheInterface, \Phalcon\Events\EventsAwareInterface
 {
@@ -55,6 +62,28 @@ abstract class AbstractCache implements \Phalcon\Cache\CacheInterface, \Phalcon\
     public function getAdapter(): AdapterInterface
     {
     }
+
+    /**
+     * Fetches a value from the cache.
+     *
+     * @param string $key
+     * @param mixed  $defaultValue
+     *
+     * @return mixed
+     */
+    abstract public function get(string $key, $defaultValue = null);
+
+    /**
+     * Persists data in the cache, uniquely referenced by a key with an
+     * optional expiration TTL time.
+     *
+     * @param string                $key
+     * @param mixed                 $value
+     * @param null|int|DateInterval $ttl
+     *
+     * @return bool
+     */
+    abstract public function set(string $key, $value, $ttl = null): bool;
 
     /**
      * Sets the event manager

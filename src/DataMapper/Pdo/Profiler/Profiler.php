@@ -35,7 +35,7 @@ class Profiler implements \Phalcon\DataMapper\Pdo\Profiler\ProfilerInterface
     protected $logFormat = '';
 
     /**
-     * @var int
+     * @var int|string
      */
     protected $logLevel = 0;
 

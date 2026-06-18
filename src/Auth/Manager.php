@@ -10,6 +10,7 @@
 namespace Phalcon\Auth;
 
 use Phalcon\Auth\Access\AccessLocator;
+use Phalcon\Auth\Exceptions\DoesNotImplement;
 use Phalcon\Contracts\Auth\Access\Access;
 use Phalcon\Contracts\Auth\Adapter\Adapter;
 use Phalcon\Contracts\Auth\AuthUser;

@@ -17,6 +17,7 @@ use Phalcon\Events\ManagerInterface;
 use Phalcon\Storage\Serializer\SerializerInterface;
 use Phalcon\Storage\SerializerFactory;
 use Phalcon\Support\Exception as SupportException;
+use Phalcon\Support\Helper\Arr\Get;
 
 /**
  * Class AbstractAdapter
@@ -430,7 +431,10 @@ abstract class AbstractAdapter implements \Phalcon\Storage\Adapter\AdapterInterf
     }
 
     /**
-     * @todo Remove this when we get traits
+     * Reads an element from an array, optionally casting it. Delegates to the
+     * canonical Support\Helper\Arr\Get helper.
+     *
+     * @todo Remove this wrapper when we get traits
      * @param array $collection
      * @param mixed $index
      * @param mixed $defaultValue

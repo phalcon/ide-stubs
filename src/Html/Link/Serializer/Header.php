@@ -23,4 +23,17 @@ class Header implements \Phalcon\Html\Link\Serializer\SerializerInterface
     public function serialize(array $links): string|null
     {
     }
+
+    /**
+     * Escapes a quoted-string attribute value per RFC 8288 section 3: a
+     * backslash and a double quote are each prefixed with a backslash so the
+     * value cannot terminate or corrupt the header field.
+     *
+     * @param string $value
+     *
+     * @return string
+     */
+    private function quote(string $value): string
+    {
+    }
 }

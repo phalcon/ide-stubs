@@ -53,6 +53,10 @@ class Breadcrumbs
      * $breadcrumbs->add("Users");
      * ```
      *
+     * Crumbs are stored keyed by their link, so adding two crumbs that share
+     * the same link - including two link-less crumbs, which share the empty
+     * string key - keeps only the last one.
+     *
      * @param string $label
      * @param string $link
      * @return static

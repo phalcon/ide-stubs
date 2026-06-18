@@ -21,7 +21,10 @@ use Phalcon\Assets\Exception;
  */
 class CollectionNotFound extends Exception
 {
-    public function __construct()
+    /**
+     * @param string $name
+     */
+    public function __construct(string $name = '')
     {
     }
 }

@@ -11,6 +11,7 @@ namespace Phalcon\Paginator\Adapter;
 
 use Phalcon\Paginator\Exception;
 use Phalcon\Paginator\Exceptions\InvalidLimit;
+use Phalcon\Paginator\Exceptions\MissingRequiredParameter;
 use Phalcon\Paginator\Repository;
 use Phalcon\Paginator\RepositoryInterface;
 

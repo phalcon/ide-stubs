@@ -9,52 +9,15 @@
  */
 namespace Phalcon\Domain\Payload;
 
-use Throwable;
+use Phalcon\Contracts\Domain\Payload\Readable as ReadableContract;
 
 /**
  * This interface is used for consumers (read only)
+ *
+ * @psalm-suppress DeprecatedInterface
+ * @deprecated Will be removed in a future major release.
+ *             Use {@see \Phalcon\Contracts\Domain\Payload\Readable} instead.
  */
-interface ReadableInterface
+interface ReadableInterface extends ReadableContract
 {
-    /**
-     * Gets the potential exception thrown in the domain layer
-     *
-     * @return Throwable|null
-     */
-    public function getException(): Throwable|null;
-
-    /**
-     * Gets arbitrary extra values produced by the domain layer.
-     *
-     * @return mixed
-     */
-    public function getExtras(): mixed;
-
-    /**
-     * Gets the input received by the domain layer.
-     *
-     * @return mixed
-     */
-    public function getInput(): mixed;
-
-    /**
-     * Gets the messages produced by the domain layer.
-     *
-     * @return mixed
-     */
-    public function getMessages(): mixed;
-
-    /**
-     * Gets the output produced from the domain layer.
-     *
-     * @return mixed
-     */
-    public function getOutput(): mixed;
-
-    /**
-     * Gets the status of this payload.
-     *
-     * @return mixed
-     */
-    public function getStatus(): mixed;
 }

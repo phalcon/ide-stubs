@@ -9,11 +9,13 @@
  */
 namespace Phalcon\Encryption\Security\JWT;
 
+use DateTimeImmutable;
 use Phalcon\Encryption\Security\JWT\Exceptions\InvalidAudienceType;
 use Phalcon\Encryption\Security\JWT\Exceptions\ValidatorException;
 use Phalcon\Encryption\Security\JWT\Signer\SignerInterface;
 use Phalcon\Encryption\Security\JWT\Token\Enum;
 use Phalcon\Encryption\Security\JWT\Token\Token;
+use Phalcon\Time\Clock\ClockInterface;
 
 /**
  * Class Validator
@@ -43,10 +45,16 @@ class Validator
     /**
      * Validator constructor.
      *
-     * @param Token $token
-     * @param int   $timeShift
+     * @param Token               $token
+     * @param int                 $timeShift Legacy clock-skew offset in seconds
+     *                                       added to validated timestamps.
+     *                                       Prefer injecting a ClockInterface
+     *                                       for testable time; retained for BC.
+     * @param ClockInterface|null $clock     Clock used to read "now" at
+     *                                       construction. Defaults to the
+     *                                       system wall clock (time()).
      */
-    public function __construct(\Phalcon\Encryption\Security\JWT\Token\Token $token, int $timeShift = 0)
+    public function __construct(\Phalcon\Encryption\Security\JWT\Token\Token $token, int $timeShift = 0, ?\Phalcon\Time\Clock\ClockInterface $clock = null)
     {
     }
 

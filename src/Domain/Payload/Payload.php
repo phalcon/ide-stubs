@@ -97,7 +97,11 @@ class Payload implements \Phalcon\Domain\Payload\PayloadInterface
     /**
      * Status
      *
+     * Status values are drawn from the `Status` vocabulary.
+     *
      * @return mixed
+     *
+     * @see Status
      */
     public function getStatus(): mixed
     {
@@ -166,6 +170,9 @@ class Payload implements \Phalcon\Domain\Payload\PayloadInterface
     /**
      * Sets the payload status.
      *
+     * Status values are drawn from the `Status` vocabulary.
+     *
+     * @see Status
      * @param mixed $status
      * @return PayloadInterface
      */

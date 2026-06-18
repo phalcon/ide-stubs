@@ -34,6 +34,20 @@ final class Options
     /**
      * @phpstan-param array<string, mixed> $options
      *
+     * @phpstan-return array<string, mixed>
+     * @throws Exception
+     * @param array $options
+     * @param string $key
+     * @param string $context
+     * @return array
+     */
+    public static function requireArray(array $options, string $key, string $context): array
+    {
+    }
+
+    /**
+     * @phpstan-param array<string, mixed> $options
+     *
      * @throws Exception
      * @param array $options
      * @param string $key

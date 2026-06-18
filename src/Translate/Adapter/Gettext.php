@@ -155,6 +155,7 @@ class Gettext extends \Phalcon\Translate\Adapter\AbstractAdapter
      * @phpstan-param array<string, string> $placeholders
      *
      * @return string
+     * @throws Exception
      * @param string $translateKey
      * @param array $placeholders
      */
@@ -217,6 +218,13 @@ class Gettext extends \Phalcon\Translate\Adapter\AbstractAdapter
 
     /**
      * Sets locale information
+     *
+     * Note: this method has process-global side effects. Besides calling
+     * `setlocale()`, it exports the `LC_ALL`, `LANG` and `LANGUAGE`
+     * environment variables via `putenv()`. `LC_ALL` affects every
+     * locale-sensitive operation in the process - `(string)` casts of floats,
+     * `strtoupper()`/`strtolower()` tables, date formatting and more - not
+     * just translations.
      *
      * ```php
      * // Set locale to Dutch

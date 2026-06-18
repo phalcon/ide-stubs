@@ -15,6 +15,8 @@ use Exception;
 use Phalcon\Logger\Adapter\AdapterInterface;
 use Phalcon\Logger\Exceptions\AdapterNotFound;
 use Phalcon\Logger\Exceptions\NoAdaptersConfigured;
+use Phalcon\Time\Clock\ClockInterface;
+use Phalcon\Time\Clock\SystemClock;
 
 /**
  * Abstract Logger Class
@@ -44,6 +46,11 @@ abstract class AbstractLogger
     const int CRITICAL = 1;
 
     /**
+     * Default threshold and fallback sink. It sits between DEBUG (7) and
+     * TRACE (9) in the ordering, so the default log level excludes TRACE.
+     * It is also the fallback for unknown message levels and invalid
+     * setLogLevel() values.
+     *
      * @var int
      */
     const int CUSTOM = 8;
@@ -91,6 +98,13 @@ abstract class AbstractLogger
     protected $adapters = [];
 
     /**
+     * Clock used to timestamp log items
+     *
+     * @var ClockInterface
+     */
+    protected $clock;
+
+    /**
      * The excluded adapters for this log process
      *
      * @var array
@@ -120,10 +134,13 @@ abstract class AbstractLogger
      * @param string            $name     The name of the logger
      * @param array             $adapters The collection of adapters to be used
      *                                    for logging (default [])
-     * @param DateTimeZone|null $timezone Timezone. If omitted,
-     *                                    date_Default_timezone_get() is used
+     * @param DateTimeZone|null   $timezone Timezone. If omitted,
+     *                                      date_Default_timezone_get() is used
+     * @param ClockInterface|null $clock    Clock used to timestamp log items.
+     *                                      Defaults to a SystemClock on the
+     *                                      resolved timezone.
      */
-    public function __construct(string $name, array $adapters = [], ?\DateTimeZone $timezone = null)
+    public function __construct(string $name, array $adapters = [], ?\DateTimeZone $timezone = null, ?\Phalcon\Time\Clock\ClockInterface $clock = null)
     {
     }
 
@@ -136,6 +153,24 @@ abstract class AbstractLogger
      * @return static
      */
     public function addAdapter(string $name, \Phalcon\Logger\Adapter\AdapterInterface $adapter): static
+    {
+    }
+
+    /**
+     * Starts a transaction on every (non-excluded) adapter in the stack.
+     *
+     * @return static
+     */
+    public function begin(): static
+    {
+    }
+
+    /**
+     * Commits the transaction on every (non-excluded) adapter in the stack.
+     *
+     * @return static
+     */
+    public function commit(): static
     {
     }
 
@@ -202,6 +237,15 @@ abstract class AbstractLogger
     }
 
     /**
+     * Rolls back the transaction on every (non-excluded) adapter in the stack.
+     *
+     * @return static
+     */
+    public function rollback(): static
+    {
+    }
+
+    /**
      * Sets the adapters stack overriding what is already there
      *
      * @param array $adapters An array of adapters
@@ -213,7 +257,11 @@ abstract class AbstractLogger
     }
 
     /**
-     * Sets the adapters stack overriding what is already there
+     * Sets the minimum log level for the logger.
+     *
+     * An unknown level is not rejected: it is stored as CUSTOM, which sits
+     * between DEBUG and TRACE in the ordering, so the threshold becomes
+     * "everything except TRACE".
      *
      * @param int $level
      *

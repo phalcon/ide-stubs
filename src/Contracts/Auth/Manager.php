@@ -20,6 +20,15 @@ use Phalcon\Contracts\Auth\Guard\Guard;
 interface Manager
 {
     /**
+     * Activates the named access gate for the current request and returns the
+     * manager for fluent only()/except() configuration.
+     *
+     * Enforcement is opt-in and fail-open: when no access has been activated
+     * (getAccess() returns null) every dispatch is allowed. An activated gate
+     * stays active for subsequent dispatches in the same request (forwards,
+     * nested handlers) until it is replaced. Under classic FPM this is scoped
+     * to a single request; long-running runtimes must reset it per request.
+     *
      * @param string $accessName
      * @return self
      */
@@ -66,6 +75,9 @@ interface Manager
     public function except(string $actions): self;
 
     /**
+     * Returns the active access gate, or null when none has been activated -
+     * in which case listener enforcement is a no-op (see access()).
+     *
      * @return Access|null
      */
     public function getAccess(): Access|null;

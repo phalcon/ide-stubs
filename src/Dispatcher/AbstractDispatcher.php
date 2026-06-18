@@ -25,6 +25,31 @@ use Phalcon\Support\Collection;
  * This is the base class for Phalcon\Mvc\Dispatcher and Phalcon\Cli\Dispatcher.
  * This class can't be instantiated directly, you can use it to create your own
  * dispatchers.
+ *
+ * ## Error protocol
+ *
+ * Subclasses (including third-party ones) MUST implement the two abstract
+ * error hooks {@see throwDispatchException()} and {@see handleException()}.
+ * The dispatch loop calls them on every error/exception path; a subclass that
+ * omits them cannot be loaded.
+ *
+ * ## Hook channels
+ *
+ * A single lifecycle point can be intercepted through three independent
+ * channels. For any given point they run in this order:
+ *
+ * 1.Events-manager listener — e.g. `dispatch:beforeExecuteRoute`. A
+ *    listener returning `false` cancels; calling `forward()` re-enters the
+ *    loop; throwing routes through {@see handleException()}.
+ * 2.Duck-typed handler method — e.g. a `beforeExecuteRoute()` method on
+ *    the controller/task itself (presence is cached per class). Same
+ *    `false` / `forward()` cancellation semantics as the event.
+ * 3.`dispatch:beforeCallAction` observer — fired by
+ *    {@see callActionMethod()} with a `Phalcon\Support\Collection` carrying
+ *    the mutable keys `handler`, `action` and `params`. Listeners may rewrite
+ *    those keys to changewhat gets invoked; the substituted callable is
+ *    re-validated before the call. `dispatch:afterCallAction` receives the
+ *    same Collection plus a `result` key.
  */
 abstract class AbstractDispatcher extends AbstractInjectionAware implements \Phalcon\Dispatcher\DispatcherInterface, \Phalcon\Events\EventsAwareInterface
 {
@@ -310,7 +335,13 @@ abstract class AbstractDispatcher extends AbstractInjectionAware implements \Pha
      * @param mixed $defaultValue
      * @return mixed
      *
-     * @todo remove this in future versions
+     * @deprecated Use getParameter() instead
+     *
+     * Note: The interface declares `getParam(param, filters = null)` without the
+     * `defaultValue` argument, so code typed against `DispatcherInterface`
+     * cannot use the default-value feature. This signature drift is intentional
+     * for now; the interface and implementation will be aligned in the next
+     * major version.
      */
     public function getParam($param, $filters = null, $defaultValue = null): mixed
     {
@@ -331,7 +362,7 @@ abstract class AbstractDispatcher extends AbstractInjectionAware implements \Pha
     /**
      * Gets action params
      *
-     * @todo remove this in future versions
+     * @deprecated Use getParameters() instead
      * @return array
      */
     public function getParams(): array
@@ -348,9 +379,36 @@ abstract class AbstractDispatcher extends AbstractInjectionAware implements \Pha
     }
 
     /**
+     * Gets previous dispatched action name
+     *
+     * @return string
+     */
+    public function getPreviousActionName(): string
+    {
+    }
+
+    /**
+     * Gets previous dispatched handler name
+     *
+     * @return string
+     */
+    public function getPreviousHandlerName(): string
+    {
+    }
+
+    /**
+     * Gets previous dispatched namespace name
+     *
+     * @return string
+     */
+    public function getPreviousNamespaceName(): string
+    {
+    }
+
+    /**
      * Check if a param exists
      *
-     * @todo deprecate this in the future
+     * @deprecated Use hasParameter() instead
      * @param mixed $param
      * @return bool
      */
@@ -420,7 +478,7 @@ abstract class AbstractDispatcher extends AbstractInjectionAware implements \Pha
     /**
      * Set a param by its name or numeric index
      *
-     * @todo deprecate this in the future
+     * @deprecated Use setParameter() instead
      * @param mixed $param
      * @param mixed $value
      * @return void
@@ -443,7 +501,7 @@ abstract class AbstractDispatcher extends AbstractInjectionAware implements \Pha
     /**
      * Sets action params to be dispatched
      *
-     * @todo deprecate this in the future
+     * @deprecated Use setParameters() instead
      * @param array $params
      * @return void
      */
@@ -567,6 +625,22 @@ abstract class AbstractDispatcher extends AbstractInjectionAware implements \Pha
     }
 
     /**
+     * Handles a user exception triggered inside the dispatch loop.
+     *
+     * Subclasses implement the namespace-specific behavior (typically firing
+     * the `dispatch:beforeException` event so listeners may forward or swallow
+     * the exception).
+     *
+     * @param \Exception $exception *
+     * @return mixed Return `false` to signal that the exception was handled
+     *               (swallowed) and the current loop iteration should stop.
+     *               Any other return value (including null) lets the caller
+     *               bubble the exception, unless a forward was requested
+     *               (`finished === false`).
+     */
+    abstract protected function handleException(\Exception $exception);
+
+    /**
      * Set empty properties to their defaults (where defaults are available)
      *
      * @return void
@@ -574,6 +648,19 @@ abstract class AbstractDispatcher extends AbstractInjectionAware implements \Pha
     protected function resolveEmptyProperties(): void
     {
     }
+
+    /**
+     * Throws an internal dispatch exception.
+     *
+     * Subclasses build the namespace-specific exception and route it through
+     * {@see handleException()} before throwing it when it was not handled.
+     *
+     * @param string $message
+     * @param int $exceptionCode *
+     * @return mixed Returns `false` when {@see handleException()} swallowed the
+     *               exception; otherwise the method throws and does not return.
+     */
+    abstract protected function throwDispatchException(string $message, int $exceptionCode = 0);
 
     /**
      * @param string $input

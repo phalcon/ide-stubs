@@ -81,4 +81,20 @@ class Settings
     public static function reset(): void
     {
     }
+
+    /**
+     * The single authoritative whitelist. Reads a known setting from its
+     * C-level global, applying the per-key cast, and returns null for any
+     * unknown key. Both get() and set() consult this method so the list of
+     * valid settings lives in one place.
+     *
+     * globals_get() requires a string literal, so each key is read
+     * explicitly rather than by a variable lookup.
+     *
+     * @param string $key
+     * @return mixed
+     */
+    private static function readGlobal(string $key): mixed
+    {
+    }
 }

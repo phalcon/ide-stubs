@@ -12,6 +12,7 @@ namespace Phalcon\Support;
 use ArrayAccess;
 use ArrayIterator;
 use Countable;
+use InvalidArgumentException;
 use IteratorAggregate;
 use JsonSerializable;
 use Phalcon\Support\Collection\CollectionInterface;
@@ -466,9 +467,11 @@ class Collection implements \Phalcon\Support\Collection\CollectionInterface, \Co
      * @phpstan-return static<T>
      *
      * @param callable|null $callback
-     * @param int           $order
+     * @param int           $order    `SORT_ASC` (4, default) or `SORT_DESC` (3)
      *
      * @return static
+     *
+     * @throws InvalidArgumentException When a non-callable callback is given.
      */
     public function sort($callback = null, int $order = 4): static
     {
