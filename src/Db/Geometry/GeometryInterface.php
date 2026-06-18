@@ -9,28 +9,15 @@
  */
 namespace Phalcon\Db\Geometry;
 
+use Phalcon\Contracts\Db\Geometry\Geometry as GeometryContract;
+
 /**
- * This file is part of the Phalcon Framework.
+ * Phalcon\Db\Geometry\GeometryInterface
  *
- * (c) Phalcon Team <team@phalcon.io>
- *
- * For the full copyright and license information, please view the LICENSE.txt
- * file that was distributed with this source code.
+ * @psalm-suppress DeprecatedInterface
+ * @deprecated Will be removed in a future major release.
+ *             Use {@see \Phalcon\Contracts\Db\Geometry\Geometry} instead.
  */
-interface GeometryInterface
+interface GeometryInterface extends GeometryContract
 {
-    /**
-     * @return int
-     */
-    public function getSrid(): int;
-
-    /**
-     * @return int
-     */
-    public function getType(): int;
-
-    /**
-     * @return string
-     */
-    public function toWkt(): string;
 }

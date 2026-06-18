@@ -172,7 +172,7 @@ class Router extends AbstractInjectionAware implements \Phalcon\Cli\RouterInterf
     /**
      * Returns processed extra params
      *
-     * @todo deprecate this in future versions
+     * @deprecated Use {@see getParameters()} instead.
      * @return array
      */
     public function getParams(): array
@@ -221,7 +221,7 @@ class Router extends AbstractInjectionAware implements \Phalcon\Cli\RouterInterf
     /**
      * Handles routing information received from command-line arguments
      *
-     * @param array $arguments
+     * @param array|string|null $arguments
      */
     public function handle($arguments = null)
     {

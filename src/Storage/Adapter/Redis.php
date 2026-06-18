@@ -21,6 +21,13 @@ use Phalcon\Support\Exception as SupportException;
 /**
  * Redis adapter
  *
+ * Capabilities:
+ * - Counters: native atomic (incrBy()/decrBy()).
+ * - getKeys(): non-blocking SCAN iteration.
+ * - Serializers: Phalcon-side, or backend-native via OPT_SERIALIZER. Native
+ *   serializers change the bytes at rest and are not interchangeable with
+ *   Phalcon-side serializers.
+ *
  * @property array $options
  */
 class Redis extends \Phalcon\Storage\Adapter\AbstractAdapter

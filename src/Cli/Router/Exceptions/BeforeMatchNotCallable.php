@@ -21,7 +21,10 @@ use Phalcon\Cli\Router\Exception;
  */
 class BeforeMatchNotCallable extends Exception
 {
-    public function __construct()
+    /**
+     * @param string $route
+     */
+    public function __construct(string $route = '')
     {
     }
 }

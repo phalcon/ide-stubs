@@ -12,7 +12,6 @@ namespace Phalcon\Encryption\Crypt;
 use Phalcon\Encryption\Crypt;
 use Phalcon\Encryption\Crypt\Padding\PadInterface;
 use Phalcon\Factory\AbstractFactory;
-use Phalcon\Support\Helper\Arr\Get;
 
 /**
  * Factory for creating pad classes

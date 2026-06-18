@@ -18,16 +18,33 @@ use Phalcon\Image\Exceptions\UnsupportedImageType;
 use Phalcon\Image\Exceptions\VersionMismatch;
 
 /**
- * This file is part of the Phalcon Framework.
+ * Image manipulation backed by the GD extension.
  *
- * (c) Phalcon Team <team@phalcon.io>
+ * Capabilities:
  *
- * For the full copyright and license information, please view the LICENSE.txt
- * file that was distributed with this source code.
+ * | Aspect              | Support                                     |
+ * |---------------------|---------------------------------------------|
+ * | Load formats        | GIF, JPEG, JPEG 2000, PNG, WEBP, WBMP, XBM  |
+ * | Render/save formats | GIF, JPEG, PNG, WBMP, WEBP, XBM             |
+ * | Backend-only API    | none                                        |
+ *
+ * Unsupported render/save formats raise
+ * Phalcon\Image\Exceptions\UnsupportedImageType. Visual semantics differ from
+ * the Imagick adapter: blur() applies repeated 3x3 Gaussian convolutions
+ * (the radius is the number of passes), while sharpen and reflection use GD's
+ * own scales. Switching the factory backend can change the rendered output.
  */
 class Gd extends \Phalcon\Image\Adapter\AbstractAdapter
 {
     /**
+     * Loads an image from a file, or creates a blank canvas.
+     *
+     * When the file exists it is loaded. When the file does not exist and both
+     * a width and a height are supplied, a blank true-color canvas is created
+     * instead - its realpath, mime and type then describe a PNG canvas rather
+     * than the named file. Prefer Gd::create() for the canvas case; this dual
+     * mode is slated for removal in the next major version.
+     *
      * @param string   $file
      * @param int|null $width
      * @param int|null $height
@@ -42,6 +59,20 @@ class Gd extends \Phalcon\Image\Adapter\AbstractAdapter
      * Destructor
      */
     public function __destruct()
+    {
+    }
+
+    /**
+     * Creates a blank true-color canvas of the given dimensions, without the
+     * load-or-create ambiguity of the constructor.
+     *
+     * @param int $width
+     * @param int $height
+     *
+     * @return AbstractAdapter
+     * @throws Exception
+     */
+    public static function create(int $width, int $height): AbstractAdapter
     {
     }
 

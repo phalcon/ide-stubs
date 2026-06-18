@@ -21,7 +21,10 @@ use Phalcon\Cli\Router\Exception;
  */
 class RouterArgumentsInvalidType extends Exception
 {
-    public function __construct()
+    /**
+     * @param string $type
+     */
+    public function __construct(string $type = '')
     {
     }
 }

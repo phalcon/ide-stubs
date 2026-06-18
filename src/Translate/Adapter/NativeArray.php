@@ -12,7 +12,6 @@ namespace Phalcon\Translate\Adapter;
 use Phalcon\Translate\Exception;
 use Phalcon\Translate\Exceptions\InvalidDataType;
 use Phalcon\Translate\Exceptions\MissingContent;
-use Phalcon\Translate\Exceptions\KeyNotFound;
 use Phalcon\Translate\InterpolatorFactory;
 
 /**
@@ -29,11 +28,6 @@ class NativeArray extends \Phalcon\Translate\Adapter\AbstractAdapter
      * @var array
      */
     private $translate = [];
-
-    /**
-     * @var bool
-     */
-    private $triggerError = false;
 
     /**
      * NativeArray constructor.
@@ -67,18 +61,6 @@ class NativeArray extends \Phalcon\Translate\Adapter\AbstractAdapter
      * @return bool
      */
     public function has(string $index): bool
-    {
-    }
-
-    /**
-     * Whenever a key is not found this method will be called
-     *
-     * @param string $index
-     *
-     * @return string
-     * @throws Exception
-     */
-    public function notFound(string $index): string
     {
     }
 

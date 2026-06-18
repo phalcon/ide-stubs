@@ -10,8 +10,11 @@
 namespace Phalcon\Translate\Adapter;
 
 use ArrayAccess;
+use Phalcon\Translate\Exception;
 use Phalcon\Translate\Exceptions\ImmutableObject;
+use Phalcon\Translate\Exceptions\KeyNotFound;
 use Phalcon\Translate\InterpolatorFactory;
+use Phalcon\Translate\Interpolator\InterpolatorInterface;
 
 /**
  * @psalm-type TOptions array{
@@ -30,9 +33,19 @@ abstract class AbstractAdapter implements \Phalcon\Translate\Adapter\AdapterInte
     protected $defaultInterpolator = '';
 
     /**
+     * @var InterpolatorInterface | null
+     */
+    protected $interpolator = null;
+
+    /**
      * @var InterpolatorFactory
      */
     protected $interpolatorFactory;
+
+    /**
+     * @var bool
+     */
+    protected $triggerError = false;
 
     /**
      * AbstractAdapter constructor.
@@ -58,6 +71,18 @@ abstract class AbstractAdapter implements \Phalcon\Translate\Adapter\AdapterInte
     }
 
     /**
+     * Whenever a key is not found this method will be called
+     *
+     * @param string $index
+     *
+     * @return string
+     * @throws Exception
+     */
+    public function notFound(string $index): string
+    {
+    }
+
+    /**
      * Check whether a translation key exists
      *
      * @param mixed $translateKey
@@ -73,7 +98,7 @@ abstract class AbstractAdapter implements \Phalcon\Translate\Adapter\AdapterInte
      *
      * @param TKey $translateKey
      *
-     * @return TValue|null
+     * @return TValue
      */
     public function offsetGet($translateKey): string|null
     {

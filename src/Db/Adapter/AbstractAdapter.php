@@ -16,6 +16,7 @@ use Phalcon\Db\Enum;
 use Phalcon\Db\Exception;
 use Phalcon\Db\Exceptions\CannotInsertWithoutData;
 use Phalcon\Db\Exceptions\IncompleteBindTypes;
+use Phalcon\Db\Exceptions\InvalidDialectClass;
 use Phalcon\Db\Exceptions\InvalidWhereConditions;
 use Phalcon\Db\Exceptions\NestedTransactionChangeBlocked;
 use Phalcon\Db\Exceptions\SavepointsNotSupported;
@@ -101,7 +102,7 @@ abstract class AbstractAdapter implements \Phalcon\Db\Adapter\AdapterInterface, 
     /**
      * Dialect instance
      *
-     * @var object
+     * @var DialectInterface
      */
     protected $dialect;
 
@@ -182,6 +183,10 @@ abstract class AbstractAdapter implements \Phalcon\Db\Adapter\AdapterInterface, 
      *     'dsn' => null,
      *     'charset' => 'utf8mb4'
      * ]
+     *
+     * Note: the `options` key is forwarded to the static `setup()` method,
+     * which writes process-global settings affecting every connection in the
+     * process. See `setup()`.
      */
     public function __construct(array $descriptor)
     {
@@ -296,6 +301,8 @@ abstract class AbstractAdapter implements \Phalcon\Db\Adapter\AdapterInterface, 
      * DELETE FROM `robots` WHERE `id` = 101
      * ```
      *
+     * Warning! If $whereCondition is string it not escaped.
+     *
      * @param array|string $table
      * @param string|null $whereCondition
      * @param array $placeholders
@@ -315,6 +322,13 @@ abstract class AbstractAdapter implements \Phalcon\Db\Adapter\AdapterInterface, 
      * );
      * ```
      *
+     * This base implementation consumes the dialect's `describeIndexes()` SQL
+     * as `FETCH_NUM` rows by position: column index 2 is the index key name and
+     * column index 4 is the indexed column name. A custom dialect's
+     * `describeIndexes()` SQL must emit columns in that order, or a custom
+     * adapter must override this method. All bundled adapters except PostgreSQL
+     * override it.
+     *
      * @param string $table
      * @param string|null $schema
      * @return array|\Phalcon\Db\IndexInterface[]
@@ -331,6 +345,15 @@ abstract class AbstractAdapter implements \Phalcon\Db\Adapter\AdapterInterface, 
      *     $connection->describeReferences("robots_parts")
      * );
      * ```
+     *
+     * This base implementation consumes the dialect's `describeReferences()`
+     * SQL as `FETCH_NUM` rows by position: index 1 is the local column, index 2
+     * the constraint name, index 3 the referenced schema, index 4 the
+     * referenced table, and index 5 the referenced column. A custom dialect's
+     * `describeReferences()` SQL must emit columns in that order, or a custom
+     * adapter must override this method. Every bundled adapter (MySQL,
+     * PostgreSQL, SQLite) overrides it, so this base implementation has no
+     * in-tree caller and effectively assumes the PostgreSQL row shape.
      *
      * @param string $table
      * @param string|null $schema
@@ -888,7 +911,15 @@ abstract class AbstractAdapter implements \Phalcon\Db\Adapter\AdapterInterface, 
     }
 
     /**
-     * Enables/disables options in the Database component
+     * Enables/disables options in the Database component.
+     *
+     * The flags are stored as process-global `Phalcon\Support\Settings`
+     * (`db.escape_identifiers`, `db.force_casting`) and therefore affect every
+     * connection in the process at once, last-writer-wins. Call this once at
+     * bootstrap; it is not per-connection configuration. Because the
+     * constructor calls `setup()` whenever a descriptor carries an `options`
+     * key, constructing one adapter with `options` can change the SQL another,
+     * already-configured connection generates.
      *
      * @param array $options
      * @return void
@@ -1106,7 +1137,7 @@ abstract class AbstractAdapter implements \Phalcon\Db\Adapter\AdapterInterface, 
      * Check whether the database system support the DEFAULT
      * keyword (SQLite does not support it)
      *
-     * @deprecated Will re removed in the next version
+     * @deprecated Will be removed in a future major release.
      * @return bool
      */
     public function supportsDefaultValue(): bool
@@ -1127,6 +1158,31 @@ abstract class AbstractAdapter implements \Phalcon\Db\Adapter\AdapterInterface, 
      * @return bool
      */
     public function viewExists(string $viewName, ?string $schemaName = null): bool
+    {
+    }
+
+    /**
+     * Builds the SQL value fragment for a single INSERT/UPDATE value, shared by
+     * insert() and update(). RawValue instances are inlined as raw SQL, objects
+     * are cast via __toString, null becomes the literal "null", and every other
+     * value becomes a "?" placeholder.
+     *
+     * Zephir cannot mutate caller arrays by reference, so the bound value and
+     * bind type are returned for the caller to collect. The returned array has:
+     *
+     *  - "placeholder": string  - the SQL fragment ("null", "?", or raw SQL)
+     *  - "bind":        bool    - whether "value" must be bound
+     *  - "value":       mixed   - the value to bind (when "bind" is true)
+     *  - "hasBindType": bool    - whether "bindType" must be collected
+     *  - "bindType":    mixed   - the bind type to collect (when applicable)
+     *
+     * @param mixed $value
+     * @param mixed $position
+     * @param mixed $dataTypes
+     *
+     * @return array
+     */
+    private function buildValuePlaceholder($value, $position, $dataTypes): array
     {
     }
 }

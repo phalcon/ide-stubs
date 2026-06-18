@@ -23,6 +23,12 @@ class Redis extends \Phalcon\Session\Adapter\AbstractAdapter
     protected $lockAcquired = false;
 
     /**
+     * Lock time-to-live in seconds. The lock is not refreshed during the
+     * request: a request that runs longer than this expiry loses its lock
+     * silently and a concurrent request may then acquire it (the token-guarded
+     * release still avoids deleting the newer lock). Raise this above the
+     * longest expected request to retain the lock for the whole request.
+     *
      * @var int
      */
     protected $lockExpiry = 30;

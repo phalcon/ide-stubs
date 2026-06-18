@@ -32,7 +32,7 @@ abstract class AbstractAdapter implements \Phalcon\Logger\Adapter\AdapterInterfa
      *
      * @var string
      */
-    protected $defaultFormatter = 'Phalcon\\\\Logger\\Formatter\\\\Line';
+    protected $defaultFormatter = 'Phalcon\\\\Logger\\\\Formatter\\\\Line';
 
     /**
      * Formatter
@@ -68,7 +68,9 @@ abstract class AbstractAdapter implements \Phalcon\Logger\Adapter\AdapterInterfa
     /**
      * Destructor cleanup
      *
-     * @throws TransactionAlreadyActive
+     * Throwing from a destructor is fatal during script shutdown, so an open
+     * transaction is auto-committed here (flushing the queued items) rather
+     * than throwing.
      */
     public function __destruct()
     {
@@ -108,10 +110,18 @@ abstract class AbstractAdapter implements \Phalcon\Logger\Adapter\AdapterInterfa
      * Starts a transaction
      *
      * @return AdapterInterface
+     * @throws TransactionAlreadyActive
      */
     public function begin(): AdapterInterface
     {
     }
+
+    /**
+     * Closes the logger
+     *
+     * @return bool
+     */
+    abstract public function close(): bool;
 
     /**
      * Commits the internal transaction

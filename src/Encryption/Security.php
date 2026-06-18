@@ -58,6 +58,8 @@ class Security extends AbstractInjectionAware implements SecurityContract
     const int CRYPT_DEFAULT = 0;
 
     /**
+     * @deprecated Not implemented; resolves to bcrypt. To be removed.
+     *
      * @var int
      */
     const int CRYPT_BLOWFISH = 4;
@@ -73,16 +75,22 @@ class Security extends AbstractInjectionAware implements SecurityContract
     const int CRYPT_BLOWFISH_X = 6;
 
     /**
+     * @deprecated Not implemented; resolves to bcrypt. To be removed.
+     *
      * @var int
      */
     const int CRYPT_BLOWFISH_Y = 7;
 
     /**
+     * @deprecated Not implemented; resolves to bcrypt. To be removed.
+     *
      * @var int
      */
     const int CRYPT_EXT_DES = 2;
 
     /**
+     * @deprecated Weak legacy algorithm. To be removed.
+     *
      * @var int
      */
     const int CRYPT_MD5 = 3;
@@ -98,6 +106,8 @@ class Security extends AbstractInjectionAware implements SecurityContract
     const int CRYPT_SHA512 = 9;
 
     /**
+     * @deprecated Not implemented; resolves to bcrypt. To be removed.
+     *
      * @var int
      */
     const int CRYPT_STD_DES = 1;
@@ -326,6 +336,9 @@ class Security extends AbstractInjectionAware implements SecurityContract
 
     /**
      * Creates a password hash using bcrypt with a pseudo random salt
+     *
+     * Any `defaultHash` value that is not explicitly handled (including the
+     * deprecated, unimplemented constants) resolves to bcrypt.
      *
      * @param string $password
      * @param array  $options

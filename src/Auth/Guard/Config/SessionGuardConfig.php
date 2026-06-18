@@ -22,6 +22,14 @@ use Phalcon\Auth\Exceptions\ConfigRequiresNonEmptyValue;
 class SessionGuardConfig extends \Phalcon\Auth\Guard\Config\AbstractGuardConfig
 {
     /**
+     * Default remember-me cookie lifetime,
+     * in seconds (365 days).
+     *
+     * @var int
+     */
+    const int DEFAULT_REMEMBER_TTL = 31536000;
+
+    /**
      * @var string
      */
     private $name;
@@ -32,12 +40,18 @@ class SessionGuardConfig extends \Phalcon\Auth\Guard\Config\AbstractGuardConfig
     private $rememberName;
 
     /**
+     * @var int
+     */
+    private $rememberTtl;
+
+    /**
      * @throws Exception
      * @param string|null $suffix
      * @param string|null $name
      * @param string|null $rememberName
+     * @param mixed $rememberTtl
      */
-    public function __construct(?string $suffix = null, ?string $name = null, ?string $rememberName = null)
+    public function __construct(?string $suffix = null, ?string $name = null, ?string $rememberName = null, $rememberTtl = null)
     {
     }
 
@@ -52,6 +66,13 @@ class SessionGuardConfig extends \Phalcon\Auth\Guard\Config\AbstractGuardConfig
      * @return string
      */
     public function getRememberName(): string
+    {
+    }
+
+    /**
+     * @return int
+     */
+    public function getRememberTtl(): int
     {
     }
 

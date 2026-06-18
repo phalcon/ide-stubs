@@ -15,6 +15,8 @@ use Phalcon\Encryption\Crypt\Exception\EmptyDecryptionKey;
 use Phalcon\Encryption\Crypt\Exception\EmptyEncryptionKey;
 use Phalcon\Encryption\Crypt\Exception\EncryptionFailed;
 use Phalcon\Encryption\Crypt\Exception\Exception;
+use Phalcon\Encryption\Crypt\Exception\InvalidAuthTagLength;
+use Phalcon\Encryption\Crypt\Exception\InvalidDecryptLength;
 use Phalcon\Encryption\Crypt\Exception\InvalidPaddingSize;
 use Phalcon\Encryption\Crypt\Exception\IvLengthCalculationFailed;
 use Phalcon\Encryption\Crypt\Exception\Mismatch;
@@ -193,6 +195,7 @@ class Crypt implements \Phalcon\Encryption\Crypt\CryptInterface
      *
      * @return string
      * @throws Exception
+     * @throws InvalidDecryptLength
      * @throws Mismatch
      */
     public function decrypt(string $input, ?string $key = null): string
@@ -336,27 +339,28 @@ class Crypt implements \Phalcon\Encryption\Crypt\CryptInterface
     /**
      * @param string $data
      *
-     * @return static
+     * @return CryptInterface
      */
-    public function setAuthData(string $data): static
+    public function setAuthData(string $data): CryptInterface
     {
     }
 
     /**
      * @param string $tag
      *
-     * @return static
+     * @return CryptInterface
      */
-    public function setAuthTag(string $tag): static
+    public function setAuthTag(string $tag): CryptInterface
     {
     }
 
     /**
      * @param int $length
      *
-     * @return static
+     * @return CryptInterface
+     * @throws InvalidAuthTagLength
      */
-    public function setAuthTagLength(int $length): static
+    public function setAuthTagLength(int $length): CryptInterface
     {
     }
 
@@ -365,10 +369,10 @@ class Crypt implements \Phalcon\Encryption\Crypt\CryptInterface
      *
      * @param string $cipher
      *
-     * @return static
+     * @return CryptInterface
      * @throws Exception
      */
-    public function setCipher(string $cipher): static
+    public function setCipher(string $cipher): CryptInterface
     {
     }
 
@@ -389,9 +393,9 @@ class Crypt implements \Phalcon\Encryption\Crypt\CryptInterface
      *
      * @param string $key
      *
-     * @return static
+     * @return CryptInterface
      */
-    public function setKey(string $key): static
+    public function setKey(string $key): CryptInterface
     {
     }
 
@@ -412,9 +416,9 @@ class Crypt implements \Phalcon\Encryption\Crypt\CryptInterface
      *
      * @param int $scheme
      *
-     * @return static
+     * @return CryptInterface
      */
-    public function setPadding(int $scheme): static
+    public function setPadding(int $scheme): CryptInterface
     {
     }
 
@@ -423,9 +427,9 @@ class Crypt implements \Phalcon\Encryption\Crypt\CryptInterface
      *
      * @param bool $useSigning
      *
-     * @return static
+     * @return CryptInterface
      */
-    public function useSigning(bool $useSigning): static
+    public function useSigning(bool $useSigning): CryptInterface
     {
     }
 

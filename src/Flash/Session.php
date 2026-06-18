@@ -10,6 +10,7 @@
 namespace Phalcon\Flash;
 
 use Phalcon\Flash\Exceptions\SessionServiceUnavailable;
+use Phalcon\Html\Escaper\EscaperInterface;
 use Phalcon\Session\ManagerInterface;
 
 /**
@@ -28,6 +29,21 @@ class Session extends \Phalcon\Flash\AbstractFlash
      */
     const string SESSION_KEY = '_flashMessages';
 
+    /**
+     * @var string
+     */
+    protected $sessionKey = '';
+
+    /**
+     * Session constructor.
+     *
+     * @param EscaperInterface|null $escaper
+     * @param ManagerInterface|null $session
+     * @param string|null           $sessionKey
+     */
+    public function __construct(?\Phalcon\Html\Escaper\EscaperInterface $escaper = null, ?\Phalcon\Session\ManagerInterface $session = null, ?string $sessionKey = null)
+    {
+    }
 
     /**
      * Clear messages in the session messenger

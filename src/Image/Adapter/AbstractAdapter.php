@@ -11,6 +11,7 @@ namespace Phalcon\Image\Adapter;
 
 use Phalcon\Image\Enum;
 use Phalcon\Image\Exception;
+use Phalcon\Image\Exceptions\InvalidColor;
 use Phalcon\Image\Exceptions\MissingDimensions;
 use Phalcon\Image\Exceptions\MissingHeight;
 use Phalcon\Image\Exceptions\MissingWidth;
@@ -158,6 +159,11 @@ abstract class AbstractAdapter implements \Phalcon\Image\Adapter\AdapterInterfac
     /**
      * Composite one image onto another
      *
+     * The mask is read through its public render() output rather than its
+     * internal handle, so a mask created with a different backend composites
+     * correctly. The cost is one encode/decode round trip per call, which is
+     * worth knowing inside loops.
+     *
      * @param AdapterInterface $mask
      *
      * @return AdapterInterface
@@ -270,6 +276,11 @@ abstract class AbstractAdapter implements \Phalcon\Image\Adapter\AdapterInterfac
     /**
      * Add a watermark to an image with the specified opacity
      *
+     * The watermark is read through its public render() output rather than its
+     * internal handle, so a watermark created with a different backend
+     * composites correctly. The cost is one encode/decode round trip per call,
+     * which is worth knowing inside loops.
+     *
      * @param AdapterInterface $watermark
      * @param int              $offsetX
      * @param int              $offsetY
@@ -289,6 +300,160 @@ abstract class AbstractAdapter implements \Phalcon\Image\Adapter\AdapterInterfac
      * @return int
      */
     protected function checkHighLow(int $value, int $min = 0, int $max = 100): int
+    {
+    }
+
+    /**
+     * Renders the supplied colour onto the image as the background. Channels
+     * are 0-255; the opacity is the validated 0-100 value.
+     *
+     * @param int $red
+     * @param int $green
+     * @param int $blue
+     * @param int $opacity
+     * @return void
+     */
+    abstract protected function processBackground(int $red, int $green, int $blue, int $opacity): void;
+
+    /**
+     * Applies a blur. The radius is already clamped to 1-100.
+     *
+     * @param int $radius
+     * @return void
+     */
+    abstract protected function processBlur(int $radius): void;
+
+    /**
+     * Crops the image. Width, height and both offsets are already normalized
+     * to fit within the current canvas.
+     *
+     * @param int $width
+     * @param int $height
+     * @param int $offsetX
+     * @param int $offsetY
+     * @return void
+     */
+    abstract protected function processCrop(int $width, int $height, int $offsetX, int $offsetY): void;
+
+    /**
+     * Flips the image. The direction is already normalized to
+     * Enum::HORIZONTAL or Enum::VERTICAL.
+     *
+     * @param int $direction
+     * @return void
+     */
+    abstract protected function processFlip(int $direction): void;
+
+    /**
+     * Composites the supplied image as a mask onto this one. The mask is read
+     * through its public render() output, so it may be any adapter backend.
+     *
+     * @param AdapterInterface $mask
+     */
+    abstract protected function processMask(AdapterInterface $mask);
+
+    /**
+     * Pixelates the image. The amount is already at least 2.
+     *
+     * @param int $amount
+     * @return void
+     */
+    abstract protected function processPixelate(int $amount): void;
+
+    /**
+     * Adds a reflection. The height is clamped to the image height and the
+     * opacity to 0-100.
+     *
+     * @param int $height
+     * @param int $opacity
+     * @param bool $fadeIn
+     * @return void
+     */
+    abstract protected function processReflection(int $height, int $opacity, bool $fadeIn): void;
+
+    /**
+     * Renders the image to a binary string. The extension is non-empty and the
+     * quality is already clamped to 1-100. Returns the encoded bytes.
+     *
+     * @param string $extension
+     * @param int $quality
+     */
+    abstract protected function processRender(string $extension, int $quality);
+
+    /**
+     * Resizes the image. Width and height are already resolved to positive
+     * integers per the requested resize mode.
+     *
+     * @param int $width
+     * @param int $height
+     * @return void
+     */
+    abstract protected function processResize(int $width, int $height): void;
+
+    /**
+     * Rotates the image. The degrees value is already normalized to -180..180.
+     *
+     * @param int $degrees
+     * @return void
+     */
+    abstract protected function processRotate(int $degrees): void;
+
+    /**
+     * Saves the image to the supplied file path.
+     *
+     * @param string $file
+     * @param int $quality
+     */
+    abstract protected function processSave(string $file, int $quality);
+
+    /**
+     * Sharpens the image. The amount is already clamped to 1-100.
+     *
+     * @param int $amount
+     * @return void
+     */
+    abstract protected function processSharpen(int $amount): void;
+
+    /**
+     * Renders text onto the image. The opacity is clamped to 0-100 and the
+     * colour is supplied as separate 0-255 channels.
+     *
+     * @param string $text
+     * @param mixed $offsetX
+     * @param mixed $offsetY
+     * @param int $opacity
+     * @param int $red
+     * @param int $green
+     * @param int $blue
+     * @param int $size
+     * @param string|null $fontFile
+     * @return void
+     */
+    abstract protected function processText(string $text, $offsetX, $offsetY, int $opacity, int $red, int $green, int $blue, int $size, ?string $fontFile = null): void;
+
+    /**
+     * Composites the supplied watermark onto this image. Offsets and opacity
+     * are already clamped to the valid range; the watermark is read through
+     * its public render() output, so it may be any adapter backend.
+     *
+     * @param AdapterInterface $watermark
+     * @param int $offsetX
+     * @param int $offsetY
+     * @param int $opacity
+     * @return void
+     */
+    abstract protected function processWatermark(AdapterInterface $watermark, int $offsetX, int $offsetY, int $opacity): void;
+
+    /**
+     * Parses a hex color ("#rgb", "rgb", "#rrggbb" or "rrggbb") into an array
+     * of three integer channels [red, green, blue].
+     *
+     * @param string $color
+     *
+     * @return array
+     * @throws InvalidColor
+     */
+    private function parseColor(string $color): array
     {
     }
 }

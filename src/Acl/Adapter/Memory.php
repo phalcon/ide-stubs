@@ -98,14 +98,14 @@ class Memory extends \Phalcon\Acl\Adapter\AbstractAdapter
     /**
      * Access
      *
-     * @var mixed
+     * @var array
      */
     protected $access;
 
     /**
      * Access List
      *
-     * @var mixed
+     * @var array
      */
     protected $accessList;
 
@@ -133,42 +133,42 @@ class Memory extends \Phalcon\Acl\Adapter\AbstractAdapter
     /**
      * Components
      *
-     * @var mixed
+     * @var array
      */
     protected $components;
 
     /**
      * Component Names
      *
-     * @var mixed
+     * @var array
      */
     protected $componentsNames;
 
     /**
      * Function List
      *
-     * @var mixed
+     * @var array
      */
     protected $functions;
 
     /**
      * Default action for no arguments is `allow`
      *
-     * @var mixed
+     * @var int
      */
     protected $noArgumentsDefaultAction = Enum::DENY;
 
     /**
      * Roles
      *
-     * @var mixed
+     * @var array
      */
     protected $roles;
 
     /**
      * Role Inherits
      *
-     * @var mixed
+     * @var array
      */
     protected $roleInherits;
 
@@ -251,6 +251,10 @@ class Memory extends \Phalcon\Acl\Adapter\AbstractAdapter
     /**
      * Adds a role to the ACL list. Second parameter allows inheriting access data from other existing role
      *
+     * If the role already exists this method returns `false` and the
+     * `accessInherits` argument is ignored; the existing role is left
+     * unchanged.
+     *
      * ```php
      * $acl->addRole(
      *     new Phalcon\Acl\Role("administrator"),
@@ -272,6 +276,9 @@ class Memory extends \Phalcon\Acl\Adapter\AbstractAdapter
     /**
      * Allow access to a role on a component. You can use `` as wildcard
      *
+     * A `` role is an eager snapshot: it expands to the roles that exist when
+     * `allow()` is called, so roles added afterwards do not inherit the grant.
+     *
      * ```php
      * // Allow access to guests to search on customers
      * $acl->allow("guests", "customers", "search");
@@ -282,8 +289,8 @@ class Memory extends \Phalcon\Acl\Adapter\AbstractAdapter
      * // Allow access to any role to browse on products
      * $acl->allow("", "products", "browse");
      *
-     * // Allow access to any role to browse on any component
-     * $acl->allow("", "", "browse");
+     * // Allow access to any role to perform any action on any component
+     * $acl->allow("", "", "");
      * ```
      *
      * @param string $roleName
@@ -299,6 +306,9 @@ class Memory extends \Phalcon\Acl\Adapter\AbstractAdapter
     /**
      * Deny access to a role on a component. You can use `` as wildcard
      *
+     * A `` role is an eager snapshot: it expands to the roles that exist when
+     * `deny()` is called, so roles added afterwards do not inherit the rule.
+     *
      * ```php
      * // Deny access to guests to search on customers
      * $acl->deny("guests", "customers", "search");
@@ -309,8 +319,8 @@ class Memory extends \Phalcon\Acl\Adapter\AbstractAdapter
      * // Deny access to any role to browse on products
      * $acl->deny("", "products", "browse");
      *
-     * // Deny access to any role to browse on any component
-     * $acl->deny("", "", "browse");
+     * // Deny access to any role to perform any action on any component
+     * $acl->deny("", "", "");
      * ```
      *
      * @param string $roleName
@@ -469,6 +479,29 @@ class Memory extends \Phalcon\Acl\Adapter\AbstractAdapter
     }
 
     /**
+     * Builds the `<component>!<access>` access-list key
+     *
+     * @param string $componentName
+     * @param string $access
+     * @return string
+     */
+    private function buildAccessKey(string $componentName, string $access): string
+    {
+    }
+
+    /**
+     * Builds the `<role>!<component>!<access>` rule key
+     *
+     * @param string $roleName
+     * @param string $componentName
+     * @param string $access
+     * @return string
+     */
+    private function buildKey(string $roleName, string $componentName, string $access): string
+    {
+    }
+
+    /**
      * Check whether a role is allowed to access an action from a component
      *
      * @param string $roleName
@@ -490,6 +523,24 @@ class Memory extends \Phalcon\Acl\Adapter\AbstractAdapter
      * @return void
      */
     private function checkExists(array $collection, string $element, string $elementName, string $suffix = 'ACL'): void
+    {
+    }
+
+    /**
+     * Resolves a component identifier (object or string) to its name
+     *
+     * @param mixed $component
+     */
+    private function toComponentName($component)
+    {
+    }
+
+    /**
+     * Resolves a role identifier (object or string) to its name
+     *
+     * @param mixed $role
+     */
+    private function toRoleName($role)
     {
     }
 }

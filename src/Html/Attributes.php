@@ -10,6 +10,7 @@
 namespace Phalcon\Html;
 
 use Phalcon\Html\Attributes\RenderInterface;
+use Phalcon\Html\Escaper\AttributeEscaper;
 use Phalcon\Html\Exceptions\AttributeNotRenderable;
 use Phalcon\Support\Collection;
 

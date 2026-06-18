@@ -378,6 +378,21 @@ class Manager extends AbstractInjectionAware
     }
 
     /**
+     * Applies the collection filters to the content. Filtering only happens
+     * when `mustFilter` is true; every filter must be a `FilterInterface`
+     * instance.
+     *
+     * @param string $content
+     * @param array $filters
+     * @param bool $mustFilter *
+     * @return string
+     * @throws InvalidFilter
+     */
+    private function applyFilters(string $content, array $filters, bool $mustFilter = true): string
+    {
+    }
+
+    /**
      * Calculates the prefixed path including the version
      *
      * @param Collection $collection

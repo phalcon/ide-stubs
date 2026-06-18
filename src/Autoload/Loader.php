@@ -76,6 +76,11 @@ class Loader extends AbstractEventsAware
     protected $namespaces = [];
 
     /**
+     * @var int
+     */
+    protected $nestingLevel = 0;
+
+    /**
      * Loader constructor.
      *
      * @param bool $isDebug
@@ -429,11 +434,12 @@ class Loader extends AbstractEventsAware
      *
      * @param mixed  $directories
      * @param string $dirSeparator
+     * @param string $name
      *
      * @return array<string, string>
      * @throws Exception
      */
-    private function checkDirectories($directories, string $dirSeparator): array
+    private function checkDirectories($directories, string $dirSeparator, string $name = ''): array
     {
     }
 }

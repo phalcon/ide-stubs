@@ -21,6 +21,12 @@ use RecursiveIteratorIterator;
 /**
  * Stream adapter
  *
+ * Capabilities:
+ * - Counters: read-modify-write (doHas()/doGet()/doSet()); not atomic and racy
+ *   across concurrent processes.
+ * - getKeys(): recursive directory traversal; cost grows with the entry count.
+ * - Serializers: Phalcon-side only.
+ *
  * @property string $storageDir
  * @property array  $options
  */

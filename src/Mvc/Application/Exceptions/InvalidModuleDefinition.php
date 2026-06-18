@@ -21,7 +21,11 @@ use Phalcon\Mvc\Application\Exception;
  */
 class InvalidModuleDefinition extends Exception
 {
-    public function __construct()
+    /**
+     * @param string|null $name
+     * @param string|null $reason
+     */
+    public function __construct(?string $name = null, ?string $reason = null)
     {
     }
 }
