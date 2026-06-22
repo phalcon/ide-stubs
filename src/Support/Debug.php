@@ -9,15 +9,18 @@
  */
 namespace Phalcon\Support;
 
+use Phalcon\Contracts\Support\Debug\Renderer;
 use Phalcon\Support\Debug\Exceptions\RequestHalted;
 use Phalcon\Support\Debug\Exceptions\RuntimeWarning;
-use ReflectionClass;
+use Phalcon\Support\Debug\Renderer\HtmlRenderer;
+use Phalcon\Support\Debug\ReportBuilder;
+use Phalcon\Support\Helper\Arr\Get;
 use ReflectionException;
-use ReflectionFunction;
 use Throwable;
 
 /**
- * Provides debug capabilities to Phalcon applications
+ * Listens for uncaught exceptions and renders them. Acts as a thin coordinator
+ * delegating data collection to ReportBuilder and presentation to a Renderer.
  */
 class Debug
 {
@@ -42,6 +45,16 @@ class Debug
     protected static $isActive = false;
 
     /**
+     * @var Renderer
+     */
+    protected $renderer;
+
+    /**
+     * @var ReportBuilder
+     */
+    protected $reportBuilder;
+
+    /**
      * @var bool
      */
     protected $showBackTrace = true;
@@ -60,6 +73,10 @@ class Debug
      * @var string
      */
     protected $uri = 'https://assets.phalcon.io/debug/5.0.x/';
+
+    public function __construct()
+    {
+    }
 
     /**
      * Clears are variables added previously
@@ -96,6 +113,15 @@ class Debug
      * @return string
      */
     public function getJsSources(): string
+    {
+    }
+
+    /**
+     * Returns the renderer used to produce the output
+     *
+     * @return Renderer
+     */
+    public function getRenderer(): Renderer
     {
     }
 
@@ -150,6 +176,7 @@ class Debug
     /**
      * Handles uncaught exceptions
      *
+     * @throws ReflectionException
      * @param \Throwable $exception
      * @return bool
      */
@@ -193,6 +220,16 @@ class Debug
     }
 
     /**
+     * Sets the renderer used to produce the output
+     *
+     * @param Renderer $renderer
+     * @return static
+     */
+    public function setRenderer(\Phalcon\Contracts\Support\Debug\Renderer $renderer): static
+    {
+    }
+
+    /**
      * Sets if files the exception's backtrace must be showed
      *
      * @param bool $showBackTrace
@@ -230,124 +267,6 @@ class Debug
      * @return static
      */
     public function setUri(string $uri): static
-    {
-    }
-
-    /**
-     * Escapes a string with htmlentities
-     *
-     * @param string $value
-     * @return string
-     */
-    protected function escapeString(string $value): string
-    {
-    }
-
-    /**
-     * Produces a recursive representation of an array
-     *
-     * @param array $arguments
-     * @param int   $number
-     *
-     * @return string|null
-     * @param array $argument
-     * @param mixed $n
-     */
-    protected function getArrayDump(array $argument, $n = 0): string|null
-    {
-    }
-
-    /**
-     * Produces an string representation of a variable
-     *
-     * @param mixed $variable
-     * @return string
-     */
-    protected function getVarDump($variable): string
-    {
-    }
-
-    /**
-     * Shows a backtrace item
-     *
-     * @param int   $number
-     * @param array $trace
-     *
-     * @return string
-     * @throws ReflectionException
-     */
-    final protected function showTraceItem(int $number, array $trace): string
-    {
-    }
-
-    /**
-     * @return string
-     */
-    private function closeTable(): string
-    {
-    }
-
-    /**
-     * @param Throwable $exception
-     *
-     * @return string
-     * @throws ReflectionException
-     */
-    private function printBacktrace(\Throwable $exception): string
-    {
-    }
-
-    /**
-     * @return string
-     */
-    private function printExtraVariables(): string
-    {
-    }
-
-    /**
-     * @return string
-     */
-    private function printIncludedFiles(): string
-    {
-    }
-
-    /**
-     * @return string
-     */
-    private function printMemoryUsage(): string
-    {
-    }
-
-    /**
-     * @param array  $source
-     * @param string $div
-     *
-     * @return string
-     */
-    private function printSuperglobal(array $source, string $div): string
-    {
-    }
-
-    /**
-     * @param string $divId
-     * @param string $headerOne
-     * @param string $headerTwo
-     * @param string $colspan
-     *
-     * @return string
-     */
-    private function printTableHeader(string $divId, string $headerOne, string $headerTwo, string $colspan = ''): string
-    {
-    }
-
-    /**
-     * @todo Remove this when we get traits
-     * @param array $collection
-     * @param mixed $index
-     * @param mixed $defaultValue
-     * @return mixed
-     */
-    private function getArrVal(array $collection, $index, $defaultValue = null): mixed
     {
     }
 }

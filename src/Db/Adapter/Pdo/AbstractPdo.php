@@ -54,6 +54,14 @@ abstract class AbstractPdo extends AbstractAdapter
     protected $affectedRows = 0;
 
     /**
+     * Whether to transparently reconnect and retry once when a query fails
+     * because the connection was lost. Opt-in; off by default.
+     *
+     * @var bool
+     */
+    protected $autoReconnect = false;
+
+    /**
      * PDO Handler
      *
      * @var \PDO
@@ -196,6 +204,15 @@ abstract class AbstractPdo extends AbstractAdapter
     }
 
     /**
+     * Ensures the connection is alive, reconnecting in place if it is not.
+     *
+     * @return void
+     */
+    public function ensureConnection(): void
+    {
+    }
+
+    /**
      * Sends SQL statements to the database server returning the success state.
      * Use this method only when the SQL statement sent to the server does not
      * return any rows
@@ -252,6 +269,15 @@ abstract class AbstractPdo extends AbstractAdapter
      * @return \PDOStatement
      */
     public function executePrepared(\PDOStatement $statement, array $placeholders, array $dataTypes = []): \PDOStatement
+    {
+    }
+
+    /**
+     * Returns whether transparent auto-reconnect is enabled.
+     *
+     * @return bool
+     */
+    public function getAutoReconnect(): bool
     {
     }
 
@@ -330,6 +356,16 @@ abstract class AbstractPdo extends AbstractAdapter
     }
 
     /**
+     * Checks whether the underlying connection is still alive by issuing a
+     * trivial query. Returns false if there is no handle or the probe fails.
+     *
+     * @return bool
+     */
+    public function ping(): bool
+    {
+    }
+
+    /**
      * Returns a PDO prepared statement to be executed with 'executePrepared'
      *
      * ```php
@@ -396,11 +432,33 @@ abstract class AbstractPdo extends AbstractAdapter
     }
 
     /**
+     * Enables or disables transparent auto-reconnect on a lost connection.
+     *
+     * @param bool $autoReconnect
+     * @return static
+     */
+    public function setAutoReconnect(bool $autoReconnect): static
+    {
+    }
+
+    /**
      * Returns PDO adapter DSN defaults as a key-value map.
      *
      * @return array
      */
     abstract protected function getDsnDefaults(): array;
+
+    /**
+     * Recognizes whether an exception represents a lost ("gone away")
+     * connection. The base adapter cannot know driver specifics, so it
+     * returns false; concrete adapters override this.
+     *
+     * @param \Throwable $exception
+     * @return bool
+     */
+    protected function isConnectionError(\Throwable $exception): bool
+    {
+    }
 
     /**
      * Constructs the SQL statement (with parameters)
@@ -411,6 +469,52 @@ abstract class AbstractPdo extends AbstractAdapter
      * @return void
      */
     protected function prepareRealSql(string $statement, array $parameters): void
+    {
+    }
+
+    /**
+     * Whether a failed query may be transparently retried after reconnecting.
+     * Only when auto-reconnect is on, we are not in a transaction, and the
+     * failure is a recognized connection loss.
+     *
+     * @param \Throwable $exception
+     * @return bool
+     */
+    private function canReconnect(\Throwable $exception): bool
+    {
+    }
+
+    /**
+     * Runs the actual write against PDO and returns the affected-rows count
+     * (or the raw exec() return for unprepared statements).
+     *
+     * @param string $sqlStatement
+     * @param array $bindParams
+     * @param array $bindTypes
+     * @return mixed
+     */
+    private function executeStatement(string $sqlStatement, array $bindParams, array $bindTypes): mixed
+    {
+    }
+
+    /**
+     * Notifies listeners that the connection was lost and re-establishes it.
+     *
+     * @return void
+     */
+    private function handleConnectionLost(): void
+    {
+    }
+
+    /**
+     * Prepares and executes a read statement, returning the live PDOStatement.
+     *
+     * @param string $sqlStatement
+     * @param array $params
+     * @param array $types
+     * @return \PDOStatement
+     */
+    private function queryStatement(string $sqlStatement, array $params, array $types): \PDOStatement
     {
     }
 }

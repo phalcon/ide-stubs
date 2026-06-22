@@ -20,6 +20,14 @@ use Phalcon\DataMapper\Pdo\Profiler\ProfilerInterface;
 abstract class AbstractConnection implements \Phalcon\DataMapper\Pdo\Connection\ConnectionInterface
 {
     /**
+     * Whether to transparently reconnect and retry once when a statement fails
+     * because the connection was lost. Opt-in; off by default.
+     *
+     * @var bool
+     */
+    protected $autoReconnect = false;
+
+    /**
      * @var \PDO
      */
     protected $pdo;
@@ -28,6 +36,15 @@ abstract class AbstractConnection implements \Phalcon\DataMapper\Pdo\Connection\
      * @var ProfilerInterface
      */
     protected $profiler;
+
+    /**
+     * Current transaction nesting level. Tracked locally rather than via
+     * PDO::inTransaction() because some drivers report a broken connection as
+     * being "in transaction".
+     *
+     * @var int
+     */
+    protected $transactionLevel = 0;
 
     /**
      * Proxies to PDO methods created for specific drivers; in particular,
@@ -76,6 +93,17 @@ abstract class AbstractConnection implements \Phalcon\DataMapper\Pdo\Connection\
      * @return void
      */
     abstract public function disconnect(): void;
+
+    /**
+     * Ensures the connection is alive, reconnecting in place if it is not.
+     * disconnect() is required first because connect() is idempotent and will
+     * not rebuild a dead-but-present handle.
+     *
+     * @return void
+     */
+    public function ensureConnection(): void
+    {
+    }
 
     /**
      * Gets the most recent error code.
@@ -288,6 +316,15 @@ abstract class AbstractConnection implements \Phalcon\DataMapper\Pdo\Connection\
     }
 
     /**
+     * Returns whether transparent auto-reconnect is enabled.
+     *
+     * @return bool
+     */
+    public function getAutoReconnect(): bool
+    {
+    }
+
+    /**
      * Return the driver name
      *
      * @return string
@@ -364,6 +401,16 @@ abstract class AbstractConnection implements \Phalcon\DataMapper\Pdo\Connection\
     }
 
     /**
+     * Checks whether the underlying connection is still alive by issuing a
+     * trivial query. Returns false if there is no handle or the probe fails.
+     *
+     * @return bool
+     */
+    public function ping(): bool
+    {
+    }
+
+    /**
      * Prepares an SQL statement for execution.
      *
      * @param string $statement
@@ -425,6 +472,16 @@ abstract class AbstractConnection implements \Phalcon\DataMapper\Pdo\Connection\
     }
 
     /**
+     * Enables or disables transparent auto-reconnect on a lost connection.
+     *
+     * @param bool $autoReconnect
+     * @return static
+     */
+    public function setAutoReconnect(bool $autoReconnect): static
+    {
+    }
+
+    /**
      * Sets the Profiler instance.
      *
      * @param ProfilerInterface $profiler
@@ -457,6 +514,52 @@ abstract class AbstractConnection implements \Phalcon\DataMapper\Pdo\Connection\
      * @return array
      */
     protected function fetchData(string $method, array $arguments, string $statement, array $values = []): array
+    {
+    }
+
+    /**
+     * Recognizes a lost ("gone away") connection. Detection is driver-agnostic:
+     * the driver name is not queried because the underlying connection may be
+     * dead by this point. The MySQL error codes and PostgreSQL SQLSTATEs do not
+     * overlap, so all known signatures are checked unconditionally.
+     *
+     * @param \Throwable $exception
+     * @return bool
+     */
+    protected function isConnectionError(\Throwable $exception): bool
+    {
+    }
+
+    /**
+     * Whether a failed statement may be transparently retried after
+     * reconnecting. Only when auto-reconnect is on, a handle exists, we are
+     * not in a transaction, and the failure is a recognized connection loss.
+     *
+     * @param \Throwable $exception
+     * @return bool
+     */
+    private function canReconnect(\Throwable $exception): bool
+    {
+    }
+
+    /**
+     * Prepares, binds, and executes a statement, returning the PDOStatement.
+     *
+     * @param string $statement
+     * @param array $values
+     * @return \PDOStatement
+     */
+    private function performStatement(string $statement, array $values): \PDOStatement
+    {
+    }
+
+    /**
+     * Drops the dead handle and rebuilds it. disconnect() first is required
+     * because connect() is idempotent.
+     *
+     * @return void
+     */
+    private function reconnect(): void
     {
     }
 }

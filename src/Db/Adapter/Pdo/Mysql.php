@@ -120,4 +120,15 @@ class Mysql extends \Phalcon\Db\Adapter\Pdo\AbstractPdo
     protected function getDsnDefaults(): array
     {
     }
+
+    /**
+     * Recognizes a MySQL "server has gone away" / "Lost connection" failure
+     * by the driver error code (2006 / 2013) with a message fallback.
+     *
+     * @param \Throwable $exception
+     * @return bool
+     */
+    protected function isConnectionError(\Throwable $exception): bool
+    {
+    }
 }
