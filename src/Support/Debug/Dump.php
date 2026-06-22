@@ -9,6 +9,7 @@
  */
 namespace Phalcon\Support\Debug;
 
+use Phalcon\Contracts\Support\Debug\TemplateAware;
 use Phalcon\Di\DiInterface;
 use Phalcon\Support\Helper\Json\Encode;
 use Reflection;
@@ -33,7 +34,7 @@ use stdClass;
  * echo (new \Phalcon\Debug\Dump())->variables($foo, $bar, $baz);
  * ```
  */
-class Dump
+class Dump implements \Phalcon\Contracts\Support\Debug\TemplateAware
 {
     /**
      * @var bool
@@ -49,6 +50,17 @@ class Dump
      * @var array
      */
     protected $styles = [];
+
+    /**
+     * Template overrides keyed by name.
+     *
+     * @todo Move getTemplate()/setTemplate()/templates into a shared trait once
+     *       Zephir supports traits (mirrors
+     *       Phalcon\Support\Debug\Traits\TemplateAwareTrait in the PHP source).
+     *
+     * @var array
+     */
+    protected $templates = [];
 
     /**
      * @var Encode
@@ -82,6 +94,18 @@ class Dump
     }
 
     /**
+     * Returns the template for the given name (override if set, default
+     * otherwise).
+     *
+     * @param string $name
+     *
+     * @return string
+     */
+    public function getTemplate(string $name): string
+    {
+    }
+
+    /**
      * Alias of variable() method
      *
      * @param mixed $variable
@@ -107,6 +131,18 @@ class Dump
      * @return array
      */
     public function setStyles(array $styles = []): array
+    {
+    }
+
+    /**
+     * Overrides the template for the given name.
+     *
+     * @param string $name
+     * @param string $template
+     *
+     * @return static
+     */
+    public function setTemplate(string $name, string $template): static
     {
     }
 
@@ -167,6 +203,17 @@ class Dump
     }
 
     /**
+     * Returns the embedded default template for the given name.
+     *
+     * @param string $name
+     *
+     * @return string
+     */
+    protected function defaultTemplate(string $name): string
+    {
+    }
+
+    /**
      * Get style for type
      *
      * @param string $type
@@ -185,6 +232,15 @@ class Dump
      * @return string
      */
     protected function output($variable, ?string $name = null, int $tab = 1): string
+    {
+    }
+
+    /**
+     * @param string $text
+     *
+     * @return string
+     */
+    private function getOutputBold(string $text): string
     {
     }
 }

@@ -182,4 +182,16 @@ class Postgresql extends \Phalcon\Db\Adapter\Pdo\AbstractPdo
     protected function getDsnDefaults(): array
     {
     }
+
+    /**
+     * Recognizes a PostgreSQL connection-loss failure by SQLSTATE
+     * (connection exception class 08, or admin/crash shutdown 57P0x) with a
+     * message fallback.
+     *
+     * @param \Throwable $exception
+     * @return bool
+     */
+    protected function isConnectionError(\Throwable $exception): bool
+    {
+    }
 }
