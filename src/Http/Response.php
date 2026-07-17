@@ -27,6 +27,8 @@ use Phalcon\Mvc\Url\UrlInterface;
 use Phalcon\Mvc\ViewInterface;
 use Phalcon\Support\Helper\File\Basename;
 use Phalcon\Support\Helper\Json\Encode;
+use Phalcon\Traits\Php\InfoTrait;
+use Phalcon\Traits\Php\UrlTrait;
 
 /**
  * Part of the HTTP cycle is return responses to the clients.
@@ -44,6 +46,10 @@ use Phalcon\Support\Helper\Json\Encode;
  */
 class Response implements \Phalcon\Http\ResponseInterface, \Phalcon\Di\InjectionAwareInterface, \Phalcon\Events\EventsAwareInterface, \Phalcon\Http\Message\ResponseStatusCodeInterface
 {
+    use \Phalcon\Traits\Php\InfoTrait;
+    use \Phalcon\Traits\Php\UrlTrait;
+
+
     /**
      * @var DiInterface|null
      */

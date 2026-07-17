@@ -9,17 +9,16 @@
  */
 namespace Phalcon\Translate\Interpolator;
 
-use Phalcon\Support\Helper\Str\Interpolate;
+use Phalcon\Traits\Support\Helper\Str\InterpolateTrait;
 
 /**
  * Class AssociativeArray
  */
 class AssociativeArray implements \Phalcon\Translate\Interpolator\InterpolatorInterface
 {
-    /**
-     * @var Interpolate | null
-     */
-    protected $interpolate = null;
+    use \Phalcon\Traits\Support\Helper\Str\InterpolateTrait;
+
+
 
     /**
      * Replaces placeholders by the values passed

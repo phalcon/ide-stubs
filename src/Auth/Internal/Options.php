@@ -10,6 +10,8 @@
 namespace Phalcon\Auth\Internal;
 
 use Phalcon\Auth\Exception;
+use Phalcon\Auth\Exceptions\OptionRequiresArray;
+use Phalcon\Auth\Exceptions\OptionRequiresString;
 
 /**
  * Internal option-parsing helpers shared by adapter / guard fromOptions()

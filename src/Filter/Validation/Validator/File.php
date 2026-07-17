@@ -10,7 +10,6 @@
 namespace Phalcon\Filter\Validation\Validator;
 
 use Phalcon\Messages\Message;
-use Phalcon\Support\Helper\Arr\Get;
 use Phalcon\Filter\Validation;
 use Phalcon\Filter\Validation\AbstractValidatorComposite;
 use Phalcon\Filter\Validation\Validator\File\MimeType;
@@ -21,6 +20,7 @@ use Phalcon\Filter\Validation\Validator\File\Resolution\Min as MinResolution;
 use Phalcon\Filter\Validation\Validator\File\Size\Equal as EqualFileSize;
 use Phalcon\Filter\Validation\Validator\File\Size\Max as MaxFileSize;
 use Phalcon\Filter\Validation\Validator\File\Size\Min as MinFileSize;
+use Phalcon\Traits\Support\Helper\Arr\GetTrait;
 
 /**
  * Checks if a value has a correct file
@@ -94,6 +94,10 @@ use Phalcon\Filter\Validation\Validator\File\Size\Min as MinFileSize;
  */
 class File extends AbstractValidatorComposite
 {
+    use \Phalcon\Traits\Support\Helper\Arr\GetTrait;
+
+
+
     /**
      * Constructor
      *
@@ -107,6 +111,7 @@ class File extends AbstractValidatorComposite
      *     'equalSize' => '',
      *     'messageEqualSize' => '',
      *     'allowedTypes' => [],
+     *     'allowWildcards' => false,
      *     'messageType' => '',
      *     'maxResolution' => '1000x1000',
      *     'messageMaxResolution' => '',

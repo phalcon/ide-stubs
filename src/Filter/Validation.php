@@ -45,6 +45,18 @@ class Validation extends Injectable implements \Phalcon\Filter\Validation\Valida
     protected $data;
 
     /**
+     * Default messages for validators, keyed by validator class name
+     *
+     * Declared without an array initializer on purpose: an initialized static
+     * array makes Zephir emit a zephir_init_static_properties() function that
+     * fails to compile in the single-file build. It is null until first set
+     * and treated as an empty array by the accessors below.
+     *
+     * @var array
+     */
+    protected static $defaultMessages = [];
+
+    /**
      * @var object|null
      */
     protected $entity = null;
@@ -139,6 +151,18 @@ class Validation extends Injectable implements \Phalcon\Filter\Validation\Valida
      * @return mixed
      */
     public function getData(): mixed
+    {
+    }
+
+    /**
+     * Returns the default message registered for a validator class, or an
+     * empty string when none has been registered.
+     *
+     * @param string $validatorClassName
+     *
+     * @return string
+     */
+    public static function getDefaultMessage(string $validatorClassName): string
     {
     }
 
@@ -241,6 +265,20 @@ class Validation extends Injectable implements \Phalcon\Filter\Validation\Valida
      * @return static
      */
     public function rules($field, array $validators): static
+    {
+    }
+
+    /**
+     * Registers default messages for validators, keyed by validator class
+     * name. A registered default is used when a validator does not define its
+     * own message; a message set on the validator instance still wins. Calls
+     * are merged, so defaults can be registered incrementally.
+     *
+     * @param array $messages
+     *
+     * @return array
+     */
+    public static function setDefaultMessages(array $messages = []): array
     {
     }
 

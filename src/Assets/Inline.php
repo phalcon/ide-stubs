@@ -9,6 +9,9 @@
  */
 namespace Phalcon\Assets;
 
+use Phalcon\Assets\Traits\AttributesTrait;
+use Phalcon\Traits\Php\HashTrait;
+
 /**
  * Represents an inline asset
  *
@@ -18,10 +21,9 @@ namespace Phalcon\Assets;
  */
 class Inline implements \Phalcon\Assets\AssetInterface
 {
-    /**
-     * @var array
-     */
-    protected $attributes;
+    use \Phalcon\Assets\Traits\AttributesTrait;
+    use \Phalcon\Traits\Php\HashTrait;
+
 
     /**
      * @var string
@@ -56,13 +58,6 @@ class Inline implements \Phalcon\Assets\AssetInterface
      * @return string
      */
     public function getAssetKey(): string
-    {
-    }
-
-    /**
-     * @return array
-     */
-    public function getAttributes(): array
     {
     }
 

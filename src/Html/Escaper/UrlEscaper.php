@@ -9,11 +9,17 @@
  */
 namespace Phalcon\Html\Escaper;
 
+use Phalcon\Traits\Php\UrlTrait;
+
 /**
  * Escapes a string for use as a URL component via `rawurlencode`.
  */
 class UrlEscaper extends \Phalcon\Html\Escaper\AbstractEscaper
 {
+    use \Phalcon\Traits\Php\UrlTrait;
+
+
+
     /**
      * @param string $input
      *

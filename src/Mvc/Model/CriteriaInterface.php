@@ -197,17 +197,17 @@ interface CriteriaInterface
      *
      * ```php
      * $criteria->innerJoin(
-     *     Robots::class
+     *     Orders::class
      * );
      *
      * $criteria->innerJoin(
-     *     Robots::class,
-     *     "r.id = RobotsParts.robots_id"
+     *     Orders::class,
+     *     "r.ord_id = OrdersProducts.oxp_ord_id"
      * );
      *
      * $criteria->innerJoin(
-     *     Robots::class,
-     *     "r.id = RobotsParts.robots_id",
+     *     Orders::class,
+     *     "r.ord_id = OrdersProducts.oxp_ord_id",
      *     "r"
      * );
      * ```
@@ -224,8 +224,8 @@ interface CriteriaInterface
      *
      * ```php
      * $criteria->leftJoin(
-     *     Robots::class,
-     *     "r.id = RobotsParts.robots_id",
+     *     Orders::class,
+     *     "r.ord_id = OrdersProducts.oxp_ord_id",
      *     "r"
      * );
      * ```
@@ -296,8 +296,8 @@ interface CriteriaInterface
      *
      * ```php
      * $criteria->rightJoin(
-     *     Robots::class,
-     *     "r.id = RobotsParts.robots_id",
+     *     Orders::class,
+     *     "r.ord_id = OrdersProducts.oxp_ord_id",
      *     "r"
      * );
      * ```

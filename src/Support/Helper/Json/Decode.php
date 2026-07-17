@@ -10,6 +10,7 @@
 namespace Phalcon\Support\Helper\Json;
 
 use Phalcon\Support\Helper\Json\Exceptions\JsonDecodeError;
+use Phalcon\Traits\Support\Helper\Json\DecodeTrait;
 
 /**
  * Decodes a string using `json_decode` and throws an exception if the
@@ -26,6 +27,10 @@ use Phalcon\Support\Helper\Json\Exceptions\JsonDecodeError;
  */
 class Decode
 {
+    use \Phalcon\Traits\Support\Helper\Json\DecodeTrait;
+
+
+
     /**
      * @param string $data        JSON data to parse
      * @param bool   $associative When `true`, objects are converted to arrays

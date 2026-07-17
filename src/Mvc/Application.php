@@ -20,6 +20,7 @@ use Phalcon\Mvc\Application\Exceptions\InvalidModuleDefinition;
 use Phalcon\Mvc\Application\Exceptions\ModuleDefinitionPathNotFound;
 use Phalcon\Mvc\ModuleDefinitionInterface;
 use Phalcon\Mvc\Router\RouteInterface;
+use Phalcon\Traits\Php\FileTrait;
 
 /**
  * Phalcon\Mvc\Application
@@ -69,6 +70,9 @@ use Phalcon\Mvc\Router\RouteInterface;
  */
 class Application extends AbstractApplication
 {
+    use \Phalcon\Traits\Php\FileTrait;
+
+
     /**
      * @var bool
      */

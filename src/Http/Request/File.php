@@ -9,6 +9,8 @@
  */
 namespace Phalcon\Http\Request;
 
+use Phalcon\Traits\Support\Helper\Arr\GetTrait;
+
 /**
  * Phalcon\Http\Request\File
  *
@@ -34,6 +36,9 @@ namespace Phalcon\Http\Request;
  */
 class File implements \Phalcon\Http\Request\FileInterface
 {
+    use \Phalcon\Traits\Support\Helper\Arr\GetTrait;
+
+
     /**
      * @var int
      */
@@ -167,17 +172,6 @@ class File implements \Phalcon\Http\Request\FileInterface
      * @return bool
      */
     public function moveTo(string $destination): bool
-    {
-    }
-
-    /**
-     * @todo Remove this when we get traits
-     * @param array $collection
-     * @param mixed $index
-     * @param mixed $defaultValue
-     * @return mixed
-     */
-    private function getArrVal(array $collection, $index, $defaultValue = null): mixed
     {
     }
 }

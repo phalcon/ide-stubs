@@ -9,34 +9,17 @@
  */
 namespace Phalcon\Filter\Validation;
 
-use Phalcon\Filter\Validation;
-use Phalcon\Filter\Validation\Exceptions\NoValidatorsInComposite;
+use Phalcon\Filter\Validation\Traits\ValidatorCompositeTrait;
 
 /**
  * This is a base class for combined fields validators
+ *
+ * @todo Remove in v7. Kept only for backwards compatibility; compose
+ * Phalcon\Filter\Validation\Traits\ValidatorCompositeTrait directly (with
+ * extends AbstractValidator implements ValidatorCompositeInterface) instead of
+ * extending this.
  */
 abstract class AbstractValidatorComposite extends \Phalcon\Filter\Validation\AbstractValidator implements \Phalcon\Filter\Validation\ValidatorCompositeInterface
 {
-    /**
-     * @var array
-     */
-    protected $validators = [];
-
-    /**
-     * @return array
-     */
-    public function getValidators(): array
-    {
-    }
-
-    /**
-     * Executes the validation
-     *
-     * @param \Phalcon\Filter\Validation $validation
-     * @param mixed $field
-     * @return bool
-     */
-    public function validate(\Phalcon\Filter\Validation $validation, $field): bool
-    {
-    }
+    use \Phalcon\Filter\Validation\Traits\ValidatorCompositeTrait;
 }

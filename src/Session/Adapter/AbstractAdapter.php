@@ -10,6 +10,7 @@
 namespace Phalcon\Session\Adapter;
 
 use Phalcon\Storage\Adapter\AdapterInterface;
+use Phalcon\Traits\Support\Helper\Arr\GetTrait;
 use SessionHandlerInterface;
 use SessionUpdateTimestampHandlerInterface;
 
@@ -23,6 +24,9 @@ use SessionUpdateTimestampHandlerInterface;
  */
 abstract class AbstractAdapter implements \SessionHandlerInterface, \SessionUpdateTimestampHandlerInterface
 {
+    use \Phalcon\Traits\Support\Helper\Arr\GetTrait;
+
+
     /**
      * @var AdapterInterface
      */
@@ -107,17 +111,6 @@ abstract class AbstractAdapter implements \SessionHandlerInterface, \SessionUpda
      * @return bool
      */
     public function write($id, $data): bool
-    {
-    }
-
-    /**
-     * @todo Remove this when we get traits
-     * @param array $collection
-     * @param mixed $index
-     * @param mixed $defaultValue
-     * @return mixed
-     */
-    protected function getArrVal(array $collection, $index, $defaultValue = null): mixed
     {
     }
 }

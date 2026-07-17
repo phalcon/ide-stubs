@@ -12,6 +12,7 @@ namespace Phalcon\Mvc\Model\MetaData;
 use Phalcon\Mvc\Model\MetaData;
 use Phalcon\Mvc\Model\MetaData\Exceptions\MetaDataDirectoryNotWritable;
 use Phalcon\Support\Settings;
+use Phalcon\Traits\Php\FileTrait;
 
 /**
  * Phalcon\Mvc\Model\MetaData\Stream
@@ -28,6 +29,9 @@ use Phalcon\Support\Settings;
  */
 class Stream extends MetaData
 {
+    use \Phalcon\Traits\Php\FileTrait;
+
+
     /**
      * @var string
      */

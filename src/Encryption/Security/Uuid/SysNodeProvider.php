@@ -9,6 +9,9 @@
  */
 namespace Phalcon\Encryption\Security\Uuid;
 
+use Phalcon\Traits\Php\FileTrait;
+use Phalcon\Traits\Php\InfoTrait;
+
 /**
  * Discovers the hardware MAC address and returns it as a 12-character hex node.
  *
@@ -26,6 +29,10 @@ namespace Phalcon\Encryption\Security\Uuid;
  */
 class SysNodeProvider implements \Phalcon\Encryption\Security\Uuid\NodeProviderInterface
 {
+    use \Phalcon\Traits\Php\FileTrait;
+    use \Phalcon\Traits\Php\InfoTrait;
+
+
     /**
      * @var string|null
      */

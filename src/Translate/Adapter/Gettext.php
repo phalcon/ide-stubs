@@ -9,6 +9,7 @@
  */
 namespace Phalcon\Translate\Adapter;
 
+use Phalcon\Traits\Php\InfoTrait;
 use Phalcon\Translate\Exception;
 use Phalcon\Translate\Exceptions\MissingGettextExtension;
 use Phalcon\Translate\Exceptions\MissingRequiredParameter;
@@ -41,6 +42,9 @@ use Phalcon\Translate\InterpolatorFactory;
  */
 class Gettext extends \Phalcon\Translate\Adapter\AbstractAdapter
 {
+    use \Phalcon\Traits\Php\InfoTrait;
+
+
     /**
      * @var int
      */
@@ -264,15 +268,6 @@ class Gettext extends \Phalcon\Translate\Adapter\AbstractAdapter
      * @param array $options
      */
     protected function prepareOptions(array $options): void
-    {
-    }
-
-    /**
-     * @todo to be removed when we get traits
-     * @param string $name
-     * @return bool
-     */
-    protected function phpFunctionExists(string $name): bool
     {
     }
 }

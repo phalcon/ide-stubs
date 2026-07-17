@@ -23,4 +23,20 @@ class DoesNotImplement extends Exception
     public function __construct(string $type, string $name)
     {
     }
+
+    /**
+     * Throws when value is not an instance of the given interface. Keeps the
+     * "must implement" guard shared across adapters, guards and the manager
+     * in one place.
+     *
+     * @throws self
+     * @param mixed $value
+     * @param mixed $interfaceName
+     * @param string $type
+     * @param string $name
+     * @return void
+     */
+    public static function assert($value, $interfaceName, string $type, string $name): void
+    {
+    }
 }

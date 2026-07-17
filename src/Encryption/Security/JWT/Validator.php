@@ -131,7 +131,6 @@ class Validator
      * @param int $timestamp
      *
      * @return static
-     * @throws ValidatorException
      */
     public function validateExpiration(int $timestamp): static
     {
@@ -140,22 +139,25 @@ class Validator
     /**
      * Validate the id of the token
      *
-     * @param string $id
+     * A null id expresses no expectation and is skipped.
+     *
+     * @param string|null $id
      *
      * @return static
-     * @throws ValidatorException
      */
-    public function validateId(string $id): static
+    public function validateId(?string $id = null): static
     {
     }
 
     /**
      * Validate the issued at (iat) of the token
      *
+     * A token issued at exactly $timestamp is valid. Only a token issued after
+     * it, i.e. in the future, is rejected.
+     *
      * @param int $timestamp
      *
      * @return static
-     * @throws ValidatorException
      */
     public function validateIssuedAt(int $timestamp): static
     {
@@ -164,22 +166,25 @@ class Validator
     /**
      * Validate the issuer of the token
      *
-     * @param string $issuer
+     * A null issuer expresses no expectation and is skipped.
+     *
+     * @param string|null $issuer
      *
      * @return static
-     * @throws ValidatorException
      */
-    public function validateIssuer(string $issuer): static
+    public function validateIssuer(?string $issuer = null): static
     {
     }
 
     /**
      * Validate the notbefore (nbf) of the token
      *
+     * A token is valid at exactly $timestamp. Only a timestamp before the
+     * "nbf" claim is rejected.
+     *
      * @param int $timestamp
      *
      * @return static
-     * @throws ValidatorException
      */
     public function validateNotBefore(int $timestamp): static
     {
@@ -192,9 +197,21 @@ class Validator
      * @param string          $passphrase
      *
      * @return static
-     * @throws ValidatorException
      */
     public function validateSignature(\Phalcon\Encryption\Security\JWT\Signer\SignerInterface $signer, string $passphrase): static
+    {
+    }
+
+    /**
+     * Validate the subject of the token
+     *
+     * A null subject expresses no expectation and is skipped.
+     *
+     * @param string|null $subject
+     *
+     * @return static
+     */
+    public function validateSubject(?string $subject = null): static
     {
     }
 

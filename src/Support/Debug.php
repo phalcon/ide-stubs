@@ -14,7 +14,7 @@ use Phalcon\Support\Debug\Exceptions\RequestHalted;
 use Phalcon\Support\Debug\Exceptions\RuntimeWarning;
 use Phalcon\Support\Debug\Renderer\HtmlRenderer;
 use Phalcon\Support\Debug\ReportBuilder;
-use Phalcon\Support\Helper\Arr\Get;
+use Phalcon\Traits\Support\Helper\Arr\GetTrait;
 use ReflectionException;
 use Throwable;
 
@@ -24,6 +24,9 @@ use Throwable;
  */
 class Debug
 {
+    use \Phalcon\Traits\Support\Helper\Arr\GetTrait;
+
+
     /**
      * @var array
      */

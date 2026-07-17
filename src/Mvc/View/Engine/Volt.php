@@ -19,12 +19,16 @@ use Phalcon\Mvc\View\Engine\Volt\Exceptions\InvalidHaystack;
 use Phalcon\Mvc\View\Engine\Volt\Exceptions\MacroNotFound;
 use Phalcon\Mvc\View\Engine\Volt\Exceptions\MbstringRequired;
 use Phalcon\Mvc\View\Exception;
+use Phalcon\Traits\Php\InfoTrait;
 
 /**
  * Designer friendly and fast template engine for PHP written in Zephir/C
  */
 class Volt extends \Phalcon\Mvc\View\Engine\AbstractEngine implements \Phalcon\Events\EventsAwareInterface
 {
+    use \Phalcon\Traits\Php\InfoTrait;
+
+
     /**
      * @var Compiler
      */

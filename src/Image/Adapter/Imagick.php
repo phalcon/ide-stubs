@@ -22,6 +22,7 @@ use Phalcon\Image\Exceptions\ExtensionNotLoaded;
 use Phalcon\Image\Exceptions\ImageLoadFailed;
 use Phalcon\Image\Exceptions\ResizeFailed;
 use Phalcon\Image\Exceptions\ResourceTypeError;
+use Phalcon\Traits\Php\FileTrait;
 
 /**
  * Phalcon\Image\Adapter\Imagick
@@ -52,6 +53,9 @@ use Phalcon\Image\Exceptions\ResourceTypeError;
  */
 class Imagick extends \Phalcon\Image\Adapter\AbstractAdapter
 {
+    use \Phalcon\Traits\Php\FileTrait;
+
+
     /**
      * @var int
      */

@@ -27,6 +27,16 @@ abstract class AbstractValidator implements \Phalcon\Filter\Validation\Validator
     protected $template = null;
 
     /**
+     * Whether the template/message has been explicitly assigned on the
+     * instance (constructor `message`/`template` option or setTemplate()).
+     * While false, `template` still holds the validator's class default and a
+     * global default registered via Validation::setDefaultMessages() applies.
+     *
+     * @var bool
+     */
+    protected $templateChanged = false;
+
+    /**
      * Message templates
      *
      * @var array

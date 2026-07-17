@@ -18,6 +18,8 @@ use Phalcon\Session\Exceptions\InvalidSessionId;
 use Phalcon\Session\Exceptions\InvalidSessionName;
 use Phalcon\Session\Exceptions\SessionAlreadyStarted;
 use Phalcon\Session\Exceptions\SessionModificationDenied;
+use Phalcon\Traits\Php\HeaderTrait;
+use Phalcon\Traits\Support\Helper\Arr\GetTrait;
 
 /**
  * @property SessionHandlerInterface|null $adapter
@@ -27,6 +29,10 @@ use Phalcon\Session\Exceptions\SessionModificationDenied;
  */
 class Manager extends AbstractInjectionAware implements \Phalcon\Session\ManagerInterface
 {
+    use \Phalcon\Traits\Support\Helper\Arr\GetTrait;
+    use \Phalcon\Traits\Php\HeaderTrait;
+
+
     /**
      * @var SessionHandlerInterface|null
      */
@@ -271,28 +277,6 @@ class Manager extends AbstractInjectionAware implements \Phalcon\Session\Manager
      * @return int
      */
     public function status(): int
-    {
-    }
-
-    /**
-     * Checks if or where headers have been sent
-     *
-     * @return bool
-     *
-     * @link https://php.net/manual/en/function.headers-sent.php
-     */
-    protected function phpHeadersSent(): bool
-    {
-    }
-
-    /**
-     * @todo Remove this when we get traits
-     * @param array $collection
-     * @param mixed $index
-     * @param mixed $defaultValue
-     * @return mixed
-     */
-    private function getArrVal(array $collection, $index, $defaultValue = null): mixed
     {
     }
 

@@ -10,6 +10,7 @@
 namespace Phalcon\Filter\Sanitize;
 
 use Phalcon\Contracts\Filter\Sanitizer;
+use Phalcon\Traits\Php\MbCaseTrait;
 
 /**
  * Phalcon\Filter\Sanitize\Lower
@@ -18,6 +19,10 @@ use Phalcon\Contracts\Filter\Sanitizer;
  */
 class Lower implements \Phalcon\Contracts\Filter\Sanitizer
 {
+    use \Phalcon\Traits\Php\MbCaseTrait;
+
+
+
     /**
      * @param string $input The text to sanitize
      *

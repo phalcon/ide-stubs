@@ -11,7 +11,8 @@ namespace Phalcon\Support\Debug;
 
 use Phalcon\Support\Debug\Report\BacktraceItem;
 use Phalcon\Support\Debug\Report\ExceptionReport;
-use Phalcon\Support\Helper\Arr\Get;
+use Phalcon\Traits\Php\InfoTrait;
+use Phalcon\Traits\Support\Helper\Arr\GetTrait;
 use ReflectionClass;
 use ReflectionException;
 use ReflectionFunction;
@@ -24,6 +25,11 @@ use Throwable;
  */
 class ReportBuilder
 {
+    use \Phalcon\Traits\Support\Helper\Arr\GetTrait;
+    use \Phalcon\Traits\Php\InfoTrait;
+
+
+
     /**
      * @param Throwable $exception
      * @param array     $blacklist

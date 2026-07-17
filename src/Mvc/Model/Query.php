@@ -38,6 +38,7 @@ use Phalcon\Mvc\Model\Query\Exceptions\InvalidInjectedManager;
 use Phalcon\Mvc\Model\Query\Exceptions\InvalidInjectedMetadata;
 use Phalcon\Mvc\Model\Query\Exceptions\InvalidQueryCacheService;
 use Phalcon\Mvc\Model\Query\Exceptions\InvalidResultsetClass;
+use Phalcon\Mvc\Model\Query\Exceptions\InvalidResultsetRowClass;
 use Phalcon\Mvc\Model\Query\Exceptions\JoinAliasAlreadyUsed;
 use Phalcon\Mvc\Model\Query\Exceptions\JoinFieldCountMismatch;
 use Phalcon\Mvc\Model\Query\Exceptions\MissingCacheKey;
@@ -54,6 +55,7 @@ use Phalcon\Mvc\Model\Query\Exceptions\ReadConnectionMissing;
 use Phalcon\Mvc\Model\Query\Exceptions\RelationshipNotFound;
 use Phalcon\Mvc\Model\Query\Exceptions\ResultsetClassNotFound;
 use Phalcon\Mvc\Model\Query\Exceptions\ResultsetNonCacheable;
+use Phalcon\Mvc\Model\Query\Exceptions\ResultsetRowClassNotFound;
 use Phalcon\Mvc\Model\Query\Exceptions\UnknownBindType;
 use Phalcon\Mvc\Model\Query\Exceptions\UnknownColumnType;
 use Phalcon\Mvc\Model\Query\Exceptions\UnknownJoinType;
@@ -102,17 +104,17 @@ use Phalcon\Support\Settings;
  * // $di needs to have the service "db" registered for this to work
  * $di = Phalcon\Di\FactoryDefault::getDefault();
  *
- * $phql = 'SELECT FROM robot';
+ * $phql = 'SELECT FROM Invoices';
  *
  * $myTransaction = new Transaction($di);
  * $myTransaction->begin();
  *
- * $newRobot = new Robot();
- * $newRobot->setTransaction($myTransaction);
- * $newRobot->type = "mechanical";
- * $newRobot->name = "Astro Boy";
- * $newRobot->year = 1952;
- * $newRobot->save();
+ * $newInvoice = new Invoices();
+ * $newInvoice->setTransaction($myTransaction);
+ * $newInvoice->inv_status_flag = 1;
+ * $newInvoice->inv_title = "Test Invoice";
+ * $newInvoice->inv_total = 100;
+ * $newInvoice->save();
  *
  * $queryWithTransaction = new Query($phql, $di);
  * $queryWithTransaction->setTransaction($myTransaction);
@@ -220,6 +222,11 @@ class Query implements \Phalcon\Mvc\Model\QueryInterface, \Phalcon\Di\InjectionA
      * @var string|null
      */
     protected $phql = null;
+
+    /**
+     * @var string
+     */
+    protected $resultsetRowClass = '';
 
     /**
      * @var bool
@@ -383,9 +390,9 @@ class Query implements \Phalcon\Mvc\Model\QueryInterface, \Phalcon\Di\InjectionA
      *
      * ```php
      * [
-     *     'sql' => 'SELECT FROM parts WHERE robot = :robot',
-     *     'bind' => ['robot' => 123],
-     *     'bindTypes => ['robot' => 1] // 1 corresponds to int
+     *     'sql' => 'SELECT FROM co_invoices WHERE inv_cst_id = :cst_id',
+     *     'bind' => ['cst_id' => 123],
+     *     'bindTypes => ['cst_id' => 1] // 1 corresponds to int
      * ]
      * ```
      *
@@ -408,6 +415,17 @@ class Query implements \Phalcon\Mvc\Model\QueryInterface, \Phalcon\Di\InjectionA
      * @return int
      */
     public function getType(): int
+    {
+    }
+
+    /**
+     * Returns the class that will be used to hydrate rows that are not mapped
+     * to a model (custom columns/joins). An empty string means the default
+     * Phalcon\Mvc\Model\Row is used.
+     *
+     * @return string
+     */
+    public function getResultsetRowClass(): string
     {
     }
 
@@ -501,6 +519,18 @@ class Query implements \Phalcon\Mvc\Model\QueryInterface, \Phalcon\Di\InjectionA
      * @return QueryInterface
      */
     public function setType(int $type): QueryInterface
+    {
+    }
+
+    /**
+     * Sets the class used to hydrate rows that are not mapped to a model
+     * (custom columns/joins). The class must be a subclass of
+     * Phalcon\Mvc\Model\Row.
+     *
+     * @param string $resultsetRowClass
+     * @return QueryInterface
+     */
+    public function setResultsetRowClass(string $resultsetRowClass): QueryInterface
     {
     }
 

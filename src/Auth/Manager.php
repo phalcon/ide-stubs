@@ -10,7 +10,11 @@
 namespace Phalcon\Auth;
 
 use Phalcon\Auth\Access\AccessLocator;
+use Phalcon\Auth\Exceptions\AccessNotRegistered;
+use Phalcon\Auth\Exceptions\ActiveAccessRequired;
+use Phalcon\Auth\Exceptions\DefaultGuardNotRegistered;
 use Phalcon\Auth\Exceptions\DoesNotImplement;
+use Phalcon\Auth\Exceptions\GuardNotDefined;
 use Phalcon\Contracts\Auth\Access\Access;
 use Phalcon\Contracts\Auth\Adapter\Adapter;
 use Phalcon\Contracts\Auth\AuthUser;
@@ -107,7 +111,7 @@ class Manager implements ManagerContract
      * @param string $actions
      * @return self
      */
-    public function except(string $actions): self
+    public function except(string ...$actions): self
     {
     }
 
@@ -167,7 +171,7 @@ class Manager implements ManagerContract
      * @param string $actions
      * @return self
      */
-    public function only(string $actions): self
+    public function only(string ...$actions): self
     {
     }
 
@@ -200,6 +204,22 @@ class Manager implements ManagerContract
      * @return bool
      */
     public function validate(array $credentials = []): bool
+    {
+    }
+
+    /**
+     * @throws Exception
+     * @return Access
+     */
+    private function requireActiveAccess(): Access
+    {
+    }
+
+    /**
+     * @throws Exception
+     * @return GuardStateful
+     */
+    private function requireStatefulGuard(): GuardStateful
     {
     }
 }

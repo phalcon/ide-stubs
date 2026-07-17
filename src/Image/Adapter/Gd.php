@@ -16,6 +16,8 @@ use Phalcon\Image\Exceptions\ImageLoadFailed;
 use Phalcon\Image\Exceptions\TextRenderingFailed;
 use Phalcon\Image\Exceptions\UnsupportedImageType;
 use Phalcon\Image\Exceptions\VersionMismatch;
+use Phalcon\Traits\Php\FileTrait;
+use Phalcon\Traits\Php\InfoTrait;
 
 /**
  * Image manipulation backed by the GD extension.
@@ -36,6 +38,11 @@ use Phalcon\Image\Exceptions\VersionMismatch;
  */
 class Gd extends \Phalcon\Image\Adapter\AbstractAdapter
 {
+    use \Phalcon\Traits\Php\FileTrait;
+    use \Phalcon\Traits\Php\InfoTrait;
+
+
+
     /**
      * Loads an image from a file, or creates a blank canvas.
      *

@@ -50,13 +50,19 @@ class Complex extends Resultset
     protected $disableHydration = false;
 
     /**
+     * @var string
+     */
+    protected $resultsetRowClass = '';
+
+    /**
      * Phalcon\Mvc\Model\Resultset\Complex constructor
      *
      * @param array                $columnTypes
      * @param ResultInterface|null $result
      * @param mixed|null           $cache
+     * @param string               $resultsetRowClass
      */
-    public function __construct($columnTypes, ?\Phalcon\Db\ResultInterface $result = null, $cache = null)
+    public function __construct($columnTypes, ?\Phalcon\Db\ResultInterface $result = null, $cache = null, string $resultsetRowClass = '')
     {
     }
 

@@ -9,12 +9,18 @@
  */
 namespace Phalcon\Support\Helper\Str;
 
+use Phalcon\Traits\Support\Helper\Str\DirSeparatorTrait;
+
 /**
  * Accepts a directory name and ensures that it ends with
  * DIRECTORY_SEPARATOR
  */
 class DirSeparator
 {
+    use \Phalcon\Traits\Support\Helper\Str\DirSeparatorTrait;
+
+
+
     /**
      * @param string $directory
      *

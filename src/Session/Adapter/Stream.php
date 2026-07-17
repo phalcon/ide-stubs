@@ -12,6 +12,10 @@ namespace Phalcon\Session\Adapter;
 use Phalcon\Session\Adapter\Exceptions\AdapterRuntimeError;
 use Phalcon\Session\Adapter\Exceptions\InvalidSavePath;
 use Phalcon\Session\Adapter\Exceptions\SavePathUnavailable;
+use Phalcon\Traits\Php\FileTrait;
+use Phalcon\Traits\Php\IniTrait;
+use Phalcon\Traits\Support\Helper\Arr\GetTrait;
+use Phalcon\Traits\Support\Helper\Str\DirSeparatorTrait;
 
 /**
  * Phalcon\Session\Adapter\Stream
@@ -39,6 +43,12 @@ use Phalcon\Session\Adapter\Exceptions\SavePathUnavailable;
  */
 class Stream extends \Phalcon\Session\Adapter\Noop
 {
+    use \Phalcon\Traits\Support\Helper\Str\DirSeparatorTrait;
+    use \Phalcon\Traits\Php\FileTrait;
+    use \Phalcon\Traits\Support\Helper\Arr\GetTrait;
+    use \Phalcon\Traits\Php\IniTrait;
+
+
     /**
      * Session options
      *
@@ -140,26 +150,6 @@ class Stream extends \Phalcon\Session\Adapter\Noop
     }
 
     /**
-     * @todo Remove this when we get traits
-     * @param array $collection
-     * @param mixed $index
-     * @param mixed $defaultValue
-     * @param string|null $cast
-     * @return mixed
-     */
-    protected function getArrVal(array $collection, $index, $defaultValue = null, ?string $cast = null): mixed
-    {
-    }
-
-    /**
-     * @param string $directory
-     * @return string
-     */
-    private function getDirSeparator(string $directory): string
-    {
-    }
-
-    /**
      * Gets the glob array or returns false on failure
      *
      * @param string $pattern
@@ -177,81 +167,6 @@ class Stream extends \Phalcon\Session\Adapter\Noop
      * @return string
      */
     protected function getPrefixedName($name): string
-    {
-    }
-
-    /**
-     * @param string $filename
-     *
-     * @return bool
-     *
-     * @link https://php.net/manual/en/function.file-exists.php
-     */
-    protected function phpFileExists(string $filename)
-    {
-    }
-
-    /**
-     * @param string $filename
-     *
-     * @return string|false
-     *
-     * @link https://php.net/manual/en/function.file-get-contents.php
-     */
-    protected function phpFileGetContents(string $filename)
-    {
-    }
-
-    /**
-     * @param string   $filename
-     * @param mixed    $data
-     * @param int      $flags
-     * @param resource $context
-     *
-     * @return int|false
-     *
-     * @link https://php.net/manual/en/function.file-put-contents.php
-     */
-    protected function phpFilePutContents(string $filename, $data, int $flags = 0, $context = null)
-    {
-    }
-
-    /**
-     * @param string $filename
-     * @param string $mode
-     *
-     * @return resource|false
-     *
-     * @link https://php.net/manual/en/function.fopen.php
-     */
-    protected function phpFopen(string $filename, string $mode)
-    {
-    }
-
-    /**
-     * Gets the value of a configuration option
-     *
-     * @param string $varname
-     *
-     * @return string
-     *
-     * @link https://php.net/manual/en/function.ini-get.php
-     * @link https://php.net/manual/en/ini.list.php
-     */
-    protected function phpIniGet(string $varname): string
-    {
-    }
-
-    /**
-     * Tells whether the filename is writable
-     *
-     * @param string $filename
-     *
-     * @return bool
-     *
-     * @link https://php.net/manual/en/function.is-writable.php
-     */
-    protected function phpIsWritable(string $filename): bool
     {
     }
 }

@@ -12,12 +12,17 @@ namespace Phalcon\Image;
 use Phalcon\Config\ConfigInterface;
 use Phalcon\Factory\AbstractFactory;
 use Phalcon\Image\Adapter\AdapterInterface;
+use Phalcon\Traits\Support\Helper\Arr\GetTrait;
 
 /**
  * Factory to create adapters for image manipulation
  */
 class ImageFactory extends AbstractFactory
 {
+    use \Phalcon\Traits\Support\Helper\Arr\GetTrait;
+
+
+
     /**
      * Constructor
      *
@@ -68,17 +73,6 @@ class ImageFactory extends AbstractFactory
      * @return string[]
      */
     protected function getServices(): array
-    {
-    }
-
-    /**
-     * @todo Remove this when we get traits
-     * @param array $collection
-     * @param mixed $index
-     * @param mixed $defaultValue
-     * @return mixed
-     */
-    private function getArrVal(array $collection, $index, $defaultValue = null): mixed
     {
     }
 }

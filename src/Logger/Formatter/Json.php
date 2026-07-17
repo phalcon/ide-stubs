@@ -11,12 +11,17 @@ namespace Phalcon\Logger\Formatter;
 
 use JsonException;
 use Phalcon\Logger\Item;
+use Phalcon\Traits\Support\Helper\Json\EncodeTrait;
 
 /**
  * Formats messages using JSON encoding
  */
 class Json extends \Phalcon\Logger\Formatter\AbstractFormatter
 {
+    use \Phalcon\Traits\Support\Helper\Json\EncodeTrait;
+
+
+
     /**
      * Json constructor.
      *

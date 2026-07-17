@@ -15,6 +15,9 @@ use Iterator;
 use Phalcon\Storage\Exceptions\InvalidConfiguration;
 use Phalcon\Storage\SerializerFactory;
 use Phalcon\Support\Exception as SupportException;
+use Phalcon\Traits\Php\FileTrait;
+use Phalcon\Traits\Support\Helper\Str\DirFromFileTrait;
+use Phalcon\Traits\Support\Helper\Str\DirSeparatorTrait;
 use RecursiveDirectoryIterator;
 use RecursiveIteratorIterator;
 
@@ -32,6 +35,11 @@ use RecursiveIteratorIterator;
  */
 class Stream extends \Phalcon\Storage\Adapter\AbstractAdapter
 {
+    use \Phalcon\Traits\Support\Helper\Str\DirFromFileTrait;
+    use \Phalcon\Traits\Support\Helper\Str\DirSeparatorTrait;
+    use \Phalcon\Traits\Php\FileTrait;
+
+
     /**
      * @var string
      */
@@ -232,67 +240,6 @@ class Stream extends \Phalcon\Storage\Adapter\AbstractAdapter
      * @return bool
      */
     private function storePayload(array $payload, string $key): bool
-    {
-    }
-
-    /**
-     * @todo Remove the methods below when we get traits
-     * @param string $filename
-     * @return bool
-     */
-    protected function phpFileExists(string $filename): bool
-    {
-    }
-
-    /**
-     * @param string $filename
-     * @return string|bool
-     */
-    protected function phpFileGetContents(string $filename): bool|string
-    {
-    }
-
-    /**
-     * @param string $filename
-     * @param mixed $data
-     * @param int $flags
-     * @param mixed $context
-     * @return int|bool
-     */
-    protected function phpFilePutContents(string $filename, $data, int $flags = 0, $context = null): int|bool
-    {
-    }
-
-    /**
-     * @param string $filename
-     * @param string $mode
-     * @return mixed
-     */
-    protected function phpFopen(string $filename, string $mode): mixed
-    {
-    }
-
-    /**
-     * @param string $filename
-     * @return bool
-     */
-    protected function phpUnlink(string $filename): bool
-    {
-    }
-
-    /**
-     * @param string $file
-     * @return string
-     */
-    private function getDirFromFile(string $file): string
-    {
-    }
-
-    /**
-     * @param string $directory
-     * @return string
-     */
-    private function getDirSeparator(string $directory): string
     {
     }
 }

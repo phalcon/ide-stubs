@@ -11,12 +11,17 @@ namespace Phalcon\Encryption\Security\JWT\Signer;
 
 use Phalcon\Encryption\Security\JWT\Exceptions\UnsupportedAlgorithmException;
 use Phalcon\Encryption\Security\JWT\Exceptions\UnsupportedHmacAlgorithm;
+use Phalcon\Traits\Php\HashTrait;
 
 /**
  * HMAC signing class
  */
 class Hmac extends \Phalcon\Encryption\Security\JWT\Signer\AbstractSigner
 {
+    use \Phalcon\Traits\Php\HashTrait;
+
+
+
     /**
      * Hmac constructor.
      *

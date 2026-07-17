@@ -9,11 +9,17 @@
  */
 namespace Phalcon\Support\Helper\Arr;
 
+use Phalcon\Traits\Php\InfoTrait;
+
 /**
  * Groups the elements of an array based on the passed callable
  */
 class Group
 {
+    use \Phalcon\Traits\Php\InfoTrait;
+
+
+
     /**
      * @param array           $collection
      * @param callable|string $method

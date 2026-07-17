@@ -9,6 +9,8 @@
  */
 namespace Phalcon\Storage\Serializer;
 
+use Phalcon\Traits\Php\MsgpackTrait;
+
 /**
  * This file is part of the Phalcon Framework.
  *
@@ -19,6 +21,10 @@ namespace Phalcon\Storage\Serializer;
  */
 class Msgpack extends \Phalcon\Storage\Serializer\Igbinary
 {
+    use \Phalcon\Traits\Php\MsgpackTrait;
+
+
+
     /**
      * Serializes data
      *

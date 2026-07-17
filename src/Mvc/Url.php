@@ -18,6 +18,7 @@ use Phalcon\Mvc\Url\Exceptions\MissingRouteName;
 use Phalcon\Mvc\Url\Exceptions\RouteNotFound;
 use Phalcon\Mvc\Url\Exceptions\RouterServiceUnavailable;
 use Phalcon\Mvc\Url\UrlInterface;
+use Phalcon\Support\Helper\Str\ReduceSlashes;
 
 /**
  * This component helps in the generation of: URIs, URLs and Paths

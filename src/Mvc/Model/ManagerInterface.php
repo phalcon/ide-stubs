@@ -410,7 +410,7 @@ interface ManagerInterface
      *
      * ```php
      * $isPublic = $manager->isVisibleModelProperty(
-     *     new Robots(),
+     *     new Invoices(),
      *     "name"
      * );
      * ```
@@ -460,6 +460,15 @@ interface ManagerInterface
     public function notifyEvent(string $eventName, \Phalcon\Mvc\ModelInterface $model);
 
     /**
+     * Marks the model's write connection service as written-to for the
+     * current request cycle (sticky connections)
+     *
+     * @param \Phalcon\Mvc\ModelInterface $model
+     * @return void
+     */
+    public function registerWrite(\Phalcon\Mvc\ModelInterface $model): void;
+
+    /**
      * Removes a behavior from a model
      *
      * @param \Phalcon\Mvc\ModelInterface $model
@@ -467,6 +476,13 @@ interface ManagerInterface
      * @return void
      */
     public function removeBehavior(\Phalcon\Mvc\ModelInterface $model, string $behaviorClass): void;
+
+    /**
+     * Clears the per-request sticky write tracking
+     *
+     * @return void
+     */
+    public function resetConnectionState(): void;
 
     /**
      * Sets both write and read connection service for a model
@@ -514,6 +530,14 @@ interface ManagerInterface
      * @return void
      */
     public function setReusableRecords(string $modelName, string $key, $records): void;
+
+    /**
+     * Enables or disables sticky connections
+     *
+     * @param bool $sticky
+     * @return void
+     */
+    public function setSticky(bool $sticky): void;
 
     /**
      * Sets write connection service for a model
