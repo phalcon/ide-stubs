@@ -20,6 +20,7 @@ use Phalcon\Mvc\Model\MetaData\Strategy\Introspection;
 use Phalcon\Mvc\Model\MetaData\Strategy\StrategyInterface;
 use Phalcon\Mvc\ModelInterface;
 use Phalcon\Support\Settings;
+use Phalcon\Traits\Support\Helper\Arr\GetTrait;
 
 /**
  * Phalcon\Mvc\Model\MetaData
@@ -35,7 +36,7 @@ use Phalcon\Support\Settings;
  * $metaData = new \Phalcon\Mvc\Model\MetaData\Memory();
  *
  * $attributes = $metaData->getAttributes(
- *     new Robots()
+ *     new Invoices()
  * );
  *
  * print_r($attributes);
@@ -77,6 +78,8 @@ use Phalcon\Support\Settings;
  */
 abstract class MetaData implements \Phalcon\Di\InjectionAwareInterface, \Phalcon\Mvc\Model\MetaDataInterface
 {
+    use \Phalcon\Traits\Support\Helper\Arr\GetTrait;
+
     /**
      * @var int
      */
@@ -207,7 +210,7 @@ abstract class MetaData implements \Phalcon\Di\InjectionAwareInterface, \Phalcon
      * ```php
      * print_r(
      *     $metaData->getAttributes(
-     *         new Robots()
+     *         new Invoices()
      *     )
      * );
      * ```
@@ -225,7 +228,7 @@ abstract class MetaData implements \Phalcon\Di\InjectionAwareInterface, \Phalcon
      * ```php
      * print_r(
      *     $metaData->getAutomaticCreateAttributes(
-     *         new Robots()
+     *         new Invoices()
      *     )
      * );
      * ```
@@ -243,7 +246,7 @@ abstract class MetaData implements \Phalcon\Di\InjectionAwareInterface, \Phalcon
      * ```php
      * print_r(
      *     $metaData->getAutomaticUpdateAttributes(
-     *         new Robots()
+     *         new Invoices()
      *     )
      * );
      * ```
@@ -261,7 +264,7 @@ abstract class MetaData implements \Phalcon\Di\InjectionAwareInterface, \Phalcon
      * ```php
      * print_r(
      *     $metaData->getBindTypes(
-     *         new Robots()
+     *         new Invoices()
      *     )
      * );
      * ```
@@ -279,7 +282,7 @@ abstract class MetaData implements \Phalcon\Di\InjectionAwareInterface, \Phalcon
      * ```php
      * print_r(
      *     $metaData->getColumnMap(
-     *         new Robots()
+     *         new Invoices()
      *     )
      * );
      * ```
@@ -316,7 +319,7 @@ abstract class MetaData implements \Phalcon\Di\InjectionAwareInterface, \Phalcon
      * ```php
      * print_r(
      *     $metaData->getDataTypes(
-     *         new Robots()
+     *         new Invoices()
      *     )
      * );
      * ```
@@ -334,7 +337,7 @@ abstract class MetaData implements \Phalcon\Di\InjectionAwareInterface, \Phalcon
      * ```php
      * print_r(
      *     $metaData->getDataTypesNumeric(
-     *         new Robots()
+     *         new Invoices()
      *     )
      * );
      * ```
@@ -352,7 +355,7 @@ abstract class MetaData implements \Phalcon\Di\InjectionAwareInterface, \Phalcon
      * ```php
      * print_r(
      *     $metaData->getDefaultValues(
-     *         new Robots()
+     *         new Invoices()
      *     )
      * );
      * ```
@@ -370,7 +373,7 @@ abstract class MetaData implements \Phalcon\Di\InjectionAwareInterface, \Phalcon
      * ```php
      * print_r(
      *     $metaData->getEmptyStringAttributes(
-     *         new Robots()
+     *         new Invoices()
      *     )
      * );
      * ```
@@ -388,7 +391,7 @@ abstract class MetaData implements \Phalcon\Di\InjectionAwareInterface, \Phalcon
      * ```php
      * print_r(
      *     $metaData->getIdentityField(
-     *         new Robots()
+     *         new Invoices()
      *     )
      * );
      * ```
@@ -427,7 +430,7 @@ abstract class MetaData implements \Phalcon\Di\InjectionAwareInterface, \Phalcon
      * ```php
      * print_r(
      *     $metaData->getNonPrimaryKeyAttributes(
-     *         new Robots()
+     *         new Invoices()
      *     )
      * );
      * ```
@@ -445,7 +448,7 @@ abstract class MetaData implements \Phalcon\Di\InjectionAwareInterface, \Phalcon
      * ```php
      * print_r(
      *     $metaData->getNotNullAttributes(
-     *         new Robots()
+     *         new Invoices()
      *     )
      * );
      * ```
@@ -463,7 +466,7 @@ abstract class MetaData implements \Phalcon\Di\InjectionAwareInterface, \Phalcon
      * ```php
      * print_r(
      *     $metaData->getPrimaryKeyAttributes(
-     *         new Robots()
+     *         new Invoices()
      *     )
      * );
      * ```
@@ -481,7 +484,7 @@ abstract class MetaData implements \Phalcon\Di\InjectionAwareInterface, \Phalcon
      * ```php
      * print_r(
      *     $metaData->getReverseColumnMap(
-     *         new Robots()
+     *         new Invoices()
      *     )
      * );
      * ```
@@ -508,7 +511,7 @@ abstract class MetaData implements \Phalcon\Di\InjectionAwareInterface, \Phalcon
      * ```php
      * var_dump(
      *     $metaData->hasAttribute(
-     *         new Robots(),
+     *         new Invoices(),
      *         "name"
      *     )
      * );
@@ -564,7 +567,7 @@ abstract class MetaData implements \Phalcon\Di\InjectionAwareInterface, \Phalcon
      * ```php
      * print_r(
      *     $metaData->readColumnMap(
-     *         new Robots()
+     *         new Invoices()
      *     )
      * );
      * ```
@@ -582,7 +585,7 @@ abstract class MetaData implements \Phalcon\Di\InjectionAwareInterface, \Phalcon
      * ```php
      * print_r(
      *     $metaData->readColumnMapIndex(
-     *         new Robots(),
+     *         new Invoices(),
      *         MetaData::MODELS_REVERSE_COLUMN_MAP
      *     )
      * );
@@ -602,7 +605,7 @@ abstract class MetaData implements \Phalcon\Di\InjectionAwareInterface, \Phalcon
      * ```php
      * print_r(
      *     $metaData->readMetaData(
-     *         new Robots()
+     *         new Invoices()
      *     )
      * );
      * ```
@@ -620,7 +623,7 @@ abstract class MetaData implements \Phalcon\Di\InjectionAwareInterface, \Phalcon
      * ```php
      * print_r(
      *     $metaData->readMetaDataIndex(
-     *         new Robots(),
+     *         new Invoices(),
      *         0
      *     )
      * );
@@ -652,7 +655,7 @@ abstract class MetaData implements \Phalcon\Di\InjectionAwareInterface, \Phalcon
      *
      * ```php
      * $metaData->setAutomaticCreateAttributes(
-     *     new Robots(),
+     *     new Invoices(),
      *     [
      *         "created_at" => true,
      *     ]
@@ -672,7 +675,7 @@ abstract class MetaData implements \Phalcon\Di\InjectionAwareInterface, \Phalcon
      *
      * ```php
      * $metaData->setAutomaticUpdateAttributes(
-     *     new Robots(),
+     *     new Invoices(),
      *     [
      *         "modified_at" => true,
      *     ]
@@ -702,7 +705,7 @@ abstract class MetaData implements \Phalcon\Di\InjectionAwareInterface, \Phalcon
      *
      * ```php
      * $metaData->setEmptyStringAttributes(
-     *     new Robots(),
+     *     new Invoices(),
      *     [
      *         "name" => true,
      *     ]
@@ -744,7 +747,7 @@ abstract class MetaData implements \Phalcon\Di\InjectionAwareInterface, \Phalcon
      * ```php
      * print_r(
      *     $metaData->writeColumnMapIndex(
-     *         new Robots(),
+     *         new Invoices(),
      *         MetaData::MODELS_REVERSE_COLUMN_MAP,
      *         [
      *             "leName" => "name",
@@ -759,17 +762,6 @@ abstract class MetaData implements \Phalcon\Di\InjectionAwareInterface, \Phalcon
      * @return void
      */
     final public function writeMetaDataIndex(\Phalcon\Mvc\ModelInterface $model, int $index, $data): void
-    {
-    }
-
-    /**
-     * @todo Remove this when we get traits
-     * @param array $collection
-     * @param mixed $index
-     * @param mixed $defaultValue
-     * @return mixed
-     */
-    protected function getArrVal(array $collection, $index, $defaultValue = null): mixed
     {
     }
 

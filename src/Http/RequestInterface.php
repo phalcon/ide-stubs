@@ -325,9 +325,9 @@ interface RequestInterface
      * Gets attached files as Phalcon\Http\Request\FileInterface compatible
      * instances
      *
+     * @return FileInterface[]
      * @param bool $onlySuccessful
      * @param bool $namedKeys
-     * @return array|\Phalcon\Http\Request\FileInterface[]
      */
     public function getUploadedFiles(bool $onlySuccessful = false, bool $namedKeys = false): array;
 

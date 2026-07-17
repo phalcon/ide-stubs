@@ -51,9 +51,9 @@ use Phalcon\Db\Exceptions\InvalidIndexWhere;
  *     ]
  * );
  *
- * $connection->addIndex("robots", null, $unique);
- * $connection->addIndex("robots", null, $primary);
- * $connection->addIndex("robots", null, $hidden);
+ * $connection->addIndex("co_invoices", null, $unique);
+ * $connection->addIndex("co_invoices", null, $primary);
+ * $connection->addIndex("co_invoices", null, $hidden);
  * ```
  */
 class Index implements \Phalcon\Db\IndexInterface

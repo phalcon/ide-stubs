@@ -72,7 +72,7 @@ interface Manager
      * @param string $actions
      * @return self
      */
-    public function except(string $actions): self;
+    public function except(string ...$actions): self;
 
     /**
      * Returns the active access gate, or null when none has been activated -
@@ -128,7 +128,7 @@ interface Manager
      * @param string $actions
      * @return self
      */
-    public function only(string $actions): self;
+    public function only(string ...$actions): self;
 
     /**
      * @param \Phalcon\Contracts\Auth\Access\Access $access

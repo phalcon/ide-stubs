@@ -9,83 +9,26 @@
  */
 namespace Phalcon\Support\Helper\Str;
 
+use Phalcon\Traits\Support\Helper\Str\EndsWithTrait;
+use Phalcon\Traits\Support\Helper\Str\InterpolateTrait;
+use Phalcon\Traits\Support\Helper\Str\LowerTrait;
+use Phalcon\Traits\Support\Helper\Str\StartsWithTrait;
+use Phalcon\Traits\Support\Helper\Str\UpperTrait;
+
 /**
- * Abstract class offering methods to help with the Str namespace. This can
- * be moved to a trait once Zephir supports it.
- *
- * This base exists only for the `Str` helper hierarchy; it is not a general
- * base class. New code that needs these routines should compose the relevant
- * invokable helper (for example `Str\Interpolate`) rather than extending it.
+ * Abstract class offering methods to help with the Str namespace.
  *
  * @internal
  *
- * @todo move to trait when there is support for it
+ * @todo Remove in v7. Kept only for backwards compatibility; compose the
+ *       individual Phalcon\Traits\Support\Helper\Str\ traits directly instead
+ *       of extending this.
  */
 abstract class AbstractStr
 {
-    /**
-     * Check if a string ends with a given string
-     *
-     * @param string $haystack
-     * @param string $needle
-     * @param bool   $ignoreCase
-     *
-     * @return bool
-     */
-    protected function toEndsWith(string $haystack, string $needle, bool $ignoreCase = true): bool
-    {
-    }
-
-    /**
-     * Interpolates context values into the message placeholders
-     *
-     * @see https://www.php-fig.org/psr/psr-3/ Section 1.2 Message
-     *
-     * @param string $input
-     * @param array  $context
-     * @param string $left
-     * @param string $right
-     *
-     * @return string
-     */
-    protected function toInterpolate(string $input, array $context = [], string $left = '%', string $right = '%'): string
-    {
-    }
-
-    /**
-     * Lowercases a string using mbstring
-     *
-     * @param string $text
-     * @param string $encoding
-     *
-     * @return string
-     */
-    protected function toLower(string $text, string $encoding = 'UTF-8'): string
-    {
-    }
-
-    /**
-     * Check if a string starts with a given string
-     *
-     * @param string $haystack
-     * @param string $needle
-     * @param bool   $ignoreCase
-     *
-     * @return bool
-     */
-    protected function toStartsWith(string $haystack, string $needle, bool $ignoreCase = true): bool
-    {
-    }
-
-    /**
-     * Uppercases a string using mbstring
-     *
-     * @param string $text
-     * @param string $encoding
-     *
-     * @return string
-     */
-    protected function toUpper(string $text, string $encoding = 'UTF-8'): string
-    {
-    }
+    use \Phalcon\Traits\Support\Helper\Str\EndsWithTrait;
+    use \Phalcon\Traits\Support\Helper\Str\InterpolateTrait;
+    use \Phalcon\Traits\Support\Helper\Str\LowerTrait;
+    use \Phalcon\Traits\Support\Helper\Str\StartsWithTrait;
+    use \Phalcon\Traits\Support\Helper\Str\UpperTrait;
 }

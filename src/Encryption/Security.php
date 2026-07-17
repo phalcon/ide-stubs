@@ -17,6 +17,7 @@ use Phalcon\Encryption\Security\Exception;
 use Phalcon\Encryption\Security\Exceptions\UnknownHashAlgorithm;
 use Phalcon\Encryption\Security\Random;
 use Phalcon\Session\ManagerInterface as SessionInterface;
+use Phalcon\Traits\Php\HashTrait;
 
 /**
  * This component provides a set of functions to improve the security in Phalcon
@@ -37,6 +38,8 @@ use Phalcon\Session\ManagerInterface as SessionInterface;
  */
 class Security extends AbstractInjectionAware implements SecurityContract
 {
+    use \Phalcon\Traits\Php\HashTrait;
+
     /**
      * @var int
      */

@@ -9,6 +9,8 @@
  */
 namespace Phalcon\Storage\Serializer;
 
+use Phalcon\Traits\Php\IgbinaryTrait;
+
 /**
  * This file is part of the Phalcon Framework.
  *
@@ -19,6 +21,10 @@ namespace Phalcon\Storage\Serializer;
  */
 class Igbinary extends \Phalcon\Storage\Serializer\AbstractSerializer
 {
+    use \Phalcon\Traits\Php\IgbinaryTrait;
+
+
+
     /**
      * Serializes data
      *
@@ -58,17 +64,6 @@ class Igbinary extends \Phalcon\Storage\Serializer\AbstractSerializer
      * @return mixed|false
      */
     protected function doUnserialize($value)
-    {
-    }
-
-    /**
-     * Wrapper for `igbinary_serialize`
-     *
-     * @param mixed $value
-     *
-     * @return string|null
-     */
-    protected function phpIgbinarySerialize($value): string|null
     {
     }
 }

@@ -98,6 +98,11 @@ class Token
     }
 
     /**
+     * Validate the token against the claims registered in the validator.
+     *
+     * Only claims that have a value in the validator are checked. A claim left
+     * as null expresses no expectation and is skipped.
+     *
      * @param Validator $validator
      *
      * @return array

@@ -25,6 +25,10 @@ use Phalcon\Encryption\Crypt\Exception\MissingOpensslExtension;
 use Phalcon\Encryption\Crypt\Exception\RandomBytesGenerationFailed;
 use Phalcon\Encryption\Crypt\Exception\UnsupportedAlgorithm;
 use Phalcon\Encryption\Crypt\PadFactory;
+use Phalcon\Traits\Php\Base64Trait;
+use Phalcon\Traits\Php\HashTrait;
+use Phalcon\Traits\Php\InfoTrait;
+use Phalcon\Traits\Php\OpensslTrait;
 
 /**
  * Provides encryption capabilities to Phalcon applications.
@@ -47,6 +51,11 @@ use Phalcon\Encryption\Crypt\PadFactory;
  */
 class Crypt implements \Phalcon\Encryption\Crypt\CryptInterface
 {
+    use \Phalcon\Traits\Php\Base64Trait;
+    use \Phalcon\Traits\Php\HashTrait;
+    use \Phalcon\Traits\Php\InfoTrait;
+    use \Phalcon\Traits\Php\OpensslTrait;
+
     /**
      * @var string
      */
@@ -581,30 +590,6 @@ class Crypt implements \Phalcon\Encryption\Crypt\CryptInterface
      * @return string
      */
     private function getMode(): string
-    {
-    }
-
-    /**
-     * @todo to be removed when we get traits
-     * @param string $name
-     * @return bool
-     */
-    protected function phpFunctionExists(string $name): bool
-    {
-    }
-
-    /**
-     * @param string $cipher
-     * @return int|bool
-     */
-    protected function phpOpensslCipherIvLength(string $cipher): int|bool
-    {
-    }
-
-    /**
-     * @param int $length
-     */
-    protected function phpOpensslRandomPseudoBytes(int $length)
     {
     }
 }

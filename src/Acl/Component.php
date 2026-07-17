@@ -14,22 +14,8 @@ use Phalcon\Acl\Exceptions\ForbiddenWildcard;
 /**
  * This class defines component entity and its description
  */
-class Component implements \Phalcon\Acl\ComponentInterface
+class Component extends \Phalcon\Acl\AbstractElement implements \Phalcon\Acl\ComponentInterface
 {
-    /**
-     * Component description
-     *
-     * @var string | null
-     */
-    private $description;
-
-    /**
-     * Component name
-     *
-     * @var string
-     */
-    private $name;
-
     /**
      * Phalcon\Acl\Component constructor
      *
@@ -37,27 +23,6 @@ class Component implements \Phalcon\Acl\ComponentInterface
      * @param string|null $description
      */
     public function __construct(string $name, ?string $description = null)
-    {
-    }
-
-    /**
-     * @return string
-     */
-    public function __toString(): string
-    {
-    }
-
-    /**
-     * @return string|null
-     */
-    public function getDescription(): string|null
-    {
-    }
-
-    /**
-     * @return string
-     */
-    public function getName(): string
     {
     }
 }

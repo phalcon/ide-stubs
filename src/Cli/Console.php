@@ -17,12 +17,16 @@ use Phalcon\Cli\Console\Exceptions\ModuleDefinitionPathNotFound;
 use Phalcon\Cli\Router\Route;
 use Phalcon\Events\ManagerInterface;
 use Phalcon\Mvc\ModuleDefinitionInterface;
+use Phalcon\Traits\Php\FileTrait;
 
 /**
  * This component allows to create CLI applications using Phalcon
  */
 class Console extends AbstractApplication
 {
+    use \Phalcon\Traits\Php\FileTrait;
+
+
     /**
      * @var array|string
      */

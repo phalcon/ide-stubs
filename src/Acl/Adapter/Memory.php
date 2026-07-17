@@ -365,6 +365,9 @@ class Memory extends \Phalcon\Acl\Adapter\AbstractAdapter
     /**
      * Returns the latest key used to acquire access
      *
+     * @deprecated Relies on the internal "role!component!access" encoding,
+     *             which will be removed in v7. Use getActiveRole(),
+     *             getActiveComponent() and getActiveAccess() instead.
      * @return string|null
      */
     public function getActiveKey(): string|null
@@ -523,6 +526,24 @@ class Memory extends \Phalcon\Acl\Adapter\AbstractAdapter
      * @return void
      */
     private function checkExists(array $collection, string $element, string $elementName, string $suffix = 'ACL'): void
+    {
+    }
+
+    /**
+     * Invokes a callable rule, binding the role/component/user objects to the
+     * closure parameters by type and enforcing its arity.
+     *
+     * @param mixed $funcAccess
+     * @param int $haveAccess
+     * @param mixed $parameters
+     * @param mixed $roleObject
+     * @param mixed $componentObject
+     * @param string $roleName
+     * @param string $componentName
+     * @param string $access
+     * @return bool
+     */
+    private function invokeRule($funcAccess, int $haveAccess, $parameters, $roleObject, $componentObject, string $roleName, string $componentName, string $access): bool
     {
     }
 

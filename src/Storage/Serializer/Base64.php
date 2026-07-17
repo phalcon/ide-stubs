@@ -11,6 +11,7 @@ namespace Phalcon\Storage\Serializer;
 
 use Phalcon\Storage\Serializer\Exceptions\InvalidSerializationInput;
 use Phalcon\Storage\Serializer\Exceptions\InvalidUnserializationInput;
+use Phalcon\Traits\Php\Base64Trait;
 
 /**
  * This file is part of the Phalcon Framework.
@@ -22,6 +23,10 @@ use Phalcon\Storage\Serializer\Exceptions\InvalidUnserializationInput;
  */
 class Base64 extends \Phalcon\Storage\Serializer\AbstractSerializer
 {
+    use \Phalcon\Traits\Php\Base64Trait;
+
+
+
     /**
      * Serializes data
      *
@@ -40,18 +45,6 @@ class Base64 extends \Phalcon\Storage\Serializer\AbstractSerializer
      * @return void
      */
     public function unserialize($data): void
-    {
-    }
-
-    /**
-     * Wrapper for base64_decode
-     *
-     * @param string $input
-     * @param bool   $strict
-     *
-     * @return string|false
-     */
-    protected function phpBase64Decode(string $input, bool $strict = false)
     {
     }
 }

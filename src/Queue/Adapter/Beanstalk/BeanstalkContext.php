@@ -11,6 +11,7 @@ namespace Phalcon\Queue\Adapter\Beanstalk;
 
 use Phalcon\Contracts\Queue\Consumer as ConsumerInterface;
 use Phalcon\Contracts\Queue\Destination as DestinationInterface;
+use Phalcon\Contracts\Queue\Inspectable;
 use Phalcon\Contracts\Queue\Message as MessageInterface;
 use Phalcon\Contracts\Queue\Producer as ProducerInterface;
 use Phalcon\Contracts\Queue\Queue as QueueInterface;
@@ -25,7 +26,7 @@ use Phalcon\Queue\Adapter\QueueDestinationGuard;
  * release, bury or touch a job. The destination factories come from
  * AbstractContext.
  */
-class BeanstalkContext extends AbstractContext
+class BeanstalkContext extends AbstractContext implements \Phalcon\Contracts\Queue\Inspectable
 {
     /**
      * Shared connection used by producers and purges.
@@ -110,6 +111,26 @@ class BeanstalkContext extends AbstractContext
      * @return SubscriptionConsumerInterface
      */
     public function createSubscriptionConsumer(): SubscriptionConsumerInterface
+    {
+    }
+
+    /**
+     * Returns the Beanstalkd `stats-tube` fields for the queue's tube as an
+     * associative array, with numeric values cast to int (the `name` field is
+     * kept as a string). When the tube exists the result is the full Beanstalkd
+     * stats-tube field set (current-jobs-, total-jobs, the `cmd-` counters and
+     * tube-configuration fields).
+     *
+     * The `current-jobs-` backlog keys are always present: an unknown tube
+     * (no jobs, not used or watched) has zero backlog, so those keys are
+     * returned at zero. This keeps the backlog shape independent of transient
+     * watcher state. Runs on a fresh short-lived connection (like purgeQueue)
+     * so the read never shares the producer's socket.
+     *
+     * @param \Phalcon\Contracts\Queue\Queue $queue
+     * @return array
+     */
+    public function getStats(\Phalcon\Contracts\Queue\Queue $queue): array
     {
     }
 

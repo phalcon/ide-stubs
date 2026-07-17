@@ -79,7 +79,7 @@ class Row extends \stdClass implements \Phalcon\Mvc\EntityInterface, \Phalcon\Mv
      * Reads an attribute value by its name
      *
      * ```php
-     * echo $robot->readAttribute("name");
+     * echo $invoice->readAttribute("inv_title");
      * ```
      *
      * @return mixed
@@ -112,7 +112,7 @@ class Row extends \stdClass implements \Phalcon\Mvc\EntityInterface, \Phalcon\Mv
      * Writes an attribute value by its name
      *
      * ```php
-     * $robot->writeAttribute("name", "Rosey");
+     * $invoice->writeAttribute("inv_title", "Test Invoice");
      * ```
      *
      * @param mixed $value

@@ -9,15 +9,15 @@
  */
 namespace Phalcon\Acl;
 
+use Phalcon\Contracts\Acl\ComponentAware as ComponentAwareContract;
+
 /**
  * Interface for classes which could be used in allow method as RESOURCE
+ *
+ * @psalm-suppress DeprecatedInterface
+ * @deprecated Will be removed in a future major release.
+ *             Use {@see \Phalcon\Contracts\Acl\ComponentAware} instead.
  */
-interface ComponentAwareInterface
+interface ComponentAwareInterface extends ComponentAwareContract
 {
-    /**
-     * Returns component name
-     *
-     * @return string
-     */
-    public function getComponentName(): string;
 }

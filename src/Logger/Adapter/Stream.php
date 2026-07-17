@@ -12,6 +12,7 @@ namespace Phalcon\Logger\Adapter;
 use Phalcon\Logger\Adapter\Exceptions\FileOpenFailed;
 use Phalcon\Logger\Adapter\Exceptions\InvalidStreamMode;
 use Phalcon\Logger\Item;
+use Phalcon\Traits\Php\FileTrait;
 
 /**
  * Phalcon\Logger\Adapter\Stream
@@ -34,6 +35,9 @@ use Phalcon\Logger\Item;
  */
 class Stream extends \Phalcon\Logger\Adapter\AbstractAdapter
 {
+    use \Phalcon\Traits\Php\FileTrait;
+
+
     /**
      * Stream handler resource
      *
@@ -92,33 +96,6 @@ class Stream extends \Phalcon\Logger\Adapter\AbstractAdapter
      * @return void
      */
     public function process(\Phalcon\Logger\Item $item): void
-    {
-    }
-
-    /**
-     * @todo to be removed when we get traits
-     * @param mixed $handle
-     * @return bool
-     */
-    protected function phpFclose($handle): bool
-    {
-    }
-
-    /**
-     * @todo to be removed when we get traits
-     * @param string $filename
-     * @param string $mode
-     */
-    protected function phpFopen(string $filename, string $mode)
-    {
-    }
-
-    /**
-     * @todo to be removed when we get traits
-     * @param mixed $handle
-     * @param string $message
-     */
-    protected function phpFwrite($handle, string $message)
     {
     }
 }

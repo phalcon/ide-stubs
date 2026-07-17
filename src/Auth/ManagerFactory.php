@@ -11,6 +11,8 @@ namespace Phalcon\Auth;
 
 use Phalcon\Auth\Access\AccessLocator;
 use Phalcon\Auth\Adapter\AdapterLocator;
+use Phalcon\Auth\Exceptions\UnknownAdapter;
+use Phalcon\Auth\Exceptions\UnknownGuard;
 use Phalcon\Auth\Guard\GuardLocator;
 use Phalcon\Auth\Internal\ContainerResolver;
 use Phalcon\Auth\Internal\Options;

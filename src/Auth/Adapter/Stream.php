@@ -19,6 +19,7 @@ use Phalcon\Auth\Exceptions\FileNotValidJson;
 use Phalcon\Auth\Internal\Options;
 use Phalcon\Contracts\Encryption\Security\Security;
 use Phalcon\Support\Helper\Json\Decode;
+use Phalcon\Traits\Php\FileTrait;
 
 /**
  * JSON file-backed adapter.
@@ -32,6 +33,10 @@ use Phalcon\Support\Helper\Json\Decode;
  */
 class Stream extends \Phalcon\Auth\Adapter\AbstractArrayAdapter
 {
+    use \Phalcon\Traits\Php\FileTrait;
+
+
+
     /**
      * @param \Phalcon\Contracts\Encryption\Security\Security $hasher
      * @param \Phalcon\Auth\Adapter\Config\StreamAdapterConfig $config
@@ -59,21 +64,6 @@ class Stream extends \Phalcon\Auth\Adapter\AbstractArrayAdapter
      * @return array
      */
     protected function loadUsers(): array
-    {
-    }
-
-    /**
-     * @param string $filename
-     * @return bool
-     */
-    protected function phpFileExists(string $filename): bool
-    {
-    }
-
-    /**
-     * @param string $filename
-     */
-    protected function phpFileGetContents(string $filename)
     {
     }
 }

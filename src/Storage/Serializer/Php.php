@@ -10,6 +10,7 @@
 namespace Phalcon\Storage\Serializer;
 
 use Phalcon\Storage\Serializer\Exceptions\InvalidUnserializationInput;
+use Phalcon\Traits\Php\SerializeTrait;
 
 /**
  * This file is part of the Phalcon Framework.
@@ -21,6 +22,10 @@ use Phalcon\Storage\Serializer\Exceptions\InvalidUnserializationInput;
  */
 class Php extends \Phalcon\Storage\Serializer\AbstractSerializer
 {
+    use \Phalcon\Traits\Php\SerializeTrait;
+
+
+
     /**
      * Serializes data
      *
@@ -37,16 +42,6 @@ class Php extends \Phalcon\Storage\Serializer\AbstractSerializer
      * @return void
      */
     public function unserialize($data): void
-    {
-    }
-
-    /**
-     * @param string $data
-     * @param array  $options
-     *
-     * @return mixed
-     */
-    private function phpUnserialize(string $data, array $options = []): mixed
     {
     }
 }

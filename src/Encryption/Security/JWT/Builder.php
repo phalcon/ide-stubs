@@ -23,6 +23,7 @@ use Phalcon\Encryption\Security\JWT\Token\Token;
 use Phalcon\Support\Collection;
 use Phalcon\Support\Collection\CollectionInterface;
 use Phalcon\Support\Helper\Json\Encode;
+use Phalcon\Traits\Php\Base64Trait;
 
 /**
  * JWT Builder
@@ -31,6 +32,9 @@ use Phalcon\Support\Helper\Json\Encode;
  */
 class Builder
 {
+    use \Phalcon\Traits\Php\Base64Trait;
+
+
     /**
      * @var CollectionInterface
      */
@@ -332,15 +336,6 @@ class Builder
      * @return Builder
      */
     protected function setClaim(string $name, $value): Builder
-    {
-    }
-
-    /**
-     * @todo This will be removed when traits are introduced
-     * @param string $input
-     * @return string
-     */
-    private function encodeUrl(string $input): string
     {
     }
 }

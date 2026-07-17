@@ -135,6 +135,11 @@ class Builder implements \Phalcon\Mvc\Model\Query\BuilderInterface, \Phalcon\Di\
     protected $order;
 
     /**
+     * @var string
+     */
+    protected $resultsetRowClass = '';
+
+    /**
      * @var bool
      */
     protected $sharedLock = false;
@@ -153,14 +158,14 @@ class Builder implements \Phalcon\Mvc\Model\Query\BuilderInterface, \Phalcon\Di\
      * Add a model to take part of the query
      *
      * ```php
-     * // Load data from models Robots
+     * // Load data from models Invoices
      * $builder->addFrom(
-     *     Robots::class
+     *     Invoices::class
      * );
      *
-     * // Load data from model 'Robots' using 'r' as alias in PHQL
+     * // Load data from model 'Invoices' using 'r' as alias in PHQL
      * $builder->addFrom(
-     *     Robots::class,
+     *     Invoices::class,
      *     "r"
      * );
      * ```
@@ -177,10 +182,10 @@ class Builder implements \Phalcon\Mvc\Model\Query\BuilderInterface, \Phalcon\Di\
      * Appends a condition to the current HAVING conditions clause using a AND operator
      *
      * ```php
-     * $builder->andHaving("SUM(Robots.price) > 0");
+     * $builder->andHaving("SUM(Invoices.inv_total) > 0");
      *
      * $builder->andHaving(
-     *     "SUM(Robots.price) > :sum:",
+     *     "SUM(Invoices.inv_total) > :sum:",
      *     [
      *         "sum" => 100,
      *     ]
@@ -234,7 +239,7 @@ class Builder implements \Phalcon\Mvc\Model\Query\BuilderInterface, \Phalcon\Di\
      * Appends a BETWEEN condition to the current HAVING conditions clause
      *
      * ```php
-     * $builder->betweenHaving("SUM(Robots.price)", 100.25, 200.50);
+     * $builder->betweenHaving("SUM(Invoices.inv_total)", 100.25, 200.50);
      * ```
      *
      * @param string $expr
@@ -350,20 +355,20 @@ class Builder implements \Phalcon\Mvc\Model\Query\BuilderInterface, \Phalcon\Di\
      *
      * ```php
      * $builder->from(
-     *     Robots::class
+     *     Invoices::class
      * );
      *
      * $builder->from(
      *     [
-     *         Robots::class,
-     *         RobotsParts::class,
+     *         Invoices::class,
+     *         OrdersProducts::class,
      *     ]
      * );
      *
      * $builder->from(
      *     [
-     *         "r"  => Robots::class,
-     *         "rp" => RobotsParts::class,
+     *         "r"  => Invoices::class,
+     *         "rp" => OrdersProducts::class,
      *     ]
      * );
      * ```
@@ -511,6 +516,17 @@ class Builder implements \Phalcon\Mvc\Model\Query\BuilderInterface, \Phalcon\Di\
     }
 
     /**
+     * Returns the class that will be used to hydrate rows that are not mapped
+     * to a model (custom columns/joins). An empty string means the default
+     * Phalcon\Mvc\Model\Row is used.
+     *
+     * @return string
+     */
+    public function getResultsetRowClass(): string
+    {
+    }
+
+    /**
      * Return the conditions for the query
      *
      * @return array|string
@@ -525,7 +541,7 @@ class Builder implements \Phalcon\Mvc\Model\Query\BuilderInterface, \Phalcon\Di\
      * ```php
      * $builder->groupBy(
      *     [
-     *         "Robots.name",
+     *         "Invoices.inv_title",
      *     ]
      * );
      * ```
@@ -541,10 +557,10 @@ class Builder implements \Phalcon\Mvc\Model\Query\BuilderInterface, \Phalcon\Di\
      * Sets the HAVING condition clause
      *
      * ```php
-     * $builder->having("SUM(Robots.price) > 0");
+     * $builder->having("SUM(Invoices.inv_total) > 0");
      *
      * $builder->having(
-     *     "SUM(Robots.price) > :sum:",
+     *     "SUM(Invoices.inv_total) > :sum:",
      *     [
      *         "sum" => 100,
      *     ]
@@ -564,7 +580,7 @@ class Builder implements \Phalcon\Mvc\Model\Query\BuilderInterface, \Phalcon\Di\
      * Appends an IN condition to the current HAVING conditions clause
      *
      * ```php
-     * $builder->inHaving("SUM(Robots.price)", [100, 200]);
+     * $builder->inHaving("SUM(Invoices.inv_total)", [100, 200]);
      * ```
      *
      * @param string $expr
@@ -599,21 +615,21 @@ class Builder implements \Phalcon\Mvc\Model\Query\BuilderInterface, \Phalcon\Di\
      * Adds an INNER join to the query
      *
      * ```php
-     * // Inner Join model 'Robots' with automatic conditions and alias
+     * // Inner Join model 'Invoices' with automatic conditions and alias
      * $builder->innerJoin(
-     *     Robots::class
+     *     Invoices::class
      * );
      *
-     * // Inner Join model 'Robots' specifying conditions
+     * // Inner Join model 'Invoices' specifying conditions
      * $builder->innerJoin(
-     *     Robots::class,
-     *     "Robots.id = RobotsParts.robots_id"
+     *     Invoices::class,
+     *     "Invoices.inv_id = OrdersProducts.oxp_ord_id"
      * );
      *
-     * // Inner Join model 'Robots' specifying conditions and alias
+     * // Inner Join model 'Invoices' specifying conditions and alias
      * $builder->innerJoin(
-     *     Robots::class,
-     *     "r.id = RobotsParts.robots_id",
+     *     Invoices::class,
+     *     "r.inv_id = OrdersProducts.oxp_ord_id",
      *     "r"
      * );
      * ```
@@ -631,28 +647,28 @@ class Builder implements \Phalcon\Mvc\Model\Query\BuilderInterface, \Phalcon\Di\
      * Adds an :type: join (by default type - INNER) to the query
      *
      * ```php
-     * // Inner Join model 'Robots' with automatic conditions and alias
+     * // Inner Join model 'Invoices' with automatic conditions and alias
      * $builder->join(
-     *     Robots::class
+     *     Invoices::class
      * );
      *
-     * // Inner Join model 'Robots' specifying conditions
+     * // Inner Join model 'Invoices' specifying conditions
      * $builder->join(
-     *     Robots::class,
-     *     "Robots.id = RobotsParts.robots_id"
+     *     Invoices::class,
+     *     "Invoices.inv_id = OrdersProducts.oxp_ord_id"
      * );
      *
-     * // Inner Join model 'Robots' specifying conditions and alias
+     * // Inner Join model 'Invoices' specifying conditions and alias
      * $builder->join(
-     *     Robots::class,
-     *     "r.id = RobotsParts.robots_id",
+     *     Invoices::class,
+     *     "r.inv_id = OrdersProducts.oxp_ord_id",
      *     "r"
      * );
      *
-     * // Left Join model 'Robots' specifying conditions, alias and type of join
+     * // Left Join model 'Invoices' specifying conditions, alias and type of join
      * $builder->join(
-     *     Robots::class,
-     *     "r.id = RobotsParts.robots_id",
+     *     Invoices::class,
+     *     "r.inv_id = OrdersProducts.oxp_ord_id",
      *     "r",
      *     "LEFT"
      * );
@@ -673,8 +689,8 @@ class Builder implements \Phalcon\Mvc\Model\Query\BuilderInterface, \Phalcon\Di\
      *
      * ```php
      * $builder->leftJoin(
-     *     Robots::class,
-     *     "r.id = RobotsParts.robots_id",
+     *     Invoices::class,
+     *     "r.inv_id = OrdersProducts.oxp_ord_id",
      *     "r"
      * );
      * ```
@@ -709,7 +725,7 @@ class Builder implements \Phalcon\Mvc\Model\Query\BuilderInterface, \Phalcon\Di\
      * Appends a NOT BETWEEN condition to the current HAVING conditions clause
      *
      * ```php
-     * $builder->notBetweenHaving("SUM(Robots.price)", 100.25, 200.50);
+     * $builder->notBetweenHaving("SUM(Invoices.inv_total)", 100.25, 200.50);
      * ```
      *
      * @param string $expr
@@ -743,7 +759,7 @@ class Builder implements \Phalcon\Mvc\Model\Query\BuilderInterface, \Phalcon\Di\
      * Appends a NOT IN condition to the current HAVING conditions clause
      *
      * ```php
-     * $builder->notInHaving("SUM(Robots.price)", [100, 200]);
+     * $builder->notInHaving("SUM(Invoices.inv_total)", [100, 200]);
      * ```
      *
      * @param string $expr
@@ -789,10 +805,10 @@ class Builder implements \Phalcon\Mvc\Model\Query\BuilderInterface, \Phalcon\Di\
      * Appends a condition to the current HAVING conditions clause using an OR operator
      *
      * ```php
-     * $builder->orHaving("SUM(Robots.price) > 0");
+     * $builder->orHaving("SUM(Invoices.inv_total) > 0");
      *
      * $builder->orHaving(
-     *     "SUM(Robots.price) > :sum:",
+     *     "SUM(Invoices.inv_total) > :sum:",
      *     [
      *         "sum" => 100,
      *     ]
@@ -836,9 +852,9 @@ class Builder implements \Phalcon\Mvc\Model\Query\BuilderInterface, \Phalcon\Di\
      * Sets an ORDER BY condition clause
      *
      * ```php
-     * $builder->orderBy("Robots.name");
-     * $builder->orderBy(["1", "Robots.name"]);
-     * $builder->orderBy(["Robots.name DESC"]);
+     * $builder->orderBy("Invoices.inv_title");
+     * $builder->orderBy(["1", "Invoices.inv_title"]);
+     * $builder->orderBy(["Invoices.inv_title DESC"]);
      * ```
      *
      * @param array|string $orderBy
@@ -853,8 +869,8 @@ class Builder implements \Phalcon\Mvc\Model\Query\BuilderInterface, \Phalcon\Di\
      *
      * ```php
      * $builder->rightJoin(
-     *     Robots::class,
-     *     "r.id = RobotsParts.robots_id",
+     *     Invoices::class,
+     *     "r.inv_id = OrdersProducts.oxp_ord_id",
      *     "r"
      * );
      * ```
@@ -897,6 +913,19 @@ class Builder implements \Phalcon\Mvc\Model\Query\BuilderInterface, \Phalcon\Di\
      * @return void
      */
     public function setDI(\Phalcon\Di\DiInterface $container): void
+    {
+    }
+
+    /**
+     * Sets the class used to hydrate rows that are not mapped to a model
+     * (custom columns/joins). The class must be a subclass of
+     * Phalcon\Mvc\Model\Row. Validation is performed by the underlying
+     * Phalcon\Mvc\Model\Query when the query is built.
+     *
+     * @param string $resultsetRowClass
+     * @return BuilderInterface
+     */
+    public function setResultsetRowClass(string $resultsetRowClass): BuilderInterface
     {
     }
 

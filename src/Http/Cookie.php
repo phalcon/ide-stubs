@@ -20,13 +20,19 @@ use Phalcon\Http\Cookie\Exceptions\CryptInterfaceRequired;
 use Phalcon\Http\Cookie\Exceptions\CryptServiceUnavailable;
 use Phalcon\Http\Cookie\Exceptions\FilterServiceUnavailable;
 use Phalcon\Http\Response\Exception;
+use Phalcon\Http\Traits\EncryptionAwareTrait;
 use Phalcon\Session\ManagerInterface as SessionManagerInterface;
+use Phalcon\Traits\Support\Helper\Arr\GetTrait;
 
 /**
  * Provide OO wrappers to manage a HTTP cookie.
  */
 class Cookie extends AbstractInjectionAware implements \Phalcon\Http\Cookie\CookieInterface
 {
+    use \Phalcon\Http\Traits\EncryptionAwareTrait;
+    use \Phalcon\Traits\Support\Helper\Arr\GetTrait;
+
+
     /**
      * @var string
      */
@@ -83,11 +89,6 @@ class Cookie extends AbstractInjectionAware implements \Phalcon\Http\Cookie\Cook
      * @var string|null
      */
     protected $signKey = null;
-
-    /**
-     * @var bool
-     */
-    protected $useEncryption = false;
 
     /**
      * @var mixed|null
@@ -198,15 +199,6 @@ class Cookie extends AbstractInjectionAware implements \Phalcon\Http\Cookie\Cook
      * @return mixed
      */
     public function getValue($filters = null, $defaultValue = null): mixed
-    {
-    }
-
-    /**
-     * Check if the cookie is using implicit encryption
-     *
-     * @return bool
-     */
-    public function isUsingEncryption(): bool
     {
     }
 
@@ -339,17 +331,6 @@ class Cookie extends AbstractInjectionAware implements \Phalcon\Http\Cookie\Cook
      * @return void
      */
     protected function assertSignKeyIsLongEnough(string $signKey): void
-    {
-    }
-
-    /**
-     * @todo Remove this when we get traits
-     * @param array $collection
-     * @param mixed $index
-     * @param mixed $defaultValue
-     * @return mixed
-     */
-    private function getArrVal(array $collection, $index, $defaultValue = null): mixed
     {
     }
 

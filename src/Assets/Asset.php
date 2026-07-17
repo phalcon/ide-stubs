@@ -10,6 +10,10 @@
 namespace Phalcon\Assets;
 
 use Phalcon\Assets\Exceptions\CannotReadAsset;
+use Phalcon\Assets\Traits\AttributesTrait;
+use Phalcon\Assets\Traits\SourceTargetTrait;
+use Phalcon\Traits\Php\FileTrait;
+use Phalcon\Traits\Php\HashTrait;
 
 /**
  * Represents an asset
@@ -20,10 +24,11 @@ use Phalcon\Assets\Exceptions\CannotReadAsset;
  */
 class Asset implements \Phalcon\Assets\AssetInterface
 {
-    /**
-     * @var array
-     */
-    protected $attributes;
+    use \Phalcon\Assets\Traits\AttributesTrait;
+    use \Phalcon\Traits\Php\FileTrait;
+    use \Phalcon\Traits\Php\HashTrait;
+    use \Phalcon\Assets\Traits\SourceTargetTrait;
+
 
     /**
      * @var bool
@@ -36,29 +41,9 @@ class Asset implements \Phalcon\Assets\AssetInterface
     protected $filter;
 
     /**
-     * @var bool
-     */
-    protected $isLocal;
-
-    /**
      * @var string
      */
     protected $path;
-
-    /**
-     * @var string
-     */
-    protected $sourcePath;
-
-    /**
-     * @var string
-     */
-    protected $targetPath;
-
-    /**
-     * @var string
-     */
-    protected $targetUri;
 
     /**
      * @var string
@@ -93,15 +78,6 @@ class Asset implements \Phalcon\Assets\AssetInterface
      * @return string
      */
     public function getAssetKey(): string
-    {
-    }
-
-    /**
-     * Gets extra HTML attributes.
-     *
-     * @return array
-     */
-    public function getAttributes(): array
     {
     }
 
@@ -166,27 +142,6 @@ class Asset implements \Phalcon\Assets\AssetInterface
     /**
      * @return string
      */
-    public function getSourcePath(): string
-    {
-    }
-
-    /**
-     * @return string
-     */
-    public function getTargetPath(): string
-    {
-    }
-
-    /**
-     * @return string
-     */
-    public function getTargetUri(): string
-    {
-    }
-
-    /**
-     * @return string
-     */
     public function getType(): string
     {
     }
@@ -206,15 +161,6 @@ class Asset implements \Phalcon\Assets\AssetInterface
      * @return bool
      */
     public function isAutoVersion(): bool
-    {
-    }
-
-    /**
-     * Checks if the asset is local or not
-     *
-     * @return bool
-     */
-    public function isLocal(): bool
     {
     }
 
@@ -246,50 +192,6 @@ class Asset implements \Phalcon\Assets\AssetInterface
      * @return AssetInterface
      */
     public function setFilter(bool $filter): AssetInterface
-    {
-    }
-
-    /**
-     * Sets if the asset is local or external
-     *
-     * @param bool $flag
-     *
-     * @return AssetInterface
-     */
-    public function setIsLocal(bool $flag): AssetInterface
-    {
-    }
-
-    /**
-     * Sets the asset's source path
-     *
-     * @param string $sourcePath
-     *
-     * @return AssetInterface
-     */
-    public function setSourcePath(string $sourcePath): AssetInterface
-    {
-    }
-
-    /**
-     * Sets the asset's target path
-     *
-     * @param string $targetPath
-     *
-     * @return AssetInterface
-     */
-    public function setTargetPath(string $targetPath): AssetInterface
-    {
-    }
-
-    /**
-     * Sets a target uri for the generated HTML
-     *
-     * @param string $targetUri
-     *
-     * @return AssetInterface
-     */
-    public function setTargetUri(string $targetUri): AssetInterface
     {
     }
 
@@ -342,22 +244,6 @@ class Asset implements \Phalcon\Assets\AssetInterface
      * @return void
      */
     private function throwException(string $completePath): void
-    {
-    }
-
-    /**
-     * @todo to be removed when we get traits
-     * @param string $filename
-     * @return bool
-     */
-    protected function phpFileExists(string $filename): bool
-    {
-    }
-
-    /**
-     * @param string $filename
-     */
-    protected function phpFileGetContents(string $filename)
     {
     }
 }

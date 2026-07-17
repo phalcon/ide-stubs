@@ -13,6 +13,7 @@ use Phalcon\Messages\Message;
 use Phalcon\Filter\Validation;
 use Phalcon\Filter\Validation\AbstractValidator;
 use Phalcon\Filter\Validation\Exception;
+use Phalcon\Traits\Php\InfoTrait;
 
 /**
  * Validates that a string has the specified minimum constraints
@@ -62,6 +63,9 @@ use Phalcon\Filter\Validation\Exception;
  */
 class Min extends AbstractValidator
 {
+    use \Phalcon\Traits\Php\InfoTrait;
+
+
     protected $template = 'Field :field must be at least :min characters long';
 
     /**

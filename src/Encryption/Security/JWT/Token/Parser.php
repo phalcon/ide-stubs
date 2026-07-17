@@ -15,6 +15,7 @@ use Phalcon\Encryption\Security\JWT\Exceptions\InvalidHeader;
 use Phalcon\Encryption\Security\JWT\Exceptions\MalformedJwtString;
 use Phalcon\Encryption\Security\JWT\Exceptions\MissingJwtTypHeader;
 use Phalcon\Support\Helper\Json\Decode;
+use Phalcon\Traits\Php\Base64Trait;
 
 /**
  * Token Parser class.
@@ -25,6 +26,9 @@ use Phalcon\Support\Helper\Json\Decode;
  */
 class Parser
 {
+    use \Phalcon\Traits\Php\Base64Trait;
+
+
     /**
      * @var Decode
      */
@@ -90,15 +94,6 @@ class Parser
      * @return array
      */
     private function parseToken(string $token): array
-    {
-    }
-
-    /**
-     * @todo This will be removed when traits are introduced
-     * @param string $input
-     * @return string
-     */
-    private function decodeUrl(string $input): string
     {
     }
 }

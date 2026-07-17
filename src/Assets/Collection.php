@@ -12,21 +12,24 @@ namespace Phalcon\Assets;
 use ArrayIterator;
 use Countable;
 use IteratorAggregate;
+use Phalcon\Assets\Traits\AttributesTrait;
+use Phalcon\Assets\Traits\SourceTargetTrait;
+use Phalcon\Traits\Php\FileTrait;
 
 /**
  * Collection of asset objects
  */
 class Collection implements \Countable, \IteratorAggregate
 {
-    /**
-     * @var array
-     */
-    protected $assets = [];
+    use \Phalcon\Assets\Traits\AttributesTrait;
+    use \Phalcon\Traits\Php\FileTrait;
+    use \Phalcon\Assets\Traits\SourceTargetTrait;
+
 
     /**
      * @var array
      */
-    protected $attributes = [];
+    protected $assets = [];
 
     /**
      * Should version be determined from file modification time
@@ -48,11 +51,6 @@ class Collection implements \Countable, \IteratorAggregate
     /**
      * @var bool
      */
-    protected $isLocal = true;
-
-    /**
-     * @var bool
-     */
     protected $join = true;
 
     /**
@@ -61,24 +59,9 @@ class Collection implements \Countable, \IteratorAggregate
     protected $prefix = '';
 
     /**
-     * @var string
-     */
-    protected $sourcePath = '';
-
-    /**
      * @var bool
      */
     protected $targetIsLocal = true;
-
-    /**
-     * @var string
-     */
-    protected $targetPath = '';
-
-    /**
-     * @var string
-     */
-    protected $targetUri = '';
 
     /**
      * @var string
@@ -190,13 +173,6 @@ class Collection implements \Countable, \IteratorAggregate
     /**
      * @return array
      */
-    public function getAttributes(): array
-    {
-    }
-
-    /**
-     * @return array
-     */
     public function getCodes(): array
     {
     }
@@ -245,30 +221,9 @@ class Collection implements \Countable, \IteratorAggregate
     }
 
     /**
-     * @return string
-     */
-    public function getSourcePath(): string
-    {
-    }
-
-    /**
      * @return bool
      */
     public function getTargetIsLocal(): bool
-    {
-    }
-
-    /**
-     * @return string
-     */
-    public function getTargetPath(): string
-    {
-    }
-
-    /**
-     * @return string
-     */
-    public function getTargetUri(): string
     {
     }
 
@@ -308,13 +263,6 @@ class Collection implements \Countable, \IteratorAggregate
      * @return bool
      */
     public function isAutoVersion(): bool
-    {
-    }
-
-    /**
-     * @return bool
-     */
-    public function isLocal(): bool
     {
     }
 
@@ -359,16 +307,6 @@ class Collection implements \Countable, \IteratorAggregate
     }
 
     /**
-     * Sets if the collection uses local assets by default
-     *
-     * @param bool $flag
-     * @return static
-     */
-    public function setIsLocal(bool $flag): static
-    {
-    }
-
-    /**
      * Sets a common prefix for all the assets
      *
      * @param string $prefix
@@ -385,36 +323,6 @@ class Collection implements \Countable, \IteratorAggregate
      * @return static
      */
     public function setTargetIsLocal(bool $flag): static
-    {
-    }
-
-    /**
-     * Sets the target path of the file for the filtered/join output
-     *
-     * @param string $targetPath
-     * @return static
-     */
-    public function setTargetPath(string $targetPath): static
-    {
-    }
-
-    /**
-     * Sets a target uri for the generated HTML
-     *
-     * @param string $targetUri
-     * @return static
-     */
-    public function setTargetUri(string $targetUri): static
-    {
-    }
-
-    /**
-     * Sets a base source path for all the assets in this collection
-     *
-     * @param string $sourcePath
-     * @return static
-     */
-    public function setSourcePath(string $sourcePath): static
     {
     }
 

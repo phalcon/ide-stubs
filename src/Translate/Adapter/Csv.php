@@ -9,6 +9,7 @@
  */
 namespace Phalcon\Translate\Adapter;
 
+use Phalcon\Traits\Php\FileTrait;
 use Phalcon\Translate\Exception;
 use Phalcon\Translate\Exceptions\MissingRequiredParameter;
 use Phalcon\Translate\Exceptions\FileOpenError;
@@ -24,6 +25,9 @@ use Phalcon\Translate\InterpolatorFactory;
  */
 class Csv extends \Phalcon\Translate\Adapter\AbstractAdapter
 {
+    use \Phalcon\Traits\Php\FileTrait;
+
+
     /**
      * @var array
      */
@@ -85,15 +89,6 @@ class Csv extends \Phalcon\Translate\Adapter\AbstractAdapter
      * @return array
      */
     public function toArray(): array
-    {
-    }
-
-    /**
-     * @todo to be removed when we get traits
-     * @param string $filename
-     * @param string $mode
-     */
-    protected function phpFopen(string $filename, string $mode)
     {
     }
 

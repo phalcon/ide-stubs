@@ -50,6 +50,7 @@ use Phalcon\Mvc\Model\Exceptions\RelationRequiresObjectOrArray;
 use Phalcon\Mvc\Model\Exceptions\SnapshotsDisabled;
 use Phalcon\Mvc\Model\Exceptions\StaticMethodRequiresOneArgument;
 use Phalcon\Mvc\Model\Exceptions\UpdateSnapshotDisabled;
+use Phalcon\Mvc\Model\Hydration\CloneResultMapHydrate;
 use Phalcon\Mvc\Model\ManagerInterface;
 use Phalcon\Mvc\Model\MetaDataInterface;
 use Phalcon\Mvc\Model\Query;
@@ -68,7 +69,8 @@ use Phalcon\Filter\Validation\ValidationInterface;
 use Phalcon\Support\Collection;
 use Phalcon\Support\Collection\CollectionInterface;
 use Phalcon\Support\Settings;
-use Serializable;
+use ReflectionClass;
+use ReflectionProperty;
 
 /**
  * Phalcon\Mvc\Model
@@ -88,22 +90,22 @@ use Serializable;
  * is also easy to use.
  *
  * ```php
- * $robot = new Robots();
+ * $invoice = new Invoices();
  *
- * $robot->type = "mechanical";
- * $robot->name = "Astro Boy";
- * $robot->year = 1952;
+ * $invoice->inv_status_flag = "mechanical";
+ * $invoice->inv_title = "Test Invoice";
+ * $invoice->inv_total = 1952;
  *
- * if ($robot->save() === false) {
- *     echo "Umh, We can store robots: ";
+ * if ($invoice->save() === false) {
+ *     echo "Umh, We can store invoices: ";
  *
- *     $messages = $robot->getMessages();
+ *     $messages = $invoice->getMessages();
  *
  *     foreach ($messages as $message) {
  *         echo $message;
  *     }
  * } else {
- *     echo "Great, a new robot was saved successfully!";
+ *     echo "Great, a new invoice was saved successfully!";
  * }
  * ```
  *
@@ -124,7 +126,7 @@ use Serializable;
  *
  * @template T of static
  */
-abstract class Model extends AbstractInjectionAware implements \Phalcon\Mvc\EntityInterface, \Phalcon\Mvc\ModelInterface, \Phalcon\Mvc\Model\ResultInterface, \Serializable, \JsonSerializable
+abstract class Model extends AbstractInjectionAware implements \Phalcon\Mvc\EntityInterface, \Phalcon\Mvc\ModelInterface, \Phalcon\Mvc\Model\ResultInterface, \JsonSerializable
 {
     /**
      * @var int
@@ -250,6 +252,15 @@ abstract class Model extends AbstractInjectionAware implements \Phalcon\Mvc\Enti
     protected $uniqueTypes = [];
 
     /**
+     * Per-process cache of declared private model properties as
+     * [class name => [property name => ReflectionProperty]], used during
+     * hydration - see getPrivateProperties()
+     *
+     * @var array
+     */
+    private static $privatePropertiesCache = [];
+
+    /**
      * Phalcon\Mvc\Model constructor
      *
      * @param mixed $data
@@ -341,7 +352,7 @@ abstract class Model extends AbstractInjectionAware implements \Phalcon\Mvc\Enti
      * use Phalcon\Mvc\Model;
      * use Phalcon\Mvc\Model\Behavior\Timestampable;
      *
-     * class Robots extends Model
+     * class Invoices extends Model
      * {
      *     public function initialize()
      *     {
@@ -384,13 +395,13 @@ abstract class Model extends AbstractInjectionAware implements \Phalcon\Mvc\Enti
      * use Phalcon\Mvc\Model;
      * use Phalcon\Messages\Message as Message;
      *
-     * class Robots extends Model
+     * class Invoices extends Model
      * {
      *     public function beforeSave()
      *     {
      *         if ($this->name === "Peter") {
      *             $message = new Message(
-     *                 "Sorry, but a robot cannot be named Peter"
+     *                 "Sorry, but an invoice cannot be named Peter"
      *             );
      *
      *             $this->appendMessage($message);
@@ -410,16 +421,16 @@ abstract class Model extends AbstractInjectionAware implements \Phalcon\Mvc\Enti
      * Assigns values to a model from an array
      *
      * ```php
-     * $robot->assign(
+     * $invoice->assign(
      *     [
      *         "type" => "mechanical",
-     *         "name" => "Astro Boy",
+     *         "name" => "Test Invoice",
      *         "year" => 1952,
      *     ]
      * );
      *
      * // Assign by db row, column map needed
-     * $robot->assign(
+     * $invoice->assign(
      *     $dbRow,
      *     [
      *         "db_type" => "type",
@@ -429,7 +440,7 @@ abstract class Model extends AbstractInjectionAware implements \Phalcon\Mvc\Enti
      * );
      *
      * // Allow assign only name and year
-     * $robot->assign(
+     * $invoice->assign(
      *     $_POST,
      *     [
      *         "name",
@@ -441,7 +452,7 @@ abstract class Model extends AbstractInjectionAware implements \Phalcon\Mvc\Enti
      *
      * ini_set("phalcon.orm.disable_assign_setters", true);
      *
-     * $robot->assign(
+     * $invoice->assign(
      *     $_POST,
      *     [
      *         "name",
@@ -469,24 +480,24 @@ abstract class Model extends AbstractInjectionAware implements \Phalcon\Mvc\Enti
      * contain the average of each group.
      *
      * ```php
-     * // What's the average price of robots?
-     * $average = Robots::average(
+     * // What's the average price of invoices?
+     * $average = Invoices::average(
      *     [
-     *         "column" => "price",
+     *         "column" => "inv_total",
      *     ]
      * );
      *
      * echo "The average price is ", $average, "\n";
      *
-     * // What's the average price of mechanical robots?
-     * $average = Robots::average(
+     * // What's the average price of paid invoices?
+     * $average = Invoices::average(
      *     [
-     *         "type = 'mechanical'",
-     *         "column" => "price",
+     *         "inv_status_flag = 1",
+     *         "column" => "inv_total",
      *     ]
      * );
      *
-     * echo "The average price of mechanical robots is ", $average, "\n";
+     * echo "The average price of paid invoices is ", $average, "\n";
      * ```
      *
      * @param array $parameters
@@ -500,11 +511,11 @@ abstract class Model extends AbstractInjectionAware implements \Phalcon\Mvc\Enti
      * Assigns values to a model from an array returning a new model
      *
      * ```php
-     * $robot = Phalcon\Mvc\Model::cloneResult(
-     *     new Robots(),
+     * $invoice = Phalcon\Mvc\Model::cloneResult(
+     *     new Invoices(),
      *     [
      *         "type" => "mechanical",
-     *         "name" => "Astro Boy",
+     *         "name" => "Test Invoice",
      *         "year" => 1952,
      *     ]
      * );
@@ -523,11 +534,11 @@ abstract class Model extends AbstractInjectionAware implements \Phalcon\Mvc\Enti
      * Assigns values to a model from an array, returning a new model.
      *
      * ```php
-     * $robot = \Phalcon\Mvc\Model::cloneResultMap(
-     *     new Robots(),
+     * $invoice = \Phalcon\Mvc\Model::cloneResultMap(
+     *     new Invoices(),
      *     [
      *         "type" => "mechanical",
-     *         "name" => "Astro Boy",
+     *         "name" => "Test Invoice",
      *         "year" => 1952,
      *     ]
      * );
@@ -574,15 +585,15 @@ abstract class Model extends AbstractInjectionAware implements \Phalcon\Mvc\Enti
      * contain the count of each group.
      *
      * ```php
-     * // How many robots are there?
-     * $number = Robots::count();
+     * // How many invoices are there?
+     * $number = Invoices::count();
      *
      * echo "There are ", $number, "\n";
      *
-     * // How many mechanical robots are there?
-     * $number = Robots::count("type = 'mechanical'");
+     * // How many paid invoices are there?
+     * $number = Invoices::count("inv_status_flag = 1");
      *
-     * echo "There are ", $number, " mechanical robots\n";
+     * echo "There are ", $number, " paid invoices\n";
      * ```
      *
      * @param array|string|null $parameters
@@ -598,27 +609,27 @@ abstract class Model extends AbstractInjectionAware implements \Phalcon\Mvc\Enti
      * Returning true on success or false otherwise.
      *
      * ```php
-     * // Creating a new robot
-     * $robot = new Robots();
+     * // Creating a new invoice
+     * $invoice = new Invoices();
      *
-     * $robot->type = "mechanical";
-     * $robot->name = "Astro Boy";
-     * $robot->year = 1952;
+     * $invoice->inv_status_flag = "mechanical";
+     * $invoice->inv_title = "Test Invoice";
+     * $invoice->inv_total = 1952;
      *
-     * $robot->create();
+     * $invoice->create();
      *
      * // Passing an array to create
-     * $robot = new Robots();
+     * $invoice = new Invoices();
      *
-     * $robot->assign(
+     * $invoice->assign(
      *     [
      *         "type" => "mechanical",
-     *         "name" => "Astro Boy",
+     *         "name" => "Test Invoice",
      *         "year" => 1952,
      *     ]
      * );
      *
-     * $robot->create();
+     * $invoice->create();
      * ```
      *
      * @return bool
@@ -631,14 +642,14 @@ abstract class Model extends AbstractInjectionAware implements \Phalcon\Mvc\Enti
      * Deletes a model instance. Returning true on success or false otherwise.
      *
      * ```php
-     * $robot = Robots::findFirst("id=100");
+     * $invoice = Invoices::findFirst("id=100");
      *
-     * $robot->delete();
+     * $invoice->delete();
      *
-     * $robots = Robots::find("type = 'mechanical'");
+     * $invoices = Invoices::find("inv_status_flag = 1");
      *
-     * foreach ($robots as $robot) {
-     *     $robot->delete();
+     * foreach ($invoices as $invoice) {
+     *     $invoice->delete();
      * }
      * ```
      *
@@ -654,7 +665,7 @@ abstract class Model extends AbstractInjectionAware implements \Phalcon\Mvc\Enti
      *
      * ```php
      * var_dump(
-     *     $robot->dump()
+     *     $invoice->dump()
      * );
      * ```
      *
@@ -668,32 +679,32 @@ abstract class Model extends AbstractInjectionAware implements \Phalcon\Mvc\Enti
      * Query for a set of records that match the specified conditions
      *
      * ```php
-     * // How many robots are there?
-     * $robots = Robots::find();
+     * // How many invoices are there?
+     * $invoices = Invoices::find();
      *
-     * echo "There are ", count($robots), "\n";
+     * echo "There are ", count($invoices), "\n";
      *
-     * // How many mechanical robots are there?
-     * $robots = Robots::find(
-     *     "type = 'mechanical'"
+     * // How many paid invoices are there?
+     * $invoices = Invoices::find(
+     *     "inv_status_flag = 1"
      * );
      *
-     * echo "There are ", count($robots), "\n";
+     * echo "There are ", count($invoices), "\n";
      *
-     * // Get and print virtual robots ordered by name
-     * $robots = Robots::find(
+     * // Get and print virtual invoices ordered by name
+     * $invoices = Invoices::find(
      *     [
      *         "type = 'virtual'",
      *         "order" => "name",
      *     ]
      * );
      *
-     * foreach ($robots as $robot) {
-     *     echo $robot->name, "\n";
+     * foreach ($invoices as $invoice) {
+     *     echo $invoice->inv_title, "\n";
      * }
      *
-     * // Get first 100 virtual robots ordered by name
-     * $robots = Robots::find(
+     * // Get first 100 virtual invoices ordered by name
+     * $invoices = Invoices::find(
      *     [
      *         "type = 'virtual'",
      *         "order" => "name",
@@ -701,8 +712,8 @@ abstract class Model extends AbstractInjectionAware implements \Phalcon\Mvc\Enti
      *     ]
      * );
      *
-     * foreach ($robots as $robot) {
-     *     echo $robot->name, "\n";
+     * foreach ($invoices as $invoice) {
+     *     echo $invoice->inv_title, "\n";
      * }
      *
      * // encapsulate find it into an running transaction esp. useful for application unit-tests
@@ -711,10 +722,10 @@ abstract class Model extends AbstractInjectionAware implements \Phalcon\Mvc\Enti
      * $myTransaction = new Transaction(\Phalcon\Di\Di::getDefault());
      * $myTransaction->begin();
      *
-     * $newRobot = new Robot();
-     * $newRobot->setTransaction($myTransaction);
+     * $newInvoices = new Invoices();
+     * $newInvoices->setTransaction($myTransaction);
      *
-     * $newRobot->assign(
+     * $newInvoices->assign(
      *     [
      *         'name' => 'test',
      *         'type' => 'mechanical',
@@ -722,23 +733,23 @@ abstract class Model extends AbstractInjectionAware implements \Phalcon\Mvc\Enti
      *     ]
      * );
      *
-     * $newRobot->save();
+     * $newInvoices->save();
      *
-     * $resultInsideTransaction = Robot::find(
+     * $resultInsideTransaction = Invoices::find(
      *     [
      *         'name' => 'test',
      *         Model::TRANSACTION_INDEX => $myTransaction,
      *     ]
      * );
      *
-     * $resultOutsideTransaction = Robot::find(['name' => 'test']);
+     * $resultOutsideTransaction = Invoices::find(['name' => 'test']);
      *
-     * foreach ($setInsideTransaction as $robot) {
-     *     echo $robot->name, "\n";
+     * foreach ($setInsideTransaction as $invoice) {
+     *     echo $invoice->inv_title, "\n";
      * }
      *
-     * foreach ($setOutsideTransaction as $robot) {
-     *     echo $robot->name, "\n";
+     * foreach ($setOutsideTransaction as $invoice) {
+     *     echo $invoice->inv_title, "\n";
      * }
      *
      * // reverts all not commited changes
@@ -750,72 +761,72 @@ abstract class Model extends AbstractInjectionAware implements \Phalcon\Mvc\Enti
      * $myTransaction2 = new Transaction(\Phalcon\Di\Di::getDefault());
      * $myTransaction2->begin();
      *
-     *  // add a new robots
-     * $firstNewRobot = new Robot();
-     * $firstNewRobot->setTransaction($myTransaction1);
-     * $firstNewRobot->assign(
+     *  // add a new invoices
+     * $firstNewInvoices = new Invoices();
+     * $firstNewInvoices->setTransaction($myTransaction1);
+     * $firstNewInvoices->assign(
      *     [
-     *         'name' => 'first-transaction-robot',
+     *         'name' => 'first-transaction-invoice',
      *         'type' => 'mechanical',
      *         'year' => 1944,
      *     ]
      * );
-     * $firstNewRobot->save();
+     * $firstNewInvoices->save();
      *
-     * $secondNewRobot = new Robot();
-     * $secondNewRobot->setTransaction($myTransaction2);
-     * $secondNewRobot->assign(
+     * $secondNewInvoices = new Invoices();
+     * $secondNewInvoices->setTransaction($myTransaction2);
+     * $secondNewInvoices->assign(
      *     [
-     *         'name' => 'second-transaction-robot',
+     *         'name' => 'second-transaction-invoice',
      *         'type' => 'fictional',
      *         'year' => 1984,
      *     ]
      * );
-     * $secondNewRobot->save();
+     * $secondNewInvoices->save();
      *
-     * // this transaction will find the robot.
-     * $resultInFirstTransaction = Robot::find(
+     * // this transaction will find the invoice.
+     * $resultInFirstTransaction = Invoices::find(
      *     [
-     *         'name'                   => 'first-transaction-robot',
+     *         'name'                   => 'first-transaction-invoice',
      *         Model::TRANSACTION_INDEX => $myTransaction1,
      *     ]
      * );
      *
-     * // this transaction won't find the robot.
-     * $resultInSecondTransaction = Robot::find(
+     * // this transaction won't find the invoice.
+     * $resultInSecondTransaction = Invoices::find(
      *     [
-     *         'name'                   => 'first-transaction-robot',
+     *         'name'                   => 'first-transaction-invoice',
      *         Model::TRANSACTION_INDEX => $myTransaction2,
      *     ]
      * );
      *
-     * // this transaction won't find the robot.
-     * $resultOutsideAnyExplicitTransaction = Robot::find(
+     * // this transaction won't find the invoice.
+     * $resultOutsideAnyExplicitTransaction = Invoices::find(
      *     [
-     *         'name' => 'first-transaction-robot',
+     *         'name' => 'first-transaction-invoice',
      *     ]
      * );
      *
-     * // this transaction won't find the robot.
-     * $resultInFirstTransaction = Robot::find(
+     * // this transaction won't find the invoice.
+     * $resultInFirstTransaction = Invoices::find(
      *     [
-     *         'name'                   => 'second-transaction-robot',
+     *         'name'                   => 'second-transaction-invoice',
      *         Model::TRANSACTION_INDEX => $myTransaction2,
      *     ]
      * );
      *
-     * // this transaction will find the robot.
-     * $resultInSecondTransaction = Robot::find(
+     * // this transaction will find the invoice.
+     * $resultInSecondTransaction = Invoices::find(
      *     [
-     *         'name'                   => 'second-transaction-robot',
+     *         'name'                   => 'second-transaction-invoice',
      *         Model::TRANSACTION_INDEX => $myTransaction1,
      *     ]
      * );
      *
-     * // this transaction won't find the robot.
-     * $resultOutsideAnyExplicitTransaction = Robot::find(
+     * // this transaction won't find the invoice.
+     * $resultOutsideAnyExplicitTransaction = Invoices::find(
      *     [
-     *         'name' => 'second-transaction-robot',
+     *         'name' => 'second-transaction-invoice',
      *     ]
      * );
      *
@@ -850,62 +861,62 @@ abstract class Model extends AbstractInjectionAware implements \Phalcon\Mvc\Enti
      * Query the first record that matches the specified conditions
      *
      * ```php
-     * // What's the first robot in robots table?
-     * $robot = Robots::findFirst();
+     * // What's the first invoice in invoices table?
+     * $invoice = Invoices::findFirst();
      *
-     * echo "The robot name is ", $robot->name;
+     * echo "The invoice name is ", $invoice->inv_title;
      *
-     * // What's the first mechanical robot in robots table?
-     * $robot = Robots::findFirst(
-     *     "type = 'mechanical'"
+     * // What's the first paid invoice in invoices table?
+     * $invoice = Invoices::findFirst(
+     *     "inv_status_flag = 1"
      * );
      *
-     * echo "The first mechanical robot name is ", $robot->name;
+     * echo "The first paid invoice name is ", $invoice->inv_title;
      *
-     * // Get first virtual robot ordered by name
-     * $robot = Robots::findFirst(
+     * // Get first virtual invoice ordered by name
+     * $invoice = Invoices::findFirst(
      *     [
      *         "type = 'virtual'",
      *         "order" => "name",
      *     ]
      * );
      *
-     * echo "The first virtual robot name is ", $robot->name;
+     * echo "The first virtual invoice name is ", $invoice->inv_title;
      *
      * // behaviour with transaction
      * $myTransaction = new Transaction(\Phalcon\Di\Di::getDefault());
      * $myTransaction->begin();
      *
-     * $newRobot = new Robot();
-     * $newRobot->setTransaction($myTransaction);
-     * $newRobot->assign(
+     * $newInvoices = new Invoices();
+     * $newInvoices->setTransaction($myTransaction);
+     * $newInvoices->assign(
      *     [
      *         'name' => 'test',
      *         'type' => 'mechanical',
      *         'year' => 1944,
      *     ]
      * );
-     * $newRobot->save();
+     * $newInvoices->save();
      *
-     * $findsARobot = Robot::findFirst(
+     * $findsAInvoices = Invoices::findFirst(
      *     [
      *         'name'                   => 'test',
      *         Model::TRANSACTION_INDEX => $myTransaction,
      *     ]
      * );
      *
-     * $doesNotFindARobot = Robot::findFirst(
+     * $doesNotFindAInvoices = Invoices::findFirst(
      *     [
      *         'name' => 'test',
      *     ]
      * );
      *
-     * var_dump($findARobot);
-     * var_dump($doesNotFindARobot);
+     * var_dump($findAInvoices);
+     * var_dump($doesNotFindAInvoices);
      *
      * $transaction->commit();
      *
-     * $doesFindTheRobotNow = Robot::findFirst(
+     * $doesFindTheInvoicesNow = Invoices::findFirst(
      *     [
      *         'name' => 'test',
      *     ]
@@ -963,13 +974,13 @@ abstract class Model extends AbstractInjectionAware implements \Phalcon\Mvc\Enti
      * Returns a list of changed values.
      *
      * ```php
-     * $robots = Robots::findFirst();
-     * print_r($robots->getChangedFields()); // []
+     * $invoices = Invoices::findFirst();
+     * print_r($invoices->getChangedFields()); // []
      *
-     * $robots->deleted = 'Y';
+     * $invoices->deleted = 'Y';
      *
-     * $robots->getChangedFields();
-     * print_r($robots->getChangedFields()); // ["deleted"]
+     * $invoices->getChangedFields();
+     * print_r($invoices->getChangedFields()); // ["deleted"]
      * ```
      *
      * @return array
@@ -1001,22 +1012,22 @@ abstract class Model extends AbstractInjectionAware implements \Phalcon\Mvc\Enti
      * Returns array of validation messages
      *
      * ```php
-     * $robot = new Robots();
+     * $invoice = new Invoices();
      *
-     * $robot->type = "mechanical";
-     * $robot->name = "Astro Boy";
-     * $robot->year = 1952;
+     * $invoice->inv_status_flag = "mechanical";
+     * $invoice->inv_title = "Test Invoice";
+     * $invoice->inv_total = 1952;
      *
-     * if ($robot->save() === false) {
-     *     echo "Umh, We can't store robots right now ";
+     * if ($invoice->save() === false) {
+     *     echo "Umh, We can't store invoices right now ";
      *
-     *     $messages = $robot->getMessages();
+     *     $messages = $invoice->getMessages();
      *
      *     foreach ($messages as $message) {
      *         echo $message;
      *     }
      * } else {
-     *     echo "Great, a new robot was saved successfully!";
+     *     echo "Great, a new invoice was saved successfully!";
      * }
      * ```
      *
@@ -1101,17 +1112,17 @@ abstract class Model extends AbstractInjectionAware implements \Phalcon\Mvc\Enti
      * through the model without any additional parameters.
      *
      * ```php
-     * $robot = Robots::findFirst();
-     * var_dump($robot->isRelationshipLoaded('robotsParts')); // false
+     * $invoice = Invoices::findFirst();
+     * var_dump($invoice->isRelationshipLoaded('ordersProducts')); // false
      *
-     * $robotsParts = $robot->getRobotsParts(['id > 0']);
-     * var_dump($robot->isRelationshipLoaded('robotsParts')); // false
+     * $invoicesParts = $invoice->getOrdersProducts(['id > 0']);
+     * var_dump($invoice->isRelationshipLoaded('ordersProducts')); // false
      *
-     * $robotsParts = $robot->getRobotsParts(); // or $robot->robotsParts
-     * var_dump($robot->isRelationshipLoaded('robotsParts')); // true
+     * $invoicesParts = $invoice->getOrdersProducts(); // or $invoice->ordersProducts
+     * var_dump($invoice->isRelationshipLoaded('ordersProducts')); // true
      *
-     * $robot->robotsParts = [new RobotsParts()];
-     * var_dump($robot->isRelationshipLoaded('robotsParts')); // false
+     * $invoice->ordersProducts = [new OrdersProducts()];
+     * var_dump($invoice->isRelationshipLoaded('ordersProducts')); // false
      * ```
      *
      * @param string $relationshipAlias
@@ -1152,16 +1163,16 @@ abstract class Model extends AbstractInjectionAware implements \Phalcon\Mvc\Enti
      * Returns a list of updated values.
      *
      * ```php
-     * $robots = Robots::findFirst();
-     * print_r($robots->getChangedFields()); // []
+     * $invoices = Invoices::findFirst();
+     * print_r($invoices->getChangedFields()); // []
      *
-     * $robots->deleted = 'Y';
+     * $invoices->deleted = 'Y';
      *
-     * $robots->getChangedFields();
-     * print_r($robots->getChangedFields()); // ["deleted"]
-     * $robots->save();
-     * print_r($robots->getChangedFields()); // []
-     * print_r($robots->getUpdatedFields()); // ["deleted"]
+     * $invoices->getChangedFields();
+     * print_r($invoices->getChangedFields()); // ["deleted"]
+     * $invoices->save();
+     * print_r($invoices->getChangedFields()); // []
+     * print_r($invoices->getUpdatedFields()); // ["deleted"]
      * ```
      *
      * @return array
@@ -1194,19 +1205,19 @@ abstract class Model extends AbstractInjectionAware implements \Phalcon\Mvc\Enti
      * This only works if the model is keeping data snapshots
      *
      * ```php
-     * $robot = new Robots();
+     * $invoice = new Invoices();
      *
-     * $robot->type = "mechanical";
-     * $robot->name = "Astro Boy";
-     * $robot->year = 1952;
+     * $invoice->inv_status_flag = "mechanical";
+     * $invoice->inv_title = "Test Invoice";
+     * $invoice->inv_total = 1952;
      *
-     * $robot->create();
+     * $invoice->create();
      *
-     * $robot->type = "hydraulic";
+     * $invoice->inv_status_flag = "hydraulic";
      *
-     * $hasChanged = $robot->hasChanged("type"); // returns true
-     * $hasChanged = $robot->hasChanged(["type", "name"]); // returns true
-     * $hasChanged = $robot->hasChanged(["type", "name"], true); // returns false
+     * $hasChanged = $invoice->hasChanged("type"); // returns true
+     * $hasChanged = $invoice->hasChanged(["type", "name"]); // returns true
+     * $hasChanged = $invoice->hasChanged(["type", "name"], true); // returns false
      * ```
      *
      * @param string|array $fieldName
@@ -1242,7 +1253,7 @@ abstract class Model extends AbstractInjectionAware implements \Phalcon\Mvc\Enti
      * Serializes the object for json_encode
      *
      * ```php
-     * echo json_encode($robot);
+     * echo json_encode($invoice);
      * ```
      *
      * @return array
@@ -1256,24 +1267,24 @@ abstract class Model extends AbstractInjectionAware implements \Phalcon\Mvc\Enti
      * the specified conditions
      *
      * ```php
-     * // What is the maximum robot id?
-     * $id = Robots::maximum(
+     * // What is the maximum invoice id?
+     * $id = Invoices::maximum(
      *     [
      *         "column" => "id",
      *     ]
      * );
      *
-     * echo "The maximum robot id is: ", $id, "\n";
+     * echo "The maximum invoice id is: ", $id, "\n";
      *
-     * // What is the maximum id of mechanical robots?
-     * $sum = Robots::maximum(
+     * // What is the maximum id of paid invoices?
+     * $sum = Invoices::maximum(
      *     [
-     *         "type = 'mechanical'",
+     *         "inv_status_flag = 1",
      *         "column" => "id",
      *     ]
      * );
      *
-     * echo "The maximum robot id of mechanical robots is ", $id, "\n";
+     * echo "The maximum invoice id of paid invoices is ", $id, "\n";
      * ```
      *
      * @param array $parameters
@@ -1288,24 +1299,24 @@ abstract class Model extends AbstractInjectionAware implements \Phalcon\Mvc\Enti
      * the specified conditions
      *
      * ```php
-     * // What is the minimum robot id?
-     * $id = Robots::minimum(
+     * // What is the minimum invoice id?
+     * $id = Invoices::minimum(
      *     [
      *         "column" => "id",
      *     ]
      * );
      *
-     * echo "The minimum robot id is: ", $id;
+     * echo "The minimum invoice id is: ", $id;
      *
-     * // What is the minimum id of mechanical robots?
-     * $sum = Robots::minimum(
+     * // What is the minimum id of paid invoices?
+     * $sum = Invoices::minimum(
      *     [
-     *         "type = 'mechanical'",
+     *         "inv_status_flag = 1",
      *         "column" => "id",
      *     ]
      * );
      *
-     * echo "The minimum robot id of mechanical robots is ", $id;
+     * echo "The minimum invoice id of paid invoices is ", $id;
      * ```
      *
      * @param array $parameters
@@ -1329,7 +1340,7 @@ abstract class Model extends AbstractInjectionAware implements \Phalcon\Mvc\Enti
      * Reads an attribute value by its name
      *
      * ```php
-     * echo $robot->readAttribute("name");
+     * echo $invoice->readAttribute("name");
      * ```
      *
      * @param string $attribute
@@ -1353,21 +1364,21 @@ abstract class Model extends AbstractInjectionAware implements \Phalcon\Mvc\Enti
      * otherwise.
      *
      * ```php
-     * // Creating a new robot
-     * $robot = new Robots();
+     * // Creating a new invoice
+     * $invoice = new Invoices();
      *
-     * $robot->type = "mechanical";
-     * $robot->name = "Astro Boy";
-     * $robot->year = 1952;
+     * $invoice->inv_status_flag = "mechanical";
+     * $invoice->inv_title = "Test Invoice";
+     * $invoice->inv_total = 1952;
      *
-     * $robot->save();
+     * $invoice->save();
      *
-     * // Updating a robot name
-     * $robot = Robots::findFirst("id = 100");
+     * // Updating an invoice name
+     * $invoice = Invoices::findFirst("id = 100");
      *
-     * $robot->name = "Biomass";
+     * $invoice->inv_title = "Biomass";
      *
-     * $robot->save();
+     * $invoice->save();
      * ```
      *
      * @return bool
@@ -1513,25 +1524,25 @@ abstract class Model extends AbstractInjectionAware implements \Phalcon\Mvc\Enti
      *
      *     $transaction = $txManager->get();
      *
-     *     $robot = new Robots();
+     *     $invoice = new Invoices();
      *
-     *     $robot->setTransaction($transaction);
+     *     $invoice->setTransaction($transaction);
      *
-     *     $robot->name       = "WALL·E";
-     *     $robot->created_at = date("Y-m-d");
+     *     $invoice->inv_title       = "WALL·E";
+     *     $invoice->created_at = date("Y-m-d");
      *
-     *     if ($robot->save() === false) {
-     *         $transaction->rollback("Can't save robot");
+     *     if ($invoice->save() === false) {
+     *         $transaction->rollback("Can't save invoice");
      *     }
      *
-     *     $robotPart = new RobotParts();
+     *     $invoicePart = new OrdersProducts();
      *
-     *     $robotPart->setTransaction($transaction);
+     *     $invoicePart->setTransaction($transaction);
      *
-     *     $robotPart->type = "head";
+     *     $invoicePart->type = "head";
      *
-     *     if ($robotPart->save() === false) {
-     *         $transaction->rollback("Robot part cannot be saved");
+     *     if ($invoicePart->save() === false) {
+     *         $transaction->rollback("Invoices part cannot be saved");
      *     }
      *
      *     $transaction->commit();
@@ -1595,24 +1606,24 @@ abstract class Model extends AbstractInjectionAware implements \Phalcon\Mvc\Enti
      * specified conditions
      *
      * ```php
-     * // How much are all robots?
-     * $sum = Robots::sum(
+     * // How much are all invoices?
+     * $sum = Invoices::sum(
      *     [
-     *         "column" => "price",
+     *         "column" => "inv_total",
      *     ]
      * );
      *
-     * echo "The total price of robots is ", $sum, "\n";
+     * echo "The total price of invoices is ", $sum, "\n";
      *
-     * // How much are mechanical robots?
-     * $sum = Robots::sum(
+     * // How much are paid invoices?
+     * $sum = Invoices::sum(
      *     [
-     *         "type = 'mechanical'",
-     *         "column" => "price",
+     *         "inv_status_flag = 1",
+     *         "column" => "inv_total",
      *     ]
      * );
      *
-     * echo "The total price of mechanical robots is  ", $sum, "\n";
+     * echo "The total price of paid invoices is  ", $sum, "\n";
      * ```
      *
      * @param array $parameters
@@ -1627,7 +1638,7 @@ abstract class Model extends AbstractInjectionAware implements \Phalcon\Mvc\Enti
      *
      * ```php
      * print_r(
-     *     $robot->toArray()
+     *     $invoice->toArray()
      * );
      * ```
      *
@@ -1672,7 +1683,7 @@ abstract class Model extends AbstractInjectionAware implements \Phalcon\Mvc\Enti
      * Writes an attribute value by its name
      *
      * ```php
-     * $robot->writeAttribute("name", "Rosey");
+     * $invoice->writeAttribute("name", "Rosey");
      * ```
      *
      * @param string $attribute
@@ -1849,7 +1860,7 @@ abstract class Model extends AbstractInjectionAware implements \Phalcon\Mvc\Enti
      * generated UPDATE statement
      *
      * ```php
-     * class Robots extends \Phalcon\Mvc\Model
+     * class Invoices extends \Phalcon\Mvc\Model
      * {
      *     public function initialize()
      *     {
@@ -1880,13 +1891,13 @@ abstract class Model extends AbstractInjectionAware implements \Phalcon\Mvc\Enti
      * Setup a reverse 1-1 or n-1 relation between two models
      *
      * ```php
-     * class RobotsParts extends \Phalcon\Mvc\Model
+     * class OrdersProducts extends \Phalcon\Mvc\Model
      * {
      *     public function initialize()
      *     {
      *         $this->belongsTo(
-     *             "robots_id",
-     *             Robots::class,
+     *             "oxp_ord_id",
+     *             Invoices::class,
      *             "id"
      *         );
      *     }
@@ -1943,14 +1954,14 @@ abstract class Model extends AbstractInjectionAware implements \Phalcon\Mvc\Enti
      * Setup a 1-n relation between two models
      *
      * ```php
-     * class Robots extends \Phalcon\Mvc\Model
+     * class Invoices extends \Phalcon\Mvc\Model
      * {
      *     public function initialize()
      *     {
      *         $this->hasMany(
      *             "id",
-     *             RobotsParts::class,
-     *             "robots_id"
+     *             OrdersProducts::class,
+     *             "oxp_ord_id"
      *         );
      *     }
      * }
@@ -1996,17 +2007,17 @@ abstract class Model extends AbstractInjectionAware implements \Phalcon\Mvc\Enti
      * relation
      *
      * ```php
-     * class Robots extends \Phalcon\Mvc\Model
+     * class Invoices extends \Phalcon\Mvc\Model
      * {
      *     public function initialize()
      *     {
-     *         // Setup a many-to-many relation to Parts through RobotsParts
+     *         // Setup a many-to-many relation to Parts through OrdersProducts
      *         $this->hasManyToMany(
      *             "id",
-     *             RobotsParts::class,
-     *             "robots_id",
-     *             "parts_id",
-     *             Parts::class,
+     *             OrdersProducts::class,
+     *             "oxp_ord_id",
+     *             "oxp_prd_id",
+     *             Products::class,
      *             "id",
      *         );
      *     }
@@ -2055,14 +2066,14 @@ abstract class Model extends AbstractInjectionAware implements \Phalcon\Mvc\Enti
      * Setup a 1-1 relation between two models
      *
      * ```php
-     * class Robots extends \Phalcon\Mvc\Model
+     * class Invoices extends \Phalcon\Mvc\Model
      * {
      *     public function initialize()
      *     {
      *         $this->hasOne(
      *             "id",
-     *             RobotsDescription::class,
-     *             "robots_id"
+     *             InvoicesDescription::class,
+     *             "oxp_ord_id"
      *         );
      *     }
      * }
@@ -2108,17 +2119,17 @@ abstract class Model extends AbstractInjectionAware implements \Phalcon\Mvc\Enti
      * relation
      *
      * ```php
-     * class Robots extends \Phalcon\Mvc\Model
+     * class Invoices extends \Phalcon\Mvc\Model
      * {
      *     public function initialize()
      *     {
-     *         // Setup a 1-1 relation to one item from Parts through RobotsParts
+     *         // Setup a 1-1 relation to one item from Parts through OrdersProducts
      *         $this->hasOneThrough(
      *             "id",
-     *             RobotsParts::class,
-     *             "robots_id",
-     *             "parts_id",
-     *             Parts::class,
+     *             OrdersProducts::class,
+     *             "oxp_ord_id",
+     *             "oxp_prd_id",
+     *             Products::class,
      *             "id",
      *         );
      *     }
@@ -2144,7 +2155,7 @@ abstract class Model extends AbstractInjectionAware implements \Phalcon\Mvc\Enti
      * ```php
      * use Phalcon\Mvc\Model;
      *
-     * class Robots extends Model
+     * class Invoices extends Model
      * {
      *     public function initialize()
      *     {
@@ -2185,7 +2196,7 @@ abstract class Model extends AbstractInjectionAware implements \Phalcon\Mvc\Enti
      * generated INSERT/UPDATE statement
      *
      * ```php
-     * class Robots extends \Phalcon\Mvc\Model
+     * class Invoices extends \Phalcon\Mvc\Model
      * {
      *     public function initialize()
      *     {
@@ -2210,7 +2221,7 @@ abstract class Model extends AbstractInjectionAware implements \Phalcon\Mvc\Enti
      * generated INSERT statement
      *
      * ```php
-     * class Robots extends \Phalcon\Mvc\Model
+     * class Invoices extends \Phalcon\Mvc\Model
      * {
      *     public function initialize()
      *     {
@@ -2235,7 +2246,7 @@ abstract class Model extends AbstractInjectionAware implements \Phalcon\Mvc\Enti
      * generated UPDATE statement
      *
      * ```php
-     * class Robots extends \Phalcon\Mvc\Model
+     * class Invoices extends \Phalcon\Mvc\Model
      * {
      *     public function initialize()
      *     {
@@ -2261,7 +2272,7 @@ abstract class Model extends AbstractInjectionAware implements \Phalcon\Mvc\Enti
      * ```php
      * use Phalcon\Mvc\Model;
      *
-     * class Robots extends Model
+     * class Invoices extends Model
      * {
      *     public function initialize()
      *     {
@@ -2360,6 +2371,24 @@ abstract class Model extends AbstractInjectionAware implements \Phalcon\Mvc\Enti
      * @return string
      */
     private static function caseInsensitiveColumnMap($columnMap, $key): string
+    {
+    }
+
+    /**
+     * Returns the declared private properties of a class (including inherited
+     * ones) as [property name => ReflectionProperty], cached per class.
+     *
+     * Hydration (cloneResult/cloneResultMap) cannot write private properties
+     * directly: the engine write from Model scope falls back to __set(),
+     * which invokes a possible setter - or throws for a non-public property
+     * without one. Writing through ReflectionProperty stores the raw
+     * database value instead.
+     *
+     * @see https://github.com/phalcon/cphalcon/issues/16454
+     * @param string $className
+     * @return array
+     */
+    private static function getPrivateProperties(string $className): array
     {
     }
 

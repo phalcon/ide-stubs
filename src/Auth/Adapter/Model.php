@@ -87,4 +87,18 @@ class Model extends \Phalcon\Auth\Adapter\AbstractAdapter implements \Phalcon\Co
     public function retrieveByToken($id, string $token, ?string $userAgent = null): AuthUser|null
     {
     }
+
+    /**
+     * Runs findFirst() with the given parameters and normalizes the result to
+     * an ?AuthUser: a missing record yields null, a record that is not an
+     * AuthUser throws.
+     *
+     * @param array{conditions: string, bind: array<string, mixed>} $parameters
+     *
+     * @throws DoesNotImplement
+     * @return AuthUser|null
+     */
+    private function findFirstAsAuthUser(array $parameters): AuthUser|null
+    {
+    }
 }

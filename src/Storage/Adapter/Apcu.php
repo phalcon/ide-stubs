@@ -9,11 +9,11 @@
  */
 namespace Phalcon\Storage\Adapter;
 
-use APCUIterator;
 use DateInterval;
 use Exception;
 use Phalcon\Storage\SerializerFactory;
 use Phalcon\Support\Exception as SupportException;
+use Phalcon\Traits\Php\ApcuTrait;
 
 /**
  * Apcu adapter
@@ -27,6 +27,9 @@ use Phalcon\Support\Exception as SupportException;
  */
 class Apcu extends \Phalcon\Storage\Adapter\AbstractAdapter
 {
+    use \Phalcon\Traits\Php\ApcuTrait;
+
+
     /**
      * @var string
      */
@@ -157,67 +160,6 @@ class Apcu extends \Phalcon\Storage\Adapter\AbstractAdapter
      * @throws Exception
      */
     protected function doSet(string $key, $value, $ttl = null): bool
-    {
-    }
-
-    /**
-     * @todo Remove the below once we get traits
-     * @param mixed $key
-     * @param int $step
-     * @return bool|int
-     */
-    protected function phpApcuDec($key, int $step = 1): int|bool
-    {
-    }
-
-    /**
-     * @param mixed $key
-     * @return bool|array
-     */
-    protected function phpApcuDelete($key): bool|array
-    {
-    }
-
-    /**
-     * @param mixed $key
-     * @return bool|array
-     */
-    protected function phpApcuExists($key): bool|array
-    {
-    }
-
-    /**
-     * @param mixed $key
-     * @param int $step
-     * @return bool|int
-     */
-    protected function phpApcuInc($key, int $step = 1): int|bool
-    {
-    }
-
-    /**
-     * @param mixed $key
-     * @return mixed
-     */
-    protected function phpApcuFetch($key): mixed
-    {
-    }
-
-    /**
-     * @param string $pattern
-     * @return bool|APCUIterator
-     */
-    protected function phpApcuIterator(string $pattern): APCUIterator|bool
-    {
-    }
-
-    /**
-     * @param mixed $key
-     * @param mixed $payload
-     * @param int $ttl
-     * @return bool|array
-     */
-    protected function phpApcuStore($key, $payload, int $ttl = 0): bool|array
     {
     }
 }

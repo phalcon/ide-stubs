@@ -33,6 +33,7 @@ use Phalcon\Mvc\Router\Group;
 use Phalcon\Mvc\Router\GroupInterface;
 use Phalcon\Mvc\Router\Route;
 use Phalcon\Mvc\Router\RouteInterface;
+use Phalcon\Traits\Php\FileTrait;
 
 /**
  * Phalcon\Mvc\Router
@@ -64,6 +65,8 @@ use Phalcon\Mvc\Router\RouteInterface;
  */
 class Router extends AbstractInjectionAware implements \Phalcon\Mvc\RouterInterface, \Phalcon\Events\EventsAwareInterface
 {
+    use \Phalcon\Traits\Php\FileTrait;
+
     /**
      * @var int
      */

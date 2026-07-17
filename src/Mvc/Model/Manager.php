@@ -51,7 +51,7 @@ use ReflectionProperty;
  *     }
  * );
  *
- * $robot = new Robots($di);
+ * $invoice = new Invoices($di);
  * ```
  */
 class Manager implements \Phalcon\Mvc\Model\ManagerInterface, \Phalcon\Di\InjectionAwareInterface, \Phalcon\Events\EventsAwareInterface
@@ -96,6 +96,15 @@ class Manager implements \Phalcon\Mvc\Model\ManagerInterface, \Phalcon\Di\Inject
      * @var array
      */
     protected $customEventsManager = [];
+
+    /**
+     * Write connection services that have been written to during the current
+     * request cycle. Used by the sticky mechanism to route reads to the write
+     * connection after a write.
+     *
+     * @var array
+     */
+    protected $dirtyWriteServices = [];
 
     /**
      * Does the model use dynamic update, instead of updating all rows?
@@ -215,6 +224,14 @@ class Manager implements \Phalcon\Mvc\Model\ManagerInterface, \Phalcon\Di\Inject
      * @var array
      */
     protected $schemas = [];
+
+    /**
+     * Whether reads should stick to the write connection after a write has
+     * occurred during the current request cycle.
+     *
+     * @var bool
+     */
+    protected $sticky = false;
 
     /**
      * @var array
@@ -361,23 +378,23 @@ class Manager implements \Phalcon\Mvc\Model\ManagerInterface, \Phalcon\Di\Inject
      * Creates a Phalcon\Mvc\Model\Query and execute it
      *
      * ```php
-     * $model = new Robots();
+     * $model = new Invoices();
      * $manager = $model->getModelsManager();
      *
      * // \Phalcon\Mvc\Model\Resultset\Simple
-     * $manager->executeQuery('SELECT FROM Robots');
+     * $manager->executeQuery('SELECT FROM Invoices');
      *
      * // \Phalcon\Mvc\Model\Resultset\Complex
-     * $manager->executeQuery('SELECT COUNT(type) FROM Robots GROUP BY type');
+     * $manager->executeQuery('SELECT COUNT(inv_status_flag) FROM Invoices GROUP BY inv_status_flag');
      *
      * // \Phalcon\Mvc\Model\Query\StatusInterface
-     * $manager->executeQuery('INSERT INTO Robots (id) VALUES (1)');
+     * $manager->executeQuery('INSERT INTO Invoices (inv_id) VALUES (1)');
      *
      * // \Phalcon\Mvc\Model\Query\StatusInterface
-     * $manager->executeQuery('UPDATE Robots SET id = 0 WHERE id = :id:', ['id' => 1]);
+     * $manager->executeQuery('UPDATE Invoices SET inv_id = 0 WHERE inv_id = :id:', ['id' => 1]);
      *
      * // \Phalcon\Mvc\Model\Query\StatusInterface
-     * $manager->executeQuery('DELETE FROM Robots WHERE id = :id:', ['id' => 1]);
+     * $manager->executeQuery('DELETE FROM Invoices WHERE inv_id = :id:', ['id' => 1]);
      * ```
      *
      * @param string     $phql
@@ -455,7 +472,7 @@ class Manager implements \Phalcon\Mvc\Model\ManagerInterface, \Phalcon\Di\Inject
      *
      * ```php
      * $relations = $modelsManager->getBelongsTo(
-     *     new Robots()
+     *     new Invoices()
      * );
      * ```
      *
@@ -870,7 +887,7 @@ class Manager implements \Phalcon\Mvc\Model\ManagerInterface, \Phalcon\Di\Inject
      *
      * ```php
      * $isPublic = $manager->isVisibleModelProperty(
-     *     new Robots(),
+     *     new Invoices(),
      *     "name"
      * );
      * ```
@@ -933,6 +950,19 @@ class Manager implements \Phalcon\Mvc\Model\ManagerInterface, \Phalcon\Di\Inject
     }
 
     /**
+     * Marks the model's write connection service as written-to for the
+     * current request cycle. Used by the sticky mechanism to route
+     * subsequent reads to the write connection.
+     *
+     * @param ModelInterface $model
+     *
+     * @return void
+     */
+    public function registerWrite(\Phalcon\Mvc\ModelInterface $model): void
+    {
+    }
+
+    /**
      * Removes a behavior from a model
      *
      * @param ModelInterface $model
@@ -941,6 +971,17 @@ class Manager implements \Phalcon\Mvc\Model\ManagerInterface, \Phalcon\Di\Inject
      * @return void
      */
     public function removeBehavior(\Phalcon\Mvc\ModelInterface $model, string $behaviorClass): void
+    {
+    }
+
+    /**
+     * Clears the per-request sticky write tracking. Call this between
+     * requests in long-running runtimes (e.g. Swoole, RoadRunner) where the
+     * manager instance is reused across requests.
+     *
+     * @return void
+     */
+    public function resetConnectionState(): void
     {
     }
 
@@ -1007,9 +1048,9 @@ class Manager implements \Phalcon\Mvc\Model\ManagerInterface, \Phalcon\Di\Inject
      *     }
      * );
      *
-     * $robots = new Robots();
+     * $invoices = new Invoices();
      *
-     * echo $robots->getSource(); // wp_robots
+     * echo $invoices->getSource(); // wp_co_invoices
      * ```
      *
      * $param string $prefix
@@ -1068,6 +1109,19 @@ class Manager implements \Phalcon\Mvc\Model\ManagerInterface, \Phalcon\Di\Inject
      * @param string $modelName
      */
     public function setReusableRecords(string $modelName, string $key, $records): void
+    {
+    }
+
+    /**
+     * Enables or disables sticky connections. When enabled, once a model has
+     * written to its write connection during the current request cycle, any
+     * further reads for that write service use the write connection.
+     *
+     * @param bool $sticky
+     *
+     * @return void
+     */
+    public function setSticky(bool $sticky): void
     {
     }
 

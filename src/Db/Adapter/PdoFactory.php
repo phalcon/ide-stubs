@@ -10,7 +10,7 @@
 namespace Phalcon\Db\Adapter;
 
 use Phalcon\Factory\AbstractFactory;
-use Phalcon\Support\Helper\Arr\Get;
+use Phalcon\Traits\Support\Helper\Arr\GetTrait;
 
 /**
  * This file is part of the Phalcon Framework.
@@ -22,6 +22,10 @@ use Phalcon\Support\Helper\Arr\Get;
  */
 class PdoFactory extends AbstractFactory
 {
+    use \Phalcon\Traits\Support\Helper\Arr\GetTrait;
+
+
+
     /**
      * Constructor
      *

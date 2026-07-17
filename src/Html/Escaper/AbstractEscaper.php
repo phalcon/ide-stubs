@@ -9,105 +9,15 @@
  */
 namespace Phalcon\Html\Escaper;
 
+use Phalcon\Html\Escaper\Traits\EscaperTrait;
+
 /**
- * Shared base for the per-context escaper objects. Holds the encoding,
- * htmlspecialchars flag, and double-encode toggle, plus the encoding
- * detection / normalization utilities used by the CSS and JS escapers.
+ * Shared base for the per-context escaper objects.
  *
- * Each concrete context (`HtmlEscaper`, `AttributeEscaper`, `CssEscaper`,
- * `JsEscaper`, `UrlEscaper`) extends this so that callers can configure
- * one context without affecting the others.
- *
- * @property bool   $doubleEncode
- * @property string $encoding
- * @property int    $flags
+ * @todo Remove in v7. Kept only for backwards compatibility; compose
+ * Phalcon\Html\Escaper\Traits\EscaperTrait directly instead of extending this.
  */
 abstract class AbstractEscaper
 {
-    /**
-     * @var bool
-     */
-    protected $doubleEncode = true;
-
-    /**
-     * @var string
-     */
-    protected $encoding = 'utf-8';
-
-    /**
-     * ENT_QUOTES | ENT_SUBSTITUTE | ENT_HTML401
-     *
-     * @var int
-     */
-    protected $flags = 11;
-
-    /**
-     * Detects the character encoding of a string. Special-handling for
-     * chr(172) and chr(128) to chr(159) which fail to be detected by
-     * `mb_detect_encoding()`.
-     *
-     * @param string $input
-     *
-     * @return string|null
-     */
-    final public function detectEncoding(string $input): string|null
-    {
-    }
-
-    /**
-     * @return bool
-     */
-    public function getDoubleEncode(): bool
-    {
-    }
-
-    /**
-     * @return string
-     */
-    public function getEncoding(): string
-    {
-    }
-
-    /**
-     * @return int
-     */
-    public function getFlags(): int
-    {
-    }
-
-    /**
-     * Normalizes a string's encoding to UTF-32, used by the CSS and JS
-     * escapers before invoking the C-level escape routines.
-     *
-     * @param string $input
-     *
-     * @return string
-     */
-    final public function normalizeEncoding(string $input): string
-    {
-    }
-
-    /**
-     * @param bool $doubleEncode
-     * @return static
-     */
-    public function setDoubleEncode(bool $doubleEncode): static
-    {
-    }
-
-    /**
-     * @param string $encoding
-     * @return static
-     */
-    public function setEncoding(string $encoding): static
-    {
-    }
-
-    /**
-     * @param int $flags
-     * @return static
-     */
-    public function setFlags(int $flags): static
-    {
-    }
+    use \Phalcon\Html\Escaper\Traits\EscaperTrait;
 }

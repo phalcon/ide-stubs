@@ -19,13 +19,13 @@ class Concat extends \Phalcon\Support\Helper\Str\AbstractStr
 {
     /**
      * @param string $delimiter
-     * @param string $first
-     * @param string $second
-     * @param string ...$arguments
+     * @param string ...$many
      *
      * @return string
+     *
+     * @throws InsufficientArguments
      */
-    public function __invoke(): string
+    public function __invoke(string $delimiter, string ...$many): string
     {
     }
 }

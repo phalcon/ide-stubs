@@ -18,6 +18,7 @@ use Phalcon\Contracts\Queue\SubscriptionConsumer as SubscriptionConsumerInterfac
 use Phalcon\Queue\Adapter\AbstractContext;
 use Phalcon\Queue\Adapter\MessageEnvelope;
 use Phalcon\Queue\Adapter\QueueDestinationGuard;
+use Phalcon\Traits\Php\FileTrait;
 
 /**
  * Filesystem transport session. Each queue is one append-only file under the
@@ -27,6 +28,9 @@ use Phalcon\Queue\Adapter\QueueDestinationGuard;
  */
 class StreamContext extends AbstractContext
 {
+    use \Phalcon\Traits\Php\FileTrait;
+
+
     /**
      * Milliseconds slept between poll attempts by consumers.
      *

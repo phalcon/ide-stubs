@@ -23,6 +23,7 @@ use Phalcon\Http\Request\Exceptions\SanitizerNotFound;
 use Phalcon\Http\Request\File;
 use Phalcon\Http\Request\FileInterface;
 use Phalcon\Support\Helper\Json\Decode;
+use Phalcon\Traits\Php\FileTrait;
 use stdClass;
 
 /**
@@ -53,6 +54,9 @@ use stdClass;
  */
 class Request extends AbstractInjectionAware implements \Phalcon\Http\RequestInterface, \Phalcon\Http\Message\RequestMethodInterface
 {
+    use \Phalcon\Traits\Php\FileTrait;
+
+
     /**
      * @var FilterInterface|null
      */
@@ -584,9 +588,9 @@ class Request extends AbstractInjectionAware implements \Phalcon\Http\RequestInt
     /**
      * Gets attached files as Phalcon\Http\Request\File instances
      *
+     * @return FileInterface[]
      * @param bool $onlySuccessful
      * @param bool $namedKeys
-     * @return array|\Phalcon\Http\Request\FileInterface[]
      */
     public function getUploadedFiles(bool $onlySuccessful = false, bool $namedKeys = false): array
     {

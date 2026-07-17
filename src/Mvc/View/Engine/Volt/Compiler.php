@@ -34,6 +34,7 @@ use Phalcon\Mvc\View\Engine\Volt\Exceptions\UnknownVoltFilterType;
 use Phalcon\Mvc\View\Engine\Volt\Exceptions\UnknownVoltStatement;
 use Phalcon\Mvc\View\Engine\Volt\Exceptions\VoltDirectoryNotWritable;
 use Phalcon\Mvc\ViewBaseInterface;
+use Phalcon\Traits\Php\FileTrait;
 
 /**
  * This class reads and compiles Volt templates into PHP plain code
@@ -48,6 +49,9 @@ use Phalcon\Mvc\ViewBaseInterface;
  */
 class Compiler implements \Phalcon\Di\InjectionAwareInterface
 {
+    use \Phalcon\Traits\Php\FileTrait;
+
+
     /**
      * @var bool
      */
@@ -702,6 +706,16 @@ class Compiler implements \Phalcon\Di\InjectionAwareInterface
      * @return string|array
      */
     final protected function statementListOrExtends($statements)
+    {
+    }
+
+    /**
+     * Checks whether a path is absolute (Unix root, Windows UNC or drive)
+     *
+     * @param string $path
+     * @return bool
+     */
+    private function isAbsolutePath(string $path): bool
     {
     }
 

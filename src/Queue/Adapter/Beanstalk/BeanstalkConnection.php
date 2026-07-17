@@ -10,6 +10,7 @@
 namespace Phalcon\Queue\Adapter\Beanstalk;
 
 use Phalcon\Queue\Exceptions\Exception;
+use Phalcon\Traits\Php\FileTrait;
 
 /**
  * Dependency-free socket client for the Beanstalkd work queue, implementing
@@ -19,6 +20,9 @@ use Phalcon\Queue\Exceptions\Exception;
  */
 class BeanstalkConnection
 {
+    use \Phalcon\Traits\Php\FileTrait;
+
+
     /**
      * Connection resource.
      *
@@ -173,6 +177,17 @@ class BeanstalkConnection
     }
 
     /**
+     * Returns the Beanstalkd statistics for a tube as an associative array, or
+     * false when the tube does not exist.
+     *
+     * @param string $tube
+     * @return array|bool
+     */
+    public function statsTube(string $tube): bool|array
+    {
+    }
+
+    /**
      * Extends the time-to-run of a reserved job.
      *
      * @param string $id
@@ -209,6 +224,20 @@ class BeanstalkConnection
      * @return bool|int
      */
     public function write(string $data): int|bool
+    {
+    }
+
+    /**
+     * Parses a Beanstalkd YAML dictionary payload (a flat "key: value" map)
+     * into an associative array. Numeric values are cast to int, except the
+     * `name` field, which is always kept as a string (a tube may be named
+     * numerically). Avoids the yaml extension; the payload format is a fixed,
+     * flat map.
+     *
+     * @param string $payload
+     * @return array
+     */
+    private function parseDictionary(string $payload): array
     {
     }
 

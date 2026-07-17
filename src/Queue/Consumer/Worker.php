@@ -9,6 +9,8 @@
  */
 namespace Phalcon\Queue\Consumer;
 
+use Phalcon\Traits\Php\InfoTrait;
+
 /**
  * Long-running operational shell around a QueueConsumer. Owns the outer loop,
  * the bounded lifetime (max messages / seconds / memory, plus jitter) and -
@@ -18,6 +20,9 @@ namespace Phalcon\Queue\Consumer;
  */
 class Worker
 {
+    use \Phalcon\Traits\Php\InfoTrait;
+
+
     /**
      * @var QueueConsumer
      */

@@ -12,12 +12,16 @@ namespace Phalcon\Logger;
 use DateTimeZone;
 use Phalcon\Config\ConfigInterface;
 use Phalcon\Factory\AbstractConfigFactory;
+use Phalcon\Traits\Support\Helper\Arr\GetTrait;
 
 /**
  * Factory creating logger objects
  */
 class LoggerFactory extends AbstractConfigFactory
 {
+    use \Phalcon\Traits\Support\Helper\Arr\GetTrait;
+
+
     /**
      * @var AdapterFactory
      */
@@ -63,17 +67,6 @@ class LoggerFactory extends AbstractConfigFactory
      * @return Logger
      */
     public function newInstance(string $name, array $adapters = [], ?\DateTimeZone $timezone = null): Logger
-    {
-    }
-
-    /**
-     * @todo Remove this when we get traits
-     * @param array $collection
-     * @param mixed $index
-     * @param mixed $defaultValue
-     * @return mixed
-     */
-    protected function getArrVal(array $collection, $index, $defaultValue = null): mixed
     {
     }
 

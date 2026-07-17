@@ -10,6 +10,7 @@
 namespace Phalcon\Support\Helper\Json;
 
 use Phalcon\Support\Helper\Json\Exceptions\JsonEncodeError;
+use Phalcon\Traits\Support\Helper\Json\EncodeTrait;
 
 /**
  * Encodes a string using `json_encode` and throws an exception if the
@@ -28,6 +29,10 @@ use Phalcon\Support\Helper\Json\Exceptions\JsonEncodeError;
  */
 class Encode
 {
+    use \Phalcon\Traits\Support\Helper\Json\EncodeTrait;
+
+
+
     /**
      * @param mixed $data    JSON data to parse
      * @param int   $options Bitmask of JSON encode options.

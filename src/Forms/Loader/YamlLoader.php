@@ -13,6 +13,7 @@ use Phalcon\Contracts\Forms\Schema;
 use Phalcon\Forms\Exception;
 use Phalcon\Forms\Exceptions\YamlExtensionRequired;
 use Phalcon\Forms\Exceptions\YamlSchemaNotArray;
+use Phalcon\Traits\Php\InfoTrait;
 
 /**
  * Supplies form element definitions from a YAML string or file.
@@ -24,6 +25,9 @@ use Phalcon\Forms\Exceptions\YamlSchemaNotArray;
  */
 class YamlLoader implements \Phalcon\Contracts\Forms\Schema
 {
+    use \Phalcon\Traits\Php\InfoTrait;
+
+
     /**
      * @var string
      */

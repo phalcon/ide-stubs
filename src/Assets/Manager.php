@@ -25,12 +25,16 @@ use Phalcon\Html\Helper\Element;
 use Phalcon\Html\Helper\Link;
 use Phalcon\Html\Helper\Script;
 use Phalcon\Html\TagFactory;
+use Phalcon\Traits\Php\FileTrait;
 
 /**
  * Manages collections of CSS/JavaScript assets
  */
 class Manager extends AbstractInjectionAware
 {
+    use \Phalcon\Traits\Php\FileTrait;
+
+
     /**
      * @var array
      */

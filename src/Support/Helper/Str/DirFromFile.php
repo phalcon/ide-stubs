@@ -9,12 +9,18 @@
  */
 namespace Phalcon\Support\Helper\Str;
 
+use Phalcon\Traits\Support\Helper\Str\DirFromFileTrait;
+
 /**
  * Accepts a file name (without extension) and returns a calculated
  * directory structure with the filename in the end
  */
 class DirFromFile
 {
+    use \Phalcon\Traits\Support\Helper\Str\DirFromFileTrait;
+
+
+
     /**
      * @param string $file
      *

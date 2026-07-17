@@ -12,6 +12,8 @@ namespace Phalcon\Auth\Access;
 use Phalcon\Acl\Adapter\AdapterInterface;
 use Phalcon\Acl\RoleAwareInterface;
 use Phalcon\Auth\Exception;
+use Phalcon\Auth\Exceptions\DoesNotImplement;
+use Phalcon\Auth\Exceptions\MissingHandlerContext;
 use Phalcon\Contracts\Auth\Access\Access;
 use Phalcon\Contracts\Auth\AuthUser;
 use Phalcon\Contracts\Auth\Guard\Guard;
