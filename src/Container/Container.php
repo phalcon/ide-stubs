@@ -26,6 +26,7 @@ use Phalcon\Container\Exceptions\ServiceNotRegistered;
 use Phalcon\Container\Resolver\Lazy\Lazy;
 use Phalcon\Container\Resolver\Resolver;
 use Phalcon\Contracts\Container\Service\Collection;
+use Phalcon\Contracts\Container\Service\Enumerable;
 use Phalcon\Di\InjectionAwareInterface;
 use ReflectionException;
 
@@ -57,7 +58,7 @@ use ReflectionException;
  * @link    https://github.com/resolver-interop/interface/tree/1.x
  * @license https://github.com/resolver-interop/interface/blob/1.x/LICENSE.md
  */
-class Container implements \Phalcon\Contracts\Container\Service\Collection
+class Container implements \Phalcon\Contracts\Container\Service\Collection, \Phalcon\Contracts\Container\Service\Enumerable
 {
     /**
      * @var array<string, string>
@@ -247,6 +248,17 @@ class Container implements \Phalcon\Contracts\Container\Service\Collection
      * @throws ServiceNotRegistered
      */
     public function getService(string $serviceName): object
+    {
+    }
+
+    /**
+     * Returns the names of every registered service definition. Names that
+     * only exist as an alias, a pre-set instance or a parameter are not
+     * included.
+     *
+     * @return array<int, string>
+     */
+    public function getServiceNames(): array
     {
     }
 

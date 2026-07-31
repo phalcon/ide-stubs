@@ -9,6 +9,7 @@
  */
 namespace Phalcon\Auth\Access;
 
+use Phalcon\Auth\Exception;
 use Phalcon\Auth\Internal\ContainerResolver;
 use Phalcon\Contracts\Auth\Access\Access;
 use Phalcon\Support\AbstractLocator;

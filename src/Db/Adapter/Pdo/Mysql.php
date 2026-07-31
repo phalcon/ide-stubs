@@ -131,4 +131,18 @@ class Mysql extends \Phalcon\Db\Adapter\Pdo\AbstractPdo
     protected function isConnectionError(\Throwable $exception): bool
     {
     }
+
+    /**
+     * Resolves a MariaDB `COLUMN_DEFAULT` literal to the value it represents.
+     *
+     * MariaDB quotes literal defaults to tell them apart from the expression
+     * defaults it has supported since 10.2. Expression defaults arrive
+     * unquoted, so an unmatched pair leaves the value untouched.
+     *
+     * @param string $value
+     * @return string
+     */
+    private function unquoteDefault(string $value): string
+    {
+    }
 }

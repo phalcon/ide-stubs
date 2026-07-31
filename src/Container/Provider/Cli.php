@@ -9,11 +9,33 @@
  */
 namespace Phalcon\Container\Provider;
 
+use Phalcon\Annotations\Adapter\Memory as AnnotationsMemory;
 use Phalcon\Auth\Access\AccessLocator;
+use Phalcon\Cli\Dispatcher;
+use Phalcon\Cli\DispatcherInterface;
+use Phalcon\Cli\Router;
+use Phalcon\Cli\RouterInterface;
 use Phalcon\Contracts\Container\Service\Collection;
 use Phalcon\Contracts\Container\Service\Provider;
+use Phalcon\Contracts\Encryption\Security\Security as SecurityContract;
+use Phalcon\Encryption\Security;
+use Phalcon\Events\Manager as EventsManager;
+use Phalcon\Events\ManagerInterface as EventsManagerInterface;
 use Phalcon\Filter\Filter;
 use Phalcon\Filter\FilterFactory;
+use Phalcon\Filter\FilterInterface;
+use Phalcon\Html\Escaper;
+use Phalcon\Html\Escaper\EscaperInterface;
+use Phalcon\Html\TagFactory;
+use Phalcon\Mvc\Model\Manager as ModelManager;
+use Phalcon\Mvc\Model\ManagerInterface as ModelManagerInterface;
+use Phalcon\Mvc\Model\MetaDataInterface;
+use Phalcon\Mvc\Model\MetaData\Memory as ModelMetaDataMemory;
+use Phalcon\Mvc\Model\Transaction\Manager as TransactionManager;
+use Phalcon\Mvc\Model\Transaction\ManagerInterface as TransactionManagerInterface;
+use Phalcon\Storage\SerializerFactory;
+use Phalcon\Support\HelperFactory;
+use Phalcon\Support\Settings;
 
 /**
  * This file is part of the Phalcon Framework.

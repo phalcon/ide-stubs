@@ -9,11 +9,46 @@
  */
 namespace Phalcon\Container\Provider;
 
+use Phalcon\Annotations\Adapter\Memory as AnnotationsMemory;
+use Phalcon\Assets\Manager as AssetsManager;
 use Phalcon\Auth\Access\AccessLocator;
 use Phalcon\Contracts\Container\Service\Collection;
 use Phalcon\Contracts\Container\Service\Provider;
+use Phalcon\Contracts\Encryption\Security\Security as SecurityContract;
+use Phalcon\Encryption\Crypt;
+use Phalcon\Encryption\Crypt\CryptInterface;
+use Phalcon\Encryption\Security;
+use Phalcon\Events\Manager as EventsManager;
+use Phalcon\Events\ManagerInterface as EventsManagerInterface;
 use Phalcon\Filter\Filter;
 use Phalcon\Filter\FilterFactory;
+use Phalcon\Filter\FilterInterface;
+use Phalcon\Flash\Direct;
+use Phalcon\Flash\Session;
+use Phalcon\Html\Escaper;
+use Phalcon\Html\Escaper\EscaperInterface;
+use Phalcon\Html\TagFactory;
+use Phalcon\Http\Request;
+use Phalcon\Http\RequestInterface;
+use Phalcon\Http\Response;
+use Phalcon\Http\ResponseInterface;
+use Phalcon\Http\Response\Cookies;
+use Phalcon\Http\Response\CookiesInterface;
+use Phalcon\Mvc\Dispatcher;
+use Phalcon\Mvc\DispatcherInterface;
+use Phalcon\Mvc\Model\Manager as ModelManager;
+use Phalcon\Mvc\Model\ManagerInterface as ModelManagerInterface;
+use Phalcon\Mvc\Model\MetaDataInterface;
+use Phalcon\Mvc\Model\MetaData\Memory as ModelMetaDataMemory;
+use Phalcon\Mvc\Model\Transaction\Manager as TransactionManager;
+use Phalcon\Mvc\Model\Transaction\ManagerInterface as TransactionManagerInterface;
+use Phalcon\Mvc\Router;
+use Phalcon\Mvc\RouterInterface;
+use Phalcon\Mvc\Url;
+use Phalcon\Mvc\Url\UrlInterface;
+use Phalcon\Storage\SerializerFactory;
+use Phalcon\Support\HelperFactory;
+use Phalcon\Support\Settings;
 
 /**
  * This file is part of the Phalcon Framework.

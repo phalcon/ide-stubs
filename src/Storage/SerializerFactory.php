@@ -10,6 +10,20 @@
 namespace Phalcon\Storage;
 
 use Phalcon\Factory\AbstractFactory;
+use Phalcon\Storage\Serializer\Base64;
+use Phalcon\Storage\Serializer\Igbinary;
+use Phalcon\Storage\Serializer\Json;
+use Phalcon\Storage\Serializer\MemcachedIgbinary;
+use Phalcon\Storage\Serializer\MemcachedJson;
+use Phalcon\Storage\Serializer\MemcachedPhp;
+use Phalcon\Storage\Serializer\Msgpack;
+use Phalcon\Storage\Serializer\None;
+use Phalcon\Storage\Serializer\Php;
+use Phalcon\Storage\Serializer\RedisIgbinary;
+use Phalcon\Storage\Serializer\RedisJson;
+use Phalcon\Storage\Serializer\RedisMsgpack;
+use Phalcon\Storage\Serializer\RedisNone;
+use Phalcon\Storage\Serializer\RedisPhp;
 use Phalcon\Storage\Serializer\SerializerInterface;
 
 /**

@@ -1,0 +1,106 @@
+<?php
+
+/* This file is part of the Phalcon Framework.
+ *
+ * (c) Phalcon Team <team@phalcon.io>
+ *
+ * For the full copyright and license information, please view the LICENSE.txt
+ * file that was distributed with this source code.
+ */
+namespace Phalcon\Contracts\ADR\Router;
+
+use Phalcon\Http\RequestInterface;
+
+/**
+ * Maps a request to an Action by convention: the HTTP method and the static
+ * path segments identify the class; trailing segments become positional
+ * request attributes. No route table.
+ */
+interface Router
+{
+    /**
+     * Every Action class this router would try for the given method and path,
+     * in the order it tries them. The first that exists wins at match time.
+     * Namespace descent consults the filesystem, so the list depends on the
+     * action directory.
+     *
+     * @return list<class-string>
+     * @param string $method
+     * @param string $path
+     */
+    public function candidatesFor(string $method, string $path): array;
+
+    /**
+     * The class this convention names for a fully static path, derived without
+     * consulting the filesystem - the exact inverse of pathFor().
+     *
+     * For tooling that needs the name before the code exists: generators,
+     * linters, documentation and "no action found; expected X" diagnostics.
+     * Pass the static prefix only; placeholders are the caller's concern.
+     *
+     * @param string $method
+     * @param string $path
+     * @return string
+     */
+    public function classFor(string $method, string $path): string;
+
+    /**
+     * @param \Phalcon\Http\RequestInterface $request
+     * @return RouterMatch|null
+     */
+    public function match(\Phalcon\Http\RequestInterface $request): RouterMatch|null;
+
+    /**
+     * The HTTP method the given Action class answers, uppercased, or null when
+     * the class is not one this convention would have produced.
+     *
+     * The counterpart to pathFor(): same argument, same null semantics, so a
+     * caller that accepts one answer accepts the other. Together they are the
+     * whole inverse of classFor().
+     *
+     * @param string $className
+     * @return string|null
+     */
+    public function methodFor(string $className): string|null;
+
+    /**
+     * The canonical static path the given Action class answers, or null when
+     * the class is not derivable from the base namespace. Positional
+     * attributes are not part of the canonical path.
+     *
+     * @param string $className
+     * @return string|null
+     */
+    public function pathFor(string $className): string|null;
+
+    /**
+     * The filesystem root that backs the base namespace. The router uses it to
+     * decide whether a path segment names a sub-namespace.
+     *
+     * @param string $actionDirectory
+     * @return Router
+     */
+    public function setActionDirectory(string $actionDirectory): Router;
+
+    /**
+     * @param string $baseNamespace
+     * @return Router
+     */
+    public function setBaseNamespace(string $baseNamespace): Router;
+
+    /**
+     * @param array $middlewareMap
+     * @return Router
+     */
+    public function setMiddlewareMap(array $middlewareMap): Router;
+
+    /**
+     * The single delimiter between words in a path segment. Applied
+     * symmetrically when deriving a class name from a path and a path from a
+     * class name. Any other character is literal.
+     *
+     * @param string $wordSeparator
+     * @return Router
+     */
+    public function setWordSeparator(string $wordSeparator): Router;
+}

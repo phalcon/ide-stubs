@@ -12,6 +12,10 @@ namespace Phalcon\Translate;
 use Phalcon\Config\ConfigInterface;
 use Phalcon\Factory\AbstractFactory;
 use Phalcon\Translate\Adapter\AdapterInterface;
+use Phalcon\Translate\Adapter\Csv;
+use Phalcon\Translate\Adapter\Gettext;
+use Phalcon\Translate\Adapter\NativeArray;
+use Phalcon\Translate\Exceptions\TranslatorNotRegistered;
 
 /**
  * @property InterpolatorFactory $interpolator

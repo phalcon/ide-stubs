@@ -9,6 +9,7 @@
  */
 namespace Phalcon\Mvc\Model\Hydration;
 
+use Phalcon\Mvc\Model;
 use Phalcon\Mvc\Model\Exceptions\ColumnNotInMap;
 use Phalcon\Mvc\Model\Resultset;
 use Phalcon\Support\Settings;

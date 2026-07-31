@@ -9,9 +9,22 @@
  */
 namespace Phalcon\Di\FactoryDefault;
 
+use Phalcon\Annotations\Adapter\Memory as AnnotationsMemory;
+use Phalcon\Cli\Dispatcher;
+use Phalcon\Cli\Router;
 use Phalcon\Di\FactoryDefault;
 use Phalcon\Di\Service;
+use Phalcon\Encryption\Security;
+use Phalcon\Events\Manager as EventsManager;
 use Phalcon\Filter\FilterFactory;
+use Phalcon\Html\Escaper;
+use Phalcon\Html\TagFactory;
+use Phalcon\Mvc\Model\Manager as ModelManager;
+use Phalcon\Mvc\Model\MetaData\Memory as ModelMetaDataMemory;
+use Phalcon\Mvc\Model\Transaction\Manager as TransactionManager;
+use Phalcon\Queue\QueueFactory;
+use Phalcon\Support\HelperFactory;
+use Phalcon\Support\Settings;
 
 /**
  * Phalcon\Di\FactoryDefault\Cli

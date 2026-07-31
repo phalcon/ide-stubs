@@ -9,6 +9,7 @@
  */
 namespace Phalcon\Mvc\Model;
 
+use Phalcon\Cache\CacheInterface;
 use Phalcon\Db\Column;
 use Phalcon\Db\RawValue;
 use Phalcon\Db\ResultInterface;

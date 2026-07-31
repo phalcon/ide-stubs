@@ -10,6 +10,7 @@
 namespace Phalcon\Mvc\View;
 
 use Closure;
+use Phalcon\Contracts\View\Renderer;
 use Phalcon\Di\DiInterface;
 use Phalcon\Di\Injectable;
 use Phalcon\Events\EventsAwareInterface;
@@ -49,7 +50,7 @@ use Phalcon\Traits\Support\Helper\Str\DirSeparatorTrait;
  * );
  * ```
  */
-class Simple extends Injectable implements \Phalcon\Mvc\ViewBaseInterface, \Phalcon\Events\EventsAwareInterface
+class Simple extends Injectable implements \Phalcon\Mvc\ViewBaseInterface, \Phalcon\Events\EventsAwareInterface, \Phalcon\Contracts\View\Renderer
 {
     use \Phalcon\Traits\Support\Helper\Str\DirSeparatorTrait;
     use \Phalcon\Traits\Php\FileTrait;

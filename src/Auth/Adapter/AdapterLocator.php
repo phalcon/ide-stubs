@@ -9,6 +9,7 @@
  */
 namespace Phalcon\Auth\Adapter;
 
+use Phalcon\Auth\Exception;
 use Phalcon\Contracts\Auth\Adapter\Adapter;
 use Phalcon\Support\AbstractLocator;
 

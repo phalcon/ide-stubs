@@ -11,6 +11,11 @@ namespace Phalcon\Queue;
 
 use Phalcon\Contracts\Queue\ConnectionFactory as ConnectionFactoryInterface;
 use Phalcon\Factory\AbstractFactory;
+use Phalcon\Queue\Adapter\Beanstalk\BeanstalkConnectionFactory;
+use Phalcon\Queue\Adapter\Memory\MemoryConnectionFactory;
+use Phalcon\Queue\Adapter\Redis\RedisConnectionFactory;
+use Phalcon\Queue\Adapter\Stream\StreamConnectionFactory;
+use Phalcon\Queue\Exceptions\Exception;
 
 /**
  * Maps an adapter name to its ConnectionFactory. Mirrors

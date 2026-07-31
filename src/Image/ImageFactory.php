@@ -12,6 +12,8 @@ namespace Phalcon\Image;
 use Phalcon\Config\ConfigInterface;
 use Phalcon\Factory\AbstractFactory;
 use Phalcon\Image\Adapter\AdapterInterface;
+use Phalcon\Image\Adapter\Gd;
+use Phalcon\Image\Adapter\Imagick;
 use Phalcon\Traits\Support\Helper\Arr\GetTrait;
 
 /**

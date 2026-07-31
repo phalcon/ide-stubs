@@ -10,6 +10,9 @@
 namespace Phalcon\Translate;
 
 use Phalcon\Factory\AbstractFactory;
+use Phalcon\Translate\Exceptions\InterpolatorNotRegistered;
+use Phalcon\Translate\Interpolator\AssociativeArray;
+use Phalcon\Translate\Interpolator\IndexedArray;
 use Phalcon\Translate\Interpolator\InterpolatorInterface;
 
 /**

@@ -24,6 +24,8 @@ use Phalcon\Messages\MessageInterface;
 use Phalcon\Mvc\Model\BehaviorInterface;
 use Phalcon\Mvc\Model\Criteria;
 use Phalcon\Mvc\Model\CriteriaInterface;
+use Phalcon\Mvc\Model\Eager\Loader;
+use Phalcon\Mvc\Model\Eager\PathTree;
 use Phalcon\Mvc\Model\Exception;
 use Phalcon\Mvc\Model\Exceptions\BelongsToRequiresObject;
 use Phalcon\Mvc\Model\Exceptions\BindTypeNotDefined;
@@ -35,6 +37,7 @@ use Phalcon\Mvc\Model\Exceptions\DataTypeNotDefined;
 use Phalcon\Mvc\Model\Exceptions\IdentityNotInColumnMap;
 use Phalcon\Mvc\Model\Exceptions\IdentityNotInTableColumns;
 use Phalcon\Mvc\Model\Exceptions\InvalidDumpResultKey;
+use Phalcon\Mvc\Model\Exceptions\InvalidEagerParameter;
 use Phalcon\Mvc\Model\Exceptions\InvalidFindParameters;
 use Phalcon\Mvc\Model\Exceptions\InvalidModelsManagerService;
 use Phalcon\Mvc\Model\Exceptions\InvalidModelsMetadataService;
@@ -49,6 +52,8 @@ use Phalcon\Mvc\Model\Exceptions\RelationNotDefined;
 use Phalcon\Mvc\Model\Exceptions\RelationRequiresObjectOrArray;
 use Phalcon\Mvc\Model\Exceptions\SnapshotsDisabled;
 use Phalcon\Mvc\Model\Exceptions\StaticMethodRequiresOneArgument;
+use Phalcon\Mvc\Model\Exceptions\UnsupportedEagerHydration;
+use Phalcon\Mvc\Model\Exceptions\UnsupportedEagerResultset;
 use Phalcon\Mvc\Model\Exceptions\UpdateSnapshotDisabled;
 use Phalcon\Mvc\Model\Hydration\CloneResultMapHydrate;
 use Phalcon\Mvc\Model\ManagerInterface;
@@ -62,6 +67,7 @@ use Phalcon\Mvc\Model\RelationInterface;
 use Phalcon\Mvc\Model\ResultInterface;
 use Phalcon\Mvc\Model\Resultset;
 use Phalcon\Mvc\Model\ResultsetInterface;
+use Phalcon\Mvc\Model\Resultset\Simple;
 use Phalcon\Mvc\Model\TransactionInterface;
 use Phalcon\Mvc\Model\ValidationFailed;
 use Phalcon\Mvc\ModelInterface;
@@ -1470,6 +1476,22 @@ abstract class Model extends AbstractInjectionAware implements \Phalcon\Mvc\Enti
     }
 
     /**
+     * Stores related records in the relation cache, so that a subsequent
+     * getRelated() or property access returns them without querying.
+     *
+     * This is the write side of the cache getRelated() already reads. It does
+     * not mark the record dirty: the value lands in `related`, never in
+     * `dirtyRelated`, so save() is unaffected.
+     *
+     * @param mixed $records ModelInterface, Row, ResultsetInterface or null
+     * @param string $alias
+     * @return ModelInterface
+     */
+    public function setRelated(string $alias, $records): ModelInterface
+    {
+    }
+
+    /**
      * Sets the record's snapshot data.
      * This method is used internally to set snapshot data when the model was
      * set up to keep snapshot data
@@ -1942,6 +1964,16 @@ abstract class Model extends AbstractInjectionAware implements \Phalcon\Mvc\Enti
     /**
      * shared prepare query logic for find and findFirst method
      *
+     * @param mixed $resultset
+     * @param mixed $eager
+     * @param array $params
+     * @return void
+     */
+    private static function loadEager($resultset, $eager, array $params): void
+    {
+    }
+
+    /**
      * @param mixed $params
      * @param mixed $limit
      * @return QueryInterface
