@@ -10,7 +10,15 @@
 namespace Phalcon\Encryption\Crypt;
 
 use Phalcon\Encryption\Crypt;
+use Phalcon\Encryption\Crypt\Exception\Exception;
+use Phalcon\Encryption\Crypt\Padding\Ansi;
+use Phalcon\Encryption\Crypt\Padding\Iso10126;
+use Phalcon\Encryption\Crypt\Padding\IsoIek;
+use Phalcon\Encryption\Crypt\Padding\Noop;
 use Phalcon\Encryption\Crypt\Padding\PadInterface;
+use Phalcon\Encryption\Crypt\Padding\Pkcs7;
+use Phalcon\Encryption\Crypt\Padding\Space;
+use Phalcon\Encryption\Crypt\Padding\Zero;
 use Phalcon\Factory\AbstractFactory;
 
 /**
@@ -18,10 +26,7 @@ use Phalcon\Factory\AbstractFactory;
  */
 class PadFactory extends AbstractFactory
 {
-    /**
-     * @var string
-     */
-    protected $exception = 'Phalcon\\\\Encryption\\\\Crypt\\\\Exception\\\\Exception';
+    protected string $exception = '';
 
     /**
      * AdapterFactory constructor.

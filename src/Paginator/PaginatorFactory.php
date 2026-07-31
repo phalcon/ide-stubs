@@ -11,6 +11,10 @@ namespace Phalcon\Paginator;
 
 use Phalcon\Paginator\Adapter\AdapterInterface;
 use Phalcon\Factory\AbstractFactory;
+use Phalcon\Paginator\Adapter\Model;
+use Phalcon\Paginator\Adapter\NativeArray;
+use Phalcon\Paginator\Adapter\QueryBuilder;
+use Phalcon\Paginator\Adapter\QueryBuilderCursor;
 
 /**
  * This file is part of the Phalcon Framework.

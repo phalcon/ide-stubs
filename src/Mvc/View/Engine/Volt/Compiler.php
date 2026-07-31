@@ -34,6 +34,7 @@ use Phalcon\Mvc\View\Engine\Volt\Exceptions\UnknownVoltFilterType;
 use Phalcon\Mvc\View\Engine\Volt\Exceptions\UnknownVoltStatement;
 use Phalcon\Mvc\View\Engine\Volt\Exceptions\VoltDirectoryNotWritable;
 use Phalcon\Mvc\ViewBaseInterface;
+use Phalcon\Tag;
 use Phalcon\Traits\Php\FileTrait;
 
 /**

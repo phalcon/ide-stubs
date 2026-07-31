@@ -9,11 +9,13 @@
  */
 namespace Phalcon\Http;
 
+use Phalcon\Contracts\Http\AttributeRequest;
 use Phalcon\Di\AbstractInjectionAware;
 use Phalcon\Di\DiInterface;
 use Phalcon\Events\ManagerInterface;
 use Phalcon\Filter\FilterInterface;
 use Phalcon\Http\Message\RequestMethodInterface;
+use Phalcon\Http\Request\Bag\AttributeBag;
 use Phalcon\Http\Request\Exception;
 use Phalcon\Http\Request\Exceptions\FilterServiceUnavailable;
 use Phalcon\Http\Request\Exceptions\InvalidHost;
@@ -52,10 +54,15 @@ use stdClass;
  * $request->getLanguages();
  * ```
  */
-class Request extends AbstractInjectionAware implements \Phalcon\Http\RequestInterface, \Phalcon\Http\Message\RequestMethodInterface
+class Request extends AbstractInjectionAware implements \Phalcon\Http\RequestInterface, \Phalcon\Http\Message\RequestMethodInterface, \Phalcon\Contracts\Http\AttributeRequest
 {
     use \Phalcon\Traits\Php\FileTrait;
 
+
+    /**
+     * @var AttributeBag|null
+     */
+    protected $attributes = null;
 
     /**
      * @var FilterInterface|null
@@ -127,6 +134,25 @@ class Request extends AbstractInjectionAware implements \Phalcon\Http\RequestInt
      * @return array
      */
     public function getAcceptableContent(): array
+    {
+    }
+
+    /**
+     * Returns the request attributes bag. Attributes are arbitrary,
+     * application-defined values attached to the request during its
+     * lifecycle (router, dispatcher, security components etc.). The bag
+     * is created empty on first access and the same instance is returned
+     * on every subsequent call.
+     *
+     * ```php
+     * $request->getAttributes()->set("user", $user);
+     *
+     * $user = $request->getAttributes()->get("user");
+     * ```
+     *
+     * @return AttributeBag
+     */
+    public function getAttributes(): AttributeBag
     {
     }
 

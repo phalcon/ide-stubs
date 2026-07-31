@@ -9,6 +9,11 @@
  */
 namespace Phalcon\Config;
 
+use Phalcon\Config\Adapter\Grouped;
+use Phalcon\Config\Adapter\Ini;
+use Phalcon\Config\Adapter\Json;
+use Phalcon\Config\Adapter\Php;
+use Phalcon\Config\Adapter\Yaml;
 use Phalcon\Config\Config;
 use Phalcon\Config\ConfigInterface;
 use Phalcon\Config\Exceptions\ConfigNotArrayOrObject;

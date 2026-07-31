@@ -11,6 +11,13 @@ namespace Phalcon\Storage;
 
 use Phalcon\Factory\AbstractFactory;
 use Phalcon\Storage\Adapter\AdapterInterface;
+use Phalcon\Storage\Adapter\Apcu;
+use Phalcon\Storage\Adapter\Libmemcached;
+use Phalcon\Storage\Adapter\Memory;
+use Phalcon\Storage\Adapter\Redis;
+use Phalcon\Storage\Adapter\RedisCluster;
+use Phalcon\Storage\Adapter\Stream;
+use Phalcon\Storage\Adapter\Weak;
 
 /**
  * This file is part of the Phalcon Framework.

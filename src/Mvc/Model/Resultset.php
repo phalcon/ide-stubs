@@ -111,9 +111,13 @@ abstract class Resultset implements \Phalcon\Mvc\Model\ResultsetInterface, \Iter
     protected $cache = null;
 
     /**
-     * @var int
+     * Number of rows, or null while it has not been worked out yet. Resolved
+     * lazily by count() - asking the driver up front costs SQLite an extra
+     * statement on every single result-set.
+     *
+     * @var int|null
      */
-    protected $count = 0;
+    protected $count = null;
 
     /**
      * @var array
@@ -310,6 +314,21 @@ abstract class Resultset implements \Phalcon\Mvc\Model\ResultsetInterface, \Iter
     }
 
     /**
+     * Fetches every remaining row of the underlying cursor into memory,
+     * turning the resultset into TYPE_RESULT_FULL.
+     *
+     * Free when called before the cursor has been advanced: the statement has
+     * already been executed by Model\Query::executeSelect() and only the row
+     * the constructor consumed is missing from the cursor, so no re-execution
+     * takes place. Idempotent.
+     *
+     * @return void
+     */
+    public function materialize(): void
+    {
+    }
+
+    /**
      * Moves cursor to next row in the resultset
      *
      * @return void
@@ -412,6 +431,10 @@ abstract class Resultset implements \Phalcon\Mvc\Model\ResultsetInterface, \Iter
 
     /**
      * Check whether internal resource has rows to fetch
+     *
+     * Driven by the row the cursor is parked on rather than by the count, so
+     * that a plain traversal never has to ask the driver how many rows there
+     * are - on SQLite that answer costs a second statement.
      *
      * @return bool
      */

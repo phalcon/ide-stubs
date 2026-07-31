@@ -10,6 +10,9 @@
 namespace Phalcon\Annotations;
 
 use Phalcon\Annotations\Adapter\AdapterInterface;
+use Phalcon\Annotations\Adapter\Apcu;
+use Phalcon\Annotations\Adapter\Memory;
+use Phalcon\Annotations\Adapter\Stream;
 use Phalcon\Factory\AbstractFactory;
 use Phalcon\Traits\Support\Helper\Arr\GetTrait;
 

@@ -11,6 +11,7 @@ namespace Phalcon\Queue;
 
 use Phalcon\Contracts\Queue\Context as ContextInterface;
 use Phalcon\Factory\AbstractConfigFactory;
+use Phalcon\Queue\Exceptions\Exception;
 
 /**
  * Builds a queue Context from the standard Phalcon config shape. Mirrors

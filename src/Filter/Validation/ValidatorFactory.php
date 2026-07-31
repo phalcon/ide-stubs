@@ -10,6 +10,27 @@
 namespace Phalcon\Filter\Validation;
 
 use Phalcon\Factory\AbstractFactory;
+use Phalcon\Filter\Validation\Validator\Alnum;
+use Phalcon\Filter\Validation\Validator\Alpha;
+use Phalcon\Filter\Validation\Validator\Between;
+use Phalcon\Filter\Validation\Validator\Callback;
+use Phalcon\Filter\Validation\Validator\Confirmation;
+use Phalcon\Filter\Validation\Validator\CreditCard;
+use Phalcon\Filter\Validation\Validator\Date;
+use Phalcon\Filter\Validation\Validator\Digit;
+use Phalcon\Filter\Validation\Validator\Email;
+use Phalcon\Filter\Validation\Validator\Exception as ValidatorException;
+use Phalcon\Filter\Validation\Validator\ExclusionIn;
+use Phalcon\Filter\Validation\Validator\File;
+use Phalcon\Filter\Validation\Validator\Identical;
+use Phalcon\Filter\Validation\Validator\InclusionIn;
+use Phalcon\Filter\Validation\Validator\Ip;
+use Phalcon\Filter\Validation\Validator\Numericality;
+use Phalcon\Filter\Validation\Validator\PresenceOf;
+use Phalcon\Filter\Validation\Validator\Regex;
+use Phalcon\Filter\Validation\Validator\StringLength;
+use Phalcon\Filter\Validation\Validator\Uniqueness;
+use Phalcon\Filter\Validation\Validator\Url;
 
 /**
  * This file is part of the Phalcon Framework.

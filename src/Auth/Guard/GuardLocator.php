@@ -9,6 +9,7 @@
  */
 namespace Phalcon\Auth\Guard;
 
+use Phalcon\Auth\Exception;
 use Phalcon\Contracts\Auth\Guard\Guard;
 use Phalcon\Support\AbstractLocator;
 
