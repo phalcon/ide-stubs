@@ -16,25 +16,13 @@ use Phalcon\Contracts\ADR\Router\RouterMatch as RouterMatchInterface;
  */
 final class RouterMatch implements RouterMatchInterface
 {
-    /**
-     * @var string
-     */
-    protected $action;
+    protected string $action = '';
 
-    /**
-     * @var array
-     */
-    protected $attributes;
+    protected array $attributes = [];
 
-    /**
-     * @var array
-     */
-    protected $middleware;
+    protected array $middleware = [];
 
-    /**
-     * @var string|null
-     */
-    protected $name;
+    protected ?string $name = null;
 
     /**
      * @param string $action

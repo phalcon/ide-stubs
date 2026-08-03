@@ -9,6 +9,7 @@
  */
 namespace Phalcon\ADR\Front;
 
+use Throwable;
 use Phalcon\ADR\Application;
 use Phalcon\ADR\Container\AdrProvider;
 use Phalcon\Container\Container;
@@ -28,12 +29,12 @@ abstract class AbstractHttpFront implements \Phalcon\Contracts\Front\FrontContro
     /**
      * @var Container|null
      */
-    protected $container = null;
+    protected ?\Phalcon\Container\Container $container = null;
 
     /**
      * @var string
      */
-    protected string $projectRoot;
+    protected string $projectRoot = '';
 
     /**
      * @param string $projectRoot

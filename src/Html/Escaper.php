@@ -74,6 +74,9 @@ class Escaper implements \Phalcon\Html\Escaper\EscaperInterface
     protected $urlEscaper;
 
     /**
+     * Constructor. Accepts the legacy scalar params for backward compatibility
+     * and fans them out to every sub-escaper so existing code keeps working.
+     *
      * @param string $encoding
      * @param int $flags
      * @param bool $doubleEncode
@@ -106,6 +109,8 @@ class Escaper implements \Phalcon\Html\Escaper\EscaperInterface
     }
 
     /**
+     * Detects the character encoding of a string. Delegates to `HtmlEscaper`.
+     *
      * @param string $input
      *
      * @return string|null
@@ -179,6 +184,8 @@ class Escaper implements \Phalcon\Html\Escaper\EscaperInterface
     }
 
     /**
+     * Returns the encoding from the HtmlEscaper.
+     *
      * @return string
      */
     public function getEncoding(): string
@@ -186,6 +193,8 @@ class Escaper implements \Phalcon\Html\Escaper\EscaperInterface
     }
 
     /**
+     * Returns the flags from the HtmlEscaper.
+     *
      * @return int
      */
     public function getFlags(): int
@@ -236,6 +245,8 @@ class Escaper implements \Phalcon\Html\Escaper\EscaperInterface
     }
 
     /**
+     * Normalizes a string's encoding to UTF-32. Delegates to `HtmlEscaper`.
+     *
      * @param string $input
      *
      * @return string
@@ -302,6 +313,12 @@ class Escaper implements \Phalcon\Html\Escaper\EscaperInterface
     }
 
     /**
+     * Sets the HTML quoting type for htmlspecialchars.
+     *
+     * ```php
+     * $escaper->setHtmlQuoteType(ENT_XHTML);
+     * ```
+     *
      * @param int $flags
      *
      * @deprecated

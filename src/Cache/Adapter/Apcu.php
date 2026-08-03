@@ -17,5 +17,8 @@ use Phalcon\Storage\Adapter\Apcu as StorageApcu;
  */
 class Apcu extends \Phalcon\Storage\Adapter\Apcu implements CacheAdapterInterface
 {
+    /**
+     * EventType prefix.
+     */
     protected $eventType = 'cache';
 }

@@ -45,23 +45,17 @@ class Gettext extends \Phalcon\Translate\Adapter\AbstractAdapter
     use \Phalcon\Traits\Php\InfoTrait;
 
 
-    /**
-     * @var int
-     */
-    protected $category;
+    protected int $category = 6;
+
+    protected string $defaultDomain = 'messages';
 
     /**
-     * @var string
-     */
-    protected $defaultDomain;
-
-    /**
-     * @var string|array
+     * @var array<string, string>|string
      */
     protected $directory;
 
     /**
-     * @var string | false
+     * @var false|string
      */
     protected $locale;
 
@@ -114,7 +108,7 @@ class Gettext extends \Phalcon\Translate\Adapter\AbstractAdapter
     }
 
     /**
-     * @return string
+     * @return false|string
      */
     public function getLocale(): false|string
     {
@@ -124,7 +118,6 @@ class Gettext extends \Phalcon\Translate\Adapter\AbstractAdapter
      * Check whether is defined a translation key in the internal array
      *
      * @param string $index
-     *
      * @return bool
      */
     public function has(string $index): bool
@@ -202,7 +195,7 @@ class Gettext extends \Phalcon\Translate\Adapter\AbstractAdapter
      * );
      * ```
      *
-     * @param string|array $directory
+     * @param array<string, string>|string $directory
      * @return void
      */
     public function setDirectory($directory): void
@@ -244,7 +237,7 @@ class Gettext extends \Phalcon\Translate\Adapter\AbstractAdapter
      * @param int $category
      * @param array $localeArray
      */
-    public function setLocale(int $category, array $localeArray = []): bool|string
+    public function setLocale(int $category, array $localeArray = []): false|string
     {
     }
 

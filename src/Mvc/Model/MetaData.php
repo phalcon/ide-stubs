@@ -766,7 +766,7 @@ abstract class MetaData implements \Phalcon\Di\InjectionAwareInterface, \Phalcon
     }
 
     /**
-     * Initialize old behaviour for compatability
+     * Initialize old behavior for compatability
      *
      * @param \Phalcon\Mvc\ModelInterface $model
      * @param mixed $key

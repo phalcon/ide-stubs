@@ -314,6 +314,8 @@ class Validation extends Injectable implements \Phalcon\Filter\Validation\Valida
     }
 
     /**
+     * Sets the validator array
+     *
      * @param array $validators
      * @return static
      */

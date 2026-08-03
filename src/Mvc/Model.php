@@ -889,7 +889,7 @@ abstract class Model extends AbstractInjectionAware implements \Phalcon\Mvc\Enti
      *
      * echo "The first virtual invoice name is ", $invoice->inv_title;
      *
-     * // behaviour with transaction
+     * // behavior with transaction
      * $myTransaction = new Transaction(\Phalcon\Di\Di::getDefault());
      * $myTransaction->begin();
      *
@@ -1974,6 +1974,8 @@ abstract class Model extends AbstractInjectionAware implements \Phalcon\Mvc\Enti
     }
 
     /**
+     * shared prepare query logic for find and findFirst method
+     *
      * @param mixed $params
      * @param mixed $limit
      * @return QueryInterface

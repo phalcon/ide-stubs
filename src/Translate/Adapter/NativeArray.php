@@ -25,7 +25,7 @@ use Phalcon\Translate\InterpolatorFactory;
 class NativeArray extends \Phalcon\Translate\Adapter\AbstractAdapter
 {
     /**
-     * @var array
+     * @var array<string, string>
      */
     private $translate = [];
 
@@ -35,7 +35,8 @@ class NativeArray extends \Phalcon\Translate\Adapter\AbstractAdapter
      * @param InterpolatorFactory $interpolator
      * @param TOptions            $options
      *
-     * @throws Exception
+     * @throws InvalidDataType
+     * @throws MissingContent
      */
     public function __construct(\Phalcon\Translate\InterpolatorFactory $interpolator, array $options)
     {

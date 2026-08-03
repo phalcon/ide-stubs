@@ -25,6 +25,8 @@ use Phalcon\Support\Settings;
 class CloneResultMapHydrate
 {
     /**
+     * Returns an hydrated result based on the data and the column map
+     *
      * @param array $data
      * @param mixed $columnMap
      * @param int $hydrationMode

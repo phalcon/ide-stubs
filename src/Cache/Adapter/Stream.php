@@ -17,5 +17,8 @@ use Phalcon\Storage\Adapter\Stream as StorageStream;
  */
 class Stream extends \Phalcon\Storage\Adapter\Stream implements CacheAdapterInterface
 {
+    /**
+     * EventType prefix.
+     */
     protected $eventType = 'cache';
 }

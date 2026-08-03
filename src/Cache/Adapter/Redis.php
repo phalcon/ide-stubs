@@ -17,5 +17,8 @@ use Phalcon\Storage\Adapter\Redis as StorageRedis;
  */
 class Redis extends \Phalcon\Storage\Adapter\Redis implements CacheAdapterInterface
 {
+    /**
+     * EventType prefix.
+     */
     protected $eventType = 'cache';
 }

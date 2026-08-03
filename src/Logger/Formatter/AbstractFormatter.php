@@ -65,6 +65,8 @@ abstract class AbstractFormatter implements \Phalcon\Logger\Formatter\FormatterI
     }
 
     /**
+     * Returns the interpolated message, replacing context placeholders.
+     *
      * @param Item   $item
      * @param string $message
      *

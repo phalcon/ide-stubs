@@ -15,7 +15,7 @@ namespace Phalcon\ADR\Responder;
  */
 class Redirect
 {
-    protected int $status;
+    protected int $status = 302;
 
     protected string $url;
 
@@ -44,17 +44,17 @@ class Redirect
     }
 
     /**
-     * @return int
-     */
-    public function status(): int
-    {
-    }
-
-    /**
      * @param string $url
      * @return Redirect
      */
     public static function temporary(string $url): Redirect
+    {
+    }
+
+    /**
+     * @return int
+     */
+    public function status(): int
     {
     }
 

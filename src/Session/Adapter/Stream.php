@@ -64,6 +64,8 @@ class Stream extends \Phalcon\Session\Adapter\Noop
     protected $prefix = '';
 
     /**
+     * The path of the session files
+     *
      * @var string
      */
     private $path = '';
