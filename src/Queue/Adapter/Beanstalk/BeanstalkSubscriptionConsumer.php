@@ -26,6 +26,9 @@ class BeanstalkSubscriptionConsumer extends AbstractSubscriptionConsumer
     protected $context;
 
     /**
+     * The context is retained for transports that may later need it for a
+     * native multi-queue receive; the shared poll loop does not use it.
+     *
      * @param BeanstalkContext $context
      * @param int $pollInterval
      */

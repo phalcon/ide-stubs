@@ -42,17 +42,6 @@ final class FrozenClock implements \Phalcon\Time\Clock\ClockInterface
     }
 
     /**
-     * Mutates the clock to a new value. All consumers receive the same modification
-     *
-     * @throws InvalidModifier
-     * @param string $modifier
-     * @return static
-     */
-    public function adjust(string $modifier): static
-    {
-    }
-
-    /**
      * Return a new object of now with the current timezone
      *
      * @return FrozenClock
@@ -67,6 +56,17 @@ final class FrozenClock implements \Phalcon\Time\Clock\ClockInterface
      * @return FrozenClock
      */
     public static function fromUTC(): FrozenClock
+    {
+    }
+
+    /**
+     * Mutates the clock to a new value. All consumers receive the same modification
+     *
+     * @throws InvalidModifier
+     * @param string $modifier
+     * @return static
+     */
+    public function adjust(string $modifier): static
     {
     }
 

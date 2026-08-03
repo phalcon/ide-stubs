@@ -78,6 +78,8 @@ class Route implements \Phalcon\Cli\Router\RouteInterface
     protected static $uniqueId = 0;
 
     /**
+     * Constructor
+     *
      * @param array|string $paths
      * @param string $pattern
      */

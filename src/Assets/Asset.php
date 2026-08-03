@@ -95,6 +95,8 @@ class Asset implements \Phalcon\Assets\AssetInterface
     }
 
     /**
+     * Gets if the asset must be filtered or not.
+     *
      * @return bool
      */
     public function getFilter(): bool
@@ -102,6 +104,8 @@ class Asset implements \Phalcon\Assets\AssetInterface
     }
 
     /**
+     * Returns the path for this asset
+     *
      * @return string
      */
     public function getPath(): string
@@ -140,6 +144,8 @@ class Asset implements \Phalcon\Assets\AssetInterface
     }
 
     /**
+     * Gets the asset's type.
+     *
      * @return string
      */
     public function getType(): string

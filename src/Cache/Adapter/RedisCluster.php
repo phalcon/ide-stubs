@@ -17,5 +17,8 @@ use Phalcon\Storage\Adapter\RedisCluster as StorageRedisCluster;
  */
 class RedisCluster extends \Phalcon\Storage\Adapter\RedisCluster implements CacheAdapterInterface
 {
+    /**
+     * EventType prefix.
+     */
     protected $eventType = 'cache';
 }

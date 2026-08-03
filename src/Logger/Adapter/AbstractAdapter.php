@@ -134,6 +134,8 @@ abstract class AbstractAdapter implements \Phalcon\Logger\Adapter\AdapterInterfa
     }
 
     /**
+     * Return the formatter used
+     *
      * @return FormatterInterface
      */
     public function getFormatter(): FormatterInterface

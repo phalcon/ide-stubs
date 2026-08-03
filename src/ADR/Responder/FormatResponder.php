@@ -26,7 +26,7 @@ class FormatResponder implements \Phalcon\Contracts\ADR\Responder\Responder
     /**
      * @var array
      */
-    protected array $formatters;
+    protected array $formatters = [];
 
     /**
      * @param array $formatters

@@ -32,17 +32,17 @@ class CorsMiddleware implements \Phalcon\Contracts\ADR\Middleware
     /**
      * @var array
      */
-    protected array $allowedHeaders;
+    protected array $allowedHeaders = [];
 
     /**
      * @var array
      */
-    protected array $allowedMethods;
+    protected array $allowedMethods = [];
 
     /**
      * @var array
      */
-    protected array $allowedOrigins;
+    protected array $allowedOrigins = [];
 
     /**
      * @var int

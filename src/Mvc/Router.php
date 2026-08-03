@@ -1022,6 +1022,9 @@ class Router extends AbstractInjectionAware implements \Phalcon\Mvc\RouterInterf
     }
 
     /**
+     * Rebuilds the HTTP-method index from the current routes array.
+     * Routes with no HTTP method constraint are filed under "".
+     *
      * @return void
      */
     protected function rebuildMethodIndex(): void

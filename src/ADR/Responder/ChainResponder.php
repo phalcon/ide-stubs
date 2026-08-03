@@ -23,7 +23,7 @@ class ChainResponder implements \Phalcon\Contracts\ADR\Responder\Responder
     /**
      * @var Responder[]
      */
-    protected $links;
+    protected $links = [];
 
     /**
      * @param array $links

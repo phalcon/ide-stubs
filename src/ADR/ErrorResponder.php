@@ -33,7 +33,7 @@ final class ErrorResponder
 {
     protected \Phalcon\Contracts\ADR\Responder\Responder $chain;
 
-    protected bool $debug;
+    protected bool $debug = false;
 
     /**
      * @var array

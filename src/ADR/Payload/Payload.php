@@ -24,7 +24,7 @@ class Payload implements PayloadContract
     /**
      * @var Throwable|null
      */
-    protected $exception = null;
+    protected ?\Throwable $exception = null;
 
     /**
      * @var mixed
@@ -129,60 +129,6 @@ class Payload implements PayloadContract
      * @return PayloadContract
      */
     public static function found($result = null): PayloadContract
-    {
-    }
-
-    /**
-     * Gets the exception thrown in the domain layer, if any.
-     *
-     * @return Throwable|null
-     */
-    public function getException(): Throwable|null
-    {
-    }
-
-    /**
-     * Gets the arbitrary extra domain information.
-     *
-     * @return mixed
-     */
-    public function getExtras(): mixed
-    {
-    }
-
-    /**
-     * Gets the domain input.
-     *
-     * @return mixed
-     */
-    public function getInput(): mixed
-    {
-    }
-
-    /**
-     * Gets the domain messages.
-     *
-     * @return mixed
-     */
-    public function getMessages(): mixed
-    {
-    }
-
-    /**
-     * Gets the domain result.
-     *
-     * @return mixed
-     */
-    public function getResult(): mixed
-    {
-    }
-
-    /**
-     * Gets the payload status.
-     *
-     * @return mixed
-     */
-    public function getStatus(): mixed
     {
     }
 
@@ -294,6 +240,60 @@ class Payload implements PayloadContract
      * @return PayloadContract
      */
     public static function valid($result = null): PayloadContract
+    {
+    }
+
+    /**
+     * Gets the exception thrown in the domain layer, if any.
+     *
+     * @return Throwable|null
+     */
+    public function getException(): Throwable|null
+    {
+    }
+
+    /**
+     * Gets the arbitrary extra domain information.
+     *
+     * @return mixed
+     */
+    public function getExtras(): mixed
+    {
+    }
+
+    /**
+     * Gets the domain input.
+     *
+     * @return mixed
+     */
+    public function getInput(): mixed
+    {
+    }
+
+    /**
+     * Gets the domain messages.
+     *
+     * @return mixed
+     */
+    public function getMessages(): mixed
+    {
+    }
+
+    /**
+     * Gets the domain result.
+     *
+     * @return mixed
+     */
+    public function getResult(): mixed
+    {
+    }
+
+    /**
+     * Gets the payload status.
+     *
+     * @return mixed
+     */
+    public function getStatus(): mixed
     {
     }
 

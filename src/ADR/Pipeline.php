@@ -22,17 +22,17 @@ use Phalcon\Http\ResponseInterface;
  */
 final class Pipeline implements \Phalcon\Contracts\ADR\Handler
 {
-    protected int $index;
+    protected int $index = 0;
 
     /**
      * @var array
      */
-    protected array $middleware;
+    protected array $middleware = [];
 
     /**
      * @var Handler
      */
-    protected $terminal;
+    protected \Phalcon\Contracts\ADR\Handler $terminal;
 
     /**
      * @param array $middleware

@@ -34,8 +34,9 @@ final class AttributeFilter implements AttributeFilterInterface
     /**
      * @param string $value
      * @param string $type
+     * @return double|int|string
      */
-    protected function cast(string $value, string $type)
+    protected function cast(string $value, string $type): int|float|string
     {
     }
 }
