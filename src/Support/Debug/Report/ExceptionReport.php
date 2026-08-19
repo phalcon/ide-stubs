@@ -9,83 +9,65 @@
  */
 namespace Phalcon\Support\Debug\Report;
 
+use Phalcon\Contracts\Support\SupportTypes;
+
 /**
  * Carries all data collected for an exception, ready to be rendered. Holds no
  * presentation logic.
+ *
+ * @phpstan-import-type support_debug_included_files from SupportTypes
+ * @phpstan-import-type support_debug_superglobal from SupportTypes
+ * @phpstan-import-type support_debug_variables from SupportTypes
  */
 final class ExceptionReport
 {
     /**
      * @var BacktraceItem[]
      */
-    protected $backtrace = [];
+    private array $backtrace = [];
+
+    private string $className;
+
+    private string $file;
 
     /**
-     * @var string
+     * @phpstan-var support_debug_included_files
      */
-    protected $className;
+    private array $includedFiles = [];
+
+    private int $line;
+
+    private int $memoryUsage = 0;
+
+    private string $message;
+
+    private int $peakMemoryUsage = 0;
 
     /**
-     * @var string
+     * @phpstan-var support_debug_superglobal
      */
-    protected $file;
+    private array $request = [];
 
     /**
-     * @var array
+     * @phpstan-var support_debug_superglobal
      */
-    protected $includedFiles = [];
+    private array $server = [];
+
+    private bool $showBackTrace;
+
+    private string $uri;
 
     /**
-     * @var int
+     * @phpstan-var support_debug_variables
      */
-    protected $line;
-
-    /**
-     * @var int
-     */
-    protected $memoryUsage = 0;
-
-    /**
-     * @var string
-     */
-    protected $message;
-
-    /**
-     * @var int
-     */
-    protected $peakMemoryUsage = 0;
-
-    /**
-     * @var array
-     */
-    protected $request = [];
-
-    /**
-     * @var array
-     */
-    protected $server = [];
-
-    /**
-     * @var bool
-     */
-    protected $showBackTrace;
-
-    /**
-     * @var string
-     */
-    protected $uri;
-
-    /**
-     * @var array
-     */
-    protected $variables = [];
+    private array $variables = [];
 
     /**
      * @param string $className
      * @param string $message
      * @param string $file
-     * @param int    $line
-     * @param bool   $showBackTrace
+     * @param int $line
+     * @param bool $showBackTrace
      * @param string $uri
      */
     public function __construct(string $className, string $message, string $file, int $line, bool $showBackTrace, string $uri)
@@ -114,6 +96,7 @@ final class ExceptionReport
     }
 
     /**
+     * @phpstan-return support_debug_included_files
      * @return array
      */
     public function getIncludedFiles(): array
@@ -149,6 +132,7 @@ final class ExceptionReport
     }
 
     /**
+     * @phpstan-return support_debug_superglobal
      * @return array
      */
     public function getRequest(): array
@@ -156,6 +140,7 @@ final class ExceptionReport
     }
 
     /**
+     * @phpstan-return support_debug_superglobal
      * @return array
      */
     public function getServer(): array
@@ -170,6 +155,7 @@ final class ExceptionReport
     }
 
     /**
+     * @phpstan-return support_debug_variables
      * @return array
      */
     public function getVariables(): array
@@ -192,7 +178,6 @@ final class ExceptionReport
 
     /**
      * @param BacktraceItem[] $backtrace
-     *
      * @return static
      */
     public function setBacktrace(array $backtrace): static
@@ -200,8 +185,8 @@ final class ExceptionReport
     }
 
     /**
+     * @phpstan-param support_debug_included_files $includedFiles
      * @param array $includedFiles
-     *
      * @return static
      */
     public function setIncludedFiles(array $includedFiles): static
@@ -210,7 +195,6 @@ final class ExceptionReport
 
     /**
      * @param int $memoryUsage
-     *
      * @return static
      */
     public function setMemoryUsage(int $memoryUsage): static
@@ -219,7 +203,6 @@ final class ExceptionReport
 
     /**
      * @param int $peakMemoryUsage
-     *
      * @return static
      */
     public function setPeakMemoryUsage(int $peakMemoryUsage): static
@@ -227,8 +210,8 @@ final class ExceptionReport
     }
 
     /**
+     * @phpstan-param support_debug_superglobal $request
      * @param array $request
-     *
      * @return static
      */
     public function setRequest(array $request): static
@@ -236,8 +219,8 @@ final class ExceptionReport
     }
 
     /**
+     * @phpstan-param support_debug_superglobal $server
      * @param array $server
-     *
      * @return static
      */
     public function setServer(array $server): static
@@ -245,8 +228,8 @@ final class ExceptionReport
     }
 
     /**
+     * @phpstan-param support_debug_variables $variables
      * @param array $variables
-     *
      * @return static
      */
     public function setVariables(array $variables): static

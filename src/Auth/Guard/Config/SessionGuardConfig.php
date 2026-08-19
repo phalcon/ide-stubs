@@ -23,36 +23,26 @@ use Phalcon\Auth\Exceptions\SessionNamesMustDiffer;
 class SessionGuardConfig extends \Phalcon\Auth\Guard\Config\AbstractGuardConfig
 {
     /**
-     * Default remember-me cookie lifetime,
-     * in seconds (365 days).
+     * Default remember-me cookie lifetime, in seconds (365 days).
      *
      * @var int
      */
     const int DEFAULT_REMEMBER_TTL = 31536000;
 
-    /**
-     * @var string
-     */
-    private $name;
+    private string $name;
 
-    /**
-     * @var string
-     */
-    private $rememberName;
+    private string $rememberName;
 
-    /**
-     * @var int
-     */
-    private $rememberTtl;
+    private int $rememberTtl;
 
     /**
      * @throws Exception
      * @param string|null $suffix
      * @param string|null $name
      * @param string|null $rememberName
-     * @param mixed $rememberTtl
+     * @param int|null $rememberTtl
      */
-    public function __construct(?string $suffix = null, ?string $name = null, ?string $rememberName = null, $rememberTtl = null)
+    public function __construct(?string $suffix = null, ?string $name = null, ?string $rememberName = null, ?int $rememberTtl = null)
     {
     }
 

@@ -13,6 +13,7 @@ use Phalcon\Container\Exceptions\Exception as ContainerException;
 use Phalcon\Contracts\Container\Service\Collection;
 use Phalcon\Di\DiInterface;
 use Phalcon\Di\Exception as DiException;
+use TypeError;
 
 /**
  * Internal single source of truth for resolving services from either the
@@ -32,26 +33,11 @@ final class ContainerResolver
     /**
      * Validates that the value is a supported container.
      *
-     * @throws \TypeError
+     * @throws TypeError
      * @param mixed $container
      * @return void
      */
     public static function ensureContainer($container): void
-    {
-    }
-
-    /**
-     * Resolves a fresh instance: new() on the Container (bypasses the
-     * instance cache); get() on the legacy Di (fresh for unregistered or
-     * non-shared services). On Di, an unregistered but existing class is
-     * still built via the class builder.
-     *
-     * @throws ContainerException
-     * @param mixed $container
-     * @param string $name
-     * @return object
-     */
-    public static function resolveFresh($container, string $name): object
     {
     }
 
@@ -73,22 +59,6 @@ final class ContainerResolver
     }
 
     /**
-     * Builds the ordered candidate list for a framework service:
-     * an explicit override from options['services'][key] if present,
-     * otherwise the interface FQN followed by the conventional short name.
-     *
-     * @param array<string, mixed> $options
-     *
-     * @return list<string>
-     * @param string $key
-     * @param string $fqn
-     * @param string $shortName
-     */
-    public static function serviceCandidates(array $options, string $key, string $fqn, string $shortName): array
-    {
-    }
-
-    /**
      * Convenience composition of serviceCandidates() + requireService():
      * resolves the first bound candidate for a framework service whose
      * container key may vary, using the options override or the
@@ -105,6 +75,37 @@ final class ContainerResolver
      * @return object
      */
     public static function resolveCandidate($container, array $options, string $key, string $fqn, string $shortName, string $context): object
+    {
+    }
+
+    /**
+     * Resolves a fresh instance: new() on the Container (bypasses the
+     * instance cache); get() on the legacy Di (fresh for unregistered or
+     * non-shared services). On Di, an unregistered but existing class is
+     * still built via the class builder.
+     *
+     * @throws ContainerException
+     * @param mixed $container
+     * @param string $name
+     * @return object
+     */
+    public static function resolveFresh($container, string $name): object
+    {
+    }
+
+    /**
+     * Builds the ordered candidate list for a framework service:
+     * an explicit override from options['services'][key] if present,
+     * otherwise the interface FQN followed by the conventional short name.
+     *
+     * @param array<string, mixed> $options
+     *
+     * @return list<string>
+     * @param string $key
+     * @param string $fqn
+     * @param string $shortName
+     */
+    public static function serviceCandidates(array $options, string $key, string $fqn, string $shortName): array
     {
     }
 

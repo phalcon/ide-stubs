@@ -9,6 +9,7 @@
  */
 namespace Phalcon\Support\Helper\Json;
 
+use JsonException;
 use Phalcon\Support\Helper\Json\Exceptions\JsonDecodeError;
 use Phalcon\Traits\Support\Helper\Json\DecodeTrait;
 
@@ -32,15 +33,13 @@ class Decode
 
 
     /**
-     * @param string $data        JSON data to parse
-     * @param bool   $associative When `true`, objects are converted to arrays
-     * @param int    $depth       Recursion depth.
-     * @param int    $options     Bitmask of JSON decode options.
-     *
-     * @return mixed
+     * @param int<1, max> $depth       Recursion depth.
      *
      * @throws JsonDecodeError if the JSON cannot be decoded.
      * @link https://www.php.net/manual/en/function.json-decode.php
+     * @param string $data
+     * @param bool $associative
+     * @param int $options
      */
     public function __invoke(string $data, bool $associative = false, int $depth = 512, int $options = 79)
     {

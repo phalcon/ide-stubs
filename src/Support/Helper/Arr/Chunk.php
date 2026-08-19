@@ -15,11 +15,11 @@ namespace Phalcon\Support\Helper\Arr;
 class Chunk
 {
     /**
-     * @param array $collection
-     * @param int   $size
-     * @param bool  $preserveKeys
+     * @param array<array-key, mixed> $collection
+     * @param int<1, max>             $size
      *
-     * @return array<int|string,mixed>
+     * @return array<array-key, mixed>
+     * @param bool $preserveKeys
      */
     public function __invoke(array $collection, int $size, bool $preserveKeys = false): array
     {

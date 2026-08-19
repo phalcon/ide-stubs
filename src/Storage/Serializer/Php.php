@@ -29,7 +29,7 @@ class Php extends \Phalcon\Storage\Serializer\AbstractSerializer
     /**
      * Serializes data
      *
-     * @return mixed
+     * @return bool|float|int|string|null
      */
     public function serialize(): mixed
     {

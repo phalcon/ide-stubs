@@ -18,9 +18,8 @@ class Decapitalize extends \Phalcon\Support\Helper\Str\AbstractStr
 {
     /**
      * @param string $text
-     * @param bool   $upperRest
+     * @param bool $upperRest
      * @param string $encoding
-     *
      * @return string
      */
     public function __invoke(string $text, bool $upperRest = false, string $encoding = 'UTF-8'): string

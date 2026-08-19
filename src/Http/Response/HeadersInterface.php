@@ -18,8 +18,7 @@ interface HeadersInterface
      * Gets a header value from the internal bag
      *
      * @param string $name
-     *
-     * @return string|bool|null
+     * @return bool|string|null
      */
     public function get(string $name): bool|string|null;
 
@@ -27,7 +26,6 @@ interface HeadersInterface
      * Checks if a header exists
      *
      * @param string $name
-     *
      * @return bool
      */
     public function has(string $name): bool;
@@ -51,7 +49,6 @@ interface HeadersInterface
      *
      * @param string $name
      * @param string $value
-     *
      * @return HeadersInterface
      */
     public function set(string $name, string $value): HeadersInterface;
@@ -60,7 +57,6 @@ interface HeadersInterface
      * Sets a raw header to be sent at the end of the request
      *
      * @param string $header
-     *
      * @return HeadersInterface
      */
     public function setRaw(string $header): HeadersInterface;

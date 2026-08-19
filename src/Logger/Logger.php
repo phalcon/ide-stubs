@@ -9,9 +9,6 @@
  */
 namespace Phalcon\Logger;
 
-use Exception;
-use Phalcon\Logger\Exception as LoggerException;
-
 /**
  * Phalcon Logger.
  *
@@ -29,12 +26,10 @@ class Logger extends \Phalcon\Logger\AbstractLogger implements \Phalcon\Logger\L
      * Example: Entire website down, database unavailable, etc. This should
      * trigger the SMS alerts and wake you up.
      *
-     * @param string $message
-     * @param array  $context
-     *
-     * @return void
      * @throws Exception
-     * @throws LoggerException
+     * @param string $message
+     * @param array $context
+     * @return void
      */
     public function alert(string $message, array $context = []): void
     {
@@ -45,12 +40,10 @@ class Logger extends \Phalcon\Logger\AbstractLogger implements \Phalcon\Logger\L
      *
      * Example: Application component unavailable, unexpected exception.
      *
-     * @param string $message
-     * @param array  $context
-     *
-     * @return void
      * @throws Exception
-     * @throws LoggerException
+     * @param string $message
+     * @param array $context
+     * @return void
      */
     public function critical(string $message, array $context = []): void
     {
@@ -59,12 +52,10 @@ class Logger extends \Phalcon\Logger\AbstractLogger implements \Phalcon\Logger\L
     /**
      * Detailed debug information.
      *
-     * @param string $message
-     * @param array  $context
-     *
-     * @return void
      * @throws Exception
-     * @throws LoggerException
+     * @param string $message
+     * @param array $context
+     * @return void
      */
     public function debug(string $message, array $context = []): void
     {
@@ -73,12 +64,10 @@ class Logger extends \Phalcon\Logger\AbstractLogger implements \Phalcon\Logger\L
     /**
      * System is unusable.
      *
-     * @param string $message
-     * @param array  $context
-     *
-     * @return void
      * @throws Exception
-     * @throws LoggerException
+     * @param string $message
+     * @param array $context
+     * @return void
      */
     public function emergency(string $message, array $context = []): void
     {
@@ -88,12 +77,10 @@ class Logger extends \Phalcon\Logger\AbstractLogger implements \Phalcon\Logger\L
      * Runtime errors that do not require immediate action but should typically
      * be logged and monitored.
      *
-     * @param string $message
-     * @param array  $context
-     *
-     * @return void
      * @throws Exception
-     * @throws LoggerException
+     * @param string $message
+     * @param array $context
+     * @return void
      */
     public function error(string $message, array $context = []): void
     {
@@ -104,12 +91,10 @@ class Logger extends \Phalcon\Logger\AbstractLogger implements \Phalcon\Logger\L
      *
      * Example: User logs in, SQL logs.
      *
-     * @param string $message
-     * @param array  $context
-     *
-     * @return void
      * @throws Exception
-     * @throws LoggerException
+     * @param string $message
+     * @param array $context
+     * @return void
      */
     public function info(string $message, array $context = []): void
     {
@@ -121,13 +106,11 @@ class Logger extends \Phalcon\Logger\AbstractLogger implements \Phalcon\Logger\L
      * An unknown level (a typo or an unmapped value) is not rejected; it maps
      * to the CUSTOM level and is logged, rather than raising an exception.
      *
-     * @param mixed  $level
-     * @param string $message
-     * @param array  $context
-     *
-     * @return void
      * @throws Exception
-     * @throws LoggerException
+     * @param mixed $level
+     * @param string $message
+     * @param array $context
+     * @return void
      */
     public function log($level, string $message, array $context = []): void
     {
@@ -136,12 +119,10 @@ class Logger extends \Phalcon\Logger\AbstractLogger implements \Phalcon\Logger\L
     /**
      * Normal but significant events.
      *
-     * @param string $message
-     * @param array  $context
-     *
-     * @return void
      * @throws Exception
-     * @throws LoggerException
+     * @param string $message
+     * @param array $context
+     * @return void
      */
     public function notice(string $message, array $context = []): void
     {
@@ -154,12 +135,10 @@ class Logger extends \Phalcon\Logger\AbstractLogger implements \Phalcon\Logger\L
      * HTTP response bodies, or internal state transitions that are too noisy
      * for DEBUG.
      *
-     * @param string $message
-     * @param array  $context
-     *
-     * @return void
      * @throws Exception
-     * @throws LoggerException
+     * @param string $message
+     * @param array $context
+     * @return void
      */
     public function trace(string $message, array $context = []): void
     {
@@ -171,12 +150,10 @@ class Logger extends \Phalcon\Logger\AbstractLogger implements \Phalcon\Logger\L
      * Example: Use of deprecated APIs, poor use of an API, undesirable things
      * that are not necessarily wrong.
      *
-     * @param string $message
-     * @param array  $context
-     *
-     * @return void
      * @throws Exception
-     * @throws LoggerException
+     * @param string $message
+     * @param array $context
+     * @return void
      */
     public function warning(string $message, array $context = []): void
     {

@@ -33,17 +33,13 @@ class StreamContext extends AbstractContext
 
     /**
      * Milliseconds slept between poll attempts by consumers.
-     *
-     * @var int
      */
-    protected $pollInterval = 200;
+    protected int $pollInterval = 200;
 
     /**
      * Directory (with trailing separator) that holds the queue files.
-     *
-     * @var string
      */
-    protected $storageDir = '';
+    protected string $storageDir = '';
 
     /**
      * @param string $storageDir

@@ -91,7 +91,9 @@ class Url extends AbstractInjectionAware implements \Phalcon\Mvc\Url\UrlInterfac
      *     ]
      * );
      *
-     * // Generate an absolute URL by setting the third parameter as false.
+     * // A URI that already carries a scheme is detected as remote and is
+     * // returned untouched. The third parameter is only honored when it is
+     * // explicitly true - a false reads the same as leaving it out.
      * echo $url->get(
      *     "https://phalcon.io/",
      *     null,

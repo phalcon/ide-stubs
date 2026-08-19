@@ -28,7 +28,7 @@ interface RememberAdapter extends \Phalcon\Contracts\Auth\Adapter\Adapter
     /**
      * Retrieve a user by the remember-me cookie payload.
      *
-     * @param mixed $id
+     * @param int|string $id
      * @param string $token
      * @param string|null $userAgent
      * @return AuthUser|null

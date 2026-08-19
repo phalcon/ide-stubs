@@ -9,7 +9,6 @@
  */
 namespace Phalcon\Logger;
 
-use DateTimeImmutable;
 use DateTimeZone;
 use Exception;
 use Phalcon\Logger\Adapter\AdapterInterface;
@@ -31,7 +30,7 @@ use Phalcon\Time\Clock\SystemClock;
  * @property array              $excluded
  * @property int                $logLevel
  * @property string             $name
- * @property string             $timezone
+ * @property DateTimeZone       $timezone
  */
 abstract class AbstractLogger
 {
@@ -95,50 +94,34 @@ abstract class AbstractLogger
      *
      * @var AdapterInterface[]
      */
-    protected $adapters = [];
+    protected array $adapters = [];
 
     /**
      * Clock used to timestamp log items
-     *
-     * @var ClockInterface
      */
-    protected $clock;
+    protected \Phalcon\Time\Clock\ClockInterface $clock;
 
     /**
      * The excluded adapters for this log process
-     *
-     * @var array
      */
-    protected $excluded = [];
+    protected array $excluded = [];
 
     /**
      * Minimum log level for the logger
-     *
-     * @var int
      */
-    protected $logLevel = 8;
+    protected int $logLevel = 8;
 
-    /**
-     * @var string
-     */
-    protected $name = '';
+    protected string $name = '';
 
-    /**
-     * @var DateTimeZone
-     */
-    protected $timezone;
+    protected \DateTimeZone $timezone;
 
     /**
      * Constructor.
      *
-     * @param string            $name     The name of the logger
-     * @param array             $adapters The collection of adapters to be used
-     *                                    for logging (default [])
-     * @param DateTimeZone|null   $timezone Timezone. If omitted,
-     *                                      date_Default_timezone_get() is used
-     * @param ClockInterface|null $clock    Clock used to timestamp log items.
-     *                                      Defaults to a SystemClock on the
-     *                                      resolved timezone.
+     * @param string $name
+     * @param array $adapters
+     * @param \DateTimeZone|null $timezone
+     * @param \Phalcon\Time\Clock\ClockInterface|null $clock
      */
     public function __construct(string $name, array $adapters = [], ?\DateTimeZone $timezone = null, ?\Phalcon\Time\Clock\ClockInterface $clock = null)
     {
@@ -147,9 +130,8 @@ abstract class AbstractLogger
     /**
      * Add an adapter to the stack. For processing we use FIFO
      *
-     * @param string           $name    The name of the adapter
-     * @param AdapterInterface $adapter The adapter to add to the stack
-     *
+     * @param string $name
+     * @param \Phalcon\Logger\Adapter\AdapterInterface $adapter
      * @return static
      */
     public function addAdapter(string $name, \Phalcon\Logger\Adapter\AdapterInterface $adapter): static
@@ -178,7 +160,6 @@ abstract class AbstractLogger
      * Exclude certain adapters.
      *
      * @param array $adapters
-     *
      * @return static
      */
     public function excludeAdapters(array $adapters = []): static
@@ -188,10 +169,9 @@ abstract class AbstractLogger
     /**
      * Returns an adapter from the stack
      *
-     * @param string $name The name of the adapter
-     *
-     * @return AdapterInterface
      * @throws AdapterNotFound
+     * @param string $name
+     * @return AdapterInterface
      */
     public function getAdapter(string $name): AdapterInterface
     {
@@ -227,10 +207,9 @@ abstract class AbstractLogger
     /**
      * Removes an adapter from the stack
      *
-     * @param string $name The name of the adapter
-     *
-     * @return static
      * @throws AdapterNotFound
+     * @param string $name
+     * @return static
      */
     public function removeAdapter(string $name): static
     {
@@ -248,8 +227,7 @@ abstract class AbstractLogger
     /**
      * Sets the adapters stack overriding what is already there
      *
-     * @param array $adapters An array of adapters
-     *
+     * @param array $adapters
      * @return static
      */
     public function setAdapters(array $adapters): static
@@ -264,7 +242,6 @@ abstract class AbstractLogger
      * "everything except TRACE".
      *
      * @param int $level
-     *
      * @return static
      */
     public function setLogLevel(int $level): static
@@ -274,13 +251,12 @@ abstract class AbstractLogger
     /**
      * Adds a message to each handler for processing
      *
-     * @param int $level
-     * @param string $message
-     * @param array  $context
-     *
-     * @return bool
      * @throws Exception
      * @throws NoAdaptersConfigured
+     * @param int $level
+     * @param string $message
+     * @param array $context
+     * @return bool
      */
     protected function addMessage(int $level, string $message, array $context = []): bool
     {
@@ -290,7 +266,6 @@ abstract class AbstractLogger
      * Converts the level from string/word to an integer
      *
      * @param mixed $level
-     *
      * @return int
      */
     protected function getLevelNumber($level): int
@@ -300,7 +275,7 @@ abstract class AbstractLogger
     /**
      * Returns an array of log levels with integer to string conversion
      *
-     * @return string[]
+     * @return array
      */
     protected function getLevels(): array
     {

@@ -18,20 +18,11 @@ use Phalcon\Contracts\Queue\Queue as QueueInterface;
  */
 class BoundProcessor
 {
-    /**
-     * @var ConsumerInterface
-     */
-    protected $consumer;
+    protected \Phalcon\Contracts\Queue\Consumer $consumer;
 
-    /**
-     * @var ProcessorInterface
-     */
-    protected $processor;
+    protected \Phalcon\Contracts\Queue\Processor $processor;
 
-    /**
-     * @var QueueInterface
-     */
-    protected $queue;
+    protected \Phalcon\Contracts\Queue\Queue $queue;
 
     /**
      * @param \Phalcon\Contracts\Queue\Queue $queue

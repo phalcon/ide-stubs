@@ -9,10 +9,10 @@
  */
 namespace Phalcon\Storage\Adapter;
 
-use DateInterval;
+use APCUIterator;
 use Exception;
+use Phalcon\Contracts\Storage\StorageTypes;
 use Phalcon\Storage\SerializerFactory;
-use Phalcon\Support\Exception as SupportException;
 use Phalcon\Traits\Php\ApcuTrait;
 
 /**
@@ -23,25 +23,26 @@ use Phalcon\Traits\Php\ApcuTrait;
  * - getKeys(): APCUIterator regex scan over the shared APCu store.
  * - Serializers: Phalcon-side only; no backend-native serializer.
  *
- * @property array $options
+ * @phpstan-import-type storage_adapter_options from StorageTypes
+ * @phpstan-import-type storage_keys from StorageTypes
+ *
+ * @phpstan-property storage_adapter_options $options
  */
 class Apcu extends \Phalcon\Storage\Adapter\AbstractAdapter
 {
     use \Phalcon\Traits\Php\ApcuTrait;
 
 
-    /**
-     * @var string
-     */
-    protected $prefix = 'ph-apcu-';
+    protected string $prefix = 'ph-apcu-';
 
     /**
      * Apcu constructor.
      *
-     * @param SerializerFactory $factory
-     * @param array             $options
+     * @phpstan-param storage_adapter_options $options
      *
-     * @throws SupportException
+     * @throws Exception
+     * @param \Phalcon\Storage\SerializerFactory $factory
+     * @param array $options
      */
     public function __construct(\Phalcon\Storage\SerializerFactory $factory, array $options = [])
     {
@@ -59,8 +60,8 @@ class Apcu extends \Phalcon\Storage\Adapter\AbstractAdapter
     /**
      * Stores data in the adapter
      *
+     * @phpstan-return storage_keys
      * @param string $prefix
-     *
      * @return array
      */
     public function getKeys(string $prefix = ''): array
@@ -72,11 +73,10 @@ class Apcu extends \Phalcon\Storage\Adapter\AbstractAdapter
      * from the adapter.
      *
      * @param string $key
-     * @param mixed  $value
-     *
+     * @param mixed $data
      * @return bool
      */
-    public function setForever(string $key, $value): bool
+    public function setForever(string $key, $data): bool
     {
     }
 
@@ -84,11 +84,10 @@ class Apcu extends \Phalcon\Storage\Adapter\AbstractAdapter
      * Decrements a stored number
      *
      * @param string $key
-     * @param int    $value
-     *
-     * @return bool|int
+     * @param int $value
+     * @return false|int
      */
-    protected function doDecrement(string $key, int $value = 1): int|bool
+    protected function doDecrement(string $key, int $value = 1): int|false
     {
     }
 
@@ -96,7 +95,6 @@ class Apcu extends \Phalcon\Storage\Adapter\AbstractAdapter
      * Deletes data from the adapter
      *
      * @param string $key
-     *
      * @return bool
      */
     protected function doDelete(string $key): bool
@@ -106,6 +104,7 @@ class Apcu extends \Phalcon\Storage\Adapter\AbstractAdapter
     /**
      * Deletes multiple keys from APCu in a single call
      *
+     * @phpstan-param storage_keys $keys
      * @param array $keys
      * @return bool
      */
@@ -115,10 +114,9 @@ class Apcu extends \Phalcon\Storage\Adapter\AbstractAdapter
 
     /**
      * @param string $key
-     *
      * @return mixed
      */
-    protected function doGetData(string $key)
+    protected function doGetData(string $key): mixed
     {
     }
 
@@ -126,7 +124,6 @@ class Apcu extends \Phalcon\Storage\Adapter\AbstractAdapter
      * Checks if an element exists in the cache
      *
      * @param string $key
-     *
      * @return bool
      */
     protected function doHas(string $key): bool
@@ -137,11 +134,10 @@ class Apcu extends \Phalcon\Storage\Adapter\AbstractAdapter
      * Increments a stored number
      *
      * @param string $key
-     * @param int    $value
-     *
-     * @return bool|int
+     * @param int $value
+     * @return false|int
      */
-    protected function doIncrement(string $key, int $value = 1): int|bool
+    protected function doIncrement(string $key, int $value = 1): int|false
     {
     }
 
@@ -152,12 +148,11 @@ class Apcu extends \Phalcon\Storage\Adapter\AbstractAdapter
      * item has expired. If you need to set this key forever, you should use
      * the `setForever()` method.
      *
-     * @param string                $key
-     * @param mixed                 $value
-     * @param DateInterval|int|null $ttl
-     *
-     * @return bool
      * @throws Exception
+     * @param string $key
+     * @param mixed $value
+     * @param mixed $ttl
+     * @return bool
      */
     protected function doSet(string $key, $value, $ttl = null): bool
     {

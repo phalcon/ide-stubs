@@ -24,6 +24,7 @@ class QueueDestinationGuard
     /**
      * Throws InvalidDestinationException unless the destination is a queue.
      *
+     * @phpstan-assert QueueInterface $destination
      * @param \Phalcon\Contracts\Queue\Destination $destination
      * @param string $action
      * @return void

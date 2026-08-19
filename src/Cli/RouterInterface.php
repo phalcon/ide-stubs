@@ -10,16 +10,20 @@
 namespace Phalcon\Cli;
 
 use Phalcon\Cli\Router\RouteInterface;
+use Phalcon\Contracts\Cli\CliTypes;
 
 /**
  * Interface for Phalcon\Cli\Router
+ *
+ * @phpstan-import-type cli_parameters from CliTypes
+ * @phpstan-import-type cli_router_defaults from CliTypes
  */
 interface RouterInterface
 {
     /**
      * Adds a route to the router on any HTTP method
      *
-     * @phpstan-param array|string|null $paths
+     * @phpstan-param mixed $paths
      * @param string $pattern
      * @param mixed $paths
      * @return RouteInterface
@@ -43,7 +47,7 @@ interface RouterInterface
     /**
      * Return the sub expressions in the regular expression matched
      *
-     * @return array
+     * @return array<array-key, string>
      */
     public function getMatches(): array;
 
@@ -57,17 +61,20 @@ interface RouterInterface
     /**
      * Returns processed extra params
      *
-     * @deprecated Use {@see getParameters()} instead.
+     * @phpstan-return cli_parameters
      * @return array
      */
-    public function getParams(): array;
+    public function getParameters(): array;
 
     /**
      * Returns processed extra params
      *
+     * @deprecated Use getParameters() instead
+     *
+     * @phpstan-return cli_parameters
      * @return array
      */
-    public function getParameters(): array;
+    public function getParams(): array;
 
     /**
      * Returns a route object by its id
@@ -133,6 +140,7 @@ interface RouterInterface
     /**
      * Sets an array of default paths
      *
+     * @phpstan-param cli_router_defaults $defaults
      * @param array $defaults
      * @return RouterInterface
      */

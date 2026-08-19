@@ -23,20 +23,12 @@ abstract class AbstractFormatter implements \Phalcon\Logger\Formatter\FormatterI
 
     /**
      * Default date format
-     *
-     * @var string
      */
-    protected $dateFormat = 'c';
+    protected string $dateFormat = 'c';
 
-    /**
-     * @var string
-     */
-    protected $interpolatorLeft = '%';
+    protected string $interpolatorLeft = '%';
 
-    /**
-     * @var string
-     */
-    protected $interpolatorRight = '%';
+    protected string $interpolatorRight = '%';
 
     /**
      * @return string

@@ -9,7 +9,6 @@
  */
 namespace Phalcon\Auth\Guard;
 
-use DateTimeImmutable;
 use Phalcon\Auth\Exception;
 use Phalcon\Auth\Exceptions\DoesNotImplement;
 use Phalcon\Auth\Guard\Config\SessionGuardConfig;
@@ -36,30 +35,15 @@ use Phalcon\Time\Clock\SystemClock;
  */
 class Session extends \Phalcon\Auth\Guard\AbstractGuard implements \Phalcon\Contracts\Auth\Guard\GuardStateful, \Phalcon\Contracts\Auth\Guard\BasicAuth
 {
-    /**
-     * @var ClockInterface
-     */
-    protected $clock;
+    protected \Phalcon\Time\Clock\ClockInterface $clock;
 
-    /**
-     * @var CookiesInterface
-     */
-    protected $cookies;
+    protected \Phalcon\Http\Response\CookiesInterface $cookies;
 
-    /**
-     * @var RequestInterface
-     */
-    protected $request;
+    protected \Phalcon\Http\RequestInterface $request;
 
-    /**
-     * @var SessionManagerInterface
-     */
-    protected $session;
+    protected \Phalcon\Session\ManagerInterface $session;
 
-    /**
-     * @var bool
-     */
-    protected $viaRemember = false;
+    protected bool $viaRemember = false;
 
     /**
      * @param \Phalcon\Contracts\Auth\Adapter\Adapter $adapter
@@ -74,9 +58,9 @@ class Session extends \Phalcon\Auth\Guard\AbstractGuard implements \Phalcon\Cont
     }
 
     /**
+     * @param array<string, mixed> $options
      * @param \Phalcon\Contracts\Auth\Adapter\Adapter $adapter
      * @param mixed $container
-     * @param array $options
      * @return static
      */
     public static function fromOptions(\Phalcon\Contracts\Auth\Adapter\Adapter $adapter, $container, array $options): static
@@ -132,11 +116,11 @@ class Session extends \Phalcon\Auth\Guard\AbstractGuard implements \Phalcon\Cont
 
     /**
      * @throws Exception
-     * @param mixed $id
+     * @param int|string $id
      * @param bool $remember
      * @return false|AuthUser
      */
-    public function loginById($id, bool $remember = false): AuthUser|false
+    public function loginById(int|string $id, bool $remember = false): AuthUser|false
     {
     }
 

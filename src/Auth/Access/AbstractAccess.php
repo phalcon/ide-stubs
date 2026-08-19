@@ -19,14 +19,14 @@ use Phalcon\Contracts\Auth\Guard\Guard;
 abstract class AbstractAccess implements \Phalcon\Contracts\Auth\Access\Access
 {
     /**
-     * @var array
+     * @var list<string>
      */
-    protected $exceptActions = [];
+    protected array $exceptActions = [];
 
     /**
-     * @var array
+     * @var list<string>
      */
-    protected $onlyActions = [];
+    protected array $onlyActions = [];
 
     /**
      * @phpstan-return list<string>

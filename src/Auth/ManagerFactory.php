@@ -14,7 +14,6 @@ use Phalcon\Auth\Adapter\AdapterLocator;
 use Phalcon\Auth\Exceptions\UnknownAdapter;
 use Phalcon\Auth\Exceptions\UnknownGuard;
 use Phalcon\Auth\Guard\GuardLocator;
-use Phalcon\Auth\Internal\ContainerResolver;
 use Phalcon\Auth\Internal\Options;
 use Phalcon\Config\ConfigInterface;
 use Phalcon\Contracts\Auth\Access\Access;
@@ -23,6 +22,7 @@ use Phalcon\Contracts\Auth\Guard\Guard;
 use Phalcon\Contracts\Container\Service\Collection;
 use Phalcon\Di\DiInterface;
 use Phalcon\Encryption\Security;
+use Phalcon\Traits\Factory\ConfigTrait;
 
 /**
  * Single entry-point factory that builds a fully wired Phalcon\Auth\Manager
@@ -78,39 +78,27 @@ use Phalcon\Encryption\Security;
  */
 class ManagerFactory
 {
-    /**
-     * @var AccessLocator
-     */
-    protected $accessLocator;
+    use \Phalcon\Traits\Factory\ConfigTrait;
 
-    /**
-     * @var AdapterLocator
-     */
-    protected $adapterLocator;
 
-    /**
-     * @var Collection|DiInterface
-     */
-    protected $container;
+    protected \Phalcon\Auth\Access\AccessLocator $accessLocator;
 
-    /**
-     * @var GuardLocator
-     */
-    protected $guardLocator;
+    protected \Phalcon\Auth\Adapter\AdapterLocator $adapterLocator;
 
-    /**
-     * @var Security
-     */
-    protected $hasher;
+    protected \Phalcon\Contracts\Container\Service\Collection|\Phalcon\Di\DiInterface $container;
+
+    protected \Phalcon\Auth\Guard\GuardLocator $guardLocator;
+
+    protected \Phalcon\Encryption\Security $hasher;
 
     /**
      * @param \Phalcon\Encryption\Security $hasher
-     * @param mixed $container
+     * @param \Phalcon\Contracts\Container\Service\Collection|\Phalcon\Di\DiInterface $container
      * @param \Phalcon\Auth\Adapter\AdapterLocator|null $adapterLocator
      * @param \Phalcon\Auth\Guard\GuardLocator|null $guardLocator
      * @param \Phalcon\Auth\Access\AccessLocator|null $accessLocator
      */
-    public function __construct(\Phalcon\Encryption\Security $hasher, $container, ?\Phalcon\Auth\Adapter\AdapterLocator $adapterLocator = null, ?\Phalcon\Auth\Guard\GuardLocator $guardLocator = null, ?\Phalcon\Auth\Access\AccessLocator $accessLocator = null)
+    public function __construct(\Phalcon\Encryption\Security $hasher, \Phalcon\Contracts\Container\Service\Collection|\Phalcon\Di\DiInterface $container, ?\Phalcon\Auth\Adapter\AdapterLocator $adapterLocator = null, ?\Phalcon\Auth\Guard\GuardLocator $guardLocator = null, ?\Phalcon\Auth\Access\AccessLocator $accessLocator = null)
     {
     }
 
@@ -146,6 +134,13 @@ class ManagerFactory
      * @return Guard
      */
     protected function buildGuard(\Phalcon\Auth\Guard\GuardLocator $locator, string $type, \Phalcon\Contracts\Auth\Adapter\Adapter $adapter, array $options): Guard
+    {
+    }
+
+    /**
+     * @return string
+     */
+    protected function getExceptionClass(): string
     {
     }
 }

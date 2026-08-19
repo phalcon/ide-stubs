@@ -10,6 +10,7 @@
 namespace Phalcon\Translate\Adapter;
 
 use ArrayAccess;
+use Phalcon\Contracts\Translate\TranslateTypes;
 use Phalcon\Translate\Exception;
 use Phalcon\Translate\Exceptions\ImmutableObject;
 use Phalcon\Translate\Exceptions\KeyNotFound;
@@ -17,13 +18,10 @@ use Phalcon\Translate\Interpolator\InterpolatorInterface;
 use Phalcon\Translate\InterpolatorFactory;
 
 /**
- * @psalm-type TOptions array{
- *     defaultInterpolator?: string
- * }
+ * @phpstan-import-type translate_adapter_options from TranslateTypes
+ * @phpstan-import-type translate_placeholders from TranslateTypes
  *
- * @template TKey of string
- * @template TValue of string
- * @implements ArrayAccess<TKey, TValue>
+ * @implements ArrayAccess<string, string>
  */
 abstract class AbstractAdapter implements \Phalcon\Translate\Adapter\AdapterInterface, \ArrayAccess
 {
@@ -38,8 +36,9 @@ abstract class AbstractAdapter implements \Phalcon\Translate\Adapter\AdapterInte
     /**
      * AbstractAdapter constructor.
      *
-     * @param TOptions            $options
+     * @phpstan-param translate_adapter_options $options
      * @param \Phalcon\Translate\InterpolatorFactory $interpolatorFactory
+     * @param array $options
      */
     public function __construct(\Phalcon\Translate\InterpolatorFactory $interpolatorFactory, array $options = [])
     {
@@ -48,7 +47,7 @@ abstract class AbstractAdapter implements \Phalcon\Translate\Adapter\AdapterInte
     /**
      * Returns the translation string of the given key (alias of method 't')
      *
-     * @phpstan-param array<string, string> $placeholders
+     * @phpstan-param translate_placeholders $placeholders
      * @param string $translateKey
      * @param array $placeholders
      * @return string
@@ -81,9 +80,9 @@ abstract class AbstractAdapter implements \Phalcon\Translate\Adapter\AdapterInte
     /**
      * Returns the translation related to the given key
      *
-     * @param TKey $offset
+     * @param string $offset
      *
-     * @return TValue
+     * @return string
      */
     public function offsetGet($offset): string
     {
@@ -115,7 +114,7 @@ abstract class AbstractAdapter implements \Phalcon\Translate\Adapter\AdapterInte
     /**
      * Returns the translation string of the given key
      *
-     * @phpstan-param array<string, string> $placeholders
+     * @phpstan-param translate_placeholders $placeholders
      * @param string $translateKey
      * @param array $placeholders
      * @return string
@@ -127,7 +126,7 @@ abstract class AbstractAdapter implements \Phalcon\Translate\Adapter\AdapterInte
     /**
      * Replaces placeholders by the values passed
      *
-     * @phpstan-param array<string, string> $placeholders
+     * @phpstan-param translate_placeholders $placeholders
      *
      * @throws Exception
      * @param string $translation

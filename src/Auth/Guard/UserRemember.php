@@ -24,22 +24,16 @@ final class UserRemember
      */
     protected $id;
 
-    /**
-     * @var string
-     */
-    protected $token;
+    protected string $token;
 
-    /**
-     * @var string
-     */
-    protected $userAgent;
+    protected string $userAgent;
 
     /**
      * Accepts either the raw JSON cookie value (string) or the already
      * decoded associative array. Malformed input degrades to an empty
      * payload so callers can read getters without null-guarding.
      *
-     * @param string|array<string, mixed> $payload
+     * @param array<string, mixed>|string $payload
      */
     public function __construct($payload)
     {

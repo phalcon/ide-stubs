@@ -16,20 +16,20 @@ namespace Phalcon\Support\Helper\Arr;
 class Flatten
 {
     /**
-     * @param array $collection
-     * @param bool  $deep
+     * @param array<array-key, mixed> $collection
+     * @param bool                    $deep
      *
-     * @return array
+     * @return array<array-key, mixed>
      */
     public function __invoke(array $collection, bool $deep = false): array
     {
     }
 
     /**
-     * @param array $data
-     * @param mixed $item
+     * @param array<array-key, mixed> $data
      *
-     * @return array
+     * @return array<array-key, mixed>
+     * @param mixed $item
      * @param bool $deep
      */
     private function processArray(array $data, $item, bool $deep): array
@@ -37,21 +37,21 @@ class Flatten
     }
 
     /**
-     * @param array $data
-     * @param mixed $item
-     * @param bool  $deep
+     * @param array<array-key, mixed> $data
      *
-     * @return array
+     * @return array<array-key, mixed>
+     * @param mixed $item
+     * @param bool $deep
      */
     private function processArrayDeep(array $data, $item, bool $deep): array
     {
     }
 
     /**
-     * @param array $data
-     * @param mixed $item
+     * @param array<array-key, mixed> $data
      *
-     * @return array
+     * @return array<array-key, mixed>
+     * @param mixed $item
      */
     private function processNotArray(array $data, $item): array
     {

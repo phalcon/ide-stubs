@@ -9,12 +9,14 @@
  */
 namespace Phalcon\Queue\Consumer;
 
+use Phalcon\Contracts\Queue\Consumer as ConsumerInterface;
 use Phalcon\Contracts\Queue\Context as ContextInterface;
 use Phalcon\Contracts\Queue\Message as MessageInterface;
 use Phalcon\Contracts\Queue\Processor as ProcessorInterface;
 use Phalcon\Contracts\Queue\Queue as QueueInterface;
 use Phalcon\Events\AbstractEventsAware;
 use Phalcon\Events\EventsAwareInterface;
+use Throwable;
 
 /**
  * Lean consumption runner. Binds processors to queues, polls each bound queue
@@ -29,26 +31,18 @@ class QueueConsumer extends AbstractEventsAware implements \Phalcon\Events\Event
     /**
      * Bound processors keyed by queue name.
      *
-     * @var array
+     * @var array<string, BoundProcessor>
      */
-    protected $bindings = [];
+    protected array $bindings = [];
 
-    /**
-     * @var ContextInterface
-     */
-    protected $context;
+    protected \Phalcon\Contracts\Queue\Context $context;
 
     /**
      * Milliseconds slept between poll passes when nothing was received.
-     *
-     * @var int
      */
-    protected $pollInterval = 200;
+    protected int $pollInterval = 200;
 
-    /**
-     * @var bool
-     */
-    protected $shouldStop = false;
+    protected bool $shouldStop = false;
 
     /**
      * @param \Phalcon\Contracts\Queue\Context $context
@@ -80,13 +74,13 @@ class QueueConsumer extends AbstractEventsAware implements \Phalcon\Events\Event
     }
 
     /**
-     * Polls every bound queue once, processing up to one message from each.
-     * Returns true if any message was handled. Sleeps the poll interval when
-     * nothing was received so callers can loop tightly.
+     * Polls every bound queue once, dispatching any messages found. Returns
+     * the number of messages processed in this pass, so callers (the Worker)
+     * can apply a message-count limit across several bound queues.
      *
-     * @return bool
+     * @return int
      */
-    public function consumeOnce(): bool
+    public function consumeOnce(): int
     {
     }
 
@@ -141,12 +135,12 @@ class QueueConsumer extends AbstractEventsAware implements \Phalcon\Events\Event
     /**
      * Applies a processor result (ACK / REJECT / REQUEUE) to the message.
      *
-     * @param mixed $consumer
+     * @param \Phalcon\Contracts\Queue\Consumer $consumer
      * @param \Phalcon\Contracts\Queue\Message $message
      * @param mixed $result
      * @return void
      */
-    private function handleResult($consumer, \Phalcon\Contracts\Queue\Message $message, $result): void
+    private function handleResult(\Phalcon\Contracts\Queue\Consumer $consumer, \Phalcon\Contracts\Queue\Message $message, $result): void
     {
     }
 
@@ -155,11 +149,11 @@ class QueueConsumer extends AbstractEventsAware implements \Phalcon\Events\Event
      * applying the outcome. A processor exception fires
      * `queue:processorException` and rejects the message.
      *
-     * @param mixed $binding
+     * @param BoundProcessor $binding
      * @param \Phalcon\Contracts\Queue\Message $message
      * @return void
      */
-    private function process($binding, \Phalcon\Contracts\Queue\Message $message): void
+    private function process(BoundProcessor $binding, \Phalcon\Contracts\Queue\Message $message): void
     {
     }
 }

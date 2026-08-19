@@ -20,5 +20,5 @@ class Weak extends \Phalcon\Storage\Adapter\Weak implements CacheAdapterInterfac
     /**
      * EventType prefix.
      */
-    protected $eventType = 'cache';
+    protected string $eventType = 'cache';
 }

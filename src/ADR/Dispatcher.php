@@ -12,7 +12,9 @@ namespace Phalcon\ADR;
 use Phalcon\ADR\Events\Event;
 use Phalcon\ADR\Exceptions\NotAnAction;
 use Phalcon\Contracts\ADR\Action;
+use Phalcon\Contracts\ADR\ADRTypes;
 use Phalcon\Contracts\ADR\Dispatcher as DispatcherInterface;
+use Phalcon\Contracts\ADR\Middleware;
 use Phalcon\Contracts\Container\Ioc\IocContainer;
 use Phalcon\Contracts\Events\Manager;
 use Phalcon\Contracts\Http\AttributeRequest;
@@ -26,6 +28,8 @@ use Phalcon\Http\ResponseInterface;
  * The container resolution is the one deliberate Service Locator: it uses the
  * resolve-only `IocContainer` contract, so a container swap is a two-method
  * adapter. Everything else is constructor-injected.
+ *
+ * @phpstan-import-type adr_middleware_names from ADRTypes
  */
 final class Dispatcher implements DispatcherInterface
 {
@@ -34,16 +38,17 @@ final class Dispatcher implements DispatcherInterface
     protected \Phalcon\Contracts\Events\Manager $events;
 
     /**
-     * @var array
+     * @phpstan-var adr_middleware_names
      */
     protected array $globalMiddleware = [];
 
     /**
-     * @var array|null
+     * @var list<Middleware>|null
      */
     protected ?array $resolvedGlobal = null;
 
     /**
+     * @phpstan-param adr_middleware_names $globalMiddleware
      * @param \Phalcon\Contracts\Container\Ioc\IocContainer $container
      * @param \Phalcon\Contracts\Events\Manager $events
      * @param array $globalMiddleware
@@ -53,6 +58,8 @@ final class Dispatcher implements DispatcherInterface
     }
 
     /**
+     * @phpstan-param class-string          $actionClass
+     * @phpstan-param adr_middleware_names  $routeMiddleware
      * @param string $actionClass
      * @param \Phalcon\Contracts\Http\AttributeRequest $request
      * @param array $routeMiddleware

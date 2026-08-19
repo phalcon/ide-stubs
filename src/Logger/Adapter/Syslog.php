@@ -24,25 +24,13 @@ use Phalcon\Logger\Item;
  */
 class Syslog extends \Phalcon\Logger\Adapter\AbstractAdapter
 {
-    /**
-     * @var int
-     */
-    protected $facility = 0;
+    protected int $facility = 0;
 
-    /**
-     * @var string
-     */
-    protected $name = '';
+    protected string $name = '';
 
-    /**
-     * @var bool
-     */
-    protected $opened = false;
+    protected bool $opened = false;
 
-    /**
-     * @var int
-     */
-    protected $option = 0;
+    protected int $option = 0;
 
     /**
      * Syslog constructor.
@@ -66,9 +54,8 @@ class Syslog extends \Phalcon\Logger\Adapter\AbstractAdapter
     /**
      * Processes the message i.e. writes it to the syslog
      *
-     * @param Item $item
-     *
      * @throws SyslogOpenFailed
+     * @param \Phalcon\Logger\Item $item
      * @return void
      */
     public function process(\Phalcon\Logger\Item $item): void
@@ -78,12 +65,9 @@ class Syslog extends \Phalcon\Logger\Adapter\AbstractAdapter
     /**
      * Open connection to system logger
      *
-     * @link https://php.net/manual/en/function.openlog.php
-     *
      * @param string $ident
-     * @param int    $option
-     * @param int    $facility
-     *
+     * @param int $option
+     * @param int $facility
      * @return bool
      */
     protected function openlog(string $ident, int $option, int $facility): bool
@@ -94,7 +78,6 @@ class Syslog extends \Phalcon\Logger\Adapter\AbstractAdapter
      * Translates a Logger level to a Syslog level
      *
      * @param int $level
-     *
      * @return int
      */
     private function logLevelToSyslog(int $level): int

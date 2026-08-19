@@ -9,11 +9,18 @@
  */
 namespace Phalcon\Support\Debug;
 
+use InvalidArgumentException;
+use JsonException;
+use Phalcon\Container\Container;
 use Phalcon\Contracts\Support\Debug\TemplateAware;
+use Phalcon\Contracts\Support\SupportTypes;
 use Phalcon\Di\DiInterface;
+use Phalcon\Support\Debug\Traits\TemplateAwareTrait;
 use Phalcon\Support\Helper\Json\Encode;
+use Phalcon\Traits\Support\Helper\Str\InterpolateTrait;
 use Reflection;
 use ReflectionClass;
+use ReflectionException;
 use ReflectionProperty;
 use stdClass;
 
@@ -33,43 +40,33 @@ use stdClass;
  *
  * echo (new \Phalcon\Debug\Dump())->variables($foo, $bar, $baz);
  * ```
+ *
+ * @phpstan-import-type support_debug_styles from SupportTypes
  */
 class Dump implements \Phalcon\Contracts\Support\Debug\TemplateAware
 {
-    /**
-     * @var bool
-     */
-    protected $detailed = false;
+    use \Phalcon\Traits\Support\Helper\Str\InterpolateTrait;
+    use \Phalcon\Support\Debug\Traits\TemplateAwareTrait;
+
+
+    protected bool $detailed = false;
 
     /**
-     * @var array
+     * @var array<array-key, class-string>
      */
-    protected $methods = [];
+    protected array $methods = [];
 
     /**
-     * @var array
+     * @phpstan-var support_debug_styles
      */
-    protected $styles = [];
+    protected array $styles = [];
+
+    private \Phalcon\Support\Helper\Json\Encode $encode;
 
     /**
-     * Template overrides keyed by name.
+     * Dump constructor.
      *
-     * @todo Move getTemplate()/setTemplate()/templates into a shared trait once
-     *       Zephir supports traits (mirrors
-     *       Phalcon\Support\Debug\Traits\TemplateAwareTrait in the PHP source).
-     *
-     * @var array
-     */
-    protected $templates = [];
-
-    /**
-     * @var Encode
-     */
-    private $encode;
-
-    /**
-     * Phalcon\Debug\Dump constructor
-     *
+     * @phpstan-param support_debug_styles $styles
      * @param array $styles
      * @param bool $detailed
      */
@@ -94,20 +91,9 @@ class Dump implements \Phalcon\Contracts\Support\Debug\TemplateAware
     }
 
     /**
-     * Returns the template for the given name (override if set, default
-     * otherwise).
-     *
-     * @param string $name
-     *
-     * @return string
-     */
-    public function getTemplate(string $name): string
-    {
-    }
-
-    /**
      * Alias of variable() method
      *
+     * @throws ReflectionException
      * @param mixed $variable
      * @param string|null $name
      * @return string
@@ -127,22 +113,12 @@ class Dump implements \Phalcon\Contracts\Support\Debug\TemplateAware
     /**
      * Set styles for vars type
      *
+     * @phpstan-param  support_debug_styles $styles
+     * @phpstan-return support_debug_styles
      * @param array $styles
      * @return array
      */
     public function setStyles(array $styles = []): array
-    {
-    }
-
-    /**
-     * Overrides the template for the given name.
-     *
-     * @param string $name
-     * @param string $template
-     *
-     * @return static
-     */
-    public function setTemplate(string $name, string $template): static
     {
     }
 
@@ -162,6 +138,8 @@ class Dump implements \Phalcon\Contracts\Support\Debug\TemplateAware
      * echo (new \Phalcon\Debug\Dump())->toJson($foo);
      * ```
      *
+     * @throws InvalidArgumentException
+     * @throws JsonException
      * @param mixed $variable
      * @return string
      */
@@ -176,6 +154,7 @@ class Dump implements \Phalcon\Contracts\Support\Debug\TemplateAware
      * echo (new \Phalcon\Debug\Dump())->variable($foo, "foo");
      * ```
      *
+     * @throws ReflectionException
      * @param mixed $variable
      * @param string|null $name
      * @return string
@@ -196,6 +175,7 @@ class Dump implements \Phalcon\Contracts\Support\Debug\TemplateAware
      * echo (new \Phalcon\Debug\Dump())->variables($foo, $bar, $baz);
      * ```
      *
+     * @throws ReflectionException
      * @return string
      */
     public function variables(): string
@@ -226,6 +206,7 @@ class Dump implements \Phalcon\Contracts\Support\Debug\TemplateAware
     /**
      * Prepare an HTML string of information about a single variable.
      *
+     * @throws ReflectionException
      * @param mixed $variable
      * @param string|null $name
      * @param int $tab

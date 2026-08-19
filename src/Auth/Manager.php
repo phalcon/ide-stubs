@@ -32,25 +32,16 @@ use Phalcon\Contracts\Auth\Manager as ManagerContract;
  */
 class Manager implements ManagerContract
 {
-    /**
-     * @var AccessLocator
-     */
-    protected $accessFactory;
+    protected ?\Phalcon\Auth\Access\AccessLocator $accessFactory;
 
-    /**
-     * @var Access | null
-     */
-    protected $activeAccess = null;
+    protected ?\Phalcon\Contracts\Auth\Access\Access $activeAccess = null;
 
-    /**
-     * @var Guard | null
-     */
-    protected $defaultGuard = null;
+    protected ?\Phalcon\Contracts\Auth\Guard\Guard $defaultGuard = null;
 
     /**
      * @var array<string, Guard>
      */
-    protected $guards = [];
+    protected array $guards = [];
 
     /**
      * @param \Phalcon\Auth\Access\AccessLocator $accessFactory

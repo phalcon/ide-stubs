@@ -30,9 +30,8 @@ abstract class AbstractLocator
 
     /**
      * @phpstan-var array<string, class-string<T>>
-     * @var array
      */
-    protected $services = [];
+    protected array $services = [];
 
     /**
      * @phpstan-param array<string, class-string<T>> $services

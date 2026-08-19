@@ -9,6 +9,7 @@
  */
 namespace Phalcon\Queue\Adapter\Beanstalk;
 
+use Phalcon\Contracts\Queue\QueueTypes;
 use Phalcon\Queue\Exceptions\Exception;
 use Phalcon\Traits\Php\FileTrait;
 
@@ -17,6 +18,9 @@ use Phalcon\Traits\Php\FileTrait;
  * the subset of the 1.2 protocol the adapter needs (use/watch/ignore, put,
  * reserve-with-timeout, delete/release/bury/touch). Recovered and trimmed
  * from the original Phalcon\Queue\Beanstalk transport.
+ *
+ * @phpstan-import-type queue_beanstalk_job from QueueTypes
+ * @phpstan-import-type queue_beanstalk_status from QueueTypes
  */
 class BeanstalkConnection
 {
@@ -26,39 +30,28 @@ class BeanstalkConnection
     /**
      * Connection resource.
      *
-     * @var resource
+     * @var resource|null
      */
-    protected $connection;
+    protected $connection = null;
 
-    /**
-     * @var string
-     */
-    protected $host = '127.0.0.1';
+    protected string $host = '127.0.0.1';
 
-    /**
-     * @var bool
-     */
-    protected $persistent = false;
+    protected bool $persistent = false;
 
-    /**
-     * @var int
-     */
-    protected $port = 11300;
+    protected int $port = 11300;
 
     /**
      * Tube currently selected with `use`. A fresh connection uses "default".
-     *
-     * @var string
      */
-    protected $usedTube = 'default';
+    protected string $usedTube = 'default';
 
     /**
      * Tubes currently on the watch list, keyed by tube name. A fresh
      * connection watches "default".
      *
-     * @var array
+     * @var array<string, bool>
      */
-    protected $watchedTubes = [];
+    protected array $watchedTubes = [];
 
     /**
      * @param string $host
@@ -126,9 +119,9 @@ class BeanstalkConnection
      * @param int $priority
      * @param int $delay
      * @param int $ttr
-     * @return int|bool
+     * @return false|int
      */
-    public function put(string $data, int $priority, int $delay, int $ttr): int|bool
+    public function put(string $data, int $priority, int $delay, int $ttr): int|false
     {
     }
 
@@ -137,15 +130,16 @@ class BeanstalkConnection
      * first.
      *
      * @param int $length
-     * @return bool|string
+     * @return false|string
      */
-    public function read(int $length = 0): bool|string
+    public function read(int $length = 0): false|string
     {
     }
 
     /**
      * Reads the latest status line and splits it into tokens.
      *
+     * @phpstan-return queue_beanstalk_status
      * @return array
      */
     public function readStatus(): array
@@ -169,6 +163,7 @@ class BeanstalkConnection
      * job is available; otherwise it blocks up to timeout seconds. Returns
      * [id, body] or null when none is reserved.
      *
+     * @phpstan-return queue_beanstalk_job|null
      * @param mixed $timeout
      * @return array|null
      */
@@ -180,10 +175,10 @@ class BeanstalkConnection
      * Returns the Beanstalkd statistics for a tube as an associative array, or
      * false when the tube does not exist.
      *
+     * @return array<string, int|string>|false
      * @param string $tube
-     * @return array|bool
      */
-    public function statsTube(string $tube): bool|array
+    public function statsTube(string $tube): false|array
     {
     }
 
@@ -221,9 +216,9 @@ class BeanstalkConnection
      * Writes data to the socket, connecting first when needed.
      *
      * @param string $data
-     * @return bool|int
+     * @return false|int
      */
-    public function write(string $data): int|bool
+    public function write(string $data): int|false
     {
     }
 
@@ -234,8 +229,8 @@ class BeanstalkConnection
      * numerically). Avoids the yaml extension; the payload format is a fixed,
      * flat map.
      *
+     * @return array<string, int|string>
      * @param string $payload
-     * @return array
      */
     private function parseDictionary(string $payload): array
     {

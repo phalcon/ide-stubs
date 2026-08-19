@@ -9,6 +9,8 @@
  */
 namespace Phalcon\Image\Adapter;
 
+use GdImage;
+use Phalcon\Contracts\Image\ImageTypes;
 use Phalcon\Image\Enum;
 use Phalcon\Image\Exception;
 use Phalcon\Image\Exceptions\ExtensionNotLoaded;
@@ -35,6 +37,11 @@ use Phalcon\Traits\Php\InfoTrait;
  * the Imagick adapter: blur() applies repeated 3x3 Gaussian convolutions
  * (the radius is the number of passes), while sharpen and reflection use GD's
  * own scales. Switching the factory backend can change the rendered output.
+ *
+ * @extends AbstractAdapter<GdImage>
+ *
+ * @phpstan-import-type image_crop_rectangle from ImageTypes
+ * @phpstan-import-type image_text_bounds from ImageTypes
  */
 class Gd extends \Phalcon\Image\Adapter\AbstractAdapter
 {
@@ -73,19 +80,19 @@ class Gd extends \Phalcon\Image\Adapter\AbstractAdapter
      * Creates a blank true-color canvas of the given dimensions, without the
      * load-or-create ambiguity of the constructor.
      *
+     * @phpstan-return AbstractAdapter<GdImage>
+     * @throws Exception
      * @param int $width
      * @param int $height
-     *
      * @return AbstractAdapter
-     * @throws Exception
      */
     public static function create(int $width, int $height): AbstractAdapter
     {
     }
 
     /**
-     * @return string
      * @throws Exception
+     * @return string
      */
     public function getVersion(): string
     {
@@ -96,7 +103,6 @@ class Gd extends \Phalcon\Image\Adapter\AbstractAdapter
      * @param int $green
      * @param int $blue
      * @param int $opacity
-     *
      * @return void
      */
     protected function processBackground(int $red, int $green, int $blue, int $opacity): void
@@ -105,7 +111,6 @@ class Gd extends \Phalcon\Image\Adapter\AbstractAdapter
 
     /**
      * @param int $radius
-     *
      * @return void
      */
     protected function processBlur(int $radius): void
@@ -113,10 +118,9 @@ class Gd extends \Phalcon\Image\Adapter\AbstractAdapter
     }
 
     /**
+     * @phpstan-return GdImage
      * @param int $width
      * @param int $height
-     *
-     * @return false|resource
      */
     protected function processCreate(int $width, int $height)
     {
@@ -127,7 +131,6 @@ class Gd extends \Phalcon\Image\Adapter\AbstractAdapter
      * @param int $height
      * @param int $offsetX
      * @param int $offsetY
-     *
      * @return void
      */
     protected function processCrop(int $width, int $height, int $offsetX, int $offsetY): void
@@ -136,7 +139,6 @@ class Gd extends \Phalcon\Image\Adapter\AbstractAdapter
 
     /**
      * @param int $direction
-     *
      * @return void
      */
     protected function processFlip(int $direction): void
@@ -145,8 +147,6 @@ class Gd extends \Phalcon\Image\Adapter\AbstractAdapter
 
     /**
      * @param AdapterInterface $mask
-     *
-     * @return void
      */
     protected function processMask(AdapterInterface $mask)
     {
@@ -154,7 +154,6 @@ class Gd extends \Phalcon\Image\Adapter\AbstractAdapter
 
     /**
      * @param int $amount
-     *
      * @return void
      */
     protected function processPixelate(int $amount): void
@@ -162,10 +161,9 @@ class Gd extends \Phalcon\Image\Adapter\AbstractAdapter
     }
 
     /**
-     * @param int  $height
-     * @param int  $opacity
+     * @param int $height
+     * @param int $opacity
      * @param bool $fadeIn
-     *
      * @return void
      */
     protected function processReflection(int $height, int $opacity, bool $fadeIn): void
@@ -174,19 +172,16 @@ class Gd extends \Phalcon\Image\Adapter\AbstractAdapter
 
     /**
      * @param string $extension
-     * @param int    $quality
-     *
+     * @param int $quality
      * @return false|string
-     * @throws Exception
      */
-    protected function processRender(string $extension, int $quality)
+    protected function processRender(string $extension, int $quality): false|string
     {
     }
 
     /**
      * @param int $width
      * @param int $height
-     *
      * @return void
      */
     protected function processResize(int $width, int $height): void
@@ -195,7 +190,6 @@ class Gd extends \Phalcon\Image\Adapter\AbstractAdapter
 
     /**
      * @param int $degrees
-     *
      * @return void
      */
     protected function processRotate(int $degrees): void
@@ -203,11 +197,10 @@ class Gd extends \Phalcon\Image\Adapter\AbstractAdapter
     }
 
     /**
-     * @param string $file
-     * @param int    $quality
-     *
-     * @return bool
      * @throws Exception
+     * @param string $file
+     * @param int $quality
+     * @return bool
      */
     protected function processSave(string $file, int $quality): bool
     {
@@ -215,7 +208,6 @@ class Gd extends \Phalcon\Image\Adapter\AbstractAdapter
 
     /**
      * @param int $amount
-     *
      * @return void
      */
     protected function processSharpen(int $amount): void
@@ -223,18 +215,17 @@ class Gd extends \Phalcon\Image\Adapter\AbstractAdapter
     }
 
     /**
-     * @param string      $text
-     * @param mixed       $offsetX
-     * @param mixed       $offsetY
-     * @param int         $opacity
-     * @param int         $red
-     * @param int         $green
-     * @param int         $blue
-     * @param int         $size
-     * @param string|null $fontFile
-     *
-     * @return void
      * @throws Exception
+     * @param string $text
+     * @param mixed $offsetX
+     * @param mixed $offsetY
+     * @param int $opacity
+     * @param int $red
+     * @param int $green
+     * @param int $blue
+     * @param int $size
+     * @param string|null $fontFile
+     * @return void
      */
     protected function processText(string $text, $offsetX, $offsetY, int $opacity, int $red, int $green, int $blue, int $size, ?string $fontFile = null): void
     {
@@ -254,8 +245,8 @@ class Gd extends \Phalcon\Image\Adapter\AbstractAdapter
     /**
      * Checks the installed version of GD
      *
-     * @return void
      * @throws Exception
+     * @return void
      */
     private function check(): void
     {

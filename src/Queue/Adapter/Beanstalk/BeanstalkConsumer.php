@@ -31,10 +31,7 @@ class BeanstalkConsumer extends AbstractConsumer implements \Phalcon\Contracts\Q
      */
     const int DEFAULT_PRIORITY = 100;
 
-    /**
-     * @var BeanstalkConnection
-     */
-    protected $connection;
+    protected BeanstalkConnection $connection;
 
     /**
      * @param BeanstalkConnection $connection
@@ -89,22 +86,21 @@ class BeanstalkConsumer extends AbstractConsumer implements \Phalcon\Contracts\Q
     /**
      * Builds a BeanstalkMessage from a reserved [id, body] pair, or null.
      *
-     * @param mixed $job
+     * @param array{0: string, 1: false|string}|null $job
      * @return MessageInterface|null
      */
-    private function buildMessage($job): MessageInterface|null
+    private function buildMessage($job = null): MessageInterface|null
     {
     }
 
     /**
-     * Resolves a message's Beanstalkd job id. The `message` parameter is typed
-     * `var` so the call is dynamic; this avoids Zephir resolving getJobId()
-     * against the Message interface, which does not declare it.
+     * Resolves a message's Beanstalkd job id. The Message interface does not
+     * declare getJobId(), so the concrete BeanstalkMessage is required.
      *
-     * @param mixed $message
+     * @param \Phalcon\Contracts\Queue\Message $message
      * @return string
      */
-    private function resolveJobId($message): string
+    private function resolveJobId(\Phalcon\Contracts\Queue\Message $message): string
     {
     }
 }

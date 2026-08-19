@@ -10,6 +10,7 @@
 namespace Phalcon\Cli;
 
 use Phalcon\Cli\Dispatcher\Exception;
+use Phalcon\Contracts\Cli\CliTypes;
 use Phalcon\Dispatcher\AbstractDispatcher as CliDispatcher;
 use Phalcon\Events\ManagerInterface;
 use Phalcon\Filter\FilterInterface;
@@ -35,34 +36,27 @@ use Phalcon\Filter\FilterInterface;
  *
  * $handle = $dispatcher->dispatch();
  * ```
+ *
+ * @phpstan-import-type cli_options from CliTypes
  */
 class Dispatcher extends \Phalcon\Dispatcher\AbstractDispatcher implements \Phalcon\Cli\DispatcherInterface
 {
-    /**
-     * @var string
-     */
-    protected $defaultHandler = 'main';
+    protected string $defaultAction = 'main';
+
+    protected string $defaultHandler = 'main';
+
+    protected string $handlerSuffix = 'Task';
 
     /**
-     * @var string
+     * @phpstan-var cli_options
      */
-    protected $defaultAction = 'main';
-
-    /**
-     * @var string
-     */
-    protected $handlerSuffix = 'Task';
-
-    /**
-     * @var array
-     */
-    protected $options = [];
+    protected array $options = [];
 
     /**
      * Calls the action method.
      *
      * The CLI options collected by the dispatcher are appended to the
-     * positional `params` before the call, so a task action receives any
+     * positional `parameters` before the call, so a task action receives any
      * options as trailing arguments after its declared parameters.
      *
      * @param mixed $handler
@@ -95,9 +89,13 @@ class Dispatcher extends \Phalcon\Dispatcher\AbstractDispatcher implements \Phal
     /**
      * Gets an option by its name or numeric index
      *
-     * @param  mixed $option
-     * @param  string|array $filters
-     * @param  mixed $defaultValue
+     * @param int|string   $option
+     * @param array|string $filters
+     * @param mixed        $defaultValue
+     *
+     * @phpstan-param array-key $option
+     * @phpstan-param mixed     $filters
+     * @phpstan-param mixed     $defaultValue
      * @return mixed
      */
     public function getOption($option, $filters = null, $defaultValue = null): mixed
@@ -107,6 +105,7 @@ class Dispatcher extends \Phalcon\Dispatcher\AbstractDispatcher implements \Phal
     /**
      * Get dispatched options
      *
+     * @phpstan-return cli_options
      * @return array
      */
     public function getOptions(): array
@@ -134,6 +133,7 @@ class Dispatcher extends \Phalcon\Dispatcher\AbstractDispatcher implements \Phal
     /**
      * Check if an option exists
      *
+     * @phpstan-param array-key $option
      * @param mixed $option
      * @return bool
      */
@@ -154,6 +154,7 @@ class Dispatcher extends \Phalcon\Dispatcher\AbstractDispatcher implements \Phal
     /**
      * Set the options to be dispatched
      *
+     * @phpstan-param cli_options $options
      * @param array $options
      * @return void
      */

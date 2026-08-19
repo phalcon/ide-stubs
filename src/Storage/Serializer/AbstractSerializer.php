@@ -9,9 +9,13 @@
  */
 namespace Phalcon\Storage\Serializer;
 
+use Phalcon\Contracts\Storage\StorageTypes;
+
 /**
  * @property mixed $data
  * @property bool  $isSuccess
+ *
+ * @phpstan-import-type storage_serializer_data from StorageTypes
  */
 abstract class AbstractSerializer implements \Phalcon\Storage\Serializer\SerializerInterface
 {
@@ -20,15 +24,12 @@ abstract class AbstractSerializer implements \Phalcon\Storage\Serializer\Seriali
      */
     protected $data = null;
 
-    /**
-     * @var bool
-     */
-    protected $isSuccess = true;
+    protected bool $isSuccess = true;
 
     /**
      * AbstractSerializer constructor.
      *
-     * @param mixed|null $data
+     * @param mixed $data
      */
     public function __construct($data = null)
     {
@@ -38,6 +39,8 @@ abstract class AbstractSerializer implements \Phalcon\Storage\Serializer\Seriali
      * Serialize data
      *
      * @return array
+     *
+     * @phpstan-return storage_serializer_data
      */
     public function __serialize(): array
     {
@@ -46,6 +49,7 @@ abstract class AbstractSerializer implements \Phalcon\Storage\Serializer\Seriali
     /**
      * Unserialize data
      *
+     * @phpstan-param storage_serializer_data $data
      * @param array $data
      * @return void
      */
@@ -83,6 +87,7 @@ abstract class AbstractSerializer implements \Phalcon\Storage\Serializer\Seriali
      *
      * @param mixed $data
      *
+     * @phpstan-assert-if-false bool|float|int|numeric-string|null $data
      * @return bool
      */
     protected function isSerializable($data): bool

@@ -12,6 +12,9 @@ namespace Phalcon\Contracts\Queue;
 /**
  * A session with the transport. Factory for messages, destinations,
  * producers and consumers.
+ *
+ * @phpstan-import-type queue_message_headers from QueueTypes
+ * @phpstan-import-type queue_message_properties from QueueTypes
  */
 interface Context
 {
@@ -33,6 +36,8 @@ interface Context
     /**
      * Creates a message with an optional body, properties and headers.
      *
+     * @phpstan-param queue_message_properties $properties
+     * @phpstan-param queue_message_headers    $headers
      * @param string $body
      * @param array $properties
      * @param array $headers

@@ -24,8 +24,8 @@ class Interpolate
 
 
     /**
+     * @param string[] $context
      * @param string $message
-     * @param array  $context
      * @param string $leftToken
      * @param string $rightToken
      * @return string

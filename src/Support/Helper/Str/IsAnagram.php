@@ -18,7 +18,6 @@ class IsAnagram
     /**
      * @param string $first
      * @param string $second
-     *
      * @return bool
      */
     public function __invoke(string $first, string $second): bool

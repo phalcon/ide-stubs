@@ -24,10 +24,9 @@ class AssociativeArray implements \Phalcon\Translate\Interpolator\InterpolatorIn
      * Replaces placeholders by the values passed
      *
      * @phpstan-param array<string, string> $placeholders
-     *
-     * @return string
      * @param string $translation
      * @param array $placeholders
+     * @return string
      */
     public function replacePlaceholders(string $translation, array $placeholders = []): string
     {

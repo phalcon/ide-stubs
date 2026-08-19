@@ -21,7 +21,4 @@ use Phalcon\Support\Helper\Exception;
  */
 class InsufficientArguments extends Exception
 {
-    public function __construct()
-    {
-    }
 }

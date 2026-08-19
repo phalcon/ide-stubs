@@ -28,36 +28,36 @@ class Order
 
 
     /**
-     * @param array $collection
-     * @param mixed $attribute
-     * @param int   $order
-     * @param int   $flags
+     * @param array<array-key, mixed> $collection
      *
-     * @return array
+     * @return array<array-key, mixed>
+     * @param mixed $attribute
+     * @param int $order
+     * @param int $flags
      */
     public function __invoke(array $collection, $attribute, int $order = self::ORDER_ASC, int $flags = 0): array
     {
     }
 
     /**
-     * @param array $sorted
-     * @param mixed $attribute
-     * @param mixed $item
+     * @param array<array-key, mixed> $sorted
+     * @param string                  $attribute
+     * @param mixed                   $item
      *
-     * @return array
+     * @return array<array-key, mixed>
      */
-    private function checkNonObject(array $sorted, $attribute, $item): array
+    private function checkNonObject(array $sorted, string $attribute, $item): array
     {
     }
 
     /**
-     * @param array $sorted
-     * @param mixed $attribute
-     * @param mixed $item
+     * @param array<array-key, mixed> $sorted
+     * @param string                  $attribute
+     * @param mixed                   $item
      *
-     * @return array
+     * @return array<array-key, mixed>
      */
-    private function checkObject(array $sorted, $attribute, $item): array
+    private function checkObject(array $sorted, string $attribute, $item): array
     {
     }
 }

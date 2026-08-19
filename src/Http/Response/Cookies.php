@@ -9,6 +9,7 @@
  */
 namespace Phalcon\Http\Response;
 
+use Phalcon\Contracts\Http\HttpTypes;
 use Phalcon\Di\AbstractInjectionAware;
 use Phalcon\Di\DiInterface;
 use Phalcon\Http\Cookie;
@@ -38,8 +39,10 @@ use Phalcon\Http\Traits\EncryptionAwareTrait;
  *     function () {
  *         $crypt = new Crypt();
  *
- *         // The `$key' should have been previously generated in a cryptographically safe way.
- *         $key = "T4\xb1\x8d\xa9\x98\x05\\\x8c\xbe\x1d\x07&[\x99\x18\xa4~Lc1\xbeW\xb3";
+ *         // The `$key' should have been previously generated in a
+ *         // cryptographically safe way.
+ *         $key =
+ *         "T4\xb1\x8d\xa9\x98\x05\\\x8c\xbe\x1d\x07&[\x99\x18\xa4~Lc1\xbeW\xb3";
  *
  *         $crypt->setKey($key);
  *
@@ -52,9 +55,10 @@ use Phalcon\Http\Traits\EncryptionAwareTrait;
  *     function () {
  *         $cookies = new Cookies();
  *
- *         // The `$key' MUST be at least 32 characters long and generated using a
- *         // cryptographically secure pseudo random generator.
- *         $key = "#1dj8$=dp?.ak//j1V$~%0XaK\xb1\x8d\xa9\x98\x054t7w!z%CF-Jk\x98\x05\\\x5c";
+ *         // The `$key' MUST be at least 32 characters long and generated
+ *         // using a cryptographically secure pseudo random generator.
+ *         $key =
+ *         "#1dj8$=dp?.ak//j1V$~%0XaK\xb1\x8d\xa9\x98\x054t7w!z%CF-Jk\x98\x05\\\x5c";
  *
  *         $cookies->setSignKey($key);
  *
@@ -62,6 +66,9 @@ use Phalcon\Http\Traits\EncryptionAwareTrait;
  *     }
  * );
  * ```
+ *
+ * @phpstan-import-type http_cookie_bag from HttpTypes
+ * @phpstan-import-type http_cookie_options from HttpTypes
  */
 class Cookies extends AbstractInjectionAware implements \Phalcon\Http\Response\CookiesInterface
 {
@@ -69,29 +76,21 @@ class Cookies extends AbstractInjectionAware implements \Phalcon\Http\Response\C
 
 
     /**
-     * @var array
+     * @phpstan-var http_cookie_bag
      */
-    protected $cookies = [];
+    protected array $cookies = [];
 
-    /**
-     * @var bool
-     */
-    protected $isSent = false;
+    protected bool $isRegistered = false;
 
-    /**
-     * @var bool
-     */
-    protected $isRegistered = false;
+    protected bool $isSent = false;
 
     /**
      * The cookie's sign key.
-     *
-     * @var string|null
      */
-    protected $signKey = null;
+    protected ?string $signKey = null;
 
     /**
-     * Phalcon\Http\Response\Cookies constructor
+     * Constructor
      *
      * @param bool $useEncryption
      * @param string|null $signKey
@@ -102,7 +101,7 @@ class Cookies extends AbstractInjectionAware implements \Phalcon\Http\Response\C
 
     /**
      * Deletes a cookie by its name
-     * This method does not removes cookies from the _COOKIE superglobal
+     * This method does not remove cookies from the _COOKIE super-global
      *
      * @param string $name
      * @return bool
@@ -124,6 +123,7 @@ class Cookies extends AbstractInjectionAware implements \Phalcon\Http\Response\C
     /**
      * Gets all cookies from the bag
      *
+     * @phpstan-return http_cookie_bag
      * @return array
      */
     public function getCookies(): array
@@ -132,7 +132,7 @@ class Cookies extends AbstractInjectionAware implements \Phalcon\Http\Response\C
 
     /**
      * Check if a cookie is defined in the bag or exists in the _COOKIE
-     * superglobal
+     * super-global
      *
      * @param string $name
      * @return bool
@@ -188,6 +188,7 @@ class Cookies extends AbstractInjectionAware implements \Phalcon\Http\Response\C
      * );
      * ```
      *
+     * @phpstan-param http_cookie_options $options
      * @param string $name
      * @param mixed $value
      * @param int $expire
@@ -210,7 +211,7 @@ class Cookies extends AbstractInjectionAware implements \Phalcon\Http\Response\C
      *
      * Use NULL to disable cookie signing.
      *
-     * @see \Phalcon\Security\Random
+     * @see \Phalcon\Encryption\Security\Random
      * @param string|null $signKey
      * @return CookiesInterface
      */
@@ -231,7 +232,7 @@ class Cookies extends AbstractInjectionAware implements \Phalcon\Http\Response\C
     /**
      * @return DiInterface
      */
-    private function checkContainer(): DiInterface
+    private function checkGetContainer(): DiInterface
     {
     }
 }

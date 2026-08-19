@@ -9,10 +9,13 @@
  */
 namespace Phalcon\Messages;
 
+use Iterator;
 use JsonSerializable;
 use Phalcon\Contracts\Messages\Messages as MessagesContract;
+use Phalcon\Contracts\Messages\MessagesTypes;
 use Phalcon\Messages\Exceptions\MessageNotObject;
 use Phalcon\Messages\Exceptions\MessagesNotIterable;
+use Phalcon\Messages\Traits\MessagesHelperTrait;
 use Traversable;
 
 /**
@@ -24,23 +27,20 @@ use Traversable;
  * visited during iteration (`foreach`), which walks the integer sequence only.
  * Use the append methods (`appendMessage()` / `appendMessages()`) when entries
  * must take part in iteration.
+ *
+ * @phpstan-import-type messages_list from MessagesTypes
+ * @phpstan-import-type messages_serialized from MessagesTypes
  */
 class Messages implements MessagesContract, \JsonSerializable
 {
-    /**
-     * @var int
-     */
-    protected $position = 0;
+    use \Phalcon\Messages\Traits\MessagesHelperTrait;
 
-    /**
-     * @var array
-     */
-    protected $messages;
+
 
     /**
      * Phalcon\Messages\Messages constructor
      *
-     * @param array $messages
+     * @param messages_list $messages
      */
     public function __construct(array $messages = [])
     {
@@ -69,35 +69,25 @@ class Messages implements MessagesContract, \JsonSerializable
      * $messages->appendMessages($messagesArray);
      * ```
      *
-     * @param \Phalcon\Messages\MessageInterface[] $messages
+     * Accepts an array of MessageInterface objects or an Iterator yielding
+     * them. The parameter stays untyped so that a non-iterable argument
+     * reaches the guard below and raises MessagesNotIterable rather than a
+     * TypeError.
+     *
+     * @param mixed $messages
+     *
+     * @return void
+     * @throws MessagesNotIterable
      */
     public function appendMessages($messages)
     {
     }
 
     /**
-     * Returns the number of messages in the list
-     *
-     * @return int
-     */
-    public function count(): int
-    {
-    }
-
-    /**
-     * Returns the current message in the iterator
-     *
-     * @return MessageInterface
-     */
-    public function current(): MessageInterface
-    {
-    }
-
-    /**
      * Filters the message collection by field name
      *
+     * @return messages_list
      * @param string $fieldName
-     * @return array
      */
     public function filter(string $fieldName): array
     {
@@ -112,107 +102,17 @@ class Messages implements MessagesContract, \JsonSerializable
      * echo json_encode($data);
      * ```
      *
-     * @return array
+     * @return messages_serialized
      */
     public function jsonSerialize(): array
     {
     }
 
     /**
-     * Returns the current position/key in the iterator
-     *
-     * @return int
-     */
-    public function key(): int
-    {
-    }
-
-    /**
-     * Moves the internal iteration pointer to the next position
-     *
-     * @return void
-     */
-    public function next(): void
-    {
-    }
-
-    /**
-     * Checks if an index exists
-     *
-     * ```php
-     * var_dump(
-     *     isset($message["database"])
-     * );
-     * ```
-     *
-     * @param int $index
-     * @return bool
-     */
-    public function offsetExists($index): bool
-    {
-    }
-
-    /**
-     * Gets an attribute a message using the array syntax
-     *
-     * ```php
-     * print_r(
-     *     $messages[0]
-     * );
-     * ```
-     *
-     * @param mixed $index
+     * @param mixed $value
      * @return mixed
      */
-    public function offsetGet($index): mixed
-    {
-    }
-
-    /**
-     * Sets an attribute using the array-syntax
-     *
-     * ```php
-     * $messages[0] = new \Phalcon\Messages\Message("This is a message");
-     * ```
-     *
-     * @param \Phalcon\Messages\Message $message
-     * @param mixed $offset
-     * @param mixed $value
-     * @return void
-     */
-    public function offsetSet($offset, $value): void
-    {
-    }
-
-    /**
-     * Removes a message from the list
-     *
-     * ```php
-     * unset($message["database"]);
-     * ```
-     *
-     * @param mixed $index
-     * @return void
-     */
-    public function offsetUnset($index): void
-    {
-    }
-
-    /**
-     * Rewinds the internal iterator
-     *
-     * @return void
-     */
-    public function rewind(): void
-    {
-    }
-
-    /**
-     * Check if the current message in the iterator is valid
-     *
-     * @return bool
-     */
-    public function valid(): bool
+    private function checkSerializable($value): mixed
     {
     }
 }

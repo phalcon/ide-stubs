@@ -11,74 +11,71 @@ namespace Phalcon\Autoload;
 
 use Phalcon\Autoload\Exceptions\LoaderDirectoriesNotArray;
 use Phalcon\Autoload\Exceptions\LoaderMethodNotCallable;
-use Phalcon\Events\AbstractEventsAware;
+use Phalcon\Contracts\Autoload\AutoloadTypes;
+use Phalcon\Events\Exception as EventsException;
+use Phalcon\Events\ManagerInterface;
+use Phalcon\Events\Traits\EventsAwareTrait;
 
 /**
  * The Phalcon Autoloader provides an easy way to automatically load classes
  * (namespaced or not) as well as files. It also features extension loading,
  * allowing the user to autoload files with different extensions than .php.
+ *
+ * @phpstan-import-type autoload_namespaces from AutoloadTypes
+ * @phpstan-import-type autoload_strings from AutoloadTypes
  */
-class Loader extends AbstractEventsAware
+class Loader
 {
-    /**
-     * @var string|null
-     */
-    protected $checkedPath = null;
+    use \Phalcon\Events\Traits\EventsAwareTrait;
+
+
+    protected ?string $checkedPath = null;
 
     /**
-     * @var array
+     * @var autoload_strings
      */
-    protected $classes = [];
+    protected array $classes = [];
 
     /**
-     * @var array
+     * @var array<int, string>
      */
-    protected $debug = [];
+    protected array $debug = [];
 
     /**
-     * @var array
+     * @var autoload_strings
      */
-    protected $directories = [];
+    protected array $directories = [];
 
     /**
-     * @var array
+     * @var autoload_strings
      */
-    protected $extensions = [];
+    protected array $extensions = [];
 
     /**
-     * @var string|callable
+     * Always holds a callable. The setter accepts a callable or a callable
+     * string and rejects anything else.
+     *
+     * @var callable
      */
     protected $fileCheckingCallback = 'is_file';
 
     /**
-     * @var array
+     * @var autoload_strings
      */
-    protected $files = [];
+    protected array $files = [];
+
+    protected ?string $foundPath = null;
+
+    protected bool $isDebug = false;
+
+    protected bool $isRegistered = false;
 
     /**
-     * @var string|null
+     * @var autoload_namespaces
      */
-    protected $foundPath = null;
+    protected array $namespaces = [];
 
-    /**
-     * @var bool
-     */
-    protected $isDebug = false;
-
-    /**
-     * @var bool
-     */
-    protected $isRegistered = false;
-
-    /**
-     * @var array
-     */
-    protected $namespaces = [];
-
-    /**
-     * @var int
-     */
-    protected $nestingLevel = 0;
+    protected int $nestingLevel = 0;
 
     /**
      * Loader constructor.
@@ -94,7 +91,6 @@ class Loader extends AbstractEventsAware
      *
      * @param string $name
      * @param string $file
-     *
      * @return static
      */
     public function addClass(string $name, string $file): static
@@ -105,7 +101,6 @@ class Loader extends AbstractEventsAware
      * Adds a directory for the loaded files
      *
      * @param string $directory
-     *
      * @return static
      */
     public function addDirectory(string $directory): static
@@ -116,7 +111,6 @@ class Loader extends AbstractEventsAware
      * Adds an extension for the loaded files
      *
      * @param string $extension
-     *
      * @return static
      */
     public function addExtension(string $extension): static
@@ -127,7 +121,6 @@ class Loader extends AbstractEventsAware
      * Adds a file to be added to the loader
      *
      * @param string $file
-     *
      * @return static
      */
     public function addFile(string $file): static
@@ -135,12 +128,10 @@ class Loader extends AbstractEventsAware
     }
 
     /**
+     * @param autoload_strings|string $directories
      * @param string $name
-     * @param mixed  $directories
-     * @param bool   $prepend
-     *
+     * @param bool $prepend
      * @return static
-     * @throws Exception
      */
     public function addNamespace(string $name, $directories, bool $prepend = false): static
     {
@@ -149,8 +140,8 @@ class Loader extends AbstractEventsAware
     /**
      * Autoloads the registered classes
      *
+     * @throws EventsException
      * @param string $className
-     *
      * @return bool
      */
     public function autoload(string $className): bool
@@ -223,9 +214,18 @@ class Loader extends AbstractEventsAware
     /**
      * Returns the namespaces currently registered in the autoloader
      *
-     * @return string[]
+     * @return autoload_namespaces
      */
     public function getNamespaces(): array
+    {
+    }
+
+    /**
+     * Returns isRegistered
+     *
+     * @return bool
+     */
+    public function isRegistered(): bool
     {
     }
 
@@ -241,6 +241,7 @@ class Loader extends AbstractEventsAware
     /**
      * Register the autoload method
      *
+     * @throws EventsException
      * @param bool $prepend
      * @return static
      */
@@ -251,9 +252,8 @@ class Loader extends AbstractEventsAware
     /**
      * Register classes and their locations
      *
-     * @param array $classes
-     * @param bool  $merge
-     *
+     * @param autoload_strings $classes
+     * @param bool $merge
      * @return static
      */
     public function setClasses(array $classes, bool $merge = false): static
@@ -263,7 +263,7 @@ class Loader extends AbstractEventsAware
     /**
      * Register directories in which "not found" classes could be found
      *
-     * @param array $directories
+     * @param autoload_strings $directories
      * @param bool  $merge
      *
      * @return static
@@ -276,9 +276,8 @@ class Loader extends AbstractEventsAware
      * Sets an array of file extensions that the loader must try in each attempt
      * to locate the file
      *
-     * @param array $extensions
-     * @param bool  $merge
-     *
+     * @param autoload_strings $extensions
+     * @param bool $merge
      * @return static
      */
     public function setExtensions(array $extensions, bool $merge = false): static
@@ -300,10 +299,10 @@ class Loader extends AbstractEventsAware
      * $loader->setFileCheckingCallback(null);
      * ```
      *
-     * @param string|callable|null $method
+     * @param callable|string|null $method
      *
-     * @return static
      * @throws Exception
+     * @return static
      */
     public function setFileCheckingCallback($method = null): static
     {
@@ -313,9 +312,8 @@ class Loader extends AbstractEventsAware
      * Registers files that are "non-classes" hence need a "require". This is
      * very useful for including files that only have functions
      *
-     * @param array $files
-     * @param bool  $merge
-     *
+     * @param autoload_strings $files
+     * @param bool $merge
      * @return static
      */
     public function setFiles(array $files, bool $merge = false): static
@@ -325,21 +323,11 @@ class Loader extends AbstractEventsAware
     /**
      * Register namespaces and their related directories
      *
-     * @param array $namespaces
-     * @param bool  $merge
-     *
+     * @param autoload_namespaces $namespaces
+     * @param bool $merge
      * @return static
      */
     public function setNamespaces(array $namespaces, bool $merge = false): static
-    {
-    }
-
-    /**
-     * returns isRegistered
-     *
-     * @return bool
-     */
-    public function isRegistered(): bool
     {
     }
 
@@ -355,8 +343,8 @@ class Loader extends AbstractEventsAware
     /**
      * If the file exists, require it and return true; false otherwise
      *
-     * @param string $file The file to require
-     *
+     * @throws EventsException
+     * @param string $file
      * @return bool
      */
     protected function requireFile(string $file): bool
@@ -377,11 +365,10 @@ class Loader extends AbstractEventsAware
      * Traverses a collection and adds elements to it using the relevant
      * class method
      *
-     * @param array  $collection
+     * @param autoload_strings $collection
      * @param string $collectionName
      * @param string $method
-     * @param bool   $merge
-     *
+     * @param bool $merge
      * @return static
      */
     private function addToCollection(array $collection, string $collectionName, string $method, bool $merge = false): static
@@ -392,8 +379,8 @@ class Loader extends AbstractEventsAware
      * Checks the registered classes to find the class. Includes the file if
      * found and returns true; false otherwise
      *
+     * @throws EventsException
      * @param string $className
-     *
      * @return bool
      */
     private function autoloadCheckClasses(string $className): bool
@@ -404,10 +391,11 @@ class Loader extends AbstractEventsAware
      * Checks the registered directories to find the class. Includes the file if
      * found and returns true; false otherwise
      *
-     * @param array  $directories
-     * @param string $className
-     * @param bool   $isDirectory
+     * @param autoload_strings $directories
      *
+     * @throws EventsException
+     * @param string $className
+     * @param bool $isDirectory
      * @return bool
      */
     private function autoloadCheckDirectories(array $directories, string $className, bool $isDirectory = false): bool
@@ -418,8 +406,8 @@ class Loader extends AbstractEventsAware
      * Checks the registered namespaces to find the class. Includes the file if
      * found and returns true; false otherwise
      *
+     * @throws EventsException
      * @param string $className
-     *
      * @return bool
      */
     private function autoloadCheckNamespaces(string $className): bool
@@ -432,14 +420,21 @@ class Loader extends AbstractEventsAware
      * to normalize the directories with the proper directory separator at the
      * end
      *
-     * @param mixed  $directories
+     * @param mixed $directories
+     *
+     * @return autoload_strings
      * @param string $dirSeparator
      * @param string $name
-     *
-     * @return array<string, string>
-     * @throws Exception
      */
     private function checkDirectories($directories, string $dirSeparator, string $name = ''): array
+    {
+    }
+
+    /**
+     * @param bool $prepend
+     * @return bool
+     */
+    private function registerAutoload(bool $prepend): bool
     {
     }
 }

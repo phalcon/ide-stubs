@@ -38,7 +38,6 @@ class Igbinary extends \Phalcon\Storage\Serializer\AbstractSerializer
      * Unserializes data
      *
      * @param mixed $data
-     *
      * @return void
      */
     public function unserialize($data): void
@@ -49,7 +48,6 @@ class Igbinary extends \Phalcon\Storage\Serializer\AbstractSerializer
      * Serialize
      *
      * @param mixed $value
-     *
      * @return string|null
      */
     protected function doSerialize($value): string|null
@@ -61,7 +59,7 @@ class Igbinary extends \Phalcon\Storage\Serializer\AbstractSerializer
      *
      * @param string $value
      *
-     * @return mixed|false
+     * @return false|mixed
      */
     protected function doUnserialize($value)
     {

@@ -32,13 +32,6 @@ abstract class AbstractFactory extends \Phalcon\Factory\AbstractConfigFactory
     protected $services = [];
 
     /**
-     * Returns the adapters for the factory
-     *
-     * @return string[]
-     */
-    abstract protected function getServices(): array;
-
-    /**
      * Checks if a service exists and throws an exception
      *
      * @param string $name
@@ -47,6 +40,13 @@ abstract class AbstractFactory extends \Phalcon\Factory\AbstractConfigFactory
     protected function getService(string $name): mixed
     {
     }
+
+    /**
+     * Returns the adapters for the factory
+     *
+     * @return string[]
+     */
+    abstract protected function getServices(): array;
 
     /**
      * Initialize services/add new services

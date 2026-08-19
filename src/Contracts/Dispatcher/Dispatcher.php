@@ -16,6 +16,9 @@ namespace Phalcon\Contracts\Dispatcher;
  * `setParams()` spellings are still declared for backwards compatibility and
  * are scheduled to be removed in the next major version in favor of their
  * `Parameter` counterparts.
+ *
+ * @phpstan-import-type dispatcher_forward from DispatcherTypes
+ * @phpstan-import-type dispatcher_params from DispatcherTypes
  */
 interface Dispatcher
 {
@@ -29,6 +32,7 @@ interface Dispatcher
     /**
      * Forwards the execution flow to another controller/action
      *
+     * @phpstan-param dispatcher_forward $forward
      * @param array $forward
      * @return void
      */
@@ -58,12 +62,15 @@ interface Dispatcher
     /**
      * Gets a param by its name or numeric index
      *
-     * @param string|array $filters *
+     * @phpstan-param array-key $param
+     * @phpstan-param mixed $filters
+     *
      * @deprecated Use getParameter() instead
      *
      * Note: This signature omits the `defaultValue` argument the implementation
      * accepts; the two will be aligned in the next major version.
      * @param mixed $param
+     * @param mixed $filters
      * @return mixed
      */
     public function getParam($param, $filters = null): mixed;
@@ -71,8 +78,10 @@ interface Dispatcher
     /**
      * Gets a param by its name or numeric index
      *
-     * @param string|array $filters
+     * @phpstan-param array-key $param
+     * @phpstan-param mixed $filters
      * @param mixed $param
+     * @param mixed $filters
      * @return mixed
      */
     public function getParameter($param, $filters = null): mixed;
@@ -81,6 +90,8 @@ interface Dispatcher
      * Gets action params
      *
      * @deprecated Use getParameters() instead
+     *
+     * @phpstan-return dispatcher_params
      * @return array
      */
     public function getParams(): array;
@@ -88,6 +99,7 @@ interface Dispatcher
     /**
      * Gets action params
      *
+     * @phpstan-return dispatcher_params
      * @return array
      */
     public function getParameters(): array;
@@ -103,6 +115,8 @@ interface Dispatcher
      * Check if a param exists
      *
      * @deprecated Use hasParameter() instead
+     *
+     * @phpstan-param array-key $param
      * @param mixed $param
      * @return bool
      */
@@ -175,6 +189,7 @@ interface Dispatcher
     /**
      * Set a param by its name or numeric index
      *
+     * @phpstan-param array-key $param
      * @param mixed $value *
      * @deprecated Use setParameter() instead
      * @param mixed $param
@@ -186,6 +201,8 @@ interface Dispatcher
      * Sets action params to be dispatched
      *
      * @deprecated Use setParameters() instead
+     *
+     * @phpstan-param dispatcher_params $params
      * @param array $params
      * @return void
      */

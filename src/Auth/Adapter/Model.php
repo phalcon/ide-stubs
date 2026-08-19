@@ -69,7 +69,7 @@ class Model extends \Phalcon\Auth\Adapter\AbstractAdapter implements \Phalcon\Co
     }
 
     /**
-     * @param mixed $id
+     * @param int|string $id
      * @return AuthUser|null
      */
     public function retrieveById($id): AuthUser|null
@@ -79,7 +79,7 @@ class Model extends \Phalcon\Auth\Adapter\AbstractAdapter implements \Phalcon\Co
     /**
      * Retrieve a user by the remember-me cookie payload.
      *
-     * @param mixed $id
+     * @param int|string $id
      * @param string $token
      * @param string|null $userAgent
      * @return AuthUser|null

@@ -23,12 +23,13 @@ class Get
 
 
     /**
-     * @param array       $collection
-     * @param mixed       $index
-     * @param mixed|null  $defaultValue
+     * @phpstan-param array<array-key, mixed> $collection
+     * @phpstan-param array-key               $index
+     * @param array $collection
+     * @param mixed $index
+     * @param mixed $defaultValue
      * @param string|null $cast
-     *
-     * @return mixed|null
+     * @return mixed
      */
     public function __invoke(array $collection, $index, $defaultValue = null, ?string $cast = null): mixed
     {

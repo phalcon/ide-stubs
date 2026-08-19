@@ -46,10 +46,10 @@ abstract class AbstractArrayAdapter extends \Phalcon\Auth\Adapter\AbstractAdapte
      * Default linear-scan implementation. Memory overrides this for an O(1)
      * id-keyed lookup; Stream uses this as-is.
      *
-     * @param mixed $id
+     * @param int|string $id
      * @return AuthUserContract|null
      */
-    public function retrieveById($id): AuthUserContract|null
+    public function retrieveById(int|string $id): AuthUserContract|null
     {
     }
 
@@ -90,7 +90,9 @@ abstract class AbstractArrayAdapter extends \Phalcon\Auth\Adapter\AbstractAdapte
     abstract protected function loadUsers(): array;
 
     /**
-     * Strict per-key match of a row against credentials, skipping 'password'.
+     * Per-key match of a row against credentials, skipping 'password'. Values
+     * are compared as strings so typed row values (e.g. int id, bool active)
+     * match the string input that arrives from an HTTP request.
      *
      * @phpstan-param AuthUserRow     $row
      * @phpstan-param AuthCredentials $credentials

@@ -20,10 +20,7 @@ use Phalcon\Queue\Adapter\AbstractConsumer;
  */
 class RedisConsumer extends AbstractConsumer
 {
-    /**
-     * @var RedisContext
-     */
-    protected $context;
+    protected RedisContext $context;
 
     /**
      * @param RedisContext $context

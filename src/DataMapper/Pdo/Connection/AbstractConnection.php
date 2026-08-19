@@ -10,15 +10,28 @@
 namespace Phalcon\DataMapper\Pdo\Connection;
 
 use BadMethodCallException;
+use Phalcon\Contracts\Events\EventsAware;
+use Phalcon\DataMapper\Pdo\Events;
+use Phalcon\DataMapper\Pdo\Exception\OperationCancelled;
 use Phalcon\DataMapper\Pdo\Exception\UnknownDriverMethod;
 use Phalcon\DataMapper\Pdo\Profiler\ProfilerInterface;
+use Phalcon\Events\ManagerInterface;
+use Phalcon\Events\Traits\EventsAwareTrait;
 
 /**
  * Provides array quoting, profiling, a new `perform()` method, new `fetch()`
  * methods
+ *
+ * Connections fire the lifecycle events in Phalcon\DataMapper\Pdo\Events when
+ * an events manager is set. ConnectionInterface does not declare the events
+ * manager methods; the EventsAware contract is applied here so that existing
+ * implementations of the interface keep working.
  */
-abstract class AbstractConnection implements \Phalcon\DataMapper\Pdo\Connection\ConnectionInterface
+abstract class AbstractConnection implements \Phalcon\DataMapper\Pdo\Connection\ConnectionInterface, \Phalcon\Contracts\Events\EventsAware
 {
+    use \Phalcon\Events\Traits\EventsAwareTrait;
+
+
     /**
      * Whether to transparently reconnect and retry once when a statement fails
      * because the connection was lost. Opt-in; off by default.
@@ -488,6 +501,21 @@ abstract class AbstractConnection implements \Phalcon\DataMapper\Pdo\Connection\
      * @return static
      */
     public function setProfiler(\Phalcon\DataMapper\Pdo\Profiler\ProfilerInterface $profiler): static
+    {
+    }
+
+    /**
+     * Fires a cancellable "before" event. A listener cancels by stopping the
+     * event and returning false; see Phalcon\DataMapper\Pdo\Events for the
+     * required idiom. The operation does not run when it is cancelled.
+     *
+     * @param string     $eventName
+     * @param mixed|null $data
+     *
+     * @throws OperationCancelled
+     * @return void
+     */
+    protected function fireBefore(string $eventName, $data = null): void
     {
     }
 

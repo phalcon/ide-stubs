@@ -14,6 +14,8 @@ use Phalcon\Contracts\Dispatcher\Dispatcher as DispatcherContract;
 
 /**
  * Canonical contract for Phalcon\Cli\Dispatcher.
+ *
+ * @phpstan-import-type cli_options from CliTypes
  */
 interface Dispatcher extends DispatcherContract
 {
@@ -34,6 +36,7 @@ interface Dispatcher extends DispatcherContract
     /**
      * Get dispatched options
      *
+     * @phpstan-return cli_options
      * @return array
      */
     public function getOptions(): array;
@@ -63,6 +66,7 @@ interface Dispatcher extends DispatcherContract
     /**
      * Set the options to be dispatched
      *
+     * @phpstan-param cli_options $options
      * @param array $options
      * @return void
      */

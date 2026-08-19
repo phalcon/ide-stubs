@@ -9,6 +9,8 @@
  */
 namespace Phalcon\Queue\Exceptions;
 
+use Throwable;
+
 /**
  * Base throwable contract for the Queue component. Every queue exception
  * implements it, so callers can catch all queue errors with a single type.

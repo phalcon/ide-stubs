@@ -18,10 +18,7 @@ use Phalcon\Contracts\Queue\Topic as TopicInterface;
  */
 class GenericTopic implements TopicInterface
 {
-    /**
-     * @var string
-     */
-    protected $topicName = '';
+    protected string $topicName = '';
 
     /**
      * GenericTopic constructor.

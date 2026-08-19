@@ -547,7 +547,10 @@ class Builder implements \Phalcon\Mvc\Model\Query\BuilderInterface, \Phalcon\Di\
      * );
      * ```
      *
-     * @param array|string $group
+     * Passing null (or an empty array) clears the clause; the PHQL generator
+     * treats both as "no GROUP BY".
+     *
+     * @param array|string|null $group
      * @return BuilderInterface
      */
     public function groupBy($group): BuilderInterface

@@ -11,6 +11,8 @@ namespace Phalcon\Storage\Adapter;
 
 use DateInterval;
 use Exception as BaseException;
+use Memcached;
+use Phalcon\Contracts\Storage\StorageTypes;
 use Phalcon\Storage\Exception as StorageException;
 use Phalcon\Storage\Exceptions\ConnectionFailed;
 use Phalcon\Storage\Exceptions\InvalidConfiguration;
@@ -25,21 +27,27 @@ use Phalcon\Support\Exception as SupportException;
  * - getKeys(): Memcached::getAllKeys(), which is server-dependent and may be
  *   incomplete or unavailable on modern memcached builds.
  * - Serializers: Phalcon-side plus libmemcached's own options.
+ *
+ * @phpstan-import-type storage_keys from StorageTypes
+ * @phpstan-import-type storage_libmemcached_client from StorageTypes
+ * @phpstan-import-type storage_libmemcached_options from StorageTypes
+ * @phpstan-import-type storage_libmemcached_sasl from StorageTypes
+ * @phpstan-import-type storage_libmemcached_servers from StorageTypes
+ * @phpstan-import-type storage_libmemcached_settings from StorageTypes
+ *
+ * @phpstan-property Memcached|null $adapter
+ * @phpstan-property storage_libmemcached_settings $options
  */
 class Libmemcached extends \Phalcon\Storage\Adapter\AbstractAdapter
 {
-    /**
-     * @var string
-     */
-    protected $prefix = 'ph-memc-';
+    protected string $prefix = 'ph-memc-';
 
     /**
      * Libmemcached constructor.
      *
-     * @param SerializerFactory $factory
-     * @param array             $options
-     *
-     * @throws SupportException
+     * @phpstan-param storage_libmemcached_options $options
+     * @param \Phalcon\Storage\SerializerFactory $factory
+     * @param array $options
      */
     public function __construct(\Phalcon\Storage\SerializerFactory $factory, array $options = [])
     {
@@ -48,8 +56,8 @@ class Libmemcached extends \Phalcon\Storage\Adapter\AbstractAdapter
     /**
      * Flushes/clears the cache
      *
-     * @return bool
      * @throws StorageException
+     * @return bool
      */
     public function clear(): bool
     {
@@ -59,7 +67,7 @@ class Libmemcached extends \Phalcon\Storage\Adapter\AbstractAdapter
      * Returns the already connected adapter or connects to the Memcached
      * server(s)
      *
-     * @return \Memcached|null
+     * @return Memcached
      * @throws StorageException
      */
     public function getAdapter(): mixed
@@ -69,48 +77,47 @@ class Libmemcached extends \Phalcon\Storage\Adapter\AbstractAdapter
     /**
      * Stores data in the adapter
      *
-     * @param string $prefix
+     * @phpstan-return storage_keys
      *
-     * @return array
      * @throws StorageException
+     * @param string $prefix
+     * @return array
      */
     public function getKeys(string $prefix = ''): array
     {
     }
 
     /**
-     * Stores data in the adapter forever. The key needs to manually deleted
+     * Stores data in the adapter forever. The key needs to be manually deleted
      * from the adapter.
      *
+     * @throws StorageException
      * @param string $key
-     * @param mixed  $value
-     *
+     * @param mixed $data
      * @return bool
      */
-    public function setForever(string $key, $value): bool
+    public function setForever(string $key, $data): bool
     {
     }
 
     /**
      * Decrements a stored number
      *
-     * @param string $key
-     * @param int    $value
-     *
-     * @return bool|int
      * @throws StorageException
+     * @param string $key
+     * @param int $value
+     * @return false|int
      */
-    protected function doDecrement(string $key, int $value = 1): int|bool
+    protected function doDecrement(string $key, int $value = 1): int|false
     {
     }
 
     /**
      * Deletes data from the adapter
      *
-     * @param string $key
-     *
-     * @return bool
      * @throws StorageException
+     * @param string $key
+     * @return bool
      */
     protected function doDelete(string $key): bool
     {
@@ -119,6 +126,9 @@ class Libmemcached extends \Phalcon\Storage\Adapter\AbstractAdapter
     /**
      * Deletes multiple keys from Memcached using a single deleteMulti call
      *
+     * @phpstan-param storage_keys $keys
+     *
+     * @throws StorageException
      * @param array $keys
      * @return bool
      */
@@ -129,10 +139,9 @@ class Libmemcached extends \Phalcon\Storage\Adapter\AbstractAdapter
     /**
      * Checks if an element exists in the cache
      *
-     * @param string $key
-     *
-     * @return bool
      * @throws StorageException
+     * @param string $key
+     * @return bool
      */
     protected function doHas(string $key): bool
     {
@@ -141,13 +150,12 @@ class Libmemcached extends \Phalcon\Storage\Adapter\AbstractAdapter
     /**
      * Increments a stored number
      *
-     * @param string $key
-     * @param int    $value
-     *
-     * @return bool|int
      * @throws StorageException
+     * @param string $key
+     * @param int $value
+     * @return false|int
      */
-    protected function doIncrement(string $key, int $value = 1): int|bool
+    protected function doIncrement(string $key, int $value = 1): int|false
     {
     }
 
@@ -171,11 +179,12 @@ class Libmemcached extends \Phalcon\Storage\Adapter\AbstractAdapter
     }
 
     /**
-     * @param \Memcached $connection
-     * @param array      $client
+     * @phpstan-param storage_libmemcached_client $client
      *
-     * @return static
      * @throws InvalidConfiguration
+     * @param \Memcached $connection
+     * @param array $client
+     * @return static
      */
     private function setOptions(\Memcached $connection, array $client): static
     {
@@ -183,9 +192,8 @@ class Libmemcached extends \Phalcon\Storage\Adapter\AbstractAdapter
 
     /**
      * @param \Memcached $connection
-     * @param string     $saslUser
-     * @param string     $saslPass
-     *
+     * @param string $saslUser
+     * @param string $saslPass
      * @return static
      */
     private function setSasl(\Memcached $connection, string $saslUser, string $saslPass): static
@@ -196,6 +204,7 @@ class Libmemcached extends \Phalcon\Storage\Adapter\AbstractAdapter
      * Checks the serializer. If it is a supported one it is set, otherwise
      * the custom one is set.
      *
+     * @throws SupportException
      * @param \Memcached $connection
      * @return void
      */
@@ -204,11 +213,12 @@ class Libmemcached extends \Phalcon\Storage\Adapter\AbstractAdapter
     }
 
     /**
-     * @param \Memcached $connection
-     * @param array      $servers
+     * @phpstan-param storage_libmemcached_servers $servers
      *
-     * @return static
      * @throws ConnectionFailed
+     * @param \Memcached $connection
+     * @param array $servers
+     * @return static
      */
     private function setServers(\Memcached $connection, array $servers): static
     {

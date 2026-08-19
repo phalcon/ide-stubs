@@ -20,5 +20,5 @@ class RedisCluster extends \Phalcon\Storage\Adapter\RedisCluster implements Cach
     /**
      * EventType prefix.
      */
-    protected $eventType = 'cache';
+    protected string $eventType = 'cache';
 }

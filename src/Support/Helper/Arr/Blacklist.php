@@ -16,10 +16,10 @@ namespace Phalcon\Support\Helper\Arr;
 class Blacklist extends \Phalcon\Support\Helper\Arr\AbstractArr
 {
     /**
-     * @param array $collection
-     * @param array $blackList
+     * @param array<array-key, mixed> $collection
+     * @param array<array-key, mixed> $blackList
      *
-     * @return array
+     * @return array<array-key, mixed>
      */
     public function __invoke(array $collection, array $blackList): array
     {

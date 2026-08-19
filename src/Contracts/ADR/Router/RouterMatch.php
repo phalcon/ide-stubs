@@ -9,23 +9,31 @@
  */
 namespace Phalcon\Contracts\ADR\Router;
 
+use Phalcon\Contracts\ADR\ADRTypes;
+
 /**
  * The result of matching a request against the router: the Action class, the
  * extracted route attributes, the route's middleware and its optional name.
+ *
+ * @phpstan-import-type adr_middleware_names from ADRTypes
+ * @phpstan-import-type adr_route_attributes from ADRTypes
  */
 interface RouterMatch
 {
     /**
+     * @phpstan-return class-string
      * @return string
      */
     public function getAction(): string;
 
     /**
+     * @phpstan-return adr_route_attributes
      * @return array
      */
     public function getAttributes(): array;
 
     /**
+     * @phpstan-return adr_middleware_names
      * @return array
      */
     public function getMiddleware(): array;

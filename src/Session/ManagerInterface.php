@@ -10,12 +10,13 @@
 namespace Phalcon\Session;
 
 use InvalidArgumentException;
+use Phalcon\Contracts\Session\SessionTypes;
 use SessionHandlerInterface;
 
 /**
- * Phalcon\Session
- *
  * Interface for the Phalcon\Session\Manager
+ *
+ * @phpstan-import-type session_options from SessionTypes
  */
 interface ManagerInterface
 {
@@ -116,6 +117,7 @@ interface ManagerInterface
     /**
      * Get internal options
      *
+     * @phpstan-return session_options
      * @return array
      */
     public function getOptions(): array;
@@ -182,6 +184,7 @@ interface ManagerInterface
     /**
      * Sets session's options
      *
+     * @phpstan-param session_options $options
      * @param array $options
      * @return void
      */

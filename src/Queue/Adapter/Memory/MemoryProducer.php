@@ -21,10 +21,7 @@ use Phalcon\Queue\Adapter\QueueDestinationGuard;
  */
 class MemoryProducer extends AbstractProducer
 {
-    /**
-     * @var MemoryContext
-     */
-    protected $context;
+    protected MemoryContext $context;
 
     /**
      * @param MemoryContext $context

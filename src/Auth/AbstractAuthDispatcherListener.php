@@ -28,10 +28,7 @@ use Phalcon\Contracts\Auth\Manager;
  */
 abstract class AbstractAuthDispatcherListener
 {
-    /**
-     * @var Manager
-     */
-    protected $manager;
+    protected \Phalcon\Contracts\Auth\Manager $manager;
 
     /**
      * @param \Phalcon\Contracts\Auth\Manager $manager
@@ -39,14 +36,6 @@ abstract class AbstractAuthDispatcherListener
     public function __construct(\Phalcon\Contracts\Auth\Manager $manager)
     {
     }
-
-    /**
-     * Returns the kind label used by AccessDenied (e.g. 'task', 'action',
-     * 'route').
-     *
-     * @return string
-     */
-    abstract protected function getActionType(): string;
 
     /**
      * Runs the access check for the given action name. Returns true when
@@ -57,7 +46,7 @@ abstract class AbstractAuthDispatcherListener
      * path works without a default guard.
      *
      * @phpstan-param AccessContext $context
-     * @phpstan-param callable|null $forwardHandler
+     * @phpstan-param (callable(array<string, mixed>): void)|null $forwardHandler
      *
      * @throws Exception
      * @param string $actionName
@@ -68,4 +57,12 @@ abstract class AbstractAuthDispatcherListener
     protected function enforce(string $actionName, array $context = [], $forwardHandler = null): bool
     {
     }
+
+    /**
+     * Returns the kind label used by AccessDenied (e.g. 'task', 'action',
+     * 'route').
+     *
+     * @return string
+     */
+    abstract protected function getActionType(): string;
 }

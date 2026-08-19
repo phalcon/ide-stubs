@@ -30,15 +30,9 @@ abstract class AbstractAdapter implements \Phalcon\Contracts\Auth\Adapter\Adapte
      */
     const string DUMMY_HASH = '$2y$10$YMmGMSXz.5U3bjjJ2qx45uElzUrlaBiS8L70VaVnmsKYFJVcam8gW';
 
-    /**
-     * @var AdapterConfig
-     */
-    protected $config;
+    protected \Phalcon\Contracts\Auth\Adapter\AdapterConfig $config;
 
-    /**
-     * @var Security
-     */
-    protected $hasher;
+    protected \Phalcon\Contracts\Encryption\Security\Security $hasher;
 
     /**
      * @phpstan-param TConfig $config
