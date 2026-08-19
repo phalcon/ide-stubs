@@ -17,8 +17,7 @@ class StartsWith extends \Phalcon\Support\Helper\Str\AbstractStr
     /**
      * @param string $haystack
      * @param string $needle
-     * @param bool   $ignoreCase
-     *
+     * @param bool $ignoreCase
      * @return bool
      */
     public function __invoke(string $haystack, string $needle, bool $ignoreCase = true): bool

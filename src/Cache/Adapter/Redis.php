@@ -20,5 +20,5 @@ class Redis extends \Phalcon\Storage\Adapter\Redis implements CacheAdapterInterf
     /**
      * EventType prefix.
      */
-    protected $eventType = 'cache';
+    protected string $eventType = 'cache';
 }

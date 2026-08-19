@@ -29,10 +29,7 @@ use Throwable;
  */
 final class FrozenClock implements \Phalcon\Time\Clock\ClockInterface
 {
-    /**
-     * @var DateTimeImmutable
-     */
-    private $now;
+    private \DateTimeImmutable $now;
 
     /**
      * @param \DateTimeImmutable $now

@@ -39,7 +39,7 @@ class Settings
      *
      * @var array
      */
-    protected static $overrides;
+    protected static array $overrides = [];
 
     /**
      * Returns the value of a known setting.
@@ -65,7 +65,7 @@ class Settings
      * Unknown keys are silently ignored.
      *
      * @param string $key
-     * @param mixed  $value
+     * @param mixed $value
      * @return void
      */
     public static function set(string $key, $value): void

@@ -20,5 +20,5 @@ class Memory extends \Phalcon\Storage\Adapter\Memory implements CacheAdapterInte
     /**
      * EventType prefix.
      */
-    protected $eventType = 'cache';
+    protected string $eventType = 'cache';
 }

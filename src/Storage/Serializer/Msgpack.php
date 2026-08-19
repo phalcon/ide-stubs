@@ -28,17 +28,15 @@ class Msgpack extends \Phalcon\Storage\Serializer\Igbinary
     /**
      * Serializes data
      *
-     * @return string
      * @param mixed $value
+     * @return string
      */
     protected function doSerialize($value): string
     {
     }
 
     /**
-     * @param mixed $value
-     *
-     * @return mixed
+     * @param string $value
      */
     protected function doUnserialize($value)
     {

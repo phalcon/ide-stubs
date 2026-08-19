@@ -41,11 +41,11 @@ interface GuardStateful
      * Logs in the user identified by $id. Returns the resolved user on
      * success or false when no user matches the id.
      *
-     * @param mixed $id
+     * @param int|string $id
      * @param bool $remember
      * @return false|AuthUser
      */
-    public function loginById($id, bool $remember = false): AuthUser|false;
+    public function loginById(int|string $id, bool $remember = false): AuthUser|false;
 
     /**
      * @return void

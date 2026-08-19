@@ -27,10 +27,7 @@ abstract class AbstractAdapter implements \SessionHandlerInterface, \SessionUpda
     use \Phalcon\Traits\Support\Helper\Arr\GetTrait;
 
 
-    /**
-     * @var AdapterInterface
-     */
-    protected $adapter;
+    protected \Phalcon\Storage\Adapter\AdapterInterface $adapter;
 
     /**
      * Close
@@ -44,10 +41,10 @@ abstract class AbstractAdapter implements \SessionHandlerInterface, \SessionUpda
     /**
      * Destroy
      *
-     * @param mixed $id
+     * @param string $id
      * @return bool
      */
-    public function destroy($id): bool
+    public function destroy(string $id): bool
     {
     }
 
@@ -64,53 +61,53 @@ abstract class AbstractAdapter implements \SessionHandlerInterface, \SessionUpda
     /**
      * Open
      *
-     * @param mixed $path
-     * @param mixed $name
+     * @param string $path
+     * @param string $name
      * @return bool
      */
-    public function open($path, $name): bool
+    public function open(string $path, string $name): bool
     {
     }
 
     /**
      * Read
      *
-     * @param mixed $id
+     * @param string $id
      * @return string
      */
-    public function read($id): string
+    public function read(string $id): string
     {
     }
 
     /**
      * Refresh the session lifetime without changing the session data
      *
-     * @param mixed $id
-     * @param mixed $data
+     * @param string $id
+     * @param string $data
      * @return bool
      */
-    public function updateTimestamp($id, $data): bool
+    public function updateTimestamp(string $id, string $data): bool
     {
     }
 
     /**
      * Validate the session id (used when strict mode is enabled)
      *
-     * @param mixed $id
+     * @param string $id
      * @return bool
      */
-    public function validateId($id): bool
+    public function validateId(string $id): bool
     {
     }
 
     /**
      * Write
      *
-     * @param mixed $id
-     * @param mixed $data
+     * @param string $id
+     * @param string $data
      * @return bool
      */
-    public function write($id, $data): bool
+    public function write(string $id, string $data): bool
     {
     }
 }

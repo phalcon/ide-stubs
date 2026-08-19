@@ -9,6 +9,8 @@
  */
 namespace Phalcon\Storage;
 
+use Exception as BaseException;
+use Phalcon\Contracts\Storage\StorageTypes;
 use Phalcon\Factory\AbstractFactory;
 use Phalcon\Storage\Adapter\AdapterInterface;
 use Phalcon\Storage\Adapter\Apcu;
@@ -18,27 +20,21 @@ use Phalcon\Storage\Adapter\Redis;
 use Phalcon\Storage\Adapter\RedisCluster;
 use Phalcon\Storage\Adapter\Stream;
 use Phalcon\Storage\Adapter\Weak;
+use Throwable;
 
 /**
- * This file is part of the Phalcon Framework.
- *
- * (c) Phalcon Team <team@phalcon.io>
- *
- * For the full copyright and license information, please view the LICENSE.txt
- * file that was distributed with this source code.
+ * @phpstan-import-type storage_options from StorageTypes
+ * @phpstan-import-type storage_services from StorageTypes
  */
 class AdapterFactory extends AbstractFactory
 {
-    /**
-     * @var SerializerFactory
-     */
-    private $serializerFactory;
+    private SerializerFactory $serializerFactory;
 
     /**
      * AdapterFactory constructor.
      *
+     * @param string[] $services
      * @param SerializerFactory $factory
-     * @param array $services
      */
     public function __construct(SerializerFactory $factory, array $services = [])
     {
@@ -68,8 +64,10 @@ class AdapterFactory extends AbstractFactory
      *     'storageDir' => '',
      * ]
      *
+     * @phpstan-param storage_options $options
+     *
      * @return AdapterInterface
-     * @throws Exception
+     * @throws BaseException
      * @param string $name
      */
     public function newInstance(string $name, array $options = []): AdapterInterface
@@ -77,7 +75,7 @@ class AdapterFactory extends AbstractFactory
     }
 
     /**
-     * @return string
+     * @return class-string<Throwable>
      */
     protected function getExceptionClass(): string
     {
@@ -87,6 +85,8 @@ class AdapterFactory extends AbstractFactory
      * Returns the available adapters
      *
      * @return string[]
+     *
+     * @phpstan-return storage_services
      */
     protected function getServices(): array
     {

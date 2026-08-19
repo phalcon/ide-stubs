@@ -16,9 +16,9 @@ namespace Phalcon\Support\Helper\Str;
 class Decrement
 {
     /**
+     * @phpstan-param non-empty-string $separator
      * @param string $text
      * @param string $separator
-     *
      * @return string
      */
     public function __invoke(string $text, string $separator = '_'): string

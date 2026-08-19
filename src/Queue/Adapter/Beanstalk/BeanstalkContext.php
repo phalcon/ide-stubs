@@ -30,39 +30,18 @@ class BeanstalkContext extends AbstractContext implements \Phalcon\Contracts\Que
 {
     /**
      * Shared connection used by producers and purges.
-     *
-     * @var BeanstalkConnection | null
      */
-    protected $connection = null;
+    protected ?BeanstalkConnection $connection = null;
 
-    /**
-     * @var string
-     */
-    protected $host = '127.0.0.1';
+    protected string $host = '127.0.0.1';
 
-    /**
-     * @var bool
-     */
-    protected $persistent = false;
+    protected bool $persistent = false;
 
-    /**
-     * Milliseconds slept between poll passes by a subscription consumer.
-     *
-     * @var int
-     */
-    protected $pollInterval = 200;
+    protected int $pollInterval = 200;
 
-    /**
-     * @var int
-     */
-    protected $port = 11300;
+    protected int $port = 11300;
 
-    /**
-     * Default time-to-run (seconds) applied to every put.
-     *
-     * @var int
-     */
-    protected $ttr = 86400;
+    protected int $ttr = 86400;
 
     /**
      * @param string $host
@@ -127,8 +106,8 @@ class BeanstalkContext extends AbstractContext implements \Phalcon\Contracts\Que
      * watcher state. Runs on a fresh short-lived connection (like purgeQueue)
      * so the read never shares the producer's socket.
      *
+     * @return array<string, int|string>
      * @param \Phalcon\Contracts\Queue\Queue $queue
-     * @return array
      */
     public function getStats(\Phalcon\Contracts\Queue\Queue $queue): array
     {

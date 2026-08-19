@@ -9,6 +9,7 @@
  */
 namespace Phalcon\Http\Request;
 
+use Phalcon\Contracts\Http\HttpTypes;
 use Phalcon\Traits\Support\Helper\Arr\GetTrait;
 
 /**
@@ -33,55 +34,34 @@ use Phalcon\Traits\Support\Helper\Arr\GetTrait;
  *     }
  * }
  * ```
+ *
+ * @phpstan-import-type http_uploaded_file from HttpTypes
  */
 class File implements \Phalcon\Http\Request\FileInterface
 {
     use \Phalcon\Traits\Support\Helper\Arr\GetTrait;
 
 
-    /**
-     * @var int
-     */
-    protected $error = 0;
+    protected int $error = 0;
+
+    protected string $extension = '';
+
+    protected string $key = '';
+
+    protected string $name = '';
+
+    protected string $realType;
+
+    protected int $size = 0;
+
+    protected string $tmpName = '';
+
+    protected string $type = '';
 
     /**
-     * @var string
-     */
-    protected $extension = '';
-
-    /**
-     * @var string
-     */
-    protected $key = '';
-
-    /**
-     * @var string
-     */
-    protected $name = '';
-
-    /**
-     * @var string
-     */
-    protected $realType;
-
-    /**
-     * @var int
-     */
-    protected $size = 0;
-
-    /**
-     * @var string
-     */
-    protected $tmpName = '';
-
-    /**
-     * @var string
-     */
-    protected $type = '';
-
-    /**
-     * Phalcon\Http\Request\File constructor
+     * Constructor
      *
+     * @phpstan-param http_uploaded_file $file
      * @param array $file
      * @param string $key
      */

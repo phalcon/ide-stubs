@@ -21,10 +21,10 @@ class Group
 
 
     /**
-     * @param array           $collection
-     * @param callable|string $method
+     * @param array<array-key, mixed> $collection
+     * @param callable|string         $method
      *
-     * @return array
+     * @return array<array-key, list<mixed>>
      */
     public function __invoke(array $collection, $method): array
     {
@@ -32,7 +32,6 @@ class Group
 
     /**
      * @param mixed $method
-     *
      * @return bool
      */
     private function isCallable($method): bool
@@ -40,33 +39,42 @@ class Group
     }
 
     /**
-     * @param array           $filtered
-     * @param callable|string $method
-     * @param mixed           $element
+     * @param mixed $element
      *
-     * @return array
+     * @return bool
+     */
+    private function isObject($element): bool
+    {
+    }
+
+    /**
+     * @param array<array-key, mixed> $filtered
+     * @param callable|string         $method
+     * @param mixed                   $element
+     *
+     * @return array<array-key, mixed>
      */
     private function processCallable(array $filtered, $method, $element): array
     {
     }
 
     /**
-     * @param array           $filtered
-     * @param callable|string $method
-     * @param mixed           $element
+     * @param array<array-key, mixed> $filtered
+     * @param callable|string         $method
+     * @param mixed                   $element
      *
-     * @return array
+     * @return array<array-key, mixed>
      */
     private function processObject(array $filtered, $method, $element): array
     {
     }
 
     /**
-     * @param array           $filtered
-     * @param callable|string $method
-     * @param mixed           $element
+     * @param array<array-key, mixed> $filtered
+     * @param callable|string         $method
+     * @param mixed                   $element
      *
-     * @return array
+     * @return array<array-key, mixed>
      */
     private function processOther(array $filtered, $method, $element): array
     {

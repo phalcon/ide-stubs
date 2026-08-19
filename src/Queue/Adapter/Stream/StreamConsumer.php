@@ -19,10 +19,7 @@ use Phalcon\Queue\Adapter\AbstractConsumer;
  */
 class StreamConsumer extends AbstractConsumer
 {
-    /**
-     * @var StreamContext
-     */
-    protected $context;
+    protected StreamContext $context;
 
     /**
      * @param StreamContext $context

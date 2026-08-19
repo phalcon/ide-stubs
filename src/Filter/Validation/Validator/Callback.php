@@ -14,6 +14,7 @@ use Phalcon\Filter\Validation\AbstractValidator;
 use Phalcon\Filter\Validation\Exceptions\InvalidCallbackReturn;
 use Phalcon\Filter\Validation\ValidatorInterface;
 use Phalcon\Messages\Message;
+use ReflectionFunction;
 
 /**
  * Calls user function for validation

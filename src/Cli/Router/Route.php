@@ -11,9 +11,15 @@ namespace Phalcon\Cli\Router;
 
 use Phalcon\Cli\Router\Exceptions\BeforeMatchNotCallable;
 use Phalcon\Cli\Router\Exceptions\InvalidRoutePaths;
+use Phalcon\Contracts\Cli\CliTypes;
 
 /**
  * This class represents every route added to the router
+ *
+ * @phpstan-import-type cli_route_converters from CliTypes
+ * @phpstan-import-type cli_route_extracted from CliTypes
+ * @phpstan-import-type cli_route_paths from CliTypes
+ * @phpstan-import-type cli_route_reversed_paths from CliTypes
  */
 class Route implements \Phalcon\Cli\Router\RouteInterface
 {
@@ -23,59 +29,38 @@ class Route implements \Phalcon\Cli\Router\RouteInterface
     const string DEFAULT_DELIMITER = ' ';
 
     /**
-     * @var mixed|null
-     */
-    protected $beforeMatch = null;
-
-    /**
-     * @var string
-     */
-    protected $compiledPattern = '';
-
-    /**
-     * @var array
-     */
-    protected $converters = [];
-
-    /**
-     * @var string
-     */
-    protected $delimiter;
-
-    /**
      * @var string
      */
     protected static $delimiterPath = self::DEFAULT_DELIMITER;
 
-    /**
-     * @var string
-     */
-    protected $description = '';
+    protected static int $uniqueId = 0;
 
     /**
-     * @var string
+     * @var mixed|null
      */
-    protected $routeId;
+    protected $beforeMatch = null;
+
+    protected string $compiledPattern = '';
 
     /**
-     * @var string
+     * @phpstan-var cli_route_converters
      */
-    protected $name = '';
+    protected array $converters = [];
+
+    protected string $delimiter;
+
+    protected string $description = '';
+
+    protected string $name = '';
 
     /**
-     * @var array
+     * @phpstan-var cli_route_paths
      */
-    protected $paths = [];
+    protected array $paths = [];
 
-    /**
-     * @var string
-     */
-    protected $pattern = '';
+    protected string $pattern = '';
 
-    /**
-     * @var int
-     */
-    protected static $uniqueId = 0;
+    protected string $routeId;
 
     /**
      * Constructor
@@ -84,6 +69,44 @@ class Route implements \Phalcon\Cli\Router\RouteInterface
      * @param string $pattern
      */
     public function __construct(string $pattern, $paths = null)
+    {
+    }
+
+    /**
+     * Set the routing delimiter.
+     *
+     * This sets a process-global delimiter that each route captures at
+     * construction time. Configure it once during bootstrap, before any routes
+     * are created: routes built before and after a change keep their own
+     * delimiter, and `Console::setArgument()` reads the current value when it
+     * parses arguments.
+     *
+     * @param string|null $delimiter
+     * @return void
+     */
+    public static function delimiter(?string $delimiter = null): void
+    {
+    }
+
+    /**
+     * Get routing delimiter
+     *
+     * @return string
+     */
+    public static function getDelimiter(): string
+    {
+    }
+
+    /**
+     * Resets the internal route id generator.
+     *
+     * Intended for test isolation only. The router keys its route map by the
+     * route id, so resetting the sequence while a router still holds routes
+     * makes newly created routes overwrite existing entries.
+     *
+     * @return void
+     */
+    public static function reset(): void
     {
     }
 
@@ -123,24 +146,9 @@ class Route implements \Phalcon\Cli\Router\RouteInterface
     }
 
     /**
-     * Set the routing delimiter.
-     *
-     * This sets a process-global delimiter that each route captures at
-     * construction time. Configure it once during bootstrap, before any routes
-     * are created: routes built before and after a change keep their own
-     * delimiter, and `Console::setArgument()` reads the current value when it
-     * parses arguments.
-     *
-     * @param string|null $delimiter
-     * @return void
-     */
-    public static function delimiter(?string $delimiter = null): void
-    {
-    }
-
-    /**
      * Extracts parameters from a string
      *
+     * @phpstan-return cli_route_extracted|false
      * @param string $pattern
      * @return array|bool
      */
@@ -169,18 +177,10 @@ class Route implements \Phalcon\Cli\Router\RouteInterface
     /**
      * Returns the router converter
      *
+     * @phpstan-return cli_route_converters
      * @return array
      */
     public function getConverters(): array
-    {
-    }
-
-    /**
-     * Get routing delimiter
-     *
-     * @return string
-     */
-    public static function getDelimiter(): string
     {
     }
 
@@ -205,6 +205,7 @@ class Route implements \Phalcon\Cli\Router\RouteInterface
     /**
      * Returns the paths
      *
+     * @phpstan-return cli_route_paths
      * @return array
      */
     public function getPaths(): array
@@ -223,6 +224,7 @@ class Route implements \Phalcon\Cli\Router\RouteInterface
     /**
      * Returns the paths using positions as keys and names as values
      *
+     * @phpstan-return cli_route_reversed_paths
      * @return array
      */
     public function getReversedPaths(): array
@@ -241,24 +243,11 @@ class Route implements \Phalcon\Cli\Router\RouteInterface
     /**
      * Reconfigure the route adding a new pattern and a set of paths
      *
+     * @param array|string|null $paths
      * @param string $pattern
-     * @param array|string|null $paths *
      * @return void
      */
     public function reConfigure(string $pattern, $paths = null): void
-    {
-    }
-
-    /**
-     * Resets the internal route id generator.
-     *
-     * Intended for test isolation only. The router keys its route map by the
-     * route id, so resetting the sequence while a router still holds routes
-     * makes newly created routes overwrite existing entries.
-     *
-     * @return void
-     */
-    public static function reset(): void
     {
     }
 

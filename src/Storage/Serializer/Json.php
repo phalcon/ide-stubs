@@ -9,7 +9,6 @@
  */
 namespace Phalcon\Storage\Serializer;
 
-use InvalidArgumentException;
 use Phalcon\Support\Helper\Json\Decode;
 use Phalcon\Support\Helper\Json\Encode;
 
@@ -23,20 +22,14 @@ use Phalcon\Support\Helper\Json\Encode;
  */
 class Json extends \Phalcon\Storage\Serializer\AbstractSerializer
 {
-    /**
-     * @var Decode
-     */
-    private $decode;
+    private \Phalcon\Support\Helper\Json\Decode $decode;
 
-    /**
-     * @var Encode
-     */
-    private $encode;
+    private \Phalcon\Support\Helper\Json\Encode $encode;
 
     /**
      * AbstractSerializer constructor.
      *
-     * @param mixed|null $data
+     * @param mixed $data
      */
     public function __construct($data = null)
     {
@@ -45,7 +38,7 @@ class Json extends \Phalcon\Storage\Serializer\AbstractSerializer
     /**
      * Serializes data
      *
-     * @return mixed|string
+     * @return mixed
      */
     public function serialize(): mixed
     {
@@ -55,7 +48,6 @@ class Json extends \Phalcon\Storage\Serializer\AbstractSerializer
      * Unserializes data
      *
      * @param mixed $data
-     *
      * @return void
      */
     public function unserialize($data): void

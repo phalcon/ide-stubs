@@ -26,15 +26,9 @@ use Phalcon\Auth\Exceptions\ConfigRequiresNonEmptyValue;
  */
 class TokenGuardConfig extends \Phalcon\Auth\Guard\Config\AbstractGuardConfig
 {
-    /**
-     * @var string
-     */
-    protected $inputKey;
+    protected string $inputKey;
 
-    /**
-     * @var string
-     */
-    protected $storageKey;
+    protected string $storageKey;
 
     /**
      * @throws Exception

@@ -9,6 +9,8 @@
  */
 namespace Phalcon\Paginator\Adapter;
 
+use Phalcon\Contracts\Db\Adapter\Adapter as DbAdapter;
+use Phalcon\Contracts\Paginator\PaginatorTypes;
 use Phalcon\Db\Enum;
 use Phalcon\Mvc\Model\Query\Builder;
 use Phalcon\Paginator\Exception;
@@ -19,8 +21,6 @@ use Phalcon\Paginator\Exceptions\MissingRequiredParameter;
 use Phalcon\Paginator\RepositoryInterface;
 
 /**
- * Phalcon\Paginator\Adapter\QueryBuilder
- *
  * Pagination using a PHQL query builder as source of data
  *
  * ```php
@@ -39,22 +39,27 @@ use Phalcon\Paginator\RepositoryInterface;
  *     ]
  * );
  * ```
+ *
+ * @phpstan-import-type paginator_columns from PaginatorTypes
+ * @phpstan-import-type paginator_config from PaginatorTypes
+ * @phpstan-import-type paginator_count_object from PaginatorTypes
+ * @phpstan-import-type paginator_count_row from PaginatorTypes
+ * @phpstan-import-type paginator_group_by from PaginatorTypes
+ * @phpstan-import-type paginator_query_sql from PaginatorTypes
  */
 class QueryBuilder extends \Phalcon\Paginator\Adapter\AbstractAdapter
 {
     /**
      * Paginator's data
-     *
-     * @var Builder
      */
-    protected $builder;
+    protected \Phalcon\Mvc\Model\Query\Builder $builder;
 
     /**
      * Column list used only for COUNT rewriting when the builder carries a
      * HAVING or GROUP BY clause. It supplies the columns for the subquery
      * that counts the grouped/having result set and is ignored otherwise.
      *
-     * @var array|string
+     * @var paginator_columns|null
      */
     protected $columns;
 
@@ -66,7 +71,7 @@ class QueryBuilder extends \Phalcon\Paginator\Adapter\AbstractAdapter
      * HAVING or GROUP BY clause (it becomes the column list of the counting
      * subquery). It has no effect on plain queries.
      *
-     * @param array $config = [
+     * @param paginator_config $config = [
      *     'limit' => 10,
      *     'builder' => null,
      *     'columns' => ''

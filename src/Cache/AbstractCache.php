@@ -15,6 +15,8 @@ use Phalcon\Cache\Adapter\Redis;
 use Phalcon\Cache\Exception\InvalidArgumentException;
 use Phalcon\Events\EventsAwareInterface;
 use Phalcon\Events\ManagerInterface;
+use Phalcon\Events\Traits\EventsAwareTrait;
+use Throwable;
 use Traversable;
 
 /**
@@ -31,19 +33,10 @@ use Traversable;
  */
 abstract class AbstractCache implements \Phalcon\Cache\CacheInterface, \Phalcon\Events\EventsAwareInterface
 {
-    /**
-     * The adapter
-     *
-     * @var AdapterInterface
-     */
-    protected $adapter;
+    use \Phalcon\Events\Traits\EventsAwareTrait;
 
-    /**
-     * Event Manager
-     *
-     * @var ManagerInterface|null
-     */
-    protected $eventsManager = null;
+
+    protected \Phalcon\Cache\Adapter\AdapterInterface $adapter;
 
     /**
      * Constructor.
@@ -55,6 +48,15 @@ abstract class AbstractCache implements \Phalcon\Cache\CacheInterface, \Phalcon\
     }
 
     /**
+     * Fetches a value from the cache.
+     *
+     * @param string $key
+     * @param mixed $defaultValue
+     * @return mixed
+     */
+    abstract public function get(string $key, $defaultValue = null): mixed;
+
+    /**
      * Returns the current adapter
      *
      * @return AdapterInterface
@@ -64,52 +66,20 @@ abstract class AbstractCache implements \Phalcon\Cache\CacheInterface, \Phalcon\
     }
 
     /**
-     * Fetches a value from the cache.
-     *
-     * @param string $key
-     * @param mixed  $defaultValue
-     *
-     * @return mixed
-     */
-    abstract public function get(string $key, $defaultValue = null);
-
-    /**
      * Persists data in the cache, uniquely referenced by a key with an
      * optional expiration TTL time.
      *
-     * @param string                $key
-     * @param mixed                 $value
-     * @param null|int|DateInterval $ttl
-     *
+     * @param string $key
+     * @param mixed $value
+     * @param mixed $ttl
      * @return bool
      */
     abstract public function set(string $key, $value, $ttl = null): bool;
 
     /**
-     * Sets the event manager
-     *
-     * @param \Phalcon\Events\ManagerInterface $eventsManager
-     * @return void
-     */
-    public function setEventsManager(\Phalcon\Events\ManagerInterface $eventsManager): void
-    {
-    }
-
-    /**
-     * Get the event manager
-     *
-     * @return ManagerInterface|null
-     */
-    public function getEventsManager(): ManagerInterface|null
-    {
-    }
-
-    /**
      * Checks the key. If it contains invalid characters an exception is thrown
      *
-     * @param mixed $key
-     *
-     * @throws InvalidArgumentException
+     * @param string $key
      * @return void
      */
     protected function checkKey(string $key): void
@@ -120,8 +90,6 @@ abstract class AbstractCache implements \Phalcon\Cache\CacheInterface, \Phalcon\
      * Checks the key. If it contains invalid characters an exception is thrown
      *
      * @param mixed $keys
-     *
-     * @throws InvalidArgumentException
      * @return void
      */
     protected function checkKeys($keys): void
@@ -131,7 +99,7 @@ abstract class AbstractCache implements \Phalcon\Cache\CacheInterface, \Phalcon\
     /**
      * Wipes clean the entire cache's keys.
      *
-     * @return bool True on success and false on failure.
+     * @return bool
      */
     protected function doClear(): bool
     {
@@ -140,13 +108,8 @@ abstract class AbstractCache implements \Phalcon\Cache\CacheInterface, \Phalcon\
     /**
      * Delete an item from the cache by its unique key.
      *
-     * @param string $key The unique cache key of the item to delete.
-     *
-     * @return bool True if the item was successfully removed. False if there
-     *              was an error.
-     *
-     * @throws InvalidArgumentException MUST be thrown if the $key string is
-     *                                  not a legal value.
+     * @param string $key
+     * @return bool
      */
     protected function doDelete(string $key): bool
     {
@@ -155,6 +118,7 @@ abstract class AbstractCache implements \Phalcon\Cache\CacheInterface, \Phalcon\
     /**
      * Deletes multiple cache items in a single operation.
      *
+     * @phpstan-param iterable<array-key, string> $keys
      * @param mixed $keys
      * @return bool
      */
@@ -165,14 +129,9 @@ abstract class AbstractCache implements \Phalcon\Cache\CacheInterface, \Phalcon\
     /**
      * Fetches a value from the cache.
      *
-     * @param string $key          The unique key of this item in the cache.
-     * @param mixed  $defaultValue Default value to return if the key does not exist.
-     *
-     * @return mixed The value of the item from the cache, or $default in case
-     * of cache miss.
-     *
-     * @throws InvalidArgumentException MUST be thrown if the $key string is
-     * not a legal value.
+     * @param string $key
+     * @param mixed $defaultValue
+     * @return mixed
      */
     protected function doGet(string $key, $defaultValue = null): mixed
     {
@@ -181,6 +140,9 @@ abstract class AbstractCache implements \Phalcon\Cache\CacheInterface, \Phalcon\
     /**
      * Obtains multiple cache items by their unique keys.
      *
+     * @phpstan-param iterable<array-key, string> $keys
+     *
+     * @phpstan-return array<string, mixed>
      * @param mixed $keys
      * @param mixed $defaultValue
      * @return array
@@ -192,12 +154,8 @@ abstract class AbstractCache implements \Phalcon\Cache\CacheInterface, \Phalcon\
     /**
      * Determines whether an item is present in the cache.
      *
-     * @param string $key The cache item key.
-     *
+     * @param string $key
      * @return bool
-     *
-     * @throws InvalidArgumentException MUST be thrown if the $key string is
-     * not a legal value.
      */
     protected function doHas(string $key): bool
     {
@@ -207,19 +165,10 @@ abstract class AbstractCache implements \Phalcon\Cache\CacheInterface, \Phalcon\
      * Persists data in the cache, uniquely referenced by a key with an optional
      * expiration TTL time.
      *
-     * @param string                $key    The key of the item to store.
-     * @param mixed                 $value  The value of the item to store.
-     *                                      Must be serializable.
-     * @param null|int|DateInterval $ttl    Optional. The TTL value of this
-     *                                      item. If no value is sent and the
-     *                                      driver supports TTL then the library
-     *                                      may set a default value for it or
-     *                                      let the driver take care of that.
-     *
-     * @return bool True on success and false on failure.
-     *
-     * @throws InvalidArgumentException MUST be thrown if the $key string is not
-     * a legal value.
+     * @param string $key
+     * @param mixed $value
+     * @param mixed $ttl
+     * @return bool
      */
     protected function doSet(string $key, $value, $ttl = null): bool
     {
@@ -228,6 +177,8 @@ abstract class AbstractCache implements \Phalcon\Cache\CacheInterface, \Phalcon\
     /**
      * Persists a set of key => value pairs in the cache, with an optional TTL.
      *
+     * @phpstan-param iterable<string, mixed> $values
+     * @phpstan-param DateInterval|int|null   $ttl
      * @param mixed $values
      * @param mixed $ttl
      * @return bool
@@ -237,20 +188,9 @@ abstract class AbstractCache implements \Phalcon\Cache\CacheInterface, \Phalcon\
     }
 
     /**
-     * Trigger an event for the eventsManager.
-     *
-     * @param string $eventName
-     * @param mixed $keys
-     * @return void
-     */
-    protected function fire(string $eventName, $keys): void
-    {
-    }
-
-    /**
      * Returns the exception class that will be used for exceptions thrown
      *
-     * @return string
+     * @return class-string<Throwable>
      */
     abstract protected function getExceptionClass(): string;
 }

@@ -20,6 +20,11 @@ use Phalcon\Traits\Php\InfoTrait;
  * The test is passed if for a string's length L, min<=L, i.e. L must
  * be at least min.
  *
+ * The "included" option is true by default. Set the option to false
+ * for min<L, i.e. L must be more than min. The "includedMinimum" option
+ * is an alias of "included". If you set the two options, "included" has
+ * precedence.
+ *
  * ```php
  * use Phalcon\Filter\Validation;
  * use Phalcon\Filter\Validation\Validator\StringLength\Min;
@@ -32,7 +37,7 @@ use Phalcon\Traits\Php\InfoTrait;
  *         [
  *             "min"     => 2,
  *             "message" => "We want more than just their initials",
- *             "included" => true
+ *             "included" => false
  *         ]
  *     )
  * );
@@ -76,7 +81,8 @@ class Min extends AbstractValidator
      *     'template' => '',
      *     'allowEmpty' => false,
      *     'min' => 1000,
-     *     'included' => false
+     *     'included' => true,
+     *     'includedMinimum' => true
      * ]
      */
     public function __construct(array $options = [])

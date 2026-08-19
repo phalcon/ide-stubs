@@ -37,20 +37,11 @@ use Phalcon\Contracts\Auth\Guard\Guard;
  */
 class Acl extends \Phalcon\Auth\Access\AbstractAccess
 {
-    /**
-     * @var AdapterInterface
-     */
-    protected $acl;
+    protected \Phalcon\Acl\Adapter\AdapterInterface $acl;
 
-    /**
-     * @var string
-     */
-    protected $guestRole = 'guest';
+    protected string $guestRole = 'guest';
 
-    /**
-     * @var string
-     */
-    protected $moduleSeparator = ':';
+    protected string $moduleSeparator = ':';
 
     /**
      * @phpstan-param array{guestRole?: string, moduleSeparator?: string} $options

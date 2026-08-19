@@ -23,15 +23,9 @@ class Worker
     use \Phalcon\Traits\Php\InfoTrait;
 
 
-    /**
-     * @var QueueConsumer
-     */
-    protected $consumer;
+    protected QueueConsumer $consumer;
 
-    /**
-     * @var WorkerOptions
-     */
-    protected $options;
+    protected WorkerOptions $options;
 
     /**
      * @param QueueConsumer $consumer

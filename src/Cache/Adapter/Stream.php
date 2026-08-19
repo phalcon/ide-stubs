@@ -20,5 +20,5 @@ class Stream extends \Phalcon\Storage\Adapter\Stream implements CacheAdapterInte
     /**
      * EventType prefix.
      */
-    protected $eventType = 'cache';
+    protected string $eventType = 'cache';
 }

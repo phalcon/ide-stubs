@@ -20,5 +20,5 @@ class Libmemcached extends \Phalcon\Storage\Adapter\Libmemcached implements Cach
     /**
      * EventType prefix.
      */
-    protected $eventType = 'cache';
+    protected string $eventType = 'cache';
 }

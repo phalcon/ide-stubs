@@ -24,7 +24,7 @@ class StreamProducer extends AbstractProducer
     /**
      * @var StreamContext
      */
-    protected $context;
+    protected StreamContext $context;
 
     /**
      * @param StreamContext $context

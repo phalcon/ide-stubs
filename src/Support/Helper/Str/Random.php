@@ -62,7 +62,6 @@ class Random
     /**
      * @param int $type
      * @param int $length
-     *
      * @return string
      */
     public function __invoke(int $type = self::RANDOM_ALNUM, int $length = 8): string

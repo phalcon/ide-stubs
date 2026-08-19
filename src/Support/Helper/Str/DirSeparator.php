@@ -23,7 +23,6 @@ class DirSeparator
 
     /**
      * @param string $directory
-     *
      * @return string
      */
     public function __invoke(string $directory): string

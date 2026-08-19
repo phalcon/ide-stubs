@@ -32,8 +32,6 @@ class None extends \Phalcon\Storage\Serializer\AbstractSerializer
      * Unserializes data
      *
      * @param mixed $data
-     *
-     * @retrun void
      * @return void
      */
     public function unserialize($data): void

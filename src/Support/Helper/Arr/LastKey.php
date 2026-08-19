@@ -16,10 +16,10 @@ namespace Phalcon\Support\Helper\Arr;
 class LastKey extends \Phalcon\Support\Helper\Arr\AbstractArr
 {
     /**
-     * @param array         $collection
-     * @param callable|null $method
+     * @param array<array-key, mixed> $collection
+     * @param callable|null           $method
      *
-     * @return mixed
+     * @return int|string|null
      */
     public function __invoke(array $collection, $method = null): mixed
     {

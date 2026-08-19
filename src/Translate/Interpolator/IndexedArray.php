@@ -23,10 +23,9 @@ class IndexedArray implements \Phalcon\Translate\Interpolator\InterpolatorInterf
      * Replaces placeholders by the values passed
      *
      * @phpstan-param array<string, string> $placeholders
-     *
-     * @return string
      * @param string $translation
      * @param array $placeholders
+     * @return string
      */
     public function replacePlaceholders(string $translation, array $placeholders = []): string
     {

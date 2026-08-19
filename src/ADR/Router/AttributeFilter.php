@@ -10,6 +10,7 @@
 namespace Phalcon\ADR\Router;
 
 use Phalcon\ADR\Exceptions\RouteNotFound;
+use Phalcon\Contracts\ADR\ADRTypes;
 use Phalcon\Contracts\ADR\Router\AttributeFilter as AttributeFilterInterface;
 
 /**
@@ -19,10 +20,17 @@ use Phalcon\Contracts\ADR\Router\AttributeFilter as AttributeFilterInterface;
  * the attributes; a declared parameter with no segment is skipped; surplus
  * segments pass through under their positional keys. An Action without
  * `params()` is returned unchanged.
+ *
+ * @phpstan-import-type adr_filtered_attributes from ADRTypes
+ * @phpstan-import-type adr_route_attributes from ADRTypes
  */
 final class AttributeFilter implements AttributeFilterInterface
 {
     /**
+     * @phpstan-param class-string          $actionClass
+     * @phpstan-param adr_route_attributes  $attributes
+     *
+     * @phpstan-return adr_filtered_attributes
      * @param string $actionClass
      * @param array $attributes
      * @return array

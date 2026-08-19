@@ -15,12 +15,17 @@ use Phalcon\Cli\Console\Exceptions\ContainerRequired;
 use Phalcon\Cli\Console\Exceptions\InvalidModuleDefinition;
 use Phalcon\Cli\Console\Exceptions\ModuleDefinitionPathNotFound;
 use Phalcon\Cli\Router\Route;
+use Phalcon\Contracts\Cli\CliTypes;
 use Phalcon\Events\ManagerInterface;
 use Phalcon\Mvc\ModuleDefinitionInterface;
 use Phalcon\Traits\Php\FileTrait;
 
 /**
  * This component allows to create CLI applications using Phalcon
+ *
+ * @phpstan-import-type cli_arguments from CliTypes
+ * @phpstan-import-type cli_options from CliTypes
+ * @phpstan-import-type cli_parameters from CliTypes
  */
 class Console extends AbstractApplication
 {
@@ -28,18 +33,19 @@ class Console extends AbstractApplication
 
 
     /**
-     * @var array|string
+     * @phpstan-var cli_arguments
      */
     protected $arguments = [];
 
     /**
-     * @var array
+     * @phpstan-var cli_options
      */
-    protected $options = [];
+    protected array $options = [];
 
     /**
      * Handle the whole command-line tasks
      *
+     * @phpstan-param cli_parameters|null $arguments
      * @param array|null $arguments
      */
     public function handle(?array $arguments = null)
@@ -47,8 +53,9 @@ class Console extends AbstractApplication
     }
 
     /**
-     * Set an specific argument
+     * Set a specific argument
      *
+     * @phpstan-param cli_parameters|null $arguments
      * @param array|null $arguments
      * @param bool $str
      * @param bool $shift

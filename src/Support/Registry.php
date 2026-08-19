@@ -9,7 +9,6 @@
  */
 namespace Phalcon\Support;
 
-use Phalcon\Support\Collection;
 use Traversable;
 
 /**
@@ -59,8 +58,10 @@ use Traversable;
  * Internally all the magic methods (and interfaces except JsonSerializable)
  * are implemented using object handlers or similar techniques: this allows to
  * bypass relatively slow method calls.
+ *
+ * @extends Collection<mixed>
  */
-final class Registry extends Collection
+final class Registry extends \Phalcon\Support\Collection
 {
     /**
      * Constructor
@@ -124,7 +125,6 @@ final class Registry extends Collection
     /**
      * Count elements of an object
      *
-     * @link https://php.net/manual/en/countable.count.php
      * @return int
      */
     final public function count(): int
@@ -146,7 +146,7 @@ final class Registry extends Collection
     /**
      * Returns the iterator of the class
      *
-     * @return Traversable
+     * @return Traversable<int|string, mixed>
      */
     final public function getIterator(): Traversable
     {
@@ -175,7 +175,6 @@ final class Registry extends Collection
     /**
      * Specify data which should be serialized to JSON
      *
-     * @link https://php.net/manual/en/jsonserializable.jsonserialize.php
      * @return array
      */
     final public function jsonSerialize(): array
@@ -185,7 +184,6 @@ final class Registry extends Collection
     /**
      * Whether a offset exists
      *
-     * @link https://php.net/manual/en/arrayaccess.offsetexists.php
      * @param mixed $element
      * @return bool
      */
@@ -196,7 +194,6 @@ final class Registry extends Collection
     /**
      * Offset to retrieve
      *
-     * @link https://php.net/manual/en/arrayaccess.offsetget.php
      * @param mixed $element
      * @return mixed
      */
@@ -207,7 +204,6 @@ final class Registry extends Collection
     /**
      * Offset to set
      *
-     * @link https://php.net/manual/en/arrayaccess.offsetset.php
      * @param mixed $element
      * @param mixed $value
      * @return void
@@ -219,7 +215,6 @@ final class Registry extends Collection
     /**
      * Offset to unset
      *
-     * @link https://php.net/manual/en/arrayaccess.offsetunset.php
      * @param mixed $element
      * @return void
      */
@@ -240,7 +235,6 @@ final class Registry extends Collection
     /**
      * String representation of object
      *
-     * @link https://php.net/manual/en/serializable.serialize.php
      * @return string|null
      */
     final public function serialize(): string|null
@@ -274,7 +268,6 @@ final class Registry extends Collection
      *
      * JSON_HEX_TAG, JSON_HEX_APOS, JSON_HEX_AMP, JSON_HEX_QUOT, JSON_UNESCAPED_SLASHES
      *
-     * @see https://www.ietf.org/rfc/rfc4627.txt
      * @param int $options
      * @return string
      */
@@ -283,9 +276,8 @@ final class Registry extends Collection
     }
 
     /**
-     * Constructs the object
+     * Unserializes the object
      *
-     * @link https://php.net/manual/en/serializable.unserialize.php
      * @param string $data
      * @return void
      */

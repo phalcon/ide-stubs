@@ -28,9 +28,9 @@ class MemoryContext extends AbstractContext
     /**
      * Named queues: queue name => list of messages (FIFO).
      *
-     * @var array
+     * @var array<string, list<MessageInterface>>
      */
-    protected $queues = [];
+    protected array $queues = [];
 
     /**
      * Closes the context and drops every stored message.

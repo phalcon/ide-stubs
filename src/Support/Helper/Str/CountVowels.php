@@ -17,7 +17,6 @@ class CountVowels
 {
     /**
      * @param string $text
-     *
      * @return int
      */
     public function __invoke(string $text): int

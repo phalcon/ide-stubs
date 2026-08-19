@@ -9,6 +9,8 @@
  */
 namespace Phalcon\Queue\Adapter\Traits;
 
+use Phalcon\Contracts\Queue\QueueTypes;
+
 /**
  * Shared implementation of every Message getter/setter, plus the
  * correlation-id / message-id / timestamp / reply-to header conveniences.
@@ -16,36 +18,31 @@ namespace Phalcon\Queue\Adapter\Traits;
  *
  * The convenience accessors are stored as transport headers under fixed keys
  * for binary compatibility with the wider interop ecosystem.
+ *
+ * @phpstan-import-type queue_message_headers from QueueTypes
+ * @phpstan-import-type queue_message_properties from QueueTypes
  */
 trait MessageTrait
 {
-    /**
-     * @var string
-     */
-    protected $body = '';
+    protected string $body = '';
 
     /**
-     * @var array
-     *
-     * @todo Use a default [] once Zephir supports array trait defaults
+     * @phpstan-var queue_message_headers
      */
-    protected $headers = null;
+    protected array $headers = [];
 
     /**
-     * @var array
-     *
-     * @todo Use a default [] once Zephir supports array trait defaults
+     * @phpstan-var queue_message_properties
      */
-    protected $properties = null;
+    protected array $properties = [];
 
-    /**
-     * @var bool
-     */
-    protected $redelivered = false;
+    protected bool $redelivered = false;
 
     /**
      * Message constructor.
      *
+     * @phpstan-param queue_message_properties $properties
+     * @phpstan-param queue_message_headers    $headers
      * @param string $body
      * @param array $properties
      * @param array $headers
@@ -86,6 +83,7 @@ trait MessageTrait
     /**
      * Returns all transport headers.
      *
+     * @phpstan-return queue_message_headers
      * @return array
      */
     public function getHeaders(): array
@@ -104,6 +102,7 @@ trait MessageTrait
     /**
      * Returns all application properties.
      *
+     * @phpstan-return queue_message_properties
      * @return array
      */
     public function getProperties(): array
@@ -182,6 +181,7 @@ trait MessageTrait
     /**
      * Replaces all transport headers.
      *
+     * @phpstan-param queue_message_headers $headers
      * @param array $headers
      * @return void
      */
@@ -202,6 +202,7 @@ trait MessageTrait
     /**
      * Replaces all application properties.
      *
+     * @phpstan-param queue_message_properties $properties
      * @param array $properties
      * @return void
      */
@@ -247,6 +248,18 @@ trait MessageTrait
      * @return void
      */
     public function setTimestamp(int $timestamp): void
+    {
+    }
+
+    /**
+     * Reads a header that is declared as a nullable string. Headers arrive
+     * from the transport as arbitrary values, so anything that cannot be
+     * expressed as a string (an array, an object) reads back as null.
+     *
+     * @param string $name
+     * @return string|null
+     */
+    private function getHeaderAsString(string $name): string|null
     {
     }
 }

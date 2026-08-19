@@ -23,10 +23,7 @@ use Phalcon\Http\RequestInterface;
  */
 class Token extends \Phalcon\Auth\Guard\AbstractGuard
 {
-    /**
-     * @var RequestInterface
-     */
-    protected $request;
+    protected \Phalcon\Http\RequestInterface $request;
 
     /**
      * @param \Phalcon\Contracts\Auth\Adapter\Adapter $adapter
@@ -38,9 +35,9 @@ class Token extends \Phalcon\Auth\Guard\AbstractGuard
     }
 
     /**
+     * @param array<string, mixed> $options
      * @param \Phalcon\Contracts\Auth\Adapter\Adapter $adapter
      * @param mixed $container
-     * @param array $options
      * @return static
      */
     public static function fromOptions(\Phalcon\Contracts\Auth\Adapter\Adapter $adapter, $container, array $options): static

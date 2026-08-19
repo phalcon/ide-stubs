@@ -19,22 +19,22 @@ use Phalcon\Support\Helper\Str\Exceptions\InvalidReplaceFormat;
 class Friendly extends \Phalcon\Support\Helper\Str\AbstractStr
 {
     /**
-     * @param string     $text
-     * @param string     $separator
-     * @param bool       $lowercase
-     * @param mixed|null $replace
+     * @param array<array-key, string>|string|null $replace
      *
-     * @return string
      * @throws InvalidReplaceFormat
+     * @param string $text
+     * @param string $separator
+     * @param bool $lowercase
+     * @return string
      */
     public function __invoke(string $text, string $separator = '-', bool $lowercase = true, $replace = null): string
     {
     }
 
     /**
-     * @param mixed $replace
+     * @param array<array-key, string>|string $replace
      *
-     * @return array
+     * @return array<array-key, string>
      * @throws InvalidReplaceFormat
      */
     private function checkReplace($replace): array
@@ -42,9 +42,9 @@ class Friendly extends \Phalcon\Support\Helper\Str\AbstractStr
     }
 
     /**
-     * @param mixed $replace
+     * @param array<array-key, string> $replace
      *
-     * @return array
+     * @return array<string, string>
      */
     private function getMatrix(array $replace): array
     {

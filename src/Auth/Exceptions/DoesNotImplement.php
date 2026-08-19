@@ -29,14 +29,13 @@ class DoesNotImplement extends Exception
      * "must implement" guard shared across adapters, guards and the manager
      * in one place.
      *
-     * @throws self
      * @param mixed $value
-     * @param mixed $interfaceName
+     * @param string $interfaceName
      * @param string $type
      * @param string $name
      * @return void
      */
-    public static function assert($value, $interfaceName, string $type, string $name): void
+    public static function assert($value, string $interfaceName, string $type, string $name): void
     {
     }
 }

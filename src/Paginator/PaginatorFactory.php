@@ -9,27 +9,28 @@
  */
 namespace Phalcon\Paginator;
 
-use Phalcon\Paginator\Adapter\AdapterInterface;
+use Phalcon\Config\Config;
+use Phalcon\Config\ConfigInterface;
+use Phalcon\Contracts\Paginator\PaginatorTypes;
 use Phalcon\Factory\AbstractFactory;
+use Phalcon\Paginator\Adapter\AdapterInterface;
 use Phalcon\Paginator\Adapter\Model;
 use Phalcon\Paginator\Adapter\NativeArray;
 use Phalcon\Paginator\Adapter\QueryBuilder;
 use Phalcon\Paginator\Adapter\QueryBuilderCursor;
+use Throwable;
 
 /**
- * This file is part of the Phalcon Framework.
- *
- * (c) Phalcon Team <team@phalcon.io>
- *
- * For the full copyright and license information, please view the LICENSE.txt
- * file that was distributed with this source code.
+ * @phpstan-import-type paginator_config from PaginatorTypes
+ * @phpstan-import-type paginator_factory_options from PaginatorTypes
+ * @phpstan-import-type paginator_services from PaginatorTypes
  */
 class PaginatorFactory extends AbstractFactory
 {
     /**
      * AdapterFactory constructor.
      *
-     * @param array $services
+     * @param paginator_services $services
      */
     public function __construct(array $services = [])
     {
@@ -58,12 +59,7 @@ class PaginatorFactory extends AbstractFactory
      * $paginator = (new PaginatorFactory())->load($options);
      * ```
      *
-     * @param array|\Phalcon\Config\Config $config = [
-     *     'adapter' => 'queryBuilder',
-     *     'limit' => 20,
-     *     'page' => 1,
-     *     'builder' => null
-     * ]
+     * @param Config|paginator_factory_options $config
      * @return AdapterInterface
      */
     public function load($config): AdapterInterface
@@ -73,8 +69,8 @@ class PaginatorFactory extends AbstractFactory
     /**
      * Create a new instance of the adapter
      *
+     * @param paginator_config $options
      * @param string $name
-     * @param array $options
      * @return AdapterInterface
      */
     public function newInstance(string $name, array $options = []): AdapterInterface
@@ -82,7 +78,7 @@ class PaginatorFactory extends AbstractFactory
     }
 
     /**
-     * @return string
+     * @return class-string<Throwable>
      */
     protected function getExceptionClass(): string
     {
@@ -91,7 +87,7 @@ class PaginatorFactory extends AbstractFactory
     /**
      * Returns the available adapters
      *
-     * @return string[]
+     * @return paginator_services
      */
     protected function getServices(): array
     {

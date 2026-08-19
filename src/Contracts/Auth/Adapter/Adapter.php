@@ -50,10 +50,10 @@ interface Adapter
     /**
      * Find a user by their unique identifier.
      *
-     * @param mixed $id
+     * @param int|string $id
      * @return AuthUser|null
      */
-    public function retrieveById($id): AuthUser|null;
+    public function retrieveById(int|string $id): AuthUser|null;
 
     /**
      * Validate the provided credentials against the given user.

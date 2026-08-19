@@ -9,18 +9,19 @@
  */
 namespace Phalcon\Session\Adapter;
 
+use Exception;
+use Phalcon\Contracts\Session\SessionTypes;
 use Phalcon\Session\Adapter\Exceptions\AdapterRuntimeError;
 use Phalcon\Storage\AdapterFactory;
 
 /**
  * Phalcon\Session\Adapter\Redis
+ *
+ * @phpstan-import-type session_redis_options from SessionTypes
  */
 class Redis extends \Phalcon\Session\Adapter\AbstractAdapter
 {
-    /**
-     * @var bool
-     */
-    protected $lockAcquired = false;
+    protected bool $lockAcquired = false;
 
     /**
      * Lock time-to-live in seconds. The lock is not refreshed during the
@@ -28,40 +29,20 @@ class Redis extends \Phalcon\Session\Adapter\AbstractAdapter
      * silently and a concurrent request may then acquire it (the token-guarded
      * release still avoids deleting the newer lock). Raise this above the
      * longest expected request to retain the lock for the whole request.
-     *
-     * @var int
      */
-    protected $lockExpiry = 30;
+    protected int $lockExpiry = 30;
 
-    /**
-     * @var bool
-     */
-    protected $lockingEnabled = false;
+    protected bool $lockingEnabled = false;
 
-    /**
-     * @var string
-     */
-    protected $lockKey = '';
+    protected string $lockKey = '';
 
-    /**
-     * @var int
-     */
-    protected $lockRetries = 100;
+    protected int $lockRetries = 100;
 
-    /**
-     * @var string
-     */
-    protected $lockToken = '';
+    protected string $lockToken = '';
 
-    /**
-     * @var int
-     */
-    protected $lockWaitTime = 50000;
+    protected int $lockWaitTime = 50000;
 
-    /**
-     * @var string
-     */
-    protected $prefix = '';
+    protected string $prefix = '';
 
     /**
      * Constructor
@@ -81,6 +62,10 @@ class Redis extends \Phalcon\Session\Adapter\AbstractAdapter
      *                                'lockRetries'    => 100,
      *                                'lockWaitTime'   => 50000,
      * ]
+     *
+     * @phpstan-param session_redis_options $options
+     *
+     * @throws Exception
      */
     public function __construct(\Phalcon\Storage\AdapterFactory $factory, array $options = [])
     {
@@ -98,20 +83,20 @@ class Redis extends \Phalcon\Session\Adapter\AbstractAdapter
     /**
      * Destroy
      *
-     * @param mixed $id
+     * @param string $id
      * @return bool
      */
-    public function destroy($id): bool
+    public function destroy(string $id): bool
     {
     }
 
     /**
      * Read
      *
-     * @param mixed $id
+     * @param string $id
      * @return string
      */
-    public function read($id): string
+    public function read(string $id): string
     {
     }
 
@@ -119,10 +104,10 @@ class Redis extends \Phalcon\Session\Adapter\AbstractAdapter
      * Tries to acquire the session lock, pausing `lockWaitTime` microseconds
      * between attempts, up to `lockRetries` times
      *
-     * @param mixed $id
+     * @param string $id
      * @return bool
      */
-    protected function acquireLock($id): bool
+    protected function acquireLock(string $id): bool
     {
     }
 

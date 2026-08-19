@@ -9,6 +9,7 @@
  */
 namespace Phalcon\Paginator\Adapter;
 
+use Phalcon\Contracts\Paginator\PaginatorTypes;
 use Phalcon\Paginator\Exception;
 use Phalcon\Paginator\Exceptions\InvalidLimit;
 use Phalcon\Paginator\Exceptions\MissingRequiredParameter;
@@ -17,15 +18,16 @@ use Phalcon\Paginator\RepositoryInterface;
 
 /**
  * Phalcon\Paginator\Adapter\AbstractAdapter
+ *
+ * @phpstan-import-type paginator_config from PaginatorTypes
+ * @phpstan-import-type paginator_properties from PaginatorTypes
  */
 abstract class AbstractAdapter implements \Phalcon\Paginator\Adapter\AdapterInterface
 {
     /**
      * Configuration of paginator
-     *
-     * @var array
      */
-    protected $config;
+    protected array $config;
 
     /**
      * Number of rows to show in the paginator. By default is null
@@ -43,15 +45,13 @@ abstract class AbstractAdapter implements \Phalcon\Paginator\Adapter\AdapterInte
 
     /**
      * Repository for pagination
-     *
-     * @var RepositoryInterface
      */
-    protected $repository;
+    protected \Phalcon\Paginator\RepositoryInterface $repository;
 
     /**
-     * Phalcon\Paginator\Adapter\AbstractAdapter constructor
+     * Constructor
      *
-     * @param array $config
+     * @param paginator_config $config
      */
     public function __construct(array $config)
     {
@@ -99,7 +99,7 @@ abstract class AbstractAdapter implements \Phalcon\Paginator\Adapter\AdapterInte
     /**
      * Gets current repository for pagination
      *
-     * @param array|null $properties
+     * @param paginator_properties|null $properties
      * @return RepositoryInterface
      */
     protected function getRepository(?array $properties = null): RepositoryInterface

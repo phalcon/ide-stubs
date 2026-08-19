@@ -27,9 +27,8 @@ class Memory extends \Phalcon\Auth\Adapter\AbstractArrayAdapter
      * Map of id => user row for O(1) retrieveById lookup.
      *
      * @phpstan-var array<int|string, AuthUserRow>
-     * @var array
      */
-    private $idStore = [];
+    private array $idStore = [];
 
     /**
      * @param \Phalcon\Contracts\Encryption\Security\Security $hasher
@@ -51,10 +50,10 @@ class Memory extends \Phalcon\Auth\Adapter\AbstractArrayAdapter
     /**
      * Overridden for O(1) lookup via the id index built in the constructor.
      *
-     * @param mixed $id
+     * @param int|string $id
      * @return AuthUser|null
      */
-    public function retrieveById($id): AuthUser|null
+    public function retrieveById(int|string $id): AuthUser|null
     {
     }
 

@@ -26,10 +26,7 @@ use Phalcon\Auth\Exceptions\ConfigRequiresNonEmptyValue;
  */
 class ModelAdapterConfig extends \Phalcon\Auth\Adapter\Config\AbstractAdapterConfig
 {
-    /**
-     * @var string
-     */
-    protected $idColumn = 'id';
+    protected string $idColumn = 'id';
 
     /**
      * @throws Exception

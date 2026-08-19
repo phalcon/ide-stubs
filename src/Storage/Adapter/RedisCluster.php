@@ -9,8 +9,13 @@
  */
 namespace Phalcon\Storage\Adapter;
 
+use Phalcon\Contracts\Storage\StorageTypes;
 use Phalcon\Storage\Exceptions\ClusterConnectionFailed;
 use Phalcon\Storage\SerializerFactory;
+use Phalcon\Support\Exception as SupportException;
+use Redis as RedisConsts;
+use RedisCluster as RedisService;
+use Throwable;
 
 /**
  * RedisCluster adapter
@@ -21,14 +26,17 @@ use Phalcon\Storage\SerializerFactory;
  *   the redesign); clear() flushes every master.
  * - Serializers: Phalcon-side, or backend-native via OPT_SERIALIZER.
  *
- * @property array $options
+ * @phpstan-import-type storage_keys from StorageTypes
+ * @phpstan-import-type storage_options from StorageTypes
+ * @phpstan-import-type storage_rediscluster_options from StorageTypes
+ * @phpstan-import-type storage_rediscluster_settings from StorageTypes
+ *
+ * @phpstan-property RedisService|null $adapter
+ * @phpstan-property storage_rediscluster_settings $options
  */
 class RedisCluster extends \Phalcon\Storage\Adapter\Redis
 {
-    /**
-     * @var string
-     */
-    protected $prefix = 'ph-redc-';
+    protected string $prefix = 'ph-redc-';
 
     /**
      * You can create and connect to a cluster either by passing it one or more
@@ -60,7 +68,6 @@ class RedisCluster extends \Phalcon\Storage\Adapter\Redis
      * The `context` is an array of values used for ssl/tls stream context
      * options eg `["verify_peer" => 0, "local_cert" => "file:///path/to/cert.pem"]`
      *
-     * @param SerializerFactory $factory
      * @param array             $options = [
      *     "name"        => null,
      *     "hosts"       => ["127.0.0.1:6379"],
@@ -71,7 +78,10 @@ class RedisCluster extends \Phalcon\Storage\Adapter\Redis
      *     "context"     => null,
      * ]
      *
-     * @throws \Phalcon\Support\Exception
+     * @phpstan-param storage_rediscluster_options $options
+     *
+     * @throws SupportException
+     * @param \Phalcon\Storage\SerializerFactory $factory
      */
     public function __construct(\Phalcon\Storage\SerializerFactory $factory, array $options = [])
     {
@@ -81,7 +91,7 @@ class RedisCluster extends \Phalcon\Storage\Adapter\Redis
      * Flushes/clears the cache
      *
      * @return bool
-     * @throws ClusterConnectionFailed
+     * @throws ClusterConnectionFailed|SupportException
      */
     public function clear(): bool
     {
@@ -89,10 +99,10 @@ class RedisCluster extends \Phalcon\Storage\Adapter\Redis
 
     /**
      * Returns the already connected adapter or connects to the Redis
-     * Cluster server(s)
+     * server(s)
      *
-     * @return mixed|\RedisCluster
-     * @throws ClusterConnectionFailed
+     * @return RedisService
+     * @throws ClusterConnectionFailed|SupportException
      */
     public function getAdapter(): mixed
     {
@@ -105,8 +115,10 @@ class RedisCluster extends \Phalcon\Storage\Adapter\Redis
      * command is retained here (phpredis routes it across the masters). The
      * per-node SCAN migration is left to the storage redesign.
      *
-     * @param string $prefix
+     * @phpstan-return storage_keys
      *
+     * @throws ClusterConnectionFailed|SupportException
+     * @param string $prefix
      * @return array
      */
     public function getKeys(string $prefix = ''): array
@@ -114,9 +126,21 @@ class RedisCluster extends \Phalcon\Storage\Adapter\Redis
     }
 
     /**
+     * @phpstan-param storage_options $options
+     *
+     * @phpstan-return storage_options
+     * @param array $options
+     * @return array
+     */
+    protected function getDefaultOptions(array $options): array
+    {
+    }
+
+    /**
      * Checks the serializer. If it is a supported one it is set, otherwise
      * the custom one is set.
      *
+     * @throws SupportException
      * @param \RedisCluster $connection
      * @return void
      */

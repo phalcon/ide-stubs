@@ -9,6 +9,7 @@
  */
 namespace Phalcon\ADR\Input;
 
+use Phalcon\Contracts\ADR\ADRTypes;
 use Phalcon\Contracts\Http\AttributeRequest;
 use Phalcon\Http\Request\Bag\AttributeBag;
 
@@ -19,15 +20,18 @@ use Phalcon\Http\Request\Bag\AttributeBag;
  * into a single bag (later sources win). Extend it to build a typed, per-domain
  * input value object: the factories use late static binding, so a subclass's
  * `fromRequest()` / `fromArray()` return that subclass.
+ *
+ * @phpstan-import-type adr_input_data from ADRTypes
  */
 class Input
 {
     /**
-     * @var array
+     * @phpstan-var adr_input_data
      */
     protected array $data = [];
 
     /**
+     * @phpstan-param adr_input_data $data
      * @param array $data
      */
     public function __construct(array $data = [])
@@ -35,6 +39,7 @@ class Input
     }
 
     /**
+     * @phpstan-param adr_input_data $data
      * @param array $data
      * @return static
      */
@@ -68,6 +73,7 @@ class Input
     }
 
     /**
+     * @phpstan-return adr_input_data
      * @return array
      */
     public function toArray(): array

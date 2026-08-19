@@ -15,12 +15,34 @@ namespace Phalcon\Support\Helper\Arr;
 class Pluck
 {
     /**
-     * @param array  $collection
-     * @param string $element
+     * @param array<array-key, mixed> $collection
+     * @param string                  $element
      *
-     * @return array
+     * @return array<array-key, mixed>
      */
     public function __invoke(array $collection, string $element): array
+    {
+    }
+
+    /**
+     * @param array<array-key, mixed> $filtered
+     * @param string                  $element
+     * @param mixed                   $item
+     *
+     * @return array<array-key, mixed>
+     */
+    private function checkArray(array $filtered, string $element, $item): array
+    {
+    }
+
+    /**
+     * @param array<array-key, mixed> $filtered
+     * @param string                  $element
+     * @param mixed                   $item
+     *
+     * @return array<array-key, mixed>
+     */
+    private function checkObject(array $filtered, string $element, $item): array
     {
     }
 }

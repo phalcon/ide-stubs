@@ -9,11 +9,10 @@
  */
 namespace Phalcon\Storage\Adapter;
 
-use DateInterval;
 use Exception as BaseException;
+use Phalcon\Contracts\Storage\StorageTypes;
 use Phalcon\Storage\SerializerFactory;
-use Phalcon\Support\Exception as SupportException;
-use Phalcon\Storage\Serializer\SerializerInterface;
+use WeakReference;
 
 /**
  * Weak Adapter
@@ -24,30 +23,39 @@ use Phalcon\Storage\Serializer\SerializerInterface;
  * - TTL is ignored; no serializer is used (none/no-op).
  * - Counters unsupported: increment()/decrement() return false.
  * - setForever() is equivalent to set(); getKeys() reads the in-memory list.
+ *
+ * @phpstan-import-type storage_adapter_options from StorageTypes
+ * @phpstan-import-type storage_keys from StorageTypes
+ * @phpstan-import-type storage_options from StorageTypes
+ * @phpstan-import-type storage_weak_list from StorageTypes
  */
 class Weak extends \Phalcon\Storage\Adapter\AbstractAdapter
 {
     /**
-     * @var int|null
+     * @var string|null
      */
     protected $fetching = null;
 
     /**
-     * @var array
+     * @var array<string, WeakReference<object>>
+     *
+     * @phpstan-var storage_weak_list
      */
-    protected $weakList = [];
+    protected array $weakList = [];
 
     /**
-     * @var array
+     * @var array<string, mixed>
+     *
+     * @phpstan-var storage_options
      */
-    protected $options = [];
+    protected array $options = [];
 
     /**
      * Constructor, there are no options
      *
-     * @param array $options = []
-     * @throws SupportException
+     * @phpstan-param storage_adapter_options $options
      * @param \Phalcon\Storage\SerializerFactory $factory
+     * @param array $options
      */
     public function __construct(\Phalcon\Storage\SerializerFactory $factory, array $options = [])
     {
@@ -65,8 +73,8 @@ class Weak extends \Phalcon\Storage\Adapter\AbstractAdapter
     /**
      * Stores data in the adapter
      *
+     * @phpstan-return storage_keys
      * @param string $prefix
-     *
      * @return array
      */
     public function getKeys(string $prefix = ''): array
@@ -74,19 +82,7 @@ class Weak extends \Phalcon\Storage\Adapter\AbstractAdapter
     }
 
     /**
-     * For compatiblity only, there is no Forever with WeakReference.
-     *
-     * @param string $key
-     * @param mixed  $value
-     *
-     * @return bool
-     */
-    public function setForever(string $key, $value): bool
-    {
-    }
-
-    /**
-     * will never set a serializer, WeakReference cannot be serialized
+     * Will never set a serializer, WeakReference cannot be serialized
      *
      * @param string $serializer
      * @return void
@@ -96,14 +92,24 @@ class Weak extends \Phalcon\Storage\Adapter\AbstractAdapter
     }
 
     /**
+     * For compatiblity only, there is no Forever with WeakReference.
+     *
+     * @param string $key
+     * @param mixed $data
+     * @return bool
+     */
+    public function setForever(string $key, $data): bool
+    {
+    }
+
+    /**
      * Decrements a stored number - not supported for WeakReference
      *
      * @param string $key
-     * @param int    $value
-     *
-     * @return bool|int
+     * @param int $value
+     * @return false|int
      */
-    protected function doDecrement(string $key, int $value = 1): int|bool
+    protected function doDecrement(string $key, int $value = 1): int|false
     {
     }
 
@@ -111,7 +117,6 @@ class Weak extends \Phalcon\Storage\Adapter\AbstractAdapter
      * Deletes data from the adapter
      *
      * @param string $key
-     *
      * @return bool
      */
     protected function doDelete(string $key): bool
@@ -121,9 +126,8 @@ class Weak extends \Phalcon\Storage\Adapter\AbstractAdapter
     /**
      * Reads data from the adapter
      *
-     * @param string     $key
-     * @param mixed|null $defaultValue
-     *
+     * @param string $key
+     * @param mixed $defaultValue
      * @return mixed
      */
     protected function doGet(string $key, $defaultValue = null): mixed
@@ -134,7 +138,6 @@ class Weak extends \Phalcon\Storage\Adapter\AbstractAdapter
      * Checks if an element exists in the cache
      *
      * @param string $key
-     *
      * @return bool
      */
     protected function doHas(string $key): bool
@@ -145,11 +148,10 @@ class Weak extends \Phalcon\Storage\Adapter\AbstractAdapter
      * Increments a stored number - not supported for WeakReference
      *
      * @param string $key
-     * @param int    $value
-     *
-     * @return bool|int
+     * @param int $value
+     * @return false|int
      */
-    protected function doIncrement(string $key, int $value = 1): int|bool
+    protected function doIncrement(string $key, int $value = 1): int|false
     {
     }
 
@@ -160,12 +162,11 @@ class Weak extends \Phalcon\Storage\Adapter\AbstractAdapter
      * item has expired. If you need to set this key forever, you should use
      * the `setForever()` method.
      *
-     * @param string                $key
-     * @param mixed                 $value
-     * @param DateInterval|int|null $ttl
-     *
-     * @return bool
      * @throws BaseException
+     * @param string $key
+     * @param mixed $value
+     * @param mixed $ttl
+     * @return bool
      */
     protected function doSet(string $key, $value, $ttl = null): bool
     {

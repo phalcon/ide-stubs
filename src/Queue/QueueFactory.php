@@ -9,24 +9,25 @@
  */
 namespace Phalcon\Queue;
 
+use Phalcon\Config\ConfigInterface;
 use Phalcon\Contracts\Queue\Context as ContextInterface;
+use Phalcon\Contracts\Queue\QueueTypes;
 use Phalcon\Factory\AbstractConfigFactory;
 use Phalcon\Queue\Exceptions\Exception;
 
 /**
  * Builds a queue Context from the standard Phalcon config shape. Mirrors
  * Phalcon\Cache\CacheFactory.
+ *
+ * @phpstan-import-type queue_connection_options from QueueTypes
  */
 class QueueFactory extends AbstractConfigFactory
 {
-    /**
-     * @var AdapterFactory
-     */
-    protected $adapterFactory;
+    protected AdapterFactory $adapterFactory;
 
     /**
-     * QueueFactory constructor. A default AdapterFactory is created when none
-     * is supplied, so the factory is usable straight from the DI container.
+     * A default AdapterFactory is created when none is supplied, so the
+     * factory is usable straight from the DI container.
      *
      * @param AdapterFactory|null $factory
      */
@@ -37,9 +38,9 @@ class QueueFactory extends AbstractConfigFactory
     /**
      * Builds a Context from a config array/object.
      *
-     * @param array $config = [
+     * @param array<string, mixed>|ConfigInterface $config = [
      *     'adapter' => 'memory',
-     *     'options' => []
+     *     'options' => [],
      * ]
      * @return ContextInterface
      */
@@ -50,6 +51,7 @@ class QueueFactory extends AbstractConfigFactory
     /**
      * Builds a Context for the named adapter.
      *
+     * @phpstan-param queue_connection_options $options
      * @param string $name
      * @param array $options
      * @return ContextInterface
@@ -59,7 +61,9 @@ class QueueFactory extends AbstractConfigFactory
     }
 
     /**
-     * @return string
+     * Returns the exception class for the factory
+     *
+     * @return class-string<\Throwable>
      */
     protected function getExceptionClass(): string
     {

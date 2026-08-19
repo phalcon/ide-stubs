@@ -9,6 +9,8 @@
  */
 namespace Phalcon\Storage;
 
+use Exception as BaseException;
+use Phalcon\Contracts\Storage\StorageTypes;
 use Phalcon\Factory\AbstractFactory;
 use Phalcon\Storage\Serializer\Base64;
 use Phalcon\Storage\Serializer\Igbinary;
@@ -25,21 +27,17 @@ use Phalcon\Storage\Serializer\RedisMsgpack;
 use Phalcon\Storage\Serializer\RedisNone;
 use Phalcon\Storage\Serializer\RedisPhp;
 use Phalcon\Storage\Serializer\SerializerInterface;
+use Throwable;
 
 /**
- * This file is part of the Phalcon Framework.
- *
- * (c) Phalcon Team <team@phalcon.io>
- *
- * For the full copyright and license information, please view the LICENSE.txt
- * file that was distributed with this source code.
+ * @phpstan-import-type storage_services from StorageTypes
  */
 class SerializerFactory extends AbstractFactory
 {
     /**
      * SerializerFactory constructor.
      *
-     * @param array $services
+     * @param string[] $services
      */
     public function __construct(array $services = [])
     {
@@ -48,14 +46,14 @@ class SerializerFactory extends AbstractFactory
     /**
      * @param string $name *
      * @return SerializerInterface
-     * @throws Exception
+     * @throws BaseException
      */
     public function newInstance(string $name): SerializerInterface
     {
     }
 
     /**
-     * @return string
+     * @return class-string<Throwable>
      */
     protected function getExceptionClass(): string
     {
@@ -65,6 +63,8 @@ class SerializerFactory extends AbstractFactory
      * Returns the available adapters
      *
      * @return string[]
+     *
+     * @phpstan-return storage_services
      */
     protected function getServices(): array
     {

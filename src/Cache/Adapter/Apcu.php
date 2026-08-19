@@ -20,5 +20,5 @@ class Apcu extends \Phalcon\Storage\Adapter\Apcu implements CacheAdapterInterfac
     /**
      * EventType prefix.
      */
-    protected $eventType = 'cache';
+    protected string $eventType = 'cache';
 }

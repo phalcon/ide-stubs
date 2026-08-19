@@ -19,11 +19,11 @@ use Phalcon\Support\Helper\Str\Exceptions\SyntaxError;
 class Dynamic
 {
     /**
+     * @phpstan-param non-empty-string $separator
      * @param string $text
      * @param string $leftDelimiter
      * @param string $rightDelimiter
      * @param string $separator
-     *
      * @return string
      */
     public function __invoke(string $text, string $leftDelimiter = '{', string $rightDelimiter = '}', string $separator = '|'): string

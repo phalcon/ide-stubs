@@ -21,10 +21,7 @@ use Phalcon\Translate\Exception;
  */
 class MissingRequiredParameter extends Exception
 {
-    /**
-     * @var string
-     */
-    private $parameter;
+    private string $parameter;
 
     /**
      * @param string $parameter

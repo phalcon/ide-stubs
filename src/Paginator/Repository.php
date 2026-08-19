@@ -10,27 +10,27 @@
 namespace Phalcon\Paginator;
 
 use JsonSerializable;
+use Phalcon\Contracts\Paginator\PaginatorTypes;
 
 /**
- * Phalcon\Paginator\Repository
- *
  * Repository of current state Phalcon\Paginator\AdapterInterface::paginate()
+ *
+ * @phpstan-import-type paginator_aliases from PaginatorTypes
+ * @phpstan-import-type paginator_properties from PaginatorTypes
  */
 class Repository implements \Phalcon\Paginator\RepositoryInterface, \JsonSerializable
 {
     /**
-     * @var array
+     * @var paginator_aliases
      */
-    protected $aliases = [];
+    protected array $aliases = [];
 
     /**
-     * @var array
+     * @var paginator_properties
      */
-    protected $properties = [];
+    protected array $properties = [];
 
     /**
-     * {@inheritdoc}
-     *
      * @param string $property
      * @return mixed|null
      */
@@ -39,17 +39,13 @@ class Repository implements \Phalcon\Paginator\RepositoryInterface, \JsonSeriali
     }
 
     /**
-     * {@inheritdoc}
-     *
-     * @return array
+     * @return paginator_aliases
      */
     public function getAliases(): array
     {
     }
 
     /**
-     * {@inheritdoc}
-     *
      * @return int
      */
     public function getCurrent(): int
@@ -57,8 +53,6 @@ class Repository implements \Phalcon\Paginator\RepositoryInterface, \JsonSeriali
     }
 
     /**
-     * {@inheritdoc}
-     *
      * @return int
      */
     public function getFirst(): int
@@ -66,8 +60,6 @@ class Repository implements \Phalcon\Paginator\RepositoryInterface, \JsonSeriali
     }
 
     /**
-     * {@inheritdoc}
-     *
      * @return mixed
      */
     public function getItems(): mixed
@@ -75,8 +67,6 @@ class Repository implements \Phalcon\Paginator\RepositoryInterface, \JsonSeriali
     }
 
     /**
-     * {@inheritdoc}
-     *
      * @return int
      */
     public function getLast(): int
@@ -84,8 +74,6 @@ class Repository implements \Phalcon\Paginator\RepositoryInterface, \JsonSeriali
     }
 
     /**
-     * {@inheritdoc}
-     *
      * @return int
      */
     public function getLimit(): int
@@ -93,8 +81,6 @@ class Repository implements \Phalcon\Paginator\RepositoryInterface, \JsonSeriali
     }
 
     /**
-     * {@inheritdoc}
-     *
      * @return int
      */
     public function getNext(): int
@@ -102,8 +88,6 @@ class Repository implements \Phalcon\Paginator\RepositoryInterface, \JsonSeriali
     }
 
     /**
-     * {@inheritdoc}
-     *
      * @return int
      */
     public function getPrevious(): int
@@ -111,8 +95,6 @@ class Repository implements \Phalcon\Paginator\RepositoryInterface, \JsonSeriali
     }
 
     /**
-     * {@inheritdoc}
-     *
      * @return int
      */
     public function getTotalItems(): int
@@ -120,18 +102,14 @@ class Repository implements \Phalcon\Paginator\RepositoryInterface, \JsonSeriali
     }
 
     /**
-     * See [jsonSerialize](https://php.net/manual/en/jsonserializable.jsonserialize.php)
-     *
-     * @return array
+     * @return paginator_properties
      */
     public function jsonSerialize(): array
     {
     }
 
     /**
-     * {@inheritdoc}
-     *
-     * @param array $aliases
+     * @param paginator_aliases $aliases
      * @return RepositoryInterface
      */
     public function setAliases(array $aliases): RepositoryInterface
@@ -139,9 +117,7 @@ class Repository implements \Phalcon\Paginator\RepositoryInterface, \JsonSeriali
     }
 
     /**
-     * {@inheritdoc}
-     *
-     * @param array $properties
+     * @param paginator_properties $properties
      * @return RepositoryInterface
      */
     public function setProperties(array $properties): RepositoryInterface
@@ -151,6 +127,11 @@ class Repository implements \Phalcon\Paginator\RepositoryInterface, \JsonSeriali
     /**
      * Gets value of property by name
      *
+     * The repository is filled by the adapters, which store an int under every
+     * property that has an int default, so callers passing one are handed an
+     * int back.
+     *
+     * @phpstan-return ($defaultValue is int ? int : mixed)
      * @param string $property
      * @param mixed $defaultValue
      * @return mixed

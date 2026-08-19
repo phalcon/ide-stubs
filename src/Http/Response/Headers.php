@@ -10,36 +10,38 @@
 namespace Phalcon\Http\Response;
 
 use IteratorAggregate;
+use Phalcon\Contracts\Http\HttpTypes;
 use Traversable;
 
 /**
  * This class is a bag to manage the response headers
+ *
+ * @phpstan-import-type http_response_headers from HttpTypes
+ *
+ * @implements IteratorAggregate<string, string|null>
  */
 class Headers implements \Phalcon\Http\Response\HeadersInterface, \IteratorAggregate
 {
     /**
-     * @var array
+     * @phpstan-var http_response_headers
      */
-    protected $headers = [];
+    protected array $headers = [];
 
-    /**
-     * @var bool
-     */
-    protected $isSent = false;
+    protected bool $isSent = false;
 
     /**
      * Gets a header value from the internal bag
      *
+     * @return bool|string|null
+     * @todo change the raw headers not to return null
      * @param string $name
-     *
-     * @return string|bool|null
      */
     public function get(string $name): bool|string|null
     {
     }
 
     /**
-     * @return Traversable
+     * @return Traversable<string, string|null>
      */
     public function getIterator(): Traversable
     {
@@ -49,7 +51,6 @@ class Headers implements \Phalcon\Http\Response\HeadersInterface, \IteratorAggre
      * Checks if a header exists
      *
      * @param string $name
-     *
      * @return bool
      */
     public function has(string $name): bool
@@ -117,6 +118,7 @@ class Headers implements \Phalcon\Http\Response\HeadersInterface, \IteratorAggre
     /**
      * Returns the current headers as an array
      *
+     * @phpstan-return http_response_headers
      * @return array
      */
     public function toArray(): array

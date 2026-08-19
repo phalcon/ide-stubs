@@ -15,39 +15,18 @@ use DateTimeImmutable;
  * Phalcon\Logger\Item
  *
  * Represents each item in a logging transaction
- *
- * @property array             $context
- * @property string            $message
- * @property int               $level
- * @property string            $levelName
- * @property DateTimeImmutable $dateTime
  */
 class Item
 {
-    /**
-     * @var array
-     */
-    protected $context = [];
+    protected array $context = [];
 
-    /**
-     * @var DateTimeImmutable
-     */
-    protected $dateTime;
+    protected \DateTimeImmutable $dateTime;
 
-    /**
-     * @var int
-     */
-    protected $level;
+    protected int $level;
 
-    /**
-     * @var string
-     */
-    protected $levelName;
+    protected string $levelName;
 
-    /**
-     * @var string
-     */
-    protected $message;
+    protected string $message;
 
     /**
      * Item constructor.

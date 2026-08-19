@@ -26,10 +26,7 @@ use Phalcon\Auth\Exceptions\ConfigRequiresNonEmptyValue;
  */
 class StreamAdapterConfig extends \Phalcon\Auth\Adapter\Config\AbstractAdapterConfig
 {
-    /**
-     * @var string
-     */
-    protected $file;
+    protected string $file;
 
     /**
      * @throws Exception

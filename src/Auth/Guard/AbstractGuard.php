@@ -13,34 +13,26 @@ use Phalcon\Contracts\Auth\Adapter\Adapter;
 use Phalcon\Contracts\Auth\AuthUser;
 use Phalcon\Contracts\Auth\Guard\Guard;
 use Phalcon\Contracts\Auth\Guard\GuardConfig;
-use Phalcon\Events\AbstractEventsAware;
+use Phalcon\Events\ManagerInterface;
+use Phalcon\Events\Traits\EventsAwareTrait;
 
 /**
  * @phpstan-import-type AuthCredentials from Adapter
  *
  * @template TConfig of GuardConfig
  */
-abstract class AbstractGuard extends AbstractEventsAware implements \Phalcon\Contracts\Auth\Guard\Guard
+abstract class AbstractGuard implements \Phalcon\Contracts\Auth\Guard\Guard
 {
-    /**
-     * @var Adapter
-     */
-    protected $adapter;
+    use \Phalcon\Events\Traits\EventsAwareTrait;
 
-    /**
-     * @var GuardConfig
-     */
-    protected $config;
 
-    /**
-     * @var AuthUser | null
-     */
-    protected $lastUserAttempted = null;
+    protected \Phalcon\Contracts\Auth\Adapter\Adapter $adapter;
 
-    /**
-     * @var AuthUser | null
-     */
-    protected $user = null;
+    protected \Phalcon\Contracts\Auth\Guard\GuardConfig $config;
+
+    protected ?\Phalcon\Contracts\Auth\AuthUser $lastUserAttempted = null;
+
+    protected ?\Phalcon\Contracts\Auth\AuthUser $user = null;
 
     /**
      * @phpstan-param TConfig $config
@@ -48,16 +40,6 @@ abstract class AbstractGuard extends AbstractEventsAware implements \Phalcon\Con
      * @param \Phalcon\Contracts\Auth\Guard\GuardConfig $config
      */
     public function __construct(\Phalcon\Contracts\Auth\Adapter\Adapter $adapter, \Phalcon\Contracts\Auth\Guard\GuardConfig $config)
-    {
-    }
-
-    /**
-     * Returns the guard configuration object.
-     *
-     * @phpstan-return TConfig
-     * @return GuardConfig
-     */
-    public function getConfig(): GuardConfig
     {
     }
 
@@ -72,6 +54,16 @@ abstract class AbstractGuard extends AbstractEventsAware implements \Phalcon\Con
      * @return Adapter
      */
     public function getAdapter(): Adapter
+    {
+    }
+
+    /**
+     * Returns the guard configuration object.
+     *
+     * @phpstan-return TConfig
+     * @return GuardConfig
+     */
+    public function getConfig(): GuardConfig
     {
     }
 

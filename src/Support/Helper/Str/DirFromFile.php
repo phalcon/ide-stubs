@@ -23,7 +23,6 @@ class DirFromFile
 
     /**
      * @param string $file
-     *
      * @return string
      */
     public function __invoke(string $file): string

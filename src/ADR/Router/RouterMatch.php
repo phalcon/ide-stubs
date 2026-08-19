@@ -9,10 +9,14 @@
  */
 namespace Phalcon\ADR\Router;
 
+use Phalcon\Contracts\ADR\ADRTypes;
 use Phalcon\Contracts\ADR\Router\RouterMatch as RouterMatchInterface;
 
 /**
  * Immutable result of a successful route match.
+ *
+ * @phpstan-import-type adr_middleware_names from ADRTypes
+ * @phpstan-import-type adr_route_attributes from ADRTypes
  */
 final class RouterMatch implements RouterMatchInterface
 {
@@ -25,6 +29,9 @@ final class RouterMatch implements RouterMatchInterface
     protected ?string $name = null;
 
     /**
+     * @phpstan-param class-string          $action
+     * @phpstan-param adr_route_attributes  $attributes
+     * @phpstan-param adr_middleware_names  $middleware
      * @param string $action
      * @param array $attributes
      * @param array $middleware
@@ -35,6 +42,7 @@ final class RouterMatch implements RouterMatchInterface
     }
 
     /**
+     * @phpstan-return class-string
      * @return string
      */
     public function getAction(): string
@@ -42,6 +50,7 @@ final class RouterMatch implements RouterMatchInterface
     }
 
     /**
+     * @phpstan-return adr_route_attributes
      * @return array
      */
     public function getAttributes(): array
@@ -49,6 +58,7 @@ final class RouterMatch implements RouterMatchInterface
     }
 
     /**
+     * @phpstan-return adr_middleware_names
      * @return array
      */
     public function getMiddleware(): array

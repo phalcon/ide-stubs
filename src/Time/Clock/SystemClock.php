@@ -27,10 +27,7 @@ use DateTimeZone;
  */
 final class SystemClock implements \Phalcon\Time\Clock\ClockInterface
 {
-    /**
-     * @var DateTimeZone
-     */
-    private $timezone;
+    private \DateTimeZone $timezone;
 
     /**
      * @param \DateTimeZone $timezone

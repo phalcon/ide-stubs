@@ -19,10 +19,8 @@ class Line extends \Phalcon\Logger\Formatter\AbstractFormatter
 {
     /**
      * Format applied to each message
-     *
-     * @var string
      */
-    protected $format;
+    protected string $format;
 
     /**
      * Line constructor.
@@ -39,10 +37,9 @@ class Line extends \Phalcon\Logger\Formatter\AbstractFormatter
     /**
      * Applies a format to a message before sent it to the internal log
      *
-     * @param Item $item
-     *
-     * @return string
      * @throws Exception
+     * @param \Phalcon\Logger\Item $item
+     * @return string
      */
     public function format(\Phalcon\Logger\Item $item): string
     {
@@ -61,7 +58,6 @@ class Line extends \Phalcon\Logger\Formatter\AbstractFormatter
      * Set the format applied to each message
      *
      * @param string $format
-     *
      * @return static
      */
     public function setFormat(string $format): static

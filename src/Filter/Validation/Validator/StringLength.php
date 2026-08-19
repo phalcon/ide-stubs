@@ -21,6 +21,11 @@ use Phalcon\Filter\Validation\Exception;
  * be at least min, and at most max.
  * Since Phalcon v4.0 this validator works like a container
  *
+ * The "includedMinimum" and "includedMaximum" options are true by
+ * default. Set an option to false to exclude that boundary. The two
+ * options are independent of each other. The "included" option sets
+ * the two boundaries together and has precedence.
+ *
  * ```php
  * use Phalcon\Filter\Validation;
  * use Phalcon\Filter\Validation\Validator\StringLength as StringLength;
@@ -86,11 +91,11 @@ class StringLength extends AbstractValidatorComposite
      *     'min' => 100,
      *     'message' => '',
      *     'messageMinimum' => '',
-     *     'included' => '',
-     *     'includedMinimum' => false,
+     *     'included' => true,
+     *     'includedMinimum' => true,
      *     'max' => 1000,
      *     'messageMaximum' => '',
-     *     'includedMaximum' => false
+     *     'includedMaximum' => true
      * ]
      */
     public function __construct(array $options = [])

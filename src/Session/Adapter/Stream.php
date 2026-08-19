@@ -9,6 +9,7 @@
  */
 namespace Phalcon\Session\Adapter;
 
+use Phalcon\Contracts\Session\SessionTypes;
 use Phalcon\Session\Adapter\Exceptions\AdapterRuntimeError;
 use Phalcon\Session\Adapter\Exceptions\InvalidSavePath;
 use Phalcon\Session\Adapter\Exceptions\SavePathUnavailable;
@@ -37,9 +38,10 @@ use Phalcon\Traits\Support\Helper\Str\DirSeparatorTrait;
  * $session->setAdapter($files);
  * ```
  *
- * @property array  $options
- * @property string $prefix
- * @property string $path
+ * @phpstan-import-type session_files from SessionTypes
+ * @phpstan-import-type session_stream_options from SessionTypes
+ *
+ * @phpstan-property session_stream_options $options
  */
 class Stream extends \Phalcon\Session\Adapter\Noop
 {
@@ -52,41 +54,38 @@ class Stream extends \Phalcon\Session\Adapter\Noop
     /**
      * Session options
      *
-     * @var array
+     * @phpstan-var session_stream_options
      */
-    protected $options = [];
+    protected array $options = [];
 
     /**
      * Session prefix
-     *
-     * @var string
      */
-    protected $prefix = '';
+    protected string $prefix = '';
 
     /**
      * The path of the session files
-     *
-     * @var string
      */
-    private $path = '';
+    private string $path = '';
 
     /**
      * Constructor
      *
-     * @param array $options = [
-     *     'prefix' => '',
-     *     'savePath' => ''
-     * ]
+     * @phpstan-param session_stream_options $options
+     *
+     * @throws InvalidSavePath
+     * @throws SavePathUnavailable
+     * @param array $options
      */
     public function __construct(array $options = [])
     {
     }
 
     /**
-     * @param mixed $id
+     * @param string $id
      * @return bool
      */
-    public function destroy($id): bool
+    public function destroy(string $id): bool
     {
     }
 
@@ -94,7 +93,9 @@ class Stream extends \Phalcon\Session\Adapter\Noop
      * Garbage Collector
      *
      * @param int $max_lifetime
+     *
      * @return false|int
+     * @throws AdapterRuntimeError
      */
     public function gc(int $max_lifetime): int|false
     {
@@ -103,51 +104,51 @@ class Stream extends \Phalcon\Session\Adapter\Noop
     /**
      * Ignore the savePath and use local defined path
      *
+     * @param string $path
+     * @param string $name
      * @return bool
-     * @param mixed $path
-     * @param mixed $name
      */
-    public function open($path, $name): bool
+    public function open(string $path, string $name): bool
     {
     }
 
     /**
      * Reads data from the adapter
      *
-     * @param mixed $id
+     * @param string $id
      * @return string
      */
-    public function read($id): string
+    public function read(string $id): string
     {
     }
 
     /**
      * Refresh the session file modification time without changing its data
      *
-     * @param mixed $id
-     * @param mixed $data
+     * @param string $id
+     * @param string $data
      * @return bool
      */
-    public function updateTimestamp($id, $data): bool
+    public function updateTimestamp(string $id, string $data): bool
     {
     }
 
     /**
      * Validate the session id (used when strict mode is enabled)
      *
-     * @param mixed $id
+     * @param string $id
      * @return bool
      */
-    public function validateId($id): bool
+    public function validateId(string $id): bool
     {
     }
 
     /**
-     * @param mixed $id
-     * @param mixed $data
+     * @param string $id
+     * @param string $data
      * @return bool
      */
-    public function write($id, $data): bool
+    public function write(string $id, string $data): bool
     {
     }
 
@@ -157,6 +158,8 @@ class Stream extends \Phalcon\Session\Adapter\Noop
      * @param string $pattern
      *
      * @return array|false
+     *
+     * @phpstan-return session_files|false
      */
     protected function getGlobFiles(string $pattern): false|array
     {
@@ -165,7 +168,7 @@ class Stream extends \Phalcon\Session\Adapter\Noop
     /**
      * Helper method to get the name prefixed
      *
-     * @param mixed $name
+     * @param float|int|string $name
      * @return string
      */
     protected function getPrefixedName($name): string
