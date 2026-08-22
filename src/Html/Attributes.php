@@ -16,18 +16,11 @@ use Phalcon\Support\Collection;
 
 /**
  * This class helps to work with HTML Attributes
+ *
+ * @extends Collection<mixed>
  */
 class Attributes extends Collection implements \Phalcon\Html\Attributes\RenderInterface
 {
-    /**
-     * Render attributes as HTML attributes
-     *
-     * @return string
-     */
-    public function render(): string
-    {
-    }
-
     /**
      * Alias of the render method
      *
@@ -38,7 +31,18 @@ class Attributes extends Collection implements \Phalcon\Html\Attributes\RenderIn
     }
 
     /**
+     * Render attributes as HTML attributes
+     *
+     * @return string
+     */
+    public function render(): string
+    {
+    }
+
+    /**
      * @todo remove this when we refactor forms. Maybe remove this class? Put it into traits
+     *
+     * @phpstan-param array<array-key, mixed> $attributes
      * @param array $attributes
      * @return string
      */

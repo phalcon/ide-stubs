@@ -10,18 +10,21 @@
 namespace Phalcon\Assets\Inline;
 
 use Phalcon\Assets\Inline as InlineBase;
+use Phalcon\Contracts\Assets\AssetsTypes;
 
 /**
  * Represents an inlined CSS
+ *
+ * @phpstan-import-type assets_attributes from AssetsTypes
  */
 class Css extends \Phalcon\Assets\Inline
 {
     /**
-     * Phalcon\Assets\Inline\Css constructor
+     * Css constructor.
      *
+     * @param assets_attributes $attributes
      * @param string $content
      * @param bool $filter
-     * @param array $attributes
      */
     public function __construct(string $content, bool $filter = true, array $attributes = [])
     {

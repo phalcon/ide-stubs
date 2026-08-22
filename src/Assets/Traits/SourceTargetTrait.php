@@ -15,25 +15,13 @@ namespace Phalcon\Assets\Traits;
  */
 trait SourceTargetTrait
 {
-    /**
-     * @var bool
-     */
-    protected $isLocal = true;
+    protected bool $isLocal = true;
 
-    /**
-     * @var string
-     */
-    protected $sourcePath = '';
+    protected string $sourcePath = '';
 
-    /**
-     * @var string
-     */
-    protected $targetPath = '';
+    protected string $targetPath = '';
 
-    /**
-     * @var string
-     */
-    protected $targetUri = '';
+    protected string $targetUri = '';
 
     /**
      * @return string
@@ -69,7 +57,6 @@ trait SourceTargetTrait
      * Sets if the asset is local or external
      *
      * @param bool $flag
-     *
      * @return static
      */
     public function setIsLocal(bool $flag): static
@@ -80,7 +67,6 @@ trait SourceTargetTrait
      * Sets the asset's source path
      *
      * @param string $sourcePath
-     *
      * @return static
      */
     public function setSourcePath(string $sourcePath): static
@@ -91,7 +77,6 @@ trait SourceTargetTrait
      * Sets the asset's target path
      *
      * @param string $targetPath
-     *
      * @return static
      */
     public function setTargetPath(string $targetPath): static
@@ -102,7 +87,6 @@ trait SourceTargetTrait
      * Sets a target uri for the generated HTML
      *
      * @param string $targetUri
-     *
      * @return static
      */
     public function setTargetUri(string $targetUri): static

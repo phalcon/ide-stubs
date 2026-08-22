@@ -10,6 +10,7 @@
 namespace Phalcon\Assets;
 
 use Phalcon\Assets\Traits\AttributesTrait;
+use Phalcon\Contracts\Assets\AssetsTypes;
 use Phalcon\Traits\Php\HashTrait;
 
 /**
@@ -18,6 +19,8 @@ use Phalcon\Traits\Php\HashTrait;
  * ```php
  * $inline = new \Phalcon\Assets\Inline("js", "alert('hello world');");
  * ```
+ *
+ * @phpstan-import-type assets_attributes from AssetsTypes
  */
 class Inline implements \Phalcon\Assets\AssetInterface
 {
@@ -25,28 +28,19 @@ class Inline implements \Phalcon\Assets\AssetInterface
     use \Phalcon\Traits\Php\HashTrait;
 
 
-    /**
-     * @var string
-     */
-    protected $content;
+    protected string $content;
+
+    protected bool $filter;
+
+    protected string $type;
 
     /**
-     * @var bool
-     */
-    protected $filter;
-
-    /**
-     * @var string
-     */
-    protected $type;
-
-    /**
-     * Phalcon\Assets\Inline constructor
+     * Inline constructor.
      *
+     * @param assets_attributes $attributes
      * @param string $type
      * @param string $content
      * @param bool $filter
-     * @param array $attributes
      */
     public function __construct(string $type, string $content, bool $filter = true, array $attributes = [])
     {
@@ -91,7 +85,7 @@ class Inline implements \Phalcon\Assets\AssetInterface
     /**
      * Sets extra HTML attributes
      *
-     * @param array $attributes
+     * @param assets_attributes $attributes
      * @return AssetInterface
      */
     public function setAttributes(array $attributes): AssetInterface

@@ -9,56 +9,49 @@
  */
 namespace Phalcon\Html\Helper\Input\Select;
 
-use InvalidArgumentException;
 use Phalcon\Contracts\Html\Helper\Input\SelectData;
+use Phalcon\Contracts\Html\HtmlTypes;
 use Phalcon\Html\Exceptions\InvalidResultsetValue;
 use Phalcon\Html\Exceptions\UsingRequiresTwoValues;
 use Phalcon\Mvc\Model\ResultsetInterface;
 
 /**
- * This file is part of the Phalcon Framework.
- *
- * (c) Phalcon Team <team@phalcon.io>
- *
- * For the full copyright and license information, please view the LICENSE.txt
- * file that was distributed with this source code.
- *
- * Implementation of this file has been influenced by AuraPHP
- *
- * @link    https://github.com/auraphp/Aura.Html
- * @license https://github.com/auraphp/Aura.Html/blob/2.x/LICENSE
+ * @phpstan-import-type html_select_attributes from HtmlTypes
+ * @phpstan-import-type html_select_attributes_map from HtmlTypes
+ * @phpstan-import-type html_select_options from HtmlTypes
+ * @phpstan-import-type html_select_using from HtmlTypes
  */
 class ResultsetData implements \Phalcon\Contracts\Html\Helper\Input\SelectData
 {
     /**
-     * @var array
+     * @param html_select_attributes_map
      */
-    protected $attributesMap = [];
+    protected array $attributesMap = [];
 
     /**
-     * @var array|null
+     * @var html_select_attributes|null
      */
     protected $resolvedAttributes = null;
 
     /**
-     * @var array|null
+     * @var html_select_options|null
      */
     protected $resolvedOptions = null;
 
     /**
      * @var ResultsetInterface
      */
-    protected $resultset;
+    protected \Phalcon\Mvc\Model\ResultsetInterface $resultset;
 
     /**
-     * @var array
+     * @param html_select_using
      */
-    protected $using = [];
+    protected array $using = [];
 
     /**
-     * @param ResultsetInterface $resultset
-     * @param array $using
-     * @param array $attributesMap
+     * @param html_select_using            $using
+     * @param html_select_attributes_map   $attributesMap
+     * @param \Phalcon\Mvc\Model\ResultsetInterface $resultset
      */
     public function __construct(\Phalcon\Mvc\Model\ResultsetInterface $resultset, array $using, array $attributesMap = [])
     {
@@ -67,6 +60,7 @@ class ResultsetData implements \Phalcon\Contracts\Html\Helper\Input\SelectData
     /**
      * Returns per-option attribute maps, keyed by option value.
      *
+     * @phpstan-return html_select_attributes
      * @return array
      */
     public function getAttributes(): array
@@ -74,6 +68,7 @@ class ResultsetData implements \Phalcon\Contracts\Html\Helper\Input\SelectData
     }
 
     /**
+     * @phpstan-return html_select_options
      * @return array
      */
     public function getOptions(): array
@@ -82,9 +77,9 @@ class ResultsetData implements \Phalcon\Contracts\Html\Helper\Input\SelectData
 
     /**
      * Reads a property from the row, supporting both objects (via
-     * `readAttribute` when present) and plain arrays.
+     * `readAttribute` when available) and plain arrays.
      *
-     * @param mixed $option
+     * @param array<array-key, mixed>|object $option
      * @param string $field
      */
     protected function readField($option, string $field)

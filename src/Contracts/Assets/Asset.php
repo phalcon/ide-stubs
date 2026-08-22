@@ -15,6 +15,8 @@ namespace Phalcon\Contracts\Assets;
  * Covers collection membership: an asset's key, type, HTML attributes, and
  * filter flag. The file-output pipeline (Phalcon\Assets\Manager::output())
  * requires the concrete Phalcon\Assets\Asset class.
+ *
+ * @phpstan-import-type assets_attributes from AssetsTypes
  */
 interface Asset
 {
@@ -28,7 +30,7 @@ interface Asset
     /**
      * Gets extra HTML attributes.
      *
-     * @return array|null
+     * @return assets_attributes|null
      */
     public function getAttributes(): array|null;
 
@@ -49,7 +51,7 @@ interface Asset
     /**
      * Sets extra HTML attributes.
      *
-     * @param array $attributes
+     * @param assets_attributes $attributes
      * @return Asset
      */
     public function setAttributes(array $attributes): Asset;

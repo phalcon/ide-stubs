@@ -9,42 +9,34 @@
  */
 namespace Phalcon\Html\Helper\Input;
 
-use Phalcon\Html\Helper\AbstractList;
 use Phalcon\Contracts\Html\Helper\Input\SelectData;
+use Phalcon\Contracts\Html\HtmlTypes;
+use Phalcon\Html\Helper\AbstractList;
 
 /**
  * Class Select
+ *
+ * @phpstan-import-type html_attributes from HtmlTypes
+ * @phpstan-import-type html_select_attributes from HtmlTypes
  */
 class Select extends AbstractList
 {
-    /**
-     * @var string
-     */
-    protected $elementTag = 'option';
+    protected string $elementTag = 'option';
 
-    /**
-     * @var bool
-     */
-    protected $inOptGroup = false;
+    protected bool $inOptGroup = false;
 
-    /**
-     * @var string
-     */
-    protected $selected = '';
+    protected string $selected = '';
 
-    /**
-     * @var bool
-     */
-    protected $strict = false;
+    protected bool $strict = false;
 
     /**
      * Add an element to the list
      *
-     * @param string      $text
+     * @phpstan-param html_attributes $attributes
+     * @param string $text
      * @param string|null $value
-     * @param array       $attributes
-     * @param bool        $raw
-     *
+     * @param array $attributes
+     * @param bool $raw
      * @return static
      */
     public function add(string $text, ?string $value = null, array $attributes = [], bool $raw = false): static
@@ -54,11 +46,11 @@ class Select extends AbstractList
     /**
      * Add a placeholder to the element
      *
+     * @phpstan-param html_attributes $attributes
      * @param string $text
-     * @param string $value
-     * @param array  $attributes
-     * @param bool   $raw
-     *
+     * @param string|null $value
+     * @param array $attributes
+     * @param bool $raw
      * @return static
      */
     public function addPlaceholder(string $text, ?string $value = null, array $attributes = [], bool $raw = false): static
@@ -71,7 +63,7 @@ class Select extends AbstractList
      * Flat entries: key = option value, value = label string.
      * Optgroup entries: key = group label, value = [value => label] array.
      *
-     * @param SelectData $data *
+     * @param \Phalcon\Contracts\Html\Helper\Input\SelectData $data
      * @return static
      */
     public function fromData(\Phalcon\Contracts\Html\Helper\Input\SelectData $data): static
@@ -81,9 +73,9 @@ class Select extends AbstractList
     /**
      * Creates an option group
      *
-     * @param string $label
-     * @param array  $attributes
-     *
+     * @phpstan-param html_attributes $attributes
+     * @param string|null $label
+     * @param array $attributes
      * @return static
      */
     public function optGroup(?string $label = null, array $attributes = []): static
@@ -96,7 +88,6 @@ class Select extends AbstractList
      * common HTML idiom for "Choose..."-style prompts.
      *
      * @param string $text
-     *
      * @return static
      */
     public function placeholder(string $text): static
@@ -105,7 +96,6 @@ class Select extends AbstractList
 
     /**
      * @param string $selected
-     *
      * @return static
      */
     public function selected(string $selected): static
@@ -119,7 +109,6 @@ class Select extends AbstractList
      * int/string form data marks the right option as selected.
      *
      * @param bool $flag
-     *
      * @return static
      */
     public function strict(bool $flag = true): static
@@ -141,9 +130,9 @@ class Select extends AbstractList
     }
 
     /**
+     * @phpstan-param html_attributes $attributes
      * @param string $label
-     * @param array  $attributes
-     *
+     * @param array $attributes
      * @return string
      */
     protected function optGroupStart(string $label, array $attributes): string
@@ -154,9 +143,11 @@ class Select extends AbstractList
      * Checks if the value has been passed and if it is the same as the
      * value stored in the object
      *
-     * @param array  $attributes
-     * @param string $value
+     * @phpstan-param html_attributes $attributes
      *
+     * @phpstan-return html_attributes
+     * @param array $attributes
+     * @param string|null $value
      * @return array
      */
     private function processValue(array $attributes, ?string $value = null): array

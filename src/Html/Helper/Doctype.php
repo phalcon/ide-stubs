@@ -86,7 +86,7 @@ class Doctype
     /**
      * Produce a <doctype> tag
      *
-     * @param int    $type
+     * @param int $type
      * @param string $delimiter
      * @return static
      */

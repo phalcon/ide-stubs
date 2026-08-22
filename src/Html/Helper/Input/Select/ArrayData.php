@@ -10,42 +10,46 @@
 namespace Phalcon\Html\Helper\Input\Select;
 
 use Phalcon\Contracts\Html\Helper\Input\SelectData;
+use Phalcon\Contracts\Html\HtmlTypes;
 
 /**
  * Wraps a plain PHP array as a SELECT data provider.
  *
  * Keys are option values; string values are labels;
  * array values define optgroups.
+ *
+ * @phpstan-import-type html_select_attributes from HtmlTypes
+ * @phpstan-import-type html_select_options from HtmlTypes
  */
 class ArrayData implements \Phalcon\Contracts\Html\Helper\Input\SelectData
 {
     /**
-     * @var array
+     * @param html_select_attributes
      */
-    protected $attributes = [];
+    protected array $attributes = [];
 
     /**
-     * @var array
+     * @param html_select_options
      */
-    protected $data = [];
+    protected array $data = [];
 
     /**
-     * @param array $data
-     * @param array $attributes
+     * @param html_select_options    $data
+     * @param html_select_attributes $attributes
      */
     public function __construct(array $data = [], array $attributes = [])
     {
     }
 
     /**
-     * @return array
+     * @return html_select_attributes
      */
     public function getAttributes(): array
     {
     }
 
     /**
-     * @return array
+     * @return html_select_options
      */
     public function getOptions(): array
     {

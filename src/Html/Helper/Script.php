@@ -9,22 +9,23 @@
  */
 namespace Phalcon\Html\Helper;
 
-use Phalcon\Html\Exception;
+use Phalcon\Contracts\Html\HtmlTypes;
 
 /**
  * Class Script
+ *
+ * @phpstan-import-type html_attributes from HtmlTypes
  */
 class Script extends \Phalcon\Html\Helper\AbstractSeries
 {
     /**
      * Add an element to the list
      *
+     * @phpstan-param html_attributes $attributes
      * @param string $url
-     * @param array  $attributes
-     *
-     * @return static
-     * @throws Exception
+     * @param array $attributes
      * @param int $position
+     * @return static
      */
     public function add(string $url, array $attributes = [], int $position = -1): static
     {
@@ -47,9 +48,9 @@ class Script extends \Phalcon\Html\Helper\AbstractSeries
      * attributes supplied are placed on the wrapping tag. The script body
      * is treated as raw HTML (it is JavaScript, not user-supplied text).
      *
+     * @phpstan-param html_attributes $attributes
      * @param array $attributes
-     * @param int   $position
-     *
+     * @param int $position
      * @return static
      */
     public function endInternal(array $attributes = [], int $position = -1): static
@@ -59,9 +60,11 @@ class Script extends \Phalcon\Html\Helper\AbstractSeries
     /**
      * Returns the necessary attributes
      *
-     * @param string $url
-     * @param array  $attributes
+     * @phpstan-param html_attributes $attributes
      *
+     * @phpstan-return html_attributes
+     * @param string $url
+     * @param array $attributes
      * @return array
      */
     protected function getAttributes(string $url, array $attributes): array

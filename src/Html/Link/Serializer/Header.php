@@ -9,14 +9,19 @@
  */
 namespace Phalcon\Html\Link\Serializer;
 
+use Phalcon\Contracts\Html\Link\LinkTypes;
+
 /**
  * Class Phalcon\Http\Link\Serializer\Header
+ *
+ * @phpstan-import-type link_collection from LinkTypes
  */
 class Header implements \Phalcon\Html\Link\Serializer\SerializerInterface
 {
     /**
      * Serializes all the passed links to a HTTP link header
      *
+     * @phpstan-param link_collection $links
      * @param array $links
      * @return string|null
      */
@@ -30,7 +35,6 @@ class Header implements \Phalcon\Html\Link\Serializer\SerializerInterface
      * value cannot terminate or corrupt the header field.
      *
      * @param string $value
-     *
      * @return string
      */
     private function quote(string $value): string

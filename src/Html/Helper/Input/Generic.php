@@ -22,9 +22,9 @@ use Phalcon\Html\Helper\Doctype;
 class Generic extends \Phalcon\Html\Helper\Input\AbstractInput
 {
     /**
-     * @param EscaperInterface $escaper
-     * @param Doctype          $doctype
-     * @param string           $type
+     * @param \Phalcon\Html\Escaper\EscaperInterface $escaper
+     * @param \Phalcon\Html\Helper\Doctype|null $doctype
+     * @param string $type
      */
     public function __construct(\Phalcon\Html\Escaper\EscaperInterface $escaper, ?\Phalcon\Html\Helper\Doctype $doctype = null, string $type = 'text')
     {
@@ -34,7 +34,6 @@ class Generic extends \Phalcon\Html\Helper\Input\AbstractInput
      * Sets the type of the input.
      *
      * @param string $type
-     *
      * @return AbstractInput
      */
     public function setType(string $type): AbstractInput

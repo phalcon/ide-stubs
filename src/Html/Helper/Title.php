@@ -13,42 +13,32 @@ use Phalcon\Html\Exception;
 
 /**
  * Class Title
- *
- * @property array  $append
- * @property string $delimiter
- * @property string $indent
- * @property array  $prepend
- * @property string $title
- * @property string $separator
  */
 class Title extends \Phalcon\Html\Helper\AbstractHelper
 {
     /**
-     * @var array
+     * @phpstan-var list<string>
      */
-    protected $append = [];
+    protected array $append = [];
 
     /**
-     * @var array
+     * Untyped on purpose. A typed `array` default is shared by all instances
+     * and `prepend()` mutates it in place, which corrupts the heap. See
+     * team/Planning/2026-08-20-zephir-typed-array-property-shared-default.md
+     *
+     * @phpstan-var list<string>
      */
     protected $prepend = [];
 
-    /**
-     * @var string
-     */
-    protected $title = '';
+    protected string $title = '';
 
-    /**
-     * @var string
-     */
-    protected $separator = '';
+    protected string $separator = '';
 
     /**
      * Sets the separator and returns the object back
      *
-     * @param string      $indent
+     * @param string $indent
      * @param string|null $delimiter
-     *
      * @return static
      */
     public function __invoke(string $indent = '    ', ?string $delimiter = null): static
@@ -57,9 +47,6 @@ class Title extends \Phalcon\Html\Helper\AbstractHelper
 
     /**
      * Returns the title tags
-     *
-     * @return string
-     * @throws Exception
      */
     public function __toString()
     {
@@ -69,8 +56,7 @@ class Title extends \Phalcon\Html\Helper\AbstractHelper
      * Appends text to current document title
      *
      * @param string $text
-     * @param bool   $raw
-     *
+     * @param bool $raw
      * @return static
      */
     public function append(string $text, bool $raw = false): static
@@ -87,11 +73,21 @@ class Title extends \Phalcon\Html\Helper\AbstractHelper
     }
 
     /**
+     * Prepends text to current document title
+     *
+     * @param string $text
+     * @param bool $raw
+     * @return static
+     */
+    public function prepend(string $text, bool $raw = false): static
+    {
+    }
+
+    /**
      * Sets the title
      *
      * @param string $text
-     * @param bool   $raw
-     *
+     * @param bool $raw
      * @return static
      */
     public function set(string $text, bool $raw = false): static
@@ -102,23 +98,10 @@ class Title extends \Phalcon\Html\Helper\AbstractHelper
      * Sets the separator
      *
      * @param string $separator
-     * @param bool   $raw
-     *
+     * @param bool $raw
      * @return static
      */
     public function setSeparator(string $separator, bool $raw = false): static
-    {
-    }
-
-    /**
-     * Prepends text to current document title
-     *
-     * @param string $text
-     * @param bool   $raw
-     *
-     * @return static
-     */
-    public function prepend(string $text, bool $raw = false): static
     {
     }
 }

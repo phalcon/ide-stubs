@@ -9,68 +9,53 @@
  */
 namespace Phalcon\Html\Helper;
 
+use Phalcon\Contracts\Html\HtmlTypes;
 use Phalcon\Html\Escaper\EscaperInterface;
 use Phalcon\Mvc\Url\UrlInterface;
-use Phalcon\Support\Helper\Str\Interpolate;
+use Phalcon\Traits\Support\Helper\Str\InterpolateTrait;
 
 /**
  * This component offers an easy way to create breadcrumbs for your application.
  * The resulting HTML when calling `render()` will have each breadcrumb enclosed
  * in `<li>` tags, while the whole string is enclosed in `<nav>` and `<ol>` tags.
  *
- * @phpstan-type TTemplate array{
- *      main: string,
- *      line: string,
- *      last: string
- *  }
- * @phpstan-type TElement array{
- *      attributes: array<string, string>,
- *      icon: string,
- *      link: string,
- *      text: string
- *  }
+ * @phpstan-import-type html_breadcrumb_attributes from HtmlTypes
+ * @phpstan-import-type html_breadcrumb_data from HtmlTypes
+ * @phpstan-import-type html_breadcrumb_element from HtmlTypes
+ * @phpstan-import-type html_breadcrumb_template from HtmlTypes
  */
 class Breadcrumbs extends \Phalcon\Html\Helper\AbstractHelper
 {
-    /**
-     * @var array<string, string>
-     */
-    private $attributes = [];
+    use \Phalcon\Traits\Support\Helper\Str\InterpolateTrait;
+
 
     /**
-     * Link prefix prepended to every non-empty link during rendering.
-     * Auto-populated from the Url service when one is injected.
-     *
-     * @var string
+     * @phpstan-var html_breadcrumb_attributes
      */
-    private $prefix = '';
-
-    /**
-     * Optional Url service used to resolve links via get().
-     * When set, takes priority over the string prefix.
-     *
-     * @var UrlInterface|null
-     */
-    private $url = null;
+    private array $attributes = [];
 
     /**
      * Keeps all the breadcrumbs.
      *
-     * @var array<int, TElement>
+     * @var html_breadcrumb_data
      */
-    private $data = [];
+    private array $data = [];
+
+    /**
+     * Link prefix prepended to every non-empty link during rendering.
+     * Auto-populated from the Url service when one is injected.
+     */
+    private string $prefix = '';
 
     /**
      * Crumb separator.
-     *
-     * @var string
      */
-    private $separator = '<li>/</li>';
+    private string $separator = '<li>/</li>';
 
     /**
      * The HTML template to use to render the breadcrumbs.
      *
-     * @var TTemplate
+     * @phpstan-var html_breadcrumb_template
      */
     private $template = ['main' => '
 <nav%attributes%>
@@ -80,17 +65,16 @@ class Breadcrumbs extends \Phalcon\Html\Helper\AbstractHelper
 </nav>', 'line' => '<li%attributes%><a href=\\\"%link%\\\">%icon%%text%</a></li>', 'last' => '<li><span%attributes%>%text%</span></li>'];
 
     /**
-     * The HTML template to use to render the breadcrumbs.
-     *
-     * @var Interpolate
+     * Optional Url service used to resolve links via get().
+     * When set, takes priority over the string prefix.
      */
-    private $interpolator;
+    private ?\Phalcon\Mvc\Url\UrlInterface $url = null;
 
     /**
      * AbstractHelper constructor.
      *
-     * @param EscaperInterface $escaper
-     * @param UrlInterface|null $url
+     * @param \Phalcon\Html\Escaper\EscaperInterface $escaper
+     * @param \Phalcon\Mvc\Url\UrlInterface|null $url
      */
     public function __construct(\Phalcon\Html\Escaper\EscaperInterface $escaper, ?\Phalcon\Mvc\Url\UrlInterface $url = null)
     {
@@ -121,6 +105,7 @@ class Breadcrumbs extends \Phalcon\Html\Helper\AbstractHelper
      * $breadcrumbs->add("Users");
      * ```
      *
+     * @phpstan-param html_breadcrumb_attributes $attributes
      * @param string $text
      * @param string $link
      * @param string $icon
@@ -132,7 +117,7 @@ class Breadcrumbs extends \Phalcon\Html\Helper\AbstractHelper
     }
 
     /**
-     * Clears the crumbs.
+     * Clears the crumbs
      *
      * ```php
      * $breadcrumbs->clear()
@@ -145,7 +130,7 @@ class Breadcrumbs extends \Phalcon\Html\Helper\AbstractHelper
     }
 
     /**
-     * Clear the attributes of the parent element.
+     * Clear the attributes of the parent element
      *
      * @return static
      */
@@ -154,9 +139,10 @@ class Breadcrumbs extends \Phalcon\Html\Helper\AbstractHelper
     }
 
     /**
-     * Get the attributes of the parent element.
+     * Get the attributes of the parent element
      *
-     * @return array<string, string>
+     * @phpstan-return html_breadcrumb_attributes
+     * @return array
      */
     public function getAttributes(): array
     {
@@ -183,7 +169,8 @@ class Breadcrumbs extends \Phalcon\Html\Helper\AbstractHelper
     /**
      * Return the current template.
      *
-     * @return TTemplate
+     * @phpstan-return html_breadcrumb_template
+     * @return array
      */
     public function getTemplate(): array
     {
@@ -218,8 +205,9 @@ class Breadcrumbs extends \Phalcon\Html\Helper\AbstractHelper
     }
 
     /**
-     * Set the attributes for the parent element.
+     * Set the attributes for the parent element
      *
+     * @phpstan-param html_breadcrumb_attributes $attributes
      * @param array $attributes
      * @return static
      */
@@ -239,7 +227,7 @@ class Breadcrumbs extends \Phalcon\Html\Helper\AbstractHelper
     }
 
     /**
-     * Set the separator.
+     * Set the separator
      *
      * @param string $separator
      * @return static
@@ -249,7 +237,7 @@ class Breadcrumbs extends \Phalcon\Html\Helper\AbstractHelper
     }
 
     /**
-     * Set the HTML template.
+     * Set the HTML template
      *
      * @param string $main
      * @param string $line
@@ -261,17 +249,19 @@ class Breadcrumbs extends \Phalcon\Html\Helper\AbstractHelper
     }
 
     /**
-     * Returns the internal breadcrumbs array.
+     * Returns the internal breadcrumbs array
      *
-     * @return array<int, TElement>
+     * @phpstan-return html_breadcrumb_data
+     * @return array
      */
     public function toArray(): array
     {
     }
 
     /**
-     * @param TElement $element
+     * @phpstan-param html_breadcrumb_element $element
      * @param string $template
+     * @param array $element
      * @return string
      */
     private function getLink(string $template, array $element): string
@@ -281,6 +271,7 @@ class Breadcrumbs extends \Phalcon\Html\Helper\AbstractHelper
     /**
      * Processes attributes
      *
+     * @phpstan-param html_breadcrumb_attributes $attributes
      * @param array $attributes
      * @return string
      */

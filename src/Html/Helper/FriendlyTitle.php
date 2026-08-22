@@ -9,8 +9,8 @@
  */
 namespace Phalcon\Html\Helper;
 
+use Exception;
 use Phalcon\Html\Escaper\EscaperInterface;
-use Phalcon\Html\Exception;
 use Phalcon\Html\Exceptions\FriendlyTitleConversionFailed;
 use Phalcon\Support\Helper\Str\Friendly;
 
@@ -19,26 +19,22 @@ use Phalcon\Support\Helper\Str\Friendly;
  */
 class FriendlyTitle extends \Phalcon\Html\Helper\AbstractHelper
 {
-    /**
-     * @var Friendly
-     */
-    protected $friendly;
+    protected \Phalcon\Support\Helper\Str\Friendly $friendly;
 
     /**
-     * @param EscaperInterface $escaper
+     * @param \Phalcon\Html\Escaper\EscaperInterface $escaper
      */
     public function __construct(\Phalcon\Html\Escaper\EscaperInterface $escaper)
     {
     }
 
     /**
-     * @param string     $text
-     * @param string     $separator
-     * @param bool       $lowercase
-     * @param mixed|null $replace
-     *
+     * @phpstan-param array<array-key, string>|string|null $replace
+     * @param string $text
+     * @param string $separator
+     * @param bool $lowercase
+     * @param mixed $replace
      * @return string
-     * @throws Exception
      */
     public function __invoke(string $text, string $separator = '-', bool $lowercase = true, $replace = null): string
     {

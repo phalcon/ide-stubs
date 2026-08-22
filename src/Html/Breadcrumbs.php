@@ -9,6 +9,8 @@
  */
 namespace Phalcon\Html;
 
+use Phalcon\Contracts\Html\HtmlTypes;
+
 /**
  * Phalcon\Html\Breadcrumbs
  *
@@ -16,31 +18,29 @@ namespace Phalcon\Html;
  * The resulting HTML when calling `render()` will have each breadcrumb enclosed
  * in `<dt>` tags, while the whole string is enclosed in `<dl>` tags.
  *
+ * @phpstan-import-type html_breadcrumb_elements from HtmlTypes
+ *
  * @deprecated Will be removed in future version
- * Use {@see Phalcon\Html\Helper\Breadcrumbs} instead.
+ * Use {@see \Phalcon\Html\Helper\Breadcrumbs} instead.
  */
 class Breadcrumbs
 {
     /**
      * Keeps all the breadcrumbs
      *
-     * @var array
+     * @phpstan-var html_breadcrumb_elements
      */
-    private $elements = [];
+    private array $elements = [];
 
     /**
      * Crumb separator
-     *
-     * @var string
      */
-    private $separator = ' / ';
+    private string $separator = ' / ';
 
     /**
      * The HTML template to use to render the breadcrumbs.
-     *
-     * @var string
      */
-    private $template = '<dt><a href=\\\"%link%\\\">%label%</a></dt>';
+    private string $template = '<dt><a href=\\\"%link%\\\">%label%</a></dt>';
 
     /**
      * Adds a new crumb.
@@ -79,7 +79,7 @@ class Breadcrumbs
     }
 
     /**
-     * Crumb separator
+     * Returns the separator
      *
      * @return string
      */
@@ -121,7 +121,6 @@ class Breadcrumbs
      * Set the separator
      *
      * @param string $separator
-     *
      * @return static
      */
     public function setSeparator(string $separator): static
@@ -131,6 +130,7 @@ class Breadcrumbs
     /**
      * Returns the internal breadcrumbs array
      *
+     * @phpstan-return html_breadcrumb_elements
      * @return array
      */
     public function toArray(): array

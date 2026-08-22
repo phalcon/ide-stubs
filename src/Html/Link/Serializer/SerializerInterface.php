@@ -9,14 +9,19 @@
  */
 namespace Phalcon\Html\Link\Serializer;
 
+use Phalcon\Contracts\Html\Link\LinkTypes;
+
 /**
  * Class Phalcon\Http\Link\Serializer\SerializerInterface
+ *
+ * @phpstan-import-type link_collection from LinkTypes
  */
 interface SerializerInterface
 {
     /**
      * Serializer method
      *
+     * @phpstan-param link_collection $links
      * @param array $links
      * @return string|null
      */

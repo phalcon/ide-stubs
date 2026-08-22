@@ -9,20 +9,21 @@
  */
 namespace Phalcon\Html\Helper;
 
-use Phalcon\Html\Exception;
+use Phalcon\Contracts\Html\HtmlTypes;
 
 /**
  * Class Body
+ *
+ * @phpstan-import-type html_attributes from HtmlTypes
  */
 class Body extends \Phalcon\Html\Helper\AbstractHelper
 {
     /**
      * Produce a `<body>` tag.
      *
+     * @phpstan-param html_attributes $attributes
      * @param array $attributes
-     *
      * @return string
-     * @throws Exception
      */
     public function __invoke(array $attributes = []): string
     {

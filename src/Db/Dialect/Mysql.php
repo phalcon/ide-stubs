@@ -400,6 +400,18 @@ class Mysql extends Dialect
     }
 
     /**
+     * Escape a string literal for a single quoted SQL string. MySQL treats the
+     * backslash as an escape character, so it must be doubled together with the
+     * single quote.
+     *
+     * @param string $value
+     * @return string
+     */
+    protected function escapeStringLiteral(string $value): string
+    {
+    }
+
+    /**
      * Generates SQL to add the table creation options
      *
      * @param array $definition

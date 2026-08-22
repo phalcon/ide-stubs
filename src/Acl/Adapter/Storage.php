@@ -13,6 +13,7 @@ use Phalcon\Acl\Component;
 use Phalcon\Acl\Enum;
 use Phalcon\Acl\Exceptions\InvalidSnapshot;
 use Phalcon\Acl\Role;
+use Phalcon\Contracts\Acl\AclTypes;
 use Phalcon\Contracts\Acl\Adapter\Persistable;
 use Phalcon\Storage\Adapter\AdapterInterface as StorageInterface;
 
@@ -33,6 +34,8 @@ use Phalcon\Storage\Adapter\AdapterInterface as StorageInterface;
  * Use external locking when multiple processes write the same key.
  *
  * @see Persistable
+ *
+ * @phpstan-import-type acl_snapshot from AclTypes
  */
 class Storage extends \Phalcon\Acl\Adapter\Memory implements \Phalcon\Contracts\Acl\Adapter\Persistable
 {
@@ -41,15 +44,9 @@ class Storage extends \Phalcon\Acl\Adapter\Memory implements \Phalcon\Contracts\
      */
     const int SNAPSHOT_VERSION = 1;
 
-    /**
-     * @var string
-     */
-    protected $key;
+    protected string $key;
 
-    /**
-     * @var StorageInterface
-     */
-    protected $storage;
+    protected \Phalcon\Storage\Adapter\AdapterInterface $storage;
 
     /**
      * @param \Phalcon\Storage\Adapter\AdapterInterface $storage

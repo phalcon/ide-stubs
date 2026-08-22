@@ -17,16 +17,12 @@ namespace Phalcon\Html\Helper\Input;
  */
 class CheckboxGroup extends \Phalcon\Html\Helper\Input\AbstractGroup
 {
-    /**
-     * @var string
-     */
-    protected $type = 'checkbox';
+    protected string $type = 'checkbox';
 
     /**
      * Returns true when $value appears in the checked list.
      *
      * @param string $value
-     *
      * @return bool
      */
     protected function isChecked(string $value): bool

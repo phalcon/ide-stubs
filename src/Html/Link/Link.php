@@ -9,20 +9,26 @@
  */
 namespace Phalcon\Html\Link;
 
+use Phalcon\Contracts\Html\Link\LinkTypes;
 use Phalcon\Html\Link\Interfaces\LinkInterface;
 
 /**
  * Class Phalcon\Html\Link\Link
+ *
+ * @phpstan-import-type link_attributes from LinkTypes
+ * @phpstan-import-type link_rels from LinkTypes
  */
 class Link extends \Phalcon\Html\Link\AbstractLink implements \Phalcon\Html\Link\Interfaces\LinkInterface
 {
     /**
      * Returns a list of attributes that describe the target URI.
      *
+     * A key-value list of attributes, where the key is a string and the value
+     * is either a PHP primitive or an array of PHP strings. If no values are
+     * found an empty array MUST be returned.
+     *
+     * @phpstan-return link_attributes
      * @return array
-     *   A key-value list of attributes, where the key is a string and the value
-     *  is either a PHP primitive or an array of PHP strings. If no values are
-     *  found an empty array MUST be returned.
      */
     public function getAttributes(): array
     {
@@ -51,16 +57,17 @@ class Link extends \Phalcon\Html\Link\AbstractLink implements \Phalcon\Html\Link
      * This method returns 0 or more relationship types for a link, expressed
      * as an array of strings.
      *
-     * @return string[]
+     * @phpstan-return link_rels
+     * @return array
      */
     public function getRels(): array
     {
     }
 
     /**
-     * Returns whether or not this is a templated link.
+     * Returns whether this is a templated link.
      *
-     * @return bool True if this link object is templated, False otherwise.
+     * @return bool
      */
     public function isTemplated(): bool
     {

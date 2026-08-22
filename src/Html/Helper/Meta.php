@@ -9,20 +9,22 @@
  */
 namespace Phalcon\Html\Helper;
 
-use Phalcon\Html\Exception;
+use Phalcon\Contracts\Html\HtmlTypes;
 
 /**
  * Class Meta
+ *
+ * @phpstan-import-type html_attributes from HtmlTypes
  */
 class Meta extends \Phalcon\Html\Helper\AbstractSeries
 {
     /**
      * Add an element to the list
      *
+     * @phpstan-param html_attributes $attributes
      * @param array $attributes
-     *
-     * @return static
      * @param int $position
+     * @return static
      */
     public function add(array $attributes = [], int $position = -1): static
     {
@@ -31,10 +33,8 @@ class Meta extends \Phalcon\Html\Helper\AbstractSeries
     /**
      * @param string $httpEquiv
      * @param string $content
-     * @param int    $position
-     *
+     * @param int $position
      * @return static
-     * @throws Exception
      */
     public function addHttp(string $httpEquiv, string $content, int $position = -1): static
     {
@@ -43,10 +43,8 @@ class Meta extends \Phalcon\Html\Helper\AbstractSeries
     /**
      * @param string $name
      * @param string $content
-     * @param int    $position
-     *
+     * @param int $position
      * @return static
-     * @throws Exception
      */
     public function addName(string $name, string $content, int $position = -1): static
     {
@@ -55,10 +53,8 @@ class Meta extends \Phalcon\Html\Helper\AbstractSeries
     /**
      * @param string $name
      * @param string $content
-     * @param int    $position
-     *
+     * @param int $position
      * @return static
-     * @throws Exception
      */
     public function addProperty(string $name, string $content, int $position = -1): static
     {
@@ -75,10 +71,8 @@ class Meta extends \Phalcon\Html\Helper\AbstractSeries
      * @param string $element
      * @param string $value
      * @param string $content
-     * @param int    $position
-     *
+     * @param int $position
      * @return static
-     * @throws Exception
      */
     private function addElement(string $element, string $value, string $content, int $position = -1): static
     {

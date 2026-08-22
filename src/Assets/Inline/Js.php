@@ -10,18 +10,21 @@
 namespace Phalcon\Assets\Inline;
 
 use Phalcon\Assets\Inline as InlineBase;
+use Phalcon\Contracts\Assets\AssetsTypes;
 
 /**
  * Represents an inline JavaScript
+ *
+ * @phpstan-import-type assets_attributes from AssetsTypes
  */
 class Js extends \Phalcon\Assets\Inline
 {
     /**
-     * Phalcon\Assets\Inline\Js constructor
+     * Js constructor.
      *
+     * @param assets_attributes $attributes
      * @param string $content
      * @param bool $filter
-     * @param array $attributes
      */
     public function __construct(string $content, bool $filter = true, array $attributes = [])
     {
