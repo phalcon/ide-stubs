@@ -16,7 +16,6 @@ class HtmlEscaper extends \Phalcon\Html\Escaper\AbstractEscaper
 {
     /**
      * @param string|null $input
-     *
      * @return string
      */
     public function __invoke(?string $input = null): string
@@ -25,7 +24,6 @@ class HtmlEscaper extends \Phalcon\Html\Escaper\AbstractEscaper
 
     /**
      * @param string|null $input
-     *
      * @return string
      */
     public function escape(?string $input = null): string

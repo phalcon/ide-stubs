@@ -22,7 +22,6 @@ class UrlEscaper extends \Phalcon\Html\Escaper\AbstractEscaper
 
     /**
      * @param string $input
-     *
      * @return string
      */
     public function __invoke(string $input): string
@@ -31,7 +30,6 @@ class UrlEscaper extends \Phalcon\Html\Escaper\AbstractEscaper
 
     /**
      * @param string $input
-     *
      * @return string
      */
     public function escape(string $input): string

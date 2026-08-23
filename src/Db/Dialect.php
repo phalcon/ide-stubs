@@ -382,6 +382,18 @@ abstract class Dialect implements \Phalcon\Db\DialectInterface
     }
 
     /**
+     * Escape a string literal for a single quoted SQL string. The standard
+     * way doubles the single quotes. A dialect where the backslash is an
+     * escape character must override this method.
+     *
+     * @param string $value
+     * @return string
+     */
+    protected function escapeStringLiteral(string $value): string
+    {
+    }
+
+    /**
      * Returns the size of the column enclosed in parentheses
      *
      * @param ColumnInterface $column

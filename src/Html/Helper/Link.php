@@ -9,16 +9,21 @@
  */
 namespace Phalcon\Html\Helper;
 
+use Phalcon\Contracts\Html\HtmlTypes;
+
 /**
  * Creates <link> tags
+ *
+ * @phpstan-import-type html_attributes from HtmlTypes
  */
 class Link extends \Phalcon\Html\Helper\Style
 {
     /**
      * Add an element to the list
      *
+     * @phpstan-param html_attributes $attributes
      * @param string $url
-     * @param array  $attributes
+     * @param array $attributes
      * @param int $position
      * @return static
      */
@@ -29,9 +34,11 @@ class Link extends \Phalcon\Html\Helper\Style
     /**
      * Returns the necessary attributes
      *
-     * @param string $url
-     * @param array  $attributes
+     * @phpstan-param html_attributes $attributes
      *
+     * @phpstan-return html_attributes
+     * @param string $url
+     * @param array $attributes
      * @return array
      */
     protected function getAttributes(string $url, array $attributes): array

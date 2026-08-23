@@ -9,33 +9,29 @@
  */
 namespace Phalcon\Html\Helper\Input;
 
+use Phalcon\Contracts\Html\HtmlTypes;
 use Phalcon\Html\Helper\AbstractHelper;
 use Phalcon\Html\Helper\Doctype;
 
 /**
  * Class AbstractInput
  *
- * @property array  $attributes
- * @property string $type
- * @property string $value
+ * @phpstan-import-type html_attributes from HtmlTypes
  */
 abstract class AbstractInput extends AbstractHelper
 {
     /**
-     * @var string
+     * @phpstan-var html_attributes
      */
-    protected $type = 'text';
+    protected array $attributes = [];
+
+    protected string $type = 'text';
 
     /**
-     * @var array
-     */
-    protected $attributes = [];
-
-    /**
-     * @param string      $name
+     * @phpstan-param html_attributes $attributes
+     * @param string $name
      * @param string|null $value
-     * @param array       $attributes
-     *
+     * @param array $attributes
      * @return static
      */
     public function __invoke(string $name, ?string $value = null, array $attributes = []): static
@@ -44,8 +40,6 @@ abstract class AbstractInput extends AbstractHelper
 
     /**
      * Returns the HTML for the input.
-     *
-     * @return string
      */
     public function __toString()
     {
@@ -55,7 +49,6 @@ abstract class AbstractInput extends AbstractHelper
      * Sets the value of the element
      *
      * @param string|null $value
-     *
      * @return static
      */
     public function setValue(?string $value = null): static

@@ -9,21 +9,22 @@
  */
 namespace Phalcon\Html\Helper;
 
-use Phalcon\Html\Exception;
+use Phalcon\Contracts\Html\HtmlTypes;
 
 /**
  * Class Img
+ *
+ * @phpstan-import-type html_attributes from HtmlTypes
  */
 class Img extends \Phalcon\Html\Helper\AbstractHelper
 {
     /**
      * Produce a <img> tag.
      *
+     * @phpstan-param html_attributes $attributes
      * @param string $src
-     * @param array  $attributes
-     *
+     * @param array $attributes
      * @return string
-     * @throws Exception
      */
     public function __invoke(string $src, array $attributes = []): string
     {

@@ -9,25 +9,22 @@
  */
 namespace Phalcon\Html\Helper;
 
+use Phalcon\Contracts\Html\HtmlTypes;
 use Phalcon\Html\Escaper\EscaperInterface;
-use Phalcon\Html\Exception;
 
 /**
  * Class Button
  *
- * @property bool $forceRaw
+ * @phpstan-import-type html_attributes from HtmlTypes
  */
 class Button extends \Phalcon\Html\Helper\AbstractHelper
 {
-    /**
-     * @var bool
-     */
-    protected $forceRaw = false;
+    protected bool $forceRaw = false;
 
     /**
-     * @param EscaperInterface $escaper
-     * @param Doctype          $doctype
-     * @param bool             $forceRaw
+     * @param \Phalcon\Html\Escaper\EscaperInterface $escaper
+     * @param Doctype|null $doctype
+     * @param bool $forceRaw
      */
     public function __construct(\Phalcon\Html\Escaper\EscaperInterface $escaper, ?Doctype $doctype = null, bool $forceRaw = false)
     {
@@ -36,12 +33,11 @@ class Button extends \Phalcon\Html\Helper\AbstractHelper
     /**
      * Produce a `<button>` tag.
      *
+     * @phpstan-param html_attributes $attributes
      * @param string $text
-     * @param array  $attributes
-     * @param bool   $raw
-     *
+     * @param array $attributes
+     * @param bool $raw
      * @return string
-     * @throws Exception
      */
     public function __invoke(string $text, array $attributes = [], bool $raw = false): string
     {

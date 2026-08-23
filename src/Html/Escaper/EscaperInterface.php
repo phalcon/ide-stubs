@@ -30,7 +30,6 @@ interface EscaperInterface
      * string. The widened signature lands in the next major.
      *
      * @param string $input
-     *
      * @return string
      */
     public function attributes(string $input): string;
@@ -40,7 +39,6 @@ interface EscaperInterface
      * hexadecimal representation
      *
      * @param string $input
-     *
      * @return string
      */
     public function css(string $input): string;
@@ -59,7 +57,6 @@ interface EscaperInterface
      * empty string for it. The nullable signature lands in the next major.
      *
      * @param string $input
-     *
      * @return string
      */
     public function html(string $input): string;
@@ -69,7 +66,6 @@ interface EscaperInterface
      * hexadecimal representation
      *
      * @param string $input
-     *
      * @return string
      */
     public function js(string $input): string;
@@ -94,7 +90,6 @@ interface EscaperInterface
      * Escapes a URL. Internally uses rawurlencode
      *
      * @param string $input
-     *
      * @return string
      */
     public function url(string $input): string;

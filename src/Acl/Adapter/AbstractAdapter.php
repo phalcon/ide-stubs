@@ -14,7 +14,7 @@ use Phalcon\Events\AbstractEventsAware;
 use Phalcon\Events\EventsAwareInterface;
 
 /**
- * Adapter for Phalcon\Acl adapters
+ * Functionality common to all adapters
  */
 abstract class AbstractAdapter extends AbstractEventsAware implements \Phalcon\Acl\Adapter\AdapterInterface, \Phalcon\Events\EventsAwareInterface
 {
@@ -27,25 +27,19 @@ abstract class AbstractAdapter extends AbstractEventsAware implements \Phalcon\A
 
     /**
      * Active access which the list is checking if some role can access it
-     *
-     * @var string|null
      */
-    protected $activeAccess = null;
+    protected ?string $activeAccess = null;
 
     /**
      * Component which the list is checking if some role can access it
-     *
-     * @var string|null
      */
-    protected $activeComponent = null;
+    protected ?string $activeComponent = null;
 
     /**
      * Role which the list is checking if it's allowed to certain
      * component/access
-     *
-     * @var string|null
      */
-    protected $activeRole = null;
+    protected ?string $activeRole = null;
 
     /**
      * Default access
@@ -55,7 +49,7 @@ abstract class AbstractAdapter extends AbstractEventsAware implements \Phalcon\A
     protected $defaultAccess = Enum::DENY;
 
     /**
-     * Active access which the list is checking if some role can access it
+     * Returns the access which the list is checking if a role can access it
      *
      * @return string|null
      */
@@ -64,7 +58,8 @@ abstract class AbstractAdapter extends AbstractEventsAware implements \Phalcon\A
     }
 
     /**
-     * Component which the list is checking if some role can access it
+     * Returns the component which the list is checking if some role can access
+     * it
      *
      * @return string|null
      */
@@ -73,7 +68,7 @@ abstract class AbstractAdapter extends AbstractEventsAware implements \Phalcon\A
     }
 
     /**
-     * Role which the list is checking if it's allowed to certain
+     * Returns the role which the list is checking if it's allowed to certain
      * component/access
      *
      * @return string|null
@@ -83,7 +78,7 @@ abstract class AbstractAdapter extends AbstractEventsAware implements \Phalcon\A
     }
 
     /**
-     * Returns the default ACL access level
+     * Returns the default action
      *
      * @return int
      */
@@ -92,7 +87,8 @@ abstract class AbstractAdapter extends AbstractEventsAware implements \Phalcon\A
     }
 
     /**
-     * Sets the default access level (Phalcon\Acl\Enum::ALLOW or Phalcon\Acl\Enum::DENY)
+     * Sets the default access level
+     * (Phalcon\Acl\Enum::ALLOW or Phalcon\Acl\Enum::DENY)
      *
      * @param int $defaultAccess
      * @return void

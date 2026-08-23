@@ -64,6 +64,7 @@ use Phalcon\Mvc\Model\Query\Exceptions\UnknownModelOrAlias;
 use Phalcon\Mvc\Model\Query\Exceptions\UnknownPhqlExpression;
 use Phalcon\Mvc\Model\Query\Exceptions\UnknownPhqlExpressionType;
 use Phalcon\Mvc\Model\Query\Exceptions\UnknownPhqlStatement;
+use Phalcon\Mvc\Model\Query\Exceptions\UnsafeIdentifier;
 use Phalcon\Mvc\Model\Query\Exceptions\UpdateMultipleNotSupported;
 use Phalcon\Mvc\Model\Query\Exceptions\WriteConnectionMissing;
 use Phalcon\Mvc\Model\Query\Status;

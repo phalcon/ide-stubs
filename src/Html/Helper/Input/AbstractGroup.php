@@ -9,6 +9,7 @@
  */
 namespace Phalcon\Html\Helper\Input;
 
+use Phalcon\Contracts\Html\HtmlTypes;
 use Phalcon\Html\Helper\AbstractHelper;
 
 /**
@@ -22,6 +23,10 @@ use Phalcon\Html\Helper\AbstractHelper;
  * The $checked parameter is resolved by the concrete subclass:
  *   - CheckboxGroup compares against an array of selected values
  *   - RadioGroup compares against a single scalar value
+ *
+ * @phpstan-import-type html_attributes from HtmlTypes
+ * @phpstan-import-type html_group_definition from HtmlTypes
+ * @phpstan-import-type html_group_options from HtmlTypes
  */
 abstract class AbstractGroup extends AbstractHelper
 {
@@ -30,32 +35,27 @@ abstract class AbstractGroup extends AbstractHelper
      */
     protected $checked = null;
 
-    /**
-     * @var string
-     */
-    protected $name = '';
+    protected string $name = '';
 
     /**
-     * @var array
+     * @phpstan-var html_group_options
      */
-    protected $options = [];
+    protected array $options = [];
 
     /**
-     * @var array
+     * @phpstan-var html_attributes
      */
-    protected $sharedAttributes = [];
+    protected array $sharedAttributes = [];
+
+    protected string $type = 'checkbox';
 
     /**
-     * @var string
-     */
-    protected $type = 'checkbox';
-
-    /**
+     * @phpstan-param html_group_options $options
+     * @phpstan-param html_attributes     $attributes
      * @param string $name
-     * @param array  $options
-     * @param mixed  $checked
-     * @param array  $attributes
-     *
+     * @param array $options
+     * @param mixed $checked
+     * @param array $attributes
      * @return static
      */
     public function __invoke(string $name, array $options, $checked = null, array $attributes = []): static
@@ -83,9 +83,9 @@ abstract class AbstractGroup extends AbstractHelper
     /**
      * Renders a single input + optional label pair.
      *
-     * @param string       $value
-     * @param string|array $definition
-     *
+     * @phpstan-param html_group_definition $definition
+     * @param string $value
+     * @param mixed $definition
      * @return string
      */
     protected function renderItem(string $value, $definition): string

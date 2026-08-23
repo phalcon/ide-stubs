@@ -9,14 +9,20 @@
  */
 namespace Phalcon\Html\Link\Interfaces;
 
+use Phalcon\Contracts\Html\Link\LinkTypes;
+
 /**
  * A link provider object.
+ *
+ * @phpstan-import-type link_collection from LinkTypes
+ * @phpstan-import-type link_list from LinkTypes
  */
 interface LinkProviderInterface
 {
     /**
      * Returns an array of LinkInterface objects.
      *
+     * @phpstan-return link_collection
      * @return array
      */
     public function getLinks(): array;
@@ -25,6 +31,7 @@ interface LinkProviderInterface
      * Returns an array of LinkInterface objects that have a specific
      * relationship.
      *
+     * @phpstan-return link_list
      * @param string $rel
      * @return array
      */

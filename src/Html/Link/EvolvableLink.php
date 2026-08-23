@@ -9,10 +9,13 @@
  */
 namespace Phalcon\Html\Link;
 
+use Phalcon\Contracts\Html\Link\LinkTypes;
 use Phalcon\Html\Link\Interfaces\EvolvableLinkInterface;
 
 /**
  * Class Phalcon\Html\Link\EvolvableLink
+ *
+ * @phpstan-import-type link_attribute_value from LinkTypes
  */
 class EvolvableLink extends \Phalcon\Html\Link\Link implements \Phalcon\Html\Link\Interfaces\EvolvableLinkInterface
 {
@@ -22,8 +25,9 @@ class EvolvableLink extends \Phalcon\Html\Link\Link implements \Phalcon\Html\Lin
      * If the specified attribute is already present, it will be overwritten
      * with the new value.
      *
-     * @param string       $attribute The attribute to include.
-     * @param string|array $value     The value of the attribute to set.
+     * @phpstan-param link_attribute_value $value
+     * @param mixed $attribute
+     * @param mixed $value
      * @return static
      */
     public function withAttribute($attribute, $value): static
@@ -43,24 +47,9 @@ class EvolvableLink extends \Phalcon\Html\Link\Link implements \Phalcon\Html\Lin
      *
      * An implementing library SHOULD evaluate a passed object to a string
      * immediately rather than waiting for it to be returned later.
-     *
-     * @param string $rel The relationship value to add.
      * @return static
      */
     public function withHref(string $href): static
-    {
-    }
-
-    /**
-     * Returns an instance with the specified relationship included.
-     *
-     * If the specified rel is already present, this method MUST return
-     * normally without errors, but without adding the rel a second time.
-     *
-     * @param string $rel The relationship value to add.
-     * @return static
-     */
-    public function withRel(string $rel): static
     {
     }
 
@@ -70,7 +59,7 @@ class EvolvableLink extends \Phalcon\Html\Link\Link implements \Phalcon\Html\Lin
      * If the specified attribute is not present, this method MUST return
      * normally without errors.
      *
-     * @param string $attribute The attribute to remove.
+     * @param string $attribute
      * @return static
      */
     public function withoutAttribute(string $attribute): static
@@ -83,10 +72,23 @@ class EvolvableLink extends \Phalcon\Html\Link\Link implements \Phalcon\Html\Lin
      * If the specified rel is not present, this method MUST return
      * normally without errors.
      *
-     * @param string $rel The relationship value to exclude.
+     * @param string $rel
      * @return static
      */
     public function withoutRel(string $rel): static
+    {
+    }
+
+    /**
+     * Returns an instance with the specified relationship included.
+     *
+     * If the specified rel is already present, this method MUST return
+     * normally without errors, but without adding the rel a second time.
+     *
+     * @param string $rel
+     * @return static
+     */
+    public function withRel(string $rel): static
     {
     }
 }

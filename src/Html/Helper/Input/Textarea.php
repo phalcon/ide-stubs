@@ -16,16 +16,10 @@ use Phalcon\Html\Exception;
  */
 class Textarea extends \Phalcon\Html\Helper\Input\AbstractInput
 {
-    /**
-     * @var string
-     */
-    protected $type = 'textarea';
+    protected string $type = 'textarea';
 
     /**
      * Returns the HTML for the input.
-     *
-     * @return string
-     * @throws Exception
      */
     public function __toString()
     {

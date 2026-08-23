@@ -17,7 +17,7 @@ use Phalcon\Acl\Exceptions\ForbiddenWildcard;
 class Component extends \Phalcon\Acl\AbstractElement implements \Phalcon\Acl\ComponentInterface
 {
     /**
-     * Phalcon\Acl\Component constructor
+     * Component constructor.
      *
      * @param string $name
      * @param string|null $description

@@ -9,24 +9,22 @@
  */
 namespace Phalcon\Html\Helper;
 
+use Phalcon\Contracts\Html\HtmlTypes;
 use Phalcon\Html\Escaper\EscaperInterface;
 
 /**
  * Class Ol
  *
- * @property bool $forceRaw
+ * @phpstan-import-type html_attributes from HtmlTypes
  */
 class Ol extends \Phalcon\Html\Helper\AbstractList
 {
-    /**
-     * @var bool
-     */
-    protected $forceRaw = false;
+    protected bool $forceRaw = false;
 
     /**
-     * @param EscaperInterface $escaper
-     * @param Doctype          $doctype
-     * @param bool             $forceRaw
+     * @param \Phalcon\Html\Escaper\EscaperInterface $escaper
+     * @param Doctype|null $doctype
+     * @param bool $forceRaw
      */
     public function __construct(\Phalcon\Html\Escaper\EscaperInterface $escaper, ?Doctype $doctype = null, bool $forceRaw = false)
     {
@@ -35,10 +33,10 @@ class Ol extends \Phalcon\Html\Helper\AbstractList
     /**
      * Add an element to the list
      *
+     * @phpstan-param html_attributes $attributes
      * @param string $text
-     * @param array  $attributes
-     * @param bool   $raw
-     *
+     * @param array $attributes
+     * @param bool $raw
      * @return static
      */
     public function add(string $text, array $attributes = [], bool $raw = false): static

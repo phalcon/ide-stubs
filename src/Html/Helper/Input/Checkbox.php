@@ -15,8 +15,5 @@ namespace Phalcon\Html\Helper\Input;
  */
 class Checkbox extends \Phalcon\Html\Helper\Input\AbstractChecked
 {
-    /**
-     * @var string
-     */
-    protected $type = 'checkbox';
+    protected string $type = 'checkbox';
 }

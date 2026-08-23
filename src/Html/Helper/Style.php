@@ -9,27 +9,25 @@
  */
 namespace Phalcon\Html\Helper;
 
-use Phalcon\Html\Exception;
+use Phalcon\Contracts\Html\HtmlTypes;
 
 /**
  * Class Style
+ *
+ * @phpstan-import-type html_attributes from HtmlTypes
  */
 class Style extends \Phalcon\Html\Helper\AbstractSeries
 {
-    /**
-     * @var bool
-     */
-    private $isStyle = false;
+    private bool $isStyle = false;
 
     /**
      * Add an element to the list
      *
+     * @phpstan-param html_attributes $attributes
      * @param string $url
-     * @param array  $attributes
-     *
-     * @return static
-     * @throws Exception
+     * @param array $attributes
      * @param int $position
+     * @return static
      */
     public function add(string $url, array $attributes = [], int $position = -1): static
     {
@@ -48,9 +46,11 @@ class Style extends \Phalcon\Html\Helper\AbstractSeries
     /**
      * Returns the necessary attributes
      *
-     * @param string $url
-     * @param array  $attributes
+     * @phpstan-param html_attributes $attributes
      *
+     * @phpstan-return html_attributes
+     * @param string $url
+     * @param array $attributes
      * @return array
      */
     protected function getAttributes(string $url, array $attributes): array
