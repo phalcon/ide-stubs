@@ -45,9 +45,10 @@ class WkbParser
 
     /**
      * @param int $outerSrid
+     * @param int $depth
      * @return GeometryInterface
      */
-    protected function readGeometry(int $outerSrid): GeometryInterface
+    protected function readGeometry(int $outerSrid, int $depth = 0): GeometryInterface
     {
     }
 

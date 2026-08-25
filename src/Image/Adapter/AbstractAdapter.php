@@ -12,6 +12,7 @@ namespace Phalcon\Image\Adapter;
 use Phalcon\Contracts\Image\ImageTypes;
 use Phalcon\Image\Enum;
 use Phalcon\Image\Exception;
+use Phalcon\Image\Exceptions\ImageTooLarge;
 use Phalcon\Image\Exceptions\InvalidColor;
 use Phalcon\Image\Exceptions\MissingDimensions;
 use Phalcon\Image\Exceptions\MissingHeight;
@@ -27,6 +28,16 @@ use Phalcon\Image\Exceptions\MissingWidth;
  */
 abstract class AbstractAdapter implements \Phalcon\Image\Adapter\AdapterInterface
 {
+    /**
+     * Default cap on the pixel count (width height) of a loaded image, used
+     * when the constructor is not given an explicit limit. Bounds the memory a
+     * crafted image (decompression bomb / pixel flood) can force the backend to
+     * allocate (CWE-409). Generous by default; override per instance.
+     *
+     * @var int
+     */
+    const int DEFAULT_MAX_PIXELS = 50000000;
+
     protected string $file;
 
     protected int $height;
@@ -38,6 +49,12 @@ abstract class AbstractAdapter implements \Phalcon\Image\Adapter\AdapterInterfac
      * @var TImage|null
      */
     protected $image = null;
+
+    /**
+     * Maximum allowed pixel count (width height) for a loaded image. Zero
+     * disables the check.
+     */
+    protected int $maxPixels = 0;
 
     protected string $mime;
 
@@ -273,6 +290,19 @@ abstract class AbstractAdapter implements \Phalcon\Image\Adapter\AdapterInterfac
      * @return AdapterInterface
      */
     public function watermark(AdapterInterface $watermark, int $offsetX = 0, int $offsetY = 0, int $opacity = 100): AdapterInterface
+    {
+    }
+
+    /**
+     * Rejects an image whose pixel count exceeds the configured limit before
+     * the backend allocates it, bounding decompression-bomb / pixel-flood
+     * memory use (CWE-409). A zero limit disables the check.
+     *
+     * @param int $width
+     * @param int $height
+     * @return void
+     */
+    protected function assertPixelLimit(int $width, int $height): void
     {
     }
 

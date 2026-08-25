@@ -223,6 +223,21 @@ class BeanstalkConnection
     }
 
     /**
+     * Reject a tube name that could break out of the protocol command line.
+     * A Beanstalkd tube name is at most 200 bytes from a fixed character set
+     * and must not start with a hyphen; a name carrying CR/LF (or any other
+     * out-of-charset byte) would inject arbitrary Beanstalkd commands. The
+     * "$" is written as "\x24" so the Zephir lexer does not read it as the
+     * start of a variable.
+     *
+     * @param string $tube
+     * @return void
+     */
+    private function assertValidTube(string $tube): void
+    {
+    }
+
+    /**
      * Parses a Beanstalkd YAML dictionary payload (a flat "key: value" map)
      * into an associative array. Numeric values are cast to int, except the
      * `name` field, which is always kept as a string (a tube may be named

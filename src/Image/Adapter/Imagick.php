@@ -75,8 +75,9 @@ class Imagick extends \Phalcon\Image\Adapter\AbstractAdapter
      *
      * @throws Exception
      * @throws ImagickException
+     * @param int $maxPixels
      */
-    public function __construct(string $file, ?int $width = null, ?int $height = null)
+    public function __construct(string $file, ?int $width = null, ?int $height = null, int $maxPixels = 0)
     {
     }
 

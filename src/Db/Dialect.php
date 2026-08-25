@@ -208,6 +208,17 @@ abstract class Dialect implements \Phalcon\Db\DialectInterface
     }
 
     /**
+     * Renders a LIMIT/OFFSET value: a bound placeholder passes through, any
+     * other value is coerced to an integer to prevent SQL injection.
+     *
+     * @param mixed $value
+     * @return string
+     */
+    protected function getLimitValue($value): string
+    {
+    }
+
+    /**
      * Registers custom SQL functions
      *
      * @param string $name

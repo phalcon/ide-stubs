@@ -51,6 +51,18 @@ abstract class AbstractHelper
     }
 
     /**
+     * Removes the characters that end a tag or attribute name (white space,
+     * "/", "=") and escapes the rest, so a crafted name cannot break out of
+     * its position.
+     *
+     * @param string $name
+     * @return string
+     */
+    protected function escapeName(string $name): string
+    {
+    }
+
+    /**
      * Replicates the indent x times as per indentLevel
      *
      * @return string
