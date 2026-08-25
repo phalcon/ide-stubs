@@ -15,6 +15,8 @@ namespace Phalcon\ADR\Responder;
  */
 class Redirect
 {
+    protected bool $external = false;
+
     protected int $status = 302;
 
     protected string $url;
@@ -22,8 +24,20 @@ class Redirect
     /**
      * @param string $url
      * @param int $status
+     * @param bool $external
      */
-    public function __construct(string $url, int $status = 302)
+    public function __construct(string $url, int $status = 302, bool $external = false)
+    {
+    }
+
+    /**
+     * Whether the target is an explicit external redirect. Internal (the
+     * default) redirects refuse an absolute or protocol-relative target so a
+     * request-derived value cannot become an open redirect (CWE-601).
+     *
+     * @return bool
+     */
+    public function external(): bool
     {
     }
 
