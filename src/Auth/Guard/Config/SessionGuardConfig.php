@@ -33,6 +33,8 @@ class SessionGuardConfig extends \Phalcon\Auth\Guard\Config\AbstractGuardConfig
 
     private string $rememberName;
 
+    private bool $rememberSecure;
+
     private int $rememberTtl;
 
     /**
@@ -41,8 +43,9 @@ class SessionGuardConfig extends \Phalcon\Auth\Guard\Config\AbstractGuardConfig
      * @param string|null $name
      * @param string|null $rememberName
      * @param int|null $rememberTtl
+     * @param bool $rememberSecure
      */
-    public function __construct(?string $suffix = null, ?string $name = null, ?string $rememberName = null, ?int $rememberTtl = null)
+    public function __construct(?string $suffix = null, ?string $name = null, ?string $rememberName = null, ?int $rememberTtl = null, bool $rememberSecure = true)
     {
     }
 
@@ -57,6 +60,17 @@ class SessionGuardConfig extends \Phalcon\Auth\Guard\Config\AbstractGuardConfig
      * @return string
      */
     public function getRememberName(): string
+    {
+    }
+
+    /**
+     * Whether the remember-me cookie carries the Secure flag. Defaults to
+     * true: the cookie is a bearer credential. Set it to false only for a
+     * deployment that serves plain HTTP on purpose.
+     *
+     * @return bool
+     */
+    public function getRememberSecure(): bool
     {
     }
 

@@ -23,9 +23,9 @@ use Traversable;
 class Headers implements \Phalcon\Http\Response\HeadersInterface, \IteratorAggregate
 {
     /**
-     * @phpstan-var http_response_headers
+     * @var array
      */
-    protected array $headers = [];
+    protected $headers = [];
 
     protected bool $isSent = false;
 

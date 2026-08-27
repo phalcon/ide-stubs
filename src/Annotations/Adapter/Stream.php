@@ -70,4 +70,16 @@ class Stream extends \Phalcon\Annotations\Adapter\AbstractAdapter
     public function write(string $key, \Phalcon\Annotations\Reflection $data): void
     {
     }
+
+    /**
+     * Builds the cache file path. Namespace separators become "_", so a
+     * name that itself contains "_" gets a hash suffix; otherwise "A\\B"
+     * and "A_B" would share one file.
+     *
+     * @param string $key
+     * @return string
+     */
+    private function getFilePath(string $key): string
+    {
+    }
 }

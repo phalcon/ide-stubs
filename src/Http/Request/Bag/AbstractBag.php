@@ -62,6 +62,15 @@ abstract class AbstractBag implements \ArrayAccess, \Countable, \IteratorAggrega
     }
 
     /**
+     * Removes all the elements of the bag
+     *
+     * @return void
+     */
+    public function clear(): void
+    {
+    }
+
+    /**
      * Returns the number of elements in the bag
      *
      * @return int

@@ -284,11 +284,16 @@ class Manager implements \Phalcon\Events\ManagerInterface, \Phalcon\Contracts\Ev
      *
      * @param object $source
      * @param mixed $data
+     * @param bool|null $stopOnFalse Per-call override of setStopOnFalse():
+     *                              `true` makes a listener's `false` final
+     *                              for this fire only, `false` keeps
+     *                              last-wins, `null` uses the manager
+     *                              setting. Not part of ManagerInterface.
      * @return mixed
      * @param string $eventType
      * @param bool $cancelable
      */
-    public function fire(string $eventType, $source, $data = null, bool $cancelable = true)
+    public function fire(string $eventType, $source, $data = null, bool $cancelable = true, $stopOnFalse = null)
     {
     }
 
@@ -603,8 +608,9 @@ class Manager implements \Phalcon\Events\ManagerInterface, \Phalcon\Contracts\Ev
      * @param mixed $data
      * @param bool $cancelable
      * @param bool $collect
+     * @param bool $stopOnFalse
      */
-    private function runQueue(array $queue, EventInterface $event, string $eventName, $source, $data, bool $cancelable, bool $collect)
+    private function runQueue(array $queue, EventInterface $event, string $eventName, $source, $data, bool $cancelable, bool $collect, bool $stopOnFalse)
     {
     }
 

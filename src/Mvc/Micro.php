@@ -17,6 +17,7 @@ use Phalcon\Di\FactoryDefault;
 use Phalcon\Di\Injectable;
 use Phalcon\Di\ServiceInterface;
 use Phalcon\Events\EventsAwareInterface;
+use Phalcon\Events\Manager as EventsManager;
 use Phalcon\Events\ManagerInterface;
 use Phalcon\Http\ResponseInterface;
 use Phalcon\Mvc\Micro\Collection;
