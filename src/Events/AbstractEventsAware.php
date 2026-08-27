@@ -46,10 +46,12 @@ abstract class AbstractEventsAware
      * @param string     $eventName
      * @param mixed|null $data
      * @param bool       $cancellable
+     * @param bool       $stopOnFalse Make a listener's `false` final for
+     *                                this call (concrete Manager only)
      *
      * @return mixed|bool
      */
-    protected function fireManagerEvent(string $eventName, $data = null, bool $cancellable = true): mixed
+    protected function fireManagerEvent(string $eventName, $data = null, bool $cancellable = true, bool $stopOnFalse = false): mixed
     {
     }
 }

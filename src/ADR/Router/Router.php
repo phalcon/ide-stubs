@@ -36,6 +36,8 @@ use Phalcon\Http\RequestInterface;
  * ## Guarantees
  *
  * - One path names exactly one class; that class names exactly one path.
+ * - The derived name must equal the declared class name byte for byte. A
+ *   class that only resolves case-insensitively is not a match.
  * - `classFor()` and `pathFor()` are pure functions of their input. Neither
  *   touches the filesystem, and neither consults any Action but the one it was
  *   given, so adding or deleting an Action can never move another one's URL.

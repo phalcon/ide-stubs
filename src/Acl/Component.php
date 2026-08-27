@@ -9,6 +9,7 @@
  */
 namespace Phalcon\Acl;
 
+use Phalcon\Acl\Exceptions\ForbiddenDelimiter;
 use Phalcon\Acl\Exceptions\ForbiddenWildcard;
 
 /**

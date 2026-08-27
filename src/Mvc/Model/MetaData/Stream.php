@@ -68,6 +68,18 @@ class Stream extends MetaData
     }
 
     /**
+     * Builds the cache file path. Namespace separators become "_", so a
+     * name that itself contains "_" gets a hash suffix; otherwise "A\\B"
+     * and "A_B" would share one file.
+     *
+     * @param string $key
+     * @return string
+     */
+    private function getFilePath(string $key): string
+    {
+    }
+
+    /**
      * Throws an exception when the metadata cannot be written
      *
      * @param mixed $option

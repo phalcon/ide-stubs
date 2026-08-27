@@ -82,12 +82,15 @@ class Storage extends \Phalcon\Acl\Adapter\Memory implements \Phalcon\Contracts\
     /**
      * Recursively converts stdClass into nested arrays so a snapshot stored
      * through an object-decoding serializer (e.g. JSON) is read back the same
-     * way as the array-decoding serializers (php, igbinary, msgpack).
+     * way as the array-decoding serializers (php, igbinary, msgpack). A
+     * snapshot is at most three levels deep; a deeper (or cyclic) graph is
+     * rejected.
      *
      * @param mixed $value
+     * @param int $depth
      * @return mixed
      */
-    private function normalizeToArray($value): mixed
+    private function normalizeToArray($value, int $depth = 0): mixed
     {
     }
 }

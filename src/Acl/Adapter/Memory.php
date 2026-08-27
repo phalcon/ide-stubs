@@ -16,6 +16,7 @@ use Phalcon\Acl\Enum;
 use Phalcon\Acl\Exceptions\AccessRuleNotFound;
 use Phalcon\Acl\Exceptions\CircularInheritanceError;
 use Phalcon\Acl\Exceptions\ElementNotFound;
+use Phalcon\Acl\Exceptions\ForbiddenDelimiter;
 use Phalcon\Acl\Exceptions\InvalidAccessList;
 use Phalcon\Acl\Exceptions\InvalidComponentImplementation;
 use Phalcon\Acl\Exceptions\InvalidRoleImplementation;

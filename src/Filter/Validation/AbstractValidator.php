@@ -217,4 +217,19 @@ abstract class AbstractValidator implements \Phalcon\Filter\Validation\Validator
     protected function prepareLabel(\Phalcon\Filter\Validation $validation, string $field): mixed
     {
     }
+
+    /**
+     * Rejects a value that cannot be a string: an array, or an object without
+     * __toString(). A cast would turn an array into the constant "Array",
+     * which satisfies the string checks. Appends the message and returns
+     * true when the value is rejected.
+     *
+     * @param \Phalcon\Filter\Validation $validation
+     * @param mixed $field
+     * @param mixed $value
+     * @return bool
+     */
+    protected function rejectNonStringable(\Phalcon\Filter\Validation $validation, $field, $value): bool
+    {
+    }
 }

@@ -9,10 +9,12 @@
  */
 namespace Phalcon\Auth\Internal;
 
+use Closure;
 use Phalcon\Container\Exceptions\Exception as ContainerException;
 use Phalcon\Contracts\Container\Service\Collection;
 use Phalcon\Di\DiInterface;
 use Phalcon\Di\Exception as DiException;
+use Phalcon\Di\Service;
 use TypeError;
 
 /**
@@ -80,9 +82,10 @@ final class ContainerResolver
 
     /**
      * Resolves a fresh instance: new() on the Container (bypasses the
-     * instance cache); get() on the legacy Di (fresh for unregistered or
-     * non-shared services). On Di, an unregistered but existing class is
-     * still built via the class builder.
+     * instance cache); on the legacy Di, get() for unregistered or
+     * non-shared services, and a rebuild from the definition for shared
+     * services (Di::get() would return the cached instance). On Di, an
+     * unregistered but existing class is still built via the class builder.
      *
      * @throws ContainerException
      * @param mixed $container

@@ -12,6 +12,7 @@ namespace Phalcon\Auth\Adapter;
 use Phalcon\Auth\Adapter\Config\ModelAdapterConfig;
 use Phalcon\Auth\Exception;
 use Phalcon\Auth\Exceptions\DoesNotImplement;
+use Phalcon\Auth\Exceptions\InvalidCredentialKey;
 use Phalcon\Auth\Internal\Options;
 use Phalcon\Contracts\Auth\Adapter\RememberAdapter;
 use Phalcon\Contracts\Auth\AuthRemember;
