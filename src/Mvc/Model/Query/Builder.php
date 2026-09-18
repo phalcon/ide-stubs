@@ -9,6 +9,7 @@
  */
 namespace Phalcon\Mvc\Model\Query;
 
+use Phalcon\Contracts\Mvc\MvcTypes;
 use Phalcon\Db\Column;
 use Phalcon\Di\Di;
 use Phalcon\Di\DiInterface;
@@ -57,31 +58,40 @@ use Phalcon\Support\Settings;
  *
  * $queryBuilder = new \Phalcon\Mvc\Model\Query\Builder($params);
  * ```
+ *
+ * @phpstan-import-type mvc_model_bind_params from MvcTypes
+ * @phpstan-import-type mvc_model_bind_types from MvcTypes
+ * @phpstan-import-type mvc_query_builder_join from MvcTypes
+ * @phpstan-import-type mvc_query_builder_params from MvcTypes
+ * @phpstan-import-type mvc_query_columns from MvcTypes
+ * @phpstan-import-type mvc_query_order from MvcTypes
  */
 class Builder implements \Phalcon\Mvc\Model\Query\BuilderInterface, \Phalcon\Di\InjectionAwareInterface
 {
     /**
-     * @var array
+     * @phpstan-var mvc_model_bind_params
      */
-    protected $bindParams = [];
+    protected array $bindParams = [];
 
     /**
-     * @var array
+     * @phpstan-var mvc_model_bind_types
      */
-    protected $bindTypes = [];
+    protected array $bindTypes = [];
 
     /**
-     * @var array|string|null
+     * @phpstan-var mvc_query_columns|null
      */
     protected $columns = null;
 
     /**
-     * @var array|string|null
+     * @phpstan-var array<array-key, mixed>|int|string|null
      */
     protected $conditions = null;
 
     /**
      * @var DiInterface|null
+     *
+     * @phpstan-var DiInterface|null
      */
     protected $container;
 
@@ -90,13 +100,10 @@ class Builder implements \Phalcon\Mvc\Model\Query\BuilderInterface, \Phalcon\Di\
      */
     protected $distinct = null;
 
-    /**
-     * @var bool
-     */
-    protected $forUpdate = false;
+    protected bool $forUpdate = false;
 
     /**
-     * @var array
+     * @phpstan-var array<array-key, string>|null
      */
     protected $group = [];
 
@@ -105,51 +112,45 @@ class Builder implements \Phalcon\Mvc\Model\Query\BuilderInterface, \Phalcon\Di\
      */
     protected $having = null;
 
-    /**
-     * @var int
-     */
-    protected $hiddenParamNumber = 0;
+    protected int $hiddenParamNumber = 0;
 
     /**
-     * @var array
+     * @phpstan-var array<array-key, mvc_query_builder_join>
      */
-    protected $joins = [];
+    protected array $joins = [];
 
     /**
      * @var array|string
+     *
+     * @phpstan-var array<array-key, mixed>|int|string|null
      */
     protected $limit;
 
     /**
      * @var array|string
+     *
+     * @phpstan-var mvc_query_columns|null
      */
     protected $models;
 
-    /**
-     * @var int
-     */
-    protected $offset = 0;
+    protected int $offset = 0;
 
     /**
      * @var array|string
+     *
+     * @phpstan-var array<array-key, int|string>|string|null
      */
     protected $order;
 
-    /**
-     * @var string
-     */
-    protected $resultsetRowClass = '';
+    protected string $resultsetRowClass = '';
 
-    /**
-     * @var bool
-     */
-    protected $sharedLock = false;
+    protected bool $sharedLock = false;
 
     /**
      * Phalcon\Mvc\Model\Query\Builder constructor
      *
      * @param array|string|null $params
-     * @param DiInterface|null $container
+     * @param \Phalcon\Di\DiInterface|null $container
      */
     public function __construct($params = null, ?\Phalcon\Di\DiInterface $container = null)
     {
@@ -193,6 +194,8 @@ class Builder implements \Phalcon\Mvc\Model\Query\BuilderInterface, \Phalcon\Di\
      * );
      * ```
      *
+     * @phpstan-param mvc_model_bind_params $bindParams
+     * @phpstan-param mvc_model_bind_types $bindTypes
      * @param string $conditions
      * @param array $bindParams
      * @param array $bindTypes
@@ -217,6 +220,8 @@ class Builder implements \Phalcon\Mvc\Model\Query\BuilderInterface, \Phalcon\Di\
      * );
      * ```
      *
+     * @phpstan-param mvc_model_bind_params $bindParams
+     * @phpstan-param mvc_model_bind_types $bindTypes
      * @param string $conditions
      * @param array $bindParams
      * @param array $bindTypes
@@ -374,6 +379,7 @@ class Builder implements \Phalcon\Mvc\Model\Query\BuilderInterface, \Phalcon\Di\
      * );
      * ```
      *
+     * @phpstan-param mvc_query_columns $models
      * @param mixed $models
      * @return BuilderInterface
      */
@@ -384,6 +390,7 @@ class Builder implements \Phalcon\Mvc\Model\Query\BuilderInterface, \Phalcon\Di\
     /**
      * Returns default bind params
      *
+     * @phpstan-return mvc_model_bind_params
      * @return array
      */
     public function getBindParams(): array
@@ -393,6 +400,7 @@ class Builder implements \Phalcon\Mvc\Model\Query\BuilderInterface, \Phalcon\Di\
     /**
      * Returns default bind types
      *
+     * @phpstan-return mvc_model_bind_types
      * @return array
      */
     public function getBindTypes(): array
@@ -403,6 +411,8 @@ class Builder implements \Phalcon\Mvc\Model\Query\BuilderInterface, \Phalcon\Di\
      * Return the columns to be queried
      *
      * @return array|string
+     *
+     * @phpstan-return mvc_query_columns|null
      */
     public function getColumns()
     {
@@ -430,6 +440,8 @@ class Builder implements \Phalcon\Mvc\Model\Query\BuilderInterface, \Phalcon\Di\
      * Return the models who makes part of the query
      *
      * @return array|string
+     *
+     * @phpstan-return mvc_query_columns|null
      */
     public function getFrom()
     {
@@ -438,6 +450,7 @@ class Builder implements \Phalcon\Mvc\Model\Query\BuilderInterface, \Phalcon\Di\
     /**
      * Returns the GROUP BY clause
      *
+     * @phpstan-return array<array-key, string>
      * @return array
      */
     public function getGroupBy(): array
@@ -456,6 +469,7 @@ class Builder implements \Phalcon\Mvc\Model\Query\BuilderInterface, \Phalcon\Di\
     /**
      * Return join parts of the query
      *
+     * @phpstan-return array<array-key, mvc_query_builder_join>
      * @return array
      */
     public function getJoins(): array
@@ -466,6 +480,8 @@ class Builder implements \Phalcon\Mvc\Model\Query\BuilderInterface, \Phalcon\Di\
      * Returns the current LIMIT clause
      *
      * @return array|string
+     *
+     * @phpstan-return array<array-key, mixed>|int|string|null
      */
     public function getLimit()
     {
@@ -474,7 +490,8 @@ class Builder implements \Phalcon\Mvc\Model\Query\BuilderInterface, \Phalcon\Di\
     /**
      * Returns the models involved in the query
      *
-     * @return string|array|null
+     * @phpstan-return mvc_query_columns|null
+     * @return array|string|null
      */
     public function getModels(): string|array|null
     {
@@ -493,6 +510,8 @@ class Builder implements \Phalcon\Mvc\Model\Query\BuilderInterface, \Phalcon\Di\
      * Returns the set ORDER BY clause
      *
      * @return array|string
+     *
+     * @phpstan-return array<array-key, int|string>|string|null
      */
     public function getOrderBy()
     {
@@ -531,6 +550,8 @@ class Builder implements \Phalcon\Mvc\Model\Query\BuilderInterface, \Phalcon\Di\
      * Return the conditions for the query
      *
      * @return array|string
+     *
+     * @phpstan-return array<array-key, mixed>|string|null
      */
     public function getWhere()
     {
@@ -551,6 +572,8 @@ class Builder implements \Phalcon\Mvc\Model\Query\BuilderInterface, \Phalcon\Di\
      * treats both as "no GROUP BY".
      *
      * @param array|string|null $group
+     *
+     * @phpstan-param array<array-key, string>|string|null $group
      * @return BuilderInterface
      */
     public function groupBy($group): BuilderInterface
@@ -571,6 +594,8 @@ class Builder implements \Phalcon\Mvc\Model\Query\BuilderInterface, \Phalcon\Di\
      * );
      * ```
      *
+     * @phpstan-param mvc_model_bind_params $bindParams
+     * @phpstan-param mvc_model_bind_types $bindTypes
      * @param string $conditions
      * @param array $bindParams
      * @param array $bindTypes
@@ -587,31 +612,13 @@ class Builder implements \Phalcon\Mvc\Model\Query\BuilderInterface, \Phalcon\Di\
      * $builder->inHaving("SUM(Invoices.inv_total)", [100, 200]);
      * ```
      *
+     * @phpstan-param array<array-key, mixed> $values
      * @param string $expr
      * @param array $values
      * @param string $operator
      * @return BuilderInterface
      */
     public function inHaving(string $expr, array $values, string $operator = BuilderInterface::OPERATOR_AND): BuilderInterface
-    {
-    }
-
-    /**
-     * Appends an IN condition to the current WHERE conditions
-     *
-     * ```php
-     * $builder->inWhere(
-     *     "id",
-     *     [1, 2, 3]
-     * );
-     * ```
-     *
-     * @param string $expr
-     * @param array $values
-     * @param string $operator
-     * @return BuilderInterface
-     */
-    public function inWhere(string $expr, array $values, string $operator = BuilderInterface::OPERATOR_AND): BuilderInterface
     {
     }
 
@@ -644,6 +651,26 @@ class Builder implements \Phalcon\Mvc\Model\Query\BuilderInterface, \Phalcon\Di\
      * @return BuilderInterface
      */
     public function innerJoin(string $model, ?string $conditions = null, ?string $alias = null): BuilderInterface
+    {
+    }
+
+    /**
+     * Appends an IN condition to the current WHERE conditions
+     *
+     * ```php
+     * $builder->inWhere(
+     *     "id",
+     *     [1, 2, 3]
+     * );
+     * ```
+     *
+     * @phpstan-param array<array-key, mixed> $values
+     * @param string $expr
+     * @param array $values
+     * @param string $operator
+     * @return BuilderInterface
+     */
+    public function inWhere(string $expr, array $values, string $operator = BuilderInterface::OPERATOR_AND): BuilderInterface
     {
     }
 
@@ -766,6 +793,7 @@ class Builder implements \Phalcon\Mvc\Model\Query\BuilderInterface, \Phalcon\Di\
      * $builder->notInHaving("SUM(Invoices.inv_total)", [100, 200]);
      * ```
      *
+     * @phpstan-param array<array-key, mixed> $values
      * @param string $expr
      * @param array $values
      * @param string $operator
@@ -782,6 +810,7 @@ class Builder implements \Phalcon\Mvc\Model\Query\BuilderInterface, \Phalcon\Di\
      * $builder->notInWhere("id", [1, 2, 3]);
      * ```
      *
+     * @phpstan-param array<array-key, mixed> $values
      * @param string $expr
      * @param array $values
      * @param string $operator
@@ -806,6 +835,22 @@ class Builder implements \Phalcon\Mvc\Model\Query\BuilderInterface, \Phalcon\Di\
     }
 
     /**
+     * Sets an ORDER BY condition clause
+     *
+     * ```php
+     * $builder->orderBy("Invoices.inv_title");
+     * $builder->orderBy(["1", "Invoices.inv_title"]);
+     * $builder->orderBy(["Invoices.inv_title DESC"]);
+     * ```
+     *
+     * @param mixed $orderBy
+     * @return BuilderInterface
+     */
+    public function orderBy($orderBy): BuilderInterface
+    {
+    }
+
+    /**
      * Appends a condition to the current HAVING conditions clause using an OR operator
      *
      * ```php
@@ -819,6 +864,8 @@ class Builder implements \Phalcon\Mvc\Model\Query\BuilderInterface, \Phalcon\Di\
      * );
      * ```
      *
+     * @phpstan-param mvc_model_bind_params $bindParams
+     * @phpstan-param mvc_model_bind_types $bindTypes
      * @param string $conditions
      * @param array $bindParams
      * @param array $bindTypes
@@ -853,22 +900,6 @@ class Builder implements \Phalcon\Mvc\Model\Query\BuilderInterface, \Phalcon\Di\
     }
 
     /**
-     * Sets an ORDER BY condition clause
-     *
-     * ```php
-     * $builder->orderBy("Invoices.inv_title");
-     * $builder->orderBy(["1", "Invoices.inv_title"]);
-     * $builder->orderBy(["Invoices.inv_title DESC"]);
-     * ```
-     *
-     * @param array|string $orderBy
-     * @return BuilderInterface
-     */
-    public function orderBy($orderBy): BuilderInterface
-    {
-    }
-
-    /**
      * Adds a RIGHT join to the query
      *
      * ```php
@@ -891,6 +922,7 @@ class Builder implements \Phalcon\Mvc\Model\Query\BuilderInterface, \Phalcon\Di\
     /**
      * Set default bind parameters
      *
+     * @phpstan-param mvc_model_bind_params $bindParams
      * @param array $bindParams
      * @param bool $merge
      * @return BuilderInterface
@@ -902,6 +934,7 @@ class Builder implements \Phalcon\Mvc\Model\Query\BuilderInterface, \Phalcon\Di\
     /**
      * Set default bind types
      *
+     * @phpstan-param mvc_model_bind_types $bindTypes
      * @param array $bindTypes
      * @param bool $merge
      * @return BuilderInterface
@@ -976,6 +1009,7 @@ class Builder implements \Phalcon\Mvc\Model\Query\BuilderInterface, \Phalcon\Di\
     /**
      * Appends an IN condition
      *
+     * @phpstan-param array<array-key, mixed> $values
      * @param string $clause
      * @param string $operator
      * @param string $expr
@@ -1003,6 +1037,7 @@ class Builder implements \Phalcon\Mvc\Model\Query\BuilderInterface, \Phalcon\Di\
     /**
      * Appends a NOT IN condition
      *
+     * @phpstan-param array<array-key, mixed> $values
      * @param string $clause
      * @param string $operator
      * @param string $expr

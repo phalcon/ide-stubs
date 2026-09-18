@@ -49,7 +49,8 @@ interface ViewInterface extends \Phalcon\Mvc\ViewBaseInterface
     /**
      * Returns the path of the view that is currently rendered
      *
-     * @return string|array
+     * @phpstan-return list<string>|string
+     * @return array|string
      */
     public function getActiveRenderPath(): string|array;
 
@@ -112,6 +113,7 @@ interface ViewInterface extends \Phalcon\Mvc\ViewBaseInterface
     /**
      * Register templating engines
      *
+     * @phpstan-param array<string, mixed> $engines
      * @param array $engines
      */
     public function registerEngines(array $engines);
@@ -119,6 +121,7 @@ interface ViewInterface extends \Phalcon\Mvc\ViewBaseInterface
     /**
      * Executes render process from dispatching data
      *
+     * @phpstan-param array<string, mixed> $params
      * @param string $controllerName
      * @param string $actionName
      * @param array $params

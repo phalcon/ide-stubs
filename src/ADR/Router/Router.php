@@ -15,6 +15,7 @@ use Phalcon\Contracts\ADR\ADRTypes;
 use Phalcon\Contracts\ADR\Router\Router as RouterInterface;
 use Phalcon\Contracts\ADR\Router\RouterMatch as RouterMatchInterface;
 use Phalcon\Http\RequestInterface;
+use ReflectionClass;
 
 /**
  * Convention router. `method + static path -> Action class`; the path tail
@@ -93,7 +94,10 @@ final class Router implements RouterInterface
      * Namespace descent consults the filesystem, so the list depends on the
      * action directory.
      *
-     * @return list<class-string>
+     * The names are derived, not resolved: a candidate is what the convention
+     * would call the class, whether or not that class exists.
+     *
+     * @return list<string>
      * @param string $method
      * @param string $path
      */
@@ -243,6 +247,9 @@ final class Router implements RouterInterface
     }
 
     /**
+     * The first derived candidate whose class actually exists, together with
+     * the segments the walk did not consume.
+     *
      * @phpstan-return adr_located_route|null
      * @param string $method
      * @param string $path

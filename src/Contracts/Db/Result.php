@@ -11,6 +11,8 @@ namespace Phalcon\Contracts\Db;
 
 /**
  * Canonical contract for Phalcon\Db result objects.
+ *
+ * @phpstan-import-type db_rows from DbTypes
  */
 interface Result
 {
@@ -45,6 +47,7 @@ interface Result
      * method is affected by the active fetch flag set using
      * `Phalcon\Db\Result\Pdo::setFetchMode()`
      *
+     * @phpstan-return db_rows
      * @return array
      */
     public function fetchAll(): array;

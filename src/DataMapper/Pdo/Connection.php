@@ -9,6 +9,7 @@
  */
 namespace Phalcon\DataMapper\Pdo;
 
+use Phalcon\Contracts\DataMapper\DataMapperTypes;
 use Phalcon\DataMapper\Pdo\Connection\AbstractConnection;
 use Phalcon\DataMapper\Pdo\Exception\DriverNotSupported;
 use Phalcon\DataMapper\Pdo\Profiler\Profiler;
@@ -17,11 +18,18 @@ use Phalcon\DataMapper\Pdo\Profiler\ProfilerInterface;
 /**
  * Provides array quoting, profiling, a new `perform()` method, new `fetch()`
  * methods
+ *
+ * @phpstan-import-type datamapper_connection_arguments from DataMapperTypes
+ * @phpstan-import-type datamapper_pdo_options from DataMapperTypes
+ * @phpstan-import-type datamapper_queries from DataMapperTypes
  */
 class Connection extends AbstractConnection
 {
     /**
      * @var array
+     *
+     * @phpstan-var datamapper_connection_arguments
+     * @psalm-suppress InvalidPropertyAssignmentValue
      */
     protected $arguments = [];
 
@@ -37,6 +45,9 @@ class Connection extends AbstractConnection
      * @param array             $options
      * @param array             $queries
      * @param ProfilerInterface $profiler
+     *
+     * @phpstan-param datamapper_pdo_options $options
+     * @phpstan-param datamapper_queries     $queries
      */
     public function __construct(string $dsn, ?string $username = null, ?string $password = null, array $options = [], array $queries = [], ?\Phalcon\DataMapper\Pdo\Profiler\ProfilerInterface $profiler = null)
     {
@@ -46,6 +57,8 @@ class Connection extends AbstractConnection
      * The purpose of this method is to hide sensitive data from stack traces.
      *
      * @return array
+     *
+     * @phpstan-return array{arguments: datamapper_connection_arguments}
      */
     public function __debugInfo(): array
     {

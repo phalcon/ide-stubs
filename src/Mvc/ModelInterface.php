@@ -9,6 +9,7 @@
  */
 namespace Phalcon\Mvc;
 
+use Phalcon\Contracts\Mvc\MvcTypes;
 use Phalcon\Db\Adapter\AdapterInterface;
 use Phalcon\Di\DiInterface;
 use Phalcon\Messages\MessageInterface;
@@ -25,40 +26,28 @@ use Phalcon\Mvc\Model\TransactionInterface;
  * Interface for Phalcon\Mvc\Model
  *
  * @template T
+ *
+ * @phpstan-import-type mvc_model_data from MvcTypes
+ * @phpstan-import-type mvc_model_parameters from MvcTypes
+ * @phpstan-import-type mvc_model_snapshot from MvcTypes
  */
 interface ModelInterface
 {
-    /**
-     * Appends a customized message on the validation process
-     *
-     * @param \Phalcon\Messages\MessageInterface $message
-     * @return ModelInterface
-     */
-    public function appendMessage(\Phalcon\Messages\MessageInterface $message): ModelInterface;
-
-    /**
-     * Assigns values to a model from an array
-     *
-     * @param array $data
-     * @param mixed $whiteList
-     * @param mixed $dataColumnMap Array to transform keys of data to another
-     *
-     * @return ModelInterface
-     */
-    public function assign(array $data, $whiteList = null, $dataColumnMap = null): ModelInterface;
-
     /**
      * Allows to calculate the average value on a column matching the specified
      * conditions
      *
      * @param array $parameters
      * @return ResultsetInterface|float
+     *
+     * @phpstan-param mvc_model_parameters $parameters
      */
     public static function average(array $parameters = []): ResultsetInterface|float;
 
     /**
      * Assigns values to a model from an array returning a new model
      *
+     * @phpstan-param mvc_model_data $data
      * @param ModelInterface $base
      * @param array $data
      * @param int $dirtyState
@@ -74,6 +63,8 @@ interface ModelInterface
      * @param int $dirtyState
      * @param bool $keepSnapshots *
      * @return ModelInterface
+     *
+     * @phpstan-param mvc_model_data $data
      * @param array $data
      */
     public static function cloneResultMap($base, array $data, $columnMap, int $dirtyState = 0, bool $keepSnapshots = false): ModelInterface;
@@ -81,7 +72,8 @@ interface ModelInterface
     /**
      * Returns an hydrated result based on the data and the column map
      *
-     * @param array $columnMap
+     * @param array $columnMap *
+     * @phpstan-param mvc_model_data $data
      * @param array $data
      * @param int $hydrationMode
      */
@@ -94,26 +86,11 @@ interface ModelInterface
      * instance for when the GROUP condition is used. The results will
      * contain the count of each group.
      *
-     * @param array|string|null $parameters
+     * @param array|string|null $parameters *
+     * @phpstan-param mvc_model_parameters $parameters
      * @return int|ResultsetInterface
      */
     public static function count($parameters = null): ResultsetInterface|int;
-
-    /**
-     * Inserts a model instance. If the instance already exists in the
-     * persistence it will throw an exception. Returning true on success or
-     * false otherwise.
-     *
-     * @return bool
-     */
-    public function create(): bool;
-
-    /**
-     * Deletes a model instance. Returning true on success or false otherwise.
-     *
-     * @return bool
-     */
-    public function delete(): bool;
 
     /**
      * Allows to query a set of records that match the specified conditions.
@@ -142,6 +119,77 @@ interface ModelInterface
      * @see https://github.com/phalcon/cphalcon/issues/15883
      */
     public static function findFirst($parameters = null): mixed;
+
+    /**
+     * Allows to get the maximum value of a column that match the specified
+     * conditions
+     *
+     * @param array $parameters
+     * @return mixed
+     */
+    public static function maximum($parameters = null): mixed;
+
+    /**
+     * Allows to get the minimum value of a column that match the specified
+     * conditions
+     *
+     * @param array $parameters
+     * @return mixed
+     */
+    public static function minimum($parameters = null): mixed;
+
+    /**
+     * Create a criteria for a specific model
+     *
+     * @param \Phalcon\Di\DiInterface|null $container
+     * @return CriteriaInterface
+     */
+    public static function query(?\Phalcon\Di\DiInterface $container = null): CriteriaInterface;
+
+    /**
+     * Allows to calculate a sum on a column that match the specified conditions
+     *
+     * @param array $parameters
+     * @return float|ResultsetInterface
+     */
+    public static function sum($parameters = null): ResultsetInterface|float;
+
+    /**
+     * Appends a customized message on the validation process
+     *
+     * @param \Phalcon\Messages\MessageInterface $message
+     * @return ModelInterface
+     */
+    public function appendMessage(\Phalcon\Messages\MessageInterface $message): ModelInterface;
+
+    /**
+     * Assigns values to a model from an array
+     *
+     * @param array $data
+     * @param mixed $whiteList
+     * @param mixed $dataColumnMap Array to transform keys of data to another
+     *
+     * @return ModelInterface
+     *
+     * @phpstan-param mvc_model_data $data
+     */
+    public function assign(array $data, $whiteList = null, $dataColumnMap = null): ModelInterface;
+
+    /**
+     * Inserts a model instance. If the instance already exists in the
+     * persistence it will throw an exception. Returning true on success or
+     * false otherwise.
+     *
+     * @return bool
+     */
+    public function create(): bool;
+
+    /**
+     * Deletes a model instance. Returning true on success or false otherwise.
+     *
+     * @return bool
+     */
+    public function delete(): bool;
 
     /**
      * Fires an event, implicitly calls behaviors and listeners in the events
@@ -244,32 +292,6 @@ interface ModelInterface
     public function getWriteConnectionService(): string;
 
     /**
-     * Allows to get the maximum value of a column that match the specified
-     * conditions
-     *
-     * @param array $parameters
-     * @return mixed
-     */
-    public static function maximum($parameters = null): mixed;
-
-    /**
-     * Allows to get the minimum value of a column that match the specified
-     * conditions
-     *
-     * @param array $parameters
-     * @return mixed
-     */
-    public static function minimum($parameters = null): mixed;
-
-    /**
-     * Create a criteria for a specific model
-     *
-     * @param \Phalcon\Di\DiInterface|null $container
-     * @return CriteriaInterface
-     */
-    public static function query(?\Phalcon\Di\DiInterface $container = null): CriteriaInterface;
-
-    /**
      * Refreshes the model attributes re-querying the record from the database
      *
      * @return ModelInterface
@@ -313,7 +335,8 @@ interface ModelInterface
      * Sets the record's snapshot data. This method is used internally to set
      * snapshot data when the model was set up to keep snapshot data
      *
-     * @param array $columnMap
+     * @param array $columnMap *
+     * @phpstan-param mvc_model_data $data
      * @param array $data
      * @return void
      */
@@ -323,7 +346,8 @@ interface ModelInterface
      * Marks one or more many-to-many relationships to be synchronized (or not)
      * on the next save() call.
      *
-     * @param string|array|null $elements
+     * @param string|array|null $elements *
+     * @phpstan-param mvc_model_data $elements
      * @param bool $enabled
      * @return ModelInterface
      */
@@ -352,14 +376,6 @@ interface ModelInterface
      * @return void
      */
     public function skipOperation(bool $skip): void;
-
-    /**
-     * Allows to calculate a sum on a column that match the specified conditions
-     *
-     * @param array $parameters
-     * @return float|ResultsetInterface
-     */
-    public static function sum($parameters = null): ResultsetInterface|float;
 
     /**
      * Updates a model instance. If the instance does not exist in the

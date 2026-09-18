@@ -12,8 +12,6 @@ namespace Phalcon\Filter\Sanitize;
 use Phalcon\Contracts\Filter\Sanitizer;
 
 /**
- * Phalcon\Filter\Sanitize\LowerFirst
- *
  * Sanitizes a value to lcfirst
  */
 class LowerFirst implements \Phalcon\Contracts\Filter\Sanitizer

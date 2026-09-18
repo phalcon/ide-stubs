@@ -9,6 +9,7 @@
  */
 namespace Phalcon\Db;
 
+use Phalcon\Contracts\Db\DbTypes;
 use Phalcon\Db\Exceptions\InvalidIndexColumns;
 use Phalcon\Db\Exceptions\InvalidIndexDirections;
 use Phalcon\Db\Exceptions\InvalidIndexWhere;
@@ -55,6 +56,10 @@ use Phalcon\Db\Exceptions\InvalidIndexWhere;
  * $connection->addIndex("co_invoices", null, $primary);
  * $connection->addIndex("co_invoices", null, $hidden);
  * ```
+ *
+ * @phpstan-import-type db_index_columns from DbTypes
+ * @phpstan-import-type db_index_definition from DbTypes
+ * @phpstan-import-type db_index_directions from DbTypes
  */
 class Index implements \Phalcon\Db\IndexInterface
 {
@@ -62,6 +67,8 @@ class Index implements \Phalcon\Db\IndexInterface
      * Index columns
      *
      * @var array
+     *
+     * @phpstan-var db_index_columns
      */
     protected $columns;
 
@@ -82,6 +89,8 @@ class Index implements \Phalcon\Db\IndexInterface
      * the columns list default to `ASC` for the missing positions.
      *
      * @var array
+     *
+     * @phpstan-var db_index_directions
      */
     protected $directions = [];
 
@@ -128,6 +137,7 @@ class Index implements \Phalcon\Db\IndexInterface
      * `columns` key in the second argument; when present, the third
      * positional `type` argument is ignored in favor of the definition.
      *
+     * @phpstan-param db_index_columns|db_index_definition $columnsOrDefinition
      * @param string $name
      * @param array $columnsOrDefinition
      * @param string $type
@@ -139,6 +149,7 @@ class Index implements \Phalcon\Db\IndexInterface
     /**
      * Index columns
      *
+     * @phpstan-return db_index_columns
      * @return array
      */
     public function getColumns(): array
@@ -152,6 +163,7 @@ class Index implements \Phalcon\Db\IndexInterface
      * entries are aligned with `getColumns()`; missing trailing positions
      * default to `ASC` at emission time.
      *
+     * @phpstan-return db_index_directions
      * @return array
      */
     public function getDirections(): array

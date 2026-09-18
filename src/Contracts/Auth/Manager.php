@@ -15,7 +15,7 @@ use Phalcon\Contracts\Auth\Adapter\Adapter;
 use Phalcon\Contracts\Auth\Guard\Guard;
 
 /**
- * @phpstan-import-type AuthCredentials from Adapter
+ * @phpstan-import-type auth_credentials from AuthTypes
  */
 interface Manager
 {
@@ -50,7 +50,7 @@ interface Manager
     public function addGuard(string $nameGuard, \Phalcon\Contracts\Auth\Guard\Guard $guard, bool $isDefault = false): self;
 
     /**
-     * @phpstan-param AuthCredentials $credentials
+     * @phpstan-param auth_credentials $credentials
      *
      * @throws Exception
      * @param array $credentials
@@ -153,7 +153,7 @@ interface Manager
      * Validates the given credentials against the default guard without
      * logging in.
      *
-     * @phpstan-param AuthCredentials $credentials
+     * @phpstan-param auth_credentials $credentials
      * @param array $credentials
      * @return bool
      */

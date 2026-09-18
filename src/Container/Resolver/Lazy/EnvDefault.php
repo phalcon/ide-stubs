@@ -59,7 +59,6 @@ class EnvDefault extends \Phalcon\Container\Resolver\Lazy\Env
      * Resolve an environment variable, returning the default if not defined
      *
      * @param object $ioc
-     *
      * @return mixed
      */
     public function resolve($ioc): mixed

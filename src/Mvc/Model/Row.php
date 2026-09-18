@@ -25,6 +25,7 @@ class Row extends \stdClass implements \Phalcon\Mvc\EntityInterface, \Phalcon\Mv
     /**
      * Serializes the object for json_encode
      *
+     * @phpstan-return array<array-key, mixed>
      * @return array
      */
     public function jsonSerialize(): array
@@ -37,6 +38,8 @@ class Row extends \stdClass implements \Phalcon\Mvc\EntityInterface, \Phalcon\Mv
      * presence is the contract, not value truthiness.
      *
      * @param string|int $index
+     *
+     * @phpstan-param array-key $index
      * @return bool
      */
     public function offsetExists($index): bool
@@ -48,13 +51,16 @@ class Row extends \stdClass implements \Phalcon\Mvc\EntityInterface, \Phalcon\Mv
      *
      * @param string|int $index *
      * @return string|ModelInterface
+     *
+     * @phpstan-param array-key $index
      */
     public function offsetGet($index): mixed
     {
     }
 
     /**
-     * Rows cannot be changed. It has only been implemented to meet the definition of the ArrayAccess interface
+     * Rows cannot be changed. It has only been implemented to meet the
+     * definition of the ArrayAccess interface
      *
      * @param string|int $offsetSet
      * @param ModelInterface $value
@@ -66,7 +72,8 @@ class Row extends \stdClass implements \Phalcon\Mvc\EntityInterface, \Phalcon\Mv
     }
 
     /**
-     * Rows cannot be changed. It has only been implemented to meet the definition of the ArrayAccess interface
+     * Rows cannot be changed. It has only been implemented to meet the
+     * definition of the ArrayAccess interface
      *
      * @param string|int $offset
      * @return void
@@ -102,6 +109,7 @@ class Row extends \stdClass implements \Phalcon\Mvc\EntityInterface, \Phalcon\Mv
     /**
      * Returns the instance as an array representation
      *
+     * @phpstan-return array<array-key, mixed>
      * @return array
      */
     public function toArray(): array

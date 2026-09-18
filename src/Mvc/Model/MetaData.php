@@ -10,6 +10,7 @@
 namespace Phalcon\Mvc\Model;
 
 use Phalcon\Cache\Adapter\AdapterInterface as CacheAdapterInterface;
+use Phalcon\Contracts\Mvc\MvcTypes;
 use Phalcon\Di\DiInterface;
 use Phalcon\Di\InjectionAwareInterface;
 use Phalcon\Mvc\Model\MetaData\Exceptions\ContainerRequired;
@@ -23,8 +24,6 @@ use Phalcon\Support\Settings;
 use Phalcon\Traits\Support\Helper\Arr\GetTrait;
 
 /**
- * Phalcon\Mvc\Model\MetaData
- *
  * Because Phalcon\Mvc\Model requires meta-data like field names, data types,
  * primary keys, etc. This component collect them and store for further
  * querying by Phalcon\Mvc\Model. Phalcon\Mvc\Model\MetaData can also use
@@ -75,6 +74,17 @@ use Phalcon\Traits\Support\Helper\Arr\GetTrait;
  * |------|-----------------------------|---------------------|
  * | 0    | `MODELS_COLUMN_MAP`         | column => attribute |
  * | 1    | `MODELS_REVERSE_COLUMN_MAP` | attribute => column |
+ *
+ * @phpstan-import-type mvc_metadata_column_map from MvcTypes
+ * @phpstan-import-type mvc_metadata_column_map_store from MvcTypes
+ * @phpstan-import-type mvc_metadata_column_maps from MvcTypes
+ * @phpstan-import-type mvc_metadata_default_values from MvcTypes
+ * @phpstan-import-type mvc_metadata_index from MvcTypes
+ * @phpstan-import-type mvc_metadata_model from MvcTypes
+ * @phpstan-import-type mvc_metadata_slot from MvcTypes
+ * @phpstan-import-type mvc_metadata_store from MvcTypes
+ * @phpstan-import-type mvc_metadata_types from MvcTypes
+ * @phpstan-import-type mvc_model_attributes from MvcTypes
  */
 abstract class MetaData implements \Phalcon\Di\InjectionAwareInterface, \Phalcon\Mvc\Model\MetaDataInterface
 {
@@ -160,25 +170,19 @@ abstract class MetaData implements \Phalcon\Di\InjectionAwareInterface, \Phalcon
      */
     const int MODELS_REVERSE_COLUMN_MAP = 1;
 
-    /**
-     * @var CacheAdapterInterface|null
-     */
-    protected $adapter = null;
+    protected ?\Phalcon\Cache\Adapter\AdapterInterface $adapter = null;
 
     /**
-     * @var array
+     * @phpstan-var mvc_metadata_column_map_store
      */
-    protected $columnMap = [];
+    protected array $columnMap = [];
+
+    protected ?\Phalcon\Di\DiInterface $container = null;
 
     /**
-     * @var DiInterface|null
+     * @phpstan-var mvc_metadata_store
      */
-    protected $container = null;
-
-    /**
-     * @var array
-     */
-    protected $metaData = [];
+    protected array $metaData = [];
 
     /**
      * Holds metadata index writes that arrived before the model's metadata was
@@ -186,14 +190,11 @@ abstract class MetaData implements \Phalcon\Di\InjectionAwareInterface, \Phalcon
      * initialize() while the child's source had not yet been set).  Applied
      * inside initializeMetaData() after the real schema is loaded.
      *
-     * @var array
+     * @phpstan-var mvc_metadata_store
      */
-    protected $pendingMetaDataWrites = [];
+    protected array $pendingMetaDataWrites = [];
 
-    /**
-     * @var StrategyInterface|null
-     */
-    protected $strategy = null;
+    protected ?\Phalcon\Mvc\Model\MetaData\Strategy\StrategyInterface $strategy = null;
 
     /**
      * Return the internal cache adapter
@@ -215,6 +216,7 @@ abstract class MetaData implements \Phalcon\Di\InjectionAwareInterface, \Phalcon
      * );
      * ```
      *
+     * @phpstan-return mvc_model_attributes
      * @param \Phalcon\Mvc\ModelInterface $model
      * @return array
      */
@@ -233,6 +235,7 @@ abstract class MetaData implements \Phalcon\Di\InjectionAwareInterface, \Phalcon
      * );
      * ```
      *
+     * @phpstan-return array<string, mixed>
      * @param \Phalcon\Mvc\ModelInterface $model
      * @return array
      */
@@ -251,6 +254,7 @@ abstract class MetaData implements \Phalcon\Di\InjectionAwareInterface, \Phalcon
      * );
      * ```
      *
+     * @phpstan-return array<string, mixed>
      * @param \Phalcon\Mvc\ModelInterface $model
      * @return array
      */
@@ -269,6 +273,7 @@ abstract class MetaData implements \Phalcon\Di\InjectionAwareInterface, \Phalcon
      * );
      * ```
      *
+     * @phpstan-return mvc_metadata_types
      * @param \Phalcon\Mvc\ModelInterface $model
      * @return array
      */
@@ -287,6 +292,7 @@ abstract class MetaData implements \Phalcon\Di\InjectionAwareInterface, \Phalcon
      * );
      * ```
      *
+     * @phpstan-return mvc_metadata_column_map|null
      * @param \Phalcon\Mvc\ModelInterface $model
      * @return array|null
      */
@@ -305,15 +311,6 @@ abstract class MetaData implements \Phalcon\Di\InjectionAwareInterface, \Phalcon
     }
 
     /**
-     * Returns the DependencyInjector container
-     *
-     * @return DiInterface
-     */
-    public function getDI(): DiInterface
-    {
-    }
-
-    /**
      * Returns attributes and their data types
      *
      * ```php
@@ -324,6 +321,7 @@ abstract class MetaData implements \Phalcon\Di\InjectionAwareInterface, \Phalcon
      * );
      * ```
      *
+     * @phpstan-return mvc_metadata_types
      * @param \Phalcon\Mvc\ModelInterface $model
      * @return array
      */
@@ -342,6 +340,7 @@ abstract class MetaData implements \Phalcon\Di\InjectionAwareInterface, \Phalcon
      * );
      * ```
      *
+     * @phpstan-return mvc_metadata_types
      * @param \Phalcon\Mvc\ModelInterface $model
      * @return array
      */
@@ -360,10 +359,20 @@ abstract class MetaData implements \Phalcon\Di\InjectionAwareInterface, \Phalcon
      * );
      * ```
      *
+     * @phpstan-return mvc_metadata_default_values
      * @param \Phalcon\Mvc\ModelInterface $model
      * @return array
      */
     public function getDefaultValues(\Phalcon\Mvc\ModelInterface $model): array
+    {
+    }
+
+    /**
+     * Returns the DependencyInjector container
+     *
+     * @return DiInterface
+     */
+    public function getDI(): DiInterface
     {
     }
 
@@ -378,6 +387,7 @@ abstract class MetaData implements \Phalcon\Di\InjectionAwareInterface, \Phalcon
      * );
      * ```
      *
+     * @phpstan-return array<string, mixed>
      * @param \Phalcon\Mvc\ModelInterface $model
      * @return array
      */
@@ -416,6 +426,7 @@ abstract class MetaData implements \Phalcon\Di\InjectionAwareInterface, \Phalcon
     /**
      * Returns the model UniqueID based on model and array row primary key(s) value(s)
      *
+     * @phpstan-param array<string, scalar|null> $row
      * @param \Phalcon\Mvc\ModelInterface $model
      * @param array $row
      * @return string|null
@@ -435,6 +446,7 @@ abstract class MetaData implements \Phalcon\Di\InjectionAwareInterface, \Phalcon
      * );
      * ```
      *
+     * @phpstan-return mvc_model_attributes
      * @param \Phalcon\Mvc\ModelInterface $model
      * @return array
      */
@@ -453,6 +465,7 @@ abstract class MetaData implements \Phalcon\Di\InjectionAwareInterface, \Phalcon
      * );
      * ```
      *
+     * @phpstan-return mvc_model_attributes
      * @param \Phalcon\Mvc\ModelInterface $model
      * @return array
      */
@@ -471,6 +484,7 @@ abstract class MetaData implements \Phalcon\Di\InjectionAwareInterface, \Phalcon
      * );
      * ```
      *
+     * @phpstan-return mvc_model_attributes
      * @param \Phalcon\Mvc\ModelInterface $model
      * @return array
      */
@@ -489,6 +503,7 @@ abstract class MetaData implements \Phalcon\Di\InjectionAwareInterface, \Phalcon
      * );
      * ```
      *
+     * @phpstan-return mvc_metadata_column_map|null
      * @param \Phalcon\Mvc\ModelInterface $model
      * @return array|null
      */
@@ -554,6 +569,7 @@ abstract class MetaData implements \Phalcon\Di\InjectionAwareInterface, \Phalcon
     /**
      * Reads metadata from the adapter
      *
+     * @phpstan-return mvc_metadata_index|null
      * @param mixed $key
      * @return array|null
      */
@@ -572,6 +588,7 @@ abstract class MetaData implements \Phalcon\Di\InjectionAwareInterface, \Phalcon
      * );
      * ```
      *
+     * @phpstan-return mvc_metadata_column_maps|null
      * @param \Phalcon\Mvc\ModelInterface $model
      * @return array|null
      */
@@ -591,11 +608,12 @@ abstract class MetaData implements \Phalcon\Di\InjectionAwareInterface, \Phalcon
      * );
      * ```
      *
+     * @phpstan-return mvc_metadata_slot
      * @param \Phalcon\Mvc\ModelInterface $model
      * @param int $index
-     * @return array|null
+     * @return array|bool|string|null
      */
-    final public function readColumnMapIndex(\Phalcon\Mvc\ModelInterface $model, int $index): array|null
+    final public function readColumnMapIndex(\Phalcon\Mvc\ModelInterface $model, int $index): bool|string|array|null
     {
     }
 
@@ -610,6 +628,7 @@ abstract class MetaData implements \Phalcon\Di\InjectionAwareInterface, \Phalcon
      * );
      * ```
      *
+     * @phpstan-return mvc_metadata_model|null
      * @param \Phalcon\Mvc\ModelInterface $model
      * @return array|null
      */
@@ -629,11 +648,12 @@ abstract class MetaData implements \Phalcon\Di\InjectionAwareInterface, \Phalcon
      * );
      * ```
      *
+     * @phpstan-return mvc_metadata_slot
      * @param \Phalcon\Mvc\ModelInterface $model
      * @param int $index
-     * @return array|string|null
+     * @return array|bool|string|null
      */
-    final public function readMetaDataIndex(\Phalcon\Mvc\ModelInterface $model, int $index): string|array|null
+    final public function readMetaDataIndex(\Phalcon\Mvc\ModelInterface $model, int $index): bool|string|array|null
     {
     }
 
@@ -662,6 +682,7 @@ abstract class MetaData implements \Phalcon\Di\InjectionAwareInterface, \Phalcon
      * );
      * ```
      *
+     * @phpstan-param array<string, mixed> $attributes
      * @param \Phalcon\Mvc\ModelInterface $model
      * @param array $attributes
      * @return void
@@ -682,6 +703,7 @@ abstract class MetaData implements \Phalcon\Di\InjectionAwareInterface, \Phalcon
      * );
      * ```
      *
+     * @phpstan-param array<string, mixed> $attributes
      * @param \Phalcon\Mvc\ModelInterface $model
      * @param array $attributes
      * @return void
@@ -701,6 +723,8 @@ abstract class MetaData implements \Phalcon\Di\InjectionAwareInterface, \Phalcon
     }
 
     /**
+     * Initialize old behavior for compatability
+     *
      * Set the attributes that allow empty string values
      *
      * ```php
@@ -712,6 +736,7 @@ abstract class MetaData implements \Phalcon\Di\InjectionAwareInterface, \Phalcon
      * );
      * ```
      *
+     * @phpstan-param array<string, mixed> $attributes
      * @param \Phalcon\Mvc\ModelInterface $model
      * @param array $attributes
      * @return void
@@ -733,6 +758,7 @@ abstract class MetaData implements \Phalcon\Di\InjectionAwareInterface, \Phalcon
     /**
      * Writes the metadata to adapter
      *
+     * @phpstan-param mvc_metadata_index $data
      * @param string $key
      * @param array $data
      * @return void

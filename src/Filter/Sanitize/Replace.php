@@ -12,20 +12,16 @@ namespace Phalcon\Filter\Sanitize;
 use Phalcon\Contracts\Filter\Sanitizer;
 
 /**
- * Phalcon\Filter\Sanitize\Replace
- *
  * Sanitizes a value replacing parts of a string
  */
 class Replace implements \Phalcon\Contracts\Filter\Sanitizer
 {
     /**
-     * @param mixed $input
-     * @param mixed $source
-     * @param mixed $target
+     * @param string|string[] $input
+     * @param string|string[] $from
+     * @param string|string[] $to
      *
      * @return string|string[]
-     * @param mixed $from
-     * @param mixed $to
      */
     public function __invoke($input, $from, $to)
     {

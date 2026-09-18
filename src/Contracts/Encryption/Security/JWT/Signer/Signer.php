@@ -33,7 +33,6 @@ interface Signer
      *
      * @param string $payload
      * @param string $passphrase
-     *
      * @return string
      */
     public function sign(string $payload, string $passphrase): string;
@@ -44,7 +43,6 @@ interface Signer
      * @param string $source
      * @param string $payload
      * @param string $passphrase
-     *
      * @return bool
      */
     public function verify(string $source, string $payload, string $passphrase): bool;

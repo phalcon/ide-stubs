@@ -64,13 +64,12 @@ class Simple extends Injectable implements \Phalcon\Mvc\ViewBaseInterface, \Phal
 
     /**
      * @var EngineInterface[]|false
+     *
+     * @phpstan-var array<string, EngineInterface>|false
      */
     protected $engines = false;
 
-    /**
-     * @var ManagerInterface|null
-     */
-    protected $eventsManager;
+    protected ?\Phalcon\Events\ManagerInterface $eventsManager = null;
 
     /**
      * @var array
@@ -85,7 +84,8 @@ class Simple extends Injectable implements \Phalcon\Mvc\ViewBaseInterface, \Phal
     /**
      * Phalcon\Mvc\View\Simple constructor
      *
-     * @param array $options
+     * @param array $options *
+     * @phpstan-param array<string, mixed> $options
      */
     public function __construct(array $options = [])
     {
@@ -187,6 +187,8 @@ class Simple extends Injectable implements \Phalcon\Mvc\ViewBaseInterface, \Phal
      * ```
      *
      * @return void
+     *
+     * @phpstan-param array<string, mixed> $engines
      * @param array $engines
      */
     public function registerEngines(array $engines): void
@@ -197,6 +199,8 @@ class Simple extends Injectable implements \Phalcon\Mvc\ViewBaseInterface, \Phal
      * Renders a view
      *
      * @return string
+     *
+     * @phpstan-param array<string, mixed> $params
      * @param string $path
      * @param array $params
      */
@@ -222,6 +226,8 @@ class Simple extends Injectable implements \Phalcon\Mvc\ViewBaseInterface, \Phal
      * ```
      *
      * @return static
+     *
+     * @phpstan-return static
      * @param string $key
      * @param mixed $value
      */
@@ -241,6 +247,8 @@ class Simple extends Injectable implements \Phalcon\Mvc\ViewBaseInterface, \Phal
      * ```
      *
      * @return static
+     *
+     * @phpstan-param array<string, mixed> $params
      * @param array $params
      * @param bool $merge
      */
@@ -263,6 +271,8 @@ class Simple extends Injectable implements \Phalcon\Mvc\ViewBaseInterface, \Phal
      * Phalcon\Mvc\View\Engine\Php
      *
      * @return array
+     *
+     * @phpstan-return array<string, EngineInterface>
      */
     protected function loadTemplateEngines(): array
     {

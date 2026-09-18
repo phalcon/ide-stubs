@@ -12,7 +12,9 @@ namespace Phalcon\Container\Resolver;
 use Closure;
 use Phalcon\Container\Exceptions\CannotResolveParameter;
 use Phalcon\Container\Resolver\Lazy\Lazy;
+use Phalcon\Contracts\Container\ContainerTypes;
 use Phalcon\Contracts\Container\Resolver\ResolverService;
+use Phalcon\Contracts\Container\Service\Collection;
 use ReflectionClass;
 use ReflectionException;
 use ReflectionFunction;
@@ -22,32 +24,9 @@ use ReflectionParameter;
 use ReflectionType;
 
 /**
- * This file is part of the Phalcon Framework.
- *
- * (c) Phalcon Team <team@phalcon.io>
- *
- * For the full copyright and license information, please view the LICENSE.txt
- * file that was distributed with this source code.
- *
- * Implementation of this file has been heavily influenced by CapsulePHP.
- * Additionally, there are implementations from ioc-interop, which is a
- * Composer dependency, and from service-interop and resolver-interop. The
- * latter two are copied and re-implemented here: service-interop is not yet
- * published on Packagist, and resolver-interop requires PHP 8.4 (this project
- * targets PHP 8.1). Once both packages become available and compatible, the
- * copies will be replaced with the actual Composer dependencies.
- *
- * @link    https://github.com/capsulephp/di
- * @license https://github.com/capsulephp/di/blob/3.x/LICENSE.md
- *
- * @link    https://github.com/ioc-interop/interface
- * @license https://github.com/ioc-interop/interface/blob/1.x/LICENSE.md
- *
- * @link    https://github.com/service-interop/interface
- * @license https://github.com/service-interop/interface/blob/1.x/LICENSE.md
- *
- * @link    https://github.com/resolver-interop/interface/tree/1.x
- * @license https://github.com/resolver-interop/interface/blob/1.x/LICENSE.md
+ * @phpstan-import-type container_arguments from ContainerTypes
+ * @phpstan-import-type container_reflection_parameters from ContainerTypes
+ * @phpstan-import-type container_resolved_arguments from ContainerTypes
  */
 class Resolver implements \Phalcon\Contracts\Container\Resolver\ResolverService
 {
@@ -55,7 +34,6 @@ class Resolver implements \Phalcon\Contracts\Container\Resolver\ResolverService
      * Is this a resolvable class?
      *
      * @param string $className
-     *
      * @return bool
      */
     public function isResolvableClass(string $className): bool
@@ -65,13 +43,13 @@ class Resolver implements \Phalcon\Contracts\Container\Resolver\ResolverService
     /**
      * Resolve a call
      *
-     * @param object   $ioc
-     * @param callable $callable
-     * @param array    $arguments
+     * @phpstan-param container_arguments $arguments
      *
      * @return mixed
      * @throws ReflectionException
+     * @param object $ioc
      * @param callable $callableObject
+     * @param array $arguments
      */
     public function resolveCall($ioc, $callableObject, array $arguments): mixed
     {
@@ -80,12 +58,14 @@ class Resolver implements \Phalcon\Contracts\Container\Resolver\ResolverService
     /**
      * Resolve a class
      *
+     * @phpstan-param class-string        $className
+     * @phpstan-param container_arguments $arguments
+     *
+     * @throws ReflectionException
      * @param object $ioc
      * @param string $className
-     * @param array  $arguments
-     *
+     * @param array $arguments
      * @return object
-     * @throws ReflectionException
      */
     public function resolveClass($ioc, string $className, array $arguments): object
     {
@@ -94,13 +74,11 @@ class Resolver implements \Phalcon\Contracts\Container\Resolver\ResolverService
     /**
      * Resolve a method
      *
-     * @param object           $ioc
-     * @param ReflectionMethod $method
-     * @param object           $object
-     *
-     * @return void
      * @throws ReflectionException
+     * @param object $ioc
+     * @param \ReflectionMethod $method
      * @param object $instance
+     * @return void
      */
     public function resolveMethod($ioc, \ReflectionMethod $method, $instance): void
     {
@@ -109,18 +87,25 @@ class Resolver implements \Phalcon\Contracts\Container\Resolver\ResolverService
     /**
      * Resolve parameters
      *
-     * @param object              $ioc
-     * @param ReflectionParameter $parameter
-     *
-     * @return mixed
      * @throws CannotResolveParameter
      * @throws ReflectionException
+     * @param object $ioc
+     * @param \ReflectionParameter $parameter
+     * @return mixed
      */
     public function resolveParameter($ioc, \ReflectionParameter $parameter): mixed
     {
     }
 
     /**
+     * Resolve parameters
+     *
+     * @phpstan-param container_reflection_parameters $parameters
+     * @phpstan-param container_arguments             $arguments
+     *
+     * @phpstan-return container_resolved_arguments
+     * @throws CannotResolveParameter
+     * @throws ReflectionException
      * @param object $ioc
      * @param array $parameters
      * @param array $arguments

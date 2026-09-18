@@ -12,9 +12,8 @@ namespace Phalcon\Config\Adapter;
 use Phalcon\Config\Config;
 use Phalcon\Config\ConfigFactory;
 use Phalcon\Config\ConfigInterface;
-use Phalcon\Config\Exception;
 use Phalcon\Config\Exceptions\GroupedAdapterRequiresArray;
-use Phalcon\Factory\Exception as FactoryException;
+use Phalcon\Contracts\Config\ConfigTypes;
 
 /**
  * Reads multiple files (or arrays) and merges them all together.
@@ -66,18 +65,23 @@ use Phalcon\Factory\Exception as FactoryException;
  *     ],
  * );
  * ```
+ *
+ * @phpstan-import-type config_grouped_entries from ConfigTypes
+ * @phpstan-import-type config_options from ConfigTypes
  */
 class Grouped extends Config
 {
     /**
-     * Phalcon\Config\Adapter\Grouped constructor
+     * Grouped constructor.
      *
-     * @param array              $arrayConfig
-     * @param string             $defaultAdapter
-     * @param ConfigFactory|null $factory        Factory used to load file
-     *                                           based fragments; a default
-     *                                           one is created when not
-     *                                           provided
+     * @phpstan-param config_grouped_entries $arrayConfig
+     *
+     * @param ConfigFactory|null $factory Factory used to load file
+     *                                    based fragments; a default
+     *                                    one is created when not
+     *                                    provided
+     * @param array $arrayConfig
+     * @param string $defaultAdapter
      */
     public function __construct(array $arrayConfig, string $defaultAdapter = 'php', ?\Phalcon\Config\ConfigFactory $factory = null)
     {

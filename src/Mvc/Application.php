@@ -23,8 +23,6 @@ use Phalcon\Mvc\Router\RouteInterface;
 use Phalcon\Traits\Php\FileTrait;
 
 /**
- * Phalcon\Mvc\Application
- *
  * This component encapsulates all the complex operations behind instantiating
  * every component needed and integrating it with the rest to allow the MVC
  * pattern to operate as desired.
@@ -73,20 +71,11 @@ class Application extends AbstractApplication
     use \Phalcon\Traits\Php\FileTrait;
 
 
-    /**
-     * @var bool
-     */
-    protected $implicitView = true;
+    protected bool $implicitView = true;
 
-    /**
-     * @var bool
-     */
-    protected $sendCookies = true;
+    protected bool $sendCookies = true;
 
-    /**
-     * @var bool
-     */
-    protected $sendHeaders = true;
+    protected bool $sendHeaders = true;
 
     /**
      * Handles a MVC request
@@ -111,6 +100,7 @@ class Application extends AbstractApplication
     /**
      * Enables or disables sending headers by each request handling
      *
+     * @phpstan-return static
      * @param bool $sendHeaders
      * @return static
      */
@@ -122,6 +112,7 @@ class Application extends AbstractApplication
      * By default. The view is implicitly buffering all the output
      * You can full disable the view component using this method
      *
+     * @phpstan-return static
      * @param bool $implicitView
      * @return static
      */

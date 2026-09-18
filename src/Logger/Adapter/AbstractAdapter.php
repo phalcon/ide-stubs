@@ -9,6 +9,7 @@
  */
 namespace Phalcon\Logger\Adapter;
 
+use Phalcon\Contracts\Logger\LoggerTypes;
 use Phalcon\Logger\Exceptions\DeserializationFailed;
 use Phalcon\Logger\Exceptions\SerializationFailed;
 use Phalcon\Logger\Exceptions\TransactionAlreadyActive;
@@ -19,6 +20,8 @@ use Phalcon\Logger\Item;
 
 /**
  * Class AbstractAdapter
+ *
+ * @phpstan-import-type logger_queue from LoggerTypes
  */
 abstract class AbstractAdapter implements \Phalcon\Logger\Adapter\AdapterInterface
 {
@@ -39,6 +42,8 @@ abstract class AbstractAdapter implements \Phalcon\Logger\Adapter\AdapterInterfa
 
     /**
      * Array with messages queued in the transaction
+     *
+     * @phpstan-var logger_queue
      */
     protected array $queue = [];
 
@@ -83,8 +88,7 @@ abstract class AbstractAdapter implements \Phalcon\Logger\Adapter\AdapterInterfa
     /**
      * Adds a message to the queue
      *
-     * @param Item $item
-     *
+     * @param \Phalcon\Logger\Item $item
      * @return AdapterInterface
      */
     public function add(\Phalcon\Logger\Item $item): AdapterInterface
@@ -94,8 +98,8 @@ abstract class AbstractAdapter implements \Phalcon\Logger\Adapter\AdapterInterfa
     /**
      * Starts a transaction
      *
-     * @return AdapterInterface
      * @throws TransactionAlreadyActive
+     * @return AdapterInterface
      */
     public function begin(): AdapterInterface
     {
@@ -111,8 +115,8 @@ abstract class AbstractAdapter implements \Phalcon\Logger\Adapter\AdapterInterfa
     /**
      * Commits the internal transaction
      *
-     * @return AdapterInterface
      * @throws TransactionNotActive
+     * @return AdapterInterface
      */
     public function commit(): AdapterInterface
     {

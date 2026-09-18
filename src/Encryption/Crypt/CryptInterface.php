@@ -12,7 +12,7 @@ namespace Phalcon\Encryption\Crypt;
 use Phalcon\Contracts\Encryption\Crypt\Crypt as CryptContract;
 
 /**
- * Interface for Phalcon\Crypt
+ * Interface for Phalcon\Encryption\Crypt
  *
  * @psalm-suppress DeprecatedInterface
  * @deprecated Will be removed in a future major release.

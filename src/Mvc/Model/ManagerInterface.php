@@ -9,15 +9,19 @@
  */
 namespace Phalcon\Mvc\Model;
 
+use Phalcon\Contracts\Mvc\MvcTypes;
 use Phalcon\Db\Adapter\AdapterInterface;
 use Phalcon\Mvc\ModelInterface;
 use Phalcon\Mvc\Model\Query\BuilderInterface;
 use Phalcon\Mvc\Model\Query\StatusInterface;
 
 /**
- * Phalcon\Mvc\Model\ManagerInterface
- *
  * Interface for Phalcon\Mvc\Model\Manager
+ *
+ * @phpstan-import-type mvc_model_bind_params from MvcTypes
+ * @phpstan-import-type mvc_model_bind_types from MvcTypes
+ * @phpstan-import-type mvc_model_parameters from MvcTypes
+ * @phpstan-import-type mvc_relation_options from MvcTypes
  */
 interface ManagerInterface
 {
@@ -35,7 +39,8 @@ interface ManagerInterface
      *
      * @param mixed $fields
      * @param mixed $referencedFields
-     * @param array $options
+     * @param array $options *
+     * @phpstan-param mvc_relation_options $options
      * @param \Phalcon\Mvc\ModelInterface $model
      * @param string $referencedModel
      * @return RelationInterface
@@ -47,7 +52,8 @@ interface ManagerInterface
      *
      * @param mixed $fields
      * @param mixed $referencedFields
-     * @param array $options
+     * @param array $options *
+     * @phpstan-param mvc_relation_options $options
      * @param \Phalcon\Mvc\ModelInterface $model
      * @param string $referencedModel
      * @return RelationInterface
@@ -61,7 +67,8 @@ interface ManagerInterface
      * @param string $intermediateFields
      * @param string $intermediateReferencedFields
      * @param string $referencedFields
-     * @param array $options
+     * @param array $options *
+     * @phpstan-param mvc_relation_options $options
      * @param \Phalcon\Mvc\ModelInterface $model
      * @param string $intermediateModel
      * @param string $referencedModel
@@ -74,7 +81,8 @@ interface ManagerInterface
      *
      * @param mixed $fields
      * @param mixed $referencedFields
-     * @param array $options
+     * @param array $options *
+     * @phpstan-param mvc_relation_options $options
      * @param \Phalcon\Mvc\ModelInterface $model
      * @param string $referencedModel
      * @return RelationInterface
@@ -88,7 +96,8 @@ interface ManagerInterface
      * @param string $intermediateFields
      * @param string $intermediateReferencedFields
      * @param string $referencedFields
-     * @param array $options
+     * @param array $options *
+     * @phpstan-param mvc_relation_options $options
      * @param \Phalcon\Mvc\ModelInterface $model
      * @param string $intermediateModel
      * @param string $referencedModel
@@ -411,7 +420,7 @@ interface ManagerInterface
      * ```php
      * $isPublic = $manager->isVisibleModelProperty(
      *     new Invoices(),
-     *     "name"
+     *     "inv_title"
      * );
      * ```
      *
@@ -451,8 +460,9 @@ interface ManagerInterface
     public function missingMethod(\Phalcon\Mvc\ModelInterface $model, string $eventName, $data);
 
     /**
-     * Receives events generated in the models and dispatches them to an events-manager if available
-     * Notify the behaviors that are listening in the model
+     * Receives events generated in the models and dispatches them to an
+     * events-manager if available. Notify the behaviors that are listening
+     * in the model
      *
      * @param string $eventName
      * @param \Phalcon\Mvc\ModelInterface $model

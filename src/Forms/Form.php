@@ -11,10 +11,14 @@ namespace Phalcon\Forms;
 
 use Countable;
 use Iterator;
+use Phalcon\Contracts\Forms\FormsTypes;
 use Phalcon\Contracts\Forms\Schema;
+use Phalcon\Contracts\Html\HtmlTypes;
 use Phalcon\Di\DiInterface;
 use Phalcon\Di\Injectable;
 use Phalcon\Filter\FilterInterface;
+use Phalcon\Filter\Validation;
+use Phalcon\Filter\Validation\ValidationInterface;
 use Phalcon\Forms\Element\Check;
 use Phalcon\Forms\Element\ElementInterface;
 use Phalcon\Forms\Exceptions\ElementNotInForm;
@@ -26,11 +30,19 @@ use Phalcon\Html\TagFactory;
 use Phalcon\Messages\Messages;
 use Phalcon\Support\Settings;
 use Phalcon\Tag;
-use Phalcon\Filter\Validation;
-use Phalcon\Filter\Validation\ValidationInterface;
 
 /**
  * This component allows to build forms using an object-oriented interface
+ *
+ * @phpstan-import-type forms_data from FormsTypes
+ * @phpstan-import-type forms_elements from FormsTypes
+ * @phpstan-import-type forms_elements_indexed from FormsTypes
+ * @phpstan-import-type forms_options from FormsTypes
+ * @phpstan-import-type forms_schema_definition from FormsTypes
+ * @phpstan-import-type forms_whitelist from FormsTypes
+ * @phpstan-import-type html_attributes from HtmlTypes
+ *
+ * @implements Iterator<int, ElementInterface>
  */
 class Form extends Injectable implements \Countable, \Iterator, \Phalcon\Html\Attributes\AttributesInterface
 {
@@ -40,24 +52,19 @@ class Form extends Injectable implements \Countable, \Iterator, \Phalcon\Html\At
     protected $attributes = null;
 
     /**
-     * @var array
+     * @phpstan-var forms_data
      */
-    protected $data = [];
+    protected array $data = [];
 
     /**
-     * @var array
+     * @phpstan-var forms_elements
      */
-    protected $filteredData = [];
+    protected array $elements = [];
 
     /**
-     * @var array
+     * @phpstan-var forms_elements_indexed
      */
-    protected $elements = [];
-
-    /**
-     * @var array
-     */
-    protected $elementsIndexed = [];
+    protected array $elementsIndexed = [];
 
     /**
      * @var object|null
@@ -65,38 +72,32 @@ class Form extends Injectable implements \Countable, \Iterator, \Phalcon\Html\At
     protected $entity = null;
 
     /**
-     * @var Messages
+     * @phpstan-var forms_data
      */
-    protected $messages;
+    protected array $filteredData = [];
+
+    protected \Phalcon\Messages\Messages $messages;
 
     /**
-     * @var int
+     * @phpstan-var forms_options
      */
-    protected $position = 0;
+    protected array $options = [];
+
+    protected int $position = 0;
+
+    protected ?\Phalcon\Html\TagFactory $tagFactory = null;
+
+    protected ?\Phalcon\Filter\Validation\ValidationInterface $validation = null;
 
     /**
-     * @var array
+     * @phpstan-var forms_whitelist
      */
-    protected $options = [];
-
-    /**
-     * @var TagFactory|null
-     */
-    protected $tagFactory = null;
-
-    /**
-     * @var ValidationInterface|null
-     */
-    protected $validation = null;
-
-    /**
-     * @var array
-     */
-    protected $whitelist = [];
+    protected array $whitelist = [];
 
     /**
      * Phalcon\Forms\Form constructor
      *
+     * @phpstan-param forms_options $userOptions
      * @param mixed $entity
      * @param array $userOptions
      */
@@ -119,9 +120,11 @@ class Form extends Injectable implements \Countable, \Iterator, \Phalcon\Html\At
     /**
      * Binds data to the entity
      *
-     * @param object $entity
-     * @param array $whitelist
+     * @phpstan-param forms_data      $data
+     * @param object|null             $entity
+     * @phpstan-param forms_whitelist $whitelist
      * @param array $data
+     * @param array $whitelist
      * @return static
      */
     public function bind(array $data, $entity = null, array $whitelist = []): static
@@ -131,7 +134,8 @@ class Form extends Injectable implements \Countable, \Iterator, \Phalcon\Html\At
     /**
      * Clears every element in the form to its default value
      *
-     * @param array|string|null $fields
+     * @phpstan-param array<array-key, string>|string|null $fields
+     * @param mixed $fields
      * @return static
      */
     public function clear($fields = null): static
@@ -150,6 +154,7 @@ class Form extends Injectable implements \Countable, \Iterator, \Phalcon\Html\At
     /**
      * Returns the current element in the iterator
      *
+     * @psalm-suppress LessSpecificImplementedReturnType
      * @return mixed
      */
     public function current(): mixed
@@ -196,7 +201,7 @@ class Form extends Injectable implements \Countable, \Iterator, \Phalcon\Html\At
     /**
      * Returns the entity related to the model
      *
-     * @return object
+     * @return object|null
      */
     public function getEntity()
     {
@@ -274,9 +279,19 @@ class Form extends Injectable implements \Countable, \Iterator, \Phalcon\Html\At
     /**
      * Returns the options for the element
      *
+     * @phpstan-return forms_options
      * @return array
      */
     public function getUserOptions(): array
+    {
+    }
+
+    /**
+     * return ValidationInterface|null
+     *
+     * @return ValidationInterface|null
+     */
+    public function getValidation(): ValidationInterface|null
     {
     }
 
@@ -291,17 +306,7 @@ class Form extends Injectable implements \Countable, \Iterator, \Phalcon\Html\At
     }
 
     /**
-     * return ValidationInterface|null
-     *
-     * @return ValidationInterface|null
-     */
-    public function getValidation(): ValidationInterface|null
-    {
-    }
-
-    /**
-     * return array
-     *
+     * @phpstan-return forms_whitelist
      * @return array
      */
     public function getWhitelist(): array
@@ -331,8 +336,11 @@ class Form extends Injectable implements \Countable, \Iterator, \Phalcon\Html\At
     /**
      * Validates the form
      *
-     * @param array $data
-     * @param object $entity
+     * @phpstan-param forms_data      $data
+     * @phpstan-param object|null     $entity
+     * @phpstan-param forms_whitelist $whitelist
+     * @param mixed $data
+     * @param mixed $entity
      * @param array $whitelist
      * @return bool
      */
@@ -350,30 +358,30 @@ class Form extends Injectable implements \Countable, \Iterator, \Phalcon\Html\At
     }
 
     /**
+     * Generate the label of an element added to the form including HTML
+     *
+     * @phpstan-param html_attributes $attributes
+     * @param string $name
+     * @param array $attributes
+     * @return string
+     */
+    public function label(string $name, array $attributes = []): string
+    {
+    }
+
+    /**
      * Loads elements into the form from a Schema source.
      *
      * Each definition in the schema must have at least 'type' and 'name'.
      * The locator resolves the type string to an element factory; custom
      * types can be registered on the locator with setElement().
      *
-     * @param Schema       $schema
-     * @param FormsLocator $locator
-     *
-     * @return static
      * @throws Exception
+     * @param \Phalcon\Contracts\Forms\Schema $schema
+     * @param FormsLocator $locator
+     * @return static
      */
     public function load(\Phalcon\Contracts\Forms\Schema $schema, FormsLocator $locator): static
-    {
-    }
-
-    /**
-     * Generate the label of an element added to the form including HTML
-     *
-     * @param string $name
-     * @param array $attributes
-     * @return string
-     */
-    public function label(string $name, array $attributes = []): string
     {
     }
 
@@ -387,23 +395,24 @@ class Form extends Injectable implements \Countable, \Iterator, \Phalcon\Html\At
     }
 
     /**
-     * Renders a specific item in the form
-     *
-     * @param string $name
-     * @param array $attributes
-     * @return string
-     */
-    public function render(string $name, array $attributes = []): string
-    {
-    }
-
-    /**
      * Removes an element from the form
      *
      * @param string $name
      * @return bool
      */
     public function remove(string $name): bool
+    {
+    }
+
+    /**
+     * Renders a specific item in the form
+     *
+     * @phpstan-param html_attributes $attributes
+     * @param string $name
+     * @param array $attributes
+     * @return string
+     */
+    public function render(string $name, array $attributes = []): string
     {
     }
 
@@ -419,8 +428,8 @@ class Form extends Injectable implements \Countable, \Iterator, \Phalcon\Html\At
     /**
      * Sets the form's action
      *
-     * @return static
      * @param string $action
+     * @return static
      */
     public function setAction(string $action): static
     {
@@ -457,26 +466,6 @@ class Form extends Injectable implements \Countable, \Iterator, \Phalcon\Html\At
     }
 
     /**
-     * Sets the default validation
-     *
-     * @param ValidationInterface $validation
-     * @return static
-     */
-    public function setValidation(\Phalcon\Filter\Validation\ValidationInterface $validation): static
-    {
-    }
-
-    /**
-     * Sets the default whitelist
-     *
-     * @param array $whitelist
-     * @return static
-     */
-    public function setWhitelist(array $whitelist): static
-    {
-    }
-
-    /**
      * Sets an option for the form
      *
      * @param string $option
@@ -490,10 +479,32 @@ class Form extends Injectable implements \Countable, \Iterator, \Phalcon\Html\At
     /**
      * Sets options for the element
      *
+     * @phpstan-param forms_options $options
      * @param array $options
      * @return static
      */
     public function setUserOptions(array $options): static
+    {
+    }
+
+    /**
+     * Sets the default validation
+     *
+     * @param ValidationInterface $validation
+     * @return static
+     */
+    public function setValidation(\Phalcon\Filter\Validation\ValidationInterface $validation): static
+    {
+    }
+
+    /**
+     * Sets the default whitelist
+     *
+     * @phpstan-param forms_whitelist $whitelist
+     * @param array $whitelist
+     * @return static
+     */
+    public function setWhitelist(array $whitelist): static
     {
     }
 

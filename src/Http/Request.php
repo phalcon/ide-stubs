@@ -219,7 +219,7 @@ class Request extends AbstractInjectionAware implements \Phalcon\Http\RequestInt
      * ```
      *
      * @param bool $trustForwardedHeader
-     * @return string|bool
+     * @return bool|string
      */
     public function getClientAddress(bool $trustForwardedHeader = false): bool|string
     {
@@ -336,7 +336,7 @@ class Request extends AbstractInjectionAware implements \Phalcon\Http\RequestInt
     /**
      * Returns the available headers in the request
      *
-     * <code>
+     * ```php
      * $_SERVER = [
      *     "PHP_AUTH_USER" => "phalcon",
      *     "PHP_AUTH_PW"   => "secret",
@@ -345,7 +345,7 @@ class Request extends AbstractInjectionAware implements \Phalcon\Http\RequestInt
      * $headers = $request->getHeaders();
      *
      * echo $headers["Authorization"]; // Basic cGhhbGNvbjpzZWNyZXQ=
-     * </code>
+     * ```
      *
      * @phpstan-return http_request_headers
      * @return array
@@ -523,13 +523,13 @@ class Request extends AbstractInjectionAware implements \Phalcon\Http\RequestInt
     }
 
     /**
-     * Gets a variable from the PUT request
+     * Gets a variable from put request
      *
      * ```php
-     * // Returns value from PUT stream without sanitizing
+     * // Returns value from $_PUT["user_email"] without sanitizing
      * $userEmail = $request->getPut("user_email");
      *
-     * // Returns value from PUT stream with sanitizing
+     * // Returns value from $_PUT["user_email"] with sanitizing
      * $userEmail = $request->getPut("user_email", "email");
      * ```
      *

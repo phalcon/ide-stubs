@@ -16,6 +16,7 @@ use Phalcon\Acl\Role;
 use Phalcon\Contracts\Acl\AclTypes;
 use Phalcon\Contracts\Acl\Adapter\Persistable;
 use Phalcon\Storage\Adapter\AdapterInterface as StorageInterface;
+use Throwable;
 
 /**
  * ACL adapter that persists its policy to any Phalcon\Storage backend

@@ -25,85 +25,63 @@ use Phalcon\Container\Exceptions\ServiceNotFound;
 use Phalcon\Container\Exceptions\ServiceNotRegistered;
 use Phalcon\Container\Resolver\Lazy\Lazy;
 use Phalcon\Container\Resolver\Resolver;
+use Phalcon\Contracts\Container\ContainerTypes;
 use Phalcon\Contracts\Container\Service\Collection;
 use Phalcon\Contracts\Container\Service\Enumerable;
 use Phalcon\Di\InjectionAwareInterface;
 use ReflectionException;
 
 /**
- * This file is part of the Phalcon Framework.
- *
- * (c) Phalcon Team <team@phalcon.io>
- *
- * For the full copyright and license information, please view the LICENSE.txt
- * file that was distributed with this source code.
- *
- * Implementation of this file has been heavily influenced by CapsulePHP.
- * Additionally, there are implementations from ioc-interop, which is a
- * Composer dependency, and from service-interop and resolver-interop. The
- * latter two are copied and re-implemented here: service-interop is not yet
- * published on Packagist, and resolver-interop requires PHP 8.4 (this project
- * targets PHP 8.1). Once both packages become available and compatible, the
- * copies will be replaced with the actual Composer dependencies.
- *
- * @link    https://github.com/capsulephp/di
- * @license https://github.com/capsulephp/di/blob/3.x/LICENSE.md
- *
- * @link    https://github.com/ioc-interop/interface
- * @license https://github.com/ioc-interop/interface/blob/1.x/LICENSE.md
- *
- * @link    https://github.com/service-interop/interface
- * @license https://github.com/service-interop/interface/blob/1.x/LICENSE.md
- *
- * @link    https://github.com/resolver-interop/interface/tree/1.x
- * @license https://github.com/resolver-interop/interface/blob/1.x/LICENSE.md
+ * @phpstan-import-type container_aliases from ContainerTypes
+ * @phpstan-import-type container_instance_lifetimes from ContainerTypes
+ * @phpstan-import-type container_instances from ContainerTypes
+ * @phpstan-import-type container_parameters from ContainerTypes
+ * @phpstan-import-type container_processors from ContainerTypes
+ * @phpstan-import-type container_service_names from ContainerTypes
+ * @phpstan-import-type container_service_tags from ContainerTypes
+ * @phpstan-import-type container_services from ContainerTypes
+ * @phpstan-import-type container_tagged_services from ContainerTypes
  */
 class Container implements \Phalcon\Contracts\Container\Service\Collection, \Phalcon\Contracts\Container\Service\Enumerable
 {
     /**
-     * @var array<string, string>
+     * @phpstan-var container_aliases
      */
-    protected $aliases = [];
+    protected array $aliases = [];
+
+    protected bool $autowire = true;
 
     /**
-     * @var bool
+     * @phpstan-var container_instance_lifetimes
      */
-    protected $autowire = true;
+    protected array $instanceLifetimes = [];
 
     /**
-     * @var array<string, string>
+     * @phpstan-var container_instances
      */
-    protected $instanceLifetimes = [];
+    protected array $instances = [];
 
     /**
-     * @var array<string, object>
+     * @phpstan-var container_parameters
      */
-    protected $instances = [];
+    protected array $parameters = [];
 
     /**
-     * @var array<string, mixed>
+     * @phpstan-var container_processors
      */
-    protected $parameters = [];
+    protected array $processors = [];
+
+    protected \Phalcon\Container\Resolver\Resolver $resolver;
 
     /**
-     * @var array<string, Processor>
+     * @phpstan-var container_services
      */
-    protected $processors = [];
+    protected array $services = [];
 
     /**
-     * @var Resolver
+     * @phpstan-var container_service_tags
      */
-    protected $resolver;
-
-    /**
-     * @var array<string, ServiceDefinition>
-     */
-    protected $services = [];
-
-    /**
-     * @var array<string, list<string>>
-     */
-    protected $tags = [];
+    protected array $tags = [];
 
     public function __construct()
     {
@@ -112,11 +90,9 @@ class Container implements \Phalcon\Contracts\Container\Service\Collection, \Pha
     /**
      * Bind an interface to a concrete class
      *
-     * @param string $interface
-     * @param string $concrete
-     *
-     * @return ServiceDefinition
      * @param string $interfaceName
+     * @param string $concrete
+     * @return ServiceDefinition
      */
     public function bind(string $interfaceName, string $concrete): ServiceDefinition
     {
@@ -126,7 +102,6 @@ class Container implements \Phalcon\Contracts\Container\Service\Collection, \Pha
      * Resolve to a closure on a get()
      *
      * @param string $name
-     *
      * @return Closure
      */
     public function callableGet(string $name): Closure
@@ -137,7 +112,6 @@ class Container implements \Phalcon\Contracts\Container\Service\Collection, \Pha
      * Resolve to a closure on a new()
      *
      * @param string $name
-     *
      * @return Closure
      */
     public function callableNew(string $name): Closure
@@ -147,13 +121,11 @@ class Container implements \Phalcon\Contracts\Container\Service\Collection, \Pha
     /**
      * Extends the definition
      *
-     * @param string   $name
-     * @param callable $callable
-     *
-     * @return void
      * @throws CannotExtendResolved
      * @throws ServiceNotFound
+     * @param string $name
      * @param callable $callableObject
+     * @return void
      */
     public function extend(string $name, $callableObject): void
     {
@@ -162,10 +134,9 @@ class Container implements \Phalcon\Contracts\Container\Service\Collection, \Pha
     /**
      * Resolve and return an element registerd in the container
      *
-     * @param string $name
-     *
-     * @return mixed
      * @throws ServiceNotFound
+     * @param string $name
+     * @return mixed
      */
     public function get(string $name): mixed
     {
@@ -175,7 +146,6 @@ class Container implements \Phalcon\Contracts\Container\Service\Collection, \Pha
      * Return an alias
      *
      * @param string $name
-     *
      * @return string
      */
     public function getAlias(string $name): string
@@ -185,9 +155,9 @@ class Container implements \Phalcon\Contracts\Container\Service\Collection, \Pha
     /**
      * Return services by tag
      *
+     * @phpstan-return container_tagged_services
      * @param string $tag
-     *
-     * @return list<mixed>
+     * @return array
      */
     public function getByTag(string $tag): array
     {
@@ -196,10 +166,9 @@ class Container implements \Phalcon\Contracts\Container\Service\Collection, \Pha
     /**
      * Return the service definition
      *
-     * @param string $name
-     *
-     * @return ServiceDefinition
      * @throws ServiceNotFound
+     * @param string $name
+     * @return ServiceDefinition
      */
     public function getDefinition(string $name): ServiceDefinition
     {
@@ -208,10 +177,9 @@ class Container implements \Phalcon\Contracts\Container\Service\Collection, \Pha
     /**
      * Return a stored instance
      *
-     * @param string $name
-     *
-     * @return object
      * @throws InstanceNotFound
+     * @param string $name
+     * @return object
      */
     public function getInstance(string $name): object
     {
@@ -220,10 +188,9 @@ class Container implements \Phalcon\Contracts\Container\Service\Collection, \Pha
     /**
      * Return a parameter
      *
-     * @param string $name
-     *
-     * @return mixed
      * @throws ParameterNotFound
+     * @param string $name
+     * @return mixed
      */
     public function getParameter(string $name): mixed
     {
@@ -241,11 +208,10 @@ class Container implements \Phalcon\Contracts\Container\Service\Collection, \Pha
     /**
      * Resolve an return a service
      *
-     * @param string $serviceName
-     *
-     * @return object
      * @throws ServiceNotFound
      * @throws ServiceNotRegistered
+     * @param string $serviceName
+     * @return object
      */
     public function getService(string $serviceName): object
     {
@@ -256,7 +222,8 @@ class Container implements \Phalcon\Contracts\Container\Service\Collection, \Pha
      * only exist as an alias, a pre-set instance or a parameter are not
      * included.
      *
-     * @return array<int, string>
+     * @phpstan-return container_service_names
+     * @return array
      */
     public function getServiceNames(): array
     {
@@ -265,10 +232,9 @@ class Container implements \Phalcon\Contracts\Container\Service\Collection, \Pha
     /**
      * Does the container have a particular service
      *
-     * @param string $name
-     *
-     * @return bool
      * @throws CircularAliasFound
+     * @param string $name
+     * @return bool
      */
     public function has(string $name): bool
     {
@@ -278,7 +244,6 @@ class Container implements \Phalcon\Contracts\Container\Service\Collection, \Pha
      * Does the service have an alias
      *
      * @param string $name
-     *
      * @return bool
      */
     public function hasAlias(string $name): bool
@@ -289,7 +254,6 @@ class Container implements \Phalcon\Contracts\Container\Service\Collection, \Pha
      * Does the service have a definition
      *
      * @param string $name
-     *
      * @return bool
      */
     public function hasDefinition(string $name): bool
@@ -300,7 +264,6 @@ class Container implements \Phalcon\Contracts\Container\Service\Collection, \Pha
      * Does the service have an instance
      *
      * @param string $name
-     *
      * @return bool
      */
     public function hasInstance(string $name): bool
@@ -311,7 +274,6 @@ class Container implements \Phalcon\Contracts\Container\Service\Collection, \Pha
      * Does the service have a parameter
      *
      * @param string $name
-     *
      * @return bool
      */
     public function hasParameter(string $name): bool
@@ -321,10 +283,9 @@ class Container implements \Phalcon\Contracts\Container\Service\Collection, \Pha
     /**
      * Does the container have a particular service
      *
-     * @param string $serviceName
-     *
-     * @return bool
      * @throws CircularAliasFound
+     * @param string $serviceName
+     * @return bool
      */
     public function hasService(string $serviceName): bool
     {
@@ -342,12 +303,11 @@ class Container implements \Phalcon\Contracts\Container\Service\Collection, \Pha
     /**
      * Resolve and return a new service
      *
-     * @param string $name
-     *
-     * @return mixed
      * @throws CircularAliasFound
      * @throws ReflectionException
      * @throws ServiceNotFound
+     * @param string $name
+     * @return mixed
      */
     public function new(string $name): mixed
     {
@@ -357,7 +317,6 @@ class Container implements \Phalcon\Contracts\Container\Service\Collection, \Pha
      * Return a new service definition
      *
      * @param string $name
-     *
      * @return ServiceDefinition
      */
     public function newDefinition(string $name): ServiceDefinition
@@ -367,11 +326,10 @@ class Container implements \Phalcon\Contracts\Container\Service\Collection, \Pha
     /**
      * Set a service
      *
-     * @param string $name
-     * @param mixed  $definition
-     *
-     * @return ServiceDefinition
      * @throws NoProcessorFound
+     * @param string $name
+     * @param mixed $definition
+     * @return ServiceDefinition
      */
     public function set(string $name, $definition): ServiceDefinition
     {
@@ -380,11 +338,10 @@ class Container implements \Phalcon\Contracts\Container\Service\Collection, \Pha
     /**
      * Set an alias
      *
+     * @throws CircularAliasFound
      * @param string $name
      * @param string $alias
-     *
      * @return static
-     * @throws CircularAliasFound
      */
     public function setAlias(string $name, string $alias): static
     {
@@ -394,7 +351,6 @@ class Container implements \Phalcon\Contracts\Container\Service\Collection, \Pha
      * Set AutoWire
      *
      * @param bool $enabled
-     *
      * @return static
      */
     public function setAutowire(bool $enabled): static
@@ -404,9 +360,8 @@ class Container implements \Phalcon\Contracts\Container\Service\Collection, \Pha
     /**
      * Set a definition
      *
-     * @param string            $name
-     * @param ServiceDefinition $definition
-     *
+     * @param string $name
+     * @param \Phalcon\Container\Definition\ServiceDefinition $definition
      * @return static
      */
     public function setDefinition(string $name, \Phalcon\Container\Definition\ServiceDefinition $definition): static
@@ -419,7 +374,6 @@ class Container implements \Phalcon\Contracts\Container\Service\Collection, \Pha
      * @param string $name
      * @param object $instance
      * @param string $lifetime
-     *
      * @return static
      */
     public function setInstance(string $name, $instance, string $lifetime): static
@@ -430,8 +384,7 @@ class Container implements \Phalcon\Contracts\Container\Service\Collection, \Pha
      * Set a parameter
      *
      * @param string $name
-     * @param mixed  $value
-     *
+     * @param mixed $value
      * @return static
      */
     public function setParameter(string $name, $value): static
@@ -443,7 +396,6 @@ class Container implements \Phalcon\Contracts\Container\Service\Collection, \Pha
      *
      * @param string $tag
      * @param string $serviceName
-     *
      * @return void
      */
     public function setTag(string $tag, string $serviceName): void
@@ -454,7 +406,6 @@ class Container implements \Phalcon\Contracts\Container\Service\Collection, \Pha
      * Remove an alias
      *
      * @param string $name
-     *
      * @return void
      */
     public function unsetAlias(string $name): void
@@ -465,7 +416,6 @@ class Container implements \Phalcon\Contracts\Container\Service\Collection, \Pha
      * Remove a definition
      *
      * @param string $name
-     *
      * @return void
      */
     public function unsetDefinition(string $name): void
@@ -476,7 +426,6 @@ class Container implements \Phalcon\Contracts\Container\Service\Collection, \Pha
      * Remove an instance
      *
      * @param string $name
-     *
      * @return void
      */
     public function unsetInstance(string $name): void
@@ -487,7 +436,6 @@ class Container implements \Phalcon\Contracts\Container\Service\Collection, \Pha
      * Remove instances based on lifetime
      *
      * @param string $lifetime
-     *
      * @return void
      */
     public function unsetInstances(string $lifetime): void
@@ -498,7 +446,6 @@ class Container implements \Phalcon\Contracts\Container\Service\Collection, \Pha
      * Remove a parameter
      *
      * @param string $name
-     *
      * @return void
      */
     public function unsetParameter(string $name): void
@@ -508,11 +455,10 @@ class Container implements \Phalcon\Contracts\Container\Service\Collection, \Pha
     /**
      * Detect circular aliases
      *
+     * @throws CircularAliasFound
      * @param string $alias
      * @param string $target
-     *
      * @return void
-     * @throws CircularAliasFound
      */
     private function detectCircularAlias(string $alias, string $target): void
     {
@@ -521,10 +467,9 @@ class Container implements \Phalcon\Contracts\Container\Service\Collection, \Pha
     /**
      * Locate a processor
      *
-     * @param mixed $definition
-     *
-     * @return Processor
      * @throws NoProcessorFound
+     * @param mixed $definition
+     * @return Processor
      */
     private function findProcessor($definition): Processor
     {
@@ -533,12 +478,11 @@ class Container implements \Phalcon\Contracts\Container\Service\Collection, \Pha
     /**
      * Resolve the service
      *
-     * @param string $name
-     * @param bool   $cache
-     *
-     * @return mixed
      * @throws ServiceNotFound
      * @throws ReflectionException
+     * @param string $name
+     * @param bool $cache
+     * @return mixed
      */
     private function resolve(string $name, bool $cache): mixed
     {
@@ -547,10 +491,9 @@ class Container implements \Phalcon\Contracts\Container\Service\Collection, \Pha
     /**
      * Resolve an alias
      *
-     * @param string $name
-     *
-     * @return string
      * @throws CircularAliasFound
+     * @param string $name
+     * @return string
      */
     private function resolveAlias(string $name): string
     {
@@ -560,7 +503,6 @@ class Container implements \Phalcon\Contracts\Container\Service\Collection, \Pha
      * Resolve a paramater
      *
      * @param string $name
-     *
      * @return mixed
      */
     private function resolveParameter(string $name): mixed

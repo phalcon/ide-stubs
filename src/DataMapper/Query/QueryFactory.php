@@ -16,10 +16,7 @@ use Phalcon\DataMapper\Pdo\Connection;
  */
 class QueryFactory
 {
-    /**
-     * @var string
-     */
-    protected $selectClass = '';
+    protected string $selectClass = '';
 
     /**
      * QueryFactory constructor.
@@ -42,10 +39,8 @@ class QueryFactory
     /**
      * Create a new Delete object
      *
-     * @param <Connection> connection
-     *
-     * @return Delete
      * @param \Phalcon\DataMapper\Pdo\Connection $connection
+     * @return Delete
      */
     public function newDelete(\Phalcon\DataMapper\Pdo\Connection $connection): Delete
     {
@@ -54,10 +49,8 @@ class QueryFactory
     /**
      * Create a new Insert object
      *
-     * @param <Connection> connection
-     *
-     * @return Insert
      * @param \Phalcon\DataMapper\Pdo\Connection $connection
+     * @return Insert
      */
     public function newInsert(\Phalcon\DataMapper\Pdo\Connection $connection): Insert
     {
@@ -66,10 +59,8 @@ class QueryFactory
     /**
      * Create a new Select object
      *
-     * @param <Connection> connection
-     *
-     * @return Select
      * @param \Phalcon\DataMapper\Pdo\Connection $connection
+     * @return Select
      */
     public function newSelect(\Phalcon\DataMapper\Pdo\Connection $connection): Select
     {
@@ -78,10 +69,8 @@ class QueryFactory
     /**
      * Create a new Update object
      *
-     * @param <Connection> connection
-     *
-     * @return Update
      * @param \Phalcon\DataMapper\Pdo\Connection $connection
+     * @return Update
      */
     public function newUpdate(\Phalcon\DataMapper\Pdo\Connection $connection): Update
     {

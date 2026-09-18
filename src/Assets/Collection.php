@@ -74,7 +74,7 @@ class Collection implements \Countable, \IteratorAggregate
     /**
      * Adds a CSS asset to the collection
      *
-     * @param bool|null   $isLocal
+     * @param bool|null         $isLocal
      * @param assets_attributes $attributes
      * @param string $path
      * @param bool $filter
@@ -133,7 +133,7 @@ class Collection implements \Countable, \IteratorAggregate
     /**
      * Adds a JavaScript asset to the collection
      *
-     * @param bool|null   $isLocal
+     * @param bool|null         $isLocal
      * @param assets_attributes $attributes
      * @param string $path
      * @param bool $filter
@@ -348,10 +348,10 @@ class Collection implements \Countable, \IteratorAggregate
     /**
      * Adds an inline asset
      *
+     * @param bool|null         $isLocal
      * @param assets_attributes $attributes
      * @param string $className
      * @param string $path
-     * @param mixed $isLocal
      * @param bool $filter
      * @param string|null $version
      * @param bool $autoVersion

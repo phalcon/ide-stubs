@@ -21,6 +21,8 @@ interface BinderInterface
     /**
      * Bind models into params in proper handler
      *
+     * @phpstan-param array<array-key, mixed> $params
+     * @phpstan-return array<array-key, mixed>
      * @param object $handler
      * @param array $params
      * @param string $cacheKey
@@ -32,6 +34,7 @@ interface BinderInterface
     /**
      * Gets active bound models
      *
+     * @phpstan-return array<array-key, mixed>
      * @return array
      */
     public function getBoundModels(): array;

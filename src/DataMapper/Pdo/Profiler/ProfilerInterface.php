@@ -9,28 +9,25 @@
  */
 namespace Phalcon\DataMapper\Pdo\Profiler;
 
+use Phalcon\Contracts\DataMapper\DataMapperTypes;
 use Phalcon\Logger\LoggerInterface;
 
 /**
  * Interface to send query profiles to a logger.
+ *
+ * @phpstan-import-type datamapper_values from DataMapperTypes
  */
 interface ProfilerInterface
 {
     /**
      * Finishes and logs a profile entry.
      *
-     * @param string $statement
-     * @param array  $values
+     * @phpstan-param datamapper_values $values
+     * @param string|null $statement
+     * @param array $values
      * @return void
      */
     public function finish(?string $statement = null, array $values = []): void;
-
-    /**
-     * Returns the underlying logger instance.
-     *
-     * @return LoggerInterface
-     */
-    public function getLogger(): LoggerInterface;
 
     /**
      * Returns the log message format string, with placeholders.
@@ -38,6 +35,13 @@ interface ProfilerInterface
      * @return string
      */
     public function getLogFormat(): string;
+
+    /**
+     * Returns the underlying logger instance.
+     *
+     * @return LoggerInterface
+     */
+    public function getLogger(): LoggerInterface;
 
     /**
      * Returns the level at which to log profile messages.
@@ -57,7 +61,6 @@ interface ProfilerInterface
      * Enable or disable profiler logging.
      *
      * @param bool $active
-     *
      * @return ProfilerInterface
      */
     public function setActive(bool $active): ProfilerInterface;
@@ -66,7 +69,6 @@ interface ProfilerInterface
      * Sets the log message format string, with placeholders.
      *
      * @param string $logFormat
-     *
      * @return ProfilerInterface
      */
     public function setLogFormat(string $logFormat): ProfilerInterface;
@@ -75,9 +77,7 @@ interface ProfilerInterface
      * Level at which to log profile messages.
      *
      * @param string $logLevel
-     *
      * @return ProfilerInterface
-     *
      */
     public function setLogLevel(string $logLevel): ProfilerInterface;
 

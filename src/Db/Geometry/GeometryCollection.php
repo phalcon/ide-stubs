@@ -23,10 +23,13 @@ class GeometryCollection extends \Phalcon\Db\Geometry\AbstractGeometry
 {
     /**
      * @var array
+     *
+     * @phpstan-var list<GeometryInterface>
      */
     protected $geometries;
 
     /**
+     * @phpstan-param list<GeometryInterface> $geometries
      * @param array $geometries
      * @param int $srid
      */
@@ -42,6 +45,7 @@ class GeometryCollection extends \Phalcon\Db\Geometry\AbstractGeometry
     }
 
     /**
+     * @phpstan-return list<GeometryInterface>
      * @return array
      */
     public function getGeometries(): array

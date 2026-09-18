@@ -9,6 +9,7 @@
  */
 namespace Phalcon\DataMapper\Pdo;
 
+use Phalcon\Contracts\DataMapper\DataMapperTypes;
 use Phalcon\Contracts\Events\EventsAware;
 use Phalcon\DataMapper\Pdo\Connection\ConnectionInterface;
 use Phalcon\DataMapper\Pdo\Exception\ConnectionNotFound;
@@ -20,6 +21,10 @@ use Phalcon\Events\Traits\EventsAwareTrait;
  *
  * The locator gives its events manager to each connection that it returns,
  * so connections that are built on demand also fire the DataMapper events.
+ *
+ * @phpstan-import-type datamapper_connection_factories from DataMapperTypes
+ * @phpstan-import-type datamapper_connection_factory from DataMapperTypes
+ * @phpstan-import-type datamapper_connection_instances from DataMapperTypes
  */
 class ConnectionLocator implements \Phalcon\DataMapper\Pdo\ConnectionLocatorInterface, \Phalcon\Contracts\Events\EventsAware
 {
@@ -37,6 +42,8 @@ class ConnectionLocator implements \Phalcon\DataMapper\Pdo\ConnectionLocatorInte
      * A registry of Connection "read" factories/instances.
      *
      * @var array
+     *
+     * @phpstan-var datamapper_connection_factories
      */
     protected $read = [];
 
@@ -44,6 +51,8 @@ class ConnectionLocator implements \Phalcon\DataMapper\Pdo\ConnectionLocatorInte
      * A registry of Connection "write" factories/instances.
      *
      * @var array
+     *
+     * @phpstan-var datamapper_connection_factories
      */
     protected $write = [];
 
@@ -51,6 +60,8 @@ class ConnectionLocator implements \Phalcon\DataMapper\Pdo\ConnectionLocatorInte
      * A collection of resolved instances
      *
      * @var array
+     *
+     * @phpstan-var datamapper_connection_instances
      */
     private $instances = [];
 
@@ -60,6 +71,9 @@ class ConnectionLocator implements \Phalcon\DataMapper\Pdo\ConnectionLocatorInte
      * @param ConnectionInterface $master
      * @param array               $read
      * @param array               $write
+     *
+     * @phpstan-param datamapper_connection_factories $read
+     * @phpstan-param datamapper_connection_factories $write
      */
     public function __construct(\Phalcon\DataMapper\Pdo\Connection\ConnectionInterface $master, array $read = [], array $write = [])
     {
@@ -121,6 +135,8 @@ class ConnectionLocator implements \Phalcon\DataMapper\Pdo\ConnectionLocatorInte
      * @param callable $callable
      *
      * @return static
+     *
+     * @phpstan-param datamapper_connection_factory $callableObject
      * @param callable $callableObject
      */
     public function setRead(string $name, $callableObject): static
@@ -134,6 +150,8 @@ class ConnectionLocator implements \Phalcon\DataMapper\Pdo\ConnectionLocatorInte
      * @param callable $callable
      *
      * @return static
+     *
+     * @phpstan-param datamapper_connection_factory $callableObject
      * @param callable $callableObject
      */
     public function setWrite(string $name, $callableObject): static
@@ -148,6 +166,8 @@ class ConnectionLocator implements \Phalcon\DataMapper\Pdo\ConnectionLocatorInte
      *
      * @return ConnectionInterface
      * @throws ConnectionNotFound
+     *
+     * @phpstan-param 'read'|'write' $type
      */
     protected function getConnection(string $type, string $name = ''): ConnectionInterface
     {

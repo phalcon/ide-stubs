@@ -9,6 +9,7 @@
  */
 namespace Phalcon\Db\Adapter\Pdo;
 
+use Phalcon\Contracts\Db\DbTypes;
 use Phalcon\Db\Adapter\AbstractAdapter;
 use Phalcon\Db\Column;
 use Phalcon\Db\Exception;
@@ -38,6 +39,13 @@ use Phalcon\Support\Settings;
  *
  * $connection = new Mysql($config);
  * ```
+ *
+ * @phpstan-import-type db_bind_params from DbTypes
+ * @phpstan-import-type db_bind_types from DbTypes
+ * @phpstan-import-type db_descriptor from DbTypes
+ * @phpstan-import-type db_dsn_defaults from DbTypes
+ * @phpstan-import-type db_error_info from DbTypes
+ * @phpstan-import-type db_pdo_options from DbTypes
  */
 abstract class AbstractPdo extends AbstractAdapter
 {
@@ -48,18 +56,14 @@ abstract class AbstractPdo extends AbstractAdapter
 
     /**
      * Last affected rows
-     *
-     * @var int
      */
-    protected $affectedRows = 0;
+    protected int $affectedRows = 0;
 
     /**
      * Whether to transparently reconnect and retry once when a query fails
      * because the connection was lost. Opt-in; off by default.
-     *
-     * @var bool
      */
-    protected $autoReconnect = false;
+    protected bool $autoReconnect = false;
 
     /**
      * PDO Handler
@@ -82,6 +86,8 @@ abstract class AbstractPdo extends AbstractAdapter
      *     'dsn' => null,
      *     'charset' => 'utf8mb4'
      * ]
+     *
+     * @phpstan-param db_descriptor $descriptor
      */
     public function __construct(array $descriptor)
     {
@@ -116,22 +122,22 @@ abstract class AbstractPdo extends AbstractAdapter
     }
 
     /**
-     * Commits the active transaction in the connection
-     *
-     * @param bool $nesting
-     * @return bool
-     */
-    public function commit(bool $nesting = true): bool
-    {
-    }
-
-    /**
      * Closes the active connection returning success. Phalcon automatically
      * closes and destroys active connections when the request ends
      *
      * @return void
      */
     public function close(): void
+    {
+    }
+
+    /**
+     * Commits the active transaction in the connection
+     *
+     * @param bool $nesting
+     * @return bool
+     */
+    public function commit(bool $nesting = true): bool
     {
     }
 
@@ -159,6 +165,7 @@ abstract class AbstractPdo extends AbstractAdapter
      * $connection->connect();
      * ```
      *
+     * @phpstan-param db_descriptor $descriptor
      * @param array $descriptor
      * @return void
      */
@@ -180,11 +187,23 @@ abstract class AbstractPdo extends AbstractAdapter
      * );
      * ```
      *
+     * @phpstan-param db_bind_params $params
+     *
+     * @phpstan-return array{sql: string, params: list<mixed>}
      * @param string $sql
      * @param array $params
      * @return array
      */
     public function convertBoundParams(string $sql, array $params = []): array
+    {
+    }
+
+    /**
+     * Ensures the connection is alive, reconnecting in place if it is not.
+     *
+     * @return void
+     */
+    public function ensureConnection(): void
     {
     }
 
@@ -200,15 +219,6 @@ abstract class AbstractPdo extends AbstractAdapter
      * @return string
      */
     public function escapeString(string $str): string
-    {
-    }
-
-    /**
-     * Ensures the connection is alive, reconnecting in place if it is not.
-     *
-     * @return void
-     */
-    public function ensureConnection(): void
     {
     }
 
@@ -232,6 +242,8 @@ abstract class AbstractPdo extends AbstractAdapter
      * );
      * ```
      *
+     * @phpstan-param db_bind_params $bindParams
+     * @phpstan-param db_bind_types  $bindTypes
      * @param string $sqlStatement
      * @param array $bindParams
      * @param array $bindTypes
@@ -263,6 +275,8 @@ abstract class AbstractPdo extends AbstractAdapter
      * );
      * ```
      *
+     * @phpstan-param db_bind_params $placeholders
+     * @phpstan-param db_bind_types  $dataTypes
      * @param \PDOStatement $statement
      * @param array $placeholders
      * @param array $dataTypes
@@ -284,6 +298,7 @@ abstract class AbstractPdo extends AbstractAdapter
     /**
      * Return the error info, if any
      *
+     * @phpstan-return db_error_info
      * @return array
      */
     public function getErrorInfo(): array
@@ -444,6 +459,7 @@ abstract class AbstractPdo extends AbstractAdapter
     /**
      * Returns PDO adapter DSN defaults as a key-value map.
      *
+     * @phpstan-return db_dsn_defaults
      * @return array
      */
     abstract protected function getDsnDefaults(): array;
@@ -464,6 +480,8 @@ abstract class AbstractPdo extends AbstractAdapter
      * Constructs the SQL statement (with parameters)
      *
      * @see https://stackoverflow.com/a/8403150
+     *
+     * @phpstan-param db_bind_params $parameters
      * @param string $statement
      * @param array $parameters
      * @return void
@@ -488,6 +506,8 @@ abstract class AbstractPdo extends AbstractAdapter
      * Runs the actual write against PDO and returns the affected-rows count
      * (or the raw exec() return for unprepared statements).
      *
+     * @phpstan-param db_bind_params $bindParams
+     * @phpstan-param db_bind_types  $bindTypes
      * @param string $sqlStatement
      * @param array $bindParams
      * @param array $bindTypes
@@ -509,12 +529,27 @@ abstract class AbstractPdo extends AbstractAdapter
     /**
      * Prepares and executes a read statement, returning the live PDOStatement.
      *
+     * @phpstan-param db_bind_params $params
+     * @phpstan-param db_bind_types  $types
+     *
+     * @throws CannotPrepareStatement
      * @param string $sqlStatement
      * @param array $params
      * @param array $types
      * @return \PDOStatement
      */
     private function queryStatement(string $sqlStatement, array $params, array $types): \PDOStatement
+    {
+    }
+
+    /**
+     * Resets the transaction nesting level when the connection has no active
+     * transaction. This occurs after an implicit commit, a reconnect or when
+     * the transaction ends outside of the adapter.
+     *
+     * @return void
+     */
+    private function resetStaleTransactionLevel(): void
     {
     }
 }

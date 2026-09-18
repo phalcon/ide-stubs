@@ -9,9 +9,9 @@
  */
 namespace Phalcon\Filter\Validation\Validator;
 
+use Phalcon\Contracts\Filter\FilterTypes;
 use Phalcon\Filter\Validation;
 use Phalcon\Filter\Validation\AbstractValidator;
-use Phalcon\Filter\Validation\Exception;
 use Phalcon\Filter\Validation\Exceptions\InvalidDomainOption;
 use Phalcon\Filter\Validation\Exceptions\InvalidStrictOption;
 use Phalcon\Messages\Message;
@@ -60,21 +60,21 @@ use Phalcon\Messages\Message;
  *     )
  * );
  * ```
+ *
+ * @phpstan-import-type filter_validator_options from FilterTypes
  */
 class ExclusionIn extends AbstractValidator
 {
+    /**
+     * @var string|null
+     */
     protected $template = 'Field :field must not be a part of list: :domain';
 
     /**
      * Constructor
      *
-     * @param array $options = [
-     *     'message' => '',
-     *     'template' => '',
-     *     'domain' => [],
-     *     'strict' => false,
-     *     'allowEmpty' => false
-     * ]
+     * @phpstan-param filter_validator_options $options
+     * @param array $options
      */
     public function __construct(array $options = [])
     {

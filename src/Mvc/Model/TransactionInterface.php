@@ -41,6 +41,7 @@ interface TransactionInterface
     /**
      * Returns validations messages from last save try
      *
+     * @phpstan-return array<array-key, mixed>
      * @return array
      */
     public function getMessages(): array;
@@ -77,20 +78,20 @@ interface TransactionInterface
     public function setIsNewTransaction(bool $isNew): void;
 
     /**
-     * Sets flag to rollback on abort the HTTP connection
-     *
-     * @param bool $rollbackOnAbort
-     * @return void
-     */
-    public function setRollbackOnAbort(bool $rollbackOnAbort): void;
-
-    /**
      * Sets object which generates rollback action
      *
      * @param \Phalcon\Mvc\ModelInterface $record
      * @return void
      */
     public function setRollbackedRecord(\Phalcon\Mvc\ModelInterface $record): void;
+
+    /**
+     * Sets flag to rollback on abort the HTTP connection
+     *
+     * @param bool $rollbackOnAbort
+     * @return void
+     */
+    public function setRollbackOnAbort(bool $rollbackOnAbort): void;
 
     /**
      * Sets transaction manager related to the transaction

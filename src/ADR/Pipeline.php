@@ -10,6 +10,7 @@
 namespace Phalcon\ADR;
 
 use Phalcon\Contracts\ADR\Handler;
+use Phalcon\Contracts\ADR\Middleware;
 use Phalcon\Contracts\Http\AttributeRequest;
 use Phalcon\Http\ResponseInterface;
 
@@ -24,17 +25,12 @@ final class Pipeline implements \Phalcon\Contracts\ADR\Handler
 {
     protected int $index = 0;
 
-    /**
-     * @var array
-     */
     protected array $middleware = [];
 
-    /**
-     * @var Handler
-     */
     protected \Phalcon\Contracts\ADR\Handler $terminal;
 
     /**
+     * @phpstan-param list<Middleware> $middleware
      * @param array $middleware
      * @param \Phalcon\Contracts\ADR\Handler $terminal
      * @param int $index

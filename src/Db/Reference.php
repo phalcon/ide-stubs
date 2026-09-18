@@ -9,6 +9,7 @@
  */
 namespace Phalcon\Db;
 
+use Phalcon\Contracts\Db\DbTypes;
 use Phalcon\Db\Exceptions\ForeignKeyColumnsRequired;
 use Phalcon\Db\Exceptions\ReferencedColumnCountMismatch;
 use Phalcon\Db\Exceptions\ReferencedColumnsRequired;
@@ -34,6 +35,9 @@ use Phalcon\Db\Exceptions\ReferencedTableRequired;
  *     ]
  * );
  * ```
+ *
+ * @phpstan-import-type db_column_names from DbTypes
+ * @phpstan-import-type db_reference_definition from DbTypes
  */
 class Reference implements \Phalcon\Db\ReferenceInterface
 {
@@ -41,6 +45,8 @@ class Reference implements \Phalcon\Db\ReferenceInterface
      * Local reference columns
      *
      * @var array
+     *
+     * @phpstan-var db_column_names
      */
     protected $columns;
 
@@ -55,6 +61,8 @@ class Reference implements \Phalcon\Db\ReferenceInterface
      * Referenced Columns
      *
      * @var array
+     *
+     * @phpstan-var db_column_names
      */
     protected $referencedColumns;
 
@@ -96,6 +104,7 @@ class Reference implements \Phalcon\Db\ReferenceInterface
     /**
      * Phalcon\Db\Reference constructor
      *
+     * @phpstan-param db_reference_definition $definition
      * @param string $name
      * @param array $definition
      */
@@ -106,6 +115,7 @@ class Reference implements \Phalcon\Db\ReferenceInterface
     /**
      * Local reference columns
      *
+     * @phpstan-return db_column_names
      * @return array
      */
     public function getColumns(): array
@@ -124,6 +134,7 @@ class Reference implements \Phalcon\Db\ReferenceInterface
     /**
      * Referenced Columns
      *
+     * @phpstan-return db_column_names
      * @return array
      */
     public function getReferencedColumns(): array

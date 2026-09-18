@@ -18,10 +18,8 @@ class Payload implements \Phalcon\Domain\Payload\PayloadInterface
 {
     /**
      * Exception if any
-     *
-     * @var Throwable|null
      */
-    protected $exception = null;
+    protected ?\Throwable $exception = null;
 
     /**
      * Extra information
@@ -45,18 +43,18 @@ class Payload implements \Phalcon\Domain\Payload\PayloadInterface
     protected $messages;
 
     /**
-     * Status
-     *
-     * @var mixed
-     */
-    protected $status;
-
-    /**
      * Output
      *
      * @var mixed
      */
     protected $output;
+
+    /**
+     * Status
+     *
+     * @var mixed
+     */
+    protected $status;
 
     /**
      * Gets the potential exception thrown in the domain layer
@@ -95,19 +93,6 @@ class Payload implements \Phalcon\Domain\Payload\PayloadInterface
     }
 
     /**
-     * Status
-     *
-     * Status values are drawn from the `Status` vocabulary.
-     *
-     * @return mixed
-     *
-     * @see Status
-     */
-    public function getStatus(): mixed
-    {
-    }
-
-    /**
      * Output
      *
      * @return mixed
@@ -117,10 +102,21 @@ class Payload implements \Phalcon\Domain\Payload\PayloadInterface
     }
 
     /**
+     * Status
+     *
+     * Status values are drawn from the `Status` vocabulary.
+     *
+     * @see Status
+     * @return mixed
+     */
+    public function getStatus(): mixed
+    {
+    }
+
+    /**
      * Sets an exception thrown in the domain
      *
-     * @param Throwable $exception
-     *
+     * @param \Throwable $exception
      * @return PayloadInterface
      */
     public function setException(\Throwable $exception): PayloadInterface

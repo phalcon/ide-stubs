@@ -52,7 +52,6 @@ interface ResponseInterface
      * Checks if a header exists
      *
      * @param string $name
-     *
      * @return bool
      */
     public function hasHeader(string $name): bool;
@@ -68,9 +67,8 @@ interface ResponseInterface
      * Redirect by HTTP to another action or URL
      *
      * @param string|null $location
-     * @param bool        $externalRedirect
-     * @param int         $statusCode
-     *
+     * @param bool $externalRedirect
+     * @param int $statusCode
      * @return ResponseInterface
      */
     public function redirect(?string $location = null, bool $externalRedirect = false, int $statusCode = 302): ResponseInterface;

@@ -26,32 +26,10 @@ use Phalcon\Contracts\Acl\AclTypes;
 interface Adapter
 {
     /**
-     * Do a role inherit from another existing role
-     *
-     * @phpstan-param acl_role_to_inherit $roleToInherits
-     * @param string $roleName
-     * @param mixed $roleToInherits
-     * @return bool
-     */
-    public function addInherit(string $roleName, $roleToInherits): bool;
-
-    /**
-     * Adds a role to the ACL list. Second parameter lets to inherit access data
-     * from other existing role
-     *
-     * @phpstan-param RoleInterface|string     $role
-     * @phpstan-param acl_role_to_inherit|null $accessInherits
-     * @param mixed $role
-     * @param mixed $accessInherits
-     * @return bool
-     */
-    public function addRole($role, $accessInherits = null): bool;
-
-    /**
      * Adds a component to the ACL list
      *
-     * Access names can be a particular action, by example
-     * search, update, delete, etc. or a list of them
+     * Access names can be a particular action, for instance `search`, `update`
+     * `delete` etc. or a list of them.
      *
      * @phpstan-param ComponentInterface|string $componentValue
      * @phpstan-param acl_access_list           $accessList
@@ -72,9 +50,33 @@ interface Adapter
     public function addComponentAccess(string $componentName, $accessList): bool;
 
     /**
-     * Allow access to a role on a component
+     * Add a role which inherits from an existing role
+     *
+     * @phpstan-param acl_role_to_inherit $roleToInherits
+     * @param string $roleName
+     * @param mixed $roleToInherits
+     * @return bool
+     */
+    public function addInherit(string $roleName, $roleToInherits): bool;
+
+    /**
+     * Adds a role to the ACL list. The second parameter lets to inherit access
+     * from an existing role
+     *
+     * @phpstan-param RoleInterface|string     $role
+     * @phpstan-param acl_role_to_inherit|null $accessInherits
+     * @param mixed $role
+     * @param mixed $accessInherits
+     * @return bool
+     */
+    public function addRole($role, $accessInherits = null): bool;
+
+    /**
+     * Allow access to a role on a component. You can use `` as wildcard
      *
      * @phpstan-param acl_access_list $access
+     *
+     * @phpstan-param callable|null $func
      * @param string $roleName
      * @param string $componentName
      * @param mixed $access
@@ -84,9 +86,11 @@ interface Adapter
     public function allow(string $roleName, string $componentName, $access, $func = null): void;
 
     /**
-     * Deny access to a role on a component
+     * Deny access to a role on a component. You can use `` as wildcard
      *
      * @phpstan-param acl_access_list $access
+     *
+     * @phpstan-param callable|null $func
      * @param string $roleName
      * @param string $componentName
      * @param mixed $access
@@ -106,19 +110,11 @@ interface Adapter
     public function dropComponentAccess(string $componentName, $accessList): void;
 
     /**
-     * Returns the access which the list is checking if some role can access it
+     * Returns the access which the list is checking if a role can access it
      *
      * @return string|null
      */
     public function getActiveAccess(): string|null;
-
-    /**
-     * Returns the role which the list is checking if it's allowed to certain
-     * component/access
-     *
-     * @return string|null
-     */
-    public function getActiveRole(): string|null;
 
     /**
      * Returns the component which the list is checking if some role can access
@@ -129,6 +125,14 @@ interface Adapter
     public function getActiveComponent(): string|null;
 
     /**
+     * Returns the role which the list is checking if it's allowed to certain
+     * component/access
+     *
+     * @return string|null
+     */
+    public function getActiveRole(): string|null;
+
+    /**
      * Return an array with every component registered in the list
      *
      * @phpstan-return acl_components
@@ -137,7 +141,7 @@ interface Adapter
     public function getComponents(): array;
 
     /**
-     * Returns the default ACL access level
+     * Returns the default action
      *
      * @return int
      */
@@ -148,14 +152,14 @@ interface Adapter
      * has been specified it will return the whole array. If the role has not
      * been found it returns an empty array
      *
+     * @return array<int|string, array<int, string>|string>
      * @param string $roleName
-     * @return array
      */
     public function getInheritedRoles(string $roleName = ''): array;
 
     /**
      * Returns the default ACL access level for no arguments provided in
-     * isAllowed action if there exists func for accessKey
+     * `isAllowed` action if a `function` (callable) exists for `accessKey`
      *
      * @return int
      */
@@ -183,7 +187,7 @@ interface Adapter
     public function isAllowed($roleName, $componentName, string $access, ?array $parameters = null): bool;
 
     /**
-     * Check whether component exist in the components list
+     * Check whether a component exists in the components list
      *
      * @param string $componentName
      * @return bool
@@ -199,7 +203,8 @@ interface Adapter
     public function isRole(string $roleName): bool;
 
     /**
-     * Sets the default access level (Phalcon\Acl\Enum::ALLOW or Phalcon\Acl\Enum::DENY)
+     * Sets the default access level
+     * (Phalcon\Acl\Enum::ALLOW or Phalcon\Acl\Enum::DENY)
      *
      * @param int $defaultAccess
      * @return void
@@ -207,9 +212,9 @@ interface Adapter
     public function setDefaultAction(int $defaultAccess): void;
 
     /**
-     * Sets the default access level (Phalcon\Acl\Enum::ALLOW or Phalcon\Acl\Enum::DENY)
-     * for no arguments provided in isAllowed action if there exists func for
-     * accessKey
+     * Sets the default access level (Phalcon\Acl\Enum::ALLOW or
+     * Phalcon\Acl\Enum::DENY) for no arguments provided in isAllowed action if
+     * there exists func for accessKey
      *
      * @param int $defaultAccess
      * @return void

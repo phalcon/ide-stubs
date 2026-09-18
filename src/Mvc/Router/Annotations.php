@@ -46,6 +46,8 @@ class Annotations extends Router
 
     /**
      * @var callable|string|null
+     *
+     * @phpstan-var callable|string|null
      */
     protected $actionPreformatCallback = null;
 
@@ -56,6 +58,8 @@ class Annotations extends Router
 
     /**
      * @var array
+     *
+     * @phpstan-var list<array{0: string|null, 1: string, 2?: string}>
      */
     protected $handlers = [];
 
@@ -69,6 +73,7 @@ class Annotations extends Router
      * A resource is a class that contains routing annotations
      * The class is located in a module
      *
+     * @phpstan-return static
      * @param string $module
      * @param string $handler
      * @param string|null $prefix
@@ -82,6 +87,7 @@ class Annotations extends Router
      * Adds a resource to the annotations handler
      * A resource is a class that contains routing annotations
      *
+     * @phpstan-return static
      * @param string $handler
      * @param string|null $prefix
      * @return static
@@ -93,6 +99,7 @@ class Annotations extends Router
     /**
      * Return the registered resources
      *
+     * @phpstan-return list<array{0: string|null, 1: string, 2?: string}>
      * @return array
      */
     public function getResources(): array
@@ -136,6 +143,7 @@ class Annotations extends Router
     /**
      * Changes the action method suffix
      *
+     * @phpstan-return static
      * @param string $actionSuffix
      * @return self
      */
@@ -171,6 +179,8 @@ class Annotations extends Router
      * ```
      *
      * @param callable|string|null $callback
+     *
+     * @phpstan-return static
      * @return self
      */
     public function setActionPreformatCallback($callback = null): self
@@ -187,6 +197,7 @@ class Annotations extends Router
     /**
      * Changes the controller class suffix
      *
+     * @phpstan-return static
      * @param string $controllerSuffix
      * @return self
      */

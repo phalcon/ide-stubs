@@ -9,6 +9,7 @@
  */
 namespace Phalcon\Mvc\Model\Resultset;
 
+use Phalcon\Contracts\Mvc\MvcTypes;
 use Phalcon\Db\ResultInterface;
 use Phalcon\Di\Di;
 use Phalcon\Di\DiInterface;
@@ -26,13 +27,15 @@ use Phalcon\Support\Settings;
 use stdClass;
 
 /**
- * Phalcon\Mvc\Model\Resultset\Complex
- *
  * Complex resultsets may include complete objects and scalar values.
  * This class builds every complex row as it is required
  *
  * @template TKey of int
  * @template TValue of mixed
+ *
+ * @phpstan-import-type mvc_resultset_complex_state from MvcTypes
+ * @phpstan-import-type mvc_resultset_object_column from MvcTypes
+ * @phpstan-import-type mvc_resultset_scalar_column from MvcTypes
  */
 class Complex extends Resultset
 {
@@ -42,17 +45,12 @@ class Complex extends Resultset
     protected $columnTypes;
 
     /**
-     * Unserialised result-set hydrated all rows already. unserialise() sets
+     * Unserialized result-set hydrated all rows already. unserialize() sets
      * disableHydration to true
-     *
-     * @var bool
      */
-    protected $disableHydration = false;
+    protected bool $disableHydration = false;
 
-    /**
-     * @var string
-     */
-    protected $resultsetRowClass = '';
+    protected string $resultsetRowClass = '';
 
     /**
      * Phalcon\Mvc\Model\Resultset\Complex constructor
@@ -74,6 +72,7 @@ class Complex extends Resultset
     }
 
     /**
+     * @phpstan-param mvc_resultset_complex_state $data
      * @param array $data
      * @return void
      */
@@ -84,6 +83,7 @@ class Complex extends Resultset
     /**
      * Returns current row in the resultset
      *
+     * @phpstan-return mixed
      * @return mixed
      */
     final public function current(): mixed
@@ -104,6 +104,7 @@ class Complex extends Resultset
      * Returns a complete resultset as an array, if the resultset has a big
      * number of rows it could consume more memory than currently it does.
      *
+     * @phpstan-return array<array-key, mixed>
      * @return array
      */
     public function toArray(): array
@@ -111,8 +112,10 @@ class Complex extends Resultset
     }
 
     /**
-     * Unserializing a resultset will allow to only works on the rows present in the saved state
+     * Unserializing a resultset will allow to only works on the rows present
+     * in the saved state
      *
+     * @phpstan-param string $data
      * @param mixed $data
      * @return void
      */

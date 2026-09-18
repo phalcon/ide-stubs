@@ -20,16 +20,6 @@ namespace Phalcon\Contracts\Encryption\Security;
 interface CsrfProtection
 {
     /**
-     * @return string|null
-     */
-    public function getToken(): string|null;
-
-    /**
-     * @return string|null
-     */
-    public function getTokenKey(): string|null;
-
-    /**
      * @param string|null $tokenKey
      * @param mixed $tokenValue
      * @param bool $destroyIfValid
@@ -51,4 +41,14 @@ interface CsrfProtection
      * @return string|null
      */
     public function getSessionToken(): string|null;
+
+    /**
+     * @return string|null
+     */
+    public function getToken(): string|null;
+
+    /**
+     * @return string|null
+     */
+    public function getTokenKey(): string|null;
 }

@@ -12,8 +12,6 @@ namespace Phalcon\Filter\Sanitize;
 use Phalcon\Contracts\Filter\Sanitizer;
 
 /**
- * Phalcon\Filter\Sanitize\FloatVal
- *
  * Sanitizes a value to float
  */
 class FloatVal implements \Phalcon\Contracts\Filter\Sanitizer

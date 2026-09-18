@@ -28,10 +28,7 @@ class YamlLoader implements \Phalcon\Contracts\Forms\Schema
     use \Phalcon\Traits\Php\InfoTrait;
 
 
-    /**
-     * @var string
-     */
-    protected $source;
+    protected string $source;
 
     /**
      * @param string $source YAML string or path to a YAML file

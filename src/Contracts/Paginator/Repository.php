@@ -147,7 +147,6 @@ interface Repository
      * Sets the aliases for properties repository
      *
      * @param paginator_aliases $aliases
-     *
      * @return Repository
      */
     public function setAliases(array $aliases): Repository;
@@ -156,7 +155,6 @@ interface Repository
      * Sets values for properties of the repository
      *
      * @param paginator_properties $properties
-     *
      * @return Repository
      */
     public function setProperties(array $properties): Repository;

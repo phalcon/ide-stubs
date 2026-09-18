@@ -64,6 +64,7 @@ class WkbParser
     }
 
     /**
+     * @phpstan-return list<Point>
      * @param bool $little
      * @param bool $hasZ
      * @param bool $hasM
@@ -74,6 +75,7 @@ class WkbParser
     }
 
     /**
+     * @phpstan-return list<list<Point>>
      * @param bool $little
      * @param bool $hasZ
      * @param bool $hasM

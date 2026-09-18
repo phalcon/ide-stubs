@@ -38,7 +38,7 @@ interface Processor
      * Processes the message and returns one of the ACK / REJECT / REQUEUE
      * constants, or an object whose string form is one of those values.
      *
-     * @return string|object
+     * @return object | string
      * @param Message $message
      * @param Context $context
      */

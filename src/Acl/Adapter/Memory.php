@@ -9,6 +9,7 @@
  */
 namespace Phalcon\Acl\Adapter;
 
+use Closure;
 use Phalcon\Acl\Component;
 use Phalcon\Acl\ComponentAwareInterface;
 use Phalcon\Acl\ComponentInterface;
@@ -300,6 +301,7 @@ class Memory extends \Phalcon\Acl\Adapter\AbstractAdapter
      * $acl->allow("", "", "");
      * ```
      *
+     * @phpstan-param callable|null $func
      * @param string $roleName
      * @param string $componentName
      * @param mixed $access
@@ -330,6 +332,7 @@ class Memory extends \Phalcon\Acl\Adapter\AbstractAdapter
      * $acl->deny("", "", "");
      * ```
      *
+     * @phpstan-param callable|null $func
      * @param string $roleName
      * @param string $componentName
      * @param mixed $access
@@ -521,9 +524,10 @@ class Memory extends \Phalcon\Acl\Adapter\AbstractAdapter
      * Check whether a role is allowed to access an action from a component
      *
      * Returns the rule key that grants the access, or `false` when no rule
-     * matches. The native type is the wider `string | bool`.
+     * matches. The native type is the wider `bool|string` that the Zephir
+     * `string | bool` maps to.
      *
-     * @return string|false
+     * @return false|string
      * @param string $roleName
      * @param string $componentName
      * @param string $access

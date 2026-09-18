@@ -9,6 +9,7 @@
  */
 namespace Phalcon\Encryption\Security\JWT;
 
+use Phalcon\Contracts\Encryption\EncryptionTypes;
 use Phalcon\Encryption\Security\JWT\Exceptions\EmptyPassphrase;
 use Phalcon\Encryption\Security\JWT\Exceptions\InvalidAudience;
 use Phalcon\Encryption\Security\JWT\Exceptions\InvalidExpirationTime;
@@ -29,6 +30,10 @@ use Phalcon\Traits\Php\Base64Trait;
  * JWT Builder
  *
  * @link https://tools.ietf.org/html/rfc7519
+ *
+ * @phpstan-import-type encryption_jwt_audience from EncryptionTypes
+ * @phpstan-import-type encryption_jwt_claims from EncryptionTypes
+ * @phpstan-import-type encryption_jwt_headers from EncryptionTypes
  */
 class Builder
 {
@@ -36,34 +41,25 @@ class Builder
 
 
     /**
-     * @var CollectionInterface
+     * @phpstan-var CollectionInterface<mixed>
      */
-    private $claims;
+    private \Phalcon\Support\Collection\CollectionInterface $claims;
+
+    private \Phalcon\Support\Helper\Json\Encode $encode;
 
     /**
-     * @var Encode
+     * @phpstan-var CollectionInterface<mixed>
      */
-    private $encode;
+    private \Phalcon\Support\Collection\CollectionInterface $jose;
 
-    /**
-     * @var CollectionInterface
-     */
-    private $jose;
+    private string $passphrase;
 
-    /**
-     * @var string
-     */
-    private $passphrase;
-
-    /**
-     * @var SignerInterface
-     */
-    private $signer;
+    private \Phalcon\Encryption\Security\JWT\Signer\SignerInterface $signer;
 
     /**
      * Builder constructor.
      *
-     * @param SignerInterface $signer
+     * @param \Phalcon\Encryption\Security\JWT\Signer\SignerInterface $signer
      */
     public function __construct(\Phalcon\Encryption\Security\JWT\Signer\SignerInterface $signer)
     {
@@ -73,8 +69,7 @@ class Builder
      * Adds a custom claim
      *
      * @param string $name
-     * @param mixed  $value
-     *
+     * @param mixed $value
      * @return static
      */
     public function addClaim(string $name, $value): static
@@ -85,8 +80,7 @@ class Builder
      * Adds a custom claim
      *
      * @param string $name
-     * @param mixed  $value
-     *
+     * @param mixed $value
      * @return static
      */
     public function addHeader(string $name, $value): static
@@ -94,13 +88,14 @@ class Builder
     }
 
     /**
-     * @return array|string
+     * @phpstan-return encryption_jwt_audience
      */
     public function getAudience()
     {
     }
 
     /**
+     * @phpstan-return encryption_jwt_claims
      * @return array
      */
     public function getClaims(): array
@@ -122,6 +117,7 @@ class Builder
     }
 
     /**
+     * @phpstan-return encryption_jwt_headers
      * @return array
      */
     public function getHeaders(): array
@@ -171,8 +167,8 @@ class Builder
     }
 
     /**
-     * @return Token
      * @throws ValidatorException
+     * @return Token
      */
     public function getToken(): Token
     {
@@ -198,10 +194,9 @@ class Builder
      * interpretation of audience values is generally application specific.
      * Use of this claim is OPTIONAL.
      *
-     * @param mixed $audience
-     *
-     * @return static
      * @throws ValidatorException
+     * @param mixed $audience
+     * @return static
      */
     public function setAudience($audience): static
     {
@@ -211,7 +206,6 @@ class Builder
      * Sets the content type header 'cty'
      *
      * @param string $contentType
-     *
      * @return static
      */
     public function setContentType(string $contentType): static
@@ -227,10 +221,9 @@ class Builder
      * a few minutes, to account for clock skew.  Its value MUST be a number
      * containing a NumericDate value.  Use of this claim is OPTIONAL.
      *
-     * @param int $timestamp
-     *
-     * @return static
      * @throws ValidatorException
+     * @param int $timestamp
+     * @return static
      */
     public function setExpirationTime(int $timestamp): static
     {
@@ -247,7 +240,6 @@ class Builder
      * sensitive string.  Use of this claim is OPTIONAL.
      *
      * @param string $jwtId
-     *
      * @return static
      */
     public function setId(string $jwtId): static
@@ -261,7 +253,6 @@ class Builder
      * claim is OPTIONAL.
      *
      * @param int $timestamp
-     *
      * @return static
      */
     public function setIssuedAt(int $timestamp): static
@@ -275,7 +266,6 @@ class Builder
      * value.  Use of this claim is OPTIONAL.
      *
      * @param string $issuer
-     *
      * @return static
      */
     public function setIssuer(string $issuer): static
@@ -291,20 +281,18 @@ class Builder
      * account for clock skew.  Its value MUST be a number containing a
      * NumericDate value.  Use of this claim is OPTIONAL.
      *
-     * @param int $timestamp
-     *
-     * @return static
      * @throws ValidatorException
+     * @param int $timestamp
+     * @return static
      */
     public function setNotBefore(int $timestamp): static
     {
     }
 
     /**
-     * @param string $passphrase
-     *
-     * @return static
      * @throws ValidatorException
+     * @param string $passphrase
+     * @return static
      */
     public function setPassphrase(string $passphrase): static
     {
@@ -320,7 +308,6 @@ class Builder
      * value.  Use of this claim is OPTIONAL.
      *
      * @param string $subject
-     *
      * @return static
      */
     public function setSubject(string $subject): static
@@ -331,8 +318,7 @@ class Builder
      * Sets a registered claim
      *
      * @param string $name
-     * @param mixed  $value
-     *
+     * @param mixed $value
      * @return Builder
      */
     protected function setClaim(string $name, $value): Builder

@@ -15,6 +15,7 @@ use Phalcon\Auth\Exception;
 use Phalcon\Auth\Exceptions\DoesNotImplement;
 use Phalcon\Auth\Exceptions\MissingHandlerContext;
 use Phalcon\Contracts\Auth\Access\Access;
+use Phalcon\Contracts\Auth\AuthTypes;
 use Phalcon\Contracts\Auth\AuthUser;
 use Phalcon\Contracts\Auth\Guard\Guard;
 
@@ -33,7 +34,8 @@ use Phalcon\Contracts\Auth\Guard\Guard;
  * implementing Phalcon\Acl\RoleAwareInterface supplies its role name; any
  * other user is rejected with an exception.
  *
- * @phpstan-import-type AccessContext from Access
+ * @phpstan-import-type auth_access_context from AuthTypes
+ * @phpstan-import-type auth_acl_options from AuthTypes
  */
 class Acl extends \Phalcon\Auth\Access\AbstractAccess
 {
@@ -44,7 +46,7 @@ class Acl extends \Phalcon\Auth\Access\AbstractAccess
     protected string $moduleSeparator = ':';
 
     /**
-     * @phpstan-param array{guestRole?: string, moduleSeparator?: string} $options
+     * @phpstan-param auth_acl_options $options
      * @param \Phalcon\Acl\Adapter\AdapterInterface $acl
      * @param array $options
      */
@@ -53,7 +55,7 @@ class Acl extends \Phalcon\Auth\Access\AbstractAccess
     }
 
     /**
-     * @phpstan-param AccessContext $context
+     * @phpstan-param auth_access_context $context
      *
      * @throws Exception
      * @param \Phalcon\Contracts\Auth\Guard\Guard $guard

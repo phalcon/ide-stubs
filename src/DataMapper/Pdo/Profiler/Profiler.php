@@ -9,6 +9,7 @@
  */
 namespace Phalcon\DataMapper\Pdo\Profiler;
 
+use Phalcon\Contracts\DataMapper\DataMapperTypes;
 use Phalcon\DataMapper\Pdo\Exception\Exception;
 use Phalcon\Logger\Enum;
 use Phalcon\Logger\LoggerInterface;
@@ -16,6 +17,9 @@ use Phalcon\Support\Helper\Json\Encode;
 
 /**
  * Sends query profiles to a logger.
+ *
+ * @phpstan-import-type datamapper_profiler_context from DataMapperTypes
+ * @phpstan-import-type datamapper_values from DataMapperTypes
  */
 class Profiler implements \Phalcon\DataMapper\Pdo\Profiler\ProfilerInterface
 {
@@ -26,6 +30,8 @@ class Profiler implements \Phalcon\DataMapper\Pdo\Profiler\ProfilerInterface
 
     /**
      * @var array
+     *
+     * @phpstan-var datamapper_profiler_context
      */
     protected $context = [];
 
@@ -63,6 +69,8 @@ class Profiler implements \Phalcon\DataMapper\Pdo\Profiler\ProfilerInterface
      *
      * @param string $statement
      * @param array  $values
+     *
+     * @phpstan-param datamapper_values $values
      * @return void
      */
     public function finish(?string $statement = null, array $values = []): void

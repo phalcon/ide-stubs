@@ -9,55 +9,32 @@
  */
 namespace Phalcon\Container\Resolver\Lazy;
 
+use Phalcon\Contracts\Container\ContainerTypes;
+use Phalcon\Contracts\Container\Service\Collection;
+
 /**
- * This file is part of the Phalcon Framework.
- *
- * (c) Phalcon Team <team@phalcon.io>
- *
- * For the full copyright and license information, please view the LICENSE.txt
- * file that was distributed with this source code.
- *
- * Implementation of this file has been heavily influenced by CapsulePHP.
- * Additionally, there are implementations from ioc-interop, which is a
- * Composer dependency, and from service-interop and resolver-interop. The
- * latter two are copied and re-implemented here: service-interop is not yet
- * published on Packagist, and resolver-interop requires PHP 8.4 (this project
- * targets PHP 8.1). Once both packages become available and compatible, the
- * copies will be replaced with the actual Composer dependencies.
- *
- * @link    https://github.com/capsulephp/di
- * @license https://github.com/capsulephp/di/blob/3.x/LICENSE.md
- *
- * @link    https://github.com/ioc-interop/interface
- * @license https://github.com/ioc-interop/interface/blob/1.x/LICENSE.md
- *
- * @link    https://github.com/service-interop/interface
- * @license https://github.com/service-interop/interface/blob/1.x/LICENSE.md
- *
- * @link    https://github.com/resolver-interop/interface/tree/1.x
- * @license https://github.com/resolver-interop/interface/blob/1.x/LICENSE.md
+ * @phpstan-import-type container_arguments from ContainerTypes
  */
 class NewCall extends \Phalcon\Container\Resolver\Lazy\Lazy
 {
     /**
-     * @var array<array-key, mixed>
+     * @phpstan-var container_arguments
      */
-    protected $arguments;
+    protected array $arguments;
 
     /**
-     * @var string|Lazy
+     * @var Lazy|string
      */
     protected $id;
 
-    /**
-     * @var string
-     */
-    protected $method;
+    protected string $method;
 
     /**
-     * @param string|Lazy             $id
-     * @param string                  $method
-     * @param array<array-key, mixed> $arguments
+     * @phpstan-param Lazy|string         $id
+     * @phpstan-param container_arguments $arguments
+     * @param mixed $id
+     * @param string $method
+     * @param array $arguments
      */
     public function __construct($id, string $method, array $arguments)
     {
@@ -67,7 +44,6 @@ class NewCall extends \Phalcon\Container\Resolver\Lazy\Lazy
      * Resolve a new instance method call
      *
      * @param object $ioc
-     *
      * @return mixed
      */
     public function resolve($ioc): mixed

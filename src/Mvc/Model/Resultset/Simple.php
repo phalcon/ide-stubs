@@ -9,6 +9,7 @@
  */
 namespace Phalcon\Mvc\Model\Resultset;
 
+use Phalcon\Contracts\Mvc\MvcTypes;
 use Phalcon\Di\Di;
 use Phalcon\Di\DiInterface;
 use Phalcon\Mvc\Model;
@@ -24,13 +25,15 @@ use Phalcon\Storage\Serializer\SerializerInterface;
 use Phalcon\Support\Settings;
 
 /**
- * Phalcon\Mvc\Model\Resultset\Simple
- *
  * Simple resultsets only contains a complete objects
  * This class builds every complete object as it is required
  *
  * @template TKey of int
  * @template TValue of \Phalcon\Mvc\ModelInterface
+ *
+ * @phpstan-import-type mvc_eager_map from MvcTypes
+ * @phpstan-import-type mvc_hydration_column_map from MvcTypes
+ * @phpstan-import-type mvc_resultset_simple_state from MvcTypes
  */
 class Simple extends Resultset
 {
@@ -41,6 +44,8 @@ class Simple extends Resultset
 
     /**
      * @var array|null
+     *
+     * @phpstan-var mvc_eager_map|null
      */
     protected $eagerMap = null;
 
@@ -49,10 +54,7 @@ class Simple extends Resultset
      */
     protected $model;
 
-    /**
-     * @var bool
-     */
-    protected $keepSnapshots = false;
+    protected bool $keepSnapshots = false;
 
     /**
      * Phalcon\Mvc\Model\Resultset\Simple constructor
@@ -62,6 +64,9 @@ class Simple extends Resultset
      * @param \Phalcon\Db\ResultInterface|false $result
      * @param mixed|null $cache
      * @param bool $keepSnapshots false
+     *
+     * @phpstan-param mvc_hydration_column_map|string|null      $columnMap
+     * @phpstan-param \Phalcon\Contracts\Db\Result|false|null $result
      */
     public function __construct($columnMap, $model, $result, $cache = null, bool $keepSnapshots = false)
     {
@@ -75,6 +80,7 @@ class Simple extends Resultset
     }
 
     /**
+     * @phpstan-param mvc_resultset_simple_state $data
      * @param array $data
      * @return void
      */
@@ -86,6 +92,8 @@ class Simple extends Resultset
      * Returns current row in the resultset
      *
      * @return TValue
+     *
+     * @phpstan-return ModelInterface|Row|null
      */
     final public function current(): ModelInterface|Row|null
     {
@@ -108,6 +116,7 @@ class Simple extends Resultset
      * move and current() re-hydrates from the raw row - so hydration is the
      * only durable point at which relations can be stamped.
      *
+     * @phpstan-param mvc_eager_map $eagerMap
      * @param array $eagerMap
      * @return void
      */
@@ -121,6 +130,8 @@ class Simple extends Resultset
      * snapshot behavior of this resultset.
      *
      * @param array $indexes zero-based row positions, in the desired order
+     *
+     * @phpstan-param array<array-key, int> $indexes
      * @return Simple
      */
     public function sliceRows(array $indexes): Simple
@@ -133,6 +144,7 @@ class Simple extends Resultset
      * Export the resultset to an array couldn't be faster with a large number
      * of records
      *
+     * @phpstan-return array<array-key, array<array-key, mixed>>
      * @param bool $renameColumns
      * @return array
      */
@@ -144,6 +156,7 @@ class Simple extends Resultset
      * Unserializing a resultset will allow to only works on the rows present in
      * the saved state
      *
+     * @phpstan-param string $data
      * @param mixed $data
      * @return void
      */

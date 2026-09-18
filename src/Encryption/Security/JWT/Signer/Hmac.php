@@ -25,9 +25,8 @@ class Hmac extends \Phalcon\Encryption\Security\JWT\Signer\AbstractSigner
     /**
      * Hmac constructor.
      *
-     * @param string $algo
-     *
      * @throws UnsupportedAlgorithmException
+     * @param string $algo
      */
     public function __construct(string $algo = 'sha512')
     {
@@ -47,7 +46,6 @@ class Hmac extends \Phalcon\Encryption\Security\JWT\Signer\AbstractSigner
      *
      * @param string $payload
      * @param string $passphrase
-     *
      * @return string
      */
     public function sign(string $payload, string $passphrase): string
@@ -60,7 +58,6 @@ class Hmac extends \Phalcon\Encryption\Security\JWT\Signer\AbstractSigner
      * @param string $source
      * @param string $payload
      * @param string $passphrase
-     *
      * @return bool
      */
     public function verify(string $source, string $payload, string $passphrase): bool
@@ -72,7 +69,6 @@ class Hmac extends \Phalcon\Encryption\Security\JWT\Signer\AbstractSigner
      *
      * @param string $payload
      * @param string $passphrase
-     *
      * @return string
      */
     private function getHash(string $payload, string $passphrase): string

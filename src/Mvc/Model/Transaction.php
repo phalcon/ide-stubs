@@ -11,10 +11,11 @@ namespace Phalcon\Mvc\Model;
 
 use Phalcon\Db\Adapter\AdapterInterface;
 use Phalcon\Di\DiInterface;
-use Phalcon\Mvc\ModelInterface;
+use Phalcon\Messages\MessageInterface;
 use Phalcon\Mvc\Model\Transaction\Failed as TxFailed;
 use Phalcon\Mvc\Model\Transaction\ManagerInterface;
 use Phalcon\Mvc\Model\TransactionInterface;
+use Phalcon\Mvc\ModelInterface;
 
 /**
  * Transactions are protective blocks where SQL statements are only permanent if
@@ -60,50 +61,32 @@ use Phalcon\Mvc\Model\TransactionInterface;
  */
 class Transaction implements \Phalcon\Mvc\Model\TransactionInterface
 {
-    /**
-     * @var bool
-     */
-    protected $activeTransaction = false;
+    protected bool $activeTransaction = false;
 
     /**
      * @var AdapterInterface
      */
     protected $connection;
 
-    /**
-     * @var bool
-     */
-    protected $isNewTransaction = true;
+    protected bool $isNewTransaction = true;
+
+    protected ?\Phalcon\Mvc\Model\Transaction\ManagerInterface $manager = null;
 
     /**
-     * @var ManagerInterface|null
+     * @phpstan-var list<MessageInterface>
      */
-    protected $manager = null;
+    protected array $messages = [];
 
-    /**
-     * @var array
-     */
-    protected $messages = [];
+    protected bool $rollbackOnAbort = false;
 
-    /**
-     * @var bool
-     */
-    protected $rollbackOnAbort = false;
+    protected ?\Phalcon\Mvc\ModelInterface $rollbackRecord = null;
 
-    /**
-     * @var ModelInterface|null
-     */
-    protected $rollbackRecord = null;
-
-    /**
-     * @var bool
-     */
-    protected $rollbackThrowException = false;
+    protected bool $rollbackThrowException = false;
 
     /**
      * Phalcon\Mvc\Model\Transaction constructor
      *
-     * @param DiInterface $container
+     * @param \Phalcon\Di\DiInterface $container
      * @param bool $autoBegin
      * @param string $service
      */
@@ -141,6 +124,7 @@ class Transaction implements \Phalcon\Mvc\Model\TransactionInterface
     /**
      * Returns validations messages from last save try
      *
+     * @phpstan-return list<MessageInterface>
      * @return array
      */
     public function getMessages(): array
@@ -187,22 +171,22 @@ class Transaction implements \Phalcon\Mvc\Model\TransactionInterface
     }
 
     /**
-     * Sets flag to rollback on abort the HTTP connection
-     *
-     * @param bool $rollbackOnAbort
-     * @return void
-     */
-    public function setRollbackOnAbort(bool $rollbackOnAbort): void
-    {
-    }
-
-    /**
      * Sets object which generates rollback action
      *
      * @param \Phalcon\Mvc\ModelInterface $record
      * @return void
      */
     public function setRollbackedRecord(\Phalcon\Mvc\ModelInterface $record): void
+    {
+    }
+
+    /**
+     * Sets flag to rollback on abort the HTTP connection
+     *
+     * @param bool $rollbackOnAbort
+     * @return void
+     */
+    public function setRollbackOnAbort(bool $rollbackOnAbort): void
     {
     }
 

@@ -30,12 +30,12 @@ class Php extends \Phalcon\Storage\Serializer\AbstractSerializer
      * default), false (none) or a list of class names. Stored bytes that
      * try to build another class are rejected on read.
      *
-     * @var mixed
+     * @var array<int, string>|bool
      */
     protected $allowedClasses = true;
 
     /**
-     * @return bool|array<int, string>
+     * @return array<int, string>|bool
      */
     public function getAllowedClasses(): mixed
     {
@@ -54,7 +54,7 @@ class Php extends \Phalcon\Storage\Serializer\AbstractSerializer
      * Restricts the classes that unserialize() may instantiate (see the
      * "allowed_classes" option of unserialize()).
      *
-     * @param bool|array<int, string> $allowedClasses
+     * @param array<int, string>|bool $allowedClasses
      * @return static
      */
     public function setAllowedClasses($allowedClasses): static

@@ -9,16 +9,20 @@
  */
 namespace Phalcon\Filter\Validation;
 
+use Phalcon\Contracts\Filter\FilterTypes;
 use Phalcon\Filter\Validation;
 
 /**
  * This is a base class for combined fields validators
+ *
+ * @phpstan-import-type filter_validators from FilterTypes
  */
 interface ValidatorCompositeInterface
 {
     /**
      * Executes the validation
      *
+     * @phpstan-return filter_validators
      * @return array
      */
     public function getValidators(): array;

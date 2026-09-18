@@ -19,16 +19,13 @@ use Phalcon\Mvc\ModelInterface;
  */
 class Failed extends \Phalcon\Mvc\Model\Transaction\Exception
 {
-    /**
-     * @var ModelInterface|null
-     */
-    protected $record = null;
+    protected ?\Phalcon\Mvc\ModelInterface $record = null;
 
     /**
-     * Phalcon\Mvc\Model\Transaction\Failed constructor
+     * Constructor
      *
      * @param string $message
-     * @param ModelInterface|null $record
+     * @param \Phalcon\Mvc\ModelInterface|null $record
      */
     public function __construct(string $message, ?\Phalcon\Mvc\ModelInterface $record = null)
     {

@@ -9,10 +9,12 @@
  */
 namespace Phalcon\Mvc\Micro;
 
+use Phalcon\Contracts\Mvc\MvcTypes;
+
 /**
- * Phalcon\Mvc\Micro\CollectionInterface
- *
  * Interface for Phalcon\Mvc\Micro\Collection
+ *
+ * @phpstan-import-type mvc_micro_handlers from MvcTypes
  */
 interface CollectionInterface
 {
@@ -46,6 +48,7 @@ interface CollectionInterface
     /**
      * Returns the registered handlers
      *
+     * @phpstan-return mvc_micro_handlers
      * @return array
      */
     public function getHandlers(): array;
@@ -128,8 +131,7 @@ interface CollectionInterface
      * Sets the main handler
      *
      * @param mixed $handler
-     * @param bool  $isLazy
-     *
+     * @param bool $isLazy
      * @return CollectionInterface
      */
     public function setHandler($handler, bool $isLazy = false): CollectionInterface;

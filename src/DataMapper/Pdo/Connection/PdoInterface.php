@@ -9,11 +9,26 @@
  */
 namespace Phalcon\DataMapper\Pdo\Connection;
 
+use Phalcon\Contracts\DataMapper\DataMapperTypes;
+
 /**
  * An interface to the native PDO object.
+ *
+ * @phpstan-import-type datamapper_drivers from DataMapperTypes
+ * @phpstan-import-type datamapper_error_info from DataMapperTypes
+ * @phpstan-import-type datamapper_pdo_options from DataMapperTypes
+ * @phpstan-import-type datamapper_quote_value from DataMapperTypes
  */
 interface PdoInterface
 {
+    /**
+     * Return an array of available PDO drivers (empty array if none available)
+     *
+     * @phpstan-return datamapper_drivers
+     * @return array
+     */
+    public static function getAvailableDrivers(): array;
+
     /**
      * Begins a transaction. If the profiler is enabled, the operation will
      * be recorded.
@@ -40,6 +55,7 @@ interface PdoInterface
     /**
      * Gets the most recent error info.
      *
+     * @phpstan-return datamapper_error_info
      * @return array
      */
     public function errorInfo(): array;
@@ -49,7 +65,6 @@ interface PdoInterface
      * the profiler is enabled, the operation will be recorded.
      *
      * @param string $statement
-     *
      * @return int
      */
     public function exec(string $statement): int;
@@ -58,17 +73,9 @@ interface PdoInterface
      * Retrieve a database connection attribute
      *
      * @param int $attribute
-     *
      * @return mixed
      */
     public function getAttribute(int $attribute): mixed;
-
-    /**
-     * Return an array of available PDO drivers (empty array if none available)
-     *
-     * @return array
-     */
-    public static function getAvailableDrivers(): array;
 
     /**
      * Is a transaction currently active? If the profiler is enabled, the
@@ -83,8 +90,7 @@ interface PdoInterface
      * Returns the last inserted autoincrement sequence value. If the profiler
      * is enabled, the operation will be recorded.
      *
-     * @param string $name
-     *
+     * @param string|null $name
      * @return string
      */
     public function lastInsertId(?string $name = null): string;
@@ -92,10 +98,10 @@ interface PdoInterface
     /**
      * Prepares an SQL statement for execution.
      *
+     * @phpstan-param datamapper_pdo_options $options
      * @param string $statement
-     * @param array  $options
-     *
-     * @return \PDOStatement|false
+     * @param array $options
+     * @return bool|\PDOStatement
      */
     public function prepare(string $statement, array $options = []): \PDOStatement|bool;
 
@@ -115,10 +121,10 @@ interface PdoInterface
      * `PDO::quote()` in that it will convert an array into a string of
      * comma-separated quoted values. The default type is `PDO::PARAM_STR`
      *
+     * @phpstan-param datamapper_quote_value $value
      * @param mixed $value
-     * @param int   $type
-     *
-     * @return string The quoted value.
+     * @param int $type
+     * @return string
      */
     public function quote($value, int $type = \PDO::PARAM_STR): string;
 
@@ -133,9 +139,8 @@ interface PdoInterface
     /**
      * Set a database connection attribute
      *
-     * @param int   $attribute
+     * @param int $attribute
      * @param mixed $value
-     *
      * @return bool
      */
     public function setAttribute(int $attribute, $value): bool;

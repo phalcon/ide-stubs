@@ -16,15 +16,18 @@ use Phalcon\Auth\Exceptions\InvalidCredentialKey;
 use Phalcon\Auth\Internal\Options;
 use Phalcon\Contracts\Auth\Adapter\RememberAdapter;
 use Phalcon\Contracts\Auth\AuthRemember;
+use Phalcon\Contracts\Auth\AuthTypes;
 use Phalcon\Contracts\Auth\AuthUser;
 use Phalcon\Contracts\Auth\RememberToken;
 use Phalcon\Contracts\Encryption\Security\Security;
+use Phalcon\Contracts\Mvc\MvcTypes;
 use Phalcon\Mvc\ModelInterface;
 
 /**
  * Phalcon Model-backed adapter.
  *
- * @phpstan-import-type AuthCredentials from \Phalcon\Contracts\Auth\Adapter\Adapter
+ * @phpstan-import-type auth_credentials from AuthTypes
+ * @phpstan-import-type mvc_model_find_parameters from MvcTypes
  *
  * @extends AbstractAdapter<ModelAdapterConfig>
  */
@@ -61,7 +64,7 @@ class Model extends \Phalcon\Auth\Adapter\AbstractAdapter implements \Phalcon\Co
     /**
      * Find a user matching the given credentials (excluding 'password' key).
      *
-     * @phpstan-param AuthCredentials $credentials
+     * @phpstan-param auth_credentials $credentials
      * @param array $credentials
      * @return AuthUser|null
      */
@@ -94,9 +97,10 @@ class Model extends \Phalcon\Auth\Adapter\AbstractAdapter implements \Phalcon\Co
      * an ?AuthUser: a missing record yields null, a record that is not an
      * AuthUser throws.
      *
-     * @param array{conditions: string, bind: array<string, mixed>} $parameters
+     * @phpstan-param mvc_model_find_parameters $parameters
      *
      * @throws DoesNotImplement
+     * @param array $parameters
      * @return AuthUser|null
      */
     private function findFirstAsAuthUser(array $parameters): AuthUser|null

@@ -39,9 +39,7 @@ use Phalcon\Mvc\Router\RouteInterface;
 use Throwable;
 
 /**
- * Phalcon\Mvc\Micro
- *
- * With Phalcon you can create "Micro-Framework like" applications. By doing
+ * With Phalcon, you can create "Micro-Framework like" applications. By doing
  * this, you only need to write a minimal amount of code to create a PHP
  * application. Micro applications are suitable to small applications, APIs and
  * prototypes in a practical way.
@@ -63,23 +61,25 @@ class Micro extends Injectable implements \ArrayAccess, \Phalcon\Events\EventsAw
 {
     /**
      * @var callable|null
+     *
+     * @phpstan-var array<array-key, mixed>|callable|null
      */
     protected $activeHandler = null;
 
     /**
-     * @var array
+     * @phpstan-var list<mixed>
      */
-    protected $afterBindingHandlers = [];
+    protected array $afterBindingHandlers = [];
 
     /**
-     * @var array
+     * @phpstan-var list<mixed>
      */
-    protected $afterHandlers = [];
+    protected array $afterHandlers = [];
 
     /**
-     * @var array
+     * @phpstan-var list<mixed>
      */
-    protected $beforeHandlers = [];
+    protected array $beforeHandlers = [];
 
     /**
      * @var DiInterface|null
@@ -91,25 +91,19 @@ class Micro extends Injectable implements \ArrayAccess, \Phalcon\Events\EventsAw
      */
     protected $errorHandler = null;
 
-    /**
-     * @var ManagerInterface|null
-     */
-    protected $eventsManager = null;
+    protected ?\Phalcon\Events\ManagerInterface $eventsManager = null;
 
     /**
-     * @var array
+     * @phpstan-var list<mixed>
      */
-    protected $finishHandlers = [];
+    protected array $finishHandlers = [];
 
     /**
-     * @var array
+     * @phpstan-var array<string, array<array-key, mixed>|callable>
      */
-    protected $handlers = [];
+    protected array $handlers = [];
 
-    /**
-     * @var BinderInterface|null
-     */
-    protected $modelBinder = null;
+    protected ?\Phalcon\Mvc\Model\BinderInterface $modelBinder = null;
 
     /**
      * @var callable|null
@@ -126,15 +120,9 @@ class Micro extends Injectable implements \ArrayAccess, \Phalcon\Events\EventsAw
      */
     protected $returnedValue = null;
 
-    /**
-     * @var RouterInterface|null
-     */
-    protected $router = null;
+    protected ?RouterInterface $router = null;
 
-    /**
-     * @var bool
-     */
-    protected $stopped = false;
+    protected bool $stopped = false;
 
     /**
      * Phalcon\Mvc\Micro constructor
@@ -222,6 +210,8 @@ class Micro extends Injectable implements \ArrayAccess, \Phalcon\Events\EventsAw
      * Return the handler that will be called for the matched route
      *
      * @return callable
+     *
+     * @phpstan-return array<array-key, mixed>|callable|null
      */
     public function getActiveHandler()
     {
@@ -230,6 +220,7 @@ class Micro extends Injectable implements \ArrayAccess, \Phalcon\Events\EventsAw
     /**
      * Returns bound models from binder instance
      *
+     * @phpstan-return array<array-key, mixed>
      * @return array
      */
     public function getBoundModels(): array
@@ -246,18 +237,9 @@ class Micro extends Injectable implements \ArrayAccess, \Phalcon\Events\EventsAw
     }
 
     /**
-     * Sets the events manager
-     *
-     * @param \Phalcon\Events\ManagerInterface $eventsManager
-     * @return void
-     */
-    public function setEventsManager(\Phalcon\Events\ManagerInterface $eventsManager): void
-    {
-    }
-
-    /**
      * Returns the internal handlers attached to the application
      *
+     * @phpstan-return array<string, array<array-key, mixed>|callable>
      * @return array
      */
     public function getHandlers(): array
@@ -476,7 +458,8 @@ class Micro extends Injectable implements \ArrayAccess, \Phalcon\Events\EventsAw
     /**
      * Sets externally the handler that must be called by the matched route
      *
-     * @param callable $activeHandler
+     * @param callable $activeHandler *
+     * @phpstan-return static
      * @return self
      */
     public function setActiveHandler($activeHandler): self
@@ -490,6 +473,16 @@ class Micro extends Injectable implements \ArrayAccess, \Phalcon\Events\EventsAw
      * @return void
      */
     public function setDI(\Phalcon\Di\DiInterface $container): void
+    {
+    }
+
+    /**
+     * Sets the events manager
+     *
+     * @param \Phalcon\Events\ManagerInterface $eventsManager
+     * @return void
+     */
+    public function setEventsManager(\Phalcon\Events\ManagerInterface $eventsManager): void
     {
     }
 

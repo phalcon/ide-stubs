@@ -23,10 +23,13 @@ class MultiPolygon extends \Phalcon\Db\Geometry\AbstractGeometry
 {
     /**
      * @var array
+     *
+     * @phpstan-var list<Polygon>
      */
     protected $polygons;
 
     /**
+     * @phpstan-param list<Polygon> $polygons
      * @param array $polygons
      * @param int $srid
      */
@@ -42,6 +45,7 @@ class MultiPolygon extends \Phalcon\Db\Geometry\AbstractGeometry
     }
 
     /**
+     * @phpstan-return list<Polygon>
      * @return array
      */
     public function getPolygons(): array

@@ -56,33 +56,26 @@ abstract class AbstractFile extends AbstractValidator
 {
     /**
      * Empty is empty
-     *
-     * @var string
      */
-    protected $messageFileEmpty = 'Field :field must not be empty';
+    protected string $messageFileEmpty = 'Field :field must not be empty';
 
     /**
      * File exceeds the file size set in PHP configuration
-     *
-     * @var string
      */
-    protected $messageIniSize = 'File :field exceeds the maximum file size';
+    protected string $messageIniSize = 'File :field exceeds the maximum file size';
 
     /**
      * File is not valid
-     *
-     * @var string
      */
-    protected $messageValid = 'Field :field is not valid';
+    protected string $messageValid = 'Field :field is not valid';
 
     /**
      * Check upload
      *
-     * @param Validation $validation
-     * @param string     $field
-     *
-     * @return bool
      * @throws Validation\Exception
+     * @param \Phalcon\Filter\Validation $validation
+     * @param string $field
+     * @return bool
      */
     public function checkUpload(\Phalcon\Filter\Validation $validation, string $field): bool
     {
@@ -91,11 +84,10 @@ abstract class AbstractFile extends AbstractValidator
     /**
      * Check if upload is empty
      *
-     * @param Validation $validation
-     * @param string     $field
-     *
-     * @return bool
      * @throws Validation\Exception
+     * @param \Phalcon\Filter\Validation $validation
+     * @param string $field
+     * @return bool
      */
     public function checkUploadIsEmpty(\Phalcon\Filter\Validation $validation, string $field): bool
     {
@@ -104,11 +96,10 @@ abstract class AbstractFile extends AbstractValidator
     /**
      * Check if upload is valid
      *
-     * @param Validation $validation
-     * @param string     $field
-     *
-     * @return bool
      * @throws Validation\Exception
+     * @param \Phalcon\Filter\Validation $validation
+     * @param string $field
+     * @return bool
      */
     public function checkUploadIsValid(\Phalcon\Filter\Validation $validation, string $field): bool
     {
@@ -117,11 +108,10 @@ abstract class AbstractFile extends AbstractValidator
     /**
      * Check if uploaded file is larger than PHP allowed size
      *
-     * @param Validation $validation
-     * @param string     $field
-     *
-     * @return bool
      * @throws Validation\Exception
+     * @param \Phalcon\Filter\Validation $validation
+     * @param string $field
+     * @return bool
      */
     public function checkUploadMaxSize(\Phalcon\Filter\Validation $validation, string $field): bool
     {
@@ -131,7 +121,6 @@ abstract class AbstractFile extends AbstractValidator
      * Convert a string like "2.5MB" in bytes
      *
      * @param string $size
-     *
      * @return float
      */
     public function getFileSizeInBytes(string $size): float
@@ -168,11 +157,10 @@ abstract class AbstractFile extends AbstractValidator
     /**
      * Check on empty
      *
-     * @param Validation $validation
-     * @param string     $field
-     *
-     * @return bool
      * @throws Validation\Exception
+     * @param \Phalcon\Filter\Validation $validation
+     * @param string $field
+     * @return bool
      */
     public function isAllowEmpty(\Phalcon\Filter\Validation $validation, string $field): bool
     {
@@ -182,7 +170,6 @@ abstract class AbstractFile extends AbstractValidator
      * Empty is empty
      *
      * @param string $message
-     *
      * @return void
      */
     public function setMessageFileEmpty(string $message): void
@@ -193,7 +180,6 @@ abstract class AbstractFile extends AbstractValidator
      * File exceeds the file size set in PHP configuration
      *
      * @param string $message
-     *
      * @return void
      */
     public function setMessageIniSize(string $message): void
@@ -204,10 +190,20 @@ abstract class AbstractFile extends AbstractValidator
      * File is not valid
      *
      * @param string $message
-     *
      * @return void
      */
     public function setMessageValid(string $message): void
+    {
+    }
+
+    /**
+     * Appends the "file is not valid" message for the field
+     *
+     * @param \Phalcon\Filter\Validation $validation
+     * @param string $field
+     * @return void
+     */
+    protected function appendMessageValid(\Phalcon\Filter\Validation $validation, string $field): void
     {
     }
 
@@ -216,7 +212,6 @@ abstract class AbstractFile extends AbstractValidator
      * overridden in a subclass if you do not want to check uploaded files
      *
      * @param string $name
-     *
      * @return bool
      */
     protected function checkIsUploadedFile(string $name): bool

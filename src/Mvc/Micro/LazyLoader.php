@@ -13,16 +13,11 @@ use Phalcon\Mvc\Micro\Exceptions\LazyHandlerNotFound;
 use Phalcon\Mvc\Model\BinderInterface;
 
 /**
- * Phalcon\Mvc\Micro\LazyLoader
- *
  * Lazy-Load of handlers for Mvc\Micro using auto-loading
  */
 class LazyLoader
 {
-    /**
-     * @var string
-     */
-    protected $definition;
+    protected string $definition;
 
     /**
      * @var object|null
@@ -42,7 +37,6 @@ class LazyLoader
      * Calling __call method
      *
      * @param array $arguments
-     * @return mixed
      * @param string $method
      * @param \Phalcon\Mvc\Model\BinderInterface|null $modelBinder
      */

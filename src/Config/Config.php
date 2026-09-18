@@ -10,6 +10,7 @@
 namespace Phalcon\Config;
 
 use Phalcon\Config\Exceptions\InvalidMergeData;
+use Phalcon\Contracts\Config\ConfigTypes;
 use Phalcon\Support\Collection;
 
 /**
@@ -36,6 +37,10 @@ use Phalcon\Support\Collection;
  *     ]
  * );
  * ```
+ *
+ * @extends Collection<mixed>
+ *
+ * @phpstan-import-type config_data from ConfigTypes
  */
 class Config extends Collection implements \Phalcon\Config\ConfigInterface
 {
@@ -73,10 +78,11 @@ class Config extends Collection implements \Phalcon\Config\ConfigInterface
      * $globalConfig->merge($appConfig);
      * ```
      *
-     * @param array|ConfigInterface $toMerge
+     * @phpstan-param config_data|ConfigInterface $toMerge
      *
-     * @return ConfigInterface
      * @throws Exception
+     * @param mixed $toMerge
+     * @return ConfigInterface
      */
     public function merge($toMerge): ConfigInterface
     {
@@ -89,10 +95,9 @@ class Config extends Collection implements \Phalcon\Config\ConfigInterface
      * echo $config->path("unknown.path", "default", ".");
      * ```
      *
-     * @param string      $path
-     * @param mixed|null  $defaultValue
+     * @param string $path
+     * @param mixed $defaultValue
      * @param string|null $delimiter
-     *
      * @return mixed
      */
     public function path(string $path, $defaultValue = null, ?string $delimiter = null): mixed
@@ -103,7 +108,6 @@ class Config extends Collection implements \Phalcon\Config\ConfigInterface
      * Sets the default path delimiter
      *
      * @param string|null $delimiter
-     *
      * @return ConfigInterface
      */
     public function setPathDelimiter(?string $delimiter = null): ConfigInterface
@@ -130,11 +134,10 @@ class Config extends Collection implements \Phalcon\Config\ConfigInterface
      * configuration of the current one. Clone-based instead of
      * constructor-based: adapter subclasses (Ini, Json, Php, Yaml, Grouped)
      * define file-loading constructors that are incompatible with the
-     * parent's `(array data, ...)` signature, so `filter()`, `map()`,
+     * parent's `(array $data, ...)` signature, so `filter()`, `map()`,
      * `sort()` and `where()` would otherwise fail on any adapter instance.
      *
      * @param array<int|string, mixed> $data
-     *
      * @return static
      */
     protected function cloneEmpty(array $data = []): static
@@ -144,10 +147,10 @@ class Config extends Collection implements \Phalcon\Config\ConfigInterface
     /**
      * Performs a merge recursively
      *
-     * @param array $source
-     * @param array $target
+     * @param array<array-key, mixed> $source
+     * @param array<array-key, mixed> $target
      *
-     * @return array
+     * @return array<array-key, mixed>
      */
     final protected function internalMerge(array $source, array $target): array
     {

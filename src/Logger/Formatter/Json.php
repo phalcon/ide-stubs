@@ -36,10 +36,9 @@ class Json extends \Phalcon\Logger\Formatter\AbstractFormatter
     /**
      * Applies a format to a message before sent it to the internal log
      *
-     * @param Item $item
-     *
-     * @return string
      * @throws JsonException
+     * @param \Phalcon\Logger\Item $item
+     * @return string
      */
     public function format(\Phalcon\Logger\Item $item): string
     {

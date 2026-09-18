@@ -9,18 +9,25 @@
  */
 namespace Phalcon\DataMapper\Query;
 
+use Phalcon\Contracts\DataMapper\DataMapperTypes;
 use Phalcon\DataMapper\Pdo\Connection;
 
 /**
  * Update Query
+ *
+ * @phpstan-import-type datamapper_clauses from DataMapperTypes
+ * @phpstan-import-type datamapper_column_values from DataMapperTypes
+ * @phpstan-import-type datamapper_write_store from DataMapperTypes
+ *
+ * @property datamapper_write_store $store
  */
 class Update extends \Phalcon\DataMapper\Query\AbstractConditions
 {
     /**
      * Update constructor.
      *
-     * @param Connection $connection
-     * @param Bind       $bind
+     * @param \Phalcon\DataMapper\Pdo\Connection $connection
+     * @param Bind $bind
      */
     public function __construct(\Phalcon\DataMapper\Pdo\Connection $connection, Bind $bind)
     {
@@ -30,10 +37,9 @@ class Update extends \Phalcon\DataMapper\Query\AbstractConditions
      * Sets a column for the `UPDATE` query
      *
      * @param string $column
-     *
-     * @return Update
      * @param mixed $value
      * @param int $type
+     * @return Update
      */
     public function column(string $column, $value = null, int $type = -1): Update
     {
@@ -42,8 +48,8 @@ class Update extends \Phalcon\DataMapper\Query\AbstractConditions
     /**
      * Mass sets columns and values for the `UPDATE`
      *
+     * @phpstan-param datamapper_column_values $columns
      * @param array $columns
-     *
      * @return Update
      */
     public function columns(array $columns): Update
@@ -54,7 +60,6 @@ class Update extends \Phalcon\DataMapper\Query\AbstractConditions
      * Adds table(s) in the query
      *
      * @param string $table
-     *
      * @return Update
      */
     public function from(string $table): Update
@@ -78,17 +83,6 @@ class Update extends \Phalcon\DataMapper\Query\AbstractConditions
     }
 
     /**
-     * Adds the `RETURNING` clause
-     *
-     * @param array $columns
-     *
-     * @return Update
-     */
-    public function returning(array $columns): Update
-    {
-    }
-
-    /**
      * Resets the internal store
      *
      * @return void
@@ -98,11 +92,22 @@ class Update extends \Phalcon\DataMapper\Query\AbstractConditions
     }
 
     /**
+     * Adds the `RETURNING` clause
+     *
+     * @phpstan-param datamapper_clauses $columns
+     * @param array $columns
+     * @return Update
+     */
+    public function returning(array $columns): Update
+    {
+    }
+
+    /**
      * Sets a column = value condition
      *
-     * @param string     $column
-     * @param mixed|null $value
-     *
+     * @phpstan-param string|null $value
+     * @param string $column
+     * @param mixed $value
      * @return Update
      */
     public function set(string $column, $value = null): Update

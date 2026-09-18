@@ -18,7 +18,6 @@ use Phalcon\Paginator\Adapter\Model;
 use Phalcon\Paginator\Adapter\NativeArray;
 use Phalcon\Paginator\Adapter\QueryBuilder;
 use Phalcon\Paginator\Adapter\QueryBuilderCursor;
-use Throwable;
 
 /**
  * @phpstan-import-type paginator_config from PaginatorTypes
@@ -78,7 +77,7 @@ class PaginatorFactory extends AbstractFactory
     }
 
     /**
-     * @return class-string<Throwable>
+     * @return class-string<\Exception>
      */
     protected function getExceptionClass(): string
     {

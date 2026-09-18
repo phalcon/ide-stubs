@@ -9,23 +9,33 @@
  */
 namespace Phalcon\Forms\Element;
 
+use Phalcon\Contracts\Forms\FormsTypes;
+use Phalcon\Contracts\Html\HtmlTypes;
 use Phalcon\Tag\Select as SelectTag;
 
 /**
  * Component SELECT (choice) for forms
+ *
+ * @phpstan-import-type forms_attributes from FormsTypes
+ * @phpstan-import-type forms_select_options from FormsTypes
+ * @phpstan-import-type html_attributes from HtmlTypes
  */
 class Select extends \Phalcon\Forms\Element\AbstractElement
 {
     /**
-     * @var object|array|null
+     * @var array|object|null
+     *
+     * @phpstan-var forms_select_options|object|null
      */
     protected $optionsValues = null;
 
     /**
      * Constructor
      *
+     * @phpstan-param forms_select_options|object|null $options
+     * @phpstan-param forms_attributes $attributes
      * @param string $name
-     * @param object|array|null $options
+     * @param mixed $options
      * @param array $attributes
      */
     public function __construct(string $name, $options = null, array $attributes = [])
@@ -35,7 +45,7 @@ class Select extends \Phalcon\Forms\Element\AbstractElement
     /**
      * Adds an option to the current options
      *
-     * @param array|string $option
+     * @param mixed $option
      * @return ElementInterface
      */
     public function addOption($option): ElementInterface
@@ -45,7 +55,7 @@ class Select extends \Phalcon\Forms\Element\AbstractElement
     /**
      * Returns the choices' options
      *
-     * @return array|object
+     * @phpstan-return forms_select_options|object|null
      */
     public function getOptions()
     {
@@ -54,6 +64,7 @@ class Select extends \Phalcon\Forms\Element\AbstractElement
     /**
      * Renders the element widget returning HTML
      *
+     * @phpstan-param html_attributes $attributes
      * @param array $attributes
      * @return string
      */
@@ -64,7 +75,8 @@ class Select extends \Phalcon\Forms\Element\AbstractElement
     /**
      * Set the choice's options
      *
-     * @param array|object $options
+     * @phpstan-param forms_select_options|object $options
+     * @param mixed $options
      * @return ElementInterface
      */
     public function setOptions($options): ElementInterface
@@ -75,6 +87,8 @@ class Select extends \Phalcon\Forms\Element\AbstractElement
      * Returns an array of prepared attributes for Phalcon\Html\TagFactory
      * helpers according to the element parameters
      *
+     * @phpstan-param html_attributes $attributes
+     * @phpstan-return array<array-key, mixed>
      * @param array $attributes
      * @return array
      */

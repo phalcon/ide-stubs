@@ -12,20 +12,16 @@ namespace Phalcon\Mvc\Model;
 use Phalcon\Mvc\ModelInterface;
 
 /**
- * Phalcon\Mvc\Model\Behavior
- *
  * This is an optional base class for ORM behaviors
  */
 abstract class Behavior implements \Phalcon\Mvc\Model\BehaviorInterface
 {
-    /**
-     * @var array
-     */
-    protected $options;
+    protected array $options;
 
     /**
      * Phalcon\Mvc\Model\Behavior
      *
+     * @phpstan-param array<string, mixed> $options
      * @param array $options
      */
     public function __construct(array $options = [])
@@ -35,6 +31,7 @@ abstract class Behavior implements \Phalcon\Mvc\Model\BehaviorInterface
     /**
      * Acts as fallbacks when a missing method is called on the model
      *
+     * @phpstan-param array<array-key, mixed> $arguments
      * @param \Phalcon\Mvc\ModelInterface $model
      * @param string $method
      * @param array $arguments
@@ -46,6 +43,7 @@ abstract class Behavior implements \Phalcon\Mvc\Model\BehaviorInterface
     /**
      * This method receives the notifications from the EventsManager
      *
+     * @phpstan-return mixed
      * @param string $type
      * @param \Phalcon\Mvc\ModelInterface $model
      */
@@ -57,6 +55,8 @@ abstract class Behavior implements \Phalcon\Mvc\Model\BehaviorInterface
      * Returns the behavior options related to an event
      *
      * @return array
+     *
+     * @phpstan-return array<string, mixed>|mixed
      * @param string|null $eventName
      */
     protected function getOptions(?string $eventName = null)

@@ -10,12 +10,13 @@
 namespace Phalcon\Contracts\Auth\Guard;
 
 use Phalcon\Contracts\Auth\Adapter\Adapter;
+use Phalcon\Contracts\Auth\AuthTypes;
 use Phalcon\Contracts\Auth\AuthUser;
 
 /**
  * Implemented by guards backed by persistent state (sessions/cookies).
  *
- * @phpstan-import-type AuthCredentials from Adapter
+ * @phpstan-import-type auth_credentials from AuthTypes
  */
 interface GuardStateful
 {
@@ -23,7 +24,7 @@ interface GuardStateful
      * Attempts to authenticate the user with the given credentials and, on
      * success, persists the resulting state on the guard.
      *
-     * @phpstan-param AuthCredentials $credentials
+     * @phpstan-param auth_credentials $credentials
      * @param array $credentials
      * @param bool $remember
      * @return bool

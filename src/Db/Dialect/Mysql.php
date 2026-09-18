@@ -9,6 +9,7 @@
  */
 namespace Phalcon\Db\Dialect;
 
+use Phalcon\Contracts\Db\DbTypes;
 use Phalcon\Db\CheckInterface;
 use Phalcon\Db\Column;
 use Phalcon\Db\ColumnInterface;
@@ -24,6 +25,8 @@ use Phalcon\Db\ReferenceInterface;
 
 /**
  * Generates database specific SQL for the MySQL RDBMS
+ *
+ * @phpstan-import-type db_table_options from DbTypes
  */
 class Mysql extends Dialect
 {
@@ -34,6 +37,8 @@ class Mysql extends Dialect
 
     /**
      * @var array
+     *
+     * @phpstan-var list<string>
      */
     protected $supportedOperators = ['->', '->>'];
 
@@ -412,8 +417,11 @@ class Mysql extends Dialect
     }
 
     /**
-     * Generates SQL to add the table creation options
+     * Generates SQL to add the table creation options. The caller emits the
+     * clause only when the definition carries the options, so the shape
+     * below is narrower than `db_table_definition`.
      *
+     * @phpstan-param array{options: db_table_options} $definition
      * @param array $definition
      * @return string
      */

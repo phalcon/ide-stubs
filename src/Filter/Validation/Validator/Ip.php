@@ -9,6 +9,7 @@
  */
 namespace Phalcon\Filter\Validation\Validator;
 
+use Phalcon\Contracts\Filter\FilterTypes;
 use Phalcon\Filter\Validation;
 use Phalcon\Filter\Validation\AbstractValidator;
 use Phalcon\Messages\Message;
@@ -63,6 +64,8 @@ use Phalcon\Messages\Message;
  *     )
  * );
  * ```
+ *
+ * @phpstan-import-type filter_validator_options from FilterTypes
  */
 class Ip extends AbstractValidator
 {
@@ -76,18 +79,16 @@ class Ip extends AbstractValidator
      */
     const int VERSION_6 = 2097152;
 
+    /**
+     * @var string|null
+     */
     protected $template = 'Field :field must be a valid IP address';
 
     /**
      * Constructor
      *
-     * @param array $options = [
-     *     'message' => '',
-     *     'template' => '',
-     *     'allowPrivate' => false,
-     *     'allowReserved' => false,
-     *     'allowEmpty' => false
-     * ]
+     * @phpstan-param filter_validator_options $options
+     * @param array $options
      */
     public function __construct(array $options = [])
     {

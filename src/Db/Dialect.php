@@ -9,6 +9,7 @@
  */
 namespace Phalcon\Db;
 
+use Phalcon\Contracts\Db\DbTypes;
 use Phalcon\Db\Exceptions\ConflictTargetColumnRequired;
 use Phalcon\Db\Exceptions\ConflictUpdateColumnRequired;
 use Phalcon\Db\Exceptions\InvalidGroupByExpression;
@@ -26,6 +27,18 @@ use Phalcon\Support\Settings;
 /**
  * This is the base class to each database dialect. This implements
  * common methods to transform intermediate code into its RDBMS related syntax
+ *
+ * @phpstan-import-type db_bind_counts from DbTypes
+ * @phpstan-import-type db_column_list from DbTypes
+ * @phpstan-import-type db_column_names from DbTypes
+ * @phpstan-import-type db_custom_functions from DbTypes
+ * @phpstan-import-type db_expression from DbTypes
+ * @phpstan-import-type db_joins from DbTypes
+ * @phpstan-import-type db_limit_expression from DbTypes
+ * @phpstan-import-type db_limit_number from DbTypes
+ * @phpstan-import-type db_select_definition from DbTypes
+ * @phpstan-import-type db_table_name from DbTypes
+ * @phpstan-import-type db_view_definition from DbTypes
  */
 abstract class Dialect implements \Phalcon\Db\DialectInterface
 {
@@ -36,6 +49,8 @@ abstract class Dialect implements \Phalcon\Db\DialectInterface
 
     /**
      * @var array
+     *
+     * @phpstan-var db_custom_functions
      */
     protected $customFunctions = [];
 
@@ -44,6 +59,8 @@ abstract class Dialect implements \Phalcon\Db\DialectInterface
      * via supportedOperators; using one elsewhere throws.
      *
      * @var array
+     *
+     * @phpstan-var list<string>
      */
     protected $guardedOperators = ['@@', '@>', '<@', '&&', '||', '->', '->>', '#>', '#>>'];
 
@@ -52,6 +69,8 @@ abstract class Dialect implements \Phalcon\Db\DialectInterface
      * dialect.
      *
      * @var array
+     *
+     * @phpstan-var list<string>
      */
     protected $supportedOperators = [];
 
@@ -128,6 +147,8 @@ abstract class Dialect implements \Phalcon\Db\DialectInterface
      * );
      * ```
      *
+     * @phpstan-param db_column_list $columnList
+     * @phpstan-param db_bind_counts $bindCounts
      * @param array $columnList
      * @param string|null $escapeChar
      * @param array $bindCounts
@@ -140,6 +161,7 @@ abstract class Dialect implements \Phalcon\Db\DialectInterface
     /**
      * Returns registered functions
      *
+     * @phpstan-return db_custom_functions
      * @return array
      */
     public function getCustomFunctions(): array
@@ -149,9 +171,11 @@ abstract class Dialect implements \Phalcon\Db\DialectInterface
     /**
      * Resolve Column expressions
      *
-     * @param array|string $column
+     * @phpstan-param db_expression  $column
+     * @phpstan-param db_bind_counts $bindCounts
+     * @param mixed $column
      * @param string|null $escapeChar
-     * @param array $bindCounts *
+     * @param array $bindCounts
      * @return string
      */
     final public function getSqlColumn($column, ?string $escapeChar = null, array $bindCounts = []): string
@@ -161,6 +185,8 @@ abstract class Dialect implements \Phalcon\Db\DialectInterface
     /**
      * Transforms an intermediate representation for an expression into a database system valid expression
      *
+     * @phpstan-param db_expression  $expression
+     * @phpstan-param db_bind_counts $bindCounts
      * @param array $expression
      * @param string|null $escapeChar
      * @param array $bindCounts
@@ -174,6 +200,7 @@ abstract class Dialect implements \Phalcon\Db\DialectInterface
      * Transform an intermediate representation of a schema/table into a
      * database system valid expression
      *
+     * @phpstan-param db_table_name $table
      * @param mixed $table
      * @param string|null $escapeChar
      * @return string
@@ -199,6 +226,7 @@ abstract class Dialect implements \Phalcon\Db\DialectInterface
      * );
      * ```
      *
+     * @phpstan-param db_limit_number $number
      * @param string $sqlQuery
      * @param mixed $number
      * @return string
@@ -234,6 +262,7 @@ abstract class Dialect implements \Phalcon\Db\DialectInterface
      * (`CREATE MATERIALIZED VIEW name AS <sql>`). Other dialects inherit
      * this throw - MySQL and SQLite have no materialized-view concept.
      *
+     * @phpstan-param db_view_definition $definition
      * @param string $viewName
      * @param array $definition
      * @param string|null $schemaName
@@ -277,6 +306,8 @@ abstract class Dialect implements \Phalcon\Db\DialectInterface
      * MySQL overrides this method to throw because its `ON DUPLICATE KEY
      * UPDATE` has a different shape (deferred to parser item #23).
      *
+     * @phpstan-param db_column_names $conflictColumns
+     * @phpstan-param db_column_names $updateColumns
      * @param string $sqlQuery
      * @param array $conflictColumns
      * @param array $updateColumns
@@ -293,6 +324,7 @@ abstract class Dialect implements \Phalcon\Db\DialectInterface
      * names. The base implementation throws - MySQL inherits it because
      * MySQL has no RETURNING construct.
      *
+     * @phpstan-param db_column_names $columns
      * @param string $sqlQuery
      * @param array $columns
      * @return string
@@ -324,6 +356,7 @@ abstract class Dialect implements \Phalcon\Db\DialectInterface
     /**
      * Builds a SELECT statement
      *
+     * @phpstan-param db_select_definition $definition
      * @param array $definition
      * @return string
      */
@@ -493,6 +526,7 @@ abstract class Dialect implements \Phalcon\Db\DialectInterface
     /**
      * Resolve
      *
+     * @phpstan-param db_expression $expression
      * @param array $expression
      * @param string|null $escapeChar
      * @return string
@@ -508,6 +542,9 @@ abstract class Dialect implements \Phalcon\Db\DialectInterface
      * @param string|null $escapeChar
      * @param array $bindCounts *
      * @return string
+     *
+     * @phpstan-param db_expression $expression
+     * @phpstan-param db_bind_counts $bindCounts
      */
     final protected function getSqlExpressionBinaryOperations(array $expression, ?string $escapeChar = null, array $bindCounts = []): string
     {
@@ -520,6 +557,9 @@ abstract class Dialect implements \Phalcon\Db\DialectInterface
      * @param string|null $escapeChar
      * @param array $bindCounts *
      * @return string
+     *
+     * @phpstan-param db_expression $expression
+     * @phpstan-param db_bind_counts $bindCounts
      */
     final protected function getSqlExpressionCase(array $expression, ?string $escapeChar = null, array $bindCounts = []): string
     {
@@ -532,6 +572,9 @@ abstract class Dialect implements \Phalcon\Db\DialectInterface
      * @param string|null $escapeChar
      * @param array $bindCounts *
      * @return string
+     *
+     * @phpstan-param db_expression $expression
+     * @phpstan-param db_bind_counts $bindCounts
      */
     final protected function getSqlExpressionCastValue(array $expression, ?string $escapeChar = null, array $bindCounts = []): string
     {
@@ -544,6 +587,9 @@ abstract class Dialect implements \Phalcon\Db\DialectInterface
      * @param string|null $escapeChar
      * @param array $bindCounts *
      * @return string
+     *
+     * @phpstan-param db_expression $expression
+     * @phpstan-param db_bind_counts $bindCounts
      */
     final protected function getSqlExpressionConvertValue(array $expression, ?string $escapeChar = null, array $bindCounts = []): string
     {
@@ -552,6 +598,7 @@ abstract class Dialect implements \Phalcon\Db\DialectInterface
     /**
      * Resolve a FROM clause
      *
+     * @phpstan-param array<array-key, db_table_name>|string $expression
      * @param mixed $expression
      * @param string|null $escapeChar
      * @return string
@@ -567,6 +614,9 @@ abstract class Dialect implements \Phalcon\Db\DialectInterface
      * @param string|null $escapeChar
      * @param array $bindCounts *
      * @return string
+     *
+     * @phpstan-param db_expression $expression
+     * @phpstan-param db_bind_counts $bindCounts
      */
     final protected function getSqlExpressionFunctionCall(array $expression, ?string $escapeChar = null, array $bindCounts = []): string
     {
@@ -579,6 +629,9 @@ abstract class Dialect implements \Phalcon\Db\DialectInterface
      * @param string|null $escapeChar
      * @param array $bindCounts *
      * @return string
+     *
+     * @phpstan-param array<array-key, mixed>|string $expression
+     * @phpstan-param db_bind_counts $bindCounts
      */
     final protected function getSqlExpressionGroupBy($expression, ?string $escapeChar = null, array $bindCounts = []): string
     {
@@ -591,6 +644,9 @@ abstract class Dialect implements \Phalcon\Db\DialectInterface
      * @param string|null $escapeChar
      * @param array $bindCounts *
      * @return string
+     *
+     * @phpstan-param db_expression $expression
+     * @phpstan-param db_bind_counts $bindCounts
      */
     final protected function getSqlExpressionHaving(array $expression, ?string $escapeChar = null, array $bindCounts = []): string
     {
@@ -603,6 +659,9 @@ abstract class Dialect implements \Phalcon\Db\DialectInterface
      * @param string|null $escapeChar
      * @param array $bindCounts *
      * @return string
+     *
+     * @phpstan-param db_joins $expression
+     * @phpstan-param db_bind_counts $bindCounts
      */
     final protected function getSqlExpressionJoins($expression, ?string $escapeChar = null, array $bindCounts = []): string
     {
@@ -615,6 +674,9 @@ abstract class Dialect implements \Phalcon\Db\DialectInterface
      * @param string|null $escapeChar
      * @param array $bindCounts *
      * @return string
+     *
+     * @phpstan-param db_limit_expression $expression
+     * @phpstan-param db_bind_counts $bindCounts
      */
     final protected function getSqlExpressionLimit($expression, ?string $escapeChar = null, array $bindCounts = []): string
     {
@@ -627,6 +689,9 @@ abstract class Dialect implements \Phalcon\Db\DialectInterface
      * @param string|null $escapeChar
      * @param array $bindCounts *
      * @return string
+     *
+     * @phpstan-param db_expression $expression
+     * @phpstan-param db_bind_counts $bindCounts
      */
     final protected function getSqlExpressionList(array $expression, ?string $escapeChar = null, array $bindCounts = []): string
     {
@@ -639,6 +704,9 @@ abstract class Dialect implements \Phalcon\Db\DialectInterface
      * @param string|null $escapeChar
      * @param array $bindCounts *
      * @return string
+     *
+     * @phpstan-param db_expression $expression
+     * @phpstan-param db_bind_counts $bindCounts
      */
     final protected function getSqlExpressionObject(array $expression, ?string $escapeChar = null, array $bindCounts = []): string
     {
@@ -651,6 +719,9 @@ abstract class Dialect implements \Phalcon\Db\DialectInterface
      * @param string|null $escapeChar
      * @param array $bindCounts *
      * @return string
+     *
+     * @phpstan-param array<array-key, mixed>|string $expression
+     * @phpstan-param db_bind_counts $bindCounts
      */
     final protected function getSqlExpressionOrderBy($expression, ?string $escapeChar = null, array $bindCounts = []): string
     {
@@ -659,6 +730,7 @@ abstract class Dialect implements \Phalcon\Db\DialectInterface
     /**
      * Resolve qualified expressions
      *
+     * @phpstan-param db_expression $expression
      * @param array $expression
      * @param string|null $escapeChar
      * @return string
@@ -672,7 +744,9 @@ abstract class Dialect implements \Phalcon\Db\DialectInterface
      *
      * @param array $expression
      * @param string|null $escapeChar
-     * @param array $bindCounts
+     * @param array $bindCounts *
+     * @phpstan-param db_expression $expression
+     * @phpstan-param db_bind_counts $bindCounts
      * @return string
      */
     final protected function getSqlExpressionScalar(array $expression, ?string $escapeChar = null, array $bindCounts = []): string
@@ -686,6 +760,9 @@ abstract class Dialect implements \Phalcon\Db\DialectInterface
      * @param string|null $escapeChar
      * @param array $bindCounts *
      * @return string
+     *
+     * @phpstan-param db_expression $expression
+     * @phpstan-param db_bind_counts $bindCounts
      */
     final protected function getSqlExpressionUnaryOperations(array $expression, ?string $escapeChar = null, array $bindCounts = []): string
     {
@@ -698,6 +775,9 @@ abstract class Dialect implements \Phalcon\Db\DialectInterface
      * @param string|null $escapeChar
      * @param array $bindCounts *
      * @return string
+     *
+     * @phpstan-param db_expression|string $expression
+     * @phpstan-param db_bind_counts $bindCounts
      */
     final protected function getSqlExpressionWhere($expression, ?string $escapeChar = null, array $bindCounts = []): string
     {

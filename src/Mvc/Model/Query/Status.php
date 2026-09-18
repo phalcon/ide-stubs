@@ -19,7 +19,11 @@ use Phalcon\Mvc\ModelInterface;
  * model which finally executes the operations when it fails
  *
  * ```php
- * $phql = "UPDATE Invoices SET inv_title = :inv_title:, inv_status_flag = :inv_status_flag:, inv_total = :inv_total: WHERE inv_id = :inv_id:";
+ * $phql = "UPDATE Invoices
+ *      SET inv_title = :inv_title:,
+ *          inv_status_flag = :inv_status_flag:,
+ *          inv_total = :inv_total:
+ *      WHERE inv_id = :inv_id:";
  *
  * $status = $app->modelsManager->executeQuery(
  *     $phql,
@@ -39,15 +43,9 @@ use Phalcon\Mvc\ModelInterface;
  */
 class Status implements \Phalcon\Mvc\Model\Query\StatusInterface
 {
-    /**
-     * @var ModelInterface|null
-     */
-    protected $model;
+    protected ?\Phalcon\Mvc\ModelInterface $model;
 
-    /**
-     * @var bool
-     */
-    protected $success;
+    protected bool $success;
 
     /**
      * Phalcon\Mvc\Model\Query\Status

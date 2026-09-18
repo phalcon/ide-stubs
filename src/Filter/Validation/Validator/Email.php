@@ -9,7 +9,7 @@
  */
 namespace Phalcon\Filter\Validation\Validator;
 
-use Phalcon\Messages\Message;
+use Phalcon\Contracts\Filter\FilterTypes;
 use Phalcon\Filter\Validation;
 use Phalcon\Filter\Validation\AbstractValidator;
 
@@ -45,7 +45,9 @@ use Phalcon\Filter\Validation\AbstractValidator;
  *         ]
  *     )
  * );
+ * ```
  *
+ * ```php
  * $validator->add(
  *     "täst@example.com",
  *     new EmailValidator(
@@ -56,20 +58,21 @@ use Phalcon\Filter\Validation\AbstractValidator;
  *     )
  * );
  * ```
+ *
+ * @phpstan-import-type filter_validator_options from FilterTypes
  */
 class Email extends AbstractValidator
 {
+    /**
+     * @var string|null
+     */
     protected $template = 'Field :field must be an email address';
 
     /**
      * Constructor
      *
-     * @param array $options = [
-     *     'message' => '',
-     *     'template' => '',
-     *     'allowEmpty' => false,
-     *     'allowUTF8' => false,
-     * ]
+     * @phpstan-param filter_validator_options $options
+     * @param array $options
      */
     public function __construct(array $options = [])
     {

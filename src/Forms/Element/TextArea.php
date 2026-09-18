@@ -9,15 +9,10 @@
  */
 namespace Phalcon\Forms\Element;
 
-use Phalcon\Tag;
-
 /**
  * Component TEXTAREA for forms
  */
 class TextArea extends \Phalcon\Forms\Element\AbstractElement
 {
-    /**
-     * @var string
-     */
-    protected $method = 'inputTextarea';
+    protected string $method = 'inputTextarea';
 }

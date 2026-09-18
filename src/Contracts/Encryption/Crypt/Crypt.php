@@ -30,9 +30,8 @@ interface Crypt
     /**
      * Decrypts a text
      *
-     * @param string      $input
+     * @param string $input
      * @param string|null $key
-     *
      * @return string
      */
     public function decrypt(string $input, ?string $key = null): string;
@@ -40,9 +39,8 @@ interface Crypt
     /**
      * Decrypt a text that is coded as a base64 string
      *
-     * @param string      $input
+     * @param string $input
      * @param string|null $key
-     *
      * @return string
      */
     public function decryptBase64(string $input, ?string $key = null): string;
@@ -50,9 +48,8 @@ interface Crypt
     /**
      * Encrypts a text
      *
-     * @param string      $input
+     * @param string $input
      * @param string|null $key
-     *
      * @return string
      */
     public function encrypt(string $input, ?string $key = null): string;
@@ -60,9 +57,8 @@ interface Crypt
     /**
      * Encrypts a text returning the result as a base64 string
      *
-     * @param string      $input
+     * @param string $input
      * @param string|null $key
-     *
      * @return string
      */
     public function encryptBase64(string $input, ?string $key = null): string;
@@ -114,7 +110,6 @@ interface Crypt
      * Sets authentication data
      *
      * @param string $data
-     *
      * @return Crypt
      */
     public function setAuthData(string $data): Crypt;
@@ -123,7 +118,6 @@ interface Crypt
      * Sets the authentication tag
      *
      * @param string $tag
-     *
      * @return Crypt
      */
     public function setAuthTag(string $tag): Crypt;
@@ -132,7 +126,6 @@ interface Crypt
      * Sets the authentication tag length
      *
      * @param int $length
-     *
      * @return Crypt
      */
     public function setAuthTagLength(int $length): Crypt;
@@ -141,7 +134,6 @@ interface Crypt
      * Sets the cipher algorithm
      *
      * @param string $cipher
-     *
      * @return Crypt
      */
     public function setCipher(string $cipher): Crypt;
@@ -150,7 +142,6 @@ interface Crypt
      * Sets the encryption key
      *
      * @param string $key
-     *
      * @return Crypt
      */
     public function setKey(string $key): Crypt;
@@ -159,7 +150,6 @@ interface Crypt
      * Changes the padding scheme used.
      *
      * @param int $scheme
-     *
      * @return Crypt
      */
     public function setPadding(int $scheme): Crypt;
@@ -168,7 +158,6 @@ interface Crypt
      * Sets if the calculating message digest must be used.
      *
      * @param bool $useSigning
-     *
      * @return Crypt
      */
     public function useSigning(bool $useSigning): Crypt;

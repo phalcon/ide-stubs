@@ -9,6 +9,7 @@
  */
 namespace Phalcon\Mvc\Model\Eager;
 
+use Phalcon\Contracts\Mvc\MvcTypes;
 use Phalcon\Mvc\Model\Exceptions\EagerRowLimitExceeded;
 use Phalcon\Mvc\Model\Exceptions\MissingEagerKeyColumn;
 use Phalcon\Mvc\Model\Exceptions\UnknownEagerRelation;
@@ -23,6 +24,14 @@ use Phalcon\Mvc\ModelInterface;
  * Loads model relations in bulk - a bounded number of queries per relation
  * node rather than one per record - and applies the result to records as they
  * are hydrated.
+ *
+ * @phpstan-import-type mvc_eager_map from MvcTypes
+ * @phpstan-import-type mvc_eager_map_node from MvcTypes
+ * @phpstan-import-type mvc_eager_node from MvcTypes
+ * @phpstan-import-type mvc_eager_parents from MvcTypes
+ * @phpstan-import-type mvc_model_parameters from MvcTypes
+ * @phpstan-import-type mvc_query_columns from MvcTypes
+ * @phpstan-import-type mvc_relation_fields from MvcTypes
  */
 class Loader
 {
@@ -35,10 +44,7 @@ class Loader
      */
     const int MAX_ROWS_PER_LEVEL = 100000;
 
-    /**
-     * @var ManagerInterface
-     */
-    protected $manager;
+    protected \Phalcon\Mvc\Model\ManagerInterface $manager;
 
     /**
      * @param \Phalcon\Mvc\Model\ManagerInterface $manager
@@ -58,6 +64,8 @@ class Loader
      * select produces, and it has no relation cache.
      *
      * @param object $record ModelInterface or Row
+     *
+     * @phpstan-param mvc_eager_map $eagerMap
      * @param array $eagerMap
      * @return void
      */
@@ -73,6 +81,7 @@ class Loader
      * values are length-prefixed so ["a|b", "c"] cannot collide with
      * ["a", "b|c"].
      *
+     * @phpstan-param array<array-key, mixed> $values
      * @param array $values
      * @return string
      */
@@ -87,6 +96,7 @@ class Loader
      * but no row has been consumed, so fetching every row costs nothing extra
      * and gives the key values without a second pass over the cursor.
      *
+     * @phpstan-param array<string, mixed> $tree
      * @param \Phalcon\Mvc\Model\Resultset\Simple $resultset
      * @param string $modelName
      * @param array $tree
@@ -99,8 +109,10 @@ class Loader
     /**
      * Builds one level of the map.
      *
-     * @param array $parents attribute-keyed row arrays at the root, or
-     *                       ModelInterface / Row instances below it
+     * @phpstan-param mvc_eager_parents    $parents
+     * @phpstan-param array<string, mixed> $tree
+     * @phpstan-return mvc_eager_map
+     * @param array $parents
      * @param string $modelName
      * @param array $tree
      * @return array
@@ -112,6 +124,9 @@ class Loader
     /**
      * Builds a single map node: one query, indexed by the referenced field.
      *
+     * @phpstan-param mvc_eager_parents $parents
+     * @phpstan-param mvc_eager_node    $node
+     * @phpstan-return mvc_eager_map_node
      * @param \Phalcon\Mvc\Model\RelationInterface $relation
      * @param string $alias
      * @param array $parents
@@ -131,6 +146,9 @@ class Loader
      * without a synthetic column in the select list, and without the row
      * multiplication an inner join would cause.
      *
+     * @phpstan-param mvc_eager_parents $parents
+     * @phpstan-param mvc_eager_node    $node
+     * @phpstan-return mvc_eager_map_node
      * @param \Phalcon\Mvc\Model\RelationInterface $relation
      * @param string $alias
      * @param array $parents
@@ -144,11 +162,13 @@ class Loader
     /**
      * Distinct, non-null local key tuples across the parent set.
      *
-     * @param array $parents attribute-keyed row arrays, ModelInterface or Row
-     *
-     * @return array list of value-tuples, deduped
+     * @phpstan-param mvc_eager_parents         $parents
+     * @phpstan-param array<array-key, string>  $fields
+     * @phpstan-return list<array<array-key, mixed>>
+     * @param array $parents
      * @param array $fields
      * @param string $alias
+     * @return array
      */
     protected function collectKeys(array $parents, array $fields, string $alias): array
     {
@@ -158,6 +178,8 @@ class Loader
      * One query per relation node. An empty key set issues none at all -
      * WHERE IN () is a syntax error and there is nothing to attribute.
      *
+     * @phpstan-param array<array-key, array<array-key, mixed>> $keys
+     * @phpstan-param mvc_model_parameters                      $options
      * @param \Phalcon\Mvc\Model\RelationInterface $relation
      * @param string $alias
      * @param array $keys
@@ -173,6 +195,8 @@ class Loader
      * array for a composite key. Normalizing removes that fork everywhere
      * downstream.
      *
+     * @phpstan-param mvc_relation_fields $fields
+     * @phpstan-return array<array-key, string>
      * @param mixed $fields
      * @return array
      */
@@ -183,6 +207,7 @@ class Loader
     /**
      * Lookup key for an already-hydrated record.
      *
+     * @phpstan-param array<array-key, string> $fields
      * @param mixed $record
      * @param array $fields
      * @return string
