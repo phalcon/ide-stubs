@@ -9,6 +9,8 @@
  */
 namespace Phalcon\Logger;
 
+use Phalcon\Contracts\Logger\LoggerTypes;
+
 /**
  * Phalcon Logger.
  *
@@ -17,6 +19,8 @@ namespace Phalcon\Logger;
  * easily using the built-in AdapterFactory. A LoggerFactory is also available
  * that allows developers to create new instances of the Logger or load them
  * from config files (see Phalcon\Config\Config object).
+ *
+ * @phpstan-import-type logger_context from LoggerTypes
  */
 class Logger extends \Phalcon\Logger\AbstractLogger implements \Phalcon\Logger\LoggerInterface
 {
@@ -25,6 +29,8 @@ class Logger extends \Phalcon\Logger\AbstractLogger implements \Phalcon\Logger\L
      *
      * Example: Entire website down, database unavailable, etc. This should
      * trigger the SMS alerts and wake you up.
+     *
+     * @phpstan-param logger_context $context
      *
      * @throws Exception
      * @param string $message
@@ -40,6 +46,8 @@ class Logger extends \Phalcon\Logger\AbstractLogger implements \Phalcon\Logger\L
      *
      * Example: Application component unavailable, unexpected exception.
      *
+     * @phpstan-param logger_context $context
+     *
      * @throws Exception
      * @param string $message
      * @param array $context
@@ -52,6 +60,8 @@ class Logger extends \Phalcon\Logger\AbstractLogger implements \Phalcon\Logger\L
     /**
      * Detailed debug information.
      *
+     * @phpstan-param logger_context $context
+     *
      * @throws Exception
      * @param string $message
      * @param array $context
@@ -63,6 +73,8 @@ class Logger extends \Phalcon\Logger\AbstractLogger implements \Phalcon\Logger\L
 
     /**
      * System is unusable.
+     *
+     * @phpstan-param logger_context $context
      *
      * @throws Exception
      * @param string $message
@@ -77,6 +89,8 @@ class Logger extends \Phalcon\Logger\AbstractLogger implements \Phalcon\Logger\L
      * Runtime errors that do not require immediate action but should typically
      * be logged and monitored.
      *
+     * @phpstan-param logger_context $context
+     *
      * @throws Exception
      * @param string $message
      * @param array $context
@@ -90,6 +104,8 @@ class Logger extends \Phalcon\Logger\AbstractLogger implements \Phalcon\Logger\L
      * Interesting events.
      *
      * Example: User logs in, SQL logs.
+     *
+     * @phpstan-param logger_context $context
      *
      * @throws Exception
      * @param string $message
@@ -106,6 +122,8 @@ class Logger extends \Phalcon\Logger\AbstractLogger implements \Phalcon\Logger\L
      * An unknown level (a typo or an unmapped value) is not rejected; it maps
      * to the CUSTOM level and is logged, rather than raising an exception.
      *
+     * @phpstan-param logger_context $context
+     *
      * @throws Exception
      * @param mixed $level
      * @param string $message
@@ -118,6 +136,8 @@ class Logger extends \Phalcon\Logger\AbstractLogger implements \Phalcon\Logger\L
 
     /**
      * Normal but significant events.
+     *
+     * @phpstan-param logger_context $context
      *
      * @throws Exception
      * @param string $message
@@ -135,6 +155,8 @@ class Logger extends \Phalcon\Logger\AbstractLogger implements \Phalcon\Logger\L
      * HTTP response bodies, or internal state transitions that are too noisy
      * for DEBUG.
      *
+     * @phpstan-param logger_context $context
+     *
      * @throws Exception
      * @param string $message
      * @param array $context
@@ -149,6 +171,8 @@ class Logger extends \Phalcon\Logger\AbstractLogger implements \Phalcon\Logger\L
      *
      * Example: Use of deprecated APIs, poor use of an API, undesirable things
      * that are not necessarily wrong.
+     *
+     * @phpstan-param logger_context $context
      *
      * @throws Exception
      * @param string $message

@@ -9,13 +9,21 @@
  */
 namespace Phalcon\Forms\Element;
 
+use Phalcon\Contracts\Forms\FormsTypes;
+use Phalcon\Contracts\Html\HtmlTypes;
+use Phalcon\Filter\Validation\ValidatorInterface;
 use Phalcon\Forms\Form;
 use Phalcon\Messages\MessageInterface;
 use Phalcon\Messages\Messages;
-use Phalcon\Filter\Validation\ValidatorInterface;
 
 /**
  * Interface for Phalcon\Forms\Element classes
+ *
+ * @phpstan-import-type forms_attributes from FormsTypes
+ * @phpstan-import-type forms_filters from FormsTypes
+ * @phpstan-import-type forms_options from FormsTypes
+ * @phpstan-import-type forms_validators from FormsTypes
+ * @phpstan-import-type html_attributes from HtmlTypes
  */
 interface ElementInterface
 {
@@ -38,8 +46,9 @@ interface ElementInterface
     /**
      * Adds a group of validators
      *
-     * @param \Phalcon\Filter\Validation\ValidatorInterface[] $validators
-     * @param bool $merge *
+     * @phpstan-param array<array-key, mixed> $validators
+     * @param array $validators
+     * @param bool $merge
      * @return ElementInterface
      */
     public function addValidators(array $validators, bool $merge = true): ElementInterface;
@@ -71,6 +80,7 @@ interface ElementInterface
     /**
      * Returns the default attributes for the element
      *
+     * @phpstan-return forms_attributes
      * @return array
      */
     public function getAttributes(): array;
@@ -85,7 +95,7 @@ interface ElementInterface
     /**
      * Returns the element's filters
      *
-     * @return mixed
+     * @phpstan-return forms_filters
      */
     public function getFilters();
 
@@ -130,6 +140,7 @@ interface ElementInterface
     /**
      * Returns the options for the element
      *
+     * @phpstan-return forms_options
      * @return array
      */
     public function getUserOptions(): array;
@@ -137,6 +148,7 @@ interface ElementInterface
     /**
      * Returns the validators registered for the element
      *
+     * @phpstan-return forms_validators
      * @return array|\Phalcon\Filter\Validation\ValidatorInterface[]
      */
     public function getValidators(): array;
@@ -165,6 +177,7 @@ interface ElementInterface
     /**
      * Renders the element widget
      *
+     * @phpstan-param html_attributes $attributes
      * @param array $attributes
      * @return string
      */
@@ -182,6 +195,7 @@ interface ElementInterface
     /**
      * Sets default attributes for the element
      *
+     * @phpstan-param forms_attributes $attributes
      * @param array $attributes
      * @return ElementInterface
      */
@@ -199,7 +213,8 @@ interface ElementInterface
     /**
      * Sets the element's filters
      *
-     * @param array|string $filters
+     * @phpstan-param forms_filters|string $filters
+     * @param mixed $filters
      * @return ElementInterface
      */
     public function setFilters($filters): ElementInterface;
@@ -248,6 +263,7 @@ interface ElementInterface
     /**
      * Sets options for the element
      *
+     * @phpstan-param forms_options $options
      * @param array $options
      * @return ElementInterface
      */

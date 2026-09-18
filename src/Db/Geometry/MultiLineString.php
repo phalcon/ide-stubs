@@ -23,10 +23,13 @@ class MultiLineString extends \Phalcon\Db\Geometry\AbstractGeometry
 {
     /**
      * @var array
+     *
+     * @phpstan-var list<LineString>
      */
     protected $lineStrings;
 
     /**
+     * @phpstan-param list<LineString> $lineStrings
      * @param array $lineStrings
      * @param int $srid
      */
@@ -42,6 +45,7 @@ class MultiLineString extends \Phalcon\Db\Geometry\AbstractGeometry
     }
 
     /**
+     * @phpstan-return list<LineString>
      * @return array
      */
     public function getLineStrings(): array

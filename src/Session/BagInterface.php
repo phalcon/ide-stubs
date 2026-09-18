@@ -9,8 +9,12 @@
  */
 namespace Phalcon\Session;
 
+use Phalcon\Contracts\Session\SessionTypes;
+
 /**
  * Interface for Phalcon\Session\Bag
+ *
+ * @phpstan-import-type session_bag_data from SessionTypes
  */
 interface BagInterface
 {
@@ -59,6 +63,7 @@ interface BagInterface
     public function has(string $element): bool;
 
     /**
+     * @phpstan-param session_bag_data $data
      * @param array $data
      * @return void
      */

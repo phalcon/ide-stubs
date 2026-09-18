@@ -14,7 +14,6 @@ use Phalcon\Translate\Exceptions\InterpolatorNotRegistered;
 use Phalcon\Translate\Interpolator\AssociativeArray;
 use Phalcon\Translate\Interpolator\IndexedArray;
 use Phalcon\Translate\Interpolator\InterpolatorInterface;
-use Throwable;
 
 /**
  * This file is part of the Phalcon Framework.
@@ -45,7 +44,7 @@ class InterpolatorFactory extends AbstractFactory
     }
 
     /**
-     * @return class-string<Throwable>
+     * @return class-string<\Exception>
      */
     protected function getExceptionClass(): string
     {
@@ -54,7 +53,7 @@ class InterpolatorFactory extends AbstractFactory
     /**
      * Returns the available adapters
      *
-     * @return string[]
+     * @return array<string, string>
      */
     protected function getServices(): array
     {

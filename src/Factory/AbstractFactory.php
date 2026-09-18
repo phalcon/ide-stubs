@@ -9,27 +9,25 @@
  */
 namespace Phalcon\Factory;
 
+use Exception as BaseException;
 use Phalcon\Config\ConfigInterface;
+use Phalcon\Contracts\Factory\FactoryTypes;
 
 /**
- * This file is part of the Phalcon Framework.
- *
- * (c) Phalcon Team <team@phalcon.io>
- *
- * For the full copyright and license information, please view the LICENSE.txt
- * file that was distributed with this source code.
+ * @phpstan-import-type factory_instances from FactoryTypes
+ * @phpstan-import-type factory_services from FactoryTypes
  */
 abstract class AbstractFactory extends \Phalcon\Factory\AbstractConfigFactory
 {
     /**
-     * @var array
+     * @phpstan-var factory_services
      */
-    protected $mapper = [];
+    protected array $mapper = [];
 
     /**
-     * @var array
+     * @phpstan-var factory_instances
      */
-    protected $services = [];
+    protected array $services = [];
 
     /**
      * Checks if a service exists and throws an exception
@@ -44,13 +42,15 @@ abstract class AbstractFactory extends \Phalcon\Factory\AbstractConfigFactory
     /**
      * Returns the adapters for the factory
      *
-     * @return string[]
+     * @phpstan-return factory_services
+     * @return array
      */
     abstract protected function getServices(): array;
 
     /**
      * Initialize services/add new services
      *
+     * @phpstan-param factory_services $services
      * @param array $services
      * @return void
      */

@@ -28,12 +28,11 @@ use Phalcon\Support\Settings;
 use SeekableIterator;
 
 /**
- * Phalcon\Mvc\Model\Resultset
- *
- * This component allows to Phalcon\Mvc\Model returns large resultsets with the minimum memory consumption
- * Resultsets can be traversed using a standard foreach or a while statement. If a resultset is serialized
- * it will dump all the rows into a big array. Then unserialize will retrieve the rows as they were before
- * serializing.
+ * This component allows to Phalcon\Mvc\Model returns large resultsets with
+ * the minimum memory consumption. Resultsets can be traversed using a standard
+ * foreach or a while statement. If a resultset is serialized it will dump all
+ * the rows into a big array. Then unserialize will retrieve the rows as they
+ * were before serializing.
  *
  * ```php
  *
@@ -68,7 +67,7 @@ use SeekableIterator;
  * }
  * ```
  *
- * @template TKey
+ * @template TKey of int
  * @template TValue
  * @implements Iterator<TKey, TValue>
  * @implements ArrayAccess<TKey, TValue>
@@ -120,24 +119,24 @@ abstract class Resultset implements \Phalcon\Mvc\Model\ResultsetInterface, \Iter
     protected $count = null;
 
     /**
-     * @var array
+     * @phpstan-var array<array-key, MessageInterface>
      */
-    protected $errorMessages = [];
+    protected array $errorMessages = [];
+
+    protected int $hydrateMode = 0;
+
+    protected bool $isFresh = true;
+
+    protected int $pointer = 0;
 
     /**
-     * @var int
+     * Phalcon\Db\ResultInterface or false for empty resultset
+     *
+     * @var ResultInterface|bool
+     *
+     * @phpstan-var bool|\Phalcon\Contracts\Db\Result|null
      */
-    protected $hydrateMode = 0;
-
-    /**
-     * @var bool
-     */
-    protected $isFresh = true;
-
-    /**
-     * @var int
-     */
-    protected $pointer = 0;
+    protected $result;
 
     /**
      * @var mixed|null
@@ -146,21 +145,18 @@ abstract class Resultset implements \Phalcon\Mvc\Model\ResultsetInterface, \Iter
 
     /**
      * @var array|null
+     *
+     * @phpstan-var array<array-key, mixed>|null
      */
     protected $rows = null;
-
-    /**
-     * Phalcon\Db\ResultInterface or false for empty resultset
-     *
-     * @var ResultInterface|bool
-     */
-    protected $result;
 
     /**
      * Phalcon\Mvc\Model\Resultset constructor
      *
      * @param ResultInterface|false $result
      * @param mixed|null            $cache
+     *
+     * @phpstan-param \Phalcon\Contracts\Db\Result|false|null $result
      */
     public function __construct($result, $cache = null)
     {
@@ -169,6 +165,7 @@ abstract class Resultset implements \Phalcon\Mvc\Model\ResultsetInterface, \Iter
     /**
      * Counts how many rows are in the resultset
      *
+     * @phpstan-return int
      * @return int
      */
     final public function count(): int
@@ -198,6 +195,7 @@ abstract class Resultset implements \Phalcon\Mvc\Model\ResultsetInterface, \Iter
      * );
      * ```
      *
+     * @phpstan-return list<array<array-key, mixed>|object>
      * @param callable $filter
      * @return array|\Phalcon\Mvc\ModelInterface[]
      */
@@ -264,9 +262,17 @@ abstract class Resultset implements \Phalcon\Mvc\Model\ResultsetInterface, \Iter
     /**
      * Returns the error messages produced by a batch operation
      *
+     * @phpstan-return array<array-key, MessageInterface>
      * @return array|\Phalcon\Messages\MessageInterface[]
      */
     public function getMessages(): array
+    {
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getResult(): mixed
     {
     }
 
@@ -298,6 +304,7 @@ abstract class Resultset implements \Phalcon\Mvc\Model\ResultsetInterface, \Iter
      * echo json_encode($invoices);
      * ```
      *
+     * @phpstan-return array<array-key, mixed>
      * @return array
      */
     public function jsonSerialize(): array
@@ -340,6 +347,7 @@ abstract class Resultset implements \Phalcon\Mvc\Model\ResultsetInterface, \Iter
     /**
      * Checks whether offset exists in the resultset
      *
+     * @phpstan-param int $index
      * @param mixed $index
      * @return bool
      */
@@ -350,6 +358,7 @@ abstract class Resultset implements \Phalcon\Mvc\Model\ResultsetInterface, \Iter
     /**
      * Gets row in a specific position of the resultset
      *
+     * @phpstan-param int $index
      * @param mixed $index
      * @return mixed
      */
@@ -379,6 +388,13 @@ abstract class Resultset implements \Phalcon\Mvc\Model\ResultsetInterface, \Iter
     }
 
     /**
+     * @return bool
+     */
+    public function refresh(): bool
+    {
+    }
+
+    /**
      * Rewinds resultset to its beginning
      *
      * @return void
@@ -391,6 +407,7 @@ abstract class Resultset implements \Phalcon\Mvc\Model\ResultsetInterface, \Iter
      * Changes the internal pointer to a specific position in the resultset.
      * Set the new position if required, and then set this->row
      *
+     * @phpstan-param int $position
      * @param mixed $position
      * @return void
      */
@@ -421,7 +438,8 @@ abstract class Resultset implements \Phalcon\Mvc\Model\ResultsetInterface, \Iter
     /**
      * Updates every record in the resultset
      *
-     * @param array $data
+     * @param array $data *
+     * @phpstan-param array<array-key, mixed> $data
      * @param \Closure|null $conditionCallback
      * @return bool
      */
@@ -439,20 +457,6 @@ abstract class Resultset implements \Phalcon\Mvc\Model\ResultsetInterface, \Iter
      * @return bool
      */
     public function valid(): bool
-    {
-    }
-
-    /**
-     * @return bool
-     */
-    public function refresh(): bool
-    {
-    }
-
-    /**
-     * @return mixed
-     */
-    public function getResult(): mixed
     {
     }
 }

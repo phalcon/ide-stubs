@@ -9,9 +9,13 @@
  */
 namespace Phalcon\Filter\Validation\Traits;
 
+use Phalcon\Contracts\Filter\FilterTypes;
+
 /**
  * Shared validator collection state and combined validation for composite
  * validators.
+ *
+ * @phpstan-import-type filter_validators from FilterTypes
  */
 trait ValidatorCompositeTrait
 {
@@ -23,6 +27,7 @@ trait ValidatorCompositeTrait
     protected $validators = null;
 
     /**
+     * @phpstan-return filter_validators
      * @return array
      */
     public function getValidators(): array

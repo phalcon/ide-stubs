@@ -9,6 +9,7 @@
  */
 namespace Phalcon\Filter\Validation;
 
+use Phalcon\Contracts\Filter\FilterTypes;
 use Phalcon\Factory\AbstractFactory;
 use Phalcon\Filter\Validation\Validator\Alnum;
 use Phalcon\Filter\Validation\Validator\Alpha;
@@ -33,18 +34,14 @@ use Phalcon\Filter\Validation\Validator\Uniqueness;
 use Phalcon\Filter\Validation\Validator\Url;
 
 /**
- * This file is part of the Phalcon Framework.
- *
- * (c) Phalcon Team <team@phalcon.io>
- *
- * For the full copyright and license information, please view the LICENSE.txt
- * file that was distributed with this source code.
+ * @phpstan-import-type filter_validator_services from FilterTypes
  */
 class ValidatorFactory extends AbstractFactory
 {
     /**
-     * TagFactory constructor.
+     * Constructor.
      *
+     * @phpstan-param filter_validator_services $services
      * @param array $services
      */
     public function __construct(array $services = [])
@@ -62,7 +59,7 @@ class ValidatorFactory extends AbstractFactory
     }
 
     /**
-     * @return string
+     * @return class-string<\Exception>
      */
     protected function getExceptionClass(): string
     {
@@ -71,7 +68,7 @@ class ValidatorFactory extends AbstractFactory
     /**
      * Returns the available adapters
      *
-     * @return string[]
+     * @return array<string, string>
      */
     protected function getServices(): array
     {

@@ -114,6 +114,19 @@ trait FileTrait
     }
 
     /**
+     * Tells whether the filename is a directory
+     *
+     * @param string $filename
+     *
+     * @return bool
+     *
+     * @link https://php.net/manual/en/function.is-dir.php
+     */
+    protected static function phpIsDir(string $filename): bool
+    {
+    }
+
+    /**
      * Tells whether the filename is writable
      *
      * @param string $filename
@@ -123,6 +136,22 @@ trait FileTrait
      * @link https://php.net/manual/en/function.is-writable.php
      */
     protected static function phpIsWritable(string $filename): bool
+    {
+    }
+
+    /**
+     * Makes a directory
+     *
+     * @param string        $directory
+     * @param int           $permissions
+     * @param bool          $recursive
+     * @param resource|null $context
+     *
+     * @return bool
+     *
+     * @link https://php.net/manual/en/function.mkdir.php
+     */
+    protected static function phpMkdir(string $directory, int $permissions = 0777, bool $recursive = false, $context = null): bool
     {
     }
 

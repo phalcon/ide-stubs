@@ -30,7 +30,7 @@ class Noop extends \Phalcon\Logger\Adapter\AbstractAdapter
     /**
      * Processes the message i.e. writes it to the file
      *
-     * @param Item $item
+     * @param \Phalcon\Logger\Item $item
      * @return void
      */
     public function process(\Phalcon\Logger\Item $item): void

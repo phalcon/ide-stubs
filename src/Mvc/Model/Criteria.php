@@ -9,6 +9,7 @@
  */
 namespace Phalcon\Mvc\Model;
 
+use Phalcon\Contracts\Mvc\MvcTypes;
 use Phalcon\Db\Column;
 use Phalcon\Di\Di;
 use Phalcon\Di\DiInterface;
@@ -32,23 +33,27 @@ use Phalcon\Mvc\Model\Query\BuilderInterface;
  *     ->orderBy("inv_title")
  *     ->execute();
  * ```
+ *
+ * @phpstan-import-type mvc_criteria_params from MvcTypes
+ * @phpstan-import-type mvc_model_bind_params from MvcTypes
+ * @phpstan-import-type mvc_model_bind_types from MvcTypes
+ * @phpstan-import-type mvc_model_cache_options from MvcTypes
+ * @phpstan-import-type mvc_model_parameters from MvcTypes
+ * @phpstan-import-type mvc_query_columns from MvcTypes
  */
 class Criteria implements \Phalcon\Mvc\Model\CriteriaInterface, \Phalcon\Di\InjectionAwareInterface
 {
     /**
-     * @var array
+     * @phpstan-var mvc_model_bind_params
      */
-    protected $bindParams;
+    protected array $bindParams;
 
     /**
-     * @var array
+     * @phpstan-var mvc_model_bind_types
      */
-    protected $bindTypes;
+    protected array $bindTypes;
 
-    /**
-     * @var int
-     */
-    protected $hiddenParamNumber = 0;
+    protected int $hiddenParamNumber = 0;
 
     /**
      * @var string|null
@@ -56,9 +61,23 @@ class Criteria implements \Phalcon\Mvc\Model\CriteriaInterface, \Phalcon\Di\Inje
     protected $model = null;
 
     /**
-     * @var array
+     * @phpstan-var mvc_criteria_params
      */
-    protected $params = [];
+    protected array $params = [];
+
+    /**
+     * Builds a Phalcon\Mvc\Model\Criteria based on an input array like $_POST
+     *
+     * @phpstan-param array<string, mixed> $data
+     * @param \Phalcon\Di\DiInterface $container
+     * @param string $modelName
+     * @param array $data
+     * @param string $operator
+     * @return CriteriaInterface
+     */
+    public static function fromInput(\Phalcon\Di\DiInterface $container, string $modelName, array $data, string $operator = 'AND'): CriteriaInterface
+    {
+    }
 
     /**
      * Appends a condition to the current conditions using an AND operator
@@ -92,6 +111,7 @@ class Criteria implements \Phalcon\Mvc\Model\CriteriaInterface, \Phalcon\Di\Inje
      * Sets the bound parameters in the criteria
      * This method replaces all previously set bound parameters
      *
+     * @phpstan-param mvc_model_bind_params $bindParams
      * @param array $bindParams
      * @param bool $merge
      * @return CriteriaInterface
@@ -104,6 +124,7 @@ class Criteria implements \Phalcon\Mvc\Model\CriteriaInterface, \Phalcon\Di\Inje
      * Sets the bind types in the criteria
      * This method replaces all previously set bound parameters
      *
+     * @phpstan-param mvc_model_bind_types $bindTypes
      * @param array $bindTypes
      * @return CriteriaInterface
      */
@@ -115,6 +136,7 @@ class Criteria implements \Phalcon\Mvc\Model\CriteriaInterface, \Phalcon\Di\Inje
      * Sets the cache options in the criteria
      * This method replaces all previously set cache options
      *
+     * @phpstan-param mvc_model_cache_options $cache
      * @param array $cache
      * @return CriteriaInterface
      */
@@ -231,6 +253,8 @@ class Criteria implements \Phalcon\Mvc\Model\CriteriaInterface, \Phalcon\Di\Inje
      * would break every userland implementation.
      *
      * @param array $paths relation paths
+     *
+     * @phpstan-param array<array-key, mixed> $paths
      * @return Criteria
      */
     public function eager(array $paths): Criteria
@@ -257,22 +281,10 @@ class Criteria implements \Phalcon\Mvc\Model\CriteriaInterface, \Phalcon\Di\Inje
     }
 
     /**
-     * Builds a Phalcon\Mvc\Model\Criteria based on an input array like $_POST
-     *
-     * @param \Phalcon\Di\DiInterface $container
-     * @param string $modelName
-     * @param array $data
-     * @param string $operator
-     * @return CriteriaInterface
-     */
-    public static function fromInput(\Phalcon\Di\DiInterface $container, string $modelName, array $data, string $operator = 'AND'): CriteriaInterface
-    {
-    }
-
-    /**
      * Returns the columns to be queried
      *
-     * @return string|array|null
+     * @phpstan-return mvc_query_columns|null
+     * @return array|string|null
      */
     public function getColumns(): string|array|null
     {
@@ -317,7 +329,8 @@ class Criteria implements \Phalcon\Mvc\Model\CriteriaInterface, \Phalcon\Di\Inje
      * - An array with 'number' and 'offset' keys if an offset was set with the limit
      * - NULL if limit has not been set
      *
-     * @return int|array|null
+     * @phpstan-return array{number: int|string, offset?: int|string}|int|null
+     * @return array|int|null
      */
     public function getLimit(): int|array|null
     {
@@ -344,6 +357,7 @@ class Criteria implements \Phalcon\Mvc\Model\CriteriaInterface, \Phalcon\Di\Inje
     /**
      * Returns all the parameters defined in the criteria
      *
+     * @phpstan-return mvc_criteria_params
      * @return array
      */
     public function getParams(): array
@@ -380,21 +394,6 @@ class Criteria implements \Phalcon\Mvc\Model\CriteriaInterface, \Phalcon\Di\Inje
     }
 
     /**
-     * Appends an IN condition to the current conditions
-     *
-     * ```php
-     * $criteria->inWhere("id", [1, 2, 3]);
-     * ```
-     *
-     * @param string $expr
-     * @param array $values
-     * @return CriteriaInterface
-     */
-    public function inWhere(string $expr, array $values): CriteriaInterface
-    {
-    }
-
-    /**
      * Adds an INNER join to the query
      *
      * ```php
@@ -422,6 +421,22 @@ class Criteria implements \Phalcon\Mvc\Model\CriteriaInterface, \Phalcon\Di\Inje
      * @return CriteriaInterface
      */
     public function innerJoin(string $model, $conditions = null, $alias = null): CriteriaInterface
+    {
+    }
+
+    /**
+     * Appends an IN condition to the current conditions
+     *
+     * ```php
+     * $criteria->inWhere("id", [1, 2, 3]);
+     * ```
+     *
+     * @phpstan-param array<array-key, mixed> $values
+     * @param string $expr
+     * @param array $values
+     * @return CriteriaInterface
+     */
+    public function inWhere(string $expr, array $values): CriteriaInterface
     {
     }
 
@@ -526,11 +541,22 @@ class Criteria implements \Phalcon\Mvc\Model\CriteriaInterface, \Phalcon\Di\Inje
      * $criteria->notInWhere("id", [1, 2, 3]);
      * ```
      *
+     * @phpstan-param array<array-key, mixed> $values
      * @param string $expr
      * @param array $values
      * @return CriteriaInterface
      */
     public function notInWhere(string $expr, array $values): CriteriaInterface
+    {
+    }
+
+    /**
+     * Adds the order-by clause to the criteria
+     *
+     * @param string $orderColumns
+     * @return CriteriaInterface
+     */
+    public function orderBy(string $orderColumns): CriteriaInterface
     {
     }
 
@@ -543,16 +569,6 @@ class Criteria implements \Phalcon\Mvc\Model\CriteriaInterface, \Phalcon\Di\Inje
      * @return CriteriaInterface
      */
     public function orWhere(string $conditions, $bindParams = null, $bindTypes = null): CriteriaInterface
-    {
-    }
-
-    /**
-     * Adds the order-by clause to the criteria
-     *
-     * @param string $orderColumns
-     * @return CriteriaInterface
-     */
-    public function orderBy(string $orderColumns): CriteriaInterface
     {
     }
 

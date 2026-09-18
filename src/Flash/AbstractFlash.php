@@ -9,6 +9,7 @@
  */
 namespace Phalcon\Flash;
 
+use Phalcon\Contracts\Flash\FlashTypes;
 use Phalcon\Di\Di;
 use Phalcon\Di\DiInterface;
 use Phalcon\Di\AbstractInjectionAware;
@@ -16,7 +17,7 @@ use Phalcon\Flash\Exceptions\EscaperServiceUnavailable;
 use Phalcon\Flash\Exceptions\FlashMessageNotStringOrArray;
 use Phalcon\Html\Escaper\EscaperInterface;
 use Phalcon\Session\ManagerInterface as SessionInterface;
-use Phalcon\Support\Helper\Str\Interpolate;
+use Phalcon\Traits\Support\Helper\Str\InterpolateTrait;
 
 /**
  * Shows HTML notifications related to different circumstances. Classes can be
@@ -27,67 +28,46 @@ use Phalcon\Support\Helper\Str\Interpolate;
  * $flash->error("Cannot open the file");
  * ```
  *
- * Class AbstractFlash
- *
- * @package Phalcon\Flash
+ * @phpstan-import-type flash_messages from FlashTypes
+ * @phpstan-import-type flash_css_classes from FlashTypes
  */
 abstract class AbstractFlash extends AbstractInjectionAware implements \Phalcon\Flash\FlashInterface
 {
-    /**
-     * @var bool
-     */
-    protected $autoescape = true;
+    use \Phalcon\Traits\Support\Helper\Str\InterpolateTrait;
+
+
+    protected bool $autoescape = true;
+
+    protected bool $automaticHtml = true;
 
     /**
-     * @var bool
+     * @phpstan-var flash_css_classes
      */
-    protected $automaticHtml = true;
+    protected array $cssClasses = [];
 
     /**
-     * @var array
+     * @phpstan-var flash_css_classes
      */
-    protected $cssClasses = [];
+    protected array $cssIconClasses = [];
+
+    protected string $customTemplate = '';
+
+    protected ?\Phalcon\Html\Escaper\EscaperInterface $escaperService = null;
+
+    protected bool $implicitFlush = true;
 
     /**
-     * @var array
+     * @phpstan-var flash_messages
      */
-    protected $cssIconClasses = [];
+    protected array $messages = [];
 
-    /**
-     * @var string
-     */
-    protected $customTemplate = '';
-
-    /**
-     * @var EscaperInterface | null
-     */
-    protected $escaperService = null;
-
-    /**
-     * @var bool
-     */
-    protected $implicitFlush = true;
-
-    /**
-     * @var Interpolate
-     */
-    protected $interpolator;
-
-    /**
-     * @var array
-     */
-    protected $messages = [];
-
-    /**
-     * @var SessionInterface|null
-     */
-    protected $sessionService = null;
+    protected ?\Phalcon\Session\ManagerInterface $sessionService = null;
 
     /**
      * AbstractFlash constructor.
      *
-     * @param EscaperInterface|null $escaper
-     * @param SessionInterface|null $session
+     * @param \Phalcon\Html\Escaper\EscaperInterface|null $escaper
+     * @param \Phalcon\Session\ManagerInterface|null $session
      */
     public function __construct(?\Phalcon\Html\Escaper\EscaperInterface $escaper = null, ?\Phalcon\Session\ManagerInterface $session = null)
     {
@@ -110,7 +90,6 @@ abstract class AbstractFlash extends AbstractInjectionAware implements \Phalcon\
      * ```
      *
      * @param string $message
-     *
      * @return string|null
      */
     public function error(string $message): string|null
@@ -118,6 +97,8 @@ abstract class AbstractFlash extends AbstractInjectionAware implements \Phalcon\
     }
 
     /**
+     * Returns the flag that defines whether to automatically escape content or not
+     *
      * @return bool
      */
     public function getAutoescape(): bool
@@ -125,6 +106,8 @@ abstract class AbstractFlash extends AbstractInjectionAware implements \Phalcon\
     }
 
     /**
+     * Returns the flag that defines whether to automatically use HTML or not
+     *
      * @return bool
      */
     public function getAutomaticHtml(): bool
@@ -132,6 +115,10 @@ abstract class AbstractFlash extends AbstractInjectionAware implements \Phalcon\
     }
 
     /**
+     * Returns the array of the CSS classes for formatting messages. The key is
+     * the type of message and the value is the CSS class
+     *
+     * @phpstan-return flash_css_classes
      * @return array
      */
     public function getCssClasses(): array
@@ -139,6 +126,10 @@ abstract class AbstractFlash extends AbstractInjectionAware implements \Phalcon\
     }
 
     /**
+     * Returns the array of the icon CSS classes for formatting messages. The
+     * key is the type of message and the value is the icon CSS class
+     *
+     * @phpstan-return flash_css_classes
      * @return array
      */
     public function getCssIconClasses(): array
@@ -146,6 +137,8 @@ abstract class AbstractFlash extends AbstractInjectionAware implements \Phalcon\
     }
 
     /**
+     * Returns the custom template for formatting messages
+     *
      * @return string
      */
     public function getCustomTemplate(): string
@@ -155,8 +148,8 @@ abstract class AbstractFlash extends AbstractInjectionAware implements \Phalcon\
     /**
      * Returns the Escaper Service
      *
-     * @return EscaperInterface
      * @throws Exception
+     * @return EscaperInterface
      */
     public function getEscaperService(): EscaperInterface
     {
@@ -168,8 +161,7 @@ abstract class AbstractFlash extends AbstractInjectionAware implements \Phalcon\
      * message for output on a later request.
      *
      * @param string $type
-     * @param mixed  $message
-     *
+     * @param mixed $message
      * @return string|null
      */
     abstract public function message(string $type, $message): string|null;
@@ -182,10 +174,25 @@ abstract class AbstractFlash extends AbstractInjectionAware implements \Phalcon\
      * ```
      *
      * @param string $message
-     *
      * @return string|null
      */
     public function notice(string $message): string|null
+    {
+    }
+
+    /**
+     * Outputs a message formatting it with HTML
+     *
+     * ```php
+     * $flash->outputMessage("error", $message);
+     * ```
+     *
+     * @throws Exception
+     * @param string $type
+     * @param mixed $message
+     * @return string|null
+     */
+    public function outputMessage(string $type, $message): string|null
     {
     }
 
@@ -212,6 +219,7 @@ abstract class AbstractFlash extends AbstractInjectionAware implements \Phalcon\
     /**
      * Set an array with CSS classes to format the messages
      *
+     * @phpstan-param flash_css_classes $cssClasses
      * @param array $cssClasses
      * @return static
      */
@@ -222,6 +230,7 @@ abstract class AbstractFlash extends AbstractInjectionAware implements \Phalcon\
     /**
      * Set an array with CSS classes to format the icon messages
      *
+     * @phpstan-param flash_css_classes $cssIconClasses
      * @param array $cssIconClasses
      * @return static
      */
@@ -242,7 +251,7 @@ abstract class AbstractFlash extends AbstractInjectionAware implements \Phalcon\
     /**
      * Sets the Escaper Service
      *
-     * @param EscaperInterface $escaperService
+     * @param \Phalcon\Html\Escaper\EscaperInterface $escaperService
      * @return static
      */
     public function setEscaperService(\Phalcon\Html\Escaper\EscaperInterface $escaperService): static
@@ -272,27 +281,9 @@ abstract class AbstractFlash extends AbstractInjectionAware implements \Phalcon\
      * ```
      *
      * @param string $message
-     *
      * @return string|null
      */
     public function success(string $message): string|null
-    {
-    }
-
-    /**
-     * Outputs a message formatting it with HTML
-     *
-     * ```php
-     * $flash->outputMessage("error", $message);
-     * ```
-     *
-     * @param string $type
-     * @param mixed  $message
-     *
-     * @return string|null
-     * @throws Exception
-     */
-    public function outputMessage(string $type, $message): string|null
     {
     }
 
@@ -304,10 +295,22 @@ abstract class AbstractFlash extends AbstractInjectionAware implements \Phalcon\
      * ```
      *
      * @param string $message
-     *
      * @return string|null
      */
     public function warning(string $message): string|null
+    {
+    }
+
+    /**
+     * Checks the collection and returns the content as a string
+     * (array is joined)
+     *
+     * @phpstan-param flash_css_classes $collection
+     * @param array $collection
+     * @param string $type
+     * @return string
+     */
+    private function checkClasses(array $collection, string $type): string
     {
     }
 
@@ -317,7 +320,6 @@ abstract class AbstractFlash extends AbstractInjectionAware implements \Phalcon\
      *
      * @param string $cssClasses
      * @param string $cssIconClasses
-     *
      * @return string
      */
     private function getTemplate(string $cssClasses, string $cssIconClasses): string
@@ -329,9 +331,7 @@ abstract class AbstractFlash extends AbstractInjectionAware implements \Phalcon\
      * original message is returned
      *
      * @param string $message
-     *
      * @return string
-     * @throws Exception
      */
     private function prepareEscapedMessage(string $message): string
     {
@@ -343,23 +343,9 @@ abstract class AbstractFlash extends AbstractInjectionAware implements \Phalcon\
      *
      * @param string $type
      * @param string $message
-     *
      * @return string
      */
     private function prepareHtmlMessage(string $type, string $message): string
-    {
-    }
-
-    /**
-     * Checks the collection and returns the content as a string
-     * (array is joined)
-     *
-     * @param array  $collection
-     * @param string $type
-     *
-     * @return string
-     */
-    private function checkClasses(array $collection, string $type): string
     {
     }
 }

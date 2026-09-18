@@ -31,7 +31,7 @@ class Anchor extends \Phalcon\Html\Helper\AbstractHelper
     }
 
     /**
-     * Produce a <a> tag
+     * Produce a `<a>` tag
      *
      * @phpstan-param html_attributes $attributes
      * @param string $href

@@ -45,9 +45,9 @@ class ModelAdapterConfig extends \Phalcon\Auth\Adapter\Config\AbstractAdapterCon
     }
 
     /**
-     * @return string
+     * @return string|null
      */
-    public function getModel(): string
+    public function getModel(): string|null
     {
     }
 }

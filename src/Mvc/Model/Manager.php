@@ -10,10 +10,12 @@
 namespace Phalcon\Mvc\Model;
 
 use Phalcon\Contracts\Mvc\Model\Relation\CacheKeyProvider;
+use Phalcon\Contracts\Mvc\MvcTypes;
 use Phalcon\Db\Adapter\AdapterInterface;
 use Phalcon\Di\DiInterface;
 use Phalcon\Di\InjectionAwareInterface;
 use Phalcon\Events\EventsAwareInterface;
+use Phalcon\Events\Exception as EventsException;
 use Phalcon\Events\ManagerInterface as EventsManagerInterface;
 use Phalcon\Mvc\Model\Exceptions\InvalidConnectionService;
 use Phalcon\Mvc\Model\Exceptions\ManagerOrmServicesUnavailable;
@@ -27,11 +29,10 @@ use Phalcon\Mvc\Model\Query\StatusInterface;
 use Phalcon\Mvc\ModelInterface;
 use Phalcon\Support\Settings;
 use ReflectionClass;
+use ReflectionException;
 use ReflectionProperty;
 
 /**
- * Phalcon\Mvc\Model\Manager
- *
  * This components controls the initialization of models, keeping record of
  * relations between the different models of the application.
  *
@@ -53,138 +54,135 @@ use ReflectionProperty;
  *
  * $invoice = new Invoices($di);
  * ```
+ *
+ * @phpstan-import-type mvc_manager_relations from MvcTypes
+ * @phpstan-import-type mvc_model_bind_params from MvcTypes
+ * @phpstan-import-type mvc_model_bind_types from MvcTypes
+ * @phpstan-import-type mvc_model_parameters from MvcTypes
+ * @phpstan-import-type mvc_relation_options from MvcTypes
  */
 class Manager implements \Phalcon\Mvc\Model\ManagerInterface, \Phalcon\Di\InjectionAwareInterface, \Phalcon\Events\EventsAwareInterface
 {
     /**
-     * @var array
+     * @phpstan-var array<string, RelationInterface>
      */
-    protected $aliases = [];
+    protected array $aliases = [];
 
     /**
      * Models' behaviors
      *
-     * @var array
+     * @phpstan-var array<string, array<int, BehaviorInterface>>
      */
-    protected $behaviors = [];
+    protected array $behaviors = [];
 
     /**
      * Belongs to relations
      *
-     * @var array
+     * @phpstan-var mvc_manager_relations
      */
-    protected $belongsTo = [];
+    protected array $belongsTo = [];
 
     /**
      * All the relationships by model
      *
-     * @var array
+     * @phpstan-var mvc_manager_relations
      */
-    protected $belongsToSingle = [];
+    protected array $belongsToSingle = [];
+
+    protected ?\Phalcon\Mvc\Model\Query\BuilderInterface $builder = null;
+
+    protected ?\Phalcon\Di\DiInterface $container = null;
 
     /**
-     * @var BuilderInterface|null
+     * @phpstan-var array<string, EventsManagerInterface>
      */
-    protected $builder = null;
-
-    /**
-     * @var DiInterface|null
-     */
-    protected $container = null;
-
-    /**
-     * @var array
-     */
-    protected $customEventsManager = [];
+    protected array $customEventsManager = [];
 
     /**
      * Write connection services that have been written to during the current
      * request cycle. Used by the sticky mechanism to route reads to the write
      * connection after a write.
      *
-     * @var array
+     * @phpstan-var array<string, bool>
      */
-    protected $dirtyWriteServices = [];
+    protected array $dirtyWriteServices = [];
 
     /**
      * Does the model use dynamic update, instead of updating all rows?
      *
-     * @var array
+     * @phpstan-var array<string, bool>
      */
-    protected $dynamicUpdate = [];
+    protected array $dynamicUpdate = [];
 
-    /**
-     * @var EventsManagerInterface|null
-     */
-    protected $eventsManager = null;
+    protected ?\Phalcon\Events\ManagerInterface $eventsManager = null;
 
     /**
      * Has many relations
      *
-     * @var array
+     * @phpstan-var mvc_manager_relations
      */
-    protected $hasMany = [];
+    protected array $hasMany = [];
 
     /**
      * Has many relations by model
      *
-     * @var array
+     * @phpstan-var mvc_manager_relations
      */
-    protected $hasManySingle = [];
+    protected array $hasManySingle = [];
 
     /**
      * Has many-Through relations
      *
-     * @var array
+     * @phpstan-var mvc_manager_relations
      */
-    protected $hasManyToMany = [];
+    protected array $hasManyToMany = [];
 
     /**
      * Has many-Through relations by model
      *
-     * @var array
+     * @phpstan-var mvc_manager_relations
      */
-    protected $hasManyToManySingle = [];
+    protected array $hasManyToManySingle = [];
 
     /**
      * Has one relations
      *
-     * @var array
+     * @phpstan-var mvc_manager_relations
      */
-    protected $hasOne = [];
+    protected array $hasOne = [];
 
     /**
      * Has one relations by model
      *
-     * @var array
+     * @phpstan-var mvc_manager_relations
      */
-    protected $hasOneSingle = [];
+    protected array $hasOneSingle = [];
 
     /**
      * Has one through relations
      *
-     * @var array
+     * @phpstan-var mvc_manager_relations
      */
-    protected $hasOneThrough = [];
+    protected array $hasOneThrough = [];
 
     /**
      * Has one through relations by model
      *
-     * @var array
+     * @phpstan-var mvc_manager_relations
      */
-    protected $hasOneThroughSingle = [];
+    protected array $hasOneThroughSingle = [];
 
     /**
      * Mark initialized models
      *
-     * @var array
+     * @phpstan-var array<string, bool>
      */
-    protected $initialized = [];
+    protected array $initialized = [];
 
     /**
-     * @var array
+     * @phpstan-var array<string, bool>
      */
-    protected $keepSnapshots = [];
+    protected array $keepSnapshots = [];
 
     /**
      * Last model initialized
@@ -201,49 +199,44 @@ class Manager implements \Phalcon\Mvc\Model\ManagerInterface, \Phalcon\Di\Inject
     protected $lastQuery = null;
 
     /**
-     * @var array
+     * @phpstan-var array<string, array<string, bool>>
      */
-    protected $modelVisibility = [];
+    protected array $modelVisibility = [];
+
+    protected string $prefix = '';
 
     /**
-     * @var string
+     * @phpstan-var array<string, string>
      */
-    protected $prefix = '';
-
-    /**
-     * @var array
-     */
-    protected $readConnectionServices = [];
-
-    /**
-     * @var array
-     */
-    protected $sources = [];
-
-    /**
-     * @var array
-     */
-    protected $schemas = [];
-
-    /**
-     * Whether reads should stick to the write connection after a write has
-     * occurred during the current request cycle.
-     *
-     * @var bool
-     */
-    protected $sticky = false;
-
-    /**
-     * @var array
-     */
-    protected $writeConnectionServices = [];
+    protected array $readConnectionServices = [];
 
     /**
      * Stores a list of reusable instances
      *
-     * @var array
+     * @phpstan-var array<string, mixed>
      */
-    protected $reusable = [];
+    protected array $reusable = [];
+
+    /**
+     * @phpstan-var array<string, string>
+     */
+    protected array $schemas = [];
+
+    /**
+     * @phpstan-var array<string, string>
+     */
+    protected array $sources = [];
+
+    /**
+     * Whether reads should stick to the write connection after a write has
+     * occurred during the current request cycle.
+     */
+    protected bool $sticky = false;
+
+    /**
+     * @phpstan-var array<string, string>
+     */
+    protected array $writeConnectionServices = [];
 
     /**
      * Destroys the current PHQL cache
@@ -253,9 +246,31 @@ class Manager implements \Phalcon\Mvc\Model\ManagerInterface, \Phalcon\Di\Inject
     }
 
     /**
+     * Merge two arrays of find parameters
+     *
+     * The order matters. Conditions coming from key 0 or "conditions" are
+     * ANDed in argument order; `bind` and `bindTypes` are merged for the
+     * second argument only and assigned outright for the first. Pass the
+     * parameters whose bindings must survive as the second argument.
+     *
+     * Static because it reads nothing but its arguments, and public so bulk
+     * loaders can reuse the merge instead of duplicating these semantics.
+     *
+     * @param mixed $findParamsOne
+     * @param mixed $findParamsTwo
+     *
+     * @return array
+     *
+     * @phpstan-return mvc_model_parameters
+     */
+    final public static function mergeFindParameters($findParamsOne, $findParamsTwo): array
+    {
+    }
+
+    /**
      * Binds a behavior to a model
      *
-     * @param ModelInterface    $model
+     * @param \Phalcon\Mvc\ModelInterface $model
      * @param BehaviorInterface $behavior
      * @return void
      */
@@ -273,6 +288,8 @@ class Manager implements \Phalcon\Mvc\Model\ManagerInterface, \Phalcon\Di\Inject
      * @param array          $options
      *
      * @return RelationInterface
+     *
+     * @phpstan-param mvc_relation_options $options
      */
     public function addBelongsTo(\Phalcon\Mvc\ModelInterface $model, $fields, string $referencedModel, $referencedFields, array $options = []): RelationInterface
     {
@@ -288,6 +305,8 @@ class Manager implements \Phalcon\Mvc\Model\ManagerInterface, \Phalcon\Di\Inject
      * @param array          $options
      *
      * @return RelationInterface
+     *
+     * @phpstan-param mvc_relation_options $options
      */
     public function addHasMany(\Phalcon\Mvc\ModelInterface $model, $fields, string $referencedModel, $referencedFields, array $options = []): RelationInterface
     {
@@ -306,6 +325,8 @@ class Manager implements \Phalcon\Mvc\Model\ManagerInterface, \Phalcon\Di\Inject
      * @param array          $options
      *
      * @return RelationInterface
+     *
+     * @phpstan-param mvc_relation_options $options
      */
     public function addHasManyToMany(\Phalcon\Mvc\ModelInterface $model, $fields, string $intermediateModel, $intermediateFields, $intermediateReferencedFields, string $referencedModel, $referencedFields, array $options = []): RelationInterface
     {
@@ -321,6 +342,8 @@ class Manager implements \Phalcon\Mvc\Model\ManagerInterface, \Phalcon\Di\Inject
      * @param array          $options
      *
      * @return RelationInterface
+     *
+     * @phpstan-param mvc_relation_options $options
      */
     public function addHasOne(\Phalcon\Mvc\ModelInterface $model, $fields, string $referencedModel, $referencedFields, array $options = []): RelationInterface
     {
@@ -339,6 +362,8 @@ class Manager implements \Phalcon\Mvc\Model\ManagerInterface, \Phalcon\Di\Inject
      * @param array          $options
      *
      * @return RelationInterface
+     *
+     * @phpstan-param mvc_relation_options $options
      */
     public function addHasOneThrough(\Phalcon\Mvc\ModelInterface $model, $fields, string $intermediateModel, $intermediateFields, $intermediateReferencedFields, string $referencedModel, $referencedFields, array $options = []): RelationInterface
     {
@@ -366,8 +391,8 @@ class Manager implements \Phalcon\Mvc\Model\ManagerInterface, \Phalcon\Di\Inject
     /**
      * Creates a Phalcon\Mvc\Model\Query without execute it
      *
+     * @throws Exception
      * @param string $phql
-     *
      * @return QueryInterface
      */
     public function createQuery(string $phql): QueryInterface
@@ -476,9 +501,8 @@ class Manager implements \Phalcon\Mvc\Model\ManagerInterface, \Phalcon\Di\Inject
      * );
      * ```
      *
-     * @param ModelInterface $model
-     *
-     * @return RelationInterface[] | array
+     * @return array|RelationInterface[]
+     * @param \Phalcon\Mvc\ModelInterface $model
      */
     public function getBelongsTo(\Phalcon\Mvc\ModelInterface $model): array
     {
@@ -494,6 +518,8 @@ class Manager implements \Phalcon\Mvc\Model\ManagerInterface, \Phalcon\Di\Inject
      * @param string|null    $method
      *
      * @return ResultsetInterface | bool
+     *
+     * @phpstan-param mvc_model_parameters|string|null $parameters
      */
     public function getBelongsToRecords(string $modelName, string $modelRelation, \Phalcon\Mvc\ModelInterface $record, $parameters = null, ?string $method = null): ResultsetInterface|bool
     {
@@ -502,7 +528,7 @@ class Manager implements \Phalcon\Mvc\Model\ManagerInterface, \Phalcon\Di\Inject
     /**
      * Returns the newly created Phalcon\Mvc\Model\Query\Builder or null
      *
-     * @return BuilderInterface | null
+     * @return BuilderInterface|null
      */
     public function getBuilder(): BuilderInterface|null
     {
@@ -512,9 +538,9 @@ class Manager implements \Phalcon\Mvc\Model\ManagerInterface, \Phalcon\Di\Inject
      * Returns the connection service name used to read or write data related to
      * a model depending on the connection services
      *
-     * @param ModelInterface $model
-     * @param array          $connectionServices
-     *
+     * @phpstan-param array<string, string> $connectionServices
+     * @param \Phalcon\Mvc\ModelInterface $model
+     * @param array $connectionServices
      * @return string
      */
     public function getConnectionService(\Phalcon\Mvc\ModelInterface $model, array $connectionServices): string
@@ -525,9 +551,8 @@ class Manager implements \Phalcon\Mvc\Model\ManagerInterface, \Phalcon\Di\Inject
      * Returns a custom events manager related to a model or null if there is
      * no related events manager
      *
-     * @param ModelInterface $model
-     *
-     * @return EventsManagerInterface | null
+     * @param \Phalcon\Mvc\ModelInterface $model
+     * @return EventsManagerInterface|null
      */
     public function getCustomEventsManager(\Phalcon\Mvc\ModelInterface $model): EventsManagerInterface|null
     {
@@ -564,6 +589,7 @@ class Manager implements \Phalcon\Mvc\Model\ManagerInterface, \Phalcon\Di\Inject
     /**
      * Gets hasMany related records from a model
      *
+     * @phpstan-param mvc_model_parameters|string|null $parameters
      * @param string $modelName
      * @param string $modelRelation
      * @param \Phalcon\Mvc\ModelInterface $record
@@ -608,6 +634,7 @@ class Manager implements \Phalcon\Mvc\Model\ManagerInterface, \Phalcon\Di\Inject
     /**
      * Gets belongsTo related records from a model
      *
+     * @phpstan-param mvc_model_parameters|string|null $parameters
      * @param string $modelName
      * @param string $modelRelation
      * @param \Phalcon\Mvc\ModelInterface $record
@@ -700,8 +727,8 @@ class Manager implements \Phalcon\Mvc\Model\ManagerInterface, \Phalcon\Di\Inject
      * Returns a relation by its alias
      *
      * @param string $modelName
-     * @param string $alias *
-     * @return RelationInterface|bool
+     * @param string $alias
+     * @return bool|RelationInterface
      */
     public function getRelationByAlias(string $modelName, string $alias): RelationInterface|bool
     {
@@ -724,9 +751,8 @@ class Manager implements \Phalcon\Mvc\Model\ManagerInterface, \Phalcon\Di\Inject
     /**
      * Query all the relationships defined on a model
      *
-     * @param string $modelName
-     *
      * @return RelationInterface[]
+     * @param string $modelName
      */
     public function getRelations(string $modelName): array
     {
@@ -735,10 +761,9 @@ class Manager implements \Phalcon\Mvc\Model\ManagerInterface, \Phalcon\Di\Inject
     /**
      * Query the first relationship defined between two models
      *
+     * @return bool|RelationInterface[]
      * @param string $first
      * @param string $second
-     *
-     * @return RelationInterface[] | bool
      */
     public function getRelationsBetween(string $first, string $second): bool|array
     {
@@ -747,10 +772,9 @@ class Manager implements \Phalcon\Mvc\Model\ManagerInterface, \Phalcon\Di\Inject
     /**
      * Returns a reusable object from the internal list
      *
+     * @return mixed
      * @param string $modelName
      * @param string $key
-     *
-     * @return mixed
      */
     public function getReusableRecords(string $modelName, string $key)
     {
@@ -759,8 +783,7 @@ class Manager implements \Phalcon\Mvc\Model\ManagerInterface, \Phalcon\Di\Inject
     /**
      * Returns the connection to write data related to a model
      *
-     * @param ModelInterface $model
-     *
+     * @param \Phalcon\Mvc\ModelInterface $model
      * @return AdapterInterface
      */
     public function getWriteConnection(\Phalcon\Mvc\ModelInterface $model): AdapterInterface
@@ -770,8 +793,7 @@ class Manager implements \Phalcon\Mvc\Model\ManagerInterface, \Phalcon\Di\Inject
     /**
      * Returns the connection service name used to write data related to a model
      *
-     * @param ModelInterface $model
-     *
+     * @param \Phalcon\Mvc\ModelInterface $model
      * @return string
      */
     public function getWriteConnectionService(\Phalcon\Mvc\ModelInterface $model): string
@@ -783,7 +805,6 @@ class Manager implements \Phalcon\Mvc\Model\ManagerInterface, \Phalcon\Di\Inject
      *
      * @param string $modelName
      * @param string $modelRelation
-     *
      * @return bool
      */
     public function hasBelongsTo(string $modelName, string $modelRelation): bool
@@ -795,7 +816,6 @@ class Manager implements \Phalcon\Mvc\Model\ManagerInterface, \Phalcon\Di\Inject
      *
      * @param string $modelName
      * @param string $modelRelation
-     *
      * @return bool
      */
     public function hasHasMany(string $modelName, string $modelRelation): bool
@@ -807,7 +827,6 @@ class Manager implements \Phalcon\Mvc\Model\ManagerInterface, \Phalcon\Di\Inject
      *
      * @param string $modelName
      * @param string $modelRelation
-     *
      * @return bool
      */
     public function hasHasManyToMany(string $modelName, string $modelRelation): bool
@@ -819,7 +838,6 @@ class Manager implements \Phalcon\Mvc\Model\ManagerInterface, \Phalcon\Di\Inject
      *
      * @param string $modelName
      * @param string $modelRelation
-     *
      * @return bool
      */
     public function hasHasOne(string $modelName, string $modelRelation): bool
@@ -831,7 +849,6 @@ class Manager implements \Phalcon\Mvc\Model\ManagerInterface, \Phalcon\Di\Inject
      *
      * @param string $modelName
      * @param string $modelRelation
-     *
      * @return bool
      */
     public function hasHasOneThrough(string $modelName, string $modelRelation): bool
@@ -841,8 +858,8 @@ class Manager implements \Phalcon\Mvc\Model\ManagerInterface, \Phalcon\Di\Inject
     /**
      * Initializes a model in the model manager
      *
-     * @param ModelInterface $model
-     *
+     * @throws EventsException
+     * @param \Phalcon\Mvc\ModelInterface $model
      * @return bool
      */
     public function initialize(\Phalcon\Mvc\ModelInterface $model): bool
@@ -853,7 +870,6 @@ class Manager implements \Phalcon\Mvc\Model\ManagerInterface, \Phalcon\Di\Inject
      * Check whether a model is already initialized
      *
      * @param string $className
-     *
      * @return bool
      */
     public function isInitialized(string $className): bool
@@ -863,8 +879,7 @@ class Manager implements \Phalcon\Mvc\Model\ManagerInterface, \Phalcon\Di\Inject
     /**
      * Checks if a model is keeping snapshots for the queried records
      *
-     * @param ModelInterface $model
-     *
+     * @param \Phalcon\Mvc\ModelInterface $model
      * @return bool
      */
     public function isKeepingSnapshots(\Phalcon\Mvc\ModelInterface $model): bool
@@ -874,8 +889,7 @@ class Manager implements \Phalcon\Mvc\Model\ManagerInterface, \Phalcon\Di\Inject
     /**
      * Checks if a model is using dynamic update instead of all-field update
      *
-     * @param ModelInterface $model
-     *
+     * @param \Phalcon\Mvc\ModelInterface $model
      * @return bool
      */
     public function isUsingDynamicUpdate(\Phalcon\Mvc\ModelInterface $model): bool
@@ -892,9 +906,9 @@ class Manager implements \Phalcon\Mvc\Model\ManagerInterface, \Phalcon\Di\Inject
      * );
      * ```
      *
-     * @param ModelInterface $model
-     * @param string         $property
-     *
+     * @throws ReflectionException
+     * @param \Phalcon\Mvc\ModelInterface $model
+     * @param string $property
      * @return bool
      */
     final public function isVisibleModelProperty(\Phalcon\Mvc\ModelInterface $model, string $property): bool
@@ -904,9 +918,8 @@ class Manager implements \Phalcon\Mvc\Model\ManagerInterface, \Phalcon\Di\Inject
     /**
      * Sets if a model must keep snapshots
      *
-     * @param ModelInterface $model
-     * @param bool           $keepSnapshots
-     *
+     * @param \Phalcon\Mvc\ModelInterface $model
+     * @param bool $keepSnapshots
      * @return void
      */
     public function keepSnapshots(\Phalcon\Mvc\ModelInterface $model, bool $keepSnapshots): void
@@ -916,31 +929,11 @@ class Manager implements \Phalcon\Mvc\Model\ManagerInterface, \Phalcon\Di\Inject
     /**
      * Loads a model throwing an exception if it does not exist
      *
+     * @throws Exception
      * @param string $modelName
-     *
      * @return ModelInterface
      */
     public function load(string $modelName): ModelInterface
-    {
-    }
-
-    /**
-     * Merge two arrays of find parameters
-     *
-     * The order matters. Conditions coming from key 0 or "conditions" are
-     * ANDed in argument order; `bind` and `bindTypes` are merged for the
-     * second argument only and assigned outright for the first. Pass the
-     * parameters whose bindings must survive as the second argument.
-     *
-     * Static because it reads nothing but its arguments, and public so bulk
-     * loaders can reuse the merge instead of duplicating these semantics.
-     *
-     * @param mixed $findParamsOne
-     * @param mixed $findParamsTwo
-     *
-     * @return array
-     */
-    final public static function mergeFindParameters($findParamsOne, $findParamsTwo): array
     {
     }
 
@@ -952,6 +945,8 @@ class Manager implements \Phalcon\Mvc\Model\ManagerInterface, \Phalcon\Di\Inject
      * @param ModelInterface $model
      * @param string         $eventName
      * @param mixed          $data
+     *
+     * @phpstan-param array<array-key, mixed> $data
      */
     public function missingMethod(\Phalcon\Mvc\ModelInterface $model, string $eventName, $data)
     {
@@ -974,8 +969,7 @@ class Manager implements \Phalcon\Mvc\Model\ManagerInterface, \Phalcon\Di\Inject
      * current request cycle. Used by the sticky mechanism to route
      * subsequent reads to the write connection.
      *
-     * @param ModelInterface $model
-     *
+     * @param \Phalcon\Mvc\ModelInterface $model
      * @return void
      */
     public function registerWrite(\Phalcon\Mvc\ModelInterface $model): void
@@ -1008,9 +1002,8 @@ class Manager implements \Phalcon\Mvc\Model\ManagerInterface, \Phalcon\Di\Inject
     /**
      * Sets both write and read connection service for a model
      *
-     * @param ModelInterface $model
-     * @param string         $connectionService
-     *
+     * @param \Phalcon\Mvc\ModelInterface $model
+     * @param string $connectionService
      * @return void
      */
     public function setConnectionService(\Phalcon\Mvc\ModelInterface $model, string $connectionService): void
@@ -1020,9 +1013,8 @@ class Manager implements \Phalcon\Mvc\Model\ManagerInterface, \Phalcon\Di\Inject
     /**
      * Sets a custom events manager for a specific model
      *
-     * @param ModelInterface         $model
-     * @param EventsManagerInterface $eventsManager
-     *
+     * @param \Phalcon\Mvc\ModelInterface $model
+     * @param \Phalcon\Events\ManagerInterface $eventsManager
      * @return void
      */
     public function setCustomEventsManager(\Phalcon\Mvc\ModelInterface $model, \Phalcon\Events\ManagerInterface $eventsManager): void
@@ -1032,8 +1024,7 @@ class Manager implements \Phalcon\Mvc\Model\ManagerInterface, \Phalcon\Di\Inject
     /**
      * Sets the DependencyInjector container
      *
-     * @param DiInterface $container
-     *
+     * @param \Phalcon\Di\DiInterface $container
      * @return void
      */
     public function setDI(\Phalcon\Di\DiInterface $container): void
@@ -1073,10 +1064,8 @@ class Manager implements \Phalcon\Mvc\Model\ManagerInterface, \Phalcon\Di\Inject
      * echo $invoices->getSource(); // wp_co_invoices
      * ```
      *
-     * $param string $prefix
-     *
-     * @return void
      * @param string $prefix
+     * @return void
      */
     public function setModelPrefix(string $prefix): void
     {
@@ -1085,9 +1074,8 @@ class Manager implements \Phalcon\Mvc\Model\ManagerInterface, \Phalcon\Di\Inject
     /**
      * Sets the mapped schema for a model
      *
-     * @param ModelInterface $model
-     * @param string         $schema
-     *
+     * @param \Phalcon\Mvc\ModelInterface $model
+     * @param string $schema
      * @return void
      */
     public function setModelSchema(\Phalcon\Mvc\ModelInterface $model, string $schema): void
@@ -1097,9 +1085,8 @@ class Manager implements \Phalcon\Mvc\Model\ManagerInterface, \Phalcon\Di\Inject
     /**
      * Sets the mapped source for a model
      *
-     * @param ModelInterface $model
-     * @param string         $source
-     *
+     * @param \Phalcon\Mvc\ModelInterface $model
+     * @param string $source
      * @return void
      */
     public function setModelSource(\Phalcon\Mvc\ModelInterface $model, string $source): void
@@ -1109,9 +1096,8 @@ class Manager implements \Phalcon\Mvc\Model\ManagerInterface, \Phalcon\Di\Inject
     /**
      * Sets read connection service for a model
      *
-     * @param ModelInterface $model
-     * @param string         $connectionService
-     *
+     * @param \Phalcon\Mvc\ModelInterface $model
+     * @param string $connectionService
      * @return void
      */
     public function setReadConnectionService(\Phalcon\Mvc\ModelInterface $model, string $connectionService): void
@@ -1138,7 +1124,6 @@ class Manager implements \Phalcon\Mvc\Model\ManagerInterface, \Phalcon\Di\Inject
      * further reads for that write service use the write connection.
      *
      * @param bool $sticky
-     *
      * @return void
      */
     public function setSticky(bool $sticky): void
@@ -1148,9 +1133,8 @@ class Manager implements \Phalcon\Mvc\Model\ManagerInterface, \Phalcon\Di\Inject
     /**
      * Sets write connection service for a model
      *
-     * @param ModelInterface $model
-     * @param string         $connectionService
-     *
+     * @param \Phalcon\Mvc\ModelInterface $model
+     * @param string $connectionService
      * @return void
      */
     public function setWriteConnectionService(\Phalcon\Mvc\ModelInterface $model, string $connectionService): void
@@ -1160,9 +1144,8 @@ class Manager implements \Phalcon\Mvc\Model\ManagerInterface, \Phalcon\Di\Inject
     /**
      * Sets if a model must use dynamic update instead of the all-field update
      *
-     * @param ModelInterface $model
-     * @param bool           $dynamicUpdate
-     *
+     * @param \Phalcon\Mvc\ModelInterface $model
+     * @param bool $dynamicUpdate
      * @return void
      */
     public function useDynamicUpdate(\Phalcon\Mvc\ModelInterface $model, bool $dynamicUpdate): void
@@ -1173,9 +1156,11 @@ class Manager implements \Phalcon\Mvc\Model\ManagerInterface, \Phalcon\Di\Inject
      * Returns the connection to read or write data related to a model
      * depending on the connection services.
      *
-     * @param ModelInterface $model
-     * @param array          $connectionServices
+     * @throws Exception
      *
+     * @phpstan-param array<string, string> $connectionServices
+     * @param \Phalcon\Mvc\ModelInterface $model
+     * @param array $connectionServices
      * @return AdapterInterface
      */
     protected function getConnection(\Phalcon\Mvc\ModelInterface $model, array $connectionServices): AdapterInterface
@@ -1186,10 +1171,21 @@ class Manager implements \Phalcon\Mvc\Model\ManagerInterface, \Phalcon\Di\Inject
      * @param string $collection
      * @param string $modelName
      * @param string $modelRelation
-     *
      * @return bool
      */
     private function checkHasRelationship(string $collection, string $modelName, string $modelRelation): bool
+    {
+    }
+
+    /**
+     * Counts the fields of a relation leg. A leg with one field is a string,
+     * so it counts as one field.
+     *
+     * @param mixed $fields
+     *
+     * @return int
+     */
+    private function getFieldsCount($fields): int
     {
     }
 }

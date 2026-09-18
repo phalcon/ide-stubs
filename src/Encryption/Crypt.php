@@ -9,6 +9,7 @@
  */
 namespace Phalcon\Encryption;
 
+use Phalcon\Contracts\Encryption\EncryptionTypes;
 use Phalcon\Encryption\Crypt\CryptInterface;
 use Phalcon\Encryption\Crypt\Exception\DecryptionFailed;
 use Phalcon\Encryption\Crypt\Exception\EmptyDecryptionKey;
@@ -29,6 +30,7 @@ use Phalcon\Traits\Php\Base64Trait;
 use Phalcon\Traits\Php\HashTrait;
 use Phalcon\Traits\Php\InfoTrait;
 use Phalcon\Traits\Php\OpensslTrait;
+use Throwable;
 
 /**
  * Provides encryption capabilities to Phalcon applications.
@@ -48,6 +50,10 @@ use Phalcon\Traits\Php\OpensslTrait;
  *
  * echo $crypt->decrypt($encrypted, $key);
  * ```
+ *
+ * @phpstan-import-type encryption_cipher_list from EncryptionTypes
+ * @phpstan-import-type encryption_hash_algorithms from EncryptionTypes
+ * @phpstan-import-type encryption_hash_length_cache from EncryptionTypes
  */
 class Crypt implements \Phalcon\Encryption\Crypt\CryptInterface
 {
@@ -103,27 +109,18 @@ class Crypt implements \Phalcon\Encryption\Crypt\CryptInterface
      */
     const int PADDING_ZERO = 5;
 
-    /**
-     * @var string
-     */
-    protected $authData = '';
+    protected string $authData = '';
 
-    /**
-     * @var string
-     */
-    protected $authTag = '';
+    protected string $authTag = '';
 
-    /**
-     * @var int
-     */
-    protected $authTagLength = 16;
+    protected int $authTagLength = 16;
 
     /**
      * Available cipher methods.
      *
-     * @var array
+     * @phpstan-var encryption_cipher_list
      */
-    protected $availableCiphers = [];
+    protected array $availableCiphers = [];
 
     /**
      * @var string
@@ -143,47 +140,33 @@ class Crypt implements \Phalcon\Encryption\Crypt\CryptInterface
      * given algorithm, so this collapses the per-decrypt strlen+hash
      * call to a single hash lookup after warm-up.
      *
-     * @var array
+     * @phpstan-var encryption_hash_length_cache
      */
-    protected $hashLengthCache = [];
+    protected array $hashLengthCache = [];
 
     /**
      * The cipher iv length.
-     *
-     * @var int
      */
-    protected $ivLength = 16;
+    protected int $ivLength = 16;
 
-    /**
-     * @var string
-     */
-    protected $key = '';
+    protected string $key = '';
 
-    /**
-     * @var int
-     */
-    protected $padding = 0;
+    protected int $padding = 0;
 
-    /**
-     * @var PadFactory
-     */
-    protected $padFactory;
+    protected \Phalcon\Encryption\Crypt\PadFactory $padFactory;
 
     /**
      * Whether calculating message digest enabled or not.
-     *
-     * @var bool
      */
-    protected $useSigning = true;
+    protected bool $useSigning = true;
 
     /**
      * Crypt constructor.
      *
-     * @param string          $cipher
-     * @param bool            $useSigning
-     * @param PadFactory|null $padFactory
-     *
      * @throws Exception
+     * @param string $cipher
+     * @param bool $useSigning
+     * @param \Phalcon\Encryption\Crypt\PadFactory|null $padFactory
      */
     public function __construct(string $cipher = self::DEFAULT_CIPHER, bool $useSigning = true, ?\Phalcon\Encryption\Crypt\PadFactory $padFactory = null)
     {
@@ -199,13 +182,12 @@ class Crypt implements \Phalcon\Encryption\Crypt\CryptInterface
      * );
      * ```
      *
-     * @param string      $input
-     * @param string|null $key
-     *
-     * @return string
      * @throws Exception
      * @throws InvalidDecryptLength
      * @throws Mismatch
+     * @param string $input
+     * @param string|null $key
+     * @return string
      */
     public function decrypt(string $input, ?string $key = null): string
     {
@@ -214,13 +196,12 @@ class Crypt implements \Phalcon\Encryption\Crypt\CryptInterface
     /**
      * Decrypt a text that is coded as a base64 string.
      *
-     * @param string     $input
-     * @param mixed|null $key
-     * @param bool       $safe
-     *
-     * @return string
      * @throws Exception
      * @throws Mismatch
+     * @param string $input
+     * @param string|null $key
+     * @param bool $safe
+     * @return string
      */
     public function decryptBase64(string $input, ?string $key = null, bool $safe = false): string
     {
@@ -236,11 +217,10 @@ class Crypt implements \Phalcon\Encryption\Crypt\CryptInterface
      * );
      * ```
      *
-     * @param string      $input
-     * @param string|null $key
-     *
-     * @return string
      * @throws Exception
+     * @param string $input
+     * @param string|null $key
+     * @return string
      */
     public function encrypt(string $input, ?string $key = null): string
     {
@@ -249,24 +229,13 @@ class Crypt implements \Phalcon\Encryption\Crypt\CryptInterface
     /**
      * Encrypts a text returning the result as a base64 string.
      *
-     * @param string     $input
-     * @param mixed|null $key
-     * @param bool       $safe
-     *
-     * @return string
      * @throws Exception
+     * @param string $input
+     * @param string|null $key
+     * @param bool $safe
+     * @return string
      */
     public function encryptBase64(string $input, ?string $key = null, bool $safe = false): string
-    {
-    }
-
-    /**
-     * Returns a list of available ciphers.
-     *
-     * @phpstan-return array<array-key, string>
-     * @return array
-     */
-    public function getAvailableCiphers(): array
     {
     }
 
@@ -298,20 +267,22 @@ class Crypt implements \Phalcon\Encryption\Crypt\CryptInterface
     }
 
     /**
-     * Return a list of registered hashing algorithms suitable for hash_hmac.
+     * Returns a list of available ciphers.
      *
+     * @phpstan-return encryption_cipher_list
      * @return array
      */
-    public function getAvailableHashAlgorithms(): array
+    public function getAvailableCiphers(): array
     {
     }
 
     /**
-     * Get the name of hashing algorithm.
+     * Return a list of registered hashing algorithms suitable for hash_hmac.
      *
-     * @return string
+     * @phpstan-return encryption_hash_algorithms
+     * @return array
      */
-    public function getHashAlgorithm(): string
+    public function getAvailableHashAlgorithms(): array
     {
     }
 
@@ -321,6 +292,15 @@ class Crypt implements \Phalcon\Encryption\Crypt\CryptInterface
      * @return string
      */
     public function getCipher(): string
+    {
+    }
+
+    /**
+     * Get the name of hashing algorithm.
+     *
+     * @return string
+     */
+    public function getHashAlgorithm(): string
     {
     }
 
@@ -338,7 +318,6 @@ class Crypt implements \Phalcon\Encryption\Crypt\CryptInterface
      * (number of bytes required by the cipher).
      *
      * @param string $input
-     *
      * @return bool
      */
     public function isValidDecryptLength(string $input): bool
@@ -347,7 +326,6 @@ class Crypt implements \Phalcon\Encryption\Crypt\CryptInterface
 
     /**
      * @param string $data
-     *
      * @return CryptInterface
      */
     public function setAuthData(string $data): CryptInterface
@@ -356,7 +334,6 @@ class Crypt implements \Phalcon\Encryption\Crypt\CryptInterface
 
     /**
      * @param string $tag
-     *
      * @return CryptInterface
      */
     public function setAuthTag(string $tag): CryptInterface
@@ -364,10 +341,9 @@ class Crypt implements \Phalcon\Encryption\Crypt\CryptInterface
     }
 
     /**
-     * @param int $length
-     *
-     * @return CryptInterface
      * @throws InvalidAuthTagLength
+     * @param int $length
+     * @return CryptInterface
      */
     public function setAuthTagLength(int $length): CryptInterface
     {
@@ -376,12 +352,22 @@ class Crypt implements \Phalcon\Encryption\Crypt\CryptInterface
     /**
      * Sets the cipher algorithm for data encryption and decryption.
      *
-     * @param string $cipher
-     *
-     * @return CryptInterface
      * @throws Exception
+     * @param string $cipher
+     * @return CryptInterface
      */
     public function setCipher(string $cipher): CryptInterface
+    {
+    }
+
+    /**
+     * Set the name of hashing algorithm.
+     *
+     * @throws Exception
+     * @param string $hashAlgorithm
+     * @return static
+     */
+    public function setHashAlgorithm(string $hashAlgorithm): static
     {
     }
 
@@ -401,7 +387,6 @@ class Crypt implements \Phalcon\Encryption\Crypt\CryptInterface
      * "T4\xb1\x8d\xa9\x98\x05\\\x8c\xbe\x1d\x07&[\x99\x18\xa4~Lc1\xbeW\xb3"
      *
      * @param string $key
-     *
      * @return CryptInterface
      */
     public function setKey(string $key): CryptInterface
@@ -409,22 +394,9 @@ class Crypt implements \Phalcon\Encryption\Crypt\CryptInterface
     }
 
     /**
-     * Set the name of hashing algorithm.
-     *
-     * @param string $hashAlgorithm
-     *
-     * @return static
-     * @throws Exception
-     */
-    public function setHashAlgorithm(string $hashAlgorithm): static
-    {
-    }
-
-    /**
      * Changes the padding scheme used.
      *
      * @param int $scheme
-     *
      * @return CryptInterface
      */
     public function setPadding(int $scheme): CryptInterface
@@ -435,7 +407,6 @@ class Crypt implements \Phalcon\Encryption\Crypt\CryptInterface
      * Sets if the calculating message digest must used.
      *
      * @param bool $useSigning
-     *
      * @return CryptInterface
      */
     public function useSigning(bool $useSigning): CryptInterface
@@ -445,10 +416,9 @@ class Crypt implements \Phalcon\Encryption\Crypt\CryptInterface
     /**
      * Checks if a cipher or a hash algorithm is available
      *
+     * @throws Exception
      * @param string $cipher
      * @param string $type
-     *
-     * @throws Exception
      * @return void
      */
     protected function checkCipherHashIsAvailable(string $cipher, string $type): void
@@ -459,13 +429,12 @@ class Crypt implements \Phalcon\Encryption\Crypt\CryptInterface
      * Pads texts before encryption. See
      * [cryptopad](https://www.di-mgt.com.au/cryptopad.html)
      *
+     * @throws Exception
      * @param string $input
      * @param string $mode
-     * @param int    $blockSize
-     * @param int    $paddingType
-     *
+     * @param int $blockSize
+     * @param int $paddingType
      * @return string
-     * @throws Exception
      */
     protected function cryptPadText(string $input, string $mode, int $blockSize, int $paddingType): string
     {
@@ -477,37 +446,24 @@ class Crypt implements \Phalcon\Encryption\Crypt\CryptInterface
      * If the function detects that the text was not padded, it will return it
      * unmodified.
      *
+     * @throws Exception
      * @param string $input
      * @param string $mode
-     * @param int    $blockSize
-     * @param int    $paddingType
-     *
+     * @param int $blockSize
+     * @param int $paddingType
      * @return string
-     * @throws Exception
      */
     protected function cryptUnpadText(string $input, string $mode, int $blockSize, int $paddingType): string
     {
     }
 
     /**
-     * @param string $mode
-     * @param int    $blockSize
-     * @param string $decrypted
-     *
-     * @return string
-     */
-    protected function decryptGetUnpadded(string $mode, int $blockSize, string $decrypted): string
-    {
-    }
-
-    /**
+     * @throws Exception
      * @param string $mode
      * @param string $cipherText
      * @param string $decryptKey
      * @param string $iv
-     *
      * @return string
-     * @throws Exception
      */
     protected function decryptGcmCcmAuth(string $mode, string $cipherText, string $decryptKey, string $iv): string
     {
@@ -515,34 +471,42 @@ class Crypt implements \Phalcon\Encryption\Crypt\CryptInterface
 
     /**
      * @param string $mode
-     * @param string $input
-     * @param int    $blockSize
-     *
+     * @param int $blockSize
+     * @param string $decrypted
      * @return string
-     * @throws Exception
      */
-    protected function encryptGetPadded(string $mode, string $input, int $blockSize): string
+    protected function decryptGetUnpadded(string $mode, int $blockSize, string $decrypted): string
     {
     }
 
     /**
+     * @throws Exception
      * @param string $mode
      * @param string $padded
      * @param string $encryptKey
      * @param string $iv
-     *
      * @return string
-     * @throws Exception
      */
     protected function encryptGcmCcm(string $mode, string $padded, string $encryptKey, string $iv): string
     {
     }
 
     /**
+     * @throws Exception
+     * @param string $mode
+     * @param string $input
+     * @param int $blockSize
+     * @return string
+     */
+    protected function encryptGetPadded(string $mode, string $input, int $blockSize): string
+    {
+    }
+
+    /**
      * Initialize available cipher algorithms.
      *
-     * @return static
      * @throws Exception
+     * @return static
      */
     protected function initializeAvailableCiphers(): static
     {
@@ -551,9 +515,9 @@ class Crypt implements \Phalcon\Encryption\Crypt\CryptInterface
     /**
      * Checks if a mode (string) is in the values to compare (modes array)
      *
-     * @param array  $modes
+     * @phpstan-param encryption_cipher_list $modes
+     * @param array $modes
      * @param string $mode
-     *
      * @return bool
      */
     private function checkIsMode(array $modes, string $mode): bool
@@ -563,10 +527,9 @@ class Crypt implements \Phalcon\Encryption\Crypt\CryptInterface
     /**
      * Returns the block size
      *
-     * @param string $mode
-     *
-     * @return int
      * @throws Exception
+     * @param string $mode
+     * @return int
      */
     private function getBlockSize(string $mode): int
     {
@@ -575,10 +538,9 @@ class Crypt implements \Phalcon\Encryption\Crypt\CryptInterface
     /**
      * Initialize available cipher algorithms.
      *
-     * @param string $cipher
-     *
-     * @return int
      * @throws Exception
+     * @param string $cipher
+     * @return int
      */
     private function getIvLength(string $cipher): int
     {

@@ -10,16 +10,19 @@
 namespace Phalcon\Mvc;
 
 use JsonSerializable;
+use Phalcon\Contracts\Mvc\MvcTypes;
 use Phalcon\Db\Adapter\AdapterInterface;
 use Phalcon\Db\Column;
 use Phalcon\Db\DialectInterface;
 use Phalcon\Db\Enum;
+use Phalcon\Db\Exceptions\InvalidWkb;
 use Phalcon\Db\Geometry\WkbParser;
 use Phalcon\Db\RawValue;
 use Phalcon\Di\AbstractInjectionAware;
 use Phalcon\Di\Di;
 use Phalcon\Di\DiInterface;
 use Phalcon\Events\ManagerInterface as EventsManagerInterface;
+use Phalcon\Filter\Validation\ValidationInterface;
 use Phalcon\Messages\Message;
 use Phalcon\Messages\MessageInterface;
 use Phalcon\Mvc\Model\BehaviorInterface;
@@ -37,7 +40,6 @@ use Phalcon\Mvc\Model\Exceptions\ColumnNotInTableMap;
 use Phalcon\Mvc\Model\Exceptions\DataTypeNotDefined;
 use Phalcon\Mvc\Model\Exceptions\IdentityNotInColumnMap;
 use Phalcon\Mvc\Model\Exceptions\IdentityNotInTableColumns;
-use Phalcon\Mvc\Model\Exceptions\InvalidDumpResultKey;
 use Phalcon\Mvc\Model\Exceptions\InvalidEagerParameter;
 use Phalcon\Mvc\Model\Exceptions\InvalidFindParameters;
 use Phalcon\Mvc\Model\Exceptions\InvalidModelsManagerService;
@@ -56,7 +58,10 @@ use Phalcon\Mvc\Model\Exceptions\StaticMethodRequiresOneArgument;
 use Phalcon\Mvc\Model\Exceptions\UnsupportedEagerHydration;
 use Phalcon\Mvc\Model\Exceptions\UnsupportedEagerResultset;
 use Phalcon\Mvc\Model\Exceptions\UpdateSnapshotDisabled;
+use Phalcon\Mvc\Model\Hydration\CaseInsensitiveColumnMap;
+use Phalcon\Mvc\Model\Hydration\CloneResult;
 use Phalcon\Mvc\Model\Hydration\CloneResultMapHydrate;
+use Phalcon\Mvc\Model\Hydration\GetPrivateProperties;
 use Phalcon\Mvc\Model\ManagerInterface;
 use Phalcon\Mvc\Model\MetaDataInterface;
 use Phalcon\Mvc\Model\Query;
@@ -69,19 +74,15 @@ use Phalcon\Mvc\Model\ResultInterface;
 use Phalcon\Mvc\Model\Resultset;
 use Phalcon\Mvc\Model\ResultsetInterface;
 use Phalcon\Mvc\Model\Resultset\Simple;
+use Phalcon\Mvc\Model\Row;
 use Phalcon\Mvc\Model\TransactionInterface;
 use Phalcon\Mvc\Model\ValidationFailed;
 use Phalcon\Mvc\ModelInterface;
-use Phalcon\Filter\Validation\ValidationInterface;
 use Phalcon\Support\Collection;
 use Phalcon\Support\Collection\CollectionInterface;
 use Phalcon\Support\Settings;
-use ReflectionClass;
-use ReflectionProperty;
 
 /**
- * Phalcon\Mvc\Model
- *
  * Phalcon\Mvc\Model connects business objects and database tables to create a
  * persistable domain model where logic and data are presented in one wrapping.
  * It‘s an implementation of the object-relational mapping (ORM).
@@ -132,6 +133,23 @@ use ReflectionProperty;
  * `Phalcon\Mvc\Model\Exceptions\MethodNotFound`.
  *
  * @template T of static
+ *
+ * @phpstan-import-type mvc_model_attributes from MvcTypes
+ * @phpstan-import-type mvc_model_bind_params from MvcTypes
+ * @phpstan-import-type mvc_model_bind_types from MvcTypes
+ * @phpstan-import-type mvc_model_cache_options from MvcTypes
+ * @phpstan-import-type mvc_model_data from MvcTypes
+ * @phpstan-import-type mvc_model_foreign_key from MvcTypes
+ * @phpstan-import-type mvc_model_messages from MvcTypes
+ * @phpstan-import-type mvc_model_parameters from MvcTypes
+ * @phpstan-import-type mvc_model_related from MvcTypes
+ * @phpstan-import-type mvc_model_serialized from MvcTypes
+ * @phpstan-import-type mvc_model_snapshot from MvcTypes
+ * @phpstan-import-type mvc_model_sync_related from MvcTypes
+ * @phpstan-import-type mvc_metadata_column_map from MvcTypes
+ * @phpstan-import-type mvc_hydration_column_map from MvcTypes
+ * @phpstan-import-type mvc_relation_fields from MvcTypes
+ * @phpstan-import-type mvc_relation_options from MvcTypes
  */
 abstract class Model extends AbstractInjectionAware implements \Phalcon\Mvc\EntityInterface, \Phalcon\Mvc\ModelInterface, \Phalcon\Mvc\Model\ResultInterface, \JsonSerializable
 {
@@ -176,67 +194,52 @@ abstract class Model extends AbstractInjectionAware implements \Phalcon\Mvc\Enti
     const string TRANSACTION_INDEX = 'transaction';
 
     /**
-     * @var int
+     * @phpstan-var mvc_model_related
      */
-    protected $dirtyState = 1;
+    protected array $dirtyRelated = [];
+
+    protected int $dirtyState = 1;
 
     /**
-     * @var array
+     * @phpstan-var mvc_model_messages
      */
-    protected $dirtyRelated = [];
+    protected array $errorMessages = [];
+
+    protected ?\Phalcon\Mvc\Model\ManagerInterface $modelsManager = null;
+
+    protected ?\Phalcon\Mvc\Model\MetaDataInterface $modelsMetaData = null;
 
     /**
-     * @var array
+     * @phpstan-var mvc_model_snapshot
      */
-    protected $errorMessages = [];
+    protected array $oldSnapshot = [];
+
+    protected int $operationMade = 0;
 
     /**
-     * @var ManagerInterface|null
+     * @phpstan-var array<string, mixed>
      */
-    protected $modelsManager = null;
+    protected array $rawValues = [];
 
     /**
-     * @var MetaDataInterface|null
+     * @phpstan-var mvc_model_related
      */
-    protected $modelsMetaData = null;
+    protected array $related = [];
+
+    protected bool $skipped = false;
 
     /**
-     * @var array
+     * @phpstan-var mvc_model_snapshot
      */
-    protected $related = [];
-
-    /**
-     * @var int
-     */
-    protected $operationMade = 0;
-
-    /**
-     * @var array
-     */
-    protected $oldSnapshot = [];
-
-    /**
-     * @var array
-     */
-    protected $rawValues = [];
-
-    /**
-     * @var bool
-     */
-    protected $skipped = false;
-
-    /**
-     * @var array
-     */
-    protected $snapshot = [];
+    protected array $snapshot = [];
 
     /**
      * Per-save many-to-many sync overrides, keyed by lowercased relation
      * alias (or "" wildcard) => bool. Cleared after each save().
      *
-     * @var array
+     * @phpstan-var mvc_model_sync_related
      */
-    protected $syncRelated = [];
+    protected array $syncRelated = [];
 
     /**
      * @var TransactionInterface|null
@@ -250,22 +253,15 @@ abstract class Model extends AbstractInjectionAware implements \Phalcon\Mvc\Enti
 
     /**
      * @var array
+     *
+     * @phpstan-var mvc_model_bind_params
      */
     protected $uniqueParams = [];
 
     /**
-     * @var array
+     * @phpstan-var mvc_model_bind_types
      */
-    protected $uniqueTypes = [];
-
-    /**
-     * Per-process cache of declared private model properties as
-     * [class name => [property name => ReflectionProperty]], used during
-     * hydration - see getPrivateProperties()
-     *
-     * @var array
-     */
-    private static $privatePropertiesCache = [];
+    protected array $uniqueTypes = [];
 
     /**
      * Phalcon\Mvc\Model constructor
@@ -283,6 +279,8 @@ abstract class Model extends AbstractInjectionAware implements \Phalcon\Mvc\Enti
      *
      * @return mixed
      * @throws \Phalcon\Mvc\Model\Exception If the method does not exist
+     *
+     * @phpstan-param list<mixed> $arguments
      * @param string $method
      * @param array $arguments
      */
@@ -295,6 +293,9 @@ abstract class Model extends AbstractInjectionAware implements \Phalcon\Mvc\Enti
      *
      * @return mixed
      * @throws \Phalcon\Mvc\Model\Exception If the method does not exist
+     *
+     * @phpstan-param list<mixed> $arguments
+     * @phpstan-return int|ResultsetInterface|Row|static|null
      * @param string $method
      * @param array $arguments
      */
@@ -326,6 +327,7 @@ abstract class Model extends AbstractInjectionAware implements \Phalcon\Mvc\Enti
     /**
      * Serializes a model
      *
+     * @phpstan-return mvc_model_serialized
      * @return array
      */
     public function __serialize(): array
@@ -345,6 +347,7 @@ abstract class Model extends AbstractInjectionAware implements \Phalcon\Mvc\Enti
     /**
      * Unserializes an array to the model
      *
+     * @phpstan-param array<string, mixed> $data
      * @param array $data
      * @return void
      */
@@ -353,128 +356,19 @@ abstract class Model extends AbstractInjectionAware implements \Phalcon\Mvc\Enti
     }
 
     /**
-     * Setups a behavior in a model
+     * Enables/disables options in the ORM.
      *
-     * ```php
-     * use Phalcon\Mvc\Model;
-     * use Phalcon\Mvc\Model\Behavior\Timestampable;
+     * The options are written to process-global `Phalcon\Support\Settings`
+     * (`orm.` flags) and therefore affect every model in the process at once.
+     * Call this once during bootstrap; it is not per-model or per-container
+     * configuration, and one application's `setup()` reconfigures the ORM for
+     * every other user in the same process.
      *
-     * class Invoices extends Model
-     * {
-     *     public function initialize()
-     *     {
-     *         $this->addBehavior(
-     *             new Timestampable(
-     *                 [
-     *                     "beforeCreate" => [
-     *                         "field"  => "created_at",
-     *                         "format" => "Y-m-d",
-     *                     ],
-     *                 ]
-     *             )
-     *         );
-     *
-     *         $this->addBehavior(
-     *             new Timestampable(
-     *                 [
-     *                     "beforeUpdate" => [
-     *                         "field"  => "updated_at",
-     *                         "format" => "Y-m-d",
-     *                     ],
-     *                 ]
-     *             )
-     *         );
-     *     }
-     * }
-     * ```
-     *
-     * @param \Phalcon\Mvc\Model\BehaviorInterface $behavior
+     * @phpstan-param array<string, mixed> $options
+     * @param array $options
      * @return void
      */
-    public function addBehavior(\Phalcon\Mvc\Model\BehaviorInterface $behavior): void
-    {
-    }
-
-    /**
-     * Appends a customized message on the validation process
-     *
-     * ```php
-     * use Phalcon\Mvc\Model;
-     * use Phalcon\Messages\Message as Message;
-     *
-     * class Invoices extends Model
-     * {
-     *     public function beforeSave()
-     *     {
-     *         if ($this->name === "Peter") {
-     *             $message = new Message(
-     *                 "Sorry, but an invoice cannot be named Peter"
-     *             );
-     *
-     *             $this->appendMessage($message);
-     *         }
-     *     }
-     * }
-     * ```
-     *
-     * @param \Phalcon\Messages\MessageInterface $message
-     * @return ModelInterface
-     */
-    public function appendMessage(\Phalcon\Messages\MessageInterface $message): ModelInterface
-    {
-    }
-
-    /**
-     * Assigns values to a model from an array
-     *
-     * ```php
-     * $invoice->assign(
-     *     [
-     *         "type" => "mechanical",
-     *         "name" => "Test Invoice",
-     *         "year" => 1952,
-     *     ]
-     * );
-     *
-     * // Assign by db row, column map needed
-     * $invoice->assign(
-     *     $dbRow,
-     *     [
-     *         "db_type" => "type",
-     *         "db_name" => "name",
-     *         "db_year" => "year",
-     *     ]
-     * );
-     *
-     * // Allow assign only name and year
-     * $invoice->assign(
-     *     $_POST,
-     *     [
-     *         "name",
-     *         "year",
-     *     ]
-     * );
-     *
-     * // By default assign method will use setters if exist, you can disable it by using ini_set to directly use properties
-     *
-     * ini_set("phalcon.orm.disable_assign_setters", true);
-     *
-     * $invoice->assign(
-     *     $_POST,
-     *     [
-     *         "name",
-     *         "year",
-     *     ]
-     * );
-     * ```
-     *
-     * @param array $data
-     * @param mixed $whiteList
-     * @param mixed $dataColumnMap Array to transform keys of data to another
-     *
-     * @return ModelInterface
-     */
-    public function assign(array $data, $whiteList = null, $dataColumnMap = null): ModelInterface
+    public static function setup(array $options): void
     {
     }
 
@@ -507,8 +401,9 @@ abstract class Model extends AbstractInjectionAware implements \Phalcon\Mvc\Enti
      * echo "The average price of paid invoices is ", $average, "\n";
      * ```
      *
+     * @phpstan-param mvc_model_parameters $parameters
      * @param array $parameters
-     * @return float | ResultsetInterface
+     * @return double|ResultsetInterface
      */
     public static function average(array $parameters = []): ResultsetInterface|float
     {
@@ -528,6 +423,7 @@ abstract class Model extends AbstractInjectionAware implements \Phalcon\Mvc\Enti
      * );
      * ```
      *
+     * @phpstan-param mvc_model_data $data
      * @param \Phalcon\Mvc\ModelInterface $base
      * @param array $data
      * @param int $dirtyState
@@ -556,6 +452,8 @@ abstract class Model extends AbstractInjectionAware implements \Phalcon\Mvc\Enti
      * @param int $dirtyState
      * @param bool $keepSnapshots *
      * @return ModelInterface
+     *
+     * @phpstan-param mvc_model_data $data
      * @param array $data
      */
     public static function cloneResultMap($base, array $data, $columnMap, int $dirtyState = 0, ?bool $keepSnapshots = null): ModelInterface
@@ -569,18 +467,10 @@ abstract class Model extends AbstractInjectionAware implements \Phalcon\Mvc\Enti
      * @param mixed $columnMap
      * @param int $hydrationMode *
      * @return mixed
+     *
+     * @phpstan-param mvc_model_data $data
      */
     public static function cloneResultMapHydrate(array $data, $columnMap, int $hydrationMode)
-    {
-    }
-
-    /**
-     * Collects previously queried (belongs-to, has-one and has-one-through)
-     * related records along with freshly added one
-     *
-     * @return array Related records that should be saved
-     */
-    protected function collectRelatedToSave(): array
     {
     }
 
@@ -604,81 +494,11 @@ abstract class Model extends AbstractInjectionAware implements \Phalcon\Mvc\Enti
      * ```
      *
      * @param array|string|null $parameters
+     *
+     * @phpstan-param mvc_model_parameters|string|null $parameters
      * @return int|ResultsetInterface
      */
     public static function count($parameters = null): ResultsetInterface|int
-    {
-    }
-
-    /**
-     * Inserts a model instance. If the instance already exists in the
-     * persistence it will throw an exception
-     * Returning true on success or false otherwise.
-     *
-     * ```php
-     * // Creating a new invoice
-     * $invoice = new Invoices();
-     *
-     * $invoice->inv_status_flag = "mechanical";
-     * $invoice->inv_title = "Test Invoice";
-     * $invoice->inv_total = 1952;
-     *
-     * $invoice->create();
-     *
-     * // Passing an array to create
-     * $invoice = new Invoices();
-     *
-     * $invoice->assign(
-     *     [
-     *         "type" => "mechanical",
-     *         "name" => "Test Invoice",
-     *         "year" => 1952,
-     *     ]
-     * );
-     *
-     * $invoice->create();
-     * ```
-     *
-     * @return bool
-     */
-    public function create(): bool
-    {
-    }
-
-    /**
-     * Deletes a model instance. Returning true on success or false otherwise.
-     *
-     * ```php
-     * $invoice = Invoices::findFirst("id=100");
-     *
-     * $invoice->delete();
-     *
-     * $invoices = Invoices::find("inv_status_flag = 1");
-     *
-     * foreach ($invoices as $invoice) {
-     *     $invoice->delete();
-     * }
-     * ```
-     *
-     * @return bool
-     */
-    public function delete(): bool
-    {
-    }
-
-    /**
-     * Returns a simple representation of the object that can be used with
-     * `var_dump()`
-     *
-     * ```php
-     * var_dump(
-     *     $invoice->dump()
-     * );
-     * ```
-     *
-     * @return array
-     */
-    public function dump(): array
     {
     }
 
@@ -859,6 +679,8 @@ abstract class Model extends AbstractInjectionAware implements \Phalcon\Mvc\Enti
      *     'hydration' => null
      * ]
      * @return \Phalcon\Mvc\Model\Resultset<int, T>
+     *
+     * @phpstan-param mvc_model_parameters|int|string|null $parameters
      */
     public static function find($parameters = null): ResultsetInterface
     {
@@ -949,8 +771,397 @@ abstract class Model extends AbstractInjectionAware implements \Phalcon\Mvc\Enti
      * ]
      *
      * @return T|\Phalcon\Mvc\Model\Row|null
+     *
+     * @phpstan-param mvc_model_parameters|scalar|null $parameters
      */
     public static function findFirst($parameters = null): mixed
+    {
+    }
+
+    /**
+     * Returns the maximum value of a column for a result-set of rows that match
+     * the specified conditions
+     *
+     * ```php
+     * // What is the maximum invoice id?
+     * $id = Invoices::maximum(
+     *     [
+     *         "column" => "id",
+     *     ]
+     * );
+     *
+     * echo "The maximum invoice id is: ", $id, "\n";
+     *
+     * // What is the maximum id of paid invoices?
+     * $sum = Invoices::maximum(
+     *     [
+     *         "inv_status_flag = 1",
+     *         "column" => "id",
+     *     ]
+     * );
+     *
+     * echo "The maximum invoice id of paid invoices is ", $id, "\n";
+     * ```
+     *
+     * @param array $parameters
+     * @return mixed
+     *
+     * @phpstan-param mvc_model_parameters|string|null $parameters
+     */
+    public static function maximum($parameters = null): mixed
+    {
+    }
+
+    /**
+     * Returns the minimum value of a column for a result-set of rows that match
+     * the specified conditions
+     *
+     * ```php
+     * // What is the minimum invoice id?
+     * $id = Invoices::minimum(
+     *     [
+     *         "column" => "id",
+     *     ]
+     * );
+     *
+     * echo "The minimum invoice id is: ", $id;
+     *
+     * // What is the minimum id of paid invoices?
+     * $sum = Invoices::minimum(
+     *     [
+     *         "inv_status_flag = 1",
+     *         "column" => "id",
+     *     ]
+     * );
+     *
+     * echo "The minimum invoice id of paid invoices is ", $id;
+     * ```
+     *
+     * @param array $parameters *
+     * @phpstan-param mvc_model_parameters|string|null $parameters
+     * @return mixed
+     */
+    public static function minimum($parameters = null): mixed
+    {
+    }
+
+    /**
+     * Create a criteria for a specific model
+     *
+     * @param \Phalcon\Di\DiInterface|null $container
+     * @return CriteriaInterface
+     */
+    public static function query(?\Phalcon\Di\DiInterface $container = null): CriteriaInterface
+    {
+    }
+
+    /**
+     * Calculates the sum on a column for a result-set of rows that match the
+     * specified conditions
+     *
+     * ```php
+     * // How much are all invoices?
+     * $sum = Invoices::sum(
+     *     [
+     *         "column" => "inv_total",
+     *     ]
+     * );
+     *
+     * echo "The total price of invoices is ", $sum, "\n";
+     *
+     * // How much are paid invoices?
+     * $sum = Invoices::sum(
+     *     [
+     *         "inv_status_flag = 1",
+     *         "column" => "inv_total",
+     *     ]
+     * );
+     *
+     * echo "The total price of paid invoices is  ", $sum, "\n";
+     * ```
+     *
+     * @param array $parameters
+     * @return double | ResultsetInterface
+     *
+     * @phpstan-param mvc_model_parameters|string|null $parameters
+     */
+    public static function sum($parameters = null): ResultsetInterface|float
+    {
+    }
+
+    /**
+     * Generate a PHQL SELECT statement for an aggregate
+     *
+     * @param string $functionName
+     * @param string $alias
+     * @param array|string|null $parameters *
+     * @return int|float|string|null|ResultsetInterface
+     */
+    protected static function groupResult(string $functionName, string $alias, $parameters = null): mixed
+    {
+    }
+
+    /**
+     * Try to check if the query must invoke a finder
+     *
+     * @return ModelInterface[]|ModelInterface|bool
+     *
+     * @phpstan-param array<array-key, mixed> $arguments
+     * @phpstan-return false|int|ResultsetInterface|Row|static|null
+     * @param string $method
+     * @param array $arguments
+     */
+    final protected static function invokeFinder(string $method, array $arguments)
+    {
+    }
+
+    /**
+     * shared prepare query logic for find and findFirst method
+     *
+     * @phpstan-param int|null $limit
+     * @param mixed $params
+     * @param mixed $limit
+     * @return QueryInterface
+     */
+    private static function getPreparedQuery($params, $limit = null): QueryInterface
+    {
+    }
+
+    /**
+     * shared prepare query logic for find and findFirst method
+     *
+     * @phpstan-param object $resultset
+     * @phpstan-param mvc_model_parameters $params
+     * @param mixed $resultset
+     * @param mixed $eager
+     * @param array $params
+     * @return void
+     */
+    private static function loadEager($resultset, $eager, array $params): void
+    {
+    }
+
+    /**
+     * Setups a behavior in a model
+     *
+     * ```php
+     * use Phalcon\Mvc\Model;
+     * use Phalcon\Mvc\Model\Behavior\Timestampable;
+     *
+     * class Invoices extends Model
+     * {
+     *     public function initialize()
+     *     {
+     *         $this->addBehavior(
+     *             new Timestampable(
+     *                 [
+     *                     "beforeCreate" => [
+     *                         "field"  => "created_at",
+     *                         "format" => "Y-m-d",
+     *                     ],
+     *                 ]
+     *             )
+     *         );
+     *
+     *         $this->addBehavior(
+     *             new Timestampable(
+     *                 [
+     *                     "beforeUpdate" => [
+     *                         "field"  => "updated_at",
+     *                         "format" => "Y-m-d",
+     *                     ],
+     *                 ]
+     *             )
+     *         );
+     *     }
+     * }
+     * ```
+     *
+     * @param \Phalcon\Mvc\Model\BehaviorInterface $behavior
+     * @return void
+     */
+    public function addBehavior(\Phalcon\Mvc\Model\BehaviorInterface $behavior): void
+    {
+    }
+
+    /**
+     * Appends a customized message on the validation process
+     *
+     * ```php
+     * use Phalcon\Mvc\Model;
+     * use Phalcon\Messages\Message as Message;
+     *
+     * class Invoices extends Model
+     * {
+     *     public function beforeSave()
+     *     {
+     *         if ($this->name === "Peter") {
+     *             $message = new Message(
+     *                 "Sorry, but an invoice cannot be named Peter"
+     *             );
+     *
+     *             $this->appendMessage($message);
+     *         }
+     *     }
+     * }
+     * ```
+     *
+     * @param \Phalcon\Messages\MessageInterface $message
+     * @return ModelInterface
+     */
+    public function appendMessage(\Phalcon\Messages\MessageInterface $message): ModelInterface
+    {
+    }
+
+    /**
+     * Append messages to this model from another Model.
+     *
+     * @param mixed $model
+     * @return void
+     */
+    public function appendMessagesFrom($model): void
+    {
+    }
+
+    /**
+     * Assigns values to a model from an array
+     *
+     * ```php
+     * $invoice->assign(
+     *     [
+     *         "type" => "mechanical",
+     *         "name" => "Test Invoice",
+     *         "year" => 1952,
+     *     ]
+     * );
+     *
+     * // Assign by db row, column map needed
+     * $invoice->assign(
+     *     $dbRow,
+     *     [
+     *         "db_type" => "type",
+     *         "db_name" => "name",
+     *         "db_year" => "year",
+     *     ]
+     * );
+     *
+     * // Allow assign only name and year
+     * $invoice->assign(
+     *     $_POST,
+     *     [
+     *         "name",
+     *         "year",
+     *     ]
+     * );
+     *
+     * // By default assign method will use setters if exist, you can disable it by using ini_set to directly use properties
+     *
+     * ini_set("phalcon.orm.disable_assign_setters", true);
+     *
+     * $invoice->assign(
+     *     $_POST,
+     *     [
+     *         "name",
+     *         "year",
+     *     ]
+     * );
+     * ```
+     *
+     * @param array $data
+     * @param mixed $whiteList
+     * @param mixed $dataColumnMap Array to transform keys of data to another
+     *
+     * @return ModelInterface
+     *
+     * @phpstan-param mvc_model_data $data
+     */
+    public function assign(array $data, $whiteList = null, $dataColumnMap = null): ModelInterface
+    {
+    }
+
+    /**
+     * Inserts a model instance. If the instance already exists in the
+     * persistence it will throw an exception
+     * Returning true on success or false otherwise.
+     *
+     * ```php
+     * // Creating a new invoice
+     * $invoice = new Invoices();
+     *
+     * $invoice->inv_status_flag = "mechanical";
+     * $invoice->inv_title = "Test Invoice";
+     * $invoice->inv_total = 1952;
+     *
+     * $invoice->create();
+     *
+     * // Passing an array to create
+     * $invoice = new Invoices();
+     *
+     * $invoice->assign(
+     *     [
+     *         "type" => "mechanical",
+     *         "name" => "Test Invoice",
+     *         "year" => 1952,
+     *     ]
+     * );
+     *
+     * $invoice->create();
+     * ```
+     *
+     * @return bool
+     */
+    public function create(): bool
+    {
+    }
+
+    /**
+     * Deletes a model instance. Returning true on success or false otherwise.
+     *
+     * ```php
+     * $invoice = Invoices::findFirst("id=100");
+     *
+     * $invoice->delete();
+     *
+     * $invoices = Invoices::find("inv_status_flag = 1");
+     *
+     * foreach ($invoices as $invoice) {
+     *     $invoice->delete();
+     * }
+     * ```
+     *
+     * @return bool
+     */
+    public function delete(): bool
+    {
+    }
+
+    /**
+     * Inserted or updates model instance, expects a visited list of objects.
+     *
+     * @param CollectionInterface $visited
+     *
+     * @return bool
+     *
+     * @phpstan-param CollectionInterface<mixed> $visited
+     */
+    public function doSave(\Phalcon\Support\Collection\CollectionInterface $visited): bool
+    {
+    }
+
+    /**
+     * Returns a simple representation of the object that can be used with
+     * `var_dump()`
+     *
+     * ```php
+     * var_dump(
+     *     $invoice->dump()
+     * );
+     * ```
+     *
+     * @phpstan-return array<string, mixed>
+     * @return array
+     */
+    public function dump(): array
     {
     }
 
@@ -990,6 +1201,7 @@ abstract class Model extends AbstractInjectionAware implements \Phalcon\Mvc\Enti
      * print_r($invoices->getChangedFields()); // ["deleted"]
      * ```
      *
+     * @phpstan-return list<string>
      * @return array
      */
     public function getChangedFields(): array
@@ -1038,6 +1250,7 @@ abstract class Model extends AbstractInjectionAware implements \Phalcon\Mvc\Enti
      * }
      * ```
      *
+     * @phpstan-return mvc_model_messages
      * @param mixed $filter
      * @return array|\Phalcon\Messages\MessageInterface[]
      */
@@ -1064,21 +1277,22 @@ abstract class Model extends AbstractInjectionAware implements \Phalcon\Mvc\Enti
     }
 
     /**
+     * Returns the internal old snapshot data
+     *
+     * @phpstan-return mvc_model_snapshot
+     * @return array
+     */
+    public function getOldSnapshotData(): array
+    {
+    }
+
+    /**
      * Returns the type of the latest operation performed by the ORM
      * Returns one of the OP_ class constants
      *
      * @return int
      */
     public function getOperationMade(): int
-    {
-    }
-
-    /**
-     * Returns the internal old snapshot data
-     *
-     * @return array
-     */
-    public function getOldSnapshotData(): array
     {
     }
 
@@ -1113,33 +1327,6 @@ abstract class Model extends AbstractInjectionAware implements \Phalcon\Mvc\Enti
     }
 
     /**
-     * Checks if saved related records have already been loaded.
-     *
-     * Only returns true if the records were previously fetched
-     * through the model without any additional parameters.
-     *
-     * ```php
-     * $invoice = Invoices::findFirst();
-     * var_dump($invoice->isRelationshipLoaded('ordersProducts')); // false
-     *
-     * $invoicesParts = $invoice->getOrdersProducts(['id > 0']);
-     * var_dump($invoice->isRelationshipLoaded('ordersProducts')); // false
-     *
-     * $invoicesParts = $invoice->getOrdersProducts(); // or $invoice->ordersProducts
-     * var_dump($invoice->isRelationshipLoaded('ordersProducts')); // true
-     *
-     * $invoice->ordersProducts = [new OrdersProducts()];
-     * var_dump($invoice->isRelationshipLoaded('ordersProducts')); // false
-     * ```
-     *
-     * @param string $relationshipAlias
-     * @return bool
-     */
-    public function isRelationshipLoaded(string $relationshipAlias): bool
-    {
-    }
-
-    /**
      * Returns schema name where the mapped table is located
      *
      * @return string|null
@@ -1151,6 +1338,7 @@ abstract class Model extends AbstractInjectionAware implements \Phalcon\Mvc\Enti
     /**
      * Returns the internal snapshot data
      *
+     * @phpstan-return mvc_model_snapshot
      * @return array
      */
     public function getSnapshotData(): array
@@ -1163,6 +1351,13 @@ abstract class Model extends AbstractInjectionAware implements \Phalcon\Mvc\Enti
      * @return string
      */
     final public function getSource(): string
+    {
+    }
+
+    /**
+     * @return TransactionInterface|null
+     */
+    public function getTransaction(): TransactionInterface|null
     {
     }
 
@@ -1182,6 +1377,7 @@ abstract class Model extends AbstractInjectionAware implements \Phalcon\Mvc\Enti
      * print_r($invoices->getUpdatedFields()); // ["deleted"]
      * ```
      *
+     * @phpstan-return list<string>
      * @return array
      */
     public function getUpdatedFields(): array
@@ -1228,7 +1424,8 @@ abstract class Model extends AbstractInjectionAware implements \Phalcon\Mvc\Enti
      * ```
      *
      * @param string|array $fieldName
-     * @param boolean $allFields
+     * @param boolean $allFields *
+     * @phpstan-param list<string>|string|null $fieldName
      * @return bool
      */
     public function hasChanged($fieldName = null, bool $allFields = false): bool
@@ -1257,89 +1454,43 @@ abstract class Model extends AbstractInjectionAware implements \Phalcon\Mvc\Enti
     }
 
     /**
+     * Checks if saved related records have already been loaded.
+     *
+     * Only returns true if the records were previously fetched
+     * through the model without any additional parameters.
+     *
+     * ```php
+     * $invoice = Invoices::findFirst();
+     * var_dump($invoice->isRelationshipLoaded('ordersProducts')); // false
+     *
+     * $invoicesParts = $invoice->getOrdersProducts(['id > 0']);
+     * var_dump($invoice->isRelationshipLoaded('ordersProducts')); // false
+     *
+     * $invoicesParts = $invoice->getOrdersProducts(); // or $invoice->ordersProducts
+     * var_dump($invoice->isRelationshipLoaded('ordersProducts')); // true
+     *
+     * $invoice->ordersProducts = [new OrdersProducts()];
+     * var_dump($invoice->isRelationshipLoaded('ordersProducts')); // false
+     * ```
+     *
+     * @param string $relationshipAlias
+     * @return bool
+     */
+    public function isRelationshipLoaded(string $relationshipAlias): bool
+    {
+    }
+
+    /**
      * Serializes the object for json_encode
      *
      * ```php
      * echo json_encode($invoice);
      * ```
      *
+     * @phpstan-return array<string, mixed>
      * @return array
      */
     public function jsonSerialize(): array
-    {
-    }
-
-    /**
-     * Returns the maximum value of a column for a result-set of rows that match
-     * the specified conditions
-     *
-     * ```php
-     * // What is the maximum invoice id?
-     * $id = Invoices::maximum(
-     *     [
-     *         "column" => "id",
-     *     ]
-     * );
-     *
-     * echo "The maximum invoice id is: ", $id, "\n";
-     *
-     * // What is the maximum id of paid invoices?
-     * $sum = Invoices::maximum(
-     *     [
-     *         "inv_status_flag = 1",
-     *         "column" => "id",
-     *     ]
-     * );
-     *
-     * echo "The maximum invoice id of paid invoices is ", $id, "\n";
-     * ```
-     *
-     * @param array $parameters
-     * @return mixed
-     */
-    public static function maximum($parameters = null): mixed
-    {
-    }
-
-    /**
-     * Returns the minimum value of a column for a result-set of rows that match
-     * the specified conditions
-     *
-     * ```php
-     * // What is the minimum invoice id?
-     * $id = Invoices::minimum(
-     *     [
-     *         "column" => "id",
-     *     ]
-     * );
-     *
-     * echo "The minimum invoice id is: ", $id;
-     *
-     * // What is the minimum id of paid invoices?
-     * $sum = Invoices::minimum(
-     *     [
-     *         "inv_status_flag = 1",
-     *         "column" => "id",
-     *     ]
-     * );
-     *
-     * echo "The minimum invoice id of paid invoices is ", $id;
-     * ```
-     *
-     * @param array $parameters
-     * @return mixed
-     */
-    public static function minimum($parameters = null): mixed
-    {
-    }
-
-    /**
-     * Create a criteria for a specific model
-     *
-     * @param \Phalcon\Di\DiInterface|null $container
-     * @return CriteriaInterface
-     */
-    public static function query(?\Phalcon\Di\DiInterface $container = null): CriteriaInterface
     {
     }
 
@@ -1395,33 +1546,12 @@ abstract class Model extends AbstractInjectionAware implements \Phalcon\Mvc\Enti
     }
 
     /**
-     * Inserted or updates model instance, expects a visited list of objects.
-     *
-     * @param CollectionInterface $visited
-     *
-     * @return bool
-     */
-    public function doSave(\Phalcon\Support\Collection\CollectionInterface $visited): bool
-    {
-    }
-
-    /**
      * Serializes the object ignoring connections, services, related objects or
      * static properties
      *
      * @return string|null
      */
     public function serialize(): string|null
-    {
-    }
-
-    /**
-     * Unserializes the object from a serialized string
-     *
-     * @param string $data
-     * @return void
-     */
-    public function unserialize(string $data): void
     {
     }
 
@@ -1455,6 +1585,20 @@ abstract class Model extends AbstractInjectionAware implements \Phalcon\Mvc\Enti
     }
 
     /**
+     * Sets the record's old snapshot data.
+     * This method is used internally to set old snapshot data when the model
+     * was set up to keep snapshot data
+     *
+     * @param array $data
+     * @param array $columnMap *
+     * @phpstan-param array<string, mixed> $data
+     * @phpstan-param mvc_hydration_column_map|null $columnMap
+     */
+    public function setOldSnapshotData(array $data, $columnMap = null)
+    {
+    }
+
+    /**
      * Sets the DependencyInjection connection service name used to read data
      *
      * @param string $connectionService
@@ -1465,24 +1609,18 @@ abstract class Model extends AbstractInjectionAware implements \Phalcon\Mvc\Enti
     }
 
     /**
-     * Sets the record's old snapshot data.
-     * This method is used internally to set old snapshot data when the model
-     * was set up to keep snapshot data
-     *
-     * @param array $data
-     * @param array $columnMap
-     */
-    public function setOldSnapshotData(array $data, $columnMap = null)
-    {
-    }
-
-    /**
      * Stores related records in the relation cache, so that a subsequent
      * getRelated() or property access returns them without querying.
      *
-     * This is the write side of the cache getRelated() already reads. It does
-     * not mark the record dirty: the value lands in `related`, never in
-     * `dirtyRelated`, so save() is unaffected.
+     * This is the write side of the cache getRelated() already reads. The value
+     * lands in `related`, never in `dirtyRelated`.
+     *
+     * That is not the same as leaving save() untouched. collectRelatedToSave()
+     * promotes a `related` entry into `dirtyRelated` when the entry is a single
+     * ModelInterface that is new or has changed, so passing such a record here
+     * does cascade on the next save(). Arrays, resultsets, and unchanged
+     * records carrying snapshot data are skipped - which is why eager loading,
+     * the caller this exists for, never triggers a cascade.
      *
      * @param mixed $records ModelInterface, Row, ResultsetInterface or null
      * @param string $alias
@@ -1497,7 +1635,8 @@ abstract class Model extends AbstractInjectionAware implements \Phalcon\Mvc\Enti
      * This method is used internally to set snapshot data when the model was
      * set up to keep snapshot data
      *
-     * @param array $columnMap
+     * @param array $columnMap *
+     * @phpstan-param mvc_model_data $data
      * @param array $data
      * @return void
      */
@@ -1527,7 +1666,9 @@ abstract class Model extends AbstractInjectionAware implements \Phalcon\Mvc\Enti
      * $post->setSync(["tags", "categories"], false)->save();
      * ```
      *
-     * @param string|array|null $elements
+     * @param array|string|null $elements
+     *
+     * @phpstan-param array<array-key, mixed> $elements
      * @param bool $enabled
      * @return ModelInterface
      */
@@ -1582,29 +1723,6 @@ abstract class Model extends AbstractInjectionAware implements \Phalcon\Mvc\Enti
     }
 
     /**
-     * @return TransactionInterface|null
-     */
-    public function getTransaction(): TransactionInterface|null
-    {
-    }
-
-    /**
-     * Enables/disables options in the ORM.
-     *
-     * The options are written to process-global `Phalcon\Support\Settings`
-     * (`orm.` flags) and therefore affect every model in the process at once.
-     * Call this once during bootstrap; it is not per-model or per-container
-     * configuration, and one application's `setup()` reconfigures the ORM for
-     * every other user in the same process.
-     *
-     * @param array $options
-     * @return void
-     */
-    public static function setup(array $options): void
-    {
-    }
-
-    /**
      * Sets the DependencyInjection connection service name used to write data
      *
      * @param string $connectionService
@@ -1625,38 +1743,6 @@ abstract class Model extends AbstractInjectionAware implements \Phalcon\Mvc\Enti
     }
 
     /**
-     * Calculates the sum on a column for a result-set of rows that match the
-     * specified conditions
-     *
-     * ```php
-     * // How much are all invoices?
-     * $sum = Invoices::sum(
-     *     [
-     *         "column" => "inv_total",
-     *     ]
-     * );
-     *
-     * echo "The total price of invoices is ", $sum, "\n";
-     *
-     * // How much are paid invoices?
-     * $sum = Invoices::sum(
-     *     [
-     *         "inv_status_flag = 1",
-     *         "column" => "inv_total",
-     *     ]
-     * );
-     *
-     * echo "The total price of paid invoices is  ", $sum, "\n";
-     * ```
-     *
-     * @param array $parameters
-     * @return double | ResultsetInterface
-     */
-    public static function sum($parameters = null): ResultsetInterface|float
-    {
-    }
-
-    /**
      * Returns the instance as an array representation
      *
      * ```php
@@ -1666,10 +1752,22 @@ abstract class Model extends AbstractInjectionAware implements \Phalcon\Mvc\Enti
      * ```
      *
      * @param array $columns
+     *
+     * @phpstan-return array<string, mixed>
      * @param mixed $useGetter
      * @return array
      */
     public function toArray($columns = null, $useGetter = true): array
+    {
+    }
+
+    /**
+     * Unserializes the object from a serialized string
+     *
+     * @param string $data
+     * @return void
+     */
+    public function unserialize(string $data): void
     {
     }
 
@@ -1703,6 +1801,43 @@ abstract class Model extends AbstractInjectionAware implements \Phalcon\Mvc\Enti
     }
 
     /**
+     * Check whether validation process has generated any messages
+     *
+     * ```php
+     * use Phalcon\Mvc\Model;
+     * use Phalcon\Filter\Validation;
+     * use Phalcon\Filter\Validation\Validator\ExclusionIn;
+     *
+     * class Subscriptors extends Model
+     * {
+     *     public function validation()
+     *     {
+     *         $validator = new Validation();
+     *
+     *         $validator->validate(
+     *             "status",
+     *             new ExclusionIn(
+     *                 [
+     *                     "domain" => [
+     *                         "A",
+     *                         "I",
+     *                     ],
+     *                 ]
+     *             )
+     *         );
+     *
+     *         return $this->validate($validator);
+     *     }
+     * }
+     * ```
+     *
+     * @return bool
+     */
+    public function validationHasFailed(): bool
+    {
+    }
+
+    /**
      * Writes an attribute value by its name
      *
      * ```php
@@ -1714,167 +1849,6 @@ abstract class Model extends AbstractInjectionAware implements \Phalcon\Mvc\Enti
      * @return void
      */
     public function writeAttribute(string $attribute, $value): void
-    {
-    }
-
-    /**
-     * Reads "belongs to" relations and check the virtual foreign keys when
-     * inserting or updating records to verify that inserted/updated values are
-     * present in the related entity
-     *
-     * @return bool
-     */
-    final protected function checkForeignKeysRestrict(): bool
-    {
-    }
-
-    /**
-     * Reads both "hasMany" and "hasOne" relations and checks the virtual
-     * foreign keys (cascade) when deleting records
-     *
-     * @return bool
-     */
-    final protected function checkForeignKeysReverseCascade(): bool
-    {
-    }
-
-    /**
-     * Reads both "hasMany" and "hasOne" relations and checks the virtual
-     * foreign keys (restrict) when deleting records
-     *
-     * @return bool
-     */
-    final protected function checkForeignKeysReverseRestrict(): bool
-    {
-    }
-
-    /**
-     * Sends a pre-build INSERT SQL statement to the relational database system
-     *
-     * @param string|array $table
-     * @param bool|string $identityField
-     * @param \Phalcon\Mvc\Model\MetaDataInterface $metaData
-     * @param \Phalcon\Db\Adapter\AdapterInterface $connection
-     * @return bool
-     */
-    protected function doLowInsert(\Phalcon\Mvc\Model\MetaDataInterface $metaData, \Phalcon\Db\Adapter\AdapterInterface $connection, $table, $identityField): bool
-    {
-    }
-
-    /**
-     * Sends a pre-build UPDATE SQL statement to the relational database system
-     *
-     * @param string|array $table
-     * @param \Phalcon\Mvc\Model\MetaDataInterface $metaData
-     * @param \Phalcon\Db\Adapter\AdapterInterface $connection
-     * @return bool
-     */
-    protected function doLowUpdate(\Phalcon\Mvc\Model\MetaDataInterface $metaData, \Phalcon\Db\Adapter\AdapterInterface $connection, $table): bool
-    {
-    }
-
-    /**
-     * Checks whether the current record already exists
-     *
-     * @return bool
-     * @param \Phalcon\Mvc\Model\MetaDataInterface $metaData
-     * @param \Phalcon\Db\Adapter\AdapterInterface $connection
-     */
-    protected function has(\Phalcon\Mvc\Model\MetaDataInterface $metaData, \Phalcon\Db\Adapter\AdapterInterface $connection): bool
-    {
-    }
-
-    /**
-     * Returns related records defined relations depending on the method name.
-     * Returns false if the relation is non-existent.
-     *
-     * @param string $modelName
-     * @param string $method
-     * @param array $arguments *
-     * @return ResultsetInterface|ModelInterface|bool|null
-     */
-    protected function getRelatedRecords(string $modelName, string $method, array $arguments)
-    {
-    }
-
-    /**
-     * Generate a PHQL SELECT statement for an aggregate
-     *
-     * @param string $functionName
-     * @param string $alias
-     * @param array|string|null $parameters *
-     * @return int|float|string|null|ResultsetInterface
-     */
-    protected static function groupResult(string $functionName, string $alias, $parameters = null): mixed
-    {
-    }
-
-    /**
-     * Try to check if the query must invoke a finder
-     *
-     * @return ModelInterface[]|ModelInterface|bool
-     * @param string $method
-     * @param array $arguments
-     */
-    final protected static function invokeFinder(string $method, array $arguments)
-    {
-    }
-
-    /**
-     * Check for, and attempt to use, possible setter.
-     *
-     * @param string $property
-     * @param mixed $value
-     * @return bool
-     */
-    final protected function possibleSetter(string $property, $value): bool
-    {
-    }
-
-    /**
-     * Executes internal hooks before save a record
-     *
-     * @return bool
-     * @param \Phalcon\Mvc\Model\MetaDataInterface $metaData
-     * @param bool $exists
-     * @param mixed $identityField
-     */
-    protected function preSave(\Phalcon\Mvc\Model\MetaDataInterface $metaData, bool $exists, $identityField): bool
-    {
-    }
-
-    /**
-     * Saves related records that must be stored prior to save the master record
-     *
-     * @param ModelInterface[] $related
-     * @param CollectionInterface $visited
-     * @return bool
-     * @param \Phalcon\Db\Adapter\AdapterInterface $connection
-     */
-    protected function preSaveRelatedRecords(\Phalcon\Db\Adapter\AdapterInterface $connection, $related, \Phalcon\Support\Collection\CollectionInterface $visited): bool
-    {
-    }
-
-    /**
-     * Executes internal events after save a record
-     *
-     * @return bool
-     * @param bool $success
-     * @param bool $exists
-     */
-    protected function postSave(bool $success, bool $exists): bool
-    {
-    }
-
-    /**
-     * Save the related records assigned in the has-one/has-many relations
-     *
-     * @param ModelInterface[] $related
-     * @param CollectionInterface $visited
-     * @return bool
-     * @param \Phalcon\Db\Adapter\AdapterInterface $connection
-     */
-    protected function postSaveRelatedRecords(\Phalcon\Db\Adapter\AdapterInterface $connection, $related, \Phalcon\Support\Collection\CollectionInterface $visited): bool
     {
     }
 
@@ -1896,17 +1870,11 @@ abstract class Model extends AbstractInjectionAware implements \Phalcon\Mvc\Enti
      * }
      * ```
      *
+     * @phpstan-param mvc_model_attributes $attributes
      * @param array $attributes
      * @return void
      */
     protected function allowEmptyStringValues(array $attributes): void
-    {
-    }
-
-    /**
-     * Cancel the current operation
-     */
-    protected function cancelOperation()
     {
     }
 
@@ -1953,6 +1921,8 @@ abstract class Model extends AbstractInjectionAware implements \Phalcon\Mvc\Enti
      *         'hydration' => null
      *     ]
      * ]
+     *
+     * @phpstan-param mvc_relation_options $options
      * @param mixed $fields
      * @param string $referenceModel
      * @param mixed $referencedFields
@@ -1963,25 +1933,103 @@ abstract class Model extends AbstractInjectionAware implements \Phalcon\Mvc\Enti
     }
 
     /**
-     * shared prepare query logic for find and findFirst method
-     *
-     * @param mixed $resultset
-     * @param mixed $eager
-     * @param array $params
-     * @return void
+     * Cancel the current operation
      */
-    private static function loadEager($resultset, $eager, array $params): void
+    protected function cancelOperation()
     {
     }
 
     /**
-     * shared prepare query logic for find and findFirst method
+     * Reads "belongs to" relations and check the virtual foreign keys when
+     * inserting or updating records to verify that inserted/updated values are
+     * present in the related entity
      *
-     * @param mixed $params
-     * @param mixed $limit
-     * @return QueryInterface
+     * @return bool
      */
-    private static function getPreparedQuery($params, $limit = null): QueryInterface
+    final protected function checkForeignKeysRestrict(): bool
+    {
+    }
+
+    /**
+     * Reads both "hasMany" and "hasOne" relations and checks the virtual
+     * foreign keys (cascade) when deleting records
+     *
+     * @return bool
+     */
+    final protected function checkForeignKeysReverseCascade(): bool
+    {
+    }
+
+    /**
+     * Reads both "hasMany" and "hasOne" relations and checks the virtual
+     * foreign keys (restrict) when deleting records
+     *
+     * @return bool
+     */
+    final protected function checkForeignKeysReverseRestrict(): bool
+    {
+    }
+
+    /**
+     * Collects previously queried (belongs-to, has-one and has-one-through)
+     * related records along with freshly added one
+     *
+     * @return array Related records that should be saved
+     *
+     * @phpstan-return mvc_model_related
+     */
+    protected function collectRelatedToSave(): array
+    {
+    }
+
+    /**
+     * Sends a pre-build INSERT SQL statement to the relational database system
+     *
+     * @param string|array $table
+     * @param bool|string $identityField
+     * @param \Phalcon\Mvc\Model\MetaDataInterface $metaData
+     * @param \Phalcon\Db\Adapter\AdapterInterface $connection
+     * @return bool
+     */
+    protected function doLowInsert(\Phalcon\Mvc\Model\MetaDataInterface $metaData, \Phalcon\Db\Adapter\AdapterInterface $connection, $table, $identityField): bool
+    {
+    }
+
+    /**
+     * Sends a pre-build UPDATE SQL statement to the relational database system
+     *
+     * @param string|array $table
+     * @param \Phalcon\Mvc\Model\MetaDataInterface $metaData
+     * @param \Phalcon\Db\Adapter\AdapterInterface $connection
+     * @return bool
+     */
+    protected function doLowUpdate(\Phalcon\Mvc\Model\MetaDataInterface $metaData, \Phalcon\Db\Adapter\AdapterInterface $connection, $table): bool
+    {
+    }
+
+    /**
+     * Returns related records defined relations depending on the method name.
+     * Returns false if the relation is non-existent.
+     *
+     * @param string $modelName
+     * @param string $method
+     * @param array $arguments *
+     * @return ResultsetInterface|ModelInterface|bool|null
+     *
+     * @phpstan-param list<mixed> $arguments
+     */
+    protected function getRelatedRecords(string $modelName, string $method, array $arguments)
+    {
+    }
+
+    /**
+     * Checks whether the current record already exists
+     *
+     * @return bool
+     * @param \Phalcon\Mvc\Model\MetaDataInterface $metaData
+     * @param \Phalcon\Db\Adapter\AdapterInterface $connection
+     */
+    protected function has(\Phalcon\Mvc\Model\MetaDataInterface $metaData, \Phalcon\Db\Adapter\AdapterInterface $connection): bool
     {
     }
 
@@ -2028,6 +2076,9 @@ abstract class Model extends AbstractInjectionAware implements \Phalcon\Mvc\Enti
      *         'hydration' => null
      *     ]
      * ]
+     *
+     * @phpstan-param mvc_relation_options $options
+     * @phpstan-param mvc_relation_fields $referencedFields
      * @param mixed $fields
      * @param string $referenceModel
      * @param mixed $referencedFields
@@ -2091,6 +2142,10 @@ abstract class Model extends AbstractInjectionAware implements \Phalcon\Mvc\Enti
      *         'hydration' => null
      *     ]
      * ]
+     *
+     * @phpstan-param mvc_relation_options $options
+     * @phpstan-param mvc_relation_fields $intermediateFields
+     * @phpstan-param mvc_relation_fields $intermediateReferencedFields
      * @return Relation
      */
     protected function hasManyToMany($fields, string $intermediateModel, $intermediateFields, $intermediateReferencedFields, string $referenceModel, $referencedFields, array $options = []): Relation
@@ -2140,6 +2195,8 @@ abstract class Model extends AbstractInjectionAware implements \Phalcon\Mvc\Enti
      *         'hydration' => null
      *     ]
      * ]
+     *
+     * @phpstan-param mvc_relation_options $options
      * @param mixed $fields
      * @param string $referenceModel
      * @param mixed $referencedFields
@@ -2176,6 +2233,10 @@ abstract class Model extends AbstractInjectionAware implements \Phalcon\Mvc\Enti
      * @param    string|array $intermediateReferencedFields
      * @param    string|array $referencedFields
      * @param    array $options
+     *
+     * @phpstan-param mvc_relation_options $options
+     * @phpstan-param mvc_relation_fields $intermediateFields
+     * @phpstan-param mvc_relation_fields $intermediateReferencedFields
      * @param string $intermediateModel
      * @param string $referenceModel
      * @return Relation
@@ -2203,6 +2264,68 @@ abstract class Model extends AbstractInjectionAware implements \Phalcon\Mvc\Enti
      * @return void
      */
     protected function keepSnapshots(bool $keepSnapshot): void
+    {
+    }
+
+    /**
+     * Check for, and attempt to use, possible setter.
+     *
+     * @param string $property
+     * @param mixed $value
+     * @return bool
+     */
+    final protected function possibleSetter(string $property, $value): bool
+    {
+    }
+
+    /**
+     * Executes internal events after save a record
+     *
+     * @return bool
+     * @param bool $success
+     * @param bool $exists
+     */
+    protected function postSave(bool $success, bool $exists): bool
+    {
+    }
+
+    /**
+     * Save the related records assigned in the has-one/has-many relations
+     *
+     * @param ModelInterface[] $related
+     * @param CollectionInterface $visited
+     * @return bool
+     *
+     * @phpstan-param CollectionInterface<mixed> $visited
+     * @param \Phalcon\Db\Adapter\AdapterInterface $connection
+     */
+    protected function postSaveRelatedRecords(\Phalcon\Db\Adapter\AdapterInterface $connection, $related, \Phalcon\Support\Collection\CollectionInterface $visited): bool
+    {
+    }
+
+    /**
+     * Executes internal hooks before save a record
+     *
+     * @return bool
+     * @param \Phalcon\Mvc\Model\MetaDataInterface $metaData
+     * @param bool $exists
+     * @param mixed $identityField
+     */
+    protected function preSave(\Phalcon\Mvc\Model\MetaDataInterface $metaData, bool $exists, $identityField): bool
+    {
+    }
+
+    /**
+     * Saves related records that must be stored prior to save the master record
+     *
+     * @param ModelInterface[] $related
+     * @param CollectionInterface $visited
+     * @return bool
+     *
+     * @phpstan-param CollectionInterface<mixed> $visited
+     * @param \Phalcon\Db\Adapter\AdapterInterface $connection
+     */
+    protected function preSaveRelatedRecords(\Phalcon\Db\Adapter\AdapterInterface $connection, $related, \Phalcon\Support\Collection\CollectionInterface $visited): bool
     {
     }
 
@@ -2244,6 +2367,7 @@ abstract class Model extends AbstractInjectionAware implements \Phalcon\Mvc\Enti
      * }
      * ```
      *
+     * @phpstan-param mvc_model_attributes $attributes
      * @param array $attributes
      * @return void
      */
@@ -2269,6 +2393,7 @@ abstract class Model extends AbstractInjectionAware implements \Phalcon\Mvc\Enti
      * }
      * ```
      *
+     * @phpstan-param mvc_model_attributes $attributes
      * @param array $attributes
      * @return void
      */
@@ -2294,6 +2419,7 @@ abstract class Model extends AbstractInjectionAware implements \Phalcon\Mvc\Enti
      * }
      * ```
      *
+     * @phpstan-param mvc_model_attributes $attributes
      * @param array $attributes
      * @return void
      */
@@ -2358,82 +2484,6 @@ abstract class Model extends AbstractInjectionAware implements \Phalcon\Mvc\Enti
      * @return bool
      */
     protected function validate(\Phalcon\Filter\Validation\ValidationInterface $validator): bool
-    {
-    }
-
-    /**
-     * Check whether validation process has generated any messages
-     *
-     * ```php
-     * use Phalcon\Mvc\Model;
-     * use Phalcon\Filter\Validation;
-     * use Phalcon\Filter\Validation\Validator\ExclusionIn;
-     *
-     * class Subscriptors extends Model
-     * {
-     *     public function validation()
-     *     {
-     *         $validator = new Validation();
-     *
-     *         $validator->validate(
-     *             "status",
-     *             new ExclusionIn(
-     *                 [
-     *                     "domain" => [
-     *                         "A",
-     *                         "I",
-     *                     ],
-     *                 ]
-     *             )
-     *         );
-     *
-     *         return $this->validate($validator);
-     *     }
-     * }
-     * ```
-     *
-     * @return bool
-     */
-    public function validationHasFailed(): bool
-    {
-    }
-
-    /**
-     * Attempts to find key case-insensitively
-     *
-     * @param mixed $columnMap
-     * @param mixed $key
-     * @return string
-     */
-    private static function caseInsensitiveColumnMap($columnMap, $key): string
-    {
-    }
-
-    /**
-     * Returns the declared private properties of a class (including inherited
-     * ones) as [property name => ReflectionProperty], cached per class.
-     *
-     * Hydration (cloneResult/cloneResultMap) cannot write private properties
-     * directly: the engine write from Model scope falls back to __set(),
-     * which invokes a possible setter - or throws for a non-public property
-     * without one. Writing through ReflectionProperty stores the raw
-     * database value instead.
-     *
-     * @see https://github.com/phalcon/cphalcon/issues/16454
-     * @param string $className
-     * @return array
-     */
-    private static function getPrivateProperties(string $className): array
-    {
-    }
-
-    /**
-     * Append messages to this model from another Model.
-     *
-     * @param mixed $model
-     * @return void
-     */
-    public function appendMessagesFrom($model): void
     {
     }
 }

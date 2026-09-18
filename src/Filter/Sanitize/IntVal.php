@@ -12,8 +12,6 @@ namespace Phalcon\Filter\Sanitize;
 use Phalcon\Contracts\Filter\Sanitizer;
 
 /**
- * Phalcon\Filter\Sanitize\IntVal
- *
  * Sanitizes a value to integer
  */
 class IntVal implements \Phalcon\Contracts\Filter\Sanitizer

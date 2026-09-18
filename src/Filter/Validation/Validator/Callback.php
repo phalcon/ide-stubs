@@ -9,11 +9,12 @@
  */
 namespace Phalcon\Filter\Validation\Validator;
 
+use Closure;
+use Phalcon\Contracts\Filter\FilterTypes;
 use Phalcon\Filter\Validation;
 use Phalcon\Filter\Validation\AbstractValidator;
 use Phalcon\Filter\Validation\Exceptions\InvalidCallbackReturn;
 use Phalcon\Filter\Validation\ValidatorInterface;
-use Phalcon\Messages\Message;
 use ReflectionFunction;
 
 /**
@@ -59,19 +60,21 @@ use ReflectionFunction;
  *     )
  * );
  * ```
+ *
+ * @phpstan-import-type filter_validator_options from FilterTypes
  */
 class Callback extends AbstractValidator
 {
+    /**
+     * @var string|null
+     */
     protected $template = 'Field :field must match the callback function';
 
     /**
      * Constructor
      *
-     * @param array $options = [
-     *     'message' => '',
-     *     'template' => '',
-     *     'callback' => null
-     * ]
+     * @phpstan-param filter_validator_options $options
+     * @param array $options
      */
     public function __construct(array $options = [])
     {

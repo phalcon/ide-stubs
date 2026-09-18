@@ -41,18 +41,12 @@ use Phalcon\Container\Exceptions\EnvNotDefined;
  */
 class Env extends \Phalcon\Container\Resolver\Lazy\Lazy
 {
-    /**
-     * @var string
-     */
-    protected $varname;
+    protected string $varname;
+
+    protected ?string $vartype = null;
 
     /**
-     * @var string|null
-     */
-    protected $vartype = null;
-
-    /**
-     * @param string      $varname
+     * @param string $varname
      * @param string|null $vartype
      */
     public function __construct(string $varname, ?string $vartype = null)
@@ -62,10 +56,9 @@ class Env extends \Phalcon\Container\Resolver\Lazy\Lazy
     /**
      * Resolve an environment variable
      *
-     * @param object $ioc
-     *
-     * @return mixed
      * @throws EnvNotDefined
+     * @param object $ioc
+     * @return mixed
      */
     public function resolve($ioc): mixed
     {
@@ -74,8 +67,7 @@ class Env extends \Phalcon\Container\Resolver\Lazy\Lazy
     /**
      * Cast a value to the defined type (if any)
      *
-     * @param string $value
-     *
+     * @param mixed $value
      * @return mixed
      */
     protected function cast($value): mixed
@@ -85,8 +77,8 @@ class Env extends \Phalcon\Container\Resolver\Lazy\Lazy
     /**
      * Return the env value
      *
-     * @return string
      * @throws EnvNotDefined
+     * @return string
      */
     protected function getEnv(): string
     {

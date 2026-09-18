@@ -23,10 +23,13 @@ class Polygon extends \Phalcon\Db\Geometry\AbstractGeometry
 {
     /**
      * @var array
+     *
+     * @phpstan-var list<list<Point>>
      */
     protected $rings;
 
     /**
+     * @phpstan-param list<list<Point>> $rings
      * @param array $rings
      * @param int $srid
      */
@@ -42,6 +45,7 @@ class Polygon extends \Phalcon\Db\Geometry\AbstractGeometry
     }
 
     /**
+     * @phpstan-return list<list<Point>>
      * @return array
      */
     public function getRings(): array

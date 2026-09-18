@@ -10,6 +10,7 @@
 namespace Phalcon\Di;
 
 use Closure;
+use Phalcon\Contracts\Di\DiTypes;
 use Phalcon\Di\Exception\ServiceResolutionException;
 use Phalcon\Di\Exceptions\DefinitionMustBeArrayForRead;
 use Phalcon\Di\Exceptions\DefinitionMustBeArrayForUpdate;
@@ -26,6 +27,10 @@ use Phalcon\Di\Service\Builder;
  *
  * $request = service->resolve();
  * ```
+ *
+ * @phpstan-import-type di_parameters from DiTypes
+ * @phpstan-import-type di_service_argument from DiTypes
+ * @phpstan-import-type di_service_definition from DiTypes
  */
 class Service implements \Phalcon\Di\ServiceInterface
 {
@@ -34,15 +39,9 @@ class Service implements \Phalcon\Di\ServiceInterface
      */
     protected $definition;
 
-    /**
-     * @var bool
-     */
-    protected $resolved = false;
+    protected bool $resolved = false;
 
-    /**
-     * @var bool
-     */
-    protected $shared = false;
+    protected bool $shared = false;
 
     /**
      * @var mixed|null
@@ -50,7 +49,7 @@ class Service implements \Phalcon\Di\ServiceInterface
     protected $sharedInstance = null;
 
     /**
-     * Phalcon\Di\Service
+     * Service constructor.
      *
      * @param mixed $definition
      * @param bool $shared
@@ -99,7 +98,8 @@ class Service implements \Phalcon\Di\ServiceInterface
     /**
      * Resolves the service
      *
-     * @param array $parameters
+     * @phpstan-param di_parameters|null $parameters
+     * @param mixed $parameters
      * @param DiInterface|null $container
      * @return mixed
      */
@@ -120,6 +120,7 @@ class Service implements \Phalcon\Di\ServiceInterface
     /**
      * Changes a parameter in the definition without resolve the service
      *
+     * @phpstan-param di_service_argument $parameter
      * @param int $position
      * @param array $parameter
      * @return ServiceInterface

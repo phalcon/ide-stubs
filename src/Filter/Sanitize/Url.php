@@ -12,8 +12,6 @@ namespace Phalcon\Filter\Sanitize;
 use Phalcon\Contracts\Filter\Sanitizer;
 
 /**
- * Phalcon\Filter\Sanitize\Url
- *
  * Sanitizes a value url
  */
 class Url implements \Phalcon\Contracts\Filter\Sanitizer

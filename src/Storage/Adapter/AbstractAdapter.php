@@ -41,7 +41,7 @@ abstract class AbstractAdapter implements \Phalcon\Storage\Adapter\AdapterInterf
      * Classes the "php" serializer may instantiate: true, false or a list
      * of class names (the "allowedClasses" option)
      *
-     * @var bool|array<int, string>
+     * @var array<int, string>|bool
      */
     protected $allowedClasses = true;
 

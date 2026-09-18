@@ -9,6 +9,7 @@
  */
 namespace Phalcon\Mvc\Model\Eager;
 
+use Phalcon\Contracts\Mvc\MvcTypes;
 use Phalcon\Mvc\Model\Exceptions\InvalidEagerPath;
 use Phalcon\Mvc\Model\Exceptions\UnsupportedEagerOption;
 
@@ -20,6 +21,10 @@ use Phalcon\Mvc\Model\Exceptions\UnsupportedEagerOption;
  * "customer.country"] and ["customer.country"] produce the same two-node tree.
  * The number of queries an eager load costs follows the number of nodes in
  * this tree, not the number of elements supplied.
+ *
+ * @phpstan-import-type mvc_eager_node from MvcTypes
+ * @phpstan-import-type mvc_eager_tree from MvcTypes
+ * @phpstan-import-type mvc_model_parameters from MvcTypes
  */
 class PathTree
 {
@@ -34,6 +39,9 @@ class PathTree
 
     /**
      * @param array $spec the `eager` find parameter
+     *
+     * @phpstan-param array<array-key, mixed> $spec
+     * @phpstan-return mvc_eager_tree
      * @return array
      */
     public static function parse(array $spec): array
@@ -46,6 +54,7 @@ class PathTree
      * would return N children in total rather than N per parent, which is
      * silently wrong.
      *
+     * @phpstan-param mvc_model_parameters $options
      * @param array $options
      * @return void
      */
@@ -59,6 +68,11 @@ class PathTree
      * @param array  $segments exploded path
      * @param int    $index    segment currently being inserted
      * @param array  $options  attach to the last segment only
+     *
+     * @phpstan-param mvc_eager_tree            $tree
+     * @phpstan-param array<array-key, string>  $segments
+     * @phpstan-param mvc_model_parameters      $options
+     * @phpstan-return mvc_eager_tree
      * @return array
      */
     private static function insert(array $tree, string $path, array $segments, int $index, array $options): array

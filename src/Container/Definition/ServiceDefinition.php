@@ -13,45 +13,31 @@ use Phalcon\Container\Exceptions\FrozenDefinition;
 use Phalcon\Container\Exceptions\InvalidExtender;
 use Phalcon\Container\Exceptions\NoClassSet;
 use Phalcon\Container\Exceptions\NoFactorySet;
+use Phalcon\Contracts\Container\ContainerTypes;
+use Phalcon\Contracts\Container\Ioc\IocContainer;
 use Phalcon\Contracts\Container\Resolver\Resolvable;
+use Phalcon\Contracts\Container\Service\Collection;
 use ReflectionClass;
 use ReflectionException;
 
 /**
- * This file is part of the Phalcon Framework.
- *
- * (c) Phalcon Team <team@phalcon.io>
- *
- * For the full copyright and license information, please view the LICENSE.txt
- * file that was distributed with this source code.
- *
- * Implementation of this file has been heavily influenced by CapsulePHP.
- * Additionally, there are implementations from ioc-interop, which is a
- * Composer dependency, and from service-interop and resolver-interop. The
- * latter two are copied and re-implemented here: service-interop is not yet
- * published on Packagist, and resolver-interop requires PHP 8.4 (this project
- * targets PHP 8.1). Once both packages become available and compatible, the
- * copies will be replaced with the actual Composer dependencies.
- *
- * @link    https://github.com/capsulephp/di
- * @license https://github.com/capsulephp/di/blob/3.x/LICENSE.md
- *
- * @link    https://github.com/ioc-interop/interface
- * @license https://github.com/ioc-interop/interface/blob/1.x/LICENSE.md
- *
- * @link    https://github.com/service-interop/interface
- * @license https://github.com/service-interop/interface/blob/1.x/LICENSE.md
- *
- * @link    https://github.com/resolver-interop/interface/tree/1.x
- * @license https://github.com/resolver-interop/interface/blob/1.x/LICENSE.md
+ * @phpstan-import-type container_arguments from ContainerTypes
+ * @phpstan-import-type container_extenders from ContainerTypes
+ * @phpstan-import-type container_tags from ContainerTypes
  */
 class ServiceDefinition
 {
     /**
-     * @phpstan-var array<array-key, mixed>
-     * @var array
+     * @phpstan-var container_arguments
      */
     protected $arguments = [];
+
+    protected ?string $className = null;
+
+    /**
+     * @phpstan-var container_arguments
+     */
+    protected array $constructorArgs = [];
 
     /**
      * @var object | null
@@ -59,34 +45,18 @@ class ServiceDefinition
     protected $container = null;
 
     /**
-     * @var string | null
+     * @phpstan-var container_extenders
      */
-    protected $className = null;
-
-    /**
-     * @var array
-     */
-    protected $constructorArgs = [];
-
-    /**
-     * @var array<array-key, callable>
-     */
-    protected $extenders = [];
+    protected array $extenders = [];
 
     /**
      * @var callable | null
      */
     protected $factory = null;
 
-    /**
-     * @var bool
-     */
-    protected $frozen = false;
+    protected bool $frozen = false;
 
-    /**
-     * @var bool
-     */
-    protected $isCacheable = false;
+    protected bool $isCacheable = false;
 
     /**
      * @var string
@@ -98,21 +68,14 @@ class ServiceDefinition
      */
     protected $raw = null;
 
-    /**
-     * @var string
-     */
-    protected $serviceName;
+    protected string $serviceName;
 
     /**
-     * @phpstan-var array<array-key, string>
-     * @var array
+     * @phpstan-var container_tags
      */
-    protected $tags = [];
+    protected array $tags = [];
 
-    /**
-     * @var string
-     */
-    protected $type;
+    protected string $type;
 
     /**
      * @param string $serviceName
@@ -126,10 +89,9 @@ class ServiceDefinition
     /**
      * Adds an extender
      *
-     * @param callable $extender
-     *
-     * @return static
      * @throws FrozenDefinition
+     * @param callable $extender
+     * @return static
      */
     public function addExtender($extender): static
     {
@@ -138,10 +100,9 @@ class ServiceDefinition
     /**
      * Adds a tag
      *
-     * @param string $tag
-     *
-     * @return static
      * @throws FrozenDefinition
+     * @param string $tag
+     * @return static
      */
     public function addTag(string $tag): static
     {
@@ -150,10 +111,9 @@ class ServiceDefinition
     /**
      * Builds a service and returns the instance back
      *
-     * @param object $container
-     *
-     * @return object
      * @throws ReflectionException
+     * @param object $container
+     * @return object
      */
     public function buildService($container): object
     {
@@ -162,10 +122,9 @@ class ServiceDefinition
     /**
      * Freezes the container
      *
-     * @param object $container
-     *
-     * @return void
      * @throws ReflectionException
+     * @param object $container
+     * @return void
      */
     public function freeze($container): void
     {
@@ -174,6 +133,7 @@ class ServiceDefinition
     /**
      * Returns the arguments
      *
+     * @phpstan-return container_arguments
      * @return array
      */
     public function getArguments(): array
@@ -183,8 +143,8 @@ class ServiceDefinition
     /**
      * Returns the class
      *
-     * @return string
      * @throws NoClassSet
+     * @return string
      */
     public function getClass(): string
     {
@@ -193,6 +153,7 @@ class ServiceDefinition
     /**
      * Returns the constructor arguments
      *
+     * @phpstan-return container_arguments
      * @return array
      */
     public function getConstructorArgs(): array
@@ -202,7 +163,8 @@ class ServiceDefinition
     /**
      * Returns the extenders
      *
-     * @return array<array-key, callable>
+     * @phpstan-return container_extenders
+     * @return array
      */
     public function getExtenders(): array
     {
@@ -211,8 +173,8 @@ class ServiceDefinition
     /**
      * Returns the factory
      *
-     * @return callable
      * @throws NoFactorySet
+     * @return mixed
      */
     public function getFactory()
     {
@@ -239,7 +201,8 @@ class ServiceDefinition
     /**
      * Returns the tags
      *
-     * @return array<array-key, string>
+     * @phpstan-return container_tags
+     * @return array
      */
     public function getTags(): array
     {
@@ -305,21 +268,10 @@ class ServiceDefinition
      * @param int|string $param
      * @param mixed      $value
      *
-     * @return static
      * @throws FrozenDefinition
+     * @return static
      */
     public function setArgument($param, $value): static
-    {
-    }
-
-    /**
-     * Set the container
-     *
-     * @param object $container
-     *
-     * @return static
-     */
-    public function setContainer($container): static
     {
     }
 
@@ -328,21 +280,32 @@ class ServiceDefinition
      *
      * @param string $className
      *
-     * @return static
      * @throws FrozenDefinition
+     * @return static
      */
     public function setClass(string $className): static
     {
     }
 
     /**
+     * Set the container
+     *
+     * @param object $container
+     * @return static
+     */
+    public function setContainer($container): static
+    {
+    }
+
+    /**
      * Set extenders
      *
-     * @param array<array-key, callable> $extenders
+     * @phpstan-param container_arguments $extenders
      *
-     * @return static
      * @throws FrozenDefinition
      * @throws InvalidExtender
+     * @param array $extenders
+     * @return static
      */
     public function setExtenders(array $extenders): static
     {
@@ -351,10 +314,9 @@ class ServiceDefinition
     /**
      * Set a factory
      *
-     * @param callable $factory
-     *
-     * @return static
      * @throws FrozenDefinition
+     * @param callable $factory
+     * @return static
      */
     public function setFactory($factory): static
     {
@@ -363,10 +325,9 @@ class ServiceDefinition
     /**
      * Set cachable
      *
-     * @param bool $isCacheable
-     *
-     * @return static
      * @throws FrozenDefinition
+     * @param bool $isCacheable
+     * @return static
      */
     public function setIsCacheable(bool $isCacheable): static
     {
@@ -375,10 +336,9 @@ class ServiceDefinition
     /**
      * Set lifetime
      *
-     * @param string $lifetime
-     *
-     * @return static
      * @throws FrozenDefinition
+     * @param string $lifetime
+     * @return static
      */
     public function setLifetime(string $lifetime): static
     {
@@ -387,8 +347,8 @@ class ServiceDefinition
     /**
      * Unset class
      *
-     * @return static
      * @throws FrozenDefinition
+     * @return static
      */
     public function unsetClass(): static
     {
@@ -397,8 +357,8 @@ class ServiceDefinition
     /**
      * Unset extenders
      *
-     * @return static
      * @throws FrozenDefinition
+     * @return static
      */
     public function unsetExtenders(): static
     {
@@ -407,8 +367,8 @@ class ServiceDefinition
     /**
      * Unset the factory
      *
-     * @return static
      * @throws FrozenDefinition
+     * @return static
      */
     public function unsetFactory(): static
     {
@@ -417,8 +377,8 @@ class ServiceDefinition
     /**
      * Check if frozen
      *
-     * @return void
      * @throws FrozenDefinition
+     * @return void
      */
     protected function checkFrozen(): void
     {
@@ -427,9 +387,10 @@ class ServiceDefinition
     /**
      * Resolve arguments
      *
+     * @phpstan-param  container_arguments $args
+     * @phpstan-return container_arguments
      * @param object $container
-     * @param array  $args
-     *
+     * @param array $args
      * @return array
      */
     private function resolveArgs($container, array $args): array

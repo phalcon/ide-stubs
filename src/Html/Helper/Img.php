@@ -19,7 +19,7 @@ use Phalcon\Contracts\Html\HtmlTypes;
 class Img extends \Phalcon\Html\Helper\AbstractHelper
 {
     /**
-     * Produce a <img> tag.
+     * Produce a `<img>` tag.
      *
      * @phpstan-param html_attributes $attributes
      * @param string $src

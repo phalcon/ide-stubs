@@ -11,13 +11,14 @@ namespace Phalcon\Auth\Adapter;
 
 use Phalcon\Auth\Adapter\Config\MemoryAdapterConfig;
 use Phalcon\Auth\Internal\Options;
+use Phalcon\Contracts\Auth\AuthTypes;
 use Phalcon\Contracts\Auth\AuthUser;
 use Phalcon\Contracts\Encryption\Security\Security;
 
 /**
  * In-memory adapter - useful for tests and small read-only user lists.
  *
- * @phpstan-import-type AuthUserRow from AbstractArrayAdapter
+ * @phpstan-import-type auth_user_row from AuthTypes
  *
  * @extends AbstractArrayAdapter<MemoryAdapterConfig>
  */
@@ -26,7 +27,7 @@ class Memory extends \Phalcon\Auth\Adapter\AbstractArrayAdapter
     /**
      * Map of id => user row for O(1) retrieveById lookup.
      *
-     * @phpstan-var array<int|string, AuthUserRow>
+     * @phpstan-var array<int|string, auth_user_row>
      */
     private array $idStore = [];
 
@@ -58,7 +59,7 @@ class Memory extends \Phalcon\Auth\Adapter\AbstractArrayAdapter
     }
 
     /**
-     * @phpstan-return list<AuthUserRow>
+     * @phpstan-return list<auth_user_row>
      * @return array
      */
     protected function loadUsers(): array

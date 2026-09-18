@@ -37,7 +37,6 @@ class None implements \Phalcon\Encryption\Security\JWT\Signer\SignerInterface
      *
      * @param string $payload
      * @param string $passphrase
-     *
      * @return string
      */
     public function sign(string $payload, string $passphrase): string
@@ -50,7 +49,6 @@ class None implements \Phalcon\Encryption\Security\JWT\Signer\SignerInterface
      * @param string $source
      * @param string $payload
      * @param string $passphrase
-     *
      * @return bool
      */
     public function verify(string $source, string $payload, string $passphrase): bool

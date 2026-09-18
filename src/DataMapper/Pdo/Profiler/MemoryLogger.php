@@ -9,24 +9,27 @@
  */
 namespace Phalcon\DataMapper\Pdo\Profiler;
 
-use Phalcon\Logger\Enum;
+use Phalcon\Contracts\DataMapper\DataMapperTypes;
 use Phalcon\Logger\Adapter\AdapterInterface;
 use Phalcon\Logger\Adapter\Noop;
+use Phalcon\Logger\Enum;
 use Phalcon\Logger\LoggerInterface;
 
 /**
  * A memory-based logger.
+ *
+ * @phpstan-import-type datamapper_log_messages from DataMapperTypes
  */
 class MemoryLogger implements \Phalcon\Logger\LoggerInterface
 {
     /**
-     * @var array
+     * @phpstan-var datamapper_log_messages
      */
-    protected $messages = [];
+    protected array $messages = [];
 
     /**
-     * @param string $message
      * @param mixed[] $context
+     * @param string $message
      * @return void
      */
     public function alert(string $message, array $context = []): void
@@ -34,8 +37,8 @@ class MemoryLogger implements \Phalcon\Logger\LoggerInterface
     }
 
     /**
-     * @param string $message
      * @param mixed[] $context
+     * @param string $message
      * @return void
      */
     public function critical(string $message, array $context = []): void
@@ -43,8 +46,8 @@ class MemoryLogger implements \Phalcon\Logger\LoggerInterface
     }
 
     /**
-     * @param string $message
      * @param mixed[] $context
+     * @param string $message
      * @return void
      */
     public function debug(string $message, array $context = []): void
@@ -52,8 +55,8 @@ class MemoryLogger implements \Phalcon\Logger\LoggerInterface
     }
 
     /**
-     * @param string $message
      * @param mixed[] $context
+     * @param string $message
      * @return void
      */
     public function emergency(string $message, array $context = []): void
@@ -61,8 +64,8 @@ class MemoryLogger implements \Phalcon\Logger\LoggerInterface
     }
 
     /**
-     * @param string $message
      * @param mixed[] $context
+     * @param string $message
      * @return void
      */
     public function error(string $message, array $context = []): void
@@ -72,8 +75,7 @@ class MemoryLogger implements \Phalcon\Logger\LoggerInterface
     /**
      * Returns an adapter from the stack
      *
-     * @param string $name The name of the adapter
-     *
+     * @param string $name
      * @return AdapterInterface
      */
     public function getAdapter(string $name): AdapterInterface
@@ -101,6 +103,7 @@ class MemoryLogger implements \Phalcon\Logger\LoggerInterface
     /**
      * Returns the logged messages.
      *
+     * @phpstan-return datamapper_log_messages
      * @return array
      */
     public function getMessages(): array
@@ -117,38 +120,11 @@ class MemoryLogger implements \Phalcon\Logger\LoggerInterface
     }
 
     /**
-     * @param string $message
      * @param mixed[] $context
+     * @param string $message
      * @return void
      */
     public function info(string $message, array $context = []): void
-    {
-    }
-
-    /**
-     * @param string $message
-     * @param mixed[] $context
-     * @return void
-     */
-    public function notice(string $message, array $context = []): void
-    {
-    }
-
-    /**
-     * @param string $message
-     * @param mixed[] $context
-     * @return void
-     */
-    public function trace(string $message, array $context = []): void
-    {
-    }
-
-    /**
-     * @param string $message
-     * @param mixed[] $context
-     * @return void
-     */
-    public function warning(string $message, array $context = []): void
     {
     }
 
@@ -161,6 +137,33 @@ class MemoryLogger implements \Phalcon\Logger\LoggerInterface
      * @return void
      */
     public function log($level, string $message, array $context = []): void
+    {
+    }
+
+    /**
+     * @param mixed[] $context
+     * @param string $message
+     * @return void
+     */
+    public function notice(string $message, array $context = []): void
+    {
+    }
+
+    /**
+     * @param mixed[] $context
+     * @param string $message
+     * @return void
+     */
+    public function trace(string $message, array $context = []): void
+    {
+    }
+
+    /**
+     * @param mixed[] $context
+     * @param string $message
+     * @return void
+     */
+    public function warning(string $message, array $context = []): void
     {
     }
 }

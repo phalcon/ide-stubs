@@ -9,15 +9,16 @@
  */
 namespace Phalcon\Filter\Validation\Validator;
 
-use Phalcon\Messages\Message;
-use Phalcon\Mvc\Model;
-use Phalcon\Mvc\ModelInterface;
+use Phalcon\Contracts\Filter\FilterTypes;
 use Phalcon\Filter\Validation;
 use Phalcon\Filter\Validation\AbstractCombinedFieldsValidator;
 use Phalcon\Filter\Validation\Exception;
 use Phalcon\Filter\Validation\Exceptions\UniquenessConversionMustBeArray;
 use Phalcon\Filter\Validation\Exceptions\UniquenessModelRequired;
 use Phalcon\Filter\Validation\Exceptions\UniquenessOnlyForPhalconModel;
+use Phalcon\Messages\Message;
+use Phalcon\Mvc\Model;
+use Phalcon\Mvc\ModelInterface;
 use Phalcon\Support\Settings;
 
 /**
@@ -89,27 +90,30 @@ use Phalcon\Support\Settings;
  *     )
  * );
  * ```
+ *
+ * @phpstan-import-type filter_uniqueness_column_map from FilterTypes
+ * @phpstan-import-type filter_uniqueness_fields from FilterTypes
+ * @phpstan-import-type filter_uniqueness_params from FilterTypes
+ * @phpstan-import-type filter_uniqueness_values from FilterTypes
+ * @phpstan-import-type filter_validator_options from FilterTypes
  */
 class Uniqueness extends AbstractCombinedFieldsValidator
 {
+    /**
+     * @var string|null
+     */
     protected $template = 'Field :field must be unique';
 
     /**
-     * @var array|null
+     * @phpstan-var filter_uniqueness_column_map|null
      */
     private $columnMap = null;
 
     /**
      * Constructor
      *
-     * @param array $options = [
-     *     'message'    => '',
-     *     'template'   => '',
-     *     'allowEmpty' => false,
-     *     'convert'    => null,
-     *     'model'      => null,
-     *     'except'     => null
-     * ]
+     * @phpstan-param filter_validator_options $options
+     * @param array $options
      */
     public function __construct(array $options = [])
     {
@@ -165,6 +169,10 @@ class Uniqueness extends AbstractCombinedFieldsValidator
     /**
      * Uniqueness method used for model
      *
+     * @phpstan-param filter_uniqueness_fields $field
+     * @phpstan-param filter_uniqueness_values $values
+     *
+     * @phpstan-return filter_uniqueness_params
      * @param mixed $record
      * @param array $field
      * @param array $values

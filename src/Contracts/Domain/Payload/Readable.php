@@ -60,9 +60,8 @@ interface Readable
      *
      * Status values are drawn from the `Status` vocabulary.
      *
-     * @return mixed
-     *
      * @see \Phalcon\Domain\Payload\Status
+     * @return mixed
      */
     public function getStatus(): mixed;
 }

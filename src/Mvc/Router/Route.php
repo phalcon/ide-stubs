@@ -9,15 +9,29 @@
  */
 namespace Phalcon\Mvc\Router;
 
+use Phalcon\Contracts\Mvc\MvcTypes;
 use Phalcon\Mvc\Router\Exceptions\InvalidRoutePaths;
 
 /**
  * This class represents every route added to the router
+ *
+ * @phpstan-import-type mvc_router_converters from MvcTypes
+ * @phpstan-import-type mvc_router_http_methods from MvcTypes
+ * @phpstan-import-type mvc_router_named_params from MvcTypes
+ * @phpstan-import-type mvc_router_paths from MvcTypes
+ * @phpstan-import-type mvc_router_reversed_paths from MvcTypes
  */
 class Route implements \Phalcon\Mvc\Router\RouteInterface
 {
     /**
+     * @var int
+     */
+    protected static $uniqueId = 0;
+
+    /**
      * @var callable|null
+     *
+     * @phpstan-var callable|null
      */
     protected $beforeMatch = null;
 
@@ -37,6 +51,8 @@ class Route implements \Phalcon\Mvc\Router\RouteInterface
 
     /**
      * @var array
+     *
+     * @phpstan-var mvc_router_converters
      */
     protected $converters = [];
 
@@ -52,11 +68,15 @@ class Route implements \Phalcon\Mvc\Router\RouteInterface
 
     /**
      * @var callable|null
+     *
+     * @phpstan-var callable|null
      */
     protected $match = null;
 
     /**
      * @var array|string|null
+     *
+     * @phpstan-var mvc_router_http_methods|string|null
      */
     protected $methods = [];
 
@@ -67,6 +87,8 @@ class Route implements \Phalcon\Mvc\Router\RouteInterface
 
     /**
      * @var array
+     *
+     * @phpstan-var mvc_router_paths
      */
     protected $paths = [];
 
@@ -81,11 +103,6 @@ class Route implements \Phalcon\Mvc\Router\RouteInterface
     protected $routeId = '';
 
     /**
-     * @var int
-     */
-    protected static $uniqueId = 0;
-
-    /**
      * Phalcon\Mvc\Router\Route constructor
      *
      * @param string $pattern
@@ -93,6 +110,26 @@ class Route implements \Phalcon\Mvc\Router\RouteInterface
      * @param mixed $httpMethods
      */
     public function __construct(string $pattern, $paths = null, $httpMethods = null)
+    {
+    }
+
+    /**
+     * Returns routePaths
+     *
+     * @phpstan-return mvc_router_paths
+     * @param mixed $paths
+     * @return array
+     */
+    public static function getRoutePaths($paths = null): array
+    {
+    }
+
+    /**
+     * Resets the internal route id generator
+     *
+     * @return void
+     */
+    public static function reset(): void
     {
     }
 
@@ -151,6 +188,7 @@ class Route implements \Phalcon\Mvc\Router\RouteInterface
     /**
      * Extracts parameters from a string
      *
+     * @phpstan-return mvc_router_named_params|false
      * @param string $pattern
      * @return array|bool
      */
@@ -192,6 +230,7 @@ class Route implements \Phalcon\Mvc\Router\RouteInterface
     /**
      * Returns the router converter
      *
+     * @phpstan-return mvc_router_converters
      * @return array
      */
     public function getConverters(): array
@@ -219,6 +258,7 @@ class Route implements \Phalcon\Mvc\Router\RouteInterface
     /**
      * Returns the HTTP methods that constraint matching the route
      *
+     * @phpstan-return mvc_router_http_methods|string|null
      * @return array|string|null
      */
     public function getHttpMethods(): string|array|null
@@ -246,6 +286,7 @@ class Route implements \Phalcon\Mvc\Router\RouteInterface
     /**
      * Returns the paths
      *
+     * @phpstan-return mvc_router_paths
      * @return array
      */
     public function getPaths(): array
@@ -264,6 +305,7 @@ class Route implements \Phalcon\Mvc\Router\RouteInterface
     /**
      * Returns the paths using positions as keys and names as values
      *
+     * @phpstan-return mvc_router_reversed_paths
      * @return array
      */
     public function getReversedPaths(): array
@@ -276,16 +318,6 @@ class Route implements \Phalcon\Mvc\Router\RouteInterface
      * @return string
      */
     public function getRouteId(): string
-    {
-    }
-
-    /**
-     * Returns routePaths
-     *
-     * @param mixed $paths
-     * @return array
-     */
-    public static function getRoutePaths($paths = null): array
     {
     }
 
@@ -318,15 +350,6 @@ class Route implements \Phalcon\Mvc\Router\RouteInterface
      * @return void
      */
     public function reConfigure(string $pattern, $paths = null): void
-    {
-    }
-
-    /**
-     * Resets the internal route id generator
-     *
-     * @return void
-     */
-    public static function reset(): void
     {
     }
 

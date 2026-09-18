@@ -9,27 +9,30 @@
  */
 namespace Phalcon\DataMapper\Query;
 
+use Phalcon\Contracts\DataMapper\DataMapperTypes;
 use Phalcon\DataMapper\Pdo\Connection;
 
 /**
  * Class AbstractQuery
+ *
+ * @phpstan-import-type datamapper_bind_store from DataMapperTypes
+ * @phpstan-import-type datamapper_bind_values from DataMapperTypes
+ * @phpstan-import-type datamapper_clauses from DataMapperTypes
+ * @phpstan-import-type datamapper_query_store from DataMapperTypes
  */
 abstract class AbstractQuery
 {
-    /**
-     * @var Bind
-     */
-    protected $bind;
+    protected Bind $bind;
 
-    /**
-     * @var Connection
-     */
-    protected $connection;
+    protected \Phalcon\DataMapper\Pdo\Connection $connection;
 
     /**
      * @var array
+     *
+     * @phpstan-var datamapper_query_store
+     * @psalm-suppress InvalidPropertyAssignmentValue
      */
-    protected $store = [];
+    protected array $store = [];
 
     /**
      * AbstractQuery constructor.
@@ -45,8 +48,7 @@ abstract class AbstractQuery
      * Binds a value inline
      *
      * @param mixed $value
-     * @param int   $type
-     *
+     * @param int $type
      * @return string
      */
     public function bindInline($value, int $type = -1): string
@@ -72,6 +74,8 @@ abstract class AbstractQuery
      * @param array $values
      *
      * @return AbstractQuery
+     *
+     * @phpstan-param datamapper_bind_values $values
      */
     public function bindValues(array $values): AbstractQuery
     {
@@ -80,6 +84,7 @@ abstract class AbstractQuery
     /**
      * Returns all the bound values
      *
+     * @phpstan-return datamapper_bind_store
      * @return array
      */
     public function getBindValues(): array
@@ -103,22 +108,10 @@ abstract class AbstractQuery
     }
 
     /**
-     * Sets a flag for the query such as "DISTINCT"
-     *
-     * @param string $flag
-     * @param bool   $enable
-     * @return void
-     */
-    public function setFlag(string $flag, bool $enable = true): void
-    {
-    }
-
-    /**
      * Quotes the identifier
      *
      * @param string $name
-     * @param int    $type
-     *
+     * @param int $type
      * @return string
      */
     public function quoteIdentifier(string $name, int $type = \PDO::PARAM_STR): string
@@ -144,20 +137,20 @@ abstract class AbstractQuery
     }
 
     /**
+     * Resets the flags
+     *
+     * @return void
+     */
+    public function resetFlags(): void
+    {
+    }
+
+    /**
      * Resets the from
      *
      * @return void
      */
     public function resetFrom(): void
-    {
-    }
-
-    /**
-     * Resets the where
-     *
-     * @return void
-     */
-    public function resetWhere(): void
     {
     }
 
@@ -180,15 +173,6 @@ abstract class AbstractQuery
     }
 
     /**
-     * Resets the order by
-     *
-     * @return void
-     */
-    public function resetOrderBy(): void
-    {
-    }
-
-    /**
      * Resets the limit and offset
      *
      * @return void
@@ -198,11 +182,31 @@ abstract class AbstractQuery
     }
 
     /**
-     * Resets the flags
+     * Resets the order by
      *
      * @return void
      */
-    public function resetFlags(): void
+    public function resetOrderBy(): void
+    {
+    }
+
+    /**
+     * Resets the where
+     *
+     * @return void
+     */
+    public function resetWhere(): void
+    {
+    }
+
+    /**
+     * Sets a flag for the query such as "DISTINCT"
+     *
+     * @param string $flag
+     * @param bool $enable
+     * @return void
+     */
+    public function setFlag(string $flag, bool $enable = true): void
     {
     }
 
@@ -227,9 +231,9 @@ abstract class AbstractQuery
     /**
      * Indents a collection
      *
-     * @param array  $collection
+     * @phpstan-param datamapper_clauses $collection
+     * @param array $collection
      * @param string $glue
-     *
      * @return string
      */
     protected function indent(array $collection, string $glue = ''): string

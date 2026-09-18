@@ -9,20 +9,23 @@
  */
 namespace Phalcon\DataMapper\Query;
 
+use Phalcon\Contracts\DataMapper\DataMapperTypes;
+
 /**
  * Class Bind
+ *
+ * @phpstan-import-type datamapper_bind_store from DataMapperTypes
+ * @phpstan-import-type datamapper_bind_values from DataMapperTypes
+ * @phpstan-import-type datamapper_values from DataMapperTypes
  */
 class Bind
 {
-    /**
-     * @var int
-     */
-    protected $inlineCount = 0;
+    protected int $inlineCount = 0;
 
     /**
-     * @var array
+     * @phpstan-var datamapper_bind_store
      */
-    protected $store = [];
+    protected array $store = [];
 
     /**
      * @param mixed $value
@@ -48,8 +51,8 @@ class Bind
      * Sets a value
      *
      * @param string $key
-     * @param mixed  $value
-     * @param int    $type
+     * @param mixed $value
+     * @param int $type
      * @return void
      */
     public function setValue(string $key, $value, int $type = -1): void
@@ -59,8 +62,9 @@ class Bind
     /**
      * Sets values from an array
      *
+     * @phpstan-param datamapper_bind_values $values
      * @param array $values
-     * @param int   $type
+     * @param int $type
      * @return void
      */
     public function setValues(array $values, int $type = -1): void
@@ -70,6 +74,7 @@ class Bind
     /**
      * Returns the internal collection
      *
+     * @phpstan-return datamapper_bind_store
      * @return array
      */
     public function toArray(): array
@@ -80,7 +85,6 @@ class Bind
      * Auto detects the PDO type
      *
      * @param mixed $value
-     *
      * @return int
      */
     protected function getType($value): int
@@ -90,11 +94,10 @@ class Bind
     /**
      * Processes an array - if passed as an `inline` parameter
      *
-     * @param array $array
-     * @param int   $type
-     *
-     * @return string
+     * @phpstan-param datamapper_values $data
      * @param array $data
+     * @param int $type
+     * @return string
      */
     protected function inlineArray(array $data, int $type): string
     {

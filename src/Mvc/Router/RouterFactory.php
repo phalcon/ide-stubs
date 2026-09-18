@@ -25,9 +25,9 @@ use Phalcon\Mvc\RouterInterface;
  *
  * $router = (new RouterFactory())->load(
  *     [
- *         "defaultRoutes" : false,
- *         "routes" : [
- *             ["method" : "get", "pattern" : "/users", "paths" : "Users::index"]
+ *         'defaultRoutes' => false,
+ *         'routes' => [
+ *             ['method' => 'get', 'pattern' => '/users', 'paths' => 'Users::index']
  *         ]
  *     ]
  * );
@@ -38,8 +38,11 @@ class RouterFactory
     /**
      * Builds a Router from a config array or ConfigInterface and loads routes.
      *
-     * @param array|\Phalcon\Config\ConfigInterface $config *
+     * @param array|ConfigInterface $config
+     *
      * @return RouterInterface
+     *
+     * @phpstan-param array<array-key, mixed>|ConfigInterface $config
      */
     public function load($config): RouterInterface
     {

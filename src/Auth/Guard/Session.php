@@ -17,6 +17,7 @@ use Phalcon\Auth\Internal\Options;
 use Phalcon\Contracts\Auth\Adapter\Adapter;
 use Phalcon\Contracts\Auth\Adapter\RememberAdapter;
 use Phalcon\Contracts\Auth\AuthRemember;
+use Phalcon\Contracts\Auth\AuthTypes;
 use Phalcon\Contracts\Auth\AuthUser;
 use Phalcon\Contracts\Auth\Guard\BasicAuth;
 use Phalcon\Contracts\Auth\Guard\GuardStateful;
@@ -29,7 +30,7 @@ use Phalcon\Time\Clock\ClockInterface;
 use Phalcon\Time\Clock\SystemClock;
 
 /**
- * @phpstan-import-type AuthCredentials from Adapter
+ * @phpstan-import-type auth_credentials from AuthTypes
  *
  * @extends AbstractGuard<SessionGuardConfig>
  */
@@ -68,7 +69,7 @@ class Session extends \Phalcon\Auth\Guard\AbstractGuard implements \Phalcon\Cont
     }
 
     /**
-     * @phpstan-param AuthCredentials $credentials
+     * @phpstan-param auth_credentials $credentials
      *
      * @throws Exception
      * @param array $credentials
@@ -132,7 +133,7 @@ class Session extends \Phalcon\Auth\Guard\AbstractGuard implements \Phalcon\Cont
     }
 
     /**
-     * @phpstan-param AuthCredentials $credentials
+     * @phpstan-param auth_credentials $credentials
      * @param array $credentials
      * @return bool
      */
@@ -157,7 +158,7 @@ class Session extends \Phalcon\Auth\Guard\AbstractGuard implements \Phalcon\Cont
     }
 
     /**
-     * @phpstan-param AuthCredentials $credentials
+     * @phpstan-param auth_credentials $credentials
      *
      * @phpstan-assert-if-true !null $this->lastUserAttempted
      * @param array $credentials

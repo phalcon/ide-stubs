@@ -264,8 +264,7 @@ class Loader
      * Register directories in which "not found" classes could be found
      *
      * @param autoload_strings $directories
-     * @param bool  $merge
-     *
+     * @param bool $merge
      * @return static
      */
     public function setDirectories(array $directories, bool $merge = false): static

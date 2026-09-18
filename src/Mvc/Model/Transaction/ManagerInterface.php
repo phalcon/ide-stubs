@@ -46,7 +46,8 @@ interface ManagerInterface
     public function getDbService(): string;
 
     /**
-     * Check if the transaction manager is registering a shutdown function to clean up pendent transactions
+     * Check if the transaction manager is registering a shutdown function to
+     * clean up pendent transactions
      *
      * @return bool
      */

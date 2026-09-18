@@ -317,7 +317,7 @@ abstract class AbstractAdapter implements \Phalcon\Image\Adapter\AdapterInterfac
     }
 
     /**
-     * Renders the supplied colour onto the image as the background. Channels
+     * Renders the supplied color onto the image as the background. Channels
      * are 0-255; the opacity is the validated 0-100 value.
      *
      * @phpstan-param image_channel $red

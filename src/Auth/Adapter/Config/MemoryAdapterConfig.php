@@ -9,15 +9,17 @@
  */
 namespace Phalcon\Auth\Adapter\Config;
 
+use Phalcon\Contracts\Auth\AuthTypes;
+
 /**
- * @phpstan-type AuthUserRow array{id?: int|string}&array<string, mixed>
+ * @phpstan-import-type auth_user_row from AuthTypes
  */
 class MemoryAdapterConfig extends \Phalcon\Auth\Adapter\Config\AbstractAdapterConfig
 {
     protected array $users = [];
 
     /**
-     * @phpstan-param list<AuthUserRow> $users
+     * @phpstan-param list<auth_user_row> $users
      * @param array $users
      * @param string|null $model
      */
@@ -26,7 +28,7 @@ class MemoryAdapterConfig extends \Phalcon\Auth\Adapter\Config\AbstractAdapterCo
     }
 
     /**
-     * @phpstan-return list<AuthUserRow>
+     * @phpstan-return list<auth_user_row>
      * @return array
      */
     public function getUsers(): array

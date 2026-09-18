@@ -9,12 +9,17 @@
  */
 namespace Phalcon\Mvc\Model;
 
+use Phalcon\Contracts\Mvc\MvcTypes;
 use Phalcon\Di\DiInterface;
 
 /**
- * Phalcon\Mvc\Model\CriteriaInterface
- *
  * Interface for Phalcon\Mvc\Model\Criteria
+ *
+ * @phpstan-import-type mvc_model_bind_params from MvcTypes
+ * @phpstan-import-type mvc_model_bind_types from MvcTypes
+ * @phpstan-import-type mvc_model_cache_options from MvcTypes
+ * @phpstan-import-type mvc_model_parameters from MvcTypes
+ * @phpstan-import-type mvc_query_columns from MvcTypes
  */
 interface CriteriaInterface
 {
@@ -46,6 +51,7 @@ interface CriteriaInterface
      * Sets the bound parameters in the criteria
      * This method replaces all previously set bound parameters
      *
+     * @phpstan-param mvc_model_bind_params $bindParams
      * @param array $bindParams
      * @return CriteriaInterface
      */
@@ -55,6 +61,7 @@ interface CriteriaInterface
      * Sets the bind types in the criteria
      * This method replaces all previously set bound parameters
      *
+     * @phpstan-param mvc_model_bind_types $bindTypes
      * @param array $bindTypes
      * @return CriteriaInterface
      */
@@ -64,6 +71,7 @@ interface CriteriaInterface
      * Sets the cache options in the criteria
      * This method replaces all previously set cache options
      *
+     * @phpstan-param mvc_model_cache_options $cache
      * @param array $cache
      * @return CriteriaInterface
      */
@@ -103,7 +111,8 @@ interface CriteriaInterface
     /**
      * Returns the columns to be queried
      *
-     * @return string|array|null
+     * @phpstan-return mvc_query_columns|null
+     * @return array|string|null
      */
     public function getColumns(): string|array|null;
 
@@ -131,7 +140,8 @@ interface CriteriaInterface
      * - An array with 'number' and 'offset' keys if an offset was set with the limit
      * - NULL if limit has not been set
      *
-     * @return int|array|null
+     * @phpstan-return array{number: int|string, offset?: int|string}|int|null
+     * @return array|int|null
      */
     public function getLimit(): int|array|null;
 
@@ -152,6 +162,7 @@ interface CriteriaInterface
     /**
      * Returns all the parameters defined in the criteria
      *
+     * @phpstan-return mvc_model_parameters
      * @return array
      */
     public function getParams(): array;
@@ -180,19 +191,6 @@ interface CriteriaInterface
     public function having($having): CriteriaInterface;
 
     /**
-     * Appends an IN condition to the current conditions
-     *
-     * ```php
-     * $criteria->inWhere("id", [1, 2, 3]);
-     * ```
-     *
-     * @param string $expr
-     * @param array $values
-     * @return CriteriaInterface
-     */
-    public function inWhere(string $expr, array $values): CriteriaInterface;
-
-    /**
      * Adds an INNER join to the query
      *
      * ```php
@@ -218,6 +216,20 @@ interface CriteriaInterface
      * @return CriteriaInterface
      */
     public function innerJoin(string $model, $conditions = null, $alias = null): CriteriaInterface;
+
+    /**
+     * Appends an IN condition to the current conditions
+     *
+     * ```php
+     * $criteria->inWhere("id", [1, 2, 3]);
+     * ```
+     *
+     * @phpstan-param array<array-key, mixed> $values
+     * @param string $expr
+     * @param array $values
+     * @return CriteriaInterface
+     */
+    public function inWhere(string $expr, array $values): CriteriaInterface;
 
     /**
      * Adds a LEFT join to the query
@@ -267,11 +279,20 @@ interface CriteriaInterface
      * $criteria->notInWhere("id", [1, 2, 3]);
      * ```
      *
+     * @phpstan-param array<array-key, mixed> $values
      * @param string $expr
      * @param array $values
      * @return CriteriaInterface
      */
     public function notInWhere(string $expr, array $values): CriteriaInterface;
+
+    /**
+     * Adds the order-by parameter to the criteria
+     *
+     * @param string $orderColumns
+     * @return CriteriaInterface
+     */
+    public function orderBy(string $orderColumns): CriteriaInterface;
 
     /**
      * Appends a condition to the current conditions using an OR operator
@@ -282,14 +303,6 @@ interface CriteriaInterface
      * @return CriteriaInterface
      */
     public function orWhere(string $conditions, $bindParams = null, $bindTypes = null): CriteriaInterface;
-
-    /**
-     * Adds the order-by parameter to the criteria
-     *
-     * @param string $orderColumns
-     * @return CriteriaInterface
-     */
-    public function orderBy(string $orderColumns): CriteriaInterface;
 
     /**
      * Adds a RIGHT join to the query

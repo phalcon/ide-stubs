@@ -9,6 +9,8 @@
  */
 namespace Phalcon\Contracts\Db\Adapter;
 
+use PDOStatement;
+use Phalcon\Contracts\Db\DbTypes;
 use Phalcon\Db\ColumnInterface;
 use Phalcon\Db\DialectInterface;
 use Phalcon\Db\IndexInterface;
@@ -19,6 +21,23 @@ use Phalcon\Db\ResultInterface;
 /**
  * Canonical contract for Phalcon\Db adapters.
  *
+ * @phpstan-import-type db_bind_params from DbTypes
+ * @phpstan-import-type db_bind_types from DbTypes
+ * @phpstan-import-type db_column_list from DbTypes
+ * @phpstan-import-type db_column_names from DbTypes
+ * @phpstan-import-type db_descriptor from DbTypes
+ * @phpstan-import-type db_dict from DbTypes
+ * @phpstan-import-type db_identifier from DbTypes
+ * @phpstan-import-type db_limit_number from DbTypes
+ * @phpstan-import-type db_row from DbTypes
+ * @phpstan-import-type db_rows from DbTypes
+ * @phpstan-import-type db_table_definition from DbTypes
+ * @phpstan-import-type db_table_identifier from DbTypes
+ * @phpstan-import-type db_table_names from DbTypes
+ * @phpstan-import-type db_table_options from DbTypes
+ * @phpstan-import-type db_view_definition from DbTypes
+ * @phpstan-import-type db_where_condition from DbTypes
+ *
  * @todo v7 - these will become required interface members. They are
  *            omitted from the v5 line to avoid breaking third-party
  *            implementors:
@@ -26,9 +45,18 @@ use Phalcon\Db\ResultInterface;
  *              - createMaterializedView()  : bool
  *              - dropCheck()               : bool
  *              - dropMaterializedView()    : bool
+ *              - executePrepared()         : PDOStatement
  *              - onConflictUpdate()        : string
+ *              - prepare()                 : PDOStatement
  *              - refreshMaterializedView() : bool
  *              - returning()               : string
+ *
+ * The PDO adapters carry the two statement members above and the framework
+ * calls them on the interface. They join the interface in the next major;
+ * until then the tags below record what they provide.
+ *
+ * @method PDOStatement executePrepared(PDOStatement $statement, db_bind_params $placeholders, db_bind_types $dataTypes)
+ * @method PDOStatement prepare(string $sqlStatement)
  */
 interface Adapter
 {
@@ -108,6 +136,7 @@ interface Adapter
      * This method is automatically called in \Phalcon\Db\Adapter\Pdo
      * constructor. Call it when you need to restore a database connection
      *
+     * @phpstan-param db_descriptor $descriptor
      * @param array $descriptor
      * @return void
      */
@@ -124,6 +153,7 @@ interface Adapter
     /**
      * Creates a table
      *
+     * @phpstan-param db_table_definition $definition
      * @param string $tableName
      * @param string $schemaName
      * @param array $definition
@@ -134,6 +164,7 @@ interface Adapter
     /**
      * Creates a view
      *
+     * @phpstan-param db_view_definition $definition
      * @param string $viewName
      * @param array $definition
      * @param string|null $schemaName
@@ -144,10 +175,13 @@ interface Adapter
     /**
      * Deletes data from a table using custom RDBMS SQL syntax
      *
-     * @param array|string $table
+     * @phpstan-param db_table_identifier $table
+     * @phpstan-param db_bind_params $placeholders
+     * @phpstan-param db_bind_types  $dataTypes
+     * @param mixed $table
      * @param string|null $whereCondition
      * @param array $placeholders
-     * @param array $dataTypes *
+     * @param array $dataTypes
      * @return bool
      */
     public function delete($table, ?string $whereCondition = null, array $placeholders = [], array $dataTypes = []): bool;
@@ -241,6 +275,7 @@ interface Adapter
     /**
      * Escapes a column/table/schema name
      *
+     * @phpstan-param db_identifier $identifier
      * @param mixed $identifier
      * @return string
      */
@@ -259,6 +294,8 @@ interface Adapter
      * Use this method only when the SQL statement sent to the server does not
      * return any rows
      *
+     * @phpstan-param db_bind_params $bindParams
+     * @phpstan-param db_bind_types  $bindTypes
      * @param string $sqlStatement
      * @param array $bindParams
      * @param array $bindTypes
@@ -269,6 +306,10 @@ interface Adapter
     /**
      * Dumps the complete result of a query into an array
      *
+     * @phpstan-param db_bind_params $bindParams
+     * @phpstan-param db_bind_types  $bindTypes
+     *
+     * @phpstan-return db_rows
      * @param string $sqlQuery
      * @param int $fetchMode
      * @param array $bindParams
@@ -293,6 +334,9 @@ interface Adapter
      * print_r($invoice);
      * ```
      *
+     * @phpstan-param db_bind_params $placeholders
+     *
+     * @phpstan-param int|string $column
      * @param string $sqlQuery
      * @param array $placeholders
      * @param mixed $column
@@ -303,6 +347,10 @@ interface Adapter
     /**
      * Returns the first row in a SQL query result
      *
+     * @phpstan-param db_bind_params $bindParams
+     * @phpstan-param db_bind_types  $bindTypes
+     *
+     * @phpstan-return db_row
      * @param string $sqlQuery
      * @param int $fetchMode
      * @param array $bindParams
@@ -333,6 +381,7 @@ interface Adapter
     /**
      * Gets a list of columns
      *
+     * @phpstan-param db_column_list $columnList
      * @param mixed $columnList
      * @return string
      */
@@ -344,27 +393,6 @@ interface Adapter
      * @return int
      */
     public function getConnectionId(): int;
-
-    /**
-     * Return descriptor used to connect to the active database
-     *
-     * @return array
-     */
-    public function getDescriptor(): array;
-
-    /**
-     * Returns internal dialect instance
-     *
-     * @return DialectInterface
-     */
-    public function getDialect(): DialectInterface;
-
-    /**
-     * Returns the name of the dialect used
-     *
-     * @return string
-     */
-    public function getDialectType(): string;
 
     /**
      * Return the default identity value to insert in an identity column
@@ -398,6 +426,28 @@ interface Adapter
     public function getDefaultValue(): RawValue|null;
 
     /**
+     * Return descriptor used to connect to the active database
+     *
+     * @phpstan-return db_descriptor
+     * @return array
+     */
+    public function getDescriptor(): array;
+
+    /**
+     * Returns internal dialect instance
+     *
+     * @return DialectInterface
+     */
+    public function getDialect(): DialectInterface;
+
+    /**
+     * Returns the name of the dialect used
+     *
+     * @return string
+     */
+    public function getDialectType(): string;
+
+    /**
      * Return internal PDO handler
      *
      * @return mixed
@@ -421,6 +471,7 @@ interface Adapter
     /**
      * Active SQL statement in the object
      *
+     * @phpstan-return db_bind_types
      * @return array
      */
     public function getSQLBindTypes(): array;
@@ -435,6 +486,7 @@ interface Adapter
     /**
      * Active SQL statement in the object
      *
+     * @phpstan-return db_bind_params
      * @return array
      */
     public function getSQLVariables(): array;
@@ -449,6 +501,9 @@ interface Adapter
     /**
      * Inserts data into a table using custom RDBMS SQL syntax
      *
+     * @phpstan-param db_bind_params      $values
+     * @phpstan-param db_column_names|null $fields
+     * @phpstan-param db_bind_types       $dataTypes
      * @param string $table
      * @param array $values
      * @param mixed $fields
@@ -474,6 +529,8 @@ interface Adapter
      * INSERT INTO `co_invoices` (`inv_title`, `inv_total`) VALUES ("Test Invoice", 100);
      * ```
      *
+     * @phpstan-param db_dict       $data
+     * @phpstan-param db_bind_types $dataTypes
      * @param string $table
      * @param mixed $data
      * @param mixed $dataTypes
@@ -499,14 +556,16 @@ interface Adapter
      * Returns insert id for the auto_increment column inserted in the last SQL
      * statement
      *
-     * @param string|null $name Name of the sequence object from which the ID should be returned.
-     * @return string|bool
+     * @param string|null $name Name of the sequence object from which the ID
+     *                          should be returned.
+     * @return bool|string
      */
     public function lastInsertId(?string $name = null): bool|string;
 
     /**
      * Appends a LIMIT clause to sqlQuery argument
      *
+     * @phpstan-param db_limit_number $number
      * @param string $sqlQuery
      * @param mixed $number
      * @return string
@@ -516,6 +575,7 @@ interface Adapter
     /**
      * List all tables on a database
      *
+     * @phpstan-return db_table_names
      * @param string|null $schemaName
      * @return array
      */
@@ -524,6 +584,7 @@ interface Adapter
     /**
      * List all views on a database
      *
+     * @phpstan-return db_table_names
      * @param string|null $schemaName
      * @return array
      */
@@ -545,6 +606,8 @@ interface Adapter
      * Use this method only when the SQL statement sent to the server returns
      * rows
      *
+     * @phpstan-param db_bind_params $bindParams
+     * @phpstan-param db_bind_types  $bindTypes
      * @param string $sqlStatement
      * @param array $bindParams
      * @param array $bindTypes
@@ -577,6 +640,14 @@ interface Adapter
     public function rollbackSavepoint(string $name): bool;
 
     /**
+     * Set if nested transactions should use savepoints
+     *
+     * @param bool $nestedTransactionsWithSavepoints
+     * @return \Phalcon\Db\Adapter\AdapterInterface
+     */
+    public function setNestedTransactionsWithSavepoints(bool $nestedTransactionsWithSavepoints): \Phalcon\Db\Adapter\AdapterInterface;
+
+    /**
      * Returns a SQL modified with a shared-lock clause. See the dialect's
      * `sharedLock()` for per-engine semantics. The optional `modifier` is
      * passed straight through (use `Dialect::LOCK_NOWAIT` /
@@ -589,12 +660,12 @@ interface Adapter
     public function sharedLock(string $sqlQuery, string $modifier = ''): string;
 
     /**
-     * Set if nested transactions should use savepoints
+     * SQLite does not support the DEFAULT keyword
      *
-     * @param bool $nestedTransactionsWithSavepoints
-     * @return \Phalcon\Db\Adapter\AdapterInterface
+     * @deprecated Will re removed in the next version
+     * @return bool
      */
-    public function setNestedTransactionsWithSavepoints(bool $nestedTransactionsWithSavepoints): \Phalcon\Db\Adapter\AdapterInterface;
+    public function supportsDefaultValue(): bool;
 
     /**
      * Check whether the database system requires a sequence to produce
@@ -616,6 +687,7 @@ interface Adapter
     /**
      * Gets creation options from a table
      *
+     * @phpstan-return db_table_options
      * @param string $tableName
      * @param string|null $schemaName
      * @return array
@@ -625,6 +697,10 @@ interface Adapter
     /**
      * Updates data on a table using custom RDBMS SQL syntax
      *
+     * @phpstan-param db_column_names    $fields
+     * @phpstan-param db_bind_params     $values
+     * @phpstan-param db_where_condition $whereCondition
+     * @phpstan-param db_bind_types      $dataTypes
      * @param string $table
      * @param mixed $fields
      * @param mixed $values
@@ -652,6 +728,9 @@ interface Adapter
      * UPDATE `co_invoices` SET `inv_title` = "New Test Invoice" WHERE inv_id = 101
      * ```
      *
+     * @phpstan-param db_dict           $data
+     * @phpstan-param db_where_condition $whereCondition
+     * @phpstan-param db_bind_types     $dataTypes
      * @param string $table
      * @param mixed $data
      * @param mixed $whereCondition
@@ -667,14 +746,6 @@ interface Adapter
      * @return bool
      */
     public function useExplicitIdValue(): bool;
-
-    /**
-     * SQLite does not support the DEFAULT keyword
-     *
-     * @deprecated Will re removed in the next version
-     * @return bool
-     */
-    public function supportsDefaultValue(): bool;
 
     /**
      * Generates SQL checking for the existence of a schema.view

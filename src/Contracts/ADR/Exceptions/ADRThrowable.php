@@ -9,6 +9,8 @@
  */
 namespace Phalcon\Contracts\ADR\Exceptions;
 
+use Throwable;
+
 /**
  * Base throwable contract for the ADR component. Every ADR exception implements
  * it, so callers can catch all ADR errors with a single type.

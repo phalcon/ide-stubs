@@ -9,15 +9,10 @@
  */
 namespace Phalcon\Forms\Element;
 
-use Phalcon\Tag;
-
 /**
  * Component INPUT[type=date] for forms
  */
 class Date extends \Phalcon\Forms\Element\AbstractElement
 {
-    /**
-     * @var string
-     */
-    protected $method = 'inputDate';
+    protected string $method = 'inputDate';
 }

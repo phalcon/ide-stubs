@@ -12,9 +12,12 @@ namespace Phalcon\Annotations\Adapter;
 use Phalcon\Annotations\Reflection;
 use Phalcon\Annotations\Collection;
 use Phalcon\Annotations\ReaderInterface;
+use Phalcon\Contracts\Annotations\AnnotationsTypes;
 
 /**
  * This interface must be implemented by adapters in Phalcon\Annotations
+ *
+ * @phpstan-import-type annotations_collection_map from AnnotationsTypes
  */
 interface AdapterInterface
 {
@@ -38,6 +41,7 @@ interface AdapterInterface
     /**
      * Returns the annotations found in all the class' constants
      *
+     * @phpstan-return annotations_collection_map
      * @param string $className
      * @return array
      */
@@ -55,6 +59,7 @@ interface AdapterInterface
     /**
      * Returns the annotations found in all the class' methods
      *
+     * @phpstan-return annotations_collection_map
      * @param string $className
      * @return array
      */
@@ -72,6 +77,7 @@ interface AdapterInterface
     /**
      * Returns the annotations found in all the class' methods
      *
+     * @phpstan-return annotations_collection_map
      * @param string $className
      * @return array
      */

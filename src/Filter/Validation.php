@@ -9,12 +9,14 @@
  */
 namespace Phalcon\Filter;
 
+use Phalcon\Contracts\Filter\FilterTypes;
 use Phalcon\Di\Di;
 use Phalcon\Di\DiInterface;
+use Phalcon\Di\Exception as DiException;
 use Phalcon\Di\Injectable;
 use Phalcon\Filter\FilterInterface;
 use Phalcon\Filter\Validation\AbstractCombinedFieldsValidator;
-use Phalcon\Filter\Validation\Exception;
+use Phalcon\Filter\Validation\Exception as ValidationException;
 use Phalcon\Filter\Validation\Exceptions\FilterServiceUnavailable;
 use Phalcon\Filter\Validation\Exceptions\InvalidFieldType;
 use Phalcon\Filter\Validation\Exceptions\InvalidFilterService;
@@ -31,19 +33,20 @@ use Phalcon\Messages\Messages;
 
 /**
  * Allows to validate data using custom or built-in validators
+ *
+ * @phpstan-import-type filter_sanitizers from FilterTypes
+ * @phpstan-import-type filter_validation_combined_validators from FilterTypes
+ * @phpstan-import-type filter_validation_data from FilterTypes
+ * @phpstan-import-type filter_validation_default_messages from FilterTypes
+ * @phpstan-import-type filter_validation_filters from FilterTypes
+ * @phpstan-import-type filter_validation_labels from FilterTypes
+ * @phpstan-import-type filter_validation_validators from FilterTypes
+ * @phpstan-import-type filter_validation_values from FilterTypes
+ * @phpstan-import-type filter_validation_whitelist from FilterTypes
+ * @phpstan-import-type filter_validators from FilterTypes
  */
 class Validation extends Injectable implements \Phalcon\Filter\Validation\ValidationInterface
 {
-    /**
-     * @var array
-     */
-    protected $combinedFieldsValidators = [];
-
-    /**
-     * @var mixed
-     */
-    protected $data;
-
     /**
      * Default messages for validators, keyed by validator class name
      *
@@ -52,9 +55,19 @@ class Validation extends Injectable implements \Phalcon\Filter\Validation\Valida
      * fails to compile in the single-file build. It is null until first set
      * and treated as an empty array by the accessors below.
      *
-     * @var array
+     * @phpstan-var filter_validation_default_messages
      */
     protected static $defaultMessages = [];
+
+    /**
+     * @phpstan-var filter_validation_combined_validators
+     */
+    protected array $combinedFieldsValidators = [];
+
+    /**
+     * @phpstan-var filter_validation_data
+     */
+    protected $data;
 
     /**
      * @var object|null
@@ -62,42 +75,40 @@ class Validation extends Injectable implements \Phalcon\Filter\Validation\Valida
     protected $entity = null;
 
     /**
-     * @var array
+     * @phpstan-var filter_validation_filters
      */
-    protected $filters = [];
+    protected array $filters = [];
 
     /**
-     * @var array
+     * @phpstan-var filter_validation_labels
      */
-    protected $whitelist = [];
+    protected array $labels = [];
 
-    /**
-     * @var array
-     */
-    protected $labels = [];
-
-    /**
-     * @var Messages
-     */
-    protected $messages;
+    protected \Phalcon\Messages\Messages $messages;
 
     /**
      * List of validators
      *
-     * @var array
+     * @phpstan-var filter_validation_validators
      */
-    protected $validators = [];
+    protected array $validators = [];
 
     /**
      * Calculated values
      *
-     * @var array
+     * @phpstan-var filter_validation_values
      */
-    protected $values = [];
+    protected array $values = [];
+
+    /**
+     * @phpstan-var filter_validation_whitelist
+     */
+    protected array $whitelist = [];
 
     /**
      * Phalcon\Filter\Validation constructor
      *
+     * @phpstan-param filter_validation_validators $validators
      * @param array $validators
      */
     public function __construct(array $validators = [])
@@ -105,11 +116,42 @@ class Validation extends Injectable implements \Phalcon\Filter\Validation\Valida
     }
 
     /**
+     * Returns the default message registered for a validator class, or an
+     * empty string when none has been registered.
+     *
+     * @param string $validatorClassName
+     * @return string
+     */
+    public static function getDefaultMessage(string $validatorClassName): string
+    {
+    }
+
+    /**
+     * Registers default messages for validators, keyed by validator class
+     * name. A registered default is used when a validator does not define its
+     * own message; a message set on the validator instance still wins. Calls
+     * are merged, so defaults can be registered incrementally.
+     *
+     * @phpstan-param filter_validation_default_messages $messages
+     *
+     * @phpstan-return filter_validation_default_messages
+     * @param array $messages
+     * @return array
+     */
+    public static function setDefaultMessages(array $messages = []): array
+    {
+    }
+
+    /**
      * Adds a validator to a field
      *
-     * @param string|array       $field
-     * @param ValidatorInterface $validator
+     * @param array|string $field
      *
+     * @phpstan-param mixed $field
+     *
+     * @phpstan-return static
+     * @throws ValidationException
+     * @param \Phalcon\Filter\Validation\ValidatorInterface $validator
      * @return static
      */
     public function add($field, \Phalcon\Filter\Validation\ValidatorInterface $validator): static
@@ -119,7 +161,7 @@ class Validation extends Injectable implements \Phalcon\Filter\Validation\Valida
     /**
      * Appends a message to the messages list
      *
-     * @param MessageInterface $message
+     * @param \Phalcon\Messages\MessageInterface $message
      * @return static
      */
     public function appendMessage(\Phalcon\Messages\MessageInterface $message): static
@@ -138,12 +180,25 @@ class Validation extends Injectable implements \Phalcon\Filter\Validation\Valida
      * $validation->validate();
      * ```
      *
-     * @param object $entity the entity object to assign data to
-     * @param array|object $data the data that needs to be validated
-     * @param array $whitelist only allow these fields to be mutated when entity is used
+     * @param object $entity
+     *
+     * @phpstan-param mixed                       $entity
+     * @phpstan-param filter_validation_data      $data
+     * @phpstan-param filter_validation_whitelist $whitelist
+     * @param mixed $data
+     * @param array $whitelist
      * @return static
      */
     public function bind($entity, $data, array $whitelist = []): static
+    {
+    }
+
+    /**
+     * Verify if validation fails by verifying if there are messages in the current validation
+     *
+     * @return bool
+     */
+    public function fails(): bool
     {
     }
 
@@ -155,21 +210,11 @@ class Validation extends Injectable implements \Phalcon\Filter\Validation\Valida
     }
 
     /**
-     * Returns the default message registered for a validator class, or an
-     * empty string when none has been registered.
-     *
-     * @param string $validatorClassName
-     *
-     * @return string
-     */
-    public static function getDefaultMessage(string $validatorClassName): string
-    {
-    }
-
-    /**
      * Returns the bound entity
      *
      * @return object
+     *
+     * @phpstan-return object|null
      */
     public function getEntity(): mixed
     {
@@ -188,7 +233,9 @@ class Validation extends Injectable implements \Phalcon\Filter\Validation\Valida
     /**
      * Get label for field
      *
-     * @param string $field
+     * @param array|string $field
+     *
+     * @phpstan-param mixed $field
      * @return string
      */
     public function getLabel($field): string
@@ -207,6 +254,7 @@ class Validation extends Injectable implements \Phalcon\Filter\Validation\Valida
     /**
      * Returns the validators added to the validation
      *
+     * @phpstan-return filter_validation_validators
      * @return array
      */
     public function getValidators(): array
@@ -214,18 +262,19 @@ class Validation extends Injectable implements \Phalcon\Filter\Validation\Valida
     }
 
     /**
-     * Gets the a value to validate in the object entity source
+     * Gets the value to validate in the array/object data source
      *
-     * @param mixed $entity
+     * @throws ValidationException
+     * @throws DiException
      * @param string $field
      * @return mixed|null
      */
-    public function getValueByEntity($entity, string $field): mixed
+    public function getValue(string $field): mixed
     {
     }
 
     /**
-     * Gets the a value to validate in the array/object data source
+     * Gets the value to validate in the array/object data source
      *
      * @param mixed $data
      * @param string $field
@@ -236,21 +285,25 @@ class Validation extends Injectable implements \Phalcon\Filter\Validation\Valida
     }
 
     /**
-     * Gets the a value to validate in the array/object data source
+     * Gets the value to validate in the object entity source
      *
+     * @param mixed $entity
      * @param string $field
      * @return mixed|null
      */
-    public function getValue(string $field): mixed
+    public function getValueByEntity($entity, string $field): mixed
     {
     }
 
     /**
      * Alias of `add` method
      *
-     * @param string|array       $field
-     * @param ValidatorInterface $validator
+     * @param array|string $field
      *
+     * @phpstan-param mixed $field
+     *
+     * @todo remove this
+     * @param \Phalcon\Filter\Validation\ValidatorInterface $validator
      * @return static
      */
     public function rule($field, \Phalcon\Filter\Validation\ValidatorInterface $validator): static
@@ -260,25 +313,12 @@ class Validation extends Injectable implements \Phalcon\Filter\Validation\Valida
     /**
      * Adds the validators to a field
      *
+     * @phpstan-param filter_validators $validators
      * @param mixed $field
      * @param array $validators
      * @return static
      */
     public function rules($field, array $validators): static
-    {
-    }
-
-    /**
-     * Registers default messages for validators, keyed by validator class
-     * name. A registered default is used when a validator does not define its
-     * own message; a message set on the validator instance still wins. Calls
-     * are merged, so defaults can be registered incrementally.
-     *
-     * @param array $messages
-     *
-     * @return array
-     */
-    public static function setDefaultMessages(array $messages = []): array
     {
     }
 
@@ -295,8 +335,11 @@ class Validation extends Injectable implements \Phalcon\Filter\Validation\Valida
     /**
      * Adds filters to the field
      *
-     * @param string $field
+     * @param array|string $field
      * @param array|string $filters
+     *
+     * @phpstan-param mixed $field
+     * @phpstan-param mixed $filters
      * @return static
      */
     public function setFilters($field, $filters): static
@@ -306,6 +349,7 @@ class Validation extends Injectable implements \Phalcon\Filter\Validation\Valida
     /**
      * Adds labels for fields
      *
+     * @phpstan-param filter_validation_labels $labels
      * @param array $labels
      * @return void
      */
@@ -316,6 +360,7 @@ class Validation extends Injectable implements \Phalcon\Filter\Validation\Valida
     /**
      * Sets the validator array
      *
+     * @phpstan-param filter_validation_validators $validators
      * @param array $validators
      * @return static
      */
@@ -342,22 +387,17 @@ class Validation extends Injectable implements \Phalcon\Filter\Validation\Valida
      * $validation->validate($_POST, $entity, $fields);
      * ```
      *
-     * @param array|object $data the data that needs to be validated
-     * @param object $entity the entity object to assign data to
-     * @param array $whitelist only allow these fields to be mutated when entity is used
+     * @param array|object $data
      *
-     * @return Messages|false
+     * @phpstan-param mixed $data
+     * @phpstan-param object $entity
+     * @phpstan-param filter_validation_whitelist $whitelist
+     *
+     * @return false|Messages
+     * @param mixed $entity
+     * @param array $whitelist
      */
     public function validate($data = null, $entity = null, array $whitelist = []): Messages|bool
-    {
-    }
-
-    /**
-     * Verify if validation fails by verifying if there are messages in the current validation
-     *
-     * @return bool
-     */
-    public function fails(): bool
     {
     }
 
@@ -366,6 +406,8 @@ class Validation extends Injectable implements \Phalcon\Filter\Validation\Valida
      *
      * @param array|string $field
      * @param ValidatorInterface $validator
+     *
+     * @phpstan-param mixed $field
      * @return bool
      */
     protected function preChecking($field, \Phalcon\Filter\Validation\ValidatorInterface $validator): bool

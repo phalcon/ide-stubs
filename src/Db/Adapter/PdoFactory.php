@@ -9,6 +9,8 @@
  */
 namespace Phalcon\Db\Adapter;
 
+use Phalcon\Config\ConfigInterface;
+use Phalcon\Contracts\Db\DbTypes;
 use Phalcon\Db\Adapter\Pdo\Mysql;
 use Phalcon\Db\Adapter\Pdo\Postgresql;
 use Phalcon\Db\Adapter\Pdo\Sqlite;
@@ -17,12 +19,8 @@ use Phalcon\Factory\AbstractFactory;
 use Phalcon\Traits\Support\Helper\Arr\GetTrait;
 
 /**
- * This file is part of the Phalcon Framework.
- *
- * (c) Phalcon Team <team@phalcon.io>
- *
- * For the full copyright and license information, please view the LICENSE.txt
- * file that was distributed with this source code.
+ * @phpstan-import-type db_descriptor from DbTypes
+ * @phpstan-import-type db_factory_config from DbTypes
  */
 class PdoFactory extends AbstractFactory
 {
@@ -33,6 +31,7 @@ class PdoFactory extends AbstractFactory
     /**
      * Constructor
      *
+     * @phpstan-param array<string, class-string<AdapterInterface>> $services
      * @param array $services
      */
     public function __construct(array $services = [])
@@ -42,7 +41,7 @@ class PdoFactory extends AbstractFactory
     /**
      * Factory to create an instance from a Config object
      *
-     * @param array|\Phalcon\Config\Config $config = [
+     * @param array<string, mixed>|ConfigInterface $config = [
      *     'adapter' => 'mysql',
      *     'options' => [
      *         'host' => 'localhost',
@@ -65,6 +64,7 @@ class PdoFactory extends AbstractFactory
     /**
      * Create a new instance of the adapter
      *
+     * @phpstan-param db_descriptor $options
      * @param string $name
      * @param array $options
      * @return AdapterInterface
@@ -74,7 +74,7 @@ class PdoFactory extends AbstractFactory
     }
 
     /**
-     * @return string
+     * @return class-string<\Exception>
      */
     protected function getExceptionClass(): string
     {
@@ -83,7 +83,7 @@ class PdoFactory extends AbstractFactory
     /**
      * Returns the available adapters
      *
-     * @return string[]
+     * @return array<string, string>
      */
     protected function getServices(): array
     {

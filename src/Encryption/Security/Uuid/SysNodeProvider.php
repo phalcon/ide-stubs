@@ -33,10 +33,7 @@ class SysNodeProvider implements \Phalcon\Encryption\Security\Uuid\NodeProviderI
     use \Phalcon\Traits\Php\InfoTrait;
 
 
-    /**
-     * @var string|null
-     */
-    private $node = null;
+    private ?string $node = null;
 
     /**
      * Returns the hardware MAC address as a 12-character hex string.

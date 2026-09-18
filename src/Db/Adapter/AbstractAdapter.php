@@ -9,6 +9,7 @@
  */
 namespace Phalcon\Db\Adapter;
 
+use Phalcon\Contracts\Db\DbTypes;
 use Phalcon\Db\CheckInterface;
 use Phalcon\Db\ColumnInterface;
 use Phalcon\Db\DialectInterface;
@@ -75,6 +76,23 @@ use Phalcon\Support\Settings;
  *     echo $e->getMessage(), PHP_EOL;
  * }
  * ```
+ *
+ * @phpstan-import-type db_bind_params from DbTypes
+ * @phpstan-import-type db_bind_types from DbTypes
+ * @phpstan-import-type db_column_names from DbTypes
+ * @phpstan-import-type db_descriptor from DbTypes
+ * @phpstan-import-type db_identifier from DbTypes
+ * @phpstan-import-type db_indexes from DbTypes
+ * @phpstan-import-type db_limit_number from DbTypes
+ * @phpstan-import-type db_references from DbTypes
+ * @phpstan-import-type db_row from DbTypes
+ * @phpstan-import-type db_rows from DbTypes
+ * @phpstan-import-type db_setup_options from DbTypes
+ * @phpstan-import-type db_table_definition from DbTypes
+ * @phpstan-import-type db_table_names from DbTypes
+ * @phpstan-import-type db_table_options from DbTypes
+ * @phpstan-import-type db_value_placeholder from DbTypes
+ * @phpstan-import-type db_view_definition from DbTypes
  */
 abstract class AbstractAdapter implements \Phalcon\Db\Adapter\AdapterInterface, \Phalcon\Events\EventsAwareInterface
 {
@@ -87,87 +105,69 @@ abstract class AbstractAdapter implements \Phalcon\Db\Adapter\AdapterInterface, 
 
     /**
      * Active connection ID
-     *
-     * @var int
      */
-    protected $connectionId;
+    protected int $connectionId;
 
     /**
      * Descriptor used to connect to a database
      *
-     * @var array
+     * @phpstan-var db_descriptor
      */
-    protected $descriptor = [];
+    protected array $descriptor = [];
 
     /**
      * Dialect instance
-     *
-     * @var DialectInterface
      */
-    protected $dialect;
+    protected \Phalcon\Db\DialectInterface $dialect;
 
     /**
      * Name of the dialect used
-     *
-     * @var string
      */
-    protected $dialectType;
+    protected string $dialectType;
 
     /**
      * Event Manager
-     *
-     * @var ManagerInterface|null
      */
-    protected $eventsManager = null;
+    protected ?\Phalcon\Events\ManagerInterface $eventsManager = null;
 
     /**
      * The real SQL statement - what was executed
-     *
-     * @var string
      */
-    protected $realSqlStatement;
+    protected string $realSqlStatement;
 
     /**
      * Active SQL Bind Types
      *
-     * @var array
+     * @phpstan-var db_bind_types
      */
-    protected $sqlBindTypes = [];
+    protected array $sqlBindTypes = [];
 
     /**
      * Active SQL Statement
-     *
-     * @var string
      */
-    protected $sqlStatement;
+    protected string $sqlStatement;
 
     /**
      * Active SQL bound parameter variables
      *
-     * @var array
+     * @phpstan-var db_bind_params
      */
-    protected $sqlVariables = [];
+    protected array $sqlVariables = [];
 
     /**
      * Current transaction level
-     *
-     * @var int
      */
-    protected $transactionLevel = 0;
+    protected int $transactionLevel = 0;
 
     /**
      * Whether the database supports transactions with save points
-     *
-     * @var bool
      */
-    protected $transactionsWithSavepoints = false;
+    protected bool $transactionsWithSavepoints = false;
 
     /**
      * Type of database system the adapter is used for
-     *
-     * @var string
      */
-    protected $type;
+    protected string $type;
 
     /**
      * Phalcon\Db\Adapter constructor
@@ -187,20 +187,29 @@ abstract class AbstractAdapter implements \Phalcon\Db\Adapter\AdapterInterface, 
      * Note: the `options` key is forwarded to the static `setup()` method,
      * which writes process-global settings affecting every connection in the
      * process. See `setup()`.
+     *
+     * @phpstan-param db_descriptor $descriptor
      */
     public function __construct(array $descriptor)
     {
     }
 
     /**
-     * Adds a column to a table
+     * Enables/disables options in the Database component.
      *
-     * @param string $tableName
-     * @param string $schemaName
-     * @param \Phalcon\Db\ColumnInterface $column
-     * @return bool
+     * The flags are stored as process-global `Phalcon\Support\Settings`
+     * (`db.escape_identifiers`, `db.force_casting`) and therefore affect every
+     * connection in the process at once, last-writer-wins. Call this once at
+     * bootstrap; it is not per-connection configuration. Because the
+     * constructor calls `setup()` whenever a descriptor carries an `options`
+     * key, constructing one adapter with `options` can change the SQL another,
+     * already-configured connection generates.
+     *
+     * @phpstan-param db_setup_options $options
+     * @param array $options
+     * @return void
      */
-    public function addColumn(string $tableName, string $schemaName, \Phalcon\Db\ColumnInterface $column): bool
+    public static function setup(array $options): void
     {
     }
 
@@ -214,6 +223,18 @@ abstract class AbstractAdapter implements \Phalcon\Db\Adapter\AdapterInterface, 
      * @return bool
      */
     public function addCheck(string $tableName, string $schemaName, \Phalcon\Db\CheckInterface $check): bool
+    {
+    }
+
+    /**
+     * Adds a column to a table
+     *
+     * @param string $tableName
+     * @param string $schemaName
+     * @param \Phalcon\Db\ColumnInterface $column
+     * @return bool
+     */
+    public function addColumn(string $tableName, string $schemaName, \Phalcon\Db\ColumnInterface $column): bool
     {
     }
 
@@ -254,8 +275,23 @@ abstract class AbstractAdapter implements \Phalcon\Db\Adapter\AdapterInterface, 
     }
 
     /**
+     * Creates a materialized view (PostgreSQL only - MySQL and SQLite
+     * throw via the dialect).
+     *
+     * @phpstan-param db_view_definition $definition
+     * @param string $viewName
+     * @param array $definition
+     * @param string|null $schemaName
+     * @return bool
+     */
+    public function createMaterializedView(string $viewName, array $definition, ?string $schemaName = null): bool
+    {
+    }
+
+    /**
      * Creates a new savepoint
      *
+     * @throws SavepointsNotSupported
      * @param string $name
      * @return bool
      */
@@ -266,6 +302,9 @@ abstract class AbstractAdapter implements \Phalcon\Db\Adapter\AdapterInterface, 
     /**
      * Creates a table
      *
+     * @phpstan-param db_table_definition $definition
+     *
+     * @throws TableMustHaveColumn
      * @param string $tableName
      * @param string $schemaName
      * @param array $definition
@@ -278,6 +317,7 @@ abstract class AbstractAdapter implements \Phalcon\Db\Adapter\AdapterInterface, 
     /**
      * Creates a view
      *
+     * @throws TableMustHaveColumn
      * @param string $viewName
      * @param array $definition
      * @param string|null $schemaName
@@ -364,18 +404,6 @@ abstract class AbstractAdapter implements \Phalcon\Db\Adapter\AdapterInterface, 
     }
 
     /**
-     * Drops a column from a table
-     *
-     * @param string $tableName
-     * @param string $schemaName
-     * @param string $columnName
-     * @return bool
-     */
-    public function dropColumn(string $tableName, string $schemaName, string $columnName): bool
-    {
-    }
-
-    /**
      * Drops a CHECK constraint from a table. SQLite throws.
      *
      * @param string $tableName
@@ -384,6 +412,18 @@ abstract class AbstractAdapter implements \Phalcon\Db\Adapter\AdapterInterface, 
      * @return bool
      */
     public function dropCheck(string $tableName, string $schemaName, string $checkName): bool
+    {
+    }
+
+    /**
+     * Drops a column from a table
+     *
+     * @param string $tableName
+     * @param string $schemaName
+     * @param string $columnName
+     * @return bool
+     */
+    public function dropColumn(string $tableName, string $schemaName, string $columnName): bool
     {
     }
 
@@ -408,6 +448,18 @@ abstract class AbstractAdapter implements \Phalcon\Db\Adapter\AdapterInterface, 
      * @return bool
      */
     public function dropIndex(string $tableName, string $schemaName, $indexName): bool
+    {
+    }
+
+    /**
+     * Drops a materialized view (PostgreSQL only).
+     *
+     * @param string $viewName
+     * @param string|null $schemaName
+     * @param bool $ifExists
+     * @return bool
+     */
+    public function dropMaterializedView(string $viewName, ?string $schemaName = null, bool $ifExists = true): bool
     {
     }
 
@@ -462,6 +514,7 @@ abstract class AbstractAdapter implements \Phalcon\Db\Adapter\AdapterInterface, 
      * );
      * ```
      *
+     * @phpstan-param db_identifier $identifier
      * @param mixed $identifier
      * @return string
      */
@@ -496,6 +549,10 @@ abstract class AbstractAdapter implements \Phalcon\Db\Adapter\AdapterInterface, 
      * }
      * ```
      *
+     * @phpstan-param db_bind_params $bindParams
+     * @phpstan-param db_bind_types  $bindTypes
+     *
+     * @phpstan-return db_rows
      * @param string $sqlQuery
      * @param int $fetchMode
      * @param array $bindParams
@@ -522,6 +579,7 @@ abstract class AbstractAdapter implements \Phalcon\Db\Adapter\AdapterInterface, 
      * print_r($invoice);
      * ```
      *
+     * @phpstan-param int|string $column
      * @param string $sqlQuery
      * @param array $placeholders
      * @param mixed $column
@@ -547,6 +605,7 @@ abstract class AbstractAdapter implements \Phalcon\Db\Adapter\AdapterInterface, 
      * print_r($invoice);
      * ```
      *
+     * @todo v7 check the return type, it should be also bool
      * @param string $sqlQuery
      * @param mixed $fetchMode
      * @param array $bindParams
@@ -654,6 +713,7 @@ abstract class AbstractAdapter implements \Phalcon\Db\Adapter\AdapterInterface, 
     /**
      * Return descriptor used to connect to the active database
      *
+     * @phpstan-return db_descriptor
      * @return array
      */
     public function getDescriptor(): array
@@ -708,6 +768,7 @@ abstract class AbstractAdapter implements \Phalcon\Db\Adapter\AdapterInterface, 
     /**
      * Active SQL statement in the object
      *
+     * @phpstan-return db_bind_types
      * @return array
      */
     public function getSQLBindTypes(): array
@@ -756,6 +817,9 @@ abstract class AbstractAdapter implements \Phalcon\Db\Adapter\AdapterInterface, 
      * INSERT INTO `co_invoices` (`inv_title`, `inv_total`) VALUES ("Test Invoice", 100);
      * ```
      *
+     * @phpstan-param db_bind_params      $values
+     * @phpstan-param db_column_names|null $fields
+     * @phpstan-param db_bind_types       $dataTypes
      * @param string $table
      * @param array $values
      * @param mixed $fields
@@ -808,6 +872,7 @@ abstract class AbstractAdapter implements \Phalcon\Db\Adapter\AdapterInterface, 
      * echo $connection->limit("SELECT FROM co_invoices", 5);
      * ```
      *
+     * @phpstan-param db_limit_number $number
      * @param string $sqlQuery
      * @param mixed $number
      * @return string
@@ -825,6 +890,9 @@ abstract class AbstractAdapter implements \Phalcon\Db\Adapter\AdapterInterface, 
      * );
      * ```
      *
+     * @phpstan-return db_table_names
+     *
+     * @todo optimize this
      * @param string|null $schemaName
      * @return array
      */
@@ -841,6 +909,7 @@ abstract class AbstractAdapter implements \Phalcon\Db\Adapter\AdapterInterface, 
      * );
      * ```
      *
+     * @phpstan-return db_table_names
      * @param string|null $schemaName
      * @return array
      */
@@ -862,12 +931,55 @@ abstract class AbstractAdapter implements \Phalcon\Db\Adapter\AdapterInterface, 
     }
 
     /**
+     * Appends an `ON CONFLICT (...) DO UPDATE SET col = excluded.col`
+     * upsert clause to the supplied INSERT statement. Supported by
+     * PostgreSQL and SQLite 3.24+; MySQL throws.
+     *
+     * @phpstan-param db_column_names $conflictColumns
+     * @phpstan-param db_column_names $updateColumns
+     * @param string $sqlQuery
+     * @param array $conflictColumns
+     * @param array $updateColumns
+     * @return string
+     */
+    public function onConflictUpdate(string $sqlQuery, array $conflictColumns, array $updateColumns): string
+    {
+    }
+
+    /**
+     * Refreshes a materialized view (PostgreSQL only). Pass
+     * `concurrent = true` for non-blocking refresh.
+     *
+     * @param string $viewName
+     * @param string|null $schemaName
+     * @param bool $concurrent
+     * @return bool
+     */
+    public function refreshMaterializedView(string $viewName, ?string $schemaName = null, bool $concurrent = false): bool
+    {
+    }
+
+    /**
      * Releases given savepoint
      *
      * @param string $name
      * @return bool
      */
     public function releaseSavepoint(string $name): bool
+    {
+    }
+
+    /**
+     * Appends a RETURNING clause to an INSERT/UPDATE/DELETE SQL statement
+     * and returns the modified SQL. Supported by PostgreSQL and SQLite 3.35+;
+     * MySQL throws (no RETURNING construct). Pass `[""]` for `RETURNING`.
+     *
+     * @phpstan-param db_column_names $columns
+     * @param string $sqlQuery
+     * @param array $columns
+     * @return string
+     */
+    public function returning(string $sqlQuery, array $columns): string
     {
     }
 
@@ -911,24 +1023,6 @@ abstract class AbstractAdapter implements \Phalcon\Db\Adapter\AdapterInterface, 
     }
 
     /**
-     * Enables/disables options in the Database component.
-     *
-     * The flags are stored as process-global `Phalcon\Support\Settings`
-     * (`db.escape_identifiers`, `db.force_casting`) and therefore affect every
-     * connection in the process at once, last-writer-wins. Call this once at
-     * bootstrap; it is not per-connection configuration. Because the
-     * constructor calls `setup()` whenever a descriptor carries an `options`
-     * key, constructing one adapter with `options` can change the SQL another,
-     * already-configured connection generates.
-     *
-     * @param array $options
-     * @return void
-     */
-    public static function setup(array $options): void
-    {
-    }
-
-    /**
      * Returns a SQL modified with a shared-lock clause. The optional
      * `modifier` is passed straight to the dialect (use
      * `Dialect::LOCK_NOWAIT` / `Dialect::LOCK_SKIP_LOCKED` for PostgreSQL).
@@ -942,67 +1036,13 @@ abstract class AbstractAdapter implements \Phalcon\Db\Adapter\AdapterInterface, 
     }
 
     /**
-     * Creates a materialized view (PostgreSQL only - MySQL and SQLite
-     * throw via the dialect).
+     * Check whether the database system support the DEFAULT
+     * keyword (SQLite does not support it)
      *
-     * @param string $viewName
-     * @param array $definition
-     * @param string|null $schemaName
+     * @deprecated Will be removed in a future major release.
      * @return bool
      */
-    public function createMaterializedView(string $viewName, array $definition, ?string $schemaName = null): bool
-    {
-    }
-
-    /**
-     * Drops a materialized view (PostgreSQL only).
-     *
-     * @param string $viewName
-     * @param string|null $schemaName
-     * @param bool $ifExists
-     * @return bool
-     */
-    public function dropMaterializedView(string $viewName, ?string $schemaName = null, bool $ifExists = true): bool
-    {
-    }
-
-    /**
-     * Refreshes a materialized view (PostgreSQL only). Pass
-     * `concurrent = true` for non-blocking refresh.
-     *
-     * @param string $viewName
-     * @param string|null $schemaName
-     * @param bool $concurrent
-     * @return bool
-     */
-    public function refreshMaterializedView(string $viewName, ?string $schemaName = null, bool $concurrent = false): bool
-    {
-    }
-
-    /**
-     * Appends an `ON CONFLICT (...) DO UPDATE SET col = excluded.col`
-     * upsert clause to the supplied INSERT statement. Supported by
-     * PostgreSQL and SQLite 3.24+; MySQL throws.
-     *
-     * @param string $sqlQuery
-     * @param array $conflictColumns
-     * @param array $updateColumns
-     * @return string
-     */
-    public function onConflictUpdate(string $sqlQuery, array $conflictColumns, array $updateColumns): string
-    {
-    }
-
-    /**
-     * Appends a RETURNING clause to an INSERT/UPDATE/DELETE SQL statement
-     * and returns the modified SQL. Supported by PostgreSQL and SQLite 3.35+;
-     * MySQL throws (no RETURNING construct). Pass `[""]` for `RETURNING`.
-     *
-     * @param string $sqlQuery
-     * @param array $columns
-     * @return string
-     */
-    public function returning(string $sqlQuery, array $columns): string
+    public function supportsDefaultValue(): bool
     {
     }
 
@@ -1042,6 +1082,7 @@ abstract class AbstractAdapter implements \Phalcon\Db\Adapter\AdapterInterface, 
      * );
      * ```
      *
+     * @phpstan-return db_table_options
      * @param string $tableName
      * @param string|null $schemaName
      * @return array
@@ -1082,8 +1123,9 @@ abstract class AbstractAdapter implements \Phalcon\Db\Adapter\AdapterInterface, 
      *
      * ```
      *
-     * Warning! If $whereCondition is string it not escaped.
+     * Warning! If $whereCondition is string, it is not escaped.
      *
+     * @throws Exception
      * @param string $table
      * @param mixed $fields
      * @param mixed $values
@@ -1134,17 +1176,6 @@ abstract class AbstractAdapter implements \Phalcon\Db\Adapter\AdapterInterface, 
     }
 
     /**
-     * Check whether the database system support the DEFAULT
-     * keyword (SQLite does not support it)
-     *
-     * @deprecated Will be removed in a future major release.
-     * @return bool
-     */
-    public function supportsDefaultValue(): bool
-    {
-    }
-
-    /**
      * Generates SQL checking for the existence of a schema.view
      *
      * ```php
@@ -1158,6 +1189,16 @@ abstract class AbstractAdapter implements \Phalcon\Db\Adapter\AdapterInterface, 
      * @return bool
      */
     public function viewExists(string $viewName, ?string $schemaName = null): bool
+    {
+    }
+
+    /**
+     * Check if savepoints are supported
+     *
+     * @throws Exception
+     * @return void
+     */
+    protected function checkSavepoints(): void
     {
     }
 
@@ -1181,6 +1222,11 @@ abstract class AbstractAdapter implements \Phalcon\Db\Adapter\AdapterInterface, 
      * @param mixed $dataTypes
      *
      * @return array
+     *
+     * @phpstan-param int|string         $position
+     * @phpstan-param db_bind_types|null $dataTypes
+     *
+     * @phpstan-return db_value_placeholder
      */
     private function buildValuePlaceholder($value, $position, $dataTypes): array
     {

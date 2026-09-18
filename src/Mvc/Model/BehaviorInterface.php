@@ -12,8 +12,6 @@ namespace Phalcon\Mvc\Model;
 use Phalcon\Mvc\ModelInterface;
 
 /**
- * Phalcon\Mvc\Model\BehaviorInterface
- *
  * Interface for Phalcon\Mvc\Model\Behavior
  */
 interface BehaviorInterface
@@ -21,6 +19,7 @@ interface BehaviorInterface
     /**
      * Calls a method when it's missing in the model
      *
+     * @phpstan-param array<array-key, mixed> $arguments
      * @param \Phalcon\Mvc\ModelInterface $model
      * @param string $method
      * @param array $arguments

@@ -58,6 +58,8 @@ interface Cache
      * Obtains multiple cache items by their unique keys.
      *
      * @phpstan-param iterable<array-key, string> $keys
+     *
+     * @phpstan-return iterable<string, mixed>
      * @param mixed $keys
      * @param mixed $defaultValue
      */
@@ -75,6 +77,7 @@ interface Cache
      * Persists data in the cache, uniquely referenced by a key with an optional
      * expiration TTL time.
      *
+     * @phpstan-param DateInterval|int|null $ttl
      * @param string $key
      * @param mixed $value
      * @param mixed $ttl
@@ -86,6 +89,8 @@ interface Cache
      * Persists a set of key => value pairs in the cache, with an optional TTL.
      *
      * @phpstan-param iterable<string, mixed> $values
+     *
+     * @phpstan-param DateInterval|int|null $ttl
      * @param mixed $values
      * @param mixed $ttl
      * @return bool

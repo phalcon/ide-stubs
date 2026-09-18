@@ -13,6 +13,8 @@ use Phalcon\Contracts\Logger\Adapter\Adapter;
 
 /**
  * Canonical contract for Phalcon\Logger\Logger.
+ *
+ * @phpstan-import-type logger_context from LoggerTypes
  */
 interface Logger
 {
@@ -26,6 +28,8 @@ interface Logger
      * @param array  $context
      *
      * @return void
+     *
+     * @phpstan-param logger_context $context
      */
     public function alert(string $message, array $context = []): void;
 
@@ -38,6 +42,8 @@ interface Logger
      * @param array  $context
      *
      * @return void
+     *
+     * @phpstan-param logger_context $context
      */
     public function critical(string $message, array $context = []): void;
 
@@ -48,6 +54,8 @@ interface Logger
      * @param array  $context
      *
      * @return void
+     *
+     * @phpstan-param logger_context $context
      */
     public function debug(string $message, array $context = []): void;
 
@@ -58,6 +66,8 @@ interface Logger
      * @param array  $context
      *
      * @return void
+     *
+     * @phpstan-param logger_context $context
      */
     public function emergency(string $message, array $context = []): void;
 
@@ -69,6 +79,8 @@ interface Logger
      * @param array  $context
      *
      * @return void
+     *
+     * @phpstan-param logger_context $context
      */
     public function error(string $message, array $context = []): void;
 
@@ -111,6 +123,8 @@ interface Logger
      * @param array  $context
      *
      * @return void
+     *
+     * @phpstan-param logger_context $context
      */
     public function info(string $message, array $context = []): void;
 
@@ -125,6 +139,8 @@ interface Logger
      * @param array  $context
      *
      * @return void
+     *
+     * @phpstan-param logger_context $context
      */
     public function log($level, string $message, array $context = []): void;
 
@@ -135,6 +151,8 @@ interface Logger
      * @param array  $context
      *
      * @return void
+     *
+     * @phpstan-param logger_context $context
      */
     public function notice(string $message, array $context = []): void;
 
@@ -145,6 +163,8 @@ interface Logger
      * @param array  $context
      *
      * @return void
+     *
+     * @phpstan-param logger_context $context
      */
     public function trace(string $message, array $context = []): void;
 
@@ -158,6 +178,8 @@ interface Logger
      * @param array  $context
      *
      * @return void
+     *
+     * @phpstan-param logger_context $context
      */
     public function warning(string $message, array $context = []): void;
 }

@@ -9,6 +9,7 @@
  */
 namespace Phalcon\Mvc;
 
+use Phalcon\Contracts\Mvc\MvcTypes;
 use Phalcon\Di\AbstractInjectionAware;
 use Phalcon\Di\DiInterface;
 use Phalcon\Mvc\Router\RouteInterface;
@@ -36,26 +37,26 @@ use Phalcon\Support\Helper\Str\ReduceSlashes;
  *     ]
  * );
  * ```
+ *
+ * @phpstan-import-type mvc_router_paths from MvcTypes
+ * @phpstan-import-type mvc_router_reversed_paths from MvcTypes
  */
 class Url extends AbstractInjectionAware implements \Phalcon\Mvc\Url\UrlInterface
 {
     /**
-     * @var null | string
+     * @var string | null
      */
     protected $basePath = null;
 
     /**
-     * @var null | string
+     * @var string | null
      */
     protected $baseUri = null;
 
-    /**
-     * @var RouterInterface | null
-     */
-    protected $router = null;
+    protected ?\Phalcon\Mvc\RouterInterface $router = null;
 
     /**
-     * @var null | string
+     * @var string | null
      */
     protected $staticBaseUri = null;
 

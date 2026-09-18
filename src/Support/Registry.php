@@ -266,12 +266,13 @@ final class Registry extends \Phalcon\Support\Collection
      *
      * The default string uses the following options for json_encode
      *
-     * JSON_HEX_TAG, JSON_HEX_APOS, JSON_HEX_AMP, JSON_HEX_QUOT, JSON_UNESCAPED_SLASHES
+     * JSON_HEX_TAG, JSON_HEX_APOS, JSON_HEX_AMP, JSON_HEX_QUOT,
+     * JSON_UNESCAPED_SLASHES, JSON_THROW_ON_ERROR
      *
      * @param int $options
      * @return string
      */
-    final public function toJson(int $options = 79): string
+    final public function toJson(int $options = 4194383): string
     {
     }
 

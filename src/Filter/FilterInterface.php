@@ -9,8 +9,12 @@
  */
 namespace Phalcon\Filter;
 
+use Phalcon\Contracts\Filter\FilterTypes;
+
 /**
  * Lazy loads, stores and exposes sanitizer objects
+ *
+ * @phpstan-import-type filter_sanitizers from FilterTypes
  */
 interface FilterInterface
 {
@@ -25,6 +29,8 @@ interface FilterInterface
      * @param mixed $value
      * @param mixed $sanitizers
      * @param bool  $noRecursive
+     *
+     * @phpstan-param filter_sanitizers|string $sanitizers
      *
      * @return mixed
      */

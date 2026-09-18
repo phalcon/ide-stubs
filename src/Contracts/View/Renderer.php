@@ -21,6 +21,7 @@ interface Renderer
     /**
      * Renders the template and returns the output.
      *
+     * @phpstan-param array<string, mixed> $params
      * @param string $path
      * @param array $params
      * @return string

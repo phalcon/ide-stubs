@@ -9,6 +9,7 @@
  */
 namespace Phalcon\Flash;
 
+use Phalcon\Contracts\Flash\FlashTypes;
 use Phalcon\Flash\Exceptions\SessionServiceUnavailable;
 use Phalcon\Html\Escaper\EscaperInterface;
 use Phalcon\Session\ManagerInterface;
@@ -21,6 +22,8 @@ use Phalcon\Session\ManagerInterface;
  * Class Session
  *
  * @package Phalcon\Flash
+ *
+ * @phpstan-import-type flash_session_messages from FlashTypes
  */
 class Session extends \Phalcon\Flash\AbstractFlash
 {
@@ -29,17 +32,14 @@ class Session extends \Phalcon\Flash\AbstractFlash
      */
     const string SESSION_KEY = '_flashMessages';
 
-    /**
-     * @var string
-     */
-    protected $sessionKey = '';
+    protected string $sessionKey = '';
 
     /**
      * Session constructor.
      *
-     * @param EscaperInterface|null $escaper
-     * @param ManagerInterface|null $session
-     * @param string|null           $sessionKey
+     * @param \Phalcon\Html\Escaper\EscaperInterface|null $escaper
+     * @param \Phalcon\Session\ManagerInterface|null $session
+     * @param string|null $sessionKey
      */
     public function __construct(?\Phalcon\Html\Escaper\EscaperInterface $escaper = null, ?\Phalcon\Session\ManagerInterface $session = null, ?string $sessionKey = null)
     {
@@ -58,75 +58,14 @@ class Session extends \Phalcon\Flash\AbstractFlash
     /**
      * Returns the messages in the session flasher
      *
-     * @param mixed|null $type
-     * @param bool       $remove
+     * @param string|null $type
+     * @param bool        $remove
      *
-     * @return array
+     * @phpstan-return ($type is null ? flash_session_messages : list<mixed>)
      * @throws Exception
+     * @return array
      */
     public function getMessages($type = null, bool $remove = true): array
-    {
-    }
-
-    /**
-     * Checks whether there are messages
-     *
-     * @param string|null $type
-     *
-     * @return bool
-     * @throws Exception
-     */
-    public function has(?string $type = null): bool
-    {
-    }
-
-    /**
-     * Adds a message to the session flasher
-     *
-     * @param string $type
-     * @param mixed  $message
-     *
-     * @return string|null
-     * @throws Exception
-     */
-    public function message(string $type, $message): string|null
-    {
-    }
-
-    /**
-     * Prints the messages in the session flasher
-     *
-     * @param bool $remove
-     *
-     * @throws Exception
-     * @return void
-     */
-    public function output(bool $remove = true): void
-    {
-    }
-
-    /**
-     * Returns the messages stored in session
-     *
-     * @param bool       $remove
-     * @param mixed|null $type
-     *
-     * @return array
-     * @throws Exception
-     */
-    protected function getSessionMessages(bool $remove, ?string $type = null): array
-    {
-    }
-
-    /**
-     * Stores the messages in session
-     *
-     * @param array $messages
-     *
-     * @return array
-     * @throws Exception
-     */
-    protected function setSessionMessages(array $messages): array
     {
     }
 
@@ -137,6 +76,68 @@ class Session extends \Phalcon\Flash\AbstractFlash
      * @throws Exception
      */
     public function getSessionService(): ManagerInterface
+    {
+    }
+
+    /**
+     * Checks whether there are messages
+     *
+     * @throws Exception
+     * @param string|null $type
+     * @return bool
+     */
+    public function has(?string $type = null): bool
+    {
+    }
+
+    /**
+     * Adds a message to the session flasher
+     *
+     * @throws Exception
+     * @param string $type
+     * @param mixed $message
+     * @return string|null
+     */
+    public function message(string $type, $message): string|null
+    {
+    }
+
+    /**
+     * Prints the messages in the session flasher
+     *
+     * @throws Exception
+     * @param bool $remove
+     * @return void
+     */
+    public function output(bool $remove = true): void
+    {
+    }
+
+    /**
+     * Returns the messages stored in session
+     *
+     * @param bool        $remove
+     * @param string|null $type
+     *
+     * @phpstan-return ($type is null ? flash_session_messages : list<mixed>)
+     * @throws Exception
+     * @return array
+     */
+    protected function getSessionMessages(bool $remove, ?string $type = null): array
+    {
+    }
+
+    /**
+     * Stores the messages in session
+     *
+     * @phpstan-param  flash_session_messages $messages
+     * @phpstan-return flash_session_messages
+     *
+     * @throws Exception
+     * @param array $messages
+     * @return array
+     */
+    protected function setSessionMessages(array $messages): array
     {
     }
 }

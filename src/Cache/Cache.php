@@ -91,6 +91,7 @@ class Cache extends \Phalcon\Cache\AbstractCache
      * Persists data in the cache, uniquely referenced by a key with an optional
      * expiration TTL time.
      *
+     * @phpstan-param DateInterval|int|null $ttl
      * @param string $key
      * @param mixed $value
      * @param mixed $ttl
@@ -104,6 +105,8 @@ class Cache extends \Phalcon\Cache\AbstractCache
      * Persists a set of key => value pairs in the cache, with an optional TTL.
      *
      * @phpstan-param iterable<string, mixed> $values
+     *
+     * @phpstan-param DateInterval|int|null $ttl
      * @param mixed $values
      * @param mixed $ttl
      * @return bool

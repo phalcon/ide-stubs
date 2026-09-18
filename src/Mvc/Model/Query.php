@@ -10,6 +10,7 @@
 namespace Phalcon\Mvc\Model;
 
 use Phalcon\Cache\CacheInterface;
+use Phalcon\Contracts\Mvc\MvcTypes;
 use Phalcon\Db\Column;
 use Phalcon\Db\RawValue;
 use Phalcon\Db\ResultInterface;
@@ -78,8 +79,6 @@ use Phalcon\Mvc\Model\Query\Lang;
 use Phalcon\Support\Settings;
 
 /**
- * Phalcon\Mvc\Model\Query
- *
  * This class takes a PHQL intermediate representation and executes it.
  *
  * ```php
@@ -126,6 +125,12 @@ use Phalcon\Support\Settings;
  * $queryWithOutTransaction = new Query($phql, $di);
  * $resultWithOutEntries = $queryWithTransaction->execute();
  * ```
+ *
+ * @phpstan-import-type mvc_model_bind_params from MvcTypes
+ * @phpstan-import-type mvc_model_bind_types from MvcTypes
+ * @phpstan-import-type mvc_model_cache_options from MvcTypes
+ * @phpstan-import-type mvc_query_ir from MvcTypes
+ * @phpstan-import-type mvc_query_ast from MvcTypes
  */
 class Query implements \Phalcon\Mvc\Model\QueryInterface, \Phalcon\Di\InjectionAwareInterface
 {
@@ -152,16 +157,22 @@ class Query implements \Phalcon\Mvc\Model\QueryInterface, \Phalcon\Di\InjectionA
     /**
      * @var array
      * TODO: Add default value, instead of null, also remove type check
+     *
+     * @phpstan-var mvc_query_ast
      */
     protected $ast;
 
     /**
      * @var array
+     *
+     * @phpstan-var mvc_model_bind_params
      */
     protected $bindParams = [];
 
     /**
      * @var array
+     *
+     * @phpstan-var mvc_model_bind_types
      */
     protected $bindTypes = [];
 
@@ -172,26 +183,26 @@ class Query implements \Phalcon\Mvc\Model\QueryInterface, \Phalcon\Di\InjectionA
 
     /**
      * @var array|null
+     *
+     * @phpstan-var mvc_model_cache_options|null
      */
     protected $cacheOptions;
 
-    /**
-     * @var DiInterface|null
-     */
-    protected $container = null;
+    protected ?\Phalcon\Di\DiInterface $container = null;
 
-    /**
-     * @var bool
-     */
-    protected $enableImplicitJoins;
+    protected bool $enableImplicitJoins;
 
     /**
      * @var array
+     *
+     * @phpstan-var mvc_query_ir|null
      */
     protected $intermediate;
 
     /**
      * @var array|null
+     *
+     * @phpstan-var array<array-key, mvc_query_ir>|null
      */
     protected static $internalPhqlCache;
 
@@ -206,98 +217,75 @@ class Query implements \Phalcon\Mvc\Model\QueryInterface, \Phalcon\Di\InjectionA
     protected $metaData = null;
 
     /**
-     * @var array
+     * @phpstan-var array<string, string>
      */
-    protected $models = [];
+    protected array $models = [];
 
     /**
-     * @var array
+     * @phpstan-var array<string, ModelInterface>
      */
-    protected $modelsInstances = [];
+    protected array $modelsInstances = [];
 
-    /**
-     * @var int
-     */
-    protected $nestingLevel = -1;
+    protected int $nestingLevel = -1;
 
     /**
      * @var string|null
      */
     protected $phql = null;
 
-    /**
-     * @var string
-     */
-    protected $resultsetRowClass = '';
+    protected string $resultsetRowClass = '';
+
+    protected bool $sharedLock = false;
 
     /**
-     * @var bool
+     * @phpstan-var array<string, string>
      */
-    protected $sharedLock = false;
+    protected array $sqlAliases = [];
 
     /**
-     * @var array
+     * @phpstan-var array<string, string>
      */
-    protected $sqlAliases = [];
+    protected array $sqlAliasesModels = [];
 
     /**
-     * @var array
+     * @phpstan-var array<string, ModelInterface>
      */
-    protected $sqlAliasesModels = [];
+    protected array $sqlAliasesModelsInstances = [];
 
     /**
-     * @var array
+     * @phpstan-var array<int, array<string, bool>>
      */
-    protected $sqlAliasesModelsInstances = [];
+    protected array $sqlColumnAliases = [];
 
     /**
-     * @var array
+     * @phpstan-var array<string, string>
      */
-    protected $sqlColumnAliases = [];
-
-    /**
-     * @var array
-     */
-    protected $sqlModelsAliases = [];
+    protected array $sqlModelsAliases = [];
 
     /**
      * TransactionInterface so that the query can wrap a transaction
      * around batch updates and intermediate selects within the transaction.
      * however if a model got a transaction set inside it will use the local
      * transaction instead of this one
-     *
-     * @var TransactionInterface|null
      */
-    protected $transaction = null;
+    protected ?TransactionInterface $transaction = null;
 
     /**
      * @var int|null
      */
     protected $type;
 
-    /**
-     * @var bool
-     */
-    protected $uniqueRow = false;
+    protected bool $uniqueRow = false;
 
     /**
      * Phalcon\Mvc\Model\Query constructor
      *
      * @param string|null $phql
      * @param DiInterface|null $container
-     * @param array $options
+     * @param array $options *
+     * @phpstan-param array<string, mixed> $options
      */
     public function __construct(?string $phql = null, ?\Phalcon\Di\DiInterface $container = null, array $options = [])
-    {
-    }
-
-    /**
-     * Sets the cache parameters of the query
-     *
-     * @param array $cacheOptions
-     * @return QueryInterface
-     */
-    public function cache(array $cacheOptions): QueryInterface
     {
     }
 
@@ -311,9 +299,23 @@ class Query implements \Phalcon\Mvc\Model\QueryInterface, \Phalcon\Di\InjectionA
     }
 
     /**
+     * Sets the cache parameters of the query
+     *
+     * @phpstan-param mvc_model_cache_options $cacheOptions
+     * @param array $cacheOptions
+     * @return QueryInterface
+     */
+    public function cache(array $cacheOptions): QueryInterface
+    {
+    }
+
+    /**
      * Executes a parsed PHQL statement
      *
      * @return mixed
+     *
+     * @phpstan-param mvc_model_bind_params $bindParams
+     * @phpstan-param mvc_model_bind_types $bindTypes
      * @param array $bindParams
      * @param array $bindTypes
      */
@@ -324,6 +326,7 @@ class Query implements \Phalcon\Mvc\Model\QueryInterface, \Phalcon\Di\InjectionA
     /**
      * Returns default bind params
      *
+     * @phpstan-return mvc_model_bind_params
      * @return array
      */
     public function getBindParams(): array
@@ -333,6 +336,7 @@ class Query implements \Phalcon\Mvc\Model\QueryInterface, \Phalcon\Di\InjectionA
     /**
      * Returns default bind types
      *
+     * @phpstan-return mvc_model_bind_types
      * @return array
      */
     public function getBindTypes(): array
@@ -351,6 +355,7 @@ class Query implements \Phalcon\Mvc\Model\QueryInterface, \Phalcon\Di\InjectionA
     /**
      * Returns the current cache options
      *
+     * @phpstan-return mvc_model_cache_options
      * @return array
      */
     public function getCacheOptions(): array
@@ -369,6 +374,7 @@ class Query implements \Phalcon\Mvc\Model\QueryInterface, \Phalcon\Di\InjectionA
     /**
      * Returns the intermediate representation of the PHQL statement
      *
+     * @phpstan-return mvc_query_ir
      * @return array
      */
     public function getIntermediate(): array
@@ -378,6 +384,8 @@ class Query implements \Phalcon\Mvc\Model\QueryInterface, \Phalcon\Di\InjectionA
     /**
      * Executes the query returning the first result
      *
+     * @phpstan-param mvc_model_bind_params $bindParams
+     * @phpstan-param mvc_model_bind_types $bindTypes
      * @param array $bindParams
      * @param array $bindTypes
      * @return ModelInterface
@@ -398,6 +406,7 @@ class Query implements \Phalcon\Mvc\Model\QueryInterface, \Phalcon\Di\InjectionA
      * ]
      * ```
      *
+     * @phpstan-return array<string, mixed>
      * @return array
      */
     public function getSql(): array
@@ -446,6 +455,7 @@ class Query implements \Phalcon\Mvc\Model\QueryInterface, \Phalcon\Di\InjectionA
      * generating another intermediate representation that could be executed by
      * Phalcon\Mvc\Model\Query
      *
+     * @phpstan-return mvc_query_ir
      * @return array
      */
     public function parse(): array
@@ -455,6 +465,7 @@ class Query implements \Phalcon\Mvc\Model\QueryInterface, \Phalcon\Di\InjectionA
     /**
      * Set default bind parameters
      *
+     * @phpstan-param mvc_model_bind_params $bindParams
      * @param array $bindParams
      * @param bool $merge
      * @return QueryInterface
@@ -466,6 +477,7 @@ class Query implements \Phalcon\Mvc\Model\QueryInterface, \Phalcon\Di\InjectionA
     /**
      * Set default bind parameters
      *
+     * @phpstan-param mvc_model_bind_types $bindTypes
      * @param array $bindTypes
      * @param bool $merge
      * @return QueryInterface
@@ -487,10 +499,23 @@ class Query implements \Phalcon\Mvc\Model\QueryInterface, \Phalcon\Di\InjectionA
     /**
      * Allows to set the IR to be executed
      *
+     * @phpstan-param mvc_query_ir $intermediate
      * @param array $intermediate
      * @return QueryInterface
      */
     public function setIntermediate(array $intermediate): QueryInterface
+    {
+    }
+
+    /**
+     * Sets the class used to hydrate rows that are not mapped to a model
+     * (custom columns/joins). The class must be a subclass of
+     * Phalcon\Mvc\Model\Row.
+     *
+     * @param string $resultsetRowClass
+     * @return QueryInterface
+     */
+    public function setResultsetRowClass(string $resultsetRowClass): QueryInterface
     {
     }
 
@@ -525,18 +550,6 @@ class Query implements \Phalcon\Mvc\Model\QueryInterface, \Phalcon\Di\InjectionA
     }
 
     /**
-     * Sets the class used to hydrate rows that are not mapped to a model
-     * (custom columns/joins). The class must be a subclass of
-     * Phalcon\Mvc\Model\Row.
-     *
-     * @param string $resultsetRowClass
-     * @return QueryInterface
-     */
-    public function setResultsetRowClass(string $resultsetRowClass): QueryInterface
-    {
-    }
-
-    /**
      * Tells to the query if only the first row in the resultset must be
      * returned
      *
@@ -551,6 +564,9 @@ class Query implements \Phalcon\Mvc\Model\QueryInterface, \Phalcon\Di\InjectionA
      * Executes the DELETE intermediate representation producing a
      * Phalcon\Mvc\Model\Query\Status
      *
+     * @phpstan-param mvc_query_ir $intermediate
+     * @phpstan-param mvc_model_bind_params $bindParams
+     * @phpstan-param mvc_model_bind_types $bindTypes
      * @param array $intermediate
      * @param array $bindParams
      * @param array $bindTypes
@@ -564,6 +580,9 @@ class Query implements \Phalcon\Mvc\Model\QueryInterface, \Phalcon\Di\InjectionA
      * Executes the INSERT intermediate representation producing a
      * Phalcon\Mvc\Model\Query\Status
      *
+     * @phpstan-param mvc_query_ir $intermediate
+     * @phpstan-param mvc_model_bind_params $bindParams
+     * @phpstan-param mvc_model_bind_types $bindTypes
      * @param array $intermediate
      * @param array $bindParams
      * @param array $bindTypes
@@ -577,6 +596,10 @@ class Query implements \Phalcon\Mvc\Model\QueryInterface, \Phalcon\Di\InjectionA
      * Executes the SELECT intermediate representation producing a
      * Phalcon\Mvc\Model\Resultset
      *
+     * @phpstan-param mvc_query_ir $intermediate
+     * @phpstan-param mvc_model_bind_params $bindParams
+     * @phpstan-param mvc_model_bind_types $bindTypes
+     * @phpstan-return array<array-key, mixed>|ResultsetInterface
      * @param array $intermediate
      * @param array $bindParams
      * @param array $bindTypes
@@ -591,6 +614,9 @@ class Query implements \Phalcon\Mvc\Model\QueryInterface, \Phalcon\Di\InjectionA
      * Executes the UPDATE intermediate representation producing a
      * Phalcon\Mvc\Model\Query\Status
      *
+     * @phpstan-param mvc_query_ir $intermediate
+     * @phpstan-param mvc_model_bind_params $bindParams
+     * @phpstan-param mvc_model_bind_types $bindTypes
      * @param array $intermediate
      * @param array $bindParams
      * @param array $bindTypes
@@ -603,6 +629,8 @@ class Query implements \Phalcon\Mvc\Model\QueryInterface, \Phalcon\Di\InjectionA
     /**
      * Resolves an expression in a single call argument
      *
+     * @phpstan-param array<array-key, mixed> $argument
+     * @phpstan-return array<array-key, mixed>
      * @param array $argument
      * @return array
      */
@@ -613,6 +641,8 @@ class Query implements \Phalcon\Mvc\Model\QueryInterface, \Phalcon\Di\InjectionA
     /**
      * Resolves an expression in a single call argument
      *
+     * @phpstan-param array<array-key, mixed> $expr
+     * @phpstan-return array<string, mixed>
      * @param array $expr
      * @return array
      */
@@ -623,6 +653,8 @@ class Query implements \Phalcon\Mvc\Model\QueryInterface, \Phalcon\Di\InjectionA
     /**
      * Resolves an expression from its intermediate code into an array
      *
+     * @phpstan-param array<array-key, mixed> $expr
+     * @phpstan-return array<array-key, mixed>
      * @param array $expr
      * @param bool $quoting
      * @return array
@@ -634,6 +666,8 @@ class Query implements \Phalcon\Mvc\Model\QueryInterface, \Phalcon\Di\InjectionA
     /**
      * Resolves an expression in a single call argument
      *
+     * @phpstan-param array<array-key, mixed> $expr
+     * @phpstan-return array<string, mixed>
      * @param array $expr
      * @return array
      */
@@ -644,6 +678,8 @@ class Query implements \Phalcon\Mvc\Model\QueryInterface, \Phalcon\Di\InjectionA
     /**
      * Returns a processed group clause for a SELECT statement
      *
+     * @phpstan-param array<array-key, mixed> $group
+     * @phpstan-return list<array<array-key, mixed>>
      * @param array $group
      * @return array
      */
@@ -654,6 +690,7 @@ class Query implements \Phalcon\Mvc\Model\QueryInterface, \Phalcon\Di\InjectionA
     /**
      * Resolves a JOIN clause checking if the associated models exist
      *
+     * @phpstan-param array<array-key, mixed> $join
      * @param ManagerInterface $manager
      * @param array $join
      * @return array
@@ -663,19 +700,11 @@ class Query implements \Phalcon\Mvc\Model\QueryInterface, \Phalcon\Di\InjectionA
     }
 
     /**
-     * Resolves a JOIN type
-     *
-     * @param array $join
-     * @return string
-     */
-    final protected function getJoinType(array $join): string
-    {
-    }
-
-    /**
      * Processes the JOINs in the query returning an internal representation for
      * the database dialect
      *
+     * @phpstan-param mvc_query_ir $select
+     * @phpstan-return array<array-key, mixed>
      * @param array $select
      * @return array
      */
@@ -684,8 +713,21 @@ class Query implements \Phalcon\Mvc\Model\QueryInterface, \Phalcon\Di\InjectionA
     }
 
     /**
+     * Resolves a JOIN type
+     *
+     * @phpstan-param array<array-key, mixed> $join
+     * @param array $join
+     * @return string
+     */
+    final protected function getJoinType(array $join): string
+    {
+    }
+
+    /**
      * Returns a processed limit clause for a SELECT statement
      *
+     * @phpstan-param array<array-key, mixed> $limitClause
+     * @phpstan-return array<string, mixed>
      * @param array $limitClause
      * @return array
      */
@@ -696,7 +738,9 @@ class Query implements \Phalcon\Mvc\Model\QueryInterface, \Phalcon\Di\InjectionA
     /**
      * Resolves joins involving many-to-many relations
      *
-     * @param string $joinSource
+     * @param string $joinSource *
+     * @phpstan-param array<array-key, mixed>|string $joinSource
+     * @phpstan-return array<array-key, mixed>
      * @param string $joinType
      * @param string $modelAlias
      * @param string $joinAlias
@@ -710,7 +754,8 @@ class Query implements \Phalcon\Mvc\Model\QueryInterface, \Phalcon\Di\InjectionA
     /**
      * Returns a processed order clause for a SELECT statement
      *
-     * @param array|string $order
+     * @param array|string $order *
+     * @phpstan-return array<array-key, mixed>
      * @return array
      */
     final protected function getOrderClause($order): array
@@ -721,6 +766,8 @@ class Query implements \Phalcon\Mvc\Model\QueryInterface, \Phalcon\Di\InjectionA
      * Replaces the model's name to its source name in a qualified-name
      * expression
      *
+     * @phpstan-param array<array-key, mixed> $expr
+     * @phpstan-return array<string, mixed>
      * @param array $expr
      * @return array
      */
@@ -732,6 +779,9 @@ class Query implements \Phalcon\Mvc\Model\QueryInterface, \Phalcon\Di\InjectionA
      * Gets the read connection from the model if there is no transaction set
      * inside the query object
      *
+     * @phpstan-param mvc_query_ir|null $intermediate
+     * @phpstan-param mvc_model_bind_params $bindParams
+     * @phpstan-param mvc_model_bind_types $bindTypes
      * @param \Phalcon\Mvc\ModelInterface $model
      * @param array|null $intermediate
      * @param array $bindParams
@@ -746,6 +796,10 @@ class Query implements \Phalcon\Mvc\Model\QueryInterface, \Phalcon\Di\InjectionA
      * Query the records on which the UPDATE/DELETE operation will be done
      *
      * @return ResultsetInterface
+     *
+     * @phpstan-param mvc_query_ir $intermediate
+     * @phpstan-param mvc_model_bind_params $bindParams
+     * @phpstan-param mvc_model_bind_types $bindTypes
      * @param \Phalcon\Mvc\ModelInterface $model
      * @param array $intermediate
      * @param array $bindParams
@@ -759,6 +813,8 @@ class Query implements \Phalcon\Mvc\Model\QueryInterface, \Phalcon\Di\InjectionA
      * Resolves a column from its intermediate representation into an array
      * used to determine if the resultset produced is simple or complex
      *
+     * @phpstan-param array<array-key, mixed> $column
+     * @phpstan-return array<array-key, mixed>
      * @param array $column
      * @return array
      */
@@ -769,7 +825,8 @@ class Query implements \Phalcon\Mvc\Model\QueryInterface, \Phalcon\Di\InjectionA
     /**
      * Resolves joins involving has-one/belongs-to/has-many relations
      *
-     * @param string $joinSource
+     * @param string $joinSource *
+     * @phpstan-return array<string, mixed>
      * @param string $joinType
      * @param string $modelAlias
      * @param string $joinAlias
@@ -784,6 +841,9 @@ class Query implements \Phalcon\Mvc\Model\QueryInterface, \Phalcon\Di\InjectionA
      * Resolves a table in a SELECT statement checking if the model exists
      *
      * @return string
+     *
+     * @phpstan-param array<array-key, mixed> $qualifiedName
+     * @phpstan-return array<array-key, mixed>|string
      * @param ManagerInterface $manager
      * @param array $qualifiedName
      */
@@ -795,6 +855,9 @@ class Query implements \Phalcon\Mvc\Model\QueryInterface, \Phalcon\Di\InjectionA
      * Gets the write connection from the model if there is no transaction
      * inside the query object
      *
+     * @phpstan-param mvc_query_ir|null $intermediate
+     * @phpstan-param mvc_model_bind_params $bindParams
+     * @phpstan-param mvc_model_bind_types $bindTypes
      * @param \Phalcon\Mvc\ModelInterface $model
      * @param array|null $intermediate
      * @param array $bindParams
@@ -809,6 +872,7 @@ class Query implements \Phalcon\Mvc\Model\QueryInterface, \Phalcon\Di\InjectionA
      * Analyzes a DELETE intermediate code and produces an array to be executed
      * later
      *
+     * @phpstan-return mvc_query_ir
      * @return array
      */
     final protected function prepareDelete(): array
@@ -819,6 +883,7 @@ class Query implements \Phalcon\Mvc\Model\QueryInterface, \Phalcon\Di\InjectionA
      * Analyzes an INSERT intermediate code and produces an array to be executed
      * later
      *
+     * @phpstan-return mvc_query_ir
      * @return array
      */
     final protected function prepareInsert(): array
@@ -828,6 +893,8 @@ class Query implements \Phalcon\Mvc\Model\QueryInterface, \Phalcon\Di\InjectionA
     /**
      * Analyzes a SELECT intermediate code and produces an array to be executed later
      *
+     * @phpstan-param mvc_query_ast|null $ast
+     * @phpstan-return mvc_query_ir
      * @param mixed $ast
      * @param bool $merge
      * @return array
@@ -840,6 +907,7 @@ class Query implements \Phalcon\Mvc\Model\QueryInterface, \Phalcon\Di\InjectionA
      * Analyzes an UPDATE intermediate code and produces an array to be executed
      * later
      *
+     * @phpstan-return mvc_query_ir
      * @return array
      */
     final protected function prepareUpdate(): array
@@ -853,6 +921,8 @@ class Query implements \Phalcon\Mvc\Model\QueryInterface, \Phalcon\Di\InjectionA
      * runtime (for instance via setSchema()/setSource() in initialize())
      * would otherwise see the value frozen at first parse. See #17020.
      *
+     * @phpstan-param mvc_query_ir $irPhql
+     * @phpstan-return mvc_query_ir
      * @param array $irPhql
      * @return array
      */

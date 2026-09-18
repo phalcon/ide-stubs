@@ -69,6 +69,7 @@ abstract class AbstractCache implements \Phalcon\Cache\CacheInterface, \Phalcon\
      * Persists data in the cache, uniquely referenced by a key with an
      * optional expiration TTL time.
      *
+     * @phpstan-param DateInterval|int|null $ttl
      * @param string $key
      * @param mixed $value
      * @param mixed $ttl
@@ -165,6 +166,7 @@ abstract class AbstractCache implements \Phalcon\Cache\CacheInterface, \Phalcon\
      * Persists data in the cache, uniquely referenced by a key with an optional
      * expiration TTL time.
      *
+     * @phpstan-param DateInterval|int|null $ttl
      * @param string $key
      * @param mixed $value
      * @param mixed $ttl

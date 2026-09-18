@@ -123,14 +123,13 @@ class Imagick extends \Phalcon\Image\Adapter\AbstractAdapter
     /**
      * Sets the limit for a particular resource in megabytes
      *
-     * @param int $type
-     * @param int $limit
-     *
-     * @return void
      * @throws Exception
      * @throws ImagickException
      *
      * @link https://www.php.net/manual/en/imagick.constants.php#imagick.constants.resourcetypes
+     * @param int $type
+     * @param int $limit
+     * @return void
      */
     public function setResourceLimit(int $type, int $limit): void
     {
@@ -322,8 +321,8 @@ class Imagick extends \Phalcon\Image\Adapter\AbstractAdapter
     /**
      * Checks if Imagick is enabled
      *
-     * @return void
      * @throws Exception
+     * @return void
      */
     private function check(): void
     {

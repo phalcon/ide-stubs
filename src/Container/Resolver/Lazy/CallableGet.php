@@ -9,6 +9,8 @@
  */
 namespace Phalcon\Container\Resolver\Lazy;
 
+use Phalcon\Contracts\Container\Service\Collection;
+
 /**
  * This file is part of the Phalcon Framework.
  *
@@ -40,12 +42,12 @@ namespace Phalcon\Container\Resolver\Lazy;
 class CallableGet extends \Phalcon\Container\Resolver\Lazy\Lazy
 {
     /**
-     * @var string|Lazy
+     * @var Lazy|string
      */
     protected $id;
 
     /**
-     * @param string|Lazy $id
+     * @param Lazy|string $id
      */
     public function __construct($id)
     {
@@ -55,7 +57,6 @@ class CallableGet extends \Phalcon\Container\Resolver\Lazy\Lazy
      * Resolve to a closure on a get()
      *
      * @param object $ioc
-     *
      * @return mixed
      */
     public function resolve($ioc): mixed

@@ -11,6 +11,7 @@ namespace Phalcon\Events;
 
 use Closure;
 use Phalcon\Contracts\Events\Enumerable;
+use Phalcon\Contracts\Events\EventsTypes;
 use Phalcon\Contracts\Events\Stoppable;
 use Phalcon\Contracts\Events\Subscriber;
 use Phalcon\Events\Exceptions\InvalidEventHandler;
@@ -23,57 +24,20 @@ use Phalcon\Events\Exceptions\NoListenersForEvent;
  * needed, the normal flow of operation. With the EventsManager the developer
  * can create hooks or plugins that will offer monitoring of data, manipulation,
  * conditional execution and much more.
+ *
+ * @phpstan-import-type events_method_exists_cache from EventsTypes
+ * @phpstan-import-type events_name_cache from EventsTypes
+ * @phpstan-import-type events_queue from EventsTypes
+ * @phpstan-import-type events_storage from EventsTypes
+ * @phpstan-import-type events_subscriber_events_cache from EventsTypes
+ * @phpstan-import-type events_subscriber_listener from EventsTypes
+ * @phpstan-import-type events_subscribers from EventsTypes
  */
 class Manager implements \Phalcon\Events\ManagerInterface, \Phalcon\Contracts\Events\Enumerable
 {
-    /**
-     * @var bool
-     */
-    protected $collect = false;
+    protected bool $collect = false;
 
-    /**
-     * @var bool
-     */
-    protected $enablePriorities = false;
-
-    /**
-     * Re-entrancy depth of fire()/fireAll(). 0 means no fire is in
-     * progress. Incremented on every fire entry, decremented on exit.
-     * Used to keep nested fire() calls from clobbering the outer
-     * caller's `$this->responses` accumulator.
-     *
-     * @var int
-     */
-    protected $fireDepth = 0;
-
-    /**
-     * Manager-level kill switch. When true, every fire()/fireAll()/
-     * fireQueue() call returns immediately (null or empty array) without
-     * dispatching. Cleared by resume(). Survives across fire() calls,
-     * unlike Event::stop() which only stops the current dispatch chain.
-     *
-     * @var bool
-     */
-    protected $halted = false;
-
-    /**
-     * When true, a listener returning literal `false` (with the event's
-     * `cancelable` flag on) short-circuits the dispatch loop and pins
-     * the fire() return as `false`. Default off - preserves the pre-5.13
-     * "last-wins" contract for codebases that rely on later listeners
-     * overriding an earlier false return [#17019].
-     *
-     * @var bool
-     */
-    protected $stopOnFalse = false;
-
-    /**
-     * When true, fire()/fireAll() throw on dispatch of an event that
-     * has zero matching listeners. Catches typos in dev. Default off.
-     *
-     * @var bool
-     */
-    protected $strict = false;
+    protected bool $enablePriorities = false;
 
     /**
      * Parsed-eventType cache. Memoizes the strpos + substr work done in
@@ -87,39 +51,9 @@ class Manager implements \Phalcon\Events\ManagerInterface, \Phalcon\Contracts\Ev
      * application are well under 100 keys, and the cache never needs
      * invalidation (parse is deterministic for a given eventType string).
      *
-     * @var array
+     * @phpstan-var events_name_cache
      */
-    protected $eventNameCache = [];
-
-    /**
-     * Memoized method_exists() results for the OBJECT_METHOD dispatch
-     * path in dispatch(). Keyed by `handlerClass => [methodName => bool]`.
-     * A class doesn't gain methods at runtime so the lookup is permanent.
-     *
-     * @var array
-     */
-    protected $methodExistsCache = [];
-
-    /**
-     * Maximum number of distinct handler classes retained in
-     * methodExistsCache. 0 (default) keeps the original unbounded
-     * behavior; a positive value clears the cache when adding a new
-     * class would exceed it. Re-warming is cheap (method_exists is
-     * O(1)) and the cap is meant for very long-lived workers that see
-     * many distinct listener classes over time.
-     *
-     * @var int
-     */
-    protected $methodExistsCacheLimit = 0;
-
-    /**
-     * Memoized getSubscribedEvents() maps keyed by Subscriber class name.
-     * The static method's return is stable for the lifetime of a class
-     * definition, so the cache never needs invalidation.
-     *
-     * @var array
-     */
-    protected $subscriberEventsCache = [];
+    protected array $eventNameCache = [];
 
     /**
      * Listener storage. Shape:
@@ -148,19 +82,80 @@ class Manager implements \Phalcon\Events\ManagerInterface, \Phalcon\Contracts\Ev
      *   3 - generic callable (string fn name, invokable object,
      *       [class, staticMethod]): call_user_func_array
      *
-     * @var array
+     * @phpstan-var events_storage
      */
-    protected $events = [];
+    protected array $events = [];
+
+    /**
+     * Re-entrancy depth of fire()/fireAll(). 0 means no fire is in
+     * progress. Incremented on every fire entry, decremented on exit.
+     * Used to keep nested fire() calls from clobbering the outer
+     * caller's `$this->responses` accumulator.
+     */
+    protected int $fireDepth = 0;
+
+    /**
+     * Manager-level kill switch. When true, every fire()/fireAll()/
+     * fireQueue() call returns immediately (null or empty array) without
+     * dispatching. Cleared by resume(). Survives across fire() calls,
+     * unlike Event::stop() which only stops the current dispatch chain.
+     */
+    protected bool $halted = false;
+
+    /**
+     * Memoized method_exists() results for the OBJECT_METHOD dispatch
+     * path in dispatch(). Keyed by `handlerClass => [methodName => bool]`.
+     * A class doesn't gain methods at runtime so the lookup is permanent.
+     *
+     * @phpstan-var events_method_exists_cache
+     */
+    protected array $methodExistsCache = [];
+
+    /**
+     * Maximum number of distinct handler classes retained in
+     * methodExistsCache. 0 (default) keeps the original unbounded
+     * behavior; a positive value clears the cache when adding a new
+     * class would exceed it. Re-warming is cheap (method_exists is
+     * O(1)) and the cap is meant for very long-lived workers that see
+     * many distinct listener classes over time.
+     *
+     * @var int
+     */
+    protected int $methodExistsCacheLimit = 0;
 
     /**
      * @var array
      */
-    protected $responses = [];
+    protected array $responses = [];
 
     /**
-     * @var array
+     * When true, a listener returning literal `false` (with the event's
+     * `cancelable` flag on) short-circuits the dispatch loop and pins
+     * the fire() return as `false`. Default off - preserves the pre-5.13
+     * "last-wins" contract for codebases that rely on later listeners
+     * overriding an earlier false return [#17019].
      */
-    protected $subscribers = [];
+    protected bool $stopOnFalse = false;
+
+    /**
+     * When true, fire()/fireAll() throw on dispatch of an event that
+     * has zero matching listeners. Catches typos in dev. Default off.
+     */
+    protected bool $strict = false;
+
+    /**
+     * Memoized getSubscribedEvents() maps keyed by Subscriber class name.
+     * The static method's return is stable for the lifetime of a class
+     * definition, so the cache never needs invalidation.
+     *
+     * @phpstan-var events_subscriber_events_cache
+     */
+    protected array $subscriberEventsCache = [];
+
+    /**
+     * @phpstan-var events_subscribers
+     */
+    protected array $subscribers = [];
 
     /**
      * Registers an event subscriber. The subscriber's getSubscribedEvents()
@@ -175,23 +170,23 @@ class Manager implements \Phalcon\Events\ManagerInterface, \Phalcon\Contracts\Ev
     }
 
     /**
-     * Attach a listener to the events manager
-     *
-     * @param object|callable $handler
-     * @param string $eventType
-     * @param int $priority
-     * @return void
-     */
-    final public function attach(string $eventType, $handler, int $priority = self::DEFAULT_PRIORITY): void
-    {
-    }
-
-    /**
      * Returns if priorities are enabled
      *
      * @return bool
      */
     public function arePrioritiesEnabled(): bool
+    {
+    }
+
+    /**
+     * Attach a listener to the events manager
+     *
+     * @param string $eventType
+     * @param mixed $handler
+     * @param int $priority
+     * @return void
+     */
+    final public function attach(string $eventType, $handler, int $priority = self::DEFAULT_PRIORITY): void
     {
     }
 
@@ -222,8 +217,8 @@ class Manager implements \Phalcon\Events\ManagerInterface, \Phalcon\Contracts\Ev
     /**
      * Detach the listener from the events manager
      *
-     * @param object|callable $handler
      * @param string $eventType
+     * @param mixed $handler
      * @return void
      */
     public function detach(string $eventType, $handler): void
@@ -247,9 +242,10 @@ class Manager implements \Phalcon\Events\ManagerInterface, \Phalcon\Contracts\Ev
      * the event implements Phalcon\Contracts\Events\Stoppable and reports it
      * is stopped.
      *
-     * @param object $event
-     * @param string|array $name
-     * @param object|null $source *
+     * @param object               $event
+     * @param string|string[]|null $name
+     * @param object|null          $source
+     *
      * @return mixed
      */
     public function dispatch($event, $name = null, $source = null)
@@ -282,13 +278,13 @@ class Manager implements \Phalcon\Events\ManagerInterface, \Phalcon\Contracts\Ev
      * $eventsManager->fire("db", $connection);
      * ```
      *
-     * @param object $source
-     * @param mixed $data
+     * @param object    $source
+     * @param mixed     $data
      * @param bool|null $stopOnFalse Per-call override of setStopOnFalse():
-     *                              `true` makes a listener's `false` final
-     *                              for this fire only, `false` keeps
-     *                              last-wins, `null` uses the manager
-     *                              setting. Not part of ManagerInterface.
+     *                               `true` makes a listener's `false` final
+     *                               for this fire only, `false` keeps
+     *                               last-wins, `null` uses the manager
+     *                               setting. Not part of ManagerInterface.
      * @return mixed
      * @param string $eventType
      * @param bool $cancelable
@@ -307,11 +303,11 @@ class Manager implements \Phalcon\Events\ManagerInterface, \Phalcon\Contracts\Ev
      * $results = $eventsManager->fireAll("db:beforeQuery", $connection);
      * ```
      *
+     * @return array<array-key, mixed>
      * @param string $eventType
      * @param object $source
      * @param mixed $data
      * @param bool $cancelable
-     * @return array
      */
     public function fireAll(string $eventType, $source, $data = null, bool $cancelable = true): array
     {
@@ -325,24 +321,13 @@ class Manager implements \Phalcon\Events\ManagerInterface, \Phalcon\Contracts\Ev
      * re-extracting metadata from the Event; the framework's own fire()
      * path bypasses this wrapper and calls dispatch() with hoisted args.
      *
+     * @phpstan-param events_queue $queue
+     *
      * @return mixed
      * @param array $queue
      * @param EventInterface $event
      */
     final public function fireQueue(array $queue, EventInterface $event)
-    {
-    }
-
-    /**
-     * Manager-level kill switch. After halt(), every fire()/fireAll()/
-     * fireQueue() call returns immediately without dispatching, until
-     * resume() is called. Use this when a listener needs to abort all
-     * subsequent event activity for the lifetime of the manager (e.g.
-     * a security check that cancels everything downstream).
-     *
-     * @return void
-     */
-    public function halt(): void
     {
     }
 
@@ -353,9 +338,9 @@ class Manager implements \Phalcon\Events\ManagerInterface, \Phalcon\Contracts\Ev
      * pipeline.
      *
      * Unwrapping is delegated to getListeners() so the internal shape of
-     * this->events is read in exactly one place.
+     * $this->events is read in exactly one place.
      *
-     * @return array
+     * @return array<string, array<array-key, mixed>>
      */
     public function getListenerMap(): array
     {
@@ -364,8 +349,8 @@ class Manager implements \Phalcon\Events\ManagerInterface, \Phalcon\Contracts\Ev
     /**
      * Returns all the attached listeners of a certain type
      *
+     * @return array<array-key, mixed>
      * @param string $type
-     * @return array
      */
     public function getListeners(string $type): array
     {
@@ -385,7 +370,7 @@ class Manager implements \Phalcon\Events\ManagerInterface, \Phalcon\Contracts\Ev
      * Returns all the responses returned by every handler executed by the last
      * 'fire' executed
      *
-     * @return array
+     * @return array<array-key, mixed>
      */
     public function getResponses(): array
     {
@@ -395,9 +380,23 @@ class Manager implements \Phalcon\Events\ManagerInterface, \Phalcon\Contracts\Ev
      * Returns the list of registered subscriber instances. Useful for
      * introspection and test setup/teardown.
      *
+     * @phpstan-return list<Subscriber>
      * @return array
      */
     public function getSubscribers(): array
+    {
+    }
+
+    /**
+     * Manager-level kill switch. After halt(), every fire()/fireAll()/
+     * fireQueue() call returns immediately without dispatching, until
+     * resume() is called. Use this when a listener needs to abort all
+     * subsequent event activity for the lifetime of the manager (e.g.
+     * a security check that cancels everything downstream).
+     *
+     * @return void
+     */
+    public function halt(): void
     {
     }
 
@@ -563,11 +562,50 @@ class Manager implements \Phalcon\Events\ManagerInterface, \Phalcon\Contracts\Ev
     }
 
     /**
+     * Stores a pre-classified listener tuple in the queue for an event
+     * type. Bypasses attach()'s type classification - callers that
+     * already know the type (the subscriber path) skip the instanceof /
+     * is_callable cascade.
+     *
+     * type=2 tuples carry a 4th element `className` so dispatch() can
+     * skip the per-fire get_class() lookup against methodExistsCache.
+     *
+     * @phpstan-param string|null $className
+     * @param string $eventType
+     * @param mixed $handler
+     * @param int $type
+     * @param int $priority
+     * @param mixed $className
+     * @return void
+     */
+    private function insertHandlerEntry(string $eventType, $handler, int $type, int $priority, $className = null): void
+    {
+    }
+
+    /**
+     * Parses one entry of a subscriber's getSubscribedEvents() map and either
+     * attaches or detaches the resulting listeners depending on `detaching`.
+     *
+     * @throws InvalidSubscriberConfiguration
+     * @param object $subscriber
+     * @param string $eventName
+     * @param mixed $params
+     * @param bool $detaching
+     * @return void
+     */
+    private function processSubscriberEntry($subscriber, string $eventName, $params, bool $detaching): void
+    {
+    }
+
+    /**
      * Object-event dispatch loop used by dispatch(). Closure/callable handlers
      * receive the event object; plain-object handlers call the method named by
      * the dispatch name (when provided) or fall back to __invoke. Propagation
      * stops when the event implements Phalcon\Contracts\Events\Stoppable and
      * reports it is stopped.
+     *
+     * @phpstan-param events_queue $queue
+     * @phpstan-param string|null  $methodName
      *
      * @return mixed
      * @param array $queue
@@ -600,6 +638,11 @@ class Manager implements \Phalcon\Events\ManagerInterface, \Phalcon\Contracts\Ev
      * `collect` is true (the caller manages stashing/restoring around
      * nested fires).
      *
+     * The listener type that attach() sets gives the handler shape. PHPStan
+     * cannot follow that link, thus each branch declares the shape.
+     *
+     * @phpstan-param events_queue $queue
+     *
      * @return mixed
      * @param array $queue
      * @param EventInterface $event
@@ -611,40 +654,6 @@ class Manager implements \Phalcon\Events\ManagerInterface, \Phalcon\Contracts\Ev
      * @param bool $stopOnFalse
      */
     private function runQueue(array $queue, EventInterface $event, string $eventName, $source, $data, bool $cancelable, bool $collect, bool $stopOnFalse)
-    {
-    }
-
-    /**
-     * Stores a pre-classified listener tuple in the queue for an event
-     * type. Bypasses attach()'s type classification - callers that
-     * already know the type (the subscriber path) skip the instanceof /
-     * is_callable cascade.
-     *
-     * type=2 tuples carry a 4th element `className` so dispatch() can
-     * skip the per-fire get_class() lookup against methodExistsCache.
-     *
-     * @param string $eventType
-     * @param mixed $handler
-     * @param int $type
-     * @param int $priority
-     * @param mixed $className
-     * @return void
-     */
-    private function insertHandlerEntry(string $eventType, $handler, int $type, int $priority, $className = null): void
-    {
-    }
-
-    /**
-     * Parses one entry of a subscriber's getSubscribedEvents() map and either
-     * attaches or detaches the resulting listeners depending on `detaching`.
-     *
-     * @param object $subscriber
-     * @param string $eventName
-     * @param mixed $params
-     * @param bool $detaching
-     * @return void
-     */
-    private function processSubscriberEntry($subscriber, string $eventName, $params, bool $detaching): void
     {
     }
 }

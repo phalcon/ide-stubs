@@ -19,11 +19,10 @@ class Direct extends \Phalcon\Flash\AbstractFlash
     /**
      * Outputs a message
      *
-     * @param string $type
-     * @param mixed  $message
-     *
-     * @return string|null
      * @throws Exception
+     * @param string $type
+     * @param mixed $message
+     * @return string|null
      */
     public function message(string $type, $message): string|null
     {

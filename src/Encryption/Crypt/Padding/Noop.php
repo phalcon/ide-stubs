@@ -10,15 +10,12 @@
 namespace Phalcon\Encryption\Crypt\Padding;
 
 /**
- * Class Noop
- *
- * @package Phalcon\Encryption\Crypt\Padding
+ * No padding adapter
  */
 class Noop implements \Phalcon\Encryption\Crypt\Padding\PadInterface
 {
     /**
      * @param int $paddingSize
-     *
      * @return string
      */
     public function pad(int $paddingSize): string
@@ -27,8 +24,7 @@ class Noop implements \Phalcon\Encryption\Crypt\Padding\PadInterface
 
     /**
      * @param string $input
-     * @param int    $blockSize
-     *
+     * @param int $blockSize
      * @return int
      */
     public function unpad(string $input, int $blockSize): int

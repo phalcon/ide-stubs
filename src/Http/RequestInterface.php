@@ -93,7 +93,7 @@ interface RequestInterface
      * $_SERVER["HTTP_X_FORWARDED_FOR"]
      *
      * @param bool $trustForwardedHeader
-     * @return string|bool
+     * @return bool|string
      */
     public function getClientAddress(bool $trustForwardedHeader = false): bool|string;
 

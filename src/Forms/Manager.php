@@ -19,14 +19,11 @@ use Phalcon\Forms\Form;
 class Manager
 {
     /**
-     * @var array
+     * @phpstan-var array<string, Form>
      */
-    protected $forms = [];
+    protected array $forms = [];
 
-    /**
-     * @var FormsLocator
-     */
-    protected $locator;
+    protected FormsLocator $locator;
 
     /**
      * Manager constructor.
@@ -40,8 +37,8 @@ class Manager
     /**
      * Creates a form registering it in the forms manager
      *
-     * @param object $entity
      * @param string $name
+     * @param mixed $entity
      * @return Form
      */
     public function create(string $name, $entity = null): Form
@@ -81,12 +78,11 @@ class Manager
      * Creates a form from a Schema source, registers it in the manager,
      * and registers a factory in the locator for entity-aware retrieval.
      *
-     * @param string      $name
-     * @param Schema      $schema
-     * @param object|null $entity
-     *
-     * @return Form
      * @throws Exception
+     * @param string $name
+     * @param \Phalcon\Contracts\Forms\Schema $schema
+     * @param mixed $entity
+     * @return Form
      */
     public function loadForm(string $name, \Phalcon\Contracts\Forms\Schema $schema, $entity = null): Form
     {

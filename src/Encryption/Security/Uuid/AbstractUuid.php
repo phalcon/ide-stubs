@@ -25,7 +25,8 @@ abstract class AbstractUuid implements \Phalcon\Encryption\Security\Uuid\UuidInt
     const string NIL = '00000000-0000-0000-0000-000000000000';
 
     /**
-     * 100-nanosecond intervals between UUID epoch (1582-10-15) and Unix epoch (1970-01-01).
+     * 100-nanosecond intervals between UUID epoch (1582-10-15)
+     * and Unix epoch (1970-01-01).
      *
      * @var int
      */
@@ -33,17 +34,13 @@ abstract class AbstractUuid implements \Phalcon\Encryption\Security\Uuid\UuidInt
 
     /**
      * Cached SysNodeProvider instance - shared within the request via static.
-     *
-     * @var NodeProviderInterface|null
      */
-    protected static $nodeProvider = null;
+    protected static ?NodeProviderInterface $nodeProvider = null;
 
     /**
      * The generated UUID string.
-     *
-     * @var string
      */
-    protected $uid = '';
+    protected string $uid = '';
 
     /**
      * Returns the UUID string.
@@ -64,6 +61,16 @@ abstract class AbstractUuid implements \Phalcon\Encryption\Security\Uuid\UuidInt
     }
 
     /**
+     * Formats a 32-character hex string as a canonical UUID string.
+     *
+     * @param string $hex
+     * @return string
+     */
+    protected function format(string $hex): string
+    {
+    }
+
+    /**
      * Returns the shared SysNodeProvider instance, creating it on first call.
      * The static property means one discovery per request regardless of how
      * many VersionN objects are constructed.
@@ -75,33 +82,23 @@ abstract class AbstractUuid implements \Phalcon\Encryption\Security\Uuid\UuidInt
     }
 
     /**
-     * Converts a 60-bit UUID timestamp (100-ns intervals since UUID epoch) to
-     * a DateTimeImmutable. Used by Version1 and Version6.
-     *
-     * @param mixed $timestamp
-     * @return \DateTimeImmutable
-     */
-    protected function uuidTimestampToDateTime($timestamp): \DateTimeImmutable
-    {
-    }
-
-    /**
-     * Formats a 32-character hex string as a canonical UUID string.
-     *
-     * @param string $hex
-     * @return string
-     */
-    protected function format(string $hex): string
-    {
-    }
-
-    /**
      * Converts a canonical UUID string to its 16-byte binary representation.
      *
      * @param string $uuid
      * @return string
      */
     protected function namespaceToBytes(string $uuid): string
+    {
+    }
+
+    /**
+     * Converts a 60-bit UUID timestamp (100-ns intervals since UUID epoch) to
+     * a DateTimeImmutable. Used by Version1 and Version6.
+     *
+     * @param int $timestamp
+     * @return \DateTimeImmutable
+     */
+    protected function uuidTimestampToDateTime($timestamp): \DateTimeImmutable
     {
     }
 }

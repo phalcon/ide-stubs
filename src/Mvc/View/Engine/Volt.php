@@ -9,6 +9,8 @@
  */
 namespace Phalcon\Mvc\View\Engine;
 
+use Countable;
+use Iterator;
 use Phalcon\Di\DiInterface;
 use Phalcon\Events\EventsAwareInterface;
 use Phalcon\Events\ManagerInterface;
@@ -34,20 +36,17 @@ class Volt extends \Phalcon\Mvc\View\Engine\AbstractEngine implements \Phalcon\E
      */
     protected $compiler;
 
-    /**
-     * @var ManagerInterface|null
-     */
-    protected $eventsManager;
+    protected ?\Phalcon\Events\ManagerInterface $eventsManager = null;
 
     /**
-     * @var array
+     * @phpstan-var array<string, callable>
      */
-    protected $macros = [];
+    protected array $macros = [];
 
     /**
-     * @var array
+     * @phpstan-var array<string, mixed>
      */
-    protected $options = [];
+    protected array $options = [];
 
     /**
      * Checks if a macro is defined and calls it
@@ -56,6 +55,8 @@ class Volt extends \Phalcon\Mvc\View\Engine\AbstractEngine implements \Phalcon\E
      * @params array arguments
      *
      * @return mixed
+     *
+     * @phpstan-param array<array-key, mixed> $arguments
      * @param string $name
      * @param array $arguments
      */
@@ -96,6 +97,7 @@ class Volt extends \Phalcon\Mvc\View\Engine\AbstractEngine implements \Phalcon\E
     /**
      * Return Volt's options
      *
+     * @phpstan-return array<string, mixed>
      * @return array
      */
     public function getOptions(): array
@@ -118,6 +120,8 @@ class Volt extends \Phalcon\Mvc\View\Engine\AbstractEngine implements \Phalcon\E
      *
      * @param mixed $item *
      * @return int
+     *
+     * @phpstan-param array<array-key, mixed>|Countable|string|null $item
      */
     public function length($item): int
     {
@@ -125,6 +129,11 @@ class Volt extends \Phalcon\Mvc\View\Engine\AbstractEngine implements \Phalcon\E
 
     /**
      * Parses the preload element passed and sets the necessary link headers
+     *
+     * @phpstan-param array{
+     *     0?: string,
+     *     1?: array<string, array<string>|bool|float|int|string|null>
+     * }|string $parameters
      *
      * @todo find a better way to handle this
      * @param mixed $parameters
@@ -161,8 +170,10 @@ class Volt extends \Phalcon\Mvc\View\Engine\AbstractEngine implements \Phalcon\E
     /**
      * Set Volt's options
      *
-     * @param array $options *
+     * @phpstan-param array<string, mixed> $options
+     *
      * @return void
+     * @param array $options
      */
     public function setOptions(array $options)
     {
@@ -171,6 +182,9 @@ class Volt extends \Phalcon\Mvc\View\Engine\AbstractEngine implements \Phalcon\E
     /**
      * Extracts a slice from a string/array/traversable object value
      *
+     * @phpstan-param array<array-key, mixed>|string|(Countable&Iterator<array-key, mixed>) $value
+     * @phpstan-param int|null $end
+     * @phpstan-return array<array-key, mixed>|string
      * @param mixed $value
      * @param int $start
      * @param mixed $end
@@ -182,6 +196,8 @@ class Volt extends \Phalcon\Mvc\View\Engine\AbstractEngine implements \Phalcon\E
     /**
      * Sorts an array
      *
+     * @phpstan-param array<array-key, mixed> $value
+     * @phpstan-return array<array-key, mixed>
      * @param array $value
      * @return array
      */

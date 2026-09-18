@@ -9,15 +9,10 @@
  */
 namespace Phalcon\Forms\Element;
 
-use Phalcon\Tag;
-
 /**
  * Component INPUT[type=hidden] for forms
  */
 class Hidden extends \Phalcon\Forms\Element\AbstractElement
 {
-    /**
-     * @var string
-     */
-    protected $method = 'inputHidden';
+    protected string $method = 'inputHidden';
 }

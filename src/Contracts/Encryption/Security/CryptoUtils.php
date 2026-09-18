@@ -41,14 +41,14 @@ interface CryptoUtils
     public function getRandomBytes(): int;
 
     /**
-     * @param int $randomBytes
-     * @return Security
-     */
-    public function setRandomBytes(int $randomBytes): Security;
-
-    /**
      * @param int $numberBytes
      * @return string
      */
     public function getSaltBytes(int $numberBytes = 0): string;
+
+    /**
+     * @param int $randomBytes
+     * @return Security
+     */
+    public function setRandomBytes(int $randomBytes): Security;
 }

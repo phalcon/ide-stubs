@@ -9,6 +9,7 @@
  */
 namespace Phalcon\Db\Adapter\Pdo;
 
+use Phalcon\Contracts\Db\DbTypes;
 use Phalcon\Db\Adapter\Pdo\AbstractPdo as PdoAdapter;
 use Phalcon\Db\Column;
 use Phalcon\Db\ColumnInterface;
@@ -36,22 +37,21 @@ use Throwable;
  *
  * $connection = new Postgresql($config);
  * ```
+ *
+ * @phpstan-import-type db_descriptor from DbTypes
+ * @phpstan-import-type db_dsn_defaults from DbTypes
+ * @phpstan-import-type db_table_definition from DbTypes
  */
 class Postgresql extends \Phalcon\Db\Adapter\Pdo\AbstractPdo
 {
-    /**
-     * @var string
-     */
-    protected $dialectType = 'postgresql';
+    protected string $dialectType = 'postgresql';
 
-    /**
-     * @var string
-     */
-    protected $type = 'pgsql';
+    protected string $type = 'pgsql';
 
     /**
      * Constructor for Phalcon\Db\Adapter\Pdo\Postgresql
      *
+     * @phpstan-param db_descriptor $descriptor
      * @param array $descriptor
      */
     public function __construct(array $descriptor)
@@ -62,6 +62,7 @@ class Postgresql extends \Phalcon\Db\Adapter\Pdo\AbstractPdo
      * This method is automatically called in Phalcon\Db\Adapter\Pdo
      * constructor. Call it when you need to restore a database connection.
      *
+     * @phpstan-param db_descriptor $descriptor
      * @param array $descriptor
      * @return void
      */
@@ -72,6 +73,7 @@ class Postgresql extends \Phalcon\Db\Adapter\Pdo\AbstractPdo
     /**
      * Creates a table
      *
+     * @phpstan-param db_table_definition $definition
      * @param string $tableName
      * @param string $schemaName
      * @param array $definition
@@ -177,6 +179,7 @@ class Postgresql extends \Phalcon\Db\Adapter\Pdo\AbstractPdo
     /**
      * Returns PDO adapter DSN defaults as a key-value map.
      *
+     * @phpstan-return db_dsn_defaults
      * @return array
      */
     protected function getDsnDefaults(): array

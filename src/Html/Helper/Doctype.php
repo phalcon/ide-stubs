@@ -84,7 +84,7 @@ class Doctype
     }
 
     /**
-     * Produce a <doctype> tag
+     * Produce a `<doctype>` tag
      *
      * @param int $type
      * @param string $delimiter

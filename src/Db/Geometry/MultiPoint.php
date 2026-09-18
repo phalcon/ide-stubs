@@ -23,10 +23,13 @@ class MultiPoint extends \Phalcon\Db\Geometry\AbstractGeometry
 {
     /**
      * @var array
+     *
+     * @phpstan-var list<Point>
      */
     protected $points;
 
     /**
+     * @phpstan-param list<Point> $points
      * @param array $points
      * @param int $srid
      */
@@ -42,6 +45,7 @@ class MultiPoint extends \Phalcon\Db\Geometry\AbstractGeometry
     }
 
     /**
+     * @phpstan-return list<Point>
      * @return array
      */
     public function getPoints(): array

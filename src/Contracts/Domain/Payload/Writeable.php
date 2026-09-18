@@ -24,7 +24,6 @@ interface Writeable
      * Sets an exception produced by the domain layer.
      *
      * @param Throwable $exception The exception thrown in the domain layer
-     *
      * @return Payload
      */
     public function setException(\Throwable $exception): Payload;
@@ -33,7 +32,6 @@ interface Writeable
      * Sets arbitrary extra values produced by the domain layer.
      *
      * @param mixed $extras Arbitrary extra values produced by the domain layer.
-     *
      * @return Payload
      */
     public function setExtras($extras): Payload;
@@ -42,7 +40,6 @@ interface Writeable
      * Sets the input received by the domain layer.
      *
      * @param mixed $input The input received by the domain layer.
-     *
      * @return Payload
      */
     public function setInput($input): Payload;
@@ -51,7 +48,6 @@ interface Writeable
      * Sets the messages produced by the domain layer.
      *
      * @param mixed $messages The messages produced by the domain layer.
-     *
      * @return Payload
      */
     public function setMessages($messages): Payload;
@@ -60,7 +56,6 @@ interface Writeable
      * Sets the output produced from the domain layer.
      *
      * @param mixed $output The output produced from the domain layer.
-     *
      * @return Payload
      */
     public function setOutput($output): Payload;
@@ -72,9 +67,8 @@ interface Writeable
      *
      * @param mixed $status The status for this payload.
      *
-     * @return Payload
-     *
      * @see \Phalcon\Domain\Payload\Status
+     * @return Payload
      */
     public function setStatus($status): Payload;
 }

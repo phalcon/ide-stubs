@@ -12,8 +12,6 @@ namespace Phalcon\Mvc\Model;
 use Phalcon\Mvc\ModelInterface;
 
 /**
- * Phalcon\Mvc\Model\ResultInterface
- *
  * All single objects passed as base objects to Resultsets must implement this interface
  */
 interface ResultInterface

@@ -13,9 +13,34 @@ use ArrayAccess;
 
 /**
  * Interface for Phalcon\Di\Di
+ *
+ * @extends ArrayAccess<string, mixed>
  */
 interface DiInterface extends \ArrayAccess
 {
+    /**
+     * Return the last DI created
+     *
+     * @return DiInterface|null
+     */
+    public static function getDefault(): DiInterface|null;
+
+    /**
+     * Resets the internal default DI
+     *
+     * @return void
+     */
+    public static function reset(): void;
+
+    /**
+     * Set a default dependency injection container to be obtained into static
+     * methods
+     *
+     * @param DiInterface $container
+     * @return void
+     */
+    public static function setDefault(DiInterface $container): void;
+
     /**
      * Attempts to register a service in the services container
      * Only is successful if a service hasn't been registered previously
@@ -36,13 +61,6 @@ interface DiInterface extends \ArrayAccess
      * @return mixed
      */
     public function get(string $name, $parameters = null): mixed;
-
-    /**
-     * Return the last DI created
-     *
-     * @return DiInterface|null
-     */
-    public static function getDefault(): DiInterface|null;
 
     /**
      * Returns a service definition without resolving
@@ -119,13 +137,6 @@ interface DiInterface extends \ArrayAccess
     public function removeShared(string $name): void;
 
     /**
-     * Resets the internal default DI
-     *
-     * @return void
-     */
-    public static function reset(): void;
-
-    /**
      * Registers a service in the services container
      *
      * @param string $name
@@ -134,15 +145,6 @@ interface DiInterface extends \ArrayAccess
      * @return ServiceInterface
      */
     public function set(string $name, $definition, bool $shared = false): ServiceInterface;
-
-    /**
-     * Set a default dependency injection container to be obtained into static
-     * methods
-     *
-     * @param DiInterface $container
-     * @return void
-     */
-    public static function setDefault(DiInterface $container): void;
 
     /**
      * Sets a service using a raw Phalcon\Di\Service definition

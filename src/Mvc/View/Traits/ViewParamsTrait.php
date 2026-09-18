@@ -25,6 +25,8 @@ trait ViewParamsTrait
      * @var array
      *
      * @todo Use a default [] once Zephir supports array trait defaults
+     *
+     * @phpstan-var array<string, mixed>
      */
     protected $registeredEngines = null;
 
@@ -32,6 +34,8 @@ trait ViewParamsTrait
      * @var array
      *
      * @todo Use a default [] once Zephir supports array trait defaults
+     *
+     * @phpstan-var array<string, mixed>
      */
     protected $viewParams = null;
 
@@ -48,6 +52,8 @@ trait ViewParamsTrait
      * Returns parameters to views
      *
      * @return array
+     *
+     * @phpstan-return array<string, mixed>
      */
     public function getParamsToView(): array
     {
@@ -55,6 +61,8 @@ trait ViewParamsTrait
 
     /**
      * @return array
+     *
+     * @phpstan-return array<string, mixed>
      */
     public function getRegisteredEngines(): array
     {

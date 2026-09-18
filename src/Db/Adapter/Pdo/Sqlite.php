@@ -9,6 +9,7 @@
  */
 namespace Phalcon\Db\Adapter\Pdo;
 
+use Phalcon\Contracts\Db\DbTypes;
 use Phalcon\Db\Adapter\Pdo\AbstractPdo as PdoAdapter;
 use Phalcon\Db\Column;
 use Phalcon\Db\ColumnInterface;
@@ -33,18 +34,14 @@ use Phalcon\Db\ReferenceInterface;
  *     ]
  * );
  * ```
+ *
+ * @phpstan-import-type db_dsn_defaults from DbTypes
  */
 class Sqlite extends \Phalcon\Db\Adapter\Pdo\AbstractPdo
 {
-    /**
-     * @var string
-     */
-    protected $dialectType = 'sqlite';
+    protected string $dialectType = 'sqlite';
 
-    /**
-     * @var string
-     */
-    protected $type = 'sqlite';
+    protected string $type = 'sqlite';
 
     /**
      * Constructor for Phalcon\Db\Adapter\Pdo\Sqlite
@@ -159,6 +156,7 @@ class Sqlite extends \Phalcon\Db\Adapter\Pdo\AbstractPdo
     /**
      * Returns PDO adapter DSN defaults as a key-value map.
      *
+     * @phpstan-return db_dsn_defaults
      * @return array
      */
     protected function getDsnDefaults(): array

@@ -22,7 +22,7 @@ class StringValLegacy implements \Phalcon\Contracts\Filter\Sanitizer
     /**
      * @param string $input The text to sanitize
      *
-     * @return string|false
+     * @return false|string
      */
     public function __invoke($input)
     {

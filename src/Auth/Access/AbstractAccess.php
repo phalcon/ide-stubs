@@ -10,11 +10,12 @@
 namespace Phalcon\Auth\Access;
 
 use Phalcon\Contracts\Auth\Access\Access;
+use Phalcon\Contracts\Auth\AuthTypes;
 use Phalcon\Contracts\Auth\Guard\Guard;
 
 /**
- * @phpstan-import-type ForwardTarget from Access
- * @phpstan-import-type AccessContext from Access
+ * @phpstan-import-type auth_forward_target from AuthTypes
+ * @phpstan-import-type auth_access_context from AuthTypes
  */
 abstract class AbstractAccess implements \Phalcon\Contracts\Auth\Access\Access
 {
@@ -45,7 +46,7 @@ abstract class AbstractAccess implements \Phalcon\Contracts\Auth\Access\Access
     }
 
     /**
-     * @phpstan-param AccessContext $context
+     * @phpstan-param auth_access_context $context
      * @param \Phalcon\Contracts\Auth\Guard\Guard $guard
      * @param string $actionName
      * @param array $context
@@ -56,7 +57,7 @@ abstract class AbstractAccess implements \Phalcon\Contracts\Auth\Access\Access
     }
 
     /**
-     * @phpstan-return ForwardTarget|null
+     * @phpstan-return auth_forward_target|null
      * @return array|null
      */
     public function redirectTo(): array|null

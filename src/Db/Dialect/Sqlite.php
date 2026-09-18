@@ -41,6 +41,8 @@ class Sqlite extends Dialect
 
     /**
      * @var array
+     *
+     * @phpstan-var list<string>
      */
     protected $supportedOperators = ['||', '->', '->>'];
 

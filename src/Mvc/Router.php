@@ -11,6 +11,7 @@ namespace Phalcon\Mvc;
 
 use Phalcon\Cache\Adapter\AdapterInterface as CacheAdapterInterface;
 use Phalcon\Config\ConfigInterface;
+use Phalcon\Contracts\Mvc\MvcTypes;
 use Phalcon\Di\AbstractInjectionAware;
 use Phalcon\Di\DiInterface;
 use Phalcon\Events\EventsAwareInterface;
@@ -36,8 +37,6 @@ use Phalcon\Mvc\Router\RouteInterface;
 use Phalcon\Traits\Php\FileTrait;
 
 /**
- * Phalcon\Mvc\Router
- *
  * Phalcon\Mvc\Router is the standard framework router. Routing is the
  * process of taking a URI endpoint (that part of the URI which comes after the
  * base URL) and decomposing it into parameters to determine which module,
@@ -62,6 +61,25 @@ use Phalcon\Traits\Php\FileTrait;
  *
  * echo $router->getControllerName();
  * ```
+ *
+ * @phpstan-import-type mvc_router_defaults from MvcTypes
+ * @phpstan-import-type mvc_router_http_methods from MvcTypes
+ * @phpstan-import-type mvc_router_config_group from MvcTypes
+ * @phpstan-import-type mvc_router_config_route from MvcTypes
+ * @phpstan-import-type mvc_router_dump from MvcTypes
+ * @phpstan-import-type mvc_router_dumped_route from MvcTypes
+ * @phpstan-import-type mvc_router_hostname_buckets from MvcTypes
+ * @phpstan-import-type mvc_router_index_buckets from MvcTypes
+ * @phpstan-import-type mvc_router_matches from MvcTypes
+ * @phpstan-import-type mvc_router_method_buckets from MvcTypes
+ * @phpstan-import-type mvc_router_params from MvcTypes
+ * @phpstan-import-type mvc_router_paths from MvcTypes
+ * @phpstan-import-type mvc_router_regex_chunks from MvcTypes
+ * @phpstan-import-type mvc_router_regex_disabled from MvcTypes
+ * @phpstan-import-type mvc_router_regex_mark_map from MvcTypes
+ * @phpstan-import-type mvc_router_route_meta from MvcTypes
+ * @phpstan-import-type mvc_router_shadow_buckets from MvcTypes
+ * @phpstan-import-type mvc_router_static_buckets from MvcTypes
  */
 class Router extends AbstractInjectionAware implements \Phalcon\Mvc\RouterInterface, \Phalcon\Events\EventsAwareInterface
 {
@@ -95,10 +113,7 @@ class Router extends AbstractInjectionAware implements \Phalcon\Mvc\RouterInterf
      */
     const int URI_SOURCE_SERVER_REQUEST_URI = 1;
 
-    /**
-     * @var string
-     */
-    protected $action = '';
+    protected string $action = '';
 
     /**
      * Pre-merged per-method candidate buckets in attach order. For each HTTP
@@ -109,9 +124,128 @@ class Router extends AbstractInjectionAware implements \Phalcon\Mvc\RouterInterf
      *
      * Built in rebuildMethodIndex(); consumed by handle() in reverse.
      *
-     * @var array
+     * @phpstan-var mvc_router_method_buckets
      */
-    protected $candidatesByMethod = [];
+    protected array $candidatesByMethod = [];
+
+    /**
+     * Combined PCRE pattern per method bucket (chunked list of strings).
+     * Each chunk uses (?|...) branch reset and (:N) mark labels. Built
+     * only when the bucket has no hostname routes and all patterns are
+     * the standard `#^...$#u` shape.
+     *
+     * @phpstan-var mvc_router_regex_chunks
+     */
+    protected array $combinedRegexByMethod = [];
+
+    /**
+     * Boolean per method bucket: true when the combined regex cannot be
+     * built (hostname route present, exotic pattern shape, etc.).
+     *
+     * @phpstan-var mvc_router_regex_disabled
+     */
+    protected array $combinedRegexDisabled = [];
+
+    /**
+     * Map from MARK label back to the route index in
+     * candidatesByMethod[method]. One per chunk.
+     *
+     *   combinedRegexMarkMap[method][chunkIdx][markLabel] = routeIdx
+     *
+     * @phpstan-var mvc_router_regex_mark_map
+     */
+    protected array $combinedRegexMarkMap = [];
+
+    protected string $controller = '';
+
+    protected string $defaultAction = '';
+
+    protected string $defaultController = '';
+
+    protected string $defaultModule = '';
+
+    protected string $defaultNamespace = '';
+
+    /**
+     * @phpstan-var mvc_router_params
+     */
+    protected array $defaultParams = [];
+
+    protected ?\Phalcon\Events\ManagerInterface $eventsManager = null;
+
+    /**
+     * Per-method buckets of routes with hostname constraints, grouped by
+     * raw hostname string. Routes are referenced by their index into
+     * candidatesByMethod[method]. Built in rebuildMethodIndex().
+     *
+     * Shape: hostnameByMethod[method][hostname] = list of route indices.
+     *
+     * @phpstan-var mvc_router_hostname_buckets
+     */
+    protected array $hostnameByMethod = [];
+
+    /**
+     * Per-method indices of routes without a hostname constraint, in
+     * attach order.
+     *
+     * Shape: hostnameLessByMethod[method] = list of route indices into
+     * candidatesByMethod[method].
+     *
+     * @phpstan-var mvc_router_index_buckets
+     */
+    protected array $hostnameLessByMethod = [];
+
+    /**
+     * @phpstan-var array<array-key, int|string>
+     */
+    protected array $keyRouteIds = [];
+
+    /**
+     * @phpstan-var array<string, int|string>
+     */
+    protected array $keyRouteNames = [];
+
+    protected ?\Phalcon\Mvc\Router\RouteInterface $matchedRoute = null;
+
+    /**
+     * @phpstan-var mvc_router_matches
+     */
+    protected array $matches = [];
+
+    /**
+     * @phpstan-var mvc_router_method_buckets
+     */
+    protected array $methodRoutes = [];
+
+    protected bool $methodRoutesDirty = true;
+
+    protected string $module = '';
+
+    protected string $namespaceName = '';
+
+    /**
+     * @var array|string|null
+     *
+     * @phpstan-var mvc_router_paths|string|null
+     */
+    protected $notFoundPaths = null;
+
+    /**
+     * @phpstan-var mvc_router_params
+     */
+    protected array $params = [];
+
+    /**
+     * Lazy-write cache target set by useCache(). When non-null, handle()
+     * writes buildDispatcherDump() to this cache after a successful
+     * rebuild on cache miss, then clears the property to skip subsequent
+     * writes.
+     */
+    protected ?\Phalcon\Cache\Adapter\AdapterInterface $pendingCache = null;
+
+    protected string $pendingCacheKey = '';
+
+    protected bool $removeExtraSlashes = false;
 
     /**
      * Single-source per-route metadata cache. One entry per route, keyed
@@ -126,178 +260,23 @@ class Router extends AbstractInjectionAware implements \Phalcon\Mvc\RouterInterf
      *     "beforeMatch": callable|null
      *   ]
      *
-     * @var array
+     * @phpstan-var array<string, mvc_router_route_meta>
      */
-    protected $routeMeta = [];
+    protected array $routeMeta = [];
 
     /**
-     * Combined PCRE pattern per method bucket (chunked list of strings).
-     * Each chunk uses (?|...) branch reset and (:N) mark labels. Built
-     * only when the bucket meets gating: no hostname routes; standard
-     * pattern shape.
-     *
-     * @var array
+     * @phpstan-var list<RouteInterface>
      */
-    protected $combinedRegexByMethod = [];
-
-    /**
-     * Boolean per method bucket: true when the combined regex cannot be
-     * built (hostname route present, exotic pattern shape, etc.).
-     *
-     * @var array
-     */
-    protected $combinedRegexDisabled = [];
-
-    /**
-     * Map from MARK label back to the route index in
-     * candidatesByMethod[method]. One per chunk.
-     *
-     *   combinedRegexMarkMap[method][chunkIdx][markLabel] = routeIdx
-     *
-     * @var array
-     */
-    protected $combinedRegexMarkMap = [];
-
-    /**
-     * @var string
-     */
-    protected $controller = '';
-
-    /**
-     * @var string
-     */
-    protected $defaultAction = '';
-
-    /**
-     * @var string
-     */
-    protected $defaultController = '';
-
-    /**
-     * @var string
-     */
-    protected $defaultModule = '';
-
-    /**
-     * @var string
-     */
-    protected $defaultNamespace = '';
-
-    /**
-     * @var array
-     */
-    protected $defaultParams = [];
-
-    /**
-     * @var ManagerInterface|null
-     */
-    protected $eventsManager;
-
-    /**
-     * Per-method buckets of routes with hostname constraints, grouped by
-     * raw hostname string. Routes are referenced by their index into
-     * candidatesByMethod[method]. Built in rebuildMethodIndex().
-     *
-     * Shape: hostnameByMethod[method][hostname] = list of route indices.
-     *
-     * @var array
-     */
-    protected $hostnameByMethod = [];
-
-    /**
-     * Per-method indices of routes without a hostname constraint, in
-     * attach order.
-     *
-     * Shape: hostnameLessByMethod[method] = list of route indices into
-     * candidatesByMethod[method].
-     *
-     * @var array
-     */
-    protected $hostnameLessByMethod = [];
-
-    /**
-     * @var array
-     */
-    protected $keyRouteNames = [];
-
-    /**
-     * @var array
-     */
-    protected $keyRouteIds = [];
-
-    /**
-     * @var RouteInterface|null
-     */
-    protected $matchedRoute = null;
-
-    /**
-     * @var array
-     */
-    protected $matches = [];
-
-    /**
-     * @var array
-     */
-    protected $methodRoutes = [];
-
-    /**
-     * @var bool
-     */
-    protected $methodRoutesDirty = true;
-
-    /**
-     * @var string
-     */
-    protected $module = '';
-
-    /**
-     * @var string
-     */
-    protected $namespaceName = '';
-
-    /**
-     * @var array|string|null
-     */
-    protected $notFoundPaths = null;
-
-    /**
-     * @var array
-     */
-    protected $params = [];
-
-    /**
-     * Lazy-write cache target set by useCache(). When non-null, handle()
-     * writes buildDispatcherDump() to this cache after a successful
-     * rebuild on cache miss, then clears the property to skip subsequent
-     * writes.
-     *
-     * @var CacheAdapterInterface|null
-     */
-    protected $pendingCache = null;
-
-    /**
-     * @var string
-     */
-    protected $pendingCacheKey = '';
-
-    /**
-     * @var bool
-     */
-    protected $removeExtraSlashes = false;
-
-    /**
-     * @var array
-     */
-    protected $routes = [];
+    protected array $routes = [];
 
     /**
      * Static-route hash, populated by rebuildMethodIndex(). For each method
      * bucket (including ""), maps URI => list of routes whose compiled
      * pattern is a literal string equal to that URI.
      *
-     * @var array
+     * @phpstan-var mvc_router_static_buckets
      */
-    protected $staticByMethod = [];
+    protected array $staticByMethod = [];
 
     /**
      * Shadow-detection map. If staticShadowedByMethod[method][uri] is set,
@@ -305,19 +284,16 @@ class Router extends AbstractInjectionAware implements \Phalcon\Mvc\RouterInterf
      * route - the fast path MUST NOT be used; fall through to the dynamic
      * loop so the regex wins (reverse-iteration semantics).
      *
-     * @var array
+     * @phpstan-var mvc_router_shadow_buckets
      */
-    protected $staticShadowedByMethod = [];
+    protected array $staticShadowedByMethod = [];
 
     /**
      * @var int
      */
     protected $uriSource = self::URI_SOURCE_GET_URL;
 
-    /**
-     * @var bool
-     */
-    protected $wasMatched = false;
+    protected bool $wasMatched = false;
 
     /**
      * Phalcon\Mvc\Router constructor
@@ -570,17 +546,10 @@ class Router extends AbstractInjectionAware implements \Phalcon\Mvc\RouterInterf
      * @param int            $position
      *
      * @return static
+     *
+     * @phpstan-return static
      */
     public function attach(\Phalcon\Mvc\Router\RouteInterface $route, int $position = Router::POSITION_LAST): static
-    {
-    }
-
-    /**
-     * Removes all the pre-defined routes
-     *
-     * @return void
-     */
-    public function clear(): void
     {
     }
 
@@ -594,6 +563,8 @@ class Router extends AbstractInjectionAware implements \Phalcon\Mvc\RouterInterf
      * cannot be cached.
      *
      * @throws \Phalcon\Mvc\Router\Exception
+     *
+     * @phpstan-return mvc_router_dump
      * @return array
      */
     public function buildDispatcherDump(): array
@@ -601,15 +572,11 @@ class Router extends AbstractInjectionAware implements \Phalcon\Mvc\RouterInterf
     }
 
     /**
-     * Inverse of buildDispatcherDump(). Reconstructs every Route from the
-     * scalar `routes` entries (preserving subclass and routeId), restores
-     * every index, and marks the indexes clean so handle() skips rebuild.
+     * Removes all the pre-defined routes
      *
-     * @throws \Phalcon\Mvc\Router\Exception
-     * @param array $dump
      * @return void
      */
-    public function loadDispatcherFromArray(array $dump): void
+    public function clear(): void
     {
     }
 
@@ -623,42 +590,6 @@ class Router extends AbstractInjectionAware implements \Phalcon\Mvc\RouterInterf
      * @return void
      */
     public function dumpDispatcher(string $path): void
-    {
-    }
-
-    /**
-     * File-shaped helper around loadDispatcherFromArray(). Includes the
-     * file (opcache-friendly) and forwards the return value.
-     *
-     * @throws \Phalcon\Mvc\Router\Exception
-     * @param string $path
-     * @return void
-     */
-    public function loadDispatcher(string $path): void
-    {
-    }
-
-    /**
-     * Cache-instance convenience wrapper. On cache hit, restores the
-     * dispatcher immediately. On miss, defers cache population until the
-     * next handle() completes - at which point buildDispatcherDump() is
-     * written to the cache key.
-     *
-     * @throws \Phalcon\Mvc\Router\Exception
-     * @param \Phalcon\Cache\Adapter\AdapterInterface $cache
-     * @param string $key
-     * @return void
-     */
-    public function useCache(\Phalcon\Cache\Adapter\AdapterInterface $cache, string $key = 'phalcon.router.dispatcher'): void
-    {
-    }
-
-    /**
-     * Returns the internal event manager
-     *
-     * @return ManagerInterface|null
-     */
-    public function getEventsManager(): ManagerInterface|null
     {
     }
 
@@ -683,6 +614,7 @@ class Router extends AbstractInjectionAware implements \Phalcon\Mvc\RouterInterf
     /**
      * Returns an array of default parameters
      *
+     * @phpstan-return array<string, mixed>
      * @return array
      */
     public function getDefaults(): array
@@ -690,6 +622,16 @@ class Router extends AbstractInjectionAware implements \Phalcon\Mvc\RouterInterf
     }
 
     /**
+     * Returns the internal event manager
+     *
+     * @return ManagerInterface|null
+     */
+    public function getEventsManager(): ManagerInterface|null
+    {
+    }
+
+    /**
+     * @phpstan-return array<array-key, int|string>
      * @return array
      */
     public function getKeyRouteIds(): array
@@ -697,6 +639,7 @@ class Router extends AbstractInjectionAware implements \Phalcon\Mvc\RouterInterf
     }
 
     /**
+     * @phpstan-return array<string, int|string>
      * @return array
      */
     public function getKeyRouteNames(): array
@@ -715,6 +658,7 @@ class Router extends AbstractInjectionAware implements \Phalcon\Mvc\RouterInterf
     /**
      * Returns the sub expressions in the regular expression matched
      *
+     * @phpstan-return mvc_router_matches
      * @return array
      */
     public function getMatches(): array
@@ -725,6 +669,7 @@ class Router extends AbstractInjectionAware implements \Phalcon\Mvc\RouterInterf
      * Returns the routes indexed by HTTP method.
      * Routes with no HTTP constraint are stored under the "" key.
      *
+     * @phpstan-return mvc_router_method_buckets
      * @return array
      */
     public function getMethodRoutes(): array
@@ -752,6 +697,7 @@ class Router extends AbstractInjectionAware implements \Phalcon\Mvc\RouterInterf
     /**
      * Returns the processed parameters
      *
+     * @phpstan-return mvc_router_params
      * @return array
      */
     public function getParams(): array
@@ -782,8 +728,8 @@ class Router extends AbstractInjectionAware implements \Phalcon\Mvc\RouterInterf
     /**
      * Returns a route object by its name
      *
-     * @param string $name *
-     * @return RouteInterface|bool
+     * @param string $name
+     * @return bool|RouteInterface
      */
     public function getRouteByName(string $name): RouteInterface|bool
     {
@@ -823,24 +769,53 @@ class Router extends AbstractInjectionAware implements \Phalcon\Mvc\RouterInterf
     }
 
     /**
+     * File-shaped helper around loadDispatcherFromArray(). Includes the
+     * file (opcache-friendly) and forwards the return value.
+     *
+     * @throws \Phalcon\Mvc\Router\Exception
+     * @param string $path
+     * @return void
+     */
+    public function loadDispatcher(string $path): void
+    {
+    }
+
+    /**
+     * Inverse of buildDispatcherDump(). Reconstructs every Route from the
+     * scalar `routes` entries (preserving subclass and routeId), restores
+     * every index, and marks the indexes clean so handle() skips rebuild.
+     *
+     * @throws \Phalcon\Mvc\Router\Exception
+     *
+     * @phpstan-param array<string, mixed> $dump
+     * @param array $dump
+     * @return void
+     */
+    public function loadDispatcherFromArray(array $dump): void
+    {
+    }
+
+    /**
      * Loads routes from an array or Phalcon\Config\Config instance.
      *
      * ```php
      * $router->loadFromConfig(
-     *      [
-     *          'routes' => [
-     *              [
-     *                  'method'  => 'get',
-     *                  'pattern' => '/users',
-     *                  'paths'   => 'Users::index',
-     *              ],
-     *          ],
-     *      ]
-     *  );
+     *     [
+     *         'routes' => [
+     *             [
+     *                 'method'  => 'get',
+     *                 'pattern' => '/users',
+     *                 'paths'   => 'Users::index',
+     *             ],
+     *         ],
+     *     ]
+     * );
      * ```
      *
      * @param array|ConfigInterface $config *
      * @return static
+     *
+     * @phpstan-return static
      */
     public function loadFromConfig($config): static
     {
@@ -851,6 +826,8 @@ class Router extends AbstractInjectionAware implements \Phalcon\Mvc\RouterInterf
      *
      * @param GroupInterface $group *
      * @return static
+     *
+     * @phpstan-return static
      */
     public function mount(\Phalcon\Mvc\Router\GroupInterface $group): static
     {
@@ -862,6 +839,8 @@ class Router extends AbstractInjectionAware implements \Phalcon\Mvc\RouterInterf
      *
      * @param array|string|null $paths *
      * @return static
+     *
+     * @phpstan-return static
      */
     public function notFound($paths): static
     {
@@ -872,6 +851,8 @@ class Router extends AbstractInjectionAware implements \Phalcon\Mvc\RouterInterf
      *
      * @param bool $remove *
      * @return static
+     *
+     * @phpstan-return static
      */
     public function removeExtraSlashes(bool $remove): static
     {
@@ -882,6 +863,8 @@ class Router extends AbstractInjectionAware implements \Phalcon\Mvc\RouterInterf
      *
      * @param string $actionName *
      * @return static
+     *
+     * @phpstan-return static
      */
     public function setDefaultAction(string $actionName): static
     {
@@ -892,6 +875,8 @@ class Router extends AbstractInjectionAware implements \Phalcon\Mvc\RouterInterf
      *
      * @param string $controllerName *
      * @return static
+     *
+     * @phpstan-return static
      */
     public function setDefaultController(string $controllerName): static
     {
@@ -902,6 +887,8 @@ class Router extends AbstractInjectionAware implements \Phalcon\Mvc\RouterInterf
      *
      * @param string $moduleName *
      * @return static
+     *
+     * @phpstan-return static
      */
     public function setDefaultModule(string $moduleName): static
     {
@@ -913,6 +900,8 @@ class Router extends AbstractInjectionAware implements \Phalcon\Mvc\RouterInterf
      * @parma string namespaceName
      *
      * @return static
+     *
+     * @phpstan-return static
      * @param string $namespaceName
      */
     public function setDefaultNamespace(string $namespaceName): static
@@ -935,6 +924,9 @@ class Router extends AbstractInjectionAware implements \Phalcon\Mvc\RouterInterf
      *
      * @param array $defaults *
      * @return static
+     *
+     * @phpstan-param mvc_router_defaults $defaults
+     * @phpstan-return static
      */
     public function setDefaults(array $defaults): static
     {
@@ -954,6 +946,9 @@ class Router extends AbstractInjectionAware implements \Phalcon\Mvc\RouterInterf
      * @param array $routeIds
      *
      * @return static
+     *
+     * @phpstan-param array<array-key, int|string> $routeIds
+     * @phpstan-return static
      */
     public function setKeyRouteIds(array $routeIds): static
     {
@@ -963,6 +958,9 @@ class Router extends AbstractInjectionAware implements \Phalcon\Mvc\RouterInterf
      * @param array $routeNames
      *
      * @return static
+     *
+     * @phpstan-param array<string, int|string> $routeNames
+     * @phpstan-return static
      */
     public function setKeyRouteNames(array $routeNames): static
     {
@@ -985,6 +983,21 @@ class Router extends AbstractInjectionAware implements \Phalcon\Mvc\RouterInterf
     }
 
     /**
+     * Cache-instance convenience wrapper. On cache hit, restores the
+     * dispatcher immediately. On miss, defers cache population until the
+     * next handle() completes - at which point buildDispatcherDump() is
+     * written to the cache key.
+     *
+     * @throws \Phalcon\Mvc\Router\Exception
+     * @param \Phalcon\Cache\Adapter\AdapterInterface $cache
+     * @param string $key
+     * @return void
+     */
+    public function useCache(\Phalcon\Cache\Adapter\AdapterInterface $cache, string $key = 'phalcon.router.dispatcher'): void
+    {
+    }
+
+    /**
      * Checks if the router matches any of the defined routes
      *
      * @return bool
@@ -998,6 +1011,8 @@ class Router extends AbstractInjectionAware implements \Phalcon\Mvc\RouterInterf
      *
      * @param array $routeData *
      * @return void
+     *
+     * @phpstan-param array<string, mixed> $routeData
      */
     protected function addRouteFromConfig(array $routeData): void
     {
@@ -1016,6 +1031,8 @@ class Router extends AbstractInjectionAware implements \Phalcon\Mvc\RouterInterf
      *
      * @param array $groupData *
      * @return void
+     *
+     * @phpstan-param array<string, mixed> $groupData
      */
     protected function mountGroupFromConfig(array $groupData): void
     {

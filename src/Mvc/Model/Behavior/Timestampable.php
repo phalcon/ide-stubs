@@ -16,8 +16,6 @@ use Phalcon\Mvc\Model\Exception;
 use Phalcon\Mvc\ModelInterface;
 
 /**
- * Phalcon\Mvc\Model\Behavior\Timestampable
- *
  * Allows to automatically update a model’s attribute saving the datetime when a
  * record is created or updated
  */
@@ -34,6 +32,8 @@ class Timestampable extends Behavior
     }
 
     /**
+     * @phpstan-param array<string, mixed> $options
+     * @phpstan-return int|string
      * @param array $options
      */
     private function getTimestamp(array $options)

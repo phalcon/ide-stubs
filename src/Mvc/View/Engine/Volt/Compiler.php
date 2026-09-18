@@ -10,6 +10,7 @@
 namespace Phalcon\Mvc\View\Engine\Volt;
 
 use Closure;
+use Phalcon\Contracts\Mvc\MvcTypes;
 use Phalcon\Di\DiInterface;
 use Phalcon\Di\InjectionAwareInterface;
 use Phalcon\Mvc\View\Engine\Volt\Exceptions\CannotOpenCompiledFile;
@@ -47,33 +48,28 @@ use Phalcon\Traits\Php\FileTrait;
  *
  * require $compiler->getCompiledTemplatePath();
  * ```
+ *
+ * @phpstan-import-type mvc_volt_node from MvcTypes
  */
 class Compiler implements \Phalcon\Di\InjectionAwareInterface
 {
     use \Phalcon\Traits\Php\FileTrait;
 
 
-    /**
-     * @var bool
-     */
-    protected $autoescape = false;
+    protected bool $autoescape = false;
 
-    /**
-     * @var int
-     */
-    protected $blockLevel = 0;
+    protected int $blockLevel = 0;
 
     /**
      * @var array|null
      *
      * TODO: Make array only?
+     *
+     * @phpstan-var array<array-key, mixed>|null
      */
     protected $blocks;
 
-    /**
-     * @var DiInterface|null
-     */
-    protected $container = null;
+    protected ?\Phalcon\Di\DiInterface $container = null;
 
     /**
      * @var string|null
@@ -90,70 +86,62 @@ class Compiler implements \Phalcon\Di\InjectionAwareInterface
      */
     protected $currentPath = null;
 
-    /**
-     * @var int
-     */
-    protected $exprLevel = 0;
+    protected int $exprLevel = 0;
 
-    /**
-     * @var bool
-     */
-    protected $extended = false;
-
-    /**
-     * @var array
-     */
-    protected $extensions = [];
+    protected bool $extended = false;
 
     /**
      * @var array|bool
      *
      * TODO: Make it always array
+     *
+     * @phpstan-var array<array-key, mixed>|bool|string
      */
     protected $extendedBlocks;
 
     /**
-     * @var array
+     * @phpstan-var list<object>
      */
-    protected $filters = [];
+    protected array $extensions = [];
 
     /**
-     * @var int
+     * @phpstan-var array<string, mixed>
      */
-    protected $foreachLevel = 0;
+    protected array $filters = [];
+
+    protected int $foreachLevel = 0;
 
     /**
-     * @var array
+     * @phpstan-var array<int, string>
      */
-    protected $forElsePointers = [];
+    protected array $forElsePointers = [];
 
     /**
-     * @var array
+     * @phpstan-var array<string, mixed>
      */
-    protected $functions = [];
+    protected array $functions = [];
+
+    protected int $level = 0;
 
     /**
-     * @var int
+     * @phpstan-var array<int, int>
      */
-    protected $level = 0;
+    protected array $loopPointers = [];
 
     /**
-     * @var array
+     * @phpstan-var array<string, string>
      */
-    protected $loopPointers = [];
+    protected array $macros = [];
 
     /**
-     * @var array
+     * @phpstan-var array<string, mixed>
      */
-    protected $macros = [];
-
-    /**
-     * @var array
-     */
-    protected $options = [];
+    protected array $options = [];
 
     /**
      * @var string
+     *
+     * @phpstan-var Closure|string
      */
     protected $prefix = '';
 
@@ -208,6 +196,8 @@ class Compiler implements \Phalcon\Di\InjectionAwareInterface
      *
      * @param array $expr *
      * @return string
+     *
+     * @phpstan-param mvc_volt_node $expr
      */
     public function attributeReader(array $expr): string
     {
@@ -238,6 +228,8 @@ class Compiler implements \Phalcon\Di\InjectionAwareInterface
      * @param array $statement
      * @param bool $extendsMode *
      * @return string
+     *
+     * @phpstan-param mvc_volt_node $statement
      */
     public function compileAutoEscape(array $statement, bool $extendsMode): string
     {
@@ -247,7 +239,8 @@ class Compiler implements \Phalcon\Di\InjectionAwareInterface
      * Compiles calls to macros
      *
      * @param array $statement
-     * @param bool $extendsMode
+     * @param bool $extendsMode *
+     * @phpstan-param mvc_volt_node $statement
      * @return string
      */
     public function compileCall(array $statement, bool $extendsMode): string
@@ -260,6 +253,8 @@ class Compiler implements \Phalcon\Di\InjectionAwareInterface
      * @param array $statement
      * @param bool $caseClause *
      * @return string
+     *
+     * @phpstan-param mvc_volt_node $statement
      */
     public function compileCase(array $statement, bool $caseClause = true): string
     {
@@ -268,7 +263,10 @@ class Compiler implements \Phalcon\Di\InjectionAwareInterface
     /**
      * Compiles a "do" statement returning PHP code
      *
-     * @param array $statement *
+     * @phpstan-param mvc_volt_node $statement
+     *
+     * @throws Exception
+     * @param array $statement
      * @return string
      */
     public function compileDo(array $statement): string
@@ -278,7 +276,10 @@ class Compiler implements \Phalcon\Di\InjectionAwareInterface
     /**
      * Compiles a `{{` `}}` statement returning PHP code
      *
-     * @param array $statement *
+     * @phpstan-param mvc_volt_node $statement
+     *
+     * @throws Exception
+     * @param array $statement
      * @return string
      */
     public function compileEcho(array $statement): string
@@ -288,7 +289,10 @@ class Compiler implements \Phalcon\Di\InjectionAwareInterface
     /**
      * Compiles a "elseif" statement returning PHP code
      *
-     * @param array $statement *
+     * @phpstan-param mvc_volt_node $statement
+     *
+     * @throws Exception
+     * @param array $statement
      * @return string
      */
     public function compileElseIf(array $statement): string
@@ -310,6 +314,8 @@ class Compiler implements \Phalcon\Di\InjectionAwareInterface
      * @param bool $extendsMode *
      * @throws \Phalcon\Mvc\View\Engine\Volt\Exception
      * @return string|array
+     *
+     * @phpstan-return array<array-key, mixed>|string
      */
     public function compileFile(string $path, string $compiledPath, bool $extendsMode = false)
     {
@@ -321,6 +327,8 @@ class Compiler implements \Phalcon\Di\InjectionAwareInterface
      * @param array $statement
      * @param bool $extendsMode *
      * @return string
+     *
+     * @phpstan-param mvc_volt_node $statement
      */
     public function compileForeach(array $statement, bool $extendsMode = false): string
     {
@@ -342,6 +350,8 @@ class Compiler implements \Phalcon\Di\InjectionAwareInterface
      * @param bool $extendsMode *
      * @throws \Phalcon\Mvc\View\Engine\Volt\Exception
      * @return string
+     *
+     * @phpstan-param mvc_volt_node $statement
      */
     public function compileIf(array $statement, bool $extendsMode = false): string
     {
@@ -353,6 +363,8 @@ class Compiler implements \Phalcon\Di\InjectionAwareInterface
      * @param array $statement *
      * @throws \Phalcon\Mvc\View\Engine\Volt\Exception
      * @return string
+     *
+     * @phpstan-param mvc_volt_node $statement
      */
     public function compileInclude(array $statement): string
     {
@@ -361,8 +373,11 @@ class Compiler implements \Phalcon\Di\InjectionAwareInterface
     /**
      * Compiles macros
      *
+     * @phpstan-param mvc_volt_node $statement
+     *
+     * @throws Exception
      * @param array $statement
-     * @param bool $extendsMode *
+     * @param bool $extendsMode
      * @return string
      */
     public function compileMacro(array $statement, bool $extendsMode): string
@@ -372,9 +387,11 @@ class Compiler implements \Phalcon\Di\InjectionAwareInterface
     /**
      * Compiles a "return" statement returning PHP code
      *
-     * @throws \Phalcon\Mvc\View\Engine\Volt\Exception
-     * @return string
+     * @phpstan-param mvc_volt_node $statement
+     *
+     * @throws Exception
      * @param array $statement
+     * @return string
      */
     public function compileReturn(array $statement): string
     {
@@ -394,7 +411,6 @@ class Compiler implements \Phalcon\Di\InjectionAwareInterface
      * $compiler = new Compiler();
      *
      * // {% set a = ['first': 1] %}
-     *
      * $source = [
      *     "type" => 306,
      *     "assignments" => [
@@ -434,9 +450,10 @@ class Compiler implements \Phalcon\Di\InjectionAwareInterface
      * // <?php $a = ['first' => 1]; ?>";
      * ```
      *
-     * @param array $statement
+     * @phpstan-param mvc_volt_node $statement
      *
-     * @throws \Phalcon\Mvc\View\Engine\Volt\Exception
+     * @throws Exception
+     * @param array $statement
      * @return string
      */
     public function compileSet(array $statement): string
@@ -450,8 +467,9 @@ class Compiler implements \Phalcon\Di\InjectionAwareInterface
      * echo $compiler->compileString('{{ "hello world" }}');
      * ```
      *
+     * @throws Exception
      * @param string $viewCode
-     * @param bool $extendsMode *
+     * @param bool $extendsMode
      * @return string
      */
     public function compileString(string $viewCode, bool $extendsMode = false): string
@@ -461,9 +479,11 @@ class Compiler implements \Phalcon\Di\InjectionAwareInterface
     /**
      * Compiles a 'switch' statement returning PHP code
      *
+     * @phpstan-param mvc_volt_node $statement
+     *
+     * @throws Exception
      * @param array $statement
-     * @param bool $extendsMode *
-     * @throws \Phalcon\Mvc\View\Engine\Volt\Exception
+     * @param bool $extendsMode
      * @return string
      */
     public function compileSwitch(array $statement, bool $extendsMode = false): string
@@ -473,9 +493,11 @@ class Compiler implements \Phalcon\Di\InjectionAwareInterface
     /**
      * Resolves an expression node in an AST volt tree
      *
-     * @param array $expr
-     * @param bool  $doubleQuotes
+     * @phpstan-param mvc_volt_node $expr
      *
+     * @throws Exception
+     * @param array $expr
+     * @param bool $doubleQuotes
      * @return string
      */
     final public function expression(array $expr, bool $doubleQuotes = false): string
@@ -485,10 +507,11 @@ class Compiler implements \Phalcon\Di\InjectionAwareInterface
     /**
      * Fires an event to registered extensions
      *
-     * @param string $name
-     * @param array  $arguments
+     * @phpstan-param array<array-key, mixed> $arguments
      *
      * @return mixed
+     * @param string $name
+     * @param array $arguments
      */
     final public function fireExtensionEvent(string $name, array $arguments = [])
     {
@@ -497,10 +520,11 @@ class Compiler implements \Phalcon\Di\InjectionAwareInterface
     /**
      * Resolves function intermediate code into PHP function calls
      *
-     * @param array $expr
-     * @param bool  $doubleQuotes
+     * @phpstan-param mvc_volt_node $expr
      *
-     * @throws \Phalcon\Mvc\View\Engine\Volt\Exception
+     * @throws Exception
+     * @param array $expr
+     * @param bool $doubleQuotes
      * @return string
      */
     public function functionCall(array $expr, bool $doubleQuotes = false): string
@@ -528,6 +552,7 @@ class Compiler implements \Phalcon\Di\InjectionAwareInterface
     /**
      * Returns the list of extensions registered in Volt
      *
+     * @phpstan-return list<object>
      * @return array
      */
     public function getExtensions(): array
@@ -537,6 +562,7 @@ class Compiler implements \Phalcon\Di\InjectionAwareInterface
     /**
      * Register the user registered filters
      *
+     * @phpstan-return array<string, mixed>
      * @return array
      */
     public function getFilters(): array
@@ -546,6 +572,7 @@ class Compiler implements \Phalcon\Di\InjectionAwareInterface
     /**
      * Register the user registered functions
      *
+     * @phpstan-return array<string, mixed>
      * @return array
      */
     public function getFunctions(): array
@@ -555,7 +582,7 @@ class Compiler implements \Phalcon\Di\InjectionAwareInterface
     /**
      * Returns a compiler's option
      *
-     * @param string $option *
+     * @param string $option
      * @return string|null
      */
     public function getOption(string $option): string|null
@@ -565,6 +592,7 @@ class Compiler implements \Phalcon\Di\InjectionAwareInterface
     /**
      * Returns the compiler options
      *
+     * @phpstan-return array<string, mixed>
      * @return array
      */
     public function getOptions(): array
@@ -599,7 +627,8 @@ class Compiler implements \Phalcon\Di\InjectionAwareInterface
      * );
      * ```
      *
-     * @param string $viewCode *
+     * @phpstan-return mvc_volt_node
+     * @param string $viewCode
      * @return array
      */
     public function parse(string $viewCode): array
@@ -609,6 +638,9 @@ class Compiler implements \Phalcon\Di\InjectionAwareInterface
     /**
      * Resolves filter intermediate code into a valid PHP expression
      *
+     * @phpstan-param mvc_volt_node $test
+     *
+     * @throws Exception
      * @param array $test
      * @param string $left
      * @return string
@@ -641,6 +673,7 @@ class Compiler implements \Phalcon\Di\InjectionAwareInterface
     /**
      * Sets the compiler options
      *
+     * @phpstan-param array<string, mixed> $options
      * @param array $options
      * @return static
      */
@@ -661,6 +694,7 @@ class Compiler implements \Phalcon\Di\InjectionAwareInterface
     /**
      * Compiles a Volt source code returning a PHP plain version
      *
+     * @phpstan-return array<array-key, mixed>|string
      * @param string $viewCode
      * @param bool $extendsMode
      * @return array|string
@@ -672,6 +706,7 @@ class Compiler implements \Phalcon\Di\InjectionAwareInterface
     /**
      * Gets the final path with VIEW
      *
+     * @return string
      * @param string $path
      */
     protected function getFinalPath(string $path)
@@ -681,6 +716,9 @@ class Compiler implements \Phalcon\Di\InjectionAwareInterface
     /**
      * Resolves filter intermediate code into PHP function calls
      *
+     * @phpstan-param mvc_volt_node $filter
+     *
+     * @throws Exception
      * @param array $filter
      * @param string $left
      * @return string
@@ -692,6 +730,8 @@ class Compiler implements \Phalcon\Di\InjectionAwareInterface
     /**
      * Traverses a statement list compiling each of its nodes
      *
+     * @phpstan-param mvc_volt_node $statements
+     * @phpstan-return string
      * @param array $statements
      * @param bool $extendsMode
      * @return string
@@ -721,6 +761,7 @@ class Compiler implements \Phalcon\Di\InjectionAwareInterface
     }
 
     /**
+     * @phpstan-param mvc_volt_node $expression
      * @param array $expression
      * @return bool
      */

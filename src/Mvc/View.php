@@ -14,6 +14,7 @@ use Phalcon\Di\DiInterface;
 use Phalcon\Di\Injectable;
 use Phalcon\Events\EventsAwareInterface;
 use Phalcon\Events\ManagerInterface;
+use Phalcon\Mvc\View\Engine\EngineInterface;
 use Phalcon\Mvc\View\Engine\Php as PhpEngine;
 use Phalcon\Mvc\View\Exception;
 use Phalcon\Mvc\View\Exceptions\InvalidEngineRegistration;
@@ -63,6 +64,13 @@ class View extends Injectable implements \Phalcon\Mvc\ViewInterface, \Phalcon\Ev
     const int LEVEL_ACTION_VIEW = 1;
 
     /**
+     * Render Level: Render to the templates "after"
+     *
+     * @var int
+     */
+    const int LEVEL_AFTER_TEMPLATE = 4;
+
+    /**
      * Render Level: To the templates "before"
      *
      * @var int
@@ -91,115 +99,93 @@ class View extends Injectable implements \Phalcon\Mvc\ViewInterface, \Phalcon\Ev
     const int LEVEL_NO_RENDER = 0;
 
     /**
-     * Render Level: Render to the templates "after"
-     *
-     * @var int
-     */
-    const int LEVEL_AFTER_TEMPLATE = 4;
-
-    /**
      * @var string
      */
     protected $actionName;
 
     /**
      * @var array
+     *
+     * @phpstan-var list<string>
      */
     protected $activeRenderPaths;
 
     /**
      * @var string
      */
-    protected $basePath = '';
+    protected string $basePath = '';
 
     /**
      * @var string
      */
     protected $controllerName;
 
-    /**
-     * @var int
-     */
-    protected $currentRenderLevel = 0;
+    protected int $currentRenderLevel = 0;
+
+    protected bool $disabled = false;
 
     /**
-     * @var bool
+     * @phpstan-var array<int, bool|int>
      */
-    protected $disabled = false;
-
-    /**
-     * @var array
-     */
-    protected $disabledLevels = [];
+    protected array $disabledLevels = [];
 
     /**
      * @var array|bool
+     *
+     * @phpstan-var array<string, EngineInterface>|false
      */
     protected $engines = false;
 
-    /**
-     * @var ManagerInterface|null
-     */
-    protected $eventsManager;
+    protected ?\Phalcon\Events\ManagerInterface $eventsManager = null;
 
     /**
      * @var string|null
      */
     protected $layout = null;
 
-    /**
-     * @var string
-     */
-    protected $layoutsDir = '';
+    protected string $layoutsDir = '';
+
+    protected string $mainView = 'index';
+
+    protected array $options = [];
 
     /**
-     * @var string
+     * @phpstan-var array<string, mixed>
      */
-    protected $mainView = 'index';
+    protected array $params = [];
 
-    /**
-     * @var array
-     */
-    protected $options = [];
-
-    /**
-     * @var array
-     */
-    protected $params = [];
+    protected string $partialsDir = '';
 
     /**
      * @var array|null
+     *
+     * @phpstan-var array{0: string, 1?: string|null}|null
      */
     protected $pickView;
 
-    /**
-     * @var string
-     */
-    protected $partialsDir = '';
+    protected int $renderLevel = 5;
 
     /**
-     * @var int
+     * @phpstan-var list<string>
      */
-    protected $renderLevel = 5;
+    protected array $templatesAfter = [];
 
     /**
-     * @var array
+     * @phpstan-var list<string>
      */
-    protected $templatesAfter = [];
+    protected array $templatesBefore = [];
 
     /**
      * @var array
-     */
-    protected $templatesBefore = [];
-
-    /**
-     * @var array
+     *
+     * @phpstan-var list<string>|string
      */
     protected $viewsDirs = [];
 
     /**
      * Phalcon\Mvc\View constructor
      *
+     * @phpstan-param array<string, mixed> $options
      * @param array $options
      */
     public function __construct(array $options = [])
@@ -285,6 +271,7 @@ class View extends Injectable implements \Phalcon\Mvc\ViewInterface, \Phalcon\Ev
      * );
      * ```
      *
+     * @phpstan-return static
      * @param mixed $level
      * @return static
      */
@@ -333,6 +320,7 @@ class View extends Injectable implements \Phalcon\Mvc\ViewInterface, \Phalcon\Ev
     /**
      * Returns the path (or paths) of the views that are currently rendered
      *
+     * @phpstan-return list<string>|string
      * @return string|array
      */
     public function getActiveRenderPath(): string|array
@@ -448,7 +436,8 @@ class View extends Injectable implements \Phalcon\Mvc\ViewInterface, \Phalcon\Ev
      * );
      * ```
      *
-     * @param mixed $configCallback
+     * @param mixed $configCallback *
+     * @phpstan-param array<string, mixed> $params
      * @param string $controllerName
      * @param string $actionName
      * @param array $params
@@ -468,7 +457,8 @@ class View extends Injectable implements \Phalcon\Mvc\ViewInterface, \Phalcon\Ev
     /**
      * Gets views directory
      *
-     * @return string|array
+     * @phpstan-return list<string>|string
+     * @return array|string
      */
     public function getViewsDir(): string|array
     {
@@ -546,6 +536,7 @@ class View extends Injectable implements \Phalcon\Mvc\ViewInterface, \Phalcon\Ev
     /**
      * Processes the view and templates; Fires events if needed
      *
+     * @phpstan-param array<string, mixed> $params
      * @param string $controllerName
      * @param string $actionName
      * @param array $params
@@ -569,6 +560,7 @@ class View extends Injectable implements \Phalcon\Mvc\ViewInterface, \Phalcon\Ev
      * );
      * ```
      *
+     * @phpstan-param array<string, mixed> $engines
      * @param array $engines
      * @return static
      */
@@ -584,6 +576,7 @@ class View extends Injectable implements \Phalcon\Mvc\ViewInterface, \Phalcon\Ev
      * $view->start()->render("posts", "recent")->finish();
      * ```
      *
+     * @phpstan-param array<string, mixed> $params
      * @param string $controllerName
      * @param string $actionName
      * @param array $params
@@ -681,6 +674,7 @@ class View extends Injectable implements \Phalcon\Mvc\ViewInterface, \Phalcon\Ev
      * $this->view->setParamToView("products", $products);
      * ```
      *
+     * @phpstan-return static
      * @param string $key
      * @param mixed $value
      * @return static
@@ -753,6 +747,7 @@ class View extends Injectable implements \Phalcon\Mvc\ViewInterface, \Phalcon\Ev
      * );
      * ```
      *
+     * @phpstan-param array<string, mixed> $params
      * @param array $params
      * @param bool $merge
      * @return static
@@ -784,6 +779,7 @@ class View extends Injectable implements \Phalcon\Mvc\ViewInterface, \Phalcon\Ev
     /**
      * Renders the view and returns it as a string
      *
+     * @phpstan-param array<string, mixed> $params
      * @param string $controllerName
      * @param string $actionName
      * @param array $params
@@ -796,6 +792,7 @@ class View extends Injectable implements \Phalcon\Mvc\ViewInterface, \Phalcon\Ev
     /**
      * Checks whether view exists on registered extensions and render it
      *
+     * @phpstan-param array<string, EngineInterface> $engines
      * @param array $engines
      * @param string $viewPath
      * @param bool $silence
@@ -808,6 +805,7 @@ class View extends Injectable implements \Phalcon\Mvc\ViewInterface, \Phalcon\Ev
     /**
      * Gets views directories
      *
+     * @phpstan-return list<string>
      * @return array
      */
     protected function getViewsDirs(): array
@@ -827,6 +825,7 @@ class View extends Injectable implements \Phalcon\Mvc\ViewInterface, \Phalcon\Ev
      * Loads registered template engines, if none is registered it will use
      * Phalcon\Mvc\View\Engine\Php
      *
+     * @phpstan-return array<string, EngineInterface>
      * @return array
      */
     protected function loadTemplateEngines(): array

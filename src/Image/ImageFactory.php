@@ -17,7 +17,6 @@ use Phalcon\Image\Adapter\AdapterInterface;
 use Phalcon\Image\Adapter\Gd;
 use Phalcon\Image\Adapter\Imagick;
 use Phalcon\Traits\Support\Helper\Arr\GetTrait;
-use Throwable;
 
 /**
  * Factory to create adapters for image manipulation
@@ -48,9 +47,9 @@ class ImageFactory extends AbstractFactory
      *
      * @param array|ConfigInterface $config = [
      *     'adapter' => 'gd',
-     *     'file' => 'image.jpg',
-     *     'height' => null,
-     *     'width' => null
+     *     'file'    => 'image.jpg',
+     *     'height'  => null,
+     *     'width'   => null
      * ]
      * @return AdapterInterface
      */
@@ -73,7 +72,7 @@ class ImageFactory extends AbstractFactory
     }
 
     /**
-     * @return class-string<Throwable>
+     * @return class-string<\Exception>
      */
     protected function getExceptionClass(): string
     {

@@ -55,7 +55,6 @@ class Call extends \Phalcon\Container\Resolver\Lazy\Lazy
      * Resolve the callable
      *
      * @param object $ioc
-     *
      * @return mixed
      */
     public function resolve($ioc): mixed

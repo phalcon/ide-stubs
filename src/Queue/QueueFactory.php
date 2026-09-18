@@ -63,7 +63,7 @@ class QueueFactory extends AbstractConfigFactory
     /**
      * Returns the exception class for the factory
      *
-     * @return class-string<\Throwable>
+     * @return class-string<\Exception>
      */
     protected function getExceptionClass(): string
     {

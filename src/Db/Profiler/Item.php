@@ -9,10 +9,14 @@
  */
 namespace Phalcon\Db\Profiler;
 
+use Phalcon\Contracts\Db\DbTypes;
 use Phalcon\Db\Traits\ElapsedTimeTrait;
 
 /**
  * This class identifies each profile in a Phalcon\Db\Profiler
+ *
+ * @phpstan-import-type db_bind_params from DbTypes
+ * @phpstan-import-type db_bind_types from DbTypes
  */
 class Item
 {
@@ -22,14 +26,14 @@ class Item
     /**
      * Timestamp when the profile ended
      *
-     * @var double
+     * @var float
      */
     protected $finalTime;
 
     /**
      * Timestamp when the profile started
      *
-     * @var double
+     * @var float
      */
     protected $initialTime;
 
@@ -37,6 +41,8 @@ class Item
      * SQL bind types related to the profile
      *
      * @var array
+     *
+     * @phpstan-var db_bind_types
      */
     protected $sqlBindTypes;
 
@@ -51,6 +57,8 @@ class Item
      * SQL variables related to the profile
      *
      * @var array
+     *
+     * @phpstan-var db_bind_params
      */
     protected $sqlVariables;
 
@@ -75,6 +83,7 @@ class Item
     /**
      * Return the SQL bind types related to the profile
      *
+     * @phpstan-return db_bind_types
      * @return array
      */
     public function getSqlBindTypes(): array
@@ -93,6 +102,7 @@ class Item
     /**
      * Return the SQL variables related to the profile
      *
+     * @phpstan-return db_bind_params
      * @return array
      */
     public function getSqlVariables(): array
@@ -131,6 +141,7 @@ class Item
     /**
      * Return the SQL bind types related to the profile
      *
+     * @phpstan-param db_bind_types $sqlBindTypes
      * @param array $sqlBindTypes
      * @return static
      */
@@ -151,6 +162,7 @@ class Item
     /**
      * Return the SQL variables related to the profile
      *
+     * @phpstan-param db_bind_params $sqlVariables
      * @param array $sqlVariables
      * @return static
      */

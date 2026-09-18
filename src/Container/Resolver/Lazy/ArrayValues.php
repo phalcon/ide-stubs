@@ -13,44 +13,24 @@ use ArrayAccess;
 use ArrayIterator;
 use Countable;
 use IteratorAggregate;
+use Phalcon\Contracts\Container\ContainerTypes;
 
 /**
- * This file is part of the Phalcon Framework.
+ * @phpstan-import-type container_values from ContainerTypes
  *
- * (c) Phalcon Team <team@phalcon.io>
- *
- * For the full copyright and license information, please view the LICENSE.txt
- * file that was distributed with this source code.
- *
- * Implementation of this file has been heavily influenced by CapsulePHP.
- * Additionally, there are implementations from ioc-interop, which is a
- * Composer dependency, and from service-interop and resolver-interop. The
- * latter two are copied and re-implemented here: service-interop is not yet
- * published on Packagist, and resolver-interop requires PHP 8.4 (this project
- * targets PHP 8.1). Once both packages become available and compatible, the
- * copies will be replaced with the actual Composer dependencies.
- *
- * @link    https://github.com/capsulephp/di
- * @license https://github.com/capsulephp/di/blob/3.x/LICENSE.md
- *
- * @link    https://github.com/ioc-interop/interface
- * @license https://github.com/ioc-interop/interface/blob/1.x/LICENSE.md
- *
- * @link    https://github.com/service-interop/interface
- * @license https://github.com/service-interop/interface/blob/1.x/LICENSE.md
- *
- * @link    https://github.com/resolver-interop/interface/tree/1.x
- * @license https://github.com/resolver-interop/interface/blob/1.x/LICENSE.md
+ * @implements ArrayAccess<array-key, mixed>
+ * @implements IteratorAggregate<array-key, mixed>
  */
 class ArrayValues extends \Phalcon\Container\Resolver\Lazy\Lazy implements \ArrayAccess, \Countable, \IteratorAggregate
 {
     /**
-     * @var array<array-key, mixed>
+     * @phpstan-var container_values
      */
-    protected $values = [];
+    protected array $values = [];
 
     /**
-     * @param array<array-key, mixed> $values
+     * @phpstan-param container_values $values
+     * @param array $values
      */
     public function __construct(array $values = [])
     {
@@ -64,7 +44,7 @@ class ArrayValues extends \Phalcon\Container\Resolver\Lazy\Lazy implements \Arra
     }
 
     /**
-     * @return ArrayIterator
+     * @return ArrayIterator<array-key, mixed>
      */
     public function getIterator(): ArrayIterator
     {
@@ -72,7 +52,6 @@ class ArrayValues extends \Phalcon\Container\Resolver\Lazy\Lazy implements \Arra
 
     /**
      * @param iterable<array-key, mixed> $values
-     *
      * @return void
      */
     public function merge($values): void
@@ -80,6 +59,7 @@ class ArrayValues extends \Phalcon\Container\Resolver\Lazy\Lazy implements \Arra
     }
 
     /**
+     * @phpstan-param array-key $offset
      * @param mixed $offset
      * @return bool
      */
@@ -88,6 +68,7 @@ class ArrayValues extends \Phalcon\Container\Resolver\Lazy\Lazy implements \Arra
     }
 
     /**
+     * @phpstan-param array-key $offset
      * @param mixed $offset
      * @return mixed
      */
@@ -96,6 +77,7 @@ class ArrayValues extends \Phalcon\Container\Resolver\Lazy\Lazy implements \Arra
     }
 
     /**
+     * @phpstan-param array-key|null $offset
      * @param mixed $offset
      * @param mixed $value
      * @return void
@@ -105,6 +87,7 @@ class ArrayValues extends \Phalcon\Container\Resolver\Lazy\Lazy implements \Arra
     }
 
     /**
+     * @phpstan-param array-key $offset
      * @param mixed $offset
      * @return void
      */
@@ -115,9 +98,9 @@ class ArrayValues extends \Phalcon\Container\Resolver\Lazy\Lazy implements \Arra
     /**
      * Resolve to an array, where each element has itself been lazy-resolved.
      *
+     * @phpstan-return container_values
      * @param object $ioc
-     *
-     * @return array<array-key, mixed>
+     * @return array
      */
     public function resolve($ioc): array
     {
@@ -133,9 +116,10 @@ class ArrayValues extends \Phalcon\Container\Resolver\Lazy\Lazy implements \Arra
     }
 
     /**
-     * @param object                  $ioc
-     * @param array<array-key, mixed> $values
-     *
+     * @phpstan-param  container_values $values
+     * @phpstan-return container_values
+     * @param object $ioc
+     * @param array $values
      * @return array
      */
     protected function resolveValues($ioc, array $values): array

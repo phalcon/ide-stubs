@@ -9,8 +9,13 @@
  */
 namespace Phalcon\Di;
 
+use Phalcon\Contracts\Di\DiTypes;
+
 /**
  * Represents a service in the services container
+ *
+ * @phpstan-import-type di_parameters from DiTypes
+ * @phpstan-import-type di_service_argument from DiTypes
  */
 interface ServiceInterface
 {
@@ -46,7 +51,8 @@ interface ServiceInterface
     /**
      * Resolves the service
      *
-     * @param array $parameters
+     * @phpstan-param di_parameters|null $parameters
+     * @param mixed $parameters
      * @param DiInterface|null $container
      * @return mixed
      */
@@ -62,6 +68,7 @@ interface ServiceInterface
     /**
      * Changes a parameter in the definition without resolve the service
      *
+     * @phpstan-param di_service_argument $parameter
      * @param int $position
      * @param array $parameter
      * @return ServiceInterface

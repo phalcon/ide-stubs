@@ -9,9 +9,9 @@
  */
 namespace Phalcon\Mvc\Micro;
 
+use Phalcon\Contracts\Mvc\MvcTypes;
+
 /**
- * Phalcon\Mvc\Micro\Collection
- *
  * Groups Micro-Mvc handlers as controllers
  *
  * ```php
@@ -23,10 +23,12 @@ namespace Phalcon\Mvc\Micro;
  *     new PostsController()
  * );
  *
- * $collection->get("/posts/edit/{id}", "edit");
+ * $collection->get('/posts/edit/{id}', 'edit');
  *
  * $app->mount($collection);
  * ```
+ *
+ * @phpstan-import-type mvc_micro_handlers from MvcTypes
  */
 class Collection implements \Phalcon\Mvc\Micro\CollectionInterface
 {
@@ -36,26 +38,20 @@ class Collection implements \Phalcon\Mvc\Micro\CollectionInterface
     protected $handler;
 
     /**
-     * @var array
+     * @phpstan-var mvc_micro_handlers
      */
-    protected $handlers = [];
+    protected array $handlers = [];
 
-    /**
-     * @var bool
-     */
-    protected $isLazy = false;
+    protected bool $isLazy = false;
 
-    /**
-     * @var string
-     */
-    protected $prefix = '';
+    protected string $prefix = '';
 
     /**
      * Maps a route to a handler that only matches if the HTTP method is DELETE.
      *
+     * @param mixed $handler
      * @param string $routePattern
-     * @param callable $handler
-     * @param string|null $name *
+     * @param string|null $name
      * @return CollectionInterface
      */
     public function delete(string $routePattern, $handler, ?string $name = null): CollectionInterface
@@ -65,9 +61,9 @@ class Collection implements \Phalcon\Mvc\Micro\CollectionInterface
     /**
      * Maps a route to a handler that only matches if the HTTP method is GET.
      *
+     * @param mixed $handler
      * @param string $routePattern
-     * @param callable $handler
-     * @param string|null $name *
+     * @param string|null $name
      * @return CollectionInterface
      */
     public function get(string $routePattern, $handler, ?string $name = null): CollectionInterface
@@ -86,6 +82,7 @@ class Collection implements \Phalcon\Mvc\Micro\CollectionInterface
     /**
      * Returns the registered handlers
      *
+     * @phpstan-return mvc_micro_handlers
      * @return array
      */
     public function getHandlers(): array
@@ -104,9 +101,9 @@ class Collection implements \Phalcon\Mvc\Micro\CollectionInterface
     /**
      * Maps a route to a handler that only matches if the HTTP method is HEAD.
      *
+     * @param mixed $handler
      * @param string $routePattern
-     * @param callable|string $handler
-     * @param string|null $name *
+     * @param string|null $name
      * @return CollectionInterface
      */
     public function head(string $routePattern, $handler, ?string $name = null): CollectionInterface
@@ -125,9 +122,9 @@ class Collection implements \Phalcon\Mvc\Micro\CollectionInterface
     /**
      * Maps a route to a handler.
      *
+     * @param mixed $handler
      * @param string $routePattern
-     * @param callable $handler
-     * @param string|null $name *
+     * @param string|null $name
      * @return CollectionInterface
      */
     public function map(string $routePattern, $handler, ?string $name = null): CollectionInterface
@@ -139,17 +136,17 @@ class Collection implements \Phalcon\Mvc\Micro\CollectionInterface
      *
      * ```php
      * $collection->mapVia(
-     *     "/test",
-     *     "indexAction",
-     *     ["POST", "GET"],
-     *     "test"
+     *     '/test',
+     *     'indexAction',
+     *     ['POST', 'GET'],
+     *     'test'
      * );
      * ```
      *
-     * @param string $routePattern
-     * @param callable $handler
+     * @param callable     $handler
      * @param string|array $method
-     * @param string|null $name *
+     * @param string $routePattern
+     * @param string|null $name
      * @return CollectionInterface
      */
     public function mapVia(string $routePattern, $handler, $method, ?string $name = null): CollectionInterface
@@ -160,9 +157,9 @@ class Collection implements \Phalcon\Mvc\Micro\CollectionInterface
      * Maps a route to a handler that only matches if the HTTP method is
      * OPTIONS.
      *
-     * @param string $routePattern
      * @param callable $handler
-     * @param string|null $name *
+     * @param string $routePattern
+     * @param string|null $name
      * @return CollectionInterface
      */
     public function options(string $routePattern, $handler, ?string $name = null): CollectionInterface
@@ -172,9 +169,9 @@ class Collection implements \Phalcon\Mvc\Micro\CollectionInterface
     /**
      * Maps a route to a handler that only matches if the HTTP method is PATCH.
      *
-     * @param string $routePattern
      * @param callable $handler
-     * @param string|null $name *
+     * @param string $routePattern
+     * @param string|null $name
      * @return CollectionInterface
      */
     public function patch(string $routePattern, $handler, ?string $name = null): CollectionInterface
@@ -184,9 +181,9 @@ class Collection implements \Phalcon\Mvc\Micro\CollectionInterface
     /**
      * Maps a route to a handler that only matches if the HTTP method is POST.
      *
-     * @param string $routePattern
      * @param callable $handler
-     * @param string|null $name *
+     * @param string $routePattern
+     * @param string|null $name
      * @return CollectionInterface
      */
     public function post(string $routePattern, $handler, ?string $name = null): CollectionInterface
@@ -196,9 +193,9 @@ class Collection implements \Phalcon\Mvc\Micro\CollectionInterface
     /**
      * Maps a route to a handler that only matches if the HTTP method is PUT.
      *
-     * @param string $routePattern
      * @param callable $handler
-     * @param string|null $name *
+     * @param string $routePattern
+     * @param string|null $name
      * @return CollectionInterface
      */
     public function put(string $routePattern, $handler, ?string $name = null): CollectionInterface
@@ -209,7 +206,7 @@ class Collection implements \Phalcon\Mvc\Micro\CollectionInterface
      * Sets the main handler.
      *
      * @param mixed $handler
-     * @param bool $isLazy *
+     * @param bool $isLazy
      * @return CollectionInterface
      */
     public function setHandler($handler, bool $isLazy = false): CollectionInterface
@@ -219,7 +216,7 @@ class Collection implements \Phalcon\Mvc\Micro\CollectionInterface
     /**
      * Sets if the main handler must be lazy loaded
      *
-     * @param bool $isLazy *
+     * @param bool $isLazy
      * @return CollectionInterface
      */
     public function setLazy(bool $isLazy): CollectionInterface
@@ -229,7 +226,7 @@ class Collection implements \Phalcon\Mvc\Micro\CollectionInterface
     /**
      * Sets a prefix for all routes added to the collection
      *
-     * @param string $prefix *
+     * @param string $prefix
      * @return CollectionInterface
      */
     public function setPrefix(string $prefix): CollectionInterface
@@ -240,8 +237,8 @@ class Collection implements \Phalcon\Mvc\Micro\CollectionInterface
      * Internal function to add a handler to the group.
      *
      * @param string|array $method
+     * @param callable     $handler
      * @param string $routePattern
-     * @param callable $handler
      * @param string|null $name
      * @return void
      */

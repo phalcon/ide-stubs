@@ -11,6 +11,7 @@ namespace Phalcon\Logger;
 
 use DateTimeZone;
 use Exception;
+use Phalcon\Contracts\Logger\LoggerTypes;
 use Phalcon\Logger\Adapter\AdapterInterface;
 use Phalcon\Logger\Exceptions\AdapterNotFound;
 use Phalcon\Logger\Exceptions\NoAdaptersConfigured;
@@ -31,6 +32,11 @@ use Phalcon\Time\Clock\SystemClock;
  * @property int                $logLevel
  * @property string             $name
  * @property DateTimeZone       $timezone
+ *
+ * @phpstan-import-type logger_adapters from LoggerTypes
+ * @phpstan-import-type logger_context from LoggerTypes
+ * @phpstan-import-type logger_excluded from LoggerTypes
+ * @phpstan-import-type logger_levels from LoggerTypes
  */
 abstract class AbstractLogger
 {
@@ -93,6 +99,8 @@ abstract class AbstractLogger
      * The adapter stack
      *
      * @var AdapterInterface[]
+     *
+     * @phpstan-var logger_adapters
      */
     protected array $adapters = [];
 
@@ -103,6 +111,8 @@ abstract class AbstractLogger
 
     /**
      * The excluded adapters for this log process
+     *
+     * @phpstan-var logger_excluded
      */
     protected array $excluded = [];
 
@@ -118,6 +128,7 @@ abstract class AbstractLogger
     /**
      * Constructor.
      *
+     * @phpstan-param logger_adapters $adapters
      * @param string $name
      * @param array $adapters
      * @param \DateTimeZone|null $timezone
@@ -159,6 +170,7 @@ abstract class AbstractLogger
     /**
      * Exclude certain adapters.
      *
+     * @phpstan-param array<array-key, array-key> $adapters
      * @param array $adapters
      * @return static
      */
@@ -181,6 +193,8 @@ abstract class AbstractLogger
      * Returns the adapter stack array
      *
      * @return AdapterInterface[]
+     *
+     * @phpstan-return logger_adapters
      */
     public function getAdapters(): array
     {
@@ -227,6 +241,7 @@ abstract class AbstractLogger
     /**
      * Sets the adapters stack overriding what is already there
      *
+     * @phpstan-param logger_adapters $adapters
      * @param array $adapters
      * @return static
      */
@@ -250,6 +265,8 @@ abstract class AbstractLogger
 
     /**
      * Adds a message to each handler for processing
+     *
+     * @phpstan-param logger_context $context
      *
      * @throws Exception
      * @throws NoAdaptersConfigured
@@ -275,6 +292,7 @@ abstract class AbstractLogger
     /**
      * Returns an array of log levels with integer to string conversion
      *
+     * @phpstan-return logger_levels
      * @return array
      */
     protected function getLevels(): array
