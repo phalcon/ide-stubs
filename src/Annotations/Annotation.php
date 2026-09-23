@@ -23,6 +23,20 @@ use Phalcon\Contracts\Annotations\AnnotationsTypes;
 class Annotation
 {
     /**
+     * Type of an expression node that holds a value that PHP resolved
+     * already. The attributes reader makes these nodes, because
+     * ReflectionAttribute::getArguments() gives the values and not a parse
+     * tree. The value goes to the caller without a change.
+     *
+     * The parser types stop at 309 (PHANNOT_T_ARBITRARY_TEXT). The value is
+     * 1000 and not 310, so that a token added to the grammar later cannot
+     * make two case labels with one value in getExpression().
+     *
+     * @var int
+     */
+    const int T_RESOLVED = 1000;
+
+    /**
      * Annotation Arguments
      *
      * @var array
