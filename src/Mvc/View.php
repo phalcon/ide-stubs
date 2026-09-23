@@ -61,42 +61,42 @@ class View extends Injectable implements \Phalcon\Mvc\ViewInterface, \Phalcon\Ev
      *
      * @var int
      */
-    const int LEVEL_ACTION_VIEW = 1;
+    const LEVEL_ACTION_VIEW = 1;
 
     /**
      * Render Level: Render to the templates "after"
      *
      * @var int
      */
-    const int LEVEL_AFTER_TEMPLATE = 4;
+    const LEVEL_AFTER_TEMPLATE = 4;
 
     /**
      * Render Level: To the templates "before"
      *
      * @var int
      */
-    const int LEVEL_BEFORE_TEMPLATE = 2;
+    const LEVEL_BEFORE_TEMPLATE = 2;
 
     /**
      * Render Level: To the controller layout
      *
      * @var int
      */
-    const int LEVEL_LAYOUT = 3;
+    const LEVEL_LAYOUT = 3;
 
     /**
      * Render Level: To the main layout
      *
      * @var int
      */
-    const int LEVEL_MAIN_LAYOUT = 5;
+    const LEVEL_MAIN_LAYOUT = 5;
 
     /**
      * Render Level: No render any view
      *
      * @var int
      */
-    const int LEVEL_NO_RENDER = 0;
+    const LEVEL_NO_RENDER = 0;
 
     /**
      * @var string

@@ -42,15 +42,15 @@ class ServiceLifetime
     /**
      * @var string
      */
-    const string SCOPED = 'SCOPED';
+    const SCOPED = 'SCOPED';
 
     /**
      * @var string
      */
-    const string SINGLETON = 'SINGLETON';
+    const SINGLETON = 'SINGLETON';
 
     /**
      * @var string
      */
-    const string TRANSIENT = 'TRANSIENT';
+    const TRANSIENT = 'TRANSIENT';
 }

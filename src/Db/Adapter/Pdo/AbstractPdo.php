@@ -52,7 +52,7 @@ abstract class AbstractPdo extends AbstractAdapter
     /**
      * @var string
      */
-    const string BIND_PATTERN = '/\\\\?([0-9]+)|:([a-zA-Z0-9_]+):/';
+    const BIND_PATTERN = '/\\\\?([0-9]+)|:([a-zA-Z0-9_]+):/';
 
     /**
      * Last affected rows

@@ -23,17 +23,17 @@ interface ManagerInterface
     /**
      * @var int
      */
-    const int SESSION_ACTIVE = 2;
+    const SESSION_ACTIVE = 2;
 
     /**
      * @var int
      */
-    const int SESSION_DISABLED = 0;
+    const SESSION_DISABLED = 0;
 
     /**
      * @var int
      */
-    const int SESSION_NONE = 1;
+    const SESSION_NONE = 1;
 
 
     /**

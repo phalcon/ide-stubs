@@ -19,12 +19,12 @@ class Order
     /**
      * @var int
      */
-    const int ORDER_ASC = 1;
+    const ORDER_ASC = 1;
 
     /**
      * @var int
      */
-    const int ORDER_DESC = 2;
+    const ORDER_DESC = 2;
 
 
     /**

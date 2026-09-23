@@ -25,12 +25,12 @@ interface BuilderInterface
     /**
      * @var string
      */
-    const string OPERATOR_AND = 'and';
+    const OPERATOR_AND = 'and';
 
     /**
      * @var string
      */
-    const string OPERATOR_OR = 'or';
+    const OPERATOR_OR = 'or';
 
 
     /**

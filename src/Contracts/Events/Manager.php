@@ -17,7 +17,7 @@ interface Manager
     /**
      * @var int
      */
-    const int DEFAULT_PRIORITY = 100;
+    const DEFAULT_PRIORITY = 100;
 
 
     /**

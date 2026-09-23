@@ -43,7 +43,7 @@ class Storage extends \Phalcon\Acl\Adapter\Memory implements \Phalcon\Contracts\
     /**
      * @var int
      */
-    const int SNAPSHOT_VERSION = 1;
+    const SNAPSHOT_VERSION = 1;
 
     protected string $key;
 

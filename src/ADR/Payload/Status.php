@@ -28,107 +28,107 @@ class Status
     /**
      * @var string
      */
-    const string ACCEPTED = 'ACCEPTED';
+    const ACCEPTED = 'ACCEPTED';
 
     /**
      * @var string
      */
-    const string AUTHENTICATED = 'AUTHENTICATED';
+    const AUTHENTICATED = 'AUTHENTICATED';
 
     /**
      * @var string
      */
-    const string AUTHORIZED = 'AUTHORIZED';
+    const AUTHORIZED = 'AUTHORIZED';
 
     /**
      * @var string
      */
-    const string CREATED = 'CREATED';
+    const CREATED = 'CREATED';
 
     /**
      * @var string
      */
-    const string DELETED = 'DELETED';
+    const DELETED = 'DELETED';
 
     /**
      * @var string
      */
-    const string ERROR = 'ERROR';
+    const ERROR = 'ERROR';
 
     /**
      * @var string
      */
-    const string FAILURE = 'FAILURE';
+    const FAILURE = 'FAILURE';
 
     /**
      * @var string
      */
-    const string FOUND = 'FOUND';
+    const FOUND = 'FOUND';
 
     /**
      * @var string
      */
-    const string METHOD_NOT_ALLOWED = 'METHOD_NOT_ALLOWED';
+    const METHOD_NOT_ALLOWED = 'METHOD_NOT_ALLOWED';
 
     /**
      * @var string
      */
-    const string NOT_ACCEPTED = 'NOT_ACCEPTED';
+    const NOT_ACCEPTED = 'NOT_ACCEPTED';
 
     /**
      * @var string
      */
-    const string NOT_AUTHENTICATED = 'NOT_AUTHENTICATED';
+    const NOT_AUTHENTICATED = 'NOT_AUTHENTICATED';
 
     /**
      * @var string
      */
-    const string NOT_AUTHORIZED = 'NOT_AUTHORIZED';
+    const NOT_AUTHORIZED = 'NOT_AUTHORIZED';
 
     /**
      * @var string
      */
-    const string NOT_CREATED = 'NOT_CREATED';
+    const NOT_CREATED = 'NOT_CREATED';
 
     /**
      * @var string
      */
-    const string NOT_DELETED = 'NOT_DELETED';
+    const NOT_DELETED = 'NOT_DELETED';
 
     /**
      * @var string
      */
-    const string NOT_FOUND = 'NOT_FOUND';
+    const NOT_FOUND = 'NOT_FOUND';
 
     /**
      * @var string
      */
-    const string NOT_UPDATED = 'NOT_UPDATED';
+    const NOT_UPDATED = 'NOT_UPDATED';
 
     /**
      * @var string
      */
-    const string NOT_VALID = 'NOT_VALID';
+    const NOT_VALID = 'NOT_VALID';
 
     /**
      * @var string
      */
-    const string PROCESSING = 'PROCESSING';
+    const PROCESSING = 'PROCESSING';
 
     /**
      * @var string
      */
-    const string SUCCESS = 'SUCCESS';
+    const SUCCESS = 'SUCCESS';
 
     /**
      * @var string
      */
-    const string UPDATED = 'UPDATED';
+    const UPDATED = 'UPDATED';
 
     /**
      * @var string
      */
-    const string VALID = 'VALID';
+    const VALID = 'VALID';
 
 
     /**

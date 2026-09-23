@@ -17,10 +17,10 @@ class Enum
     /**
      * @var int
      */
-    const int ALLOW = 1;
+    const ALLOW = 1;
 
     /**
      * @var int
      */
-    const int DENY = 0;
+    const DENY = 0;
 }

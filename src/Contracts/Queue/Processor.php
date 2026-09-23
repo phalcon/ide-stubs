@@ -21,17 +21,17 @@ interface Processor
     /**
      * @var string
      */
-    const string ACK = 'enqueue.ack';
+    const ACK = 'enqueue.ack';
 
     /**
      * @var string
      */
-    const string REJECT = 'enqueue.reject';
+    const REJECT = 'enqueue.reject';
 
     /**
      * @var string
      */
-    const string REQUEUE = 'enqueue.requeue';
+    const REQUEUE = 'enqueue.requeue';
 
 
     /**

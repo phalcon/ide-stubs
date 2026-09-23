@@ -30,42 +30,42 @@ interface Repository
     /**
      * @var string
      */
-    const string PROPERTY_CURRENT_PAGE = 'current';
+    const PROPERTY_CURRENT_PAGE = 'current';
 
     /**
      * @var string
      */
-    const string PROPERTY_FIRST_PAGE = 'first';
+    const PROPERTY_FIRST_PAGE = 'first';
 
     /**
      * @var string
      */
-    const string PROPERTY_ITEMS = 'items';
+    const PROPERTY_ITEMS = 'items';
 
     /**
      * @var string
      */
-    const string PROPERTY_LAST_PAGE = 'last';
+    const PROPERTY_LAST_PAGE = 'last';
 
     /**
      * @var string
      */
-    const string PROPERTY_LIMIT = 'limit';
+    const PROPERTY_LIMIT = 'limit';
 
     /**
      * @var string
      */
-    const string PROPERTY_NEXT_PAGE = 'next';
+    const PROPERTY_NEXT_PAGE = 'next';
 
     /**
      * @var string
      */
-    const string PROPERTY_PREVIOUS_PAGE = 'previous';
+    const PROPERTY_PREVIOUS_PAGE = 'previous';
 
     /**
      * @var string
      */
-    const string PROPERTY_TOTAL_ITEMS = 'total_items';
+    const PROPERTY_TOTAL_ITEMS = 'total_items';
 
 
     /**

@@ -72,12 +72,12 @@ class Ip extends AbstractValidator
     /**
      * @var int
      */
-    const int VERSION_4 = 1048576;
+    const VERSION_4 = 1048576;
 
     /**
      * @var int
      */
-    const int VERSION_6 = 2097152;
+    const VERSION_6 = 2097152;
 
     /**
      * @var string|null

@@ -28,22 +28,22 @@ class Select extends \Phalcon\DataMapper\Query\AbstractConditions
     /**
      * @var string
      */
-    const string JOIN_INNER = 'INNER';
+    const JOIN_INNER = 'INNER';
 
     /**
      * @var string
      */
-    const string JOIN_LEFT = 'LEFT';
+    const JOIN_LEFT = 'LEFT';
 
     /**
      * @var string
      */
-    const string JOIN_NATURAL = 'NATURAL';
+    const JOIN_NATURAL = 'NATURAL';
 
     /**
      * @var string
      */
-    const string JOIN_RIGHT = 'RIGHT';
+    const JOIN_RIGHT = 'RIGHT';
 
     protected string $asAlias = '';
 

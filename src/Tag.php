@@ -37,57 +37,57 @@ class Tag
     /**
      * @var int
      */
-    const int HTML32 = 1;
+    const HTML32 = 1;
 
     /**
      * @var int
      */
-    const int HTML401_STRICT = 2;
+    const HTML401_STRICT = 2;
 
     /**
      * @var int
      */
-    const int HTML401_TRANSITIONAL = 3;
+    const HTML401_TRANSITIONAL = 3;
 
     /**
      * @var int
      */
-    const int HTML401_FRAMESET = 4;
+    const HTML401_FRAMESET = 4;
 
     /**
      * @var int
      */
-    const int HTML5 = 5;
+    const HTML5 = 5;
 
     /**
      * @var int
      */
-    const int XHTML10_STRICT = 6;
+    const XHTML10_STRICT = 6;
 
     /**
      * @var int
      */
-    const int XHTML10_TRANSITIONAL = 7;
+    const XHTML10_TRANSITIONAL = 7;
 
     /**
      * @var int
      */
-    const int XHTML10_FRAMESET = 8;
+    const XHTML10_FRAMESET = 8;
 
     /**
      * @var int
      */
-    const int XHTML11 = 9;
+    const XHTML11 = 9;
 
     /**
      * @var int
      */
-    const int XHTML20 = 10;
+    const XHTML20 = 10;
 
     /**
      * @var int
      */
-    const int XHTML5 = 11;
+    const XHTML5 = 11;
 
     protected static bool $autoEscape = true;
 

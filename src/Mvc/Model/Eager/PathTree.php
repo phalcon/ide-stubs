@@ -34,7 +34,7 @@ class PathTree
      *
      * @var int
      */
-    const int MAX_DEPTH = 5;
+    const MAX_DEPTH = 5;
 
 
     /**

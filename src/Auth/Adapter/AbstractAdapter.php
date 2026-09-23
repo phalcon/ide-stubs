@@ -29,7 +29,7 @@ abstract class AbstractAdapter implements \Phalcon\Contracts\Auth\Adapter\Adapte
      *
      * @var string
      */
-    const string DUMMY_HASH = '$2y$10$YMmGMSXz.5U3bjjJ2qx45uElzUrlaBiS8L70VaVnmsKYFJVcam8gW';
+    const DUMMY_HASH = '$2y$10$YMmGMSXz.5U3bjjJ2qx45uElzUrlaBiS8L70VaVnmsKYFJVcam8gW';
 
     protected \Phalcon\Contracts\Auth\Adapter\AdapterConfig $config;
 

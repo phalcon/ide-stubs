@@ -30,7 +30,7 @@ class Session extends \Phalcon\Flash\AbstractFlash
     /**
      * @var string
      */
-    const string SESSION_KEY = '_flashMessages';
+    const SESSION_KEY = '_flashMessages';
 
     protected string $sessionKey = '';
 

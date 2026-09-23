@@ -26,7 +26,7 @@ class Route implements \Phalcon\Cli\Router\RouteInterface
     /**
      * @var string
      */
-    const string DEFAULT_DELIMITER = ' ';
+    const DEFAULT_DELIMITER = ' ';
 
     /**
      * @var string

@@ -18,35 +18,35 @@ class Events
     /**
      * @var string
      */
-    const string AFTER_END = 'queue:afterEnd';
+    const AFTER_END = 'queue:afterEnd';
 
     /**
      * @var string
      */
-    const string AFTER_PROCESS = 'queue:afterProcess';
+    const AFTER_PROCESS = 'queue:afterProcess';
 
     /**
      * @var string
      */
-    const string AFTER_RECEIVE = 'queue:afterReceive';
+    const AFTER_RECEIVE = 'queue:afterReceive';
 
     /**
      * @var string
      */
-    const string BEFORE_PROCESS = 'queue:beforeProcess';
+    const BEFORE_PROCESS = 'queue:beforeProcess';
 
     /**
      * @var string
      */
-    const string BEFORE_RECEIVE = 'queue:beforeReceive';
+    const BEFORE_RECEIVE = 'queue:beforeReceive';
 
     /**
      * @var string
      */
-    const string BEFORE_START = 'queue:beforeStart';
+    const BEFORE_START = 'queue:beforeStart';
 
     /**
      * @var string
      */
-    const string PROCESSOR_EXCEPTION = 'queue:processorException';
+    const PROCESSOR_EXCEPTION = 'queue:processorException';
 }

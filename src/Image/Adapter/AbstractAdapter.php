@@ -36,7 +36,7 @@ abstract class AbstractAdapter implements \Phalcon\Image\Adapter\AdapterInterfac
      *
      * @var int
      */
-    const int DEFAULT_MAX_PIXELS = 50000000;
+    const DEFAULT_MAX_PIXELS = 50000000;
 
     protected string $file;
 

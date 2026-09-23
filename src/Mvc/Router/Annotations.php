@@ -204,4 +204,20 @@ class Annotations extends Router
     public function setControllerSuffix(string $controllerSuffix): self
     {
     }
+
+    /**
+     * Returns the argument at position 0, or the named one when position 0
+     * is not there.
+     *
+     * A docblock puts the value at position 0. An attribute puts it at
+     * position 0 too, unless the developer writes the name as a named
+     * argument.
+     *
+     * @param \Phalcon\Annotations\Annotation $annotation
+     * @param string $name
+     * @return mixed
+     */
+    protected function resolveArgument(\Phalcon\Annotations\Annotation $annotation, string $name): mixed
+    {
+    }
 }

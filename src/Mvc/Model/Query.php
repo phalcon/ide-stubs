@@ -137,22 +137,22 @@ class Query implements \Phalcon\Mvc\Model\QueryInterface, \Phalcon\Di\InjectionA
     /**
      * @var int
      */
-    const int TYPE_DELETE = 303;
+    const TYPE_DELETE = 303;
 
     /**
      * @var int
      */
-    const int TYPE_INSERT = 306;
+    const TYPE_INSERT = 306;
 
     /**
      * @var int
      */
-    const int TYPE_SELECT = 309;
+    const TYPE_SELECT = 309;
 
     /**
      * @var int
      */
-    const int TYPE_UPDATE = 300;
+    const TYPE_UPDATE = 300;
 
     /**
      * @var array

@@ -22,50 +22,50 @@ interface RequestMethodInterface
     /**
      * @var string
      */
-    const string METHOD_CONNECT = 'CONNECT';
+    const METHOD_CONNECT = 'CONNECT';
 
     /**
      * @var string
      */
-    const string METHOD_DELETE = 'DELETE';
+    const METHOD_DELETE = 'DELETE';
 
     /**
      * @var string
      */
-    const string METHOD_GET = 'GET';
+    const METHOD_GET = 'GET';
 
     /**
      * @var string
      */
-    const string METHOD_HEAD = 'HEAD';
+    const METHOD_HEAD = 'HEAD';
 
     /**
      * @var string
      */
-    const string METHOD_OPTIONS = 'OPTIONS';
+    const METHOD_OPTIONS = 'OPTIONS';
 
     /**
      * @var string
      */
-    const string METHOD_PATCH = 'PATCH';
+    const METHOD_PATCH = 'PATCH';
 
     /**
      * @var string
      */
-    const string METHOD_POST = 'POST';
+    const METHOD_POST = 'POST';
 
     /**
      * @var string
      */
-    const string METHOD_PURGE = 'PURGE';
+    const METHOD_PURGE = 'PURGE';
 
     /**
      * @var string
      */
-    const string METHOD_PUT = 'PUT';
+    const METHOD_PUT = 'PUT';
 
     /**
      * @var string
      */
-    const string METHOD_TRACE = 'TRACE';
+    const METHOD_TRACE = 'TRACE';
 }

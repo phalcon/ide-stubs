@@ -29,7 +29,7 @@ class BeanstalkProducer extends AbstractProducer
      *
      * @var int
      */
-    const int DEFAULT_PRIORITY = 100;
+    const DEFAULT_PRIORITY = 100;
 
     protected BeanstalkContext $context;
 

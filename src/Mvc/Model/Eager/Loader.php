@@ -42,7 +42,7 @@ class Loader
      *
      * @var int
      */
-    const int MAX_ROWS_PER_LEVEL = 100000;
+    const MAX_ROWS_PER_LEVEL = 100000;
 
     protected \Phalcon\Mvc\Model\ManagerInterface $manager;
 

@@ -62,7 +62,7 @@ interface Dialect
      *
      * @var string
      */
-    const string LOCK_NONE = '';
+    const LOCK_NONE = '';
 
     /**
      * Append `NOWAIT` to the `FOR UPDATE` clause - the query fails immediately
@@ -72,7 +72,7 @@ interface Dialect
      *
      * @var string
      */
-    const string LOCK_NOWAIT = 'NOWAIT';
+    const LOCK_NOWAIT = 'NOWAIT';
 
     /**
      * Append `SKIP LOCKED` to the `FOR UPDATE` clause - the query returns
@@ -81,7 +81,7 @@ interface Dialect
      *
      * @var string
      */
-    const string LOCK_SKIP_LOCKED = 'SKIP LOCKED';
+    const LOCK_SKIP_LOCKED = 'SKIP LOCKED';
 
 
     /**

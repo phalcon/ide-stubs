@@ -17,32 +17,32 @@ class Event
     /**
      * @var string
      */
-    const string ADR_AFTER_EXECUTE_ACTION = 'adr:afterExecuteAction';
+    const ADR_AFTER_EXECUTE_ACTION = 'adr:afterExecuteAction';
 
     /**
      * @var string
      */
-    const string ADR_BEFORE_EXECUTE_ACTION = 'adr:beforeExecuteAction';
+    const ADR_BEFORE_EXECUTE_ACTION = 'adr:beforeExecuteAction';
 
     /**
      * @var string
      */
-    const string APPLICATION_AFTER_HANDLE = 'application:afterHandle';
+    const APPLICATION_AFTER_HANDLE = 'application:afterHandle';
 
     /**
      * @var string
      */
-    const string APPLICATION_BEFORE_HANDLE = 'application:beforeHandle';
+    const APPLICATION_BEFORE_HANDLE = 'application:beforeHandle';
 
     /**
      * @var string
      */
-    const string PIPELINE_AFTER_DISPATCH = 'pipeline:afterDispatch';
+    const PIPELINE_AFTER_DISPATCH = 'pipeline:afterDispatch';
 
     /**
      * @var string
      */
-    const string PIPELINE_BEFORE_DISPATCH = 'pipeline:beforeDispatch';
+    const PIPELINE_BEFORE_DISPATCH = 'pipeline:beforeDispatch';
 
 
     /**

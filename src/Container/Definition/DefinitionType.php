@@ -42,20 +42,20 @@ class DefinitionType
     /**
      * @var string
      */
-    const string CLOSURE_TYPE = 'closure';
+    const CLOSURE_TYPE = 'closure';
 
     /**
      * @var string
      */
-    const string OBJECT_TYPE = 'object';
+    const OBJECT_TYPE = 'object';
 
     /**
      * @var string
      */
-    const string PARAMETER_TYPE = 'parameter';
+    const PARAMETER_TYPE = 'parameter';
 
     /**
      * @var string
      */
-    const string STRING_TYPE = 'string';
+    const STRING_TYPE = 'string';
 }

@@ -27,7 +27,7 @@ class SessionGuardConfig extends \Phalcon\Auth\Guard\Config\AbstractGuardConfig
      *
      * @var int
      */
-    const int DEFAULT_REMEMBER_TTL = 31536000;
+    const DEFAULT_REMEMBER_TTL = 31536000;
 
     private string $name;
 
