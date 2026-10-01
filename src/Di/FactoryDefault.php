@@ -14,7 +14,7 @@ use Phalcon\Assets\Manager as AssetsManager;
 use Phalcon\Encryption\Crypt;
 use Phalcon\Encryption\Security;
 use Phalcon\Events\Manager as EventsManager;
-use Phalcon\Filter\FilterFactory;
+use Phalcon\Filter\Filter;
 use Phalcon\Flash\Direct;
 use Phalcon\Flash\Session;
 use Phalcon\Html\Escaper;

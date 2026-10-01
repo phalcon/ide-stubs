@@ -16,7 +16,7 @@ use Phalcon\Di\FactoryDefault;
 use Phalcon\Di\Service;
 use Phalcon\Encryption\Security;
 use Phalcon\Events\Manager as EventsManager;
-use Phalcon\Filter\FilterFactory;
+use Phalcon\Filter\Filter;
 use Phalcon\Html\Escaper;
 use Phalcon\Html\TagFactory;
 use Phalcon\Mvc\Model\Manager as ModelManager;

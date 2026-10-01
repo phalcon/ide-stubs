@@ -23,7 +23,7 @@ use Phalcon\Contracts\Annotations\AnnotationsTypes;
  * @phpstan-import-type annotations_route_methods from AnnotationsTypes
  * @phpstan-import-type annotations_route_paths from AnnotationsTypes
  */
-#[\Attribute(68)]
+#[\Attribute(132)]
 class Route
 {
     /**

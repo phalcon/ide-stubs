@@ -19,7 +19,7 @@ use Phalcon\Http\Message\RequestMethodInterface;
  * @phpstan-import-type annotations_route_converters from AnnotationsTypes
  * @phpstan-import-type annotations_route_paths from AnnotationsTypes
  */
-#[\Attribute(68)]
+#[\Attribute(132)]
 class Delete extends \Phalcon\Annotations\Router\Route
 {
     /**

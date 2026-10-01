@@ -37,7 +37,7 @@ class AttributesReader implements \Phalcon\Annotations\ReaderInterface
      *
      * @var string
      */
-    const PHALCON_NAMESPACE = 'Phalcon\\\\Annotations\\\\';
+    const string PHALCON_NAMESPACE = 'Phalcon\\\\Annotations\\\\';
 
 
     /**
