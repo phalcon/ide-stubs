@@ -82,6 +82,17 @@ class Stream extends MetaData
     }
 
     /**
+     * Returns the value of a PHP file. The require is in a separate method,
+     * because the caller must be able to catch a ParseError.
+     *
+     * @param string $path
+     * @return mixed
+     */
+    private function requireFile(string $path): mixed
+    {
+    }
+
+    /**
      * Throws an exception when the metadata cannot be written
      *
      * @param mixed $option

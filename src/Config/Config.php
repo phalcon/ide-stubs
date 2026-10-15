@@ -47,7 +47,7 @@ class Config extends Collection implements \Phalcon\Config\ConfigInterface
     /**
      * @var string
      */
-    const DEFAULT_PATH_DELIMITER = '.';
+    const string DEFAULT_PATH_DELIMITER = '.';
 
     /**
      * @var string

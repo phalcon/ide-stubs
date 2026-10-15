@@ -17,7 +17,7 @@ namespace Phalcon\Annotations\Models\MetaData;
  * value is `defaultValue` and not `default`, because `default` is a Zephir
  * keyword.
  */
-#[\Attribute(8)]
+#[\Attribute(\Attribute::TARGET_PROPERTY)]
 class Column
 {
     /**

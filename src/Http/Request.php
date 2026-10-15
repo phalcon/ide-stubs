@@ -1098,13 +1098,6 @@ class Request extends AbstractInjectionAware implements \Phalcon\Http\RequestInt
     }
 
     /**
-     * @return array
-     */
-    private function getServerArray(): array
-    {
-    }
-
-    /**
      * Verify if given IP address is trusted
      *
      * @param string $ip

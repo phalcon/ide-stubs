@@ -34,7 +34,7 @@ class Annotation
      *
      * @var int
      */
-    const T_RESOLVED = 1000;
+    const int T_RESOLVED = 1000;
 
     /**
      * Annotation Arguments

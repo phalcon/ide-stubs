@@ -95,6 +95,14 @@ class Manager implements \Phalcon\Events\ManagerInterface, \Phalcon\Contracts\Ev
     protected int $fireDepth = 0;
 
     /**
+     * True when the object is a subclass of this class: fire() then calls
+     * the beforeFire() and afterFire() hooks. Null until the first fire.
+     *
+     * @var bool|null
+     */
+    protected $fireHooks = null;
+
+    /**
      * Manager-level kill switch. When true, every fire()/fireAll()/
      * fireQueue() call returns immediately (null or empty array) without
      * dispatching. Cleared by resume(). Survives across fire() calls,

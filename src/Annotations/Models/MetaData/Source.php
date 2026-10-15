@@ -12,7 +12,7 @@ namespace Phalcon\Annotations\Models\MetaData;
 /**
  * Names the table of a model. No framework code reads it today.
  */
-#[\Attribute(1)]
+#[\Attribute(\Attribute::TARGET_CLASS)]
 class Source
 {
     /**
