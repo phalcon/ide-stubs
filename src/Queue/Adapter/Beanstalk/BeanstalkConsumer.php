@@ -29,7 +29,7 @@ class BeanstalkConsumer extends AbstractConsumer implements \Phalcon\Contracts\Q
      *
      * @var int
      */
-    const DEFAULT_PRIORITY = 100;
+    const int DEFAULT_PRIORITY = 100;
 
     protected BeanstalkConnection $connection;
 

@@ -151,6 +151,13 @@ class Compiler implements \Phalcon\Di\InjectionAwareInterface
     protected $view;
 
     /**
+     * The virtual path of each template path (see compile())
+     *
+     * @phpstan-var array<string, string>
+     */
+    protected array $virtualPaths = [];
+
+    /**
      * Phalcon\Mvc\View\Engine\Volt\Compiler
      *
      * @param ViewBaseInterface|null $view

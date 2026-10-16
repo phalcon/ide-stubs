@@ -12,7 +12,7 @@ namespace Phalcon\Annotations\Models\MetaData;
 /**
  * Marks a property as part of the primary key. It is the attribute form of `@Primary`.
  */
-#[\Attribute(8)]
+#[\Attribute(\Attribute::TARGET_PROPERTY)]
 class Primary
 {
 }

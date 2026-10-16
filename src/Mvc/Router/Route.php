@@ -266,6 +266,18 @@ class Route implements \Phalcon\Mvc\Router\RouteInterface
     }
 
     /**
+     * Returns the data that the router needs for its method index, with
+     * one call: the HTTP methods, the compiled pattern, the host name, the
+     * compiled host name, the beforeMatch callback and the route id, in
+     * this order.
+     *
+     * @return array
+     */
+    public function getIndexData(): array
+    {
+    }
+
+    /**
      * Returns the 'match' callback if any
      *
      * @return mixed|null

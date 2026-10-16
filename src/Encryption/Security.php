@@ -48,53 +48,53 @@ class Security extends AbstractInjectionAware implements SecurityContract
     /**
      * @var int
      */
-    const CRYPT_ARGON2I = 10;
+    const int CRYPT_ARGON2I = 10;
 
     /**
      * @var int
      */
-    const CRYPT_ARGON2ID = 11;
+    const int CRYPT_ARGON2ID = 11;
 
     /**
      * @var int
      */
-    const CRYPT_BCRYPT = 0;
+    const int CRYPT_BCRYPT = 0;
 
     /**
      * @var int
      */
-    const CRYPT_DEFAULT = 0;
-
-    /**
-     * @deprecated Not implemented; resolves to bcrypt. To be removed.
-     *
-     * @var int
-     */
-    const CRYPT_BLOWFISH = 4;
-
-    /**
-     * @var int
-     */
-    const CRYPT_BLOWFISH_A = 5;
-
-    /**
-     * @var int
-     */
-    const CRYPT_BLOWFISH_X = 6;
+    const int CRYPT_DEFAULT = 0;
 
     /**
      * @deprecated Not implemented; resolves to bcrypt. To be removed.
      *
      * @var int
      */
-    const CRYPT_BLOWFISH_Y = 7;
+    const int CRYPT_BLOWFISH = 4;
+
+    /**
+     * @var int
+     */
+    const int CRYPT_BLOWFISH_A = 5;
+
+    /**
+     * @var int
+     */
+    const int CRYPT_BLOWFISH_X = 6;
 
     /**
      * @deprecated Not implemented; resolves to bcrypt. To be removed.
      *
      * @var int
      */
-    const CRYPT_EXT_DES = 2;
+    const int CRYPT_BLOWFISH_Y = 7;
+
+    /**
+     * @deprecated Not implemented; resolves to bcrypt. To be removed.
+     *
+     * @var int
+     */
+    const int CRYPT_EXT_DES = 2;
 
     /**
      * Weak legacy algorithm, easier to brute-force than bcrypt or Argon2. Use
@@ -103,7 +103,7 @@ class Security extends AbstractInjectionAware implements SecurityContract
      *
      * @var int
      */
-    const CRYPT_MD5 = 3;
+    const int CRYPT_MD5 = 3;
 
     /**
      * Weak legacy algorithm, easier to brute-force than bcrypt or Argon2. Use
@@ -112,7 +112,7 @@ class Security extends AbstractInjectionAware implements SecurityContract
      *
      * @var int
      */
-    const CRYPT_SHA256 = 8;
+    const int CRYPT_SHA256 = 8;
 
     /**
      * Weak legacy algorithm, easier to brute-force than bcrypt or Argon2. Use
@@ -121,14 +121,14 @@ class Security extends AbstractInjectionAware implements SecurityContract
      *
      * @var int
      */
-    const CRYPT_SHA512 = 9;
+    const int CRYPT_SHA512 = 9;
 
     /**
      * @deprecated Not implemented; resolves to bcrypt. To be removed.
      *
      * @var int
      */
-    const CRYPT_STD_DES = 1;
+    const int CRYPT_STD_DES = 1;
 
     protected bool $autoRefresh = true;
 

@@ -12,7 +12,7 @@ namespace Phalcon\Annotations\Models\MetaData;
 /**
  * Marks a property as the identity column. It is the attribute form of `@Identity`.
  */
-#[\Attribute(8)]
+#[\Attribute(\Attribute::TARGET_PROPERTY)]
 class Identity
 {
 }

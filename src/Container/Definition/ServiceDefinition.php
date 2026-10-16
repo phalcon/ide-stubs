@@ -375,7 +375,8 @@ class ServiceDefinition
     }
 
     /**
-     * Check if frozen
+     * Check if frozen. The setters call this method only when the
+     * definition is frozen: the method call costs more than the check.
      *
      * @throws FrozenDefinition
      * @return void

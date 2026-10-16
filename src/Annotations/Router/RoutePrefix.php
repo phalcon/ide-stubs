@@ -13,7 +13,7 @@ namespace Phalcon\Annotations\Router;
  * Sets the prefix of every route of a controller. It is the attribute form of
  * `@RoutePrefix`.
  */
-#[\Attribute(1)]
+#[\Attribute(\Attribute::TARGET_CLASS)]
 class RoutePrefix
 {
     /**

@@ -49,85 +49,85 @@ class Events
     /**
      * @var string
      */
-    const AFTER_BEGIN_TRANSACTION = 'dm:afterBeginTransaction';
+    const string AFTER_BEGIN_TRANSACTION = 'dm:afterBeginTransaction';
 
     /**
      * @var string
      */
-    const AFTER_COMMIT = 'dm:afterCommit';
+    const string AFTER_COMMIT = 'dm:afterCommit';
 
     /**
      * @var string
      */
-    const AFTER_CONNECT = 'dm:afterConnect';
+    const string AFTER_CONNECT = 'dm:afterConnect';
 
     /**
      * @var string
      */
-    const AFTER_DISCONNECT = 'dm:afterDisconnect';
+    const string AFTER_DISCONNECT = 'dm:afterDisconnect';
 
     /**
      * @var string
      */
-    const AFTER_EXEC = 'dm:afterExec';
+    const string AFTER_EXEC = 'dm:afterExec';
 
     /**
      * @var string
      */
-    const AFTER_PERFORM = 'dm:afterPerform';
+    const string AFTER_PERFORM = 'dm:afterPerform';
 
     /**
      * @var string
      */
-    const AFTER_QUERY = 'dm:afterQuery';
+    const string AFTER_QUERY = 'dm:afterQuery';
 
     /**
      * @var string
      */
-    const AFTER_ROLLBACK = 'dm:afterRollBack';
+    const string AFTER_ROLLBACK = 'dm:afterRollBack';
 
     /**
      * @var string
      */
-    const BEFORE_BEGIN_TRANSACTION = 'dm:beforeBeginTransaction';
+    const string BEFORE_BEGIN_TRANSACTION = 'dm:beforeBeginTransaction';
 
     /**
      * @var string
      */
-    const BEFORE_COMMIT = 'dm:beforeCommit';
+    const string BEFORE_COMMIT = 'dm:beforeCommit';
 
     /**
      * @var string
      */
-    const BEFORE_CONNECT = 'dm:beforeConnect';
+    const string BEFORE_CONNECT = 'dm:beforeConnect';
 
     /**
      * @var string
      */
-    const BEFORE_DISCONNECT = 'dm:beforeDisconnect';
+    const string BEFORE_DISCONNECT = 'dm:beforeDisconnect';
 
     /**
      * @var string
      */
-    const BEFORE_EXEC = 'dm:beforeExec';
+    const string BEFORE_EXEC = 'dm:beforeExec';
 
     /**
      * @var string
      */
-    const BEFORE_PERFORM = 'dm:beforePerform';
+    const string BEFORE_PERFORM = 'dm:beforePerform';
 
     /**
      * @var string
      */
-    const BEFORE_QUERY = 'dm:beforeQuery';
+    const string BEFORE_QUERY = 'dm:beforeQuery';
 
     /**
      * @var string
      */
-    const BEFORE_ROLLBACK = 'dm:beforeRollBack';
+    const string BEFORE_ROLLBACK = 'dm:beforeRollBack';
 
     /**
      * @var string
      */
-    const CONNECTION_LOST = 'dm:connectionLost';
+    const string CONNECTION_LOST = 'dm:connectionLost';
 }
